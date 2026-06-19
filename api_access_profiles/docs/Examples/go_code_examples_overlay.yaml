@@ -1,0 +1,308 @@
+- path: /access-profiles/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#create-access-profile-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+        )
+
+        func main() {
+           accessprofile := []byte(``) // Accessprofile | 
+
+          
+          var accessprofile v1.Accessprofile
+          if err := json.Unmarshal(accessprofile, &accessprofile); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.CreateAccessProfileV1(context.Background()).Accessprofile(accessprofile).Execute()
+          //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.CreateAccessProfileV1(context.Background()).Accessprofile(accessprofile).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.CreateAccessProfileV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateAccessProfileV1`: Accessprofile
+          fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.CreateAccessProfileV1`: %v\n", resp)
+        }
+- path: /access-profiles/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#delete-access-profile-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+        )
+
+        func main() {
+          id := `2c91808a7813090a017814121919ecca` // string | ID of the Access Profile to delete # string | ID of the Access Profile to delete
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.AccessProfiles.AccessProfilesAPI.DeleteAccessProfileV1(context.Background(), id).Execute()
+          //r, err := apiClient.AccessProfiles.AccessProfilesAPI.DeleteAccessProfileV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.DeleteAccessProfileV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /access-profiles/v1/bulk-delete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#delete-access-profiles-in-bulk-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+        )
+
+        func main() {
+           accessprofilebulkdeleterequest := []byte(`{"bestEffortOnly":true,"accessProfileIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}`) // Accessprofilebulkdeleterequest | 
+
+          
+          var accessprofilebulkdeleterequest v1.Accessprofilebulkdeleterequest
+          if err := json.Unmarshal(accessprofilebulkdeleterequest, &accessprofilebulkdeleterequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.DeleteAccessProfilesInBulkV1(context.Background()).Accessprofilebulkdeleterequest(accessprofilebulkdeleterequest).Execute()
+          //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.DeleteAccessProfilesInBulkV1(context.Background()).Accessprofilebulkdeleterequest(accessprofilebulkdeleterequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.DeleteAccessProfilesInBulkV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DeleteAccessProfilesInBulkV1`: Accessprofilebulkdeleteresponse
+          fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.DeleteAccessProfilesInBulkV1`: %v\n", resp)
+        }
+- path: /access-profiles/v1/{id}/entitlements
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#get-access-profile-entitlements-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+        )
+
+        func main() {
+          id := `2c91808a7813090a017814121919ecca` // string | ID of the access profile containing the entitlements. # string | ID of the access profile containing the entitlements.
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `attribute eq "memberOf"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*  Filtering is not supported for access profiles and entitlements that have the '+' symbol in their names.  (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*  Filtering is not supported for access profiles and entitlements that have the '+' symbol in their names.  (optional)
+          sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.GetAccessProfileEntitlementsV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.GetAccessProfileEntitlementsV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.GetAccessProfileEntitlementsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetAccessProfileEntitlementsV1`: []Entitlement
+          fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.GetAccessProfileEntitlementsV1`: %v\n", resp)
+        }
+- path: /access-profiles/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#get-access-profile-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+        )
+
+        func main() {
+          id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Access Profile # string | ID of the Access Profile
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.GetAccessProfileV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.GetAccessProfileV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.GetAccessProfileV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetAccessProfileV1`: Accessprofile
+          fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.GetAccessProfileV1`: %v\n", resp)
+        }
+- path: /access-profiles/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#list-access-profiles-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+        )
+
+        func main() {
+          forSubadmin := `8c190e6787aa4ed9a90bd9d5344523fb` // string | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error. (optional) # string | Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error. (optional)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `name eq "SailPoint Support"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Supported composite operators are *and, or*  Filtering is not supported for access profiles and entitlements that have the '+' symbol in their names.  (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Supported composite operators are *and, or*  Filtering is not supported for access profiles and entitlements that have the '+' symbol in their names.  (optional)
+          sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          forSegmentIds := `0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d` // string | Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional) # string | Filters access profiles to only those assigned to the segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional)
+          includeUnsegmented := false // bool | Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error. (optional) (default to true) # bool | Indicates whether the response list should contain unsegmented access profiles. If `for-segment-ids` is absent or empty, specifying *include-unsegmented* as `false` results in an error. (optional) (default to true)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.ListAccessProfilesV1(context.Background()).Execute()
+          //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.ListAccessProfilesV1(context.Background()).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.ListAccessProfilesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListAccessProfilesV1`: []Accessprofile
+          fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.ListAccessProfilesV1`: %v\n", resp)
+        }
+- path: /access-profiles/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#patch-access-profile-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+        )
+
+        func main() {
+          id := `2c91808a7813090a017814121919ecca` // string | ID of the Access Profile to patch # string | ID of the Access Profile to patch
+          jsonpatchoperation := []byte(`[{"op":"add","path":"/entitlements","value":[{"id":"2c9180857725c14301772a93bb77242d","type":"ENTITLEMENT","name":"AD User Group"}]}]`) // []Jsonpatchoperation | 
+
+          
+          var jsonpatchoperation []v1.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.PatchAccessProfileV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.PatchAccessProfileV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.PatchAccessProfileV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchAccessProfileV1`: Accessprofile
+          fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.PatchAccessProfileV1`: %v\n", resp)
+        }
+- path: /access-profiles/v1/bulk-update-requestable
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#update-access-profiles-in-bulk-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          accessprofilebulkupdaterequestinner := []byte(`[{"id":"464ae7bf-791e-49fd-b746-06a2e4a89635","requestable":false}]`) // []AccessprofilebulkupdaterequestInner | 
+
+          
+          var accessprofilebulkupdaterequestInner []v1.AccessprofilebulkupdaterequestInner
+          if err := json.Unmarshal(accessprofilebulkupdaterequestinner, &accessprofilebulkupdaterequestInner); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessprofilebulkupdaterequestInner(accessprofilebulkupdaterequestInner).Execute()
+          //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessprofilebulkupdaterequestInner(accessprofilebulkupdaterequestInner).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesInBulkV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateAccessProfilesInBulkV1`: []Accessprofileupdateitem
+          fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesInBulkV1`: %v\n", resp)
+        }

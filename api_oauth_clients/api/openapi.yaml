@@ -1,0 +1,1211 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - OAuth Clients
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement OAuth client functionality.   \nWith this\
+    \ functionality in place, users with the appropriate security scopes can create\
+    \ and configure OAuth clients to use as a way to obtain authorization to use the\
+    \ Identity Security Cloud REST API.\nRefer to [Authentication](https://developer.sailpoint.com/docs/api/authentication/)\
+    \ for more information about OAuth and how it works with the Identity Security\
+    \ Cloud REST API.\n"
+  name: OAuth Clients
+paths:
+  /oauth-clients/v1:
+    get:
+      description: This gets a list of OAuth clients.
+      operationId: listOauthClientsV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **lastUsed**: *le, isnull*
+        example: lastUsed le 2023-02-05T10:59:27.214Z
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/getoauthclientresponse'
+                type: array
+          description: List of OAuth clients.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOauthClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOauthClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:oauth-client:read
+        - sp:oauth-client:manage
+      summary: List oauth clients
+      tags:
+      - OAuth Clients
+    post:
+      description: This creates an OAuth client.
+      operationId: createOauthClientV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createoauthclientrequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createoauthclientresponse'
+          description: Request succeeded.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOauthClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOauthClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:oauth-client:manage
+      summary: Create oauth client
+      tags:
+      - OAuth Clients
+  /oauth-clients/v1/{id}:
+    delete:
+      description: This deletes an OAuth client.
+      operationId: deleteOauthClientV1
+      parameters:
+      - description: The OAuth client id
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listOauthClientsV1
+      responses:
+        "204":
+          description: No content.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOauthClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOauthClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:oauth-client:manage
+      summary: Delete oauth client
+      tags:
+      - OAuth Clients
+    get:
+      description: This gets details of an OAuth client.
+      operationId: getOauthClientV1
+      parameters:
+      - description: The OAuth client id
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listOauthClientsV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getoauthclientresponse'
+          description: Request succeeded.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOauthClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOauthClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:oauth-client:manage
+        - sp:oauth-client:read
+      - applicationAuth:
+        - sp:oauth-client:manage
+        - sp:oauth-client:read
+      summary: Get oauth client
+      tags:
+      - OAuth Clients
+    patch:
+      description: This performs a targeted update to the field(s) of an OAuth client.
+      operationId: patchOauthClientV1
+      parameters:
+      - description: The OAuth client id
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listOauthClientsV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: replace
+              path: /strongAuthSupported
+              value: true
+            - op: replace
+              path: /businessName
+              value: acme-solar
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: |
+          A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          The following fields are patchable:
+          * tenant
+          * businessName
+          * homepageUrl
+          * name
+          * description
+          * accessTokenValiditySeconds
+          * refreshTokenValiditySeconds
+          * redirectUris
+          * grantTypes
+          * accessType
+          * enabled
+          * strongAuthSupported
+          * claimsSupported
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getoauthclientresponse'
+          description: "Indicates the PATCH operation succeeded, and returns the OAuth\
+            \ client's new representation."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOauthClientsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOauthClientsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:oauth-client:manage
+      summary: Patch oauth client
+      tags:
+      - OAuth Clients
+components:
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listOauthClientsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listOauthClientsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    granttype:
+      description: OAuth2 Grant Type
+      enum:
+      - CLIENT_CREDENTIALS
+      - AUTHORIZATION_CODE
+      - REFRESH_TOKEN
+      example: CLIENT_CREDENTIALS
+      type: string
+    accesstype:
+      description: Access type of API Client indicating online or offline use
+      enum:
+      - ONLINE
+      - OFFLINE
+      example: OFFLINE
+      type: string
+    clienttype:
+      description: Type of an API Client indicating public or confidentials use
+      enum:
+      - CONFIDENTIAL
+      - PUBLIC
+      example: CONFIDENTIAL
+      type: string
+    getoauthclientresponse:
+      example:
+        internal: false
+        metadata: metadata
+        created: 2017-07-11T18:45:37.098Z
+        businessName: Acme-Solar
+        description: "An API client used for the authorization_code, refresh_token,\
+          \ and client_credentials flows"
+        refreshTokenValiditySeconds: 86400
+        secret: secret
+        type: CONFIDENTIAL
+        redirectUris:
+        - http://localhost:12345
+        enabled: true
+        accessType: OFFLINE
+        lastUsed: 2017-07-11T18:45:37.098Z
+        grantTypes:
+        - AUTHORIZATION_CODE
+        - CLIENT_CREDENTIALS
+        - REFRESH_TOKEN
+        strongAuthSupported: false
+        homepageUrl: http://localhost:12345
+        accessTokenValiditySeconds: 750
+        scope:
+        - demo:api-client-scope:first
+        - demo:api-client-scope:second
+        name: Demo API Client
+        claimsSupported: false
+        modified: 2018-06-25T20:22:28.104Z
+        id: 2c9180835d2e5168015d32f890ca1581
+      properties:
+        id:
+          description: ID of the OAuth client
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        businessName:
+          description: The name of the business the API Client should belong to
+          example: Acme-Solar
+          nullable: true
+          type: string
+        homepageUrl:
+          description: The homepage URL associated with the owner of the API Client
+          example: http://localhost:12345
+          nullable: true
+          type: string
+        name:
+          description: A human-readable name for the API Client
+          example: Demo API Client
+          type: string
+        description:
+          description: A description of the API Client
+          example: "An API client used for the authorization_code, refresh_token,\
+            \ and client_credentials flows"
+          nullable: true
+          type: string
+        accessTokenValiditySeconds:
+          description: The number of seconds an access token generated for this API
+            Client is valid for
+          example: 750
+          format: int32
+          type: integer
+        refreshTokenValiditySeconds:
+          description: The number of seconds a refresh token generated for this API
+            Client is valid for
+          example: 86400
+          format: int32
+          type: integer
+        redirectUris:
+          description: A list of the approved redirect URIs used with the authorization_code
+            flow
+          example:
+          - http://localhost:12345
+          items:
+            type: string
+          nullable: true
+          type: array
+        grantTypes:
+          description: A list of OAuth 2.0 grant types this API Client can be used
+            with
+          example:
+          - AUTHORIZATION_CODE
+          - CLIENT_CREDENTIALS
+          - REFRESH_TOKEN
+          items:
+            $ref: '#/components/schemas/granttype'
+          type: array
+        accessType:
+          $ref: '#/components/schemas/accesstype'
+        type:
+          $ref: '#/components/schemas/clienttype'
+        internal:
+          description: An indicator of whether the API Client can be used for requests
+            internal to IDN
+          example: false
+          type: boolean
+        enabled:
+          description: An indicator of whether the API Client is enabled for use
+          example: true
+          type: boolean
+        strongAuthSupported:
+          description: An indicator of whether the API Client supports strong authentication
+          example: false
+          type: boolean
+        claimsSupported:
+          description: An indicator of whether the API Client supports the serialization
+            of SAML claims when used with the authorization_code flow
+          example: false
+          type: boolean
+        created:
+          description: "The date and time, down to the millisecond, when the API Client\
+            \ was created"
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          type: string
+        modified:
+          description: "The date and time, down to the millisecond, when the API Client\
+            \ was last updated"
+          example: 2018-06-25T20:22:28.104Z
+          format: date-time
+          type: string
+        secret:
+          nullable: true
+          type: string
+        metadata:
+          nullable: true
+          type: string
+        lastUsed:
+          description: "The date and time, down to the millisecond, when this API\
+            \ Client was last used to generate an access token. This timestamp does\
+            \ not get updated on every API Client usage, but only once a day. This\
+            \ property can be useful for identifying which API Clients are no longer\
+            \ actively used and can be removed."
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          nullable: true
+          type: string
+        scope:
+          description: Scopes of the API Client.
+          example:
+          - demo:api-client-scope:first
+          - demo:api-client-scope:second
+          items:
+            default: sp:scopes:all
+            type: string
+          nullable: true
+          type: array
+      required:
+      - accessTokenValiditySeconds
+      - accessType
+      - businessName
+      - claimsSupported
+      - created
+      - description
+      - enabled
+      - grantTypes
+      - homepageUrl
+      - id
+      - internal
+      - modified
+      - name
+      - redirectUris
+      - refreshTokenValiditySeconds
+      - scope
+      - strongAuthSupported
+      - type
+      title: Get O Auth Client Response
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    createoauthclientrequest:
+      properties:
+        businessName:
+          description: The name of the business the API Client should belong to
+          example: Acme-Solar
+          nullable: true
+          type: string
+        homepageUrl:
+          description: The homepage URL associated with the owner of the API Client
+          example: http://localhost:12345
+          nullable: true
+          type: string
+        name:
+          description: A human-readable name for the API Client
+          example: Demo API Client
+          nullable: true
+          type: string
+        description:
+          description: A description of the API Client
+          example: "An API client used for the authorization_code, refresh_token,\
+            \ and client_credentials flows"
+          nullable: true
+          type: string
+        accessTokenValiditySeconds:
+          description: The number of seconds an access token generated for this API
+            Client is valid for
+          example: 750
+          format: int32
+          type: integer
+        refreshTokenValiditySeconds:
+          description: The number of seconds a refresh token generated for this API
+            Client is valid for
+          example: 86400
+          format: int32
+          type: integer
+        redirectUris:
+          description: A list of the approved redirect URIs. Provide one or more URIs
+            when assigning the AUTHORIZATION_CODE grant type to a new OAuth Client.
+          example:
+          - http://localhost:12345
+          items:
+            type: string
+          nullable: true
+          type: array
+        grantTypes:
+          description: A list of OAuth 2.0 grant types this API Client can be used
+            with
+          example:
+          - AUTHORIZATION_CODE
+          - CLIENT_CREDENTIALS
+          - REFRESH_TOKEN
+          items:
+            $ref: '#/components/schemas/granttype'
+          nullable: true
+          type: array
+        accessType:
+          $ref: '#/components/schemas/accesstype'
+        type:
+          $ref: '#/components/schemas/clienttype'
+        internal:
+          description: An indicator of whether the API Client can be used for requests
+            internal within the product.
+          example: false
+          type: boolean
+        enabled:
+          description: An indicator of whether the API Client is enabled for use
+          example: true
+          type: boolean
+        strongAuthSupported:
+          description: An indicator of whether the API Client supports strong authentication
+          example: false
+          type: boolean
+        claimsSupported:
+          description: An indicator of whether the API Client supports the serialization
+            of SAML claims when used with the authorization_code flow
+          example: false
+          type: boolean
+        scope:
+          description: "Scopes of the API Client. If no scope is specified, the client\
+            \ will be created with the default scope \"sp:scopes:all\". This means\
+            \ the API Client will have all the rights of the owner who created it."
+          example:
+          - demo:api-client-scope:first
+          - demo:api-client-scope:second
+          items:
+            default: sp:scopes:all
+            type: string
+          nullable: true
+          type: array
+      required:
+      - accessTokenValiditySeconds
+      - accessType
+      - description
+      - enabled
+      - grantTypes
+      - name
+      title: Create O Auth Client Request
+      type: object
+    createoauthclientresponse:
+      example:
+        internal: false
+        created: 2017-07-11T18:45:37.098Z
+        businessName: Acme-Solar
+        description: "An API client used for the authorization_code, refresh_token,\
+          \ and client_credentials flows"
+        secret: 5c32dd9b21adb51c77794d46e71de117a1d0ddb36a7ff941fa28014ab7de2cf3
+        refreshTokenValiditySeconds: 86400
+        type: CONFIDENTIAL
+        redirectUris:
+        - http://localhost:12345
+        enabled: true
+        accessType: OFFLINE
+        grantTypes:
+        - AUTHORIZATION_CODE
+        - CLIENT_CREDENTIALS
+        - REFRESH_TOKEN
+        strongAuthSupported: false
+        homepageUrl: http://localhost:12345
+        accessTokenValiditySeconds: 750
+        scope:
+        - demo:api-client-scope:first
+        - demo:api-client-scope:second
+        name: Demo API Client
+        claimsSupported: false
+        modified: 2018-06-25T20:22:28.104Z
+        id: 2c9180835d2e5168015d32f890ca1581
+      properties:
+        id:
+          description: ID of the OAuth client
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        secret:
+          description: Secret of the OAuth client (This field is only returned on
+            the intial create call.)
+          example: 5c32dd9b21adb51c77794d46e71de117a1d0ddb36a7ff941fa28014ab7de2cf3
+          type: string
+        businessName:
+          description: The name of the business the API Client should belong to
+          example: Acme-Solar
+          type: string
+        homepageUrl:
+          description: The homepage URL associated with the owner of the API Client
+          example: http://localhost:12345
+          type: string
+        name:
+          description: A human-readable name for the API Client
+          example: Demo API Client
+          type: string
+        description:
+          description: A description of the API Client
+          example: "An API client used for the authorization_code, refresh_token,\
+            \ and client_credentials flows"
+          type: string
+        accessTokenValiditySeconds:
+          description: The number of seconds an access token generated for this API
+            Client is valid for
+          example: 750
+          format: int32
+          type: integer
+        refreshTokenValiditySeconds:
+          description: The number of seconds a refresh token generated for this API
+            Client is valid for
+          example: 86400
+          format: int32
+          type: integer
+        redirectUris:
+          description: A list of the approved redirect URIs used with the authorization_code
+            flow
+          example:
+          - http://localhost:12345
+          items:
+            type: string
+          type: array
+        grantTypes:
+          description: A list of OAuth 2.0 grant types this API Client can be used
+            with
+          example:
+          - AUTHORIZATION_CODE
+          - CLIENT_CREDENTIALS
+          - REFRESH_TOKEN
+          items:
+            $ref: '#/components/schemas/granttype'
+          type: array
+        accessType:
+          $ref: '#/components/schemas/accesstype'
+        type:
+          $ref: '#/components/schemas/clienttype'
+        internal:
+          description: An indicator of whether the API Client can be used for requests
+            internal to IDN
+          example: false
+          type: boolean
+        enabled:
+          description: An indicator of whether the API Client is enabled for use
+          example: true
+          type: boolean
+        strongAuthSupported:
+          description: An indicator of whether the API Client supports strong authentication
+          example: false
+          type: boolean
+        claimsSupported:
+          description: An indicator of whether the API Client supports the serialization
+            of SAML claims when used with the authorization_code flow
+          example: false
+          type: boolean
+        created:
+          description: "The date and time, down to the millisecond, when the API Client\
+            \ was created"
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          type: string
+        modified:
+          description: "The date and time, down to the millisecond, when the API Client\
+            \ was last updated"
+          example: 2018-06-25T20:22:28.104Z
+          format: date-time
+          type: string
+        scope:
+          description: Scopes of the API Client.
+          example:
+          - demo:api-client-scope:first
+          - demo:api-client-scope:second
+          items:
+            default: sp:scopes:all
+            type: string
+          nullable: true
+          type: array
+      required:
+      - accessTokenValiditySeconds
+      - accessType
+      - businessName
+      - claimsSupported
+      - created
+      - description
+      - enabled
+      - grantTypes
+      - homepageUrl
+      - id
+      - internal
+      - modified
+      - name
+      - redirectUris
+      - refreshTokenValiditySeconds
+      - scope
+      - secret
+      - strongAuthSupported
+      - type
+      title: Create O Auth Client Response
+      type: object
+    jsonpatchoperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/jsonpatchoperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    listOauthClientsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listOauthClientsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    jsonpatchoperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array

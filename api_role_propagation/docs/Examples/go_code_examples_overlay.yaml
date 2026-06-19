@@ -1,0 +1,211 @@
+- path: /role-propagation/v1/terminate
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/rolepropagation/methods/role-propagation#cancel-role-propagation-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.RolePropagation.RolePropagationAPI.CancelRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.RolePropagation.RolePropagationAPI.CancelRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.CancelRolePropagationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /role-propagation/v1/is-running
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/rolepropagation/methods/role-propagation#get-ongoing-role-propagation-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetOngoingRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetOngoingRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetOngoingRolePropagationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetOngoingRolePropagationV1`: RolePropagationOngoingResponse
+          fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetOngoingRolePropagationV1`: %v\n", resp)
+        }
+- path: /role-propagation-config/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/rolepropagation/methods/role-propagation#get-role-propagation-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetRolePropagationConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetRolePropagationConfigV1`: RolePropagationConfigResponse
+          fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetRolePropagationConfigV1`: %v\n", resp)
+        }
+- path: /role-propagation/v1/{rolePropagationId}/status
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/rolepropagation/methods/role-propagation#get-role-propagation-status-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          rolePropagationId := `47b9fb02-e12e-42ba-8bfe-1860d78c88eb` // string | The ID of the role propagation process to retrieve the status for. # string | The ID of the role propagation process to retrieve the status for.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetRolePropagationStatusV1(context.Background(), rolePropagationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetRolePropagationStatusV1(context.Background(), rolePropagationId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetRolePropagationStatusV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetRolePropagationStatusV1`: RolePropagationStatusResponse
+          fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetRolePropagationStatusV1`: %v\n", resp)
+        }
+- path: /role-propagation-config/v1
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/rolepropagation/methods/role-propagation#set-role-propagation-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           rolepropagationconfiginput := []byte(``) // RolePropagationConfigInput | 
+
+          
+          var rolePropagationConfigInput v1.RolePropagationConfigInput
+          if err := json.Unmarshal(rolepropagationconfiginput, &rolePropagationConfigInput); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.RolePropagation.RolePropagationAPI.SetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
+          //resp, r, err := apiClient.RolePropagation.RolePropagationAPI.SetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.SetRolePropagationConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetRolePropagationConfigV1`: RolePropagationConfigResponse
+          fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.SetRolePropagationConfigV1`: %v\n", resp)
+        }
+- path: /role-propagation/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/rolepropagation/methods/role-propagation#start-role-propagation-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          skipRoleRefresh := true // bool | When true, the role refresh is not performed. Keeping it false is recommended. (optional) (default to false) # bool | When true, the role refresh is not performed. Keeping it false is recommended. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.RolePropagation.RolePropagationAPI.StartRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.RolePropagation.RolePropagationAPI.StartRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SkipRoleRefresh(skipRoleRefresh).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.StartRolePropagationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartRolePropagationV1`: RolePropagationResponse
+          fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.StartRolePropagationV1`: %v\n", resp)
+        }

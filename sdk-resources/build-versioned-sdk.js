@@ -192,8 +192,8 @@ function writePartitionConfig(partitionName) {
     .map(s => s.charAt(0).toUpperCase() + s.slice(1))
     .join("");
 
-  const packageName   = `api_${partitionName.replaceAll("-", "_")}_v1`;
-  const subModuleName = `${pascal}V1`;
+  const packageName   = `api_${partitionName.replaceAll("-", "_")}`;
+  const subModuleName = pascal;
   const importPath    = `github.com/sailpoint-oss/golang-sdk/v2/${packageName}`;
 
   const config = [
@@ -233,7 +233,7 @@ function writePartitionConfig(partitionName) {
 // ---------------------------------------------------------------------------
 
 function generatePartition(partitionName, bundledSpec, configPath) {
-  const packageName = `api_${partitionName.replaceAll("-", "_")}_v1`;
+  const packageName = `api_${partitionName.replaceAll("-", "_")}`;
   const outputDir   = path.join(SDK_ROOT, packageName);
 
   if (fs.existsSync(outputDir)) {
@@ -447,6 +447,20 @@ async function main() {
   // Clear any previous error reports
   if (fs.existsSync(ERROR_DIR)) fs.rmSync(ERROR_DIR, { recursive: true, force: true });
 
+  // Remove all stale api_* partition directories so renamed/removed APIs don't linger.
+  // Skipped when --partition is used (single-partition rebuild preserves sibling packages).
+  if (!onlyPartition) {
+    console.log("[CLEAN] Removing stale api_* partition directories ...");
+    const SPECIAL_PKGS = new Set(["api_generic", "api_nerm", "api_nerm_v2025"]);
+    const stale = fs.readdirSync(SDK_ROOT)
+      .filter(d => /^api_/.test(d) && !SPECIAL_PKGS.has(d) && fs.statSync(path.join(SDK_ROOT, d)).isDirectory());
+    for (const d of stale) {
+      fs.rmSync(path.join(SDK_ROOT, d), { recursive: true, force: true });
+      console.log(`  removed ${d}/`);
+    }
+    console.log(`  cleaned ${stale.length} directory/directories\n`);
+  }
+
   const results = {
     total:   partitions.length,
     success: [],
@@ -559,27 +573,26 @@ function packageToFieldName(pkgName) {
 }
 
 /**
- * Regenerate golang-sdk/client.go from the api_*_v{n} packages currently on disk.
+ * Regenerate golang-sdk/client.go from the api_* packages currently on disk.
  * Also keeps api_generic, api_nerm, and api_nerm_v2025 as special cases.
  *
  * Field naming convention:
- *   Single-version resource  →  AccountsAPI *api_accounts_v1.AccountsAPIService
- *   Multi-version resource   →  AccountsV1API *api_accounts_v1.AccountsAPIService
- *                               AccountsV2API *api_accounts_v2.AccountsAPIService
+ *   AccountsAPI *api_accounts.AccountsAPIService
  *
- * Year-based packages like api_nerm_v2025 are excluded from partition processing
- * (they are handled as special cases) by matching only 1-2 digit version numbers.
+ * Versions are embedded in the method names themselves (e.g. ListAccountsV1,
+ * GetAccessRequestConfigV2), so no version suffix is added to the folder or field name.
  */
 function generateClientGo() {
   const MODULE = "github.com/sailpoint-oss/golang-sdk/v2";
 
-  // Only resource-version packages (_v1, _v2 … _v99); excludes year-based (_v2025)
+  // All api_* packages except the known special cases (generic, nerm, nerm_v2025)
+  const SPECIAL_PKGS = new Set(["api_generic", "api_nerm", "api_nerm_v2025"]);
   const partitionPkgs = fs.readdirSync(SDK_ROOT)
-    .filter(d => /^api_.+_v\d{1,2}$/.test(d) && fs.statSync(path.join(SDK_ROOT, d)).isDirectory())
+    .filter(d => /^api_/.test(d) && !SPECIAL_PKGS.has(d) && fs.statSync(path.join(SDK_ROOT, d)).isDirectory())
     .sort();
 
   if (partitionPkgs.length === 0) {
-    console.log("  No api_*_v{n} packages found, skipping client.go generation.");
+    console.log("  No api_* partition packages found, skipping client.go generation.");
     return;
   }
 
@@ -598,81 +611,38 @@ function generateClientGo() {
   // serviceBase: e.g. "Accounts", "IAIAccessRequestRecommendations"
   const pkgInfos = partitionPkgs.map(pkg => ({
     pkg,
-    ver: parseInt(pkg.match(/_v(\d+)$/)[1]),
     serviceBase: readServiceFieldName(pkg),
   }));
-
-  // Group by serviceBase, sorted oldest→newest
-  const byResource = new Map();
-  for (const info of pkgInfos) {
-    if (!byResource.has(info.serviceBase)) byResource.set(info.serviceBase, []);
-    byResource.get(info.serviceBase).push(info);
-  }
-  for (const group of byResource.values()) {
-    group.sort((a, b) => a.ver - b.ver);
-  }
 
   // Build import block (one line per package)
   const partitionImports = partitionPkgs
     .map(pkg => `\t${pkg} "${MODULE}/${pkg}"`)
     .join("\n");
 
-  // Build struct fields
-  //   Single version:  AccountsAPI     *api_accounts_v1.AccountsAPIService
-  //   Multi-version:   AccountsV1API   *api_accounts_v1.AccountsAPIService
-  //                    AccountsV2API   *api_accounts_v2.AccountsAPIService
-  const fieldLines = [];
-  for (const [svcBase, group] of byResource.entries()) {
-    if (group.length === 1) {
-      const { pkg } = group[0];
-      fieldLines.push(`\t${svcBase}API *${pkg}.${svcBase}APIService`);
-    } else {
-      for (const { pkg, ver } of group) {
-        fieldLines.push(`\t${svcBase}V${ver}API *${pkg}.${svcBase}APIService`);
-      }
-    }
-  }
+  // Build struct fields: one field per package
+  //   AccountsAPI *api_accounts.AccountsAPIService
+  const fieldLines = pkgInfos.map(({ pkg, serviceBase }) =>
+    `\t${serviceBase}API *${pkg}.${serviceBase}APIService`
+  );
   const partitionFields = fieldLines.join("\n");
 
   // Build NewAPIClient instantiation lines
-  const initBlocks = [];
-  for (const [svcBase, group] of byResource.entries()) {
-    if (group.length === 1) {
-      const { pkg } = group[0];
-      const cfgVar = `_cfg${svcBase}`;
-      initBlocks.push([
-        `\t${cfgVar} := ${pkg}.NewConfiguration(`,
-        `\t\tcfg.ClientConfiguration.ClientId,`,
-        `\t\tcfg.ClientConfiguration.ClientSecret,`,
-        `\t\tcfg.ClientConfiguration.BaseURL,`,
-        `\t\tcfg.ClientConfiguration.TokenURL,`,
-        `\t\tcfg.ClientConfiguration.Token,`,
-        `\t\tconsumerSuffix,`,
-        `\t\tcfg.Experimental,`,
-        `\t)`,
-        `\t${cfgVar}.HTTPClient = cfg.HTTPClient`,
-        `\tc.${svcBase}API = ${pkg}.NewAPIClient(${cfgVar}).${svcBase}API`,
-      ].join("\n"));
-    } else {
-      for (const { pkg, ver } of group) {
-        const fieldName = `${svcBase}V${ver}API`;
-        const cfgVar = `_cfg${svcBase}V${ver}`;
-        initBlocks.push([
-          `\t${cfgVar} := ${pkg}.NewConfiguration(`,
-          `\t\tcfg.ClientConfiguration.ClientId,`,
-          `\t\tcfg.ClientConfiguration.ClientSecret,`,
-          `\t\tcfg.ClientConfiguration.BaseURL,`,
-          `\t\tcfg.ClientConfiguration.TokenURL,`,
-          `\t\tcfg.ClientConfiguration.Token,`,
-          `\t\tconsumerSuffix,`,
-          `\t\tcfg.Experimental,`,
-          `\t)`,
-          `\t${cfgVar}.HTTPClient = cfg.HTTPClient`,
-          `\tc.${fieldName} = ${pkg}.NewAPIClient(${cfgVar}).${svcBase}API`,
-        ].join("\n"));
-      }
-    }
-  }
+  const initBlocks = pkgInfos.map(({ pkg, serviceBase }) => {
+    const cfgVar = `_cfg${serviceBase}`;
+    return [
+      `\t${cfgVar} := ${pkg}.NewConfiguration(`,
+      `\t\tcfg.ClientConfiguration.ClientId,`,
+      `\t\tcfg.ClientConfiguration.ClientSecret,`,
+      `\t\tcfg.ClientConfiguration.BaseURL,`,
+      `\t\tcfg.ClientConfiguration.TokenURL,`,
+      `\t\tcfg.ClientConfiguration.Token,`,
+      `\t\tconsumerSuffix,`,
+      `\t\tcfg.Experimental,`,
+      `\t)`,
+      `\t${cfgVar}.HTTPClient = cfg.HTTPClient`,
+      `\tc.${serviceBase}API = ${pkg}.NewAPIClient(${cfgVar}).${serviceBase}API`,
+    ].join("\n");
+  });
   const partitionInits = initBlocks.join("\n\n");
 
   const content = `/*
@@ -682,9 +652,9 @@ Use these APIs to interact with the SailPoint Identity Security Cloud platform.
 We encourage you to join the SailPoint Developer Community forum at
 https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
-Per-resource versioned API packages (e.g. api_entitlements_v1, api_accounts_v1) are
-generated automatically — this file is regenerated by build-versioned-sdk.js after
-each build, so new partitions appear here without any manual changes.
+Per-resource API packages (e.g. api_entitlements, api_accounts) are generated
+automatically — this file is regenerated by build-versioned-sdk.js after each build,
+so new partitions appear here without any manual changes.
 */
 
 // Code generated by build-versioned-sdk.js; DO NOT EDIT.
@@ -710,8 +680,7 @@ var (
 // In most cases there should be only one, shared, APIClient.
 //
 // Per-resource API services are available as fields (e.g. c.AccountsAPI, c.RolesAPI).
-// Single-version resources use the plain name; multi-version resources include the
-// version number (e.g. c.AccountsV1API, c.AccountsV2API).
+// Versions are embedded in the method names themselves (e.g. ListAccountsV1, GetAccessRequestConfigV2).
 // Use NewPartitionConfiguration to build a config for directly importing a single package.
 type APIClient struct {
 \tcfg *Configuration
@@ -781,11 +750,11 @@ ${partitionInits}
 }
 
 // NewPartitionConfiguration returns the configuration parameters needed to
-// instantiate any per-resource versioned API package directly.
+// instantiate any per-resource API package directly.
 // Example:
 //
-//\tcfg := api_accounts_v1.NewConfiguration(NewPartitionConfiguration(sailpointCfg))
-//\tclient := api_accounts_v1.NewAPIClient(cfg)
+//\tcfg := api_accounts.NewConfiguration(NewPartitionConfiguration(sailpointCfg))
+//\tclient := api_accounts.NewAPIClient(cfg)
 //\tresp, r, err := client.AccountsAPI.ListAccountsV1(ctx).Execute()
 func NewPartitionConfiguration(cfg *Configuration) (clientId, clientSecret, baseURL, tokenURL, token, consumerSuffix string, experimental bool) {
 \treturn cfg.ClientConfiguration.ClientId,

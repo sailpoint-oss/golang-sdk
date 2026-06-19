@@ -1,0 +1,232 @@
+- path: /identity-profiles/v1/{identity-profile-id}/lifecycle-states
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/lifecyclestates/methods/lifecycle-states#create-lifecycle-state-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+        )
+
+        func main() {
+          identityProfileId := `2b838de9-db9b-abcf-e646-d4f274ad4238` // string | Identity profile ID. # string | Identity profile ID.
+           lifecyclestate := []byte(``) // Lifecyclestate | Lifecycle state to be created.
+
+          
+          var lifecyclestate v1.Lifecyclestate
+          if err := json.Unmarshal(lifecyclestate, &lifecyclestate); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.CreateLifecycleStateV1(context.Background(), identityProfileId).Lifecyclestate(lifecyclestate).Execute()
+          //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.CreateLifecycleStateV1(context.Background(), identityProfileId).Lifecyclestate(lifecyclestate).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.CreateLifecycleStateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateLifecycleStateV1`: Lifecyclestate
+          fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.CreateLifecycleStateV1`: %v\n", resp)
+        }
+- path: /identity-profiles/v1/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/lifecyclestates/methods/lifecycle-states#delete-lifecycle-state-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+        )
+
+        func main() {
+          identityProfileId := `2b838de9-db9b-abcf-e646-d4f274ad4238` // string | Identity profile ID. # string | Identity profile ID.
+          lifecycleStateId := `ef38f94347e94562b5bb8424a56397d8` // string | Lifecycle state ID. # string | Lifecycle state ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.DeleteLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
+          //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.DeleteLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.DeleteLifecycleStateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DeleteLifecycleStateV1`: Lifecyclestatedeleted
+          fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.DeleteLifecycleStateV1`: %v\n", resp)
+        }
+- path: /identity-profiles/v1/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/lifecyclestates/methods/lifecycle-states#get-lifecycle-state-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+        )
+
+        func main() {
+          identityProfileId := `2b838de9-db9b-abcf-e646-d4f274ad4238` // string | Identity profile ID. # string | Identity profile ID.
+          lifecycleStateId := `ef38f94347e94562b5bb8424a56397d8` // string | Lifecycle state ID. # string | Lifecycle state ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.GetLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
+          //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.GetLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.GetLifecycleStateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetLifecycleStateV1`: Lifecyclestate
+          fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.GetLifecycleStateV1`: %v\n", resp)
+        }
+- path: /identity-profiles/v1/{identity-profile-id}/lifecycle-states
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/lifecyclestates/methods/lifecycle-states#get-lifecycle-states-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+        )
+
+        func main() {
+          identityProfileId := `2b838de9-db9b-abcf-e646-d4f274ad4238` // string | Identity profile ID. # string | Identity profile ID.
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          sorters := `created,modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, priority, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, priority, created, modified** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.GetLifecycleStatesV1(context.Background(), identityProfileId).Execute()
+          //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.GetLifecycleStatesV1(context.Background(), identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.GetLifecycleStatesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetLifecycleStatesV1`: []Lifecyclestate
+          fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.GetLifecycleStatesV1`: %v\n", resp)
+        }
+- path: /identities/v1/{identity-id}/set-lifecycle-state
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/lifecyclestates/methods/lifecycle-states#set-lifecycle-state-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+        )
+
+        func main() {
+          identityId := `2c9180857893f1290178944561990364` // string | ID of the identity to update. # string | ID of the identity to update.
+           setlifecyclestatev1request := []byte(``) // SetLifecycleStateV1Request | 
+
+          
+          var setLifecycleStateV1Request v1.SetLifecycleStateV1Request
+          if err := json.Unmarshal(setlifecyclestatev1request, &setLifecycleStateV1Request); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.SetLifecycleStateV1(context.Background(), identityId).SetLifecycleStateV1Request(setLifecycleStateV1Request).Execute()
+          //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.SetLifecycleStateV1(context.Background(), identityId).SetLifecycleStateV1Request(setLifecycleStateV1Request).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.SetLifecycleStateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetLifecycleStateV1`: SetLifecycleStateV1200Response
+          fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.SetLifecycleStateV1`: %v\n", resp)
+        }
+- path: /identity-profiles/v1/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/lifecyclestates/methods/lifecycle-states#update-lifecycle-states-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
+        )
+
+        func main() {
+          identityProfileId := `2b838de9-db9b-abcf-e646-d4f274ad4238` // string | Identity profile ID. # string | Identity profile ID.
+          lifecycleStateId := `ef38f94347e94562b5bb8424a56397d8` // string | Lifecycle state ID. # string | Lifecycle state ID.
+          jsonpatchoperation := []byte(`[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/accessProfileIds","value":["2c918087742bab150174407a80f3125e","2c918087742bab150174407a80f3124f"]},{"op":"replace","path":"/accountActions","value":[{"action":"ENABLE","sourceIds":["2c9180846a2f82fb016a481c1b1560c5","2c9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false},{"action":"DISABLE","sourceIds":null,"excludeSourceIds":["3b551ccf5566478b9b77f37de25303aa"],"allSources":true},{"action":"DELETE","sourceIds":["3c9180846a2f82fb016a481c1b1560c5","8n9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false}]},{"op":"replace","path":"/emailNotificationOption","value":{"notifyManagers":true,"notifyAllAdmins":false,"notifySpecificUsers":false,"emailAddressList":[]}},{"op":"replace","path":"/accessActionConfiguration","value":{"removeAllAccessEnabled":true}}]`) // []Jsonpatchoperation | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority 
+
+          
+          var jsonpatchoperation []v1.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.UpdateLifecycleStatesV1(context.Background(), identityProfileId, lifecycleStateId).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.UpdateLifecycleStatesV1(context.Background(), identityProfileId, lifecycleStateId).Jsonpatchoperation(jsonpatchoperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.UpdateLifecycleStatesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateLifecycleStatesV1`: Lifecyclestate
+          fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.UpdateLifecycleStatesV1`: %v\n", resp)
+        }

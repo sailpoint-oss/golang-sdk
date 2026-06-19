@@ -1,0 +1,75 @@
+- path: /auth-users/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/authusers/methods/auth-users#get-auth-user-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_auth_users"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_auth_users"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Identity ID # string | Identity ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AuthUsers.AuthUsersAPI.GetAuthUserV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AuthUsers.AuthUsersAPI.GetAuthUserV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AuthUsersAPI.GetAuthUserV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetAuthUserV1`: Authuser
+          fmt.Fprintf(os.Stdout, "Response from `AuthUsersAPI.GetAuthUserV1`: %v\n", resp)
+        }
+- path: /auth-users/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/authusers/methods/auth-users#patch-auth-user-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_auth_users"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_auth_users"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Identity ID # string | Identity ID
+          jsonpatchoperation := []byte(`[{"op":"replace","path":"/capabilities","value":["ORG_ADMIN"]}]`) // []Jsonpatchoperation | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          
+          var jsonpatchoperation []v1.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AuthUsers.AuthUsersAPI.PatchAuthUserV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.AuthUsers.AuthUsersAPI.PatchAuthUserV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AuthUsersAPI.PatchAuthUserV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchAuthUserV1`: Authuser
+          fmt.Fprintf(os.Stdout, "Response from `AuthUsersAPI.PatchAuthUserV1`: %v\n", resp)
+        }

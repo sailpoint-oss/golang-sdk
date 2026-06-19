@@ -1,0 +1,801 @@
+- path: /campaigns/v1/{id}/complete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#complete-campaign-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Campaign ID. # string | Campaign ID.
+           campaigncompleteoptions := []byte(``) // Campaigncompleteoptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CompleteCampaignV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CompleteCampaignV1(context.Background(), id).Campaigncompleteoptions(campaigncompleteoptions).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CompleteCampaignV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CompleteCampaignV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.CompleteCampaignV1`: %v\n", resp)
+        }
+- path: /campaign-templates/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#create-campaign-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            "time"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+           campaigntemplate := []byte(``) // Campaigntemplate | 
+
+          
+          var campaigntemplate v1.Campaigntemplate
+          if err := json.Unmarshal(campaigntemplate, &campaigntemplate); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CreateCampaignTemplateV1(context.Background()).Campaigntemplate(campaigntemplate).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CreateCampaignTemplateV1(context.Background()).Campaigntemplate(campaigntemplate).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CreateCampaignTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateCampaignTemplateV1`: Campaigntemplate
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.CreateCampaignTemplateV1`: %v\n", resp)
+        }
+- path: /campaigns/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#create-campaign-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+           campaign2 := []byte(``) // Campaign2 | 
+
+          
+          var campaign2 v1.Campaign2
+          if err := json.Unmarshal(campaign2, &campaign2); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CreateCampaignV1(context.Background()).Campaign2(campaign2).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CreateCampaignV1(context.Background()).Campaign2(campaign2).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CreateCampaignV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateCampaignV1`: Campaign2
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.CreateCampaignV1`: %v\n", resp)
+        }
+- path: /campaign-templates/v1/{id}/schedule
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#delete-campaign-template-schedule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `04bedce387bd47b2ae1f86eb0bb36dee` // string | ID of the campaign template whose schedule is being deleted. # string | ID of the campaign template whose schedule is being deleted.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignTemplateScheduleV1(context.Background(), id).Execute()
+          //r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignTemplateScheduleV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaignTemplateScheduleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /campaign-templates/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#delete-campaign-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `2c9180835d191a86015d28455b4a2329` // string | ID of the campaign template being deleted. # string | ID of the campaign template being deleted.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignTemplateV1(context.Background(), id).Execute()
+          //r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignTemplateV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaignTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /campaigns/v1/delete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#delete-campaigns-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+           campaignsdeleterequest := []byte(``) // Campaignsdeleterequest | IDs of the campaigns to delete.
+
+          
+          var campaignsdeleterequest v1.Campaignsdeleterequest
+          if err := json.Unmarshal(campaignsdeleterequest, &campaignsdeleterequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignsV1(context.Background()).Campaignsdeleterequest(campaignsdeleterequest).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignsV1(context.Background()).Campaignsdeleterequest(campaignsdeleterequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaignsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DeleteCampaignsV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.DeleteCampaignsV1`: %v\n", resp)
+        }
+- path: /campaigns/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#get-active-campaigns-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          detail := `FULL` // string | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. (optional) # string | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. (optional)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `name eq "Manager Campaign"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **status**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **status**: *eq, in* (optional)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetActiveCampaignsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetActiveCampaignsV1(context.Background()).Detail(detail).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetActiveCampaignsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetActiveCampaignsV1`: []GetActiveCampaignsV1200ResponseInner
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetActiveCampaignsV1`: %v\n", resp)
+        }
+- path: /campaigns/v1/reports-configuration
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#get-campaign-reports-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignReportsConfigV1(context.Background()).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignReportsConfigV1(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReportsConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCampaignReportsConfigV1`: Campaignreportsconfig
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignReportsConfigV1`: %v\n", resp)
+        }
+- path: /campaigns/v1/{id}/reports
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#get-campaign-reports-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign whose reports are being fetched. # string | ID of the campaign whose reports are being fetched.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignReportsV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignReportsV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReportsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCampaignReportsV1`: []Campaignreport
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignReportsV1`: %v\n", resp)
+        }
+- path: /campaign-templates/v1/{id}/schedule
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#get-campaign-template-schedule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `04bedce387bd47b2ae1f86eb0bb36dee` // string | ID of the campaign template whose schedule is being fetched. # string | ID of the campaign template whose schedule is being fetched.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplateScheduleV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplateScheduleV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplateScheduleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCampaignTemplateScheduleV1`: Schedule2
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignTemplateScheduleV1`: %v\n", resp)
+        }
+- path: /campaign-templates/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#get-campaign-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `2c9180835d191a86015d28455b4a2329` // string | Requested campaign template's ID. # string | Requested campaign template's ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplateV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplateV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCampaignTemplateV1`: Campaigntemplate
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignTemplateV1`: %v\n", resp)
+        }
+- path: /campaign-templates/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#get-campaign-templates-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          filters := `name eq "manager template"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, ge, gt, in, le, lt, ne, sw*  **id**: *eq, ge, gt, in, le, lt, ne, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, ge, gt, in, le, lt, ne, sw*  **id**: *eq, ge, gt, in, le, lt, ne, sw* (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplatesV1(context.Background()).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplatesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplatesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCampaignTemplatesV1`: []Campaigntemplate
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignTemplatesV1`: %v\n", resp)
+        }
+- path: /campaigns/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#get-campaign-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign to be retrieved. # string | ID of the campaign to be retrieved.
+          detail := `FULL` // string | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. (optional) # string | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignV1(context.Background(), id).Detail(detail).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetCampaignV1`: GetCampaignV1200Response
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignV1`: %v\n", resp)
+        }
+- path: /campaigns/v1/{id}/reassign
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#move-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | The certification campaign ID # string | The certification campaign ID
+           adminreviewreassign := []byte(``) // Adminreviewreassign | 
+
+          
+          var adminreviewreassign v1.Adminreviewreassign
+          if err := json.Unmarshal(adminreviewreassign, &adminreviewreassign); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.MoveV1(context.Background(), id).Adminreviewreassign(adminreviewreassign).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.MoveV1(context.Background(), id).Adminreviewreassign(adminreviewreassign).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.MoveV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `MoveV1`: Certificationtask
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.MoveV1`: %v\n", resp)
+        }
+- path: /campaign-templates/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#patch-campaign-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `2c9180835d191a86015d28455b4a2329` // string | ID of the campaign template being modified. # string | ID of the campaign template being modified.
+          jsonpatchoperation := []byte(`[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/campaign/filter/id","value":"ff80818155fe8c080155fe8d925b0316"}]`) // []Jsonpatchoperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
+
+          
+          var jsonpatchoperation []v1.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.PatchCampaignTemplateV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.PatchCampaignTemplateV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.PatchCampaignTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchCampaignTemplateV1`: Campaigntemplate
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.PatchCampaignTemplateV1`: %v\n", resp)
+        }
+- path: /campaigns/v1/reports-configuration
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#set-campaign-reports-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+           campaignreportsconfig := []byte(``) // Campaignreportsconfig | Campaign report configuration.
+
+          
+          var campaignreportsconfig v1.Campaignreportsconfig
+          if err := json.Unmarshal(campaignreportsconfig, &campaignreportsconfig); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.SetCampaignReportsConfigV1(context.Background()).Campaignreportsconfig(campaignreportsconfig).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.SetCampaignReportsConfigV1(context.Background()).Campaignreportsconfig(campaignreportsconfig).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.SetCampaignReportsConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetCampaignReportsConfigV1`: Campaignreportsconfig
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.SetCampaignReportsConfigV1`: %v\n", resp)
+        }
+- path: /campaign-templates/v1/{id}/schedule
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#set-campaign-template-schedule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `04bedce387bd47b2ae1f86eb0bb36dee` // string | ID of the campaign template being scheduled. # string | ID of the campaign template being scheduled.
+           schedule2 := []byte(`{"type":"MONTHLY","hours":{"type":"LIST","values":["17"]},"days":{"type":"LIST","values":["15"]}}`) // Schedule2 |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.SetCampaignTemplateScheduleV1(context.Background(), id).Execute()
+          //r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.SetCampaignTemplateScheduleV1(context.Background(), id).Schedule2(schedule2).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.SetCampaignTemplateScheduleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /campaigns/v1/{id}/run-remediation-scan
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#start-campaign-remediation-scan-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign the remediation scan is being run for. # string | ID of the campaign the remediation scan is being run for.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignRemediationScanV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignRemediationScanV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaignRemediationScanV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartCampaignRemediationScanV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartCampaignRemediationScanV1`: %v\n", resp)
+        }
+- path: /campaigns/v1/{id}/run-report/{type}
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#start-campaign-report-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign the report is being run for. # string | ID of the campaign the report is being run for.
+          type_ :=  // Reporttype | Type of the report to run. # Reporttype | Type of the report to run.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignReportV1(context.Background(), id, type_).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignReportV1(context.Background(), id, type_).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaignReportV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartCampaignReportV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartCampaignReportV1`: %v\n", resp)
+        }
+- path: /campaigns/v1/{id}/activate
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#start-campaign-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Campaign ID. # string | Campaign ID.
+           activatecampaignoptions := []byte(``) // Activatecampaignoptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignV1(context.Background(), id).Activatecampaignoptions(activatecampaignoptions).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaignV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartCampaignV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartCampaignV1`: %v\n", resp)
+        }
+- path: /campaign-templates/v1/{id}/generate
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#start-generate-campaign-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `2c9180835d191a86015d28455b4a2329` // string | ID of the campaign template to use for generation. # string | ID of the campaign template to use for generation.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartGenerateCampaignTemplateV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartGenerateCampaignTemplateV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartGenerateCampaignTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartGenerateCampaignTemplateV1`: Campaignreference
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartGenerateCampaignTemplateV1`: %v\n", resp)
+        }
+- path: /campaigns/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/certificationcampaigns/methods/certification-campaigns#update-campaign-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+        )
+
+        func main() {
+          id := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign template being modified. # string | ID of the campaign template being modified.
+          jsonpatchoperation := []byte(`[{"op":"replace","path":"/name","value":"This field has been updated!"},{"op":"copy","from":"/name","path":"/description"}]`) // []Jsonpatchoperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
+
+          
+          var jsonpatchoperation []v1.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.UpdateCampaignV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.UpdateCampaignV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.UpdateCampaignV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateCampaignV1`: Slimcampaign
+          fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.UpdateCampaignV1`: %v\n", resp)
+        }

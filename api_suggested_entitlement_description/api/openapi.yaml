@@ -1,0 +1,3083 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Suggested Entitlement Description
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement Suggested Entitlement Description (SED)\
+    \ functionality. \nSED functionality leverages the power of LLM to generate suggested\
+    \ entitlement descriptions. \nRefer to [GenAI Entitlement Descriptions](https://documentation.sailpoint.com/saas/help/access/entitlements.html#genai-entitlement-descriptions)\
+    \ to learn more about SED in Identity Security Cloud (ISC). \n"
+  name: Suggested Entitlement Description
+paths:
+  /suggested-entitlement-descriptions/v1/auto-write-settings:
+    get:
+      description: "Get the current auto-write configuration for the tenant, including\
+        \ the enabled state and source include/exclude lists."
+      operationId: getAutoWriteSettingsV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/autowritesettingresponse'
+          description: Current auto-write settings
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:read
+      - applicationAuth:
+        - idn:sed:read
+      summary: Get auto-write settings for SED
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    patch:
+      description: Partially update the auto-write settings for a tenant using JSON
+        Patch operations. Only the "replace" operation is supported. Returns 404 if
+        no settings exist yet - use POST to create them first.
+      operationId: updateAutoWriteSettingsV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/autowritesettingpatch'
+              type: array
+        description: Patch operations for auto-write settings
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/autowritesettingresponse'
+          description: Updated auto-write settings
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:manage
+      - applicationAuth:
+        - idn:sed:manage
+      summary: Update auto-write settings for SED
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    post:
+      description: Create the initial auto-write settings for a tenant. Returns 409
+        Conflict if settings already exist. Use PATCH to update existing settings.
+      operationId: createAutoWriteSettingsV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/autowritesetting'
+        description: Auto-write settings to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/autowritesettingresponse'
+          description: Auto-write settings created successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAutoWriteSettingsV1_409_response'
+          description: Conflict - Indicates that the request could not be processed
+            because of conflict in the current state of the resource.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:manage
+      - applicationAuth:
+        - idn:sed:manage
+      summary: Create auto-write settings for SED
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /entitlement-recommendations/v1/pending-approvals:
+    get:
+      description: "Returns a list of entitlement recommendations (SED and/or privilege)\
+        \ that are currently awaiting review or approval. Each record includes the\
+        \ recommendation type, entitlement details, and any AI-generated suggestions."
+      operationId: listPendingEntitlementRecommendationApprovalsV1
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/entitlementrecommendationrecord'
+                type: array
+          description: A list of pending entitlement recommendation records.
+          headers:
+            X-Total-Count:
+              description: The total number of pending approval records available.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:read
+      - applicationAuth:
+        - idn:sed:read
+      summary: List pending entitlement recommendation approvals
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /privileged-recommendations/v1:
+    get:
+      description: "Returns a list of privileged entitlement recommendation groups.\
+        \ Each group aggregates individual entitlement instances that share the same\
+        \ entitlement name and connector type, along with a recommendation score and\
+        \ instance count."
+      operationId: listPrivilegedEntitlementRecommendationsV1
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/privilegedrecommendationgroup'
+                type: array
+          description: A list of privileged recommendation groups.
+          headers:
+            X-Total-Count:
+              description: The total number of recommendation groups available.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            X-Total-Entitlements:
+              description: The total number of individual entitlement instances across
+                all groups.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:read
+      - applicationAuth:
+        - idn:sed:read
+      summary: List privileged entitlement recommendations
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /entitlement-recommendations/v1/bulk-approve:
+    post:
+      description: "Approve multiple entitlement recommendations in a single request.\
+        \ Each item in the request must include the recommendation ID and, depending\
+        \ on the record type, either an approved description (SED items) or an approved\
+        \ privilege level (privilege items). Returns a per-item result indicating\
+        \ success or failure."
+      operationId: approveBulkEntitlementRecommendationsV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bulkapproveentitlementrecommendationrequest'
+        description: The list of recommendation items to approve.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/bulkapproveentitlementrecommendationresult'
+                type: array
+          description: Per-item approval results.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:manage
+      - applicationAuth:
+        - idn:sed:manage
+      summary: Bulk approve entitlement recommendations
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /entitlement-recommendations/v1/assign:
+    post:
+      description: "Assign a set of entitlement recommendation records to a reviewer.\
+        \ The assignee can be a specific identity, a governance group, or a role-based\
+        \ assignee such as source owner or entitlement owner. Returns a batch ID that\
+        \ can be used to track the assignment."
+      operationId: submitEntitlementRecommendationsAssignmentV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitlementrecommendationassignrequest'
+        description: The recommendation IDs and the target assignee.
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitlementrecommendationassignresult'
+          description: Assignment queued successfully. Returns the batch ID for tracking.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:manage
+      - applicationAuth:
+        - idn:sed:manage
+      summary: Assign entitlement recommendations for review
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /entitlement-recommendations/v1/{id}:
+    patch:
+      description: "Partially update a single entitlement recommendation record by\
+        \ its ID. Use this endpoint to update the status, description, or privilege\
+        \ level of a specific SED or privilege recommendation."
+      operationId: patchEntitlementRecommendationV1
+      parameters:
+      - description: The unique identifier of the entitlement recommendation to update.
+        example: 79db50d4-723c-4aa0-a824-83c2205d82d1
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listPendingEntitlementRecommendationApprovalsV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: The patch operations to apply to the entitlement recommendation
+          record.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitlementrecommendationrecord'
+          description: The updated entitlement recommendation record.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:manage
+      - applicationAuth:
+        - idn:sed:manage
+      summary: Update an entitlement recommendation
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /suggested-entitlement-description-batches/v1/{batchId}/stats:
+    get:
+      description: |
+        'Submit Sed Batch Stats Request.
+
+         Submits batchId in the path param `(e.g. {batchId}/stats)`. API responses with stats
+         of the batchId.'
+      operationId: getSedBatchStatsV1
+      parameters:
+      - description: Batch Id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        explode: false
+        in: path
+        name: batchId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getSedBatchesV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sedbatchstats'
+          description: Stats of Sed batch.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:read
+      - applicationAuth:
+        - idn:sed:read
+      summary: Submit sed batch stats request
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+  /suggested-entitlement-description-batches/v1:
+    get:
+      description: |-
+        List Sed Batches.
+        API responses with Sed Batch Records
+      operationId: getSedBatchesV1
+      parameters:
+      - description: |-
+          Offset
+
+          Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).
+          The offset value is record-based, not page-based, and the index starts at 0.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int64
+          type: integer
+          x-go-name: Offset
+        style: form
+        x-go-name: Offset
+      - description: |-
+          Limit
+
+          Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).
+          If it is not specified, a default limit is used.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int64
+          maxLength: 250
+          minLength: 0
+          type: integer
+          x-go-name: Limit
+        style: form
+        x-go-name: Limit
+      - description: "If `true` it will populate the `X-Total-Count` response header\
+          \ with the number of results that would be returned if `limit` and `offset`\
+          \ were ignored. \nThe standard syntax described in [V3 API Standard Collection\
+          \ Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).\n\
+          Since requesting a total count can have a performance impact, it is recommended\
+          \ not to send `count=true` if that value will not be used."
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.
+          This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.
+        example: true
+        explode: true
+        in: query
+        name: count-only
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: Batch Status
+        example: "completed, failed, submitted, materialized, failed"
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/sedbatchrecord'
+                type: array
+          description: List of Sed Batch Records
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:read
+      - applicationAuth:
+        - idn:sed:read
+      summary: List Sed Batch Record
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+    post:
+      description: |-
+        Submit Sed Batch Request.
+        Request body has one of the following: - a list of entitlement Ids - a list of SED Ids that user wants to have description generated by LLM.  API responses with batchId that groups Ids together
+      operationId: submitSedBatchRequestV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/sedbatchrequest'
+        description: Sed Batch Request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sedbatchresponse'
+          description: Sed Batch Response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:write
+      - applicationAuth:
+        - idn:sed:write
+      summary: Submit sed batch request
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+  /suggested-entitlement-description-approvals/v1:
+    post:
+      description: |-
+        Submit Bulk Approval Request for SED.
+        Request body takes list of SED Ids. API responses with list of SED Approval Status
+      operationId: submitSedApprovalV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/sedapproval'
+              type: array
+        description: Sed Approval
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/sedapprovalstatus'
+                type: array
+          description: List of SED Approval Status
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:write
+      - applicationAuth:
+        - idn:sed:write
+      summary: Submit bulk approval request
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+  /suggested-entitlement-description-assignments/v1:
+    post:
+      description: |-
+        Submit Assignment Request.
+        Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
+      operationId: submitSedAssignmentV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/sedassignment'
+        description: Sed Assignment Request
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sedassignmentresponse'
+          description: Sed Assignment Response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:write
+      - applicationAuth:
+        - idn:sed:write
+      summary: Submit sed assignment request
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+  /suggested-entitlement-descriptions/v1:
+    get:
+      description: |-
+        List of Suggested Entitlement Descriptions (SED)
+
+        SED field descriptions:
+
+        **batchId**: the ID of the batch of entitlements that are submitted for description generation
+
+        **displayName**: the display name of the entitlement that we are generating a description for
+
+        **sourceName**: the name of the source associated with the entitlement that we are generating the description for
+
+        **sourceId**: the ID of the source associated with the entitlement that we are generating the description for
+
+        **status**: the status of the suggested entitlement description, valid status options: "requested", "suggested", "not_suggested", "failed", "assigned", "approved", "denied"
+
+        **fullText**: will filter suggested entitlement description records by text found in any of the following fields: entitlement name, entitlement display name, suggested description, source name
+      operationId: listSedsV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **batchId**: *eq, ne*
+
+          **displayName**: *eq, ne, co*
+
+          **sourceName**: *eq, ne, co*
+
+          **sourceId**: *eq, ne*
+
+          **status**: *eq, ne*
+
+          **fullText**: *co*
+        example: displayName co "Read and Write"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **displayName, sourceName, status**
+        example: sorters=displayName
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.
+          This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.
+        example: count-only=true
+        explode: true
+        in: query
+        name: count-only
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: "By default, the ListSeds API will only return items that you\
+          \ have requested to be generated.  \nThis option will allow you to see all\
+          \ items that have been requested"
+        example: requested-by-anyone=true
+        explode: true
+        in: query
+        name: requested-by-anyone
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: Will limit records to items that are in "suggested" or "approved"
+          status
+        example: show-pending-status-only=true
+        explode: true
+        in: query
+        name: show-pending-status-only
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/sed'
+                type: array
+          description: List of Suggested Entitlement Details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:read
+      - applicationAuth:
+        - idn:sed:read
+      summary: List suggested entitlement descriptions
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    patch:
+      description: Patch Suggested Entitlement Description
+      operationId: patchSedV1
+      parameters:
+      - description: id is sed id
+        example: ebab396f-0af1-4050-89b7-dafc63ec70e7
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSedsV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/sedpatch'
+              type: array
+        description: Sed Patch Request
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sed'
+          description: detail of patched sed
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sed:write
+      - applicationAuth:
+        - idn:sed:write
+      summary: Patch suggested entitlement description
+      tags:
+      - Suggested Entitlement Description
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+components:
+  parameters:
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAutoWriteSettingsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "409":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createAutoWriteSettingsV1_409_response'
+      description: Conflict - Indicates that the request could not be processed because
+        of conflict in the current state of the resource.
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAutoWriteSettingsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    autowritesetting:
+      description: Auto-Write Setting for SED
+      properties:
+        enabled:
+          default: false
+          description: Whether auto-write is currently enabled for the tenant
+          example: true
+          type: boolean
+        includedSourceIds:
+          description: Source IDs in the allowlist. Empty array means not in allowlist
+            mode.
+          example:
+          - 2c91808a7813090a017814552e526349
+          - 2c91808a7813090a017814552e52634a
+          items:
+            type: string
+          nullable: true
+          type: array
+        excludedSourceIds:
+          description: Source IDs to exclude from auto-write. Always applied.
+          example:
+          - 2c91808a7813090a017814552e526350
+          items:
+            type: string
+          nullable: true
+          type: array
+      title: Auto-Write Setting
+      type: object
+    autowritesettingresponse:
+      allOf:
+      - $ref: '#/components/schemas/autowritesetting'
+      - properties:
+          createdAt:
+            description: When settings were first created
+            example: 2026-02-15T10:30:00Z
+            format: date-time
+            type: string
+          updatedAt:
+            description: When settings were last modified
+            example: 2026-03-09T14:22:00Z
+            format: date-time
+            type: string
+        type: object
+      description: Auto-Write Setting response with timestamps
+      example:
+        createdAt: 2026-02-15T10:30:00Z
+        excludedSourceIds:
+        - 2c91808a7813090a017814552e526350
+        includedSourceIds:
+        - 2c91808a7813090a017814552e526349
+        - 2c91808a7813090a017814552e52634a
+        enabled: true
+        updatedAt: 2026-03-09T14:22:00Z
+      title: Auto-Write Setting Response
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    autowritesettingpatch:
+      description: Patch operation for Auto-Write Setting
+      properties:
+        op:
+          description: The operation to perform. Only "replace" is supported.
+          enum:
+          - replace
+          example: replace
+          type: string
+        path:
+          description: "The field to update. Allowed values: /enabled, /includedSourceIds,\
+            \ /excludedSourceIds"
+          example: /enabled
+          type: string
+        value:
+          $ref: '#/components/schemas/autowritesettingpatch_value'
+      required:
+      - op
+      - path
+      - value
+      title: Auto-Write Setting Patch
+      type: object
+    entitlementrecommendationrecord:
+      description: A unified entitlement recommendation record representing either
+        a SED (Suggested Entitlement Description) or a privilege recommendation.
+      example:
+        sourceId: 2c9180877a7c8e88017a7d1234567890
+        recordType: SED
+        displayName: Schema Admins
+        approvedBy: 2c91808a7f3b2e8a017f3c3e5f6d0099
+        description: Grants full control over the Active Directory schema.
+        privilege: high
+        type: group
+        approvedType: direct
+        approvedWhen: 2026-03-15T14:22:00Z
+        suggestedDescription: Grants full administrative access to the domain.
+        name: Schema Admins
+        suggestedPrivilege: high
+        id: 79db50d4-723c-4aa0-a824-83c2205d82d1
+        attribute: groups
+        sourceName: Active Directory
+        llmBatchCreatedAt: 2026-03-01T00:00:00Z
+        value: "CN=Schema Admins,DC=example,DC=com"
+        status: suggested
+      properties:
+        recordType:
+          description: The type of recommendation. "SED" indicates a suggested description
+            recommendation; "privilege" indicates a privilege-level recommendation.
+          enum:
+          - SED
+          - privilege
+          example: SED
+          type: string
+        id:
+          description: The unique identifier for this recommendation record.
+          example: 79db50d4-723c-4aa0-a824-83c2205d82d1
+          format: uuid
+          type: string
+        attribute:
+          description: The entitlement attribute name (e.g. "groups").
+          example: groups
+          nullable: true
+          type: string
+        displayName:
+          description: The human-readable display name of the entitlement.
+          example: Schema Admins
+          nullable: true
+          type: string
+        name:
+          description: The internal name of the entitlement.
+          example: Schema Admins
+          nullable: true
+          type: string
+        sourceId:
+          description: The ID of the source that owns this entitlement.
+          example: 2c9180877a7c8e88017a7d1234567890
+          type: string
+        sourceName:
+          description: The display name of the source that owns this entitlement.
+          example: Active Directory
+          type: string
+        status:
+          description: The current review status of the recommendation.
+          example: suggested
+          type: string
+        type:
+          description: The entitlement type (e.g. "group").
+          example: group
+          nullable: true
+          type: string
+        value:
+          description: The entitlement value or identifier.
+          example: "CN=Schema Admins,DC=example,DC=com"
+          type: string
+        description:
+          description: "The current description of the entitlement, if one exists."
+          example: Grants full control over the Active Directory schema.
+          nullable: true
+          type: string
+        suggestedDescription:
+          description: The AI-generated suggested description for the entitlement
+            (SED records only).
+          example: Grants full administrative access to the domain.
+          nullable: true
+          type: string
+        privilege:
+          description: The current privilege level assigned to the entitlement.
+          example: high
+          nullable: true
+          type: string
+        suggestedPrivilege:
+          description: The AI-suggested privilege level for the entitlement (privilege
+            records only).
+          example: high
+          nullable: true
+          type: string
+        approvedBy:
+          description: The ID of the identity who approved this recommendation.
+          example: 2c91808a7f3b2e8a017f3c3e5f6d0099
+          nullable: true
+          type: string
+        approvedType:
+          description: How the recommendation was approved (e.g. "direct").
+          example: direct
+          nullable: true
+          type: string
+        approvedWhen:
+          description: The timestamp when the recommendation was approved.
+          example: 2026-03-15T14:22:00Z
+          format: date-time
+          nullable: true
+          type: string
+        llmBatchCreatedAt:
+          description: The timestamp when the LLM batch that generated this recommendation
+            was created.
+          example: 2026-03-01T00:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+      title: Entitlement Recommendation Record
+      type: object
+    privilegedrecommendationinstance:
+      description: An individual entitlement instance within a privileged recommendation
+        group.
+      example:
+        sourceId: 2c9180877a7c8e88017a7d1234567890
+        privilegeLevel: high
+        recommendedAt: 2026-03-01T00:00:00Z
+        description: Grants full administrative access to the domain.
+        id: d6127d2c-bd62-4217-b187-e4b28f328080
+        attribute: memberOf
+        sourceName: AD Corp
+        type: group
+        value: "CN=Domain Admins,CN=Users,DC=corp,DC=example,DC=com"
+        status: suggested
+      properties:
+        id:
+          description: The unique identifier for this entitlement instance.
+          example: d6127d2c-bd62-4217-b187-e4b28f328080
+          format: uuid
+          type: string
+        attribute:
+          description: The entitlement attribute name.
+          example: memberOf
+          type: string
+        sourceId:
+          description: The ID of the source that owns this entitlement.
+          example: 2c9180877a7c8e88017a7d1234567890
+          type: string
+        sourceName:
+          description: The display name of the source.
+          example: AD Corp
+          type: string
+        type:
+          description: The entitlement type.
+          example: group
+          type: string
+        value:
+          description: The entitlement value or distinguished name.
+          example: "CN=Domain Admins,CN=Users,DC=corp,DC=example,DC=com"
+          type: string
+        status:
+          description: The current review status of this instance.
+          example: suggested
+          type: string
+        privilegeLevel:
+          description: "The currently assigned privilege level, if any."
+          example: high
+          nullable: true
+          type: string
+        description:
+          description: "The current description of the entitlement, if one exists."
+          example: Grants full administrative access to the domain.
+          nullable: true
+          type: string
+        recommendedAt:
+          description: The timestamp when this instance was recommended.
+          example: 2026-03-01T00:00:00Z
+          format: date-time
+          type: string
+      title: Privileged Recommendation Instance
+      type: object
+    privilegedrecommendationgroup:
+      description: "A group of entitlement instances that share the same entitlement\
+        \ name and connector type, aggregated for privileged-access review."
+      example:
+        connectorType: Active Directory - Direct
+        instances:
+        - sourceId: 2c9180877a7c8e88017a7d1234567890
+          privilegeLevel: high
+          recommendedAt: 2026-03-01T00:00:00Z
+          description: Grants full administrative access to the domain.
+          id: d6127d2c-bd62-4217-b187-e4b28f328080
+          attribute: memberOf
+          sourceName: AD Corp
+          type: group
+          value: "CN=Domain Admins,CN=Users,DC=corp,DC=example,DC=com"
+          status: suggested
+        - sourceId: 2c9180877a7c8e88017a7d1234567890
+          privilegeLevel: high
+          recommendedAt: 2026-03-01T00:00:00Z
+          description: Grants full administrative access to the domain.
+          id: d6127d2c-bd62-4217-b187-e4b28f328080
+          attribute: memberOf
+          sourceName: AD Corp
+          type: group
+          value: "CN=Domain Admins,CN=Users,DC=corp,DC=example,DC=com"
+          status: suggested
+        recommendationScore: ".85"
+        instanceCount: 2
+        orgCount: 8
+        entitlementName: Domain Admins
+      properties:
+        entitlementName:
+          description: The name of the entitlement shared across all instances in
+            this group.
+          example: Domain Admins
+          type: string
+        connectorType:
+          description: The connector type associated with all instances in this group.
+          example: Active Directory - Direct
+          type: string
+        recommendationScore:
+          description: A decimal string representing the confidence score of the privilege
+            recommendation (0.0-1.0).
+          example: ".85"
+          type: string
+        orgCount:
+          description: The number of organizations in which this entitlement appears
+            as privileged.
+          example: 8
+          format: int32
+          type: integer
+        instanceCount:
+          description: The total number of individual entitlement instances in this
+            group.
+          example: 2
+          format: int32
+          type: integer
+        instances:
+          description: The individual entitlement instances belonging to this group.
+          items:
+            $ref: '#/components/schemas/privilegedrecommendationinstance'
+          type: array
+      title: Privileged Recommendation Group
+      type: object
+    bulkapproveentitlementrecommendationitem:
+      description: A single item in a bulk entitlement recommendation approval request.
+        The recordType is optional; the backend resolves the type by ID lookup when
+        omitted. Description applies to SED items only; privilegeLevel is required
+        for privilege items.
+      properties:
+        id:
+          description: The unique identifier of the recommendation record to approve.
+          example: 79db50d4-723c-4aa0-a824-83c2205d82d1
+          format: uuid
+          type: string
+        recordType:
+          description: "The type of the recommendation. When omitted, the backend\
+            \ resolves the type by looking up the ID."
+          enum:
+          - SED
+          - privilege
+          example: SED
+          nullable: true
+          type: string
+        description:
+          description: The approved description text. Required for SED-type items;
+            ignored for privilege items.
+          example: Provides access and permissions related to the Delinea Secret Server
+            Cloud system.
+          nullable: true
+          type: string
+        privilegeLevel:
+          description: The approved privilege level. Required for privilege-type items;
+            ignored for SED items.
+          example: high
+          nullable: true
+          type: string
+      required:
+      - id
+      title: Bulk Approve Entitlement Recommendation Item
+      type: object
+    bulkapproveentitlementrecommendationrequest:
+      description: Request body for bulk-approving a set of entitlement recommendations.
+      properties:
+        items:
+          description: The list of recommendation items to approve.
+          example:
+          - id: 79db50d4-723c-4aa0-a824-83c2205d82d1
+            recordType: SED
+            description: Provides access and permissions related to the Delinea Secret
+              Server Cloud system.
+          - id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+            recordType: privilege
+            privilegeLevel: high
+          items:
+            $ref: '#/components/schemas/bulkapproveentitlementrecommendationitem'
+          type: array
+      required:
+      - items
+      title: Bulk Approve Entitlement Recommendation Request
+      type: object
+    bulkapproveentitlementrecommendationresult:
+      description: The result for a single item in a bulk entitlement recommendation
+        approval response.
+      example:
+        id: 79db50d4-723c-4aa0-a824-83c2205d82d1
+        status: SUCCESS
+        failedReason: failedReason
+      properties:
+        id:
+          description: The unique identifier of the processed recommendation record.
+          example: 79db50d4-723c-4aa0-a824-83c2205d82d1
+          format: uuid
+          type: string
+        status:
+          description: The outcome of the approval for this item.
+          enum:
+          - SUCCESS
+          - FAILURE
+          example: SUCCESS
+          type: string
+        failedReason:
+          description: The reason for failure if status is FAILURE; null on success.
+          nullable: true
+          type: string
+          example: null
+      title: Bulk Approve Entitlement Recommendation Result
+      type: object
+    entitlementrecommendationassignee:
+      description: Describes the target assignee for entitlement recommendations.
+      oneOf:
+      - $ref: '#/components/schemas/entitlementrecommendationassignee_oneOf'
+      - $ref: '#/components/schemas/entitlementrecommendationassignee_oneOf_1'
+      title: Entitlement Recommendation Assignee
+    entitlementrecommendationassignrequest:
+      description: Request body for assigning a set of entitlement recommendations
+        to a reviewer.
+      properties:
+        items:
+          description: The list of recommendation record IDs to assign.
+          example:
+          - 79db50d4-723c-4aa0-a824-83c2205d82d1
+          - a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          items:
+            format: uuid
+            type: string
+          type: array
+        assignee:
+          $ref: '#/components/schemas/entitlementrecommendationassignee'
+      required:
+      - assignee
+      - items
+      title: Entitlement Recommendation Assign Request
+      type: object
+    entitlementrecommendationassignresult:
+      description: Response body returned when entitlement recommendations are successfully
+        queued for assignment.
+      example:
+        batchId: 770e8400-e29b-41d4-a716-446655440099
+      properties:
+        batchId:
+          description: The unique identifier of the assignment batch created by this
+            request.
+          example: 770e8400-e29b-41d4-a716-446655440099
+          format: uuid
+          type: string
+      title: Entitlement Recommendation Assign Result
+      type: object
+    jsonpatchoperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/jsonpatchoperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    sedbatchstats:
+      description: Sed Batch Stats
+      example:
+        discoveredCount: 100
+        discoveryComplete: true
+        processedCount: 100
+        batchId: 016629d1-1d25-463f-97f3-0c6686846650
+        batchComplete: true
+      properties:
+        batchComplete:
+          default: false
+          description: batch complete
+          example: true
+          type: boolean
+        batchId:
+          description: batch Id
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
+          type: string
+        discoveredCount:
+          description: discovered count
+          example: 100
+          format: int64
+          type: integer
+        discoveryComplete:
+          default: false
+          description: discovery complete
+          example: true
+          type: boolean
+        processedCount:
+          description: processed count
+          example: 100
+          format: int64
+          type: integer
+      title: Sed Batch Stats
+      type: object
+    sedbatchrecord:
+      description: Sed Batch Record
+      example:
+        requestedBy: 987e6543-e21b-45d3-b123-123456789abc
+        createdAt: 2023-10-01T12:00:00Z
+        processedCount: 45
+        materializedCount: 50
+        tenantId: 123e4567-e89b-12d3-a456-426614174000
+        name: Example Batch Name
+        processedState: submitted | materialized | completed | failed
+        batchId: 016629d1-1d25-463f-97f3-0c6686846650
+        updatedAt: 2023-10-02T15:30:00Z
+      properties:
+        tenantId:
+          description: The tenant ID associated with the batch.
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          type: string
+        batchId:
+          description: The unique ID of the batch.
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
+          type: string
+        name:
+          description: The name of the batch.
+          example: Example Batch Name
+          nullable: true
+          type: string
+        processedState:
+          description: "The current state of the batch (e.g., submitted, materialized,\
+            \ completed)."
+          example: submitted | materialized | completed | failed
+          nullable: true
+          type: string
+        requestedBy:
+          description: The ID of the user who requested the batch.
+          example: 987e6543-e21b-45d3-b123-123456789abc
+          format: uuid
+          type: string
+        materializedCount:
+          description: The number of items materialized in the batch.
+          example: 50
+          format: int32
+          type: integer
+        processedCount:
+          description: The number of items processed in the batch.
+          example: 45
+          format: int32
+          type: integer
+        createdAt:
+          description: The timestamp when the batch was created.
+          example: 2023-10-01T12:00:00Z
+          format: date-time
+          type: string
+        updatedAt:
+          description: The timestamp when the batch was last updated.
+          example: 2023-10-02T15:30:00Z
+          format: date-time
+          nullable: true
+          type: string
+      title: Sed Batch Record
+      type: object
+    searchcriteria:
+      description: Represents the search criteria for querying entitlements.
+      properties:
+        indices:
+          description: "A list of indices to search within. Must contain exactly one\
+            \ item, typically \"entitlements\"."
+          example:
+          - entitlements
+          items:
+            type: string
+          type: array
+        filters:
+          additionalProperties:
+            $ref: '#/components/schemas/searchcriteria_filters_value'
+          description: "A map of filters applied to the search. Keys are filter names,\
+            \ and values are filter definitions."
+          example:
+            status:
+              type: TERMS
+              terms:
+              - active
+              - inactive
+          type: object
+        query:
+          $ref: '#/components/schemas/searchcriteria_query'
+        queryType:
+          description: Specifies the type of query. Must be "TEXT" if `textQuery`
+            is used.
+          example: TEXT
+          type: string
+        textQuery:
+          $ref: '#/components/schemas/searchcriteria_textQuery'
+        includeNested:
+          default: false
+          description: Whether to include nested objects in the search results.
+          example: true
+          type: boolean
+        sort:
+          description: Specifies the sorting order for the results.
+          example:
+          - name:asc
+          - createdAt:desc
+          items:
+            type: string
+          type: array
+        searchAfter:
+          description: Used for pagination to fetch results after a specific point.
+          example:
+          - "12345"
+          - "67890"
+          items:
+            type: string
+          type: array
+      required:
+      - indices
+      title: Search Criteria
+      type: object
+    sedbatchrequest:
+      description: Sed Batch Request
+      minProperties: 1
+      properties:
+        entitlements:
+          description: list of entitlement ids
+          items:
+            example: 016629d1-1d25-463f-97f3-c6686846650
+            type: string
+          minItems: 1
+          nullable: true
+          type: array
+        seds:
+          description: list of sed ids
+          items:
+            example: 016629d1-1d25-463f-97f3-c6686846650
+            type: string
+          minItems: 1
+          nullable: true
+          type: array
+        searchCriteria:
+          additionalProperties:
+            $ref: '#/components/schemas/searchcriteria'
+          description: Search criteria for the batch request.
+          nullable: true
+          type: object
+      title: Sed Batch Request
+      type: object
+    sedbatchresponse:
+      description: Sed Batch Response
+      example:
+        batchId: 016629d1-1d25-463f-97f3-0c6686846650
+      properties:
+        batchId:
+          description: BatchId that groups all the ids together
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
+          type: string
+      title: Sed Batch Response
+      type: object
+    sedapproval:
+      description: Sed Approval Request Body
+      properties:
+        items:
+          description: List of SED id's
+          example: 016629d1-1d25-463f-97f3-c6686846650
+          items:
+            format: uuid
+            type: string
+          type: array
+      title: Sed Approval
+      type: object
+    sedapprovalstatus:
+      description: SED Approval Status
+      example:
+        id: 016629d1-1d25-463f-97f3-0c6686846650
+        failedReason: invalid status
+        status: SUCCESS
+      properties:
+        failedReason:
+          description: failed reason will be display if status is failed
+          example: invalid status
+          type: string
+        id:
+          description: Sed id
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
+          type: string
+        status:
+          description: SUCCESS | FAILED
+          example: SUCCESS
+          type: string
+      title: Sed Approval Status
+      type: object
+    sedassignee:
+      description: Sed Assignee
+      properties:
+        type:
+          description: |-
+            Type of assignment
+            When value is PERSONA, the value MUST be SOURCE_OWNER or ENTITLEMENT_OWNER
+            IDENTITY SED_ASSIGNEE_IDENTITY_TYPE
+            GROUP SED_ASSIGNEE_GROUP_TYPE
+            SOURCE_OWNER SED_ASSIGNEE_SOURCE_OWNER_TYPE
+            ENTITLEMENT_OWNER SED_ASSIGNEE_ENTITLEMENT_OWNER_TYPE
+          enum:
+          - IDENTITY
+          - GROUP
+          - SOURCE_OWNER
+          - ENTITLEMENT_OWNER
+          example: SOURCE_OWNER
+          type: string
+        value:
+          description: |-
+            Identity or Group identifier
+            Empty when using source/entitlement owner personas
+          example: 016629d1-1d25-463f-97f3-c6686846650
+          type: string
+      required:
+      - type
+      title: Sed Assignee
+      type: object
+    sedassignment:
+      description: Sed Assignment
+      properties:
+        assignee:
+          $ref: '#/components/schemas/sedassignee'
+        items:
+          description: List of SED id's
+          items:
+            example: 016629d1-1d25-463f-97f3-0c6686846650
+            format: uuid
+            type: string
+          type: array
+      title: Sed Assignment
+      type: object
+    sedassignmentresponse:
+      description: Sed Assignment Response
+      example:
+        batchId: 016629d1-1d25-463f-97f3-0c6686846650
+      properties:
+        batchId:
+          description: BatchId that groups all the ids together
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
+          type: string
+      title: Sed Assignment Response
+      type: object
+    sed:
+      description: Suggested Entitlement Description
+      example:
+        approved_type: admin
+        sourceId: 103f567b93ee49b991c40f9412f87643
+        approved_when: 2000-01-23T04:56:07.000+00:00
+        displayName: AWS-Cloud-Billing
+        description: This entitlement allows automated processing of invoices in batches
+          on a scheduled basis to streamline accounts payable procedures.
+        type: group
+        Name: BatchInvoiceProcessing
+        approved_by: 2c918086-76de-afbf-0176-f6d28f65565a
+        suggestedDescription: This entitlement allows automated processing of invoices
+          in batches on a scheduled basis to streamline accounts payable
+        attribute: Role
+        id: ead281ee-12a9-40ac-9534-36b5d7d65d53
+        sourceName: IDN Salesforce
+        value: group
+        status: suggested
+      properties:
+        Name:
+          description: name of the entitlement
+          example: BatchInvoiceProcessing
+          type: string
+        approved_by:
+          description: entitlement approved by
+          example: 2c918086-76de-afbf-0176-f6d28f65565a
+          type: string
+        approved_type:
+          description: entitlement approved type
+          example: admin
+          type: string
+        approved_when:
+          description: entitlement approved then
+          format: date-time
+          type: string
+        attribute:
+          description: entitlement attribute
+          example: Role
+          type: string
+        description:
+          description: description of entitlement
+          example: This entitlement allows automated processing of invoices in batches
+            on a scheduled basis to streamline accounts payable procedures.
+          type: string
+        displayName:
+          description: entitlement display name
+          example: AWS-Cloud-Billing
+          type: string
+        id:
+          description: sed id
+          example: ead281ee-12a9-40ac-9534-36b5d7d65d53
+          format: uuid
+          type: string
+        sourceId:
+          description: entitlement source id
+          example: 103f567b93ee49b991c40f9412f87643
+          type: string
+        sourceName:
+          description: entitlement source name
+          example: IDN Salesforce
+          type: string
+        status:
+          description: entitlement status
+          example: suggested
+          type: string
+        suggestedDescription:
+          description: llm suggested entitlement description
+          example: This entitlement allows automated processing of invoices in batches
+            on a scheduled basis to streamline accounts payable
+          type: string
+        type:
+          description: entitlement type
+          example: group
+          type: string
+        value:
+          description: entitlement value
+          example: group
+          type: string
+      title: Sed
+      type: object
+    sedpatch:
+      description: Patch for Suggested Entitlement Description
+      properties:
+        op:
+          description: desired operation
+          example: replace
+          type: string
+        path:
+          description: field to be patched
+          example: status
+          type: string
+        value:
+          description: value to replace with
+          example: approved
+      title: Sed Patch
+      type: object
+    getAutoWriteSettingsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getAutoWriteSettingsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    createAutoWriteSettingsV1_409_response:
+      example:
+        errorName: ConflictException
+        errorMessage: Failed to store object
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        errorName:
+          description: A message describing the error
+          example: ConflictException
+        errorMessage:
+          description: Description of the error
+          example: Failed to store object
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+      type: object
+    autowritesettingpatch_value:
+      description: The new value for the field
+      example: true
+      oneOf:
+      - example: true
+        title: boolean
+        type: boolean
+      - example:
+        - 2c91808a7813090a017814552e526349
+        items:
+          type: string
+        title: array
+        type: array
+    entitlementrecommendationassignee_oneOf:
+      description: Assign to a specific identity or governance group. The value field
+        is required and must be the ID of the identity or governance group.
+      properties:
+        type:
+          description: The type of assignee.
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+        value:
+          description: The ID of the identity or governance group to assign to.
+          example: 2c91808a7f3b2e8a017f3c3e5f6d0099
+          type: string
+      required:
+      - type
+      - value
+      type: object
+    entitlementrecommendationassignee_oneOf_1:
+      description: Assign to the source owner or entitlement owner role. No value
+        field is required.
+      properties:
+        type:
+          description: The type of assignee.
+          enum:
+          - SOURCE_OWNER
+          - ENTITLEMENT_OWNER
+          example: SOURCE_OWNER
+          type: string
+      required:
+      - type
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    jsonpatchoperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
+    searchcriteria_filters_value_range_lower:
+      properties:
+        value:
+          description: The lower bound value.
+          example: "10"
+          type: string
+        inclusive:
+          default: false
+          description: Whether the lower bound is inclusive.
+          example: true
+          type: boolean
+      type: object
+    searchcriteria_filters_value_range_upper:
+      properties:
+        value:
+          description: The upper bound value.
+          example: "20"
+          type: string
+        inclusive:
+          default: false
+          description: Whether the upper bound is inclusive.
+          example: false
+          type: boolean
+      type: object
+    searchcriteria_filters_value_range:
+      properties:
+        lower:
+          $ref: '#/components/schemas/searchcriteria_filters_value_range_lower'
+        upper:
+          $ref: '#/components/schemas/searchcriteria_filters_value_range_upper'
+      type: object
+    searchcriteria_filters_value:
+      properties:
+        type:
+          description: "The type of filter, e.g., \"TERMS\" or \"RANGE\"."
+          example: TERMS
+          type: string
+        terms:
+          description: Terms to filter by (for "TERMS" type).
+          example:
+          - active
+          - inactive
+          items:
+            type: string
+          type: array
+        range:
+          $ref: '#/components/schemas/searchcriteria_filters_value_range'
+      type: object
+    searchcriteria_query:
+      properties:
+        query:
+          description: A structured query for advanced search.
+          example: status:active
+          type: string
+      type: object
+    searchcriteria_textQuery:
+      properties:
+        terms:
+          description: Terms to search for.
+          example:
+          - admin
+          - user
+          items:
+            type: string
+          type: array
+        fields:
+          description: Fields to search within.
+          example:
+          - role
+          - name
+          items:
+            type: string
+          type: array
+        matchAny:
+          default: false
+          description: Whether to match any of the terms.
+          example: true
+          type: boolean
+      type: object

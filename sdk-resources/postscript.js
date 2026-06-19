@@ -11,7 +11,7 @@ const getAllFiles = async function (dirPath, arrayOfFiles = []) {
     if (stat.isDirectory()) {
       arrayOfFiles = await getAllFiles(fullPath, arrayOfFiles);
     } else {
-      arrayOfFiles.push(path.join(__dirname.replace(/sdk-resources/g, ''), dirPath, file));
+      arrayOfFiles.push(fullPath);
     }
   }
 

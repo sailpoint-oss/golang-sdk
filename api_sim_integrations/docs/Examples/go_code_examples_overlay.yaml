@@ -1,0 +1,269 @@
+- path: /sim-integrations/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/simintegrations/methods/sim-integrations#create-sim-integration-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           simintegrationdetails := []byte(``) // Simintegrationdetails | DTO containing the details of the SIM integration
+
+          
+          var simintegrationdetails v1.Simintegrationdetails
+          if err := json.Unmarshal(simintegrationdetails, &simintegrationdetails); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.CreateSIMIntegrationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
+          //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.CreateSIMIntegrationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.CreateSIMIntegrationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateSIMIntegrationV1`: Servicedeskintegrationdto
+          fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.CreateSIMIntegrationV1`: %v\n", resp)
+        }
+- path: /sim-integrations/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/simintegrations/methods/sim-integrations#delete-sim-integration-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+        )
+
+        func main() {
+          id := `12345` // string | The id of the integration to delete. # string | The id of the integration to delete.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.DeleteSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.DeleteSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.DeleteSIMIntegrationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /sim-integrations/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/simintegrations/methods/sim-integrations#get-sim-integration-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+        )
+
+        func main() {
+          id := `12345` // string | The id of the integration. # string | The id of the integration.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.GetSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.GetSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegrationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetSIMIntegrationV1`: Servicedeskintegrationdto
+          fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.GetSIMIntegrationV1`: %v\n", resp)
+        }
+- path: /sim-integrations/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/simintegrations/methods/sim-integrations#get-sim-integrations-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.GetSIMIntegrationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.GetSIMIntegrationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegrationsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetSIMIntegrationsV1`: []Servicedeskintegrationdto
+          fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.GetSIMIntegrationsV1`: %v\n", resp)
+        }
+- path: /sim-integrations/v1/{id}/beforeProvisioningRule
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/simintegrations/methods/sim-integrations#patch-before-provisioning-rule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+        )
+
+        func main() {
+          id := `12345` // string | SIM integration id # string | SIM integration id
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           jsonpatch := []byte(``) // Jsonpatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
+
+          
+          var jsonpatch v1.Jsonpatch
+          if err := json.Unmarshal(jsonpatch, &jsonpatch); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+          //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchBeforeProvisioningRuleV1`: Servicedeskintegrationdto
+          fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1`: %v\n", resp)
+        }
+- path: /sim-integrations/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/simintegrations/methods/sim-integrations#patch-sim-attributes-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+        )
+
+        func main() {
+          id := `12345` // string | SIM integration id # string | SIM integration id
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           jsonpatch := []byte(``) // Jsonpatch | The JsonPatch object that describes the changes of SIM
+
+          
+          var jsonpatch v1.Jsonpatch
+          if err := json.Unmarshal(jsonpatch, &jsonpatch); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PatchSIMAttributesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+          //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PatchSIMAttributesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchSIMAttributesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchSIMAttributesV1`: Servicedeskintegrationdto
+          fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PatchSIMAttributesV1`: %v\n", resp)
+        }
+- path: /sim-integrations/v1/{id}
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/simintegrations/methods/sim-integrations#put-sim-integration-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+        )
+
+        func main() {
+          id := `12345` // string | The id of the integration. # string | The id of the integration.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           simintegrationdetails := []byte(``) // Simintegrationdetails | The full DTO of the integration containing the updated model
+
+          
+          var simintegrationdetails v1.Simintegrationdetails
+          if err := json.Unmarshal(simintegrationdetails, &simintegrationdetails); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PutSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
+          //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PutSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PutSIMIntegrationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PutSIMIntegrationV1`: Servicedeskintegrationdto
+          fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PutSIMIntegrationV1`: %v\n", resp)
+        }

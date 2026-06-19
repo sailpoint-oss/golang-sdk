@@ -1,0 +1,107 @@
+- path: /sources/v1/{sourceId}/machine-classification-config
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineclassificationconfig/methods/machine-classification-config#delete-machine-classification-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_classification_config"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_classification_config"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1(context.Background(), sourceId).Execute()
+          //r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1(context.Background(), sourceId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /sources/v1/{sourceId}/machine-classification-config
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineclassificationconfig/methods/machine-classification-config#get-machine-classification-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_classification_config"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_classification_config"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID # string | Source ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.GetMachineClassificationConfigV1(context.Background(), sourceId).Execute()
+          //resp, r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.GetMachineClassificationConfigV1(context.Background(), sourceId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.GetMachineClassificationConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineClassificationConfigV1`: Machineclassificationconfig
+          fmt.Fprintf(os.Stdout, "Response from `MachineClassificationConfigAPI.GetMachineClassificationConfigV1`: %v\n", resp)
+        }
+- path: /sources/v1/{sourceId}/machine-classification-config
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineclassificationconfig/methods/machine-classification-config#set-machine-classification-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_classification_config"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_classification_config"
+        )
+
+        func main() {
+          sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+           machineclassificationconfig := []byte(``) // Machineclassificationconfig | 
+
+          
+          var machineclassificationconfig v1.Machineclassificationconfig
+          if err := json.Unmarshal(machineclassificationconfig, &machineclassificationconfig); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).Machineclassificationconfig(machineclassificationconfig).Execute()
+          //resp, r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).Machineclassificationconfig(machineclassificationconfig).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.SetMachineClassificationConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetMachineClassificationConfigV1`: Machineclassificationconfig
+          fmt.Fprintf(os.Stdout, "Response from `MachineClassificationConfigAPI.SetMachineClassificationConfigV1`: %v\n", resp)
+        }

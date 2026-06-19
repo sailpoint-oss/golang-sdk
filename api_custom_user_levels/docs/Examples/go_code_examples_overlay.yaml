@@ -1,0 +1,343 @@
+- path: /authorization/v1/custom-user-levels
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/customuserlevels/methods/custom-user-levels#create-custom-user-level-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           userlevelrequest := []byte(`{"name":"Identity And Access Management","description":"This is a description of the custom user level.","owner":{"id":"29b9da8273b441239238bc041c386817","name":"John Doe"},"rightSets":["idn:ui-identity-manage-example","idn:ui-identity-manage-child-one-example"]}`) // Userlevelrequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+
+          
+          var userlevelrequest v1.Userlevelrequest
+          if err := json.Unmarshal(userlevelrequest, &userlevelrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.CreateCustomUserLevelV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Userlevelrequest(userlevelrequest).Execute()
+          //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.CreateCustomUserLevelV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Userlevelrequest(userlevelrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.CreateCustomUserLevelV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateCustomUserLevelV1`: Userlevelsummarydto
+          fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.CreateCustomUserLevelV1`: %v\n", resp)
+        }
+- path: /authorization/v1/custom-user-levels/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/customuserlevels/methods/custom-user-levels#delete-user-level-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `6e110911-5984-491b-be74-2707980a46a7` // string | The unique identifier of the user level. # string | The unique identifier of the user level.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.DeleteUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.DeleteUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.DeleteUserLevelV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /authorization/v1/custom-user-levels/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/customuserlevels/methods/custom-user-levels#get-user-level-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `6e110911-5984-491b-be74-2707980a46a7` // string | The unique identifier of the user level. # string | The unique identifier of the user level.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.GetUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.GetUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.GetUserLevelV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetUserLevelV1`: Userlevelsummarydto
+          fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.GetUserLevelV1`: %v\n", resp)
+        }
+- path: /authorization/v1/authorization-assignable-right-sets
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/customuserlevels/methods/custom-user-levels#list-all-authorization-right-sets-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          filters := `category eq "identity"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **category**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **category**: *eq* (optional)
+          sorters := `name, -id, -category` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, category** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, category** (optional)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListAllAuthorizationRightSetsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListAllAuthorizationRightSetsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ListAllAuthorizationRightSetsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListAllAuthorizationRightSetsV1`: []Hierarchicalrightset
+          fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ListAllAuthorizationRightSetsV1`: %v\n", resp)
+        }
+- path: /authorization/v1/user-levels/{id}/identities
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/customuserlevels/methods/custom-user-levels#list-user-level-identities-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `idn:access-request-administrator` // string | The unique identifier of the user level. # string | The unique identifier of the user level.
+          count := true // bool | If true, X-Total-Count header with the the total number of identities for this user level will be included in the response. (optional) (default to false) # bool | If true, X-Total-Count header with the the total number of identities for this user level will be included in the response. (optional) (default to false)
+          sorters := `displayName` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName** (optional)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListUserLevelIdentitiesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListUserLevelIdentitiesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Count(count).Sorters(sorters).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ListUserLevelIdentitiesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListUserLevelIdentitiesV1`: []Authuserslimresponse
+          fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ListUserLevelIdentitiesV1`: %v\n", resp)
+        }
+- path: /authorization/v1/custom-user-levels
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/customuserlevels/methods/custom-user-levels#list-user-levels-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          detailLevel := `FULL` // string | Specifies the level of detail for the user levels. (optional) (default to "basic") # string | Specifies the level of detail for the user levels. (optional) (default to "basic")
+          filters := `name co "identity", owner co "john", status eq "active", description co "some description"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *co*    **owner**: *co*    **status**: *eq*  **description**: *co* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *co*    **owner**: *co*    **status**: *eq*  **description**: *co* (optional)
+          sorters := `name, -created, description, status, owner` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, description, status, owner** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, description, status, owner** (optional)
+          limit := 50 // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListUserLevelsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListUserLevelsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).DetailLevel(detailLevel).Filters(filters).Sorters(sorters).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ListUserLevelsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListUserLevelsV1`: []Userlevelsummarydto
+          fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ListUserLevelsV1`: %v\n", resp)
+        }
+- path: /authorization/v1/custom-user-levels/{id}/publish
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/customuserlevels/methods/custom-user-levels#publish-custom-user-level-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `6e110911-5984-491b-be74-2707980a46a7` // string | The unique identifier of the user level to publish. # string | The unique identifier of the user level to publish.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.PublishCustomUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.PublishCustomUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.PublishCustomUserLevelV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PublishCustomUserLevelV1`: Userlevelpublishsummary
+          fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.PublishCustomUserLevelV1`: %v\n", resp)
+        }
+- path: /authorization/v1/user-levels/get-identity-count
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/customuserlevels/methods/custom-user-levels#show-user-level-counts-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          requestbody := []byte(``) // []string | List of user level ids. Max 50 identifiers can be passed in a single request.
+
+          
+          var requestBody []v1.RequestBody
+          if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ShowUserLevelCountsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ShowUserLevelCountsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ShowUserLevelCountsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ShowUserLevelCountsV1`: []Authuserlevelsidentitycount
+          fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ShowUserLevelCountsV1`: %v\n", resp)
+        }
+- path: /authorization/v1/custom-user-levels/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/customuserlevels/methods/custom-user-levels#update-user-level-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          id := `6e110911-5984-491b-be74-2707980a46a7` // string | The unique identifier of the user level. # string | The unique identifier of the user level.
+           jsonpatch := []byte(`[{"op":"replace","path":"/rightSets","value":["idn:ui-identity-manage-example"]}]`) // Jsonpatch | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+
+          
+          var jsonpatch v1.Jsonpatch
+          if err := json.Unmarshal(jsonpatch, &jsonpatch); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.UpdateUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+          //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.UpdateUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.UpdateUserLevelV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateUserLevelV1`: Userlevelsummarydto
+          fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.UpdateUserLevelV1`: %v\n", resp)
+        }

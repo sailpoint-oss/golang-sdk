@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/sailpoint-oss/golang-sdk/v2/api_accounts_v1"
-	"github.com/sailpoint-oss/golang-sdk/v2/api_transforms_v1"
-	"github.com/sailpoint-oss/golang-sdk/v2/api_workflows_v1"
+	"github.com/sailpoint-oss/golang-sdk/v2/api_accounts"
+	"github.com/sailpoint-oss/golang-sdk/v2/api_transforms"
+	"github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -177,13 +177,13 @@ func Test_workflows(t *testing.T) {
 	t.Run("Test create workflow", func(t *testing.T) {
 		randomName := fmt.Sprintf("Test Workflow %s", randString(8))
 
-		trigger := api_workflows_v1.NewWorkflowtrigger("EVENT", map[string]interface{}{
+		trigger := api_workflows.NewWorkflowtrigger("EVENT", map[string]interface{}{
 			"id":     "idn:identity-attributes-changed",
 			"filter": "$.changes[?(@.attribute == 'manager')]",
 		})
 		description := "Send an email to the identity who's attributes changed."
 		enabled := false
-		req := api_workflows_v1.NewCreateWorkflowV1Request(randomName)
+		req := api_workflows.NewCreateWorkflowV1Request(randomName)
 		req.SetDescription(description)
 		req.SetEnabled(enabled)
 		req.SetTrigger(*trigger)
@@ -225,8 +225,8 @@ func Test_typed_direct(t *testing.T) {
 	configuration := NewDefaultConfiguration()
 
 	t.Run("Test List Accounts direct", func(t *testing.T) {
-		cfg := api_accounts_v1.NewConfiguration(NewPartitionConfiguration(configuration))
-		client := api_accounts_v1.NewAPIClient(cfg)
+		cfg := api_accounts.NewConfiguration(NewPartitionConfiguration(configuration))
+		client := api_accounts.NewAPIClient(cfg)
 
 		resp, r, err := client.AccountsAPI.ListAccountsV1(context.TODO()).Execute()
 		if err != nil {
@@ -238,8 +238,8 @@ func Test_typed_direct(t *testing.T) {
 	})
 
 	t.Run("Test List Transforms direct", func(t *testing.T) {
-		cfg := api_transforms_v1.NewConfiguration(NewPartitionConfiguration(configuration))
-		client := api_transforms_v1.NewAPIClient(cfg)
+		cfg := api_transforms.NewConfiguration(NewPartitionConfiguration(configuration))
+		client := api_transforms.NewAPIClient(cfg)
 
 		resp, r, err := client.TransformsAPI.ListTransformsV1(context.TODO()).Execute()
 		if err != nil {

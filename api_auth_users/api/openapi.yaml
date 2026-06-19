@@ -1,0 +1,627 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Auth Users
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement user authentication system functionality.\
+    \ \nWith this functionality in place, users can get a user's authentication system\
+    \ details, including their capabilities, and modify those capabilities. \nThe\
+    \ user's capabilities refer to their access to different systems, or authorization,\
+    \ within the tenant, like access to certifications (CERT_ADMIN) or reports (REPORT_ADMIN).\
+    \ \nThese capabilities also determine a user's access to the different APIs. \n\
+    This API provides users with a way to determine a user's access and make quick\
+    \ and easy changes to that access. \n"
+  name: Auth Users
+paths:
+  /auth-users/v1/{id}:
+    get:
+      description: Return the specified user's authentication system details.
+      operationId: getAuthUserV1
+      parameters:
+      - description: Identity ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentitiesV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authuser'
+          description: The specified user's authentication system details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthUserV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthUserV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:auth-user:read
+      summary: Auth user details
+      tags:
+      - Auth Users
+    patch:
+      description: "Use a PATCH request to update an existing user in the authentication\
+        \ system.\nUse this endpoint to modify these fields: \n  * `capabilities`\n\
+        \nA '400.1.1 Illegal update attempt' detail code indicates that you attempted\
+        \ to PATCH a field that is not allowed."
+      operationId: patchAuthUserV1
+      parameters:
+      - description: Identity ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentitiesV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: replace
+              path: /capabilities
+              value:
+              - ORG_ADMIN
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: "A list of auth user update operations according to the [JSON\
+          \ Patch](https://tools.ietf.org/html/rfc6902) standard."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authuser'
+          description: Auth user updated.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthUserV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAuthUserV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:auth-user:manage
+      summary: Auth user update
+      tags:
+      - Auth Users
+components:
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAuthUserV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAuthUserV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    authuser:
+      example:
+        firstname: Will
+        capabilities:
+        - ORG_ADMIN
+        - ORG_ADMIN
+        displayName: Will Smith
+        profile: 2c91808458ae7a4f0158b1bbf8af0756
+        lastPasswordChangeDate: 2021-03-08T22:37:33.901Z
+        currentLoginTimestamp: 1656327185832
+        personalEmail: william.smith@example.com
+        lastname: Smith
+        lastLoginTimestamp: 1656327185832
+        uid: will.smith
+        phone: "5555555555"
+        identificationNumber: 19-5588452
+        alias: will.smith
+        workPhone: "5555555555"
+        id: 2c91808458ae7a4f0158b1bbf8af0628
+        tenant: test-tenant
+        email: william.smith@example.com
+        lastUnlockTimestamp: 2021-03-08T22:37:33.901Z
+      properties:
+        tenant:
+          description: Tenant name.
+          example: test-tenant
+          type: string
+        id:
+          description: Identity ID.
+          example: 2c91808458ae7a4f0158b1bbf8af0628
+          type: string
+        uid:
+          description: Identity's unique identitifier.
+          example: will.smith
+          type: string
+        profile:
+          description: ID of the auth profile associated with the auth user.
+          example: 2c91808458ae7a4f0158b1bbf8af0756
+          type: string
+        identificationNumber:
+          description: Auth user's employee number.
+          example: 19-5588452
+          nullable: true
+          type: string
+        email:
+          description: Auth user's email.
+          example: william.smith@example.com
+          nullable: true
+          type: string
+        phone:
+          description: Auth user's phone number.
+          example: "5555555555"
+          nullable: true
+          type: string
+        workPhone:
+          description: Auth user's work phone number.
+          example: "5555555555"
+          nullable: true
+          type: string
+        personalEmail:
+          description: Auth user's personal email.
+          example: william.smith@example.com
+          nullable: true
+          type: string
+        firstname:
+          description: Auth user's first name.
+          example: Will
+          nullable: true
+          type: string
+        lastname:
+          description: Auth user's last name.
+          example: Smith
+          nullable: true
+          type: string
+        displayName:
+          description: Auth user's name in displayed format.
+          example: Will Smith
+          type: string
+        alias:
+          description: Auth user's alias.
+          example: will.smith
+          type: string
+        lastPasswordChangeDate:
+          description: Date of last password change.
+          example: 2021-03-08T22:37:33.901Z
+          format: date-time
+          nullable: true
+          type: string
+        lastLoginTimestamp:
+          description: Timestamp of the last login (long type value).
+          example: 1656327185832
+          format: int64
+          type: integer
+        currentLoginTimestamp:
+          description: Timestamp of the current login (long type value).
+          example: 1656327185832
+          format: int64
+          type: integer
+        lastUnlockTimestamp:
+          description: The date and time when the user was last unlocked.
+          example: 2021-03-08T22:37:33.901Z
+          format: date-time
+          nullable: true
+          type: string
+        capabilities:
+          description: Array of the auth user's capabilities.
+          items:
+            enum:
+            - CERT_ADMIN
+            - CLOUD_GOV_ADMIN
+            - CLOUD_GOV_USER
+            - HELPDESK
+            - INTERNAL
+            - ORG_ADMIN
+            - POLICY_ADMIN
+            - REPORT_ADMIN
+            - ROLE_ADMIN
+            - ROLE_SUBADMIN
+            - SAAS_MANAGEMENT_ADMIN
+            - SAAS_MANAGEMENT_READER
+            - SOURCE_ADMIN
+            - SOURCE_SUBADMIN
+            - das:ui-administrator
+            - das:ui-compliance_manager
+            - das:ui-auditor
+            - das:ui-data-scope
+            - sp:aic-dashboard-read
+            - sp:aic-dashboard-write
+            - sp:ui-config-hub-admin
+            - sp:ui-config-hub-backup-admin
+            - sp:ui-config-hub-read
+            example: ORG_ADMIN
+            type: string
+          nullable: true
+          type: array
+      title: Auth User
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    jsonpatchoperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/jsonpatchoperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    getAuthUserV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getAuthUserV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    jsonpatchoperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array

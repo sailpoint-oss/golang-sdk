@@ -1,0 +1,155 @@
+- path: /generate-password-reset-token/v1/digit
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/passwordmanagement/methods/password-management#create-digit-token-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           passworddigittokenreset := []byte(`{"userId":"Abby.Smith","length":8,"durationMinutes":5}`) // Passworddigittokenreset | 
+
+          
+          var passworddigittokenreset v1.Passworddigittokenreset
+          if err := json.Unmarshal(passworddigittokenreset, &passworddigittokenreset); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.CreateDigitTokenV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passworddigittokenreset(passworddigittokenreset).Execute()
+          //resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.CreateDigitTokenV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passworddigittokenreset(passworddigittokenreset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.CreateDigitTokenV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateDigitTokenV1`: Passworddigittoken
+          fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.CreateDigitTokenV1`: %v\n", resp)
+        }
+- path: /password-change-status/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/passwordmanagement/methods/password-management#get-password-change-status-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+        )
+
+        func main() {
+          id := `089899f13a8f4da7824996191587bab9` // string | Password change request ID # string | Password change request ID
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.GetPasswordChangeStatusV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.GetPasswordChangeStatusV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.GetPasswordChangeStatusV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetPasswordChangeStatusV1`: Passwordstatus
+          fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.GetPasswordChangeStatusV1`: %v\n", resp)
+        }
+- path: /query-password-info/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/passwordmanagement/methods/password-management#query-password-info-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+        )
+
+        func main() {
+           passwordinfoquerydto := []byte(``) // Passwordinfoquerydto | 
+
+          
+          var passwordinfoquerydto v1.Passwordinfoquerydto
+          if err := json.Unmarshal(passwordinfoquerydto, &passwordinfoquerydto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.QueryPasswordInfoV1(context.Background()).Passwordinfoquerydto(passwordinfoquerydto).Execute()
+          //resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.QueryPasswordInfoV1(context.Background()).Passwordinfoquerydto(passwordinfoquerydto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.QueryPasswordInfoV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `QueryPasswordInfoV1`: Passwordinfo
+          fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.QueryPasswordInfoV1`: %v\n", resp)
+        }
+- path: /set-password/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/passwordmanagement/methods/password-management#set-password-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+        )
+
+        func main() {
+           passwordchangerequest := []byte(``) // Passwordchangerequest | 
+
+          
+          var passwordchangerequest v1.Passwordchangerequest
+          if err := json.Unmarshal(passwordchangerequest, &passwordchangerequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.SetPasswordV1(context.Background()).Passwordchangerequest(passwordchangerequest).Execute()
+          //resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.SetPasswordV1(context.Background()).Passwordchangerequest(passwordchangerequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.SetPasswordV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetPasswordV1`: Passwordchangeresponse
+          fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.SetPasswordV1`: %v\n", resp)
+        }
