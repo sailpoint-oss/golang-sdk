@@ -32,6 +32,7 @@ var (
 	// ContextClientCredentials takes ClientCredentials as authentication for the request.
 	ContextClientCredentials = contextKey("clientCredentials")
 
+
 	// ContextServerIndex uses a server configuration from the index.
 	ContextServerIndex = contextKey("serverIndex")
 

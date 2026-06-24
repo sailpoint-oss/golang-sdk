@@ -434,7 +434,7 @@ func (c *APIClient) prepareRequest(
 
 		// Walk through any authentication.
 
-	if clientCreds, ok := ctx.Value(ContextClientCredentials).(ClientCredentials); ok {
+if clientCreds, ok := ctx.Value(ContextClientCredentials).(ClientCredentials); ok {
 			// Use override client credentials from context
 			auth, err := getAccessToken(clientCreds.ClientID, clientCreds.ClientSecret, c.cfg.TokenURL)
 			if err != nil {
