@@ -251,6 +251,36 @@ func Test_typed_direct(t *testing.T) {
 	})
 }
 
+// Test_nerm validates the NERM and NERM v2025 API clients.
+// The test is skipped when NermBaseURL is not configured.
+func Test_nerm(t *testing.T) {
+	configuration := NewDefaultConfiguration()
+	if configuration.ClientConfiguration.NermBaseURL == "" {
+		t.Skip("NERM not configured: set nermbaseurl in config or SAIL_NERM_BASE_URL env var")
+	}
+	apiClient := NewAPIClient(configuration)
+
+	t.Run("NERM list users", func(t *testing.T) {
+		resp, r, err := apiClient.NERM.UsersAPI.GetUsers(context.TODO()).Execute()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "during test: %v\n", err)
+		}
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, r.StatusCode)
+	})
+
+	t.Run("NERM v2025 list delegations", func(t *testing.T) {
+		resp, r, err := apiClient.NERMV2025.DelegationsAPI.DelegationsGet(context.TODO()).Execute()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "during test: %v\n", err)
+		}
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, r.StatusCode)
+	})
+}
+
 // Helper function to generate a random string
 func randString(n int) string {
 	const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
