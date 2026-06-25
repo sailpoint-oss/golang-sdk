@@ -11,8 +11,8 @@
           "fmt"
           "os"
             
-             ""
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+             "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
         )
 
         func main() {
@@ -45,8 +45,8 @@
           "fmt"
           "os"
             
-             ""
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+             "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
         )
 
         func main() {
@@ -79,8 +79,8 @@
           "fmt"
           "os"
             
-             ""
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+             "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
         )
 
         func main() {
@@ -114,8 +114,8 @@
           "fmt"
           "os"
             
-             ""
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+             "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
         )
 
         func main() {
@@ -149,8 +149,8 @@
           "fmt"
           "os"
             
-             ""
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+             "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
         )
 
         func main() {

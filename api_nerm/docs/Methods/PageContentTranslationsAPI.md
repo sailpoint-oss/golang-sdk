@@ -64,7 +64,7 @@ import (
 	"os"
   "encoding/json"
     NERM "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
 )
 
 func main() {
@@ -135,7 +135,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
 )
 
 func main() {
@@ -201,7 +201,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
 )
 
 func main() {
@@ -259,7 +259,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
 )
 
 func main() {
@@ -324,7 +324,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
 )
 
 func main() {
@@ -390,7 +390,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
 )
 
 func main() {
@@ -457,7 +457,7 @@ import (
 	"os"
   "encoding/json"
     NERM "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
 )
 
 func main() {
@@ -530,7 +530,7 @@ import (
 	"os"
   "encoding/json"
     NERM "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
 )
 
 func main() {

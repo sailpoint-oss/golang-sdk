@@ -7,6 +7,8 @@ useOneOfDiscriminatorLookup: false
 enumClassPrefix: true
 gitRepoId: golang-sdk/v2
 gitUserId: sailpoint-oss
+isGoSubmodule: true
+moduleImportPath: github.com/sailpoint-oss/golang-sdk/v2/api_generic
 files:
   developerSite_code_examples.mustache:
     templateType: APIDocs

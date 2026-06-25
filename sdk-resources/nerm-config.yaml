@@ -7,6 +7,7 @@ useOneOfDiscriminatorLookup: false
 enumClassPrefix: true
 gitRepoId: golang-sdk/v2
 gitUserId: sailpoint-oss
+isGoSubmodule: true
 apiVersion: NERM
 funtionPrefix: NERM
 subModuleName: NERM
