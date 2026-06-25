@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DataAccessSecurityAPI* | [**CancelTaskV1**](docs/DataAccessSecurityAPI.md#canceltaskv1) | **Post** /das/v1/tasks/cancel/{id} | Cancel a DAS task.
 *DataAccessSecurityAPI* | [**CreateApplicationV1**](docs/DataAccessSecurityAPI.md#createapplicationv1) | **Post** /das/v1/applications | Create application
+*DataAccessSecurityAPI* | [**CreateIdentityCollectorV1**](docs/DataAccessSecurityAPI.md#createidentitycollectorv1) | **Post** /das/identity-collectors/v1 | Create identity collector
 *DataAccessSecurityAPI* | [**CreateScheduleV1**](docs/DataAccessSecurityAPI.md#createschedulev1) | **Post** /das/v1/tasks/schedules | Create a new schedule.
 *DataAccessSecurityAPI* | [**DasV1OwnersAssignPost**](docs/DataAccessSecurityAPI.md#dasv1ownersassignpost) | **Post** /das/v1/owners/assign | Assign owner to application resource.
 *DataAccessSecurityAPI* | [**DasV1OwnersOwnerIdentityIdResourcesGet**](docs/DataAccessSecurityAPI.md#dasv1ownersowneridentityidresourcesget) | **Get** /das/v1/owners/{ownerIdentityId}/resources | List resources for owner.
@@ -88,6 +89,7 @@ Class | Method | HTTP request | Description
 *DataAccessSecurityAPI* | [**DasV1OwnersResourcesResourceIdGet**](docs/DataAccessSecurityAPI.md#dasv1ownersresourcesresourceidget) | **Get** /das/v1/owners/resources/{resourceId} | List owners for resource.
 *DataAccessSecurityAPI* | [**DasV1OwnersSourceIdentityIdReassignDestinationIdentityIdPost**](docs/DataAccessSecurityAPI.md#dasv1ownerssourceidentityidreassigndestinationidentityidpost) | **Post** /das/v1/owners/{sourceIdentityId}/reassign/{destinationIdentityId} | Reassign resource owner.
 *DataAccessSecurityAPI* | [**DeleteApplicationV1**](docs/DataAccessSecurityAPI.md#deleteapplicationv1) | **Delete** /das/v1/applications/{id} | Delete an application by identifier.
+*DataAccessSecurityAPI* | [**DeleteIdentityCollectorV1**](docs/DataAccessSecurityAPI.md#deleteidentitycollectorv1) | **Delete** /das/identity-collectors/v1/{id} | Delete identity collector by identifier
 *DataAccessSecurityAPI* | [**DeleteScheduleV1**](docs/DataAccessSecurityAPI.md#deleteschedulev1) | **Delete** /das/v1/tasks/schedules/{id} | Delete a DAS schedule.
 *DataAccessSecurityAPI* | [**DeleteTaskV1**](docs/DataAccessSecurityAPI.md#deletetaskv1) | **Delete** /das/v1/tasks/{id} | Delete a DAS task.
 *DataAccessSecurityAPI* | [**GetApplicationV1**](docs/DataAccessSecurityAPI.md#getapplicationv1) | **Get** /das/v1/applications/{id} | Retrieve application details by identifier.
@@ -97,7 +99,9 @@ Class | Method | HTTP request | Description
 *DataAccessSecurityAPI* | [**GetSchedulesV1**](docs/DataAccessSecurityAPI.md#getschedulesv1) | **Get** /das/v1/tasks/schedules | List all schedules.
 *DataAccessSecurityAPI* | [**GetTaskV1**](docs/DataAccessSecurityAPI.md#gettaskv1) | **Get** /das/v1/tasks/{id} | Get a DAS task.
 *DataAccessSecurityAPI* | [**GetTasksV1**](docs/DataAccessSecurityAPI.md#gettasksv1) | **Get** /das/v1/tasks | Lists all DAS tasks.
+*DataAccessSecurityAPI* | [**ListIdentityCollectorsV1**](docs/DataAccessSecurityAPI.md#listidentitycollectorsv1) | **Get** /das/identity-collectors/v1 | List identity collectors
 *DataAccessSecurityAPI* | [**PutApplicationV1**](docs/DataAccessSecurityAPI.md#putapplicationv1) | **Put** /das/v1/applications/{id} | Update application by identifier.
+*DataAccessSecurityAPI* | [**PutIdentityCollectorV1**](docs/DataAccessSecurityAPI.md#putidentitycollectorv1) | **Put** /das/identity-collectors/v1/{id} | Update identity collector by identifier
 *DataAccessSecurityAPI* | [**PutScheduleV1**](docs/DataAccessSecurityAPI.md#putschedulev1) | **Put** /das/v1/tasks/schedules/{id} | Update a schedule.
 *DataAccessSecurityAPI* | [**StartTaskRerunV1**](docs/DataAccessSecurityAPI.md#starttaskrerunv1) | **Post** /das/v1/tasks/rerun/{id} | Rerun a DAS task.
 
@@ -113,6 +117,8 @@ Class | Method | HTTP request | Description
  - [Basesettings](docs/Basesettings.md)
  - [Businessservicetype](docs/Businessservicetype.md)
  - [Crawlresourcessizesoptions](docs/Crawlresourcessizesoptions.md)
+ - [CreateIdentityCollectorV1200Response](docs/CreateIdentityCollectorV1200Response.md)
+ - [Createidentitycollectorrequest](docs/Createidentitycollectorrequest.md)
  - [Createschedulerequest](docs/Createschedulerequest.md)
  - [Dataclassificationsettings](docs/Dataclassificationsettings.md)
  - [Dataownermodel](docs/Dataownermodel.md)
@@ -120,14 +126,18 @@ Class | Method | HTTP request | Description
  - [Errorresponsedto](docs/Errorresponsedto.md)
  - [GetTasksV1401Response](docs/GetTasksV1401Response.md)
  - [GetTasksV1429Response](docs/GetTasksV1429Response.md)
+ - [Identitycollectorlistitem](docs/Identitycollectorlistitem.md)
  - [Int64stringkeyvaluepair](docs/Int64stringkeyvaluepair.md)
  - [Localeorigin](docs/Localeorigin.md)
  - [Permissioncollectorsettings](docs/Permissioncollectorsettings.md)
+ - [PutIdentityCollectorV1409Response](docs/PutIdentityCollectorV1409Response.md)
+ - [PutIdentityCollectorV1409ResponseMessagesInner](docs/PutIdentityCollectorV1409ResponseMessagesInner.md)
  - [Reelectrequest](docs/Reelectrequest.md)
  - [Resourcemodel](docs/Resourcemodel.md)
  - [Scheduleinfo](docs/Scheduleinfo.md)
  - [Tag](docs/Tag.md)
  - [Taskinfo](docs/Taskinfo.md)
+ - [Updateidentitycollectorrequest](docs/Updateidentitycollectorrequest.md)
  - [Updateschedulerequest](docs/Updateschedulerequest.md)
 
 

@@ -68,6 +68,46 @@
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
         }
+- path: /das/identity-collectors/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/dataaccesssecurity/methods/data-access-security#create-identity-collector-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_data_access_security"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_access_security"
+        )
+
+        func main() {
+           createidentitycollectorrequest := []byte(``) // Createidentitycollectorrequest | Request body containing the details required to create a new identity collector.
+
+          
+          var createidentitycollectorrequest v1.Createidentitycollectorrequest
+          if err := json.Unmarshal(createidentitycollectorrequest, &createidentitycollectorrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.CreateIdentityCollectorV1(context.Background()).Createidentitycollectorrequest(createidentitycollectorrequest).Execute()
+          //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.CreateIdentityCollectorV1(context.Background()).Createidentitycollectorrequest(createidentitycollectorrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.CreateIdentityCollectorV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateIdentityCollectorV1`: CreateIdentityCollectorV1200Response
+          fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.CreateIdentityCollectorV1`: %v\n", resp)
+        }
 - path: /das/v1/tasks/schedules
   method: Post
   xCodeSample:
@@ -324,6 +364,38 @@
           //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DeleteApplicationV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DeleteApplicationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /das/identity-collectors/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/dataaccesssecurity/methods/data-access-security#delete-identity-collector-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_data_access_security"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_access_security"
+        )
+
+        func main() {
+          id := 12345 // int64 | The unique identifier of the identity collector to delete. # int64 | The unique identifier of the identity collector to delete.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DeleteIdentityCollectorV1(context.Background(), id).Execute()
+          //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DeleteIdentityCollectorV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DeleteIdentityCollectorV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
         }
@@ -640,6 +712,43 @@
           // response from `GetTasksV1`: []Taskinfo
           fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.GetTasksV1`: %v\n", resp)
         }
+- path: /das/identity-collectors/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/dataaccesssecurity/methods/data-access-security#list-identity-collectors-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_data_access_security"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_access_security"
+        )
+
+        func main() {
+          filters := `sourceId eq "2c9180835d2e5168015d32f890ca1581"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or* (optional)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.ListIdentityCollectorsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.ListIdentityCollectorsV1(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.ListIdentityCollectorsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListIdentityCollectorsV1`: []Identitycollectorlistitem
+          fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.ListIdentityCollectorsV1`: %v\n", resp)
+        }
 - path: /das/v1/applications/{id}
   method: Put
   xCodeSample:
@@ -676,6 +785,45 @@
           //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.PutApplicationV1(context.Background(), id).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.PutApplicationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /das/identity-collectors/v1/{id}
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/dataaccesssecurity/methods/data-access-security#put-identity-collector-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_data_access_security"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_access_security"
+        )
+
+        func main() {
+          id := 12345 // int64 | The unique identifier of the identity collector to update. # int64 | The unique identifier of the identity collector to update.
+           updateidentitycollectorrequest := []byte(``) // Updateidentitycollectorrequest | Request body containing the updated details for the identity collector.
+
+          
+          var updateidentitycollectorrequest v1.Updateidentitycollectorrequest
+          if err := json.Unmarshal(updateidentitycollectorrequest, &updateidentitycollectorrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.PutIdentityCollectorV1(context.Background(), id).Updateidentitycollectorrequest(updateidentitycollectorrequest).Execute()
+          //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.PutIdentityCollectorV1(context.Background(), id).Updateidentitycollectorrequest(updateidentitycollectorrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.PutIdentityCollectorV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
         }

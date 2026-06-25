@@ -115,5 +115,4 @@ use (
 	./api_work_items
 	./api_work_reassignment
 	./api_workflows
-	./examples
 )
