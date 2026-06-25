@@ -64,8 +64,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_managed_cluster_types"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_cluster_types"
 )
 
 func main() {
@@ -136,7 +136,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_cluster_types"
 )
 
 func main() {
@@ -201,7 +201,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_cluster_types"
 )
 
 func main() {
@@ -267,7 +267,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_cluster_types"
 )
 
 func main() {
@@ -337,8 +337,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_managed_cluster_types"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_cluster_types"
 )
 
 func main() {

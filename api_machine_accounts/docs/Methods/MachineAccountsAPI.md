@@ -17,19 +17,19 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-machine-account-subtype-v1**](#create-machine-account-subtype-v1) | **Post** `/sources/v1/{sourceId}/subtypes` | Create subtype
 [**delete-machine-account-subtype-by-technical-name-v1**](#delete-machine-account-subtype-by-technical-name-v1) | **Delete** `/sources/v1/{sourceId}/subtypes/{technicalName}` | Delete subtype
+[**get-machine-account-subtype-approval-config-v1**](#get-machine-account-subtype-approval-config-v1) | **Get** `/source-subtypes/v1/{subtypeId}/machine-config` | Machine Subtype Approval Config
 [**get-machine-account-subtype-by-id-v1**](#get-machine-account-subtype-by-id-v1) | **Get** `/sources/v1/subtypes/{subtypeId}` | Retrieve subtype by subtype id
 [**get-machine-account-subtype-by-technical-name-v1**](#get-machine-account-subtype-by-technical-name-v1) | **Get** `/sources/v1/{sourceId}/subtypes/{technicalName}` | Retrieve subtype by source and technicalName
 [**get-machine-account-v1**](#get-machine-account-v1) | **Get** `/machine-accounts/v1/{id}` | Get machine account details
 [**list-machine-account-subtypes-v1**](#list-machine-account-subtypes-v1) | **Get** `/sources/v1/{sourceId}/subtypes` | Retrieve all subtypes by source
 [**list-machine-accounts-v1**](#list-machine-accounts-v1) | **Get** `/machine-accounts/v1` | List machine accounts
+[**load-bulk-source-subtypes-v1**](#load-bulk-source-subtypes-v1) | **Post** `/source-subtypes/v1/bulk-retrieve` | Bulk Retrieve of Source Subtypes
 [**patch-machine-account-subtype-by-technical-name-v1**](#patch-machine-account-subtype-by-technical-name-v1) | **Patch** `/sources/v1/{sourceId}/subtypes/{technicalName}` | Patch subtype
+[**update-machine-account-subtype-approval-config-v1**](#update-machine-account-subtype-approval-config-v1) | **Patch** `/source-subtypes/v1/{subtypeId}/machine-config` | Machine Subtype Approval Config
 [**update-machine-account-v1**](#update-machine-account-v1) | **Patch** `/machine-accounts/v1/{id}` | Update machine account details
 
 
 ## create-machine-account-subtype-v1
-:::caution deprecated 
-This endpoint has been deprecated and may be replaced or removed in future versions of the API.
-:::
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -84,8 +84,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
 )
 
 func main() {
@@ -116,9 +116,6 @@ func main() {
 [[Back to top]](#)
 
 ## delete-machine-account-subtype-by-technical-name-v1
-:::caution deprecated 
-This endpoint has been deprecated and may be replaced or removed in future versions of the API.
-:::
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -175,7 +172,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
 )
 
 func main() {
@@ -199,10 +196,86 @@ func main() {
 
 [[Back to top]](#)
 
-## get-machine-account-subtype-by-id-v1
-:::caution deprecated 
-This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+## get-machine-account-subtype-approval-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Machine Subtype Approval Config
+This endpoint retrieves the approval configuration for machine account creation and deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account creation and deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for creating and deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account creation and deletion.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v1/get-machine-account-subtype-approval-config-v1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**subtypeId** | **string** | machine subtype id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMachineAccountSubtypeApprovalConfigV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+
+### Return type
+
+[**Machineaccountsubtypeconfigdto**](../models/machineaccountsubtypeconfigdto)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
+)
+
+func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    subtypeId := `ef38f94347e94562b5bb8424a56498d8` // string | machine subtype id. # string | machine subtype id.
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.MachineAccounts.MachineAccountsAPI.GetMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineAccounts.MachineAccountsAPI.GetMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.GetMachineAccountSubtypeApprovalConfigV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetMachineAccountSubtypeApprovalConfigV1`: Machineaccountsubtypeconfigdto
+    fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.GetMachineAccountSubtypeApprovalConfigV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## get-machine-account-subtype-by-id-v1
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -257,7 +330,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
 )
 
 func main() {
@@ -282,9 +355,6 @@ func main() {
 [[Back to top]](#)
 
 ## get-machine-account-subtype-by-technical-name-v1
-:::caution deprecated 
-This endpoint has been deprecated and may be replaced or removed in future versions of the API.
-:::
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -341,7 +411,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
 )
 
 func main() {
@@ -421,7 +491,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
 )
 
 func main() {
@@ -446,9 +516,6 @@ func main() {
 [[Back to top]](#)
 
 ## list-machine-account-subtypes-v1
-:::caution deprecated 
-This endpoint has been deprecated and may be replaced or removed in future versions of the API.
-:::
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -508,7 +575,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
 )
 
 func main() {
@@ -592,7 +659,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
 )
 
 func main() {
@@ -620,10 +687,87 @@ func main() {
 
 [[Back to top]](#)
 
-## patch-machine-account-subtype-by-technical-name-v1
-:::caution deprecated 
-This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+## load-bulk-source-subtypes-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Bulk Retrieve of Source Subtypes
+This endpoint retrieves the subtypes for given subtypeIds.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v1/load-bulk-source-subtypes-v1)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiLoadBulkSourceSubtypesV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **requestBody** | **[]string** |  | 
+
+### Return type
+
+[**[]Sourcesubtypewithsource**](../models/sourcesubtypewithsource)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
+)
+
+func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    requestbody := []byte(``) // []string | 
+
+    var requestBody []v1.RequestBody
+    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.MachineAccounts.MachineAccountsAPI.LoadBulkSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.MachineAccounts.MachineAccountsAPI.LoadBulkSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.LoadBulkSourceSubtypesV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `LoadBulkSourceSubtypesV1`: []Sourcesubtypewithsource
+    fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.LoadBulkSourceSubtypesV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## patch-machine-account-subtype-by-technical-name-v1
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -681,8 +825,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
 )
 
 func main() {
@@ -708,6 +852,92 @@ func main() {
     }
     // response from `PatchMachineAccountSubtypeByTechnicalNameV1`: Sourcesubtype
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.PatchMachineAccountSubtypeByTechnicalNameV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-machine-account-subtype-approval-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Machine Subtype Approval Config
+Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account creation and deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for creating and deleting machine accounts of a particular subtype.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v1/update-machine-account-subtype-approval-config-v1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**subtypeId** | **string** | machine account subtype ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateMachineAccountSubtypeApprovalConfigV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+ **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | The JSONPatch payload used to update the object. | 
+
+### Return type
+
+[**Machineaccountsubtypeconfigdto**](../models/machineaccountsubtypeconfigdto)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
+)
+
+func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    subtypeId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account subtype ID. # string | machine account subtype ID.
+    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
+
+    var jsonpatchoperation []v1.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.MachineAccounts.MachineAccountsAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.MachineAccounts.MachineAccountsAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.UpdateMachineAccountSubtypeApprovalConfigV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateMachineAccountSubtypeApprovalConfigV1`: Machineaccountsubtypeconfigdto
+    fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.UpdateMachineAccountSubtypeApprovalConfigV1`: %v\n", resp)
 }
 ```
 
@@ -769,8 +999,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
 )
 
 func main() {

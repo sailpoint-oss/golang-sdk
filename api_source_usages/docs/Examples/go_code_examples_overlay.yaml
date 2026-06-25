@@ -11,8 +11,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_source_usages"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_source_usages"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_source_usages"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_source_usages"
         )
 
         func main() {
@@ -45,8 +45,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_source_usages"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_source_usages"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_source_usages"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_source_usages"
         )
 
         func main() {

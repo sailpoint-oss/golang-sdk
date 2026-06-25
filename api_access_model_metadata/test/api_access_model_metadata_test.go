@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_access_model_metadata"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_access_model_metadata"
 )
 
 func Test_api_access_model_metadata_AccessModelMetadataAPIService(t *testing.T) {

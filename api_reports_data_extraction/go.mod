@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_reports_data_extraction
+module github.com/sailpoint-oss/golang-sdk/v3/api_reports_data_extraction
 
 go 1.23.0
 

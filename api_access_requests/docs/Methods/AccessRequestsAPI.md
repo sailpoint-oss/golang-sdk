@@ -21,13 +21,11 @@ Method | HTTP request | Description
 [**close-access-request-v1**](#close-access-request-v1) | **Post** `/access-requests/v1/close` | Close access request
 [**create-access-request-v1**](#create-access-request-v1) | **Post** `/access-requests/v1` | Submit access request
 [**get-access-request-config-v1**](#get-access-request-config-v1) | **Get** `/access-request-config/v1` | Get access request configuration
-[**get-access-request-config-v2**](#get-access-request-config-v2) | **Get** `/access-request-config/v2` | Get access request configuration
 [**get-entitlement-details-for-identity-v1**](#get-entitlement-details-for-identity-v1) | **Get** `/revocable-objects/v1` | Identity entitlement details
 [**list-access-request-status-v1**](#list-access-request-status-v1) | **Get** `/access-request-status/v1` | Access request status
 [**list-administrators-access-request-status-v1**](#list-administrators-access-request-status-v1) | **Get** `/access-request-administration/v1` | Access request status for administrators
 [**load-account-selections-v1**](#load-account-selections-v1) | **Post** `/access-requests/v1/accounts-selection` | Get accounts selections for identity
 [**set-access-request-config-v1**](#set-access-request-config-v1) | **Put** `/access-request-config/v1` | Update access request configuration
-[**set-access-request-config-v2**](#set-access-request-config-v2) | **Put** `/access-request-config/v2` | Update access request configuration
 
 
 ## approve-bulk-access-request-v1
@@ -68,8 +66,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func main() {
@@ -136,8 +134,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func main() {
@@ -204,8 +202,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func main() {
@@ -282,8 +280,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func main() {
@@ -339,8 +337,6 @@ __GRANT_ACCESS__
 * Supports self request and request on behalf of other users. Refer to the [Get Access Request Configuration](https://developer.sailpoint.com/idn/api/v3/get-access-request-config) endpoint for request configuration options.  
 * Allows any authenticated token (except API) to call this endpoint to request to grant access to themselves. Depending on the configuration, a user can request access for others.
 * Roles, access profiles and entitlements can be requested.
-* You can specify a `startDate` to set or alter a sunrise date-time on an assignment. The startDate must be a future date-time, in the UTC timezone. Additionally, if the user already has the access assigned with a sunrise date and its yet to be provisioned, you can also submit a request without a `startDate` to request immediate provisioning after approval.
-* If a `startDate` is specified, then the requested role, access profile, or entitlement will be provisioned on that date and time.
 * You can specify a `removeDate` to set or alter a sunset date-time on an assignment. The removeDate must be a future date-time, in the UTC timezone. Additionally, if the user already has the access assigned with a sunset date, you can also submit a request without a `removeDate` to request removal of the sunset date and time.
 * If a `removeDate` is specified, then the requested role, access profile, or entitlement will be removed on that date and time.
 * Now supports an alternate field 'requestedForWithRequestedItems' for users to specify account selections while requesting items where they have more than one account on the source.
@@ -358,7 +354,6 @@ __REVOKE_ACCESS__
 * If a `removeDate` is specified, then the requested role, access profile, or entitlement will be removed on that date and time.
 * Roles, access profiles, and entitlements can be requested for revocation.
 * Revoke requests for entitlements are limited to 1 entitlement per access request currently.
-* You cannot specify a 'startDate' in a REVOKE_ACCESS request, as startDate is only applicable for GRANT_ACCESS requests to indicate when the access should be provisioned, and it does not make sense in the context of revoking access.
 * You can specify a `removeDate` to add or alter a sunset date and time on an assignment. The `removeDate` must be a future date-time, in the UTC timezone. If the user already has the access assigned with a sunset date and time, the removeDate must be a date-time earlier than the existing sunset date and time. 
 * Allows a manager to request to revoke access for direct employees. A user with ORG_ADMIN authority can also request to revoke access from anyone.
 * Now supports REVOKE_ACCESS requests for identities with multiple accounts on a single source, with the help of 'assignmentId' and 'nativeIdentity' fields. These fields should be used within the 'requestedItems' section for the revoke requests. 
@@ -399,8 +394,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func main() {
@@ -429,9 +424,6 @@ func main() {
 [[Back to top]](#)
 
 ## get-access-request-config-v1
-:::caution deprecated 
-This endpoint has been deprecated and may be replaced or removed in future versions of the API.
-:::
 Get access request configuration
 This endpoint returns the current access-request configuration.
 
@@ -466,7 +458,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func main() {
@@ -483,63 +475,6 @@ func main() {
     }
     // response from `GetAccessRequestConfigV1`: Accessrequestconfig
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetAccessRequestConfigV1`: %v\n", resp)
-}
-```
-
-[[Back to top]](#)
-
-## get-access-request-config-v2
-Get access request configuration
-This endpoint returns the current access-request configuration.
-
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-access-request-config-v2)
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAccessRequestConfigV2Request struct via the builder pattern
-
-
-### Return type
-
-[**Accessrequestconfigv2**](../models/accessrequestconfigv2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-  
-    
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-)
-
-func main() {
-
-    
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
-	  //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
-    if err != nil {
-	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfigV2``: %v\n", err)
-	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAccessRequestConfigV2`: Accessrequestconfigv2
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetAccessRequestConfigV2`: %v\n", resp)
 }
 ```
 
@@ -590,7 +525,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func main() {
@@ -664,7 +599,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func main() {
@@ -733,7 +668,7 @@ Name | Type | Description  | Notes
  **count** | **bool** | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. | [default to false]
  **limit** | **int32** | Max number of results to return. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. | 
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* | 
  **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId** | 
  **requestState** | **string** | Filter the results by the state of the request. The only valid value is *EXECUTING*. | 
 
@@ -757,7 +692,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func main() {
@@ -769,7 +704,7 @@ func main() {
     count := false // bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to false) # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to false)
     limit := 100 // int32 | Max number of results to return. (optional) (default to 250) # int32 | Max number of results to return. (optional) (default to 250)
     offset := 10 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
-    filters := `accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional)
+    filters := `accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional)
     sorters := `created` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId** (optional)
     requestState := `request-state=EXECUTING` // string | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional) # string | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional)
 
@@ -843,8 +778,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func main() {
@@ -874,9 +809,6 @@ func main() {
 [[Back to top]](#)
 
 ## set-access-request-config-v1
-:::caution deprecated 
-This endpoint has been deprecated and may be replaced or removed in future versions of the API.
-:::
 Update access request configuration
 This endpoint replaces the current access-request configuration.
 
@@ -914,8 +846,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func main() {
@@ -938,73 +870,6 @@ func main() {
     }
     // response from `SetAccessRequestConfigV1`: Accessrequestconfig
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.SetAccessRequestConfigV1`: %v\n", resp)
-}
-```
-
-[[Back to top]](#)
-
-## set-access-request-config-v2
-Update access request configuration
-This endpoint replaces the current access-request configuration.
-
-[API Spec](https://developer.sailpoint.com/docs/api/v1/set-access-request-config-v2)
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetAccessRequestConfigV2Request struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **accessrequestconfigv2** | [**Accessrequestconfigv2**](../models/accessrequestconfigv2) |  | 
-
-### Return type
-
-[**Accessrequestconfigv2**](../models/accessrequestconfigv2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-  "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-)
-
-func main() {
-    accessrequestconfigv2 := []byte(``) // Accessrequestconfigv2 | 
-
-    var accessrequestconfigv2 v1.Accessrequestconfigv2
-    if err := json.Unmarshal(accessrequestconfigv2, &accessrequestconfigv2); err != nil {
-      fmt.Println("Error:", err)
-      return
-    }
-    
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).Accessrequestconfigv2(accessrequestconfigv2).Execute()
-	  //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).Accessrequestconfigv2(accessrequestconfigv2).Execute()
-    if err != nil {
-	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfigV2``: %v\n", err)
-	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SetAccessRequestConfigV2`: Accessrequestconfigv2
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.SetAccessRequestConfigV2`: %v\n", resp)
 }
 ```
 

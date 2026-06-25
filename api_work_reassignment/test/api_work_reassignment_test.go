@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
 )
 
 func Test_api_work_reassignment_WorkReassignmentAPIService(t *testing.T) {

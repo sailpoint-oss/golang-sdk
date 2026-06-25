@@ -89,7 +89,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -156,7 +156,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -223,7 +223,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -290,8 +290,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -361,7 +361,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -426,7 +426,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -488,7 +488,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -554,7 +554,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -616,7 +616,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -681,7 +681,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -752,7 +752,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -819,7 +819,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {
@@ -885,8 +885,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func main() {

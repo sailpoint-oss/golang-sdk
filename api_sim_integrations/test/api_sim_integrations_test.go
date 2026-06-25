@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_sim_integrations"
 )
 
 func Test_api_sim_integrations_SIMIntegrationsAPIService(t *testing.T) {

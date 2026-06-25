@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration
+module github.com/sailpoint-oss/golang-sdk/v3/api_multi_host_integration
 
 go 1.23.0
 

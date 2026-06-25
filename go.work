@@ -35,7 +35,6 @@ use (
 	./api_data_segmentation
 	./api_declassify_source
 	./api_dimensions
-	./api_entitlement_connections
 	./api_entitlements
 	./api_generic
 	./api_global_tenant_security_settings
@@ -51,6 +50,7 @@ use (
 	./api_identity_attributes
 	./api_identity_history
 	./api_identity_profiles
+	./api_intelligence_package
 	./api_jit_access
 	./api_jit_activations
 	./api_launchers

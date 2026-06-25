@@ -14,25 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_subtypes"
 )
 
 func Test_api_machine_account_subtypes_MachineAccountSubtypesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-
-	t.Run("Test MachineAccountSubtypesAPIService CreateSourceSubtypeV1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeV1(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
 
 	t.Run("Test MachineAccountSubtypesAPIService DeleteMachineAccountSubtypeV1", func(t *testing.T) {
 
@@ -43,20 +31,6 @@ func Test_api_machine_account_subtypes_MachineAccountSubtypesAPIService(t *testi
 		httpRes, err := apiClient.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).Execute()
 
 		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MachineAccountSubtypesAPIService GetMachineAccountSubtypeApprovalConfigV1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var subtypeId string
-
-		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -75,30 +49,6 @@ func Test_api_machine_account_subtypes_MachineAccountSubtypesAPIService(t *testi
 
 	})
 
-	t.Run("Test MachineAccountSubtypesAPIService ListSourceSubtypesV1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypesV1(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MachineAccountSubtypesAPIService LoadBulkSourceSubtypesV1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test MachineAccountSubtypesAPIService PatchMachineAccountSubtypeV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -106,20 +56,6 @@ func Test_api_machine_account_subtypes_MachineAccountSubtypesAPIService(t *testi
 		var subtypeId string
 
 		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MachineAccountSubtypesAPIService UpdateMachineAccountSubtypeApprovalConfigV1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var subtypeId string
-
-		resp, httpRes, err := apiClient.MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

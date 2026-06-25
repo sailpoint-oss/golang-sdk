@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_auth_users
+module github.com/sailpoint-oss/golang-sdk/v3/api_auth_users
 
 go 1.23.0
 

@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings
+module github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings
 
 go 1.23.0
 

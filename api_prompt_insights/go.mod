@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_prompt_insights
+module github.com/sailpoint-oss/golang-sdk/v3/api_prompt_insights
 
 go 1.23.0
 

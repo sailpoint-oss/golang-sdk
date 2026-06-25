@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_role_insights
+module github.com/sailpoint-oss/golang-sdk/v3/api_role_insights
 
 go 1.23.0
 

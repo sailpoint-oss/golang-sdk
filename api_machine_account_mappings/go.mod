@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_mappings
+module github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_mappings
 
 go 1.23.0
 

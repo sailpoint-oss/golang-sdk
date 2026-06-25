@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_search_attribute_configuration"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_search_attribute_configuration"
 )
 
 func Test_api_search_attribute_configuration_SearchAttributeConfigurationAPIService(t *testing.T) {

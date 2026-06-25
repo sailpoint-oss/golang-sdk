@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations
+module github.com/sailpoint-oss/golang-sdk/v3/api_sim_integrations
 
 go 1.23.0
 

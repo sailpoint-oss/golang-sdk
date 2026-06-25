@@ -72,7 +72,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_api_usage"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_api_usage"
 )
 
 func main() {
@@ -149,7 +149,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_api_usage"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_api_usage"
 )
 
 func main() {

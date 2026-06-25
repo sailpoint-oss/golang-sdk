@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_public_identities"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_public_identities"
 )
 
 func Test_api_public_identities_PublicIdentitiesAPIService(t *testing.T) {

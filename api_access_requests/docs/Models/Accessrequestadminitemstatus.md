@@ -35,7 +35,6 @@ Name | Type | Description | Notes
 **PreApprovalTriggerDetails** | Pointer to [**RequesteditemstatusPreApprovalTriggerDetails**](requesteditemstatus-pre-approval-trigger-details) |  | [optional] 
 **AccessRequestPhases** | Pointer to [**[]Accessrequestphases**](accessrequestphases) | A list of Phases that the Access Request has gone through in order, to help determine the status of the request. | [optional] 
 **Description** | Pointer to **NullableString** | Description associated to the requested object. | [optional] 
-**StartDate** | Pointer to **NullableTime** | When the role access is scheduled for provisioning. | [optional] 
 **RemoveDate** | Pointer to **NullableTime** | When the role access is scheduled for removal. | [optional] 
 **Cancelable** | Pointer to **bool** | True if the request can be canceled. | [optional] [default to false]
 **ReauthorizationRequired** | Pointer to **bool** | True if re-auth is required. | [optional] [default to false]
@@ -651,41 +650,6 @@ HasDescription returns a boolean if a field has been set.
 `func (o *Accessrequestadminitemstatus) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
-### GetStartDate
-
-`func (o *Accessrequestadminitemstatus) GetStartDate() SailPointTime`
-
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
-
-### GetStartDateOk
-
-`func (o *Accessrequestadminitemstatus) GetStartDateOk() (*SailPointTime, bool)`
-
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStartDate
-
-`func (o *Accessrequestadminitemstatus) SetStartDate(v SailPointTime)`
-
-SetStartDate sets StartDate field to given value.
-
-### HasStartDate
-
-`func (o *Accessrequestadminitemstatus) HasStartDate() bool`
-
-HasStartDate returns a boolean if a field has been set.
-
-### SetStartDateNil
-
-`func (o *Accessrequestadminitemstatus) SetStartDateNil(b bool)`
-
- SetStartDateNil sets the value for StartDate to be an explicit nil
-
-### UnsetStartDate
-`func (o *Accessrequestadminitemstatus) UnsetStartDate()`
-
-UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
 ### GetRemoveDate
 
 `func (o *Accessrequestadminitemstatus) GetRemoveDate() SailPointTime`

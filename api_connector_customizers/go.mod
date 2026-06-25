@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers
+module github.com/sailpoint-oss/golang-sdk/v3/api_connector_customizers
 
 go 1.23.0
 

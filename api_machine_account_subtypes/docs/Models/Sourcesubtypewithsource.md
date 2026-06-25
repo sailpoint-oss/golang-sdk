@@ -24,7 +24,6 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **SailPointTime** | Last modified timestamp. | [optional] 
 **Type** | Pointer to **string** | Type of the subtype. Either MACHINE OR null. | [optional] 
 **Source** | Pointer to [**SourcesubtypewithsourceSource**](sourcesubtypewithsource-source) |  | [optional] 
-**SystemManaged** | Pointer to **bool** | Indicates if the subtype is managed by the system. | [optional] [default to false]
 
 ## Methods
 
@@ -269,30 +268,5 @@ SetSource sets Source field to given value.
 `func (o *Sourcesubtypewithsource) HasSource() bool`
 
 HasSource returns a boolean if a field has been set.
-
-### GetSystemManaged
-
-`func (o *Sourcesubtypewithsource) GetSystemManaged() bool`
-
-GetSystemManaged returns the SystemManaged field if non-nil, zero value otherwise.
-
-### GetSystemManagedOk
-
-`func (o *Sourcesubtypewithsource) GetSystemManagedOk() (*bool, bool)`
-
-GetSystemManagedOk returns a tuple with the SystemManaged field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSystemManaged
-
-`func (o *Sourcesubtypewithsource) SetSystemManaged(v bool)`
-
-SetSystemManaged sets SystemManaged field to given value.
-
-### HasSystemManaged
-
-`func (o *Sourcesubtypewithsource) HasSystemManaged() bool`
-
-HasSystemManaged returns a boolean if a field has been set.
 
 

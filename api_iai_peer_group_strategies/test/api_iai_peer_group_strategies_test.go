@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_iai_peer_group_strategies"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_iai_peer_group_strategies"
 )
 
 func Test_api_iai_peer_group_strategies_IAIPeerGroupStrategiesAPIService(t *testing.T) {

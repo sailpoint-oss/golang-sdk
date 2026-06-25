@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_task_management"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_task_management"
 )
 
 func Test_api_task_management_TaskManagementAPIService(t *testing.T) {

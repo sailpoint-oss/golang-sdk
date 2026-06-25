@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func Test_api_suggested_entitlement_description_SuggestedEntitlementDescriptionAPIService(t *testing.T) {

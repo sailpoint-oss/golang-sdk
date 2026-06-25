@@ -67,7 +67,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_application_discovery"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_application_discovery"
 )
 
 func main() {
@@ -132,7 +132,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_application_discovery"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_application_discovery"
 )
 
 func main() {
@@ -194,7 +194,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_application_discovery"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_application_discovery"
 )
 
 func main() {
@@ -271,8 +271,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_application_discovery"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_application_discovery"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_application_discovery"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_application_discovery"
 )
 
 func main() {

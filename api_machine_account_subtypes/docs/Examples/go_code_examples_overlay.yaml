@@ -1,44 +1,3 @@
-- path: /source-subtypes/v1
-  method: Post
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/machineaccountsubtypes/methods/machine-account-subtypes#create-source-subtype-v1
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-             "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-        )
-
-        func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-           createsourcesubtypev1request := []byte(`{"sourceId":"6d0458373bec4b4b80460992b76016da","technicalName":"foo","displayName":"Mr Foo","description":"fighters","type":"MACHINE"}`) // CreateSourceSubtypeV1Request | 
-
-          
-          var createSourceSubtypeV1Request v1.CreateSourceSubtypeV1Request
-          if err := json.Unmarshal(createsourcesubtypev1request, &createSourceSubtypeV1Request); err != nil {
-            fmt.Println("Error:", err)
-            return
-          }
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.CreateSourceSubtypeV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CreateSourceSubtypeV1Request(createSourceSubtypeV1Request).Execute()
-          //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.CreateSourceSubtypeV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CreateSourceSubtypeV1Request(createSourceSubtypeV1Request).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.CreateSourceSubtypeV1``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-          // response from `CreateSourceSubtypeV1`: Sourcesubtypewithsource
-          fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.CreateSourceSubtypeV1`: %v\n", resp)
-        }
 - path: /source-subtypes/v1/{subtypeId}
   method: Delete
   xCodeSample:
@@ -52,60 +11,24 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_subtypes"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_subtypes"
         )
 
         func main() {
           subtypeId := `6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa` // string | The ID of the subtype. # string | The ID of the subtype.
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).Execute()
+          //r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-        }
-- path: /source-subtypes/v1/{subtypeId}/machine-config
-  method: Get
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/machineaccountsubtypes/methods/machine-account-subtypes#get-machine-account-subtype-approval-config-v1
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-            
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-        )
-
-        func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          subtypeId := `ef38f94347e94562b5bb8424a56498d8` // string | machine subtype id. # string | machine subtype id.
-
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-          // response from `GetMachineAccountSubtypeApprovalConfigV1`: Machineaccountsubtypeconfigdto
-          fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1`: %v\n", resp)
         }
 - path: /source-subtypes/v1/{subtypeId}
   method: Get
@@ -120,107 +43,26 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_subtypes"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_subtypes"
         )
 
         func main() {
           subtypeId := `6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa` // string | The ID of the subtype. # string | The ID of the subtype.
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+          resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1(context.Background(), subtypeId).Execute()
+          //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1(context.Background(), subtypeId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
           // response from `GetSourceSubtypeByIdV1`: Sourcesubtypewithsource
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1`: %v\n", resp)
-        }
-- path: /source-subtypes/v1
-  method: Get
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/machineaccountsubtypes/methods/machine-account-subtypes#list-source-subtypes-v1
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-            
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-        )
-
-        func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          filters := `displayName eq "sail"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, sw*  **technicalName**: *eq, sw*  **source.id**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, sw*  **technicalName**: *eq, sw*  **source.id**: *eq, in* (optional)
-          sorters := `displayName` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName** (optional)
-          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.ListSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.ListSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.ListSourceSubtypesV1``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-          // response from `ListSourceSubtypesV1`: []Sourcesubtypewithsource
-          fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.ListSourceSubtypesV1`: %v\n", resp)
-        }
-- path: /source-subtypes/v1/bulk-retrieve
-  method: Post
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/machineaccountsubtypes/methods/machine-account-subtypes#load-bulk-source-subtypes-v1
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-             "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-        )
-
-        func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          requestbody := []byte(``) // []string | 
-
-          
-          var requestBody []v1.RequestBody
-          if err := json.Unmarshal(requestbody, &requestBody); err != nil {
-            fmt.Println("Error:", err)
-            return
-          }
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-          //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-          // response from `LoadBulkSourceSubtypesV1`: []Sourcesubtypewithsource
-          fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1`: %v\n", resp)
         }
 - path: /source-subtypes/v1/{subtypeId}
   method: Patch
@@ -235,13 +77,12 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_subtypes"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_subtypes"
         )
 
         func main() {
           subtypeId := `6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa` // string | The ID of the subtype. # string | The ID of the subtype.
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           requestbody := []byte(`[{"op":"replace","path":"/displayName","value":"Test New DisplayName"}]`) // []map[string]interface{} | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
           
@@ -255,54 +96,12 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-          //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+          resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).RequestBody(requestBody).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
           // response from `PatchMachineAccountSubtypeV1`: Sourcesubtypewithsource
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1`: %v\n", resp)
-        }
-- path: /source-subtypes/v1/{subtypeId}/machine-config
-  method: Patch
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/machineaccountsubtypes/methods/machine-account-subtypes#update-machine-account-subtype-approval-config-v1
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-             "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-        )
-
-        func main() {
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          subtypeId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account subtype ID. # string | machine account subtype ID.
-          jsonpatchoperation := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
-
-          
-          var jsonpatchoperation []v1.Jsonpatchoperation
-          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
-            fmt.Println("Error:", err)
-            return
-          }
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
-          //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-          // response from `UpdateMachineAccountSubtypeApprovalConfigV1`: Machineaccountsubtypeconfigdto
-          fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1`: %v\n", resp)
         }

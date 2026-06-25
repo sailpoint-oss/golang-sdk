@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_iai_access_request_recommendations
+module github.com/sailpoint-oss/golang-sdk/v3/api_iai_access_request_recommendations
 
 go 1.23.0
 

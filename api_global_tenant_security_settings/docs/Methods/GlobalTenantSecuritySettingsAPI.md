@@ -67,8 +67,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
 )
 
 func main() {
@@ -131,7 +131,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
 )
 
 func main() {
@@ -188,7 +188,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
 )
 
 func main() {
@@ -245,7 +245,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
 )
 
 func main() {
@@ -302,7 +302,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
 )
 
 func main() {
@@ -363,8 +363,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
 )
 
 func main() {
@@ -431,8 +431,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
 )
 
 func main() {
@@ -498,8 +498,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
 )
 
 func main() {
@@ -565,8 +565,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
 )
 
 func main() {

@@ -21,13 +21,12 @@ var _ MappedNullable = &Accessrequestconfig{}
 type Accessrequestconfig struct {
 	// If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin.
 	ApprovalsMustBeExternal *bool `json:"approvalsMustBeExternal,omitempty"`
-	// If this is true and the requester and reviewer are the same, the request is automatically approved.
-	AutoApprovalEnabled *bool `json:"autoApprovalEnabled,omitempty"`
 	// If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state.
 	ReauthorizationEnabled *bool `json:"reauthorizationEnabled,omitempty"`
 	RequestOnBehalfOfConfig *Requestonbehalfofconfig `json:"requestOnBehalfOfConfig,omitempty"`
-	ApprovalReminderAndEscalationConfig *Approvalreminderandescalationconfig `json:"approvalReminderAndEscalationConfig,omitempty"`
 	EntitlementRequestConfig *Entitlementrequestconfig `json:"entitlementRequestConfig,omitempty"`
+	// If this is true, requesters and requested-for users will be able to see the names of governance group members when a request is awaiting the group's approval. Up to the first 10 members of the group will be listed.
+	GovGroupVisibilityEnabled *bool `json:"govGroupVisibilityEnabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -41,10 +40,10 @@ func NewAccessrequestconfig() *Accessrequestconfig {
 	this := Accessrequestconfig{}
 	var approvalsMustBeExternal bool = false
 	this.ApprovalsMustBeExternal = &approvalsMustBeExternal
-	var autoApprovalEnabled bool = false
-	this.AutoApprovalEnabled = &autoApprovalEnabled
 	var reauthorizationEnabled bool = false
 	this.ReauthorizationEnabled = &reauthorizationEnabled
+	var govGroupVisibilityEnabled bool = false
+	this.GovGroupVisibilityEnabled = &govGroupVisibilityEnabled
 	return &this
 }
 
@@ -55,10 +54,10 @@ func NewAccessrequestconfigWithDefaults() *Accessrequestconfig {
 	this := Accessrequestconfig{}
 	var approvalsMustBeExternal bool = false
 	this.ApprovalsMustBeExternal = &approvalsMustBeExternal
-	var autoApprovalEnabled bool = false
-	this.AutoApprovalEnabled = &autoApprovalEnabled
 	var reauthorizationEnabled bool = false
 	this.ReauthorizationEnabled = &reauthorizationEnabled
+	var govGroupVisibilityEnabled bool = false
+	this.GovGroupVisibilityEnabled = &govGroupVisibilityEnabled
 	return &this
 }
 
@@ -92,38 +91,6 @@ func (o *Accessrequestconfig) HasApprovalsMustBeExternal() bool {
 // SetApprovalsMustBeExternal gets a reference to the given bool and assigns it to the ApprovalsMustBeExternal field.
 func (o *Accessrequestconfig) SetApprovalsMustBeExternal(v bool) {
 	o.ApprovalsMustBeExternal = &v
-}
-
-// GetAutoApprovalEnabled returns the AutoApprovalEnabled field value if set, zero value otherwise.
-func (o *Accessrequestconfig) GetAutoApprovalEnabled() bool {
-	if o == nil || IsNil(o.AutoApprovalEnabled) {
-		var ret bool
-		return ret
-	}
-	return *o.AutoApprovalEnabled
-}
-
-// GetAutoApprovalEnabledOk returns a tuple with the AutoApprovalEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Accessrequestconfig) GetAutoApprovalEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.AutoApprovalEnabled) {
-		return nil, false
-	}
-	return o.AutoApprovalEnabled, true
-}
-
-// HasAutoApprovalEnabled returns a boolean if a field has been set.
-func (o *Accessrequestconfig) HasAutoApprovalEnabled() bool {
-	if o != nil && !IsNil(o.AutoApprovalEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoApprovalEnabled gets a reference to the given bool and assigns it to the AutoApprovalEnabled field.
-func (o *Accessrequestconfig) SetAutoApprovalEnabled(v bool) {
-	o.AutoApprovalEnabled = &v
 }
 
 // GetReauthorizationEnabled returns the ReauthorizationEnabled field value if set, zero value otherwise.
@@ -190,38 +157,6 @@ func (o *Accessrequestconfig) SetRequestOnBehalfOfConfig(v Requestonbehalfofconf
 	o.RequestOnBehalfOfConfig = &v
 }
 
-// GetApprovalReminderAndEscalationConfig returns the ApprovalReminderAndEscalationConfig field value if set, zero value otherwise.
-func (o *Accessrequestconfig) GetApprovalReminderAndEscalationConfig() Approvalreminderandescalationconfig {
-	if o == nil || IsNil(o.ApprovalReminderAndEscalationConfig) {
-		var ret Approvalreminderandescalationconfig
-		return ret
-	}
-	return *o.ApprovalReminderAndEscalationConfig
-}
-
-// GetApprovalReminderAndEscalationConfigOk returns a tuple with the ApprovalReminderAndEscalationConfig field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Accessrequestconfig) GetApprovalReminderAndEscalationConfigOk() (*Approvalreminderandescalationconfig, bool) {
-	if o == nil || IsNil(o.ApprovalReminderAndEscalationConfig) {
-		return nil, false
-	}
-	return o.ApprovalReminderAndEscalationConfig, true
-}
-
-// HasApprovalReminderAndEscalationConfig returns a boolean if a field has been set.
-func (o *Accessrequestconfig) HasApprovalReminderAndEscalationConfig() bool {
-	if o != nil && !IsNil(o.ApprovalReminderAndEscalationConfig) {
-		return true
-	}
-
-	return false
-}
-
-// SetApprovalReminderAndEscalationConfig gets a reference to the given Approvalreminderandescalationconfig and assigns it to the ApprovalReminderAndEscalationConfig field.
-func (o *Accessrequestconfig) SetApprovalReminderAndEscalationConfig(v Approvalreminderandescalationconfig) {
-	o.ApprovalReminderAndEscalationConfig = &v
-}
-
 // GetEntitlementRequestConfig returns the EntitlementRequestConfig field value if set, zero value otherwise.
 func (o *Accessrequestconfig) GetEntitlementRequestConfig() Entitlementrequestconfig {
 	if o == nil || IsNil(o.EntitlementRequestConfig) {
@@ -254,6 +189,38 @@ func (o *Accessrequestconfig) SetEntitlementRequestConfig(v Entitlementrequestco
 	o.EntitlementRequestConfig = &v
 }
 
+// GetGovGroupVisibilityEnabled returns the GovGroupVisibilityEnabled field value if set, zero value otherwise.
+func (o *Accessrequestconfig) GetGovGroupVisibilityEnabled() bool {
+	if o == nil || IsNil(o.GovGroupVisibilityEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.GovGroupVisibilityEnabled
+}
+
+// GetGovGroupVisibilityEnabledOk returns a tuple with the GovGroupVisibilityEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Accessrequestconfig) GetGovGroupVisibilityEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.GovGroupVisibilityEnabled) {
+		return nil, false
+	}
+	return o.GovGroupVisibilityEnabled, true
+}
+
+// HasGovGroupVisibilityEnabled returns a boolean if a field has been set.
+func (o *Accessrequestconfig) HasGovGroupVisibilityEnabled() bool {
+	if o != nil && !IsNil(o.GovGroupVisibilityEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetGovGroupVisibilityEnabled gets a reference to the given bool and assigns it to the GovGroupVisibilityEnabled field.
+func (o *Accessrequestconfig) SetGovGroupVisibilityEnabled(v bool) {
+	o.GovGroupVisibilityEnabled = &v
+}
+
 func (o Accessrequestconfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -267,20 +234,17 @@ func (o Accessrequestconfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApprovalsMustBeExternal) {
 		toSerialize["approvalsMustBeExternal"] = o.ApprovalsMustBeExternal
 	}
-	if !IsNil(o.AutoApprovalEnabled) {
-		toSerialize["autoApprovalEnabled"] = o.AutoApprovalEnabled
-	}
 	if !IsNil(o.ReauthorizationEnabled) {
 		toSerialize["reauthorizationEnabled"] = o.ReauthorizationEnabled
 	}
 	if !IsNil(o.RequestOnBehalfOfConfig) {
 		toSerialize["requestOnBehalfOfConfig"] = o.RequestOnBehalfOfConfig
 	}
-	if !IsNil(o.ApprovalReminderAndEscalationConfig) {
-		toSerialize["approvalReminderAndEscalationConfig"] = o.ApprovalReminderAndEscalationConfig
-	}
 	if !IsNil(o.EntitlementRequestConfig) {
 		toSerialize["entitlementRequestConfig"] = o.EntitlementRequestConfig
+	}
+	if !IsNil(o.GovGroupVisibilityEnabled) {
+		toSerialize["govGroupVisibilityEnabled"] = o.GovGroupVisibilityEnabled
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -305,11 +269,10 @@ func (o *Accessrequestconfig) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approvalsMustBeExternal")
-		delete(additionalProperties, "autoApprovalEnabled")
 		delete(additionalProperties, "reauthorizationEnabled")
 		delete(additionalProperties, "requestOnBehalfOfConfig")
-		delete(additionalProperties, "approvalReminderAndEscalationConfig")
 		delete(additionalProperties, "entitlementRequestConfig")
+		delete(additionalProperties, "govGroupVisibilityEnabled")
 		o.AdditionalProperties = additionalProperties
 	}
 

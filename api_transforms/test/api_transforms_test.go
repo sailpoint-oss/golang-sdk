@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_transforms"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_transforms"
 )
 
 func Test_api_transforms_TransformsAPIService(t *testing.T) {

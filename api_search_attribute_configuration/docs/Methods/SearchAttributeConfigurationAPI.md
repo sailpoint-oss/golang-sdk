@@ -91,8 +91,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_search_attribute_configuration"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_search_attribute_configuration"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_search_attribute_configuration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_search_attribute_configuration"
 )
 
 func main() {
@@ -176,7 +176,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_search_attribute_configuration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_search_attribute_configuration"
 )
 
 func main() {
@@ -251,7 +251,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_search_attribute_configuration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_search_attribute_configuration"
 )
 
 func main() {
@@ -331,7 +331,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_search_attribute_configuration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_search_attribute_configuration"
 )
 
 func main() {
@@ -412,8 +412,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_search_attribute_configuration"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_search_attribute_configuration"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_search_attribute_configuration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_search_attribute_configuration"
 )
 
 func main() {

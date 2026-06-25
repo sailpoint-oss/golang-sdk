@@ -11,8 +11,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_prompt_insights"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_prompt_insights"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_prompt_insights"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_prompt_insights"
         )
 
         func main() {
@@ -45,8 +45,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_prompt_insights"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_prompt_insights"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_prompt_insights"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_prompt_insights"
         )
 
         func main() {

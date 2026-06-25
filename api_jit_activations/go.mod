@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_jit_activations
+module github.com/sailpoint-oss/golang-sdk/v3/api_jit_activations
 
 go 1.23.0
 

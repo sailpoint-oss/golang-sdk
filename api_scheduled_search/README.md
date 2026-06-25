@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import api_scheduled_search "github.com/sailpoint-oss/golang-sdk/v2/api_scheduled_search"
+import api_scheduled_search "github.com/sailpoint-oss/golang-sdk/v3/api_scheduled_search"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:

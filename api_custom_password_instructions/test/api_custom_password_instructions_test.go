@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_custom_password_instructions"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_custom_password_instructions"
 )
 
 func Test_api_custom_password_instructions_CustomPasswordInstructionsAPIService(t *testing.T) {

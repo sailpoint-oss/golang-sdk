@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_iai_access_request_recommendations"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_iai_access_request_recommendations"
 )
 
 func Test_api_iai_access_request_recommendations_IAIAccessRequestRecommendationsAPIService(t *testing.T) {

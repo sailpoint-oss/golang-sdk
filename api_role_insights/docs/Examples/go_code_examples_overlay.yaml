@@ -11,8 +11,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
         )
 
         func main() {
@@ -45,8 +45,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
         )
 
         func main() {
@@ -82,8 +82,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
         )
 
         func main() {
@@ -124,8 +124,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
         )
 
         func main() {
@@ -159,8 +159,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
         )
 
         func main() {
@@ -195,8 +195,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
         )
 
         func main() {
@@ -232,8 +232,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
         )
 
         func main() {
@@ -267,8 +267,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
         )
 
         func main() {
@@ -301,8 +301,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
         )
 
         func main() {

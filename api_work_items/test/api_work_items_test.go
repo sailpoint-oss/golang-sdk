@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
 )
 
 func Test_api_work_items_WorkItemsAPIService(t *testing.T) {

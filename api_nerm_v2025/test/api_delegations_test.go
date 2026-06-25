@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_nerm_v2025"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_nerm_v2025"
 )
 
 func Test_api_nerm_v2025_DelegationsAPIService(t *testing.T) {

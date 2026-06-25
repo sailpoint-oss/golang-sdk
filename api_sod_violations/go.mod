@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_sod_violations
+module github.com/sailpoint-oss/golang-sdk/v3/api_sod_violations
 
 go 1.23.0
 

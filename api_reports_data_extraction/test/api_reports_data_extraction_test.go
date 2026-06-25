@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_reports_data_extraction"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_reports_data_extraction"
 )
 
 func Test_api_reports_data_extraction_ReportsDataExtractionAPIService(t *testing.T) {

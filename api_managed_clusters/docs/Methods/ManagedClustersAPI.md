@@ -66,8 +66,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
 )
 
 func main() {
@@ -139,7 +139,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
 )
 
 func main() {
@@ -205,7 +205,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
 )
 
 func main() {
@@ -271,7 +271,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
 )
 
 func main() {
@@ -336,7 +336,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
 )
 
 func main() {
@@ -405,8 +405,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
 )
 
 func main() {
@@ -478,8 +478,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
 )
 
 func main() {
@@ -552,7 +552,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
 )
 
 func main() {

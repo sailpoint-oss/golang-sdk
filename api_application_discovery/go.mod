@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_application_discovery
+module github.com/sailpoint-oss/golang-sdk/v3/api_application_discovery
 
 go 1.23.0
 

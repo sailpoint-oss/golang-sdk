@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_oauth_clients"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_oauth_clients"
 )
 
 func Test_api_oauth_clients_OAuthClientsAPIService(t *testing.T) {

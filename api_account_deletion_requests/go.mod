@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_account_deletion_requests
+module github.com/sailpoint-oss/golang-sdk/v3/api_account_deletion_requests
 
 go 1.23.0
 

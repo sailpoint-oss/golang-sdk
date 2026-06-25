@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_shared_signals_framework_ssf"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_shared_signals_framework_ssf"
 )
 
 func Test_api_shared_signals_framework_ssf_SharedSignalsFrameworkSSFAPIService(t *testing.T) {

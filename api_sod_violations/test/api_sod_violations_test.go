@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_sod_violations"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_sod_violations"
 )
 
 func Test_api_sod_violations_SODViolationsAPIService(t *testing.T) {

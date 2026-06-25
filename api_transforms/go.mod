@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_transforms
+module github.com/sailpoint-oss/golang-sdk/v3/api_transforms
 
 go 1.23.0
 

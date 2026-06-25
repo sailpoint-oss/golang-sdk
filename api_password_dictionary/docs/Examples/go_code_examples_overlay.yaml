@@ -11,8 +11,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_password_dictionary"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_password_dictionary"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_password_dictionary"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_password_dictionary"
         )
 
         func main() {
@@ -44,8 +44,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_password_dictionary"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_password_dictionary"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_password_dictionary"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_password_dictionary"
         )
 
         func main() {

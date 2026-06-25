@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_account_activities
+module github.com/sailpoint-oss/golang-sdk/v3/api_account_activities
 
 go 1.23.0
 

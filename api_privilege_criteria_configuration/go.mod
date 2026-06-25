@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_privilege_criteria_configuration
+module github.com/sailpoint-oss/golang-sdk/v3/api_privilege_criteria_configuration
 
 go 1.23.0
 

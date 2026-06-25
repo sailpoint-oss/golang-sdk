@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func Test_api_certification_campaigns_CertificationCampaignsAPIService(t *testing.T) {

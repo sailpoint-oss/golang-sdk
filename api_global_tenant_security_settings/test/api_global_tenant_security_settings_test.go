@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
 )
 
 func Test_api_global_tenant_security_settings_GlobalTenantSecuritySettingsAPIService(t *testing.T) {

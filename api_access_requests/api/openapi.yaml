@@ -34,7 +34,6 @@ tags:
 paths:
   /access-request-config/v1:
     get:
-      deprecated: true
       description: This endpoint returns the current access-request configuration.
       operationId: getAccessRequestConfigV1
       responses:
@@ -106,15 +105,12 @@ paths:
       summary: Get access request configuration
       tags:
       - Access Requests
-      x-deprecated-description: |
-        This endpoint has been deprecated as of 2026-02-26. Please use the [v2 get-access-request-config](https://developer.sailpoint.com/docs/api/get-access-request-config-v-2) endpoint instead.
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
       - USER
     put:
-      deprecated: true
       description: This endpoint replaces the current access-request configuration.
       operationId: setAccessRequestConfigV1
       requestBody:
@@ -129,166 +125,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/accessrequestconfig'
-          description: Access Request Configuration Details.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAccessRequestConfigV1_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAccessRequestConfigV1_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - userAuth:
-        - idn:access-request-config:manage
-      summary: Update access request configuration
-      tags:
-      - Access Requests
-      x-deprecated-description: |
-        This endpoint has been deprecated as of 2026-02-26. Please use the [v2 set-access-request-config](https://developer.sailpoint.com/docs/api/set-access-request-config-v-2) endpoint instead.
-      x-sailpoint-userLevels:
-      - ORG_ADMIN
-  /access-request-config/v2:
-    get:
-      description: This endpoint returns the current access-request configuration.
-      operationId: getAccessRequestConfigV2
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/accessrequestconfigv2'
-          description: Access Request Configuration Details.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAccessRequestConfigV1_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAccessRequestConfigV1_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - userAuth:
-        - idn:access-request-config:read
-      summary: Get access request configuration
-      tags:
-      - Access Requests
-      x-sailpoint-userLevels:
-      - ORG_ADMIN
-      - SOURCE_ADMIN
-      - SOURCE_SUBADMIN
-      - USER
-    put:
-      description: This endpoint replaces the current access-request configuration.
-      operationId: setAccessRequestConfigV2
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/accessrequestconfigv2'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/accessrequestconfigv2'
           description: Access Request Configuration Details.
         "400":
           content:
@@ -384,49 +220,39 @@ paths:
         \ token (except API) to call this endpoint to request to grant access to themselves.\
         \ Depending on the configuration, a user can request access for others.\n\
         * Roles, access profiles and entitlements can be requested.\n* You can specify\
-        \ a `startDate` to set or alter a sunrise date-time on an assignment. The\
-        \ startDate must be a future date-time, in the UTC timezone. Additionally,\
-        \ if the user already has the access assigned with a sunrise date and its\
-        \ yet to be provisioned, you can also submit a request without a `startDate`\
-        \ to request immediate provisioning after approval.\n* If a `startDate` is\
-        \ specified, then the requested role, access profile, or entitlement will\
-        \ be provisioned on that date and time.\n* You can specify a `removeDate`\
-        \ to set or alter a sunset date-time on an assignment. The removeDate must\
-        \ be a future date-time, in the UTC timezone. Additionally, if the user already\
-        \ has the access assigned with a sunset date, you can also submit a request\
-        \ without a `removeDate` to request removal of the sunset date and time.\n\
-        * If a `removeDate` is specified, then the requested role, access profile,\
-        \ or entitlement will be removed on that date and time.\n* Now supports an\
-        \ alternate field 'requestedForWithRequestedItems' for users to specify account\
-        \ selections while requesting items where they have more than one account\
-        \ on the source.\n\n:::caution\n\nIf any entitlements are being requested,\
-        \ then the maximum number of entitlements that can be requested is 25, and\
-        \ the maximum number of identities that can be requested for is 10. If you\
-        \ exceed these limits, the request will fail with a 400 error. If you are\
-        \ not requesting any entitlements, then there are no limits.\n\n:::\n\n__REVOKE_ACCESS__\n\
-        * Can only be requested for a single identity at a time.\n* You cannot use\
-        \ an access request to revoke access from an identity if that access has been\
-        \ granted by role membership or by birthright provisioning. \n* Does not support\
-        \ self request. Only manager can request to revoke access for their directly\
-        \ managed employees.\n* If a `removeDate` is specified, then the requested\
-        \ role, access profile, or entitlement will be removed on that date and time.\n\
-        * Roles, access profiles, and entitlements can be requested for revocation.\n\
-        * Revoke requests for entitlements are limited to 1 entitlement per access\
-        \ request currently.\n* You cannot specify a 'startDate' in a REVOKE_ACCESS\
-        \ request, as startDate is only applicable for GRANT_ACCESS requests to indicate\
-        \ when the access should be provisioned, and it does not make sense in the\
-        \ context of revoking access.\n* You can specify a `removeDate` to add or\
-        \ alter a sunset date and time on an assignment. The `removeDate` must be\
-        \ a future date-time, in the UTC timezone. If the user already has the access\
-        \ assigned with a sunset date and time, the removeDate must be a date-time\
-        \ earlier than the existing sunset date and time. \n* Allows a manager to\
-        \ request to revoke access for direct employees. A user with ORG_ADMIN authority\
-        \ can also request to revoke access from anyone.\n* Now supports REVOKE_ACCESS\
-        \ requests for identities with multiple accounts on a single source, with\
-        \ the help of 'assignmentId' and 'nativeIdentity' fields. These fields should\
-        \ be used within the 'requestedItems' section for the revoke requests. \n\
-        * Usage of 'requestedForWithRequestedItems' field is not supported for revoke\
-        \ requests.\n"
+        \ a `removeDate` to set or alter a sunset date-time on an assignment. The\
+        \ removeDate must be a future date-time, in the UTC timezone. Additionally,\
+        \ if the user already has the access assigned with a sunset date, you can\
+        \ also submit a request without a `removeDate` to request removal of the sunset\
+        \ date and time.\n* If a `removeDate` is specified, then the requested role,\
+        \ access profile, or entitlement will be removed on that date and time.\n\
+        * Now supports an alternate field 'requestedForWithRequestedItems' for users\
+        \ to specify account selections while requesting items where they have more\
+        \ than one account on the source.\n\n:::caution\n\nIf any entitlements are\
+        \ being requested, then the maximum number of entitlements that can be requested\
+        \ is 25, and the maximum number of identities that can be requested for is\
+        \ 10. If you exceed these limits, the request will fail with a 400 error.\
+        \ If you are not requesting any entitlements, then there are no limits.\n\n\
+        :::\n\n__REVOKE_ACCESS__\n* Can only be requested for a single identity at\
+        \ a time.\n* You cannot use an access request to revoke access from an identity\
+        \ if that access has been granted by role membership or by birthright provisioning.\
+        \ \n* Does not support self request. Only manager can request to revoke access\
+        \ for their directly managed employees.\n* If a `removeDate` is specified,\
+        \ then the requested role, access profile, or entitlement will be removed\
+        \ on that date and time.\n* Roles, access profiles, and entitlements can be\
+        \ requested for revocation.\n* Revoke requests for entitlements are limited\
+        \ to 1 entitlement per access request currently.\n* You can specify a `removeDate`\
+        \ to add or alter a sunset date and time on an assignment. The `removeDate`\
+        \ must be a future date-time, in the UTC timezone. If the user already has\
+        \ the access assigned with a sunset date and time, the removeDate must be\
+        \ a date-time earlier than the existing sunset date and time. \n* Allows a\
+        \ manager to request to revoke access for direct employees. A user with ORG_ADMIN\
+        \ authority can also request to revoke access from anyone.\n* Now supports\
+        \ REVOKE_ACCESS requests for identities with multiple accounts on a single\
+        \ source, with the help of 'assignmentId' and 'nativeIdentity' fields. These\
+        \ fields should be used within the 'requestedItems' section for the revoke\
+        \ requests. \n* Usage of 'requestedForWithRequestedItems' field is not supported\
+        \ for revoke requests.\n"
       operationId: createAccessRequestV1
       requestBody:
         content:
@@ -1216,7 +1042,7 @@ paths:
 
           **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 
-          **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*
+          **accessRequestId**: *in*
 
           **status**: *in, eq, ne*
 
@@ -1652,72 +1478,6 @@ components:
           type: boolean
       title: Request On Behalf Of Config
       type: object
-    identityreferencewithnameandemail:
-      example:
-        name: Alison Ferguso
-        id: 5168015d32f890ca15812c9180835d2e
-        type: IDENTITY
-        email: alison.ferguso@identitysoon.com
-      nullable: true
-      properties:
-        type:
-          description: The type can only be IDENTITY. This is read-only.
-          example: IDENTITY
-          type: string
-        id:
-          description: Identity ID.
-          example: 5168015d32f890ca15812c9180835d2e
-          type: string
-        name:
-          description: Identity's human-readable display name. This is read-only.
-          example: Alison Ferguso
-          type: string
-        email:
-          description: Identity's email address. This is read-only.
-          example: alison.ferguso@identitysoon.com
-          nullable: true
-          type: string
-      title: Identity Reference With Name And Email
-      type: object
-    approvalreminderandescalationconfig:
-      description: |
-        Configuration for approval reminder and escalation behavior. Important: Modifying this object will override the sp-approval service's reminderConfig and escalationConfig settings. Changes made here take precedence over any configuration set directly in the sp-approval service.
-      example:
-        fallbackApproverRef:
-          name: Alison Ferguso
-          id: 5168015d32f890ca15812c9180835d2e
-          type: IDENTITY
-          email: alison.ferguso@identitysoon.com
-        maxReminders: 1
-        daysUntilEscalation: 0
-        daysBetweenReminders: 0
-      properties:
-        daysUntilEscalation:
-          description: "Number of days to wait before the first reminder. If no reminders\
-            \ are configured, then this is the number of days to wait before escalation."
-          example: 0
-          format: int32
-          nullable: true
-          type: integer
-        daysBetweenReminders:
-          description: Number of days to wait between reminder notifications.
-          example: 0
-          format: int32
-          nullable: true
-          type: integer
-        maxReminders:
-          description: Maximum number of reminder notifications to send to the reviewer
-            before approval escalation. The maximum allowed value is 20.
-          example: 1
-          format: int32
-          maximum: 20
-          minimum: 0
-          nullable: true
-          type: integer
-        fallbackApproverRef:
-          $ref: '#/components/schemas/identityreferencewithnameandemail'
-      title: Approval Reminder And Escalation Config
-      type: object
     entitlementapprovalscheme:
       example:
         approverId: e3eab852-8315-467f-9de7-70eda97f63c8
@@ -1841,19 +1601,10 @@ components:
       type: object
     accessrequestconfig:
       example:
+        govGroupVisibilityEnabled: true
         requestOnBehalfOfConfig:
           allowRequestOnBehalfOfEmployeeByManager: true
           allowRequestOnBehalfOfAnyoneByAnyone: true
-        approvalReminderAndEscalationConfig:
-          fallbackApproverRef:
-            name: Alison Ferguso
-            id: 5168015d32f890ca15812c9180835d2e
-            type: IDENTITY
-            email: alison.ferguso@identitysoon.com
-          maxReminders: 1
-          daysUntilEscalation: 0
-          daysBetweenReminders: 0
-        autoApprovalEnabled: true
         entitlementRequestConfig:
           accessRequestConfig:
             denialCommentRequired: false
@@ -1884,12 +1635,6 @@ components:
             \ and returns an error for any user who isn't an org admin."
           example: true
           type: boolean
-        autoApprovalEnabled:
-          default: false
-          description: "If this is true and the requester and reviewer are the same,\
-            \ the request is automatically approved."
-          example: true
-          type: boolean
         reauthorizationEnabled:
           default: false
           description: "If this is true, reauthorization will be enforced for appropriately\
@@ -1899,10 +1644,16 @@ components:
           type: boolean
         requestOnBehalfOfConfig:
           $ref: '#/components/schemas/requestonbehalfofconfig'
-        approvalReminderAndEscalationConfig:
-          $ref: '#/components/schemas/approvalreminderandescalationconfig'
         entitlementRequestConfig:
           $ref: '#/components/schemas/entitlementrequestconfig'
+        govGroupVisibilityEnabled:
+          default: false
+          description: "If this is true, requesters and requested-for users will be\
+            \ able to see the names of governance group members when a request is\
+            \ awaiting the group's approval. Up to the first 10 members of the group\
+            \ will be listed."
+          example: true
+          type: boolean
       title: Access Request Config
       type: object
     localeorigin:
@@ -1982,109 +1733,6 @@ components:
           type: array
       title: Error Response Dto
       type: object
-    requestonbehalfofconfigv2:
-      example:
-        allowRequestOnBehalfOfEmployeeByManager: true
-        allowRequestOnBehalfOfAnyoneByAnyone: true
-      properties:
-        allowRequestOnBehalfOfAnyoneByAnyone:
-          default: false
-          description: "If this is true, anyone can request access for anyone."
-          example: true
-          type: boolean
-        allowRequestOnBehalfOfEmployeeByManager:
-          default: false
-          description: "If this is true, a manager can request access for his or her\
-            \ direct reports."
-          example: true
-          type: boolean
-      title: Request On Behalf Of Config
-      type: object
-    entitlementrequestconfigv2:
-      example:
-        accessRequestConfig:
-          denialCommentRequired: false
-          approvalSchemes:
-          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
-            approverType: GOVERNANCE_GROUP
-          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
-            approverType: GOVERNANCE_GROUP
-          reauthorizationRequired: false
-          requestCommentRequired: true
-          requireEndDate: true
-          maxPermittedAccessDuration:
-            value: 5
-            timeUnit: DAYS
-        revocationRequestConfig:
-          approvalSchemes:
-          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
-            approverType: GOVERNANCE_GROUP
-          - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
-            approverType: GOVERNANCE_GROUP
-      properties:
-        accessRequestConfig:
-          $ref: '#/components/schemas/entitlementaccessrequestconfig'
-        revocationRequestConfig:
-          $ref: '#/components/schemas/entitlementrevocationrequestconfig'
-      title: Entitlement Request Config
-      type: object
-    accessrequestconfigv2:
-      example:
-        govGroupVisibilityEnabled: true
-        requestOnBehalfOfConfig:
-          allowRequestOnBehalfOfEmployeeByManager: true
-          allowRequestOnBehalfOfAnyoneByAnyone: true
-        entitlementRequestConfig:
-          accessRequestConfig:
-            denialCommentRequired: false
-            approvalSchemes:
-            - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
-              approverType: GOVERNANCE_GROUP
-            - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
-              approverType: GOVERNANCE_GROUP
-            reauthorizationRequired: false
-            requestCommentRequired: true
-            requireEndDate: true
-            maxPermittedAccessDuration:
-              value: 5
-              timeUnit: DAYS
-          revocationRequestConfig:
-            approvalSchemes:
-            - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
-              approverType: GOVERNANCE_GROUP
-            - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
-              approverType: GOVERNANCE_GROUP
-        reauthorizationEnabled: true
-        approvalsMustBeExternal: true
-      properties:
-        approvalsMustBeExternal:
-          default: false
-          description: "If this is true, approvals must be processed by an external\
-            \ system. Also, if this is true, it blocks Request Center access requests\
-            \ and returns an error for any user who isn't an org admin."
-          example: true
-          type: boolean
-        reauthorizationEnabled:
-          default: false
-          description: "If this is true, reauthorization will be enforced for appropriately\
-            \ configured access items. Enablement of this feature is currently in\
-            \ a limited state."
-          example: true
-          type: boolean
-        requestOnBehalfOfConfig:
-          $ref: '#/components/schemas/requestonbehalfofconfigv2'
-        entitlementRequestConfig:
-          $ref: '#/components/schemas/entitlementrequestconfigv2'
-        govGroupVisibilityEnabled:
-          default: false
-          description: "If this is true, requesters and requested-for users will be\
-            \ able to see the names of governance group members when a request is\
-            \ awaiting the group's approval. Up to the first 10 members of the group\
-            \ will be listed."
-          example: true
-          type: boolean
-      title: Access Request Config
-      type: object
     accessrequesttype:
       description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type
         can only have a single Identity ID in the requestedFor field. MODIFY_ACCESS
@@ -2129,15 +1777,6 @@ components:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
           type: object
-        startDate:
-          description: |
-            The date and time the role or access profile or entitlement is/will be provisioned to the specified identity. Also known as the sunrise date.
-            * Specify a date-time in the future.
-            * This date-time can be used to indicate date-time when access item will be provisioned on the identity account. A GRANT_ACCESS request can use startDate to specify when to schedule provisioning of access item for an identity/account & a MODIFY_ACCESS request can use startDate to change the provisioning date-time of already assigned access item. But REVOKE_ACCESS request can not have startDate field. You can change the sunrise date in requests for yourself or others you are authorized to request for.
-            * If the startDate is in the past, then the provisioning will be processed as soon as possible, but no guarantees can be made about when the provisioning will occur. If the startDate is in the future, then the provisioning will be scheduled to occur on that date and time. If no startDate is provided, then the provisioning will be processed as soon as possible.
-          example: 2020-06-12T21:22:23Z
-          format: date-time
-          type: string
         removeDate:
           description: |
             The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date.
@@ -2227,15 +1866,6 @@ components:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
           type: object
-        startDate:
-          description: |
-            The date and time the role or access profile or entitlement is/will be provisioned to the specified identity. Also known as the sunrise date.
-            * Specify a date-time in the future.
-            * This date-time can be used to indicate date-time when access item will be provisioned on the identity account. A GRANT_ACCESS request can use startDate to specify when to schedule provisioning of access item for an identity/account & a MODIFY_ACCESS request can use startDate to change the provisioning date-time of already assigned access item. But REVOKE_ACCESS request can not have startDate field. You can change the sunrise date in requests for yourself or others you are authorized to request for.
-            * If the startDate is in the past, then the provisioning will be processed as soon as possible, but no guarantees can be made about when the provisioning will occur. If the startDate is in the future, then the provisioning will be scheduled to occur on that date and time. If no startDate is provided, then the provisioning will be processed as soon as possible.
-          example: 2020-06-12T21:22:23Z
-          format: date-time
-          type: string
         removeDate:
           description: |
             The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date.
@@ -2309,7 +1939,6 @@ components:
             Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity.
             * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided
             * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source
-            * Allows the ability to request items with different start dates
             * Allows the ability to request items with different remove dates
             * Also allows different combinations of request items and identities in the same request
             * Only for use in GRANT_ACCESS type requests
@@ -3867,7 +3496,6 @@ components:
             comment: Forwarding from Frank to Al
           forwarded: true
           status: PENDING
-        startDate: 2019-10-21T00:00:00Z
       properties:
         id:
           description: "The ID of the access request. As of 2025, this is a new property.\
@@ -3960,12 +3588,6 @@ components:
         description:
           description: Description associated to the requested object.
           example: This is the Engineering role that engineers are granted.
-          nullable: true
-          type: string
-        startDate:
-          description: When the role access is scheduled for provisioning.
-          example: 2019-10-21T00:00:00Z
-          format: date-time
           nullable: true
           type: string
         removeDate:
@@ -4239,7 +3861,6 @@ components:
             comment: Forwarding from Frank to Al
           forwarded: true
           status: PENDING
-        startDate: 2019-10-21T00:00:00Z
       properties:
         id:
           description: ID of the access request. This is a new property as of 2025.
@@ -4323,12 +3944,6 @@ components:
         description:
           description: Description associated to the requested object.
           example: This is the Engineering role that engineers are granted.
-          nullable: true
-          type: string
-        startDate:
-          description: When the role access is scheduled for provisioning.
-          example: 2019-10-21T00:00:00Z
-          format: date-time
           nullable: true
           type: string
         removeDate:

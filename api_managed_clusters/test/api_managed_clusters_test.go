@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
 )
 
 func Test_api_managed_clusters_ManagedClustersAPIService(t *testing.T) {

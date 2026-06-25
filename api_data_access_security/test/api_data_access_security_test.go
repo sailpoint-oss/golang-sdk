@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_data_access_security"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_data_access_security"
 )
 
 func Test_api_data_access_security_DataAccessSecurityAPIService(t *testing.T) {
@@ -42,18 +42,6 @@ func Test_api_data_access_security_DataAccessSecurityAPIService(t *testing.T) {
 		httpRes, err := apiClient.DataAccessSecurityAPI.CreateApplicationV1(context.Background()).Execute()
 
 		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DataAccessSecurityAPIService CreateIdentityCollectorV1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.DataAccessSecurityAPI.CreateIdentityCollectorV1(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -144,19 +132,6 @@ func Test_api_data_access_security_DataAccessSecurityAPIService(t *testing.T) {
 		var id int64
 
 		httpRes, err := apiClient.DataAccessSecurityAPI.DeleteApplicationV1(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DataAccessSecurityAPIService DeleteIdentityCollectorV1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id int64
-
-		httpRes, err := apiClient.DataAccessSecurityAPI.DeleteIdentityCollectorV1(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -281,18 +256,6 @@ func Test_api_data_access_security_DataAccessSecurityAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DataAccessSecurityAPIService ListIdentityCollectorsV1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.DataAccessSecurityAPI.ListIdentityCollectorsV1(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DataAccessSecurityAPIService PutApplicationV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -300,19 +263,6 @@ func Test_api_data_access_security_DataAccessSecurityAPIService(t *testing.T) {
 		var id int64
 
 		httpRes, err := apiClient.DataAccessSecurityAPI.PutApplicationV1(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DataAccessSecurityAPIService PutIdentityCollectorV1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id int64
-
-		httpRes, err := apiClient.DataAccessSecurityAPI.PutIdentityCollectorV1(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

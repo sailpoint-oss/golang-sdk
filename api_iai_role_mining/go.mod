@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_iai_role_mining
+module github.com/sailpoint-oss/golang-sdk/v3/api_iai_role_mining
 
 go 1.23.0
 

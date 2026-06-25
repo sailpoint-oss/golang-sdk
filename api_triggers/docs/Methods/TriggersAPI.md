@@ -100,8 +100,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
 )
 
 func main() {
@@ -169,8 +169,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
 )
 
 func main() {
@@ -241,7 +241,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
 )
 
 func main() {
@@ -306,7 +306,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
 )
 
 func main() {
@@ -378,7 +378,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
 )
 
 func main() {
@@ -448,7 +448,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
 )
 
 func main() {
@@ -520,8 +520,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
 )
 
 func main() {
@@ -588,8 +588,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
 )
 
 func main() {
@@ -656,8 +656,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
 )
 
 func main() {
@@ -737,8 +737,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
 )
 
 func main() {

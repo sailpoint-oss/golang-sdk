@@ -11,8 +11,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
         )
 
         func main() {
@@ -52,8 +52,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
         )
 
         func main() {
@@ -84,8 +84,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
         )
 
         func main() {
@@ -117,8 +117,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
         )
 
         func main() {
@@ -151,8 +151,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
         )
 
         func main() {

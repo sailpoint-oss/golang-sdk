@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_access_request_identity_metrics
+module github.com/sailpoint-oss/golang-sdk/v3/api_access_request_identity_metrics
 
 go 1.23.0
 

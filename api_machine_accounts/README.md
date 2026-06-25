@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import api_machine_accounts "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
+import api_machine_accounts "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -81,26 +81,38 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MachineAccountsAPI* | [**CreateMachineAccountSubtypeV1**](docs/MachineAccountsAPI.md#createmachineaccountsubtypev1) | **Post** /sources/v1/{sourceId}/subtypes | Create subtype
 *MachineAccountsAPI* | [**DeleteMachineAccountSubtypeByTechnicalNameV1**](docs/MachineAccountsAPI.md#deletemachineaccountsubtypebytechnicalnamev1) | **Delete** /sources/v1/{sourceId}/subtypes/{technicalName} | Delete subtype
+*MachineAccountsAPI* | [**GetMachineAccountSubtypeApprovalConfigV1**](docs/MachineAccountsAPI.md#getmachineaccountsubtypeapprovalconfigv1) | **Get** /source-subtypes/v1/{subtypeId}/machine-config | Machine Subtype Approval Config
 *MachineAccountsAPI* | [**GetMachineAccountSubtypeByIdV1**](docs/MachineAccountsAPI.md#getmachineaccountsubtypebyidv1) | **Get** /sources/v1/subtypes/{subtypeId} | Retrieve subtype by subtype id
 *MachineAccountsAPI* | [**GetMachineAccountSubtypeByTechnicalNameV1**](docs/MachineAccountsAPI.md#getmachineaccountsubtypebytechnicalnamev1) | **Get** /sources/v1/{sourceId}/subtypes/{technicalName} | Retrieve subtype by source and technicalName
 *MachineAccountsAPI* | [**GetMachineAccountV1**](docs/MachineAccountsAPI.md#getmachineaccountv1) | **Get** /machine-accounts/v1/{id} | Get machine account details
 *MachineAccountsAPI* | [**ListMachineAccountSubtypesV1**](docs/MachineAccountsAPI.md#listmachineaccountsubtypesv1) | **Get** /sources/v1/{sourceId}/subtypes | Retrieve all subtypes by source
 *MachineAccountsAPI* | [**ListMachineAccountsV1**](docs/MachineAccountsAPI.md#listmachineaccountsv1) | **Get** /machine-accounts/v1 | List machine accounts
+*MachineAccountsAPI* | [**LoadBulkSourceSubtypesV1**](docs/MachineAccountsAPI.md#loadbulksourcesubtypesv1) | **Post** /source-subtypes/v1/bulk-retrieve | Bulk Retrieve of Source Subtypes
 *MachineAccountsAPI* | [**PatchMachineAccountSubtypeByTechnicalNameV1**](docs/MachineAccountsAPI.md#patchmachineaccountsubtypebytechnicalnamev1) | **Patch** /sources/v1/{sourceId}/subtypes/{technicalName} | Patch subtype
+*MachineAccountsAPI* | [**UpdateMachineAccountSubtypeApprovalConfigV1**](docs/MachineAccountsAPI.md#updatemachineaccountsubtypeapprovalconfigv1) | **Patch** /source-subtypes/v1/{subtypeId}/machine-config | Machine Subtype Approval Config
 *MachineAccountsAPI* | [**UpdateMachineAccountV1**](docs/MachineAccountsAPI.md#updatemachineaccountv1) | **Patch** /machine-accounts/v1/{id} | Update machine account details
 
 
 ## Documentation For Models
 
+ - [ArrayInner](docs/ArrayInner.md)
  - [Basecommondto](docs/Basecommondto.md)
  - [CreateMachineAccountSubtypeV1Request](docs/CreateMachineAccountSubtypeV1Request.md)
  - [Errormessagedto](docs/Errormessagedto.md)
  - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
+ - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
  - [ListMachineAccountsV1401Response](docs/ListMachineAccountsV1401Response.md)
  - [ListMachineAccountsV1429Response](docs/ListMachineAccountsV1429Response.md)
  - [Localeorigin](docs/Localeorigin.md)
  - [Machineaccount](docs/Machineaccount.md)
+ - [Machineaccountsubtypeconfigdto](docs/Machineaccountsubtypeconfigdto.md)
+ - [MachineaccountsubtypeconfigdtoMachineAccountCreate](docs/MachineaccountsubtypeconfigdtoMachineAccountCreate.md)
+ - [MachineaccountsubtypeconfigdtoMachineAccountDelete](docs/MachineaccountsubtypeconfigdtoMachineAccountDelete.md)
+ - [Machinesubtypeapprovalconfig](docs/Machinesubtypeapprovalconfig.md)
  - [Sourcesubtype](docs/Sourcesubtype.md)
+ - [Sourcesubtypewithsource](docs/Sourcesubtypewithsource.md)
+ - [SourcesubtypewithsourceSource](docs/SourcesubtypewithsourceSource.md)
 
 
 ## Documentation For Authorization

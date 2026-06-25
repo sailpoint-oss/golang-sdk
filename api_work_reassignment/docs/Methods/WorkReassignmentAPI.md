@@ -86,8 +86,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
 )
 
 func main() {
@@ -173,7 +173,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
 )
 
 func main() {
@@ -255,7 +255,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
 )
 
 func main() {
@@ -331,7 +331,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
 )
 
 func main() {
@@ -409,7 +409,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
 )
 
 func main() {
@@ -483,7 +483,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
 )
 
 func main() {
@@ -556,7 +556,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
 )
 
 func main() {
@@ -634,8 +634,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
 )
 
 func main() {
@@ -715,8 +715,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
 )
 
 func main() {

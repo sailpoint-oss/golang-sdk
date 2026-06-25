@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_saved_search
+module github.com/sailpoint-oss/golang-sdk/v3/api_saved_search
 
 go 1.23.0
 

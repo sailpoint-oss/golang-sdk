@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 )
 
 func Test_api_access_requests_AccessRequestsAPIService(t *testing.T) {
@@ -94,18 +94,6 @@ func Test_api_access_requests_AccessRequestsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessRequestsAPIService GetAccessRequestConfigV2", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test AccessRequestsAPIService GetEntitlementDetailsForIdentityV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -162,18 +150,6 @@ func Test_api_access_requests_AccessRequestsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV1(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AccessRequestsAPIService SetAccessRequestConfigV2", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

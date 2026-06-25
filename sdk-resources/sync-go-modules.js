@@ -21,7 +21,7 @@ const path = require("path");
 const { spawnSync } = require("child_process");
 
 const SDK_ROOT = path.resolve(__dirname, "..");
-const MODULE_PREFIX = "github.com/sailpoint-oss/golang-sdk/v2";
+const MODULE_PREFIX = "github.com/sailpoint-oss/golang-sdk/v3";
 
 const SUBMODULE_GO_TEMPLATE = (modulePath) => `module ${modulePath}
 

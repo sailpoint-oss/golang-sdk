@@ -85,8 +85,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_search"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_search"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_search"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_search"
 )
 
 func main() {
@@ -155,8 +155,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_search"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_search"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_search"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_search"
 )
 
 func main() {
@@ -228,7 +228,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_search"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_search"
 )
 
 func main() {
@@ -293,8 +293,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_search"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_search"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_search"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_search"
 )
 
 func main() {

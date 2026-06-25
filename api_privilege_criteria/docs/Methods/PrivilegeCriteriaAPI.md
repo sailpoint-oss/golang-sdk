@@ -61,8 +61,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_privilege_criteria"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_privilege_criteria"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_privilege_criteria"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_privilege_criteria"
 )
 
 func main() {
@@ -133,7 +133,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_privilege_criteria"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_privilege_criteria"
 )
 
 func main() {
@@ -198,7 +198,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_privilege_criteria"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_privilege_criteria"
 )
 
 func main() {
@@ -260,7 +260,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_privilege_criteria"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_privilege_criteria"
 )
 
 func main() {
@@ -326,8 +326,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_privilege_criteria"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_privilege_criteria"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_privilege_criteria"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_privilege_criteria"
 )
 
 func main() {

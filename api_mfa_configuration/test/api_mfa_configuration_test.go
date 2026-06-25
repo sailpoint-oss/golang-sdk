@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_mfa_configuration"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_mfa_configuration"
 )
 
 func Test_api_mfa_configuration_MFAConfigurationAPIService(t *testing.T) {

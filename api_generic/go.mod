@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_generic
+module github.com/sailpoint-oss/golang-sdk/v3/api_generic
 
 go 1.23.0
 

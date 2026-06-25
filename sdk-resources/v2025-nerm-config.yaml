@@ -5,14 +5,14 @@ generateInterfaces: false
 disallowAdditionalPropertiesIfNotPresent: false
 useOneOfDiscriminatorLookup: false
 enumClassPrefix: true
-gitRepoId: golang-sdk/v2
+gitRepoId: golang-sdk/v3
 gitUserId: sailpoint-oss
 isGoSubmodule: true
 apiVersion: NERMV2025
 funtionPrefix: NERMV2025
 subModuleName: NERMV2025
 nerm: true
-moduleImportPath: github.com/sailpoint-oss/golang-sdk/v2/api_nerm_v2025
+moduleImportPath: github.com/sailpoint-oss/golang-sdk/v3/api_nerm_v2025
 files:
   developerSite_code_examples.mustache:
     templateType: APIDocs

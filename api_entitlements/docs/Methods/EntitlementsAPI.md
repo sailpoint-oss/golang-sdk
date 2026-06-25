@@ -77,7 +77,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -149,7 +149,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -216,7 +216,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -282,7 +282,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -356,7 +356,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -429,7 +429,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -507,7 +507,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -584,7 +584,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -659,7 +659,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -738,7 +738,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -805,8 +805,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -879,7 +879,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {
@@ -952,8 +952,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func main() {

@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import api_machine_account_subtypes "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
+import api_machine_account_subtypes "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_subtypes"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -79,31 +79,18 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MachineAccountSubtypesAPI* | [**CreateSourceSubtypeV1**](docs/MachineAccountSubtypesAPI.md#createsourcesubtypev1) | **Post** /source-subtypes/v1 | Create subtype
 *MachineAccountSubtypesAPI* | [**DeleteMachineAccountSubtypeV1**](docs/MachineAccountSubtypesAPI.md#deletemachineaccountsubtypev1) | **Delete** /source-subtypes/v1/{subtypeId} | Delete subtype by ID
-*MachineAccountSubtypesAPI* | [**GetMachineAccountSubtypeApprovalConfigV1**](docs/MachineAccountSubtypesAPI.md#getmachineaccountsubtypeapprovalconfigv1) | **Get** /source-subtypes/v1/{subtypeId}/machine-config | Machine Subtype Approval Config
 *MachineAccountSubtypesAPI* | [**GetSourceSubtypeByIdV1**](docs/MachineAccountSubtypesAPI.md#getsourcesubtypebyidv1) | **Get** /source-subtypes/v1/{subtypeId} | Get subtype by ID
-*MachineAccountSubtypesAPI* | [**ListSourceSubtypesV1**](docs/MachineAccountSubtypesAPI.md#listsourcesubtypesv1) | **Get** /source-subtypes/v1 | Retrieve all subtypes
-*MachineAccountSubtypesAPI* | [**LoadBulkSourceSubtypesV1**](docs/MachineAccountSubtypesAPI.md#loadbulksourcesubtypesv1) | **Post** /source-subtypes/v1/bulk-retrieve | Bulk Retrieve of Source Subtypes
 *MachineAccountSubtypesAPI* | [**PatchMachineAccountSubtypeV1**](docs/MachineAccountSubtypesAPI.md#patchmachineaccountsubtypev1) | **Patch** /source-subtypes/v1/{subtypeId} | Patch subtype by ID
-*MachineAccountSubtypesAPI* | [**UpdateMachineAccountSubtypeApprovalConfigV1**](docs/MachineAccountSubtypesAPI.md#updatemachineaccountsubtypeapprovalconfigv1) | **Patch** /source-subtypes/v1/{subtypeId}/machine-config | Machine Subtype Approval Config
 
 
 ## Documentation For Models
 
- - [ArrayInner](docs/ArrayInner.md)
- - [CreateSourceSubtypeV1Request](docs/CreateSourceSubtypeV1Request.md)
  - [Errormessagedto](docs/Errormessagedto.md)
  - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
- - [LoadBulkSourceSubtypesV1401Response](docs/LoadBulkSourceSubtypesV1401Response.md)
- - [LoadBulkSourceSubtypesV1429Response](docs/LoadBulkSourceSubtypesV1429Response.md)
+ - [GetSourceSubtypeByIdV1401Response](docs/GetSourceSubtypeByIdV1401Response.md)
+ - [GetSourceSubtypeByIdV1429Response](docs/GetSourceSubtypeByIdV1429Response.md)
  - [Localeorigin](docs/Localeorigin.md)
- - [Machineaccountsubtypeconfigdto](docs/Machineaccountsubtypeconfigdto.md)
- - [MachineaccountsubtypeconfigdtoMachineAccountCreate](docs/MachineaccountsubtypeconfigdtoMachineAccountCreate.md)
- - [MachineaccountsubtypeconfigdtoMachineAccountDelete](docs/MachineaccountsubtypeconfigdtoMachineAccountDelete.md)
- - [Machinesubtypeapprovalconfig](docs/Machinesubtypeapprovalconfig.md)
  - [Sourcesubtypewithsource](docs/Sourcesubtypewithsource.md)
  - [SourcesubtypewithsourceSource](docs/SourcesubtypewithsourceSource.md)
 

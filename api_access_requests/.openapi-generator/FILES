@@ -14,7 +14,6 @@ docs/Accessitemreviewedby.md
 docs/Accessrequest.md
 docs/Accessrequestadminitemstatus.md
 docs/Accessrequestconfig.md
-docs/Accessrequestconfigv2.md
 docs/Accessrequestitem.md
 docs/Accessrequestphases.md
 docs/Accessrequestresponse.md
@@ -25,7 +24,6 @@ docs/Accountitemref.md
 docs/Accountsselectionrequest.md
 docs/Accountsselectionresponse.md
 docs/Approvalforwardhistory.md
-docs/Approvalreminderandescalationconfig.md
 docs/Approvalscheme.md
 docs/Approvalstatusdto.md
 docs/ApprovalstatusdtoCurrentOwner.md
@@ -42,7 +40,6 @@ docs/Entitlementaccessrequestconfig.md
 docs/EntitlementaccessrequestconfigMaxPermittedAccessDuration.md
 docs/Entitlementapprovalscheme.md
 docs/Entitlementrequestconfig.md
-docs/Entitlementrequestconfigv2.md
 docs/Entitlementrevocationrequestconfig.md
 docs/Errormessagedto.md
 docs/Errorresponsedto.md
@@ -52,7 +49,6 @@ docs/Identityaccountselections.md
 docs/Identityentitlementdetails.md
 docs/Identityentitlementdetailsaccounttarget.md
 docs/Identityentitlementdetailsentitlementdto.md
-docs/Identityreferencewithnameandemail.md
 docs/Localeorigin.md
 docs/Manualworkitemdetails.md
 docs/ManualworkitemdetailsCurrentOwner.md
@@ -77,7 +73,6 @@ docs/RequesteditemstatusRequesterComment.md
 docs/RequesteditemstatusSodViolationContext.md
 docs/Requesteditemstatusrequeststate.md
 docs/Requestonbehalfofconfig.md
-docs/Requestonbehalfofconfigv2.md
 docs/Sodexemptcriteria.md
 docs/Sodpolicydto.md
 docs/Sodviolationcheckresult.md
@@ -95,7 +90,6 @@ model_accessitemreviewedby.go
 model_accessrequest.go
 model_accessrequestadminitemstatus.go
 model_accessrequestconfig.go
-model_accessrequestconfigv2.go
 model_accessrequestitem.go
 model_accessrequestphases.go
 model_accessrequestresponse.go
@@ -106,7 +100,6 @@ model_accountitemref.go
 model_accountsselectionrequest.go
 model_accountsselectionresponse.go
 model_approvalforwardhistory.go
-model_approvalreminderandescalationconfig.go
 model_approvalscheme.go
 model_approvalstatusdto.go
 model_approvalstatusdto_current_owner.go
@@ -123,7 +116,6 @@ model_entitlementaccessrequestconfig.go
 model_entitlementaccessrequestconfig_max_permitted_access_duration.go
 model_entitlementapprovalscheme.go
 model_entitlementrequestconfig.go
-model_entitlementrequestconfigv2.go
 model_entitlementrevocationrequestconfig.go
 model_errormessagedto.go
 model_errorresponsedto.go
@@ -133,7 +125,6 @@ model_identityaccountselections.go
 model_identityentitlementdetails.go
 model_identityentitlementdetailsaccounttarget.go
 model_identityentitlementdetailsentitlementdto.go
-model_identityreferencewithnameandemail.go
 model_localeorigin.go
 model_manualworkitemdetails.go
 model_manualworkitemdetails_current_owner.go
@@ -157,7 +148,6 @@ model_requesteditemstatus_requester_comment.go
 model_requesteditemstatus_sod_violation_context.go
 model_requesteditemstatusrequeststate.go
 model_requestonbehalfofconfig.go
-model_requestonbehalfofconfigv2.go
 model_sodexemptcriteria.go
 model_sodpolicydto.go
 model_sodviolationcheckresult.go

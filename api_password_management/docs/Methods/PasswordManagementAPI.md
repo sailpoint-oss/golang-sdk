@@ -95,8 +95,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_password_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_password_management"
 )
 
 func main() {
@@ -168,7 +168,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_password_management"
 )
 
 func main() {
@@ -230,8 +230,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_password_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_password_management"
 )
 
 func main() {
@@ -316,8 +316,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_password_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_password_management"
 )
 
 func main() {

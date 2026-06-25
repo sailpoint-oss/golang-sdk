@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_parameter_storage"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_parameter_storage"
 )
 
 func Test_api_parameter_storage_ParameterStorageAPIService(t *testing.T) {

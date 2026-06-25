@@ -34,428 +34,6 @@ tags:
     Use this API to get, update, and delete machine account subtype for sources.
   name: Machine Account Subtypes
 paths:
-  /source-subtypes/v1/bulk-retrieve:
-    post:
-      description: This endpoint retrieves the subtypes for given subtypeIds.
-      operationId: loadBulkSourceSubtypesV1
-      parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/bulkretrievesourcesubtypesrequest'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/sourcesubtypewithsource'
-                type: array
-          description: List of source subtypes.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - userAuth:
-        - idn:sources:manage
-      - applicationAuth:
-        - idn:sources:manage
-      summary: Bulk Retrieve of Source Subtypes
-      tags:
-      - Machine Account Subtypes
-      x-sailpoint-userLevels:
-      - ORG_ADMIN
-      - SOURCE_ADMIN
-      - SOURCE_SUBADMIN
-  /source-subtypes/v1:
-    get:
-      description: Get all machine account subtypes.
-      operationId: listSourceSubtypesV1
-      parameters:
-      - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
-
-          Filtering is supported for the following fields and operators:
-
-          **id**: *eq, in, sw*
-
-          **displayName**: *eq, sw*
-
-          **technicalName**: *eq, sw*
-
-          **source.id**: *eq, in*
-        example: displayName eq "sail"
-        explode: true
-        in: query
-        name: filters
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
-
-          Sorting is supported for the following fields: **displayName, technicalName**
-        example: displayName
-        explode: true
-        in: query
-        name: sorters
-        required: false
-        schema:
-          format: comma-separated
-          type: string
-        style: form
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
-      - description: |-
-          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
-
-          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
-
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: true
-        explode: true
-        in: query
-        name: count
-        required: false
-        schema:
-          default: false
-          type: boolean
-        style: form
-      - description: |-
-          Max number of results to return.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: 250
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 250
-          format: int32
-          maximum: 250
-          minimum: 0
-          type: integer
-        style: form
-      - description: |-
-          Offset into the full result set. Usually specified with *limit* to paginate through the results.
-          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: 0
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          minimum: 0
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                SourceSubtype:
-                  value:
-                  - id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
-                    sourceId: 6d0458373bec4b4b80460992b76016da
-                    technicalName: foo
-                    displayName: Mr Foo
-                    description: fighters
-                    created: 2025-07-28T16:13:42.801Z
-                    modified: 2025-07-28T16:13:42.750Z
-                    type: MACHINE
-                    source:
-                      type: SOURCE
-                      id: 6d0458373bec4b4b80460992b76016da
-                      name: Test Source
-                    systemManaged: false
-              schema:
-                items:
-                  $ref: '#/components/schemas/sourcesubtypewithsource'
-                type: array
-          description: List of machine account subtypes.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - userAuth:
-        - idn:sources:read
-        - idn:sources:manage
-      - applicationAuth:
-        - idn:sources:read
-        - idn:sources:manage
-      summary: Retrieve all subtypes
-      tags:
-      - Machine Account Subtypes
-      x-sailpoint-userLevels:
-      - ORG_ADMIN
-      - SOURCE_ADMIN
-      - SOURCE_SUBADMIN
-    post:
-      description: Create a new machine account subtype.
-      operationId: createSourceSubtypeV1
-      parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            examples:
-              SourceSubtype:
-                value:
-                  sourceId: 6d0458373bec4b4b80460992b76016da
-                  technicalName: foo
-                  displayName: Mr Foo
-                  description: fighters
-                  type: MACHINE
-            schema:
-              $ref: '#/components/schemas/createSourceSubtypeV1_request'
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              examples:
-                SourceSubtype:
-                  value:
-                    id: 43bdd144-4b17-4fce-a744-17c7fd3e717b
-                    sourceId: 6d0458373bec4b4b80460992b76016da
-                    technicalName: foo
-                    displayName: Mr Foo
-                    description: fighters
-                    created: 2025-07-28T16:13:42.801Z
-                    modified: 2025-07-28T16:13:42.750Z
-                    type: MACHINE
-                    source:
-                      type: SOURCE
-                      id: 6d0458373bec4b4b80460992b76016da
-                      name: Test Source
-                    systemManaged: false
-              schema:
-                $ref: '#/components/schemas/sourcesubtypewithsource'
-          description: Created machine account subtype.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - userAuth:
-        - idn:sources:manage
-      - applicationAuth:
-        - idn:sources:manage
-      summary: Create subtype
-      tags:
-      - Machine Account Subtypes
-      x-sailpoint-userLevels:
-      - ORG_ADMIN
-      - SOURCE_ADMIN
-      - SOURCE_SUBADMIN
   /source-subtypes/v1/{subtypeId}:
     delete:
       description: |-
@@ -473,17 +51,7 @@ paths:
           example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
           type: string
         style: simple
-        x-sailpoint-resource-operation-id: listSourceSubtypesV1
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
+        x-sailpoint-resource-operation-id: listMachineAccountSubtypesV1
       responses:
         "204":
           description: Subtype deleted successfully.
@@ -497,7 +65,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+                $ref: '#/components/schemas/getSourceSubtypeByIdV1_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -522,7 +90,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+                $ref: '#/components/schemas/getSourceSubtypeByIdV1_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -568,17 +136,7 @@ paths:
         schema:
           type: string
         style: simple
-        x-sailpoint-resource-operation-id: listSourceSubtypesV1
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
+        x-sailpoint-resource-operation-id: listMachineAccountSubtypesV1
       responses:
         "200":
           content:
@@ -596,7 +154,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+                $ref: '#/components/schemas/getSourceSubtypeByIdV1_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -639,7 +197,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+                $ref: '#/components/schemas/getSourceSubtypeByIdV1_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -689,17 +247,7 @@ paths:
           example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
           type: string
         style: simple
-        x-sailpoint-resource-operation-id: listSourceSubtypesV1
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
+        x-sailpoint-resource-operation-id: listMachineAccountSubtypesV1
       requestBody:
         content:
           application/json-patch+json:
@@ -733,7 +281,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+                $ref: '#/components/schemas/getSourceSubtypeByIdV1_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
         "403":
@@ -758,7 +306,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+                $ref: '#/components/schemas/getSourceSubtypeByIdV1_429_response'
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
@@ -791,335 +339,7 @@ paths:
       - ORG_ADMIN
       - SOURCE_ADMIN
       - SOURCE_SUBADMIN
-  /source-subtypes/v1/{subtypeId}/machine-config:
-    get:
-      description: "This endpoint retrieves the approval configuration for machine\
-        \ account creation and deletion at the machine subtype level. By providing\
-        \ a specific subtypeId in the path, clients can fetch the approval rules and\
-        \ settings (such as required approvers and comments policy) that govern account\
-        \ creation and deletion for that particular machine subtype. The response\
-        \ includes a MachineAccountSubtypeConfigDto object detailing these configurations,\
-        \ enabling clients to understand or display the approval workflow required\
-        \ for creating and deleting machine accounts of the given subtype. Use this\
-        \ endpoint to get machine subtype level approval config for account creation\
-        \ and deletion."
-      operationId: getMachineAccountSubtypeApprovalConfigV1
-      parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
-      - description: machine subtype id.
-        example: ef38f94347e94562b5bb8424a56498d8
-        explode: false
-        in: path
-        name: subtypeId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-sailpoint-resource-operation-id: listSourceSubtypesV1
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/machineaccountsubtypeconfigdto'
-          description: Responds with a MachineAccountSubtypeConfigDto for machine
-            account creation and deletion approval config by subtypeId.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - userAuth:
-        - idn:source-subtypes:read
-        - idn:source-subtypes:management
-      summary: Machine Subtype Approval Config
-      tags:
-      - Machine Account Subtypes
-      x-sailpoint-userLevels:
-      - ORG_ADMIN
-      - SOURCE_ADMIN
-      - SOURCE_SUBADMIN
-      - API
-    patch:
-      description: Updates the approval configuration for machine account deletion
-        at the specified machine subtype level. This endpoint allows clients to modify
-        approval rules and settings (such as required approvers and comments policy)
-        for account creation and deletion workflows associated with a given subtypeId.
-        Use this to customize or enforce approval requirements for creating and deleting
-        machine accounts of a particular subtype.
-      operationId: updateMachineAccountSubtypeApprovalConfigV1
-      parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
-      - description: machine account subtype ID.
-        example: 00eebcf881994e419d72e757fd30dc0e
-        explode: false
-        in: path
-        name: subtypeId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-sailpoint-resource-operation-id: listSourceSubtypesV1
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              example:
-              - op: replace
-                path: /machineAccountDelete/approvalConfig/approvers
-                value: sourceOwner
-              items:
-                $ref: '#/components/schemas/jsonpatchoperation'
-              type: array
-        description: The JSONPatch payload used to update the object.
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                subtypeId: 1419fc28-a8ed-4a07-9f5c-0cb5dfad6311
-                machineAccountCreate:
-                  accountCreateEnabled: true
-                  approvalRequired: true
-                  formId: 4f1bb61b-a0ab-4c0a-b9fb-20f44407b75a
-                  entitlementId: 858d2151-ff19-464b-ae0d-6938b3af2baf
-                  approvalConfig:
-                    approvers: "sourceOwner, manager, workgroup:f76ff96a-0815-402a-be1a-18cdc693b79f"
-                    comments: ALL
-                machineAccountDelete:
-                  approvalRequired: false
-                  approvalConfig:
-                    approvers: sourceOwner
-                    comments: REJECTION
-              schema:
-                $ref: '#/components/schemas/machineaccountsubtypeconfigdto'
-          description: This response indicates the PATCH operation succeeded and the
-            API returns the updated MachineAccountSubtypeConfigDto object.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/errorresponsedto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - userAuth:
-        - idn:source-subtypes:delete
-        - idn:source-subtypes:update
-        - idn:source-subtypes:management
-      summary: Machine Subtype Approval Config
-      tags:
-      - Machine Account Subtypes
-      x-sailpoint-userLevels:
-      - ORG_ADMIN
-      - SOURCE_ADMIN
-      - SOURCE_SUBADMIN
-      - API
 components:
-  parameters:
-    count:
-      description: |-
-        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
-
-        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
-
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-      example: true
-      explode: true
-      in: query
-      name: count
-      required: false
-      schema:
-        default: false
-        type: boolean
-      style: form
-    limit:
-      description: |-
-        Max number of results to return.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-      example: 250
-      explode: true
-      in: query
-      name: limit
-      required: false
-      schema:
-        default: 250
-        format: int32
-        maximum: 250
-        minimum: 0
-        type: integer
-      style: form
-    offset:
-      description: |-
-        Offset into the full result set. Usually specified with *limit* to paginate through the results.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-      example: 0
-      explode: true
-      in: query
-      name: offset
-      required: false
-      schema:
-        default: 0
-        format: int32
-        minimum: 0
-        type: integer
-      style: form
   responses:
     "400":
       content:
@@ -1131,7 +351,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/loadBulkSourceSubtypesV1_401_response'
+            $ref: '#/components/schemas/getSourceSubtypeByIdV1_401_response'
       description: "Unauthorized - Returned if there is no authorization header, or\
         \ if the JWT token is expired."
     "403":
@@ -1174,7 +394,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/loadBulkSourceSubtypesV1_429_response'
+            $ref: '#/components/schemas/getSourceSubtypeByIdV1_429_response'
       description: Too Many Requests - Returned in response to too many requests in
         a given period of time - rate limited. The Retry-After header in the response
         includes how long to wait before trying again.
@@ -1195,24 +415,11 @@ components:
             $ref: '#/components/schemas/errorresponsedto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    bulkretrievesourcesubtypesrequest:
-      description: List of source subtype IDs.
-      example:
-      - 38453251-6be2-5f8f-df93-5ce19e295838
-      items:
-        description: Subtype ID.
-        example: 38453251-6be2-5f8f-df93-5ce19e295838
-        type: string
-      maxItems: 100
-      minItems: 1
-      title: Bulk Retrieve Request for Source Subtypes
-      type: array
     sourcesubtypewithsource:
       example:
         sourceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         displayName: Mr Foo
         created: 2025-07-28T16:13:42.8013Z
-        systemManaged: true
         description: fighters
         modified: 2025-07-28T16:13:42.75085Z
         id: 38453251-6be2-5f8f-df93-5ce19e295838
@@ -1261,11 +468,6 @@ components:
           type: string
         source:
           $ref: '#/components/schemas/sourcesubtypewithsource_source'
-        systemManaged:
-          default: false
-          description: Indicates if the subtype is managed by the system.
-          example: true
-          type: boolean
       type: object
     localeorigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
@@ -1344,94 +546,7 @@ components:
           type: array
       title: Error Response Dto
       type: object
-    machinesubtypeapprovalconfig:
-      example:
-        comments: ALL
-        approvers: "manager, workgroup:1419fc28-a8ed-4a07-9f5c-0cb5dfad6311"
-      properties:
-        approvers:
-          description: |-
-            Comma separated string of approvers.
-
-            Following are the options for approver types: manager, sourceOwner, accountOwner, workgroup:[workgroupId] (Governance group).
-
-            Approval request will be assigned based on the order of the approvers passed.
-
-            Multiple workgroups(governance groups) can be selected as an approver.
-
-            >**Note:** accountOwner approver type is only for machine account delete approval settings.
-          example: "manager, workgroup:1419fc28-a8ed-4a07-9f5c-0cb5dfad6311"
-          type: string
-        comments:
-          description: |-
-            Comment configurations for the approval request.
-
-            Following are the options for comments: ALL, OFF, APPROVAL, REJECT.
-          example: ALL
-          type: string
-      title: Machine Subtype Approval Config Dto
-      type: object
-    machineaccountsubtypeconfigdto:
-      description: "Contains comprehensive configuration details for machine account\
-        \ subtype approval, including creation and deletion approval requirements,\
-        \ approver lists, form and entitlement references, and approval status options."
-      example:
-        machineAccountCreate:
-          formId: 4f1bb61b-a0ab-4c0a-b9fb-20f44407b75a
-          approvalConfig:
-            comments: ALL
-            approvers: "manager, workgroup:1419fc28-a8ed-4a07-9f5c-0cb5dfad6311"
-          approvalRequired: true
-          accountCreateEnabled: true
-          entitlementId: 858d2151-ff19-464b-ae0d-6938b3af2baf
-          passwordAttribute: accountName
-          passwordSetting: SET_TO_EXISTING_ATTRIBUTE
-        machineAccountDelete:
-          approvalConfig:
-            comments: ALL
-            approvers: "manager, workgroup:1419fc28-a8ed-4a07-9f5c-0cb5dfad6311"
-          approvalRequired: true
-        subtypeId: 1419fc28-a8ed-4a07-9f5c-0cb5dfad6311
-      properties:
-        subtypeId:
-          description: "Unique identifier representing the specific subtype of the\
-            \ machine account, used to distinguish between different machine account\
-            \ categories."
-          example: 1419fc28-a8ed-4a07-9f5c-0cb5dfad6311
-          type: string
-        machineAccountCreate:
-          $ref: '#/components/schemas/machineaccountsubtypeconfigdto_machineAccountCreate'
-        machineAccountDelete:
-          $ref: '#/components/schemas/machineaccountsubtypeconfigdto_machineAccountDelete'
-      title: Machine Account Subtype Approval Config
-      type: object
-    jsonpatchoperation:
-      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
-      properties:
-        op:
-          description: The operation to be performed
-          enum:
-          - add
-          - remove
-          - replace
-          - move
-          - copy
-          - test
-          example: replace
-          type: string
-        path:
-          description: A string JSON Pointer representing the target path to an element
-            to be affected by the operation
-          example: /description
-          type: string
-        value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
-      required:
-      - op
-      - path
-      title: Json Patch Operation
-      type: object
-    loadBulkSourceSubtypesV1_401_response:
+    getSourceSubtypeByIdV1_401_response:
       example:
         error: "JWT validation failed: JWT is expired"
       properties:
@@ -1439,41 +554,13 @@ components:
           description: A message describing the error
           example: "JWT validation failed: JWT is expired"
       type: object
-    loadBulkSourceSubtypesV1_429_response:
+    getSourceSubtypeByIdV1_429_response:
       example:
         message: ' Rate Limit Exceeded '
       properties:
         message:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
-      type: object
-    createSourceSubtypeV1_request:
-      properties:
-        sourceId:
-          description: ID of the source where subtype is created.
-          example: 6d0458373bec4b4b80460992b76016da
-          type: string
-        technicalName:
-          description: Technical name of the subtype.
-          example: foo
-          type: string
-        displayName:
-          description: Display name of the subtype.
-          example: Mr Foo
-          type: string
-        description:
-          description: Description of the subtype.
-          example: fighters
-          type: string
-        type:
-          description: Type of the subtype.
-          example: MACHINE
-          type: string
-      required:
-      - description
-      - displayName
-      - sourceId
-      - technicalName
       type: object
     sourcesubtypewithsource_source:
       description: Source reference of the subtype.
@@ -1497,108 +584,3 @@ components:
           example: Test Source
           type: string
       type: object
-    machineaccountsubtypeconfigdto_machineAccountCreate:
-      description: "Configuration options for machine account creation, including\
-        \ whether creation is enabled, if approval is required, associated form and\
-        \ entitlement IDs, and detailed approval settings such as approvers and allowed\
-        \ comment types."
-      example:
-        formId: 4f1bb61b-a0ab-4c0a-b9fb-20f44407b75a
-        approvalConfig:
-          comments: ALL
-          approvers: "manager, workgroup:1419fc28-a8ed-4a07-9f5c-0cb5dfad6311"
-        approvalRequired: true
-        accountCreateEnabled: true
-        entitlementId: 858d2151-ff19-464b-ae0d-6938b3af2baf
-        passwordAttribute: accountName
-        passwordSetting: SET_TO_EXISTING_ATTRIBUTE
-      properties:
-        accountCreateEnabled:
-          default: false
-          description: Specifies if the creation of machine accounts is allowed for
-            this subtype.
-          example: true
-          type: boolean
-        approvalRequired:
-          default: false
-          description: Specifies if approval is required for machine account creation
-            requests for this subtype.
-          example: true
-          type: boolean
-        formId:
-          description: Id of the form linked to subtype.
-          example: 4f1bb61b-a0ab-4c0a-b9fb-20f44407b75a
-          type: string
-        entitlementId:
-          description: Id of the system created entitlement entitlement upon enabling
-            account creation for this subtype.
-          example: 858d2151-ff19-464b-ae0d-6938b3af2baf
-          type: string
-        passwordSetting:
-          description: This is required before enabling the account creation to true.
-            Default value will be null.
-          enum:
-          - DO_NOT_SET_PASSWORD
-          - SET_TO_EXISTING_ATTRIBUTE
-          - SET_TO_NEW_ATTRIBUTE
-          example: SET_TO_EXISTING_ATTRIBUTE
-          type: string
-        passwordAttribute:
-          description: Name of the account attribute from the source's schema or new
-            custom attribute to use when password settings is enabled.
-          example: accountName
-          type: string
-        approvalConfig:
-          $ref: '#/components/schemas/machinesubtypeapprovalconfig'
-      type: object
-    machineaccountsubtypeconfigdto_machineAccountDelete:
-      description: "Configuration options for machine account deletion, including\
-        \ whether approval is required, the list of authorized approvers, and the\
-        \ types of comments permitted during the approval workflow."
-      example:
-        approvalConfig:
-          comments: ALL
-          approvers: "manager, workgroup:1419fc28-a8ed-4a07-9f5c-0cb5dfad6311"
-        approvalRequired: true
-      properties:
-        approvalRequired:
-          default: false
-          description: Indicates whether approval is required for an account deletion
-            request.
-          example: true
-          type: boolean
-        approvalConfig:
-          $ref: '#/components/schemas/machinesubtypeapprovalconfig'
-      type: object
-    array_inner:
-      anyOf:
-      - type: string
-      - type: integer
-      - type: object
-      example:
-      - "001"
-      - "002"
-      - "003"
-    jsonpatchoperation_value:
-      description: "The value to be used for the operation, required for \"add\" and\
-        \ \"replace\" operations"
-      example: New description
-      oneOf:
-      - example: New description
-        title: string
-        type: string
-      - example: true
-        title: boolean
-        type: boolean
-      - example: 300
-        title: integer
-        type: integer
-      - example:
-          attributes:
-            name: philip
-        title: object
-        type: object
-      - items:
-          $ref: '#/components/schemas/array_inner'
-        title: array
-        type: array

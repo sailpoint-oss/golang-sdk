@@ -68,7 +68,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_account_usages"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_account_usages"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_shared_signals_framework_ssf
+module github.com/sailpoint-oss/golang-sdk/v3/api_shared_signals_framework_ssf
 
 go 1.23.0
 

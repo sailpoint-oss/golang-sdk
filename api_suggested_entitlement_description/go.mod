@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description
+module github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description
 
 go 1.23.0
 

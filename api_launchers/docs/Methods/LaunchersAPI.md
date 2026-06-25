@@ -61,8 +61,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_launchers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_launchers"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_launchers"
 )
 
 func main() {
@@ -133,7 +133,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_launchers"
 )
 
 func main() {
@@ -198,7 +198,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_launchers"
 )
 
 func main() {
@@ -262,7 +262,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_launchers"
 )
 
 func main() {
@@ -330,8 +330,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_launchers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_launchers"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_launchers"
 )
 
 func main() {
@@ -403,7 +403,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_launchers"
 )
 
 func main() {

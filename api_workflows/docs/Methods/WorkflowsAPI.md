@@ -80,7 +80,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -146,7 +146,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -213,7 +213,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -274,8 +274,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -346,7 +346,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -411,7 +411,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -477,7 +477,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -543,7 +543,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -622,7 +622,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -691,7 +691,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -754,7 +754,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -819,7 +819,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -879,7 +879,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -942,7 +942,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -1002,7 +1002,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -1067,8 +1067,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -1140,8 +1140,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -1214,7 +1214,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {
@@ -1292,8 +1292,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 )
 
 func main() {

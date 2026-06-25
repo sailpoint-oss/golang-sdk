@@ -123,7 +123,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
 )
 
 func main() {
@@ -184,8 +184,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
 )
 
 func main() {
@@ -257,7 +257,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
 )
 
 func main() {
@@ -328,7 +328,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
 )
 
 func main() {
@@ -397,7 +397,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
 )
 
 func main() {
@@ -468,8 +468,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
 )
 
 func main() {
@@ -537,8 +537,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
 )
 
 func main() {
@@ -603,8 +603,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
 )
 
 func main() {

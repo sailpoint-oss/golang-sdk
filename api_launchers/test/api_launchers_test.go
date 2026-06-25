@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_launchers"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_launchers"
 )
 
 func Test_api_launchers_LaunchersAPIService(t *testing.T) {

@@ -11,8 +11,8 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
         )
 
         func main() {
@@ -51,8 +51,8 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
         )
 
         func main() {
@@ -91,8 +91,8 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
         )
 
         func main() {
@@ -131,8 +131,8 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
         )
 
         func main() {
@@ -171,8 +171,8 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
         )
 
         func main() {
@@ -211,8 +211,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
         )
 
         func main() {
@@ -231,39 +231,6 @@
           // response from `GetAccessRequestConfigV1`: Accessrequestconfig
           fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetAccessRequestConfigV1`: %v\n", resp)
         }
-- path: /access-request-config/v2
-  method: Get
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/accessrequests/methods/access-requests#get-access-request-config-v2
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-            
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-        )
-
-        func main() {
-
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfigV2``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-          // response from `GetAccessRequestConfigV2`: Accessrequestconfigv2
-          fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetAccessRequestConfigV2`: %v\n", resp)
-        }
 - path: /revocable-objects/v1
   method: Get
   xCodeSample:
@@ -277,8 +244,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
         )
 
         func main() {
@@ -312,8 +279,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
         )
 
         func main() {
@@ -355,8 +322,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
         )
 
         func main() {
@@ -368,7 +335,7 @@
           count := false // bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to false) # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to false)
           limit := 100 // int32 | Max number of results to return. (optional) (default to 250) # int32 | Max number of results to return. (optional) (default to 250)
           offset := 10 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
-          filters := `accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional)
+          filters := `accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional)
           sorters := `created` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId** (optional)
           requestState := `request-state=EXECUTING` // string | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional) # string | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional)
 
@@ -399,8 +366,8 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
         )
 
         func main() {
@@ -440,8 +407,8 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
         )
 
         func main() {
@@ -466,44 +433,4 @@
           }
           // response from `SetAccessRequestConfigV1`: Accessrequestconfig
           fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.SetAccessRequestConfigV1`: %v\n", resp)
-        }
-- path: /access-request-config/v2
-  method: Put
-  xCodeSample:
-    - lang: Go
-      label: SDK_tools/sdk/go/accessrequests/methods/access-requests#set-access-request-config-v2
-      source: |
-        package main
-
-        import (
-          "context"
-          "fmt"
-          "os"
-             "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-        )
-
-        func main() {
-           accessrequestconfigv2 := []byte(``) // Accessrequestconfigv2 | 
-
-          
-          var accessrequestconfigv2 v1.Accessrequestconfigv2
-          if err := json.Unmarshal(accessrequestconfigv2, &accessrequestconfigv2); err != nil {
-            fmt.Println("Error:", err)
-            return
-          }
-          
-
-
-          configuration := sailpoint.NewDefaultConfiguration()
-          apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).Accessrequestconfigv2(accessrequestconfigv2).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).Accessrequestconfigv2(accessrequestconfigv2).Execute()
-          if err != nil {
-            fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfigV2``: %v\n", err)
-            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-          }
-          // response from `SetAccessRequestConfigV2`: Accessrequestconfigv2
-          fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.SetAccessRequestConfigV2`: %v\n", resp)
         }

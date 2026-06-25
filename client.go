@@ -18,119 +18,119 @@ import (
 	"regexp"
 
 	"github.com/hashicorp/go-retryablehttp"
-	api_access_model_metadata "github.com/sailpoint-oss/golang-sdk/v2/api_access_model_metadata"
-	api_access_profiles "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
-	api_access_request_approvals "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_approvals"
-	api_access_request_identity_metrics "github.com/sailpoint-oss/golang-sdk/v2/api_access_request_identity_metrics"
-	api_access_requests "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
-	api_account_activities "github.com/sailpoint-oss/golang-sdk/v2/api_account_activities"
-	api_account_aggregations "github.com/sailpoint-oss/golang-sdk/v2/api_account_aggregations"
-	api_account_deletion_requests "github.com/sailpoint-oss/golang-sdk/v2/api_account_deletion_requests"
-	api_account_usages "github.com/sailpoint-oss/golang-sdk/v2/api_account_usages"
-	api_accounts "github.com/sailpoint-oss/golang-sdk/v2/api_accounts"
-	api_api_usage "github.com/sailpoint-oss/golang-sdk/v2/api_api_usage"
-	api_application_discovery "github.com/sailpoint-oss/golang-sdk/v2/api_application_discovery"
-	api_approvals "github.com/sailpoint-oss/golang-sdk/v2/api_approvals"
-	api_apps "github.com/sailpoint-oss/golang-sdk/v2/api_apps"
-	api_auth_profile "github.com/sailpoint-oss/golang-sdk/v2/api_auth_profile"
-	api_auth_users "github.com/sailpoint-oss/golang-sdk/v2/api_auth_users"
-	api_branding "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
-	api_certification_campaign_filters "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaign_filters"
-	api_certification_campaigns "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
-	api_certification_summaries "github.com/sailpoint-oss/golang-sdk/v2/api_certification_summaries"
-	api_certifications "github.com/sailpoint-oss/golang-sdk/v2/api_certifications"
-	api_classify_source "github.com/sailpoint-oss/golang-sdk/v2/api_classify_source"
-	api_configuration_hub "github.com/sailpoint-oss/golang-sdk/v2/api_configuration_hub"
-	api_connector_customizers "github.com/sailpoint-oss/golang-sdk/v2/api_connector_customizers"
-	api_connector_rule_management "github.com/sailpoint-oss/golang-sdk/v2/api_connector_rule_management"
-	api_connectors "github.com/sailpoint-oss/golang-sdk/v2/api_connectors"
-	api_custom_forms "github.com/sailpoint-oss/golang-sdk/v2/api_custom_forms"
-	api_custom_password_instructions "github.com/sailpoint-oss/golang-sdk/v2/api_custom_password_instructions"
-	api_custom_user_levels "github.com/sailpoint-oss/golang-sdk/v2/api_custom_user_levels"
-	api_data_access_security "github.com/sailpoint-oss/golang-sdk/v2/api_data_access_security"
-	api_data_segmentation "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
-	api_declassify_source "github.com/sailpoint-oss/golang-sdk/v2/api_declassify_source"
-	api_dimensions "github.com/sailpoint-oss/golang-sdk/v2/api_dimensions"
-	api_entitlement_connections "github.com/sailpoint-oss/golang-sdk/v2/api_entitlement_connections"
-	api_entitlements "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
-	api_global_tenant_security_settings "github.com/sailpoint-oss/golang-sdk/v2/api_global_tenant_security_settings"
-	api_governance_groups "github.com/sailpoint-oss/golang-sdk/v2/api_governance_groups"
-	api_iai_access_request_recommendations "github.com/sailpoint-oss/golang-sdk/v2/api_iai_access_request_recommendations"
-	api_iai_common_access "github.com/sailpoint-oss/golang-sdk/v2/api_iai_common_access"
-	api_iai_outliers "github.com/sailpoint-oss/golang-sdk/v2/api_iai_outliers"
-	api_iai_peer_group_strategies "github.com/sailpoint-oss/golang-sdk/v2/api_iai_peer_group_strategies"
-	api_iai_recommendations "github.com/sailpoint-oss/golang-sdk/v2/api_iai_recommendations"
-	api_iai_role_mining "github.com/sailpoint-oss/golang-sdk/v2/api_iai_role_mining"
-	api_icons "github.com/sailpoint-oss/golang-sdk/v2/api_icons"
-	api_identities "github.com/sailpoint-oss/golang-sdk/v2/api_identities"
-	api_identity_attributes "github.com/sailpoint-oss/golang-sdk/v2/api_identity_attributes"
-	api_identity_history "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
-	api_identity_profiles "github.com/sailpoint-oss/golang-sdk/v2/api_identity_profiles"
-	api_jit_access "github.com/sailpoint-oss/golang-sdk/v2/api_jit_access"
-	api_jit_activations "github.com/sailpoint-oss/golang-sdk/v2/api_jit_activations"
-	api_launchers "github.com/sailpoint-oss/golang-sdk/v2/api_launchers"
-	api_lifecycle_states "github.com/sailpoint-oss/golang-sdk/v2/api_lifecycle_states"
-	api_machine_account_classify "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_classify"
-	api_machine_account_creation_request "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_creation_request"
-	api_machine_account_mappings "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_mappings"
-	api_machine_account_subtypes "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_subtypes"
-	api_machine_accounts "github.com/sailpoint-oss/golang-sdk/v2/api_machine_accounts"
-	api_machine_classification_config "github.com/sailpoint-oss/golang-sdk/v2/api_machine_classification_config"
-	api_machine_identities "github.com/sailpoint-oss/golang-sdk/v2/api_machine_identities"
-	api_managed_clients "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clients"
-	api_managed_cluster_types "github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types"
-	api_managed_clusters "github.com/sailpoint-oss/golang-sdk/v2/api_managed_clusters"
-	api_mfa_configuration "github.com/sailpoint-oss/golang-sdk/v2/api_mfa_configuration"
-	api_multi_host_integration "github.com/sailpoint-oss/golang-sdk/v2/api_multi_host_integration"
-	api_non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management"
-	api_notifications "github.com/sailpoint-oss/golang-sdk/v2/api_notifications"
-	api_oauth_clients "github.com/sailpoint-oss/golang-sdk/v2/api_oauth_clients"
-	api_org_config "github.com/sailpoint-oss/golang-sdk/v2/api_org_config"
-	api_parameter_storage "github.com/sailpoint-oss/golang-sdk/v2/api_parameter_storage"
-	api_password_configuration "github.com/sailpoint-oss/golang-sdk/v2/api_password_configuration"
-	api_password_dictionary "github.com/sailpoint-oss/golang-sdk/v2/api_password_dictionary"
-	api_password_management "github.com/sailpoint-oss/golang-sdk/v2/api_password_management"
-	api_password_policies "github.com/sailpoint-oss/golang-sdk/v2/api_password_policies"
-	api_password_sync_groups "github.com/sailpoint-oss/golang-sdk/v2/api_password_sync_groups"
-	api_personal_access_tokens "github.com/sailpoint-oss/golang-sdk/v2/api_personal_access_tokens"
-	api_privilege_criteria "github.com/sailpoint-oss/golang-sdk/v2/api_privilege_criteria"
-	api_privilege_criteria_configuration "github.com/sailpoint-oss/golang-sdk/v2/api_privilege_criteria_configuration"
-	api_prompt_insights "github.com/sailpoint-oss/golang-sdk/v2/api_prompt_insights"
-	api_public_identities "github.com/sailpoint-oss/golang-sdk/v2/api_public_identities"
-	api_public_identities_config "github.com/sailpoint-oss/golang-sdk/v2/api_public_identities_config"
-	api_reports_data_extraction "github.com/sailpoint-oss/golang-sdk/v2/api_reports_data_extraction"
-	api_requestable_objects "github.com/sailpoint-oss/golang-sdk/v2/api_requestable_objects"
-	api_role_insights "github.com/sailpoint-oss/golang-sdk/v2/api_role_insights"
-	api_role_propagation "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
-	api_roles "github.com/sailpoint-oss/golang-sdk/v2/api_roles"
-	api_saved_search "github.com/sailpoint-oss/golang-sdk/v2/api_saved_search"
-	api_scheduled_search "github.com/sailpoint-oss/golang-sdk/v2/api_scheduled_search"
-	api_search "github.com/sailpoint-oss/golang-sdk/v2/api_search"
-	api_search_attribute_configuration "github.com/sailpoint-oss/golang-sdk/v2/api_search_attribute_configuration"
-	api_segments "github.com/sailpoint-oss/golang-sdk/v2/api_segments"
-	api_service_desk_integration "github.com/sailpoint-oss/golang-sdk/v2/api_service_desk_integration"
-	api_shared_signals_framework_ssf "github.com/sailpoint-oss/golang-sdk/v2/api_shared_signals_framework_ssf"
-	api_sim_integrations "github.com/sailpoint-oss/golang-sdk/v2/api_sim_integrations"
-	api_sod_policies "github.com/sailpoint-oss/golang-sdk/v2/api_sod_policies"
-	api_sod_violations "github.com/sailpoint-oss/golang-sdk/v2/api_sod_violations"
-	api_source_usages "github.com/sailpoint-oss/golang-sdk/v2/api_source_usages"
-	api_sources "github.com/sailpoint-oss/golang-sdk/v2/api_sources"
-	api_sp_config "github.com/sailpoint-oss/golang-sdk/v2/api_sp_config"
-	api_suggested_entitlement_description "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
-	api_tagged_objects "github.com/sailpoint-oss/golang-sdk/v2/api_tagged_objects"
-	api_tags "github.com/sailpoint-oss/golang-sdk/v2/api_tags"
-	api_task_management "github.com/sailpoint-oss/golang-sdk/v2/api_task_management"
-	api_tenant "github.com/sailpoint-oss/golang-sdk/v2/api_tenant"
-	api_tenant_context "github.com/sailpoint-oss/golang-sdk/v2/api_tenant_context"
-	api_transforms "github.com/sailpoint-oss/golang-sdk/v2/api_transforms"
-	api_triggers "github.com/sailpoint-oss/golang-sdk/v2/api_triggers"
-	api_ui_metadata "github.com/sailpoint-oss/golang-sdk/v2/api_ui_metadata"
-	api_work_items "github.com/sailpoint-oss/golang-sdk/v2/api_work_items"
-	api_work_reassignment "github.com/sailpoint-oss/golang-sdk/v2/api_work_reassignment"
-	api_workflows "github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
-	generic   "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
-	nerm      "github.com/sailpoint-oss/golang-sdk/v2/api_nerm"
-	nermv2025 "github.com/sailpoint-oss/golang-sdk/v2/api_nerm_v2025"
+	api_access_model_metadata "github.com/sailpoint-oss/golang-sdk/v3/api_access_model_metadata"
+	api_access_profiles "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
+	api_access_request_approvals "github.com/sailpoint-oss/golang-sdk/v3/api_access_request_approvals"
+	api_access_request_identity_metrics "github.com/sailpoint-oss/golang-sdk/v3/api_access_request_identity_metrics"
+	api_access_requests "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
+	api_account_activities "github.com/sailpoint-oss/golang-sdk/v3/api_account_activities"
+	api_account_aggregations "github.com/sailpoint-oss/golang-sdk/v3/api_account_aggregations"
+	api_account_deletion_requests "github.com/sailpoint-oss/golang-sdk/v3/api_account_deletion_requests"
+	api_account_usages "github.com/sailpoint-oss/golang-sdk/v3/api_account_usages"
+	api_accounts "github.com/sailpoint-oss/golang-sdk/v3/api_accounts"
+	api_api_usage "github.com/sailpoint-oss/golang-sdk/v3/api_api_usage"
+	api_application_discovery "github.com/sailpoint-oss/golang-sdk/v3/api_application_discovery"
+	api_approvals "github.com/sailpoint-oss/golang-sdk/v3/api_approvals"
+	api_apps "github.com/sailpoint-oss/golang-sdk/v3/api_apps"
+	api_auth_profile "github.com/sailpoint-oss/golang-sdk/v3/api_auth_profile"
+	api_auth_users "github.com/sailpoint-oss/golang-sdk/v3/api_auth_users"
+	api_branding "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
+	api_certification_campaign_filters "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaign_filters"
+	api_certification_campaigns "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
+	api_certification_summaries "github.com/sailpoint-oss/golang-sdk/v3/api_certification_summaries"
+	api_certifications "github.com/sailpoint-oss/golang-sdk/v3/api_certifications"
+	api_classify_source "github.com/sailpoint-oss/golang-sdk/v3/api_classify_source"
+	api_configuration_hub "github.com/sailpoint-oss/golang-sdk/v3/api_configuration_hub"
+	api_connector_customizers "github.com/sailpoint-oss/golang-sdk/v3/api_connector_customizers"
+	api_connector_rule_management "github.com/sailpoint-oss/golang-sdk/v3/api_connector_rule_management"
+	api_connectors "github.com/sailpoint-oss/golang-sdk/v3/api_connectors"
+	api_custom_forms "github.com/sailpoint-oss/golang-sdk/v3/api_custom_forms"
+	api_custom_password_instructions "github.com/sailpoint-oss/golang-sdk/v3/api_custom_password_instructions"
+	api_custom_user_levels "github.com/sailpoint-oss/golang-sdk/v3/api_custom_user_levels"
+	api_data_access_security "github.com/sailpoint-oss/golang-sdk/v3/api_data_access_security"
+	api_data_segmentation "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
+	api_declassify_source "github.com/sailpoint-oss/golang-sdk/v3/api_declassify_source"
+	api_dimensions "github.com/sailpoint-oss/golang-sdk/v3/api_dimensions"
+	api_entitlements "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
+	api_global_tenant_security_settings "github.com/sailpoint-oss/golang-sdk/v3/api_global_tenant_security_settings"
+	api_governance_groups "github.com/sailpoint-oss/golang-sdk/v3/api_governance_groups"
+	api_iai_access_request_recommendations "github.com/sailpoint-oss/golang-sdk/v3/api_iai_access_request_recommendations"
+	api_iai_common_access "github.com/sailpoint-oss/golang-sdk/v3/api_iai_common_access"
+	api_iai_outliers "github.com/sailpoint-oss/golang-sdk/v3/api_iai_outliers"
+	api_iai_peer_group_strategies "github.com/sailpoint-oss/golang-sdk/v3/api_iai_peer_group_strategies"
+	api_iai_recommendations "github.com/sailpoint-oss/golang-sdk/v3/api_iai_recommendations"
+	api_iai_role_mining "github.com/sailpoint-oss/golang-sdk/v3/api_iai_role_mining"
+	api_icons "github.com/sailpoint-oss/golang-sdk/v3/api_icons"
+	api_identities "github.com/sailpoint-oss/golang-sdk/v3/api_identities"
+	api_identity_attributes "github.com/sailpoint-oss/golang-sdk/v3/api_identity_attributes"
+	api_identity_history "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
+	api_identity_profiles "github.com/sailpoint-oss/golang-sdk/v3/api_identity_profiles"
+	api_intelligence_package "github.com/sailpoint-oss/golang-sdk/v3/api_intelligence_package"
+	api_jit_access "github.com/sailpoint-oss/golang-sdk/v3/api_jit_access"
+	api_jit_activations "github.com/sailpoint-oss/golang-sdk/v3/api_jit_activations"
+	api_launchers "github.com/sailpoint-oss/golang-sdk/v3/api_launchers"
+	api_lifecycle_states "github.com/sailpoint-oss/golang-sdk/v3/api_lifecycle_states"
+	api_machine_account_classify "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_classify"
+	api_machine_account_creation_request "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_creation_request"
+	api_machine_account_mappings "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_mappings"
+	api_machine_account_subtypes "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_subtypes"
+	api_machine_accounts "github.com/sailpoint-oss/golang-sdk/v3/api_machine_accounts"
+	api_machine_classification_config "github.com/sailpoint-oss/golang-sdk/v3/api_machine_classification_config"
+	api_machine_identities "github.com/sailpoint-oss/golang-sdk/v3/api_machine_identities"
+	api_managed_clients "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clients"
+	api_managed_cluster_types "github.com/sailpoint-oss/golang-sdk/v3/api_managed_cluster_types"
+	api_managed_clusters "github.com/sailpoint-oss/golang-sdk/v3/api_managed_clusters"
+	api_mfa_configuration "github.com/sailpoint-oss/golang-sdk/v3/api_mfa_configuration"
+	api_multi_host_integration "github.com/sailpoint-oss/golang-sdk/v3/api_multi_host_integration"
+	api_non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/api_non_employee_lifecycle_management"
+	api_notifications "github.com/sailpoint-oss/golang-sdk/v3/api_notifications"
+	api_oauth_clients "github.com/sailpoint-oss/golang-sdk/v3/api_oauth_clients"
+	api_org_config "github.com/sailpoint-oss/golang-sdk/v3/api_org_config"
+	api_parameter_storage "github.com/sailpoint-oss/golang-sdk/v3/api_parameter_storage"
+	api_password_configuration "github.com/sailpoint-oss/golang-sdk/v3/api_password_configuration"
+	api_password_dictionary "github.com/sailpoint-oss/golang-sdk/v3/api_password_dictionary"
+	api_password_management "github.com/sailpoint-oss/golang-sdk/v3/api_password_management"
+	api_password_policies "github.com/sailpoint-oss/golang-sdk/v3/api_password_policies"
+	api_password_sync_groups "github.com/sailpoint-oss/golang-sdk/v3/api_password_sync_groups"
+	api_personal_access_tokens "github.com/sailpoint-oss/golang-sdk/v3/api_personal_access_tokens"
+	api_privilege_criteria "github.com/sailpoint-oss/golang-sdk/v3/api_privilege_criteria"
+	api_privilege_criteria_configuration "github.com/sailpoint-oss/golang-sdk/v3/api_privilege_criteria_configuration"
+	api_prompt_insights "github.com/sailpoint-oss/golang-sdk/v3/api_prompt_insights"
+	api_public_identities "github.com/sailpoint-oss/golang-sdk/v3/api_public_identities"
+	api_public_identities_config "github.com/sailpoint-oss/golang-sdk/v3/api_public_identities_config"
+	api_reports_data_extraction "github.com/sailpoint-oss/golang-sdk/v3/api_reports_data_extraction"
+	api_requestable_objects "github.com/sailpoint-oss/golang-sdk/v3/api_requestable_objects"
+	api_role_insights "github.com/sailpoint-oss/golang-sdk/v3/api_role_insights"
+	api_role_propagation "github.com/sailpoint-oss/golang-sdk/v3/api_role_propagation"
+	api_roles "github.com/sailpoint-oss/golang-sdk/v3/api_roles"
+	api_saved_search "github.com/sailpoint-oss/golang-sdk/v3/api_saved_search"
+	api_scheduled_search "github.com/sailpoint-oss/golang-sdk/v3/api_scheduled_search"
+	api_search "github.com/sailpoint-oss/golang-sdk/v3/api_search"
+	api_search_attribute_configuration "github.com/sailpoint-oss/golang-sdk/v3/api_search_attribute_configuration"
+	api_segments "github.com/sailpoint-oss/golang-sdk/v3/api_segments"
+	api_service_desk_integration "github.com/sailpoint-oss/golang-sdk/v3/api_service_desk_integration"
+	api_shared_signals_framework_ssf "github.com/sailpoint-oss/golang-sdk/v3/api_shared_signals_framework_ssf"
+	api_sim_integrations "github.com/sailpoint-oss/golang-sdk/v3/api_sim_integrations"
+	api_sod_policies "github.com/sailpoint-oss/golang-sdk/v3/api_sod_policies"
+	api_sod_violations "github.com/sailpoint-oss/golang-sdk/v3/api_sod_violations"
+	api_source_usages "github.com/sailpoint-oss/golang-sdk/v3/api_source_usages"
+	api_sources "github.com/sailpoint-oss/golang-sdk/v3/api_sources"
+	api_sp_config "github.com/sailpoint-oss/golang-sdk/v3/api_sp_config"
+	api_suggested_entitlement_description "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
+	api_tagged_objects "github.com/sailpoint-oss/golang-sdk/v3/api_tagged_objects"
+	api_tags "github.com/sailpoint-oss/golang-sdk/v3/api_tags"
+	api_task_management "github.com/sailpoint-oss/golang-sdk/v3/api_task_management"
+	api_tenant "github.com/sailpoint-oss/golang-sdk/v3/api_tenant"
+	api_tenant_context "github.com/sailpoint-oss/golang-sdk/v3/api_tenant_context"
+	api_transforms "github.com/sailpoint-oss/golang-sdk/v3/api_transforms"
+	api_triggers "github.com/sailpoint-oss/golang-sdk/v3/api_triggers"
+	api_ui_metadata "github.com/sailpoint-oss/golang-sdk/v3/api_ui_metadata"
+	api_work_items "github.com/sailpoint-oss/golang-sdk/v3/api_work_items"
+	api_work_reassignment "github.com/sailpoint-oss/golang-sdk/v3/api_work_reassignment"
+	api_workflows "github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
+	generic   "github.com/sailpoint-oss/golang-sdk/v3/api_generic"
+	nerm      "github.com/sailpoint-oss/golang-sdk/v3/api_nerm"
+	nermv2025 "github.com/sailpoint-oss/golang-sdk/v3/api_nerm_v2025"
 )
 
 var (
@@ -181,7 +181,6 @@ type APIClient struct {
 	DataSegmentationAPI *api_data_segmentation.DataSegmentationAPIService
 	DeclassifySourceAPI *api_declassify_source.DeclassifySourceAPIService
 	DimensionsAPI *api_dimensions.DimensionsAPIService
-	EntitlementConnectionsAPI *api_entitlement_connections.EntitlementConnectionsAPIService
 	EntitlementsAPI *api_entitlements.EntitlementsAPIService
 	GlobalTenantSecuritySettingsAPI *api_global_tenant_security_settings.GlobalTenantSecuritySettingsAPIService
 	GovernanceGroupsAPI *api_governance_groups.GovernanceGroupsAPIService
@@ -196,6 +195,7 @@ type APIClient struct {
 	IdentityAttributesAPI *api_identity_attributes.IdentityAttributesAPIService
 	IdentityHistoryAPI *api_identity_history.IdentityHistoryAPIService
 	IdentityProfilesAPI *api_identity_profiles.IdentityProfilesAPIService
+	IntelligencePackageAPI *api_intelligence_package.IntelligencePackageAPIService
 	JITAccessAPI *api_jit_access.JITAccessAPIService
 	JITActivationsAPI *api_jit_activations.JITActivationsAPIService
 	LaunchersAPI *api_launchers.LaunchersAPIService
@@ -674,18 +674,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	_cfgDimensions.HTTPClient = cfg.HTTPClient
 	c.DimensionsAPI = api_dimensions.NewAPIClient(_cfgDimensions).DimensionsAPI
 
-	_cfgEntitlementConnections := api_entitlement_connections.NewConfiguration(
-		cfg.ClientConfiguration.ClientId,
-		cfg.ClientConfiguration.ClientSecret,
-		cfg.ClientConfiguration.BaseURL,
-		cfg.ClientConfiguration.TokenURL,
-		cfg.ClientConfiguration.Token,
-		consumerSuffix,
-		cfg.Experimental,
-	)
-	_cfgEntitlementConnections.HTTPClient = cfg.HTTPClient
-	c.EntitlementConnectionsAPI = api_entitlement_connections.NewAPIClient(_cfgEntitlementConnections).EntitlementConnectionsAPI
-
 	_cfgEntitlements := api_entitlements.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
@@ -853,6 +841,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgIdentityProfiles.HTTPClient = cfg.HTTPClient
 	c.IdentityProfilesAPI = api_identity_profiles.NewAPIClient(_cfgIdentityProfiles).IdentityProfilesAPI
+
+	_cfgIntelligencePackage := api_intelligence_package.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgIntelligencePackage.HTTPClient = cfg.HTTPClient
+	c.IntelligencePackageAPI = api_intelligence_package.NewAPIClient(_cfgIntelligencePackage).IntelligencePackageAPI
 
 	_cfgJITAccess := api_jit_access.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,

@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_entitlements"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_entitlements"
 )
 
 func Test_api_entitlements_EntitlementsAPIService(t *testing.T) {

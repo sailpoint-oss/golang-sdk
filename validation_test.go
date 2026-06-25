@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/sailpoint-oss/golang-sdk/v2/api_accounts"
-	"github.com/sailpoint-oss/golang-sdk/v2/api_transforms"
-	"github.com/sailpoint-oss/golang-sdk/v2/api_workflows"
+	"github.com/sailpoint-oss/golang-sdk/v3/api_accounts"
+	"github.com/sailpoint-oss/golang-sdk/v3/api_transforms"
+	"github.com/sailpoint-oss/golang-sdk/v3/api_workflows"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

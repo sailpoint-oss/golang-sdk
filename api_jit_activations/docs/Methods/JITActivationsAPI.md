@@ -63,8 +63,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_jit_activations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_jit_activations"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_jit_activations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_jit_activations"
 )
 
 func main() {
@@ -136,8 +136,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_jit_activations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_jit_activations"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_jit_activations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_jit_activations"
 )
 
 func main() {
@@ -210,8 +210,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_jit_activations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_jit_activations"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_jit_activations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_jit_activations"
 )
 
 func main() {

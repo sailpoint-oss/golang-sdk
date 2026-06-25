@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_non_employee_lifecycle_management
+module github.com/sailpoint-oss/golang-sdk/v3/api_non_employee_lifecycle_management
 
 go 1.23.0
 

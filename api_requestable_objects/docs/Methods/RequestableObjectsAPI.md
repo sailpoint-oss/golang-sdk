@@ -70,7 +70,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_requestable_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_requestable_objects"
 )
 
 func main() {

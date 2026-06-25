@@ -65,7 +65,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_public_identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_public_identities"
 )
 
 func main() {

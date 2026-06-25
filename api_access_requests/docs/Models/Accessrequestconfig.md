@@ -16,11 +16,10 @@ tags: ['SDK', 'Software Development Kit', 'Accessrequestconfig', 'V1Accessreques
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApprovalsMustBeExternal** | Pointer to **bool** | If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin. | [optional] [default to false]
-**AutoApprovalEnabled** | Pointer to **bool** | If this is true and the requester and reviewer are the same, the request is automatically approved. | [optional] [default to false]
 **ReauthorizationEnabled** | Pointer to **bool** | If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state. | [optional] [default to false]
 **RequestOnBehalfOfConfig** | Pointer to [**Requestonbehalfofconfig**](requestonbehalfofconfig) |  | [optional] 
-**ApprovalReminderAndEscalationConfig** | Pointer to [**Approvalreminderandescalationconfig**](approvalreminderandescalationconfig) |  | [optional] 
 **EntitlementRequestConfig** | Pointer to [**Entitlementrequestconfig**](entitlementrequestconfig) |  | [optional] 
+**GovGroupVisibilityEnabled** | Pointer to **bool** | If this is true, requesters and requested-for users will be able to see the names of governance group members when a request is awaiting the group's approval. Up to the first 10 members of the group will be listed. | [optional] [default to false]
 
 ## Methods
 
@@ -65,31 +64,6 @@ SetApprovalsMustBeExternal sets ApprovalsMustBeExternal field to given value.
 `func (o *Accessrequestconfig) HasApprovalsMustBeExternal() bool`
 
 HasApprovalsMustBeExternal returns a boolean if a field has been set.
-
-### GetAutoApprovalEnabled
-
-`func (o *Accessrequestconfig) GetAutoApprovalEnabled() bool`
-
-GetAutoApprovalEnabled returns the AutoApprovalEnabled field if non-nil, zero value otherwise.
-
-### GetAutoApprovalEnabledOk
-
-`func (o *Accessrequestconfig) GetAutoApprovalEnabledOk() (*bool, bool)`
-
-GetAutoApprovalEnabledOk returns a tuple with the AutoApprovalEnabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoApprovalEnabled
-
-`func (o *Accessrequestconfig) SetAutoApprovalEnabled(v bool)`
-
-SetAutoApprovalEnabled sets AutoApprovalEnabled field to given value.
-
-### HasAutoApprovalEnabled
-
-`func (o *Accessrequestconfig) HasAutoApprovalEnabled() bool`
-
-HasAutoApprovalEnabled returns a boolean if a field has been set.
 
 ### GetReauthorizationEnabled
 
@@ -141,31 +115,6 @@ SetRequestOnBehalfOfConfig sets RequestOnBehalfOfConfig field to given value.
 
 HasRequestOnBehalfOfConfig returns a boolean if a field has been set.
 
-### GetApprovalReminderAndEscalationConfig
-
-`func (o *Accessrequestconfig) GetApprovalReminderAndEscalationConfig() Approvalreminderandescalationconfig`
-
-GetApprovalReminderAndEscalationConfig returns the ApprovalReminderAndEscalationConfig field if non-nil, zero value otherwise.
-
-### GetApprovalReminderAndEscalationConfigOk
-
-`func (o *Accessrequestconfig) GetApprovalReminderAndEscalationConfigOk() (*Approvalreminderandescalationconfig, bool)`
-
-GetApprovalReminderAndEscalationConfigOk returns a tuple with the ApprovalReminderAndEscalationConfig field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApprovalReminderAndEscalationConfig
-
-`func (o *Accessrequestconfig) SetApprovalReminderAndEscalationConfig(v Approvalreminderandescalationconfig)`
-
-SetApprovalReminderAndEscalationConfig sets ApprovalReminderAndEscalationConfig field to given value.
-
-### HasApprovalReminderAndEscalationConfig
-
-`func (o *Accessrequestconfig) HasApprovalReminderAndEscalationConfig() bool`
-
-HasApprovalReminderAndEscalationConfig returns a boolean if a field has been set.
-
 ### GetEntitlementRequestConfig
 
 `func (o *Accessrequestconfig) GetEntitlementRequestConfig() Entitlementrequestconfig`
@@ -190,5 +139,30 @@ SetEntitlementRequestConfig sets EntitlementRequestConfig field to given value.
 `func (o *Accessrequestconfig) HasEntitlementRequestConfig() bool`
 
 HasEntitlementRequestConfig returns a boolean if a field has been set.
+
+### GetGovGroupVisibilityEnabled
+
+`func (o *Accessrequestconfig) GetGovGroupVisibilityEnabled() bool`
+
+GetGovGroupVisibilityEnabled returns the GovGroupVisibilityEnabled field if non-nil, zero value otherwise.
+
+### GetGovGroupVisibilityEnabledOk
+
+`func (o *Accessrequestconfig) GetGovGroupVisibilityEnabledOk() (*bool, bool)`
+
+GetGovGroupVisibilityEnabledOk returns a tuple with the GovGroupVisibilityEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGovGroupVisibilityEnabled
+
+`func (o *Accessrequestconfig) SetGovGroupVisibilityEnabled(v bool)`
+
+SetGovGroupVisibilityEnabled sets GovGroupVisibilityEnabled field to given value.
+
+### HasGovGroupVisibilityEnabled
+
+`func (o *Accessrequestconfig) HasGovGroupVisibilityEnabled() bool`
+
+HasGovGroupVisibilityEnabled returns a boolean if a field has been set.
 
 

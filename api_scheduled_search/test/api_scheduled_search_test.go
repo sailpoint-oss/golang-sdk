@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_scheduled_search"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_scheduled_search"
 )
 
 func Test_api_scheduled_search_ScheduledSearchAPIService(t *testing.T) {

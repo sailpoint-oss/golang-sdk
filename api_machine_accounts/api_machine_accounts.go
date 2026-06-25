@@ -54,8 +54,6 @@ Create a new machine account subtype for a source.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The ID of the source.
  @return ApiCreateMachineAccountSubtypeV1Request
-
-Deprecated
 */
 func (a *MachineAccountsAPIService) CreateMachineAccountSubtypeV1(ctx context.Context, sourceId string) ApiCreateMachineAccountSubtypeV1Request {
 	return ApiCreateMachineAccountSubtypeV1Request{
@@ -67,7 +65,6 @@ func (a *MachineAccountsAPIService) CreateMachineAccountSubtypeV1(ctx context.Co
 
 // Execute executes the request
 //  @return Sourcesubtype
-// Deprecated
 func (a *MachineAccountsAPIService) CreateMachineAccountSubtypeV1Execute(r ApiCreateMachineAccountSubtypeV1Request) (*Sourcesubtype, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -244,8 +241,6 @@ Delete a machine account subtype by source ID and technical name.
  @param sourceId The ID of the source.
  @param technicalName The technical name of the subtype.
  @return ApiDeleteMachineAccountSubtypeByTechnicalNameV1Request
-
-Deprecated
 */
 func (a *MachineAccountsAPIService) DeleteMachineAccountSubtypeByTechnicalNameV1(ctx context.Context, sourceId string, technicalName string) ApiDeleteMachineAccountSubtypeByTechnicalNameV1Request {
 	return ApiDeleteMachineAccountSubtypeByTechnicalNameV1Request{
@@ -257,7 +252,6 @@ func (a *MachineAccountsAPIService) DeleteMachineAccountSubtypeByTechnicalNameV1
 }
 
 // Execute executes the request
-// Deprecated
 func (a *MachineAccountsAPIService) DeleteMachineAccountSubtypeByTechnicalNameV1Execute(r ApiDeleteMachineAccountSubtypeByTechnicalNameV1Request) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -387,6 +381,191 @@ func (a *MachineAccountsAPIService) DeleteMachineAccountSubtypeByTechnicalNameV1
 	return localVarHTTPResponse, nil
 }
 
+type ApiGetMachineAccountSubtypeApprovalConfigV1Request struct {
+	ctx context.Context
+	ApiService *MachineAccountsAPIService
+	xSailPointExperimental *string
+	subtypeId string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetMachineAccountSubtypeApprovalConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetMachineAccountSubtypeApprovalConfigV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
+}
+
+func (r ApiGetMachineAccountSubtypeApprovalConfigV1Request) Execute() (*Machineaccountsubtypeconfigdto, *http.Response, error) {
+	return r.ApiService.GetMachineAccountSubtypeApprovalConfigV1Execute(r)
+}
+
+/*
+GetMachineAccountSubtypeApprovalConfigV1 Machine Subtype Approval Config
+
+This endpoint retrieves the approval configuration for machine account creation and deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account creation and deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for creating and deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account creation and deletion.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param subtypeId machine subtype id.
+ @return ApiGetMachineAccountSubtypeApprovalConfigV1Request
+*/
+func (a *MachineAccountsAPIService) GetMachineAccountSubtypeApprovalConfigV1(ctx context.Context, subtypeId string) ApiGetMachineAccountSubtypeApprovalConfigV1Request {
+	return ApiGetMachineAccountSubtypeApprovalConfigV1Request{
+		ApiService: a,
+		ctx: ctx,
+		subtypeId: subtypeId,
+	}
+}
+
+// Execute executes the request
+//  @return Machineaccountsubtypeconfigdto
+func (a *MachineAccountsAPIService) GetMachineAccountSubtypeApprovalConfigV1Execute(r ApiGetMachineAccountSubtypeApprovalConfigV1Request) (*Machineaccountsubtypeconfigdto, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Machineaccountsubtypeconfigdto
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountsAPIService.GetMachineAccountSubtypeApprovalConfigV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/source-subtypes/v1/{subtypeId}/machine-config"
+	localVarPath = strings.Replace(localVarPath, "{"+"subtypeId"+"}", url.PathEscape(parameterValueToString(r.subtypeId, "subtypeId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListMachineAccountsV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListMachineAccountsV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetMachineAccountSubtypeByIdV1Request struct {
 	ctx context.Context
 	ApiService *MachineAccountsAPIService
@@ -412,8 +591,6 @@ Get a machine account subtype by its unique ID.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param subtypeId The ID of the machine account subtype.
  @return ApiGetMachineAccountSubtypeByIdV1Request
-
-Deprecated
 */
 func (a *MachineAccountsAPIService) GetMachineAccountSubtypeByIdV1(ctx context.Context, subtypeId string) ApiGetMachineAccountSubtypeByIdV1Request {
 	return ApiGetMachineAccountSubtypeByIdV1Request{
@@ -425,7 +602,6 @@ func (a *MachineAccountsAPIService) GetMachineAccountSubtypeByIdV1(ctx context.C
 
 // Execute executes the request
 //  @return Sourcesubtype
-// Deprecated
 func (a *MachineAccountsAPIService) GetMachineAccountSubtypeByIdV1Execute(r ApiGetMachineAccountSubtypeByIdV1Request) (*Sourcesubtype, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -591,8 +767,6 @@ Get a machine account subtype by source ID and technical name.
  @param sourceId The ID of the source.
  @param technicalName The technical name of the subtype.
  @return ApiGetMachineAccountSubtypeByTechnicalNameV1Request
-
-Deprecated
 */
 func (a *MachineAccountsAPIService) GetMachineAccountSubtypeByTechnicalNameV1(ctx context.Context, sourceId string, technicalName string) ApiGetMachineAccountSubtypeByTechnicalNameV1Request {
 	return ApiGetMachineAccountSubtypeByTechnicalNameV1Request{
@@ -605,7 +779,6 @@ func (a *MachineAccountsAPIService) GetMachineAccountSubtypeByTechnicalNameV1(ct
 
 // Execute executes the request
 //  @return Sourcesubtype
-// Deprecated
 func (a *MachineAccountsAPIService) GetMachineAccountSubtypeByTechnicalNameV1Execute(r ApiGetMachineAccountSubtypeByTechnicalNameV1Request) (*Sourcesubtype, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -990,8 +1163,6 @@ Get all machine account subtypes for a given source.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The ID of the source.
  @return ApiListMachineAccountSubtypesV1Request
-
-Deprecated
 */
 func (a *MachineAccountsAPIService) ListMachineAccountSubtypesV1(ctx context.Context, sourceId string) ApiListMachineAccountSubtypesV1Request {
 	return ApiListMachineAccountSubtypesV1Request{
@@ -1003,7 +1174,6 @@ func (a *MachineAccountsAPIService) ListMachineAccountSubtypesV1(ctx context.Con
 
 // Execute executes the request
 //  @return []Sourcesubtype
-// Deprecated
 func (a *MachineAccountsAPIService) ListMachineAccountSubtypesV1Execute(r ApiListMachineAccountSubtypesV1Request) ([]Sourcesubtype, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1406,6 +1576,210 @@ func (a *MachineAccountsAPIService) ListMachineAccountsV1Execute(r ApiListMachin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiLoadBulkSourceSubtypesV1Request struct {
+	ctx context.Context
+	ApiService *MachineAccountsAPIService
+	xSailPointExperimental *string
+	requestBody *[]string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiLoadBulkSourceSubtypesV1Request) XSailPointExperimental(xSailPointExperimental string) ApiLoadBulkSourceSubtypesV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
+}
+
+func (r ApiLoadBulkSourceSubtypesV1Request) RequestBody(requestBody []string) ApiLoadBulkSourceSubtypesV1Request {
+	r.requestBody = &requestBody
+	return r
+}
+
+func (r ApiLoadBulkSourceSubtypesV1Request) Execute() ([]Sourcesubtypewithsource, *http.Response, error) {
+	return r.ApiService.LoadBulkSourceSubtypesV1Execute(r)
+}
+
+/*
+LoadBulkSourceSubtypesV1 Bulk Retrieve of Source Subtypes
+
+This endpoint retrieves the subtypes for given subtypeIds.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiLoadBulkSourceSubtypesV1Request
+*/
+func (a *MachineAccountsAPIService) LoadBulkSourceSubtypesV1(ctx context.Context) ApiLoadBulkSourceSubtypesV1Request {
+	return ApiLoadBulkSourceSubtypesV1Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []Sourcesubtypewithsource
+func (a *MachineAccountsAPIService) LoadBulkSourceSubtypesV1Execute(r ApiLoadBulkSourceSubtypesV1Request) ([]Sourcesubtypewithsource, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Sourcesubtypewithsource
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountsAPIService.LoadBulkSourceSubtypesV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/source-subtypes/v1/bulk-retrieve"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.requestBody == nil {
+		return localVarReturnValue, nil, reportError("requestBody is required and must be specified")
+	}
+	if len(*r.requestBody) < 1 {
+		return localVarReturnValue, nil, reportError("requestBody must have at least 1 elements")
+	}
+	if len(*r.requestBody) > 100 {
+		return localVarReturnValue, nil, reportError("requestBody must have less than 100 elements")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
+	// body params
+	localVarPostBody = r.requestBody
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListMachineAccountsV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListMachineAccountsV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiPatchMachineAccountSubtypeByTechnicalNameV1Request struct {
 	ctx context.Context
 	ApiService *MachineAccountsAPIService
@@ -1441,8 +1815,6 @@ Patchable fields include: `displayName`, `description`.
  @param sourceId The ID of the source.
  @param technicalName The technical name of the subtype.
  @return ApiPatchMachineAccountSubtypeByTechnicalNameV1Request
-
-Deprecated
 */
 func (a *MachineAccountsAPIService) PatchMachineAccountSubtypeByTechnicalNameV1(ctx context.Context, sourceId string, technicalName string) ApiPatchMachineAccountSubtypeByTechnicalNameV1Request {
 	return ApiPatchMachineAccountSubtypeByTechnicalNameV1Request{
@@ -1455,7 +1827,6 @@ func (a *MachineAccountsAPIService) PatchMachineAccountSubtypeByTechnicalNameV1(
 
 // Execute executes the request
 //  @return Sourcesubtype
-// Deprecated
 func (a *MachineAccountsAPIService) PatchMachineAccountSubtypeByTechnicalNameV1Execute(r ApiPatchMachineAccountSubtypeByTechnicalNameV1Request) (*Sourcesubtype, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
@@ -1560,6 +1931,209 @@ func (a *MachineAccountsAPIService) PatchMachineAccountSubtypeByTechnicalNameV1E
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListMachineAccountsV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateMachineAccountSubtypeApprovalConfigV1Request struct {
+	ctx context.Context
+	ApiService *MachineAccountsAPIService
+	xSailPointExperimental *string
+	subtypeId string
+	jsonpatchoperation *[]Jsonpatchoperation
+}
+
+// Use this header to enable this experimental API.
+func (r ApiUpdateMachineAccountSubtypeApprovalConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiUpdateMachineAccountSubtypeApprovalConfigV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
+}
+
+// The JSONPatch payload used to update the object.
+func (r ApiUpdateMachineAccountSubtypeApprovalConfigV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateMachineAccountSubtypeApprovalConfigV1Request {
+	r.jsonpatchoperation = &jsonpatchoperation
+	return r
+}
+
+func (r ApiUpdateMachineAccountSubtypeApprovalConfigV1Request) Execute() (*Machineaccountsubtypeconfigdto, *http.Response, error) {
+	return r.ApiService.UpdateMachineAccountSubtypeApprovalConfigV1Execute(r)
+}
+
+/*
+UpdateMachineAccountSubtypeApprovalConfigV1 Machine Subtype Approval Config
+
+Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account creation and deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for creating and deleting machine accounts of a particular subtype.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param subtypeId machine account subtype ID.
+ @return ApiUpdateMachineAccountSubtypeApprovalConfigV1Request
+*/
+func (a *MachineAccountsAPIService) UpdateMachineAccountSubtypeApprovalConfigV1(ctx context.Context, subtypeId string) ApiUpdateMachineAccountSubtypeApprovalConfigV1Request {
+	return ApiUpdateMachineAccountSubtypeApprovalConfigV1Request{
+		ApiService: a,
+		ctx: ctx,
+		subtypeId: subtypeId,
+	}
+}
+
+// Execute executes the request
+//  @return Machineaccountsubtypeconfigdto
+func (a *MachineAccountsAPIService) UpdateMachineAccountSubtypeApprovalConfigV1Execute(r ApiUpdateMachineAccountSubtypeApprovalConfigV1Request) (*Machineaccountsubtypeconfigdto, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Machineaccountsubtypeconfigdto
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountsAPIService.UpdateMachineAccountSubtypeApprovalConfigV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/source-subtypes/v1/{subtypeId}/machine-config"
+	localVarPath = strings.Replace(localVarPath, "{"+"subtypeId"+"}", url.PathEscape(parameterValueToString(r.subtypeId, "subtypeId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.jsonpatchoperation == nil {
+		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json-patch+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
+	// body params
+	localVarPostBody = r.jsonpatchoperation
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListMachineAccountsV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Errorresponsedto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
 			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

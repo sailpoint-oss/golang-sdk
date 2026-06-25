@@ -100,8 +100,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
 )
 
 func main() {
@@ -176,7 +176,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
 )
 
 func main() {
@@ -240,8 +240,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
 )
 
 func main() {
@@ -319,7 +319,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
 )
 
 func main() {
@@ -390,7 +390,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
 )
 
 func main() {
@@ -460,7 +460,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
 )
 
 func main() {
@@ -564,8 +564,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
 )
 
 func main() {
@@ -650,8 +650,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_access_profiles"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_access_profiles"
 )
 
 func main() {

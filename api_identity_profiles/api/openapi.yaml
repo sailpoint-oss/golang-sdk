@@ -200,7 +200,6 @@ paths:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - API
     post:
       description: 'Creates an identity profile.    '
       operationId: createIdentityProfileV1
@@ -276,14 +275,11 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      - applicationAuth:
-        - idn:identity-profile:manage
       summary: Create identity profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - API
   /identity-profiles/v1/bulk-delete:
     post:
       description: |-
@@ -367,14 +363,11 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      - applicationAuth:
-        - idn:identity-profile:manage
       summary: Delete identity profiles
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - API
   /identity-profiles/v1/export:
     get:
       description: This exports existing identity profiles in the format specified
@@ -714,14 +707,11 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      - applicationAuth:
-        - idn:identity-profile:manage
       summary: Delete identity profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - API
     get:
       description: Get a single identity profile by ID.
       operationId: getIdentityProfileV1
@@ -828,7 +818,6 @@ paths:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - API
     patch:
       description: "Update a specified identity profile with this PATCH request.\n\
         \  \nYou cannot update these fields:\n* id\n* created\n* modified\n* identityCount\n\
@@ -955,14 +944,11 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      - applicationAuth:
-        - idn:identity-profile:manage
       summary: Update identity profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - API
   /identity-profiles/v1/{identity-profile-id}/default-identity-attribute-config:
     get:
       description: This returns the default identity attribute config.
@@ -1063,14 +1049,11 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      - applicationAuth:
-        - idn:identity-profile:manage
       summary: Get default identity attribute config
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - API
   /identity-profiles/v1/{identity-profile-id}/process-identities:
     post:
       description: "Process identities under the profile\nThis operation should not\
@@ -1189,14 +1172,11 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      - applicationAuth:
-        - idn:identity-profile:manage
       summary: Process identities under profile
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - API
   /identity-profiles/v1/identity-preview:
     post:
       description: This generates a non-persisted IdentityDetails object that will
@@ -1277,14 +1257,11 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
-      - applicationAuth:
-        - idn:identity-profile:manage
       summary: Generate identity profile preview
       tags:
       - Identity Profiles
       x-sailpoint-userLevels:
       - ORG_ADMIN
-      - API
 components:
   parameters:
     limit:

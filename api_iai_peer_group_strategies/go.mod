@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_iai_peer_group_strategies
+module github.com/sailpoint-oss/golang-sdk/v3/api_iai_peer_group_strategies
 
 go 1.23.0
 

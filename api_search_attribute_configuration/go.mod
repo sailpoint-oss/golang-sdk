@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_search_attribute_configuration
+module github.com/sailpoint-oss/golang-sdk/v3/api_search_attribute_configuration
 
 go 1.23.0
 

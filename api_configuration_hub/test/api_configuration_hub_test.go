@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_configuration_hub"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_configuration_hub"
 )
 
 func Test_api_configuration_hub_ConfigurationHubAPIService(t *testing.T) {

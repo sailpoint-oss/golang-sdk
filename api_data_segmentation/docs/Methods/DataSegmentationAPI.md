@@ -66,8 +66,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
 )
 
 func main() {
@@ -151,7 +151,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
 )
 
 func main() {
@@ -230,7 +230,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
 )
 
 func main() {
@@ -309,7 +309,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
 )
 
 func main() {
@@ -388,7 +388,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
 )
 
 func main() {
@@ -469,7 +469,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
 )
 
 func main() {
@@ -554,8 +554,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
 )
 
 func main() {
@@ -641,8 +641,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
 )
 
 func main() {

@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_service_desk_integration"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_service_desk_integration"
 )
 
 func Test_api_service_desk_integration_ServiceDeskIntegrationAPIService(t *testing.T) {

@@ -158,7 +158,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -222,8 +222,8 @@ import (
 	"os"
   "encoding/json"
     
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -290,8 +290,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -363,7 +363,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -429,7 +429,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -490,8 +490,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -564,7 +564,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -628,7 +628,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -694,7 +694,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -761,7 +761,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -828,7 +828,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -897,7 +897,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -969,7 +969,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -1037,8 +1037,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -1111,8 +1111,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -1180,8 +1180,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -1254,7 +1254,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -1321,7 +1321,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -1390,7 +1390,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -1459,7 +1459,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -1537,7 +1537,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {
@@ -1604,8 +1604,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_campaigns"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_campaigns"
 )
 
 func main() {

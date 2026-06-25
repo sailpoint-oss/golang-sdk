@@ -78,8 +78,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_personal_access_tokens"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_personal_access_tokens"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_personal_access_tokens"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_personal_access_tokens"
 )
 
 func main() {
@@ -150,7 +150,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_personal_access_tokens"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_personal_access_tokens"
 )
 
 func main() {
@@ -212,7 +212,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_personal_access_tokens"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_personal_access_tokens"
 )
 
 func main() {
@@ -288,8 +288,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_personal_access_tokens"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_personal_access_tokens"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_personal_access_tokens"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_personal_access_tokens"
 )
 
 func main() {

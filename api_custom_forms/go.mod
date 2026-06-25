@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_custom_forms
+module github.com/sailpoint-oss/golang-sdk/v3/api_custom_forms
 
 go 1.23.0
 

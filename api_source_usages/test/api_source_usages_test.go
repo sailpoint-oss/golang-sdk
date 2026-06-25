@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_source_usages"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_source_usages"
 )
 
 func Test_api_source_usages_SourceUsagesAPIService(t *testing.T) {

@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_identities"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_identities"
 )
 
 func Test_api_identities_IdentitiesAPIService(t *testing.T) {

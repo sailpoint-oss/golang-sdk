@@ -66,7 +66,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_prompt_insights"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_prompt_insights"
 )
 
 func main() {
@@ -131,7 +131,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_prompt_insights"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_prompt_insights"
 )
 
 func main() {

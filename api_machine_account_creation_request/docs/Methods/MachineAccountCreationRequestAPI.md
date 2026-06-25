@@ -76,8 +76,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_creation_request"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_creation_request"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_creation_request"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_creation_request"
 )
 
 func main() {
@@ -161,7 +161,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_creation_request"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_creation_request"
 )
 
 func main() {
@@ -238,7 +238,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_machine_account_creation_request"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_machine_account_creation_request"
 )
 
 func main() {

@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import api_password_dictionary "github.com/sailpoint-oss/golang-sdk/v2/api_password_dictionary"
+import api_password_dictionary "github.com/sailpoint-oss/golang-sdk/v3/api_password_dictionary"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:

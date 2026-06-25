@@ -91,7 +91,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
 )
 
 func main() {
@@ -183,7 +183,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
 )
 
 func main() {
@@ -274,7 +274,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
 )
 
 func main() {
@@ -359,7 +359,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
 )
 
 func main() {
@@ -444,7 +444,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
 )
 
 func main() {
@@ -531,7 +531,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
 )
 
 func main() {
@@ -611,7 +611,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
 )
 
 func main() {
@@ -690,7 +690,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
 )
 
 func main() {
@@ -778,7 +778,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
 )
 
 func main() {
@@ -864,7 +864,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
 )
 
 func main() {
@@ -950,7 +950,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_identity_history"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_identity_history"
 )
 
 func main() {

@@ -81,7 +81,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_parameter_storage"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_parameter_storage"
 )
 
 func main() {
@@ -147,7 +147,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_parameter_storage"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_parameter_storage"
 )
 
 func main() {
@@ -208,7 +208,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_parameter_storage"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_parameter_storage"
 )
 
 func main() {
@@ -277,7 +277,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_parameter_storage"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_parameter_storage"
 )
 
 func main() {
@@ -353,7 +353,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_parameter_storage"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_parameter_storage"
 )
 
 func main() {
@@ -418,7 +418,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_parameter_storage"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_parameter_storage"
 )
 
 func main() {
@@ -483,7 +483,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_parameter_storage"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_parameter_storage"
 )
 
 func main() {
@@ -553,7 +553,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_parameter_storage"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_parameter_storage"
 )
 
 func main() {

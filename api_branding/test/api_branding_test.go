@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_branding"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_branding"
 )
 
 func Test_api_branding_BrandingAPIService(t *testing.T) {

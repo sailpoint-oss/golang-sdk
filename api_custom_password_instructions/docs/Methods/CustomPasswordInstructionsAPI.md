@@ -81,8 +81,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_custom_password_instructions"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_password_instructions"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_custom_password_instructions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_custom_password_instructions"
 )
 
 func main() {
@@ -167,7 +167,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_password_instructions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_custom_password_instructions"
 )
 
 func main() {
@@ -247,7 +247,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_custom_password_instructions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_custom_password_instructions"
 )
 
 func main() {

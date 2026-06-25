@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_iai_common_access
+module github.com/sailpoint-oss/golang-sdk/v3/api_iai_common_access
 
 go 1.23.0
 

@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_password_policies"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_password_policies"
 )
 
 func Test_api_password_policies_PasswordPoliciesAPIService(t *testing.T) {

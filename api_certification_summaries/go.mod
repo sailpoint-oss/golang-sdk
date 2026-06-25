@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_certification_summaries
+module github.com/sailpoint-oss/golang-sdk/v3/api_certification_summaries
 
 go 1.23.0
 

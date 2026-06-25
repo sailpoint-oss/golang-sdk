@@ -45,7 +45,7 @@ const JAR           = path.join(SDK_ROOT, "openapi-generator-cli.jar");
 const POSTSCRIPT    = path.join(__dirname, "postscript.js");
 const TEMPLATE_DIR  = path.join(__dirname, "resources");
 
-const GIT_REPO_ID   = "golang-sdk/v2";
+const GIT_REPO_ID   = "golang-sdk/v3";
 const GIT_USER_ID   = "sailpoint-oss";
 const API_VERSION   = "v1";
 const FN_PREFIX     = "V1";
@@ -194,7 +194,7 @@ function writePartitionConfig(partitionName) {
 
   const packageName   = `api_${partitionName.replaceAll("-", "_")}`;
   const subModuleName = pascal;
-  const importPath    = `github.com/sailpoint-oss/golang-sdk/v2/${packageName}`;
+  const importPath    = `github.com/sailpoint-oss/golang-sdk/v3/${packageName}`;
 
   const config = [
     `templateDir: ${TEMPLATE_DIR}`,
@@ -583,7 +583,7 @@ function packageToFieldName(pkgName) {
  * GetAccessRequestConfigV2), so no version suffix is added to the folder or field name.
  */
 function generateClientGo() {
-  const MODULE = "github.com/sailpoint-oss/golang-sdk/v2";
+  const MODULE = "github.com/sailpoint-oss/golang-sdk/v3";
 
   // All api_* packages except the known special cases (generic, nerm, nerm_v2025)
   const SPECIAL_PKGS = new Set(["api_generic", "api_nerm", "api_nerm_v2025"]);

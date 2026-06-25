@@ -73,8 +73,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -140,8 +140,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -204,7 +204,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -273,7 +273,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -340,7 +340,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -407,7 +407,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -471,7 +471,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -555,7 +555,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -628,8 +628,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -701,8 +701,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -769,8 +769,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -837,8 +837,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -905,8 +905,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -974,7 +974,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {
@@ -1035,8 +1035,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_suggested_entitlement_description"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_suggested_entitlement_description"
 )
 
 func main() {

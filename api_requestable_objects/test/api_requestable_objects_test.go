@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_requestable_objects"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_requestable_objects"
 )
 
 func Test_api_requestable_objects_RequestableObjectsAPIService(t *testing.T) {

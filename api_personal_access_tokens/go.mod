@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_personal_access_tokens
+module github.com/sailpoint-oss/golang-sdk/v3/api_personal_access_tokens
 
 go 1.23.0
 

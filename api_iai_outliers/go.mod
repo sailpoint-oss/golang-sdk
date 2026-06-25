@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_iai_outliers
+module github.com/sailpoint-oss/golang-sdk/v3/api_iai_outliers
 
 go 1.23.0
 

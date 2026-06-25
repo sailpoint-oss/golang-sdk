@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_oauth_clients
+module github.com/sailpoint-oss/golang-sdk/v3/api_oauth_clients
 
 go 1.23.0
 

@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import api_access_requests "github.com/sailpoint-oss/golang-sdk/v2/api_access_requests"
+import api_access_requests "github.com/sailpoint-oss/golang-sdk/v3/api_access_requests"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -85,13 +85,11 @@ Class | Method | HTTP request | Description
 *AccessRequestsAPI* | [**CloseAccessRequestV1**](docs/AccessRequestsAPI.md#closeaccessrequestv1) | **Post** /access-requests/v1/close | Close access request
 *AccessRequestsAPI* | [**CreateAccessRequestV1**](docs/AccessRequestsAPI.md#createaccessrequestv1) | **Post** /access-requests/v1 | Submit access request
 *AccessRequestsAPI* | [**GetAccessRequestConfigV1**](docs/AccessRequestsAPI.md#getaccessrequestconfigv1) | **Get** /access-request-config/v1 | Get access request configuration
-*AccessRequestsAPI* | [**GetAccessRequestConfigV2**](docs/AccessRequestsAPI.md#getaccessrequestconfigv2) | **Get** /access-request-config/v2 | Get access request configuration
 *AccessRequestsAPI* | [**GetEntitlementDetailsForIdentityV1**](docs/AccessRequestsAPI.md#getentitlementdetailsforidentityv1) | **Get** /revocable-objects/v1 | Identity entitlement details
 *AccessRequestsAPI* | [**ListAccessRequestStatusV1**](docs/AccessRequestsAPI.md#listaccessrequeststatusv1) | **Get** /access-request-status/v1 | Access request status
 *AccessRequestsAPI* | [**ListAdministratorsAccessRequestStatusV1**](docs/AccessRequestsAPI.md#listadministratorsaccessrequeststatusv1) | **Get** /access-request-administration/v1 | Access request status for administrators
 *AccessRequestsAPI* | [**LoadAccountSelectionsV1**](docs/AccessRequestsAPI.md#loadaccountselectionsv1) | **Post** /access-requests/v1/accounts-selection | Get accounts selections for identity
 *AccessRequestsAPI* | [**SetAccessRequestConfigV1**](docs/AccessRequestsAPI.md#setaccessrequestconfigv1) | **Put** /access-request-config/v1 | Update access request configuration
-*AccessRequestsAPI* | [**SetAccessRequestConfigV2**](docs/AccessRequestsAPI.md#setaccessrequestconfigv2) | **Put** /access-request-config/v2 | Update access request configuration
 
 
 ## Documentation For Models
@@ -101,7 +99,6 @@ Class | Method | HTTP request | Description
  - [Accessrequest](docs/Accessrequest.md)
  - [Accessrequestadminitemstatus](docs/Accessrequestadminitemstatus.md)
  - [Accessrequestconfig](docs/Accessrequestconfig.md)
- - [Accessrequestconfigv2](docs/Accessrequestconfigv2.md)
  - [Accessrequestitem](docs/Accessrequestitem.md)
  - [Accessrequestphases](docs/Accessrequestphases.md)
  - [Accessrequestresponse](docs/Accessrequestresponse.md)
@@ -112,7 +109,6 @@ Class | Method | HTTP request | Description
  - [Accountsselectionrequest](docs/Accountsselectionrequest.md)
  - [Accountsselectionresponse](docs/Accountsselectionresponse.md)
  - [Approvalforwardhistory](docs/Approvalforwardhistory.md)
- - [Approvalreminderandescalationconfig](docs/Approvalreminderandescalationconfig.md)
  - [Approvalscheme](docs/Approvalscheme.md)
  - [Approvalstatusdto](docs/Approvalstatusdto.md)
  - [ApprovalstatusdtoCurrentOwner](docs/ApprovalstatusdtoCurrentOwner.md)
@@ -129,7 +125,6 @@ Class | Method | HTTP request | Description
  - [EntitlementaccessrequestconfigMaxPermittedAccessDuration](docs/EntitlementaccessrequestconfigMaxPermittedAccessDuration.md)
  - [Entitlementapprovalscheme](docs/Entitlementapprovalscheme.md)
  - [Entitlementrequestconfig](docs/Entitlementrequestconfig.md)
- - [Entitlementrequestconfigv2](docs/Entitlementrequestconfigv2.md)
  - [Entitlementrevocationrequestconfig](docs/Entitlementrevocationrequestconfig.md)
  - [Errormessagedto](docs/Errormessagedto.md)
  - [Errorresponsedto](docs/Errorresponsedto.md)
@@ -139,7 +134,6 @@ Class | Method | HTTP request | Description
  - [Identityentitlementdetails](docs/Identityentitlementdetails.md)
  - [Identityentitlementdetailsaccounttarget](docs/Identityentitlementdetailsaccounttarget.md)
  - [Identityentitlementdetailsentitlementdto](docs/Identityentitlementdetailsentitlementdto.md)
- - [Identityreferencewithnameandemail](docs/Identityreferencewithnameandemail.md)
  - [Localeorigin](docs/Localeorigin.md)
  - [Manualworkitemdetails](docs/Manualworkitemdetails.md)
  - [ManualworkitemdetailsCurrentOwner](docs/ManualworkitemdetailsCurrentOwner.md)
@@ -163,7 +157,6 @@ Class | Method | HTTP request | Description
  - [RequesteditemstatusSodViolationContext](docs/RequesteditemstatusSodViolationContext.md)
  - [Requesteditemstatusrequeststate](docs/Requesteditemstatusrequeststate.md)
  - [Requestonbehalfofconfig](docs/Requestonbehalfofconfig.md)
- - [Requestonbehalfofconfigv2](docs/Requestonbehalfofconfigv2.md)
  - [Sodexemptcriteria](docs/Sodexemptcriteria.md)
  - [Sodpolicydto](docs/Sodpolicydto.md)
  - [Sodviolationcheckresult](docs/Sodviolationcheckresult.md)

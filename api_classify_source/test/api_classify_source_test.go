@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_classify_source"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_classify_source"
 )
 
 func Test_api_classify_source_ClassifySourceAPIService(t *testing.T) {

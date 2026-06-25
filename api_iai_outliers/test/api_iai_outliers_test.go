@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_iai_outliers"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_iai_outliers"
 )
 
 func Test_api_iai_outliers_IAIOutliersAPIService(t *testing.T) {

@@ -85,7 +85,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_summaries"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_summaries"
 )
 
 func main() {
@@ -158,7 +158,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_summaries"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_summaries"
 )
 
 func main() {
@@ -230,7 +230,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_summaries"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_summaries"
 )
 
 func main() {
@@ -303,7 +303,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_certification_summaries"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_certification_summaries"
 )
 
 func main() {

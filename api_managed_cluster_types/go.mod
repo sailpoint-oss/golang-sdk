@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_managed_cluster_types
+module github.com/sailpoint-oss/golang-sdk/v3/api_managed_cluster_types
 
 go 1.23.0
 

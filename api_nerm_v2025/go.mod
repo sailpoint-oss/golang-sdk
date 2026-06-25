@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_nerm_v2025
+module github.com/sailpoint-oss/golang-sdk/v3/api_nerm_v2025
 
 go 1.23.0
 

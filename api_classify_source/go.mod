@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_classify_source
+module github.com/sailpoint-oss/golang-sdk/v3/api_classify_source
 
 go 1.23.0
 

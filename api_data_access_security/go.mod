@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/v2/api_data_access_security
+module github.com/sailpoint-oss/golang-sdk/v3/api_data_access_security
 
 go 1.23.0
 

@@ -66,7 +66,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_account_deletion_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_account_deletion_requests"
 )
 
 func main() {
@@ -132,7 +132,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_account_deletion_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_account_deletion_requests"
 )
 
 func main() {

@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_role_propagation"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_role_propagation"
 )
 
 func Test_api_role_propagation_RolePropagationAPIService(t *testing.T) {

@@ -58,7 +58,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tenant_context"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_tenant_context"
 )
 
 func main() {
@@ -123,8 +123,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v2/api_tenant_context"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2/api_tenant_context"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/api_tenant_context"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/api_tenant_context"
 )
 
 func main() {

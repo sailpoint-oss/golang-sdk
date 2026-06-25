@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2/api_data_segmentation"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v3/api_data_segmentation"
 )
 
 func Test_api_data_segmentation_DataSegmentationAPIService(t *testing.T) {
