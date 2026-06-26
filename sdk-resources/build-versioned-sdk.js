@@ -192,7 +192,7 @@ function writePartitionConfig(partitionName) {
     .map(s => s.charAt(0).toUpperCase() + s.slice(1))
     .join("");
 
-  const packageName   = `api_${partitionName.replaceAll("-", "_")}`;
+  const packageName   = partitionName.replaceAll("-", "_");
   const subModuleName = pascal;
   const importPath    = `github.com/sailpoint-oss/golang-sdk/v3/${packageName}`;
 
@@ -233,7 +233,7 @@ function writePartitionConfig(partitionName) {
 // ---------------------------------------------------------------------------
 
 function generatePartition(partitionName, bundledSpec, configPath) {
-  const packageName = `api_${partitionName.replaceAll("-", "_")}`;
+  const packageName = partitionName.replaceAll("-", "_");
   const outputDir   = path.join(SDK_ROOT, packageName);
 
   if (fs.existsSync(outputDir)) {
@@ -447,13 +447,21 @@ async function main() {
   // Clear any previous error reports
   if (fs.existsSync(ERROR_DIR)) fs.rmSync(ERROR_DIR, { recursive: true, force: true });
 
-  // Remove all stale api_* partition directories so renamed/removed APIs don't linger.
+  // Remove stale partition directories so renamed/removed APIs don't linger.
+  // A stale dir is one that has a go.mod (i.e. is a generated submodule) but does not
+  // correspond to any current partition and is not a special hand-written package.
   // Skipped when --partition is used (single-partition rebuild preserves sibling packages).
   if (!onlyPartition) {
-    console.log("[CLEAN] Removing stale api_* partition directories ...");
-    const SPECIAL_PKGS = new Set(["api_generic", "api_nerm", "api_nerm_v2025"]);
+    console.log("[CLEAN] Removing stale partition directories ...");
+    const SPECIAL_PKGS = new Set(["generic", "nerm", "nerm_v2025"]);
+    const expectedPkgs = new Set(allPartitions.map(p => p.replaceAll("-", "_")));
     const stale = fs.readdirSync(SDK_ROOT)
-      .filter(d => /^api_/.test(d) && !SPECIAL_PKGS.has(d) && fs.statSync(path.join(SDK_ROOT, d)).isDirectory());
+      .filter(d => {
+        if (d.startsWith(".") || SPECIAL_PKGS.has(d)) return false;
+        const dir = path.join(SDK_ROOT, d);
+        if (!fs.statSync(dir).isDirectory()) return false;
+        return fs.existsSync(path.join(dir, "go.mod")) && !expectedPkgs.has(d);
+      });
     for (const d of stale) {
       fs.rmSync(path.join(SDK_ROOT, d), { recursive: true, force: true });
       console.log(`  removed ${d}/`);
@@ -560,12 +568,11 @@ async function main() {
 }
 
 /**
- * Convert a snake_case package name like api_access_profiles_v1 to a
+ * Convert a snake_case package name like access_profiles to a
  * PascalCase Go field name like AccessProfiles.
  */
 function packageToFieldName(pkgName) {
   return pkgName
-    .replace(/^api_/, "")
     .replace(/_v\d+$/, "")
     .split("_")
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
@@ -573,11 +580,11 @@ function packageToFieldName(pkgName) {
 }
 
 /**
- * Regenerate golang-sdk/client.go from the api_* packages currently on disk.
- * Also keeps api_generic, api_nerm, and api_nerm_v2025 as special cases.
+ * Regenerate golang-sdk/client.go from the partition packages currently on disk.
+ * Also keeps generic, nerm, and nerm_v2025 as special cases.
  *
  * Field naming convention:
- *   AccountsAPI *api_accounts.AccountsAPIService
+ *   AccountsAPI *accounts.AccountsAPIService
  *
  * Versions are embedded in the method names themselves (e.g. ListAccountsV1,
  * GetAccessRequestConfigV2), so no version suffix is added to the folder or field name.
@@ -585,14 +592,19 @@ function packageToFieldName(pkgName) {
 function generateClientGo() {
   const MODULE = "github.com/sailpoint-oss/golang-sdk/v3";
 
-  // All api_* packages except the known special cases (generic, nerm, nerm_v2025)
-  const SPECIAL_PKGS = new Set(["api_generic", "api_nerm", "api_nerm_v2025"]);
+  // All generated partition packages except the known special cases
+  const SPECIAL_PKGS = new Set(["generic", "nerm", "nerm_v2025"]);
   const partitionPkgs = fs.readdirSync(SDK_ROOT)
-    .filter(d => /^api_/.test(d) && !SPECIAL_PKGS.has(d) && fs.statSync(path.join(SDK_ROOT, d)).isDirectory())
+    .filter(d => {
+      if (d.startsWith(".") || SPECIAL_PKGS.has(d)) return false;
+      const dir = path.join(SDK_ROOT, d);
+      if (!fs.statSync(dir).isDirectory()) return false;
+      return fs.existsSync(path.join(dir, "go.mod"));
+    })
     .sort();
 
   if (partitionPkgs.length === 0) {
-    console.log("  No api_* partition packages found, skipping client.go generation.");
+    console.log("  No partition packages found, skipping client.go generation.");
     return;
   }
 
@@ -652,7 +664,7 @@ Use these APIs to interact with the SailPoint Identity Security Cloud platform.
 We encourage you to join the SailPoint Developer Community forum at
 https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
-Per-resource API packages (e.g. api_entitlements, api_accounts) are generated
+Per-resource API packages (e.g. entitlements, accounts) are generated
 automatically — this file is regenerated by build-versioned-sdk.js after each build,
 so new partitions appear here without any manual changes.
 */
@@ -666,9 +678,9 @@ import (
 
 \t"github.com/hashicorp/go-retryablehttp"
 ${partitionImports}
-\tgeneric   "${MODULE}/api_generic"
-\tnerm      "${MODULE}/api_nerm"
-\tnermv2025 "${MODULE}/api_nerm_v2025"
+\tgeneric   "${MODULE}/generic"
+\tnerm      "${MODULE}/nerm"
+\tnermv2025 "${MODULE}/nerm_v2025"
 )
 
 var (
@@ -682,6 +694,11 @@ var (
 // Per-resource API services are available as fields (e.g. c.AccountsAPI, c.RolesAPI).
 // Versions are embedded in the method names themselves (e.g. ListAccountsV1, GetAccessRequestConfigV2).
 // Use NewPartitionConfiguration to build a config for directly importing a single package.
+// Example:
+//
+//\tcfg := accounts.NewConfiguration(NewPartitionConfiguration(sailpointCfg))
+//\tclient := accounts.NewAPIClient(cfg)
+//\tresp, r, err := client.AccountsAPI.ListAccountsV1(ctx).Execute()
 type APIClient struct {
 \tcfg *Configuration
 
@@ -753,8 +770,8 @@ ${partitionInits}
 // instantiate any per-resource API package directly.
 // Example:
 //
-//\tcfg := api_accounts.NewConfiguration(NewPartitionConfiguration(sailpointCfg))
-//\tclient := api_accounts.NewAPIClient(cfg)
+//\tcfg := accounts.NewConfiguration(NewPartitionConfiguration(sailpointCfg))
+//\tclient := accounts.NewAPIClient(cfg)
 //\tresp, r, err := client.AccountsAPI.ListAccountsV1(ctx).Execute()
 func NewPartitionConfiguration(cfg *Configuration) (clientId, clientSecret, baseURL, tokenURL, token, consumerSuffix string, experimental bool) {
 \treturn cfg.ClientConfiguration.ClientId,

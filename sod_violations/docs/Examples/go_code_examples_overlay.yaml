@@ -1,0 +1,80 @@
+- path: /sod-violations/v1/predict
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sodviolations/methods/sod-violations#start-predict-sod-violations-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/sod_violations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sod_violations"
+        )
+
+        func main() {
+           identitywithnewaccess := []byte(`{"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]}`) // Identitywithnewaccess | 
+
+          
+          var identitywithnewaccess v1.Identitywithnewaccess
+          if err := json.Unmarshal(identitywithnewaccess, &identitywithnewaccess); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SodViolations.SODViolationsAPI.StartPredictSodViolationsV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
+          //resp, r, err := apiClient.SodViolations.SODViolationsAPI.StartPredictSodViolationsV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.StartPredictSodViolationsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartPredictSodViolationsV1`: Violationprediction
+          fmt.Fprintf(os.Stdout, "Response from `SODViolationsAPI.StartPredictSodViolationsV1`: %v\n", resp)
+        }
+- path: /sod-violations/v1/check
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sodviolations/methods/sod-violations#start-violation-check-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/sod_violations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sod_violations"
+        )
+
+        func main() {
+           identitywithnewaccess := []byte(`{"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}],"clientMetadata":{"additionalProp1":"string","additionalProp2":"string","additionalProp3":"string"}}`) // Identitywithnewaccess | 
+
+          
+          var identitywithnewaccess v1.Identitywithnewaccess
+          if err := json.Unmarshal(identitywithnewaccess, &identitywithnewaccess); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SodViolations.SODViolationsAPI.StartViolationCheckV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
+          //resp, r, err := apiClient.SodViolations.SODViolationsAPI.StartViolationCheckV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.StartViolationCheckV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartViolationCheckV1`: Sodviolationcheck
+          fmt.Fprintf(os.Stdout, "Response from `SODViolationsAPI.StartViolationCheckV1`: %v\n", resp)
+        }

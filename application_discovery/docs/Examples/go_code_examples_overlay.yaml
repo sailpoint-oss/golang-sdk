@@ -1,0 +1,145 @@
+- path: /discovered-applications/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/applicationdiscovery/methods/application-discovery#get-discovered-applications-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+        )
+
+        func main() {
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          detail := `FULL` // string | Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior. (optional) # string | Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior. (optional)
+          filter := `name eq "Okta" and description co "Okta" and discoverySource in ("csv", "Okta Saas")` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  **discoverySourceName**: *eq, in*  **discoverySourceCategory**: *eq, in*  (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  **discoverySourceName**: *eq, in*  **discoverySourceCategory**: *eq, in*  (optional)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource, discoverySourceName, discoverySourceCategory** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource, discoverySourceName, discoverySourceCategory** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.GetDiscoveredApplicationsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.GetDiscoveredApplicationsV1(context.Background()).Limit(limit).Offset(offset).Detail(detail).Filter(filter).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.GetDiscoveredApplicationsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetDiscoveredApplicationsV1`: []GetDiscoveredApplicationsV1200ResponseInner
+          fmt.Fprintf(os.Stdout, "Response from `ApplicationDiscoveryAPI.GetDiscoveredApplicationsV1`: %v\n", resp)
+        }
+- path: /manual-discover-applications-template/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/applicationdiscovery/methods/application-discovery#get-manual-discover-applications-csv-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplateV1(context.Background()).Execute()
+          //resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplateV1(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetManualDiscoverApplicationsCsvTemplateV1`: Manualdiscoverapplicationstemplate
+          fmt.Fprintf(os.Stdout, "Response from `ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplateV1`: %v\n", resp)
+        }
+- path: /manual-discover-applications/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/applicationdiscovery/methods/application-discovery#send-manual-discover-applications-csv-template-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+        )
+
+        func main() {
+          file := BINARY_DATA_HERE // *os.File | The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered. # *os.File | The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplateV1(context.Background()).File(file).Execute()
+          //r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplateV1(context.Background()).File(file).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplateV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /sources/v1/{sourceId}/discover-applications
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/applicationdiscovery/methods/application-discovery#start-application-discovery-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          sourceId := `sourceId_example` // string | The sourceId. # string | The sourceId.
+           applicationdiscoveryrequest := []byte(``) // Applicationdiscoveryrequest | 
+
+          
+          var applicationdiscoveryrequest v1.Applicationdiscoveryrequest
+          if err := json.Unmarshal(applicationdiscoveryrequest, &applicationdiscoveryrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.StartApplicationDiscoveryV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Applicationdiscoveryrequest(applicationdiscoveryrequest).Execute()
+          //resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.StartApplicationDiscoveryV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Applicationdiscoveryrequest(applicationdiscoveryrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.StartApplicationDiscoveryV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `StartApplicationDiscoveryV1`: Applicationdiscoveryresponse
+          fmt.Fprintf(os.Stdout, "Response from `ApplicationDiscoveryAPI.StartApplicationDiscoveryV1`: %v\n", resp)
+        }

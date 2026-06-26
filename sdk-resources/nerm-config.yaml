@@ -1,5 +1,5 @@
 templateDir: ./sdk-resources/resources
-packageName: api_nerm
+packageName: nerm
 packageVersion: 2.7.106
 generateInterfaces: false
 disallowAdditionalPropertiesIfNotPresent: false
@@ -12,7 +12,7 @@ apiVersion: NERM
 funtionPrefix: NERM
 subModuleName: NERM
 nerm: true
-moduleImportPath: github.com/sailpoint-oss/golang-sdk/v3/api_nerm
+moduleImportPath: github.com/sailpoint-oss/golang-sdk/v3/nerm
 files:
   developerSite_code_examples.mustache:
     templateType: APIDocs

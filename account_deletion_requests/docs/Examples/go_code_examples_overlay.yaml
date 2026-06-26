@@ -1,0 +1,72 @@
+- path: /account-requests/v1/account/{accountId}/delete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accountdeletionrequests/methods/account-deletion-requests#delete-account-request-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/account_deletion_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/account_deletion_requests"
+        )
+
+        func main() {
+          accountId := `ef38f94347e94562b5bb8424a56498d8` // string | Account ID. # string | Account ID.
+           accountdeleterequestinput := []byte(`{"comments":"I requested this account deletion."}`) // Accountdeleterequestinput |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccountDeletionRequests.AccountDeletionRequestsAPI.DeleteAccountRequestV1(context.Background(), accountId).Execute()
+          //resp, r, err := apiClient.AccountDeletionRequests.AccountDeletionRequestsAPI.DeleteAccountRequestV1(context.Background(), accountId).Accountdeleterequestinput(accountdeleterequestinput).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccountDeletionRequestsAPI.DeleteAccountRequestV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DeleteAccountRequestV1`: Accountrequestasyncresult
+          fmt.Fprintf(os.Stdout, "Response from `AccountDeletionRequestsAPI.DeleteAccountRequestV1`: %v\n", resp)
+        }
+- path: /account-requests/v1/deletion
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accountdeletionrequests/methods/account-deletion-requests#get-account-deletion-requests-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/account_deletion_requests"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/account_deletion_requests"
+        )
+
+        func main() {
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          mine := true // bool | Determines whether to return only the account deletion requests initiated by the currently authenticated user. If set to true, the response includes only deletion requests created by the logged-in user. If set to false or not provided, the response includes all deletion requests for the tenant, regardless of the initiator. This parameter allows users to view their own requests, while administrators can view all requests within the tenant. (optional) (default to false) # bool | Determines whether to return only the account deletion requests initiated by the currently authenticated user. If set to true, the response includes only deletion requests created by the logged-in user. If set to false or not provided, the response includes all deletion requests for the tenant, regardless of the initiator. This parameter allows users to view their own requests, while administrators can view all requests within the tenant. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccountDeletionRequests.AccountDeletionRequestsAPI.GetAccountDeletionRequestsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.AccountDeletionRequests.AccountDeletionRequestsAPI.GetAccountDeletionRequestsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Mine(mine).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccountDeletionRequestsAPI.GetAccountDeletionRequestsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetAccountDeletionRequestsV1`: []Accountactionrequestdto
+          fmt.Fprintf(os.Stdout, "Response from `AccountDeletionRequestsAPI.GetAccountDeletionRequestsV1`: %v\n", resp)
+        }

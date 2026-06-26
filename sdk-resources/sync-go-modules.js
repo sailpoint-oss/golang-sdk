@@ -3,7 +3,7 @@
  * sync-go-modules.js
  *
  * Prepares the multi-module golang-sdk workspace for local builds:
- *   1. Ensures each api_* package has a go.mod with the correct module path
+ *   1. Ensures each partition package has a go.mod with the correct module path
  *   2. Creates/updates go.work to wire the root module and all submodules together
  *   3. Runs go work sync and go mod tidy on the root module
  *
@@ -33,11 +33,13 @@ require (
 `;
 
 function discoverSubmoduleDirs() {
+  const EXCLUDE = new Set(["node_modules", "sdk-resources", "api-specs", "build-errors"]);
   return fs.readdirSync(SDK_ROOT)
     .filter(name => {
-      if (!/^api_/.test(name)) return false;
+      if (name.startsWith(".") || EXCLUDE.has(name)) return false;
       const dir = path.join(SDK_ROOT, name);
-      return fs.statSync(dir).isDirectory();
+      if (!fs.statSync(dir).isDirectory()) return false;
+      return fs.existsSync(path.join(dir, "go.mod"));
     })
     .sort();
 }
@@ -73,7 +75,7 @@ function run(cmd, args, label) {
 function syncGoWorkspace() {
   const submodules = discoverSubmoduleDirs();
   if (submodules.length === 0) {
-    console.log("No api_* submodule directories found.");
+    console.log("No submodule directories found.");
     return;
   }
 

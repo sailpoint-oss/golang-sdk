@@ -15,15 +15,15 @@ APIS_DIR ?= api-specs/idn/src/main/yaml/apis
 .PHONY: build
 build:
 	node sdk-resources/build-versioned-sdk.js $(APIS_DIR)
-	rm -rf ./api_generic
-	java -jar openapi-generator-cli.jar generate -i sdk-resources/generic-api.yaml -g go -o api_generic --global-property skipFormModel=false,apiDocs=true,modelDocs=true --config sdk-resources/generic-config.yaml
-	node sdk-resources/postscript.js ./api_generic
-	rm -rf ./api_nerm
-	java -jar openapi-generator-cli.jar generate -i api-specs/nerm/openapi.yaml -g go -o api_nerm --global-property skipFormModel=false,apiDocs=true,modelDocs=true --config sdk-resources/nerm-config.yaml
-	node sdk-resources/postscript.js ./api_nerm
-	rm -rf ./api_nerm_v2025
-	java -jar openapi-generator-cli.jar generate -i api-specs/nerm/v2025/v2025.yaml -g go -o api_nerm_v2025 --global-property skipFormModel=false,apiDocs=true,modelDocs=true --config sdk-resources/v2025-nerm-config.yaml
-	node sdk-resources/postscript.js ./api_nerm_v2025
+	rm -rf ./generic
+	java -jar openapi-generator-cli.jar generate -i sdk-resources/generic-api.yaml -g go -o generic --global-property skipFormModel=false,apiDocs=true,modelDocs=true --config sdk-resources/generic-config.yaml
+	node sdk-resources/postscript.js ./generic
+	rm -rf ./nerm
+	java -jar openapi-generator-cli.jar generate -i api-specs/nerm/openapi.yaml -g go -o nerm --global-property skipFormModel=false,apiDocs=true,modelDocs=true --config sdk-resources/nerm-config.yaml
+	node sdk-resources/postscript.js ./nerm
+	rm -rf ./nerm_v2025
+	java -jar openapi-generator-cli.jar generate -i api-specs/nerm/v2025/v2025.yaml -g go -o nerm_v2025 --global-property skipFormModel=false,apiDocs=true,modelDocs=true --config sdk-resources/v2025-nerm-config.yaml
+	node sdk-resources/postscript.js ./nerm_v2025
 
 # Build a single partition (fast iteration during development).
 # Usage: make build-partition PARTITION=entitlements

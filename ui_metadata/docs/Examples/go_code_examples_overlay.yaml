@@ -1,0 +1,75 @@
+- path: /ui-metadata/v1/tenant
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uimetadata/methods/ui-metadata#get-tenant-ui-metadata-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/ui_metadata"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/ui_metadata"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.UiMetadata.UIMetadataAPI.GetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.UiMetadata.UIMetadataAPI.GetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIMetadataAPI.GetTenantUiMetadataV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetTenantUiMetadataV1`: Tenantuimetadataitemresponse
+          fmt.Fprintf(os.Stdout, "Response from `UIMetadataAPI.GetTenantUiMetadataV1`: %v\n", resp)
+        }
+- path: /ui-metadata/v1/tenant
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/uimetadata/methods/ui-metadata#set-tenant-ui-metadata-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/ui_metadata"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/ui_metadata"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           tenantuimetadataitemupdaterequest := []byte(``) // Tenantuimetadataitemupdaterequest | 
+
+          
+          var tenantuimetadataitemupdaterequest v1.Tenantuimetadataitemupdaterequest
+          if err := json.Unmarshal(tenantuimetadataitemupdaterequest, &tenantuimetadataitemupdaterequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.UiMetadata.UIMetadataAPI.SetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantuimetadataitemupdaterequest(tenantuimetadataitemupdaterequest).Execute()
+          //resp, r, err := apiClient.UiMetadata.UIMetadataAPI.SetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantuimetadataitemupdaterequest(tenantuimetadataitemupdaterequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `UIMetadataAPI.SetTenantUiMetadataV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetTenantUiMetadataV1`: Tenantuimetadataitemresponse
+          fmt.Fprintf(os.Stdout, "Response from `UIMetadataAPI.SetTenantUiMetadataV1`: %v\n", resp)
+        }

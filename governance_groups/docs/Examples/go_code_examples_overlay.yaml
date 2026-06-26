@@ -1,0 +1,377 @@
+- path: /workgroups/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/governancegroups/methods/governance-groups#create-workgroup-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+        )
+
+        func main() {
+           workgroupdto := []byte(``) // Workgroupdto | 
+
+          
+          var workgroupdto v1.Workgroupdto
+          if err := json.Unmarshal(workgroupdto, &workgroupdto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.CreateWorkgroupV1(context.Background()).Workgroupdto(workgroupdto).Execute()
+          //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.CreateWorkgroupV1(context.Background()).Workgroupdto(workgroupdto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.CreateWorkgroupV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateWorkgroupV1`: Workgroupdto
+          fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.CreateWorkgroupV1`: %v\n", resp)
+        }
+- path: /workgroups/v1/{workgroupId}/members/bulk-delete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/governancegroups/methods/governance-groups#delete-workgroup-members-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+        )
+
+        func main() {
+          workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
+          bulkworkgroupmembersrequestinner := []byte(``) // []BulkworkgroupmembersrequestInner | List of identities to be removed from  a Governance Group members list.
+
+          
+          var bulkworkgroupmembersrequestInner []v1.BulkworkgroupmembersrequestInner
+          if err := json.Unmarshal(bulkworkgroupmembersrequestinner, &bulkworkgroupmembersrequestInner); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
+          //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupMembersV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DeleteWorkgroupMembersV1`: []Workgroupmemberdeleteitem
+          fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.DeleteWorkgroupMembersV1`: %v\n", resp)
+        }
+- path: /workgroups/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/governancegroups/methods/governance-groups#delete-workgroup-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+        )
+
+        func main() {
+          id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Governance Group # string | ID of the Governance Group
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupV1(context.Background(), id).Execute()
+          //r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /workgroups/v1/bulk-delete
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/governancegroups/methods/governance-groups#delete-workgroups-in-bulk-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+        )
+
+        func main() {
+           workgroupbulkdeleterequest := []byte(`{"ids":["567a697e-885b-495a-afc5-d55e1c23a302","c7b0f7b2-1e78-4063-b294-a555333dacd2"]}`) // Workgroupbulkdeleterequest | 
+
+          
+          var workgroupbulkdeleterequest v1.Workgroupbulkdeleterequest
+          if err := json.Unmarshal(workgroupbulkdeleterequest, &workgroupbulkdeleterequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1(context.Background()).Workgroupbulkdeleterequest(workgroupbulkdeleterequest).Execute()
+          //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1(context.Background()).Workgroupbulkdeleterequest(workgroupbulkdeleterequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DeleteWorkgroupsInBulkV1`: []Workgroupdeleteitem
+          fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1`: %v\n", resp)
+        }
+- path: /workgroups/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/governancegroups/methods/governance-groups#get-workgroup-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+        )
+
+        func main() {
+          id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Governance Group # string | ID of the Governance Group
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.GetWorkgroupV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.GetWorkgroupV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.GetWorkgroupV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetWorkgroupV1`: Workgroupdto
+          fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.GetWorkgroupV1`: %v\n", resp)
+        }
+- path: /workgroups/v1/{workgroupId}/connections
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/governancegroups/methods/governance-groups#list-connections-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+        )
+
+        func main() {
+          workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 50 // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListConnectionsV1(context.Background(), workgroupId).Execute()
+          //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListConnectionsV1(context.Background(), workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListConnectionsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListConnectionsV1`: []Workgroupconnectiondto
+          fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.ListConnectionsV1`: %v\n", resp)
+        }
+- path: /workgroups/v1/{workgroupId}/members
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/governancegroups/methods/governance-groups#list-workgroup-members-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+        )
+
+        func main() {
+          workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 50 // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListWorkgroupMembersV1(context.Background(), workgroupId).Execute()
+          //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListWorkgroupMembersV1(context.Background(), workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroupMembersV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListWorkgroupMembersV1`: []ListWorkgroupMembersV1200ResponseInner
+          fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.ListWorkgroupMembersV1`: %v\n", resp)
+        }
+- path: /workgroups/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/governancegroups/methods/governance-groups#list-workgroups-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+        )
+
+        func main() {
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          filters := `name sw "Test"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in*  **memberships.identityId**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in*  **memberships.identityId**: *eq, in* (optional)
+          sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, description** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, description** (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListWorkgroupsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListWorkgroupsV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroupsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListWorkgroupsV1`: []Workgroupdto
+          fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.ListWorkgroupsV1`: %v\n", resp)
+        }
+- path: /workgroups/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/governancegroups/methods/governance-groups#patch-workgroup-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+        )
+
+        func main() {
+          id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Governance Group # string | ID of the Governance Group
+          jsonpatchoperation := []byte(`[{"op":"replace","path":"/description","value":"Governance Group new description."}]`) // []Jsonpatchoperation |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.PatchWorkgroupV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.PatchWorkgroupV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.PatchWorkgroupV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchWorkgroupV1`: Workgroupdto
+          fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.PatchWorkgroupV1`: %v\n", resp)
+        }
+- path: /workgroups/v1/{workgroupId}/members/bulk-add
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/governancegroups/methods/governance-groups#update-workgroup-members-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+        )
+
+        func main() {
+          workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
+          bulkworkgroupmembersrequestinner := []byte(``) // []BulkworkgroupmembersrequestInner | List of identities to be added to a Governance Group members list.
+
+          
+          var bulkworkgroupmembersrequestInner []v1.BulkworkgroupmembersrequestInner
+          if err := json.Unmarshal(bulkworkgroupmembersrequestinner, &bulkworkgroupmembersrequestInner); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.UpdateWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
+          //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.UpdateWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.UpdateWorkgroupMembersV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateWorkgroupMembersV1`: []Workgroupmemberadditem
+          fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.UpdateWorkgroupMembersV1`: %v\n", resp)
+        }
