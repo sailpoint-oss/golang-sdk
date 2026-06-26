@@ -3,3 +3,5 @@ config.json
 openapi-generator-cli.jar
 .sdk-build-tmp/
 build-errors/
+go.work
+go.work.sum
