@@ -137,6 +137,16 @@ jobs:
       - name: Build SDK
         uses: ./.github/actions/build-sdk
 
+      - name: Collapse to single module
+        shell: bash
+        run: |
+          # Remove per-partition go.mod/go.sum so partitions are packages inside the root module.
+          # go.work is only needed for the workspace build above; consumers use the module proxy.
+          find . -mindepth 2 -name "go.mod" -not -path './.github/*' -delete
+          find . -mindepth 2 -name "go.sum" -not -path './.github/*' -delete
+          rm -f go.work go.work.sum
+          go mod tidy
+
       - name: Commit changes and tag
         uses: stefanzweifel/git-auto-commit-action@v7
         with:

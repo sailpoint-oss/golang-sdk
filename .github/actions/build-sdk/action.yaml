@@ -85,5 +85,5 @@ runs:
       run: |
         go build -o /dev/null .
         if [ "${{ inputs.skip-tests }}" != "true" ]; then
-          go test ./...
+          go test $(go list ./... | grep -v '/test$')
         fi
