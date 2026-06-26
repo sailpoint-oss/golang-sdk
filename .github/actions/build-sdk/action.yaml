@@ -43,35 +43,35 @@ runs:
     - name: Build Generic SDK
       shell: bash
       run: |
-        rm -rf ./api_generic
+        rm -rf ./generic
         java -jar openapi-generator-cli.jar generate \
           -i sdk-resources/generic-api.yaml \
-          -g go -o api_generic \
+          -g go -o generic \
           --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
           --config sdk-resources/generic-config.yaml
-        node sdk-resources/postscript.js ./api_generic
+        node sdk-resources/postscript.js ./generic
 
     - name: Build NERM SDK
       shell: bash
       run: |
-        rm -rf ./api_nerm
+        rm -rf ./nerm
         java -jar openapi-generator-cli.jar generate \
           -i ${{ inputs.api-specs-path }}/nerm/openapi.yaml \
-          -g go -o api_nerm \
+          -g go -o nerm \
           --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
           --config sdk-resources/nerm-config.yaml
-        node sdk-resources/postscript.js ./api_nerm
+        node sdk-resources/postscript.js ./nerm
 
     - name: Build NERM V2025 SDK
       shell: bash
       run: |
-        rm -rf ./api_nerm_v2025
+        rm -rf ./nerm_v2025
         java -jar openapi-generator-cli.jar generate \
           -i ${{ inputs.api-specs-path }}/nerm/v2025/v2025.yaml \
-          -g go -o api_nerm_v2025 \
+          -g go -o nerm_v2025 \
           --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
           --config sdk-resources/v2025-nerm-config.yaml
-        node sdk-resources/postscript.js ./api_nerm_v2025
+        node sdk-resources/postscript.js ./nerm_v2025
 
     - name: Wire Go workspace
       shell: bash
