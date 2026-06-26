@@ -1,0 +1,571 @@
+- path: /generic-approvals/v1/bulk-approve
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#approve-approval-in-bulk-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+           bulkapproverequestdto := []byte(``) // Bulkapproverequestdto | 
+
+          
+          var bulkapproverequestdto v1.Bulkapproverequestdto
+          if err := json.Unmarshal(bulkapproverequestdto, &bulkapproverequestdto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.Approvals.ApprovalsAPI.ApproveApprovalInBulkV1(context.Background()).Bulkapproverequestdto(bulkapproverequestdto).Execute()
+          //resp, r, err := apiClient.Approvals.ApprovalsAPI.ApproveApprovalInBulkV1(context.Background()).Bulkapproverequestdto(bulkapproverequestdto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.ApproveApprovalInBulkV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ApproveApprovalInBulkV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.ApproveApprovalInBulkV1`: %v\n", resp)
+        }
+- path: /generic-approvals/v1/{id}/approve
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#approve-approval-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to approve. # string | Approval ID that correlates to an existing approval request that a user wants to approve.
+           approvalapproverequest := []byte(``) // Approvalapproverequest |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.Approvals.ApprovalsAPI.ApproveApprovalV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.Approvals.ApprovalsAPI.ApproveApprovalV1(context.Background(), id).Approvalapproverequest(approvalapproverequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.ApproveApprovalV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ApproveApprovalV1`: Approval2
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.ApproveApprovalV1`: %v\n", resp)
+        }
+- path: /generic-approvals/v1/{id}/cancel
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#cancel-approval-by-id-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | ID of the approval request to cancel. # string | ID of the approval request to cancel.
+           approvalcancelrequest := []byte(``) // Approvalcancelrequest |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.Approvals.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).Execute()
+          //r, err := apiClient.Approvals.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).Approvalcancelrequest(approvalcancelrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.CancelApprovalByIdV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /generic-approvals/v1/bulk-cancel
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#cancel-approval-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+           bulkcancelrequestdto := []byte(``) // Bulkcancelrequestdto | 
+
+          
+          var bulkcancelrequestdto v1.Bulkcancelrequestdto
+          if err := json.Unmarshal(bulkcancelrequestdto, &bulkcancelrequestdto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.Approvals.ApprovalsAPI.CancelApprovalV1(context.Background()).Bulkcancelrequestdto(bulkcancelrequestdto).Execute()
+          //resp, r, err := apiClient.Approvals.ApprovalsAPI.CancelApprovalV1(context.Background()).Bulkcancelrequestdto(bulkcancelrequestdto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.CancelApprovalV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CancelApprovalV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.CancelApprovalV1`: %v\n", resp)
+        }
+- path: /generic-approvals/v1/config/{id}/{scope}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#delete-approval-config-request-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+          id := `ACCESS_REQUEST_APPROVAL` // string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+          scope := `APPROVAL_TYPE` // string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.Approvals.ApprovalsAPI.DeleteApprovalConfigRequestV1(context.Background(), id, scope).Execute()
+          //r, err := apiClient.Approvals.ApprovalsAPI.DeleteApprovalConfigRequestV1(context.Background(), id, scope).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.DeleteApprovalConfigRequestV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /generic-approvals/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#get-approval-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | ID of the approval that is to be returned # string | ID of the approval that is to be returned
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.GetApprovalV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetApprovalV1`: Approval2
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.GetApprovalV1`: %v\n", resp)
+        }
+- path: /generic-approvals/v1/config/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#get-approvals-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+          id := `1.2345678901234567E+31` // string | The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)] # string | The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)]
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalsConfigV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalsConfigV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.GetApprovalsConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetApprovalsConfigV1`: Approvalconfig
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.GetApprovalsConfigV1`: %v\n", resp)
+        }
+- path: /generic-approvals/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#get-approvals-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+          mine := true // bool | Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]'). (optional) (default to false) # bool | Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]'). (optional) (default to false)
+          requesterId := `17e633e7d57e481569df76323169deb6a` // string | Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin. (optional) # string | Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin. (optional)
+          requesteeId := `27e6334g757e481569df76323169db9sc` // string | Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin. (optional) # string | Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin. (optional)
+          approverId := `37e6334g557e481569df7g2d3169db9sb` // string | Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin. (optional) # string | Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin. (optional)
+          count := true // bool | Adds X-Total-Count to the header to give the amount of total approvals returned from the query. (optional) (default to false) # bool | Adds X-Total-Count to the header to give the amount of total approvals returned from the query. (optional) (default to false)
+          countOnly := true // bool | Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects. (optional) (default to false) # bool | Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects. (optional) (default to false)
+          includeComments := true // bool | If set to true in the query, the approval requests returned will include comments. (optional) (default to false) # bool | If set to true in the query, the approval requests returned will include comments. (optional) (default to false)
+          includeApprovers := true // bool | If set to true in the query, the approval requests returned will include approvers. (optional) (default to false) # bool | If set to true in the query, the approval requests returned will include approvers. (optional) (default to false)
+          includeReassignmentHistory := true // bool | If set to true in the query, the approval requests returned will include reassignment history. (optional) (default to false) # bool | If set to true in the query, the approval requests returned will include reassignment history. (optional) (default to false)
+          includeBatchInfo := true // bool | If set to true in the query, the approval requests returned will include batch information. (optional) (default to false) # bool | If set to true in the query, the approval requests returned will include batch information. (optional) (default to false)
+          filters := `filters=status eq "PENDING" and type eq "ACCESS_REQUEST_APPROVAL"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetName**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **approvalId**: *eq, ne, in, co, sw*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetName**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **approvalId**: *eq, ne, in, co, sw*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw* (optional)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalsV1(context.Background()).Mine(mine).RequesterId(requesterId).RequesteeId(requesteeId).ApproverId(approverId).Count(count).CountOnly(countOnly).IncludeComments(includeComments).IncludeApprovers(includeApprovers).IncludeReassignmentHistory(includeReassignmentHistory).IncludeBatchInfo(includeBatchInfo).Filters(filters).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.GetApprovalsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetApprovalsV1`: []Approval2
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.GetApprovalsV1`: %v\n", resp)
+        }
+- path: /generic-approvals/v1/bulk-reassign
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#move-approval-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+           bulkreassignrequestdto := []byte(``) // Bulkreassignrequestdto | 
+
+          
+          var bulkreassignrequestdto v1.Bulkreassignrequestdto
+          if err := json.Unmarshal(bulkreassignrequestdto, &bulkreassignrequestdto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.Approvals.ApprovalsAPI.MoveApprovalV1(context.Background()).Bulkreassignrequestdto(bulkreassignrequestdto).Execute()
+          //resp, r, err := apiClient.Approvals.ApprovalsAPI.MoveApprovalV1(context.Background()).Bulkreassignrequestdto(bulkreassignrequestdto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.MoveApprovalV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `MoveApprovalV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.MoveApprovalV1`: %v\n", resp)
+        }
+- path: /generic-approvals/v1/config/{id}/{scope}
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#put-approvals-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+          id := `ACCESS_REQUEST_APPROVAL` // string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+          scope := `APPROVAL_TYPE` // string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+           approvalconfig := []byte(``) // Approvalconfig | 
+
+          
+          var approvalconfig v1.Approvalconfig
+          if err := json.Unmarshal(approvalconfig, &approvalconfig); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.Approvals.ApprovalsAPI.PutApprovalsConfigV1(context.Background(), id, scope).Approvalconfig(approvalconfig).Execute()
+          //resp, r, err := apiClient.Approvals.ApprovalsAPI.PutApprovalsConfigV1(context.Background(), id, scope).Approvalconfig(approvalconfig).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.PutApprovalsConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PutApprovalsConfigV1`: Approvalconfig
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.PutApprovalsConfigV1`: %v\n", resp)
+        }
+- path: /generic-approvals/v1/bulk-reject
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#reject-approval-in-bulk-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+           bulkrejectrequestdto := []byte(``) // Bulkrejectrequestdto | 
+
+          
+          var bulkrejectrequestdto v1.Bulkrejectrequestdto
+          if err := json.Unmarshal(bulkrejectrequestdto, &bulkrejectrequestdto); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.Approvals.ApprovalsAPI.RejectApprovalInBulkV1(context.Background()).Bulkrejectrequestdto(bulkrejectrequestdto).Execute()
+          //resp, r, err := apiClient.Approvals.ApprovalsAPI.RejectApprovalInBulkV1(context.Background()).Bulkrejectrequestdto(bulkrejectrequestdto).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.RejectApprovalInBulkV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `RejectApprovalInBulkV1`: map[string]interface{}
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.RejectApprovalInBulkV1`: %v\n", resp)
+        }
+- path: /generic-approvals/v1/{id}/reject
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#reject-approval-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to reject. # string | Approval ID that correlates to an existing approval request that a user wants to reject.
+           approvalrejectrequest := []byte(``) // Approvalrejectrequest |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.Approvals.ApprovalsAPI.RejectApprovalV1(context.Background(), id).Execute()
+          //r, err := apiClient.Approvals.ApprovalsAPI.RejectApprovalV1(context.Background(), id).Approvalrejectrequest(approvalrejectrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.RejectApprovalV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /generic-approvals/v1/{id}/attributes
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#update-approvals-attributes-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to change the attributes of. # string | Approval ID that correlates to an existing approval request that a user wants to change the attributes of.
+           approvalattributesrequest := []byte(``) // Approvalattributesrequest | 
+
+          
+          var approvalattributesrequest v1.Approvalattributesrequest
+          if err := json.Unmarshal(approvalattributesrequest, &approvalattributesrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsAttributesV1(context.Background(), id).Approvalattributesrequest(approvalattributesrequest).Execute()
+          //resp, r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsAttributesV1(context.Background(), id).Approvalattributesrequest(approvalattributesrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.UpdateApprovalsAttributesV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateApprovalsAttributesV1`: Approval2
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.UpdateApprovalsAttributesV1`: %v\n", resp)
+        }
+- path: /generic-approvals/v1/{id}/comments
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#update-approvals-comments-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to add a comment to. # string | Approval ID that correlates to an existing approval request that a user wants to add a comment to.
+           approvalcommentsrequest := []byte(``) // Approvalcommentsrequest | 
+
+          
+          var approvalcommentsrequest v1.Approvalcommentsrequest
+          if err := json.Unmarshal(approvalcommentsrequest, &approvalcommentsrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsCommentsV1(context.Background(), id).Approvalcommentsrequest(approvalcommentsrequest).Execute()
+          //resp, r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsCommentsV1(context.Background(), id).Approvalcommentsrequest(approvalcommentsrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.UpdateApprovalsCommentsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateApprovalsCommentsV1`: Approval2
+          fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.UpdateApprovalsCommentsV1`: %v\n", resp)
+        }
+- path: /generic-approvals/v1/{id}/reassign
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/approvals/methods/approvals#update-approvals-reassign-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+        )
+
+        func main() {
+          id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to reassign. # string | Approval ID that correlates to an existing approval request that a user wants to reassign.
+           approvalreassignrequest := []byte(``) // Approvalreassignrequest | 
+
+          
+          var approvalreassignrequest v1.Approvalreassignrequest
+          if err := json.Unmarshal(approvalreassignrequest, &approvalreassignrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsReassignV1(context.Background(), id).Approvalreassignrequest(approvalreassignrequest).Execute()
+          //r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsReassignV1(context.Background(), id).Approvalreassignrequest(approvalreassignrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.UpdateApprovalsReassignV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }

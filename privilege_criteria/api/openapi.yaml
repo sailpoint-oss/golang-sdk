@@ -1,0 +1,877 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Privilege Criteria
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use this API to create, retrieve, update, and delete privilege criteria.
+  name: Privilege Criteria
+paths:
+  /criteria/v1/privilege:
+    get:
+      description: Use this API to list all privilege criteria matching a filter
+      operationId: listPrivilegeCriteriaV1
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **type**: *eq*
+
+          **sourceId**: *eq*
+
+          **privilegeLevel**: *eq*
+
+          **Supported composite operators**: *and*
+
+          All filter values are case-sensitive for this API.
+
+          For example, the following is valid: `?filters=type eq "CUSTOM" and sourceId eq "2c91809175e6c63f0175fb5570220569"`
+        example: type eq "CUSTOM" and sourceId eq "c42c45d8d7c04d2da64d215cd8c32f21"
+        explode: true
+        in: query
+        name: filters
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/privilegecriteriadto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPrivilegeCriteriaV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPrivilegeCriteriaV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:gov-criteria:read
+      summary: List privilege criteria
+      tags:
+      - Privilege Criteria
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: Use this API to create a custom privilege criteria
+      operationId: createCustomPrivilegeCriteriaV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createprivilegecriteriarequest'
+        description: Create custom privilege criteria request body.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/privilegecriteriadto'
+          description: Custom privilege criteria created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPrivilegeCriteriaV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPrivilegeCriteriaV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:gov-criteria:write
+      summary: Create custom privilege criteria
+      tags:
+      - Privilege Criteria
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /criteria/v1/privilege/{criteriaId}:
+    delete:
+      description: Use this API to delete a specific custom privilege criteria.
+      operationId: deleteCustomPrivilegeCriteriaV1
+      parameters:
+      - description: The Id of the custom privilege criteria to delete.
+        example: 6d123044-5834-4e8d-a49f-9c70089b0de1
+        explode: false
+        in: path
+        name: criteriaId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listPrivilegeCriteriaV1
+      responses:
+        "204":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPrivilegeCriteriaV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPrivilegeCriteriaV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:gov-criteria:write
+      summary: Delete privilege criteria
+      tags:
+      - Privilege Criteria
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: Use this API to get a specific privilege criteria.
+      operationId: getPrivilegeCriteriaV1
+      parameters:
+      - description: The Id of the privilege criteria record to return.
+        example: 6d123044-5834-4e8d-a49f-9c70089b0de1
+        explode: false
+        in: path
+        name: criteriaId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listPrivilegeCriteriaV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/privilegecriteriadto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPrivilegeCriteriaV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPrivilegeCriteriaV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:gov-criteria:read
+      summary: Get privilege criteria
+      tags:
+      - Privilege Criteria
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    put:
+      description: Use this API to update a specific custom privilege criteria by
+        overwriting the information with new information.
+      operationId: putCustomPrivilegeCriteriaValueV1
+      parameters:
+      - description: The Id of the privilege criteria record to return.
+        example: 6d123044-5834-4e8d-a49f-9c70089b0de1
+        explode: false
+        in: path
+        name: criteriaId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listPrivilegeCriteriaV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/privilegecriteriadto'
+        description: The new version of the custom privilege criteria. This overwrites
+          the existing privilege criteria.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/privilegecriteriadto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPrivilegeCriteriaV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPrivilegeCriteriaV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:gov-criteria:write
+      summary: Update privilege criteria
+      tags:
+      - Privilege Criteria
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listPrivilegeCriteriaV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listPrivilegeCriteriaV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    privilegecriteriadto:
+      example:
+        sourceId: c42c45d8d7c04d2da64d215cd8c32f21
+        privilegeLevel: HIGH
+        groups:
+        - criteriaItems:
+          - ignoreCase: true
+            values:
+            - admin
+            - superuser
+            property: displayName
+            targetType: group
+            operator: IN
+          - ignoreCase: true
+            values:
+            - admin
+            - superuser
+            property: displayName
+            targetType: group
+            operator: IN
+          operator: AND
+        - criteriaItems:
+          - ignoreCase: true
+            values:
+            - admin
+            - superuser
+            property: displayName
+            targetType: group
+            operator: IN
+          - ignoreCase: true
+            values:
+            - admin
+            - superuser
+            property: displayName
+            targetType: group
+            operator: IN
+          operator: AND
+        id: 2c9180867817ac4d017817c491119a20
+        type: CUSTOM
+        operator: AND
+      properties:
+        id:
+          description: The Id of the criteria.
+          example: 2c9180867817ac4d017817c491119a20
+          type: string
+        sourceId:
+          description: The Id of the source that the criteria is applied to.
+          example: c42c45d8d7c04d2da64d215cd8c32f21
+          maxLength: 32
+          minLength: 32
+          type: string
+        type:
+          description: The type of criteria.
+          enum:
+          - CUSTOM
+          - CONNECTOR
+          - SINGLE_LEVEL
+          example: CUSTOM
+          type: string
+        operator:
+          description: The logical operator to apply between groups.
+          enum:
+          - AND
+          - OR
+          example: AND
+          type: string
+        groups:
+          items:
+            $ref: '#/components/schemas/privilegecriteriadto_groups_inner'
+          type: array
+        privilegeLevel:
+          description: The privilege level assigned by this criteria.
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          example: HIGH
+          type: string
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    createprivilegecriteriarequest:
+      properties:
+        sourceId:
+          description: The Id of the source that the criteria is applied to.
+          example: c42c45d8d7c04d2da64d215cd8c32f21
+          maxLength: 32
+          minLength: 32
+          type: string
+        type:
+          description: The type of criteria being created. Expects "CUSTOM".
+          enum:
+          - CUSTOM
+          example: CUSTOM
+          type: string
+        operator:
+          description: The logical operator to apply between groups.
+          enum:
+          - AND
+          - OR
+          example: AND
+          type: string
+        groups:
+          items:
+            $ref: '#/components/schemas/createprivilegecriteriarequest_groups_inner'
+          type: array
+        privilegeLevel:
+          description: The privilege level assigned by this criteria.
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          example: HIGH
+          type: string
+      type: object
+    listPrivilegeCriteriaV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listPrivilegeCriteriaV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    privilegecriteriadto_groups_inner_criteriaItems_inner:
+      example:
+        ignoreCase: true
+        values:
+        - admin
+        - superuser
+        property: displayName
+        targetType: group
+        operator: IN
+      properties:
+        targetType:
+          description: The target type for the criteria item.
+          enum:
+          - group
+          example: group
+          type: string
+        operator:
+          description: The operator to apply to the property and values.
+          enum:
+          - IN
+          - EQUALS
+          - NOT_EQUALS
+          - CONTAINS
+          - DOES_NOT_CONTAIN
+          - STARTS_WITH
+          - ENDS_WITH
+          example: IN
+          type: string
+        property:
+          enum:
+          - displayName
+          - description
+          - value
+          nullable: true
+          type: string
+        values:
+          description: The values to evaluate the property against.
+          example:
+          - admin
+          - superuser
+          items:
+            maxLength: 450
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+        ignoreCase:
+          default: false
+          description: Whether to ignore case when evaluating the property against
+            the values.
+          example: true
+          type: boolean
+      type: object
+    privilegecriteriadto_groups_inner:
+      example:
+        criteriaItems:
+        - ignoreCase: true
+          values:
+          - admin
+          - superuser
+          property: displayName
+          targetType: group
+          operator: IN
+        - ignoreCase: true
+          values:
+          - admin
+          - superuser
+          property: displayName
+          targetType: group
+          operator: IN
+        operator: AND
+      properties:
+        operator:
+          description: The logical operator to apply between criteria items in the
+            group.
+          enum:
+          - AND
+          - OR
+          example: AND
+          type: string
+        criteriaItems:
+          items:
+            $ref: '#/components/schemas/privilegecriteriadto_groups_inner_criteriaItems_inner'
+          type: array
+      type: object
+    createprivilegecriteriarequest_groups_inner_criteriaItems_inner:
+      properties:
+        targetType:
+          description: The target type of the criteria item.
+          enum:
+          - group
+          example: group
+          type: string
+        operator:
+          enum:
+          - displayName
+          - description
+          - value
+          nullable: true
+          type: string
+        values:
+          description: The values to evaluate the property against.
+          example:
+          - admin
+          - superuser
+          items:
+            maxLength: 450
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+        ignoreCase:
+          default: false
+          description: Whether to ignore case when evaluating the property against
+            the values.
+          example: true
+          type: boolean
+      type: object
+    createprivilegecriteriarequest_groups_inner:
+      properties:
+        operator:
+          description: The logical operator to apply between criteria items in the
+            group.
+          enum:
+          - AND
+          - OR
+          example: AND
+          type: string
+        criteriaItems:
+          items:
+            $ref: '#/components/schemas/createprivilegecriteriarequest_groups_inner_criteriaItems_inner'
+          type: array
+      type: object

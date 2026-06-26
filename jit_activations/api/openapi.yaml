@@ -1,0 +1,692 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - JIT Activations
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use this API to start and manage Just-In-Time (JIT) Privileged activation workflows for entitlement connections.
+  name: JIT Activations
+paths:
+  /jit-activations/v1/activate:
+    post:
+      description: |
+        Starts a JIT Privileged (JIT P) activation workflow for the given entitlement connection and duration.
+        The service performs quick validation; the workflow performs additional validation.
+
+        The response is returned with HTTP 202 Accepted while the workflow initializes.
+      operationId: startActivateWorkflowV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/jitactivationactivaterequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/jitactivationactivateresponse'
+          description: |
+            Accepted. The activation workflow was accepted and is running.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startActivateWorkflowV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startActivateWorkflowV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:jit-activation-workflow:activate
+        - idn:jit-activation-workflow:manage
+      summary: Start JIT activation workflow
+      tags:
+      - JIT Activations
+      x-sailpoint-userLevels:
+      - USER
+  /jit-activations/v1/deactivate:
+    post:
+      description: |
+        Sends a signal to a running JIT Privileged (JIT P) activation workflow to deactivate.
+
+        This request cannot be applied to a workflow that does not exist or whose execution has already completed.
+        The client receives an error response in those cases.
+
+        The response is returned with HTTP 202 Accepted after the signal is sent.
+      operationId: startDeactivateWorkflowV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/jitactivationdeactivaterequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/jitactivationdeactivateresponse'
+          description: |
+            Accepted. The deactivation signal was sent to the workflow.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startActivateWorkflowV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startActivateWorkflowV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:jit-activation-workflow:deactivate
+        - idn:jit-activation-workflow:manage
+      summary: Deactivate JIT activation workflow
+      tags:
+      - JIT Activations
+      x-sailpoint-userLevels:
+      - USER
+  /jit-activations/v1/extend:
+    post:
+      description: |
+        Sends a signal to a running JIT Privileged (JIT P) activation workflow to extend the activation period
+        by the requested number of minutes.
+
+        This request cannot be applied to a workflow that does not exist or whose execution has already completed.
+        The client receives an error response in those cases.
+
+        The response is returned with HTTP 202 Accepted after the signal is sent.
+      operationId: startExtendWorkflowV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/jitactivationextendrequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/jitactivationextendresponse'
+          description: |
+            Accepted. The extend signal was sent to the workflow.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startActivateWorkflowV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startActivateWorkflowV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:jit-activation-workflow:extend
+        - idn:jit-activation-workflow:manage
+      summary: Extend JIT activation workflow
+      tags:
+      - JIT Activations
+      x-sailpoint-userLevels:
+      - USER
+components:
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/startActivateWorkflowV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/startActivateWorkflowV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    jitactivationactivaterequest:
+      properties:
+        connectionId:
+          description: Entitlement connection identifier for the activation.
+          example: 757fb803-9024-5861-e510-83a56e4c5bd3
+          format: uuid
+          type: string
+        activationPeriodMins:
+          description: Requested activation duration in minutes.
+          example: 120
+          format: int32
+          minimum: 1
+          type: integer
+      required:
+      - activationPeriodMins
+      - connectionId
+      title: JIT Activation Activate Request
+      type: object
+    activationworkflowstatus:
+      description: JIT activation workflow status.
+      enum:
+      - CREATING
+      - ACTIVATING
+      - INVALID
+      - ERROR
+      - PROVISIONED
+      - DEPROVISIONING
+      - COMPLETED
+      - REVOKED
+      example: PROVISIONED
+      type: string
+    jitactivationactivateresponse:
+      example:
+        activationPeriodMins: 120
+        connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
+        startTime: 2025-10-11T21:23:15Z
+        id: jit-activation-abc123
+        activationId: 8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d
+        status: PROVISIONED
+      properties:
+        id:
+          description: Workflow or business identifier for this activation.
+          example: jit-activation-abc123
+          type: string
+        activationId:
+          description: Persistent activation record identifier for this JIT activation.
+          example: 8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d
+          format: uuid
+          type: string
+        connectionId:
+          description: Entitlement connection identifier for the activation.
+          example: 757fb803-9024-5861-e510-83a56e4c5bd3
+          format: uuid
+          type: string
+        activationPeriodMins:
+          description: Activation duration in minutes for this workflow.
+          example: 120
+          format: int32
+          type: integer
+        status:
+          $ref: '#/components/schemas/activationworkflowstatus'
+        startTime:
+          description: Time when the activation workflow was started (ISO-8601).
+          example: 2025-10-11T21:23:15Z
+          format: date-time
+          type: string
+      required:
+      - activationId
+      - activationPeriodMins
+      - connectionId
+      - id
+      - startTime
+      - status
+      title: JIT Activation Activate Response
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    jitactivationdeactivaterequest:
+      properties:
+        connectionId:
+          description: Entitlement connection identifier for the activation to deactivate.
+          example: 757fb803-9024-5861-e510-83a56e4c5bd3
+          format: uuid
+          type: string
+      required:
+      - connectionId
+      title: JIT Activation Deactivate Request
+      type: object
+    jitactivationdeactivateresponse:
+      example:
+        connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
+        startTime: 2025-10-11T21:23:15Z
+        id: jit-activation-abc123
+        activationId: 8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d
+        status: PROVISIONED
+      properties:
+        id:
+          description: Workflow or business identifier for this activation.
+          example: jit-activation-abc123
+          type: string
+        activationId:
+          description: Persistent activation record identifier for this JIT activation.
+          example: 8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d
+          format: uuid
+          type: string
+        connectionId:
+          description: Entitlement connection identifier for the activation.
+          example: 757fb803-9024-5861-e510-83a56e4c5bd3
+          format: uuid
+          type: string
+        status:
+          $ref: '#/components/schemas/activationworkflowstatus'
+        startTime:
+          description: Time associated with this deactivation request (ISO-8601).
+          example: 2025-10-11T21:23:15Z
+          format: date-time
+          type: string
+      required:
+      - activationId
+      - connectionId
+      - id
+      - startTime
+      - status
+      title: JIT Activation Deactivate Response
+      type: object
+    jitactivationextendrequest:
+      properties:
+        connectionId:
+          description: Entitlement connection identifier for the activation to extend.
+          example: 757fb803-9024-5861-e510-83a56e4c5bd3
+          format: uuid
+          type: string
+        activationPeriodExtensionMins:
+          description: Number of minutes to extend the activation period.
+          example: 120
+          format: int32
+          minimum: 1
+          type: integer
+      required:
+      - activationPeriodExtensionMins
+      - connectionId
+      title: JIT Activation Extend Request
+      type: object
+    jitactivationextendresponse:
+      example:
+        activationPeriodExtensionMins: 120
+        connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
+        startTime: 2025-10-11T21:23:15Z
+        id: jit-activation-abc123
+        activationId: 8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d
+        status: PROVISIONED
+      properties:
+        id:
+          description: Workflow or business identifier for this activation.
+          example: jit-activation-abc123
+          type: string
+        activationId:
+          description: Persistent activation record identifier for this JIT activation.
+          example: 8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d
+          format: uuid
+          type: string
+        connectionId:
+          description: Entitlement connection identifier for the activation.
+          example: 757fb803-9024-5861-e510-83a56e4c5bd3
+          format: uuid
+          type: string
+        activationPeriodExtensionMins:
+          description: "Extension applied to the activation period, in minutes."
+          example: 120
+          format: int32
+          type: integer
+        status:
+          $ref: '#/components/schemas/activationworkflowstatus'
+        startTime:
+          description: Time associated with this extend request (ISO-8601).
+          example: 2025-10-11T21:23:15Z
+          format: date-time
+          type: string
+      required:
+      - activationId
+      - activationPeriodExtensionMins
+      - connectionId
+      - id
+      - startTime
+      - status
+      title: JIT Activation Extend Response
+      type: object
+    startActivateWorkflowV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    startActivateWorkflowV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object

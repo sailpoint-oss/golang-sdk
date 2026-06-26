@@ -1,0 +1,509 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Tenant
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: API for reading tenant details.
+  name: Tenant
+paths:
+  /tenant/v1:
+    get:
+      description: This rest endpoint can be used to retrieve tenant details.
+      operationId: getTenantV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tenant'
+          description: Tenant Info
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTenantV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTenantV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:tenant:read
+      summary: Get tenant information.
+      tags:
+      - Tenant
+      x-sailpoint-userLevels:
+      - Any
+components:
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getTenantV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getTenantV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    license:
+      example:
+        legacyFeatureName: ACCESS_REQUEST
+        licenseId: idn:access-request
+      properties:
+        licenseId:
+          description: Name of the license
+          example: idn:access-request
+          type: string
+        legacyFeatureName:
+          description: Legacy name of the license
+          example: ACCESS_REQUEST
+          type: string
+      title: License
+      type: object
+    product:
+      example:
+        productRegion: us-east-1
+        reason: Reason
+        notes: Example notes
+        productTenantId: tenant#product
+        productName: idn
+        url: https://tenant-name.identitynow.com
+        productRight: idn:ui:view
+        lastUpdated: 2020-05-19T13:49:37.385Z
+        orgType: test
+        licenses:
+        - legacyFeatureName: ACCESS_REQUEST
+          licenseId: idn:access-request
+        - legacyFeatureName: ACCESS_REQUEST
+          licenseId: idn:access-request
+        dateCreated: 2020-05-19T13:49:37.385Z
+        apiUrl: https://tenant-name.api.identitynow.com
+        zone: Deployment zone for the Product
+        statusDateTime: 2020-05-19T13:49:37.385Z
+        attributes:
+          domain: https://tenant-name.identitynow.com
+          maxRegisteredUsers: 250
+        status: active
+      properties:
+        productName:
+          description: Name of the Product
+          example: idn
+          type: string
+        url:
+          description: URL of the Product
+          example: https://tenant-name.identitynow.com
+          type: string
+        productTenantId:
+          description: An identifier for a specific product-tenant combination
+          example: tenant#product
+          type: string
+        productRegion:
+          description: Product region
+          example: us-east-1
+          type: string
+        productRight:
+          description: Right needed for the Product
+          example: idn:ui:view
+          type: string
+        apiUrl:
+          description: API URL of the Product
+          example: https://tenant-name.api.identitynow.com
+          nullable: true
+          type: string
+        licenses:
+          items:
+            $ref: '#/components/schemas/license'
+          type: array
+        attributes:
+          additionalProperties: true
+          description: Additional attributes for a product
+          example:
+            domain: https://tenant-name.identitynow.com
+            maxRegisteredUsers: 250
+          type: object
+        zone:
+          description: Zone
+          example: Deployment zone for the Product
+          type: string
+        status:
+          description: Status of the product
+          example: active
+          type: string
+        statusDateTime:
+          description: Status datetime
+          example: 2020-05-19T13:49:37.385Z
+          format: date-time
+          type: string
+        reason:
+          description: If there's a tenant provisioning failure then reason will have
+            the description of error
+          example: Reason
+          type: string
+        notes:
+          description: Product could have additional notes added during tenant provisioning.
+          example: Example notes
+          type: string
+        dateCreated:
+          description: Date when the product was created
+          example: 2020-05-19T13:49:37.385Z
+          format: date-time
+          nullable: true
+          type: string
+        lastUpdated:
+          description: Date when the product was last updated
+          example: 2020-05-19T13:49:37.385Z
+          format: date-time
+          nullable: true
+          type: string
+        orgType:
+          description: Type of org
+          enum:
+          - development
+          - staging
+          - production
+          - test
+          - partner
+          - training
+          - demonstration
+          - sandbox
+          - null
+          example: test
+          nullable: true
+          type: string
+      title: Product
+      type: object
+    tenant:
+      example:
+        pod: example-pod
+        name: acme
+        fullName: "Acme, Inc"
+        description: Description of the Tenant
+        id: 2c91808568c529c60168cca6f90c1324
+        region: us-east-1
+        products:
+        - productRegion: us-east-1
+          reason: Reason
+          notes: Example notes
+          productTenantId: tenant#product
+          productName: idn
+          url: https://tenant-name.identitynow.com
+          productRight: idn:ui:view
+          lastUpdated: 2020-05-19T13:49:37.385Z
+          orgType: test
+          licenses:
+          - legacyFeatureName: ACCESS_REQUEST
+            licenseId: idn:access-request
+          - legacyFeatureName: ACCESS_REQUEST
+            licenseId: idn:access-request
+          dateCreated: 2020-05-19T13:49:37.385Z
+          apiUrl: https://tenant-name.api.identitynow.com
+          zone: Deployment zone for the Product
+          statusDateTime: 2020-05-19T13:49:37.385Z
+          attributes:
+            domain: https://tenant-name.identitynow.com
+            maxRegisteredUsers: 250
+          status: active
+        - productRegion: us-east-1
+          reason: Reason
+          notes: Example notes
+          productTenantId: tenant#product
+          productName: idn
+          url: https://tenant-name.identitynow.com
+          productRight: idn:ui:view
+          lastUpdated: 2020-05-19T13:49:37.385Z
+          orgType: test
+          licenses:
+          - legacyFeatureName: ACCESS_REQUEST
+            licenseId: idn:access-request
+          - legacyFeatureName: ACCESS_REQUEST
+            licenseId: idn:access-request
+          dateCreated: 2020-05-19T13:49:37.385Z
+          apiUrl: https://tenant-name.api.identitynow.com
+          zone: Deployment zone for the Product
+          statusDateTime: 2020-05-19T13:49:37.385Z
+          attributes:
+            domain: https://tenant-name.identitynow.com
+            maxRegisteredUsers: 250
+          status: active
+      properties:
+        id:
+          description: The unique identifier for the Tenant
+          example: 2c91808568c529c60168cca6f90c1324
+          readOnly: true
+          type: string
+        name:
+          description: Abbreviated name of the Tenant
+          example: acme
+          type: string
+        fullName:
+          description: Human-readable name of the Tenant
+          example: "Acme, Inc"
+          type: string
+        pod:
+          description: Deployment pod for the Tenant
+          example: example-pod
+          type: string
+        region:
+          description: Deployment region for the Tenant
+          example: us-east-1
+          type: string
+        description:
+          description: Description of the Tenant
+          example: Description of the Tenant
+          type: string
+        products:
+          items:
+            $ref: '#/components/schemas/product'
+          type: array
+      title: Tenant
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    getTenantV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getTenantV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object

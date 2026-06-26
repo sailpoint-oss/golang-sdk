@@ -1,0 +1,4157 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Search
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement search functionality. \nWith search functionality\
+    \ in place, users can search their tenants for nearly any information from throughout\
+    \ their organizations. \n\nIdentity Security Cloud enables organizations to store\
+    \ user data from across all their connected sources and manage the users' access,\
+    \ so the ability to query and filter that data is essential.  \nIts search goes\
+    \ through all those sources and finds the results quickly and specifically. \n\
+    \nThe search query is flexible - it can be very broad or very narrow. \nThe search\
+    \ only returns results for searchable objects it is filtering for. \nThe following\
+    \ objects are searchable: identities, roles, access profiles, entitlements, events,\
+    \ and account activities. \nBy default, no filter is applied, so a search for\
+    \ \"Ad\" returns both the identity \"Adam.Archer\" as well as the role \"Administrator.\"\
+    \n\nUsers can further narrow their results by using Identity Security Cloud's\
+    \ specific syntax and punctuation to structure their queries. \nFor example, the\
+    \ query \"attributes.location:austin AND NOT manager.name:amanda.ross\" returns\
+    \ all results associated with the Austin location, but it excludes those associated\
+    \ with the manager Amanda Ross.\nRefer to [Building a Search Query](https://documentation.sailpoint.com/saas/help/search/building-query.html)\
+    \ for more information about how to construct specific search queries. \n\nRefer\
+    \ to [Using Search](https://documentation.sailpoint.com/saas/help/search/index.html)\
+    \ for more information about Identity Security Cloud's search and its different\
+    \ possibilities. \n\nThe search feature uses Elasticsearch as a datastore and\
+    \ query engine. \nThe power of Elasticsearch makes this feature suitable for ad-hoc\
+    \ reporting.\nHowever, data from the operational databases (ex. identities, roles,\
+    \ events, etc) has to be ingested into Elasticsearch. \nThis ingestion process\
+    \ introduces a latency from when the operational data is created to when it is\
+    \ available in search. \nDepending on the system load, this can take a few seconds\
+    \ to a few minutes. \nPlease keep this latency in mind when you use search.\n"
+  name: Search
+paths:
+  /search/v1:
+    post:
+      description: "Perform a search with the provided query and return a matching\
+        \ result collection. To page past 10,000 records, you can use `searchAfter`\
+        \ paging.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries)\
+        \ for more information about how to implement `searchAfter` paging. The search\
+        \ query itself has a size limitation of approximately 800 objects when filtering\
+        \ by large lists of IDs or values (e.g., using `terms` filters with extensive\
+        \ lists)."
+      externalDocs:
+        description: Learn more about search.
+        url: https://documentation.sailpoint.com/saas/help/search/index.html
+      operationId: searchPostV1
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 10000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 10000
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          application/json:
+            examples:
+              accessProfiles:
+                $ref: '#/components/examples/query-accessprofiles'
+              accountActivities:
+                $ref: '#/components/examples/query-accountactivities'
+              entitlements:
+                $ref: '#/components/examples/query-entitlements'
+              events:
+                $ref: '#/components/examples/query-events'
+              identities:
+                $ref: '#/components/examples/query-identities'
+              roles:
+                $ref: '#/components/examples/query-roles'
+              query-fields:
+                $ref: '#/components/examples/query-fields'
+              query-timeZone:
+                $ref: '#/components/examples/query-timezone'
+              query-innerHit:
+                $ref: '#/components/examples/query-innerhit'
+              typeAheadQuery:
+                $ref: '#/components/examples/typeaheadquery'
+              typeAheadQuery-nestedType:
+                $ref: '#/components/examples/typeaheadquery-nestedtype'
+              filter-exists:
+                $ref: '#/components/examples/filter-exists'
+              filter-range:
+                $ref: '#/components/examples/filter-range'
+              filter-terms:
+                $ref: '#/components/examples/filter-terms'
+            schema:
+              $ref: '#/components/schemas/search'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                accessProfiles:
+                  $ref: '#/components/examples/accessprofiles'
+                accountActivities:
+                  $ref: '#/components/examples/accountactivities'
+                entitlements:
+                  $ref: '#/components/examples/entitlements'
+                events:
+                  $ref: '#/components/examples/events'
+                identities:
+                  $ref: '#/components/examples/identities'
+                roles:
+                  $ref: '#/components/examples/roles'
+                query-fields:
+                  $ref: '#/components/examples/queryfields'
+                query-timeZone:
+                  $ref: '#/components/examples/querytimezone'
+                query-innerHit:
+                  $ref: '#/components/examples/queryinnerhit'
+                typeAheadQuery:
+                  $ref: '#/components/examples/typeaheadquery-2'
+                typeAheadQuery-nestedType:
+                  $ref: '#/components/examples/typeaheadquerynestedtype'
+                filter-exists:
+                  $ref: '#/components/examples/filterexists'
+                filter-range:
+                  $ref: '#/components/examples/filterrange'
+                filter-terms:
+                  $ref: '#/components/examples/filterterms'
+              schema:
+                items:
+                  $ref: '#/components/schemas/searchdocuments'
+                type: array
+          description: List of matching documents.
+          headers:
+            X-Total-Count:
+              description: The total result count (returned only if the *count* parameter
+                is specified as *true*).
+              example: 30
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchPostV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchPostV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:search:read
+      - applicationAuth:
+        - sp:search:read
+      summary: Perform search
+      tags:
+      - Search
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+  /search/v1/count:
+    post:
+      description: Performs a search with a provided query and returns the count of
+        results in the X-Total-Count header.
+      operationId: searchCountV1
+      requestBody:
+        content:
+          application/json:
+            examples:
+              query-timeZone:
+                $ref: '#/components/examples/query-timezone'
+            schema:
+              $ref: '#/components/schemas/search'
+        required: true
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+          headers:
+            X-Total-Count:
+              description: The total result count.
+              example: 5
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchPostV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchPostV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:search:read
+      - applicationAuth:
+        - sp:search:read
+      summary: Count documents satisfying a query
+      tags:
+      - Search
+  /search/v1/aggregate:
+    post:
+      description: "Performs a search query aggregation and returns the aggregation\
+        \ result. By default, you can page a maximum of 10,000 search result records.\
+        \  To page past 10,000 records, you can use searchAfter paging.  Refer to\
+        \ [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries)\
+        \ for more information about how to implement searchAfter paging. "
+      operationId: searchAggregateV1
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          application/json:
+            examples:
+              metricAggregation:
+                $ref: '#/components/examples/metricaggregation'
+              metricAggregation-dsl:
+                $ref: '#/components/examples/metricaggregation-dsl'
+              bucketAggregation:
+                $ref: '#/components/examples/bucketaggregation'
+              bucketAggregation-dsl:
+                $ref: '#/components/examples/bucketaggregation-dsl'
+              nestedAggregation-bucketAggregation:
+                $ref: '#/components/examples/nestedaggregation-bucketaggregation'
+              nestedAggregation-bucketAggregation-dsl:
+                $ref: '#/components/examples/nestedaggregation-bucketaggregation-dsl'
+              nestedAggregation-filterAggregation-bucketAggregation:
+                $ref: '#/components/examples/nestedaggregation-filteraggregation-bucketaggregation'
+              nestedAggregation-filterAggregation-bucketAggregation-dsl:
+                $ref: '#/components/examples/nestedaggregation-filteraggregation-bucketaggregation-dsl'
+              bucketAggregation-subAggregation:
+                $ref: '#/components/examples/bucketaggregation-subaggregation'
+              bucketAggregation-subAggregation-dsl:
+                $ref: '#/components/examples/bucketaggregation-subaggregation-dsl'
+            schema:
+              $ref: '#/components/schemas/search'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/aggregationresult'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/aggregationresult-csv'
+          description: Aggregation results.
+          headers:
+            X-Total-Count:
+              description: The total result count (returned only if the *count* parameter
+                is specified as *true*).
+              example: 5
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchPostV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchPostV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:search:read
+      - applicationAuth:
+        - sp:search:read
+      summary: Perform a search query aggregation
+      tags:
+      - Search
+  /search/v1/{index}/{id}:
+    get:
+      description: "Fetches a single document from the specified index, using the\
+        \ specified document ID."
+      operationId: searchGetV1
+      parameters:
+      - description: |
+          The index from which to fetch the specified document.
+
+          The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.
+        example: identities
+        explode: false
+        in: path
+        name: index
+        required: true
+        schema:
+          enum:
+          - accessprofiles
+          - accountactivities
+          - entitlements
+          - events
+          - identities
+          - roles
+          type: string
+        style: simple
+      - description: ID of the requested document.
+        example: 2c91808568c529c60168cca6f90c1313
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id:
+        - listAccessProfiles
+        - listAccountActivities
+        - listEntitlements
+        - listRoles
+        - listIdentities
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                accessProfile:
+                  $ref: '#/components/examples/accessprofile'
+                accountActivity:
+                  $ref: '#/components/examples/accountactivity'
+                entitlement:
+                  $ref: '#/components/examples/entitlement'
+                event:
+                  $ref: '#/components/examples/event'
+                identity:
+                  $ref: '#/components/examples/identity'
+                role:
+                  $ref: '#/components/examples/role'
+              schema:
+                $ref: '#/components/schemas/searchdocument'
+          description: The requested document.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchPostV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchPostV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:search:read
+      - applicationAuth:
+        - sp:search:read
+      summary: Get a document by id
+      tags:
+      - Search
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+components:
+  examples:
+    query-accessprofiles:
+      summary: Query for access profiles
+      value:
+        indices:
+        - accessprofiles
+        query:
+          query: requestable:true
+    query-accountactivities:
+      summary: Query for acccount activities
+      value:
+        indices:
+        - accountactivities
+        query:
+          query: sources:"Active Directory"
+    query-entitlements:
+      summary: Query for entitlements
+      value:
+        indices:
+        - entitlements
+        query:
+          query: source.name:Finance
+    query-events:
+      summary: Query for events
+      value:
+        indices:
+        - events
+        query:
+          query: type:PROVISIONING
+    query-identities:
+      summary: Query for identities
+      value:
+        indices:
+        - identities
+        query:
+          query: attributes.cloudLifecycleState:active
+    query-roles:
+      summary: Query for roles
+      value:
+        indices:
+        - roles
+        query:
+          query: enabled:true
+    query-fields:
+      summary: Query with fields
+      value:
+        indices:
+        - identities
+        query:
+          query: '"John Doe"'
+          fields:
+          - name
+    query-timezone:
+      summary: Query with timezone
+      value:
+        indices:
+        - identities
+        query:
+          query: "created: [2022-05-19T19:26:03.351Z TO now]"
+          timeZone: America/Los_Angeles
+    query-innerhit:
+      summary: Query with innerhit
+      value:
+        indices:
+        - identities
+        query:
+          query: '"John Doe"'
+          innerHit:
+            type: access
+            query: source.name:"Active Directory"
+    typeaheadquery:
+      summary: Typeahead query
+      value:
+        indices:
+        - identities
+        queryType: TYPEAHEAD
+        typeAheadQuery:
+          field: name
+          query: Jo
+          maxExpansions: 50
+          size: 100
+          sort: desc
+          sortByValue: false
+    typeaheadquery-nestedtype:
+      summary: Typeahead query with nestedtype
+      value:
+        indices:
+        - identities
+        queryType: TYPEAHEAD
+        typeAheadQuery:
+          field: source.name
+          nestedType: access
+          query: Work
+          maxExpansions: 50
+          size: 100
+          sort: desc
+          sortByValue: false
+    filter-exists:
+      summary: Filter with exists
+      value:
+        indices:
+        - identities
+        query:
+          query: attributes.city:Austin
+        filters:
+          attributes.personalEmail:
+            type: EXISTS
+            exclude: true
+    filter-range:
+      summary: Filter with range
+      value:
+        indices:
+        - identities
+        query:
+          query: attributes.city:London
+          timeZone: Europe/London
+        filters:
+          accessCount:
+            type: RANGE
+            range:
+              lower:
+                value: "3"
+          created:
+            type: RANGE
+            range:
+              lower:
+                value: 2023-12-01
+                inclusive: true
+              upper:
+                value: 2025-01-01
+    filter-terms:
+      summary: Filter with terms
+      value:
+        indices:
+        - identities
+        query:
+          query: attributes.city:London
+        filters:
+          source.name:
+            type: TERMS
+            terms:
+            - HR Employees
+            - Corporate Active Directory
+            exclude: true
+          isManager:
+            type: TERMS
+            terms:
+            - "true"
+    accessprofiles:
+      summary: A collection of access profiles
+      value:
+      - id: 13b856dd9a264206954b63ecbb57a853
+        name: Cloud Eng
+        description: Cloud Eng
+        source:
+          id: 5c71ff71195b4794a0b87e7cf36fb017
+          name: Active Directory
+        entitlements:
+        - hasPermissions: false
+          attribute: memberOf
+          value: "CN=Cloud Engineering,DC=sailpoint,DC=com"
+          schema: group
+          privileged: false
+          id: 7372eaddd75749bd89a2e76a363eb891
+          name: Cloud Engineering
+          description: Cloud Engineering
+        entitlementCount: 1
+        segments: []
+        segmentCount: 0
+        apps: []
+        created: 2024-09-16T17:41:25Z
+        modified: 2024-09-16T19:30:54Z
+        synced: 2025-02-12T06:32:40.156Z
+        enabled: true
+        requestable: true
+        requestCommentsRequired: false
+        owner:
+          id: ff8081815757d36a015757d42e56031e
+          name: SailPoint Support
+          type: IDENTITY
+          email: cloud-support@sailpoint.com
+        tags:
+        - TAG_1
+        - TAG_2
+        _type: accessprofile
+        type: accessprofile
+        pod: pod01-useast1
+        org: org-name
+        _version: v2
+    accountactivities:
+      summary: A collection of account activities
+      value:
+      - id: 6f76c3add1db4ba8bbe0d42aaceb7a07
+        _type: accountactivity
+        type: accountactivity
+        requester:
+          name: Amos.Cunningham
+          id: ef1e2a36099447cb9448c68e1804dd9f
+          type: Identity
+        sources: Active Directory
+        created: 2025-01-02T21:45:59.795Z
+        accountRequests:
+        - result:
+            status: committed
+          accountId: "CN=Amos Cunningham,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          op: Modify
+          provisioningTarget:
+            name: Active Directory
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            type: ADLDAPConnector
+          source:
+            name: Active Directory
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            type: ADLDAPConnector
+          attributeRequests:
+          - op: Add
+            name: memberOf
+            value: "CN=HelpDesk,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        stage: Completed
+        originalRequests:
+        - result:
+            status: Manual Task Created
+          accountId: "CN=Amos Cunningham,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          op: Modify
+          accountUuid: "{17413e85-1c08-4bb0-b658-9afdaad11d0a}"
+          source:
+            name: Active Directory
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            type: ADLDAPConnector
+          attributeRequests:
+          - op: Add
+            name: memberOf
+            value: "CN=HelpDesk,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        expansionItems: []
+        approvals:
+        - owner:
+            name: tina.smith
+            id: 322c6bce405a495a8e841a014b7d8410
+            type: Identity
+          result: Finished
+          attributeRequest:
+            op: Add
+            name: memberOf
+            value:
+            - "CN=HelpDesk,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          accountUuid: "{17413e85-1c08-4bb0-b658-9afdaad11d0a}"
+          modified: 2025-01-02T21:47:16.903Z
+          source:
+            name: Active Directory
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            type: ADLDAPConnector
+        recipient:
+          name: Amos.Cunningham
+          id: ef1e2a36099447cb9448c68e1804dd9f
+          type: Identity
+        action: Access Request
+        modified: 2025-01-02T21:47:16.903Z
+        trackingNumber: 051d09b0bb5b453d91f658ba7f1e3171
+        status: Complete
+        pod: pod01-useast1
+        org: org-name
+        synced: 2025-01-02T21:47:16.953Z
+        _version: v2
+    entitlements:
+      summary: A collection of entitlements
+      value:
+      - id: 2c9180867dde18d1017de8ea1f5c130f
+        name: Vendor Creation
+        displayName: Vendor Creation
+        created: 2021-12-23T20:09:57.340Z
+        modified: 2023-05-02T06:31:19.357Z
+        attribute: groups
+        value: VC
+        sourceSchemaObjectType: group
+        schema: group
+        privileged: false
+        cloudGoverned: false
+        hash: 22ac1f7a13c8a462c67ee74f5fcbf06a277cce50
+        description: Set up new AP vendors
+        requestable: false
+        source:
+          id: 2c9180887de347a7017de8e75fa5570a
+          type: SOURCE
+          name: Finance
+        containsDataAccess: "false"
+        pod: pod01-useast1
+        org: org-name
+        synced: 2024-11-07T16:29:06.131Z
+        _type: entitlement
+        type: entitlement
+        _version: v2
+    events:
+      summary: A collection of events
+      value:
+      - id: 001909ce8cc3b519436197105426b18b5fc6ca179803c0c3702e9038107bec78
+        stack: wps
+        synced: 2023-06-01T22:01:38.170Z
+        created: 2023-06-01T22:01:37.818Z
+        objects:
+        - ACCOUNT
+        type: PROVISIONING
+        technicalName: ACCOUNT_MODIFY_PASSED
+        target:
+          name: Colt.Spears
+        actor:
+          name: System
+        name: Modify Account Passed
+        action: ModifyAccount
+        attributes:
+          accountUuid: "{2d1ec18a-84cc-4659-bf75-a1ce4d56a9c5}"
+          cloudAppName: Active Directory
+          appId: 5c71ff71195b4794a0b87e7cf36fb017
+          sourceId: source
+          sourceName: Active Directory
+          accountName: "CN=Colt Spears,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpoint,DC=com"
+          interface: Identity Refresh
+        trackingNumber: 1f74901adbc0412d9fa51314195155be
+        operation: MODIFY
+        status: PASSED
+        pod: pod01-useast1
+        org: org-name
+        _type: event
+        _version: v2
+    identities:
+      summary: A collection of identities
+      value:
+      - id: 2c9180865c45e7e3015c46c434a80622
+        name: Laura Peeters
+        firstName: Laura
+        lastName: Peeters
+        displayName: Laura Peeters
+        email: Laura.Peeters@sailpointdemo.com
+        created: 2024-04-04T21:36:00.385Z
+        inactive: false
+        protected: false
+        status: ACTIVE
+        employeeNumber: "10673"
+        manager:
+          id: 88e405b1a3b8439daf2efc8f4ff0a98b
+          name: Mia Garcia
+          displayName: Mia Garcia
+        isManager: true
+        identityProfile:
+          id: 00a2bc6244b34f4a88d985f035f2b68b
+          name: HR Global
+        source:
+          id: 524f8d986f9b4192865269516d169eb0
+          name: HR Global
+        attributes:
+          city: Brussels
+          cloudAuthoritativeSource: 524f8d986f9b4192865269516d169eb0
+          cloudLifecycleState: active
+          cloudStatus: ACTIVE
+          country: BE
+          department: EMEA Sales
+          displayName: Laura Peeters
+          email: Laura.Peeters@sailpointdemo.com
+          firstname: Laura
+          identificationNumber: "10673"
+          identityState: ACTIVE
+          internalCloudStatus: ACTIVE
+          jobTitle: "Manager,  Sales - Belgium"
+          lastname: Peeters
+          location: EMEA
+          uid: "10673"
+          visibleSegments:
+          - d75ae486-044b-4eba-8113-0cdacb5341df
+        disabled: false
+        locked: false
+        accounts:
+        - id: 830396e8863442f1bce7b485612c8b51
+          name: Laura Peeters
+          accountId: "10673"
+          source:
+            id: 524f8d986f9b4192865269516d169eb0
+            name: HR Global
+            type: DelimitedFile
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:36:00.385Z
+          supportsPasswordChange: false
+        - id: cd6797419f37492ba22ea991f9d6ba90
+          name: $SEK300-N3K0K4HOPEB6
+          accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+            type: Active Directory - Direct
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: true
+          passwordLastSet: 2024-04-04T21:38:57.434Z
+          entitlementAttributes:
+            memberOf:
+            - "CN=Salesforce Access,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Sales-Folder,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Salesforce opportunity management,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          created: 2024-04-04T21:42:26.787Z
+          supportsPasswordChange: true
+        - id: db145fd0ec6a4e0cbc3a24bbe0758c8f
+          name: Laura Peeters
+          accountId: "10681"
+          source:
+            id: 524f8d986f9b4192865269516d169eb0
+            name: HR Global
+            type: DelimitedFile
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:36:15.769Z
+          supportsPasswordChange: false
+        - id: 6b75898eec394b4c98a5c3d2d9ba311b
+          name: Laura Peeters
+          accountId: Laura Peeters
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+            type: IdentityNowConnector
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:36:15.809Z
+          supportsPasswordChange: true
+          accountAttributes: {}
+        accountCount: 3
+        apps:
+        - id: "20003"
+          name: Active Directory
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20013"
+          name: AD test
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20014"
+          name: Test AD
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5092"
+          name: Accounting
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5822114389092541705"
+          name: IdentityNow app
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+          account:
+            id: 6b75898eec394b4c98a5c3d2d9ba311b
+            accountId: Laura Peeters
+        appCount: 5
+        access:
+        - id: 4919721c3c1a4ca484469b85f0fd9ba1
+          name: Benefits
+          displayName: Benefits
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 4bf8f57887874e9c83ae3a662bf8988c
+          name: Sales-Folder
+          displayName: Sales-Folder
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Sales-Folder,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: f1bea520cace4489805d26de3463262d
+          name: Salesforce Access
+          displayName: Salesforce Access
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Salesforce Access,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 98a76b26b7884f3e8d115991cebc09b2
+          name: Salesforce opportunity management
+          displayName: Salesforce opportunity management
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Salesforce opportunity management,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 7e277d102c874560becc464cdfe33a86
+          name: Benefits Employees
+          displayName: Benefits Employees
+          type: ACCESS_PROFILE
+          description: Access for Benefits Employees. Distribution group and File
+            share access.
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          owner:
+            id: 278f8a1859df48d2a0adb204257b26a2
+            name: Jerry.Bennett
+            displayName: Jerry.Bennett
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: 468171f0af874adebb58d3718519bd56
+          name: SalesCommonAccess
+          displayName: SalesCommonAccess
+          type: ACCESS_PROFILE
+          description: Grants basic access for everyone in the sale department
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          owner:
+            id: 278f8a1859df48d2a0adb204257b26a2
+            name: Jerry.Bennett
+            displayName: Jerry.Bennett
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: ad7025c956734455b28fa35e315e77fe
+          name: Benefits Common Access
+          displayName: Benefits Common Access
+          type: ROLE
+          description: Testing AD provisioning with birthright access
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          owner:
+            id: 322c6bce405a495a8e841a014b7d8410
+            name: tina.smith
+            displayName: tina.smith
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: a8819cb0445541438fe08dd38f311b3c
+          name: SalesGlobal
+          displayName: SalesGlobal
+          type: ROLE
+          description: All Sales people in the company
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          owner:
+            id: 29b6ee3f91484d159b1ceac3109af151
+            name: se.admin
+            displayName: se.admin
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        accessCount: 8
+        accessProfileCount: 2
+        entitlementCount: 4
+        roleCount: 2
+        modified: 2025-01-17T03:17:17.895Z
+        visibleSegments:
+        - All Employees
+        visibleSegmentCount: 1
+        tagCount: 2
+        tags:
+        - TAG_1
+        - TAG_2
+        pod: pod01-useast1
+        org: org-name
+        synced: 2025-01-17T06:10:19.853Z
+        _type: identity
+        type: identity
+        _version: v2
+    roles:
+      summary: A collection of roles
+      value:
+      - id: 2c91808c6faadea6016fb4f2bc69077b
+        accessProfileCount: 1
+        accessProfiles:
+        - id: 468171f0af874adebb58d3718519bd56
+          name: SalesCommonAccess
+        created: 2023-06-01T22:00:55.311Z
+        description: All Sales people in the company
+        dimensional: false
+        enabled: true
+        modified: 2023-06-01T22:00:55.432Z
+        name: SalesGlobal
+        owner:
+          email: admin@sailpointdemo.com
+          id: c18630c4811c4030810afb3a14f388cf
+          name: admin
+          type: IDENTITY
+        requestCommentsRequired: false
+        requestable: true
+        tags:
+        - TAG_1
+        - TAG_2
+        pod: pod01-useast1
+        org: org-name
+        _type: role
+        type: role
+        _version: v2
+    queryfields:
+      summary: Query with fields
+      value:
+      - name: John Doe
+        firstName: John
+        lastName: Doe
+        displayName: John Doe
+        id: 655f6741762547ec937893f27eab0cec
+        email: John.Doe@sailpointdemo.com
+        created: 2025-01-03T22:36:20.025Z
+        inactive: false
+        protected: false
+        status: UNREGISTERED
+        isManager: false
+        identityProfile:
+          id: 63e42f96f2fc4b8ba544654eba6068cf
+          name: Contractors
+        source:
+          id: b33c36dbaf974200b4d91f846abc30a5
+          name: Contractors
+        attributes:
+          cloudAuthoritativeSource: b33c36dbaf974200b4d91f846abc30a5
+          cloudLifecycleState: active
+          cloudStatus: UNREGISTERED
+          displayName: John Doe
+          email: John.Doe@sailpointdemo.com
+          endDate: 2199-01-01T00:00:00.000Z
+          firstname: John
+          identityState: ACTIVE
+          internalCloudStatus: UNREGISTERED
+          lastname: Doe
+          startDate: 2199-01-01T00:00:00.000Z
+          uid: John Doe
+          visibleSegments:
+          - d75ae486-044b-4eba-8113-0cdacb5341df
+        disabled: false
+        locked: false
+        accounts:
+        - id: 6f9cce655ddd40ca86a8faab8d5d52ec
+          name: John Doe
+          accountId: ac10e3a8-942a-1409-8194-2e4fe3090003
+          source:
+            id: b33c36dbaf974200b4d91f846abc30a5
+            name: Contractors
+            type: Non-Employee
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2025-01-03T22:36:20.045Z
+          supportsPasswordChange: false
+        - id: 9e29df88d4c5449ea790b4c24135b85c
+          name: $FHK300-LAAKDKHU50K3
+          accountId: "CN=John Doe,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+            type: Active Directory - Direct
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: true
+          entitlementAttributes:
+            memberOf:
+            - "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          created: 2025-01-03T22:36:36.866Z
+          supportsPasswordChange: true
+        - id: 74e0cd14200943ff92b4f11fa3596eba
+          name: John Doe
+          accountId: John Doe
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+            type: IdentityNowConnector
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2025-01-03T22:36:20.076Z
+          supportsPasswordChange: true
+          accountAttributes: {}
+        accountCount: 2
+        apps:
+        - id: "20003"
+          name: Active Directory
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: 9e29df88d4c5449ea790b4c24135b85c
+            accountId: "CN=John Doe,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20013"
+          name: AD test
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: 9e29df88d4c5449ea790b4c24135b85c
+            accountId: "CN=John Doe,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20014"
+          name: Test AD
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: 9e29df88d4c5449ea790b4c24135b85c
+            accountId: "CN=John Doe,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5092"
+          name: Accounting
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: 9e29df88d4c5449ea790b4c24135b85c
+            accountId: "CN=John Doe,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5822114389092541705"
+          name: IdentityNow app
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+          account:
+            id: 74e0cd14200943ff92b4f11fa3596eba
+            accountId: John Doe
+        appCount: 5
+        access:
+        - id: 4919721c3c1a4ca484469b85f0fd9ba1
+          name: Benefits
+          displayName: Benefits
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 7e277d102c874560becc464cdfe33a86
+          name: Benefits Employees
+          displayName: Benefits Employees
+          type: ACCESS_PROFILE
+          description: Access for Benefits Employees. Distribution group and File
+            share access.
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          owner:
+            id: 278f8a1859df48d2a0adb204257b26a2
+            name: Jerry.Bennett
+            displayName: Jerry.Bennett
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: ad7025c956734455b28fa35e315e77fe
+          name: Benefits Common Access
+          displayName: Benefits Common Access
+          type: ROLE
+          description: Testing AD provisioning with birthright access
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          owner:
+            id: 322c6bce405a495a8e841a014b7d8410
+            name: tina.smith
+            displayName: tina.smith
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        accessCount: 3
+        accessProfileCount: 1
+        entitlementCount: 1
+        roleCount: 1
+        modified: 2025-01-03T22:36:37.599Z
+        visibleSegments:
+        - All Employees
+        visibleSegmentCount: 1
+        tagCount: 0
+        pod: pod01-useast1
+        org: org-name
+        synced: 2025-01-03T22:37:04.452Z
+        _type: identity
+        type: identity
+        _version: v2
+    querytimezone:
+      summary: Query with timezone
+      value:
+      - name: Laura Peeters
+        firstName: Laura
+        lastName: Peeters
+        displayName: Laura Peeters
+        id: 0011cac38db341738af1f2ce7bb3aede
+        email: Laura.Peeters@sailpointdemo.com
+        created: 2024-04-04T21:36:00.385Z
+        inactive: false
+        protected: false
+        status: UNREGISTERED
+        employeeNumber: "10673"
+        manager:
+          id: 88e405b1a3b8439daf2efc8f4ff0a98b
+          name: Mia Garcia
+          displayName: Mia Garcia
+        isManager: true
+        identityProfile:
+          id: 00a2bc6244b34f4a88d985f035f2b68b
+          name: HR Global
+        source:
+          id: 524f8d986f9b4192865269516d169eb0
+          name: HR Global
+        attributes:
+          city: Brussels
+          cloudAuthoritativeSource: 524f8d986f9b4192865269516d169eb0
+          cloudLifecycleState: active
+          cloudStatus: UNREGISTERED
+          country: BE
+          department: EMEA Sales
+          displayName: Laura Peeters
+          email: Laura.Peeters@sailpointdemo.com
+          firstname: Laura
+          identificationNumber: "10673"
+          identityState: ACTIVE
+          internalCloudStatus: UNREGISTERED
+          jobTitle: "Manager,  Sales - Belgium"
+          lastname: Peeters
+          location: EMEA
+          uid: "10673"
+          visibleSegments:
+          - d75ae486-044b-4eba-8113-0cdacb5341df
+        disabled: false
+        locked: false
+        accounts:
+        - id: 830396e8863442f1bce7b485612c8b51
+          name: Laura Peeters
+          accountId: "10673"
+          source:
+            id: 524f8d986f9b4192865269516d169eb0
+            name: HR Global
+            type: DelimitedFile
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:36:00.385Z
+          supportsPasswordChange: false
+        - id: cd6797419f37492ba22ea991f9d6ba90
+          name: $SEK300-N3K0K4HOPEB6
+          accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+            type: Active Directory - Direct
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: true
+          passwordLastSet: 2024-04-04T21:38:57.434Z
+          entitlementAttributes:
+            memberOf:
+            - "CN=Salesforce Access,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Sales-Folder,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Salesforce opportunity management,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          created: 2024-04-04T21:42:26.787Z
+          supportsPasswordChange: true
+        - id: db145fd0ec6a4e0cbc3a24bbe0758c8f
+          name: Laura Peeters
+          accountId: "10681"
+          source:
+            id: 524f8d986f9b4192865269516d169eb0
+            name: HR Global
+            type: DelimitedFile
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:36:15.769Z
+          supportsPasswordChange: false
+        - id: 6b75898eec394b4c98a5c3d2d9ba311b
+          name: Laura Peeters
+          accountId: Laura Peeters
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+            type: IdentityNowConnector
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:36:15.809Z
+          supportsPasswordChange: true
+          accountAttributes: {}
+        accountCount: 3
+        apps:
+        - id: "20003"
+          name: Active Directory
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20013"
+          name: AD test
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20014"
+          name: Test AD
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5092"
+          name: Accounting
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5822114389092541705"
+          name: IdentityNow app
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+          account:
+            id: 6b75898eec394b4c98a5c3d2d9ba311b
+            accountId: Laura Peeters
+        appCount: 5
+        access:
+        - id: 4919721c3c1a4ca484469b85f0fd9ba1
+          name: Benefits
+          displayName: Benefits
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 4bf8f57887874e9c83ae3a662bf8988c
+          name: Sales-Folder
+          displayName: Sales-Folder
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Sales-Folder,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: f1bea520cace4489805d26de3463262d
+          name: Salesforce Access
+          displayName: Salesforce Access
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Salesforce Access,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 98a76b26b7884f3e8d115991cebc09b2
+          name: Salesforce opportunity management
+          displayName: Salesforce opportunity management
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Salesforce opportunity management,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 7e277d102c874560becc464cdfe33a86
+          name: Benefits Employees
+          displayName: Benefits Employees
+          type: ACCESS_PROFILE
+          description: Access for Benefits Employees. Distribution group and File
+            share access.
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          owner:
+            id: 278f8a1859df48d2a0adb204257b26a2
+            name: Jerry.Bennett
+            displayName: Jerry.Bennett
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: 468171f0af874adebb58d3718519bd56
+          name: SalesCommonAccess
+          displayName: SalesCommonAccess
+          type: ACCESS_PROFILE
+          description: Grants basic access for everyone in the sale department
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          owner:
+            id: 278f8a1859df48d2a0adb204257b26a2
+            name: Jerry.Bennett
+            displayName: Jerry.Bennett
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: ad7025c956734455b28fa35e315e77fe
+          name: Benefits Common Access
+          displayName: Benefits Common Access
+          type: ROLE
+          description: Testing AD provisioning with birthright access
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          owner:
+            id: 322c6bce405a495a8e841a014b7d8410
+            name: tina.smith
+            displayName: tina.smith
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: a8819cb0445541438fe08dd38f311b3c
+          name: SalesGlobal
+          displayName: SalesGlobal
+          type: ROLE
+          description: All Sales people in the company
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          owner:
+            id: 29b6ee3f91484d159b1ceac3109af151
+            name: se.admin
+            displayName: se.admin
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        accessCount: 8
+        accessProfileCount: 2
+        entitlementCount: 4
+        roleCount: 2
+        modified: 2024-12-13T02:49:18.104Z
+        visibleSegments:
+        - All Employees
+        visibleSegmentCount: 1
+        tagCount: 0
+        pod: pod01-useast1
+        org: org-name
+        synced: 2024-12-13T06:10:14.229Z
+        _type: identity
+        type: identity
+        _version: v2
+    queryinnerhit:
+      summary: Query with innerhit
+      value:
+      - requestCommentsRequired: false
+        schema: group
+        cloudEligible: false
+        displayName: Benefits
+        standalone: false
+        source:
+          name: Active Directory
+          id: 5c71ff71195b4794a0b87e7cf36fb017
+        type: ENTITLEMENT
+        enabled: false
+        privileged: false
+        name: Benefits
+        disabled: false
+        id: 4919721c3c1a4ca484469b85f0fd9ba1
+        requestable: false
+        attribute: memberOf
+        value: "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        cloudGoverned: false
+        _type: access
+        _originalType: identity
+        _version: v2
+      - requestCommentsRequired: false
+        owner:
+          displayName: Jerry.Bennett
+          name: Jerry.Bennett
+          id: 278f8a1859df48d2a0adb204257b26a2
+        cloudEligible: false
+        displayName: Benefits Employees
+        standalone: false
+        description: Access for Benefits Employees. Distribution group and File share
+          access.
+        source:
+          name: Active Directory
+          id: 5c71ff71195b4794a0b87e7cf36fb017
+        revocable: false
+        type: ACCESS_PROFILE
+        enabled: false
+        privileged: false
+        name: Benefits Employees
+        disabled: false
+        id: 7e277d102c874560becc464cdfe33a86
+        requestable: false
+        cloudGoverned: false
+        _type: access
+        _originalType: identity
+        _version: v2
+    typeaheadquery-2:
+      summary: Typeahead query
+      value:
+      - Ethan Johnson
+      - Henry Jones
+      - Joan.Wells
+      - Joanna Gonzales
+      - Joe Cook
+      - Joe.Myers
+      - Johan Jacobs
+      - John Doe
+      - John Roberts
+      - John Smith
+      - John.Jarndyce
+      - John.Smithee
+      - John.Williams
+      - Johnny.Elliott
+      - Jonathan.West
+      - Jordan Wilson
+      - Jordan.Sullivan
+      - Jose.Reed
+      - Joao Carvalho
+      - Kamaria Jones
+      - Lisa Jones
+      - Mia Johnson
+      - Michael Johnson
+      - Scott Johnson
+    typeaheadquerynestedtype:
+      summary: Typeahead query with nestedtype
+      value:
+      - Active Directory
+      - PRISM
+      - ServiceNow
+      - TRAKK-WS
+      - AWS
+    filterexists:
+      summary: Filter with exists
+      value:
+      - name: Cory Henry
+        firstName: Cory
+        lastName: Henry
+        displayName: Cory Henry
+        id: 026bb65ed1f54fcd89197ca986e9acac
+        email: Cory.Henry@sailpointdemo.com
+        created: 2024-04-04T21:32:46.844Z
+        inactive: false
+        protected: false
+        status: UNREGISTERED
+        employeeNumber: "10090"
+        manager:
+          id: 903349b85746471a9a898722206109bb
+          name: Layla Hendricks
+          displayName: Layla Hendricks
+        isManager: true
+        identityProfile:
+          id: 00a2bc6244b34f4a88d985f035f2b68b
+          name: HR Global
+        source:
+          id: 524f8d986f9b4192865269516d169eb0
+          name: HR Global
+        attributes:
+          city: Austin
+          cloudAuthoritativeSource: 524f8d986f9b4192865269516d169eb0
+          cloudLifecycleState: active
+          cloudStatus: UNREGISTERED
+          country: US
+          department: Revenue Operations
+          displayName: Cory Henry
+          email: Cory.Henry@sailpointdemo.com
+          firstname: Cory
+          identificationNumber: "10090"
+          identityState: ACTIVE
+          internalCloudStatus: UNREGISTERED
+          jobTitle: "Manager,  System Operations"
+          lastname: Henry
+          location: AMS
+          uid: "10090"
+          visibleSegments:
+          - d75ae486-044b-4eba-8113-0cdacb5341df
+          - 8ea4e957-f2f1-4cba-b202-54cc702528d1
+        disabled: false
+        locked: false
+        accounts:
+        - id: a02142f41ad1407884da04a7bfa586d4
+          name: Cory Henry
+          accountId: "10090"
+          source:
+            id: 524f8d986f9b4192865269516d169eb0
+            name: HR Global
+            type: DelimitedFile
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:32:46.844Z
+          supportsPasswordChange: false
+        - id: f30019e125c74684acee7da3f1643d2a
+          name: $LUJ300-P3QNVHE6R7FB
+          accountId: "CN=Cory Henry,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+            type: Active Directory - Direct
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: true
+          passwordLastSet: 2024-04-04T21:33:34.488Z
+          entitlementAttributes:
+            memberOf:
+            - "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          created: 2024-04-04T21:37:03.481Z
+          supportsPasswordChange: true
+        - id: 7fe340119c5d4b00a9b85d55b18a6416
+          name: Cory Henry
+          accountId: Cory Henry
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+            type: IdentityNowConnector
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:37:03.536Z
+          supportsPasswordChange: true
+          accountAttributes: {}
+        accountCount: 2
+        apps:
+        - id: "20003"
+          name: Active Directory
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: f30019e125c74684acee7da3f1643d2a
+            accountId: "CN=Cory Henry,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20013"
+          name: AD test
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: f30019e125c74684acee7da3f1643d2a
+            accountId: "CN=Cory Henry,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20014"
+          name: Test AD
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: f30019e125c74684acee7da3f1643d2a
+            accountId: "CN=Cory Henry,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5092"
+          name: Accounting
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: f30019e125c74684acee7da3f1643d2a
+            accountId: "CN=Cory Henry,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5822114389092541705"
+          name: IdentityNow app
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+          account:
+            id: 7fe340119c5d4b00a9b85d55b18a6416
+            accountId: Cory Henry
+        appCount: 5
+        access:
+        - id: ad7025c956734455b28fa35e315e77fe
+          name: Benefits Common Access
+          displayName: Benefits Common Access
+          type: ROLE
+          description: Testing AD provisioning with birthright access
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          owner:
+            id: 322c6bce405a495a8e841a014b7d8410
+            name: tina.smith
+            displayName: tina.smith
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: 7e277d102c874560becc464cdfe33a86
+          name: Benefits Employees
+          displayName: Benefits Employees
+          type: ACCESS_PROFILE
+          description: Access for Benefits Employees. Distribution group and File
+            share access.
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          owner:
+            id: 278f8a1859df48d2a0adb204257b26a2
+            name: Jerry.Bennett
+            displayName: Jerry.Bennett
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: 4919721c3c1a4ca484469b85f0fd9ba1
+          name: Benefits
+          displayName: Benefits
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        accessCount: 3
+        accessProfileCount: 1
+        entitlementCount: 1
+        roleCount: 1
+        modified: 2024-12-13T02:49:19.214Z
+        visibleSegments:
+        - All Employees
+        - Austin Employees
+        visibleSegmentCount: 2
+        tagCount: 0
+        pod: pod01-useast1
+        org: org-name
+        synced: 2024-12-13T06:10:29.734Z
+        _type: identity
+        type: identity
+        _version: v2
+    filterrange:
+      summary: Filter with range
+      value:
+      - name: Mia Garcia
+        firstName: Mia
+        lastName: Garcia
+        displayName: Mia Garcia
+        id: 88e405b1a3b8439daf2efc8f4ff0a98b
+        email: Mia.Garcia@sailpointdemo.com
+        created: 2024-04-04T21:33:05.522Z
+        inactive: false
+        protected: false
+        status: UNREGISTERED
+        employeeNumber: "10142"
+        manager:
+          id: 624db52c764f410baca2b192caad8e58
+          name: Ethan Johnson
+          displayName: Ethan Johnson
+        isManager: true
+        identityProfile:
+          id: 00a2bc6244b34f4a88d985f035f2b68b
+          name: HR Global
+        source:
+          id: 524f8d986f9b4192865269516d169eb0
+          name: HR Global
+        attributes:
+          city: London
+          cloudAuthoritativeSource: 524f8d986f9b4192865269516d169eb0
+          cloudLifecycleState: active
+          cloudStatus: UNREGISTERED
+          country: GB
+          department: EMEA Sales
+          displayName: Mia Garcia
+          email: Mia.Garcia@sailpointdemo.com
+          firstname: Mia
+          identificationNumber: "10142"
+          identityState: ACTIVE
+          internalCloudStatus: UNREGISTERED
+          jobTitle: "Regional Director, EMEA Sales"
+          lastname: Garcia
+          location: EMEA
+          uid: "10142"
+          visibleSegments:
+          - d75ae486-044b-4eba-8113-0cdacb5341df
+        disabled: false
+        locked: false
+        accounts:
+        - id: 9021760f10b64f42b7ebfb78085ccaff
+          name: Mia Garcia
+          accountId: "10142"
+          source:
+            id: 524f8d986f9b4192865269516d169eb0
+            name: HR Global
+            type: DelimitedFile
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:33:05.522Z
+          supportsPasswordChange: false
+        - id: f3ef91f3c2874e79981f2d97297660ee
+          name: $DUJ300-H5LFRVRDLKKM
+          accountId: "CN=Mia Garcia,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+            type: Active Directory - Direct
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: true
+          passwordLastSet: 2024-04-04T21:33:25.979Z
+          entitlementAttributes:
+            memberOf:
+            - "CN=Salesforce Access,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Sales-Folder,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Salesforce opportunity management,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          created: 2024-04-04T21:36:54.974Z
+          supportsPasswordChange: true
+        - id: c379279cc5b9450cbb274aad31486510
+          name: Mia Garcia
+          accountId: Mia Garcia
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+            type: IdentityNowConnector
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:36:55.027Z
+          supportsPasswordChange: true
+          accountAttributes: {}
+        accountCount: 2
+        apps:
+        - id: "20003"
+          name: Active Directory
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: f3ef91f3c2874e79981f2d97297660ee
+            accountId: "CN=Mia Garcia,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20013"
+          name: AD test
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: f3ef91f3c2874e79981f2d97297660ee
+            accountId: "CN=Mia Garcia,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20014"
+          name: Test AD
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: f3ef91f3c2874e79981f2d97297660ee
+            accountId: "CN=Mia Garcia,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5092"
+          name: Accounting
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: f3ef91f3c2874e79981f2d97297660ee
+            accountId: "CN=Mia Garcia,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5822114389092541705"
+          name: IdentityNow app
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+          account:
+            id: c379279cc5b9450cbb274aad31486510
+            accountId: Mia Garcia
+        appCount: 5
+        access:
+        - id: 7e277d102c874560becc464cdfe33a86
+          name: Benefits Employees
+          displayName: Benefits Employees
+          type: ACCESS_PROFILE
+          description: Access for Benefits Employees. Distribution group and File
+            share access.
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          owner:
+            id: 278f8a1859df48d2a0adb204257b26a2
+            name: Jerry.Bennett
+            displayName: Jerry.Bennett
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: 468171f0af874adebb58d3718519bd56
+          name: SalesCommonAccess
+          displayName: SalesCommonAccess
+          type: ACCESS_PROFILE
+          description: Grants basic access for everyone in the sale department
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          owner:
+            id: 278f8a1859df48d2a0adb204257b26a2
+            name: Jerry.Bennett
+            displayName: Jerry.Bennett
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: ad7025c956734455b28fa35e315e77fe
+          name: Benefits Common Access
+          displayName: Benefits Common Access
+          type: ROLE
+          description: Testing AD provisioning with birthright access
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          owner:
+            id: 322c6bce405a495a8e841a014b7d8410
+            name: tina.smith
+            displayName: tina.smith
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: a8819cb0445541438fe08dd38f311b3c
+          name: SalesGlobal
+          displayName: SalesGlobal
+          type: ROLE
+          description: All Sales people in the company
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          owner:
+            id: 29b6ee3f91484d159b1ceac3109af151
+            name: se.admin
+            displayName: se.admin
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: 4919721c3c1a4ca484469b85f0fd9ba1
+          name: Benefits
+          displayName: Benefits
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 4bf8f57887874e9c83ae3a662bf8988c
+          name: Sales-Folder
+          displayName: Sales-Folder
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Sales-Folder,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: f1bea520cace4489805d26de3463262d
+          name: Salesforce Access
+          displayName: Salesforce Access
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Salesforce Access,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 98a76b26b7884f3e8d115991cebc09b2
+          name: Salesforce opportunity management
+          displayName: Salesforce opportunity management
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Salesforce opportunity management,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        accessCount: 8
+        accessProfileCount: 2
+        entitlementCount: 4
+        roleCount: 2
+        modified: 2024-12-13T02:49:35.220Z
+        visibleSegments:
+        - All Employees
+        visibleSegmentCount: 1
+        tagCount: 0
+        pod: pod01-useast1
+        org: org-name
+        synced: 2024-12-13T06:25:44.222Z
+        _type: identity
+        type: identity
+        _version: v2
+    filterterms:
+      summary: Filter with terms
+      value:
+      - name: Oliver Davies
+        firstName: Oliver
+        lastName: Davies
+        displayName: Oliver Davies
+        id: b173815fef574b74a283f39e6634c215
+        email: Oliver.Davies@sailpointdemo.com
+        created: 2024-04-04T21:32:27.473Z
+        inactive: false
+        protected: false
+        status: UNREGISTERED
+        employeeNumber: "10029"
+        manager:
+          id: b8c8e021a4104eda91b80bfac6a99b47
+          name: Jackson Brooks
+          displayName: Jackson Brooks
+        isManager: true
+        identityProfile:
+          id: 00a2bc6244b34f4a88d985f035f2b68b
+          name: HR Global
+        source:
+          id: 524f8d986f9b4192865269516d169eb0
+          name: HR Global
+        attributes:
+          city: London
+          cloudAuthoritativeSource: 524f8d986f9b4192865269516d169eb0
+          cloudLifecycleState: active
+          cloudStatus: UNREGISTERED
+          country: GB
+          department: Customer Support
+          displayName: Oliver Davies
+          email: Oliver.Davies@sailpointdemo.com
+          firstname: Oliver
+          identificationNumber: "10029"
+          identityState: ACTIVE
+          internalCloudStatus: UNREGISTERED
+          jobTitle: Call Center
+          lastname: Davies
+          location: EMEA
+          uid: "10029"
+          visibleSegments:
+          - d75ae486-044b-4eba-8113-0cdacb5341df
+        disabled: false
+        locked: false
+        accounts:
+        - id: c8cacc7080254b2781f56e0ded6c8dea
+          name: $GRJ300-AQD2M7N9L7NT
+          accountId: "CN=Oliver Davies,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+            type: Active Directory - Direct
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: true
+          passwordLastSet: 2024-04-04T21:30:25.205Z
+          entitlementAttributes:
+            memberOf:
+            - "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          created: 2024-04-04T21:33:54.332Z
+          supportsPasswordChange: true
+        - id: cd7f58b2290c43909320ff89427b57a1
+          name: Oliver Davies
+          accountId: "10029"
+          source:
+            id: 524f8d986f9b4192865269516d169eb0
+            name: HR Global
+            type: DelimitedFile
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:32:27.473Z
+          supportsPasswordChange: false
+        - id: a1ee6cd948754371a98105a5a6dd067d
+          name: Oliver Davies
+          accountId: Oliver Davies
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+            type: IdentityNowConnector
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:33:54.377Z
+          supportsPasswordChange: true
+          accountAttributes: {}
+        accountCount: 2
+        apps:
+        - id: "20003"
+          name: Active Directory
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: c8cacc7080254b2781f56e0ded6c8dea
+            accountId: "CN=Oliver Davies,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20013"
+          name: AD test
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: c8cacc7080254b2781f56e0ded6c8dea
+            accountId: "CN=Oliver Davies,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20014"
+          name: Test AD
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: c8cacc7080254b2781f56e0ded6c8dea
+            accountId: "CN=Oliver Davies,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5092"
+          name: Accounting
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: c8cacc7080254b2781f56e0ded6c8dea
+            accountId: "CN=Oliver Davies,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5822114389092541705"
+          name: IdentityNow app
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+          account:
+            id: a1ee6cd948754371a98105a5a6dd067d
+            accountId: Oliver Davies
+        appCount: 5
+        access:
+        - id: ad7025c956734455b28fa35e315e77fe
+          name: Benefits Common Access
+          displayName: Benefits Common Access
+          type: ROLE
+          description: Testing AD provisioning with birthright access
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          owner:
+            id: 322c6bce405a495a8e841a014b7d8410
+            name: tina.smith
+            displayName: tina.smith
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: 7e277d102c874560becc464cdfe33a86
+          name: Benefits Employees
+          displayName: Benefits Employees
+          type: ACCESS_PROFILE
+          description: Access for Benefits Employees. Distribution group and File
+            share access.
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          owner:
+            id: 278f8a1859df48d2a0adb204257b26a2
+            name: Jerry.Bennett
+            displayName: Jerry.Bennett
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: 4919721c3c1a4ca484469b85f0fd9ba1
+          name: Benefits
+          displayName: Benefits
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        accessCount: 3
+        accessProfileCount: 1
+        entitlementCount: 1
+        roleCount: 1
+        modified: 2024-12-13T02:49:35.917Z
+        visibleSegments:
+        - All Employees
+        visibleSegmentCount: 1
+        tagCount: 0
+        pod: pod01-useast1
+        org: org-name
+        synced: 2024-12-13T06:28:14.763Z
+        _type: identity
+        type: identity
+        _version: v2
+    metricaggregation:
+      summary: Metricaggregation
+      value:
+        indices:
+        - identities
+        aggregationType: SAILPOINT
+        aggregations:
+          metric:
+            name: How Many Locations
+            type: UNIQUE_COUNT
+            field: attributes.city
+    metricaggregation-dsl:
+      summary: Metricaggregation using dsl
+      value:
+        indices:
+        - identities
+        aggregationType: DSL
+        aggregationsDsl:
+          How Many Locations:
+            cardinality:
+              field: attributes.city.exact
+    bucketaggregation:
+      summary: Bucketaggregation
+      value:
+        indices:
+        - identities
+        aggregationType: SAILPOINT
+        aggregations:
+          bucket:
+            name: Identity Locations
+            type: TERMS
+            field: attributes.city
+    bucketaggregation-dsl:
+      summary: Bucketaggregation using dsl
+      value:
+        indices:
+        - identities
+        aggregationType: DSL
+        aggregationsDsl:
+          Identity Locations:
+            terms:
+              field: attributes.city.exact
+    nestedaggregation-bucketaggregation:
+      summary: Nestedaggregation with bucketaggregation
+      value:
+        indices:
+        - identities
+        aggregationType: SAILPOINT
+        aggregations:
+          nested:
+            name: Access
+            field: access
+            type: TERMS
+          bucket:
+            name: Access Source Name
+            type: TERMS
+            field: access.source.name
+    nestedaggregation-bucketaggregation-dsl:
+      summary: Nestedaggregation with bucketaggregation using dsl
+      value:
+        indices:
+        - identities
+        aggregationType: DSL
+        aggregationsDsl:
+          access:
+            nested:
+              path: access
+            aggs:
+              Access Source Name:
+                terms:
+                  field: access.source.name.exact
+    nestedaggregation-filteraggregation-bucketaggregation:
+      summary: Nestedaggregation with filteraggregation and bucketaggregation
+      value:
+        indices:
+        - identities
+        aggregationType: SAILPOINT
+        aggregations:
+          nested:
+            name: Access
+            field: access
+            type: TERMS
+          filter:
+            name: Entitlements
+            field: access.type
+            value: ENTITLEMENT
+          bucket:
+            name: Access Name
+            type: TERMS
+            field: access.name
+    nestedaggregation-filteraggregation-bucketaggregation-dsl:
+      summary: Nestedaggregation with filteraggregation and bucketaggregation using
+        dsl
+      value:
+        indices:
+        - identities
+        aggregationType: DSL
+        aggregationsDsl:
+          access:
+            nested:
+              path: access
+            aggs:
+              Entitlements:
+                filter:
+                  term:
+                    access.type: ENTITLEMENT
+                aggs:
+                  Access Name:
+                    terms:
+                      field: access.name.exact
+    bucketaggregation-subaggregation:
+      summary: Bucketaggregation with subaggregation
+      value:
+        indices:
+        - identities
+        aggregationType: SAILPOINT
+        aggregations:
+          bucket:
+            name: Identity Department
+            type: TERMS
+            field: attributes.department
+          subAggregation:
+            bucket:
+              name: Identity Locations
+              type: TERMS
+              field: attributes.city
+    bucketaggregation-subaggregation-dsl:
+      summary: Bucketaggregation with subaggregation using dsl
+      value:
+        indices:
+        - identities
+        aggregationType: DSL
+        aggregationsDsl:
+          Identity Department:
+            terms:
+              field: attributes.department.exact
+            aggs:
+              Identity Locations:
+                terms:
+                  field: attributes.city.exact
+    accessprofile:
+      summary: Accessprofile
+      value:
+        id: 13b856dd9a264206954b63ecbb57a853
+        name: Cloud Eng
+        description: Cloud Eng
+        source:
+          id: 5c71ff71195b4794a0b87e7cf36fb017
+          name: Active Directory
+        entitlements:
+        - hasPermissions: false
+          attribute: memberOf
+          value: "CN=Cloud Engineering,DC=sailpoint,DC=COM"
+          schema: group
+          privileged: false
+          id: 7372eaddd75749bd89a2e76a363eb891
+          name: Cloud Engineering
+          description: Cloud Engineering
+        entitlementCount: 1
+        segments: []
+        segmentCount: 0
+        apps: []
+        created: 2024-09-16T17:41:25Z
+        modified: 2024-09-16T19:30:54Z
+        synced: 2025-02-12T06:32:40.156Z
+        enabled: true
+        requestable: true
+        requestCommentsRequired: false
+        owner:
+          id: ff8081815757d36a015757d42e56031e
+          name: SailPoint Support
+          type: IDENTITY
+          email: cloud-support@sailpoint.com
+        tags:
+        - TAG_1
+        - TAG_2
+    accountactivity:
+      summary: Accountactivity
+      value:
+        id: 6f76c3add1db4ba8bbe0d42aaceb7a07
+        requester:
+          name: Amos.Cunningham
+          id: ef1e2a36099447cb9448c68e1804dd9f
+          type: Identity
+        synced: 2025-01-02T21:47:16.953Z
+        sources: Active Directory
+        created: 2025-01-02T21:45:59.795Z
+        accountRequests:
+        - result:
+            status: committed
+          accountId: "CN=Amos Cunningham,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          op: Modify
+          provisioningTarget:
+            name: Active Directory
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            type: ADLDAPConnector
+          source:
+            name: Active Directory
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            type: ADLDAPConnector
+          attributeRequests:
+          - op: Add
+            name: memberOf
+            value: "CN=HelpDesk,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        stage: Completed
+        originalRequests:
+        - result:
+            status: Manual Task Created
+          accountId: "CN=Amos Cunningham,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          op: Modify
+          accountUuid: "{17413e85-1c08-4bb0-b658-9afdaad11d0a}"
+          source:
+            name: Active Directory
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            type: ADLDAPConnector
+          attributeRequests:
+          - op: Add
+            name: memberOf
+            value: "CN=HelpDesk,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        expansionItems: []
+        approvals:
+        - owner:
+            name: tina.smith
+            id: 322c6bce405a495a8e841a014b7d8410
+            type: Identity
+          result: Finished
+          attributeRequest:
+            op: Add
+            name: memberOf
+            value:
+            - "CN=HelpDesk,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          accountUuid: "{17413e85-1c08-4bb0-b658-9afdaad11d0a}"
+          modified: 2025-01-02T21:47:16.903Z
+          source:
+            name: Active Directory
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            type: ADLDAPConnector
+        recipient:
+          name: Amos.Cunningham
+          id: ef1e2a36099447cb9448c68e1804dd9f
+          type: Identity
+        action: Access Request
+        modified: 2025-01-02T21:47:16.903Z
+        trackingNumber: 051d09b0bb5b453d91f658ba7f1e3171
+        status: Complete
+    entitlement:
+      summary: Entitlement
+      value:
+        id: 2c9180867dde18d1017de8ea1f5c130f
+        name: Vendor Creation
+        displayName: Vendor Creation
+        created: 2021-12-23T20:09:57.340Z
+        modified: 2023-05-02T06:31:19.357Z
+        attribute: groups
+        value: VC
+        sourceSchemaObjectType: group
+        schema: group
+        privileged: false
+        cloudGoverned: false
+        hash: 22ac1f7a13c8a462c67ee74f5fcbf06a277cce50
+        description: Set up new AP vendors
+        requestable: false
+        source:
+          id: 2c9180887de347a7017de8e75fa5570a
+          type: SOURCE
+          name: Finance
+        containsDataAccess: "false"
+    event:
+      summary: Event
+      value:
+        id: 001909ce8cc3b519436197105426b18b5fc6ca179803c0c3702e9038107bec78
+        stack: wps
+        synced: 2023-06-01T22:01:38.170Z
+        created: 2023-06-01T22:01:37.818Z
+        objects:
+        - ACCOUNT
+        type: PROVISIONING
+        technicalName: ACCOUNT_MODIFY_PASSED
+        target:
+          name: Colt.Spears
+        actor:
+          name: System
+        name: Modify Account Passed
+        action: ModifyAccount
+        attributes:
+          accountUuid: "{2d1ec18a-84cc-4659-bf75-a1ce4d56a9c5}"
+          cloudAppName: Active Directory
+          appId: 5c71ff71195b4794a0b87e7cf36fb017
+          sourceId: source
+          sourceName: Active Directory
+          accountName: "CN=Colt Spears,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpoint,DC=com"
+          interface: Identity Refresh
+          trackingNumber: 1f74901adbc0412d9fa51314195155be
+        operation: MODIFY
+        status: PASSED
+    identity:
+      summary: Identity
+      value:
+        id: 2c9180865c45e7e3015c46c434a80622
+        name: Laura Peeters
+        firstName: Laura
+        lastName: Peeters
+        displayName: Laura Peeters
+        email: Laura.Peeters@sailpointdemo.com
+        created: 2024-04-04T21:36:00.385Z
+        inactive: false
+        protected: false
+        status: ACTIVE
+        employeeNumber: "10673"
+        manager:
+          id: 88e405b1a3b8439daf2efc8f4ff0a98b
+          name: Mia Garcia
+          displayName: Mia Garcia
+        isManager: true
+        identityProfile:
+          id: 00a2bc6244b34f4a88d985f035f2b68b
+          name: HR Global
+        source:
+          id: 524f8d986f9b4192865269516d169eb0
+          name: HR Global
+        attributes:
+          city: Brussels
+          cloudAuthoritativeSource: 524f8d986f9b4192865269516d169eb0
+          cloudLifecycleState: active
+          cloudStatus: UNREGISTERED
+          country: BE
+          department: EMEA Sales
+          displayName: Laura Peeters
+          email: Laura.Peeters@sailpointdemo.com
+          firstname: Laura
+          identificationNumber: "10673"
+          identityState: ACTIVE
+          internalCloudStatus: UNREGISTERED
+          jobTitle: "Manager,  Sales - Belgium"
+          lastname: Peeters
+          location: EMEA
+          uid: "10673"
+          visibleSegments:
+          - d75ae486-044b-4eba-8113-0cdacb5341df
+        disabled: false
+        locked: false
+        accounts:
+        - id: 830396e8863442f1bce7b485612c8b51
+          name: Laura Peeters
+          accountId: "10673"
+          source:
+            id: 524f8d986f9b4192865269516d169eb0
+            name: HR Global
+            type: DelimitedFile
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:36:00.385Z
+          supportsPasswordChange: false
+        - id: cd6797419f37492ba22ea991f9d6ba90
+          name: $SEK300-N3K0K4HOPEB6
+          accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+            type: Active Directory - Direct
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: true
+          passwordLastSet: 2024-04-04T21:38:57.434Z
+          entitlementAttributes:
+            memberOf:
+            - "CN=Salesforce Access,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Sales-Folder,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+            - "CN=Salesforce opportunity management,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          created: 2024-04-04T21:42:26.787Z
+          supportsPasswordChange: true
+        - id: db145fd0ec6a4e0cbc3a24bbe0758c8f
+          name: Laura Peeters
+          accountId: "10681"
+          source:
+            id: 524f8d986f9b4192865269516d169eb0
+            name: HR Global
+            type: DelimitedFile
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:36:15.769Z
+          supportsPasswordChange: false
+        - id: 6b75898eec394b4c98a5c3d2d9ba311b
+          name: Laura Peeters
+          accountId: Laura Peeters
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+            type: IdentityNowConnector
+          disabled: false
+          locked: false
+          privileged: false
+          manuallyCorrelated: false
+          entitlementAttributes: {}
+          created: 2024-04-04T21:36:15.809Z
+          supportsPasswordChange: true
+          accountAttributes: {}
+        accountCount: 3
+        apps:
+        - id: "20003"
+          name: Active Directory
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20013"
+          name: AD test
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "20014"
+          name: Test AD
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5092"
+          name: Accounting
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          account:
+            id: cd6797419f37492ba22ea991f9d6ba90
+            accountId: "CN=Laura Peeters,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+        - id: "5822114389092541705"
+          name: IdentityNow app
+          source:
+            id: af4686d6482841ac96d793901372ad9b
+            name: IdentityNow
+          account:
+            id: 6b75898eec394b4c98a5c3d2d9ba311b
+            accountId: Laura Peeters
+        appCount: 5
+        access:
+        - id: 4919721c3c1a4ca484469b85f0fd9ba1
+          name: Benefits
+          displayName: Benefits
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Benefits,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 4bf8f57887874e9c83ae3a662bf8988c
+          name: Sales-Folder
+          displayName: Sales-Folder
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Sales-Folder,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: f1bea520cace4489805d26de3463262d
+          name: Salesforce Access
+          displayName: Salesforce Access
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Salesforce Access,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 98a76b26b7884f3e8d115991cebc09b2
+          name: Salesforce opportunity management
+          displayName: Salesforce opportunity management
+          type: ENTITLEMENT
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          disabled: false
+          privileged: false
+          attribute: memberOf
+          value: "CN=Salesforce opportunity management,OU=Sales,OU=AI,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
+          standalone: false
+          cloudEligible: false
+          cloudGoverned: false
+          schema: group
+        - id: 7e277d102c874560becc464cdfe33a86
+          name: Benefits Employees
+          displayName: Benefits Employees
+          type: ACCESS_PROFILE
+          description: Access for Benefits Employees. Distribution group and File
+            share access.
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          owner:
+            id: 278f8a1859df48d2a0adb204257b26a2
+            name: Jerry.Bennett
+            displayName: Jerry.Bennett
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: 468171f0af874adebb58d3718519bd56
+          name: SalesCommonAccess
+          displayName: SalesCommonAccess
+          type: ACCESS_PROFILE
+          description: Grants basic access for everyone in the sale department
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          source:
+            id: 5c71ff71195b4794a0b87e7cf36fb017
+            name: Active Directory
+          owner:
+            id: 278f8a1859df48d2a0adb204257b26a2
+            name: Jerry.Bennett
+            displayName: Jerry.Bennett
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: ad7025c956734455b28fa35e315e77fe
+          name: Benefits Common Access
+          displayName: Benefits Common Access
+          type: ROLE
+          description: Testing AD provisioning with birthright access
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          owner:
+            id: 322c6bce405a495a8e841a014b7d8410
+            name: tina.smith
+            displayName: tina.smith
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        - id: a8819cb0445541438fe08dd38f311b3c
+          name: SalesGlobal
+          displayName: SalesGlobal
+          type: ROLE
+          description: All Sales people in the company
+          enabled: false
+          requestable: false
+          requestCommentsRequired: false
+          owner:
+            id: 29b6ee3f91484d159b1ceac3109af151
+            name: se.admin
+            displayName: se.admin
+          disabled: false
+          privileged: false
+          standalone: false
+          revocable: false
+          cloudEligible: false
+          cloudGoverned: false
+        accessCount: 8
+        accessProfileCount: 2
+        entitlementCount: 4
+        roleCount: 2
+        modified: 2025-01-17T03:17:17.895Z
+        visibleSegments:
+        - All Employees
+        visibleSegmentCount: 1
+        tagCount: 2
+        tags:
+        - TAG_1
+        - TAG_2
+    role:
+      summary: Role
+      value:
+        id: 2c91808c6faadea6016fb4f2bc69077b
+        accessProfileCount: 1
+        accessProfiles:
+        - id: 468171f0af874adebb58d3718519bd56
+          name: SalesCommonAccess
+        created: 2023-06-01T22:00:55.311Z
+        description: All Sales people in the company
+        dimensional: false
+        enabled: true
+        modified: 2023-06-01T22:00:55.432Z
+        name: SalesGlobal
+        owner:
+          email: admin@sailpointdemo.com
+          id: c18630c4811c4030810afb3a14f388cf
+          name: admin
+          type: IDENTITY
+        requestCommentsRequired: false
+        requestable: true
+        tags:
+        - TAG_1
+        - TAG_2
+  parameters:
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    searchlimit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 10000
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 10000
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    index:
+      description: |
+        The index from which to fetch the specified document.
+
+        The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.
+      example: identities
+      explode: false
+      in: path
+      name: index
+      required: true
+      schema:
+        enum:
+        - accessprofiles
+        - accountactivities
+        - entitlements
+        - events
+        - identities
+        - roles
+        type: string
+      style: simple
+    id:
+      description: ID of the requested document.
+      example: 2c91808568c529c60168cca6f90c1313
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      style: simple
+      x-sailpoint-resource-operation-id:
+      - listAccessProfiles
+      - listAccountActivities
+      - listEntitlements
+      - listRoles
+      - listIdentities
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/searchPostV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/searchPostV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    index:
+      description: |-
+        Enum representing the currently supported indices.
+        Additional values may be added in the future without notice.
+      enum:
+      - accessprofiles
+      - accountactivities
+      - entitlements
+      - events
+      - identities
+      - roles
+      - '*'
+      example: identities
+      type: string
+    querytype:
+      default: SAILPOINT
+      description: |-
+        The type of query to use.  By default, the `SAILPOINT` query type is used, which requires the `query` object to be defined in the request body.
+        To use the `queryDsl` or `typeAheadQuery` objects in the request, you must set the type to `DSL` or `TYPEAHEAD` accordingly.
+        Additional values may be added in the future without notice.
+      enum:
+      - DSL
+      - SAILPOINT
+      - TEXT
+      - TYPEAHEAD
+      example: SAILPOINT
+      type: string
+    elasticversion:
+      default: "5.2"
+      description: The current Elasticserver version.
+      example: "5.2"
+      type: string
+    innerhit:
+      description: Inner Hit query object that will cause the specified nested type
+        to be returned as the result matching the supplied query.
+      properties:
+        query:
+          description: "The search query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string)\
+            \ syntax from the Query DSL extended by SailPoint to support Nested queries."
+          example: source.name:\"Active Directory\"
+          type: string
+        type:
+          description: "The nested type to use in the inner hits query.  The nested\
+            \ type [Nested Type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html)\
+            \ refers to a document \"nested\" within another document. For example,\
+            \ an identity can have nested documents for access, accounts, and apps."
+          example: access
+          type: string
+      required:
+      - query
+      - type
+      type: object
+    query:
+      description: Query parameters used to construct an Elasticsearch query object.
+      properties:
+        query:
+          description: "The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string)\
+            \ syntax from the Query DSL extended by SailPoint to support Nested queries."
+          example: name:a*
+          type: string
+        fields:
+          description: "The fields the query will be applied to.  Fields provide you\
+            \ with a simple way to add additional fields to search, without making\
+            \ the query too complicated.  For example, you can use the fields to specify\
+            \ that you want your query of \"a*\" to be applied to \"name\", \"firstName\"\
+            , and the \"source.name\".  The response will include all results matching\
+            \ the \"a*\" query found in those three fields. \nA field's availability\
+            \ depends on the indices being searched.  For example, if you are searching\
+            \ \"identities\", you can apply your search to the \"firstName\" field,\
+            \ but you couldn't use \"firstName\" with a search on \"access profiles\"\
+            .  Refer to the response schema for the respective lists of available\
+            \ fields. "
+          example: "[\"firstName,lastName,email\"]"
+          type: string
+        timeZone:
+          description: The time zone to be applied to any range query related to dates.
+          example: America/Chicago
+          type: string
+        innerHit:
+          $ref: '#/components/schemas/innerhit'
+      type: object
+    textquery:
+      description: Query parameters used to construct an Elasticsearch text query
+        object.
+      properties:
+        terms:
+          description: Words or characters that specify a particular thing to be searched
+            for.
+          example:
+          - The quick brown fox
+          - "3141592"
+          - "7"
+          items:
+            type: string
+          type: array
+        fields:
+          description: The fields to be searched.
+          example:
+          - displayName
+          - employeeNumber
+          - roleCount
+          items:
+            type: string
+          type: array
+        matchAny:
+          default: false
+          description: "Indicates that at least one of the terms must be found in\
+            \ the specified fields;  otherwise, all terms must be found."
+          example: false
+          type: boolean
+        contains:
+          default: false
+          description: "Indicates that the terms can be located anywhere in the specified\
+            \ fields;  otherwise, the fields must begin with the terms."
+          example: true
+          type: boolean
+      required:
+      - fields
+      - terms
+      type: object
+    typeaheadquery:
+      description: "Query parameters used to construct an Elasticsearch type ahead\
+        \ query object.  The typeAheadQuery performs a search for top values beginning\
+        \ with the typed values. For example, typing \"Jo\" results in top hits matching\
+        \ \"Jo.\" Typing \"Job\" results in top hits matching \"Job.\" "
+      properties:
+        query:
+          description: The type ahead query string used to construct a phrase prefix
+            match query.
+          example: Work
+          type: string
+        field:
+          description: The field on which to perform the type ahead search.
+          example: source.name
+          type: string
+        nestedType:
+          description: The nested type.
+          example: access
+          type: string
+        maxExpansions:
+          default: 10
+          description: |-
+            The number of suffixes the last term will be expanded into.
+            Influences the performance of the query and the number results returned.
+            Valid values: 1 to 1000.
+          example: 10
+          format: int32
+          maximum: 1000
+          minimum: 1
+          type: integer
+        size:
+          default: 100
+          description: The max amount of records the search will return.
+          example: 100
+          format: int32
+          minimum: 1
+          type: integer
+        sort:
+          default: desc
+          description: The sort order of the returned records.
+          example: asc
+          type: string
+        sortByValue:
+          default: false
+          description: "The flag that defines the sort type, by count or value."
+          example: true
+          type: boolean
+      required:
+      - field
+      - query
+      type: object
+    queryresultfilter:
+      description: Allows the query results to be filtered by specifying a list of
+        fields to include and/or exclude from the result documents.
+      properties:
+        includes:
+          description: The list of field names to include in the result documents.
+          example:
+          - name
+          - displayName
+          items:
+            type: string
+          type: array
+        excludes:
+          description: The list of field names to exclude from the result documents.
+          example:
+          - stacktrace
+          items:
+            type: string
+          type: array
+      type: object
+    aggregationtype:
+      default: DSL
+      description: |
+        Enum representing the currently available query languages for aggregations, which are used to perform calculations or groupings on search results.
+
+        Additional values may be added in the future without notice.
+      enum:
+      - DSL
+      - SAILPOINT
+      example: DSL
+      type: string
+    nestedaggregation:
+      description: The nested aggregation object.
+      properties:
+        name:
+          description: The name of the nested aggregate to be included in the result.
+          example: id
+          type: string
+        type:
+          description: The type of the nested object.
+          example: access
+          type: string
+      required:
+      - name
+      - type
+      type: object
+    metrictype:
+      default: UNIQUE_COUNT
+      description: |-
+        Enum representing the currently supported metric aggregation types.
+        Additional values may be added in the future without notice.
+      enum:
+      - COUNT
+      - UNIQUE_COUNT
+      - AVG
+      - SUM
+      - MEDIAN
+      - MIN
+      - MAX
+      example: COUNT
+      type: string
+    metricaggregation:
+      description: The calculation done on the results of the query
+      properties:
+        name:
+          description: |-
+            The name of the metric aggregate to be included in the result.
+            If the metric aggregation is omitted, the resulting aggregation will be a count of the documents in the search results.
+          example: Access Name Count
+          type: string
+        type:
+          $ref: '#/components/schemas/metrictype'
+        field:
+          description: |
+            The field the calculation is performed on.
+
+            Prefix the field name with '@' to reference a nested object.
+          example: '@access.name'
+          type: string
+      required:
+      - field
+      - name
+      type: object
+    searchfiltertype:
+      default: TERM
+      description: |-
+        Enum representing the currently supported filter aggregation types.
+        Additional values may be added in the future without notice.
+      enum:
+      - TERM
+      example: TERM
+      type: string
+    filteraggregation:
+      description: An additional filter to constrain the results of the search query.
+      properties:
+        name:
+          description: The name of the filter aggregate to be included in the result.
+          example: Entitlements
+          type: string
+        type:
+          $ref: '#/components/schemas/searchfiltertype'
+        field:
+          description: |
+            The search field to apply the filter to.
+
+            Prefix the field name with '@' to reference a nested object.
+          example: access.type
+          type: string
+        value:
+          description: The value to filter on.
+          example: ENTITLEMENT
+          type: string
+      required:
+      - field
+      - name
+      - value
+      type: object
+    buckettype:
+      default: TERMS
+      description: |-
+        Enum representing the currently supported bucket aggregation types.
+        Additional values may be added in the future without notice.
+      enum:
+      - TERMS
+      example: TERMS
+      type: string
+    bucketaggregation:
+      description: The bucket to group the results of the aggregation query by.
+      properties:
+        name:
+          description: The name of the bucket aggregate to be included in the result.
+          example: Identity Locations
+          type: string
+        type:
+          $ref: '#/components/schemas/buckettype'
+        field:
+          description: |-
+            The field to bucket on.
+            Prefix the field name with '@' to reference a nested object.
+          example: attributes.city
+          type: string
+        size:
+          description: Maximum number of buckets to include.
+          example: 100
+          format: int32
+          type: integer
+        minDocCount:
+          description: Minimum number of documents a bucket should have.
+          example: 2
+          format: int32
+          type: integer
+      required:
+      - field
+      - name
+      type: object
+    aggregations:
+      properties:
+        nested:
+          $ref: '#/components/schemas/nestedaggregation'
+        metric:
+          $ref: '#/components/schemas/metricaggregation'
+        filter:
+          $ref: '#/components/schemas/filteraggregation'
+        bucket:
+          $ref: '#/components/schemas/bucketaggregation'
+      type: object
+    subsearchaggregationspecification:
+      allOf:
+      - $ref: '#/components/schemas/aggregations'
+      - properties:
+          subAggregation:
+            $ref: '#/components/schemas/aggregations'
+        type: object
+    searchaggregationspecification:
+      allOf:
+      - $ref: '#/components/schemas/aggregations'
+      - properties:
+          subAggregation:
+            $ref: '#/components/schemas/subsearchaggregationspecification'
+        type: object
+    filtertype:
+      description: |-
+        Enum representing the currently supported filter types.
+        Additional values may be added in the future without notice.
+      enum:
+      - EXISTS
+      - RANGE
+      - TERMS
+      example: RANGE
+      type: string
+    bound:
+      properties:
+        value:
+          description: The value of the range's endpoint.
+          example: "1"
+          type: string
+        inclusive:
+          default: false
+          description: Indicates if the endpoint is included in the range.
+          example: false
+          type: boolean
+      required:
+      - value
+      type: object
+    range:
+      description: The range of values to be filtered.
+      properties:
+        lower:
+          $ref: '#/components/schemas/bound'
+        upper:
+          $ref: '#/components/schemas/bound'
+      type: object
+    filter:
+      properties:
+        type:
+          $ref: '#/components/schemas/filtertype'
+        range:
+          $ref: '#/components/schemas/range'
+        terms:
+          description: The terms to be filtered.
+          items:
+            example: account_count
+            type: string
+          type: array
+        exclude:
+          default: false
+          description: Indicates if the filter excludes results.
+          example: false
+          type: boolean
+      type: object
+    search:
+      properties:
+        indices:
+          description: "The names of the Elasticsearch indices in which to search.\
+            \ If none are provided, then all indices will be searched."
+          example:
+          - identities
+          externalDocs:
+            description: Learn more about search indices here.
+            url: https://documentation.sailpoint.com/saas/help/search/searchable-fields.html
+          items:
+            $ref: '#/components/schemas/index'
+          type: array
+        queryType:
+          $ref: '#/components/schemas/querytype'
+        queryVersion:
+          allOf:
+          - $ref: '#/components/schemas/elasticversion'
+          - description: |-
+              The version of the query object.
+              This version number will map to the version of Elasticsearch for the query strings and objects being used.
+            type: string
+        query:
+          $ref: '#/components/schemas/query'
+        queryDsl:
+          description: "The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html)\
+            \ syntax."
+          example:
+            match:
+              name: john.doe
+          type: object
+        textQuery:
+          $ref: '#/components/schemas/textquery'
+        typeAheadQuery:
+          $ref: '#/components/schemas/typeaheadquery'
+        includeNested:
+          default: true
+          description: Indicates whether nested objects from returned search results
+            should be included.
+          example: true
+          type: boolean
+        queryResultFilter:
+          $ref: '#/components/schemas/queryresultfilter'
+        aggregationType:
+          $ref: '#/components/schemas/aggregationtype'
+        aggregationsVersion:
+          allOf:
+          - $ref: '#/components/schemas/elasticversion'
+          - description: |-
+              The version of the language being used for aggregation queries.
+              This version number will map to the version of Elasticsearch for the aggregation query object.
+            type: string
+        aggregationsDsl:
+          description: "The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html)\
+            \ syntax."
+          example: {}
+          type: object
+        aggregations:
+          $ref: '#/components/schemas/searchaggregationspecification'
+        sort:
+          description: The fields to be used to sort the search results. Use + or
+            - to specify the sort direction.
+          example:
+          - displayName
+          - +id
+          items:
+            type: string
+          type: array
+        searchAfter:
+          description: "Used to begin the search window at the values specified.\n\
+            This parameter consists of the last values of the sorted fields in the\
+            \ current record set.\nThis is used to expand the Elasticsearch limit\
+            \ of 10K records by shifting the 10K window to begin at this value.\n\
+            It is recommended that you always include the ID of the object in addition\
+            \ to any other fields on this parameter in order to ensure you don't get\
+            \ duplicate results while paging.\nFor example, when searching for identities,\
+            \ if you are sorting by displayName you will also want to include ID,\
+            \ for example [\"displayName\", \"id\"]. \nIf the last identity ID in\
+            \ the search result is 2c91808375d8e80a0175e1f88a575221 and the last displayName\
+            \ is \"John Doe\", then using that displayName and ID will start a new\
+            \ search after this identity.\nThe searchAfter value will look like [\"\
+            John Doe\",\"2c91808375d8e80a0175e1f88a575221\"]"
+          example:
+          - John Doe
+          - 2c91808375d8e80a0175e1f88a575221
+          items:
+            type: string
+          type: array
+        filters:
+          additionalProperties:
+            $ref: '#/components/schemas/filter'
+          description: The filters to be applied for each filtered field name.
+          example: {}
+          type: object
+      type: object
+    searchdocuments:
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    aggregationresult:
+      example:
+        hits:
+        - null
+        - null
+        aggregations:
+          Identity Locations:
+            buckets:
+            - key: Austin
+              doc_count: 109
+            - key: London
+              doc_count: 64
+            - key: San Jose
+              doc_count: 27
+            - key: Brussels
+              doc_count: 26
+            - key: Sao Paulo
+              doc_count: 24
+            - key: Munich
+              doc_count: 23
+            - key: Singapore
+              doc_count: 22
+            - key: Tokyo
+              doc_count: 20
+            - key: Taipei
+              doc_count: 16
+      properties:
+        aggregations:
+          description: |
+            The document containing the results of the aggregation. This document is controlled by Elasticsearch and depends on the type of aggregation query that is run.
+
+            See Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) documentation for information.
+          example:
+            Identity Locations:
+              buckets:
+              - key: Austin
+                doc_count: 109
+              - key: London
+                doc_count: 64
+              - key: San Jose
+                doc_count: 27
+              - key: Brussels
+                doc_count: 26
+              - key: Sao Paulo
+                doc_count: 24
+              - key: Munich
+                doc_count: 23
+              - key: Singapore
+                doc_count: 22
+              - key: Tokyo
+                doc_count: 20
+              - key: Taipei
+                doc_count: 16
+          type: object
+        hits:
+          description: |
+            The results of the aggregation search query.
+          items:
+            $ref: '#/components/schemas/searchdocuments'
+          type: array
+      type: object
+    aggregationresult-csv:
+      description: |
+        If the *Accept:text/csv* header is specified and the *aggregationType* parameter in the request body is *SAILPOINT*,
+
+        the aggregation result will be returned as a CSV document.
+      example: "[\"Identity Locations,Count\",\"Munich,23\",\"Brussels,26\",\"Singapore,22\"\
+        ,\"Tokyo,20\",\"Taipei,16\",\"London,64\",\"Austin,109\",\"Sao Paulo,24\"\
+        ,\"San Jose,27\"]"
+      type: string
+    searchdocument:
+      type: object
+    searchPostV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    searchPostV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object

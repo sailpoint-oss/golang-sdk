@@ -454,7 +454,7 @@ func (c *APIClient) prepareRequest(
 			}
 
 			latestToken.SetAuthHeader(localVarRequest)
-		} else if clientCreds, ok := ctx.Value(ContextClientCredentials).(ClientCredentials); ok {
+		} else {{/hasOAuthMethods}}if clientCreds, ok := ctx.Value(ContextClientCredentials).(ClientCredentials); ok {
 			// Use override client credentials from context
 			auth, err := getAccessToken(clientCreds.ClientID, clientCreds.ClientSecret, c.cfg.TokenURL)
 			if err != nil {
@@ -473,7 +473,6 @@ func (c *APIClient) prepareRequest(
 			// Use existing token from configuration
 			localVarRequest.Header.Add("Authorization", "Bearer "+c.cfg.Token)
 		}
-		{{/hasOAuthMethods}}
 		{{#hasHttpBasicMethods}}
 		// Basic HTTP Authentication
 		if auth, ok := ctx.Value(ContextBasicAuth).(BasicAuth); ok {

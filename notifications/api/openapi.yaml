@@ -1,0 +1,2918 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Notifications
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- name: Notifications
+paths:
+  /notification-template-variables/v1/{key}/{medium}:
+    get:
+      description: |
+        Returns global variables and template-specific variables for a given notification template key and medium.
+        Use these variable names in template content; they are replaced at send time with the corresponding values.
+        Variable lists can be sorted by key, type, or description via the sorters query parameter (default ascending by key).
+      operationId: getNotificationTemplateVariablesV1
+      parameters:
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **key, type, description**
+        example: -description
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |
+          The notification template key. Valid keys (and key/medium pairs) are available from the list notification templates operation.
+        example: approval_request_notification
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listNotificationTemplatesV1
+      - description: |
+          The notification template medium (e.g. EMAIL, SLACK, TEAMS). Valid key/medium pairs are available from the list notification templates operation.
+        example: EMAIL
+        explode: false
+        in: path
+        name: medium
+        required: true
+        schema:
+          enum:
+          - EMAIL
+          - SLACK
+          - TEAMS
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listNotificationTemplatesV1
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                key: approval_request_notification
+                medium: EMAIL
+                globalVariables:
+                - key: __esc.html()
+                  type: function
+                  description: "Escapes the characters in a string using HTML entities\
+                    \ (e.g. &quot;, &amp;)."
+                  example: $__esc.html($value)
+                - key: __global.productName
+                  type: string
+                  description: The human-readable name of the product or application.
+                  example: SailPoint Identity Security Cloud
+                - key: __global.standardLogoURL
+                  type: string
+                  description: URL for the standard size logo displayed on various
+                    pages.
+                  example: null
+                templateVariables:
+                - key: approvalName
+                  type: string
+                  description: Display name of the approval request
+                  example: Request for Access to Sales Application
+                - key: requester
+                  type: object
+                  description: Identity who submitted the approval request
+                  example:
+                    identityID: 4701645331ee4e578ca7884da99452fc
+                    type: IDENTITY
+                    name: Rebecca Requester
+                    email: rebecca@testmail.identitysoon.com
+              schema:
+                $ref: '#/components/schemas/templatevariablesdto'
+          description: Global and template-specific variables for the given key and
+            medium.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-templates:read
+      summary: Get notification template variables
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - USER
+  /mail-from-attributes/v1:
+    put:
+      description: Change the MAIL FROM domain of an AWS SES email identity and provide
+        the MX and TXT records to be placed in the caller's DNS
+      operationId: putMailFromAttributesV1
+      requestBody:
+        content:
+          application/json:
+            example:
+              identity: BobSmith@sailpoint.com
+              mailFromDomain: example.sailpoint.com
+            schema:
+              $ref: '#/components/schemas/mailfromattributesdto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mailfromattributes'
+          description: MAIL FROM Attributes required to verify the change
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:notification-mail-from-attributes:write
+      summary: Change mail from domain
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /mail-from-attributes/v1/{identity}:
+    get:
+      description: Retrieve MAIL FROM attributes for a given AWS SES identity.
+      operationId: getMailFromAttributesV1
+      parameters:
+      - description: "Returns the MX and TXT record to be put in your DNS, as well\
+          \ as the MAIL FROM domain status"
+        example: bobsmith@sailpoint.com
+        explode: false
+        in: path
+        name: identity
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listFromAddressesV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mailfromattributes'
+          description: MAIL FROM Attributes object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:notification-mail-from-attributes:read
+      summary: Get mail from attributes
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /notification-template-defaults/v1:
+    get:
+      description: "This lists the default templates used for notifications, such\
+        \ as emails from IdentityNow."
+      operationId: listNotificationTemplateDefaultsV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **key**: *eq, in, sw*
+
+          **medium**: *eq, sw*
+
+          **locale**: *eq, sw*
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          example: key eq "cloud_manual_work_item_summary"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/templatedtodefault'
+                type: array
+          description: A list of the default template objects
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-template-defaults:read
+      summary: List notification template defaults
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /notification-templates/v1:
+    get:
+      description: This lists the templates that you have modified for your site.
+      operationId: listNotificationTemplatesV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **key**: *eq, in, sw*
+
+          **medium**: *eq, sw*
+
+          **locale**: *eq, sw*
+        example: medium eq "EMAIL"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **key, name, medium**
+        example: "key, -name"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/templatedto'
+                type: array
+          description: A list of template objects for your site
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-templates:read
+      summary: List notification templates
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: "This will update notification templates that are available in\
+        \ your tenant. \nNote that you cannot create new templates in your tenant,\
+        \ but you can use this to create custom notifications from existing templates.\
+        \  First, copy the response body from the [get notification template endpoint](https://developer.sailpoint.com/idn/api/beta/get-notification-template)\
+        \ for a template you wish to update and paste it into the request body for\
+        \ this endpoint.  \nModify the fields you want to change and submit the POST\
+        \ request when ready.\n"
+      operationId: createNotificationTemplateV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/templatedto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/templatedto'
+          description: A template object for your site
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-templates:create
+      summary: Create notification template
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /notification-templates/v1/{id}:
+    get:
+      description: This gets a template that you have modified for your site by Id.
+      operationId: getNotificationTemplateV1
+      parameters:
+      - description: Id of the Notification Template
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: c17bea3a-574d-453c-9e04-4365fbf5af0b
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listNotificationTemplatesV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/templatedto'
+          description: A template object for your site
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-templates:read
+      summary: Get notification template by id
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /notification-templates/v1/bulk-delete:
+    post:
+      description: This lets you bulk delete templates that you previously created
+        for your site.
+      operationId: deleteNotificationTemplatesInBulkV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/templatebulkdeletedto'
+              type: array
+        required: true
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-templates:delete
+      summary: Bulk delete notification templates
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /notification-template-context/v1:
+    get:
+      description: |-
+        The notification service maintains metadata to construct the notification templates or supply any information during the event propagation. The data-store where this information is retrieved is called "Global Context" (a.k.a. notification template context). It defines a set of attributes
+         that will be available per tenant (organization).
+      operationId: getNotificationsTemplateContextV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/notificationtemplatecontext'
+          description: Notification template context attributes for a specific tenant.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-templates:read
+      summary: Get notification template context
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /notification-preferences/v1/{key}:
+    get:
+      description: Returns a list of notification preferences for tenant.
+      operationId: getNotificationPreferencesV1
+      parameters:
+      - description: The key.
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/preferencesdto'
+          description: Return preference for the given notification key.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-preferences:read
+      summary: List notification preferences for tenant.
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /send-test-notification/v1:
+    post:
+      description: Send a Test Notification
+      operationId: sendTestNotificationV1
+      requestBody:
+        content:
+          application/json:
+            example:
+              key: cloud_manual_work_item_summary
+              medium: EMAIL
+              context:
+                numberOfPendingTasks: "4"
+                ownerId: 201327fda1c44704ac01181e963d463c
+            schema:
+              $ref: '#/components/schemas/sendtestnotificationrequestdto'
+        required: true
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-templates:create
+      summary: Send test notification
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /verified-from-addresses/v1:
+    get:
+      description: Retrieve a list of sender email addresses and their verification
+        statuses
+      operationId: listFromAddressesV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **email**: *eq, ge, le, gt, lt*
+        example: email eq "john.doe@company.com"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **email**
+        example: email
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/emailstatusdto'
+                type: array
+          description: List of Email Status
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-templates:read
+      summary: List from addresses
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: Create a new sender email address and initiate verification process.
+      operationId: createVerifiedFromAddressV1
+      requestBody:
+        content:
+          application/json:
+            example:
+              email: sender@example.com
+            schema:
+              $ref: '#/components/schemas/emailstatusdto'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/emailstatusdto'
+          description: New Verified Email Status
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-templates:create
+      summary: Create verified from address
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /verified-from-addresses/v1/{id}:
+    delete:
+      description: Delete a verified sender email address
+      operationId: deleteVerifiedFromAddressV1
+      parameters:
+      - description: Unique identifier of the verified sender address to delete.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: c17bea3a-574d-453c-9e04-4365fbf5af0b
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listFromAddressesV1
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-templates:delete
+      summary: Delete verified from address
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /verified-domains/v1:
+    get:
+      description: Retrieve DKIM (DomainKeys Identified Mail) attributes for all your
+        tenants' AWS SES identities. Limits retrieval to 100 identities per call.
+      operationId: getDkimAttributesV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/dkimattributes'
+                type: array
+          description: List of DKIM Attributes
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:notification-dkim-attributes:read
+      summary: Get dkim attributes
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: Create a domain to be verified via DKIM (DomainKeys Identified
+        Mail)
+      operationId: createDomainDkimV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/domainaddress'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainstatusdto'
+          description: List of DKIM tokens required for the verification process.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createDomainDkimV1_405_response'
+          description: "Method Not Allowed - indicates that the server knows the request\
+            \ method, but the target resource doesn't support this method."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:notification-verify-domain-dkim:write
+      summary: Verify domain address via dkim
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "204":
+      description: No content - indicates the request was successful but there is
+        no content to be returned in the response.
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "405":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createDomainDkimV1_405_response'
+      description: "Method Not Allowed - indicates that the server knows the request\
+        \ method, but the target resource doesn't support this method."
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    templatemediumdto:
+      description: The notification delivery medium.
+      enum:
+      - EMAIL
+      - SLACK
+      - TEAMS
+      example: EMAIL
+      title: Template Medium
+      type: string
+    templatevariable:
+      description: |
+        A variable available for use in a notification template. Variables can be template-specific (from domain events)
+        or global (available to all templates like __recipient, __global, __util). Template variables provide
+        self-documenting metadata about what variables are available when customizing notification templates.
+      properties:
+        key:
+          description: The variable name as used when rendering context in templates.
+          example: recipientDisplayName
+          type: string
+        type:
+          description: |
+            The data type for this variable. Use JSON Schema-like names for values (string, boolean, number, object, array)
+            or "function" for template utility/helper functions (e.g. __dateTool.format(), __esc.html()).
+          enum:
+          - string
+          - boolean
+          - number
+          - object
+          - array
+          - function
+          example: string
+          type: string
+        description:
+          description: Human-readable description explaining what this variable represents.
+          example: Display name of the notification recipient
+          nullable: true
+          type: string
+        example:
+          description: |
+            Example value demonstrating the format and usage. For type "function", often a Velocity-style call (e.g. $__esc.html($value)).
+            Can be a string, number, boolean, object, array, or null when no example is defined.
+          example: John Doe
+          nullable: true
+      title: Template Variable
+      type: object
+    templatevariablesdto:
+      description: |
+        Variables available for use in a notification template. Variables can be template-specific (from domain events)
+        or global (available to all templates like __recipient, __global, __util).
+      example:
+        globalVariables:
+        - key: __global.productName
+          type: string
+          description: The human-readable name of the product or application.
+          example: SailPoint Identity Security Cloud
+        - key: __esc.html()
+          type: function
+          description: "Escapes the characters in a string using HTML entities (e.g.\
+            \ &quot;, &amp;)."
+          example: $__esc.html($value)
+        - key: __global.standardLogoURL
+          type: string
+          description: URL for the standard size logo displayed on various pages.
+          example: null
+        medium: EMAIL
+        key: approval_request_notification
+        templateVariables:
+        - key: approvalName
+          type: string
+          description: Display name of the approval request
+          example: Request for Access to Sales Application
+        - key: requester
+          type: object
+          description: Identity who submitted the approval request
+          example:
+            identityID: 4701645331ee4e578ca7884da99452fc
+            type: IDENTITY
+            name: Rebecca Requester
+            email: rebecca@testmail.identitysoon.com
+      properties:
+        key:
+          description: The notification template key.
+          example: approval_request_notification
+          type: string
+        medium:
+          $ref: '#/components/schemas/templatemediumdto'
+        globalVariables:
+          description: |
+            Global variables available to all templates for this tenant (e.g. __global.*, __recipient, __util.*, __dateTool.*, __esc.*).
+            Includes both data variables and function-type helpers.
+          example:
+          - key: __global.productName
+            type: string
+            description: The human-readable name of the product or application.
+            example: SailPoint Identity Security Cloud
+          - key: __esc.html()
+            type: function
+            description: "Escapes the characters in a string using HTML entities (e.g.\
+              \ &quot;, &amp;)."
+            example: $__esc.html($value)
+          - key: __global.standardLogoURL
+            type: string
+            description: URL for the standard size logo displayed on various pages.
+            example: null
+          items:
+            $ref: '#/components/schemas/templatevariable'
+          nullable: true
+          type: array
+        templateVariables:
+          description: "Template-specific variables for the given key and medium (e.g.\
+            \ approverPath, requester, attributes)."
+          example:
+          - key: approvalName
+            type: string
+            description: Display name of the approval request
+            example: Request for Access to Sales Application
+          - key: requester
+            type: object
+            description: Identity who submitted the approval request
+            example:
+              identityID: 4701645331ee4e578ca7884da99452fc
+              type: IDENTITY
+              name: Rebecca Requester
+              email: rebecca@testmail.identitysoon.com
+          items:
+            $ref: '#/components/schemas/templatevariable'
+          nullable: true
+          type: array
+      title: Template Variables DTO
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    mailfromattributesdto:
+      description: MAIL FROM attributes for a domain / identity
+      properties:
+        identity:
+          description: The identity or domain address
+          example: BobSmith@sailpoint.com
+          type: string
+        mailFromDomain:
+          description: The new MAIL FROM domain of the identity. Must be a subdomain
+            of the identity.
+          example: example.sailpoint.com
+          type: string
+      title: Mail From Attributes Dto
+      type: object
+    mailfromattributes:
+      description: MAIL FROM attributes for a domain / identity
+      example:
+        identity: bob.smith@sailpoint.com
+        mailFromDomain: foo.sailpoint.com
+        mxRecord: 10 feedback-smtp.us-east-1.amazonses.com
+        txtRecord: v=spf1 include:amazonses.com ~all
+        mailFromDomainStatus: PENDING
+      properties:
+        identity:
+          description: The email identity
+          example: bob.smith@sailpoint.com
+          type: string
+        mailFromDomain:
+          description: The name of a domain that an email identity uses as a custom
+            MAIL FROM domain
+          example: foo.sailpoint.com
+          type: string
+        mxRecord:
+          description: MX record that is required in customer's DNS to allow the domain
+            to receive bounce and complaint notifications that email providers send
+            you
+          example: 10 feedback-smtp.us-east-1.amazonses.com
+          type: string
+        txtRecord:
+          description: TXT record that is required in customer's DNS in order to prove
+            that Amazon SES is authorized to send email from your domain
+          example: v=spf1 include:amazonses.com ~all
+          type: string
+        mailFromDomainStatus:
+          description: The current status of the MAIL FROM verification
+          enum:
+          - PENDING
+          - SUCCESS
+          - FAILED
+          example: PENDING
+          type: string
+      title: Mail From Attributes
+      type: object
+    templateslack:
+      example:
+        isSubscription: false
+        attachments: "[]"
+        blocks: blocks
+        requestId: requestId
+        autoApprovalData:
+          itemId: itemId
+          itemType: itemType
+          autoApprovalMessageJSON: autoApprovalMessageJSON
+          isAutoApproved: isAutoApproved
+          autoApprovalTitle: autoApprovalTitle
+        customFields:
+          requestType: requestType
+          campaignId: campaignId
+          campaignStatus: campaignStatus
+          containsDeny: containsDeny
+        requestedById: requestedById
+        approvalId: approvalId
+        text: You have a new approval request
+        notificationType: notificationType
+        key: key
+      nullable: true
+      properties:
+        key:
+          description: The template key
+          nullable: true
+          type: string
+        text:
+          description: The main text content of the Slack message
+          example: You have a new approval request
+          type: string
+        blocks:
+          description: JSON string of Slack Block Kit blocks for rich formatting
+          nullable: true
+          type: string
+        attachments:
+          description: JSON string of Slack attachments
+          example: "[]"
+          type: string
+        notificationType:
+          description: The type of notification
+          nullable: true
+          type: string
+        approvalId:
+          description: The approval request ID
+          nullable: true
+          type: string
+        requestId:
+          description: The request ID
+          nullable: true
+          type: string
+        requestedById:
+          description: The ID of the user who made the request
+          nullable: true
+          type: string
+        isSubscription:
+          default: false
+          description: Whether this is a subscription notification
+          nullable: true
+          type: boolean
+        autoApprovalData:
+          $ref: '#/components/schemas/templateslack_autoApprovalData'
+        customFields:
+          $ref: '#/components/schemas/templateslack_customFields'
+      title: Template Slack
+      type: object
+    templateteams:
+      example:
+        isSubscription: false
+        requestId: requestId
+        autoApprovalData:
+          itemId: itemId
+          itemType: itemType
+          autoApprovalMessageJSON: autoApprovalMessageJSON
+          isAutoApproved: isAutoApproved
+          autoApprovalTitle: autoApprovalTitle
+        customFields:
+          requestType: requestType
+          campaignId: campaignId
+          campaignStatus: campaignStatus
+          containsDeny: containsDeny
+        requestedById: requestedById
+        approvalId: approvalId
+        text: You have a new approval request
+        notificationType: notificationType
+        title: title
+        key: key
+        messageJSON: messageJSON
+      nullable: true
+      properties:
+        key:
+          description: The template key
+          nullable: true
+          type: string
+        title:
+          description: The title of the Teams message
+          nullable: true
+          type: string
+        text:
+          description: The main text content of the Teams message
+          example: You have a new approval request
+          type: string
+        messageJSON:
+          description: JSON string of the Teams adaptive card
+          nullable: true
+          type: string
+        isSubscription:
+          default: false
+          description: Whether this is a subscription notification
+          nullable: true
+          type: boolean
+        approvalId:
+          description: The approval request ID
+          nullable: true
+          type: string
+        requestId:
+          description: The request ID
+          nullable: true
+          type: string
+        requestedById:
+          description: The ID of the user who made the request
+          nullable: true
+          type: string
+        notificationType:
+          description: The type of notification
+          nullable: true
+          type: string
+        autoApprovalData:
+          $ref: '#/components/schemas/templateslack_autoApprovalData'
+        customFields:
+          $ref: '#/components/schemas/templateslack_customFields'
+      title: Template Teams
+      type: object
+    templatedtodefault:
+      example:
+        slackTemplate:
+          isSubscription: false
+          attachments: "[]"
+          blocks: blocks
+          requestId: requestId
+          autoApprovalData:
+            itemId: itemId
+            itemType: itemType
+            autoApprovalMessageJSON: autoApprovalMessageJSON
+            isAutoApproved: isAutoApproved
+            autoApprovalTitle: autoApprovalTitle
+          customFields:
+            requestType: requestType
+            campaignId: campaignId
+            campaignStatus: campaignStatus
+            containsDeny: containsDeny
+          requestedById: requestedById
+          approvalId: approvalId
+          text: You have a new approval request
+          notificationType: notificationType
+          key: key
+        footer: footer
+        teamsTemplate:
+          isSubscription: false
+          requestId: requestId
+          autoApprovalData:
+            itemId: itemId
+            itemType: itemType
+            autoApprovalMessageJSON: autoApprovalMessageJSON
+            isAutoApproved: isAutoApproved
+            autoApprovalTitle: autoApprovalTitle
+          customFields:
+            requestType: requestType
+            campaignId: campaignId
+            campaignStatus: campaignStatus
+            containsDeny: containsDeny
+          requestedById: requestedById
+          approvalId: approvalId
+          text: You have a new approval request
+          notificationType: notificationType
+          title: title
+          key: key
+          messageJSON: messageJSON
+        subject: "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}."
+        description: Daily digest - sent if number of outstanding tasks for task owner
+          > 0
+        medium: EMAIL
+        locale: en
+        body: Please go to the task manager
+        name: Task Manager Subscription
+        replyTo: $__global.emailFromAddress
+        header: header
+        from: $__global.emailFromAddress
+        key: cloud_manual_work_item_summary
+      properties:
+        key:
+          description: The key of the default template
+          example: cloud_manual_work_item_summary
+          type: string
+        name:
+          description: The name of the default template
+          example: Task Manager Subscription
+          type: string
+        medium:
+          description: The message medium. More mediums may be added in the future.
+          enum:
+          - EMAIL
+          - SLACK
+          - TEAMS
+          example: EMAIL
+          type: string
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en
+          type: string
+        subject:
+          description: The subject of the default template
+          example: "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}."
+          nullable: true
+          type: string
+        header:
+          deprecated: true
+          description: "The header value is now located within the body field. If\
+            \ included with non-null values, will result in a 400."
+          nullable: true
+          type: string
+          example: null
+        body:
+          description: The body of the default template
+          example: Please go to the task manager
+          type: string
+        footer:
+          deprecated: true
+          description: "The footer value is now located within the body field. If\
+            \ included with non-null values, will result in a 400."
+          nullable: true
+          type: string
+          example: null
+        from:
+          description: The "From:" address of the default template
+          example: $__global.emailFromAddress
+          nullable: true
+          type: string
+        replyTo:
+          description: The "Reply To" field of the default template
+          example: $__global.emailFromAddress
+          nullable: true
+          type: string
+        description:
+          description: The description of the default template
+          example: Daily digest - sent if number of outstanding tasks for task owner
+            > 0
+          nullable: true
+          type: string
+        slackTemplate:
+          $ref: '#/components/schemas/templateslack'
+        teamsTemplate:
+          $ref: '#/components/schemas/templateteams'
+      title: Template Dto Default
+      type: object
+    templatedto:
+      example:
+        slackTemplate:
+          isSubscription: false
+          attachments: "[]"
+          blocks: blocks
+          requestId: requestId
+          autoApprovalData:
+            itemId: itemId
+            itemType: itemType
+            autoApprovalMessageJSON: autoApprovalMessageJSON
+            isAutoApproved: isAutoApproved
+            autoApprovalTitle: autoApprovalTitle
+          customFields:
+            requestType: requestType
+            campaignId: campaignId
+            campaignStatus: campaignStatus
+            containsDeny: containsDeny
+          requestedById: requestedById
+          approvalId: approvalId
+          text: You have a new approval request
+          notificationType: notificationType
+          key: key
+        footer: footer
+        teamsTemplate:
+          isSubscription: false
+          requestId: requestId
+          autoApprovalData:
+            itemId: itemId
+            itemType: itemType
+            autoApprovalMessageJSON: autoApprovalMessageJSON
+            isAutoApproved: isAutoApproved
+            autoApprovalTitle: autoApprovalTitle
+          customFields:
+            requestType: requestType
+            campaignId: campaignId
+            campaignStatus: campaignStatus
+            containsDeny: containsDeny
+          requestedById: requestedById
+          approvalId: approvalId
+          text: You have a new approval request
+          notificationType: notificationType
+          title: title
+          key: key
+          messageJSON: messageJSON
+        subject: "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}."
+        created: 2020-01-01T00:00:00Z
+        description: Daily digest - sent if number of outstanding tasks for task owner
+          > 0
+        medium: EMAIL
+        locale: en
+        body: Please go to the task manager
+        name: Task Manager Subscription
+        replyTo: $__global.emailFromAddress
+        header: header
+        modified: 2020-01-01T00:00:00Z
+        from: $__global.emailFromAddress
+        id: c17bea3a-574d-453c-9e04-4365fbf5af0b
+        key: cloud_manual_work_item_summary
+      properties:
+        key:
+          description: The key of the template
+          example: cloud_manual_work_item_summary
+          type: string
+        name:
+          description: The name of the Task Manager Subscription
+          example: Task Manager Subscription
+          type: string
+        medium:
+          description: The message medium. More mediums may be added in the future.
+          enum:
+          - EMAIL
+          - SLACK
+          - TEAMS
+          example: EMAIL
+          type: string
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en
+          type: string
+        subject:
+          description: The subject line in the template
+          example: "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}."
+          type: string
+        header:
+          deprecated: true
+          description: "The header value is now located within the body field. If\
+            \ included with non-null values, will result in a 400."
+          nullable: true
+          type: string
+          example: null
+        body:
+          description: The body in the template
+          example: Please go to the task manager
+          type: string
+        footer:
+          deprecated: true
+          description: "The footer value is now located within the body field. If\
+            \ included with non-null values, will result in a 400."
+          nullable: true
+          type: string
+          example: null
+        from:
+          description: The "From:" address in the template
+          example: $__global.emailFromAddress
+          type: string
+        replyTo:
+          description: The "Reply To" line in the template
+          example: $__global.emailFromAddress
+          type: string
+        description:
+          description: The description in the template
+          example: Daily digest - sent if number of outstanding tasks for task owner
+            > 0
+          type: string
+        id:
+          description: This is auto-generated.
+          example: c17bea3a-574d-453c-9e04-4365fbf5af0b
+          type: string
+        created:
+          description: The time when this template is created. This is auto-generated.
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          type: string
+        modified:
+          description: The time when this template was last modified. This is auto-generated.
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          type: string
+        slackTemplate:
+          $ref: '#/components/schemas/templatedto_slackTemplate'
+        teamsTemplate:
+          $ref: '#/components/schemas/templatedto_teamsTemplate'
+      required:
+      - key
+      - locale
+      - medium
+      title: Template Dto
+      type: object
+    templatebulkdeletedto:
+      properties:
+        key:
+          description: The template key to delete
+          example: cloud_manual_work_item_summary
+          type: string
+        medium:
+          description: "The notification medium (EMAIL, SLACK, or TEAMS)"
+          enum:
+          - EMAIL
+          - SLACK
+          - TEAMS
+          example: EMAIL
+          type: string
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en
+          type: string
+      required:
+      - key
+      title: Template Bulk Delete Dto
+      type: object
+    notificationtemplatecontext:
+      example:
+        created: 2020-04-15T16:16:47.525Z
+        modified: 2020-04-15T16:16:47.525Z
+        attributes:
+          productUrl: https://test-org.identitysoon.com
+          brandingConfigs:
+            default:
+              narrowLogoURL: null
+              productName: SailPoint
+              standardLogoURL: null
+              navigationColor: 011E64
+              actionButtonColor: 20B2DE
+              emailFromAddress: null
+              activeLinkColor: 20B2DE
+              loginInformationalMessage: null
+      properties:
+        attributes:
+          additionalProperties: true
+          description: A JSON object that stores the context.
+          example:
+            productUrl: https://test-org.identitysoon.com
+            brandingConfigs:
+              default:
+                narrowLogoURL: null
+                productName: SailPoint
+                standardLogoURL: null
+                navigationColor: 011E64
+                actionButtonColor: 20B2DE
+                emailFromAddress: null
+                activeLinkColor: 20B2DE
+                loginInformationalMessage: null
+          type: object
+        created:
+          description: When the global context was created
+          example: 2020-04-15T16:16:47.525Z
+          format: date-time
+          type: string
+        modified:
+          description: When the global context was last modified
+          example: 2020-04-15T16:16:47.525Z
+          format: date-time
+          type: string
+      title: Notification Template Context
+      type: object
+    medium:
+      description: "The notification medium (EMAIL, SLACK, or TEAMS)"
+      enum:
+      - EMAIL
+      - SLACK
+      - TEAMS
+      example: EMAIL
+      type: string
+    preferencesdto:
+      description: Maps an Identity's attribute key to a list of preferred notification
+        mediums.
+      example:
+        modified: 2020-05-15T14:37:06.909Z
+        mediums:
+        - EMAIL
+        key: cloud_manual_work_item_summary
+      properties:
+        key:
+          description: The template notification key.
+          example: cloud_manual_work_item_summary
+          type: string
+        mediums:
+          description: "List of preferred notification mediums, i.e., the mediums\
+            \ (or method) for which notifications are enabled. More mediums may be\
+            \ added in the future."
+          example:
+          - EMAIL
+          items:
+            $ref: '#/components/schemas/medium'
+          type: array
+        modified:
+          description: Modified date of preference
+          example: 2020-05-15T14:37:06.909Z
+          format: date-time
+          type: string
+      title: Preferences Dto
+      type: object
+    sendtestnotificationrequestdto:
+      properties:
+        key:
+          description: The template notification key.
+          example: cloud_manual_work_item_summary
+          type: string
+        medium:
+          description: The notification medium. Has to be one of the following enum
+            values.
+          enum:
+          - EMAIL
+          - SLACK
+          - TEAMS
+          example: EMAIL
+          type: string
+        locale:
+          description: The locale for the message text.
+          example: en
+          type: string
+        context:
+          description: A Json object that denotes the context specific to the template.
+          example:
+            numberOfPendingTasks: "4"
+            taskTasks: tasks
+          type: object
+        recipientEmailList:
+          description: A list of override recipient email addresses for the test notification.
+          example:
+          - test@example.com
+          items:
+            type: string
+          type: array
+        carbonCopy:
+          description: A list of CC email addresses for the test notification.
+          example:
+          - cc@example.com
+          items:
+            type: string
+          type: array
+        blindCarbonCopy:
+          description: A list of BCC email addresses for the test notification.
+          example:
+          - bcc@example.com
+          items:
+            type: string
+          type: array
+      title: Send Test Notification Request Dto
+      type: object
+    emailstatusdto:
+      example:
+        isVerifiedByDomain: false
+        verificationStatus: SUCCESS
+        id: id
+        region: us-east-1
+        email: sender@example.com
+      properties:
+        id:
+          description: Unique identifier for the verified sender address
+          nullable: true
+          type: string
+        email:
+          description: The verified sender email address
+          example: sender@example.com
+          type: string
+        isVerifiedByDomain:
+          default: false
+          description: Whether the sender address is verified by domain
+          example: false
+          type: boolean
+        verificationStatus:
+          description: The verification status of the sender address
+          enum:
+          - PENDING
+          - SUCCESS
+          - FAILED
+          - NA
+          example: SUCCESS
+          type: string
+        region:
+          description: The AWS SES region the sender address is associated with
+          example: us-east-1
+          nullable: true
+          type: string
+      title: Email Status Dto
+      type: object
+    dkimattributes:
+      description: DKIM attributes for a domain or identity
+      example:
+        address: BobSmith@sailpoint.com
+        dkimEnabled: true
+        dkimTokens:
+        - uq1m3jjk25ckd3whl4n7y46c56r5l6aq
+        - u7pm38jky9ckdawhlsn7y4dcj6f5lpgq
+        - uhpm3jjkjjckdkwhlqn7yw6cjer5tpay
+        id: 123b45b0-aaaa-bbbb-a7db-123456a56abc
+        dkimVerificationStatus: SUCCESS
+        region: us-east-1
+      properties:
+        id:
+          description: UUID associated with domain to be verified
+          example: 123b45b0-aaaa-bbbb-a7db-123456a56abc
+          type: string
+        address:
+          description: The identity or domain address
+          example: BobSmith@sailpoint.com
+          type: string
+        dkimEnabled:
+          default: false
+          description: Whether or not DKIM has been enabled for this domain / identity
+          example: true
+          type: boolean
+        dkimTokens:
+          description: The tokens to be added to a DNS for verification
+          example:
+          - uq1m3jjk25ckd3whl4n7y46c56r5l6aq
+          - u7pm38jky9ckdawhlsn7y4dcj6f5lpgq
+          - uhpm3jjkjjckdkwhlqn7yw6cjer5tpay
+          items:
+            type: string
+          type: array
+        dkimVerificationStatus:
+          description: "The current status if the domain /identity has been verified.\
+            \ Ie SUCCESS, FAILED, PENDING"
+          example: SUCCESS
+          type: string
+        region:
+          description: The AWS SES region the domain is associated with
+          example: us-east-1
+          type: string
+      title: Dkim Attributes
+      type: object
+    domainaddress:
+      properties:
+        domain:
+          description: A domain address
+          example: sailpoint.com
+          type: string
+      title: Domain Address
+      type: object
+    domainstatusdto:
+      description: Domain status DTO containing everything required to verify via
+        DKIM
+      example:
+        domain: sailpoint.com
+        dkimEnabled: true
+        dkimTokens:
+        - token1
+        - token2
+        - token3
+        id: 123b45b0-aaaa-bbbb-a7db-123456a56abc
+        dkimVerificationStatus: PENDING
+        region: us-east-1
+      properties:
+        id:
+          description: New UUID associated with domain to be verified
+          example: 123b45b0-aaaa-bbbb-a7db-123456a56abc
+          type: string
+        domain:
+          description: A domain address
+          example: sailpoint.com
+          type: string
+        dkimEnabled:
+          default: false
+          description: DKIM is enabled for this domain
+          example: true
+          type: boolean
+        dkimTokens:
+          description: DKIM tokens required for authentication
+          example:
+          - token1
+          - token2
+          - token3
+          items:
+            type: string
+          type: array
+        dkimVerificationStatus:
+          description: Status of DKIM authentication
+          example: PENDING
+          type: string
+        region:
+          description: The AWS SES region the domain is associated with
+          example: us-east-1
+          type: string
+      title: Domain Status Dto
+      type: object
+    getNotificationTemplateVariablesV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getNotificationTemplateVariablesV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    createDomainDkimV1_405_response:
+      example:
+        errorName: NotSupportedException
+        errorMessage: Cannot consume content type
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        errorName:
+          description: A message describing the error
+          example: NotSupportedException
+        errorMessage:
+          description: Description of the error
+          example: Cannot consume content type
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+      type: object
+    templateslack_autoApprovalData:
+      example:
+        itemId: itemId
+        itemType: itemType
+        autoApprovalMessageJSON: autoApprovalMessageJSON
+        isAutoApproved: isAutoApproved
+        autoApprovalTitle: autoApprovalTitle
+      nullable: true
+      properties:
+        isAutoApproved:
+          description: Whether the request was auto-approved
+          nullable: true
+          type: string
+        itemId:
+          description: The item ID
+          nullable: true
+          type: string
+        itemType:
+          description: The item type
+          nullable: true
+          type: string
+        autoApprovalMessageJSON:
+          description: JSON message for auto-approval
+          nullable: true
+          type: string
+        autoApprovalTitle:
+          description: Title for auto-approval
+          nullable: true
+          type: string
+      type: object
+    templateslack_customFields:
+      example:
+        requestType: requestType
+        campaignId: campaignId
+        campaignStatus: campaignStatus
+        containsDeny: containsDeny
+      nullable: true
+      properties:
+        requestType:
+          description: The type of request
+          nullable: true
+          type: string
+        containsDeny:
+          description: Whether the request contains a deny action
+          nullable: true
+          type: string
+        campaignId:
+          description: The campaign ID
+          nullable: true
+          type: string
+        campaignStatus:
+          description: The campaign status
+          nullable: true
+          type: string
+      type: object
+    templatedto_slackTemplate:
+      allOf:
+      - $ref: '#/components/schemas/templateslack'
+      - nullable: true
+      example:
+        isSubscription: false
+        attachments: "[]"
+        blocks: blocks
+        requestId: requestId
+        autoApprovalData:
+          itemId: itemId
+          itemType: itemType
+          autoApprovalMessageJSON: autoApprovalMessageJSON
+          isAutoApproved: isAutoApproved
+          autoApprovalTitle: autoApprovalTitle
+        customFields:
+          requestType: requestType
+          campaignId: campaignId
+          campaignStatus: campaignStatus
+          containsDeny: containsDeny
+        requestedById: requestedById
+        approvalId: approvalId
+        text: You have a new approval request
+        notificationType: notificationType
+        key: key
+    templatedto_teamsTemplate:
+      allOf:
+      - $ref: '#/components/schemas/templateteams'
+      - nullable: true
+      example:
+        isSubscription: false
+        requestId: requestId
+        autoApprovalData:
+          itemId: itemId
+          itemType: itemType
+          autoApprovalMessageJSON: autoApprovalMessageJSON
+          isAutoApproved: isAutoApproved
+          autoApprovalTitle: autoApprovalTitle
+        customFields:
+          requestType: requestType
+          campaignId: campaignId
+          campaignStatus: campaignStatus
+          containsDeny: containsDeny
+        requestedById: requestedById
+        approvalId: approvalId
+        text: You have a new approval request
+        notificationType: notificationType
+        title: title
+        key: key
+        messageJSON: messageJSON

@@ -1,0 +1,411 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Account Aggregations
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use this API to implement account aggregation progress tracking functionality.
+    With this functionality in place, administrators can view in-progress account aggregations, their statuses, and their relevant details.
+
+    An account aggregation refers to the process Identity Security Cloud uses to gather and load account data from a source into Identity Security Cloud.
+
+    Whenever Identity Security Cloud is in the process of aggregating a source, it adds an entry to the Aggregation Activity Log, along with its relevant details.
+    To view aggregation activity, administrators can select the Connections drop-down menu, select Sources, and select the relevant source, select its Import Data tab, and select Account Aggregation.
+    In Account Aggregation, administrators can view the account aggregations' statuses and details in the Account Activity Log.
+
+    Refer to [Loading Account Data](https://documentation.sailpoint.com/saas/help/accounts/loading_data.html) for more information about account aggregations.
+
+    If you are looking for the endpoint for account aggregations in a source, [click here](https://developer.sailpoint.com/docs/api/v2025/import-accounts)
+  name: Account Aggregations
+paths:
+  /account-aggregations/v1/{id}/status:
+    get:
+      description: |-
+        This API returns the status of an *in-progress* account aggregation, along with the total number of **NEW**, **CHANGED** and **DELETED** accounts found since the previous aggregation, and the number of those accounts that have been processed so far.
+
+        Accounts that have not changed since the previous aggregation are not included in **totalAccounts** and **processedAccounts** counts returned by this API. This is distinct from **Accounts Scanned** shown in the Aggregation UI, which indicates total accounts scanned regardless of whether they changed or not.
+
+        Since this endpoint reports on the status of an *in-progress* account aggregation, totalAccounts and processedAccounts may change between calls to this endpoint.
+
+        *Only available up to an hour after the aggregation completes. May respond with *404 Not Found* after that.*
+        required to call this API.
+      operationId: getAccountAggregationStatusV1
+      parameters:
+      - description: The account aggregation id
+        example: 2c91808477a6b0c60177a81146b8110b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getTaskStatusListV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountaggregationstatus'
+          description: An account aggregation status object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccountAggregationStatusV1_400_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccountAggregationStatusV1_400_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAccountAggregationStatusV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth: []
+      summary: In-progress account aggregation status
+      tags:
+      - Account Aggregations
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+components:
+  responses:
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAccountAggregationStatusV1_400_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getAccountAggregationStatusV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    accountaggregationstatus:
+      example:
+        totalIdentities: 300
+        processedAccounts: 150
+        totalAccountsMarkedForDeletion: 10
+        processedIdentities: 250
+        start: 2021-01-31T14:30:05.104Z
+        totalAccounts: 520
+        deletedAccounts: 5
+        status: ACCOUNTS_COLLECTED
+      properties:
+        start:
+          description: When the aggregation started.
+          example: 2021-01-31T14:30:05.104Z
+          format: date-time
+          nullable: true
+          type: string
+        status:
+          description: |
+            STARTED - Aggregation started, but source account iteration has not completed.
+
+            ACCOUNTS_COLLECTED - Source account iteration completed, but all accounts have not yet been processed.
+
+            COMPLETED - Aggregation completed (*possibly with errors*).
+
+            CANCELLED - Aggregation cancelled by user.
+
+            RETRIED - Aggregation retried because of connectivity issues with the Virtual Appliance.
+
+            TERMINATED - Aggregation marked as failed after 3 tries after connectivity issues with the Virtual Appliance.
+          enum:
+          - STARTED
+          - ACCOUNTS_COLLECTED
+          - COMPLETED
+          - CANCELLED
+          - RETRIED
+          - TERMINATED
+          - NOT_FOUND
+          example: ACCOUNTS_COLLECTED
+          type: string
+        totalAccounts:
+          description: "The total number of *NEW, CHANGED and DELETED* accounts that\
+            \ need to be processed for this aggregation. This does not include accounts\
+            \ that were unchanged since the previous aggregation. This can be zero\
+            \ if there were no new, changed or deleted accounts since the previous\
+            \ aggregation. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*"
+          example: 520
+          format: int32
+          type: integer
+        processedAccounts:
+          description: "The number of *NEW, CHANGED and DELETED* accounts that have\
+            \ been processed so far. This reflects the number of accounts that have\
+            \ been processed at the time of the API call, and may increase on subsequent\
+            \ API calls while the status is ACCOUNTS_COLLECTED. *Only available when\
+            \ status is ACCOUNTS_COLLECTED or COMPLETED.*"
+          example: 150
+          format: int32
+          type: integer
+        totalAccountsMarkedForDeletion:
+          description: The total number of accounts that have been marked for deletion
+            during the aggregation. *Only available when status is ACCOUNTS_COLLECTED
+            or COMPLETED.*
+          example: 10
+          format: int32
+          type: integer
+        deletedAccounts:
+          description: The number of accounts that have been deleted during the aggregation.
+            *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*
+          example: 5
+          format: int32
+          type: integer
+        totalIdentities:
+          description: The total number of unique identities that have been marked
+            for refresh. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*
+          example: 300
+          format: int32
+          type: integer
+        processedIdentities:
+          description: "The number of unique identities that have been refreshed at\
+            \ the time of the API call, and may increase on subsequent API calls while\
+            \ the status is ACCOUNTS_COLLECTED. *Only available when status is ACCOUNTS_COLLECTED\
+            \ or COMPLETED.*"
+          example: 250
+          format: int32
+          type: integer
+      title: Account Aggregation Status
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    getAccountAggregationStatusV1_400_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getAccountAggregationStatusV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object

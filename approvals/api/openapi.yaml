@@ -1,0 +1,3841 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Approvals
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: "Use this API to implement approval functionality. With this functionality\
+    \ in place, you can get generic approvals and modify them. \n\nThe main advantages\
+    \ this API has vs [Access Request Approvals](https://developer.sailpoint.com/docs/api/v2025/access-request-approvals)\
+    \ are that you can use it to get generic approvals individually or in batches\
+    \ and make changes to those approvals. \n"
+  name: Approvals
+paths:
+  /generic-approvals/v1:
+    get:
+      description: "Gets a list of approvals.\n\nOne of the following query parameters\
+        \ should be present: 'mine', 'approverId', 'requesterId', 'requesteeId'.\n\
+        \nThe absence of all query parameters for non admins will default to mine=true\
+        \ (which is the equivalent of 'approverId=[your_identity_id]') \nwhile admins\
+        \ will default to mine=false (which will show all approvals in the org).\n\
+        \nFor lookups by access request ID please use the following:\n\n'/generic-approvals?mine=false&filters=referenceType+eq+\"\
+        accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\"'"
+      operationId: getApprovalsV1
+      parameters:
+      - description: "Determines whether to return the list of approvals assigned\
+          \ to the current caller or all approvals in the org. Defaults to false if\
+          \ admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]')."
+        example: "true"
+        explode: true
+        in: query
+        name: mine
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: Returns the list of approvals for a given requester ID. Must
+          match the calling user's identity ID unless they are an admin.
+        example: 17e633e7d57e481569df76323169deb6a
+        explode: true
+        in: query
+        name: requesterId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Returns the list of approvals for a given requesteeId ID. Must
+          match the calling user's identity ID unless they are an admin.
+        example: 27e6334g757e481569df76323169db9sc
+        explode: true
+        in: query
+        name: requesteeId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Returns the list of approvals for a given approverId ID. Must
+          match the calling user's identity ID unless they are an admin.
+        example: 37e6334g557e481569df7g2d3169db9sb
+        explode: true
+        in: query
+        name: approverId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Adds X-Total-Count to the header to give the amount of total
+          approvals returned from the query.
+        example: "true"
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: Adds X-Total-Count to the header to give the amount of total
+          approvals returned from the query. Only returns the count and no approval
+          objects.
+        example: "true"
+        explode: true
+        in: query
+        name: count-only
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: "If set to true in the query, the approval requests returned\
+          \ will include comments."
+        example: "true"
+        explode: true
+        in: query
+        name: include-comments
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: "If set to true in the query, the approval requests returned\
+          \ will include approvers."
+        example: "true"
+        explode: true
+        in: query
+        name: include-approvers
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: "If set to true in the query, the approval requests returned\
+          \ will include reassignment history."
+        example: "true"
+        explode: true
+        in: query
+        name: include-reassignment-history
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: "If set to true in the query, the approval requests returned\
+          \ will include batch information."
+        example: "true"
+        explode: true
+        in: query
+        name: include-batch-info
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **status**: *eq, ne, in, co, sw*
+
+          **name**: *eq, ne, in, co, sw*
+
+          **priority**: *eq, ne, in, co, sw*
+
+          **type**: *eq, ne, in, co, sw*
+
+          **medium**: *eq, ne, in, co, sw*
+
+          **description**: *eq, ne, in, co, sw*
+
+          **batchId**: *eq, ne, in, co, sw*
+
+          **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*
+
+          **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*
+
+          **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*
+
+          **search**: *eq, ne, in, co, sw*
+
+          **referenceId**: *eq, ne, in, co, sw*
+
+          **referenceType**: *eq, ne, in, co, sw*
+
+          **referenceName**: *eq, ne, in, co, sw*
+
+          **requestedTargetId**: *eq, ne, in, co, sw*
+
+          **requestedTargetType**: *eq, ne, in, co, sw*
+
+          **requestedTargetName**: *eq, ne, in, co, sw*
+
+          **requestedTargetRequestType**: *eq, ne, in, co, sw*
+
+          **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*
+
+          **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*
+
+          **approvalId**: *eq, ne, in, co, sw*
+
+          **requesterId**: *eq, ne, in, co, sw*
+
+          **requesteeId**: *eq, ne, in, co, sw*
+
+          **approverId**: *eq, ne, in, co, sw*
+        example: filters=status eq "PENDING" and type eq "ACCESS_REQUEST_APPROVAL"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/approval-2'
+                type: array
+          description: List of approvals.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:read
+        - idn:access-request-administration:read
+        - idn:access-request-approvals:manage
+      summary: Get approvals
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - APPROVAL_OWNER
+  /generic-approvals/v1/{id}:
+    get:
+      description: |-
+        Fetches an approval request by it's approval ID. For lookups by access request ID please use the following:
+        /generic-approvals?filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"
+      operationId: getApprovalV1
+      parameters:
+      - description: ID of the approval that is to be returned
+        example: 38453251-6be2-5f8f-df93-5ce19e295837
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getApprovalsV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/approval-2'
+          description: Approval object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:read
+        - idn:access-request-administration:read
+        - idn:access-request-approvals:manage
+      summary: Get an approval
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - APPROVAL_OWNER
+  /generic-approvals/v1/{id}/approve:
+    post:
+      description: |-
+        Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs.
+        If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+      operationId: approveApprovalV1
+      parameters:
+      - description: Approval ID that correlates to an existing approval request that
+          a user wants to approve.
+        example: 38453251-6be2-5f8f-df93-5ce19e295837
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getApprovalsV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/approvalapproverequest'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/approval-2'
+          description: Approval object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:manage
+      summary: Post Approvals Approve
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - APPROVAL_OWNER
+  /generic-approvals/v1/{id}/attributes:
+    post:
+      description: Allows for the edit/addition/removal of the key/value pair additional
+        attributes map for an existing approval request. This endpoint does not support
+        access request IDs.
+      operationId: updateApprovalsAttributesV1
+      parameters:
+      - description: Approval ID that correlates to an existing approval request that
+          a user wants to change the attributes of.
+        example: 38453251-6be2-5f8f-df93-5ce19e295837
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getApprovalsV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/approvalattributesrequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/approval-2'
+          description: Approval object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:manage
+      summary: Post Approvals Attributes
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - APPROVAL_OWNER
+  /generic-approvals/v1/{id}/comments:
+    post:
+      description: Adds comments to a specified approval request. This endpoint does
+        not support access request IDs.
+      operationId: updateApprovalsCommentsV1
+      parameters:
+      - description: Approval ID that correlates to an existing approval request that
+          a user wants to add a comment to.
+        example: 38453251-6be2-5f8f-df93-5ce19e295837
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getApprovalsV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/approvalcommentsrequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/approval-2'
+          description: Approval object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:manage
+      summary: Post Approvals Comments
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - APPROVAL_OWNER
+  /generic-approvals/v1/{id}/reassign:
+    post:
+      description: Reassigns an approval request to another identity resulting in
+        that identity being added as an authorized approver. This endpoint does not
+        support access request IDs.
+      operationId: updateApprovalsReassignV1
+      parameters:
+      - description: Approval ID that correlates to an existing approval request that
+          a user wants to reassign.
+        example: 38453251-6be2-5f8f-df93-5ce19e295837
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getApprovalsV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/approvalreassignrequest'
+        required: true
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:manage
+      summary: Post Approvals Reassign
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - APPROVAL_OWNER
+  /generic-approvals/v1/{id}/reject:
+    post:
+      description: |-
+        Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs.
+        If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
+      operationId: rejectApprovalV1
+      parameters:
+      - description: Approval ID that correlates to an existing approval request that
+          a user wants to reject.
+        example: 38453251-6be2-5f8f-df93-5ce19e295837
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getApprovalsV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/approvalrejectrequest'
+        required: false
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:manage
+      summary: Post Approvals Reject
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - APPROVAL_OWNER
+  /generic-approvals/v1/{id}/cancel:
+    post:
+      description: "Cancels a specified approval requests on behalf of the caller.\
+        \ \nNote: This endpoint does not support access request IDs. To cancel access\
+        \ request approvals, please use the following:\n/access-requests/cancel"
+      operationId: cancelApprovalByIdV1
+      parameters:
+      - description: ID of the approval request to cancel.
+        example: 38453251-6be2-5f8f-df93-5ce19e295837
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getApprovalsV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/approvalcancelrequest'
+        required: false
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:approvals:write
+      summary: Post Approval Cancel
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /generic-approvals/v1/config/{id}:
+    get:
+      description: Retrieves a singular approval configuration that matches the given
+        ID
+      operationId: getApprovalsConfigV1
+      parameters:
+      - description: "The id of the object the config applies to, for example one\
+          \ of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID),\
+          \ \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\"\
+          , \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\"\
+          , \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)]"
+        example: 12345678901234567000000000000000
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getApprovalsV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/approvalconfig'
+          description: Approval object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:approvals:read
+      summary: Get Approval Config
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - APPROVAL_OWNER
+  /generic-approvals/v1/config/{id}/{scope}:
+    delete:
+      description: |-
+        Deletes an approval configuration.
+        Configurations at the APPROVAL_REQUEST scope cannot be deleted.
+      operationId: deleteApprovalConfigRequestV1
+      parameters:
+      - description: |-
+          The ID defined by the scope field, where [[id]]:[[scope]] is the following
+          [[roleID]]:ROLE
+          [[entitlementID]]:ENTITLEMENT
+          [[accessProfileID]]:ACCESS_PROFILE
+          ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE
+          ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE
+          ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
+          ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
+          MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          [[tenantID]]:TENANT
+          [[domainObjectID]]:DOMAIN_OBJECT
+        example: ACCESS_REQUEST_APPROVAL
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id:
+        - listEntitlements
+        - listRoles
+        - listAccessProfiles
+      - description: |-
+          The scope of the field, where [[id]]:[[scope]] is the following
+          [[roleID]]:ROLE
+          [[entitlementID]]:ENTITLEMENT
+          [[accessProfileID]]:ACCESS_PROFILE
+          ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE
+          ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE
+          ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
+          ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
+          MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          [[tenantID]]:TENANT
+          [[domainObjectID]]:DOMAIN_OBJECT
+        example: APPROVAL_TYPE
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          enum:
+          - DOMAIN_OBJECT
+          - ROLE
+          - ACCESS_PROFILE
+          - ENTITLEMENT
+          - APPROVAL_TYPE
+          - TENANT
+          type: string
+        style: simple
+        x-go-name: Type
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:approvals:write
+      summary: Delete Approval Configuration
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    put:
+      description: "Upserts a singular approval configuration that matches the given\
+        \ configID and configScope. \nFor example to update the approval configurations\
+        \ for all Access Request Approvals please use: '/generic-approvals/config/ACCESS_REQUEST_APPROVAL/APPROVAL_TYPE'"
+      operationId: putApprovalsConfigV1
+      parameters:
+      - description: |-
+          The ID defined by the scope field, where [[id]]:[[scope]] is the following
+          [[roleID]]:ROLE
+          [[entitlementID]]:ENTITLEMENT
+          [[accessProfileID]]:ACCESS_PROFILE
+          ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE
+          ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE
+          ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
+          ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
+          MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          [[tenantID]]:TENANT
+          [[domainObjectID]]:DOMAIN_OBJECT
+        example: ACCESS_REQUEST_APPROVAL
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id:
+        - listEntitlements
+        - listRoles
+        - listAccessProfiles
+      - description: |-
+          The scope of the field, where [[id]]:[[scope]] is the following
+          [[roleID]]:ROLE
+          [[entitlementID]]:ENTITLEMENT
+          [[accessProfileID]]:ACCESS_PROFILE
+          ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE
+          ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE
+          ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
+          ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
+          MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          [[tenantID]]:TENANT
+          [[domainObjectID]]:DOMAIN_OBJECT
+        example: APPROVAL_TYPE
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          enum:
+          - DOMAIN_OBJECT
+          - ROLE
+          - ACCESS_PROFILE
+          - ENTITLEMENT
+          - APPROVAL_TYPE
+          - TENANT
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/approvalconfig'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/approvalconfig'
+          description: Verified Email Status
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:approvals:write
+      summary: Put Approval Config
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /generic-approvals/v1/bulk-approve:
+    post:
+      description: Bulk Approves specified approval requests on behalf of the caller
+      operationId: approveApprovalInBulkV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bulkapproverequestdto'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:approvals:write
+      summary: Post Bulk Approve Approvals
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /generic-approvals/v1/bulk-reject:
+    post:
+      description: Bulk reject specified approval requests on behalf of the caller
+      operationId: rejectApprovalInBulkV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bulkrejectrequestdto'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:approvals:write
+      summary: Post Bulk Reject Approvals
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /generic-approvals/v1/bulk-cancel:
+    post:
+      description: "Bulk cancels specified approval requests on behalf of the caller.\
+        \ \nNote: To bulk cancel access request approvals, please use the following:\n\
+        /access-requests/bulk-cancel"
+      operationId: cancelApprovalV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bulkcancelrequestdto'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:approvals:write
+      summary: Post Bulk Cancel Approvals
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /generic-approvals/v1/bulk-reassign:
+    post:
+      description: Bulk reassigns specified approval requests on behalf of the caller
+      operationId: moveApprovalV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bulkreassignrequestdto'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getApprovalsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:approvals:write
+      summary: Post Bulk Reassign Approvals
+      tags:
+      - Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+components:
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+  responses:
+    "202":
+      content:
+        application/json:
+          schema:
+            type: object
+      description: Accepted - Returned if the request was successfully accepted into
+        the system.
+    "204":
+      description: No content - indicates the request was successful but there is
+        no content to be returned in the response.
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getApprovalsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getApprovalsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    approvalidentity:
+      description: Approval Identity Object
+      example:
+        identityID: 17e633e7d57e481569df76323169deb6a
+        members:
+        - name: Bob Neil
+          id: 17e633e7d57e481569df76323169deb6a
+          type: IDENTITY
+          email: mail@mail.com
+        - name: Bob Neil
+          id: 17e633e7d57e481569df76323169deb6a
+          type: IDENTITY
+          email: mail@mail.com
+        name: Jim Bob
+        ownerOf:
+        - name: Access Request App
+          id: string
+          type: APPLICATION
+        - name: Access Request App
+          id: string
+          type: APPLICATION
+        serialOrder: 0
+        type: IDENTITY
+        email: mail@mail.com
+      properties:
+        email:
+          description: Email address.
+          example: mail@mail.com
+          type: string
+        identityID:
+          description: Identity ID of the type of identity defined in the 'type' field.
+          example: 17e633e7d57e481569df76323169deb6a
+          type: string
+        members:
+          description: List of members of a governance group. Will be omitted if the
+            identity is not a governance group.
+          items:
+            $ref: '#/components/schemas/approvalidentity_members_inner'
+          type: array
+        name:
+          description: Name of the identity.
+          example: Jim Bob
+          type: string
+        ownerOf:
+          description: "List of owned items. For example, will show the items in which\
+            \ a ROLE_OWNER owns. Omitted if not an owner of anything."
+          items:
+            $ref: '#/components/schemas/approvalidentity_ownerOf_inner'
+          type: array
+        serialOrder:
+          description: The serial step of the identity in the approval. For example
+            serialOrder 1 is the first identity to action in an approval request chain.
+            Parallel approvals are set to 0.
+          example: 0
+          format: int64
+          type: integer
+        type:
+          description: Type of identityID.
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          - MANAGER_OF
+          - ACCOUNT_OWNER
+          - MACHINE_ACCOUNT_OWNER
+          - MACHINE_IDENTITY_OWNER
+          - MANAGER_OF_REQUESTED_TARGET_OWNER
+          - MANAGER_OF_MACHINE_IDENTITY_OWNER
+          - MANAGER_OF_ACCOUNT_OWNER
+          - MANAGER_OF_MACHINE_ACCOUNT_OWNER
+          - MANAGER_OF_REQUESTER
+          - MANAGER_OF_REQUESTER_OWNER
+          - MANAGER_OF_OWNER
+          - ACCESS_PROFILE_OWNER
+          - APPLICATION_OWNER
+          - ENTITLEMENT_OWNER
+          - ROLE_OWNER
+          - SOURCE_OWNER
+          - REQUESTED_TARGET_OWNER
+          - ACCESS_PROFILE_PRIMARY_OWNER
+          - APPLICATION_PRIMARY_OWNER
+          - ENTITLEMENT_PRIMARY_OWNER
+          - ROLE_PRIMARY_OWNER
+          - SOURCE_PRIMARY_OWNER
+          - REQUESTED_TARGET_PRIMARY_OWNER
+          - ACCESS_PROFILE_SECONDARY_OWNER_GROUP
+          - APPLICATION_SECONDARY_OWNER_GROUP
+          - ENTITLEMENT_SECONDARY_OWNER_GROUP
+          - ROLE_SECONDARY_OWNER_GROUP
+          - SOURCE_SECONDARY_OWNER_GROUP
+          - REQUESTED_TARGET_SECONDARY_OWNER_GROUP
+          - ACCESS_PROFILE_ALL_OWNER_GROUP
+          - APPLICATION_ALL_OWNER_GROUP
+          - ENTITLEMENT_ALL_OWNER_GROUP
+          - ROLE_ALL_OWNER_GROUP
+          - SOURCE_ALL_OWNER_GROUP
+          - REQUESTED_TARGET_ALL_OWNER_GROUP
+          example: IDENTITY
+          type: string
+      title: Approval Identity
+      type: object
+    approvalname:
+      description: Approval Name Object
+      example:
+        locale: en_US
+        value: Audit DB Access
+      properties:
+        value:
+          description: Name of the approval
+          example: Audit DB Access
+          type: string
+        locale:
+          description: What locale the name of the approval is using
+          example: en_US
+          type: string
+      title: Approval Name
+      type: object
+    approvalbatch:
+      description: Batch properties if an approval is sent via batching.
+      example:
+        batchId: 38453251-6be2-5f8f-df93-5ce19e295837
+        batchSize: 100
+      properties:
+        batchId:
+          description: ID of the batch
+          example: 38453251-6be2-5f8f-df93-5ce19e295837
+          type: string
+        batchSize:
+          description: How many approvals are going to be in this batch. Defaults
+            to 1 if not provided.
+          example: 100
+          format: int64
+          type: integer
+      title: Approval Batch
+      type: object
+    approvalconfig:
+      description: Approval config Object
+      example:
+        timeoutConfig:
+          daysUntilTimeout: 2
+          enabled: true
+          timeoutResult: EXPIRED
+        requiresComment: ALL
+        cronTimezone:
+          offset: ""
+          location: America/New_York
+        fallbackApprover:
+          identityID: fdfda352157d4cc79bb749953131b457
+          type: MANAGER_OF
+        reminderConfig:
+          reminderCronSchedule: 1 1 1 1 1
+          daysUntilFirstReminder: 0
+          maxReminders: 5
+          enabled: false
+        circumventApprovalProcess: false
+        escalationConfig:
+          escalationCronSchedule: '*/5 * * * *'
+          escalationChain:
+          - tier: 1
+            identityType: IDENTITY
+            identityId: fdfda352157d4cc79bb749953131b457
+          - tier: 1
+            identityType: IDENTITY
+            identityId: fdfda352157d4cc79bb749953131b457
+          daysUntilFirstEscalation: 2
+          enabled: true
+        serialChain:
+        - tier: 1
+          identityType: IDENTITY
+          identityId: 2c9180858090ea8801809a0465e829da
+        - tier: 1
+          identityType: IDENTITY
+          identityId: 2c9180858090ea8801809a0465e829da
+        machineIdentityManagerAssignment: MACHINE_IDENTITY_OWNER
+        autoApprove: "OFF"
+      properties:
+        reminderConfig:
+          $ref: '#/components/schemas/approvalconfig_reminderConfig'
+        escalationConfig:
+          $ref: '#/components/schemas/approvalconfig_escalationConfig'
+        timeoutConfig:
+          $ref: '#/components/schemas/approvalconfig_timeoutConfig'
+        cronTimezone:
+          $ref: '#/components/schemas/approvalconfig_cronTimezone'
+        serialChain:
+          description: If the approval request has an approvalCriteria of SERIAL this
+            chain will be used to determine the assignment order.
+          items:
+            $ref: '#/components/schemas/approvalconfig_serialChain_inner'
+          type: array
+        requiresComment:
+          description: Determines whether a comment is required when approving or
+            rejecting the approval request.
+          enum:
+          - APPROVAL
+          - REJECTION
+          - ALL
+          - "OFF"
+          example: ALL
+          type: string
+        fallbackApprover:
+          $ref: '#/components/schemas/approvalconfig_fallbackApprover'
+        machineIdentityManagerAssignment:
+          default: MANAGER_OF_REQUESTER
+          description: Specifies how to treat the identity type "MANAGER_OF" when
+            the requestee is a machine identity.
+          enum:
+          - MANAGER_OF_REQUESTER
+          - MACHINE_IDENTITY_OWNER
+          - MANAGER_OF_MACHINE_IDENTITY_OWNER
+          - REQUESTED_TARGET_OWNER
+          - MANAGER_OF_REQUESTED_TARGET_OWNER
+          - ACCOUNT_OWNER
+          - MANAGER_OF_ACCOUNT_OWNER
+          example: MACHINE_IDENTITY_OWNER
+          type: string
+        circumventApprovalProcess:
+          default: false
+          description: "When true, all approvals will be created with the status \"\
+            PASSED\"."
+          example: false
+          type: boolean
+        autoApprove:
+          description: "OFF will prevent the approval request from being assigned\
+            \ to the requester or requestee by assigning it to their manager instead.\
+            \ DIRECT will cause approval requests to be auto-approved when assigned\
+            \ directly and only to the requester. INDIRECT will auto-approve when\
+            \ the requester appears anywhere in the list of approvers, including in\
+            \ a governance group. This field will only be effective if requestedTarget.reauthRequired\
+            \ is set to false, otherwise the approval will have to be manually approved."
+          enum:
+          - "OFF"
+          - DIRECT
+          - INDIRECT
+          example: "OFF"
+          type: string
+      type: object
+    approvaldescription:
+      description: The description of what the approval is asking for
+      example:
+        locale: en_US
+        value: This access allows viewing and editing of workflow resource
+      properties:
+        value:
+          description: The description of what the approval is asking for
+          example: This access allows viewing and editing of workflow resource
+          type: string
+        locale:
+          description: What locale the description of the approval is using
+          example: en_US
+          type: string
+      title: Approval Description
+      type: object
+    approvalcomment-3:
+      description: Comments Object
+      example:
+        createdDate: 2023-04-12T23:20:50.52Z
+        author:
+          identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          name: Jim Bob
+          ownerOf:
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          serialOrder: 0
+          type: IDENTITY
+          email: mail@mail.com
+        commentId: 38453251-6be2-5f8f-df93-5ce19e295837
+        comment: Looks good
+      properties:
+        author:
+          $ref: '#/components/schemas/approvalidentity'
+        comment:
+          description: Comment to be left on an approval
+          example: Looks good
+          type: string
+        createdDate:
+          description: Date the comment was created
+          example: 2023-04-12T23:20:50.52Z
+          type: string
+        commentId:
+          description: ID of the comment
+          example: 38453251-6be2-5f8f-df93-5ce19e295837
+          type: string
+      title: Approval Comment
+      type: object
+    approvalreference:
+      description: Reference objects related to the approval
+      example:
+        name: Access Request
+        id: 64012350-8fd9-4f6c-a170-1fe123683899
+        serialOrder: 0
+        type: AccessRequestId
+        email: user@example.com
+      properties:
+        id:
+          description: Id of the reference object
+          example: 64012350-8fd9-4f6c-a170-1fe123683899
+          type: string
+        type:
+          description: What reference object does this ID correspond to
+          example: AccessRequestId
+          type: string
+        name:
+          description: Name of the reference object
+          example: Access Request
+          type: string
+        email:
+          description: Email associated with the reference object
+          example: user@example.com
+          format: email
+          type: string
+        serialOrder:
+          description: The serial step of the identity in the approval. For example
+            serialOrder 1 is the first identity to action in an approval request chain.
+            Parallel approvals are set to 0.
+          example: 0
+          format: int64
+          type: integer
+      title: Approval Reference
+      type: object
+    approvalidentityrecord:
+      description: Identity Record Object
+      example:
+        identityID: 17e633e7d57e481569df76323169deb6a
+        members:
+        - name: Access Request
+          id: 64012350-8fd9-4f6c-a170-1fe123683899
+          serialOrder: 0
+          type: AccessRequestId
+          email: user@example.com
+        - name: Access Request
+          id: 64012350-8fd9-4f6c-a170-1fe123683899
+          serialOrder: 0
+          type: AccessRequestId
+          email: user@example.com
+        name: Jim Bob
+        type: IDENTITY
+        email: user@example.com
+        actionedAs:
+        - name: Access Request
+          id: 64012350-8fd9-4f6c-a170-1fe123683899
+          serialOrder: 0
+          type: AccessRequestId
+          email: user@example.com
+        - name: Access Request
+          id: 64012350-8fd9-4f6c-a170-1fe123683899
+          serialOrder: 0
+          type: AccessRequestId
+          email: user@example.com
+        decisionDate: 2023-04-12T23:20:50.52Z
+      properties:
+        identityID:
+          description: Identity ID.
+          example: 17e633e7d57e481569df76323169deb6a
+          type: string
+        type:
+          description: Type of identity.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        name:
+          description: Name of the identity.
+          example: Jim Bob
+          type: string
+        actionedAs:
+          description: List of references representing actions taken by the identity.
+          items:
+            $ref: '#/components/schemas/approvalreference'
+          type: array
+        members:
+          description: List of references representing members of the identity.
+          items:
+            $ref: '#/components/schemas/approvalreference'
+          type: array
+        decisionDate:
+          description: Date when the decision was made.
+          example: 2023-04-12T23:20:50.52Z
+          format: date-time
+          type: string
+        email:
+          description: Email associated with the identity.
+          example: user@example.com
+          format: email
+          type: string
+      type: object
+    approvalreassignmenthistory:
+      description: ReassignmentHistoryRecord holds a history record of reassignment
+        and escalation actions for an approval request
+      example:
+        reassignedTo:
+          identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          name: Jim Bob
+          ownerOf:
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          serialOrder: 0
+          type: IDENTITY
+          email: mail@mail.com
+        reassignmentType: ESCALATION
+        reassigner:
+          identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          name: Jim Bob
+          ownerOf:
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          serialOrder: 0
+          type: IDENTITY
+          email: mail@mail.com
+        reassignedFrom:
+          identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          name: Jim Bob
+          ownerOf:
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          serialOrder: 0
+          type: IDENTITY
+          email: mail@mail.com
+        commentID: f47ac10b-58cc-4372-a567-0e02b2c3d479
+        reassignmentDate: 2023-10-01T12:34:56.789Z
+      properties:
+        commentID:
+          description: Unique identifier for the comment associated with the reassignment.
+          example: f47ac10b-58cc-4372-a567-0e02b2c3d479
+          type: string
+        reassignedFrom:
+          $ref: '#/components/schemas/approvalidentity'
+        reassignedTo:
+          $ref: '#/components/schemas/approvalidentity'
+        reassigner:
+          $ref: '#/components/schemas/approvalidentity'
+        reassignmentDate:
+          description: Date and time when the reassignment occurred.
+          example: 2023-10-01T12:34:56.789Z
+          format: date-time
+          type: string
+        reassignmentType:
+          description: "Type of reassignment, such as escalation or manual reassignment."
+          enum:
+          - ESCALATION
+          - MANUAL_REASSIGNMENT
+          - AUTO_REASSIGNMENT
+          example: ESCALATION
+          type: string
+      type: object
+    approvalrequestedtarget:
+      description: "Represents a requested target in an approval process, including\
+        \ details such as ID, name, reauthentication requirements, and removal date."
+      example:
+        reauthRequired: true
+        removalDate: 2025-07-07T18:10:13.687Z
+        requestType: string
+        forcedAuthSignature: string
+        name: string
+        targetType: string
+        id: string
+      properties:
+        forcedAuthSignature:
+          description: Signature required for forced authentication.
+          example: string
+          type: string
+        id:
+          description: ID of the requested target.
+          example: string
+          type: string
+        name:
+          description: Name of the requested target.
+          example: string
+          type: string
+        reauthRequired:
+          default: false
+          description: Indicates if reauthentication is required.
+          example: true
+          type: boolean
+        removalDate:
+          description: Date when the target will be removed.
+          example: 2025-07-07T18:10:13.687Z
+          format: date-time
+          type: string
+        requestType:
+          description: Type of the request.
+          example: string
+          type: string
+        targetType:
+          description: Type of the target.
+          example: string
+          type: string
+      type: object
+    approval-2:
+      description: Approval Object
+      example:
+        approvalConfig:
+          timeoutConfig:
+            daysUntilTimeout: 2
+            enabled: true
+            timeoutResult: EXPIRED
+          requiresComment: ALL
+          cronTimezone:
+            offset: ""
+            location: America/New_York
+          fallbackApprover:
+            identityID: fdfda352157d4cc79bb749953131b457
+            type: MANAGER_OF
+          reminderConfig:
+            reminderCronSchedule: 1 1 1 1 1
+            daysUntilFirstReminder: 0
+            maxReminders: 5
+            enabled: false
+          circumventApprovalProcess: false
+          escalationConfig:
+            escalationCronSchedule: '*/5 * * * *'
+            escalationChain:
+            - tier: 1
+              identityType: IDENTITY
+              identityId: fdfda352157d4cc79bb749953131b457
+            - tier: 1
+              identityType: IDENTITY
+              identityId: fdfda352157d4cc79bb749953131b457
+            daysUntilFirstEscalation: 2
+            enabled: true
+          serialChain:
+          - tier: 1
+            identityType: IDENTITY
+            identityId: 2c9180858090ea8801809a0465e829da
+          - tier: 1
+            identityType: IDENTITY
+            identityId: 2c9180858090ea8801809a0465e829da
+          machineIdentityManagerAssignment: MACHINE_IDENTITY_OWNER
+          autoApprove: "OFF"
+        dueDate: 2024-05-12T23:10:50.11Z
+        approvedBy:
+        - identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          name: Jim Bob
+          type: IDENTITY
+          email: user@example.com
+          actionedAs:
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          decisionDate: 2023-04-12T23:20:50.52Z
+        - identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          name: Jim Bob
+          type: IDENTITY
+          email: user@example.com
+          actionedAs:
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          decisionDate: 2023-04-12T23:20:50.52Z
+        approvers:
+        - identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          name: Jim Bob
+          ownerOf:
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          serialOrder: 0
+          type: IDENTITY
+          email: mail@mail.com
+        - identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          name: Jim Bob
+          ownerOf:
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          serialOrder: 0
+          type: IDENTITY
+          email: mail@mail.com
+        description:
+        - locale: en_US
+          value: This access allows viewing and editing of workflow resource
+        - locale: en_US
+          value: This access allows viewing and editing of workflow resource
+        medium: EMAIL
+        type: ENTITLEMENT_DESCRIPTIONS
+        staticAttributes:
+          serviceName: ApprovalService
+          requestType: AccessRequest
+          metadata:
+            environment: production
+            region: us-east-1
+        assignedTo:
+        - identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          name: Jim Bob
+          ownerOf:
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          serialOrder: 0
+          type: IDENTITY
+          email: mail@mail.com
+        - identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          name: Jim Bob
+          ownerOf:
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          serialOrder: 0
+          type: IDENTITY
+          email: mail@mail.com
+        id: 38453251-6be2-5f8f-df93-5ce19e295837
+        reassignmentHistory:
+        - reassignedTo:
+            identityID: 17e633e7d57e481569df76323169deb6a
+            members:
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            name: Jim Bob
+            ownerOf:
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            serialOrder: 0
+            type: IDENTITY
+            email: mail@mail.com
+          reassignmentType: ESCALATION
+          reassigner:
+            identityID: 17e633e7d57e481569df76323169deb6a
+            members:
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            name: Jim Bob
+            ownerOf:
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            serialOrder: 0
+            type: IDENTITY
+            email: mail@mail.com
+          reassignedFrom:
+            identityID: 17e633e7d57e481569df76323169deb6a
+            members:
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            name: Jim Bob
+            ownerOf:
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            serialOrder: 0
+            type: IDENTITY
+            email: mail@mail.com
+          commentID: f47ac10b-58cc-4372-a567-0e02b2c3d479
+          reassignmentDate: 2023-10-01T12:34:56.789Z
+        - reassignedTo:
+            identityID: 17e633e7d57e481569df76323169deb6a
+            members:
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            name: Jim Bob
+            ownerOf:
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            serialOrder: 0
+            type: IDENTITY
+            email: mail@mail.com
+          reassignmentType: ESCALATION
+          reassigner:
+            identityID: 17e633e7d57e481569df76323169deb6a
+            members:
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            name: Jim Bob
+            ownerOf:
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            serialOrder: 0
+            type: IDENTITY
+            email: mail@mail.com
+          reassignedFrom:
+            identityID: 17e633e7d57e481569df76323169deb6a
+            members:
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            name: Jim Bob
+            ownerOf:
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            serialOrder: 0
+            type: IDENTITY
+            email: mail@mail.com
+          commentID: f47ac10b-58cc-4372-a567-0e02b2c3d479
+          reassignmentDate: 2023-10-01T12:34:56.789Z
+        batchRequest:
+          batchId: 38453251-6be2-5f8f-df93-5ce19e295837
+          batchSize: 100
+        requester:
+          identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          name: Jim Bob
+          ownerOf:
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          serialOrder: 0
+          type: IDENTITY
+          email: mail@mail.com
+        comments:
+        - createdDate: 2023-04-12T23:20:50.52Z
+          author:
+            identityID: 17e633e7d57e481569df76323169deb6a
+            members:
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            name: Jim Bob
+            ownerOf:
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            serialOrder: 0
+            type: IDENTITY
+            email: mail@mail.com
+          commentId: 38453251-6be2-5f8f-df93-5ce19e295837
+          comment: Looks good
+        - createdDate: 2023-04-12T23:20:50.52Z
+          author:
+            identityID: 17e633e7d57e481569df76323169deb6a
+            members:
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            - name: Bob Neil
+              id: 17e633e7d57e481569df76323169deb6a
+              type: IDENTITY
+              email: mail@mail.com
+            name: Jim Bob
+            ownerOf:
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            - name: Access Request App
+              id: string
+              type: APPLICATION
+            serialOrder: 0
+            type: IDENTITY
+            email: mail@mail.com
+          commentId: 38453251-6be2-5f8f-df93-5ce19e295837
+          comment: Looks good
+        priority: HIGH
+        completedDate: 2023-04-12T23:20:50.52Z
+        referenceData:
+        - name: Access Request
+          id: 64012350-8fd9-4f6c-a170-1fe123683899
+          serialOrder: 0
+          type: AccessRequestId
+          email: user@example.com
+        - name: Access Request
+          id: 64012350-8fd9-4f6c-a170-1fe123683899
+          serialOrder: 0
+          type: AccessRequestId
+          email: user@example.com
+        serialStep: 0
+        rejectedBy:
+        - identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          name: Jim Bob
+          type: IDENTITY
+          email: user@example.com
+          actionedAs:
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          decisionDate: 2023-04-12T23:20:50.52Z
+        - identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          name: Jim Bob
+          type: IDENTITY
+          email: user@example.com
+          actionedAs:
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          - name: Access Request
+            id: 64012350-8fd9-4f6c-a170-1fe123683899
+            serialOrder: 0
+            type: AccessRequestId
+            email: user@example.com
+          decisionDate: 2023-04-12T23:20:50.52Z
+        createdDate: 2023-04-12T23:20:50.52Z
+        requestee:
+          identityID: 17e633e7d57e481569df76323169deb6a
+          members:
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          - name: Bob Neil
+            id: 17e633e7d57e481569df76323169deb6a
+            type: IDENTITY
+            email: mail@mail.com
+          name: Jim Bob
+          ownerOf:
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          - name: Access Request App
+            id: string
+            type: APPLICATION
+          serialOrder: 0
+          type: IDENTITY
+          email: mail@mail.com
+        escalationStep: "0"
+        tenantId: 38453251-6be2-5f8f-df93-5ce19e295837
+        name:
+        - locale: en_US
+          value: Audit DB Access
+        - locale: en_US
+          value: Audit DB Access
+        modifiedDate: 2023-10-01T12:34:56.789Z
+        isEscalated: true
+        approvalCriteria:
+          approval:
+            calculationType: COUNT
+            value: 70
+          type: SERIAL
+          rejection:
+            calculationType: COUNT
+            value: 30
+        additionalAttributes: "{ \"llm_description\": \"generated description\" }"
+        requestedTarget:
+        - reauthRequired: true
+          removalDate: 2025-07-07T18:10:13.687Z
+          requestType: string
+          forcedAuthSignature: string
+          name: string
+          targetType: string
+          id: string
+        - reauthRequired: true
+          removalDate: 2025-07-07T18:10:13.687Z
+          requestType: string
+          forcedAuthSignature: string
+          name: string
+          targetType: string
+          id: string
+      properties:
+        id:
+          description: The Approval ID
+          example: 38453251-6be2-5f8f-df93-5ce19e295837
+          type: string
+        tenantId:
+          description: The Tenant ID of the Approval
+          example: 38453251-6be2-5f8f-df93-5ce19e295837
+          type: string
+        type:
+          description: "The type of the approval, such as ENTITLEMENT_DESCRIPTIONS,\
+            \ CUSTOM_ACCESS_REQUEST_APPROVAL, GENERIC_APPROVAL"
+          example: ENTITLEMENT_DESCRIPTIONS
+          type: string
+        approvers:
+          description: Object representation of an approver of an approval
+          items:
+            $ref: '#/components/schemas/approvalidentity'
+          type: array
+        createdDate:
+          description: Date the approval was created
+          example: 2023-04-12T23:20:50.52Z
+          type: string
+        dueDate:
+          description: Date the approval is due
+          example: 2024-05-12T23:10:50.11Z
+          type: string
+        escalationStep:
+          description: "Step in the escalation process. If set to 0, the approval\
+            \ is not escalated. If set to 1, the approval is escalated to the first\
+            \ approver in the escalation chain."
+          example: "0"
+          type: string
+        serialStep:
+          description: "The serial step of the approval in the approval chain. For\
+            \ example, serialStep 1 is the first approval to action in an approval\
+            \ request chain. Parallel approvals are set to 0."
+          example: 0
+          format: int64
+          type: integer
+        isEscalated:
+          default: false
+          description: Whether or not the approval has been escalated. Will reset
+            to false when the approval is actioned on.
+          example: true
+          type: boolean
+        name:
+          description: The name of the approval for a given locale
+          items:
+            $ref: '#/components/schemas/approvalname'
+          type: array
+        batchRequest:
+          $ref: '#/components/schemas/approvalbatch'
+        approvalConfig:
+          $ref: '#/components/schemas/approvalconfig'
+        description:
+          description: The description of the approval for a given locale
+          items:
+            $ref: '#/components/schemas/approvaldescription'
+          type: array
+        medium:
+          description: Signifies what medium to use when sending notifications (currently
+            only email is utilized)
+          enum:
+          - EMAIL
+          - SLACK
+          - TEAMS
+          example: EMAIL
+          type: string
+        priority:
+          description: The priority of the approval
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          example: HIGH
+          type: string
+        requester:
+          $ref: '#/components/schemas/approvalidentity'
+        requestee:
+          $ref: '#/components/schemas/approvalidentity'
+        comments:
+          description: Object representation of a comment on the approval
+          items:
+            $ref: '#/components/schemas/approvalcomment-3'
+          type: array
+        approvedBy:
+          description: Array of approvers who have approved the approval
+          items:
+            $ref: '#/components/schemas/approvalidentityrecord'
+          type: array
+        rejectedBy:
+          description: Array of approvers who have rejected the approval
+          items:
+            $ref: '#/components/schemas/approvalidentityrecord'
+          type: array
+        assignedTo:
+          description: "Array of identities that the approval request is currently\
+            \ assigned to/waiting on. For parallel approvals, this is set to all approvers\
+            \ left to approve."
+          items:
+            $ref: '#/components/schemas/approvalidentity'
+          type: array
+        completedDate:
+          description: Date the approval was completed
+          example: 2023-04-12T23:20:50.52Z
+          type: string
+        approvalCriteria:
+          $ref: '#/components/schemas/approval_2_approvalCriteria'
+        additionalAttributes:
+          description: Json string representing additional attributes known about
+            the object to be approved.
+          example: "{ \"llm_description\": \"generated description\" }"
+          type: string
+        referenceData:
+          description: Reference data related to the approval
+          items:
+            $ref: '#/components/schemas/approvalreference'
+          type: array
+        reassignmentHistory:
+          description: History of whom the approval request was assigned to
+          items:
+            $ref: '#/components/schemas/approvalreassignmenthistory'
+          type: array
+        staticAttributes:
+          additionalProperties: {}
+          description: Field that can include any static additional info that may
+            be needed by the service that the approval request originated from
+          example:
+            serviceName: ApprovalService
+            requestType: AccessRequest
+            metadata:
+              environment: production
+              region: us-east-1
+          type: object
+        modifiedDate:
+          description: Date/time that the approval request was last updated
+          example: 2023-10-01T12:34:56.789Z
+          format: date-time
+          type: string
+        requestedTarget:
+          description: RequestedTarget used to specify the actual object or target
+            the approval request is for
+          items:
+            $ref: '#/components/schemas/approvalrequestedtarget'
+          type: array
+      title: Approval
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    approvalapproverequest:
+      description: Approval Approve Request
+      properties:
+        additionalAttributes:
+          additionalProperties:
+            type: string
+          description: Additional attributes as key-value pairs that are not part
+            of the standard schema but can be included for custom data.
+          example:
+            additionalProp1: string
+            additionalProp2: string
+            additionalProp3: string
+          type: object
+        comment:
+          description: Comment associated with the request.
+          example: comment
+          type: string
+      type: object
+    approvalattributesrequest:
+      description: Approval Attributes Request
+      properties:
+        additionalAttributes:
+          additionalProperties:
+            type: string
+          description: Additional attributes as key-value pairs that are not part
+            of the standard schema but can be included for custom data.
+          example:
+            additionalProp1: string
+            additionalProp2: string
+            additionalProp3: string
+          type: object
+        comment:
+          description: Comment associated with the request.
+          example: comment
+          type: string
+        removeAttributeKeys:
+          description: List of attribute keys to be removed.
+          example:
+          - string
+          items:
+            type: string
+          type: array
+      type: object
+    approvalcommentsrequest:
+      properties:
+        comment:
+          description: Comment associated with the request.
+          example: Approval comment.
+          type: string
+      type: object
+    approvalreassignrequest:
+      description: Request body for reassigning an approval request to another identity.
+        This results in that identity being added as an authorized approver.
+      properties:
+        comment:
+          description: Comment associated with the reassign request.
+          example: comment
+          type: string
+        reassignFrom:
+          description: |-
+            Identity from which the approval is being reassigned.
+            If left blank, and the approval is currently assigned to the user calling this endpoint, it will use the calling user's identity.
+            If left blank, and the approval is not currently assigned to the user calling this endpoint, you need to be an admin, which would add the reassignTo as a new approver.
+          example: 384532516be25f8fdf935ce19e295837
+          type: string
+        reassignTo:
+          description: Identity to which the approval is being reassigned.
+          example: 152354832eb6f8f539fd738592e19ec5
+          type: string
+      type: object
+    approvalrejectrequest:
+      description: Request body for rejecting an approval request.
+      properties:
+        comment:
+          description: Comment associated with the reject request.
+          example: string
+          type: string
+      type: object
+    approvalcancelrequest:
+      description: Request body for cancelling a single approval request.
+      properties:
+        comment:
+          description: Optional comment associated with the cancel request.
+          example: Cancelled by administrator
+          type: string
+      type: object
+    bulkapproverequestdto:
+      description: BulkApproveRequestDTO is the input struct that represents the request
+        body required to facilitate a bulk approval action for a set of generic approval
+        requests.
+      properties:
+        approvalIds:
+          description: Array of Approval IDs to be bulk approved
+          example:
+          - 38453251-6be2-5f8f-df93-5ce19e295837
+          - 38453251-6be2-5f8f-df93-5ce19e295838
+          items:
+            type: string
+          type: array
+        comment:
+          description: Optional comment to include with the bulk approval request
+          example: Bulk approved by admin for monthly review
+          type: string
+        additionalAttributes:
+          additionalProperties: {}
+          description: Additional attributes to include with the bulk approval request
+          example:
+            source: automation
+            urgency: high
+          type: object
+      title: BulkApproveRequestDTO
+      type: object
+    bulkrejectrequestdto:
+      description: BulkRejectRequestDTO is the input struct that represents the request
+        body required to facilitate a bulk reject action for a set of generic approval
+        requests.
+      properties:
+        approvalIds:
+          description: Array of Approval IDs to be bulk rejected
+          example:
+          - 38453251-6be2-5f8f-df93-5ce19e295837
+          - 38453251-6be2-5f8f-df93-5ce19e295838
+          items:
+            type: string
+          type: array
+        comment:
+          description: Optional comment to include with the bulk reject request
+          example: Bulk reject by admin
+          type: string
+      title: BulkRejectRequestDTO
+      type: object
+    bulkcancelrequestdto:
+      description: BulkCancelRequestDTO is the input struct that represents the request
+        body required to facilitate a bulk cancellation action for a set of generic
+        approval requests.
+      properties:
+        approvalIds:
+          description: Array of Approval IDs to be bulk cancelled
+          example:
+          - 38453251-6be2-5f8f-df93-5ce19e295837
+          - 38453251-6be2-5f8f-df93-5ce19e295838
+          items:
+            type: string
+          type: array
+        comment:
+          description: Optional comment to include with the bulk cancellation request
+          example: Bulk cancellation by admin
+          type: string
+      title: BulkCancelRequestDTO
+      type: object
+    bulkreassignrequestdto:
+      description: BulkReassignRequestDTO is the input struct that represents the
+        request body required to facilitate a bulk reassignment action for a set of
+        generic approval requests.
+      properties:
+        approvalIds:
+          description: Array of Approval IDs to be bulk reassigned
+          example:
+          - 38453251-6be2-5f8f-df93-5ce19e295837
+          - 38453251-6be2-5f8f-df93-5ce19e295838
+          items:
+            type: string
+          type: array
+        comment:
+          description: Optional comment to include with the bulk reassignment request
+          example: Bulk reassignment by admin
+          type: string
+        reassignFrom:
+          description: Identity ID from which the approval requests are being reassigned
+          example: 12353251-6be2-5f8f-df93-5ce19b6e5837
+          type: string
+        reassignTo:
+          description: ReassignTo signifies the Identity ID that the approval request
+            is being reassigned to
+          example: 32454251-6ce2-5d8f-df93-5ce19e295238
+          type: string
+      title: BulkReassignRequestDTO
+      type: object
+    getApprovalsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    getApprovalsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object
+    approvalidentity_members_inner:
+      example:
+        name: Bob Neil
+        id: 17e633e7d57e481569df76323169deb6a
+        type: IDENTITY
+        email: mail@mail.com
+      properties:
+        email:
+          description: Email of the member.
+          example: mail@mail.com
+          type: string
+        id:
+          description: ID of the member.
+          example: 17e633e7d57e481569df76323169deb6a
+          type: string
+        name:
+          description: Name of the member.
+          example: Bob Neil
+          type: string
+        type:
+          description: Type of the member.
+          example: IDENTITY
+          type: string
+      type: object
+    approvalidentity_ownerOf_inner:
+      example:
+        name: Access Request App
+        id: string
+        type: APPLICATION
+      properties:
+        id:
+          description: ID of the object that is owned.
+          example: string
+          type: string
+        name:
+          description: Name of the object that is owned.
+          example: Access Request App
+          type: string
+        type:
+          description: Type of the object that is owned.
+          example: APPLICATION
+          type: string
+      type: object
+    approvalconfig_reminderConfig:
+      description: Configuration for reminders.
+      example:
+        reminderCronSchedule: 1 1 1 1 1
+        daysUntilFirstReminder: 0
+        maxReminders: 5
+        enabled: false
+      properties:
+        enabled:
+          default: false
+          description: Indicates if reminders are enabled.
+          example: false
+          type: boolean
+        daysUntilFirstReminder:
+          description: Number of days until the first reminder.
+          example: 0
+          format: int64
+          type: integer
+        reminderCronSchedule:
+          description: Cron schedule for reminders.
+          example: 1 1 1 1 1
+          type: string
+        maxReminders:
+          description: Maximum number of reminders. Max is 20.
+          example: 5
+          format: int64
+          type: integer
+      type: object
+    approvalconfig_escalationConfig_escalationChain_inner:
+      example:
+        tier: 1
+        identityType: IDENTITY
+        identityId: fdfda352157d4cc79bb749953131b457
+      properties:
+        tier:
+          description: Starting at 1 defines the order in which the identities will
+            get assigned
+          example: 1
+          format: int64
+          type: integer
+        identityId:
+          description: Optional Identity ID of the type of identity defined in the
+            'identityType' field.
+          example: fdfda352157d4cc79bb749953131b457
+          type: string
+        identityType:
+          description: Type of identityId in the escalation chain.
+          enum:
+          - IDENTITY
+          - MANAGER_OF
+          - ACCOUNT_OWNER
+          - MACHINE_ACCOUNT_OWNER
+          - MACHINE_IDENTITY_OWNER
+          - MANAGER_OF_REQUESTED_TARGET_OWNER
+          - MANAGER_OF_MACHINE_IDENTITY_OWNER
+          - MANAGER_OF_ACCOUNT_OWNER
+          - MANAGER_OF_MACHINE_ACCOUNT_OWNER
+          - MANAGER_OF_REQUESTER
+          - MANAGER_OF_REQUESTER_OWNER
+          - MANAGER_OF_OWNER
+          - ACCESS_PROFILE_OWNER
+          - APPLICATION_OWNER
+          - ENTITLEMENT_OWNER
+          - ROLE_OWNER
+          - SOURCE_OWNER
+          - ACCESS_PROFILE_PRIMARY_OWNER
+          - APPLICATION_PRIMARY_OWNER
+          - ENTITLEMENT_PRIMARY_OWNER
+          - ROLE_PRIMARY_OWNER
+          - SOURCE_PRIMARY_OWNER
+          example: IDENTITY
+          type: string
+      type: object
+    approvalconfig_escalationConfig:
+      description: Configuration for escalations.
+      example:
+        escalationCronSchedule: '*/5 * * * *'
+        escalationChain:
+        - tier: 1
+          identityType: IDENTITY
+          identityId: fdfda352157d4cc79bb749953131b457
+        - tier: 1
+          identityType: IDENTITY
+          identityId: fdfda352157d4cc79bb749953131b457
+        daysUntilFirstEscalation: 2
+        enabled: true
+      properties:
+        enabled:
+          default: false
+          description: Indicates if escalations are enabled.
+          example: true
+          type: boolean
+        daysUntilFirstEscalation:
+          description: Number of days until the first escalation.
+          example: 2
+          format: int64
+          type: integer
+        escalationCronSchedule:
+          description: Cron schedule for escalations.
+          example: '*/5 * * * *'
+          type: string
+        escalationChain:
+          description: Escalation chain configuration.
+          items:
+            $ref: '#/components/schemas/approvalconfig_escalationConfig_escalationChain_inner'
+          type: array
+      type: object
+    approvalconfig_timeoutConfig:
+      description: TimeoutConfig contains configurations around when the approval
+        request should expire.
+      example:
+        daysUntilTimeout: 2
+        enabled: true
+        timeoutResult: EXPIRED
+      properties:
+        enabled:
+          default: false
+          description: Indicates if timeout is enabled.
+          example: true
+          type: boolean
+        daysUntilTimeout:
+          description: Number of days until approval request times out. Max value
+            is 90.
+          example: 2
+          format: int64
+          type: integer
+        timeoutResult:
+          description: Result of timeout.
+          enum:
+          - EXPIRED
+          - APPROVED
+          example: EXPIRED
+          type: string
+      type: object
+    approvalconfig_cronTimezone:
+      description: Timezone configuration for cron schedules.
+      example:
+        offset: ""
+        location: America/New_York
+      properties:
+        location:
+          description: Timezone location for cron schedules.
+          example: America/New_York
+          type: string
+        offset:
+          description: Timezone offset for cron schedules.
+          example: ""
+          type: string
+      type: object
+    approvalconfig_serialChain_inner:
+      example:
+        tier: 1
+        identityType: IDENTITY
+        identityId: 2c9180858090ea8801809a0465e829da
+      properties:
+        tier:
+          description: Starting at 1 defines the order in which the identities will
+            get assigned
+          example: 1
+          format: int64
+          type: integer
+        identityId:
+          description: Optional Identity ID of the type of identity defined in the
+            'identityType' field.
+          example: 2c9180858090ea8801809a0465e829da
+          type: string
+        identityType:
+          description: Type of identityId in the serial chain.
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          - MANAGER_OF
+          - ACCOUNT_OWNER
+          - MACHINE_ACCOUNT_OWNER
+          - MACHINE_IDENTITY_OWNER
+          - MANAGER_OF_REQUESTED_TARGET_OWNER
+          - MANAGER_OF_MACHINE_IDENTITY_OWNER
+          - MANAGER_OF_ACCOUNT_OWNER
+          - MANAGER_OF_MACHINE_ACCOUNT_OWNER
+          - MANAGER_OF_REQUESTER
+          - MANAGER_OF_REQUESTER_OWNER
+          - MANAGER_OF_OWNER
+          - ACCESS_PROFILE_OWNER
+          - APPLICATION_OWNER
+          - ENTITLEMENT_OWNER
+          - ROLE_OWNER
+          - SOURCE_OWNER
+          - REQUESTED_TARGET_OWNER
+          - ACCESS_PROFILE_PRIMARY_OWNER
+          - APPLICATION_PRIMARY_OWNER
+          - ENTITLEMENT_PRIMARY_OWNER
+          - ROLE_PRIMARY_OWNER
+          - SOURCE_PRIMARY_OWNER
+          - REQUESTED_TARGET_PRIMARY_OWNER
+          - ACCESS_PROFILE_SECONDARY_OWNER_GROUP
+          - APPLICATION_SECONDARY_OWNER_GROUP
+          - ENTITLEMENT_SECONDARY_OWNER_GROUP
+          - ROLE_SECONDARY_OWNER_GROUP
+          - SOURCE_SECONDARY_OWNER_GROUP
+          - REQUESTED_TARGET_SECONDARY_OWNER_GROUP
+          - ACCESS_PROFILE_ALL_OWNER_GROUP
+          - APPLICATION_ALL_OWNER_GROUP
+          - ENTITLEMENT_ALL_OWNER_GROUP
+          - ROLE_ALL_OWNER_GROUP
+          - SOURCE_ALL_OWNER_GROUP
+          - REQUESTED_TARGET_ALL_OWNER_GROUP
+          example: IDENTITY
+          type: string
+      type: object
+    approvalconfig_fallbackApprover:
+      description: Configuration for fallback approver. Used if the user cannot be
+        found for whatever reason and escalation config does not exist.
+      example:
+        identityID: fdfda352157d4cc79bb749953131b457
+        type: MANAGER_OF
+      properties:
+        identityID:
+          description: Optional Identity ID of the type of identity defined in the
+            'type' field.
+          example: fdfda352157d4cc79bb749953131b457
+          type: string
+        type:
+          description: Type of identityID for the fallback approver.
+          enum:
+          - IDENTITY
+          - MANAGER_OF
+          - ACCOUNT_OWNER
+          - MACHINE_ACCOUNT_OWNER
+          - MACHINE_IDENTITY_OWNER
+          - MANAGER_OF_REQUESTED_TARGET_OWNER
+          - MANAGER_OF_MACHINE_IDENTITY_OWNER
+          - MANAGER_OF_ACCOUNT_OWNER
+          - MANAGER_OF_MACHINE_ACCOUNT_OWNER
+          - MANAGER_OF_REQUESTER
+          - MANAGER_OF_REQUESTER_OWNER
+          - MANAGER_OF_OWNER
+          - ACCESS_PROFILE_OWNER
+          - APPLICATION_OWNER
+          - ENTITLEMENT_OWNER
+          - ROLE_OWNER
+          - SOURCE_OWNER
+          - REQUESTED_TARGET_OWNER
+          - ACCESS_PROFILE_PRIMARY_OWNER
+          - APPLICATION_PRIMARY_OWNER
+          - ENTITLEMENT_PRIMARY_OWNER
+          - ROLE_PRIMARY_OWNER
+          - SOURCE_PRIMARY_OWNER
+          - REQUESTED_TARGET_PRIMARY_OWNER
+          example: MANAGER_OF
+          type: string
+      type: object
+    approval_2_approvalCriteria_approval:
+      description: Criteria for approval
+      example:
+        calculationType: COUNT
+        value: 70
+      properties:
+        calculationType:
+          description: "This defines what the field \"value\" will be used as, either\
+            \ a count or percentage of the total approvers that need to approve"
+          enum:
+          - COUNT
+          - PERCENT
+          example: COUNT
+          type: string
+        value:
+          description: The value that needs to be met for the approval criteria
+          example: 70
+          format: int64
+          type: integer
+      type: object
+    approval_2_approvalCriteria_rejection:
+      description: Criteria for rejection
+      example:
+        calculationType: COUNT
+        value: 30
+      properties:
+        calculationType:
+          description: "This defines what the field \"value\" will be used as, either\
+            \ a count or percentage of the total approvers that need to reject"
+          enum:
+          - COUNT
+          - PERCENT
+          example: COUNT
+          type: string
+        value:
+          description: The value that needs to be met for the rejection criteria
+          example: 30
+          format: int64
+          type: integer
+      type: object
+    approval_2_approvalCriteria:
+      description: Criteria that needs to be met for an approval or rejection
+      example:
+        approval:
+          calculationType: COUNT
+          value: 70
+        type: SERIAL
+        rejection:
+          calculationType: COUNT
+          value: 30
+      properties:
+        type:
+          description: "Type of approval criteria, such as SERIAL or PARALLEL"
+          example: SERIAL
+          type: string
+        approval:
+          $ref: '#/components/schemas/approval_2_approvalCriteria_approval'
+        rejection:
+          $ref: '#/components/schemas/approval_2_approvalCriteria_rejection'
+      type: object

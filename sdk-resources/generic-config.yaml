@@ -1,12 +1,14 @@
 templateDir: ./sdk-resources/resources
-packageName: api_generic
+packageName: generic
 packageVersion: 2.7.106
 generateInterfaces: false
 disallowAdditionalPropertiesIfNotPresent: false
 useOneOfDiscriminatorLookup: false
 enumClassPrefix: true
-gitRepoId: golang-sdk/v2
+gitRepoId: golang-sdk/v3
 gitUserId: sailpoint-oss
+isGoSubmodule: true
+moduleImportPath: github.com/sailpoint-oss/golang-sdk/v3/generic
 files:
   developerSite_code_examples.mustache:
     templateType: APIDocs

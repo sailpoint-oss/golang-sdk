@@ -1,0 +1,364 @@
+- path: /ssf/v1/streams
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sharedsignalsframeworkssf/methods/shared-signals-framework-ssf#create-stream-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+        )
+
+        func main() {
+           createstreamrequest := []byte(`{"delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Production event stream for session revocation notifications"}`) // Createstreamrequest | 
+
+          
+          var createstreamrequest v1.Createstreamrequest
+          if err := json.Unmarshal(createstreamrequest, &createstreamrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.CreateStreamV1(context.Background()).Createstreamrequest(createstreamrequest).Execute()
+          //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.CreateStreamV1(context.Background()).Createstreamrequest(createstreamrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.CreateStreamV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateStreamV1`: Streamconfigresponse
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.CreateStreamV1`: %v\n", resp)
+        }
+- path: /ssf/v1/streams
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sharedsignalsframeworkssf/methods/shared-signals-framework-ssf#delete-stream-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+        )
+
+        func main() {
+          streamId := `550e8400-e29b-41d4-a716-446655440000` // string | ID of the stream to delete. Required; omitted or empty returns 400. # string | ID of the stream to delete. Required; omitted or empty returns 400.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.DeleteStreamV1(context.Background()).StreamId(streamId).Execute()
+          //r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.DeleteStreamV1(context.Background()).StreamId(streamId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.DeleteStreamV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /ssf/v1/jwks
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sharedsignalsframeworkssf/methods/shared-signals-framework-ssf#get-jwks-data-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetJWKSDataV1(context.Background()).Execute()
+          //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetJWKSDataV1(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetJWKSDataV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetJWKSDataV1`: Jwks
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.GetJWKSDataV1`: %v\n", resp)
+        }
+- path: /.well-known/v1/ssf-configuration
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sharedsignalsframeworkssf/methods/shared-signals-framework-ssf#get-ssf-configuration-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+        )
+
+        func main() {
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetSSFConfigurationV1(context.Background()).Execute()
+          //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetSSFConfigurationV1(context.Background()).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetSSFConfigurationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetSSFConfigurationV1`: Transmittermetadata
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.GetSSFConfigurationV1`: %v\n", resp)
+        }
+- path: /ssf/v1/streams/status
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sharedsignalsframeworkssf/methods/shared-signals-framework-ssf#get-stream-status-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+        )
+
+        func main() {
+          streamId := `550e8400-e29b-41d4-a716-446655440000` // string | ID of the stream whose status to retrieve. # string | ID of the stream whose status to retrieve.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetStreamStatusV1(context.Background()).StreamId(streamId).Execute()
+          //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetStreamStatusV1(context.Background()).StreamId(streamId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetStreamStatusV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetStreamStatusV1`: Streamstatusresponse
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.GetStreamStatusV1`: %v\n", resp)
+        }
+- path: /ssf/v1/streams
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sharedsignalsframeworkssf/methods/shared-signals-framework-ssf#get-stream-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+        )
+
+        func main() {
+          streamId := `550e8400-e29b-41d4-a716-446655440000` // string | If provided, returns that stream; otherwise returns list of all streams. (optional) # string | If provided, returns that stream; otherwise returns list of all streams. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetStreamV1(context.Background()).Execute()
+          //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetStreamV1(context.Background()).StreamId(streamId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetStreamV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetStreamV1`: GetStreamV1200Response
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.GetStreamV1`: %v\n", resp)
+        }
+- path: /ssf/v1/streams/verify
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sharedsignalsframeworkssf/methods/shared-signals-framework-ssf#send-stream-verification-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+        )
+
+        func main() {
+           verificationrequest := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","state":"verification-challenge-state-123"}`) // Verificationrequest | 
+
+          
+          var verificationrequest v1.Verificationrequest
+          if err := json.Unmarshal(verificationrequest, &verificationrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1(context.Background()).Verificationrequest(verificationrequest).Execute()
+          //r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1(context.Background()).Verificationrequest(verificationrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /ssf/v1/streams
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sharedsignalsframeworkssf/methods/shared-signals-framework-ssf#set-stream-configuration-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+        )
+
+        func main() {
+           replacestreamconfigurationrequest := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Replaced stream configuration for production event delivery"}`) // Replacestreamconfigurationrequest | 
+
+          
+          var replacestreamconfigurationrequest v1.Replacestreamconfigurationrequest
+          if err := json.Unmarshal(replacestreamconfigurationrequest, &replacestreamconfigurationrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1(context.Background()).Replacestreamconfigurationrequest(replacestreamconfigurationrequest).Execute()
+          //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1(context.Background()).Replacestreamconfigurationrequest(replacestreamconfigurationrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SetStreamConfigurationV1`: Updatestreamconfigresponse
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1`: %v\n", resp)
+        }
+- path: /ssf/v1/streams
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sharedsignalsframeworkssf/methods/shared-signals-framework-ssf#update-stream-configuration-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+        )
+
+        func main() {
+           updatestreamconfigurationrequest := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","description":"Updated production event stream configuration"}`) // Updatestreamconfigurationrequest | 
+
+          
+          var updatestreamconfigurationrequest v1.Updatestreamconfigurationrequest
+          if err := json.Unmarshal(updatestreamconfigurationrequest, &updatestreamconfigurationrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1(context.Background()).Updatestreamconfigurationrequest(updatestreamconfigurationrequest).Execute()
+          //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1(context.Background()).Updatestreamconfigurationrequest(updatestreamconfigurationrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateStreamConfigurationV1`: Updatestreamconfigresponse
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1`: %v\n", resp)
+        }
+- path: /ssf/v1/streams/status
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sharedsignalsframeworkssf/methods/shared-signals-framework-ssf#update-stream-status-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+        )
+
+        func main() {
+           updatestreamstatusrequest := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","status":"paused","reason":"manually paused"}`) // Updatestreamstatusrequest | 
+
+          
+          var updatestreamstatusrequest v1.Updatestreamstatusrequest
+          if err := json.Unmarshal(updatestreamstatusrequest, &updatestreamstatusrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1(context.Background()).Updatestreamstatusrequest(updatestreamstatusrequest).Execute()
+          //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1(context.Background()).Updatestreamstatusrequest(updatestreamstatusrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateStreamStatusV1`: Streamstatusresponse
+          fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1`: %v\n", resp)
+        }

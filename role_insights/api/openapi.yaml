@@ -1,0 +1,1557 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - Role Insights
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- name: Role Insights
+paths:
+  /role-insights/v1/requests:
+    post:
+      deprecated: true
+      description: Submits a create role insights request to the role insights application.
+        At this time there are no parameters. All business roles will be processed
+        for the customer.
+      operationId: createRoleInsightRequestsV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/roleinsightsresponse'
+          description: Submitted a role insights generation request
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createRoleInsightRequestsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createRoleInsightRequestsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
+      summary: Generate insights for roles
+      tags:
+      - Role Insights
+  /role-insights/v1/requests/{id}:
+    get:
+      deprecated: true
+      description: 'This endpoint returns details of a prior role insights request. '
+      operationId: getRoleInsightsRequestsV1
+      parameters:
+      - description: The role insights request id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getRoleInsightsV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/roleinsightsresponse'
+          description: Succeeded. Returns details of an earlier role insights request.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createRoleInsightRequestsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createRoleInsightRequestsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
+      summary: Returns metadata from prior request.
+      tags:
+      - Role Insights
+  /role-insights/v1/summary:
+    get:
+      description: This method returns high level summary information for role insights
+        for a customer.
+      operationId: getRoleInsightsSummaryV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/roleinsightssummary'
+          description: Succeeded. Returns high level counts.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createRoleInsightRequestsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
+      summary: Get role insights summary information
+      tags:
+      - Role Insights
+  /role-insights/v1:
+    get:
+      description: This method returns detailed role insights for each role.
+      operationId: getRoleInsightsV1
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities**
+        example: numberOfUpdates
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **name**: *sw*
+
+          **ownerName**: *sw*
+
+          **description**: *sw*
+        example: name sw "John"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/roleinsight'
+                type: array
+          description: Succeeded. Returns a list of roles with information about insights
+            for each role.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createRoleInsightRequestsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
+      summary: Get role insights
+      tags:
+      - Role Insights
+  /role-insights/v1/{insightId}:
+    get:
+      description: This endpoint gets role insights information for a role.
+      operationId: getRoleInsightV1
+      parameters:
+      - description: The role insight id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        explode: false
+        in: path
+        name: insightId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getRoleInsightsV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/roleinsight'
+          description: Succeeded. Returns information about insights for a single
+            role.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createRoleInsightRequestsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
+      summary: Get a single role insight
+      tags:
+      - Role Insights
+  /role-insights/v1/{insightId}/entitlement-changes:
+    get:
+      description: This endpoint returns entitlement insights for a role.
+      operationId: getRoleInsightsEntitlementsChangesV1
+      parameters:
+      - description: The role insight id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        explode: false
+        in: path
+        name: insightId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getRoleInsightsV1
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **identitiesWithAccess, name**
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **name**: *sw*
+
+          **description**: *sw*
+        example: name sw "Admin"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/roleinsightsentitlementchanges'
+                type: array
+          description: Succeeded. Returns a list of entitlements to be added for a
+            role.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createRoleInsightRequestsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
+      summary: Get entitlement insights for a role
+      tags:
+      - Role Insights
+  /role-insights/v1/{insightId}/entitlement-changes/download:
+    get:
+      description: This endpoint returns the entitlement insights for a role.
+      operationId: downloadRoleInsightsEntitlementsChangesV1
+      parameters:
+      - description: The role insight id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        explode: false
+        in: path
+        name: insightId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getRoleInsightsV1
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **identitiesWithAccess**
+
+          The default sort is **identitiesWithAccess** in descending order.
+        example: identitiesWithAccess
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **name**: *sw*
+
+          **description**: *sw*
+        example: name sw "r"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/csv:
+              schema:
+                type: string
+          description: Succeeded. Returns a csv file containing a list of entitlements
+            to be added for a role.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createRoleInsightRequestsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
+      summary: Download entitlement insights for a role
+      tags:
+      - Role Insights
+  /role-insights/v1/{insightId}/current-entitlements:
+    get:
+      description: This endpoint gets the entitlements for a role. The term "current"
+        is to distinguish from the entitlement(s) an insight might recommend adding.
+      operationId: getRoleInsightsCurrentEntitlementsV1
+      parameters:
+      - description: The role insight id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        explode: false
+        in: path
+        name: insightId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getRoleInsightsV1
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **name**: *sw*
+
+          **description**: *sw*
+        example: name sw "r"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/roleinsightsentitlement'
+                type: array
+          description: Succeeded. Returns a list of current or pre-existing entitlements
+            for a role.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createRoleInsightRequestsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
+      summary: Get current entitlement for a role
+      tags:
+      - Role Insights
+  /role-insights/v1/{insightId}/entitlement-changes/{entitlementId}/identities:
+    get:
+      description: "Role insights suggests entitlements to be added for a role. This\
+        \ endpoint returns a list of identities in the role, with or without the entitlements,\
+        \ for a suggested entitlement so that the user can see which identities would\
+        \ be affected if the suggested entitlement were to be added to the role."
+      operationId: getEntitlementChangesIdentitiesV1
+      parameters:
+      - description: The role insight id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        explode: false
+        in: path
+        name: insightId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: getRoleInsightsV1
+      - description: The entitlement id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        explode: false
+        in: path
+        name: entitlementId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listEntitlementsV1
+      - description: Identity has this entitlement or not
+        explode: true
+        in: query
+        name: hasEntitlement
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name**
+        example: name
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **name**: *sw*
+        example: name sw "Jan"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/roleinsightsidentities'
+                type: array
+          description: Succeeded. Returns a list of identities with or without the
+            entitlement.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createRoleInsightRequestsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:role-insights
+      - applicationAuth:
+        - iai:role-insights
+      summary: Get identities for a suggested entitlement (for a role)
+      tags:
+      - Role Insights
+components:
+  parameters:
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createRoleInsightRequestsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createRoleInsightRequestsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/errorresponsedto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    roleinsightsresponse:
+      example:
+        id: c9aa02f7-86b0-4bc4-84bd-3116a6131e77
+        createdDate: 2020-09-16T18:49:32.150Z
+        lastGenerated: 2020-09-16T18:49:32.150Z
+        numberOfUpdates: 0
+        roleIds:
+        - 2c91808e720e94f8017253287c0a44f4
+        - 2c918087723ac2800172532191540e03
+        - 2c9180986e4c8592016e6b15eaef447c
+        status: CREATED
+      properties:
+        id:
+          description: Request Id for a role insight generation request
+          example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+          type: string
+        createdDate:
+          description: The date-time role insights request was created.
+          example: 2020-09-16T18:49:32.15Z
+          format: date-time
+          type: string
+        lastGenerated:
+          description: The date-time role insights request was completed.
+          example: 2020-09-16T18:50:12.15Z
+          format: date-time
+          type: string
+        numberOfUpdates:
+          description: Total number of updates for this request. Starts with 0 and
+            will have correct number when request is COMPLETED.
+          example: 0
+          type: integer
+        roleIds:
+          description: The role IDs that are in this request.
+          items:
+            type: string
+          type: array
+        status:
+          description: Request status
+          enum:
+          - CREATED
+          - IN PROGRESS
+          - COMPLETED
+          - FAILED
+          type: string
+      title: Role Insights Response
+      type: object
+    localeorigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    errormessagedto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/localeorigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    errorresponsedto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/errormessagedto'
+          type: array
+      title: Error Response Dto
+      type: object
+    roleinsightssummary:
+      example:
+        totalNumberOfEntitlements: 250
+        totalNumberOfIdentities: 980
+        identitiesWithAccessViaRoles: 550
+        entitlementsIncludedInRoles: 45
+        numberOfUpdates: 0
+        lastGenerated: 2020-05-19T13:49:37.385Z
+      properties:
+        numberOfUpdates:
+          description: Total number of roles with updates
+          type: integer
+        lastGenerated:
+          description: The date-time role insights were last found.
+          example: 2020-05-19T13:49:37.385Z
+          format: date-time
+          type: string
+        entitlementsIncludedInRoles:
+          description: The number of entitlements included in roles (vs free radicals).
+          example: 45
+          type: integer
+        totalNumberOfEntitlements:
+          description: The total number of entitlements.
+          example: 250
+          type: integer
+        identitiesWithAccessViaRoles:
+          description: The number of identities in roles vs. identities with just
+            entitlements and not in roles.
+          example: 550
+          type: integer
+        totalNumberOfIdentities:
+          description: The total number of identities.
+          example: 980
+          type: integer
+      title: Role Insights Summary
+      type: object
+    roleinsightsrole:
+      example:
+        ownerName: Bob
+        name: Software Engineer
+        description: Person who develops software
+        id: 1467e61e-f284-439c-ba2d-c6cc11cf0941
+        ownerId: 1467e61e-f284-439c-ba2d-c6cc11cf0941
+      properties:
+        name:
+          description: Role name
+          example: Software Engineer
+          type: string
+        id:
+          description: Role id
+          example: 1467e61e-f284-439c-ba2d-c6cc11cf0941
+          type: string
+        description:
+          description: Role description
+          example: Person who develops software
+          type: string
+        ownerName:
+          description: Role owner name
+          example: Bob
+          type: string
+        ownerId:
+          description: Role owner id
+          example: 1467e61e-f284-439c-ba2d-c6cc11cf0941
+          type: string
+      title: Role Insights Role
+      type: object
+    roleinsightsinsight:
+      example:
+        identitiesWithAccess: 850
+        totalNumberOfIdentities: 1000
+        impactedIdentityNames: impactedIdentityNames
+        identitiesImpacted: 150
+        type: ADD
+      properties:
+        type:
+          description: The number of identities in this role with the entitlement.
+          example: ADD
+          type: string
+        identitiesWithAccess:
+          description: The number of identities in this role with the entitlement.
+          example: 850
+          type: integer
+        identitiesImpacted:
+          description: The number of identities in this role that do not have the
+            specified entitlement.
+          example: 150
+          type: integer
+        totalNumberOfIdentities:
+          description: The total number of identities.
+          example: 1000
+          type: integer
+        impactedIdentityNames:
+          nullable: true
+          type: string
+      title: Role Insights Insight
+      type: object
+    roleinsight:
+      example:
+        insight:
+          identitiesWithAccess: 850
+          totalNumberOfIdentities: 1000
+          impactedIdentityNames: impactedIdentityNames
+          identitiesImpacted: 150
+          type: ADD
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        role:
+          ownerName: Bob
+          name: Software Engineer
+          description: Person who develops software
+          id: 1467e61e-f284-439c-ba2d-c6cc11cf0941
+          ownerId: 1467e61e-f284-439c-ba2d-c6cc11cf0941
+        modifiedDate: 2020-05-19T13:49:37.385Z
+        id: 1467e61e-f284-439c-ba2d-c6cc11cf0941
+        numberOfUpdates: 5
+      properties:
+        id:
+          description: Insight id
+          example: 1467e61e-f284-439c-ba2d-c6cc11cf0941
+          type: string
+        numberOfUpdates:
+          description: Total number of updates for this role
+          example: 5
+          type: integer
+        createdDate:
+          description: The date-time insights were last created for this role.
+          format: date-time
+          type: string
+        modifiedDate:
+          description: The date-time insights were last modified for this role.
+          example: 2020-05-19T13:49:37.385Z
+          format: date-time
+          nullable: true
+          type: string
+        role:
+          $ref: '#/components/schemas/roleinsightsrole'
+        insight:
+          $ref: '#/components/schemas/roleinsightsinsight'
+      title: Role Insight
+      type: object
+    roleinsightsentitlementchanges:
+      example:
+        insight:
+          identitiesWithAccess: 850
+          totalNumberOfIdentities: 1000
+          impactedIdentityNames: impactedIdentityNames
+          identitiesImpacted: 150
+          type: ADD
+        name: Administrator
+        description: Full administrative access to IdentityNow
+        id: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        attribute: assignedGroups
+        source: IdentityNow
+        value: ORG_ADMIN
+      properties:
+        name:
+          description: Name of the entitlement
+          example: Administrator
+          type: string
+        id:
+          description: Id of the entitlement
+          example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+          type: string
+        description:
+          description: Description for the entitlement
+          example: Full administrative access to IdentityNow
+          nullable: true
+          type: string
+        attribute:
+          description: Attribute for the entitlement
+          example: assignedGroups
+          type: string
+        value:
+          description: Attribute value for the entitlement
+          example: ORG_ADMIN
+          type: string
+        source:
+          description: Source or the application for the entitlement
+          example: IdentityNow
+          type: string
+        insight:
+          $ref: '#/components/schemas/roleinsightsinsight'
+      title: Role Insights Entitlement Changes
+      type: object
+    roleinsightsentitlement:
+      example:
+        name: Administrator
+        description: Full administrative access to IdentityNow
+        id: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        source: IdentityNow
+        attribute: assignedGroups
+        value: ORG_ADMIN
+      properties:
+        name:
+          description: Name of the entitlement
+          example: Administrator
+          type: string
+        id:
+          description: Id of the entitlement
+          example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+          type: string
+        description:
+          description: Description for the entitlement
+          example: Full administrative access to IdentityNow
+          nullable: true
+          type: string
+        source:
+          description: Source or the application for the entitlement
+          example: IdentityNow
+          type: string
+        attribute:
+          description: Attribute for the entitlement
+          example: assignedGroups
+          type: string
+        value:
+          description: Attribute value for the entitlement
+          example: ORG_ADMIN
+          type: string
+      title: Role Insights Entitlement
+      type: object
+    roleinsightsidentities:
+      example:
+        id: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        name: Adam Smith
+        attributes:
+          department: Human Resources-tah-mgb-dnd
+          firstName: Adam
+          jobTitle: Sales Analyst
+          location: Mexico
+      properties:
+        id:
+          description: Id for identity
+          type: string
+        name:
+          description: Name for identity
+          type: string
+        attributes:
+          additionalProperties:
+            type: string
+          type: object
+      title: Role Insights Identities
+      type: object
+    createRoleInsightRequestsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    createRoleInsightRequestsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object

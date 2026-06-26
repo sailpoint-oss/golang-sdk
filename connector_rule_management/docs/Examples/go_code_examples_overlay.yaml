@@ -1,0 +1,217 @@
+- path: /connector-rules/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorrulemanagement/methods/connector-rule-management#create-connector-rule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+        )
+
+        func main() {
+           connectorrulecreaterequest := []byte(``) // Connectorrulecreaterequest | Connector rule to create.
+
+          
+          var connectorrulecreaterequest v1.Connectorrulecreaterequest
+          if err := json.Unmarshal(connectorrulecreaterequest, &connectorrulecreaterequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.CreateConnectorRuleV1(context.Background()).Connectorrulecreaterequest(connectorrulecreaterequest).Execute()
+          //resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.CreateConnectorRuleV1(context.Background()).Connectorrulecreaterequest(connectorrulecreaterequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.CreateConnectorRuleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateConnectorRuleV1`: Connectorruleresponse
+          fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.CreateConnectorRuleV1`: %v\n", resp)
+        }
+- path: /connector-rules/v1/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorrulemanagement/methods/connector-rule-management#delete-connector-rule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+        )
+
+        func main() {
+          id := `8c190e6787aa4ed9a90bd9d5344523fb` // string | ID of the connector rule to delete. # string | ID of the connector rule to delete.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.DeleteConnectorRuleV1(context.Background(), id).Execute()
+          //r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.DeleteConnectorRuleV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.DeleteConnectorRuleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /connector-rules/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorrulemanagement/methods/connector-rule-management#get-connector-rule-list-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+        )
+
+        func main() {
+          limit := 50 // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.GetConnectorRuleListV1(context.Background()).Execute()
+          //resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.GetConnectorRuleListV1(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.GetConnectorRuleListV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetConnectorRuleListV1`: []Connectorruleresponse
+          fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.GetConnectorRuleListV1`: %v\n", resp)
+        }
+- path: /connector-rules/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorrulemanagement/methods/connector-rule-management#get-connector-rule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+        )
+
+        func main() {
+          id := `8c190e6787aa4ed9a90bd9d5344523fb` // string | ID of the connector rule to get. # string | ID of the connector rule to get.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.GetConnectorRuleV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.GetConnectorRuleV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.GetConnectorRuleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetConnectorRuleV1`: Connectorruleresponse
+          fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.GetConnectorRuleV1`: %v\n", resp)
+        }
+- path: /connector-rules/v1/{id}
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorrulemanagement/methods/connector-rule-management#put-connector-rule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+        )
+
+        func main() {
+          id := `8c190e6787aa4ed9a90bd9d5344523fb` // string | ID of the connector rule to update. # string | ID of the connector rule to update.
+           connectorruleupdaterequest := []byte(``) // Connectorruleupdaterequest | Connector rule with updated data. (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.PutConnectorRuleV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.PutConnectorRuleV1(context.Background(), id).Connectorruleupdaterequest(connectorruleupdaterequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.PutConnectorRuleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PutConnectorRuleV1`: Connectorruleresponse
+          fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.PutConnectorRuleV1`: %v\n", resp)
+        }
+- path: /connector-rules/v1/validate
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/connectorrulemanagement/methods/connector-rule-management#test-connector-rule-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+        )
+
+        func main() {
+           sourcecode := []byte(``) // Sourcecode | Code to validate.
+
+          
+          var sourcecode v1.Sourcecode
+          if err := json.Unmarshal(sourcecode, &sourcecode); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.TestConnectorRuleV1(context.Background()).Sourcecode(sourcecode).Execute()
+          //resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.TestConnectorRuleV1(context.Background()).Sourcecode(sourcecode).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.TestConnectorRuleV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `TestConnectorRuleV1`: Connectorrulevalidationresponse
+          fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.TestConnectorRuleV1`: %v\n", resp)
+        }
