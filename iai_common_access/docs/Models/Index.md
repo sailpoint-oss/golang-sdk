@@ -1,14 +1,14 @@
 ---
-id: models
+id: iaicommonaccess-models
 title: Models
 pagination_label: Models
 sidebar_label: Models
 sidebar_position: 3
-sidebar_key: v1-golang-models
+sidebar_key: iaicommonaccess-golang-models
 sidebar_class_name: models
-keywords: ['go', 'Golang', 'sdk', 'models'] 
-slug: /tools/sdk/go/v1/models
-tags: ['SDK', 'Software Development Kit', 'v1', 'models']
+keywords: ['go', 'Golang', 'sdk', 'iaicommonaccess', 'models'] 
+slug: /tools/sdk/go/iaicommonaccess/models
+tags: ['SDK', 'Software Development Kit', 'iaicommonaccess', 'models']
 ---
 
 The Python SDK uses data models to structure and manage data within the API. These models provide essential details about the data, including their attributes, data types, and how the models relate to each other. Understanding these models is crucial to effectively interact with the API.

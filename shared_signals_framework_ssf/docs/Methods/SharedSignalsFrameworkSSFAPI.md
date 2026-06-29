@@ -92,8 +92,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.CreateStreamV1(context.Background()).Createstreamrequest(createstreamrequest).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.CreateStreamV1(context.Background()).Createstreamrequest(createstreamrequest).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.CreateStreamV1(context.Background()).Createstreamrequest(createstreamrequest).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.CreateStreamV1(context.Background()).Createstreamrequest(createstreamrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.CreateStreamV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -158,8 +158,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.DeleteStreamV1(context.Background()).StreamId(streamId).Execute()
-	  //r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.DeleteStreamV1(context.Background()).StreamId(streamId).Execute()
+    r, err := apiClient.SharedSignalsFrameworkSSFAPI.DeleteStreamV1(context.Background()).StreamId(streamId).Execute()
+	  //r, err := apiClient.SharedSignalsFrameworkSSFAPI.DeleteStreamV1(context.Background()).StreamId(streamId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.DeleteStreamV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -214,8 +214,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetJWKSDataV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetJWKSDataV1(context.Background()).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.GetJWKSDataV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.GetJWKSDataV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetJWKSDataV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -271,8 +271,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetSSFConfigurationV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetSSFConfigurationV1(context.Background()).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.GetSSFConfigurationV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.GetSSFConfigurationV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetSSFConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -333,8 +333,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetStreamStatusV1(context.Background()).StreamId(streamId).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetStreamStatusV1(context.Background()).StreamId(streamId).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.GetStreamStatusV1(context.Background()).StreamId(streamId).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.GetStreamStatusV1(context.Background()).StreamId(streamId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetStreamStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -401,8 +401,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetStreamV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.GetStreamV1(context.Background()).StreamId(streamId).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.GetStreamV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.GetStreamV1(context.Background()).StreamId(streamId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetStreamV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -468,8 +468,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1(context.Background()).Verificationrequest(verificationrequest).Execute()
-	  //r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1(context.Background()).Verificationrequest(verificationrequest).Execute()
+    r, err := apiClient.SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1(context.Background()).Verificationrequest(verificationrequest).Execute()
+	  //r, err := apiClient.SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1(context.Background()).Verificationrequest(verificationrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -537,8 +537,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1(context.Background()).Replacestreamconfigurationrequest(replacestreamconfigurationrequest).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1(context.Background()).Replacestreamconfigurationrequest(replacestreamconfigurationrequest).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1(context.Background()).Replacestreamconfigurationrequest(replacestreamconfigurationrequest).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1(context.Background()).Replacestreamconfigurationrequest(replacestreamconfigurationrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -607,8 +607,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1(context.Background()).Updatestreamconfigurationrequest(updatestreamconfigurationrequest).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1(context.Background()).Updatestreamconfigurationrequest(updatestreamconfigurationrequest).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1(context.Background()).Updatestreamconfigurationrequest(updatestreamconfigurationrequest).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1(context.Background()).Updatestreamconfigurationrequest(updatestreamconfigurationrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -674,8 +674,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1(context.Background()).Updatestreamstatusrequest(updatestreamstatusrequest).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSsf.SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1(context.Background()).Updatestreamstatusrequest(updatestreamstatusrequest).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1(context.Background()).Updatestreamstatusrequest(updatestreamstatusrequest).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1(context.Background()).Updatestreamstatusrequest(updatestreamstatusrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

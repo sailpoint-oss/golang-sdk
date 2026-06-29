@@ -104,8 +104,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Search.SearchAPI.SearchAggregateV1(context.Background()).Search(search).Execute()
-	  //resp, r, err := apiClient.Search.SearchAPI.SearchAggregateV1(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.SearchAPI.SearchAggregateV1(context.Background()).Search(search).Execute()
+	  //resp, r, err := apiClient.SearchAPI.SearchAggregateV1(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchAggregateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -171,8 +171,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Search.SearchAPI.SearchCountV1(context.Background()).Search(search).Execute()
-	  //r, err := apiClient.Search.SearchAPI.SearchCountV1(context.Background()).Search(search).Execute()
+    r, err := apiClient.SearchAPI.SearchCountV1(context.Background()).Search(search).Execute()
+	  //r, err := apiClient.SearchAPI.SearchCountV1(context.Background()).Search(search).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchCountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -239,8 +239,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Search.SearchAPI.SearchGetV1(context.Background(), index, id).Execute()
-	  //resp, r, err := apiClient.Search.SearchAPI.SearchGetV1(context.Background(), index, id).Execute()
+    resp, r, err := apiClient.SearchAPI.SearchGetV1(context.Background(), index, id).Execute()
+	  //resp, r, err := apiClient.SearchAPI.SearchGetV1(context.Background(), index, id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchGetV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -312,8 +312,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Search.SearchAPI.SearchPostV1(context.Background()).Search(search).Execute()
-	  //resp, r, err := apiClient.Search.SearchAPI.SearchPostV1(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.SearchAPI.SearchPostV1(context.Background()).Search(search).Execute()
+	  //resp, r, err := apiClient.SearchAPI.SearchPostV1(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchPostV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

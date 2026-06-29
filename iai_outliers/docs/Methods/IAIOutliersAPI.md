@@ -91,8 +91,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.ExportOutliersZipV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.ExportOutliersZipV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Type_(type_).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.ExportOutliersZipV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIOutliersAPI.ExportOutliersZipV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Type_(type_).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.ExportOutliersZipV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -174,8 +174,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.GetIdentityOutlierSnapshotsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.GetIdentityOutlierSnapshotsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Type_(type_).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.GetIdentityOutlierSnapshotsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIOutliersAPI.GetIdentityOutlierSnapshotsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Type_(type_).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetIdentityOutlierSnapshotsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -259,8 +259,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.GetIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.GetIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Type_(type_).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.GetIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIOutliersAPI.GetIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Type_(type_).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetIdentityOutliersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,8 +334,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.GetLatestIdentityOutlierSnapshotsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.GetLatestIdentityOutlierSnapshotsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Type_(type_).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.GetLatestIdentityOutlierSnapshotsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIOutliersAPI.GetLatestIdentityOutlierSnapshotsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Type_(type_).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetLatestIdentityOutlierSnapshotsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -416,8 +416,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.GetOutlierContributingFeatureSummaryV1(context.Background(), outlierFeatureId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.GetOutlierContributingFeatureSummaryV1(context.Background(), outlierFeatureId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.GetOutlierContributingFeatureSummaryV1(context.Background(), outlierFeatureId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIOutliersAPI.GetOutlierContributingFeatureSummaryV1(context.Background(), outlierFeatureId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetOutlierContributingFeatureSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -508,8 +508,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.GetPeerGroupOutliersContributingFeaturesV1(context.Background(), outlierId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.GetPeerGroupOutliersContributingFeaturesV1(context.Background(), outlierId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.GetPeerGroupOutliersContributingFeaturesV1(context.Background(), outlierId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIOutliersAPI.GetPeerGroupOutliersContributingFeaturesV1(context.Background(), outlierId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetPeerGroupOutliersContributingFeaturesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -588,8 +588,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.IaiOutliers.IAIOutliersAPI.IgnoreIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-	  //r, err := apiClient.IaiOutliers.IAIOutliersAPI.IgnoreIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+    r, err := apiClient.IAIOutliersAPI.IgnoreIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+	  //r, err := apiClient.IAIOutliersAPI.IgnoreIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.IgnoreIdentityOutliersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -682,8 +682,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.ListOutliersContributingFeatureAccessItemsV1(context.Background(), outlierId, contributingFeatureName).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiOutliers.IAIOutliersAPI.ListOutliersContributingFeatureAccessItemsV1(context.Background(), outlierId, contributingFeatureName).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).AccessType(accessType).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.ListOutliersContributingFeatureAccessItemsV1(context.Background(), outlierId, contributingFeatureName).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIOutliersAPI.ListOutliersContributingFeatureAccessItemsV1(context.Background(), outlierId, contributingFeatureName).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).AccessType(accessType).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.ListOutliersContributingFeatureAccessItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -762,8 +762,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.IaiOutliers.IAIOutliersAPI.UnIgnoreIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-	  //r, err := apiClient.IaiOutliers.IAIOutliersAPI.UnIgnoreIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+    r, err := apiClient.IAIOutliersAPI.UnIgnoreIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+	  //r, err := apiClient.IAIOutliersAPI.UnIgnoreIdentityOutliersV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.UnIgnoreIdentityOutliersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -93,8 +93,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeV1(context.Background()).Attributedto(attributedto).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeV1(context.Background()).Attributedto(attributedto).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeV1(context.Background()).Attributedto(attributedto).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeV1(context.Background()).Attributedto(attributedto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.CreateAccessModelMetadataAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -167,8 +167,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1(context.Background(), key).Attributevaluedto(attributevaluedto).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1(context.Background(), key).Attributevaluedto(attributevaluedto).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1(context.Background(), key).Attributevaluedto(attributevaluedto).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1(context.Background(), key).Attributevaluedto(attributevaluedto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -233,8 +233,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.GetAccessModelMetadataAttributeV1(context.Background(), key).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.GetAccessModelMetadataAttributeV1(context.Background(), key).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.GetAccessModelMetadataAttributeV1(context.Background(), key).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.GetAccessModelMetadataAttributeV1(context.Background(), key).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.GetAccessModelMetadataAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -302,8 +302,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.GetAccessModelMetadataAttributeValueV1(context.Background(), key, value).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.GetAccessModelMetadataAttributeValueV1(context.Background(), key, value).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.GetAccessModelMetadataAttributeValueV1(context.Background(), key, value).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.GetAccessModelMetadataAttributeValueV1(context.Background(), key, value).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.GetAccessModelMetadataAttributeValueV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -370,8 +370,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.ListAccessModelMetadataAttributeV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.ListAccessModelMetadataAttributeV1(context.Background()).Filters(filters).Sorters(sorters).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttributeV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttributeV1(context.Background()).Filters(filters).Sorters(sorters).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.ListAccessModelMetadataAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -440,8 +440,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValueV1(context.Background(), key).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValueV1(context.Background(), key).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValueV1(context.Background(), key).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValueV1(context.Background(), key).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.ListAccessModelMetadataAttributeValueV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -515,8 +515,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeV1(context.Background(), key).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeV1(context.Background(), key).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeV1(context.Background(), key).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeV1(context.Background(), key).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -593,8 +593,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeValueV1(context.Background(), key, value).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeValueV1(context.Background(), key, value).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeValueV1(context.Background(), key, value).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeValueV1(context.Background(), key, value).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeValueV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -663,8 +663,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.UpdateAccessModelMetadataByFilterV1(context.Background()).Entitlementattributebulkupdatefilterrequest(entitlementattributebulkupdatefilterrequest).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.UpdateAccessModelMetadataByFilterV1(context.Background()).Entitlementattributebulkupdatefilterrequest(entitlementattributebulkupdatefilterrequest).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByFilterV1(context.Background()).Entitlementattributebulkupdatefilterrequest(entitlementattributebulkupdatefilterrequest).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByFilterV1(context.Background()).Entitlementattributebulkupdatefilterrequest(entitlementattributebulkupdatefilterrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.UpdateAccessModelMetadataByFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -733,8 +733,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.UpdateAccessModelMetadataByIdsV1(context.Background()).Entitlementattributebulkupdateidsrequest(entitlementattributebulkupdateidsrequest).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.UpdateAccessModelMetadataByIdsV1(context.Background()).Entitlementattributebulkupdateidsrequest(entitlementattributebulkupdateidsrequest).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByIdsV1(context.Background()).Entitlementattributebulkupdateidsrequest(entitlementattributebulkupdateidsrequest).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByIdsV1(context.Background()).Entitlementattributebulkupdateidsrequest(entitlementattributebulkupdateidsrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.UpdateAccessModelMetadataByIdsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -803,8 +803,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.UpdateAccessModelMetadataByQueryV1(context.Background()).Entitlementattributebulkupdatequeryrequest(entitlementattributebulkupdatequeryrequest).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadata.AccessModelMetadataAPI.UpdateAccessModelMetadataByQueryV1(context.Background()).Entitlementattributebulkupdatequeryrequest(entitlementattributebulkupdatequeryrequest).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByQueryV1(context.Background()).Entitlementattributebulkupdatequeryrequest(entitlementattributebulkupdatequeryrequest).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByQueryV1(context.Background()).Entitlementattributebulkupdatequeryrequest(entitlementattributebulkupdatequeryrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.UpdateAccessModelMetadataByQueryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

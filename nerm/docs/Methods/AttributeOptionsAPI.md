@@ -80,8 +80,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributeOptionsAPI.DeleteAttributeOptionById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.AttributeOptionsAPI.DeleteAttributeOptionById(context.Background(), id).Execute()
+    resp, r, err := apiClient.AttributeOptionsAPI.DeleteAttributeOptionById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.AttributeOptionsAPI.DeleteAttributeOptionById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.DeleteAttributeOptionById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,8 +146,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributeOptionsAPI.DeleteAttributeOptionByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.AttributeOptionsAPI.DeleteAttributeOptionByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.AttributeOptionsAPI.DeleteAttributeOptionByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.AttributeOptionsAPI.DeleteAttributeOptionByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.DeleteAttributeOptionByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,8 +212,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptionById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptionById(context.Background(), id).Execute()
+    resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptionById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptionById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.GetAttributeOptionById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,8 +278,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptionByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptionByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptionByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptionByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.GetAttributeOptionByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -348,8 +348,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptions(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptions(context.Background()).Limit(limit).Offset(offset).Order(order).NeAttributeId(neAttributeId).Metadata(metadata).Execute()
+    resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptions(context.Background()).Execute()
+	  //resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptions(context.Background()).Limit(limit).Offset(offset).Order(order).NeAttributeId(neAttributeId).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.GetAttributeOptions``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -421,8 +421,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptionById(context.Background(), id).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptionById(context.Background(), id).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+    resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptionById(context.Background(), id).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+	  //resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptionById(context.Background(), id).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.PatchAttributeOptionById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -494,8 +494,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptionByUid(context.Background(), uid).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptionByUid(context.Background(), uid).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+    resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptionByUid(context.Background(), uid).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+	  //resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptionByUid(context.Background(), uid).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.PatchAttributeOptionByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -561,8 +561,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
+    resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
+	  //resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.PatchAttributeOptions``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -628,8 +628,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributeOptionsAPI.SubmitAttributeOption(context.Background()).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AttributeOptionsAPI.SubmitAttributeOption(context.Background()).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+    resp, r, err := apiClient.AttributeOptionsAPI.SubmitAttributeOption(context.Background()).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+	  //resp, r, err := apiClient.AttributeOptionsAPI.SubmitAttributeOption(context.Background()).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.SubmitAttributeOption``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -695,8 +695,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributeOptionsAPI.SubmitAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AttributeOptionsAPI.SubmitAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
+    resp, r, err := apiClient.AttributeOptionsAPI.SubmitAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
+	  //resp, r, err := apiClient.AttributeOptionsAPI.SubmitAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.SubmitAttributeOptions``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

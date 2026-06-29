@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.IscAccountsAPI.GetSchemaMappedProfilesCollection(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.IscAccountsAPI.GetSchemaMappedProfilesCollection(context.Background()).Limit(limit).Offset(offset).UseSchema(useSchema).OverrideSyncToggle(overrideSyncToggle).Category(category).Status(status).Execute()
+    resp, r, err := apiClient.IscAccountsAPI.GetSchemaMappedProfilesCollection(context.Background()).Execute()
+	  //resp, r, err := apiClient.IscAccountsAPI.GetSchemaMappedProfilesCollection(context.Background()).Limit(limit).Offset(offset).UseSchema(useSchema).OverrideSyncToggle(overrideSyncToggle).Category(category).Status(status).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IscAccountsAPI.GetSchemaMappedProfilesCollection``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.IscAccountsAPI.GetSingleSchemaMappedProfile(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.IscAccountsAPI.GetSingleSchemaMappedProfile(context.Background(), id).Execute()
+    resp, r, err := apiClient.IscAccountsAPI.GetSingleSchemaMappedProfile(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.IscAccountsAPI.GetSingleSchemaMappedProfile(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IscAccountsAPI.GetSingleSchemaMappedProfile``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -213,8 +213,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.IscAccountsAPI.UpdateProfile(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.IscAccountsAPI.UpdateProfile(context.Background(), id).UpdateProfileRequest(updateProfileRequest).Execute()
+    resp, r, err := apiClient.IscAccountsAPI.UpdateProfile(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.IscAccountsAPI.UpdateProfile(context.Background(), id).UpdateProfileRequest(updateProfileRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IscAccountsAPI.UpdateProfile``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

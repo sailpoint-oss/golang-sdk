@@ -68,8 +68,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.GetMFADuoConfigV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.GetMFADuoConfigV1(context.Background()).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.GetMFADuoConfigV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.MFAConfigurationAPI.GetMFADuoConfigV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFADuoConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,8 +130,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.GetMFAKbaConfigV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.GetMFAKbaConfigV1(context.Background()).AllLanguages(allLanguages).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.GetMFAKbaConfigV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.MFAConfigurationAPI.GetMFAKbaConfigV1(context.Background()).AllLanguages(allLanguages).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFAKbaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -187,8 +187,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.GetMFAOktaConfigV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.GetMFAOktaConfigV1(context.Background()).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.GetMFAOktaConfigV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.MFAConfigurationAPI.GetMFAOktaConfigV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFAOktaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -254,8 +254,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.SetMFADuoConfigV1(context.Background()).Mfaduoconfig(mfaduoconfig).Execute()
-	  //resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.SetMFADuoConfigV1(context.Background()).Mfaduoconfig(mfaduoconfig).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.SetMFADuoConfigV1(context.Background()).Mfaduoconfig(mfaduoconfig).Execute()
+	  //resp, r, err := apiClient.MFAConfigurationAPI.SetMFADuoConfigV1(context.Background()).Mfaduoconfig(mfaduoconfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFADuoConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -321,8 +321,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.SetMFAKBAConfigV1(context.Background()).Kbaanswerrequestitem(kbaanswerrequestitem).Execute()
-	  //resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.SetMFAKBAConfigV1(context.Background()).Kbaanswerrequestitem(kbaanswerrequestitem).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.SetMFAKBAConfigV1(context.Background()).Kbaanswerrequestitem(kbaanswerrequestitem).Execute()
+	  //resp, r, err := apiClient.MFAConfigurationAPI.SetMFAKBAConfigV1(context.Background()).Kbaanswerrequestitem(kbaanswerrequestitem).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFAKBAConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -388,8 +388,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.SetMFAOktaConfigV1(context.Background()).Mfaoktaconfig(mfaoktaconfig).Execute()
-	  //resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.SetMFAOktaConfigV1(context.Background()).Mfaoktaconfig(mfaoktaconfig).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.SetMFAOktaConfigV1(context.Background()).Mfaoktaconfig(mfaoktaconfig).Execute()
+	  //resp, r, err := apiClient.MFAConfigurationAPI.SetMFAOktaConfigV1(context.Background()).Mfaoktaconfig(mfaoktaconfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFAOktaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -454,8 +454,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.TestMFAConfigV1(context.Background(), method).Execute()
-	  //resp, r, err := apiClient.MfaConfiguration.MFAConfigurationAPI.TestMFAConfigV1(context.Background(), method).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.TestMFAConfigV1(context.Background(), method).Execute()
+	  //resp, r, err := apiClient.MFAConfigurationAPI.TestMFAConfigV1(context.Background(), method).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.TestMFAConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

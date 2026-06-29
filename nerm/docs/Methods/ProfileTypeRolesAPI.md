@@ -72,8 +72,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfileTypeRolesAPI.CreateProfileTypeRole(context.Background()).CreateProfileTypeRoleRequest(createProfileTypeRoleRequest).Execute()
-	  //resp, r, err := apiClient.NERM.ProfileTypeRolesAPI.CreateProfileTypeRole(context.Background()).CreateProfileTypeRoleRequest(createProfileTypeRoleRequest).Execute()
+    resp, r, err := apiClient.ProfileTypeRolesAPI.CreateProfileTypeRole(context.Background()).CreateProfileTypeRoleRequest(createProfileTypeRoleRequest).Execute()
+	  //resp, r, err := apiClient.ProfileTypeRolesAPI.CreateProfileTypeRole(context.Background()).CreateProfileTypeRoleRequest(createProfileTypeRoleRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypeRolesAPI.CreateProfileTypeRole``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributesAPI.CreateAttribute(context.Background()).CreateAttributeRequest(createAttributeRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AttributesAPI.CreateAttribute(context.Background()).CreateAttributeRequest(createAttributeRequest).Execute()
+    resp, r, err := apiClient.AttributesAPI.CreateAttribute(context.Background()).CreateAttributeRequest(createAttributeRequest).Execute()
+	  //resp, r, err := apiClient.AttributesAPI.CreateAttribute(context.Background()).CreateAttributeRequest(createAttributeRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.CreateAttribute``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributesAPI.DeleteAttributeById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.AttributesAPI.DeleteAttributeById(context.Background(), id).Execute()
+    resp, r, err := apiClient.AttributesAPI.DeleteAttributeById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.AttributesAPI.DeleteAttributeById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.DeleteAttributeById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,8 +211,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributesAPI.DeleteAttributeByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.AttributesAPI.DeleteAttributeByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.AttributesAPI.DeleteAttributeByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.AttributesAPI.DeleteAttributeByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.DeleteAttributeByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -277,8 +277,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributesAPI.GetAttributeById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.AttributesAPI.GetAttributeById(context.Background(), id).Execute()
+    resp, r, err := apiClient.AttributesAPI.GetAttributeById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.AttributesAPI.GetAttributeById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.GetAttributeById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -343,8 +343,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributesAPI.GetAttributeByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.AttributesAPI.GetAttributeByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.AttributesAPI.GetAttributeByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.AttributesAPI.GetAttributeByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.GetAttributeByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -415,8 +415,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributesAPI.GetAttributes(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.AttributesAPI.GetAttributes(context.Background()).Limit(limit).Offset(offset).Order(order).Label(label).DataType(dataType).Metadata(metadata).Execute()
+    resp, r, err := apiClient.AttributesAPI.GetAttributes(context.Background()).Execute()
+	  //resp, r, err := apiClient.AttributesAPI.GetAttributes(context.Background()).Limit(limit).Offset(offset).Order(order).Label(label).DataType(dataType).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.GetAttributes``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -488,8 +488,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributesAPI.UpdateAttributeById(context.Background(), id).CreateAttributeRequest(createAttributeRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AttributesAPI.UpdateAttributeById(context.Background(), id).CreateAttributeRequest(createAttributeRequest).Execute()
+    resp, r, err := apiClient.AttributesAPI.UpdateAttributeById(context.Background(), id).CreateAttributeRequest(createAttributeRequest).Execute()
+	  //resp, r, err := apiClient.AttributesAPI.UpdateAttributeById(context.Background(), id).CreateAttributeRequest(createAttributeRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.UpdateAttributeById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -561,8 +561,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AttributesAPI.UpdateAttributeByUid(context.Background(), uid).CreateAttributeRequest(createAttributeRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AttributesAPI.UpdateAttributeByUid(context.Background(), uid).CreateAttributeRequest(createAttributeRequest).Execute()
+    resp, r, err := apiClient.AttributesAPI.UpdateAttributeByUid(context.Background(), uid).CreateAttributeRequest(createAttributeRequest).Execute()
+	  //resp, r, err := apiClient.AttributesAPI.UpdateAttributeByUid(context.Background(), uid).CreateAttributeRequest(createAttributeRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.UpdateAttributeByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

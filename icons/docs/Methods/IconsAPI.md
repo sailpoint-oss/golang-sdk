@@ -90,8 +90,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Icons.IconsAPI.DeleteIconV1(context.Background(), objectType, objectId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.Icons.IconsAPI.DeleteIconV1(context.Background(), objectType, objectId).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.IconsAPI.DeleteIconV1(context.Background(), objectType, objectId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.IconsAPI.DeleteIconV1(context.Background(), objectType, objectId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IconsAPI.DeleteIconV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -173,8 +173,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Icons.IconsAPI.SetIconV1(context.Background(), objectType, objectId).XSailPointExperimental(xSailPointExperimental).Image(image).Execute()
-	  //resp, r, err := apiClient.Icons.IconsAPI.SetIconV1(context.Background(), objectType, objectId).XSailPointExperimental(xSailPointExperimental).Image(image).Execute()
+    resp, r, err := apiClient.IconsAPI.SetIconV1(context.Background(), objectType, objectId).XSailPointExperimental(xSailPointExperimental).Image(image).Execute()
+	  //resp, r, err := apiClient.IconsAPI.SetIconV1(context.Background(), objectType, objectId).XSailPointExperimental(xSailPointExperimental).Image(image).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IconsAPI.SetIconV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

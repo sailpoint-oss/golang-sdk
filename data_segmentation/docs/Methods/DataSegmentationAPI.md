@@ -82,8 +82,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.CreateDataSegmentV1(context.Background()).DataSegment(dataSegment).Execute()
-	  //resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.CreateDataSegmentV1(context.Background()).DataSegment(dataSegment).Execute()
+    resp, r, err := apiClient.DataSegmentationAPI.CreateDataSegmentV1(context.Background()).DataSegment(dataSegment).Execute()
+	  //resp, r, err := apiClient.DataSegmentationAPI.CreateDataSegmentV1(context.Background()).DataSegment(dataSegment).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataSegmentationAPI.CreateDataSegmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -163,8 +163,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataSegmentation.DataSegmentationAPI.DeleteDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.DataSegmentation.DataSegmentationAPI.DeleteDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).Published(published).Execute()
+    r, err := apiClient.DataSegmentationAPI.DeleteDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.DataSegmentationAPI.DeleteDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).Published(published).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataSegmentationAPI.DeleteDataSegmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -241,8 +241,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.GetDataSegmentIdentityMembershipV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.GetDataSegmentIdentityMembershipV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.DataSegmentationAPI.GetDataSegmentIdentityMembershipV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.DataSegmentationAPI.GetDataSegmentIdentityMembershipV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataSegmentationAPI.GetDataSegmentIdentityMembershipV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -320,8 +320,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.GetDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.GetDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.DataSegmentationAPI.GetDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.DataSegmentationAPI.GetDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataSegmentationAPI.GetDataSegmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -399,8 +399,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.GetDataSegmentationEnabledForUserV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.GetDataSegmentationEnabledForUserV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.DataSegmentationAPI.GetDataSegmentationEnabledForUserV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.DataSegmentationAPI.GetDataSegmentationEnabledForUserV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataSegmentationAPI.GetDataSegmentationEnabledForUserV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -486,8 +486,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.ListDataSegmentsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.ListDataSegmentsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Enabled(enabled).Unique(unique).Published(published).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.DataSegmentationAPI.ListDataSegmentsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.DataSegmentationAPI.ListDataSegmentsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Enabled(enabled).Unique(unique).Published(published).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataSegmentationAPI.ListDataSegmentsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -572,8 +572,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.PatchDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.DataSegmentation.DataSegmentationAPI.PatchDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.DataSegmentationAPI.PatchDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.DataSegmentationAPI.PatchDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataSegmentationAPI.PatchDataSegmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -660,8 +660,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataSegmentation.DataSegmentationAPI.PublishDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-	  //r, err := apiClient.DataSegmentation.DataSegmentationAPI.PublishDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).PublishAll(publishAll).Execute()
+    r, err := apiClient.DataSegmentationAPI.PublishDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+	  //r, err := apiClient.DataSegmentationAPI.PublishDataSegmentV1(context.Background(), segmentId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).PublishAll(publishAll).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataSegmentationAPI.PublishDataSegmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

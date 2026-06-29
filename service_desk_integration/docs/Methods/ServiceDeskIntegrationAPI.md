@@ -105,8 +105,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.CreateServiceDeskIntegrationV1(context.Background()).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.CreateServiceDeskIntegrationV1(context.Background()).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.CreateServiceDeskIntegrationV1(context.Background()).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.CreateServiceDeskIntegrationV1(context.Background()).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.CreateServiceDeskIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -171,8 +171,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegrationV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegrationV1(context.Background(), id).Execute()
+    r, err := apiClient.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegrationV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegrationV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.DeleteServiceDeskIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -236,8 +236,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplateV1(context.Background(), scriptName).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplateV1(context.Background(), scriptName).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplateV1(context.Background(), scriptName).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplateV1(context.Background(), scriptName).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -293,8 +293,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypesV1(context.Background()).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypesV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -359,8 +359,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -429,8 +429,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationsV1(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationsV1(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -486,8 +486,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.GetStatusCheckDetailsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.GetStatusCheckDetailsV1(context.Background()).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetStatusCheckDetailsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetStatusCheckDetailsV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetStatusCheckDetailsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -559,8 +559,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.PatchServiceDeskIntegrationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.PatchServiceDeskIntegrationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PatchServiceDeskIntegrationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.PatchServiceDeskIntegrationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.PatchServiceDeskIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -632,8 +632,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.PutServiceDeskIntegrationV1(context.Background(), id).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.PutServiceDeskIntegrationV1(context.Background(), id).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PutServiceDeskIntegrationV1(context.Background(), id).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.PutServiceDeskIntegrationV1(context.Background(), id).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.PutServiceDeskIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -699,8 +699,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.UpdateStatusCheckDetailsV1(context.Background()).Queuedcheckconfigdetails(queuedcheckconfigdetails).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegration.ServiceDeskIntegrationAPI.UpdateStatusCheckDetailsV1(context.Background()).Queuedcheckconfigdetails(queuedcheckconfigdetails).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.UpdateStatusCheckDetailsV1(context.Background()).Queuedcheckconfigdetails(queuedcheckconfigdetails).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.UpdateStatusCheckDetailsV1(context.Background()).Queuedcheckconfigdetails(queuedcheckconfigdetails).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.UpdateStatusCheckDetailsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

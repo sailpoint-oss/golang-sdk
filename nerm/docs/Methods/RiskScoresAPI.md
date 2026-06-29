@@ -72,8 +72,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RiskScoresAPI.GetRiskScore(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.RiskScoresAPI.GetRiskScore(context.Background(), id).Execute()
+    resp, r, err := apiClient.RiskScoresAPI.GetRiskScore(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.RiskScoresAPI.GetRiskScore(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RiskScoresAPI.GetRiskScore``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -150,8 +150,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RiskScoresAPI.GetRiskScores(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.RiskScoresAPI.GetRiskScores(context.Background()).Limit(limit).Offset(offset).Order(order).ObjectId(objectId).ObjectType(objectType).OverallRiskLevelId(overallRiskLevelId).ImpactRiskLevelId(impactRiskLevelId).ProbabilityRiskLevelId(probabilityRiskLevelId).Metadata(metadata).Execute()
+    resp, r, err := apiClient.RiskScoresAPI.GetRiskScores(context.Background()).Execute()
+	  //resp, r, err := apiClient.RiskScoresAPI.GetRiskScores(context.Background()).Limit(limit).Offset(offset).Order(order).ObjectId(objectId).ObjectType(objectType).OverallRiskLevelId(overallRiskLevelId).ImpactRiskLevelId(impactRiskLevelId).ProbabilityRiskLevelId(probabilityRiskLevelId).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RiskScoresAPI.GetRiskScores``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

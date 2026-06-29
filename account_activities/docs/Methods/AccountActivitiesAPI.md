@@ -105,8 +105,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountActivities.AccountActivitiesAPI.GetAccountActivityV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.AccountActivities.AccountActivitiesAPI.GetAccountActivityV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.AccountActivitiesAPI.GetAccountActivityV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.AccountActivitiesAPI.GetAccountActivityV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountActivitiesAPI.GetAccountActivityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,8 +181,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountActivities.AccountActivitiesAPI.ListAccountActivitiesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.AccountActivities.AccountActivitiesAPI.ListAccountActivitiesV1(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccountActivitiesAPI.ListAccountActivitiesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.AccountActivitiesAPI.ListAccountActivitiesV1(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountActivitiesAPI.ListAccountActivitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

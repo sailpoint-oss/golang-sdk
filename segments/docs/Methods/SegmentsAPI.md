@@ -94,8 +94,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Segments.SegmentsAPI.CreateSegmentV1(context.Background()).Segment(segment).Execute()
-	  //resp, r, err := apiClient.Segments.SegmentsAPI.CreateSegmentV1(context.Background()).Segment(segment).Execute()
+    resp, r, err := apiClient.SegmentsAPI.CreateSegmentV1(context.Background()).Segment(segment).Execute()
+	  //resp, r, err := apiClient.SegmentsAPI.CreateSegmentV1(context.Background()).Segment(segment).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.CreateSegmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -161,8 +161,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Segments.SegmentsAPI.DeleteSegmentV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Segments.SegmentsAPI.DeleteSegmentV1(context.Background(), id).Execute()
+    r, err := apiClient.SegmentsAPI.DeleteSegmentV1(context.Background(), id).Execute()
+	  //r, err := apiClient.SegmentsAPI.DeleteSegmentV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.DeleteSegmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -226,8 +226,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Segments.SegmentsAPI.GetSegmentV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Segments.SegmentsAPI.GetSegmentV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SegmentsAPI.GetSegmentV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SegmentsAPI.GetSegmentV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.GetSegmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -292,8 +292,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Segments.SegmentsAPI.ListSegmentsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Segments.SegmentsAPI.ListSegmentsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.SegmentsAPI.ListSegmentsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SegmentsAPI.ListSegmentsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.ListSegmentsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -366,8 +366,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Segments.SegmentsAPI.PatchSegmentV1(context.Background(), id).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.Segments.SegmentsAPI.PatchSegmentV1(context.Background(), id).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.SegmentsAPI.PatchSegmentV1(context.Background(), id).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.SegmentsAPI.PatchSegmentV1(context.Background(), id).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.PatchSegmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

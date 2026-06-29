@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageElementsAPI.CreatePageElement(context.Background()).CreatePageElementRequest(createPageElementRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PageElementsAPI.CreatePageElement(context.Background()).CreatePageElementRequest(createPageElementRequest).Execute()
+    resp, r, err := apiClient.PageElementsAPI.CreatePageElement(context.Background()).CreatePageElementRequest(createPageElementRequest).Execute()
+	  //resp, r, err := apiClient.PageElementsAPI.CreatePageElement(context.Background()).CreatePageElementRequest(createPageElementRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.CreatePageElement``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageElementsAPI.DeletePageElementById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.PageElementsAPI.DeletePageElementById(context.Background(), id).Execute()
+    resp, r, err := apiClient.PageElementsAPI.DeletePageElementById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.PageElementsAPI.DeletePageElementById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.DeletePageElementById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,8 +211,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageElementsAPI.DeletePageElementByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.PageElementsAPI.DeletePageElementByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.PageElementsAPI.DeletePageElementByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.PageElementsAPI.DeletePageElementByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.DeletePageElementByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -277,8 +277,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElementById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElementById(context.Background(), id).Execute()
+    resp, r, err := apiClient.PageElementsAPI.GetPageElementById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.PageElementsAPI.GetPageElementById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.GetPageElementById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -343,8 +343,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElementByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElementByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.PageElementsAPI.GetPageElementByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.PageElementsAPI.GetPageElementByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.GetPageElementByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,8 +400,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElements(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElements(context.Background()).Execute()
+    resp, r, err := apiClient.PageElementsAPI.GetPageElements(context.Background()).Execute()
+	  //resp, r, err := apiClient.PageElementsAPI.GetPageElements(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.GetPageElements``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -473,8 +473,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageElementsAPI.UpdatePageElementById(context.Background(), id).CreatePageElementRequest(createPageElementRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PageElementsAPI.UpdatePageElementById(context.Background(), id).CreatePageElementRequest(createPageElementRequest).Execute()
+    resp, r, err := apiClient.PageElementsAPI.UpdatePageElementById(context.Background(), id).CreatePageElementRequest(createPageElementRequest).Execute()
+	  //resp, r, err := apiClient.PageElementsAPI.UpdatePageElementById(context.Background(), id).CreatePageElementRequest(createPageElementRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.UpdatePageElementById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -546,8 +546,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageElementsAPI.UpdatePageElementByUid(context.Background(), uid).CreatePageElementRequest(createPageElementRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PageElementsAPI.UpdatePageElementByUid(context.Background(), uid).CreatePageElementRequest(createPageElementRequest).Execute()
+    resp, r, err := apiClient.PageElementsAPI.UpdatePageElementByUid(context.Background(), uid).CreatePageElementRequest(createPageElementRequest).Execute()
+	  //resp, r, err := apiClient.PageElementsAPI.UpdatePageElementByUid(context.Background(), uid).CreatePageElementRequest(createPageElementRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.UpdatePageElementByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -192,8 +192,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.CreateProvisioningPolicyV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.CreateProvisioningPolicyV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
+    resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateProvisioningPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -266,8 +266,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.CreateSourceScheduleV1(context.Background(), sourceId).Schedule3(schedule3).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.CreateSourceScheduleV1(context.Background(), sourceId).Schedule3(schedule3).Execute()
+    resp, r, err := apiClient.SourcesAPI.CreateSourceScheduleV1(context.Background(), sourceId).Schedule3(schedule3).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.CreateSourceScheduleV1(context.Background(), sourceId).Schedule3(schedule3).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateSourceScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -340,8 +340,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.CreateSourceSchemaV1(context.Background(), sourceId).Schema(schema).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.CreateSourceSchemaV1(context.Background(), sourceId).Schema(schema).Execute()
+    resp, r, err := apiClient.SourcesAPI.CreateSourceSchemaV1(context.Background(), sourceId).Schema(schema).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.CreateSourceSchemaV1(context.Background(), sourceId).Schema(schema).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateSourceSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -409,8 +409,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.CreateSourceV1(context.Background()).Source(source).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.CreateSourceV1(context.Background()).Source(source).ProvisionAsCsv(provisionAsCsv).Execute()
+    resp, r, err := apiClient.SourcesAPI.CreateSourceV1(context.Background()).Source(source).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.CreateSourceV1(context.Background()).Source(source).ProvisionAsCsv(provisionAsCsv).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -481,8 +481,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.DeleteAccountsAsyncV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.DeleteAccountsAsyncV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesAPI.DeleteAccountsAsyncV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.DeleteAccountsAsyncV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteAccountsAsyncV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -547,8 +547,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Sources.SourcesAPI.DeleteNativeChangeDetectionConfigV1(context.Background(), sourceId).Execute()
-	  //r, err := apiClient.Sources.SourcesAPI.DeleteNativeChangeDetectionConfigV1(context.Background(), sourceId).Execute()
+    r, err := apiClient.SourcesAPI.DeleteNativeChangeDetectionConfigV1(context.Background(), sourceId).Execute()
+	  //r, err := apiClient.SourcesAPI.DeleteNativeChangeDetectionConfigV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteNativeChangeDetectionConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -615,8 +615,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Sources.SourcesAPI.DeleteProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
-	  //r, err := apiClient.Sources.SourcesAPI.DeleteProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
+    r, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
+	  //r, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteProvisioningPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -683,8 +683,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Sources.SourcesAPI.DeleteSourceScheduleV1(context.Background(), sourceId, scheduleType).Execute()
-	  //r, err := apiClient.Sources.SourcesAPI.DeleteSourceScheduleV1(context.Background(), sourceId, scheduleType).Execute()
+    r, err := apiClient.SourcesAPI.DeleteSourceScheduleV1(context.Background(), sourceId, scheduleType).Execute()
+	  //r, err := apiClient.SourcesAPI.DeleteSourceScheduleV1(context.Background(), sourceId, scheduleType).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSourceScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -751,8 +751,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Sources.SourcesAPI.DeleteSourceSchemaV1(context.Background(), sourceId, schemaId).Execute()
-	  //r, err := apiClient.Sources.SourcesAPI.DeleteSourceSchemaV1(context.Background(), sourceId, schemaId).Execute()
+    r, err := apiClient.SourcesAPI.DeleteSourceSchemaV1(context.Background(), sourceId, schemaId).Execute()
+	  //r, err := apiClient.SourcesAPI.DeleteSourceSchemaV1(context.Background(), sourceId, schemaId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSourceSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -817,8 +817,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.DeleteSourceV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.DeleteSourceV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesAPI.DeleteSourceV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.DeleteSourceV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -884,8 +884,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetAccountDeleteApprovalConfigV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetAccountDeleteApprovalConfigV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetAccountDeleteApprovalConfigV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetAccountDeleteApprovalConfigV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetAccountDeleteApprovalConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -951,8 +951,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Sources.SourcesAPI.GetAccountsSchemaV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Sources.SourcesAPI.GetAccountsSchemaV1(context.Background(), id).Execute()
+    r, err := apiClient.SourcesAPI.GetAccountsSchemaV1(context.Background(), id).Execute()
+	  //r, err := apiClient.SourcesAPI.GetAccountsSchemaV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetAccountsSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1016,8 +1016,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetCorrelationConfigV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetCorrelationConfigV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetCorrelationConfigV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetCorrelationConfigV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetCorrelationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1086,8 +1086,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Sources.SourcesAPI.GetEntitlementsSchemaV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Sources.SourcesAPI.GetEntitlementsSchemaV1(context.Background(), id).SchemaName(schemaName).Execute()
+    r, err := apiClient.SourcesAPI.GetEntitlementsSchemaV1(context.Background(), id).Execute()
+	  //r, err := apiClient.SourcesAPI.GetEntitlementsSchemaV1(context.Background(), id).SchemaName(schemaName).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetEntitlementsSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1151,8 +1151,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetMachineAccountDeletionApprovalConfigBySourceV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetMachineAccountDeletionApprovalConfigBySourceV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetMachineAccountDeletionApprovalConfigBySourceV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetMachineAccountDeletionApprovalConfigBySourceV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetMachineAccountDeletionApprovalConfigBySourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1217,8 +1217,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetNativeChangeDetectionConfigV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetNativeChangeDetectionConfigV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetNativeChangeDetectionConfigV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetNativeChangeDetectionConfigV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetNativeChangeDetectionConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1286,8 +1286,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetProvisioningPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1365,8 +1365,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceAttrSyncConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1433,8 +1433,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetSourceConfigV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetSourceConfigV1(context.Background(), id).Locale(locale).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceConfigV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceConfigV1(context.Background(), id).Locale(locale).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1499,8 +1499,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetSourceConnectionsV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetSourceConnectionsV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceConnectionsV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceConnectionsV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceConnectionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1582,8 +1582,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceEntitlementRequestConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1648,8 +1648,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetSourceHealthV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetSourceHealthV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceHealthV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceHealthV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceHealthV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1718,8 +1718,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetSourceScheduleV1(context.Background(), sourceId, scheduleType).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetSourceScheduleV1(context.Background(), sourceId, scheduleType).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceScheduleV1(context.Background(), sourceId, scheduleType).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceScheduleV1(context.Background(), sourceId, scheduleType).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1792,8 +1792,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetSourceSchedulesV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetSourceSchedulesV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceSchedulesV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceSchedulesV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceSchedulesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1862,8 +1862,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetSourceSchemaV1(context.Background(), sourceId, schemaId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetSourceSchemaV1(context.Background(), sourceId, schemaId).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceSchemaV1(context.Background(), sourceId, schemaId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceSchemaV1(context.Background(), sourceId, schemaId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1932,8 +1932,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetSourceSchemasV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetSourceSchemasV1(context.Background(), sourceId).IncludeTypes(includeTypes).IncludeNames(includeNames).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceSchemasV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceSchemasV1(context.Background(), sourceId).IncludeTypes(includeTypes).IncludeNames(includeNames).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceSchemasV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1998,8 +1998,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.GetSourceV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.GetSourceV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2072,8 +2072,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.ImportAccountsSchemaV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.ImportAccountsSchemaV1(context.Background(), id).File(file).Execute()
+    resp, r, err := apiClient.SourcesAPI.ImportAccountsSchemaV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.ImportAccountsSchemaV1(context.Background(), id).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportAccountsSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2144,8 +2144,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.ImportAccountsV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.ImportAccountsV1(context.Background(), id).File(file).DisableOptimization(disableOptimization).Execute()
+    resp, r, err := apiClient.SourcesAPI.ImportAccountsV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.ImportAccountsV1(context.Background(), id).File(file).DisableOptimization(disableOptimization).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportAccountsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2212,8 +2212,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.ImportConnectorFileV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.ImportConnectorFileV1(context.Background(), sourceId).File(file).Execute()
+    resp, r, err := apiClient.SourcesAPI.ImportConnectorFileV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.ImportConnectorFileV1(context.Background(), sourceId).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportConnectorFileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2288,8 +2288,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.ImportEntitlementsSchemaV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.ImportEntitlementsSchemaV1(context.Background(), id).SchemaName(schemaName).File(file).Execute()
+    resp, r, err := apiClient.SourcesAPI.ImportEntitlementsSchemaV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.ImportEntitlementsSchemaV1(context.Background(), id).SchemaName(schemaName).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportEntitlementsSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2359,8 +2359,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.ImportEntitlementsV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.ImportEntitlementsV1(context.Background(), sourceId).File(file).Execute()
+    resp, r, err := apiClient.SourcesAPI.ImportEntitlementsV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.ImportEntitlementsV1(context.Background(), sourceId).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2427,8 +2427,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.ImportUncorrelatedAccountsV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.ImportUncorrelatedAccountsV1(context.Background(), id).File(file).Execute()
+    resp, r, err := apiClient.SourcesAPI.ImportUncorrelatedAccountsV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.ImportUncorrelatedAccountsV1(context.Background(), id).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportUncorrelatedAccountsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2501,8 +2501,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.ListPasswordPolicyHoldersOnSourceV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.ListPasswordPolicyHoldersOnSourceV1(context.Background(), sourceId).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.SourcesAPI.ListPasswordPolicyHoldersOnSourceV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.ListPasswordPolicyHoldersOnSourceV1(context.Background(), sourceId).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListPasswordPolicyHoldersOnSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2571,8 +2571,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.ListProvisioningPoliciesV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.ListProvisioningPoliciesV1(context.Background(), sourceId).Offset(offset).Limit(limit).Execute()
+    resp, r, err := apiClient.SourcesAPI.ListProvisioningPoliciesV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.ListProvisioningPoliciesV1(context.Background(), sourceId).Offset(offset).Limit(limit).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListProvisioningPoliciesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2645,8 +2645,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.ListSourcesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.ListSourcesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSubadmin(forSubadmin).IncludeIDNSource(includeIDNSource).Execute()
+    resp, r, err := apiClient.SourcesAPI.ListSourcesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.ListSourcesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSubadmin(forSubadmin).IncludeIDNSource(includeIDNSource).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListSourcesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2711,8 +2711,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.PingClusterV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.PingClusterV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourcesAPI.PingClusterV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PingClusterV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PingClusterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2784,8 +2784,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.PutCorrelationConfigV1(context.Background(), id).Correlationconfig(correlationconfig).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.PutCorrelationConfigV1(context.Background(), id).Correlationconfig(correlationconfig).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutCorrelationConfigV1(context.Background(), id).Correlationconfig(correlationconfig).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutCorrelationConfigV1(context.Background(), id).Correlationconfig(correlationconfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutCorrelationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2857,8 +2857,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.PutNativeChangeDetectionConfigV1(context.Background(), sourceId).Nativechangedetectionconfig(nativechangedetectionconfig).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.PutNativeChangeDetectionConfigV1(context.Background(), sourceId).Nativechangedetectionconfig(nativechangedetectionconfig).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutNativeChangeDetectionConfigV1(context.Background(), sourceId).Nativechangedetectionconfig(nativechangedetectionconfig).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutNativeChangeDetectionConfigV1(context.Background(), sourceId).Nativechangedetectionconfig(nativechangedetectionconfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutNativeChangeDetectionConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2935,8 +2935,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.PutProvisioningPolicyV1(context.Background(), sourceId, usageType).Provisioningpolicydto(provisioningpolicydto).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.PutProvisioningPolicyV1(context.Background(), sourceId, usageType).Provisioningpolicydto(provisioningpolicydto).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV1(context.Background(), sourceId, usageType).Provisioningpolicydto(provisioningpolicydto).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV1(context.Background(), sourceId, usageType).Provisioningpolicydto(provisioningpolicydto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutProvisioningPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3022,8 +3022,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.PutSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Attrsyncsourceconfig(attrsyncsourceconfig).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.PutSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Attrsyncsourceconfig(attrsyncsourceconfig).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Attrsyncsourceconfig(attrsyncsourceconfig).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Attrsyncsourceconfig(attrsyncsourceconfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutSourceAttrSyncConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3108,8 +3108,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.PutSourceSchemaV1(context.Background(), sourceId, schemaId).Schema(schema).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.PutSourceSchemaV1(context.Background(), sourceId, schemaId).Schema(schema).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutSourceSchemaV1(context.Background(), sourceId, schemaId).Schema(schema).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutSourceSchemaV1(context.Background(), sourceId, schemaId).Schema(schema).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutSourceSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3193,8 +3193,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.PutSourceV1(context.Background(), id).Source(source).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.PutSourceV1(context.Background(), id).Source(source).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutSourceV1(context.Background(), id).Source(source).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutSourceV1(context.Background(), id).Source(source).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3266,8 +3266,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.SearchResourceObjectsV1(context.Background(), sourceId).Resourceobjectsrequest(resourceobjectsrequest).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.SearchResourceObjectsV1(context.Background(), sourceId).Resourceobjectsrequest(resourceobjectsrequest).Execute()
+    resp, r, err := apiClient.SourcesAPI.SearchResourceObjectsV1(context.Background(), sourceId).Resourceobjectsrequest(resourceobjectsrequest).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.SearchResourceObjectsV1(context.Background(), sourceId).Resourceobjectsrequest(resourceobjectsrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SearchResourceObjectsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3345,8 +3345,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.SyncAttributesForSourceV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.SyncAttributesForSourceV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.SourcesAPI.SyncAttributesForSourceV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.SyncAttributesForSourceV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SyncAttributesForSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3411,8 +3411,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.TestSourceConfigurationV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.TestSourceConfigurationV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourcesAPI.TestSourceConfigurationV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.TestSourceConfigurationV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.TestSourceConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3477,8 +3477,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.TestSourceConnectionV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.TestSourceConnectionV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourcesAPI.TestSourceConnectionV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.TestSourceConnectionV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.TestSourceConnectionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3551,8 +3551,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.UpdateAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.UpdateAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateAccountDeletionApprovalConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3628,8 +3628,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.UpdateMachineAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.UpdateMachineAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateMachineAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateMachineAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateMachineAccountDeletionApprovalConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3703,8 +3703,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.UpdatePasswordPolicyHoldersV1(context.Background(), sourceId).PasswordpolicyholdersdtoInner(passwordpolicyholdersdtoInner).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.UpdatePasswordPolicyHoldersV1(context.Background(), sourceId).PasswordpolicyholdersdtoInner(passwordpolicyholdersdtoInner).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdatePasswordPolicyHoldersV1(context.Background(), sourceId).PasswordpolicyholdersdtoInner(passwordpolicyholdersdtoInner).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdatePasswordPolicyHoldersV1(context.Background(), sourceId).PasswordpolicyholdersdtoInner(passwordpolicyholdersdtoInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdatePasswordPolicyHoldersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3776,8 +3776,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.UpdateProvisioningPoliciesInBulkV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.UpdateProvisioningPoliciesInBulkV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPoliciesInBulkV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPoliciesInBulkV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateProvisioningPoliciesInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3854,8 +3854,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.UpdateProvisioningPolicyV1(context.Background(), sourceId, usageType).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.UpdateProvisioningPolicyV1(context.Background(), sourceId, usageType).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV1(context.Background(), sourceId, usageType).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV1(context.Background(), sourceId, usageType).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateProvisioningPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3944,8 +3944,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sourceentitlementrequestconfig(sourceentitlementrequestconfig).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sourceentitlementrequestconfig(sourceentitlementrequestconfig).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sourceentitlementrequestconfig(sourceentitlementrequestconfig).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sourceentitlementrequestconfig(sourceentitlementrequestconfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceEntitlementRequestConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4025,8 +4025,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.UpdateSourceScheduleV1(context.Background(), sourceId, scheduleType).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.UpdateSourceScheduleV1(context.Background(), sourceId, scheduleType).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateSourceScheduleV1(context.Background(), sourceId, scheduleType).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceScheduleV1(context.Background(), sourceId, scheduleType).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4130,8 +4130,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.UpdateSourceSchemaV1(context.Background(), sourceId, schemaId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.UpdateSourceSchemaV1(context.Background(), sourceId, schemaId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateSourceSchemaV1(context.Background(), sourceId, schemaId).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceSchemaV1(context.Background(), sourceId, schemaId).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4218,8 +4218,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Sources.SourcesAPI.UpdateSourceV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.Sources.SourcesAPI.UpdateSourceV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateSourceV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

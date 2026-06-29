@@ -67,8 +67,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantContext.TenantContextAPI.GetTenantContextV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.TenantContext.TenantContextAPI.GetTenantContextV1(context.Background()).Execute()
+    resp, r, err := apiClient.TenantContextAPI.GetTenantContextV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.TenantContextAPI.GetTenantContextV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TenantContextAPI.GetTenantContextV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,8 +139,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.TenantContext.TenantContextAPI.PatchTenantContextV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //r, err := apiClient.TenantContext.TenantContextAPI.PatchTenantContextV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    r, err := apiClient.TenantContextAPI.PatchTenantContextV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //r, err := apiClient.TenantContextAPI.PatchTenantContextV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TenantContextAPI.PatchTenantContextV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

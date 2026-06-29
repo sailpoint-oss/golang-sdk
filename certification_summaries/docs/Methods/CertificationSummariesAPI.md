@@ -101,8 +101,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationSummaries.CertificationSummariesAPI.GetIdentityAccessSummariesV1(context.Background(), id, type_).Execute()
-	  //resp, r, err := apiClient.CertificationSummaries.CertificationSummariesAPI.GetIdentityAccessSummariesV1(context.Background(), id, type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CertificationSummariesAPI.GetIdentityAccessSummariesV1(context.Background(), id, type_).Execute()
+	  //resp, r, err := apiClient.CertificationSummariesAPI.GetIdentityAccessSummariesV1(context.Background(), id, type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentityAccessSummariesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -169,8 +169,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationSummaries.CertificationSummariesAPI.GetIdentityDecisionSummaryV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.CertificationSummaries.CertificationSummariesAPI.GetIdentityDecisionSummaryV1(context.Background(), id).Filters(filters).Execute()
+    resp, r, err := apiClient.CertificationSummariesAPI.GetIdentityDecisionSummaryV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.CertificationSummariesAPI.GetIdentityDecisionSummaryV1(context.Background(), id).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentityDecisionSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -245,8 +245,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationSummaries.CertificationSummariesAPI.GetIdentitySummariesV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.CertificationSummaries.CertificationSummariesAPI.GetIdentitySummariesV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CertificationSummariesAPI.GetIdentitySummariesV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.CertificationSummariesAPI.GetIdentitySummariesV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentitySummariesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -314,8 +314,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationSummaries.CertificationSummariesAPI.GetIdentitySummaryV1(context.Background(), id, identitySummaryId).Execute()
-	  //resp, r, err := apiClient.CertificationSummaries.CertificationSummariesAPI.GetIdentitySummaryV1(context.Background(), id, identitySummaryId).Execute()
+    resp, r, err := apiClient.CertificationSummariesAPI.GetIdentitySummaryV1(context.Background(), id, identitySummaryId).Execute()
+	  //resp, r, err := apiClient.CertificationSummariesAPI.GetIdentitySummaryV1(context.Background(), id, identitySummaryId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentitySummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

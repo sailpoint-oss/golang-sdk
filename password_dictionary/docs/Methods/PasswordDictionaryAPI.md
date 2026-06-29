@@ -138,8 +138,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordDictionary.PasswordDictionaryAPI.GetPasswordDictionaryV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.PasswordDictionary.PasswordDictionaryAPI.GetPasswordDictionaryV1(context.Background()).Execute()
+    resp, r, err := apiClient.PasswordDictionaryAPI.GetPasswordDictionaryV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.PasswordDictionaryAPI.GetPasswordDictionaryV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.GetPasswordDictionaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -228,8 +228,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.PasswordDictionary.PasswordDictionaryAPI.PutPasswordDictionaryV1(context.Background()).Execute()
-	  //r, err := apiClient.PasswordDictionary.PasswordDictionaryAPI.PutPasswordDictionaryV1(context.Background()).File(file).Execute()
+    r, err := apiClient.PasswordDictionaryAPI.PutPasswordDictionaryV1(context.Background()).Execute()
+	  //r, err := apiClient.PasswordDictionaryAPI.PutPasswordDictionaryV1(context.Background()).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.PutPasswordDictionaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

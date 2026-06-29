@@ -104,8 +104,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.CreateScheduledSearchV1(context.Background()).CreateScheduledSearchV1Request(createScheduledSearchV1Request).Execute()
-	  //resp, r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.CreateScheduledSearchV1(context.Background()).CreateScheduledSearchV1Request(createScheduledSearchV1Request).Execute()
+    resp, r, err := apiClient.ScheduledSearchAPI.CreateScheduledSearchV1(context.Background()).CreateScheduledSearchV1Request(createScheduledSearchV1Request).Execute()
+	  //resp, r, err := apiClient.ScheduledSearchAPI.CreateScheduledSearchV1(context.Background()).CreateScheduledSearchV1Request(createScheduledSearchV1Request).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.CreateScheduledSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -171,8 +171,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.DeleteScheduledSearchV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.DeleteScheduledSearchV1(context.Background(), id).Execute()
+    r, err := apiClient.ScheduledSearchAPI.DeleteScheduledSearchV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ScheduledSearchAPI.DeleteScheduledSearchV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.DeleteScheduledSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -236,8 +236,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.GetScheduledSearchV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.GetScheduledSearchV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ScheduledSearchAPI.GetScheduledSearchV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ScheduledSearchAPI.GetScheduledSearchV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.GetScheduledSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -305,8 +305,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.ListScheduledSearchV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.ListScheduledSearchV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.ScheduledSearchAPI.ListScheduledSearchV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ScheduledSearchAPI.ListScheduledSearchV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.ListScheduledSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -379,8 +379,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.UnsubscribeScheduledSearchV1(context.Background(), id).Typedreference(typedreference).Execute()
-	  //r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.UnsubscribeScheduledSearchV1(context.Background(), id).Typedreference(typedreference).Execute()
+    r, err := apiClient.ScheduledSearchAPI.UnsubscribeScheduledSearchV1(context.Background(), id).Typedreference(typedreference).Execute()
+	  //r, err := apiClient.ScheduledSearchAPI.UnsubscribeScheduledSearchV1(context.Background(), id).Typedreference(typedreference).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.UnsubscribeScheduledSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -452,8 +452,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.UpdateScheduledSearchV1(context.Background(), id).Scheduledsearch(scheduledsearch).Execute()
-	  //resp, r, err := apiClient.ScheduledSearch.ScheduledSearchAPI.UpdateScheduledSearchV1(context.Background(), id).Scheduledsearch(scheduledsearch).Execute()
+    resp, r, err := apiClient.ScheduledSearchAPI.UpdateScheduledSearchV1(context.Background(), id).Scheduledsearch(scheduledsearch).Execute()
+	  //resp, r, err := apiClient.ScheduledSearchAPI.UpdateScheduledSearchV1(context.Background(), id).Scheduledsearch(scheduledsearch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.UpdateScheduledSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

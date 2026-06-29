@@ -24,8 +24,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CompleteCampaignV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CompleteCampaignV1(context.Background(), id).Campaigncompleteoptions(campaigncompleteoptions).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.CompleteCampaignV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.CompleteCampaignV1(context.Background(), id).Campaigncompleteoptions(campaigncompleteoptions).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CompleteCampaignV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,8 +65,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CreateCampaignTemplateV1(context.Background()).Campaigntemplate(campaigntemplate).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CreateCampaignTemplateV1(context.Background()).Campaigntemplate(campaigntemplate).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.CreateCampaignTemplateV1(context.Background()).Campaigntemplate(campaigntemplate).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.CreateCampaignTemplateV1(context.Background()).Campaigntemplate(campaigntemplate).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CreateCampaignTemplateV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -105,8 +105,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CreateCampaignV1(context.Background()).Campaign2(campaign2).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.CreateCampaignV1(context.Background()).Campaign2(campaign2).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.CreateCampaignV1(context.Background()).Campaign2(campaign2).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.CreateCampaignV1(context.Background()).Campaign2(campaign2).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CreateCampaignV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,8 +139,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignTemplateScheduleV1(context.Background(), id).Execute()
-          //r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignTemplateScheduleV1(context.Background(), id).Execute()
+          r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignTemplateScheduleV1(context.Background(), id).Execute()
+          //r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignTemplateScheduleV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaignTemplateScheduleV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -171,8 +171,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignTemplateV1(context.Background(), id).Execute()
-          //r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignTemplateV1(context.Background(), id).Execute()
+          r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignTemplateV1(context.Background(), id).Execute()
+          //r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignTemplateV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaignTemplateV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,8 +209,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignsV1(context.Background()).Campaignsdeleterequest(campaignsdeleterequest).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.DeleteCampaignsV1(context.Background()).Campaignsdeleterequest(campaignsdeleterequest).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignsV1(context.Background()).Campaignsdeleterequest(campaignsdeleterequest).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignsV1(context.Background()).Campaignsdeleterequest(campaignsdeleterequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaignsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -248,8 +248,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetActiveCampaignsV1(context.Background()).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetActiveCampaignsV1(context.Background()).Detail(detail).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.GetActiveCampaignsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.GetActiveCampaignsV1(context.Background()).Detail(detail).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetActiveCampaignsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -281,8 +281,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignReportsConfigV1(context.Background()).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignReportsConfigV1(context.Background()).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignReportsConfigV1(context.Background()).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignReportsConfigV1(context.Background()).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReportsConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -315,8 +315,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignReportsV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignReportsV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignReportsV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignReportsV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReportsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -349,8 +349,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplateScheduleV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplateScheduleV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignTemplateScheduleV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignTemplateScheduleV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplateScheduleV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -383,8 +383,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplateV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplateV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignTemplateV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignTemplateV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplateV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -421,8 +421,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplatesV1(context.Background()).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignTemplatesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignTemplatesV1(context.Background()).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignTemplatesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplatesV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -456,8 +456,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.GetCampaignV1(context.Background(), id).Detail(detail).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignV1(context.Background(), id).Detail(detail).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -497,8 +497,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.MoveV1(context.Background(), id).Adminreviewreassign(adminreviewreassign).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.MoveV1(context.Background(), id).Adminreviewreassign(adminreviewreassign).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.MoveV1(context.Background(), id).Adminreviewreassign(adminreviewreassign).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.MoveV1(context.Background(), id).Adminreviewreassign(adminreviewreassign).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.MoveV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -538,8 +538,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.PatchCampaignTemplateV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.PatchCampaignTemplateV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.PatchCampaignTemplateV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.PatchCampaignTemplateV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.PatchCampaignTemplateV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -578,8 +578,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.SetCampaignReportsConfigV1(context.Background()).Campaignreportsconfig(campaignreportsconfig).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.SetCampaignReportsConfigV1(context.Background()).Campaignreportsconfig(campaignreportsconfig).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.SetCampaignReportsConfigV1(context.Background()).Campaignreportsconfig(campaignreportsconfig).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.SetCampaignReportsConfigV1(context.Background()).Campaignreportsconfig(campaignreportsconfig).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.SetCampaignReportsConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -613,8 +613,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.SetCampaignTemplateScheduleV1(context.Background(), id).Execute()
-          //r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.SetCampaignTemplateScheduleV1(context.Background(), id).Schedule2(schedule2).Execute()
+          r, err := apiClient.CertificationCampaignsAPI.SetCampaignTemplateScheduleV1(context.Background(), id).Execute()
+          //r, err := apiClient.CertificationCampaignsAPI.SetCampaignTemplateScheduleV1(context.Background(), id).Schedule2(schedule2).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.SetCampaignTemplateScheduleV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -645,8 +645,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignRemediationScanV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignRemediationScanV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaignRemediationScanV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaignRemediationScanV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaignRemediationScanV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -680,8 +680,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignReportV1(context.Background(), id, type_).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignReportV1(context.Background(), id, type_).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaignReportV1(context.Background(), id, type_).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaignReportV1(context.Background(), id, type_).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaignReportV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -715,8 +715,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartCampaignV1(context.Background(), id).Activatecampaignoptions(activatecampaignoptions).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaignV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaignV1(context.Background(), id).Activatecampaignoptions(activatecampaignoptions).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaignV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -749,8 +749,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartGenerateCampaignTemplateV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.StartGenerateCampaignTemplateV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.StartGenerateCampaignTemplateV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.StartGenerateCampaignTemplateV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartGenerateCampaignTemplateV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -790,8 +790,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.UpdateCampaignV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-          //resp, r, err := apiClient.CertificationCampaigns.CertificationCampaignsAPI.UpdateCampaignV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          resp, r, err := apiClient.CertificationCampaignsAPI.UpdateCampaignV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.CertificationCampaignsAPI.UpdateCampaignV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.UpdateCampaignV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

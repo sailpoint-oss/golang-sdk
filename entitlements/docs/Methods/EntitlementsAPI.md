@@ -89,8 +89,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Entitlements.EntitlementsAPI.CreateAccessModelMetadataForEntitlementV1(context.Background(), id, attributeKey, attributeValue).Execute()
-	  //resp, r, err := apiClient.Entitlements.EntitlementsAPI.CreateAccessModelMetadataForEntitlementV1(context.Background(), id, attributeKey, attributeValue).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.CreateAccessModelMetadataForEntitlementV1(context.Background(), id, attributeKey, attributeValue).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.CreateAccessModelMetadataForEntitlementV1(context.Background(), id, attributeKey, attributeValue).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.CreateAccessModelMetadataForEntitlementV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -161,8 +161,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Entitlements.EntitlementsAPI.DeleteAccessModelMetadataFromEntitlementV1(context.Background(), id, attributeKey, attributeValue).Execute()
-	  //r, err := apiClient.Entitlements.EntitlementsAPI.DeleteAccessModelMetadataFromEntitlementV1(context.Background(), id, attributeKey, attributeValue).Execute()
+    r, err := apiClient.EntitlementsAPI.DeleteAccessModelMetadataFromEntitlementV1(context.Background(), id, attributeKey, attributeValue).Execute()
+	  //r, err := apiClient.EntitlementsAPI.DeleteAccessModelMetadataFromEntitlementV1(context.Background(), id, attributeKey, attributeValue).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.DeleteAccessModelMetadataFromEntitlementV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -226,8 +226,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Entitlements.EntitlementsAPI.GetEntitlementRequestConfigV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Entitlements.EntitlementsAPI.GetEntitlementRequestConfigV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.GetEntitlementRequestConfigV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.GetEntitlementRequestConfigV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.GetEntitlementRequestConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -292,8 +292,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Entitlements.EntitlementsAPI.GetEntitlementV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Entitlements.EntitlementsAPI.GetEntitlementV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.GetEntitlementV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.GetEntitlementV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.GetEntitlementV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -367,8 +367,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Entitlements.EntitlementsAPI.ImportEntitlementsBySourceV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Entitlements.EntitlementsAPI.ImportEntitlementsBySourceV1(context.Background(), id).CsvFile(csvFile).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.ImportEntitlementsBySourceV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.ImportEntitlementsBySourceV1(context.Background(), id).CsvFile(csvFile).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ImportEntitlementsBySourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -445,8 +445,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Entitlements.EntitlementsAPI.ListEntitlementChildrenV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Entitlements.EntitlementsAPI.ListEntitlementChildrenV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).SearchAfter(searchAfter).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.ListEntitlementChildrenV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.ListEntitlementChildrenV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).SearchAfter(searchAfter).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementChildrenV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -523,8 +523,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Entitlements.EntitlementsAPI.ListEntitlementParentsV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Entitlements.EntitlementsAPI.ListEntitlementParentsV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).SearchAfter(searchAfter).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.ListEntitlementParentsV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.ListEntitlementParentsV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).SearchAfter(searchAfter).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementParentsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -599,8 +599,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Entitlements.EntitlementsAPI.ListEntitlementsByAccountV1(context.Background(), accountId).Execute()
-	  //resp, r, err := apiClient.Entitlements.EntitlementsAPI.ListEntitlementsByAccountV1(context.Background(), accountId).Limit(limit).Offset(offset).Count(count).SearchAfter(searchAfter).Sorters(sorters).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.ListEntitlementsByAccountV1(context.Background(), accountId).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.ListEntitlementsByAccountV1(context.Background(), accountId).Limit(limit).Offset(offset).Count(count).SearchAfter(searchAfter).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementsByAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -677,8 +677,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Entitlements.EntitlementsAPI.ListEntitlementsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Entitlements.EntitlementsAPI.ListEntitlementsV1(context.Background()).SegmentedForIdentity(segmentedForIdentity).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Offset(offset).Limit(limit).Count(count).SearchAfter(searchAfter).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.ListEntitlementsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.ListEntitlementsV1(context.Background()).SegmentedForIdentity(segmentedForIdentity).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Offset(offset).Limit(limit).Count(count).SearchAfter(searchAfter).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -749,8 +749,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Entitlements.EntitlementsAPI.PatchEntitlementV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Entitlements.EntitlementsAPI.PatchEntitlementV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.PatchEntitlementV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.PatchEntitlementV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.PatchEntitlementV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -822,8 +822,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Entitlements.EntitlementsAPI.PutEntitlementRequestConfigV1(context.Background(), id).Entitlementrequestconfig(entitlementrequestconfig).Execute()
-	  //resp, r, err := apiClient.Entitlements.EntitlementsAPI.PutEntitlementRequestConfigV1(context.Background(), id).Entitlementrequestconfig(entitlementrequestconfig).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.PutEntitlementRequestConfigV1(context.Background(), id).Entitlementrequestconfig(entitlementrequestconfig).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.PutEntitlementRequestConfigV1(context.Background(), id).Entitlementrequestconfig(entitlementrequestconfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.PutEntitlementRequestConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -889,8 +889,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Entitlements.EntitlementsAPI.ResetSourceEntitlementsV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Entitlements.EntitlementsAPI.ResetSourceEntitlementsV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.ResetSourceEntitlementsV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.ResetSourceEntitlementsV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ResetSourceEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -968,8 +968,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Entitlements.EntitlementsAPI.UpdateEntitlementsInBulkV1(context.Background()).Entitlementbulkupdaterequest(entitlementbulkupdaterequest).Execute()
-	  //r, err := apiClient.Entitlements.EntitlementsAPI.UpdateEntitlementsInBulkV1(context.Background()).Entitlementbulkupdaterequest(entitlementbulkupdaterequest).Execute()
+    r, err := apiClient.EntitlementsAPI.UpdateEntitlementsInBulkV1(context.Background()).Entitlementbulkupdaterequest(entitlementbulkupdaterequest).Execute()
+	  //r, err := apiClient.EntitlementsAPI.UpdateEntitlementsInBulkV1(context.Background()).Entitlementbulkupdaterequest(entitlementbulkupdaterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.UpdateEntitlementsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

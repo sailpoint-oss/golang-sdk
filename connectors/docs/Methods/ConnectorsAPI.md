@@ -98,8 +98,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.CreateCustomConnectorV1(context.Background()).V3createconnectordto(v3createconnectordto).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.CreateCustomConnectorV1(context.Background()).V3createconnectordto(v3createconnectordto).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.CreateCustomConnectorV1(context.Background()).V3createconnectordto(v3createconnectordto).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.CreateCustomConnectorV1(context.Background()).V3createconnectordto(v3createconnectordto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.CreateCustomConnectorV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -164,8 +164,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Connectors.ConnectorsAPI.DeleteCustomConnectorV1(context.Background(), scriptName).Execute()
-	  //r, err := apiClient.Connectors.ConnectorsAPI.DeleteCustomConnectorV1(context.Background(), scriptName).Execute()
+    r, err := apiClient.ConnectorsAPI.DeleteCustomConnectorV1(context.Background(), scriptName).Execute()
+	  //r, err := apiClient.ConnectorsAPI.DeleteCustomConnectorV1(context.Background(), scriptName).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.DeleteCustomConnectorV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -229,8 +229,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorCorrelationConfigV1(context.Background(), scriptName).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorCorrelationConfigV1(context.Background(), scriptName).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.GetConnectorCorrelationConfigV1(context.Background(), scriptName).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.GetConnectorCorrelationConfigV1(context.Background(), scriptName).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorCorrelationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -299,8 +299,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorListV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorListV1(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Locale(locale).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.GetConnectorListV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.GetConnectorListV1(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Locale(locale).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorListV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -365,8 +365,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorSourceConfigV1(context.Background(), scriptName).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorSourceConfigV1(context.Background(), scriptName).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.GetConnectorSourceConfigV1(context.Background(), scriptName).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.GetConnectorSourceConfigV1(context.Background(), scriptName).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorSourceConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -431,8 +431,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorSourceTemplateV1(context.Background(), scriptName).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorSourceTemplateV1(context.Background(), scriptName).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.GetConnectorSourceTemplateV1(context.Background(), scriptName).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.GetConnectorSourceTemplateV1(context.Background(), scriptName).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorSourceTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -500,8 +500,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorTranslationsV1(context.Background(), scriptName, locale).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorTranslationsV1(context.Background(), scriptName, locale).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.GetConnectorTranslationsV1(context.Background(), scriptName, locale).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.GetConnectorTranslationsV1(context.Background(), scriptName, locale).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorTranslationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -568,8 +568,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorV1(context.Background(), scriptName).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.GetConnectorV1(context.Background(), scriptName).Locale(locale).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.GetConnectorV1(context.Background(), scriptName).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.GetConnectorV1(context.Background(), scriptName).Locale(locale).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -636,8 +636,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.PutConnectorCorrelationConfigV1(context.Background(), scriptName).File(file).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.PutConnectorCorrelationConfigV1(context.Background(), scriptName).File(file).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.PutConnectorCorrelationConfigV1(context.Background(), scriptName).File(file).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.PutConnectorCorrelationConfigV1(context.Background(), scriptName).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorCorrelationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -704,8 +704,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.PutConnectorSourceConfigV1(context.Background(), scriptName).File(file).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.PutConnectorSourceConfigV1(context.Background(), scriptName).File(file).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.PutConnectorSourceConfigV1(context.Background(), scriptName).File(file).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.PutConnectorSourceConfigV1(context.Background(), scriptName).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorSourceConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -772,8 +772,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.PutConnectorSourceTemplateV1(context.Background(), scriptName).File(file).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.PutConnectorSourceTemplateV1(context.Background(), scriptName).File(file).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.PutConnectorSourceTemplateV1(context.Background(), scriptName).File(file).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.PutConnectorSourceTemplateV1(context.Background(), scriptName).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorSourceTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -841,8 +841,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.PutConnectorTranslationsV1(context.Background(), scriptName, locale).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.PutConnectorTranslationsV1(context.Background(), scriptName, locale).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.PutConnectorTranslationsV1(context.Background(), scriptName, locale).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.PutConnectorTranslationsV1(context.Background(), scriptName, locale).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorTranslationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -926,8 +926,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Connectors.ConnectorsAPI.UpdateConnectorV1(context.Background(), scriptName).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.Connectors.ConnectorsAPI.UpdateConnectorV1(context.Background(), scriptName).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.UpdateConnectorV1(context.Background(), scriptName).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.UpdateConnectorV1(context.Background(), scriptName).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.UpdateConnectorV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

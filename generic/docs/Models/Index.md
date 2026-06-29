@@ -1,12 +1,12 @@
 ---
-id: models
+id: -models
 title: Models
 pagination_label: Models
 sidebar_label: Models
 sidebar_position: 3
 sidebar_key: -golang-models
 sidebar_class_name: models
-keywords: ['go', 'Golang', 'sdk', 'models'] 
+keywords: ['go', 'Golang', 'sdk', '', 'models'] 
 slug: /tools/sdk/go//models
 tags: ['SDK', 'Software Development Kit', '', 'models']
 ---

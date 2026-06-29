@@ -78,8 +78,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Tags.TagsAPI.CreateTagV1(context.Background()).Tag2(tag2).Execute()
-	  //resp, r, err := apiClient.Tags.TagsAPI.CreateTagV1(context.Background()).Tag2(tag2).Execute()
+    resp, r, err := apiClient.TagsAPI.CreateTagV1(context.Background()).Tag2(tag2).Execute()
+	  //resp, r, err := apiClient.TagsAPI.CreateTagV1(context.Background()).Tag2(tag2).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.CreateTagV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,8 +146,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Tags.TagsAPI.DeleteTagByIdV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Tags.TagsAPI.DeleteTagByIdV1(context.Background(), id).Execute()
+    r, err := apiClient.TagsAPI.DeleteTagByIdV1(context.Background(), id).Execute()
+	  //r, err := apiClient.TagsAPI.DeleteTagByIdV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.DeleteTagByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -213,8 +213,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Tags.TagsAPI.GetTagByIdV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Tags.TagsAPI.GetTagByIdV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.TagsAPI.GetTagByIdV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.TagsAPI.GetTagByIdV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.GetTagByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -285,8 +285,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Tags.TagsAPI.ListTagsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Tags.TagsAPI.ListTagsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.TagsAPI.ListTagsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.TagsAPI.ListTagsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.ListTagsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

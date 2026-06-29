@@ -100,8 +100,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.CreateSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sourceappcreatedto(sourceappcreatedto).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.CreateSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sourceappcreatedto(sourceappcreatedto).Execute()
+    resp, r, err := apiClient.AppsAPI.CreateSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sourceappcreatedto(sourceappcreatedto).Execute()
+	  //resp, r, err := apiClient.AppsAPI.CreateSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sourceappcreatedto(sourceappcreatedto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.CreateSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -188,8 +188,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.DeleteAccessProfilesFromSourceAppByBulkV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.DeleteAccessProfilesFromSourceAppByBulkV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Limit(limit).Execute()
+    resp, r, err := apiClient.AppsAPI.DeleteAccessProfilesFromSourceAppByBulkV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.AppsAPI.DeleteAccessProfilesFromSourceAppByBulkV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Limit(limit).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.DeleteAccessProfilesFromSourceAppByBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -267,8 +267,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.DeleteSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.DeleteSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.AppsAPI.DeleteSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AppsAPI.DeleteSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.DeleteSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -346,8 +346,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.GetSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.GetSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.AppsAPI.GetSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AppsAPI.GetSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.GetSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -431,8 +431,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.ListAccessProfilesForSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.ListAccessProfilesForSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.AppsAPI.ListAccessProfilesForSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AppsAPI.ListAccessProfilesForSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAccessProfilesForSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -514,8 +514,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.ListAllSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.ListAllSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Offset(offset).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.AppsAPI.ListAllSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AppsAPI.ListAllSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Offset(offset).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAllSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -596,8 +596,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.ListAllUserAppsV1(context.Background()).Filters(filters).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.ListAllUserAppsV1(context.Background()).Filters(filters).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Offset(offset).Execute()
+    resp, r, err := apiClient.AppsAPI.ListAllUserAppsV1(context.Background()).Filters(filters).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AppsAPI.ListAllUserAppsV1(context.Background()).Filters(filters).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAllUserAppsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -679,8 +679,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.ListAssignedSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.ListAssignedSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Offset(offset).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.AppsAPI.ListAssignedSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AppsAPI.ListAssignedSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Offset(offset).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAssignedSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -762,8 +762,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.ListAvailableAccountsForUserAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.ListAvailableAccountsForUserAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.AppsAPI.ListAvailableAccountsForUserAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AppsAPI.ListAvailableAccountsForUserAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAvailableAccountsForUserAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -845,8 +845,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.ListAvailableSourceAppsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.ListAvailableSourceAppsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Offset(offset).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.AppsAPI.ListAvailableSourceAppsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AppsAPI.ListAvailableSourceAppsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Offset(offset).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAvailableSourceAppsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -926,8 +926,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.ListOwnedUserAppsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.ListOwnedUserAppsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.AppsAPI.ListOwnedUserAppsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AppsAPI.ListOwnedUserAppsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Count(count).Offset(offset).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListOwnedUserAppsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1009,8 +1009,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.PatchSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.PatchSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.AppsAPI.PatchSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AppsAPI.PatchSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.PatchSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1091,8 +1091,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Apps.AppsAPI.PatchUserAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Apps.AppsAPI.PatchUserAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.AppsAPI.PatchUserAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.AppsAPI.PatchUserAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.PatchUserAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1168,8 +1168,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Apps.AppsAPI.UpdateSourceAppsInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.Apps.AppsAPI.UpdateSourceAppsInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sourceappbulkupdaterequest(sourceappbulkupdaterequest).Execute()
+    r, err := apiClient.AppsAPI.UpdateSourceAppsInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.AppsAPI.UpdateSourceAppsInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sourceappbulkupdaterequest(sourceappbulkupdaterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.UpdateSourceAppsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

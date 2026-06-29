@@ -88,8 +88,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RequestableObjects.RequestableObjectsAPI.ListRequestableObjectsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.RequestableObjects.RequestableObjectsAPI.ListRequestableObjectsV1(context.Background()).IdentityId(identityId).Types(types).Term(term).Statuses(statuses).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.RequestableObjectsAPI.ListRequestableObjectsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.RequestableObjectsAPI.ListRequestableObjectsV1(context.Background()).IdentityId(identityId).Types(types).Term(term).Statuses(statuses).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RequestableObjectsAPI.ListRequestableObjectsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

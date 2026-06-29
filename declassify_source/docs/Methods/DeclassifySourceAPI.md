@@ -72,8 +72,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DeclassifySource.DeclassifySourceAPI.SendDeclassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
-	  //r, err := apiClient.DeclassifySource.DeclassifySourceAPI.SendDeclassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
+    r, err := apiClient.DeclassifySourceAPI.SendDeclassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
+	  //r, err := apiClient.DeclassifySourceAPI.SendDeclassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DeclassifySourceAPI.SendDeclassifyMachineAccountFromSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -94,8 +94,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokens.PersonalAccessTokensAPI.CreatePersonalAccessTokenV1(context.Background()).Createpersonalaccesstokenrequest(createpersonalaccesstokenrequest).Execute()
-	  //resp, r, err := apiClient.PersonalAccessTokens.PersonalAccessTokensAPI.CreatePersonalAccessTokenV1(context.Background()).Createpersonalaccesstokenrequest(createpersonalaccesstokenrequest).Execute()
+    resp, r, err := apiClient.PersonalAccessTokensAPI.CreatePersonalAccessTokenV1(context.Background()).Createpersonalaccesstokenrequest(createpersonalaccesstokenrequest).Execute()
+	  //resp, r, err := apiClient.PersonalAccessTokensAPI.CreatePersonalAccessTokenV1(context.Background()).Createpersonalaccesstokenrequest(createpersonalaccesstokenrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.CreatePersonalAccessTokenV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -160,8 +160,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.PersonalAccessTokens.PersonalAccessTokensAPI.DeletePersonalAccessTokenV1(context.Background(), id).Execute()
-	  //r, err := apiClient.PersonalAccessTokens.PersonalAccessTokensAPI.DeletePersonalAccessTokenV1(context.Background(), id).Execute()
+    r, err := apiClient.PersonalAccessTokensAPI.DeletePersonalAccessTokenV1(context.Background(), id).Execute()
+	  //r, err := apiClient.PersonalAccessTokensAPI.DeletePersonalAccessTokenV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.DeletePersonalAccessTokenV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -223,8 +223,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokens.PersonalAccessTokensAPI.ListPersonalAccessTokensV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.PersonalAccessTokens.PersonalAccessTokensAPI.ListPersonalAccessTokensV1(context.Background()).OwnerId(ownerId).Filters(filters).Execute()
+    resp, r, err := apiClient.PersonalAccessTokensAPI.ListPersonalAccessTokensV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.PersonalAccessTokensAPI.ListPersonalAccessTokensV1(context.Background()).OwnerId(ownerId).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.ListPersonalAccessTokensV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -305,8 +305,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokens.PersonalAccessTokensAPI.PatchPersonalAccessTokenV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.PersonalAccessTokens.PersonalAccessTokensAPI.PatchPersonalAccessTokenV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.PersonalAccessTokensAPI.PatchPersonalAccessTokenV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.PersonalAccessTokensAPI.PatchPersonalAccessTokenV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.PatchPersonalAccessTokenV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

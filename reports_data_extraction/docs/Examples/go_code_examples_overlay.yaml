@@ -23,8 +23,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.ReportsDataExtraction.ReportsDataExtractionAPI.CancelReportV1(context.Background(), id).Execute()
-          //r, err := apiClient.ReportsDataExtraction.ReportsDataExtractionAPI.CancelReportV1(context.Background(), id).Execute()
+          r, err := apiClient.ReportsDataExtractionAPI.CancelReportV1(context.Background(), id).Execute()
+          //r, err := apiClient.ReportsDataExtractionAPI.CancelReportV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.CancelReportV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -56,8 +56,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.ReportsDataExtraction.ReportsDataExtractionAPI.GetReportResultV1(context.Background(), taskResultId).Execute()
-          //resp, r, err := apiClient.ReportsDataExtraction.ReportsDataExtractionAPI.GetReportResultV1(context.Background(), taskResultId).Completed(completed).Execute()
+          resp, r, err := apiClient.ReportsDataExtractionAPI.GetReportResultV1(context.Background(), taskResultId).Execute()
+          //resp, r, err := apiClient.ReportsDataExtractionAPI.GetReportResultV1(context.Background(), taskResultId).Completed(completed).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.GetReportResultV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -93,8 +93,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.ReportsDataExtraction.ReportsDataExtractionAPI.GetReportV1(context.Background(), taskResultId).FileFormat(fileFormat).Execute()
-          //resp, r, err := apiClient.ReportsDataExtraction.ReportsDataExtractionAPI.GetReportV1(context.Background(), taskResultId).FileFormat(fileFormat).Name(name).Auditable(auditable).Execute()
+          resp, r, err := apiClient.ReportsDataExtractionAPI.GetReportV1(context.Background(), taskResultId).FileFormat(fileFormat).Execute()
+          //resp, r, err := apiClient.ReportsDataExtractionAPI.GetReportV1(context.Background(), taskResultId).FileFormat(fileFormat).Name(name).Auditable(auditable).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.GetReportV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -133,8 +133,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.ReportsDataExtraction.ReportsDataExtractionAPI.StartReportV1(context.Background()).Reportdetails(reportdetails).Execute()
-          //resp, r, err := apiClient.ReportsDataExtraction.ReportsDataExtractionAPI.StartReportV1(context.Background()).Reportdetails(reportdetails).Execute()
+          resp, r, err := apiClient.ReportsDataExtractionAPI.StartReportV1(context.Background()).Reportdetails(reportdetails).Execute()
+          //resp, r, err := apiClient.ReportsDataExtractionAPI.StartReportV1(context.Background()).Reportdetails(reportdetails).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.StartReportV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

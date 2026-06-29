@@ -87,8 +87,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.CreateDomainDkimV1(context.Background()).Domainaddress(domainaddress).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.CreateDomainDkimV1(context.Background()).Domainaddress(domainaddress).Execute()
+    resp, r, err := apiClient.NotificationsAPI.CreateDomainDkimV1(context.Background()).Domainaddress(domainaddress).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.CreateDomainDkimV1(context.Background()).Domainaddress(domainaddress).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateDomainDkimV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -157,8 +157,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.CreateNotificationTemplateV1(context.Background()).Templatedto(templatedto).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.CreateNotificationTemplateV1(context.Background()).Templatedto(templatedto).Execute()
+    resp, r, err := apiClient.NotificationsAPI.CreateNotificationTemplateV1(context.Background()).Templatedto(templatedto).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.CreateNotificationTemplateV1(context.Background()).Templatedto(templatedto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateNotificationTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -224,8 +224,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.CreateVerifiedFromAddressV1(context.Background()).Emailstatusdto(emailstatusdto).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.CreateVerifiedFromAddressV1(context.Background()).Emailstatusdto(emailstatusdto).Execute()
+    resp, r, err := apiClient.NotificationsAPI.CreateVerifiedFromAddressV1(context.Background()).Emailstatusdto(emailstatusdto).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.CreateVerifiedFromAddressV1(context.Background()).Emailstatusdto(emailstatusdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateVerifiedFromAddressV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -291,8 +291,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Notifications.NotificationsAPI.DeleteNotificationTemplatesInBulkV1(context.Background()).Templatebulkdeletedto(templatebulkdeletedto).Execute()
-	  //r, err := apiClient.Notifications.NotificationsAPI.DeleteNotificationTemplatesInBulkV1(context.Background()).Templatebulkdeletedto(templatebulkdeletedto).Execute()
+    r, err := apiClient.NotificationsAPI.DeleteNotificationTemplatesInBulkV1(context.Background()).Templatebulkdeletedto(templatebulkdeletedto).Execute()
+	  //r, err := apiClient.NotificationsAPI.DeleteNotificationTemplatesInBulkV1(context.Background()).Templatebulkdeletedto(templatebulkdeletedto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.DeleteNotificationTemplatesInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -356,8 +356,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Notifications.NotificationsAPI.DeleteVerifiedFromAddressV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Notifications.NotificationsAPI.DeleteVerifiedFromAddressV1(context.Background(), id).Execute()
+    r, err := apiClient.NotificationsAPI.DeleteVerifiedFromAddressV1(context.Background(), id).Execute()
+	  //r, err := apiClient.NotificationsAPI.DeleteVerifiedFromAddressV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.DeleteVerifiedFromAddressV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -419,8 +419,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.GetDkimAttributesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.GetDkimAttributesV1(context.Background()).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.NotificationsAPI.GetDkimAttributesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.GetDkimAttributesV1(context.Background()).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetDkimAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -485,8 +485,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.GetMailFromAttributesV1(context.Background(), identity).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.GetMailFromAttributesV1(context.Background(), identity).Execute()
+    resp, r, err := apiClient.NotificationsAPI.GetMailFromAttributesV1(context.Background(), identity).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.GetMailFromAttributesV1(context.Background(), identity).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetMailFromAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -551,8 +551,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.GetNotificationPreferencesV1(context.Background(), key).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.GetNotificationPreferencesV1(context.Background(), key).Execute()
+    resp, r, err := apiClient.NotificationsAPI.GetNotificationPreferencesV1(context.Background(), key).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.GetNotificationPreferencesV1(context.Background(), key).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationPreferencesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -617,8 +617,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.GetNotificationTemplateV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.GetNotificationTemplateV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.NotificationsAPI.GetNotificationTemplateV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.GetNotificationTemplateV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -691,8 +691,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.GetNotificationTemplateVariablesV1(context.Background(), key, medium).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.GetNotificationTemplateVariablesV1(context.Background(), key, medium).Sorters(sorters).Execute()
+    resp, r, err := apiClient.NotificationsAPI.GetNotificationTemplateVariablesV1(context.Background(), key, medium).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.GetNotificationTemplateVariablesV1(context.Background(), key, medium).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationTemplateVariablesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -749,8 +749,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.GetNotificationsTemplateContextV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.GetNotificationsTemplateContextV1(context.Background()).Execute()
+    resp, r, err := apiClient.NotificationsAPI.GetNotificationsTemplateContextV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.GetNotificationsTemplateContextV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationsTemplateContextV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -819,8 +819,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.ListFromAddressesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.ListFromAddressesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.NotificationsAPI.ListFromAddressesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.ListFromAddressesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListFromAddressesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -885,8 +885,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.ListNotificationTemplateDefaultsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.ListNotificationTemplateDefaultsV1(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.NotificationsAPI.ListNotificationTemplateDefaultsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.ListNotificationTemplateDefaultsV1(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationTemplateDefaultsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -953,8 +953,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.ListNotificationTemplatesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.ListNotificationTemplatesV1(context.Background()).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.NotificationsAPI.ListNotificationTemplatesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.ListNotificationTemplatesV1(context.Background()).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationTemplatesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1020,8 +1020,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Notifications.NotificationsAPI.PutMailFromAttributesV1(context.Background()).Mailfromattributesdto(mailfromattributesdto).Execute()
-	  //resp, r, err := apiClient.Notifications.NotificationsAPI.PutMailFromAttributesV1(context.Background()).Mailfromattributesdto(mailfromattributesdto).Execute()
+    resp, r, err := apiClient.NotificationsAPI.PutMailFromAttributesV1(context.Background()).Mailfromattributesdto(mailfromattributesdto).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.PutMailFromAttributesV1(context.Background()).Mailfromattributesdto(mailfromattributesdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.PutMailFromAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1087,8 +1087,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Notifications.NotificationsAPI.SendTestNotificationV1(context.Background()).Sendtestnotificationrequestdto(sendtestnotificationrequestdto).Execute()
-	  //r, err := apiClient.Notifications.NotificationsAPI.SendTestNotificationV1(context.Background()).Sendtestnotificationrequestdto(sendtestnotificationrequestdto).Execute()
+    r, err := apiClient.NotificationsAPI.SendTestNotificationV1(context.Background()).Sendtestnotificationrequestdto(sendtestnotificationrequestdto).Execute()
+	  //r, err := apiClient.NotificationsAPI.SendTestNotificationV1(context.Background()).Sendtestnotificationrequestdto(sendtestnotificationrequestdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.SendTestNotificationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormsAPI.CreateForm(context.Background()).CreateFormRequest(createFormRequest).Execute()
-	  //resp, r, err := apiClient.NERM.FormsAPI.CreateForm(context.Background()).CreateFormRequest(createFormRequest).Execute()
+    resp, r, err := apiClient.FormsAPI.CreateForm(context.Background()).CreateFormRequest(createFormRequest).Execute()
+	  //resp, r, err := apiClient.FormsAPI.CreateForm(context.Background()).CreateFormRequest(createFormRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.CreateForm``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormsAPI.DeleteFormById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.FormsAPI.DeleteFormById(context.Background(), id).Execute()
+    resp, r, err := apiClient.FormsAPI.DeleteFormById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.FormsAPI.DeleteFormById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.DeleteFormById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,8 +211,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormsAPI.DeleteFormByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.FormsAPI.DeleteFormByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.FormsAPI.DeleteFormByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.FormsAPI.DeleteFormByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.DeleteFormByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -277,8 +277,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormsAPI.GetFormById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.FormsAPI.GetFormById(context.Background(), id).Execute()
+    resp, r, err := apiClient.FormsAPI.GetFormById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.FormsAPI.GetFormById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.GetFormById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -343,8 +343,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormsAPI.GetFormByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.FormsAPI.GetFormByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.FormsAPI.GetFormByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.FormsAPI.GetFormByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.GetFormByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,8 +400,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormsAPI.GetForms(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.FormsAPI.GetForms(context.Background()).Execute()
+    resp, r, err := apiClient.FormsAPI.GetForms(context.Background()).Execute()
+	  //resp, r, err := apiClient.FormsAPI.GetForms(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.GetForms``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -473,8 +473,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormsAPI.UpdateFormById(context.Background(), id).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
-	  //resp, r, err := apiClient.NERM.FormsAPI.UpdateFormById(context.Background(), id).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
+    resp, r, err := apiClient.FormsAPI.UpdateFormById(context.Background(), id).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
+	  //resp, r, err := apiClient.FormsAPI.UpdateFormById(context.Background(), id).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.UpdateFormById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -546,8 +546,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormsAPI.UpdateFormByUid(context.Background(), uid).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
-	  //resp, r, err := apiClient.NERM.FormsAPI.UpdateFormByUid(context.Background(), uid).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
+    resp, r, err := apiClient.FormsAPI.UpdateFormByUid(context.Background(), uid).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
+	  //resp, r, err := apiClient.FormsAPI.UpdateFormByUid(context.Background(), uid).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.UpdateFormByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

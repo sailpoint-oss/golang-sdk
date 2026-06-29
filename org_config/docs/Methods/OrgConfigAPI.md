@@ -66,8 +66,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrgConfig.OrgConfigAPI.GetOrgConfigV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.OrgConfig.OrgConfigAPI.GetOrgConfigV1(context.Background()).Execute()
+    resp, r, err := apiClient.OrgConfigAPI.GetOrgConfigV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.OrgConfigAPI.GetOrgConfigV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OrgConfigAPI.GetOrgConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrgConfig.OrgConfigAPI.GetValidTimeZonesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.OrgConfig.OrgConfigAPI.GetValidTimeZonesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.OrgConfigAPI.GetValidTimeZonesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.OrgConfigAPI.GetValidTimeZonesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OrgConfigAPI.GetValidTimeZonesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,8 +212,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrgConfig.OrgConfigAPI.PatchOrgConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.OrgConfig.OrgConfigAPI.PatchOrgConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.OrgConfigAPI.PatchOrgConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.OrgConfigAPI.PatchOrgConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OrgConfigAPI.PatchOrgConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

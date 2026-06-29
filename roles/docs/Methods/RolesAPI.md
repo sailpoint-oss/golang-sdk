@@ -130,8 +130,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.CreateRoleV1(context.Background()).Role(role).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.CreateRoleV1(context.Background()).Role(role).Execute()
+    resp, r, err := apiClient.RolesAPI.CreateRoleV1(context.Background()).Role(role).Execute()
+	  //resp, r, err := apiClient.RolesAPI.CreateRoleV1(context.Background()).Role(role).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.CreateRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -200,8 +200,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.DeleteBulkRolesV1(context.Background()).Rolebulkdeleterequest(rolebulkdeleterequest).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.DeleteBulkRolesV1(context.Background()).Rolebulkdeleterequest(rolebulkdeleterequest).Execute()
+    resp, r, err := apiClient.RolesAPI.DeleteBulkRolesV1(context.Background()).Rolebulkdeleterequest(rolebulkdeleterequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.DeleteBulkRolesV1(context.Background()).Rolebulkdeleterequest(rolebulkdeleterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.DeleteBulkRolesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -272,8 +272,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Roles.RolesAPI.DeleteMetadataFromRoleByKeyAndValueV1(context.Background(), id, attributeKey, attributeValue).Execute()
-	  //r, err := apiClient.Roles.RolesAPI.DeleteMetadataFromRoleByKeyAndValueV1(context.Background(), id, attributeKey, attributeValue).Execute()
+    r, err := apiClient.RolesAPI.DeleteMetadataFromRoleByKeyAndValueV1(context.Background(), id, attributeKey, attributeValue).Execute()
+	  //r, err := apiClient.RolesAPI.DeleteMetadataFromRoleByKeyAndValueV1(context.Background(), id, attributeKey, attributeValue).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.DeleteMetadataFromRoleByKeyAndValueV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -339,8 +339,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Roles.RolesAPI.DeleteRoleV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Roles.RolesAPI.DeleteRoleV1(context.Background(), id).Execute()
+    r, err := apiClient.RolesAPI.DeleteRoleV1(context.Background(), id).Execute()
+	  //r, err := apiClient.RolesAPI.DeleteRoleV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.DeleteRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -406,8 +406,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.GetBulkUpdateStatusByIdV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.GetBulkUpdateStatusByIdV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.RolesAPI.GetBulkUpdateStatusByIdV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.RolesAPI.GetBulkUpdateStatusByIdV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetBulkUpdateStatusByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -463,8 +463,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.GetBulkUpdateStatusV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.GetBulkUpdateStatusV1(context.Background()).Execute()
+    resp, r, err := apiClient.RolesAPI.GetBulkUpdateStatusV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.RolesAPI.GetBulkUpdateStatusV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetBulkUpdateStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -539,8 +539,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.GetRoleAssignedIdentitiesV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.GetRoleAssignedIdentitiesV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.RolesAPI.GetRoleAssignedIdentitiesV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.RolesAPI.GetRoleAssignedIdentitiesV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRoleAssignedIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -628,8 +628,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.GetRoleEntitlementsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.GetRoleEntitlementsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.RolesAPI.GetRoleEntitlementsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RolesAPI.GetRoleEntitlementsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRoleEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -695,8 +695,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.GetRoleV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.GetRoleV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.RolesAPI.GetRoleV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.RolesAPI.GetRoleV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -773,8 +773,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.ListRolesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.ListRolesV1(context.Background()).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Execute()
+    resp, r, err := apiClient.RolesAPI.ListRolesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.RolesAPI.ListRolesV1(context.Background()).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.ListRolesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -867,8 +867,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.PatchRoleV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.PatchRoleV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.RolesAPI.PatchRoleV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.RolesAPI.PatchRoleV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.PatchRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -944,8 +944,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.SearchRolesByFilterV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.SearchRolesByFilterV1(context.Background()).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Rolelistfilterdto(rolelistfilterdto).Execute()
+    resp, r, err := apiClient.RolesAPI.SearchRolesByFilterV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.RolesAPI.SearchRolesByFilterV1(context.Background()).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Rolelistfilterdto(rolelistfilterdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.SearchRolesByFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1016,8 +1016,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.UpdateAttributeKeyAndValueToRoleV1(context.Background(), id, attributeKey, attributeValue).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.UpdateAttributeKeyAndValueToRoleV1(context.Background(), id, attributeKey, attributeValue).Execute()
+    resp, r, err := apiClient.RolesAPI.UpdateAttributeKeyAndValueToRoleV1(context.Background(), id, attributeKey, attributeValue).Execute()
+	  //resp, r, err := apiClient.RolesAPI.UpdateAttributeKeyAndValueToRoleV1(context.Background(), id, attributeKey, attributeValue).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.UpdateAttributeKeyAndValueToRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1086,8 +1086,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.UpdateRolesMetadataByFilterV1(context.Background()).Rolemetadatabulkupdatebyfilterrequest(rolemetadatabulkupdatebyfilterrequest).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.UpdateRolesMetadataByFilterV1(context.Background()).Rolemetadatabulkupdatebyfilterrequest(rolemetadatabulkupdatebyfilterrequest).Execute()
+    resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByFilterV1(context.Background()).Rolemetadatabulkupdatebyfilterrequest(rolemetadatabulkupdatebyfilterrequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByFilterV1(context.Background()).Rolemetadatabulkupdatebyfilterrequest(rolemetadatabulkupdatebyfilterrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.UpdateRolesMetadataByFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1156,8 +1156,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.UpdateRolesMetadataByIdsV1(context.Background()).Rolemetadatabulkupdatebyidrequest(rolemetadatabulkupdatebyidrequest).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.UpdateRolesMetadataByIdsV1(context.Background()).Rolemetadatabulkupdatebyidrequest(rolemetadatabulkupdatebyidrequest).Execute()
+    resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByIdsV1(context.Background()).Rolemetadatabulkupdatebyidrequest(rolemetadatabulkupdatebyidrequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByIdsV1(context.Background()).Rolemetadatabulkupdatebyidrequest(rolemetadatabulkupdatebyidrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.UpdateRolesMetadataByIdsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1226,8 +1226,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Roles.RolesAPI.UpdateRolesMetadataByQueryV1(context.Background()).Rolemetadatabulkupdatebyqueryrequest(rolemetadatabulkupdatebyqueryrequest).Execute()
-	  //resp, r, err := apiClient.Roles.RolesAPI.UpdateRolesMetadataByQueryV1(context.Background()).Rolemetadatabulkupdatebyqueryrequest(rolemetadatabulkupdatebyqueryrequest).Execute()
+    resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByQueryV1(context.Background()).Rolemetadatabulkupdatebyqueryrequest(rolemetadatabulkupdatebyqueryrequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByQueryV1(context.Background()).Rolemetadatabulkupdatebyqueryrequest(rolemetadatabulkupdatebyqueryrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.UpdateRolesMetadataByQueryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

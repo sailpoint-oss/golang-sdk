@@ -81,8 +81,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.GetDiscoveredApplicationsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.GetDiscoveredApplicationsV1(context.Background()).Limit(limit).Offset(offset).Detail(detail).Filter(filter).Sorters(sorters).Execute()
+    resp, r, err := apiClient.ApplicationDiscoveryAPI.GetDiscoveredApplicationsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ApplicationDiscoveryAPI.GetDiscoveredApplicationsV1(context.Background()).Limit(limit).Offset(offset).Detail(detail).Filter(filter).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.GetDiscoveredApplicationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,8 +141,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplateV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplateV1(context.Background()).Execute()
+    resp, r, err := apiClient.ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplateV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplateV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,8 +204,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplateV1(context.Background()).File(file).Execute()
-	  //r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplateV1(context.Background()).File(file).Execute()
+    r, err := apiClient.ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplateV1(context.Background()).File(file).Execute()
+	  //r, err := apiClient.ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplateV1(context.Background()).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -289,8 +289,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.StartApplicationDiscoveryV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Applicationdiscoveryrequest(applicationdiscoveryrequest).Execute()
-	  //resp, r, err := apiClient.ApplicationDiscovery.ApplicationDiscoveryAPI.StartApplicationDiscoveryV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Applicationdiscoveryrequest(applicationdiscoveryrequest).Execute()
+    resp, r, err := apiClient.ApplicationDiscoveryAPI.StartApplicationDiscoveryV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Applicationdiscoveryrequest(applicationdiscoveryrequest).Execute()
+	  //resp, r, err := apiClient.ApplicationDiscoveryAPI.StartApplicationDiscoveryV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Applicationdiscoveryrequest(applicationdiscoveryrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.StartApplicationDiscoveryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

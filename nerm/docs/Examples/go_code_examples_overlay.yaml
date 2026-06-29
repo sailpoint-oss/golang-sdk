@@ -22,8 +22,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AdvancedSearchAPI.GetAdvancedSearch(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.AdvancedSearchAPI.GetAdvancedSearch(context.Background()).Execute()
+          resp, r, err := apiClient.AdvancedSearchAPI.GetAdvancedSearch(context.Background()).Execute()
+          //resp, r, err := apiClient.AdvancedSearchAPI.GetAdvancedSearch(context.Background()).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AdvancedSearchAPI.GetAdvancedSearch``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,8 +63,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AdvancedSearchAPI.PatchAdvancedSearch(context.Background(), id).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
-          //resp, r, err := apiClient.NERM.AdvancedSearchAPI.PatchAdvancedSearch(context.Background(), id).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
+          resp, r, err := apiClient.AdvancedSearchAPI.PatchAdvancedSearch(context.Background(), id).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
+          //resp, r, err := apiClient.AdvancedSearchAPI.PatchAdvancedSearch(context.Background(), id).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AdvancedSearchAPI.PatchAdvancedSearch``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -106,8 +106,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AdvancedSearchAPI.SearchAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
-          //resp, r, err := apiClient.NERM.AdvancedSearchAPI.SearchAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Limit(limit).Offset(offset).Order(order).Execute()
+          resp, r, err := apiClient.AdvancedSearchAPI.SearchAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
+          //resp, r, err := apiClient.AdvancedSearchAPI.SearchAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Limit(limit).Offset(offset).Order(order).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AdvancedSearchAPI.SearchAdvancedSearch``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -143,8 +143,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AdvancedSearchAPI.SearchAdvancedSearchbyID(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.AdvancedSearchAPI.SearchAdvancedSearchbyID(context.Background(), id).Limit(limit).Offset(offset).Order(order).Execute()
+          resp, r, err := apiClient.AdvancedSearchAPI.SearchAdvancedSearchbyID(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AdvancedSearchAPI.SearchAdvancedSearchbyID(context.Background(), id).Limit(limit).Offset(offset).Order(order).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AdvancedSearchAPI.SearchAdvancedSearchbyID``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -183,8 +183,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AdvancedSearchAPI.SubmitAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
-          //resp, r, err := apiClient.NERM.AdvancedSearchAPI.SubmitAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
+          resp, r, err := apiClient.AdvancedSearchAPI.SubmitAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
+          //resp, r, err := apiClient.AdvancedSearchAPI.SubmitAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AdvancedSearchAPI.SubmitAdvancedSearch``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -217,8 +217,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributeOptionsAPI.DeleteAttributeOptionById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.AttributeOptionsAPI.DeleteAttributeOptionById(context.Background(), id).Execute()
+          resp, r, err := apiClient.AttributeOptionsAPI.DeleteAttributeOptionById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AttributeOptionsAPI.DeleteAttributeOptionById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.DeleteAttributeOptionById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -251,8 +251,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributeOptionsAPI.DeleteAttributeOptionByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.AttributeOptionsAPI.DeleteAttributeOptionByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.AttributeOptionsAPI.DeleteAttributeOptionByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.AttributeOptionsAPI.DeleteAttributeOptionByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.DeleteAttributeOptionByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -285,8 +285,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptionById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptionById(context.Background(), id).Execute()
+          resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptionById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptionById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.GetAttributeOptionById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -319,8 +319,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptionByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptionByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptionByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptionByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.GetAttributeOptionByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -357,8 +357,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptions(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.AttributeOptionsAPI.GetAttributeOptions(context.Background()).Limit(limit).Offset(offset).Order(order).NeAttributeId(neAttributeId).Metadata(metadata).Execute()
+          resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptions(context.Background()).Execute()
+          //resp, r, err := apiClient.AttributeOptionsAPI.GetAttributeOptions(context.Background()).Limit(limit).Offset(offset).Order(order).NeAttributeId(neAttributeId).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.GetAttributeOptions``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -398,8 +398,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptionById(context.Background(), id).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
-          //resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptionById(context.Background(), id).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+          resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptionById(context.Background(), id).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+          //resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptionById(context.Background(), id).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.PatchAttributeOptionById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -439,8 +439,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptionByUid(context.Background(), uid).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
-          //resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptionByUid(context.Background(), uid).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+          resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptionByUid(context.Background(), uid).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+          //resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptionByUid(context.Background(), uid).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.PatchAttributeOptionByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -479,8 +479,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
-          //resp, r, err := apiClient.NERM.AttributeOptionsAPI.PatchAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
+          resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
+          //resp, r, err := apiClient.AttributeOptionsAPI.PatchAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.PatchAttributeOptions``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -519,8 +519,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributeOptionsAPI.SubmitAttributeOption(context.Background()).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
-          //resp, r, err := apiClient.NERM.AttributeOptionsAPI.SubmitAttributeOption(context.Background()).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+          resp, r, err := apiClient.AttributeOptionsAPI.SubmitAttributeOption(context.Background()).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
+          //resp, r, err := apiClient.AttributeOptionsAPI.SubmitAttributeOption(context.Background()).SubmitAttributeOptionRequest(submitAttributeOptionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.SubmitAttributeOption``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -559,8 +559,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributeOptionsAPI.SubmitAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
-          //resp, r, err := apiClient.NERM.AttributeOptionsAPI.SubmitAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
+          resp, r, err := apiClient.AttributeOptionsAPI.SubmitAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
+          //resp, r, err := apiClient.AttributeOptionsAPI.SubmitAttributeOptions(context.Background()).SubmitAttributeOptionsRequest(submitAttributeOptionsRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributeOptionsAPI.SubmitAttributeOptions``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -599,8 +599,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributesAPI.CreateAttribute(context.Background()).CreateAttributeRequest(createAttributeRequest).Execute()
-          //resp, r, err := apiClient.NERM.AttributesAPI.CreateAttribute(context.Background()).CreateAttributeRequest(createAttributeRequest).Execute()
+          resp, r, err := apiClient.AttributesAPI.CreateAttribute(context.Background()).CreateAttributeRequest(createAttributeRequest).Execute()
+          //resp, r, err := apiClient.AttributesAPI.CreateAttribute(context.Background()).CreateAttributeRequest(createAttributeRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.CreateAttribute``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -633,8 +633,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributesAPI.DeleteAttributeById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.AttributesAPI.DeleteAttributeById(context.Background(), id).Execute()
+          resp, r, err := apiClient.AttributesAPI.DeleteAttributeById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AttributesAPI.DeleteAttributeById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.DeleteAttributeById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -667,8 +667,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributesAPI.DeleteAttributeByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.AttributesAPI.DeleteAttributeByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.AttributesAPI.DeleteAttributeByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.AttributesAPI.DeleteAttributeByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.DeleteAttributeByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -701,8 +701,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributesAPI.GetAttributeById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.AttributesAPI.GetAttributeById(context.Background(), id).Execute()
+          resp, r, err := apiClient.AttributesAPI.GetAttributeById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AttributesAPI.GetAttributeById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.GetAttributeById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -735,8 +735,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributesAPI.GetAttributeByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.AttributesAPI.GetAttributeByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.AttributesAPI.GetAttributeByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.AttributesAPI.GetAttributeByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.GetAttributeByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -774,8 +774,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributesAPI.GetAttributes(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.AttributesAPI.GetAttributes(context.Background()).Limit(limit).Offset(offset).Order(order).Label(label).DataType(dataType).Metadata(metadata).Execute()
+          resp, r, err := apiClient.AttributesAPI.GetAttributes(context.Background()).Execute()
+          //resp, r, err := apiClient.AttributesAPI.GetAttributes(context.Background()).Limit(limit).Offset(offset).Order(order).Label(label).DataType(dataType).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.GetAttributes``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -815,8 +815,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributesAPI.UpdateAttributeById(context.Background(), id).CreateAttributeRequest(createAttributeRequest).Execute()
-          //resp, r, err := apiClient.NERM.AttributesAPI.UpdateAttributeById(context.Background(), id).CreateAttributeRequest(createAttributeRequest).Execute()
+          resp, r, err := apiClient.AttributesAPI.UpdateAttributeById(context.Background(), id).CreateAttributeRequest(createAttributeRequest).Execute()
+          //resp, r, err := apiClient.AttributesAPI.UpdateAttributeById(context.Background(), id).CreateAttributeRequest(createAttributeRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.UpdateAttributeById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -856,8 +856,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AttributesAPI.UpdateAttributeByUid(context.Background(), uid).CreateAttributeRequest(createAttributeRequest).Execute()
-          //resp, r, err := apiClient.NERM.AttributesAPI.UpdateAttributeByUid(context.Background(), uid).CreateAttributeRequest(createAttributeRequest).Execute()
+          resp, r, err := apiClient.AttributesAPI.UpdateAttributeByUid(context.Background(), uid).CreateAttributeRequest(createAttributeRequest).Execute()
+          //resp, r, err := apiClient.AttributesAPI.UpdateAttributeByUid(context.Background(), uid).CreateAttributeRequest(createAttributeRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AttributesAPI.UpdateAttributeByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -896,8 +896,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.AuditsAPI.Search(context.Background()).SearchRequest(searchRequest).Execute()
-          //resp, r, err := apiClient.NERM.AuditsAPI.Search(context.Background()).SearchRequest(searchRequest).Execute()
+          resp, r, err := apiClient.AuditsAPI.Search(context.Background()).SearchRequest(searchRequest).Execute()
+          //resp, r, err := apiClient.AuditsAPI.Search(context.Background()).SearchRequest(searchRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AuditsAPI.Search``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -930,8 +930,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.NERM.ConsolidationAPI.DeleteMasterRecord(context.Background(), id).Execute()
-          //r, err := apiClient.NERM.ConsolidationAPI.DeleteMasterRecord(context.Background(), id).Execute()
+          r, err := apiClient.ConsolidationAPI.DeleteMasterRecord(context.Background(), id).Execute()
+          //r, err := apiClient.ConsolidationAPI.DeleteMasterRecord(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ConsolidationAPI.DeleteMasterRecord``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -971,8 +971,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.NERM.ConsolidationAPI.PatchDataRecord(context.Background(), id).DataRecords(dataRecords).Execute()
-          //r, err := apiClient.NERM.ConsolidationAPI.PatchDataRecord(context.Background(), id).DataRecords(dataRecords).Execute()
+          r, err := apiClient.ConsolidationAPI.PatchDataRecord(context.Background(), id).DataRecords(dataRecords).Execute()
+          //r, err := apiClient.ConsolidationAPI.PatchDataRecord(context.Background(), id).DataRecords(dataRecords).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ConsolidationAPI.PatchDataRecord``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1008,8 +1008,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.DelegationsAPI.DelegationsGet(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.DelegationsAPI.DelegationsGet(context.Background()).DelegateId(delegateId).DelegatorId(delegatorId).Expired(expired).Metadata(metadata).Limit(limit).Offset(offset).Execute()
+          resp, r, err := apiClient.DelegationsAPI.DelegationsGet(context.Background()).Execute()
+          //resp, r, err := apiClient.DelegationsAPI.DelegationsGet(context.Background()).DelegateId(delegateId).DelegatorId(delegatorId).Expired(expired).Metadata(metadata).Limit(limit).Offset(offset).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DelegationsAPI.DelegationsGet``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1042,8 +1042,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.NERM.DelegationsAPI.DelegationsIdDelete(context.Background(), id).Execute()
-          //r, err := apiClient.NERM.DelegationsAPI.DelegationsIdDelete(context.Background(), id).Execute()
+          r, err := apiClient.DelegationsAPI.DelegationsIdDelete(context.Background(), id).Execute()
+          //r, err := apiClient.DelegationsAPI.DelegationsIdDelete(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DelegationsAPI.DelegationsIdDelete``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1074,8 +1074,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.DelegationsAPI.DelegationsIdGet(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.DelegationsAPI.DelegationsIdGet(context.Background(), id).Execute()
+          resp, r, err := apiClient.DelegationsAPI.DelegationsIdGet(context.Background(), id).Execute()
+          //resp, r, err := apiClient.DelegationsAPI.DelegationsIdGet(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DelegationsAPI.DelegationsIdGet``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1115,8 +1115,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.DelegationsAPI.DelegationsIdPatch(context.Background(), id).DelegationsPostRequest(delegationsPostRequest).Execute()
-          //resp, r, err := apiClient.NERM.DelegationsAPI.DelegationsIdPatch(context.Background(), id).DelegationsPostRequest(delegationsPostRequest).Execute()
+          resp, r, err := apiClient.DelegationsAPI.DelegationsIdPatch(context.Background(), id).DelegationsPostRequest(delegationsPostRequest).Execute()
+          //resp, r, err := apiClient.DelegationsAPI.DelegationsIdPatch(context.Background(), id).DelegationsPostRequest(delegationsPostRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DelegationsAPI.DelegationsIdPatch``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1155,8 +1155,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.DelegationsAPI.DelegationsPost(context.Background()).DelegationsPostRequest(delegationsPostRequest).Execute()
-          //resp, r, err := apiClient.NERM.DelegationsAPI.DelegationsPost(context.Background()).DelegationsPostRequest(delegationsPostRequest).Execute()
+          resp, r, err := apiClient.DelegationsAPI.DelegationsPost(context.Background()).DelegationsPostRequest(delegationsPostRequest).Execute()
+          //resp, r, err := apiClient.DelegationsAPI.DelegationsPost(context.Background()).DelegationsPostRequest(delegationsPostRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `DelegationsAPI.DelegationsPost``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1195,8 +1195,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormAttributesAPI.CreateFormAttribute(context.Background()).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
-          //resp, r, err := apiClient.NERM.FormAttributesAPI.CreateFormAttribute(context.Background()).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+          resp, r, err := apiClient.FormAttributesAPI.CreateFormAttribute(context.Background()).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+          //resp, r, err := apiClient.FormAttributesAPI.CreateFormAttribute(context.Background()).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.CreateFormAttribute``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1229,8 +1229,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormAttributesAPI.DeleteFormAttributeById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.FormAttributesAPI.DeleteFormAttributeById(context.Background(), id).Execute()
+          resp, r, err := apiClient.FormAttributesAPI.DeleteFormAttributeById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.FormAttributesAPI.DeleteFormAttributeById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.DeleteFormAttributeById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1263,8 +1263,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormAttributesAPI.DeleteFormAttributeByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.FormAttributesAPI.DeleteFormAttributeByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.FormAttributesAPI.DeleteFormAttributeByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.FormAttributesAPI.DeleteFormAttributeByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.DeleteFormAttributeByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1297,8 +1297,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributeById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributeById(context.Background(), id).Execute()
+          resp, r, err := apiClient.FormAttributesAPI.GetFormAttributeById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.FormAttributesAPI.GetFormAttributeById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.GetFormAttributeById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1331,8 +1331,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributeByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributeByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.FormAttributesAPI.GetFormAttributeByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.FormAttributesAPI.GetFormAttributeByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.GetFormAttributeByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1364,8 +1364,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributes(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributes(context.Background()).Execute()
+          resp, r, err := apiClient.FormAttributesAPI.GetFormAttributes(context.Background()).Execute()
+          //resp, r, err := apiClient.FormAttributesAPI.GetFormAttributes(context.Background()).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.GetFormAttributes``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1405,8 +1405,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormAttributesAPI.UpdateFormAttributeById(context.Background(), id).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
-          //resp, r, err := apiClient.NERM.FormAttributesAPI.UpdateFormAttributeById(context.Background(), id).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+          resp, r, err := apiClient.FormAttributesAPI.UpdateFormAttributeById(context.Background(), id).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+          //resp, r, err := apiClient.FormAttributesAPI.UpdateFormAttributeById(context.Background(), id).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.UpdateFormAttributeById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1446,8 +1446,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormAttributesAPI.UpdateFormAttributeByUid(context.Background(), uid).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
-          //resp, r, err := apiClient.NERM.FormAttributesAPI.UpdateFormAttributeByUid(context.Background(), uid).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+          resp, r, err := apiClient.FormAttributesAPI.UpdateFormAttributeByUid(context.Background(), uid).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+          //resp, r, err := apiClient.FormAttributesAPI.UpdateFormAttributeByUid(context.Background(), uid).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.UpdateFormAttributeByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1486,8 +1486,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormsAPI.CreateForm(context.Background()).CreateFormRequest(createFormRequest).Execute()
-          //resp, r, err := apiClient.NERM.FormsAPI.CreateForm(context.Background()).CreateFormRequest(createFormRequest).Execute()
+          resp, r, err := apiClient.FormsAPI.CreateForm(context.Background()).CreateFormRequest(createFormRequest).Execute()
+          //resp, r, err := apiClient.FormsAPI.CreateForm(context.Background()).CreateFormRequest(createFormRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.CreateForm``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1520,8 +1520,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormsAPI.DeleteFormById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.FormsAPI.DeleteFormById(context.Background(), id).Execute()
+          resp, r, err := apiClient.FormsAPI.DeleteFormById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.FormsAPI.DeleteFormById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.DeleteFormById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1554,8 +1554,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormsAPI.DeleteFormByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.FormsAPI.DeleteFormByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.FormsAPI.DeleteFormByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.FormsAPI.DeleteFormByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.DeleteFormByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1588,8 +1588,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormsAPI.GetFormById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.FormsAPI.GetFormById(context.Background(), id).Execute()
+          resp, r, err := apiClient.FormsAPI.GetFormById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.FormsAPI.GetFormById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.GetFormById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1622,8 +1622,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormsAPI.GetFormByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.FormsAPI.GetFormByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.FormsAPI.GetFormByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.FormsAPI.GetFormByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.GetFormByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1655,8 +1655,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormsAPI.GetForms(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.FormsAPI.GetForms(context.Background()).Execute()
+          resp, r, err := apiClient.FormsAPI.GetForms(context.Background()).Execute()
+          //resp, r, err := apiClient.FormsAPI.GetForms(context.Background()).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.GetForms``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1696,8 +1696,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormsAPI.UpdateFormById(context.Background(), id).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
-          //resp, r, err := apiClient.NERM.FormsAPI.UpdateFormById(context.Background(), id).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
+          resp, r, err := apiClient.FormsAPI.UpdateFormById(context.Background(), id).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
+          //resp, r, err := apiClient.FormsAPI.UpdateFormById(context.Background(), id).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.UpdateFormById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1737,8 +1737,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.FormsAPI.UpdateFormByUid(context.Background(), uid).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
-          //resp, r, err := apiClient.NERM.FormsAPI.UpdateFormByUid(context.Background(), uid).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
+          resp, r, err := apiClient.FormsAPI.UpdateFormByUid(context.Background(), uid).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
+          //resp, r, err := apiClient.FormsAPI.UpdateFormByUid(context.Background(), uid).UpdateFormByIdRequest(updateFormByIdRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `FormsAPI.UpdateFormByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1777,8 +1777,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.IdentityProofingResultsAPI.GetIdentityProofingResults(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.IdentityProofingResultsAPI.GetIdentityProofingResults(context.Background()).Limit(limit).Offset(offset).Order(order).ProfileId(profileId).WorkflowSessionId(workflowSessionId).Result(result).Metadata(metadata).Execute()
+          resp, r, err := apiClient.IdentityProofingResultsAPI.GetIdentityProofingResults(context.Background()).Execute()
+          //resp, r, err := apiClient.IdentityProofingResultsAPI.GetIdentityProofingResults(context.Background()).Limit(limit).Offset(offset).Order(order).ProfileId(profileId).WorkflowSessionId(workflowSessionId).Result(result).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IdentityProofingResultsAPI.GetIdentityProofingResults``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1816,8 +1816,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.IscAccountsAPI.GetSchemaMappedProfilesCollection(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.IscAccountsAPI.GetSchemaMappedProfilesCollection(context.Background()).Limit(limit).Offset(offset).UseSchema(useSchema).OverrideSyncToggle(overrideSyncToggle).Category(category).Status(status).Execute()
+          resp, r, err := apiClient.IscAccountsAPI.GetSchemaMappedProfilesCollection(context.Background()).Execute()
+          //resp, r, err := apiClient.IscAccountsAPI.GetSchemaMappedProfilesCollection(context.Background()).Limit(limit).Offset(offset).UseSchema(useSchema).OverrideSyncToggle(overrideSyncToggle).Category(category).Status(status).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IscAccountsAPI.GetSchemaMappedProfilesCollection``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1850,8 +1850,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.IscAccountsAPI.GetSingleSchemaMappedProfile(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.IscAccountsAPI.GetSingleSchemaMappedProfile(context.Background(), id).Execute()
+          resp, r, err := apiClient.IscAccountsAPI.GetSingleSchemaMappedProfile(context.Background(), id).Execute()
+          //resp, r, err := apiClient.IscAccountsAPI.GetSingleSchemaMappedProfile(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IscAccountsAPI.GetSingleSchemaMappedProfile``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1885,8 +1885,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.IscAccountsAPI.UpdateProfile(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.IscAccountsAPI.UpdateProfile(context.Background(), id).UpdateProfileRequest(updateProfileRequest).Execute()
+          resp, r, err := apiClient.IscAccountsAPI.UpdateProfile(context.Background(), id).Execute()
+          //resp, r, err := apiClient.IscAccountsAPI.UpdateProfile(context.Background(), id).UpdateProfileRequest(updateProfileRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IscAccountsAPI.UpdateProfile``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1919,8 +1919,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.JobStatusAPI.GetJobStatus(context.Background()).JobId(jobId).Execute()
-          //resp, r, err := apiClient.NERM.JobStatusAPI.GetJobStatus(context.Background()).JobId(jobId).Execute()
+          resp, r, err := apiClient.JobStatusAPI.GetJobStatus(context.Background()).JobId(jobId).Execute()
+          //resp, r, err := apiClient.JobStatusAPI.GetJobStatus(context.Background()).JobId(jobId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `JobStatusAPI.GetJobStatus``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1960,8 +1960,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.LanguagesAPI.PatchLanguage(context.Background(), languageLocale).PatchLanguageRequest(patchLanguageRequest).Execute()
-          //resp, r, err := apiClient.NERM.LanguagesAPI.PatchLanguage(context.Background(), languageLocale).PatchLanguageRequest(patchLanguageRequest).Execute()
+          resp, r, err := apiClient.LanguagesAPI.PatchLanguage(context.Background(), languageLocale).PatchLanguageRequest(patchLanguageRequest).Execute()
+          //resp, r, err := apiClient.LanguagesAPI.PatchLanguage(context.Background(), languageLocale).PatchLanguageRequest(patchLanguageRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `LanguagesAPI.PatchLanguage``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2000,8 +2000,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentTranslationsAPI.CreatePageContentTranslation(context.Background()).CreatePageContentTranslationRequest(createPageContentTranslationRequest).Execute()
-          //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.CreatePageContentTranslation(context.Background()).CreatePageContentTranslationRequest(createPageContentTranslationRequest).Execute()
+          resp, r, err := apiClient.PageContentTranslationsAPI.CreatePageContentTranslation(context.Background()).CreatePageContentTranslationRequest(createPageContentTranslationRequest).Execute()
+          //resp, r, err := apiClient.PageContentTranslationsAPI.CreatePageContentTranslation(context.Background()).CreatePageContentTranslationRequest(createPageContentTranslationRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.CreatePageContentTranslation``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2034,8 +2034,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentTranslationsAPI.DeletePageContentTranslationById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.DeletePageContentTranslationById(context.Background(), id).Execute()
+          resp, r, err := apiClient.PageContentTranslationsAPI.DeletePageContentTranslationById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.PageContentTranslationsAPI.DeletePageContentTranslationById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.DeletePageContentTranslationById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2068,8 +2068,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentTranslationsAPI.DeletePageContentTranslationByUid(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.DeletePageContentTranslationByUid(context.Background(), id).Execute()
+          resp, r, err := apiClient.PageContentTranslationsAPI.DeletePageContentTranslationByUid(context.Background(), id).Execute()
+          //resp, r, err := apiClient.PageContentTranslationsAPI.DeletePageContentTranslationByUid(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.DeletePageContentTranslationByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2101,8 +2101,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslation(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslation(context.Background()).Execute()
+          resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslation(context.Background()).Execute()
+          //resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslation(context.Background()).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.GetPageContentTranslation``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2135,8 +2135,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslationById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslationById(context.Background(), id).Execute()
+          resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslationById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslationById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.GetPageContentTranslationById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2169,8 +2169,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslationByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslationByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslationByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslationByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.GetPageContentTranslationByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2210,8 +2210,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentTranslationsAPI.UpdatePageContentTranslationById(context.Background(), id).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
-          //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.UpdatePageContentTranslationById(context.Background(), id).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
+          resp, r, err := apiClient.PageContentTranslationsAPI.UpdatePageContentTranslationById(context.Background(), id).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
+          //resp, r, err := apiClient.PageContentTranslationsAPI.UpdatePageContentTranslationById(context.Background(), id).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.UpdatePageContentTranslationById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2251,8 +2251,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentTranslationsAPI.UpdatePageContentTranslationByUid(context.Background(), uid).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
-          //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.UpdatePageContentTranslationByUid(context.Background(), uid).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
+          resp, r, err := apiClient.PageContentTranslationsAPI.UpdatePageContentTranslationByUid(context.Background(), uid).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
+          //resp, r, err := apiClient.PageContentTranslationsAPI.UpdatePageContentTranslationByUid(context.Background(), uid).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.UpdatePageContentTranslationByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2291,8 +2291,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentsAPI.CreatePageContent(context.Background()).CreatePageContentRequest(createPageContentRequest).Execute()
-          //resp, r, err := apiClient.NERM.PageContentsAPI.CreatePageContent(context.Background()).CreatePageContentRequest(createPageContentRequest).Execute()
+          resp, r, err := apiClient.PageContentsAPI.CreatePageContent(context.Background()).CreatePageContentRequest(createPageContentRequest).Execute()
+          //resp, r, err := apiClient.PageContentsAPI.CreatePageContent(context.Background()).CreatePageContentRequest(createPageContentRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.CreatePageContent``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2325,8 +2325,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentsAPI.DeletePageContentById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.PageContentsAPI.DeletePageContentById(context.Background(), id).Execute()
+          resp, r, err := apiClient.PageContentsAPI.DeletePageContentById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.PageContentsAPI.DeletePageContentById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.DeletePageContentById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2359,8 +2359,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentsAPI.DeletePageContentByUid(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.PageContentsAPI.DeletePageContentByUid(context.Background(), id).Execute()
+          resp, r, err := apiClient.PageContentsAPI.DeletePageContentByUid(context.Background(), id).Execute()
+          //resp, r, err := apiClient.PageContentsAPI.DeletePageContentByUid(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.DeletePageContentByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2393,8 +2393,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContentById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContentById(context.Background(), id).Execute()
+          resp, r, err := apiClient.PageContentsAPI.GetPageContentById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.PageContentsAPI.GetPageContentById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.GetPageContentById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2427,8 +2427,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContentByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContentByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.PageContentsAPI.GetPageContentByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.PageContentsAPI.GetPageContentByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.GetPageContentByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2460,8 +2460,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContents(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContents(context.Background()).Execute()
+          resp, r, err := apiClient.PageContentsAPI.GetPageContents(context.Background()).Execute()
+          //resp, r, err := apiClient.PageContentsAPI.GetPageContents(context.Background()).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.GetPageContents``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2501,8 +2501,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentsAPI.UpdatePageContentById(context.Background(), id).CreatePageContentRequest(createPageContentRequest).Execute()
-          //resp, r, err := apiClient.NERM.PageContentsAPI.UpdatePageContentById(context.Background(), id).CreatePageContentRequest(createPageContentRequest).Execute()
+          resp, r, err := apiClient.PageContentsAPI.UpdatePageContentById(context.Background(), id).CreatePageContentRequest(createPageContentRequest).Execute()
+          //resp, r, err := apiClient.PageContentsAPI.UpdatePageContentById(context.Background(), id).CreatePageContentRequest(createPageContentRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.UpdatePageContentById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2542,8 +2542,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageContentsAPI.UpdatePageContentByUid(context.Background(), uid).CreatePageContentRequest(createPageContentRequest).Execute()
-          //resp, r, err := apiClient.NERM.PageContentsAPI.UpdatePageContentByUid(context.Background(), uid).CreatePageContentRequest(createPageContentRequest).Execute()
+          resp, r, err := apiClient.PageContentsAPI.UpdatePageContentByUid(context.Background(), uid).CreatePageContentRequest(createPageContentRequest).Execute()
+          //resp, r, err := apiClient.PageContentsAPI.UpdatePageContentByUid(context.Background(), uid).CreatePageContentRequest(createPageContentRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.UpdatePageContentByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2582,8 +2582,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageElementsAPI.CreatePageElement(context.Background()).CreatePageElementRequest(createPageElementRequest).Execute()
-          //resp, r, err := apiClient.NERM.PageElementsAPI.CreatePageElement(context.Background()).CreatePageElementRequest(createPageElementRequest).Execute()
+          resp, r, err := apiClient.PageElementsAPI.CreatePageElement(context.Background()).CreatePageElementRequest(createPageElementRequest).Execute()
+          //resp, r, err := apiClient.PageElementsAPI.CreatePageElement(context.Background()).CreatePageElementRequest(createPageElementRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.CreatePageElement``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2616,8 +2616,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageElementsAPI.DeletePageElementById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.PageElementsAPI.DeletePageElementById(context.Background(), id).Execute()
+          resp, r, err := apiClient.PageElementsAPI.DeletePageElementById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.PageElementsAPI.DeletePageElementById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.DeletePageElementById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2650,8 +2650,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageElementsAPI.DeletePageElementByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.PageElementsAPI.DeletePageElementByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.PageElementsAPI.DeletePageElementByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.PageElementsAPI.DeletePageElementByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.DeletePageElementByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2684,8 +2684,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElementById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElementById(context.Background(), id).Execute()
+          resp, r, err := apiClient.PageElementsAPI.GetPageElementById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.PageElementsAPI.GetPageElementById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.GetPageElementById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2718,8 +2718,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElementByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElementByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.PageElementsAPI.GetPageElementByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.PageElementsAPI.GetPageElementByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.GetPageElementByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2751,8 +2751,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElements(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.PageElementsAPI.GetPageElements(context.Background()).Execute()
+          resp, r, err := apiClient.PageElementsAPI.GetPageElements(context.Background()).Execute()
+          //resp, r, err := apiClient.PageElementsAPI.GetPageElements(context.Background()).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.GetPageElements``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2792,8 +2792,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageElementsAPI.UpdatePageElementById(context.Background(), id).CreatePageElementRequest(createPageElementRequest).Execute()
-          //resp, r, err := apiClient.NERM.PageElementsAPI.UpdatePageElementById(context.Background(), id).CreatePageElementRequest(createPageElementRequest).Execute()
+          resp, r, err := apiClient.PageElementsAPI.UpdatePageElementById(context.Background(), id).CreatePageElementRequest(createPageElementRequest).Execute()
+          //resp, r, err := apiClient.PageElementsAPI.UpdatePageElementById(context.Background(), id).CreatePageElementRequest(createPageElementRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.UpdatePageElementById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2833,8 +2833,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PageElementsAPI.UpdatePageElementByUid(context.Background(), uid).CreatePageElementRequest(createPageElementRequest).Execute()
-          //resp, r, err := apiClient.NERM.PageElementsAPI.UpdatePageElementByUid(context.Background(), uid).CreatePageElementRequest(createPageElementRequest).Execute()
+          resp, r, err := apiClient.PageElementsAPI.UpdatePageElementByUid(context.Background(), uid).CreatePageElementRequest(createPageElementRequest).Execute()
+          //resp, r, err := apiClient.PageElementsAPI.UpdatePageElementByUid(context.Background(), uid).CreatePageElementRequest(createPageElementRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PageElementsAPI.UpdatePageElementByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2873,8 +2873,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PagesAPI.CreateProfilePage(context.Background()).CreateProfilePageRequest(createProfilePageRequest).Execute()
-          //resp, r, err := apiClient.NERM.PagesAPI.CreateProfilePage(context.Background()).CreateProfilePageRequest(createProfilePageRequest).Execute()
+          resp, r, err := apiClient.PagesAPI.CreateProfilePage(context.Background()).CreateProfilePageRequest(createProfilePageRequest).Execute()
+          //resp, r, err := apiClient.PagesAPI.CreateProfilePage(context.Background()).CreateProfilePageRequest(createProfilePageRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PagesAPI.CreateProfilePage``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2913,8 +2913,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PagesAPI.CreateWorkflowPage(context.Background()).CreateWorkflowPageRequest(createWorkflowPageRequest).Execute()
-          //resp, r, err := apiClient.NERM.PagesAPI.CreateWorkflowPage(context.Background()).CreateWorkflowPageRequest(createWorkflowPageRequest).Execute()
+          resp, r, err := apiClient.PagesAPI.CreateWorkflowPage(context.Background()).CreateWorkflowPageRequest(createWorkflowPageRequest).Execute()
+          //resp, r, err := apiClient.PagesAPI.CreateWorkflowPage(context.Background()).CreateWorkflowPageRequest(createWorkflowPageRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PagesAPI.CreateWorkflowPage``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2953,8 +2953,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.PermissionsAPI.CreatePermission(context.Background()).CreatePermissionRequest(createPermissionRequest).Execute()
-          //resp, r, err := apiClient.NERM.PermissionsAPI.CreatePermission(context.Background()).CreatePermissionRequest(createPermissionRequest).Execute()
+          resp, r, err := apiClient.PermissionsAPI.CreatePermission(context.Background()).CreatePermissionRequest(createPermissionRequest).Execute()
+          //resp, r, err := apiClient.PermissionsAPI.CreatePermission(context.Background()).CreatePermissionRequest(createPermissionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `PermissionsAPI.CreatePermission``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2993,8 +2993,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfileTypeRolesAPI.CreateProfileTypeRole(context.Background()).CreateProfileTypeRoleRequest(createProfileTypeRoleRequest).Execute()
-          //resp, r, err := apiClient.NERM.ProfileTypeRolesAPI.CreateProfileTypeRole(context.Background()).CreateProfileTypeRoleRequest(createProfileTypeRoleRequest).Execute()
+          resp, r, err := apiClient.ProfileTypeRolesAPI.CreateProfileTypeRole(context.Background()).CreateProfileTypeRoleRequest(createProfileTypeRoleRequest).Execute()
+          //resp, r, err := apiClient.ProfileTypeRolesAPI.CreateProfileTypeRole(context.Background()).CreateProfileTypeRoleRequest(createProfileTypeRoleRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypeRolesAPI.CreateProfileTypeRole``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3027,8 +3027,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfileTypesAPI.DeleteProfileTypeById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.ProfileTypesAPI.DeleteProfileTypeById(context.Background(), id).Execute()
+          resp, r, err := apiClient.ProfileTypesAPI.DeleteProfileTypeById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ProfileTypesAPI.DeleteProfileTypeById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.DeleteProfileTypeById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3061,8 +3061,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfileTypesAPI.DeleteProfileTypeByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.ProfileTypesAPI.DeleteProfileTypeByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.ProfileTypesAPI.DeleteProfileTypeByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.ProfileTypesAPI.DeleteProfileTypeByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.DeleteProfileTypeByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3095,8 +3095,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypeById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypeById(context.Background(), id).Execute()
+          resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypeById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypeById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.GetProfileTypeById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3129,8 +3129,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypeByUid(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypeByUid(context.Background(), uid).Execute()
+          resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypeByUid(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypeByUid(context.Background(), uid).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.GetProfileTypeByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3168,8 +3168,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypes(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypes(context.Background()).Limit(limit).Offset(offset).Order(order).Name(name).Archived(archived).Metadata(metadata).Execute()
+          resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypes(context.Background()).Execute()
+          //resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypes(context.Background()).Limit(limit).Offset(offset).Order(order).Name(name).Archived(archived).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.GetProfileTypes``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3209,8 +3209,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfileTypesAPI.PatchProfileTypeById(context.Background(), id).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
-          //resp, r, err := apiClient.NERM.ProfileTypesAPI.PatchProfileTypeById(context.Background(), id).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+          resp, r, err := apiClient.ProfileTypesAPI.PatchProfileTypeById(context.Background(), id).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+          //resp, r, err := apiClient.ProfileTypesAPI.PatchProfileTypeById(context.Background(), id).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.PatchProfileTypeById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3250,8 +3250,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfileTypesAPI.PatchProfileTypeByUid(context.Background(), uid).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
-          //resp, r, err := apiClient.NERM.ProfileTypesAPI.PatchProfileTypeByUid(context.Background(), uid).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+          resp, r, err := apiClient.ProfileTypesAPI.PatchProfileTypeByUid(context.Background(), uid).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+          //resp, r, err := apiClient.ProfileTypesAPI.PatchProfileTypeByUid(context.Background(), uid).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.PatchProfileTypeByUid``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3290,8 +3290,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfileTypesAPI.SubmitProfileType(context.Background()).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
-          //resp, r, err := apiClient.NERM.ProfileTypesAPI.SubmitProfileType(context.Background()).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+          resp, r, err := apiClient.ProfileTypesAPI.SubmitProfileType(context.Background()).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+          //resp, r, err := apiClient.ProfileTypesAPI.SubmitProfileType(context.Background()).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.SubmitProfileType``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3330,8 +3330,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfilesAPI.CreateProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
-          //resp, r, err := apiClient.NERM.ProfilesAPI.CreateProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+          resp, r, err := apiClient.ProfilesAPI.CreateProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+          //resp, r, err := apiClient.ProfilesAPI.CreateProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.CreateProfiles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3364,8 +3364,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.NERM.ProfilesAPI.DeleteProfileById(context.Background(), id).Execute()
-          //r, err := apiClient.NERM.ProfilesAPI.DeleteProfileById(context.Background(), id).Execute()
+          r, err := apiClient.ProfilesAPI.DeleteProfileById(context.Background(), id).Execute()
+          //r, err := apiClient.ProfilesAPI.DeleteProfileById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.DeleteProfileById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3402,8 +3402,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfilesAPI.DeleteProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
-          //resp, r, err := apiClient.NERM.ProfilesAPI.DeleteProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+          resp, r, err := apiClient.ProfilesAPI.DeleteProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+          //resp, r, err := apiClient.ProfilesAPI.DeleteProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.DeleteProfiles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3436,8 +3436,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileAvatar(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileAvatar(context.Background(), id).Execute()
+          resp, r, err := apiClient.ProfilesAPI.GetProfileAvatar(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ProfilesAPI.GetProfileAvatar(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.GetProfileAvatar``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3470,8 +3470,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileById(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileById(context.Background(), id).Execute()
+          resp, r, err := apiClient.ProfilesAPI.GetProfileById(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ProfilesAPI.GetProfileById(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.GetProfileById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3505,8 +3505,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileUpload(context.Background(), id, attributeId).Execute()
-          //resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileUpload(context.Background(), id, attributeId).Execute()
+          resp, r, err := apiClient.ProfilesAPI.GetProfileUpload(context.Background(), id, attributeId).Execute()
+          //resp, r, err := apiClient.ProfilesAPI.GetProfileUpload(context.Background(), id, attributeId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.GetProfileUpload``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3549,8 +3549,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfilesAPI.GetProfiles(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.ProfilesAPI.GetProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).ExcludeAttributes(excludeAttributes).Name(name).ProfileTypeId(profileTypeId).Status(status).Metadata(metadata).AfterId(afterId).UpdatedAfter(updatedAfter).Execute()
+          resp, r, err := apiClient.ProfilesAPI.GetProfiles(context.Background()).Execute()
+          //resp, r, err := apiClient.ProfilesAPI.GetProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).ExcludeAttributes(excludeAttributes).Name(name).ProfileTypeId(profileTypeId).Status(status).Metadata(metadata).AfterId(afterId).UpdatedAfter(updatedAfter).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.GetProfiles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3590,8 +3590,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfilesAPI.PatchProfileById(context.Background(), id).SubmitProfileRequest(submitProfileRequest).Execute()
-          //resp, r, err := apiClient.NERM.ProfilesAPI.PatchProfileById(context.Background(), id).SubmitProfileRequest(submitProfileRequest).Execute()
+          resp, r, err := apiClient.ProfilesAPI.PatchProfileById(context.Background(), id).SubmitProfileRequest(submitProfileRequest).Execute()
+          //resp, r, err := apiClient.ProfilesAPI.PatchProfileById(context.Background(), id).SubmitProfileRequest(submitProfileRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.PatchProfileById``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3630,8 +3630,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfilesAPI.PatchProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
-          //resp, r, err := apiClient.NERM.ProfilesAPI.PatchProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+          resp, r, err := apiClient.ProfilesAPI.PatchProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+          //resp, r, err := apiClient.ProfilesAPI.PatchProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.PatchProfiles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3670,8 +3670,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfile(context.Background()).SubmitProfileRequest(submitProfileRequest).Execute()
-          //resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfile(context.Background()).SubmitProfileRequest(submitProfileRequest).Execute()
+          resp, r, err := apiClient.ProfilesAPI.SubmitProfile(context.Background()).SubmitProfileRequest(submitProfileRequest).Execute()
+          //resp, r, err := apiClient.ProfilesAPI.SubmitProfile(context.Background()).SubmitProfileRequest(submitProfileRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.SubmitProfile``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3705,8 +3705,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfileAvatar(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfileAvatar(context.Background(), id).File(file).Execute()
+          resp, r, err := apiClient.ProfilesAPI.SubmitProfileAvatar(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ProfilesAPI.SubmitProfileAvatar(context.Background(), id).File(file).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.SubmitProfileAvatar``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3741,8 +3741,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfileUpload(context.Background(), id, attributeId).Execute()
-          //resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfileUpload(context.Background(), id, attributeId).File(file).Execute()
+          resp, r, err := apiClient.ProfilesAPI.SubmitProfileUpload(context.Background(), id, attributeId).Execute()
+          //resp, r, err := apiClient.ProfilesAPI.SubmitProfileUpload(context.Background(), id, attributeId).File(file).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.SubmitProfileUpload``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3775,8 +3775,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RiskLevelsAPI.GetRiskLevel(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.RiskLevelsAPI.GetRiskLevel(context.Background(), id).Execute()
+          resp, r, err := apiClient.RiskLevelsAPI.GetRiskLevel(context.Background(), id).Execute()
+          //resp, r, err := apiClient.RiskLevelsAPI.GetRiskLevel(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RiskLevelsAPI.GetRiskLevel``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3813,8 +3813,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RiskLevelsAPI.GetRiskLevels(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.RiskLevelsAPI.GetRiskLevels(context.Background()).Limit(limit).Offset(offset).Order(order).Label(label).Metadata(metadata).Execute()
+          resp, r, err := apiClient.RiskLevelsAPI.GetRiskLevels(context.Background()).Execute()
+          //resp, r, err := apiClient.RiskLevelsAPI.GetRiskLevels(context.Background()).Limit(limit).Offset(offset).Order(order).Label(label).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RiskLevelsAPI.GetRiskLevels``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3847,8 +3847,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RiskScoresAPI.GetRiskScore(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.RiskScoresAPI.GetRiskScore(context.Background(), id).Execute()
+          resp, r, err := apiClient.RiskScoresAPI.GetRiskScore(context.Background(), id).Execute()
+          //resp, r, err := apiClient.RiskScoresAPI.GetRiskScore(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RiskScoresAPI.GetRiskScore``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3889,8 +3889,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RiskScoresAPI.GetRiskScores(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.RiskScoresAPI.GetRiskScores(context.Background()).Limit(limit).Offset(offset).Order(order).ObjectId(objectId).ObjectType(objectType).OverallRiskLevelId(overallRiskLevelId).ImpactRiskLevelId(impactRiskLevelId).ProbabilityRiskLevelId(probabilityRiskLevelId).Metadata(metadata).Execute()
+          resp, r, err := apiClient.RiskScoresAPI.GetRiskScores(context.Background()).Execute()
+          //resp, r, err := apiClient.RiskScoresAPI.GetRiskScores(context.Background()).Limit(limit).Offset(offset).Order(order).ObjectId(objectId).ObjectType(objectType).OverallRiskLevelId(overallRiskLevelId).ImpactRiskLevelId(impactRiskLevelId).ProbabilityRiskLevelId(probabilityRiskLevelId).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RiskScoresAPI.GetRiskScores``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3923,8 +3923,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RoleProfilesAPI.DeleteRoleProfile(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.RoleProfilesAPI.DeleteRoleProfile(context.Background(), id).Execute()
+          resp, r, err := apiClient.RoleProfilesAPI.DeleteRoleProfile(context.Background(), id).Execute()
+          //resp, r, err := apiClient.RoleProfilesAPI.DeleteRoleProfile(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.DeleteRoleProfile``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3957,8 +3957,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RoleProfilesAPI.GetRoleProfile(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.RoleProfilesAPI.GetRoleProfile(context.Background(), id).Execute()
+          resp, r, err := apiClient.RoleProfilesAPI.GetRoleProfile(context.Background(), id).Execute()
+          //resp, r, err := apiClient.RoleProfilesAPI.GetRoleProfile(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.GetRoleProfile``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3996,8 +3996,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RoleProfilesAPI.GetRoleProfiles(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.RoleProfilesAPI.GetRoleProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).RoleId(roleId).ProfileId(profileId).Metadata(metadata).Execute()
+          resp, r, err := apiClient.RoleProfilesAPI.GetRoleProfiles(context.Background()).Execute()
+          //resp, r, err := apiClient.RoleProfilesAPI.GetRoleProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).RoleId(roleId).ProfileId(profileId).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.GetRoleProfiles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4037,8 +4037,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RoleProfilesAPI.PatchRoleProfile(context.Background(), id).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
-          //resp, r, err := apiClient.NERM.RoleProfilesAPI.PatchRoleProfile(context.Background(), id).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
+          resp, r, err := apiClient.RoleProfilesAPI.PatchRoleProfile(context.Background(), id).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
+          //resp, r, err := apiClient.RoleProfilesAPI.PatchRoleProfile(context.Background(), id).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.PatchRoleProfile``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4077,8 +4077,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RoleProfilesAPI.PatchRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
-          //resp, r, err := apiClient.NERM.RoleProfilesAPI.PatchRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
+          resp, r, err := apiClient.RoleProfilesAPI.PatchRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
+          //resp, r, err := apiClient.RoleProfilesAPI.PatchRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.PatchRoleProfiles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4117,8 +4117,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RoleProfilesAPI.SubmitRoleProfile(context.Background()).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
-          //resp, r, err := apiClient.NERM.RoleProfilesAPI.SubmitRoleProfile(context.Background()).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
+          resp, r, err := apiClient.RoleProfilesAPI.SubmitRoleProfile(context.Background()).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
+          //resp, r, err := apiClient.RoleProfilesAPI.SubmitRoleProfile(context.Background()).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.SubmitRoleProfile``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4157,8 +4157,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RoleProfilesAPI.SubmitRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
-          //resp, r, err := apiClient.NERM.RoleProfilesAPI.SubmitRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
+          resp, r, err := apiClient.RoleProfilesAPI.SubmitRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
+          //resp, r, err := apiClient.RoleProfilesAPI.SubmitRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.SubmitRoleProfiles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4191,8 +4191,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RolesAPI.GetRole(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.RolesAPI.GetRole(context.Background(), id).Execute()
+          resp, r, err := apiClient.RolesAPI.GetRole(context.Background(), id).Execute()
+          //resp, r, err := apiClient.RolesAPI.GetRole(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRole``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4229,8 +4229,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RolesAPI.GetRoles(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.RolesAPI.GetRoles(context.Background()).Limit(limit).Offset(offset).Order(order).Metadata(metadata).Type_(type_).Execute()
+          resp, r, err := apiClient.RolesAPI.GetRoles(context.Background()).Execute()
+          //resp, r, err := apiClient.RolesAPI.GetRoles(context.Background()).Limit(limit).Offset(offset).Order(order).Metadata(metadata).Type_(type_).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRoles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4270,8 +4270,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RolesAPI.PatchRole(context.Background(), id).SubmitRoleRequest(submitRoleRequest).Execute()
-          //resp, r, err := apiClient.NERM.RolesAPI.PatchRole(context.Background(), id).SubmitRoleRequest(submitRoleRequest).Execute()
+          resp, r, err := apiClient.RolesAPI.PatchRole(context.Background(), id).SubmitRoleRequest(submitRoleRequest).Execute()
+          //resp, r, err := apiClient.RolesAPI.PatchRole(context.Background(), id).SubmitRoleRequest(submitRoleRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.PatchRole``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4310,8 +4310,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RolesAPI.PatchRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
-          //resp, r, err := apiClient.NERM.RolesAPI.PatchRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
+          resp, r, err := apiClient.RolesAPI.PatchRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
+          //resp, r, err := apiClient.RolesAPI.PatchRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.PatchRoles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4350,8 +4350,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RolesAPI.SubmitRole(context.Background()).SubmitRoleRequest(submitRoleRequest).Execute()
-          //resp, r, err := apiClient.NERM.RolesAPI.SubmitRole(context.Background()).SubmitRoleRequest(submitRoleRequest).Execute()
+          resp, r, err := apiClient.RolesAPI.SubmitRole(context.Background()).SubmitRoleRequest(submitRoleRequest).Execute()
+          //resp, r, err := apiClient.RolesAPI.SubmitRole(context.Background()).SubmitRoleRequest(submitRoleRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.SubmitRole``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4390,8 +4390,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.RolesAPI.SubmitRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
-          //resp, r, err := apiClient.NERM.RolesAPI.SubmitRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
+          resp, r, err := apiClient.RolesAPI.SubmitRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
+          //resp, r, err := apiClient.RolesAPI.SubmitRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.SubmitRoles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4430,8 +4430,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.SyncedAttributesAPI.CreateSyncedAttribute(context.Background()).SyncedAttribute1(syncedAttribute1).Execute()
-          //resp, r, err := apiClient.NERM.SyncedAttributesAPI.CreateSyncedAttribute(context.Background()).SyncedAttribute1(syncedAttribute1).Execute()
+          resp, r, err := apiClient.SyncedAttributesAPI.CreateSyncedAttribute(context.Background()).SyncedAttribute1(syncedAttribute1).Execute()
+          //resp, r, err := apiClient.SyncedAttributesAPI.CreateSyncedAttribute(context.Background()).SyncedAttribute1(syncedAttribute1).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SyncedAttributesAPI.CreateSyncedAttribute``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4465,8 +4465,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.SyncedAttributesAPI.DeleteSyncedAttribute(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.SyncedAttributesAPI.DeleteSyncedAttribute(context.Background()).ProfileTypeId(profileTypeId).NeAttributeId(neAttributeId).Execute()
+          resp, r, err := apiClient.SyncedAttributesAPI.DeleteSyncedAttribute(context.Background()).Execute()
+          //resp, r, err := apiClient.SyncedAttributesAPI.DeleteSyncedAttribute(context.Background()).ProfileTypeId(profileTypeId).NeAttributeId(neAttributeId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SyncedAttributesAPI.DeleteSyncedAttribute``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4503,8 +4503,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.SyncedAttributesAPI.GetProfileTypeAttributes(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.SyncedAttributesAPI.GetProfileTypeAttributes(context.Background()).ProfileTypeId(profileTypeId).ActiveFilter(activeFilter).Search(search).Page(page).Sort(sort).Execute()
+          resp, r, err := apiClient.SyncedAttributesAPI.GetProfileTypeAttributes(context.Background()).Execute()
+          //resp, r, err := apiClient.SyncedAttributesAPI.GetProfileTypeAttributes(context.Background()).ProfileTypeId(profileTypeId).ActiveFilter(activeFilter).Search(search).Page(page).Sort(sort).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SyncedAttributesAPI.GetProfileTypeAttributes``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4543,8 +4543,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.SystemRolePermissionsAPI.CreateSystemRolePermission(context.Background()).CreateSystemRolePermissionRequest(createSystemRolePermissionRequest).Execute()
-          //resp, r, err := apiClient.NERM.SystemRolePermissionsAPI.CreateSystemRolePermission(context.Background()).CreateSystemRolePermissionRequest(createSystemRolePermissionRequest).Execute()
+          resp, r, err := apiClient.SystemRolePermissionsAPI.CreateSystemRolePermission(context.Background()).CreateSystemRolePermissionRequest(createSystemRolePermissionRequest).Execute()
+          //resp, r, err := apiClient.SystemRolePermissionsAPI.CreateSystemRolePermission(context.Background()).CreateSystemRolePermissionRequest(createSystemRolePermissionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SystemRolePermissionsAPI.CreateSystemRolePermission``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4580,8 +4580,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.SystemRolesAPI.GetSystemRoles(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.SystemRolesAPI.GetSystemRoles(context.Background()).Limit(limit).Offset(offset).Order(order).Metadata(metadata).Execute()
+          resp, r, err := apiClient.SystemRolesAPI.GetSystemRoles(context.Background()).Execute()
+          //resp, r, err := apiClient.SystemRolesAPI.GetSystemRoles(context.Background()).Limit(limit).Offset(offset).Order(order).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SystemRolesAPI.GetSystemRoles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4614,8 +4614,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserManagersAPI.GetUserManager(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.UserManagersAPI.GetUserManager(context.Background(), id).Execute()
+          resp, r, err := apiClient.UserManagersAPI.GetUserManager(context.Background(), id).Execute()
+          //resp, r, err := apiClient.UserManagersAPI.GetUserManager(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.GetUserManager``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4653,8 +4653,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserManagersAPI.GetUserManagers(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.UserManagersAPI.GetUserManagers(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).ManagerId(managerId).Metadata(metadata).Execute()
+          resp, r, err := apiClient.UserManagersAPI.GetUserManagers(context.Background()).Execute()
+          //resp, r, err := apiClient.UserManagersAPI.GetUserManagers(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).ManagerId(managerId).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.GetUserManagers``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4694,8 +4694,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserManagersAPI.PatchUserManager(context.Background(), id).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserManagersAPI.PatchUserManager(context.Background(), id).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
+          resp, r, err := apiClient.UserManagersAPI.PatchUserManager(context.Background(), id).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
+          //resp, r, err := apiClient.UserManagersAPI.PatchUserManager(context.Background(), id).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.PatchUserManager``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4734,8 +4734,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserManagersAPI.PatchUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserManagersAPI.PatchUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
+          resp, r, err := apiClient.UserManagersAPI.PatchUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
+          //resp, r, err := apiClient.UserManagersAPI.PatchUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.PatchUserManagers``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4774,8 +4774,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserManagersAPI.SubmitUserManager(context.Background()).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserManagersAPI.SubmitUserManager(context.Background()).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
+          resp, r, err := apiClient.UserManagersAPI.SubmitUserManager(context.Background()).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
+          //resp, r, err := apiClient.UserManagersAPI.SubmitUserManager(context.Background()).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.SubmitUserManager``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4814,8 +4814,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserManagersAPI.SubmitUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserManagersAPI.SubmitUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
+          resp, r, err := apiClient.UserManagersAPI.SubmitUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
+          //resp, r, err := apiClient.UserManagersAPI.SubmitUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.SubmitUserManagers``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4854,8 +4854,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserProfilesAPI.CreateUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserProfilesAPI.CreateUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+          resp, r, err := apiClient.UserProfilesAPI.CreateUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+          //resp, r, err := apiClient.UserProfilesAPI.CreateUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.CreateUserProfiles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4888,8 +4888,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserProfilesAPI.DeleteUserProfile(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.UserProfilesAPI.DeleteUserProfile(context.Background(), id).Execute()
+          resp, r, err := apiClient.UserProfilesAPI.DeleteUserProfile(context.Background(), id).Execute()
+          //resp, r, err := apiClient.UserProfilesAPI.DeleteUserProfile(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.DeleteUserProfile``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4928,8 +4928,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserProfilesAPI.DeleteUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserProfilesAPI.DeleteUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+          resp, r, err := apiClient.UserProfilesAPI.DeleteUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+          //resp, r, err := apiClient.UserProfilesAPI.DeleteUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.DeleteUserProfiles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4962,8 +4962,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserProfilesAPI.GetUserProfile(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.UserProfilesAPI.GetUserProfile(context.Background(), id).Execute()
+          resp, r, err := apiClient.UserProfilesAPI.GetUserProfile(context.Background(), id).Execute()
+          //resp, r, err := apiClient.UserProfilesAPI.GetUserProfile(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.GetUserProfile``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5003,8 +5003,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserProfilesAPI.GetUserProfiles(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.UserProfilesAPI.GetUserProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).NeAttributeId(neAttributeId).ProfileId(profileId).RelationshipType(relationshipType).Metadata(metadata).Execute()
+          resp, r, err := apiClient.UserProfilesAPI.GetUserProfiles(context.Background()).Execute()
+          //resp, r, err := apiClient.UserProfilesAPI.GetUserProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).NeAttributeId(neAttributeId).ProfileId(profileId).RelationshipType(relationshipType).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.GetUserProfiles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5044,8 +5044,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserProfilesAPI.PatchUserProfile(context.Background(), id).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserProfilesAPI.PatchUserProfile(context.Background(), id).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
+          resp, r, err := apiClient.UserProfilesAPI.PatchUserProfile(context.Background(), id).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
+          //resp, r, err := apiClient.UserProfilesAPI.PatchUserProfile(context.Background(), id).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.PatchUserProfile``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5084,8 +5084,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserProfilesAPI.PatchUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserProfilesAPI.PatchUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+          resp, r, err := apiClient.UserProfilesAPI.PatchUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+          //resp, r, err := apiClient.UserProfilesAPI.PatchUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.PatchUserProfiles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5124,8 +5124,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserProfilesAPI.SubmitUserProfile(context.Background()).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserProfilesAPI.SubmitUserProfile(context.Background()).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
+          resp, r, err := apiClient.UserProfilesAPI.SubmitUserProfile(context.Background()).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
+          //resp, r, err := apiClient.UserProfilesAPI.SubmitUserProfile(context.Background()).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.SubmitUserProfile``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5158,8 +5158,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserRolesAPI.DeleteUserRole(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.UserRolesAPI.DeleteUserRole(context.Background(), id).Execute()
+          resp, r, err := apiClient.UserRolesAPI.DeleteUserRole(context.Background(), id).Execute()
+          //resp, r, err := apiClient.UserRolesAPI.DeleteUserRole(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.DeleteUserRole``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5192,8 +5192,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserRolesAPI.GetUserRole(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.UserRolesAPI.GetUserRole(context.Background(), id).Execute()
+          resp, r, err := apiClient.UserRolesAPI.GetUserRole(context.Background(), id).Execute()
+          //resp, r, err := apiClient.UserRolesAPI.GetUserRole(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.GetUserRole``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5231,8 +5231,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserRolesAPI.GetUserRoles(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.UserRolesAPI.GetUserRoles(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).RoleId(roleId).Metadata(metadata).Execute()
+          resp, r, err := apiClient.UserRolesAPI.GetUserRoles(context.Background()).Execute()
+          //resp, r, err := apiClient.UserRolesAPI.GetUserRoles(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).RoleId(roleId).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.GetUserRoles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5272,8 +5272,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserRolesAPI.PatchUserRole(context.Background(), id).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserRolesAPI.PatchUserRole(context.Background(), id).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
+          resp, r, err := apiClient.UserRolesAPI.PatchUserRole(context.Background(), id).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
+          //resp, r, err := apiClient.UserRolesAPI.PatchUserRole(context.Background(), id).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.PatchUserRole``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5312,8 +5312,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserRolesAPI.PatchUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserRolesAPI.PatchUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
+          resp, r, err := apiClient.UserRolesAPI.PatchUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
+          //resp, r, err := apiClient.UserRolesAPI.PatchUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.PatchUserRoles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5352,8 +5352,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserRolesAPI.SubmitUserRole(context.Background()).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserRolesAPI.SubmitUserRole(context.Background()).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
+          resp, r, err := apiClient.UserRolesAPI.SubmitUserRole(context.Background()).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
+          //resp, r, err := apiClient.UserRolesAPI.SubmitUserRole(context.Background()).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.SubmitUserRole``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5392,8 +5392,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UserRolesAPI.SubmitUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
-          //resp, r, err := apiClient.NERM.UserRolesAPI.SubmitUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
+          resp, r, err := apiClient.UserRolesAPI.SubmitUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
+          //resp, r, err := apiClient.UserRolesAPI.SubmitUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.SubmitUserRoles``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5426,8 +5426,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UsersAPI.DeleteUser(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.UsersAPI.DeleteUser(context.Background(), id).Execute()
+          resp, r, err := apiClient.UsersAPI.DeleteUser(context.Background(), id).Execute()
+          //resp, r, err := apiClient.UsersAPI.DeleteUser(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.DeleteUser``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5460,8 +5460,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UsersAPI.GetUser(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.UsersAPI.GetUser(context.Background(), id).Execute()
+          resp, r, err := apiClient.UsersAPI.GetUser(context.Background(), id).Execute()
+          //resp, r, err := apiClient.UsersAPI.GetUser(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.GetUser``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5494,8 +5494,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UsersAPI.GetUserAvatar(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.UsersAPI.GetUserAvatar(context.Background(), id).Execute()
+          resp, r, err := apiClient.UsersAPI.GetUserAvatar(context.Background(), id).Execute()
+          //resp, r, err := apiClient.UsersAPI.GetUserAvatar(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.GetUserAvatar``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5538,8 +5538,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UsersAPI.GetUsers(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.UsersAPI.GetUsers(context.Background()).Limit(limit).Offset(offset).Order(order).Name(name).Login(login).Title(title).UserStatus(userStatus).Type_(type_).Email(email).Metadata(metadata).SailpointIdentityId(sailpointIdentityId).Execute()
+          resp, r, err := apiClient.UsersAPI.GetUsers(context.Background()).Execute()
+          //resp, r, err := apiClient.UsersAPI.GetUsers(context.Background()).Limit(limit).Offset(offset).Order(order).Name(name).Login(login).Title(title).UserStatus(userStatus).Type_(type_).Email(email).Metadata(metadata).SailpointIdentityId(sailpointIdentityId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.GetUsers``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5579,8 +5579,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UsersAPI.PatchUser(context.Background(), id).SubmitUserRequest(submitUserRequest).Execute()
-          //resp, r, err := apiClient.NERM.UsersAPI.PatchUser(context.Background(), id).SubmitUserRequest(submitUserRequest).Execute()
+          resp, r, err := apiClient.UsersAPI.PatchUser(context.Background(), id).SubmitUserRequest(submitUserRequest).Execute()
+          //resp, r, err := apiClient.UsersAPI.PatchUser(context.Background(), id).SubmitUserRequest(submitUserRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.PatchUser``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5619,8 +5619,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UsersAPI.PatchUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
-          //resp, r, err := apiClient.NERM.UsersAPI.PatchUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
+          resp, r, err := apiClient.UsersAPI.PatchUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
+          //resp, r, err := apiClient.UsersAPI.PatchUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.PatchUsers``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5659,8 +5659,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UsersAPI.SubmitUser(context.Background()).SubmitUserRequest(submitUserRequest).Execute()
-          //resp, r, err := apiClient.NERM.UsersAPI.SubmitUser(context.Background()).SubmitUserRequest(submitUserRequest).Execute()
+          resp, r, err := apiClient.UsersAPI.SubmitUser(context.Background()).SubmitUserRequest(submitUserRequest).Execute()
+          //resp, r, err := apiClient.UsersAPI.SubmitUser(context.Background()).SubmitUserRequest(submitUserRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.SubmitUser``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5694,8 +5694,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UsersAPI.SubmitUserAvatar(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.UsersAPI.SubmitUserAvatar(context.Background(), id).File(file).Execute()
+          resp, r, err := apiClient.UsersAPI.SubmitUserAvatar(context.Background(), id).Execute()
+          //resp, r, err := apiClient.UsersAPI.SubmitUserAvatar(context.Background(), id).File(file).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.SubmitUserAvatar``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5734,8 +5734,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.UsersAPI.SubmitUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
-          //resp, r, err := apiClient.NERM.UsersAPI.SubmitUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
+          resp, r, err := apiClient.UsersAPI.SubmitUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
+          //resp, r, err := apiClient.UsersAPI.SubmitUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.SubmitUsers``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5774,8 +5774,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionPerformerAPI.CreateWorkflowActionPerformer(context.Background()).CreateWorkflowActionPerformerRequest(createWorkflowActionPerformerRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionPerformerAPI.CreateWorkflowActionPerformer(context.Background()).CreateWorkflowActionPerformerRequest(createWorkflowActionPerformerRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionPerformerAPI.CreateWorkflowActionPerformer(context.Background()).CreateWorkflowActionPerformerRequest(createWorkflowActionPerformerRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionPerformerAPI.CreateWorkflowActionPerformer(context.Background()).CreateWorkflowActionPerformerRequest(createWorkflowActionPerformerRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionPerformerAPI.CreateWorkflowActionPerformer``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5814,8 +5814,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateApprovalAction(context.Background()).CreateApprovalActionRequest(createApprovalActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateApprovalAction(context.Background()).CreateApprovalActionRequest(createApprovalActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateApprovalAction(context.Background()).CreateApprovalActionRequest(createApprovalActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateApprovalAction(context.Background()).CreateApprovalActionRequest(createApprovalActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateApprovalAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5854,8 +5854,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateAskSecurityQuestionAction(context.Background()).CreateAskSecurityQuestionActionRequest(createAskSecurityQuestionActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateAskSecurityQuestionAction(context.Background()).CreateAskSecurityQuestionActionRequest(createAskSecurityQuestionActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateAskSecurityQuestionAction(context.Background()).CreateAskSecurityQuestionActionRequest(createAskSecurityQuestionActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateAskSecurityQuestionAction(context.Background()).CreateAskSecurityQuestionActionRequest(createAskSecurityQuestionActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateAskSecurityQuestionAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5894,8 +5894,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateAutoAssignAction(context.Background()).CreateAutoAssignActionRequest(createAutoAssignActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateAutoAssignAction(context.Background()).CreateAutoAssignActionRequest(createAutoAssignActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateAutoAssignAction(context.Background()).CreateAutoAssignActionRequest(createAutoAssignActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateAutoAssignAction(context.Background()).CreateAutoAssignActionRequest(createAutoAssignActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateAutoAssignAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5934,8 +5934,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateBatchUpdateAction(context.Background()).CreateBatchUpdateActionRequest(createBatchUpdateActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateBatchUpdateAction(context.Background()).CreateBatchUpdateActionRequest(createBatchUpdateActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateBatchUpdateAction(context.Background()).CreateBatchUpdateActionRequest(createBatchUpdateActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateBatchUpdateAction(context.Background()).CreateBatchUpdateActionRequest(createBatchUpdateActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateBatchUpdateAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5974,8 +5974,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateCloseSessionAction(context.Background()).CreateCloseSessionActionRequest(createCloseSessionActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateCloseSessionAction(context.Background()).CreateCloseSessionActionRequest(createCloseSessionActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateCloseSessionAction(context.Background()).CreateCloseSessionActionRequest(createCloseSessionActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateCloseSessionAction(context.Background()).CreateCloseSessionActionRequest(createCloseSessionActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateCloseSessionAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6014,8 +6014,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateContributorsAction(context.Background()).CreateContributorsActionRequest(createContributorsActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateContributorsAction(context.Background()).CreateContributorsActionRequest(createContributorsActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateContributorsAction(context.Background()).CreateContributorsActionRequest(createContributorsActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateContributorsAction(context.Background()).CreateContributorsActionRequest(createContributorsActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateContributorsAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6054,8 +6054,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateCreateProfileAction(context.Background()).CreateCreateProfileActionRequest(createCreateProfileActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateCreateProfileAction(context.Background()).CreateCreateProfileActionRequest(createCreateProfileActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateCreateProfileAction(context.Background()).CreateCreateProfileActionRequest(createCreateProfileActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateCreateProfileAction(context.Background()).CreateCreateProfileActionRequest(createCreateProfileActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateCreateProfileAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6094,8 +6094,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateDuplicatePreventionAction(context.Background()).CreateDuplicatePreventionActionRequest(createDuplicatePreventionActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateDuplicatePreventionAction(context.Background()).CreateDuplicatePreventionActionRequest(createDuplicatePreventionActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateDuplicatePreventionAction(context.Background()).CreateDuplicatePreventionActionRequest(createDuplicatePreventionActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateDuplicatePreventionAction(context.Background()).CreateDuplicatePreventionActionRequest(createDuplicatePreventionActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateDuplicatePreventionAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6134,8 +6134,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateEmailVerificationAction(context.Background()).CreateEmailVerificationActionRequest(createEmailVerificationActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateEmailVerificationAction(context.Background()).CreateEmailVerificationActionRequest(createEmailVerificationActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateEmailVerificationAction(context.Background()).CreateEmailVerificationActionRequest(createEmailVerificationActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateEmailVerificationAction(context.Background()).CreateEmailVerificationActionRequest(createEmailVerificationActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateEmailVerificationAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6174,8 +6174,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateFulfillmentAction(context.Background()).CreateFulfillmentActionRequest(createFulfillmentActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateFulfillmentAction(context.Background()).CreateFulfillmentActionRequest(createFulfillmentActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateFulfillmentAction(context.Background()).CreateFulfillmentActionRequest(createFulfillmentActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateFulfillmentAction(context.Background()).CreateFulfillmentActionRequest(createFulfillmentActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateFulfillmentAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6214,8 +6214,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateIdentityProofingAction(context.Background()).CreateIdentityProofingActionRequest(createIdentityProofingActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateIdentityProofingAction(context.Background()).CreateIdentityProofingActionRequest(createIdentityProofingActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateIdentityProofingAction(context.Background()).CreateIdentityProofingActionRequest(createIdentityProofingActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateIdentityProofingAction(context.Background()).CreateIdentityProofingActionRequest(createIdentityProofingActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateIdentityProofingAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6254,8 +6254,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateInvitationAction(context.Background()).CreateInvitationActionRequest(createInvitationActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateInvitationAction(context.Background()).CreateInvitationActionRequest(createInvitationActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateInvitationAction(context.Background()).CreateInvitationActionRequest(createInvitationActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateInvitationAction(context.Background()).CreateInvitationActionRequest(createInvitationActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateInvitationAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6294,8 +6294,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateLdapAction(context.Background()).CreateLdapActionRequest(createLdapActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateLdapAction(context.Background()).CreateLdapActionRequest(createLdapActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateLdapAction(context.Background()).CreateLdapActionRequest(createLdapActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateLdapAction(context.Background()).CreateLdapActionRequest(createLdapActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateLdapAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6334,8 +6334,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateNotificationAction(context.Background()).CreateNotificationActionRequest(createNotificationActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateNotificationAction(context.Background()).CreateNotificationActionRequest(createNotificationActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateNotificationAction(context.Background()).CreateNotificationActionRequest(createNotificationActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateNotificationAction(context.Background()).CreateNotificationActionRequest(createNotificationActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateNotificationAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6374,8 +6374,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreatePasswordResetAction(context.Background()).CreatePasswordResetActionRequest(createPasswordResetActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreatePasswordResetAction(context.Background()).CreatePasswordResetActionRequest(createPasswordResetActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreatePasswordResetAction(context.Background()).CreatePasswordResetActionRequest(createPasswordResetActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreatePasswordResetAction(context.Background()).CreatePasswordResetActionRequest(createPasswordResetActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreatePasswordResetAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6414,8 +6414,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateProfileCheckAction(context.Background()).CreateProfileCheckActionRequest(createProfileCheckActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateProfileCheckAction(context.Background()).CreateProfileCheckActionRequest(createProfileCheckActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateProfileCheckAction(context.Background()).CreateProfileCheckActionRequest(createProfileCheckActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateProfileCheckAction(context.Background()).CreateProfileCheckActionRequest(createProfileCheckActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateProfileCheckAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6454,8 +6454,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateProfileSelectAction(context.Background()).CreateProfileSelectActionRequest(createProfileSelectActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateProfileSelectAction(context.Background()).CreateProfileSelectActionRequest(createProfileSelectActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateProfileSelectAction(context.Background()).CreateProfileSelectActionRequest(createProfileSelectActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateProfileSelectAction(context.Background()).CreateProfileSelectActionRequest(createProfileSelectActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateProfileSelectAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6494,8 +6494,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRequestAction(context.Background()).CreateRequestActionRequest(createRequestActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRequestAction(context.Background()).CreateRequestActionRequest(createRequestActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateRequestAction(context.Background()).CreateRequestActionRequest(createRequestActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateRequestAction(context.Background()).CreateRequestActionRequest(createRequestActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateRequestAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6534,8 +6534,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRestApiAction(context.Background()).CreateRestApiActionRequest(createRestApiActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRestApiAction(context.Background()).CreateRestApiActionRequest(createRestApiActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateRestApiAction(context.Background()).CreateRestApiActionRequest(createRestApiActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateRestApiAction(context.Background()).CreateRestApiActionRequest(createRestApiActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateRestApiAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6574,8 +6574,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateReviewAction(context.Background()).CreateReviewActionRequest(createReviewActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateReviewAction(context.Background()).CreateReviewActionRequest(createReviewActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateReviewAction(context.Background()).CreateReviewActionRequest(createReviewActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateReviewAction(context.Background()).CreateReviewActionRequest(createReviewActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateReviewAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6614,8 +6614,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRunWorkflowAction(context.Background()).CreateRunWorkflowActionRequest(createRunWorkflowActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRunWorkflowAction(context.Background()).CreateRunWorkflowActionRequest(createRunWorkflowActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateRunWorkflowAction(context.Background()).CreateRunWorkflowActionRequest(createRunWorkflowActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateRunWorkflowAction(context.Background()).CreateRunWorkflowActionRequest(createRunWorkflowActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateRunWorkflowAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6654,8 +6654,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSetAttributesAction(context.Background()).CreateSetAttributesActionRequest(createSetAttributesActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSetAttributesAction(context.Background()).CreateSetAttributesActionRequest(createSetAttributesActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateSetAttributesAction(context.Background()).CreateSetAttributesActionRequest(createSetAttributesActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateSetAttributesAction(context.Background()).CreateSetAttributesActionRequest(createSetAttributesActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateSetAttributesAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6694,8 +6694,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSetSecurityQuestionAction(context.Background()).CreateSetSecurityQuestionActionRequest(createSetSecurityQuestionActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSetSecurityQuestionAction(context.Background()).CreateSetSecurityQuestionActionRequest(createSetSecurityQuestionActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateSetSecurityQuestionAction(context.Background()).CreateSetSecurityQuestionActionRequest(createSetSecurityQuestionActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateSetSecurityQuestionAction(context.Background()).CreateSetSecurityQuestionActionRequest(createSetSecurityQuestionActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateSetSecurityQuestionAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6734,8 +6734,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSoapApiAction(context.Background()).CreateSoapApiActionRequest(createSoapApiActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSoapApiAction(context.Background()).CreateSoapApiActionRequest(createSoapApiActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateSoapApiAction(context.Background()).CreateSoapApiActionRequest(createSoapApiActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateSoapApiAction(context.Background()).CreateSoapApiActionRequest(createSoapApiActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateSoapApiAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6774,8 +6774,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateStatusChangeAction(context.Background()).CreateStatusChangeActionRequest(createStatusChangeActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateStatusChangeAction(context.Background()).CreateStatusChangeActionRequest(createStatusChangeActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateStatusChangeAction(context.Background()).CreateStatusChangeActionRequest(createStatusChangeActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateStatusChangeAction(context.Background()).CreateStatusChangeActionRequest(createStatusChangeActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateStatusChangeAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6814,8 +6814,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUnassignAction(context.Background()).CreateUnassignActionRequest(createUnassignActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUnassignAction(context.Background()).CreateUnassignActionRequest(createUnassignActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateUnassignAction(context.Background()).CreateUnassignActionRequest(createUnassignActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateUnassignAction(context.Background()).CreateUnassignActionRequest(createUnassignActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateUnassignAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6854,8 +6854,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUpdateProfileAction(context.Background()).CreateUpdateProfileActionRequest(createUpdateProfileActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUpdateProfileAction(context.Background()).CreateUpdateProfileActionRequest(createUpdateProfileActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateUpdateProfileAction(context.Background()).CreateUpdateProfileActionRequest(createUpdateProfileActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateUpdateProfileAction(context.Background()).CreateUpdateProfileActionRequest(createUpdateProfileActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateUpdateProfileAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6894,8 +6894,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUsernamePasswordAction(context.Background()).CreateUsernamePasswordActionRequest(createUsernamePasswordActionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUsernamePasswordAction(context.Background()).CreateUsernamePasswordActionRequest(createUsernamePasswordActionRequest).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.CreateUsernamePasswordAction(context.Background()).CreateUsernamePasswordActionRequest(createUsernamePasswordActionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.CreateUsernamePasswordAction(context.Background()).CreateUsernamePasswordActionRequest(createUsernamePasswordActionRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateUsernamePasswordAction``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6928,8 +6928,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowActionsAPI.GetWorkflowActions(context.Background()).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowActionsAPI.GetWorkflowActions(context.Background()).WorkflowId(workflowId).Execute()
+          resp, r, err := apiClient.WorkflowActionsAPI.GetWorkflowActions(context.Background()).Execute()
+          //resp, r, err := apiClient.WorkflowActionsAPI.GetWorkflowActions(context.Background()).WorkflowId(workflowId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.GetWorkflowActions``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6962,8 +6962,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSession(context.Background(), id).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSession(context.Background(), id).Execute()
+          resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSession(context.Background(), id).Execute()
+          //resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSession(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.GetWorkflowSession``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6997,8 +6997,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
+          resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
+          //resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.GetWorkflowSessionUpload``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7039,8 +7039,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSessions(context.Background(), uid).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSessions(context.Background(), uid).Limit(limit).Offset(offset).Order(order).ProfileId(profileId).WorkflowId(workflowId).RequesterId(requesterId).Status(status).Metadata(metadata).Execute()
+          resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSessions(context.Background(), uid).Execute()
+          //resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSessions(context.Background(), uid).Limit(limit).Offset(offset).Order(order).ProfileId(profileId).WorkflowId(workflowId).RequesterId(requesterId).Status(status).Metadata(metadata).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.GetWorkflowSessions``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7081,8 +7081,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowSessionsAPI.PatchWorkflowSession(context.Background(), id).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.PatchWorkflowSession(context.Background(), id).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Run(run).Execute()
+          resp, r, err := apiClient.WorkflowSessionsAPI.PatchWorkflowSession(context.Background(), id).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowSessionsAPI.PatchWorkflowSession(context.Background(), id).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Run(run).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.PatchWorkflowSession``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7122,8 +7122,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowSessionsAPI.SubmitWorkflowSession(context.Background()).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.SubmitWorkflowSession(context.Background()).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Run(run).Execute()
+          resp, r, err := apiClient.WorkflowSessionsAPI.SubmitWorkflowSession(context.Background()).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Execute()
+          //resp, r, err := apiClient.WorkflowSessionsAPI.SubmitWorkflowSession(context.Background()).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Run(run).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.SubmitWorkflowSession``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7158,8 +7158,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowSessionsAPI.SubmitWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.SubmitWorkflowSessionUpload(context.Background(), id, attributeId).File(file).Execute()
+          resp, r, err := apiClient.WorkflowSessionsAPI.SubmitWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
+          //resp, r, err := apiClient.WorkflowSessionsAPI.SubmitWorkflowSessionUpload(context.Background(), id, attributeId).File(file).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.SubmitWorkflowSessionUpload``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7198,8 +7198,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowsAPI.CreateAutomatedWorkflow(context.Background()).CreateAutomatedWorkflowRequest(createAutomatedWorkflowRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateAutomatedWorkflow(context.Background()).CreateAutomatedWorkflowRequest(createAutomatedWorkflowRequest).Execute()
+          resp, r, err := apiClient.WorkflowsAPI.CreateAutomatedWorkflow(context.Background()).CreateAutomatedWorkflowRequest(createAutomatedWorkflowRequest).Execute()
+          //resp, r, err := apiClient.WorkflowsAPI.CreateAutomatedWorkflow(context.Background()).CreateAutomatedWorkflowRequest(createAutomatedWorkflowRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateAutomatedWorkflow``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7238,8 +7238,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowsAPI.CreateBatchWorkflow(context.Background()).CreateBatchWorkflowRequest(createBatchWorkflowRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateBatchWorkflow(context.Background()).CreateBatchWorkflowRequest(createBatchWorkflowRequest).Execute()
+          resp, r, err := apiClient.WorkflowsAPI.CreateBatchWorkflow(context.Background()).CreateBatchWorkflowRequest(createBatchWorkflowRequest).Execute()
+          //resp, r, err := apiClient.WorkflowsAPI.CreateBatchWorkflow(context.Background()).CreateBatchWorkflowRequest(createBatchWorkflowRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateBatchWorkflow``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7278,8 +7278,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowsAPI.CreateCreateWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateCreateWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
+          resp, r, err := apiClient.WorkflowsAPI.CreateCreateWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
+          //resp, r, err := apiClient.WorkflowsAPI.CreateCreateWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateCreateWorkflow``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7318,8 +7318,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowsAPI.CreateLoginWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateLoginWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
+          resp, r, err := apiClient.WorkflowsAPI.CreateLoginWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
+          //resp, r, err := apiClient.WorkflowsAPI.CreateLoginWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateLoginWorkflow``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7358,8 +7358,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowsAPI.CreatePasswordUpdateWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowsAPI.CreatePasswordUpdateWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
+          resp, r, err := apiClient.WorkflowsAPI.CreatePasswordUpdateWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
+          //resp, r, err := apiClient.WorkflowsAPI.CreatePasswordUpdateWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreatePasswordUpdateWorkflow``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7398,8 +7398,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowsAPI.CreateRegistrationWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateRegistrationWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
+          resp, r, err := apiClient.WorkflowsAPI.CreateRegistrationWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
+          //resp, r, err := apiClient.WorkflowsAPI.CreateRegistrationWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateRegistrationWorkflow``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7438,8 +7438,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.NERM.WorkflowsAPI.CreateUpdateWorkflow(context.Background()).CreateUpdateWorkflowRequest(createUpdateWorkflowRequest).Execute()
-          //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateUpdateWorkflow(context.Background()).CreateUpdateWorkflowRequest(createUpdateWorkflowRequest).Execute()
+          resp, r, err := apiClient.WorkflowsAPI.CreateUpdateWorkflow(context.Background()).CreateUpdateWorkflowRequest(createUpdateWorkflowRequest).Execute()
+          //resp, r, err := apiClient.WorkflowsAPI.CreateUpdateWorkflow(context.Background()).CreateUpdateWorkflowRequest(createUpdateWorkflowRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateUpdateWorkflow``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

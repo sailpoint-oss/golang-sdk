@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UsersAPI.DeleteUser(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.UsersAPI.DeleteUser(context.Background(), id).Execute()
+    resp, r, err := apiClient.UsersAPI.DeleteUser(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.UsersAPI.DeleteUser(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.DeleteUser``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UsersAPI.GetUser(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.UsersAPI.GetUser(context.Background(), id).Execute()
+    resp, r, err := apiClient.UsersAPI.GetUser(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.UsersAPI.GetUser(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.GetUser``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,8 +211,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UsersAPI.GetUserAvatar(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.UsersAPI.GetUserAvatar(context.Background(), id).Execute()
+    resp, r, err := apiClient.UsersAPI.GetUserAvatar(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.UsersAPI.GetUserAvatar(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.GetUserAvatar``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -293,8 +293,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UsersAPI.GetUsers(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.UsersAPI.GetUsers(context.Background()).Limit(limit).Offset(offset).Order(order).Name(name).Login(login).Title(title).UserStatus(userStatus).Type_(type_).Email(email).Metadata(metadata).SailpointIdentityId(sailpointIdentityId).Execute()
+    resp, r, err := apiClient.UsersAPI.GetUsers(context.Background()).Execute()
+	  //resp, r, err := apiClient.UsersAPI.GetUsers(context.Background()).Limit(limit).Offset(offset).Order(order).Name(name).Login(login).Title(title).UserStatus(userStatus).Type_(type_).Email(email).Metadata(metadata).SailpointIdentityId(sailpointIdentityId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.GetUsers``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -366,8 +366,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UsersAPI.PatchUser(context.Background(), id).SubmitUserRequest(submitUserRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UsersAPI.PatchUser(context.Background(), id).SubmitUserRequest(submitUserRequest).Execute()
+    resp, r, err := apiClient.UsersAPI.PatchUser(context.Background(), id).SubmitUserRequest(submitUserRequest).Execute()
+	  //resp, r, err := apiClient.UsersAPI.PatchUser(context.Background(), id).SubmitUserRequest(submitUserRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.PatchUser``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -433,8 +433,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UsersAPI.PatchUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UsersAPI.PatchUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
+    resp, r, err := apiClient.UsersAPI.PatchUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
+	  //resp, r, err := apiClient.UsersAPI.PatchUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.PatchUsers``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -500,8 +500,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UsersAPI.SubmitUser(context.Background()).SubmitUserRequest(submitUserRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UsersAPI.SubmitUser(context.Background()).SubmitUserRequest(submitUserRequest).Execute()
+    resp, r, err := apiClient.UsersAPI.SubmitUser(context.Background()).SubmitUserRequest(submitUserRequest).Execute()
+	  //resp, r, err := apiClient.UsersAPI.SubmitUser(context.Background()).SubmitUserRequest(submitUserRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.SubmitUser``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -568,8 +568,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UsersAPI.SubmitUserAvatar(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.UsersAPI.SubmitUserAvatar(context.Background(), id).File(file).Execute()
+    resp, r, err := apiClient.UsersAPI.SubmitUserAvatar(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.UsersAPI.SubmitUserAvatar(context.Background(), id).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.SubmitUserAvatar``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -635,8 +635,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UsersAPI.SubmitUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UsersAPI.SubmitUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
+    resp, r, err := apiClient.UsersAPI.SubmitUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
+	  //resp, r, err := apiClient.UsersAPI.SubmitUsers(context.Background()).SubmitUsersRequest(submitUsersRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.SubmitUsers``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

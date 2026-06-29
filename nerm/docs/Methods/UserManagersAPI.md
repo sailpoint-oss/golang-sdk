@@ -76,8 +76,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserManagersAPI.GetUserManager(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.UserManagersAPI.GetUserManager(context.Background(), id).Execute()
+    resp, r, err := apiClient.UserManagersAPI.GetUserManager(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.UserManagersAPI.GetUserManager(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.GetUserManager``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -148,8 +148,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserManagersAPI.GetUserManagers(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.UserManagersAPI.GetUserManagers(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).ManagerId(managerId).Metadata(metadata).Execute()
+    resp, r, err := apiClient.UserManagersAPI.GetUserManagers(context.Background()).Execute()
+	  //resp, r, err := apiClient.UserManagersAPI.GetUserManagers(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).ManagerId(managerId).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.GetUserManagers``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -221,8 +221,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserManagersAPI.PatchUserManager(context.Background(), id).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserManagersAPI.PatchUserManager(context.Background(), id).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
+    resp, r, err := apiClient.UserManagersAPI.PatchUserManager(context.Background(), id).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
+	  //resp, r, err := apiClient.UserManagersAPI.PatchUserManager(context.Background(), id).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.PatchUserManager``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -288,8 +288,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserManagersAPI.PatchUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserManagersAPI.PatchUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
+    resp, r, err := apiClient.UserManagersAPI.PatchUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
+	  //resp, r, err := apiClient.UserManagersAPI.PatchUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.PatchUserManagers``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -355,8 +355,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserManagersAPI.SubmitUserManager(context.Background()).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserManagersAPI.SubmitUserManager(context.Background()).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
+    resp, r, err := apiClient.UserManagersAPI.SubmitUserManager(context.Background()).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
+	  //resp, r, err := apiClient.UserManagersAPI.SubmitUserManager(context.Background()).SubmitUserManagerRequest(submitUserManagerRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.SubmitUserManager``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -422,8 +422,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserManagersAPI.SubmitUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserManagersAPI.SubmitUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
+    resp, r, err := apiClient.UserManagersAPI.SubmitUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
+	  //resp, r, err := apiClient.UserManagersAPI.SubmitUserManagers(context.Background()).SubmitUserManagersRequest(submitUserManagersRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserManagersAPI.SubmitUserManagers``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

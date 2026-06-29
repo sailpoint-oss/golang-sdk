@@ -134,8 +134,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.TaggedObjects.TaggedObjectsAPI.DeleteTaggedObjectV1(context.Background(), type_, id).Execute()
-	  //r, err := apiClient.TaggedObjects.TaggedObjectsAPI.DeleteTaggedObjectV1(context.Background(), type_, id).Execute()
+    r, err := apiClient.TaggedObjectsAPI.DeleteTaggedObjectV1(context.Background(), type_, id).Execute()
+	  //r, err := apiClient.TaggedObjectsAPI.DeleteTaggedObjectV1(context.Background(), type_, id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.DeleteTaggedObjectV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -200,8 +200,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.TaggedObjects.TaggedObjectsAPI.DeleteTagsToManyObjectV1(context.Background()).Bulkremovetaggedobject(bulkremovetaggedobject).Execute()
-	  //r, err := apiClient.TaggedObjects.TaggedObjectsAPI.DeleteTagsToManyObjectV1(context.Background()).Bulkremovetaggedobject(bulkremovetaggedobject).Execute()
+    r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObjectV1(context.Background()).Bulkremovetaggedobject(bulkremovetaggedobject).Execute()
+	  //r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObjectV1(context.Background()).Bulkremovetaggedobject(bulkremovetaggedobject).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.DeleteTagsToManyObjectV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -268,8 +268,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjects.TaggedObjectsAPI.GetTaggedObjectV1(context.Background(), type_, id).Execute()
-	  //resp, r, err := apiClient.TaggedObjects.TaggedObjectsAPI.GetTaggedObjectV1(context.Background(), type_, id).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.GetTaggedObjectV1(context.Background(), type_, id).Execute()
+	  //resp, r, err := apiClient.TaggedObjectsAPI.GetTaggedObjectV1(context.Background(), type_, id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.GetTaggedObjectV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -342,8 +342,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjects.TaggedObjectsAPI.ListTaggedObjectsByTypeV1(context.Background(), type_).Execute()
-	  //resp, r, err := apiClient.TaggedObjects.TaggedObjectsAPI.ListTaggedObjectsByTypeV1(context.Background(), type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.ListTaggedObjectsByTypeV1(context.Background(), type_).Execute()
+	  //resp, r, err := apiClient.TaggedObjectsAPI.ListTaggedObjectsByTypeV1(context.Background(), type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.ListTaggedObjectsByTypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -410,8 +410,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjects.TaggedObjectsAPI.ListTaggedObjectsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.TaggedObjects.TaggedObjectsAPI.ListTaggedObjectsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.ListTaggedObjectsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.TaggedObjectsAPI.ListTaggedObjectsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.ListTaggedObjectsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -486,8 +486,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjects.TaggedObjectsAPI.PutTaggedObjectV1(context.Background(), type_, id).Taggedobject(taggedobject).Execute()
-	  //resp, r, err := apiClient.TaggedObjects.TaggedObjectsAPI.PutTaggedObjectV1(context.Background(), type_, id).Taggedobject(taggedobject).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.PutTaggedObjectV1(context.Background(), type_, id).Taggedobject(taggedobject).Execute()
+	  //resp, r, err := apiClient.TaggedObjectsAPI.PutTaggedObjectV1(context.Background(), type_, id).Taggedobject(taggedobject).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.PutTaggedObjectV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -553,8 +553,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.TaggedObjects.TaggedObjectsAPI.SetTagToObjectV1(context.Background()).Taggedobject(taggedobject).Execute()
-	  //r, err := apiClient.TaggedObjects.TaggedObjectsAPI.SetTagToObjectV1(context.Background()).Taggedobject(taggedobject).Execute()
+    r, err := apiClient.TaggedObjectsAPI.SetTagToObjectV1(context.Background()).Taggedobject(taggedobject).Execute()
+	  //r, err := apiClient.TaggedObjectsAPI.SetTagToObjectV1(context.Background()).Taggedobject(taggedobject).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.SetTagToObjectV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -619,8 +619,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjects.TaggedObjectsAPI.SetTagsToManyObjectsV1(context.Background()).Bulkaddtaggedobject(bulkaddtaggedobject).Execute()
-	  //resp, r, err := apiClient.TaggedObjects.TaggedObjectsAPI.SetTagsToManyObjectsV1(context.Background()).Bulkaddtaggedobject(bulkaddtaggedobject).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjectsV1(context.Background()).Bulkaddtaggedobject(bulkaddtaggedobject).Execute()
+	  //resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjectsV1(context.Background()).Bulkaddtaggedobject(bulkaddtaggedobject).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.SetTagsToManyObjectsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

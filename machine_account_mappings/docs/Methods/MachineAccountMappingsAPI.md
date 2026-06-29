@@ -82,8 +82,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountMappings.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
-	  //resp, r, err := apiClient.MachineAccountMappings.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
+    resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
+	  //resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.CreateMachineAccountMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -149,8 +149,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MachineAccountMappings.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).Execute()
-	  //r, err := apiClient.MachineAccountMappings.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).Execute()
+    r, err := apiClient.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).Execute()
+	  //r, err := apiClient.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -218,8 +218,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountMappings.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.MachineAccountMappings.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.ListMachineAccountMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -291,8 +291,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountMappings.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
-	  //resp, r, err := apiClient.MachineAccountMappings.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
+    resp, r, err := apiClient.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
+	  //resp, r, err := apiClient.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.SetMachineAccountMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

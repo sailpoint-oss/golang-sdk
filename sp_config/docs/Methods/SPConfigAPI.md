@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SpConfig.SPConfigAPI.ExportSpConfigV1(context.Background()).Exportpayload(exportpayload).Execute()
-	  //resp, r, err := apiClient.SpConfig.SPConfigAPI.ExportSpConfigV1(context.Background()).Exportpayload(exportpayload).Execute()
+    resp, r, err := apiClient.SPConfigAPI.ExportSpConfigV1(context.Background()).Exportpayload(exportpayload).Execute()
+	  //resp, r, err := apiClient.SPConfigAPI.ExportSpConfigV1(context.Background()).Exportpayload(exportpayload).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ExportSpConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -147,8 +147,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SpConfig.SPConfigAPI.GetSpConfigExportStatusV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.SpConfig.SPConfigAPI.GetSpConfigExportStatusV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SPConfigAPI.GetSpConfigExportStatusV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SPConfigAPI.GetSpConfigExportStatusV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigExportStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,8 +215,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SpConfig.SPConfigAPI.GetSpConfigExportV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.SpConfig.SPConfigAPI.GetSpConfigExportV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SPConfigAPI.GetSpConfigExportV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SPConfigAPI.GetSpConfigExportV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigExportV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -285,8 +285,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SpConfig.SPConfigAPI.GetSpConfigImportStatusV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.SpConfig.SPConfigAPI.GetSpConfigImportStatusV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SPConfigAPI.GetSpConfigImportStatusV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SPConfigAPI.GetSpConfigImportStatusV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigImportStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -353,8 +353,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SpConfig.SPConfigAPI.GetSpConfigImportV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.SpConfig.SPConfigAPI.GetSpConfigImportV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SPConfigAPI.GetSpConfigImportV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SPConfigAPI.GetSpConfigImportV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigImportV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -429,8 +429,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SpConfig.SPConfigAPI.ImportSpConfigV1(context.Background()).Data(data).Execute()
-	  //resp, r, err := apiClient.SpConfig.SPConfigAPI.ImportSpConfigV1(context.Background()).Data(data).Preview(preview).Options(options).Execute()
+    resp, r, err := apiClient.SPConfigAPI.ImportSpConfigV1(context.Background()).Data(data).Execute()
+	  //resp, r, err := apiClient.SPConfigAPI.ImportSpConfigV1(context.Background()).Data(data).Preview(preview).Options(options).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ImportSpConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -486,8 +486,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SpConfig.SPConfigAPI.ListSpConfigObjectsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SpConfig.SPConfigAPI.ListSpConfigObjectsV1(context.Background()).Execute()
+    resp, r, err := apiClient.SPConfigAPI.ListSpConfigObjectsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SPConfigAPI.ListSpConfigObjectsV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ListSpConfigObjectsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

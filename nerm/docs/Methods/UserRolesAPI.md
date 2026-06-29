@@ -77,8 +77,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserRolesAPI.DeleteUserRole(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.UserRolesAPI.DeleteUserRole(context.Background(), id).Execute()
+    resp, r, err := apiClient.UserRolesAPI.DeleteUserRole(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.UserRolesAPI.DeleteUserRole(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.DeleteUserRole``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -143,8 +143,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserRolesAPI.GetUserRole(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.UserRolesAPI.GetUserRole(context.Background(), id).Execute()
+    resp, r, err := apiClient.UserRolesAPI.GetUserRole(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.UserRolesAPI.GetUserRole(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.GetUserRole``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,8 +215,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserRolesAPI.GetUserRoles(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.UserRolesAPI.GetUserRoles(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).RoleId(roleId).Metadata(metadata).Execute()
+    resp, r, err := apiClient.UserRolesAPI.GetUserRoles(context.Background()).Execute()
+	  //resp, r, err := apiClient.UserRolesAPI.GetUserRoles(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).RoleId(roleId).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.GetUserRoles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -288,8 +288,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserRolesAPI.PatchUserRole(context.Background(), id).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserRolesAPI.PatchUserRole(context.Background(), id).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
+    resp, r, err := apiClient.UserRolesAPI.PatchUserRole(context.Background(), id).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
+	  //resp, r, err := apiClient.UserRolesAPI.PatchUserRole(context.Background(), id).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.PatchUserRole``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -355,8 +355,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserRolesAPI.PatchUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserRolesAPI.PatchUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
+    resp, r, err := apiClient.UserRolesAPI.PatchUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
+	  //resp, r, err := apiClient.UserRolesAPI.PatchUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.PatchUserRoles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -422,8 +422,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserRolesAPI.SubmitUserRole(context.Background()).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserRolesAPI.SubmitUserRole(context.Background()).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
+    resp, r, err := apiClient.UserRolesAPI.SubmitUserRole(context.Background()).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
+	  //resp, r, err := apiClient.UserRolesAPI.SubmitUserRole(context.Background()).SubmitUserRoleRequest(submitUserRoleRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.SubmitUserRole``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -489,8 +489,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserRolesAPI.SubmitUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserRolesAPI.SubmitUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
+    resp, r, err := apiClient.UserRolesAPI.SubmitUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
+	  //resp, r, err := apiClient.UserRolesAPI.SubmitUserRoles(context.Background()).SubmitUserRolesRequest(submitUserRolesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserRolesAPI.SubmitUserRoles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

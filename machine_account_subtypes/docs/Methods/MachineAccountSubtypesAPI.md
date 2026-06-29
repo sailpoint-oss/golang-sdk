@@ -93,8 +93,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.CreateSourceSubtypeV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CreateSourceSubtypeV1Request(createSourceSubtypeV1Request).Execute()
-	  //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.CreateSourceSubtypeV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CreateSourceSubtypeV1Request(createSourceSubtypeV1Request).Execute()
+    resp, r, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CreateSourceSubtypeV1Request(createSourceSubtypeV1Request).Execute()
+	  //resp, r, err := apiClient.MachineAccountSubtypesAPI.CreateSourceSubtypeV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CreateSourceSubtypeV1Request(createSourceSubtypeV1Request).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.CreateSourceSubtypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -174,8 +174,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.DeleteMachineAccountSubtypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -252,8 +252,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -331,8 +331,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -414,8 +414,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.ListSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.ListSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineAccountSubtypesAPI.ListSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.ListSourceSubtypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -494,8 +494,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -581,8 +581,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -667,8 +667,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.MachineAccountSubtypes.MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

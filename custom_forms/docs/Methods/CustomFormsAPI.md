@@ -92,8 +92,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.CreateFormDefinitionDynamicSchemaV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.CreateFormDefinitionDynamicSchemaV1(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionDynamicSchemaV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionDynamicSchemaV1(context.Background()).Body(body).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinitionDynamicSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -160,8 +160,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.CreateFormDefinitionFileRequestV1(context.Background(), formDefinitionID).File(file).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.CreateFormDefinitionFileRequestV1(context.Background(), formDefinitionID).File(file).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionFileRequestV1(context.Background(), formDefinitionID).File(file).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionFileRequestV1(context.Background(), formDefinitionID).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinitionFileRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -222,8 +222,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.CreateFormDefinitionV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.CreateFormDefinitionV1(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionV1(context.Background()).Body(body).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinitionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -284,8 +284,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.CreateFormInstanceV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.CreateFormInstanceV1(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.CreateFormInstanceV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.CreateFormInstanceV1(context.Background()).Body(body).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormInstanceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -350,8 +350,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.DeleteFormDefinitionV1(context.Background(), formDefinitionID).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.DeleteFormDefinitionV1(context.Background(), formDefinitionID).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.DeleteFormDefinitionV1(context.Background(), formDefinitionID).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.DeleteFormDefinitionV1(context.Background(), formDefinitionID).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.DeleteFormDefinitionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -418,8 +418,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.ExportFormDefinitionsByTenantV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.ExportFormDefinitionsByTenantV1(context.Background()).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.ExportFormDefinitionsByTenantV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.ExportFormDefinitionsByTenantV1(context.Background()).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.ExportFormDefinitionsByTenantV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -487,8 +487,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.GetFileFromS3V1(context.Background(), formDefinitionID, fileID).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.GetFileFromS3V1(context.Background(), formDefinitionID, fileID).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.GetFileFromS3V1(context.Background(), formDefinitionID, fileID).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.GetFileFromS3V1(context.Background(), formDefinitionID, fileID).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.GetFileFromS3V1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -553,8 +553,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.GetFormDefinitionByKeyV1(context.Background(), formDefinitionID).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.GetFormDefinitionByKeyV1(context.Background(), formDefinitionID).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.GetFormDefinitionByKeyV1(context.Background(), formDefinitionID).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.GetFormDefinitionByKeyV1(context.Background(), formDefinitionID).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.GetFormDefinitionByKeyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -621,8 +621,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.GetFormInstanceByKeyV1(context.Background(), formInstanceID).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.GetFormInstanceByKeyV1(context.Background(), formInstanceID).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.GetFormInstanceByKeyV1(context.Background(), formInstanceID).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.GetFormInstanceByKeyV1(context.Background(), formInstanceID).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.GetFormInstanceByKeyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -690,8 +690,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.GetFormInstanceFileV1(context.Background(), formInstanceID, fileID).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.GetFormInstanceFileV1(context.Background(), formInstanceID, fileID).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.GetFormInstanceFileV1(context.Background(), formInstanceID, fileID).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.GetFormInstanceFileV1(context.Background(), formInstanceID, fileID).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.GetFormInstanceFileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -752,8 +752,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.ImportFormDefinitionsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.ImportFormDefinitionsV1(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.ImportFormDefinitionsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.ImportFormDefinitionsV1(context.Background()).Body(body).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.ImportFormDefinitionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -820,8 +820,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.PatchFormDefinitionV1(context.Background(), formDefinitionID).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.PatchFormDefinitionV1(context.Background(), formDefinitionID).Body(body).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.PatchFormDefinitionV1(context.Background(), formDefinitionID).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.PatchFormDefinitionV1(context.Background(), formDefinitionID).Body(body).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.PatchFormDefinitionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -890,8 +890,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.PatchFormInstanceV1(context.Background(), formInstanceID).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.PatchFormInstanceV1(context.Background(), formInstanceID).Body(body).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.PatchFormInstanceV1(context.Background(), formInstanceID).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.PatchFormInstanceV1(context.Background(), formInstanceID).Body(body).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.PatchFormInstanceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -958,8 +958,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.SearchFormDefinitionsByTenantV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.SearchFormDefinitionsByTenantV1(context.Background()).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.SearchFormDefinitionsByTenantV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.SearchFormDefinitionsByTenantV1(context.Background()).Offset(offset).Limit(limit).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormDefinitionsByTenantV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1034,8 +1034,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.SearchFormElementDataByElementIDV1(context.Background(), formInstanceID, formElementID).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.SearchFormElementDataByElementIDV1(context.Background(), formInstanceID, formElementID).Limit(limit).Filters(filters).Query(query).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.SearchFormElementDataByElementIDV1(context.Background(), formInstanceID, formElementID).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.SearchFormElementDataByElementIDV1(context.Background(), formInstanceID, formElementID).Limit(limit).Filters(filters).Query(query).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormElementDataByElementIDV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1100,8 +1100,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.SearchFormInstancesByTenantV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.SearchFormInstancesByTenantV1(context.Background()).Offset(offset).Limit(limit).Filters(filters).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.SearchFormInstancesByTenantV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.SearchFormInstancesByTenantV1(context.Background()).Offset(offset).Limit(limit).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormInstancesByTenantV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1157,8 +1157,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.SearchPreDefinedSelectOptionsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.SearchPreDefinedSelectOptionsV1(context.Background()).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.SearchPreDefinedSelectOptionsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.SearchPreDefinedSelectOptionsV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchPreDefinedSelectOptionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1231,8 +1231,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomForms.CustomFormsAPI.ShowPreviewDataSourceV1(context.Background(), formDefinitionID).Execute()
-	  //resp, r, err := apiClient.CustomForms.CustomFormsAPI.ShowPreviewDataSourceV1(context.Background(), formDefinitionID).Limit(limit).Filters(filters).Query(query).Formelementpreviewrequest(formelementpreviewrequest).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.ShowPreviewDataSourceV1(context.Background(), formDefinitionID).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.ShowPreviewDataSourceV1(context.Background(), formDefinitionID).Limit(limit).Filters(filters).Query(query).Formelementpreviewrequest(formelementpreviewrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.ShowPreviewDataSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

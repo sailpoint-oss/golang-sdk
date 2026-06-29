@@ -1,14 +1,14 @@
 ---
-id: methods
+id: nermv2025-methods
 title: Methods
 pagination_label: Methods
 sidebar_label: Methods
 sidebar_position: 3
-sidebar_key: NERMV2025-golang-methods
+sidebar_key: nermv2025-golang-methods
 sidebar_class_name: methods
-keywords: ['go', 'Golang', 'sdk', 'methods'] 
-slug: /tools/sdk/go/NERMV2025/methods
-tags: ['SDK', 'Software Development Kit', 'NERMV2025', 'methods']
+keywords: ['go', 'Golang', 'sdk', 'nermv2025', 'methods'] 
+slug: /tools/sdk/go/nermv2025/methods
+tags: ['SDK', 'Software Development Kit', 'nermv2025', 'methods']
 ---
 
 Method documents provide detailed information about each API operation (or method). They describe what the method does and details its input parameters, expected return values, and any considerations to be aware of when using it.

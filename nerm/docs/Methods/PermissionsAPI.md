@@ -72,8 +72,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PermissionsAPI.CreatePermission(context.Background()).CreatePermissionRequest(createPermissionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PermissionsAPI.CreatePermission(context.Background()).CreatePermissionRequest(createPermissionRequest).Execute()
+    resp, r, err := apiClient.PermissionsAPI.CreatePermission(context.Background()).CreatePermissionRequest(createPermissionRequest).Execute()
+	  //resp, r, err := apiClient.PermissionsAPI.CreatePermission(context.Background()).CreatePermissionRequest(createPermissionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PermissionsAPI.CreatePermission``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

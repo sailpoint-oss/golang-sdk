@@ -73,8 +73,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentitiesConfig.PublicIdentitiesConfigAPI.GetPublicIdentityConfigV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.PublicIdentitiesConfig.PublicIdentitiesConfigAPI.GetPublicIdentityConfigV1(context.Background()).Execute()
+    resp, r, err := apiClient.PublicIdentitiesConfigAPI.GetPublicIdentityConfigV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.PublicIdentitiesConfigAPI.GetPublicIdentityConfigV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.GetPublicIdentityConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,8 +140,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentitiesConfig.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1(context.Background()).Publicidentityconfig(publicidentityconfig).Execute()
-	  //resp, r, err := apiClient.PublicIdentitiesConfig.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1(context.Background()).Publicidentityconfig(publicidentityconfig).Execute()
+    resp, r, err := apiClient.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1(context.Background()).Publicidentityconfig(publicidentityconfig).Execute()
+	  //resp, r, err := apiClient.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1(context.Background()).Publicidentityconfig(publicidentityconfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

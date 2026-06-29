@@ -77,8 +77,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.CreateIdentityAttributeV1(context.Background()).Identityattribute2(identityattribute2).Execute()
-	  //resp, r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.CreateIdentityAttributeV1(context.Background()).Identityattribute2(identityattribute2).Execute()
+    resp, r, err := apiClient.IdentityAttributesAPI.CreateIdentityAttributeV1(context.Background()).Identityattribute2(identityattribute2).Execute()
+	  //resp, r, err := apiClient.IdentityAttributesAPI.CreateIdentityAttributeV1(context.Background()).Identityattribute2(identityattribute2).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.CreateIdentityAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -143,8 +143,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.DeleteIdentityAttributeV1(context.Background(), name).Execute()
-	  //r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.DeleteIdentityAttributeV1(context.Background(), name).Execute()
+    r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttributeV1(context.Background(), name).Execute()
+	  //r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttributeV1(context.Background(), name).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.DeleteIdentityAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,8 +209,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.DeleteIdentityAttributesInBulkV1(context.Background()).Identityattributenames(identityattributenames).Execute()
-	  //r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.DeleteIdentityAttributesInBulkV1(context.Background()).Identityattributenames(identityattributenames).Execute()
+    r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttributesInBulkV1(context.Background()).Identityattributenames(identityattributenames).Execute()
+	  //r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttributesInBulkV1(context.Background()).Identityattributenames(identityattributenames).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.DeleteIdentityAttributesInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -274,8 +274,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.GetIdentityAttributeV1(context.Background(), name).Execute()
-	  //resp, r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.GetIdentityAttributeV1(context.Background(), name).Execute()
+    resp, r, err := apiClient.IdentityAttributesAPI.GetIdentityAttributeV1(context.Background(), name).Execute()
+	  //resp, r, err := apiClient.IdentityAttributesAPI.GetIdentityAttributeV1(context.Background(), name).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.GetIdentityAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -342,8 +342,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.ListIdentityAttributesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.ListIdentityAttributesV1(context.Background()).IncludeSystem(includeSystem).IncludeSilent(includeSilent).SearchableOnly(searchableOnly).Count(count).Execute()
+    resp, r, err := apiClient.IdentityAttributesAPI.ListIdentityAttributesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.IdentityAttributesAPI.ListIdentityAttributesV1(context.Background()).IncludeSystem(includeSystem).IncludeSilent(includeSilent).SearchableOnly(searchableOnly).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.ListIdentityAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -415,8 +415,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.PutIdentityAttributeV1(context.Background(), name).Identityattribute2(identityattribute2).Execute()
-	  //resp, r, err := apiClient.IdentityAttributes.IdentityAttributesAPI.PutIdentityAttributeV1(context.Background(), name).Identityattribute2(identityattribute2).Execute()
+    resp, r, err := apiClient.IdentityAttributesAPI.PutIdentityAttributeV1(context.Background(), name).Identityattribute2(identityattribute2).Execute()
+	  //resp, r, err := apiClient.IdentityAttributesAPI.PutIdentityAttributeV1(context.Background(), name).Identityattribute2(identityattribute2).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.PutIdentityAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

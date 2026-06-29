@@ -76,8 +76,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PromptInsights.PromptInsightsAPI.GetPromptInsightsMetricsV1(context.Background()).Interval(interval).Execute()
-	  //resp, r, err := apiClient.PromptInsights.PromptInsightsAPI.GetPromptInsightsMetricsV1(context.Background()).Interval(interval).Execute()
+    resp, r, err := apiClient.PromptInsightsAPI.GetPromptInsightsMetricsV1(context.Background()).Interval(interval).Execute()
+	  //resp, r, err := apiClient.PromptInsightsAPI.GetPromptInsightsMetricsV1(context.Background()).Interval(interval).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PromptInsightsAPI.GetPromptInsightsMetricsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -144,8 +144,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PromptInsights.PromptInsightsAPI.ListPromptInsightsV1(context.Background()).Interval(interval).Execute()
-	  //resp, r, err := apiClient.PromptInsights.PromptInsightsAPI.ListPromptInsightsV1(context.Background()).Interval(interval).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.PromptInsightsAPI.ListPromptInsightsV1(context.Background()).Interval(interval).Execute()
+	  //resp, r, err := apiClient.PromptInsightsAPI.ListPromptInsightsV1(context.Background()).Interval(interval).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PromptInsightsAPI.ListPromptInsightsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

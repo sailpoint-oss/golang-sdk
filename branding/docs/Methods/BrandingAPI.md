@@ -90,8 +90,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Branding.BrandingAPI.CreateBrandingItemV1(context.Background()).Name(name).ProductName(productName).Execute()
-	  //resp, r, err := apiClient.Branding.BrandingAPI.CreateBrandingItemV1(context.Background()).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
+    resp, r, err := apiClient.BrandingAPI.CreateBrandingItemV1(context.Background()).Name(name).ProductName(productName).Execute()
+	  //resp, r, err := apiClient.BrandingAPI.CreateBrandingItemV1(context.Background()).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.CreateBrandingItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -156,8 +156,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Branding.BrandingAPI.DeleteBrandingV1(context.Background(), name).Execute()
-	  //r, err := apiClient.Branding.BrandingAPI.DeleteBrandingV1(context.Background(), name).Execute()
+    r, err := apiClient.BrandingAPI.DeleteBrandingV1(context.Background(), name).Execute()
+	  //r, err := apiClient.BrandingAPI.DeleteBrandingV1(context.Background(), name).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.DeleteBrandingV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,8 +212,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Branding.BrandingAPI.GetBrandingListV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Branding.BrandingAPI.GetBrandingListV1(context.Background()).Execute()
+    resp, r, err := apiClient.BrandingAPI.GetBrandingListV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.BrandingAPI.GetBrandingListV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBrandingListV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,8 +278,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Branding.BrandingAPI.GetBrandingV1(context.Background(), name).Execute()
-	  //resp, r, err := apiClient.Branding.BrandingAPI.GetBrandingV1(context.Background(), name).Execute()
+    resp, r, err := apiClient.BrandingAPI.GetBrandingV1(context.Background(), name).Execute()
+	  //resp, r, err := apiClient.BrandingAPI.GetBrandingV1(context.Background(), name).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBrandingV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -360,8 +360,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Branding.BrandingAPI.SetBrandingItemV1(context.Background(), name).Name2(name2).ProductName(productName).Execute()
-	  //resp, r, err := apiClient.Branding.BrandingAPI.SetBrandingItemV1(context.Background(), name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
+    resp, r, err := apiClient.BrandingAPI.SetBrandingItemV1(context.Background(), name).Name2(name2).ProductName(productName).Execute()
+	  //resp, r, err := apiClient.BrandingAPI.SetBrandingItemV1(context.Background(), name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.SetBrandingItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

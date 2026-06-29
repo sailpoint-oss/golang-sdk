@@ -90,8 +90,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Workflows.WorkflowsAPI.CancelWorkflowExecutionV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Workflows.WorkflowsAPI.CancelWorkflowExecutionV1(context.Background(), id).Execute()
+    r, err := apiClient.WorkflowsAPI.CancelWorkflowExecutionV1(context.Background(), id).Execute()
+	  //r, err := apiClient.WorkflowsAPI.CancelWorkflowExecutionV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CancelWorkflowExecutionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -157,8 +157,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.CreateExternalExecuteWorkflowV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.CreateExternalExecuteWorkflowV1(context.Background(), id).CreateExternalExecuteWorkflowV1Request(createExternalExecuteWorkflowV1Request).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.CreateExternalExecuteWorkflowV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.CreateExternalExecuteWorkflowV1(context.Background(), id).CreateExternalExecuteWorkflowV1Request(createExternalExecuteWorkflowV1Request).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateExternalExecuteWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -223,8 +223,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.CreateWorkflowExternalTriggerV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.CreateWorkflowExternalTriggerV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.CreateWorkflowExternalTriggerV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.CreateWorkflowExternalTriggerV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateWorkflowExternalTriggerV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -290,8 +290,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.CreateWorkflowV1(context.Background()).CreateWorkflowV1Request(createWorkflowV1Request).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.CreateWorkflowV1(context.Background()).CreateWorkflowV1Request(createWorkflowV1Request).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.CreateWorkflowV1(context.Background()).CreateWorkflowV1Request(createWorkflowV1Request).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.CreateWorkflowV1(context.Background()).CreateWorkflowV1Request(createWorkflowV1Request).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -356,8 +356,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Workflows.WorkflowsAPI.DeleteWorkflowV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Workflows.WorkflowsAPI.DeleteWorkflowV1(context.Background(), id).Execute()
+    r, err := apiClient.WorkflowsAPI.DeleteWorkflowV1(context.Background(), id).Execute()
+	  //r, err := apiClient.WorkflowsAPI.DeleteWorkflowV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.DeleteWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -421,8 +421,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.GetWorkflowExecutionHistoryV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.GetWorkflowExecutionHistoryV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionHistoryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -487,8 +487,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.GetWorkflowExecutionHistoryV2(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.GetWorkflowExecutionHistoryV2(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV2(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV2(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionHistoryV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -553,8 +553,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.GetWorkflowExecutionV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.GetWorkflowExecutionV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -635,8 +635,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.GetWorkflowExecutionsV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.GetWorkflowExecutionsV1(context.Background(), id).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionsV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionsV1(context.Background(), id).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -701,8 +701,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.GetWorkflowV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.GetWorkflowV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.GetWorkflowV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -765,8 +765,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.ListCompleteWorkflowLibraryV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.ListCompleteWorkflowLibraryV1(context.Background()).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.ListCompleteWorkflowLibraryV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.ListCompleteWorkflowLibraryV1(context.Background()).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListCompleteWorkflowLibraryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -831,8 +831,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.ListWorkflowLibraryActionsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.ListWorkflowLibraryActionsV1(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryActionsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryActionsV1(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryActionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -888,8 +888,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.ListWorkflowLibraryOperatorsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.ListWorkflowLibraryOperatorsV1(context.Background()).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryOperatorsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryOperatorsV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryOperatorsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -954,8 +954,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.ListWorkflowLibraryTriggersV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.ListWorkflowLibraryTriggersV1(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryTriggersV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryTriggersV1(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryTriggersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1011,8 +1011,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.ListWorkflowsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.ListWorkflowsV1(context.Background()).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.ListWorkflowsV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1084,8 +1084,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.PatchWorkflowV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.PatchWorkflowV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.PatchWorkflowV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.PatchWorkflowV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PatchWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1157,8 +1157,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.PutWorkflowV1(context.Background(), id).Workflowbody(workflowbody).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.PutWorkflowV1(context.Background(), id).Workflowbody(workflowbody).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.PutWorkflowV1(context.Background(), id).Workflowbody(workflowbody).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.PutWorkflowV1(context.Background(), id).Workflowbody(workflowbody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PutWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1225,8 +1225,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.TestExternalExecuteWorkflowV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.TestExternalExecuteWorkflowV1(context.Background(), id).TestExternalExecuteWorkflowV1Request(testExternalExecuteWorkflowV1Request).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.TestExternalExecuteWorkflowV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.TestExternalExecuteWorkflowV1(context.Background(), id).TestExternalExecuteWorkflowV1Request(testExternalExecuteWorkflowV1Request).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.TestExternalExecuteWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1309,8 +1309,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Workflows.WorkflowsAPI.TestWorkflowV1(context.Background(), id).TestWorkflowV1Request(testWorkflowV1Request).Execute()
-	  //resp, r, err := apiClient.Workflows.WorkflowsAPI.TestWorkflowV1(context.Background(), id).TestWorkflowV1Request(testWorkflowV1Request).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.TestWorkflowV1(context.Background(), id).TestWorkflowV1Request(testWorkflowV1Request).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.TestWorkflowV1(context.Background(), id).TestWorkflowV1Request(testWorkflowV1Request).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.TestWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

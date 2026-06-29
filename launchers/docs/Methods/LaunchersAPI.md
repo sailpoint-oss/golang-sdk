@@ -77,8 +77,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Launchers.LaunchersAPI.CreateLauncherV1(context.Background()).Launcherrequest(launcherrequest).Execute()
-	  //resp, r, err := apiClient.Launchers.LaunchersAPI.CreateLauncherV1(context.Background()).Launcherrequest(launcherrequest).Execute()
+    resp, r, err := apiClient.LaunchersAPI.CreateLauncherV1(context.Background()).Launcherrequest(launcherrequest).Execute()
+	  //resp, r, err := apiClient.LaunchersAPI.CreateLauncherV1(context.Background()).Launcherrequest(launcherrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.CreateLauncherV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -143,8 +143,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Launchers.LaunchersAPI.DeleteLauncherV1(context.Background(), launcherID).Execute()
-	  //r, err := apiClient.Launchers.LaunchersAPI.DeleteLauncherV1(context.Background(), launcherID).Execute()
+    r, err := apiClient.LaunchersAPI.DeleteLauncherV1(context.Background(), launcherID).Execute()
+	  //r, err := apiClient.LaunchersAPI.DeleteLauncherV1(context.Background(), launcherID).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.DeleteLauncherV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -208,8 +208,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Launchers.LaunchersAPI.GetLauncherV1(context.Background(), launcherID).Execute()
-	  //resp, r, err := apiClient.Launchers.LaunchersAPI.GetLauncherV1(context.Background(), launcherID).Execute()
+    resp, r, err := apiClient.LaunchersAPI.GetLauncherV1(context.Background(), launcherID).Execute()
+	  //resp, r, err := apiClient.LaunchersAPI.GetLauncherV1(context.Background(), launcherID).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.GetLauncherV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -274,8 +274,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Launchers.LaunchersAPI.GetLaunchersV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Launchers.LaunchersAPI.GetLaunchersV1(context.Background()).Filters(filters).Next(next).Limit(limit).Execute()
+    resp, r, err := apiClient.LaunchersAPI.GetLaunchersV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.LaunchersAPI.GetLaunchersV1(context.Background()).Filters(filters).Next(next).Limit(limit).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.GetLaunchersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -347,8 +347,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Launchers.LaunchersAPI.PutLauncherV1(context.Background(), launcherID).Launcherrequest(launcherrequest).Execute()
-	  //resp, r, err := apiClient.Launchers.LaunchersAPI.PutLauncherV1(context.Background(), launcherID).Launcherrequest(launcherrequest).Execute()
+    resp, r, err := apiClient.LaunchersAPI.PutLauncherV1(context.Background(), launcherID).Launcherrequest(launcherrequest).Execute()
+	  //resp, r, err := apiClient.LaunchersAPI.PutLauncherV1(context.Background(), launcherID).Launcherrequest(launcherrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.PutLauncherV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -413,8 +413,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Launchers.LaunchersAPI.StartLauncherV1(context.Background(), launcherID).Execute()
-	  //resp, r, err := apiClient.Launchers.LaunchersAPI.StartLauncherV1(context.Background(), launcherID).Execute()
+    resp, r, err := apiClient.LaunchersAPI.StartLauncherV1(context.Background(), launcherID).Execute()
+	  //resp, r, err := apiClient.LaunchersAPI.StartLauncherV1(context.Background(), launcherID).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.StartLauncherV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

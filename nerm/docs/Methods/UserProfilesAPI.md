@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserProfilesAPI.CreateUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserProfilesAPI.CreateUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+    resp, r, err := apiClient.UserProfilesAPI.CreateUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+	  //resp, r, err := apiClient.UserProfilesAPI.CreateUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.CreateUserProfiles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserProfilesAPI.DeleteUserProfile(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.UserProfilesAPI.DeleteUserProfile(context.Background(), id).Execute()
+    resp, r, err := apiClient.UserProfilesAPI.DeleteUserProfile(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.UserProfilesAPI.DeleteUserProfile(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.DeleteUserProfile``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,8 +212,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserProfilesAPI.DeleteUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserProfilesAPI.DeleteUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+    resp, r, err := apiClient.UserProfilesAPI.DeleteUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+	  //resp, r, err := apiClient.UserProfilesAPI.DeleteUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.DeleteUserProfiles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,8 +278,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserProfilesAPI.GetUserProfile(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.UserProfilesAPI.GetUserProfile(context.Background(), id).Execute()
+    resp, r, err := apiClient.UserProfilesAPI.GetUserProfile(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.UserProfilesAPI.GetUserProfile(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.GetUserProfile``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -354,8 +354,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserProfilesAPI.GetUserProfiles(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.UserProfilesAPI.GetUserProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).NeAttributeId(neAttributeId).ProfileId(profileId).RelationshipType(relationshipType).Metadata(metadata).Execute()
+    resp, r, err := apiClient.UserProfilesAPI.GetUserProfiles(context.Background()).Execute()
+	  //resp, r, err := apiClient.UserProfilesAPI.GetUserProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).UserId(userId).NeAttributeId(neAttributeId).ProfileId(profileId).RelationshipType(relationshipType).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.GetUserProfiles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -427,8 +427,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserProfilesAPI.PatchUserProfile(context.Background(), id).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserProfilesAPI.PatchUserProfile(context.Background(), id).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
+    resp, r, err := apiClient.UserProfilesAPI.PatchUserProfile(context.Background(), id).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
+	  //resp, r, err := apiClient.UserProfilesAPI.PatchUserProfile(context.Background(), id).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.PatchUserProfile``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -494,8 +494,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserProfilesAPI.PatchUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserProfilesAPI.PatchUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+    resp, r, err := apiClient.UserProfilesAPI.PatchUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
+	  //resp, r, err := apiClient.UserProfilesAPI.PatchUserProfiles(context.Background()).CreateUserProfilesRequest(createUserProfilesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.PatchUserProfiles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -561,8 +561,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.UserProfilesAPI.SubmitUserProfile(context.Background()).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
-	  //resp, r, err := apiClient.NERM.UserProfilesAPI.SubmitUserProfile(context.Background()).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
+    resp, r, err := apiClient.UserProfilesAPI.SubmitUserProfile(context.Background()).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
+	  //resp, r, err := apiClient.UserProfilesAPI.SubmitUserProfile(context.Background()).SubmitUserProfileRequest(submitUserProfileRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UserProfilesAPI.SubmitUserProfile``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

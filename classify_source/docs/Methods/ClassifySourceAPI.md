@@ -74,8 +74,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ClassifySource.ClassifySourceAPI.DeleteClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
-	  //r, err := apiClient.ClassifySource.ClassifySourceAPI.DeleteClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
+    r, err := apiClient.ClassifySourceAPI.DeleteClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
+	  //r, err := apiClient.ClassifySourceAPI.DeleteClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ClassifySourceAPI.DeleteClassifyMachineAccountFromSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,8 +140,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClassifySource.ClassifySourceAPI.GetClassifyMachineAccountFromSourceStatusV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.ClassifySource.ClassifySourceAPI.GetClassifyMachineAccountFromSourceStatusV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.ClassifySourceAPI.GetClassifyMachineAccountFromSourceStatusV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.ClassifySourceAPI.GetClassifyMachineAccountFromSourceStatusV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ClassifySourceAPI.GetClassifyMachineAccountFromSourceStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -207,8 +207,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClassifySource.ClassifySourceAPI.SendClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.ClassifySource.ClassifySourceAPI.SendClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.ClassifySourceAPI.SendClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.ClassifySourceAPI.SendClassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ClassifySourceAPI.SendClassifyMachineAccountFromSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

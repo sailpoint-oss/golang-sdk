@@ -67,8 +67,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.JobStatusAPI.GetJobStatus(context.Background()).JobId(jobId).Execute()
-	  //resp, r, err := apiClient.NERM.JobStatusAPI.GetJobStatus(context.Background()).JobId(jobId).Execute()
+    resp, r, err := apiClient.JobStatusAPI.GetJobStatus(context.Background()).JobId(jobId).Execute()
+	  //resp, r, err := apiClient.JobStatusAPI.GetJobStatus(context.Background()).JobId(jobId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JobStatusAPI.GetJobStatus``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

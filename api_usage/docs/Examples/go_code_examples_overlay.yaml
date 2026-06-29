@@ -24,8 +24,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.ApiUsage.ApiUsageAPI.GetTotalCountV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.ApiUsage.ApiUsageAPI.GetTotalCountV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Execute()
+          resp, r, err := apiClient.ApiUsageAPI.GetTotalCountV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.ApiUsageAPI.GetTotalCountV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ApiUsageAPI.GetTotalCountV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,8 +61,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.ApiUsage.ApiUsageAPI.ListApiSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.ApiUsage.ApiUsageAPI.ListApiSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Limit(limit).Offset(offset).Execute()
+          resp, r, err := apiClient.ApiUsageAPI.ListApiSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.ApiUsageAPI.ListApiSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Limit(limit).Offset(offset).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ApiUsageAPI.ListApiSummaryV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

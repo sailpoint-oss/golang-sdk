@@ -72,8 +72,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NERM.ConsolidationAPI.DeleteMasterRecord(context.Background(), id).Execute()
-	  //r, err := apiClient.NERM.ConsolidationAPI.DeleteMasterRecord(context.Background(), id).Execute()
+    r, err := apiClient.ConsolidationAPI.DeleteMasterRecord(context.Background(), id).Execute()
+	  //r, err := apiClient.ConsolidationAPI.DeleteMasterRecord(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConsolidationAPI.DeleteMasterRecord``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,8 +146,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NERM.ConsolidationAPI.PatchDataRecord(context.Background(), id).DataRecords(dataRecords).Execute()
-	  //r, err := apiClient.NERM.ConsolidationAPI.PatchDataRecord(context.Background(), id).DataRecords(dataRecords).Execute()
+    r, err := apiClient.ConsolidationAPI.PatchDataRecord(context.Background(), id).DataRecords(dataRecords).Execute()
+	  //r, err := apiClient.ConsolidationAPI.PatchDataRecord(context.Background(), id).DataRecords(dataRecords).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConsolidationAPI.PatchDataRecord``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

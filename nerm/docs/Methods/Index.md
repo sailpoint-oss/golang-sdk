@@ -1,14 +1,14 @@
 ---
-id: methods
+id: nerm-methods
 title: Methods
 pagination_label: Methods
 sidebar_label: Methods
 sidebar_position: 3
-sidebar_key: NERM-golang-methods
+sidebar_key: nerm-golang-methods
 sidebar_class_name: methods
-keywords: ['go', 'Golang', 'sdk', 'methods'] 
-slug: /tools/sdk/go/NERM/methods
-tags: ['SDK', 'Software Development Kit', 'NERM', 'methods']
+keywords: ['go', 'Golang', 'sdk', 'nerm', 'methods'] 
+slug: /tools/sdk/go/nerm/methods
+tags: ['SDK', 'Software Development Kit', 'nerm', 'methods']
 ---
 
 Method documents provide detailed information about each API operation (or method). They describe what the method does and details its input parameters, expected return values, and any considerations to be aware of when using it.

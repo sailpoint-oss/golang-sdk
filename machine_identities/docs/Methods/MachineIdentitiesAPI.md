@@ -92,8 +92,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.CreateMachineIdentityV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineidentityrequest(machineidentityrequest).Execute()
-	  //resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.CreateMachineIdentityV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineidentityrequest(machineidentityrequest).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineidentityrequest(machineidentityrequest).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineidentityrequest(machineidentityrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.CreateMachineIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -171,8 +171,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.DeleteMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.DeleteMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.DeleteMachineIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -249,8 +249,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.GetMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.GetMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.GetMachineIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -332,8 +332,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.ListMachineIdentitiesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.ListMachineIdentitiesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.ListMachineIdentitiesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.ListMachineIdentitiesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListMachineIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -415,8 +415,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -501,8 +501,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.StartMachineIdentityAggregationV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Machineidentityaggregationrequest(machineidentityaggregationrequest).Execute()
-	  //resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.StartMachineIdentityAggregationV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Machineidentityaggregationrequest(machineidentityaggregationrequest).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.StartMachineIdentityAggregationV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Machineidentityaggregationrequest(machineidentityaggregationrequest).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.StartMachineIdentityAggregationV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Machineidentityaggregationrequest(machineidentityaggregationrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.StartMachineIdentityAggregationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -588,8 +588,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.UpdateMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.MachineIdentities.MachineIdentitiesAPI.UpdateMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.UpdateMachineIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

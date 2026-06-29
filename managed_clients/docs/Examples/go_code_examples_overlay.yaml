@@ -29,8 +29,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.CreateManagedClientV1(context.Background()).Managedclientrequest(managedclientrequest).Execute()
-          //resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.CreateManagedClientV1(context.Background()).Managedclientrequest(managedclientrequest).Execute()
+          resp, r, err := apiClient.ManagedClientsAPI.CreateManagedClientV1(context.Background()).Managedclientrequest(managedclientrequest).Execute()
+          //resp, r, err := apiClient.ManagedClientsAPI.CreateManagedClientV1(context.Background()).Managedclientrequest(managedclientrequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.CreateManagedClientV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,8 +63,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.ManagedClients.ManagedClientsAPI.DeleteManagedClientV1(context.Background(), id).Execute()
-          //r, err := apiClient.ManagedClients.ManagedClientsAPI.DeleteManagedClientV1(context.Background(), id).Execute()
+          r, err := apiClient.ManagedClientsAPI.DeleteManagedClientV1(context.Background(), id).Execute()
+          //r, err := apiClient.ManagedClientsAPI.DeleteManagedClientV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.DeleteManagedClientV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -95,8 +95,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.GetManagedClientHealthIndicatorsV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.GetManagedClientHealthIndicatorsV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.ManagedClientsAPI.GetManagedClientHealthIndicatorsV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ManagedClientsAPI.GetManagedClientHealthIndicatorsV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientHealthIndicatorsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,8 +130,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.GetManagedClientStatusV1(context.Background(), id).Type_(type_).Execute()
-          //resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.GetManagedClientStatusV1(context.Background(), id).Type_(type_).Execute()
+          resp, r, err := apiClient.ManagedClientsAPI.GetManagedClientStatusV1(context.Background(), id).Type_(type_).Execute()
+          //resp, r, err := apiClient.ManagedClientsAPI.GetManagedClientStatusV1(context.Background(), id).Type_(type_).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientStatusV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -164,8 +164,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.GetManagedClientV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.GetManagedClientV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.ManagedClientsAPI.GetManagedClientV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.ManagedClientsAPI.GetManagedClientV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -201,8 +201,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.GetManagedClientsV1(context.Background()).Execute()
-          //resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.GetManagedClientsV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+          resp, r, err := apiClient.ManagedClientsAPI.GetManagedClientsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.ManagedClientsAPI.GetManagedClientsV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -242,8 +242,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.UpdateManagedClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-          //resp, r, err := apiClient.ManagedClients.ManagedClientsAPI.UpdateManagedClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          resp, r, err := apiClient.ManagedClientsAPI.UpdateManagedClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.ManagedClientsAPI.UpdateManagedClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.UpdateManagedClientV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -100,8 +100,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PrivilegeCriteriaConfiguration.PrivilegeCriteriaConfigurationAPI.GetPrivilegeCriteriaConfigV1(context.Background(), criteriaConfigId).Execute()
-	  //resp, r, err := apiClient.PrivilegeCriteriaConfiguration.PrivilegeCriteriaConfigurationAPI.GetPrivilegeCriteriaConfigV1(context.Background(), criteriaConfigId).Execute()
+    resp, r, err := apiClient.PrivilegeCriteriaConfigurationAPI.GetPrivilegeCriteriaConfigV1(context.Background(), criteriaConfigId).Execute()
+	  //resp, r, err := apiClient.PrivilegeCriteriaConfigurationAPI.GetPrivilegeCriteriaConfigV1(context.Background(), criteriaConfigId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaConfigurationAPI.GetPrivilegeCriteriaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -162,8 +162,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PrivilegeCriteriaConfiguration.PrivilegeCriteriaConfigurationAPI.ListPrivilegeCriteriaConfigV1(context.Background()).Filters(filters).Execute()
-	  //resp, r, err := apiClient.PrivilegeCriteriaConfiguration.PrivilegeCriteriaConfigurationAPI.ListPrivilegeCriteriaConfigV1(context.Background()).Filters(filters).Execute()
+    resp, r, err := apiClient.PrivilegeCriteriaConfigurationAPI.ListPrivilegeCriteriaConfigV1(context.Background()).Filters(filters).Execute()
+	  //resp, r, err := apiClient.PrivilegeCriteriaConfigurationAPI.ListPrivilegeCriteriaConfigV1(context.Background()).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaConfigurationAPI.ListPrivilegeCriteriaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -235,8 +235,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PrivilegeCriteriaConfiguration.PrivilegeCriteriaConfigurationAPI.PatchPrivilegeCriteriaConfigV1(context.Background(), criteriaConfigId).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.PrivilegeCriteriaConfiguration.PrivilegeCriteriaConfigurationAPI.PatchPrivilegeCriteriaConfigV1(context.Background(), criteriaConfigId).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.PrivilegeCriteriaConfigurationAPI.PatchPrivilegeCriteriaConfigV1(context.Background(), criteriaConfigId).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.PrivilegeCriteriaConfigurationAPI.PatchPrivilegeCriteriaConfigV1(context.Background(), criteriaConfigId).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaConfigurationAPI.PatchPrivilegeCriteriaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

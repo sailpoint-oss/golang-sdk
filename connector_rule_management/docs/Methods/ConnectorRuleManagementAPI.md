@@ -84,8 +84,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.CreateConnectorRuleV1(context.Background()).Connectorrulecreaterequest(connectorrulecreaterequest).Execute()
-	  //resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.CreateConnectorRuleV1(context.Background()).Connectorrulecreaterequest(connectorrulecreaterequest).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.CreateConnectorRuleV1(context.Background()).Connectorrulecreaterequest(connectorrulecreaterequest).Execute()
+	  //resp, r, err := apiClient.ConnectorRuleManagementAPI.CreateConnectorRuleV1(context.Background()).Connectorrulecreaterequest(connectorrulecreaterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.CreateConnectorRuleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -150,8 +150,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.DeleteConnectorRuleV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.DeleteConnectorRuleV1(context.Background(), id).Execute()
+    r, err := apiClient.ConnectorRuleManagementAPI.DeleteConnectorRuleV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ConnectorRuleManagementAPI.DeleteConnectorRuleV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.DeleteConnectorRuleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,8 +215,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.GetConnectorRuleListV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.GetConnectorRuleListV1(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.GetConnectorRuleListV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ConnectorRuleManagementAPI.GetConnectorRuleListV1(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.GetConnectorRuleListV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -281,8 +281,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.GetConnectorRuleV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.GetConnectorRuleV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.GetConnectorRuleV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ConnectorRuleManagementAPI.GetConnectorRuleV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.GetConnectorRuleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -349,8 +349,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.PutConnectorRuleV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.PutConnectorRuleV1(context.Background(), id).Connectorruleupdaterequest(connectorruleupdaterequest).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.PutConnectorRuleV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ConnectorRuleManagementAPI.PutConnectorRuleV1(context.Background(), id).Connectorruleupdaterequest(connectorruleupdaterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.PutConnectorRuleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -416,8 +416,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.TestConnectorRuleV1(context.Background()).Sourcecode(sourcecode).Execute()
-	  //resp, r, err := apiClient.ConnectorRuleManagement.ConnectorRuleManagementAPI.TestConnectorRuleV1(context.Background()).Sourcecode(sourcecode).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.TestConnectorRuleV1(context.Background()).Sourcecode(sourcecode).Execute()
+	  //resp, r, err := apiClient.ConnectorRuleManagementAPI.TestConnectorRuleV1(context.Background()).Sourcecode(sourcecode).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.TestConnectorRuleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -91,8 +91,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodViolations.SODViolationsAPI.StartPredictSodViolationsV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
-	  //resp, r, err := apiClient.SodViolations.SODViolationsAPI.StartPredictSodViolationsV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
+    resp, r, err := apiClient.SODViolationsAPI.StartPredictSodViolationsV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
+	  //resp, r, err := apiClient.SODViolationsAPI.StartPredictSodViolationsV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.StartPredictSodViolationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -158,8 +158,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodViolations.SODViolationsAPI.StartViolationCheckV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
-	  //resp, r, err := apiClient.SodViolations.SODViolationsAPI.StartViolationCheckV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
+    resp, r, err := apiClient.SODViolationsAPI.StartViolationCheckV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
+	  //resp, r, err := apiClient.SODViolationsAPI.StartViolationCheckV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.StartViolationCheckV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

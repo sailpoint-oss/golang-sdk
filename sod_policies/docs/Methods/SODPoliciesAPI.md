@@ -115,8 +115,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.CreateSodPolicyV1(context.Background()).Sodpolicy(sodpolicy).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.CreateSodPolicyV1(context.Background()).Sodpolicy(sodpolicy).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.CreateSodPolicyV1(context.Background()).Sodpolicy(sodpolicy).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.CreateSodPolicyV1(context.Background()).Sodpolicy(sodpolicy).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.CreateSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,8 +181,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.SodPolicies.SODPoliciesAPI.DeleteSodPolicyScheduleV1(context.Background(), id).Execute()
-	  //r, err := apiClient.SodPolicies.SODPoliciesAPI.DeleteSodPolicyScheduleV1(context.Background(), id).Execute()
+    r, err := apiClient.SODPoliciesAPI.DeleteSodPolicyScheduleV1(context.Background(), id).Execute()
+	  //r, err := apiClient.SODPoliciesAPI.DeleteSodPolicyScheduleV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.DeleteSodPolicyScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -249,8 +249,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.SodPolicies.SODPoliciesAPI.DeleteSodPolicyV1(context.Background(), id).Execute()
-	  //r, err := apiClient.SodPolicies.SODPoliciesAPI.DeleteSodPolicyV1(context.Background(), id).Logical(logical).Execute()
+    r, err := apiClient.SODPoliciesAPI.DeleteSodPolicyV1(context.Background(), id).Execute()
+	  //r, err := apiClient.SODPoliciesAPI.DeleteSodPolicyV1(context.Background(), id).Logical(logical).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.DeleteSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -317,8 +317,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetCustomViolationReportV1(context.Background(), reportResultId, fileName).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetCustomViolationReportV1(context.Background(), reportResultId, fileName).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.GetCustomViolationReportV1(context.Background(), reportResultId, fileName).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.GetCustomViolationReportV1(context.Background(), reportResultId, fileName).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetCustomViolationReportV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -383,8 +383,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetDefaultViolationReportV1(context.Background(), reportResultId).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetDefaultViolationReportV1(context.Background(), reportResultId).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.GetDefaultViolationReportV1(context.Background(), reportResultId).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.GetDefaultViolationReportV1(context.Background(), reportResultId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetDefaultViolationReportV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -440,8 +440,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetSodAllReportRunStatusV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetSodAllReportRunStatusV1(context.Background()).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.GetSodAllReportRunStatusV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.GetSodAllReportRunStatusV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodAllReportRunStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -506,8 +506,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetSodPolicyScheduleV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetSodPolicyScheduleV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.GetSodPolicyScheduleV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.GetSodPolicyScheduleV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodPolicyScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -573,8 +573,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetSodPolicyV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetSodPolicyV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.GetSodPolicyV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.GetSodPolicyV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -639,8 +639,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetSodViolationReportRunStatusV1(context.Background(), reportResultId).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetSodViolationReportRunStatusV1(context.Background(), reportResultId).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.GetSodViolationReportRunStatusV1(context.Background(), reportResultId).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.GetSodViolationReportRunStatusV1(context.Background(), reportResultId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodViolationReportRunStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -705,8 +705,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetSodViolationReportStatusV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.GetSodViolationReportStatusV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.GetSodViolationReportStatusV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.GetSodViolationReportStatusV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodViolationReportStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -776,8 +776,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.ListSodPoliciesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.ListSodPoliciesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.ListSodPoliciesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.ListSodPoliciesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.ListSodPoliciesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -851,8 +851,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.PatchSodPolicyV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.PatchSodPolicyV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.PatchSodPolicyV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.PatchSodPolicyV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PatchSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -924,8 +924,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.PutPolicyScheduleV1(context.Background(), id).Sodpolicyschedule(sodpolicyschedule).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.PutPolicyScheduleV1(context.Background(), id).Sodpolicyschedule(sodpolicyschedule).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.PutPolicyScheduleV1(context.Background(), id).Sodpolicyschedule(sodpolicyschedule).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.PutPolicyScheduleV1(context.Background(), id).Sodpolicyschedule(sodpolicyschedule).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PutPolicyScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -998,8 +998,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.PutSodPolicyV1(context.Background(), id).Sodpolicy(sodpolicy).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.PutSodPolicyV1(context.Background(), id).Sodpolicy(sodpolicy).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.PutSodPolicyV1(context.Background(), id).Sodpolicy(sodpolicy).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.PutSodPolicyV1(context.Background(), id).Sodpolicy(sodpolicy).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PutSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1064,8 +1064,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.StartEvaluateSodPolicyV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.StartEvaluateSodPolicyV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.StartEvaluateSodPolicyV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.StartEvaluateSodPolicyV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.StartEvaluateSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1126,8 +1126,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.StartSodAllPoliciesForOrgV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.StartSodAllPoliciesForOrgV1(context.Background()).Multipolicyrequest(multipolicyrequest).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.StartSodAllPoliciesForOrgV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.StartSodAllPoliciesForOrgV1(context.Background()).Multipolicyrequest(multipolicyrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.StartSodAllPoliciesForOrgV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1192,8 +1192,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.StartSodPolicyV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.SodPolicies.SODPoliciesAPI.StartSodPolicyV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.StartSodPolicyV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.StartSodPolicyV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.StartSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

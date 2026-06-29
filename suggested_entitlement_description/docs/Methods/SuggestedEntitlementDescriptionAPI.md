@@ -89,8 +89,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).Bulkapproveentitlementrecommendationrequest(bulkapproveentitlementrecommendationrequest).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).Bulkapproveentitlementrecommendationrequest(bulkapproveentitlementrecommendationrequest).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).Bulkapproveentitlementrecommendationrequest(bulkapproveentitlementrecommendationrequest).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).Bulkapproveentitlementrecommendationrequest(bulkapproveentitlementrecommendationrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -156,8 +156,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettingsV1(context.Background()).Autowritesetting(autowritesetting).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettingsV1(context.Background()).Autowritesetting(autowritesetting).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettingsV1(context.Background()).Autowritesetting(autowritesetting).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettingsV1(context.Background()).Autowritesetting(autowritesetting).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -213,8 +213,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.GetAutoWriteSettingsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.GetAutoWriteSettingsV1(context.Background()).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.GetAutoWriteSettingsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.GetAutoWriteSettingsV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.GetAutoWriteSettingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -283,8 +283,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.GetSedBatchStatsV1(context.Background(), batchId).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.GetSedBatchStatsV1(context.Background(), batchId).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.GetSedBatchStatsV1(context.Background(), batchId).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.GetSedBatchStatsV1(context.Background(), batchId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.GetSedBatchStatsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -354,8 +354,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.GetSedBatchesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.GetSedBatchesV1(context.Background()).Offset(offset).Limit(limit).Count(count).CountOnly(countOnly).Status(status).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.GetSedBatchesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.GetSedBatchesV1(context.Background()).Offset(offset).Limit(limit).Count(count).CountOnly(countOnly).Status(status).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.GetSedBatchesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -418,8 +418,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1(context.Background()).Offset(offset).Limit(limit).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1(context.Background()).Offset(offset).Limit(limit).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -482,8 +482,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1(context.Background()).Offset(offset).Limit(limit).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1(context.Background()).Offset(offset).Limit(limit).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -572,8 +572,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.ListSedsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.ListSedsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).CountOnly(countOnly).RequestedByAnyone(requestedByAnyone).ShowPendingStatusOnly(showPendingStatusOnly).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListSedsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListSedsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).CountOnly(countOnly).RequestedByAnyone(requestedByAnyone).ShowPendingStatusOnly(showPendingStatusOnly).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ListSedsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -645,8 +645,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -718,8 +718,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.PatchSedV1(context.Background(), id).Sedpatch(sedpatch).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.PatchSedV1(context.Background(), id).Sedpatch(sedpatch).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchSedV1(context.Background(), id).Sedpatch(sedpatch).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchSedV1(context.Background(), id).Sedpatch(sedpatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.PatchSedV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -785,8 +785,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).Entitlementrecommendationassignrequest(entitlementrecommendationassignrequest).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).Entitlementrecommendationassignrequest(entitlementrecommendationassignrequest).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).Entitlementrecommendationassignrequest(entitlementrecommendationassignrequest).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).Entitlementrecommendationassignrequest(entitlementrecommendationassignrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -853,8 +853,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.SubmitSedApprovalV1(context.Background()).Sedapproval(sedapproval).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.SubmitSedApprovalV1(context.Background()).Sedapproval(sedapproval).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedApprovalV1(context.Background()).Sedapproval(sedapproval).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedApprovalV1(context.Background()).Sedapproval(sedapproval).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitSedApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -921,8 +921,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.SubmitSedAssignmentV1(context.Background()).Sedassignment(sedassignment).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.SubmitSedAssignmentV1(context.Background()).Sedassignment(sedassignment).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedAssignmentV1(context.Background()).Sedassignment(sedassignment).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedAssignmentV1(context.Background()).Sedassignment(sedassignment).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitSedAssignmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -984,8 +984,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequestV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequestV1(context.Background()).Sedbatchrequest(sedbatchrequest).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequestV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequestV1(context.Background()).Sedbatchrequest(sedbatchrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1051,8 +1051,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettingsV1(context.Background()).Autowritesettingpatch(autowritesettingpatch).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescription.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettingsV1(context.Background()).Autowritesettingpatch(autowritesettingpatch).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettingsV1(context.Background()).Autowritesettingpatch(autowritesettingpatch).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettingsV1(context.Background()).Autowritesettingpatch(autowritesettingpatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

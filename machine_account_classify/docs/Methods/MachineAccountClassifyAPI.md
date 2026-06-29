@@ -74,8 +74,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountClassify.MachineAccountClassifyAPI.SendClassifyMachineAccountV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.MachineAccountClassify.MachineAccountClassifyAPI.SendClassifyMachineAccountV1(context.Background(), id).ClassificationMode(classificationMode).Execute()
+    resp, r, err := apiClient.MachineAccountClassifyAPI.SendClassifyMachineAccountV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.MachineAccountClassifyAPI.SendClassifyMachineAccountV1(context.Background(), id).ClassificationMode(classificationMode).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountClassifyAPI.SendClassifyMachineAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

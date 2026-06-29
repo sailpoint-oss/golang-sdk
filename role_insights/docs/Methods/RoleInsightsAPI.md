@@ -89,8 +89,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.CreateRoleInsightRequestsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.CreateRoleInsightRequestsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.CreateRoleInsightRequestsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RoleInsightsAPI.CreateRoleInsightRequestsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.CreateRoleInsightRequestsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -172,8 +172,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.DownloadRoleInsightsEntitlementsChangesV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.DownloadRoleInsightsEntitlementsChangesV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.DownloadRoleInsightsEntitlementsChangesV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RoleInsightsAPI.DownloadRoleInsightsEntitlementsChangesV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.DownloadRoleInsightsEntitlementsChangesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -266,8 +266,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetEntitlementChangesIdentitiesV1(context.Background(), insightId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetEntitlementChangesIdentitiesV1(context.Background(), insightId, entitlementId).XSailPointExperimental(xSailPointExperimental).HasEntitlement(hasEntitlement).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetEntitlementChangesIdentitiesV1(context.Background(), insightId, entitlementId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RoleInsightsAPI.GetEntitlementChangesIdentitiesV1(context.Background(), insightId, entitlementId).XSailPointExperimental(xSailPointExperimental).HasEntitlement(hasEntitlement).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetEntitlementChangesIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -345,8 +345,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -426,8 +426,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightsCurrentEntitlementsV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightsCurrentEntitlementsV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Filters(filters).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsCurrentEntitlementsV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsCurrentEntitlementsV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsCurrentEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -509,8 +509,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightsEntitlementsChangesV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightsEntitlementsChangesV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsEntitlementsChangesV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsEntitlementsChangesV1(context.Background(), insightId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsEntitlementsChangesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -591,8 +591,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightsRequestsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightsRequestsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsRequestsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsRequestsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsRequestsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -664,8 +664,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightsSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightsSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsSummaryV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -747,8 +747,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RoleInsights.RoleInsightsAPI.GetRoleInsightsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

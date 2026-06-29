@@ -82,8 +82,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfiguration.PasswordConfigurationAPI.CreatePasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
-	  //resp, r, err := apiClient.PasswordConfiguration.PasswordConfigurationAPI.CreatePasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
+    resp, r, err := apiClient.PasswordConfigurationAPI.CreatePasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
+	  //resp, r, err := apiClient.PasswordConfigurationAPI.CreatePasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.CreatePasswordOrgConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,8 +139,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfiguration.PasswordConfigurationAPI.GetPasswordOrgConfigV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.PasswordConfiguration.PasswordConfigurationAPI.GetPasswordOrgConfigV1(context.Background()).Execute()
+    resp, r, err := apiClient.PasswordConfigurationAPI.GetPasswordOrgConfigV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.PasswordConfigurationAPI.GetPasswordOrgConfigV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.GetPasswordOrgConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -208,8 +208,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfiguration.PasswordConfigurationAPI.PutPasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
-	  //resp, r, err := apiClient.PasswordConfiguration.PasswordConfigurationAPI.PutPasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
+    resp, r, err := apiClient.PasswordConfigurationAPI.PutPasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
+	  //resp, r, err := apiClient.PasswordConfigurationAPI.PutPasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.PutPasswordOrgConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

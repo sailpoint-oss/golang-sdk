@@ -74,8 +74,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.SyncedAttributesAPI.CreateSyncedAttribute(context.Background()).SyncedAttribute1(syncedAttribute1).Execute()
-	  //resp, r, err := apiClient.NERM.SyncedAttributesAPI.CreateSyncedAttribute(context.Background()).SyncedAttribute1(syncedAttribute1).Execute()
+    resp, r, err := apiClient.SyncedAttributesAPI.CreateSyncedAttribute(context.Background()).SyncedAttribute1(syncedAttribute1).Execute()
+	  //resp, r, err := apiClient.SyncedAttributesAPI.CreateSyncedAttribute(context.Background()).SyncedAttribute1(syncedAttribute1).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SyncedAttributesAPI.CreateSyncedAttribute``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -138,8 +138,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.SyncedAttributesAPI.DeleteSyncedAttribute(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.SyncedAttributesAPI.DeleteSyncedAttribute(context.Background()).ProfileTypeId(profileTypeId).NeAttributeId(neAttributeId).Execute()
+    resp, r, err := apiClient.SyncedAttributesAPI.DeleteSyncedAttribute(context.Background()).Execute()
+	  //resp, r, err := apiClient.SyncedAttributesAPI.DeleteSyncedAttribute(context.Background()).ProfileTypeId(profileTypeId).NeAttributeId(neAttributeId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SyncedAttributesAPI.DeleteSyncedAttribute``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -208,8 +208,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.SyncedAttributesAPI.GetProfileTypeAttributes(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.SyncedAttributesAPI.GetProfileTypeAttributes(context.Background()).ProfileTypeId(profileTypeId).ActiveFilter(activeFilter).Search(search).Page(page).Sort(sort).Execute()
+    resp, r, err := apiClient.SyncedAttributesAPI.GetProfileTypeAttributes(context.Background()).Execute()
+	  //resp, r, err := apiClient.SyncedAttributesAPI.GetProfileTypeAttributes(context.Background()).ProfileTypeId(profileTypeId).ActiveFilter(activeFilter).Search(search).Page(page).Sort(sort).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SyncedAttributesAPI.GetProfileTypeAttributes``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

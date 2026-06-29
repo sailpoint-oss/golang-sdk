@@ -73,8 +73,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.SystemRolesAPI.GetSystemRoles(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.SystemRolesAPI.GetSystemRoles(context.Background()).Limit(limit).Offset(offset).Order(order).Metadata(metadata).Execute()
+    resp, r, err := apiClient.SystemRolesAPI.GetSystemRoles(context.Background()).Execute()
+	  //resp, r, err := apiClient.SystemRolesAPI.GetSystemRoles(context.Background()).Limit(limit).Offset(offset).Order(order).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SystemRolesAPI.GetSystemRoles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

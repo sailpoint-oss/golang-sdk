@@ -91,8 +91,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.CreateParameterV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.CreateParameterV1(context.Background()).Parameterstoragenewparameter(parameterstoragenewparameter).Execute()
+    resp, r, err := apiClient.ParameterStorageAPI.CreateParameterV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ParameterStorageAPI.CreateParameterV1(context.Background()).Parameterstoragenewparameter(parameterstoragenewparameter).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.CreateParameterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -157,8 +157,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ParameterStorage.ParameterStorageAPI.DeleteParameterV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ParameterStorage.ParameterStorageAPI.DeleteParameterV1(context.Background(), id).Execute()
+    r, err := apiClient.ParameterStorageAPI.DeleteParameterV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ParameterStorageAPI.DeleteParameterV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.DeleteParameterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -218,8 +218,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.GetAttestationDocumentV1(context.Background()).Key(key).Execute()
-	  //resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.GetAttestationDocumentV1(context.Background()).Key(key).Execute()
+    resp, r, err := apiClient.ParameterStorageAPI.GetAttestationDocumentV1(context.Background()).Key(key).Execute()
+	  //resp, r, err := apiClient.ParameterStorageAPI.GetAttestationDocumentV1(context.Background()).Key(key).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.GetAttestationDocumentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -290,8 +290,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.GetParameterReferencesV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.GetParameterReferencesV1(context.Background(), id).Sorters(sorters).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.ParameterStorageAPI.GetParameterReferencesV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ParameterStorageAPI.GetParameterReferencesV1(context.Background(), id).Sorters(sorters).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.GetParameterReferencesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -363,8 +363,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ParameterStorage.ParameterStorageAPI.GetParameterStorageSpecificationV1(context.Background()).Execute()
-	  //r, err := apiClient.ParameterStorage.ParameterStorageAPI.GetParameterStorageSpecificationV1(context.Background()).AcceptLanguage(acceptLanguage).Execute()
+    r, err := apiClient.ParameterStorageAPI.GetParameterStorageSpecificationV1(context.Background()).Execute()
+	  //r, err := apiClient.ParameterStorageAPI.GetParameterStorageSpecificationV1(context.Background()).AcceptLanguage(acceptLanguage).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.GetParameterStorageSpecificationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -428,8 +428,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.GetParameterV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.GetParameterV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ParameterStorageAPI.GetParameterV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ParameterStorageAPI.GetParameterV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.GetParameterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -496,8 +496,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.SearchParametersV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.SearchParametersV1(context.Background()).Filters(filters).Sorters(sorters).Offset(offset).Limit(limit).Execute()
+    resp, r, err := apiClient.ParameterStorageAPI.SearchParametersV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ParameterStorageAPI.SearchParametersV1(context.Background()).Filters(filters).Sorters(sorters).Offset(offset).Limit(limit).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.SearchParametersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -564,8 +564,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.UpdateParameterV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ParameterStorage.ParameterStorageAPI.UpdateParameterV1(context.Background(), id).Parameterstorageupdateparameter(parameterstorageupdateparameter).Execute()
+    resp, r, err := apiClient.ParameterStorageAPI.UpdateParameterV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ParameterStorageAPI.UpdateParameterV1(context.Background(), id).Parameterstorageupdateparameter(parameterstorageupdateparameter).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.UpdateParameterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

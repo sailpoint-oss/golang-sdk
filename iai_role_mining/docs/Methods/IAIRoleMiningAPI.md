@@ -117,8 +117,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.CreatePotentialRoleProvisionRequestV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.CreatePotentialRoleProvisionRequestV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).MinEntitlementPopularity(minEntitlementPopularity).IncludeCommonAccess(includeCommonAccess).Roleminingpotentialroleprovisionrequest(roleminingpotentialroleprovisionrequest).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.CreatePotentialRoleProvisionRequestV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.CreatePotentialRoleProvisionRequestV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).MinEntitlementPopularity(minEntitlementPopularity).IncludeCommonAccess(includeCommonAccess).Roleminingpotentialroleprovisionrequest(roleminingpotentialroleprovisionrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.CreatePotentialRoleProvisionRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -197,8 +197,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.CreateRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Roleminingsessiondto(roleminingsessiondto).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.CreateRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Roleminingsessiondto(roleminingsessiondto).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.CreateRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Roleminingsessiondto(roleminingsessiondto).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.CreateRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Roleminingsessiondto(roleminingsessiondto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.CreateRoleMiningSessionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,8 +282,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.DownloadRoleMiningPotentialRoleZipV1(context.Background(), sessionId, potentialRoleId, exportId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.DownloadRoleMiningPotentialRoleZipV1(context.Background(), sessionId, potentialRoleId, exportId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.DownloadRoleMiningPotentialRoleZipV1(context.Background(), sessionId, potentialRoleId, exportId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.DownloadRoleMiningPotentialRoleZipV1(context.Background(), sessionId, potentialRoleId, exportId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.DownloadRoleMiningPotentialRoleZipV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -366,8 +366,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsyncV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsyncV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Roleminingpotentialroleexportrequest(roleminingpotentialroleexportrequest).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsyncV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsyncV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Roleminingpotentialroleexportrequest(roleminingpotentialroleexportrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsyncV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -451,8 +451,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleStatusV1(context.Background(), sessionId, potentialRoleId, exportId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleStatusV1(context.Background(), sessionId, potentialRoleId, exportId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleStatusV1(context.Background(), sessionId, potentialRoleId, exportId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleStatusV1(context.Background(), sessionId, potentialRoleId, exportId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.ExportRoleMiningPotentialRoleStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -533,8 +533,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.ExportRoleMiningPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -616,8 +616,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetAllPotentialRoleSummariesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetAllPotentialRoleSummariesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetAllPotentialRoleSummariesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetAllPotentialRoleSummariesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetAllPotentialRoleSummariesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -700,8 +700,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetEntitlementDistributionPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetEntitlementDistributionPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).IncludeCommonAccess(includeCommonAccess).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetEntitlementDistributionPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetEntitlementDistributionPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).IncludeCommonAccess(includeCommonAccess).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetEntitlementDistributionPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -794,8 +794,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).IncludeCommonAccess(includeCommonAccess).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).IncludeCommonAccess(includeCommonAccess).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetEntitlementsPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -886,8 +886,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetExcludedEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetExcludedEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetExcludedEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetExcludedEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetExcludedEntitlementsPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -978,8 +978,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetIdentitiesPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetIdentitiesPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetIdentitiesPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetIdentitiesPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetIdentitiesPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1068,8 +1068,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetPotentialRoleApplicationsV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetPotentialRoleApplicationsV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleApplicationsV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleApplicationsV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleApplicationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1158,8 +1158,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetPotentialRoleEntitlementsV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetPotentialRoleEntitlementsV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleEntitlementsV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleEntitlementsV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1248,8 +1248,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetPotentialRoleSourceIdentityUsageV1(context.Background(), potentialRoleId, sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetPotentialRoleSourceIdentityUsageV1(context.Background(), potentialRoleId, sourceId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleSourceIdentityUsageV1(context.Background(), potentialRoleId, sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleSourceIdentityUsageV1(context.Background(), potentialRoleId, sourceId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleSourceIdentityUsageV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1337,8 +1337,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetPotentialRoleSummariesV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetPotentialRoleSummariesV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleSummariesV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleSummariesV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleSummariesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1419,8 +1419,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1498,8 +1498,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetRoleMiningPotentialRoleV1(context.Background(), potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetRoleMiningPotentialRoleV1(context.Background(), potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningPotentialRoleV1(context.Background(), potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningPotentialRoleV1(context.Background(), potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1577,8 +1577,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetRoleMiningSessionStatusV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetRoleMiningSessionStatusV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningSessionStatusV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningSessionStatusV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningSessionStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1656,8 +1656,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningSessionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1739,8 +1739,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningSessionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1820,8 +1820,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetSavedPotentialRolesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.GetSavedPotentialRolesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetSavedPotentialRolesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.GetSavedPotentialRolesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetSavedPotentialRolesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1921,8 +1921,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.PatchPotentialRoleSessionV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.PatchPotentialRoleSessionV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleSessionV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleSessionV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchPotentialRoleSessionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2022,8 +2022,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.PatchPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.PatchPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2108,8 +2108,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.PatchRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.PatchRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.PatchRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.PatchRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchRoleMiningSessionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2197,8 +2197,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.UpdateEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Roleminingpotentialroleeditentitlements(roleminingpotentialroleeditentitlements).Execute()
-	  //resp, r, err := apiClient.IaiRoleMining.IAIRoleMiningAPI.UpdateEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Roleminingpotentialroleeditentitlements(roleminingpotentialroleeditentitlements).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.UpdateEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Roleminingpotentialroleeditentitlements(roleminingpotentialroleeditentitlements).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.UpdateEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Roleminingpotentialroleeditentitlements(roleminingpotentialroleeditentitlements).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.UpdateEntitlementsPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

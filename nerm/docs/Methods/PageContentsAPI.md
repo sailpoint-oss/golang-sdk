@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentsAPI.CreatePageContent(context.Background()).CreatePageContentRequest(createPageContentRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentsAPI.CreatePageContent(context.Background()).CreatePageContentRequest(createPageContentRequest).Execute()
+    resp, r, err := apiClient.PageContentsAPI.CreatePageContent(context.Background()).CreatePageContentRequest(createPageContentRequest).Execute()
+	  //resp, r, err := apiClient.PageContentsAPI.CreatePageContent(context.Background()).CreatePageContentRequest(createPageContentRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.CreatePageContent``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentsAPI.DeletePageContentById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentsAPI.DeletePageContentById(context.Background(), id).Execute()
+    resp, r, err := apiClient.PageContentsAPI.DeletePageContentById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.PageContentsAPI.DeletePageContentById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.DeletePageContentById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,8 +211,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentsAPI.DeletePageContentByUid(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentsAPI.DeletePageContentByUid(context.Background(), id).Execute()
+    resp, r, err := apiClient.PageContentsAPI.DeletePageContentByUid(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.PageContentsAPI.DeletePageContentByUid(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.DeletePageContentByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -277,8 +277,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContentById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContentById(context.Background(), id).Execute()
+    resp, r, err := apiClient.PageContentsAPI.GetPageContentById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.PageContentsAPI.GetPageContentById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.GetPageContentById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -343,8 +343,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContentByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContentByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.PageContentsAPI.GetPageContentByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.PageContentsAPI.GetPageContentByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.GetPageContentByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,8 +400,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContents(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentsAPI.GetPageContents(context.Background()).Execute()
+    resp, r, err := apiClient.PageContentsAPI.GetPageContents(context.Background()).Execute()
+	  //resp, r, err := apiClient.PageContentsAPI.GetPageContents(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.GetPageContents``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -473,8 +473,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentsAPI.UpdatePageContentById(context.Background(), id).CreatePageContentRequest(createPageContentRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentsAPI.UpdatePageContentById(context.Background(), id).CreatePageContentRequest(createPageContentRequest).Execute()
+    resp, r, err := apiClient.PageContentsAPI.UpdatePageContentById(context.Background(), id).CreatePageContentRequest(createPageContentRequest).Execute()
+	  //resp, r, err := apiClient.PageContentsAPI.UpdatePageContentById(context.Background(), id).CreatePageContentRequest(createPageContentRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.UpdatePageContentById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -546,8 +546,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentsAPI.UpdatePageContentByUid(context.Background(), uid).CreatePageContentRequest(createPageContentRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentsAPI.UpdatePageContentByUid(context.Background(), uid).CreatePageContentRequest(createPageContentRequest).Execute()
+    resp, r, err := apiClient.PageContentsAPI.UpdatePageContentByUid(context.Background(), uid).CreatePageContentRequest(createPageContentRequest).Execute()
+	  //resp, r, err := apiClient.PageContentsAPI.UpdatePageContentByUid(context.Background(), uid).CreatePageContentRequest(createPageContentRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentsAPI.UpdatePageContentByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

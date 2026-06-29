@@ -90,8 +90,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.CreateMultiHostIntegrationV1(context.Background()).Multihostintegrationscreate(multihostintegrationscreate).Execute()
-	  //resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.CreateMultiHostIntegrationV1(context.Background()).Multihostintegrationscreate(multihostintegrationscreate).Execute()
+    resp, r, err := apiClient.MultiHostIntegrationAPI.CreateMultiHostIntegrationV1(context.Background()).Multihostintegrationscreate(multihostintegrationscreate).Execute()
+	  //resp, r, err := apiClient.MultiHostIntegrationAPI.CreateMultiHostIntegrationV1(context.Background()).Multihostintegrationscreate(multihostintegrationscreate).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.CreateMultiHostIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -165,8 +165,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1(context.Background(), multihostId).Multihostintegrationscreatesources(multihostintegrationscreatesources).Execute()
-	  //r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1(context.Background(), multihostId).Multihostintegrationscreatesources(multihostintegrationscreatesources).Execute()
+    r, err := apiClient.MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1(context.Background(), multihostId).Multihostintegrationscreatesources(multihostintegrationscreatesources).Execute()
+	  //r, err := apiClient.MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1(context.Background(), multihostId).Multihostintegrationscreatesources(multihostintegrationscreatesources).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -239,8 +239,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.DeleteMultiHostSourcesV1(context.Background(), multiHostId).RequestBody(requestBody).Execute()
-	  //r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.DeleteMultiHostSourcesV1(context.Background(), multiHostId).RequestBody(requestBody).Execute()
+    r, err := apiClient.MultiHostIntegrationAPI.DeleteMultiHostSourcesV1(context.Background(), multiHostId).RequestBody(requestBody).Execute()
+	  //r, err := apiClient.MultiHostIntegrationAPI.DeleteMultiHostSourcesV1(context.Background(), multiHostId).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.DeleteMultiHostSourcesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -306,8 +306,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.DeleteMultiHostV1(context.Background(), multihostId).Execute()
-	  //r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.DeleteMultiHostV1(context.Background(), multihostId).Execute()
+    r, err := apiClient.MultiHostIntegrationAPI.DeleteMultiHostV1(context.Background(), multihostId).Execute()
+	  //r, err := apiClient.MultiHostIntegrationAPI.DeleteMultiHostV1(context.Background(), multihostId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.DeleteMultiHostV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -376,8 +376,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetAcctAggregationGroupsV1(context.Background(), multihostId).Execute()
-	  //resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetAcctAggregationGroupsV1(context.Background(), multihostId).Offset(offset).Limit(limit).Execute()
+    resp, r, err := apiClient.MultiHostIntegrationAPI.GetAcctAggregationGroupsV1(context.Background(), multihostId).Execute()
+	  //resp, r, err := apiClient.MultiHostIntegrationAPI.GetAcctAggregationGroupsV1(context.Background(), multihostId).Offset(offset).Limit(limit).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetAcctAggregationGroupsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -448,8 +448,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetEntitlementAggregationGroupsV1(context.Background(), multiHostId).Execute()
-	  //resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetEntitlementAggregationGroupsV1(context.Background(), multiHostId).Offset(offset).Limit(limit).Execute()
+    resp, r, err := apiClient.MultiHostIntegrationAPI.GetEntitlementAggregationGroupsV1(context.Background(), multiHostId).Execute()
+	  //resp, r, err := apiClient.MultiHostIntegrationAPI.GetEntitlementAggregationGroupsV1(context.Background(), multiHostId).Offset(offset).Limit(limit).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetEntitlementAggregationGroupsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -522,8 +522,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetMultiHostIntegrationsListV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetMultiHostIntegrationsListV1(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).ForSubadmin(forSubadmin).Execute()
+    resp, r, err := apiClient.MultiHostIntegrationAPI.GetMultiHostIntegrationsListV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.MultiHostIntegrationAPI.GetMultiHostIntegrationsListV1(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).ForSubadmin(forSubadmin).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultiHostIntegrationsListV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -590,8 +590,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetMultiHostIntegrationsV1(context.Background(), multihostId).Execute()
-	  //resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetMultiHostIntegrationsV1(context.Background(), multihostId).Execute()
+    resp, r, err := apiClient.MultiHostIntegrationAPI.GetMultiHostIntegrationsV1(context.Background(), multihostId).Execute()
+	  //resp, r, err := apiClient.MultiHostIntegrationAPI.GetMultiHostIntegrationsV1(context.Background(), multihostId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultiHostIntegrationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -658,8 +658,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetMultiHostSourceCreationErrorsV1(context.Background(), multiHostId).Execute()
-	  //resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetMultiHostSourceCreationErrorsV1(context.Background(), multiHostId).Execute()
+    resp, r, err := apiClient.MultiHostIntegrationAPI.GetMultiHostSourceCreationErrorsV1(context.Background(), multiHostId).Execute()
+	  //resp, r, err := apiClient.MultiHostIntegrationAPI.GetMultiHostSourceCreationErrorsV1(context.Background(), multiHostId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultiHostSourceCreationErrorsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -717,8 +717,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetMultihostIntegrationTypesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetMultihostIntegrationTypesV1(context.Background()).Execute()
+    resp, r, err := apiClient.MultiHostIntegrationAPI.GetMultihostIntegrationTypesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.MultiHostIntegrationAPI.GetMultihostIntegrationTypesV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultihostIntegrationTypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -795,8 +795,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetSourcesWithinMultiHostV1(context.Background(), multihostId).Execute()
-	  //resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.GetSourcesWithinMultiHostV1(context.Background(), multihostId).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
+    resp, r, err := apiClient.MultiHostIntegrationAPI.GetSourcesWithinMultiHostV1(context.Background(), multihostId).Execute()
+	  //resp, r, err := apiClient.MultiHostIntegrationAPI.GetSourcesWithinMultiHostV1(context.Background(), multihostId).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetSourcesWithinMultiHostV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -863,8 +863,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.TestConnectionMultiHostSourcesV1(context.Background(), multihostId).Execute()
-	  //r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.TestConnectionMultiHostSourcesV1(context.Background(), multihostId).Execute()
+    r, err := apiClient.MultiHostIntegrationAPI.TestConnectionMultiHostSourcesV1(context.Background(), multihostId).Execute()
+	  //r, err := apiClient.MultiHostIntegrationAPI.TestConnectionMultiHostSourcesV1(context.Background(), multihostId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.TestConnectionMultiHostSourcesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -933,8 +933,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.TestSourceConnectionMultihostV1(context.Background(), multihostId, sourceId).Execute()
-	  //resp, r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.TestSourceConnectionMultihostV1(context.Background(), multihostId, sourceId).Execute()
+    resp, r, err := apiClient.MultiHostIntegrationAPI.TestSourceConnectionMultihostV1(context.Background(), multihostId, sourceId).Execute()
+	  //resp, r, err := apiClient.MultiHostIntegrationAPI.TestSourceConnectionMultihostV1(context.Background(), multihostId, sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.TestSourceConnectionMultihostV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1008,8 +1008,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.UpdateMultiHostSourcesV1(context.Background(), multihostId).UpdateMultiHostSourcesV1RequestInner(updateMultiHostSourcesV1RequestInner).Execute()
-	  //r, err := apiClient.MultiHostIntegration.MultiHostIntegrationAPI.UpdateMultiHostSourcesV1(context.Background(), multihostId).UpdateMultiHostSourcesV1RequestInner(updateMultiHostSourcesV1RequestInner).Execute()
+    r, err := apiClient.MultiHostIntegrationAPI.UpdateMultiHostSourcesV1(context.Background(), multihostId).UpdateMultiHostSourcesV1RequestInner(updateMultiHostSourcesV1RequestInner).Execute()
+	  //r, err := apiClient.MultiHostIntegrationAPI.UpdateMultiHostSourcesV1(context.Background(), multihostId).UpdateMultiHostSourcesV1RequestInner(updateMultiHostSourcesV1RequestInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.UpdateMultiHostSourcesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
