@@ -117,8 +117,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Triggers.TriggersAPI.CompleteTriggerInvocationV1(context.Background(), id).Completeinvocation(completeinvocation).Execute()
-	  //r, err := apiClient.Triggers.TriggersAPI.CompleteTriggerInvocationV1(context.Background(), id).Completeinvocation(completeinvocation).Execute()
+    r, err := apiClient.TriggersAPI.CompleteTriggerInvocationV1(context.Background(), id).Completeinvocation(completeinvocation).Execute()
+	  //r, err := apiClient.TriggersAPI.CompleteTriggerInvocationV1(context.Background(), id).Completeinvocation(completeinvocation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CompleteTriggerInvocationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -185,8 +185,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Triggers.TriggersAPI.CreateSubscriptionV1(context.Background()).Subscriptionpostrequest(subscriptionpostrequest).Execute()
-	  //resp, r, err := apiClient.Triggers.TriggersAPI.CreateSubscriptionV1(context.Background()).Subscriptionpostrequest(subscriptionpostrequest).Execute()
+    resp, r, err := apiClient.TriggersAPI.CreateSubscriptionV1(context.Background()).Subscriptionpostrequest(subscriptionpostrequest).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.CreateSubscriptionV1(context.Background()).Subscriptionpostrequest(subscriptionpostrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CreateSubscriptionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -251,8 +251,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Triggers.TriggersAPI.DeleteSubscriptionV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Triggers.TriggersAPI.DeleteSubscriptionV1(context.Background(), id).Execute()
+    r, err := apiClient.TriggersAPI.DeleteSubscriptionV1(context.Background(), id).Execute()
+	  //r, err := apiClient.TriggersAPI.DeleteSubscriptionV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.DeleteSubscriptionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -320,8 +320,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Triggers.TriggersAPI.ListSubscriptionsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Triggers.TriggersAPI.ListSubscriptionsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.TriggersAPI.ListSubscriptionsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.ListSubscriptionsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListSubscriptionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -392,8 +392,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Triggers.TriggersAPI.ListTriggerInvocationStatusV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Triggers.TriggersAPI.ListTriggerInvocationStatusV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.TriggersAPI.ListTriggerInvocationStatusV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.ListTriggerInvocationStatusV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggerInvocationStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -462,8 +462,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Triggers.TriggersAPI.ListTriggersV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Triggers.TriggersAPI.ListTriggersV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.TriggersAPI.ListTriggersV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.ListTriggersV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -537,8 +537,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Triggers.TriggersAPI.PatchSubscriptionV1(context.Background(), id).SubscriptionpatchrequestInner(subscriptionpatchrequestInner).Execute()
-	  //resp, r, err := apiClient.Triggers.TriggersAPI.PatchSubscriptionV1(context.Background(), id).SubscriptionpatchrequestInner(subscriptionpatchrequestInner).Execute()
+    resp, r, err := apiClient.TriggersAPI.PatchSubscriptionV1(context.Background(), id).SubscriptionpatchrequestInner(subscriptionpatchrequestInner).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.PatchSubscriptionV1(context.Background(), id).SubscriptionpatchrequestInner(subscriptionpatchrequestInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.PatchSubscriptionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -604,8 +604,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Triggers.TriggersAPI.StartTestTriggerInvocationV1(context.Background()).Testinvocation(testinvocation).Execute()
-	  //resp, r, err := apiClient.Triggers.TriggersAPI.StartTestTriggerInvocationV1(context.Background()).Testinvocation(testinvocation).Execute()
+    resp, r, err := apiClient.TriggersAPI.StartTestTriggerInvocationV1(context.Background()).Testinvocation(testinvocation).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.StartTestTriggerInvocationV1(context.Background()).Testinvocation(testinvocation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.StartTestTriggerInvocationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -672,8 +672,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Triggers.TriggersAPI.TestSubscriptionFilterV1(context.Background()).Validatefilterinputdto(validatefilterinputdto).Execute()
-	  //resp, r, err := apiClient.Triggers.TriggersAPI.TestSubscriptionFilterV1(context.Background()).Validatefilterinputdto(validatefilterinputdto).Execute()
+    resp, r, err := apiClient.TriggersAPI.TestSubscriptionFilterV1(context.Background()).Validatefilterinputdto(validatefilterinputdto).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.TestSubscriptionFilterV1(context.Background()).Validatefilterinputdto(validatefilterinputdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.TestSubscriptionFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -754,8 +754,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Triggers.TriggersAPI.UpdateSubscriptionV1(context.Background(), id).Subscriptionputrequest(subscriptionputrequest).Execute()
-	  //resp, r, err := apiClient.Triggers.TriggersAPI.UpdateSubscriptionV1(context.Background(), id).Subscriptionputrequest(subscriptionputrequest).Execute()
+    resp, r, err := apiClient.TriggersAPI.UpdateSubscriptionV1(context.Background(), id).Subscriptionputrequest(subscriptionputrequest).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.UpdateSubscriptionV1(context.Background(), id).Subscriptionputrequest(subscriptionputrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.UpdateSubscriptionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

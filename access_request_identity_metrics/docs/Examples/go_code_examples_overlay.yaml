@@ -25,8 +25,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequestIdentityMetrics.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetricsV1(context.Background(), identityId, requestedObjectId, type_).Execute()
-          //resp, r, err := apiClient.AccessRequestIdentityMetrics.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetricsV1(context.Background(), identityId, requestedObjectId, type_).Execute()
+          resp, r, err := apiClient.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetricsV1(context.Background(), identityId, requestedObjectId, type_).Execute()
+          //resp, r, err := apiClient.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetricsV1(context.Background(), identityId, requestedObjectId, type_).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetricsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

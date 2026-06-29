@@ -80,8 +80,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.CreateConnectorCustomizerV1(context.Background()).Connectorcustomizercreaterequest(connectorcustomizercreaterequest).Execute()
-	  //resp, r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.CreateConnectorCustomizerV1(context.Background()).Connectorcustomizercreaterequest(connectorcustomizercreaterequest).Execute()
+    resp, r, err := apiClient.ConnectorCustomizersAPI.CreateConnectorCustomizerV1(context.Background()).Connectorcustomizercreaterequest(connectorcustomizercreaterequest).Execute()
+	  //resp, r, err := apiClient.ConnectorCustomizersAPI.CreateConnectorCustomizerV1(context.Background()).Connectorcustomizercreaterequest(connectorcustomizercreaterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.CreateConnectorCustomizerV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,8 +146,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.CreateConnectorCustomizerVersionV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.CreateConnectorCustomizerVersionV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ConnectorCustomizersAPI.CreateConnectorCustomizerVersionV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ConnectorCustomizersAPI.CreateConnectorCustomizerVersionV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.CreateConnectorCustomizerVersionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,8 +212,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.DeleteConnectorCustomizerV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.DeleteConnectorCustomizerV1(context.Background(), id).Execute()
+    r, err := apiClient.ConnectorCustomizersAPI.DeleteConnectorCustomizerV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ConnectorCustomizersAPI.DeleteConnectorCustomizerV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.DeleteConnectorCustomizerV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -277,8 +277,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.GetConnectorCustomizerV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.GetConnectorCustomizerV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ConnectorCustomizersAPI.GetConnectorCustomizerV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ConnectorCustomizersAPI.GetConnectorCustomizerV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.GetConnectorCustomizerV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -341,8 +341,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.ListConnectorCustomizersV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.ListConnectorCustomizersV1(context.Background()).Offset(offset).Limit(limit).Execute()
+    resp, r, err := apiClient.ConnectorCustomizersAPI.ListConnectorCustomizersV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ConnectorCustomizersAPI.ListConnectorCustomizersV1(context.Background()).Offset(offset).Limit(limit).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.ListConnectorCustomizersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -409,8 +409,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.PutConnectorCustomizerV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ConnectorCustomizers.ConnectorCustomizersAPI.PutConnectorCustomizerV1(context.Background(), id).Connectorcustomizerupdaterequest(connectorcustomizerupdaterequest).Execute()
+    resp, r, err := apiClient.ConnectorCustomizersAPI.PutConnectorCustomizerV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ConnectorCustomizersAPI.PutConnectorCustomizerV1(context.Background(), id).Connectorcustomizerupdaterequest(connectorcustomizerupdaterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.PutConnectorCustomizerV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -89,8 +89,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Approvals.ApprovalsAPI.ApproveApprovalInBulkV1(context.Background()).Bulkapproverequestdto(bulkapproverequestdto).Execute()
-	  //resp, r, err := apiClient.Approvals.ApprovalsAPI.ApproveApprovalInBulkV1(context.Background()).Bulkapproverequestdto(bulkapproverequestdto).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.ApproveApprovalInBulkV1(context.Background()).Bulkapproverequestdto(bulkapproverequestdto).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.ApproveApprovalInBulkV1(context.Background()).Bulkapproverequestdto(bulkapproverequestdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.ApproveApprovalInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -158,8 +158,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Approvals.ApprovalsAPI.ApproveApprovalV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Approvals.ApprovalsAPI.ApproveApprovalV1(context.Background(), id).Approvalapproverequest(approvalapproverequest).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.ApproveApprovalV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.ApproveApprovalV1(context.Background(), id).Approvalapproverequest(approvalapproverequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.ApproveApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -228,8 +228,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Approvals.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Approvals.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).Approvalcancelrequest(approvalcancelrequest).Execute()
+    r, err := apiClient.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).Approvalcancelrequest(approvalcancelrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.CancelApprovalByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -296,8 +296,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Approvals.ApprovalsAPI.CancelApprovalV1(context.Background()).Bulkcancelrequestdto(bulkcancelrequestdto).Execute()
-	  //resp, r, err := apiClient.Approvals.ApprovalsAPI.CancelApprovalV1(context.Background()).Bulkcancelrequestdto(bulkcancelrequestdto).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.CancelApprovalV1(context.Background()).Bulkcancelrequestdto(bulkcancelrequestdto).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.CancelApprovalV1(context.Background()).Bulkcancelrequestdto(bulkcancelrequestdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.CancelApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -366,8 +366,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Approvals.ApprovalsAPI.DeleteApprovalConfigRequestV1(context.Background(), id, scope).Execute()
-	  //r, err := apiClient.Approvals.ApprovalsAPI.DeleteApprovalConfigRequestV1(context.Background(), id, scope).Execute()
+    r, err := apiClient.ApprovalsAPI.DeleteApprovalConfigRequestV1(context.Background(), id, scope).Execute()
+	  //r, err := apiClient.ApprovalsAPI.DeleteApprovalConfigRequestV1(context.Background(), id, scope).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.DeleteApprovalConfigRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -432,8 +432,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.GetApprovalV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.GetApprovalV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.GetApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -498,8 +498,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalsConfigV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalsConfigV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.GetApprovalsConfigV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.GetApprovalsConfigV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.GetApprovalsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -593,8 +593,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Approvals.ApprovalsAPI.GetApprovalsV1(context.Background()).Mine(mine).RequesterId(requesterId).RequesteeId(requesteeId).ApproverId(approverId).Count(count).CountOnly(countOnly).IncludeComments(includeComments).IncludeApprovers(includeApprovers).IncludeReassignmentHistory(includeReassignmentHistory).IncludeBatchInfo(includeBatchInfo).Filters(filters).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.GetApprovalsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.GetApprovalsV1(context.Background()).Mine(mine).RequesterId(requesterId).RequesteeId(requesteeId).ApproverId(approverId).Count(count).CountOnly(countOnly).IncludeComments(includeComments).IncludeApprovers(includeApprovers).IncludeReassignmentHistory(includeReassignmentHistory).IncludeBatchInfo(includeBatchInfo).Filters(filters).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.GetApprovalsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -660,8 +660,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Approvals.ApprovalsAPI.MoveApprovalV1(context.Background()).Bulkreassignrequestdto(bulkreassignrequestdto).Execute()
-	  //resp, r, err := apiClient.Approvals.ApprovalsAPI.MoveApprovalV1(context.Background()).Bulkreassignrequestdto(bulkreassignrequestdto).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.MoveApprovalV1(context.Background()).Bulkreassignrequestdto(bulkreassignrequestdto).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.MoveApprovalV1(context.Background()).Bulkreassignrequestdto(bulkreassignrequestdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.MoveApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -737,8 +737,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Approvals.ApprovalsAPI.PutApprovalsConfigV1(context.Background(), id, scope).Approvalconfig(approvalconfig).Execute()
-	  //resp, r, err := apiClient.Approvals.ApprovalsAPI.PutApprovalsConfigV1(context.Background(), id, scope).Approvalconfig(approvalconfig).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.PutApprovalsConfigV1(context.Background(), id, scope).Approvalconfig(approvalconfig).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.PutApprovalsConfigV1(context.Background(), id, scope).Approvalconfig(approvalconfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.PutApprovalsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -804,8 +804,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Approvals.ApprovalsAPI.RejectApprovalInBulkV1(context.Background()).Bulkrejectrequestdto(bulkrejectrequestdto).Execute()
-	  //resp, r, err := apiClient.Approvals.ApprovalsAPI.RejectApprovalInBulkV1(context.Background()).Bulkrejectrequestdto(bulkrejectrequestdto).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.RejectApprovalInBulkV1(context.Background()).Bulkrejectrequestdto(bulkrejectrequestdto).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.RejectApprovalInBulkV1(context.Background()).Bulkrejectrequestdto(bulkrejectrequestdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.RejectApprovalInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -873,8 +873,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Approvals.ApprovalsAPI.RejectApprovalV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Approvals.ApprovalsAPI.RejectApprovalV1(context.Background(), id).Approvalrejectrequest(approvalrejectrequest).Execute()
+    r, err := apiClient.ApprovalsAPI.RejectApprovalV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ApprovalsAPI.RejectApprovalV1(context.Background(), id).Approvalrejectrequest(approvalrejectrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.RejectApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -945,8 +945,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsAttributesV1(context.Background(), id).Approvalattributesrequest(approvalattributesrequest).Execute()
-	  //resp, r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsAttributesV1(context.Background(), id).Approvalattributesrequest(approvalattributesrequest).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsAttributesV1(context.Background(), id).Approvalattributesrequest(approvalattributesrequest).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsAttributesV1(context.Background(), id).Approvalattributesrequest(approvalattributesrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.UpdateApprovalsAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1018,8 +1018,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsCommentsV1(context.Background(), id).Approvalcommentsrequest(approvalcommentsrequest).Execute()
-	  //resp, r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsCommentsV1(context.Background(), id).Approvalcommentsrequest(approvalcommentsrequest).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsCommentsV1(context.Background(), id).Approvalcommentsrequest(approvalcommentsrequest).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsCommentsV1(context.Background(), id).Approvalcommentsrequest(approvalcommentsrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.UpdateApprovalsCommentsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1091,8 +1091,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsReassignV1(context.Background(), id).Approvalreassignrequest(approvalreassignrequest).Execute()
-	  //r, err := apiClient.Approvals.ApprovalsAPI.UpdateApprovalsReassignV1(context.Background(), id).Approvalreassignrequest(approvalreassignrequest).Execute()
+    r, err := apiClient.ApprovalsAPI.UpdateApprovalsReassignV1(context.Background(), id).Approvalreassignrequest(approvalreassignrequest).Execute()
+	  //r, err := apiClient.ApprovalsAPI.UpdateApprovalsReassignV1(context.Background(), id).Approvalreassignrequest(approvalreassignrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.UpdateApprovalsReassignV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

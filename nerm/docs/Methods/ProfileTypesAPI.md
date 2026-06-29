@@ -78,8 +78,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfileTypesAPI.DeleteProfileTypeById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.ProfileTypesAPI.DeleteProfileTypeById(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProfileTypesAPI.DeleteProfileTypeById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ProfileTypesAPI.DeleteProfileTypeById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.DeleteProfileTypeById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -144,8 +144,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfileTypesAPI.DeleteProfileTypeByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.ProfileTypesAPI.DeleteProfileTypeByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.ProfileTypesAPI.DeleteProfileTypeByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.ProfileTypesAPI.DeleteProfileTypeByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.DeleteProfileTypeByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -210,8 +210,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypeById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypeById(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypeById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypeById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.GetProfileTypeById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -276,8 +276,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypeByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypeByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypeByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypeByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.GetProfileTypeByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -348,8 +348,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypes(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.ProfileTypesAPI.GetProfileTypes(context.Background()).Limit(limit).Offset(offset).Order(order).Name(name).Archived(archived).Metadata(metadata).Execute()
+    resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypes(context.Background()).Execute()
+	  //resp, r, err := apiClient.ProfileTypesAPI.GetProfileTypes(context.Background()).Limit(limit).Offset(offset).Order(order).Name(name).Archived(archived).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.GetProfileTypes``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -421,8 +421,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfileTypesAPI.PatchProfileTypeById(context.Background(), id).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
-	  //resp, r, err := apiClient.NERM.ProfileTypesAPI.PatchProfileTypeById(context.Background(), id).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+    resp, r, err := apiClient.ProfileTypesAPI.PatchProfileTypeById(context.Background(), id).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+	  //resp, r, err := apiClient.ProfileTypesAPI.PatchProfileTypeById(context.Background(), id).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.PatchProfileTypeById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -494,8 +494,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfileTypesAPI.PatchProfileTypeByUid(context.Background(), uid).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
-	  //resp, r, err := apiClient.NERM.ProfileTypesAPI.PatchProfileTypeByUid(context.Background(), uid).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+    resp, r, err := apiClient.ProfileTypesAPI.PatchProfileTypeByUid(context.Background(), uid).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+	  //resp, r, err := apiClient.ProfileTypesAPI.PatchProfileTypeByUid(context.Background(), uid).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.PatchProfileTypeByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -561,8 +561,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfileTypesAPI.SubmitProfileType(context.Background()).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
-	  //resp, r, err := apiClient.NERM.ProfileTypesAPI.SubmitProfileType(context.Background()).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+    resp, r, err := apiClient.ProfileTypesAPI.SubmitProfileType(context.Background()).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
+	  //resp, r, err := apiClient.ProfileTypesAPI.SubmitProfileType(context.Background()).SubmitProfileTypeRequest(submitProfileTypeRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfileTypesAPI.SubmitProfileType``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

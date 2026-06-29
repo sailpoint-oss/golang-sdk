@@ -77,8 +77,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RoleProfilesAPI.DeleteRoleProfile(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.RoleProfilesAPI.DeleteRoleProfile(context.Background(), id).Execute()
+    resp, r, err := apiClient.RoleProfilesAPI.DeleteRoleProfile(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.RoleProfilesAPI.DeleteRoleProfile(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.DeleteRoleProfile``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -143,8 +143,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RoleProfilesAPI.GetRoleProfile(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.RoleProfilesAPI.GetRoleProfile(context.Background(), id).Execute()
+    resp, r, err := apiClient.RoleProfilesAPI.GetRoleProfile(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.RoleProfilesAPI.GetRoleProfile(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.GetRoleProfile``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,8 +215,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RoleProfilesAPI.GetRoleProfiles(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.RoleProfilesAPI.GetRoleProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).RoleId(roleId).ProfileId(profileId).Metadata(metadata).Execute()
+    resp, r, err := apiClient.RoleProfilesAPI.GetRoleProfiles(context.Background()).Execute()
+	  //resp, r, err := apiClient.RoleProfilesAPI.GetRoleProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).RoleId(roleId).ProfileId(profileId).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.GetRoleProfiles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -288,8 +288,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RoleProfilesAPI.PatchRoleProfile(context.Background(), id).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
-	  //resp, r, err := apiClient.NERM.RoleProfilesAPI.PatchRoleProfile(context.Background(), id).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
+    resp, r, err := apiClient.RoleProfilesAPI.PatchRoleProfile(context.Background(), id).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
+	  //resp, r, err := apiClient.RoleProfilesAPI.PatchRoleProfile(context.Background(), id).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.PatchRoleProfile``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -355,8 +355,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RoleProfilesAPI.PatchRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.RoleProfilesAPI.PatchRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
+    resp, r, err := apiClient.RoleProfilesAPI.PatchRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
+	  //resp, r, err := apiClient.RoleProfilesAPI.PatchRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.PatchRoleProfiles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -422,8 +422,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RoleProfilesAPI.SubmitRoleProfile(context.Background()).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
-	  //resp, r, err := apiClient.NERM.RoleProfilesAPI.SubmitRoleProfile(context.Background()).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
+    resp, r, err := apiClient.RoleProfilesAPI.SubmitRoleProfile(context.Background()).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
+	  //resp, r, err := apiClient.RoleProfilesAPI.SubmitRoleProfile(context.Background()).SubmitRoleProfileRequest(submitRoleProfileRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.SubmitRoleProfile``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -489,8 +489,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RoleProfilesAPI.SubmitRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.RoleProfilesAPI.SubmitRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
+    resp, r, err := apiClient.RoleProfilesAPI.SubmitRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
+	  //resp, r, err := apiClient.RoleProfilesAPI.SubmitRoleProfiles(context.Background()).SubmitRoleProfilesRequest(submitRoleProfilesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleProfilesAPI.SubmitRoleProfiles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

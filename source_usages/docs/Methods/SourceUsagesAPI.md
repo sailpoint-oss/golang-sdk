@@ -75,8 +75,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourceUsages.SourceUsagesAPI.GetStatusBySourceIdV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.SourceUsages.SourceUsagesAPI.GetStatusBySourceIdV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourceUsagesAPI.GetStatusBySourceIdV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourceUsagesAPI.GetStatusBySourceIdV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourceUsagesAPI.GetStatusBySourceIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -149,8 +149,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourceUsages.SourceUsagesAPI.GetUsagesBySourceIdV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.SourceUsages.SourceUsagesAPI.GetUsagesBySourceIdV1(context.Background(), sourceId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+    resp, r, err := apiClient.SourceUsagesAPI.GetUsagesBySourceIdV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.SourceUsagesAPI.GetUsagesBySourceIdV1(context.Background(), sourceId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourceUsagesAPI.GetUsagesBySourceIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormAttributesAPI.CreateFormAttribute(context.Background()).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
-	  //resp, r, err := apiClient.NERM.FormAttributesAPI.CreateFormAttribute(context.Background()).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+    resp, r, err := apiClient.FormAttributesAPI.CreateFormAttribute(context.Background()).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+	  //resp, r, err := apiClient.FormAttributesAPI.CreateFormAttribute(context.Background()).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.CreateFormAttribute``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormAttributesAPI.DeleteFormAttributeById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.FormAttributesAPI.DeleteFormAttributeById(context.Background(), id).Execute()
+    resp, r, err := apiClient.FormAttributesAPI.DeleteFormAttributeById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.FormAttributesAPI.DeleteFormAttributeById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.DeleteFormAttributeById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,8 +211,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormAttributesAPI.DeleteFormAttributeByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.FormAttributesAPI.DeleteFormAttributeByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.FormAttributesAPI.DeleteFormAttributeByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.FormAttributesAPI.DeleteFormAttributeByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.DeleteFormAttributeByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -277,8 +277,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributeById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributeById(context.Background(), id).Execute()
+    resp, r, err := apiClient.FormAttributesAPI.GetFormAttributeById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.FormAttributesAPI.GetFormAttributeById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.GetFormAttributeById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -343,8 +343,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributeByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributeByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.FormAttributesAPI.GetFormAttributeByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.FormAttributesAPI.GetFormAttributeByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.GetFormAttributeByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,8 +400,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributes(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.FormAttributesAPI.GetFormAttributes(context.Background()).Execute()
+    resp, r, err := apiClient.FormAttributesAPI.GetFormAttributes(context.Background()).Execute()
+	  //resp, r, err := apiClient.FormAttributesAPI.GetFormAttributes(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.GetFormAttributes``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -473,8 +473,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormAttributesAPI.UpdateFormAttributeById(context.Background(), id).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
-	  //resp, r, err := apiClient.NERM.FormAttributesAPI.UpdateFormAttributeById(context.Background(), id).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+    resp, r, err := apiClient.FormAttributesAPI.UpdateFormAttributeById(context.Background(), id).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+	  //resp, r, err := apiClient.FormAttributesAPI.UpdateFormAttributeById(context.Background(), id).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.UpdateFormAttributeById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -546,8 +546,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.FormAttributesAPI.UpdateFormAttributeByUid(context.Background(), uid).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
-	  //resp, r, err := apiClient.NERM.FormAttributesAPI.UpdateFormAttributeByUid(context.Background(), uid).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+    resp, r, err := apiClient.FormAttributesAPI.UpdateFormAttributeByUid(context.Background(), uid).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
+	  //resp, r, err := apiClient.FormAttributesAPI.UpdateFormAttributeByUid(context.Background(), uid).CreateFormAttributeRequest(createFormAttributeRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `FormAttributesAPI.UpdateFormAttributeByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

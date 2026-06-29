@@ -86,8 +86,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.CreateWorkgroupV1(context.Background()).Workgroupdto(workgroupdto).Execute()
-	  //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.CreateWorkgroupV1(context.Background()).Workgroupdto(workgroupdto).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.CreateWorkgroupV1(context.Background()).Workgroupdto(workgroupdto).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.CreateWorkgroupV1(context.Background()).Workgroupdto(workgroupdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.CreateWorkgroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -162,8 +162,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
-	  //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupMembersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -228,8 +228,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupV1(context.Background(), id).Execute()
-	  //r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupV1(context.Background(), id).Execute()
+    r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupV1(context.Background(), id).Execute()
+	  //r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -305,8 +305,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1(context.Background()).Workgroupbulkdeleterequest(workgroupbulkdeleterequest).Execute()
-	  //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1(context.Background()).Workgroupbulkdeleterequest(workgroupbulkdeleterequest).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1(context.Background()).Workgroupbulkdeleterequest(workgroupbulkdeleterequest).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1(context.Background()).Workgroupbulkdeleterequest(workgroupbulkdeleterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -371,8 +371,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.GetWorkgroupV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.GetWorkgroupV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.GetWorkgroupV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.GetWorkgroupV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.GetWorkgroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -445,8 +445,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListConnectionsV1(context.Background(), workgroupId).Execute()
-	  //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListConnectionsV1(context.Background(), workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.ListConnectionsV1(context.Background(), workgroupId).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.ListConnectionsV1(context.Background(), workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListConnectionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -519,8 +519,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListWorkgroupMembersV1(context.Background(), workgroupId).Execute()
-	  //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListWorkgroupMembersV1(context.Background(), workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.ListWorkgroupMembersV1(context.Background(), workgroupId).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.ListWorkgroupMembersV1(context.Background(), workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroupMembersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -589,8 +589,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListWorkgroupsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.ListWorkgroupsV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.ListWorkgroupsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.ListWorkgroupsV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroupsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -660,8 +660,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.PatchWorkgroupV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.PatchWorkgroupV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.PatchWorkgroupV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.PatchWorkgroupV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.PatchWorkgroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -737,8 +737,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.UpdateWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
-	  //resp, r, err := apiClient.GovernanceGroups.GovernanceGroupsAPI.UpdateWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.UpdateWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.UpdateWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.UpdateWorkgroupMembersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

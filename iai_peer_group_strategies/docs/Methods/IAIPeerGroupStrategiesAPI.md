@@ -93,8 +93,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiPeerGroupStrategies.IAIPeerGroupStrategiesAPI.GetPeerGroupOutliersV1(context.Background(), strategy).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiPeerGroupStrategies.IAIPeerGroupStrategiesAPI.GetPeerGroupOutliersV1(context.Background(), strategy).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IAIPeerGroupStrategiesAPI.GetPeerGroupOutliersV1(context.Background(), strategy).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIPeerGroupStrategiesAPI.GetPeerGroupOutliersV1(context.Background(), strategy).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIPeerGroupStrategiesAPI.GetPeerGroupOutliersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

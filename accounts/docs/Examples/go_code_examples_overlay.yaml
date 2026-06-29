@@ -29,8 +29,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.CreateAccountV1(context.Background()).Accountattributescreate(accountattributescreate).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.CreateAccountV1(context.Background()).Accountattributescreate(accountattributescreate).Execute()
+          resp, r, err := apiClient.AccountsAPI.CreateAccountV1(context.Background()).Accountattributescreate(accountattributescreate).Execute()
+          //resp, r, err := apiClient.AccountsAPI.CreateAccountV1(context.Background()).Accountattributescreate(accountattributescreate).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.CreateAccountV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,8 +63,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.DeleteAccountAsyncV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.DeleteAccountAsyncV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.AccountsAPI.DeleteAccountAsyncV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AccountsAPI.DeleteAccountAsyncV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DeleteAccountAsyncV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -97,8 +97,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.DeleteAccountV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.DeleteAccountV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.AccountsAPI.DeleteAccountV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AccountsAPI.DeleteAccountV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DeleteAccountV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,8 +131,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.DisableAccountForIdentityV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.DisableAccountForIdentityV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.AccountsAPI.DisableAccountForIdentityV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AccountsAPI.DisableAccountForIdentityV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DisableAccountForIdentityV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -172,8 +172,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.DisableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.DisableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
+          resp, r, err := apiClient.AccountsAPI.DisableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
+          //resp, r, err := apiClient.AccountsAPI.DisableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DisableAccountV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,8 +212,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.DisableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.DisableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
+          resp, r, err := apiClient.AccountsAPI.DisableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
+          //resp, r, err := apiClient.AccountsAPI.DisableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DisableAccountsForIdentitiesV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -246,8 +246,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.EnableAccountForIdentityV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.EnableAccountForIdentityV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.AccountsAPI.EnableAccountForIdentityV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AccountsAPI.EnableAccountForIdentityV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.EnableAccountForIdentityV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -287,8 +287,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.EnableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.EnableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
+          resp, r, err := apiClient.AccountsAPI.EnableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
+          //resp, r, err := apiClient.AccountsAPI.EnableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.EnableAccountV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -327,8 +327,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.EnableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.EnableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
+          resp, r, err := apiClient.AccountsAPI.EnableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
+          //resp, r, err := apiClient.AccountsAPI.EnableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.EnableAccountsForIdentitiesV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -364,8 +364,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.GetAccountEntitlementsV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.GetAccountEntitlementsV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Execute()
+          resp, r, err := apiClient.AccountsAPI.GetAccountEntitlementsV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AccountsAPI.GetAccountEntitlementsV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.GetAccountEntitlementsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -398,8 +398,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.GetAccountV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.GetAccountV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.AccountsAPI.GetAccountV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AccountsAPI.GetAccountV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.GetAccountV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -437,8 +437,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.ListAccountsV1(context.Background()).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.ListAccountsV1(context.Background()).Limit(limit).Offset(offset).Count(count).DetailLevel(detailLevel).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.AccountsAPI.ListAccountsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.AccountsAPI.ListAccountsV1(context.Background()).Limit(limit).Offset(offset).Count(count).DetailLevel(detailLevel).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.ListAccountsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -478,8 +478,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.PutAccountV1(context.Background(), id).Accountattributes(accountattributes).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.PutAccountV1(context.Background(), id).Accountattributes(accountattributes).Execute()
+          resp, r, err := apiClient.AccountsAPI.PutAccountV1(context.Background(), id).Accountattributes(accountattributes).Execute()
+          //resp, r, err := apiClient.AccountsAPI.PutAccountV1(context.Background(), id).Accountattributes(accountattributes).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.PutAccountV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -512,8 +512,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.SubmitReloadAccountV1(context.Background(), id).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.SubmitReloadAccountV1(context.Background(), id).Execute()
+          resp, r, err := apiClient.AccountsAPI.SubmitReloadAccountV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.AccountsAPI.SubmitReloadAccountV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.SubmitReloadAccountV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -553,8 +553,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.UnlockAccountV1(context.Background(), id).Accountunlockrequest(accountunlockrequest).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.UnlockAccountV1(context.Background(), id).Accountunlockrequest(accountunlockrequest).Execute()
+          resp, r, err := apiClient.AccountsAPI.UnlockAccountV1(context.Background(), id).Accountunlockrequest(accountunlockrequest).Execute()
+          //resp, r, err := apiClient.AccountsAPI.UnlockAccountV1(context.Background(), id).Accountunlockrequest(accountunlockrequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.UnlockAccountV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -594,8 +594,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Accounts.AccountsAPI.UpdateAccountV1(context.Background(), id).RequestBody(requestBody).Execute()
-          //resp, r, err := apiClient.Accounts.AccountsAPI.UpdateAccountV1(context.Background(), id).RequestBody(requestBody).Execute()
+          resp, r, err := apiClient.AccountsAPI.UpdateAccountV1(context.Background(), id).RequestBody(requestBody).Execute()
+          //resp, r, err := apiClient.AccountsAPI.UpdateAccountV1(context.Background(), id).RequestBody(requestBody).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.UpdateAccountV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

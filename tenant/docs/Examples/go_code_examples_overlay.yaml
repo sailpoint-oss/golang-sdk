@@ -22,8 +22,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.Tenant.TenantAPI.GetTenantV1(context.Background()).Execute()
-          //resp, r, err := apiClient.Tenant.TenantAPI.GetTenantV1(context.Background()).Execute()
+          resp, r, err := apiClient.TenantAPI.GetTenantV1(context.Background()).Execute()
+          //resp, r, err := apiClient.TenantAPI.GetTenantV1(context.Background()).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `TenantAPI.GetTenantV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

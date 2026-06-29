@@ -78,8 +78,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowsAPI.CreateAutomatedWorkflow(context.Background()).CreateAutomatedWorkflowRequest(createAutomatedWorkflowRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateAutomatedWorkflow(context.Background()).CreateAutomatedWorkflowRequest(createAutomatedWorkflowRequest).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.CreateAutomatedWorkflow(context.Background()).CreateAutomatedWorkflowRequest(createAutomatedWorkflowRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.CreateAutomatedWorkflow(context.Background()).CreateAutomatedWorkflowRequest(createAutomatedWorkflowRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateAutomatedWorkflow``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowsAPI.CreateBatchWorkflow(context.Background()).CreateBatchWorkflowRequest(createBatchWorkflowRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateBatchWorkflow(context.Background()).CreateBatchWorkflowRequest(createBatchWorkflowRequest).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.CreateBatchWorkflow(context.Background()).CreateBatchWorkflowRequest(createBatchWorkflowRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.CreateBatchWorkflow(context.Background()).CreateBatchWorkflowRequest(createBatchWorkflowRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateBatchWorkflow``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,8 +212,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowsAPI.CreateCreateWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateCreateWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.CreateCreateWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.CreateCreateWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateCreateWorkflow``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -279,8 +279,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowsAPI.CreateLoginWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateLoginWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.CreateLoginWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.CreateLoginWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateLoginWorkflow``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -346,8 +346,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowsAPI.CreatePasswordUpdateWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowsAPI.CreatePasswordUpdateWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.CreatePasswordUpdateWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.CreatePasswordUpdateWorkflow(context.Background()).CreateLoginWorkflowRequest(createLoginWorkflowRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreatePasswordUpdateWorkflow``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -413,8 +413,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowsAPI.CreateRegistrationWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateRegistrationWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.CreateRegistrationWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.CreateRegistrationWorkflow(context.Background()).CreateCreateWorkflowRequest(createCreateWorkflowRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateRegistrationWorkflow``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -480,8 +480,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowsAPI.CreateUpdateWorkflow(context.Background()).CreateUpdateWorkflowRequest(createUpdateWorkflowRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowsAPI.CreateUpdateWorkflow(context.Background()).CreateUpdateWorkflowRequest(createUpdateWorkflowRequest).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.CreateUpdateWorkflow(context.Background()).CreateUpdateWorkflowRequest(createUpdateWorkflowRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.CreateUpdateWorkflow(context.Background()).CreateUpdateWorkflowRequest(createUpdateWorkflowRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateUpdateWorkflow``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

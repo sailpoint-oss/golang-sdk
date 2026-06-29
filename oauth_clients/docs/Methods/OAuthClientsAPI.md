@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.OauthClients.OAuthClientsAPI.CreateOauthClientV1(context.Background()).Createoauthclientrequest(createoauthclientrequest).Execute()
-	  //resp, r, err := apiClient.OauthClients.OAuthClientsAPI.CreateOauthClientV1(context.Background()).Createoauthclientrequest(createoauthclientrequest).Execute()
+    resp, r, err := apiClient.OAuthClientsAPI.CreateOauthClientV1(context.Background()).Createoauthclientrequest(createoauthclientrequest).Execute()
+	  //resp, r, err := apiClient.OAuthClientsAPI.CreateOauthClientV1(context.Background()).Createoauthclientrequest(createoauthclientrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.CreateOauthClientV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.OauthClients.OAuthClientsAPI.DeleteOauthClientV1(context.Background(), id).Execute()
-	  //r, err := apiClient.OauthClients.OAuthClientsAPI.DeleteOauthClientV1(context.Background(), id).Execute()
+    r, err := apiClient.OAuthClientsAPI.DeleteOauthClientV1(context.Background(), id).Execute()
+	  //r, err := apiClient.OAuthClientsAPI.DeleteOauthClientV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.DeleteOauthClientV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -210,8 +210,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.OauthClients.OAuthClientsAPI.GetOauthClientV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.OauthClients.OAuthClientsAPI.GetOauthClientV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.OAuthClientsAPI.GetOauthClientV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.OAuthClientsAPI.GetOauthClientV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.GetOauthClientV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -272,8 +272,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.OauthClients.OAuthClientsAPI.ListOauthClientsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.OauthClients.OAuthClientsAPI.ListOauthClientsV1(context.Background()).Filters(filters).Execute()
+    resp, r, err := apiClient.OAuthClientsAPI.ListOauthClientsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.OAuthClientsAPI.ListOauthClientsV1(context.Background()).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.ListOauthClientsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -345,8 +345,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.OauthClients.OAuthClientsAPI.PatchOauthClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.OauthClients.OAuthClientsAPI.PatchOauthClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.OAuthClientsAPI.PatchOauthClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.OAuthClientsAPI.PatchOauthClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.PatchOauthClientV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

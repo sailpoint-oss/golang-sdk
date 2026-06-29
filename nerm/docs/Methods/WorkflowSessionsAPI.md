@@ -76,8 +76,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSession(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSession(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSession(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSession(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.GetWorkflowSession``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
+    resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
+	  //resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.GetWorkflowSessionUpload``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -227,8 +227,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSessions(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.GetWorkflowSessions(context.Background(), uid).Limit(limit).Offset(offset).Order(order).ProfileId(profileId).WorkflowId(workflowId).RequesterId(requesterId).Status(status).Metadata(metadata).Execute()
+    resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSessions(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.WorkflowSessionsAPI.GetWorkflowSessions(context.Background(), uid).Limit(limit).Offset(offset).Order(order).ProfileId(profileId).WorkflowId(workflowId).RequesterId(requesterId).Status(status).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.GetWorkflowSessions``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -302,8 +302,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowSessionsAPI.PatchWorkflowSession(context.Background(), id).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.PatchWorkflowSession(context.Background(), id).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Run(run).Execute()
+    resp, r, err := apiClient.WorkflowSessionsAPI.PatchWorkflowSession(context.Background(), id).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowSessionsAPI.PatchWorkflowSession(context.Background(), id).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Run(run).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.PatchWorkflowSession``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -371,8 +371,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowSessionsAPI.SubmitWorkflowSession(context.Background()).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.SubmitWorkflowSession(context.Background()).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Run(run).Execute()
+    resp, r, err := apiClient.WorkflowSessionsAPI.SubmitWorkflowSession(context.Background()).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowSessionsAPI.SubmitWorkflowSession(context.Background()).SubmitWorkflowSessionRequest(submitWorkflowSessionRequest).Run(run).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.SubmitWorkflowSession``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -443,8 +443,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowSessionsAPI.SubmitWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowSessionsAPI.SubmitWorkflowSessionUpload(context.Background(), id, attributeId).File(file).Execute()
+    resp, r, err := apiClient.WorkflowSessionsAPI.SubmitWorkflowSessionUpload(context.Background(), id, attributeId).Execute()
+	  //resp, r, err := apiClient.WorkflowSessionsAPI.SubmitWorkflowSessionUpload(context.Background(), id, attributeId).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowSessionsAPI.SubmitWorkflowSessionUpload``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

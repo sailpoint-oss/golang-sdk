@@ -29,8 +29,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.ApproveBulkAccessRequestV1(context.Background()).Bulkapproveaccessrequest(bulkapproveaccessrequest).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.ApproveBulkAccessRequestV1(context.Background()).Bulkapproveaccessrequest(bulkapproveaccessrequest).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.ApproveBulkAccessRequestV1(context.Background()).Bulkapproveaccessrequest(bulkapproveaccessrequest).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.ApproveBulkAccessRequestV1(context.Background()).Bulkapproveaccessrequest(bulkapproveaccessrequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ApproveBulkAccessRequestV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -69,8 +69,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.CancelAccessRequestInBulkV1(context.Background()).Bulkcancelaccessrequest(bulkcancelaccessrequest).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.CancelAccessRequestInBulkV1(context.Background()).Bulkcancelaccessrequest(bulkcancelaccessrequest).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestInBulkV1(context.Background()).Bulkcancelaccessrequest(bulkcancelaccessrequest).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestInBulkV1(context.Background()).Bulkcancelaccessrequest(bulkcancelaccessrequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequestInBulkV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -109,8 +109,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.CancelAccessRequestV1(context.Background()).Cancelaccessrequest(cancelaccessrequest).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.CancelAccessRequestV1(context.Background()).Cancelaccessrequest(cancelaccessrequest).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestV1(context.Background()).Cancelaccessrequest(cancelaccessrequest).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestV1(context.Background()).Cancelaccessrequest(cancelaccessrequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequestV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -149,8 +149,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.CloseAccessRequestV1(context.Background()).Closeaccessrequest(closeaccessrequest).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.CloseAccessRequestV1(context.Background()).Closeaccessrequest(closeaccessrequest).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.CloseAccessRequestV1(context.Background()).Closeaccessrequest(closeaccessrequest).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.CloseAccessRequestV1(context.Background()).Closeaccessrequest(closeaccessrequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CloseAccessRequestV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -189,8 +189,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.CreateAccessRequestV1(context.Background()).Accessrequest(accessrequest).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.CreateAccessRequestV1(context.Background()).Accessrequest(accessrequest).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.CreateAccessRequestV1(context.Background()).Accessrequest(accessrequest).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.CreateAccessRequestV1(context.Background()).Accessrequest(accessrequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CreateAccessRequestV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -222,8 +222,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.GetAccessRequestConfigV1(context.Background()).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.GetAccessRequestConfigV1(context.Background()).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV1(context.Background()).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV1(context.Background()).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -255,8 +255,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfigV2(context.Background()).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfigV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -290,8 +290,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.GetEntitlementDetailsForIdentityV1(context.Background(), identityId, entitlementId).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.GetEntitlementDetailsForIdentityV1(context.Background(), identityId, entitlementId).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.GetEntitlementDetailsForIdentityV1(context.Background(), identityId, entitlementId).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.GetEntitlementDetailsForIdentityV1(context.Background(), identityId, entitlementId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetEntitlementDetailsForIdentityV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -333,8 +333,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.ListAccessRequestStatusV1(context.Background()).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.ListAccessRequestStatusV1(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).RequestState(requestState).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.ListAccessRequestStatusV1(context.Background()).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.ListAccessRequestStatusV1(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).RequestState(requestState).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ListAccessRequestStatusV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -377,8 +377,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.ListAdministratorsAccessRequestStatusV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.ListAdministratorsAccessRequestStatusV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).RequestState(requestState).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.ListAdministratorsAccessRequestStatusV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.ListAdministratorsAccessRequestStatusV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).RequestState(requestState).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ListAdministratorsAccessRequestStatusV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -418,8 +418,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.LoadAccountSelectionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accountsselectionrequest(accountsselectionrequest).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.LoadAccountSelectionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accountsselectionrequest(accountsselectionrequest).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.LoadAccountSelectionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accountsselectionrequest(accountsselectionrequest).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.LoadAccountSelectionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accountsselectionrequest(accountsselectionrequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.LoadAccountSelectionsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -458,8 +458,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.SetAccessRequestConfigV1(context.Background()).Accessrequestconfig(accessrequestconfig).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.SetAccessRequestConfigV1(context.Background()).Accessrequestconfig(accessrequestconfig).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV1(context.Background()).Accessrequestconfig(accessrequestconfig).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV1(context.Background()).Accessrequestconfig(accessrequestconfig).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -498,8 +498,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).Accessrequestconfigv2(accessrequestconfigv2).Execute()
-          //resp, r, err := apiClient.AccessRequests.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).Accessrequestconfigv2(accessrequestconfigv2).Execute()
+          resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).Accessrequestconfigv2(accessrequestconfigv2).Execute()
+          //resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).Accessrequestconfigv2(accessrequestconfigv2).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfigV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

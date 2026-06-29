@@ -72,8 +72,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.SystemRolePermissionsAPI.CreateSystemRolePermission(context.Background()).CreateSystemRolePermissionRequest(createSystemRolePermissionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.SystemRolePermissionsAPI.CreateSystemRolePermission(context.Background()).CreateSystemRolePermissionRequest(createSystemRolePermissionRequest).Execute()
+    resp, r, err := apiClient.SystemRolePermissionsAPI.CreateSystemRolePermission(context.Background()).CreateSystemRolePermissionRequest(createSystemRolePermissionRequest).Execute()
+	  //resp, r, err := apiClient.SystemRolePermissionsAPI.CreateSystemRolePermission(context.Background()).CreateSystemRolePermissionRequest(createSystemRolePermissionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SystemRolePermissionsAPI.CreateSystemRolePermission``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

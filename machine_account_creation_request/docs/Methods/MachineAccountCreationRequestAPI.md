@@ -93,8 +93,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountCreationRequest.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineaccountcreaterequestinput(machineaccountcreaterequestinput).Execute()
-	  //resp, r, err := apiClient.MachineAccountCreationRequest.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineaccountcreaterequestinput(machineaccountcreaterequestinput).Execute()
+    resp, r, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineaccountcreaterequestinput(machineaccountcreaterequestinput).Execute()
+	  //resp, r, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineaccountcreaterequestinput(machineaccountcreaterequestinput).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -172,8 +172,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountCreationRequest.MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1(context.Background(), accountRequestId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.MachineAccountCreationRequest.MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1(context.Background(), accountRequestId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1(context.Background(), accountRequestId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1(context.Background(), accountRequestId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -250,8 +250,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountCreationRequest.MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.MachineAccountCreationRequest.MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Execute()
+    resp, r, err := apiClient.MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

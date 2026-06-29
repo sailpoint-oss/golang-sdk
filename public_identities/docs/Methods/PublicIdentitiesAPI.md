@@ -80,8 +80,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentities.PublicIdentitiesAPI.GetPublicIdentitiesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.PublicIdentities.PublicIdentitiesAPI.GetPublicIdentitiesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).AddCoreFilters(addCoreFilters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.PublicIdentitiesAPI.GetPublicIdentitiesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.PublicIdentitiesAPI.GetPublicIdentitiesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).AddCoreFilters(addCoreFilters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesAPI.GetPublicIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

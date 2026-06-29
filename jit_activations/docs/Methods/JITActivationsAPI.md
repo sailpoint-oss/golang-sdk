@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.JitActivations.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).Jitactivationactivaterequest(jitactivationactivaterequest).Execute()
-	  //resp, r, err := apiClient.JitActivations.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).Jitactivationactivaterequest(jitactivationactivaterequest).Execute()
+    resp, r, err := apiClient.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).Jitactivationactivaterequest(jitactivationactivaterequest).Execute()
+	  //resp, r, err := apiClient.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).Jitactivationactivaterequest(jitactivationactivaterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartActivateWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -152,8 +152,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.JitActivations.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).Jitactivationdeactivaterequest(jitactivationdeactivaterequest).Execute()
-	  //resp, r, err := apiClient.JitActivations.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).Jitactivationdeactivaterequest(jitactivationdeactivaterequest).Execute()
+    resp, r, err := apiClient.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).Jitactivationdeactivaterequest(jitactivationdeactivaterequest).Execute()
+	  //resp, r, err := apiClient.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).Jitactivationdeactivaterequest(jitactivationdeactivaterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartDeactivateWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -226,8 +226,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.JitActivations.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).Jitactivationextendrequest(jitactivationextendrequest).Execute()
-	  //resp, r, err := apiClient.JitActivations.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).Jitactivationextendrequest(jitactivationextendrequest).Execute()
+    resp, r, err := apiClient.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).Jitactivationextendrequest(jitactivationextendrequest).Execute()
+	  //resp, r, err := apiClient.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).Jitactivationextendrequest(jitactivationextendrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartExtendWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

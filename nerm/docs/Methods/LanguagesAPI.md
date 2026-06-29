@@ -78,8 +78,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.LanguagesAPI.PatchLanguage(context.Background(), languageLocale).PatchLanguageRequest(patchLanguageRequest).Execute()
-	  //resp, r, err := apiClient.NERM.LanguagesAPI.PatchLanguage(context.Background(), languageLocale).PatchLanguageRequest(patchLanguageRequest).Execute()
+    resp, r, err := apiClient.LanguagesAPI.PatchLanguage(context.Background(), languageLocale).PatchLanguageRequest(patchLanguageRequest).Execute()
+	  //resp, r, err := apiClient.LanguagesAPI.PatchLanguage(context.Background(), languageLocale).PatchLanguageRequest(patchLanguageRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LanguagesAPI.PatchLanguage``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

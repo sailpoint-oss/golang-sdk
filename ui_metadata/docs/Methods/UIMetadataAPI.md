@@ -80,8 +80,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.UiMetadata.UIMetadataAPI.GetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.UiMetadata.UIMetadataAPI.GetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.UIMetadataAPI.GetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.UIMetadataAPI.GetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UIMetadataAPI.GetTenantUiMetadataV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -160,8 +160,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.UiMetadata.UIMetadataAPI.SetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantuimetadataitemupdaterequest(tenantuimetadataitemupdaterequest).Execute()
-	  //resp, r, err := apiClient.UiMetadata.UIMetadataAPI.SetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantuimetadataitemupdaterequest(tenantuimetadataitemupdaterequest).Execute()
+    resp, r, err := apiClient.UIMetadataAPI.SetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantuimetadataitemupdaterequest(tenantuimetadataitemupdaterequest).Execute()
+	  //resp, r, err := apiClient.UIMetadataAPI.SetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantuimetadataitemupdaterequest(tenantuimetadataitemupdaterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UIMetadataAPI.SetTenantUiMetadataV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

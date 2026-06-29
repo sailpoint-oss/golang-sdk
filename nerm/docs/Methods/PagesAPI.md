@@ -73,8 +73,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PagesAPI.CreateProfilePage(context.Background()).CreateProfilePageRequest(createProfilePageRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PagesAPI.CreateProfilePage(context.Background()).CreateProfilePageRequest(createProfilePageRequest).Execute()
+    resp, r, err := apiClient.PagesAPI.CreateProfilePage(context.Background()).CreateProfilePageRequest(createProfilePageRequest).Execute()
+	  //resp, r, err := apiClient.PagesAPI.CreateProfilePage(context.Background()).CreateProfilePageRequest(createProfilePageRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PagesAPI.CreateProfilePage``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,8 +140,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PagesAPI.CreateWorkflowPage(context.Background()).CreateWorkflowPageRequest(createWorkflowPageRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PagesAPI.CreateWorkflowPage(context.Background()).CreateWorkflowPageRequest(createWorkflowPageRequest).Execute()
+    resp, r, err := apiClient.PagesAPI.CreateWorkflowPage(context.Background()).CreateWorkflowPageRequest(createWorkflowPageRequest).Execute()
+	  //resp, r, err := apiClient.PagesAPI.CreateWorkflowPage(context.Background()).CreateWorkflowPageRequest(createWorkflowPageRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PagesAPI.CreateWorkflowPage``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

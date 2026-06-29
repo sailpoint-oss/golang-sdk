@@ -80,8 +80,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.JitAccess.JITAccessAPI.GetJitActivationConfigV1(context.Background(), configType).Execute()
-	  //resp, r, err := apiClient.JitAccess.JITAccessAPI.GetJitActivationConfigV1(context.Background(), configType).Execute()
+    resp, r, err := apiClient.JITAccessAPI.GetJitActivationConfigV1(context.Background(), configType).Execute()
+	  //resp, r, err := apiClient.JITAccessAPI.GetJitActivationConfigV1(context.Background(), configType).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITAccessAPI.GetJitActivationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -158,8 +158,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.JitAccess.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).Jitaccessoperationrequest(jitaccessoperationrequest).Execute()
-	  //resp, r, err := apiClient.JitAccess.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).Jitaccessoperationrequest(jitaccessoperationrequest).Execute()
+    resp, r, err := apiClient.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).Jitaccessoperationrequest(jitaccessoperationrequest).Execute()
+	  //resp, r, err := apiClient.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).Jitaccessoperationrequest(jitaccessoperationrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITAccessAPI.PatchJitActivationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

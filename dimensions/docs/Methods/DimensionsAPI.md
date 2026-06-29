@@ -89,8 +89,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Dimensions.DimensionsAPI.CreateDimensionV1(context.Background(), roleId).Dimension(dimension).Execute()
-	  //resp, r, err := apiClient.Dimensions.DimensionsAPI.CreateDimensionV1(context.Background(), roleId).Dimension(dimension).Execute()
+    resp, r, err := apiClient.DimensionsAPI.CreateDimensionV1(context.Background(), roleId).Dimension(dimension).Execute()
+	  //resp, r, err := apiClient.DimensionsAPI.CreateDimensionV1(context.Background(), roleId).Dimension(dimension).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.CreateDimensionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -165,8 +165,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Dimensions.DimensionsAPI.DeleteBulkDimensionsV1(context.Background(), roleId).Dimensionbulkdeleterequest(dimensionbulkdeleterequest).Execute()
-	  //resp, r, err := apiClient.Dimensions.DimensionsAPI.DeleteBulkDimensionsV1(context.Background(), roleId).Dimensionbulkdeleterequest(dimensionbulkdeleterequest).Execute()
+    resp, r, err := apiClient.DimensionsAPI.DeleteBulkDimensionsV1(context.Background(), roleId).Dimensionbulkdeleterequest(dimensionbulkdeleterequest).Execute()
+	  //resp, r, err := apiClient.DimensionsAPI.DeleteBulkDimensionsV1(context.Background(), roleId).Dimensionbulkdeleterequest(dimensionbulkdeleterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.DeleteBulkDimensionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -235,8 +235,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Dimensions.DimensionsAPI.DeleteDimensionV1(context.Background(), roleId, dimensionId).Execute()
-	  //r, err := apiClient.Dimensions.DimensionsAPI.DeleteDimensionV1(context.Background(), roleId, dimensionId).Execute()
+    r, err := apiClient.DimensionsAPI.DeleteDimensionV1(context.Background(), roleId, dimensionId).Execute()
+	  //r, err := apiClient.DimensionsAPI.DeleteDimensionV1(context.Background(), roleId, dimensionId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.DeleteDimensionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -315,8 +315,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Dimensions.DimensionsAPI.GetDimensionEntitlementsV1(context.Background(), roleId, dimensionId).Execute()
-	  //resp, r, err := apiClient.Dimensions.DimensionsAPI.GetDimensionEntitlementsV1(context.Background(), roleId, dimensionId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.DimensionsAPI.GetDimensionEntitlementsV1(context.Background(), roleId, dimensionId).Execute()
+	  //resp, r, err := apiClient.DimensionsAPI.GetDimensionEntitlementsV1(context.Background(), roleId, dimensionId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.GetDimensionEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -386,8 +386,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Dimensions.DimensionsAPI.GetDimensionV1(context.Background(), roleId, dimensionId).Execute()
-	  //resp, r, err := apiClient.Dimensions.DimensionsAPI.GetDimensionV1(context.Background(), roleId, dimensionId).Execute()
+    resp, r, err := apiClient.DimensionsAPI.GetDimensionV1(context.Background(), roleId, dimensionId).Execute()
+	  //resp, r, err := apiClient.DimensionsAPI.GetDimensionV1(context.Background(), roleId, dimensionId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.GetDimensionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -467,8 +467,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Dimensions.DimensionsAPI.ListDimensionAccessProfilesV1(context.Background(), roleId, dimensionId).Execute()
-	  //resp, r, err := apiClient.Dimensions.DimensionsAPI.ListDimensionAccessProfilesV1(context.Background(), roleId, dimensionId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.DimensionsAPI.ListDimensionAccessProfilesV1(context.Background(), roleId, dimensionId).Execute()
+	  //resp, r, err := apiClient.DimensionsAPI.ListDimensionAccessProfilesV1(context.Background(), roleId, dimensionId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.ListDimensionAccessProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -547,8 +547,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Dimensions.DimensionsAPI.ListDimensionsV1(context.Background(), roleId).Execute()
-	  //resp, r, err := apiClient.Dimensions.DimensionsAPI.ListDimensionsV1(context.Background(), roleId).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.DimensionsAPI.ListDimensionsV1(context.Background(), roleId).Execute()
+	  //resp, r, err := apiClient.DimensionsAPI.ListDimensionsV1(context.Background(), roleId).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.ListDimensionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -627,8 +627,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Dimensions.DimensionsAPI.PatchDimensionV1(context.Background(), roleId, dimensionId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.Dimensions.DimensionsAPI.PatchDimensionV1(context.Background(), roleId, dimensionId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.DimensionsAPI.PatchDimensionV1(context.Background(), roleId, dimensionId).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.DimensionsAPI.PatchDimensionV1(context.Background(), roleId, dimensionId).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.PatchDimensionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

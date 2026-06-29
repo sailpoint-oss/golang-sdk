@@ -1,14 +1,14 @@
 ---
-id: methods
+id: certifications-methods
 title: Methods
 pagination_label: Methods
 sidebar_label: Methods
 sidebar_position: 3
-sidebar_key: v1-golang-methods
+sidebar_key: certifications-golang-methods
 sidebar_class_name: methods
-keywords: ['go', 'Golang', 'sdk', 'methods'] 
-slug: /tools/sdk/go/v1/methods
-tags: ['SDK', 'Software Development Kit', 'v1', 'methods']
+keywords: ['go', 'Golang', 'sdk', 'certifications', 'methods'] 
+slug: /tools/sdk/go/certifications/methods
+tags: ['SDK', 'Software Development Kit', 'certifications', 'methods']
 ---
 
 Method documents provide detailed information about each API operation (or method). They describe what the method does and details its input parameters, expected return values, and any considerations to be aware of when using it.

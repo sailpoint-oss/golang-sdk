@@ -80,8 +80,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClusterTypes.ManagedClusterTypesAPI.CreateManagedClusterTypeV1(context.Background()).Managedclustertype(managedclustertype).Execute()
-	  //resp, r, err := apiClient.ManagedClusterTypes.ManagedClusterTypesAPI.CreateManagedClusterTypeV1(context.Background()).Managedclustertype(managedclustertype).Execute()
+    resp, r, err := apiClient.ManagedClusterTypesAPI.CreateManagedClusterTypeV1(context.Background()).Managedclustertype(managedclustertype).Execute()
+	  //resp, r, err := apiClient.ManagedClusterTypesAPI.CreateManagedClusterTypeV1(context.Background()).Managedclustertype(managedclustertype).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClusterTypesAPI.CreateManagedClusterTypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,8 +146,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ManagedClusterTypes.ManagedClusterTypesAPI.DeleteManagedClusterTypeV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ManagedClusterTypes.ManagedClusterTypesAPI.DeleteManagedClusterTypeV1(context.Background(), id).Execute()
+    r, err := apiClient.ManagedClusterTypesAPI.DeleteManagedClusterTypeV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ManagedClusterTypesAPI.DeleteManagedClusterTypeV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClusterTypesAPI.DeleteManagedClusterTypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,8 +211,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClusterTypes.ManagedClusterTypesAPI.GetManagedClusterTypeV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ManagedClusterTypes.ManagedClusterTypesAPI.GetManagedClusterTypeV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ManagedClusterTypesAPI.GetManagedClusterTypeV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ManagedClusterTypesAPI.GetManagedClusterTypeV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClusterTypesAPI.GetManagedClusterTypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -281,8 +281,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClusterTypes.ManagedClusterTypesAPI.GetManagedClusterTypesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ManagedClusterTypes.ManagedClusterTypesAPI.GetManagedClusterTypesV1(context.Background()).Type_(type_).Pod(pod).Org(org).Offset(offset).Limit(limit).Execute()
+    resp, r, err := apiClient.ManagedClusterTypesAPI.GetManagedClusterTypesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ManagedClusterTypesAPI.GetManagedClusterTypesV1(context.Background()).Type_(type_).Pod(pod).Org(org).Offset(offset).Limit(limit).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClusterTypesAPI.GetManagedClusterTypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -354,8 +354,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClusterTypes.ManagedClusterTypesAPI.UpdateManagedClusterTypeV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
-	  //resp, r, err := apiClient.ManagedClusterTypes.ManagedClusterTypesAPI.UpdateManagedClusterTypeV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
+    resp, r, err := apiClient.ManagedClusterTypesAPI.UpdateManagedClusterTypeV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
+	  //resp, r, err := apiClient.ManagedClusterTypesAPI.UpdateManagedClusterTypeV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClusterTypesAPI.UpdateManagedClusterTypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

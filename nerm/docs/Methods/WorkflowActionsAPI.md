@@ -100,8 +100,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateApprovalAction(context.Background()).CreateApprovalActionRequest(createApprovalActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateApprovalAction(context.Background()).CreateApprovalActionRequest(createApprovalActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateApprovalAction(context.Background()).CreateApprovalActionRequest(createApprovalActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateApprovalAction(context.Background()).CreateApprovalActionRequest(createApprovalActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateApprovalAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -167,8 +167,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateAskSecurityQuestionAction(context.Background()).CreateAskSecurityQuestionActionRequest(createAskSecurityQuestionActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateAskSecurityQuestionAction(context.Background()).CreateAskSecurityQuestionActionRequest(createAskSecurityQuestionActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateAskSecurityQuestionAction(context.Background()).CreateAskSecurityQuestionActionRequest(createAskSecurityQuestionActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateAskSecurityQuestionAction(context.Background()).CreateAskSecurityQuestionActionRequest(createAskSecurityQuestionActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateAskSecurityQuestionAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -234,8 +234,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateAutoAssignAction(context.Background()).CreateAutoAssignActionRequest(createAutoAssignActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateAutoAssignAction(context.Background()).CreateAutoAssignActionRequest(createAutoAssignActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateAutoAssignAction(context.Background()).CreateAutoAssignActionRequest(createAutoAssignActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateAutoAssignAction(context.Background()).CreateAutoAssignActionRequest(createAutoAssignActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateAutoAssignAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -301,8 +301,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateBatchUpdateAction(context.Background()).CreateBatchUpdateActionRequest(createBatchUpdateActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateBatchUpdateAction(context.Background()).CreateBatchUpdateActionRequest(createBatchUpdateActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateBatchUpdateAction(context.Background()).CreateBatchUpdateActionRequest(createBatchUpdateActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateBatchUpdateAction(context.Background()).CreateBatchUpdateActionRequest(createBatchUpdateActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateBatchUpdateAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -368,8 +368,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateCloseSessionAction(context.Background()).CreateCloseSessionActionRequest(createCloseSessionActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateCloseSessionAction(context.Background()).CreateCloseSessionActionRequest(createCloseSessionActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateCloseSessionAction(context.Background()).CreateCloseSessionActionRequest(createCloseSessionActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateCloseSessionAction(context.Background()).CreateCloseSessionActionRequest(createCloseSessionActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateCloseSessionAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -435,8 +435,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateContributorsAction(context.Background()).CreateContributorsActionRequest(createContributorsActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateContributorsAction(context.Background()).CreateContributorsActionRequest(createContributorsActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateContributorsAction(context.Background()).CreateContributorsActionRequest(createContributorsActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateContributorsAction(context.Background()).CreateContributorsActionRequest(createContributorsActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateContributorsAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -502,8 +502,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateCreateProfileAction(context.Background()).CreateCreateProfileActionRequest(createCreateProfileActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateCreateProfileAction(context.Background()).CreateCreateProfileActionRequest(createCreateProfileActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateCreateProfileAction(context.Background()).CreateCreateProfileActionRequest(createCreateProfileActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateCreateProfileAction(context.Background()).CreateCreateProfileActionRequest(createCreateProfileActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateCreateProfileAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -569,8 +569,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateDuplicatePreventionAction(context.Background()).CreateDuplicatePreventionActionRequest(createDuplicatePreventionActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateDuplicatePreventionAction(context.Background()).CreateDuplicatePreventionActionRequest(createDuplicatePreventionActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateDuplicatePreventionAction(context.Background()).CreateDuplicatePreventionActionRequest(createDuplicatePreventionActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateDuplicatePreventionAction(context.Background()).CreateDuplicatePreventionActionRequest(createDuplicatePreventionActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateDuplicatePreventionAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -636,8 +636,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateEmailVerificationAction(context.Background()).CreateEmailVerificationActionRequest(createEmailVerificationActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateEmailVerificationAction(context.Background()).CreateEmailVerificationActionRequest(createEmailVerificationActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateEmailVerificationAction(context.Background()).CreateEmailVerificationActionRequest(createEmailVerificationActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateEmailVerificationAction(context.Background()).CreateEmailVerificationActionRequest(createEmailVerificationActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateEmailVerificationAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -703,8 +703,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateFulfillmentAction(context.Background()).CreateFulfillmentActionRequest(createFulfillmentActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateFulfillmentAction(context.Background()).CreateFulfillmentActionRequest(createFulfillmentActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateFulfillmentAction(context.Background()).CreateFulfillmentActionRequest(createFulfillmentActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateFulfillmentAction(context.Background()).CreateFulfillmentActionRequest(createFulfillmentActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateFulfillmentAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -770,8 +770,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateIdentityProofingAction(context.Background()).CreateIdentityProofingActionRequest(createIdentityProofingActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateIdentityProofingAction(context.Background()).CreateIdentityProofingActionRequest(createIdentityProofingActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateIdentityProofingAction(context.Background()).CreateIdentityProofingActionRequest(createIdentityProofingActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateIdentityProofingAction(context.Background()).CreateIdentityProofingActionRequest(createIdentityProofingActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateIdentityProofingAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -837,8 +837,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateInvitationAction(context.Background()).CreateInvitationActionRequest(createInvitationActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateInvitationAction(context.Background()).CreateInvitationActionRequest(createInvitationActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateInvitationAction(context.Background()).CreateInvitationActionRequest(createInvitationActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateInvitationAction(context.Background()).CreateInvitationActionRequest(createInvitationActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateInvitationAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -904,8 +904,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateLdapAction(context.Background()).CreateLdapActionRequest(createLdapActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateLdapAction(context.Background()).CreateLdapActionRequest(createLdapActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateLdapAction(context.Background()).CreateLdapActionRequest(createLdapActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateLdapAction(context.Background()).CreateLdapActionRequest(createLdapActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateLdapAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -971,8 +971,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateNotificationAction(context.Background()).CreateNotificationActionRequest(createNotificationActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateNotificationAction(context.Background()).CreateNotificationActionRequest(createNotificationActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateNotificationAction(context.Background()).CreateNotificationActionRequest(createNotificationActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateNotificationAction(context.Background()).CreateNotificationActionRequest(createNotificationActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateNotificationAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1038,8 +1038,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreatePasswordResetAction(context.Background()).CreatePasswordResetActionRequest(createPasswordResetActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreatePasswordResetAction(context.Background()).CreatePasswordResetActionRequest(createPasswordResetActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreatePasswordResetAction(context.Background()).CreatePasswordResetActionRequest(createPasswordResetActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreatePasswordResetAction(context.Background()).CreatePasswordResetActionRequest(createPasswordResetActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreatePasswordResetAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1105,8 +1105,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateProfileCheckAction(context.Background()).CreateProfileCheckActionRequest(createProfileCheckActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateProfileCheckAction(context.Background()).CreateProfileCheckActionRequest(createProfileCheckActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateProfileCheckAction(context.Background()).CreateProfileCheckActionRequest(createProfileCheckActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateProfileCheckAction(context.Background()).CreateProfileCheckActionRequest(createProfileCheckActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateProfileCheckAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1172,8 +1172,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateProfileSelectAction(context.Background()).CreateProfileSelectActionRequest(createProfileSelectActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateProfileSelectAction(context.Background()).CreateProfileSelectActionRequest(createProfileSelectActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateProfileSelectAction(context.Background()).CreateProfileSelectActionRequest(createProfileSelectActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateProfileSelectAction(context.Background()).CreateProfileSelectActionRequest(createProfileSelectActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateProfileSelectAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1239,8 +1239,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRequestAction(context.Background()).CreateRequestActionRequest(createRequestActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRequestAction(context.Background()).CreateRequestActionRequest(createRequestActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateRequestAction(context.Background()).CreateRequestActionRequest(createRequestActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateRequestAction(context.Background()).CreateRequestActionRequest(createRequestActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateRequestAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1306,8 +1306,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRestApiAction(context.Background()).CreateRestApiActionRequest(createRestApiActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRestApiAction(context.Background()).CreateRestApiActionRequest(createRestApiActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateRestApiAction(context.Background()).CreateRestApiActionRequest(createRestApiActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateRestApiAction(context.Background()).CreateRestApiActionRequest(createRestApiActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateRestApiAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1373,8 +1373,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateReviewAction(context.Background()).CreateReviewActionRequest(createReviewActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateReviewAction(context.Background()).CreateReviewActionRequest(createReviewActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateReviewAction(context.Background()).CreateReviewActionRequest(createReviewActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateReviewAction(context.Background()).CreateReviewActionRequest(createReviewActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateReviewAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1440,8 +1440,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRunWorkflowAction(context.Background()).CreateRunWorkflowActionRequest(createRunWorkflowActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateRunWorkflowAction(context.Background()).CreateRunWorkflowActionRequest(createRunWorkflowActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateRunWorkflowAction(context.Background()).CreateRunWorkflowActionRequest(createRunWorkflowActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateRunWorkflowAction(context.Background()).CreateRunWorkflowActionRequest(createRunWorkflowActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateRunWorkflowAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1507,8 +1507,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSetAttributesAction(context.Background()).CreateSetAttributesActionRequest(createSetAttributesActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSetAttributesAction(context.Background()).CreateSetAttributesActionRequest(createSetAttributesActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateSetAttributesAction(context.Background()).CreateSetAttributesActionRequest(createSetAttributesActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateSetAttributesAction(context.Background()).CreateSetAttributesActionRequest(createSetAttributesActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateSetAttributesAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1574,8 +1574,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSetSecurityQuestionAction(context.Background()).CreateSetSecurityQuestionActionRequest(createSetSecurityQuestionActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSetSecurityQuestionAction(context.Background()).CreateSetSecurityQuestionActionRequest(createSetSecurityQuestionActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateSetSecurityQuestionAction(context.Background()).CreateSetSecurityQuestionActionRequest(createSetSecurityQuestionActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateSetSecurityQuestionAction(context.Background()).CreateSetSecurityQuestionActionRequest(createSetSecurityQuestionActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateSetSecurityQuestionAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1641,8 +1641,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSoapApiAction(context.Background()).CreateSoapApiActionRequest(createSoapApiActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateSoapApiAction(context.Background()).CreateSoapApiActionRequest(createSoapApiActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateSoapApiAction(context.Background()).CreateSoapApiActionRequest(createSoapApiActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateSoapApiAction(context.Background()).CreateSoapApiActionRequest(createSoapApiActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateSoapApiAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1708,8 +1708,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateStatusChangeAction(context.Background()).CreateStatusChangeActionRequest(createStatusChangeActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateStatusChangeAction(context.Background()).CreateStatusChangeActionRequest(createStatusChangeActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateStatusChangeAction(context.Background()).CreateStatusChangeActionRequest(createStatusChangeActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateStatusChangeAction(context.Background()).CreateStatusChangeActionRequest(createStatusChangeActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateStatusChangeAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1775,8 +1775,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUnassignAction(context.Background()).CreateUnassignActionRequest(createUnassignActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUnassignAction(context.Background()).CreateUnassignActionRequest(createUnassignActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateUnassignAction(context.Background()).CreateUnassignActionRequest(createUnassignActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateUnassignAction(context.Background()).CreateUnassignActionRequest(createUnassignActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateUnassignAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1842,8 +1842,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUpdateProfileAction(context.Background()).CreateUpdateProfileActionRequest(createUpdateProfileActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUpdateProfileAction(context.Background()).CreateUpdateProfileActionRequest(createUpdateProfileActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateUpdateProfileAction(context.Background()).CreateUpdateProfileActionRequest(createUpdateProfileActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateUpdateProfileAction(context.Background()).CreateUpdateProfileActionRequest(createUpdateProfileActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateUpdateProfileAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1909,8 +1909,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUsernamePasswordAction(context.Background()).CreateUsernamePasswordActionRequest(createUsernamePasswordActionRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.CreateUsernamePasswordAction(context.Background()).CreateUsernamePasswordActionRequest(createUsernamePasswordActionRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.CreateUsernamePasswordAction(context.Background()).CreateUsernamePasswordActionRequest(createUsernamePasswordActionRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.CreateUsernamePasswordAction(context.Background()).CreateUsernamePasswordActionRequest(createUsernamePasswordActionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.CreateUsernamePasswordAction``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1971,8 +1971,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionsAPI.GetWorkflowActions(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionsAPI.GetWorkflowActions(context.Background()).WorkflowId(workflowId).Execute()
+    resp, r, err := apiClient.WorkflowActionsAPI.GetWorkflowActions(context.Background()).Execute()
+	  //resp, r, err := apiClient.WorkflowActionsAPI.GetWorkflowActions(context.Background()).WorkflowId(workflowId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionsAPI.GetWorkflowActions``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

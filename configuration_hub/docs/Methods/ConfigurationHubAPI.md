@@ -102,8 +102,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.CreateDeployV1(context.Background()).Deployrequest(deployrequest).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.CreateDeployV1(context.Background()).Deployrequest(deployrequest).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.CreateDeployV1(context.Background()).Deployrequest(deployrequest).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateDeployV1(context.Background()).Deployrequest(deployrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateDeployV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -178,8 +178,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.CreateObjectMappingV1(context.Background(), sourceOrg).Objectmappingrequest(objectmappingrequest).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.CreateObjectMappingV1(context.Background(), sourceOrg).Objectmappingrequest(objectmappingrequest).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingV1(context.Background(), sourceOrg).Objectmappingrequest(objectmappingrequest).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingV1(context.Background(), sourceOrg).Objectmappingrequest(objectmappingrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateObjectMappingV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -254,8 +254,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.CreateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkcreaterequest(objectmappingbulkcreaterequest).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.CreateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkcreaterequest(objectmappingbulkcreaterequest).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkcreaterequest(objectmappingbulkcreaterequest).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkcreaterequest(objectmappingbulkcreaterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateObjectMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -321,8 +321,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.CreateScheduledActionV1(context.Background()).Scheduledactionpayload(scheduledactionpayload).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.CreateScheduledActionV1(context.Background()).Scheduledactionpayload(scheduledactionpayload).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.CreateScheduledActionV1(context.Background()).Scheduledactionpayload(scheduledactionpayload).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateScheduledActionV1(context.Background()).Scheduledactionpayload(scheduledactionpayload).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateScheduledActionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -389,8 +389,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.CreateUploadedConfigurationV1(context.Background()).Data(data).Name(name).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.CreateUploadedConfigurationV1(context.Background()).Data(data).Name(name).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.CreateUploadedConfigurationV1(context.Background()).Data(data).Name(name).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateUploadedConfigurationV1(context.Background()).Data(data).Name(name).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateUploadedConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -459,8 +459,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.DeleteBackupV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.DeleteBackupV1(context.Background(), id).Execute()
+    r, err := apiClient.ConfigurationHubAPI.DeleteBackupV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ConfigurationHubAPI.DeleteBackupV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteBackupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -528,8 +528,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.DeleteDraftV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.DeleteDraftV1(context.Background(), id).Execute()
+    r, err := apiClient.ConfigurationHubAPI.DeleteDraftV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ConfigurationHubAPI.DeleteDraftV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteDraftV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -599,8 +599,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.DeleteObjectMappingV1(context.Background(), sourceOrg, objectMappingId).Execute()
-	  //r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.DeleteObjectMappingV1(context.Background(), sourceOrg, objectMappingId).Execute()
+    r, err := apiClient.ConfigurationHubAPI.DeleteObjectMappingV1(context.Background(), sourceOrg, objectMappingId).Execute()
+	  //r, err := apiClient.ConfigurationHubAPI.DeleteObjectMappingV1(context.Background(), sourceOrg, objectMappingId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteObjectMappingV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -664,8 +664,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.DeleteScheduledActionV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.DeleteScheduledActionV1(context.Background(), id).Execute()
+    r, err := apiClient.ConfigurationHubAPI.DeleteScheduledActionV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ConfigurationHubAPI.DeleteScheduledActionV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteScheduledActionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -733,8 +733,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.DeleteUploadedConfigurationV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.DeleteUploadedConfigurationV1(context.Background(), id).Execute()
+    r, err := apiClient.ConfigurationHubAPI.DeleteUploadedConfigurationV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ConfigurationHubAPI.DeleteUploadedConfigurationV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteUploadedConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -798,8 +798,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.GetDeployV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.GetDeployV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.GetDeployV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.GetDeployV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetDeployV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -867,8 +867,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.GetObjectMappingsV1(context.Background(), sourceOrg).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.GetObjectMappingsV1(context.Background(), sourceOrg).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.GetObjectMappingsV1(context.Background(), sourceOrg).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.GetObjectMappingsV1(context.Background(), sourceOrg).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetObjectMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -933,8 +933,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.GetUploadedConfigurationV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.GetUploadedConfigurationV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.GetUploadedConfigurationV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.GetUploadedConfigurationV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetUploadedConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -995,8 +995,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.ListBackupsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.ListBackupsV1(context.Background()).Filters(filters).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.ListBackupsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.ListBackupsV1(context.Background()).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListBackupsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1052,8 +1052,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.ListDeploysV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.ListDeploysV1(context.Background()).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.ListDeploysV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.ListDeploysV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListDeploysV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1114,8 +1114,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.ListDraftsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.ListDraftsV1(context.Background()).Filters(filters).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.ListDraftsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.ListDraftsV1(context.Background()).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListDraftsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1171,8 +1171,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.ListScheduledActionsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.ListScheduledActionsV1(context.Background()).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.ListScheduledActionsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.ListScheduledActionsV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListScheduledActionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1233,8 +1233,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.ListUploadedConfigurationsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.ListUploadedConfigurationsV1(context.Background()).Filters(filters).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.ListUploadedConfigurationsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.ListUploadedConfigurationsV1(context.Background()).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListUploadedConfigurationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1309,8 +1309,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.UpdateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkpatchrequest(objectmappingbulkpatchrequest).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.UpdateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkpatchrequest(objectmappingbulkpatchrequest).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.UpdateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkpatchrequest(objectmappingbulkpatchrequest).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.UpdateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkpatchrequest(objectmappingbulkpatchrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.UpdateObjectMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1382,8 +1382,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.UpdateScheduledActionV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
-	  //resp, r, err := apiClient.ConfigurationHub.ConfigurationHubAPI.UpdateScheduledActionV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.UpdateScheduledActionV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.UpdateScheduledActionV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.UpdateScheduledActionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

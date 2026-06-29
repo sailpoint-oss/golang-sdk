@@ -90,8 +90,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountAggregations.AccountAggregationsAPI.GetAccountAggregationStatusV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.AccountAggregations.AccountAggregationsAPI.GetAccountAggregationStatusV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.AccountAggregationsAPI.GetAccountAggregationStatusV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.AccountAggregationsAPI.GetAccountAggregationStatusV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountAggregationsAPI.GetAccountAggregationStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

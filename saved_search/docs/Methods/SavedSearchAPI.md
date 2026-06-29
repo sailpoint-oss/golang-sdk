@@ -88,8 +88,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearch.SavedSearchAPI.CreateSavedSearchV1(context.Background()).CreateSavedSearchV1Request(createSavedSearchV1Request).Execute()
-	  //resp, r, err := apiClient.SavedSearch.SavedSearchAPI.CreateSavedSearchV1(context.Background()).CreateSavedSearchV1Request(createSavedSearchV1Request).Execute()
+    resp, r, err := apiClient.SavedSearchAPI.CreateSavedSearchV1(context.Background()).CreateSavedSearchV1Request(createSavedSearchV1Request).Execute()
+	  //resp, r, err := apiClient.SavedSearchAPI.CreateSavedSearchV1(context.Background()).CreateSavedSearchV1Request(createSavedSearchV1Request).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.CreateSavedSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -155,8 +155,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.SavedSearch.SavedSearchAPI.DeleteSavedSearchV1(context.Background(), id).Execute()
-	  //r, err := apiClient.SavedSearch.SavedSearchAPI.DeleteSavedSearchV1(context.Background(), id).Execute()
+    r, err := apiClient.SavedSearchAPI.DeleteSavedSearchV1(context.Background(), id).Execute()
+	  //r, err := apiClient.SavedSearchAPI.DeleteSavedSearchV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.DeleteSavedSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -228,8 +228,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.SavedSearch.SavedSearchAPI.ExecuteSavedSearchV1(context.Background(), id).Searcharguments(searcharguments).Execute()
-	  //r, err := apiClient.SavedSearch.SavedSearchAPI.ExecuteSavedSearchV1(context.Background(), id).Searcharguments(searcharguments).Execute()
+    r, err := apiClient.SavedSearchAPI.ExecuteSavedSearchV1(context.Background(), id).Searcharguments(searcharguments).Execute()
+	  //r, err := apiClient.SavedSearchAPI.ExecuteSavedSearchV1(context.Background(), id).Searcharguments(searcharguments).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.ExecuteSavedSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -294,8 +294,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearch.SavedSearchAPI.GetSavedSearchV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.SavedSearch.SavedSearchAPI.GetSavedSearchV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.SavedSearchAPI.GetSavedSearchV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.SavedSearchAPI.GetSavedSearchV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.GetSavedSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -363,8 +363,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearch.SavedSearchAPI.ListSavedSearchesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SavedSearch.SavedSearchAPI.ListSavedSearchesV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.SavedSearchAPI.ListSavedSearchesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SavedSearchAPI.ListSavedSearchesV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.ListSavedSearchesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -439,8 +439,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearch.SavedSearchAPI.PutSavedSearchV1(context.Background(), id).Savedsearch(savedsearch).Execute()
-	  //resp, r, err := apiClient.SavedSearch.SavedSearchAPI.PutSavedSearchV1(context.Background(), id).Savedsearch(savedsearch).Execute()
+    resp, r, err := apiClient.SavedSearchAPI.PutSavedSearchV1(context.Background(), id).Savedsearch(savedsearch).Execute()
+	  //resp, r, err := apiClient.SavedSearchAPI.PutSavedSearchV1(context.Background(), id).Savedsearch(savedsearch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.PutSavedSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

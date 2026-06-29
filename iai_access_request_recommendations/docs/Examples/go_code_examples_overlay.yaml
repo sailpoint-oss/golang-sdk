@@ -30,8 +30,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
-          //resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+          resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+          //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItemV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -71,8 +71,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
-          //resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+          resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+          //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItemV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -112,8 +112,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
-          //resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+          resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+          //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -153,8 +153,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
-          //resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+          resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+          //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -187,8 +187,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -226,8 +226,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItemsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -265,8 +265,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItemsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -306,8 +306,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).IdentityId(identityId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).IdentityId(identityId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -345,8 +345,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+          resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItemsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -386,8 +386,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationconfigdto(accessrequestrecommendationconfigdto).Execute()
-          //resp, r, err := apiClient.IaiAccessRequestRecommendations.IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationconfigdto(accessrequestrecommendationconfigdto).Execute()
+          resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationconfigdto(accessrequestrecommendationconfigdto).Execute()
+          //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationconfigdto(accessrequestrecommendationconfigdto).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

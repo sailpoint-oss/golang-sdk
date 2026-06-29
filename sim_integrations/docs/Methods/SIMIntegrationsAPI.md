@@ -98,8 +98,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.CreateSIMIntegrationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
-	  //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.CreateSIMIntegrationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
+    resp, r, err := apiClient.SIMIntegrationsAPI.CreateSIMIntegrationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
+	  //resp, r, err := apiClient.SIMIntegrationsAPI.CreateSIMIntegrationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.CreateSIMIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -177,8 +177,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.DeleteSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.DeleteSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.SIMIntegrationsAPI.DeleteSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.SIMIntegrationsAPI.DeleteSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.DeleteSIMIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -255,8 +255,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.GetSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.GetSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.SIMIntegrationsAPI.GetSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SIMIntegrationsAPI.GetSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -328,8 +328,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.GetSIMIntegrationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.GetSIMIntegrationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.SIMIntegrationsAPI.GetSIMIntegrationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SIMIntegrationsAPI.GetSIMIntegrationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegrationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -414,8 +414,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
-	  //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+    resp, r, err := apiClient.SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+	  //resp, r, err := apiClient.SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -500,8 +500,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PatchSIMAttributesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
-	  //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PatchSIMAttributesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+    resp, r, err := apiClient.SIMIntegrationsAPI.PatchSIMAttributesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+	  //resp, r, err := apiClient.SIMIntegrationsAPI.PatchSIMAttributesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchSIMAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -586,8 +586,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PutSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
-	  //resp, r, err := apiClient.SimIntegrations.SIMIntegrationsAPI.PutSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
+    resp, r, err := apiClient.SIMIntegrationsAPI.PutSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
+	  //resp, r, err := apiClient.SIMIntegrationsAPI.PutSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PutSIMIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

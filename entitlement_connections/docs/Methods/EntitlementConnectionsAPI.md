@@ -85,8 +85,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementConnections.EntitlementConnectionsAPI.ListEntitlementConnectionsForCurrentIdentityV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.EntitlementConnections.EntitlementConnectionsAPI.ListEntitlementConnectionsForCurrentIdentityV1(context.Background()).Offset(offset).Limit(limit).Count(count).SearchAfter(searchAfter).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.EntitlementConnectionsAPI.ListEntitlementConnectionsForCurrentIdentityV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.EntitlementConnectionsAPI.ListEntitlementConnectionsForCurrentIdentityV1(context.Background()).Offset(offset).Limit(limit).Count(count).SearchAfter(searchAfter).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementConnectionsAPI.ListEntitlementConnectionsForCurrentIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -161,8 +161,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementConnections.EntitlementConnectionsAPI.ListEntitlementConnectionsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.EntitlementConnections.EntitlementConnectionsAPI.ListEntitlementConnectionsV1(context.Background()).Offset(offset).Limit(limit).Count(count).SearchAfter(searchAfter).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.EntitlementConnectionsAPI.ListEntitlementConnectionsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.EntitlementConnectionsAPI.ListEntitlementConnectionsV1(context.Background()).Offset(offset).Limit(limit).Count(count).SearchAfter(searchAfter).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementConnectionsAPI.ListEntitlementConnectionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -235,8 +235,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementConnections.EntitlementConnectionsAPI.PatchEntitlementConnectionByIdV1(context.Background(), connectionId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.EntitlementConnections.EntitlementConnectionsAPI.PatchEntitlementConnectionByIdV1(context.Background(), connectionId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByIdV1(context.Background(), connectionId).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByIdV1(context.Background(), connectionId).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementConnectionsAPI.PatchEntitlementConnectionByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -310,8 +310,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementConnections.EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1(context.Background()).EntitlementId(entitlementId).IdentityId(identityId).AccountId(accountId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.EntitlementConnections.EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1(context.Background()).EntitlementId(entitlementId).IdentityId(identityId).AccountId(accountId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1(context.Background()).EntitlementId(entitlementId).IdentityId(identityId).AccountId(accountId).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1(context.Background()).EntitlementId(entitlementId).IdentityId(identityId).AccountId(accountId).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -379,8 +379,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementConnections.EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1(context.Background()).Entitlementconnectionbulkupdateitem(entitlementconnectionbulkupdateitem).Execute()
-	  //resp, r, err := apiClient.EntitlementConnections.EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1(context.Background()).Entitlementconnectionbulkupdateitem(entitlementconnectionbulkupdateitem).Execute()
+    resp, r, err := apiClient.EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1(context.Background()).Entitlementconnectionbulkupdateitem(entitlementconnectionbulkupdateitem).Execute()
+	  //resp, r, err := apiClient.EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1(context.Background()).Entitlementconnectionbulkupdateitem(entitlementconnectionbulkupdateitem).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

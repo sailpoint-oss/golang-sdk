@@ -110,8 +110,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Identities.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.Identities.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.DeleteIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -177,8 +177,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Identities.IdentitiesAPI.GetIdentityOwnershipDetailsV1(context.Background(), identityId).Execute()
-	  //resp, r, err := apiClient.Identities.IdentitiesAPI.GetIdentityOwnershipDetailsV1(context.Background(), identityId).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.GetIdentityOwnershipDetailsV1(context.Background(), identityId).Execute()
+	  //resp, r, err := apiClient.IdentitiesAPI.GetIdentityOwnershipDetailsV1(context.Background(), identityId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetIdentityOwnershipDetailsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -243,8 +243,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Identities.IdentitiesAPI.GetIdentityV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Identities.IdentitiesAPI.GetIdentityV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.GetIdentityV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.IdentitiesAPI.GetIdentityV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -312,8 +312,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Identities.IdentitiesAPI.GetRoleAssignmentV1(context.Background(), identityId, assignmentId).Execute()
-	  //resp, r, err := apiClient.Identities.IdentitiesAPI.GetRoleAssignmentV1(context.Background(), identityId, assignmentId).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.GetRoleAssignmentV1(context.Background(), identityId, assignmentId).Execute()
+	  //resp, r, err := apiClient.IdentitiesAPI.GetRoleAssignmentV1(context.Background(), identityId, assignmentId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetRoleAssignmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -382,8 +382,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Identities.IdentitiesAPI.GetRoleAssignmentsV1(context.Background(), identityId).Execute()
-	  //resp, r, err := apiClient.Identities.IdentitiesAPI.GetRoleAssignmentsV1(context.Background(), identityId).RoleId(roleId).RoleName(roleName).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.GetRoleAssignmentsV1(context.Background(), identityId).Execute()
+	  //resp, r, err := apiClient.IdentitiesAPI.GetRoleAssignmentsV1(context.Background(), identityId).RoleId(roleId).RoleName(roleName).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetRoleAssignmentsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -454,8 +454,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Identities.IdentitiesAPI.ListEntitlementsByIdentityV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Identities.IdentitiesAPI.ListEntitlementsByIdentityV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.ListEntitlementsByIdentityV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.IdentitiesAPI.ListEntitlementsByIdentityV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.ListEntitlementsByIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -526,8 +526,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Identities.IdentitiesAPI.ListIdentitiesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Identities.IdentitiesAPI.ListIdentitiesV1(context.Background()).Filters(filters).Sorters(sorters).DefaultFilter(defaultFilter).Count(count).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.ListIdentitiesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.IdentitiesAPI.ListIdentitiesV1(context.Background()).Filters(filters).Sorters(sorters).DefaultFilter(defaultFilter).Count(count).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.ListIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -592,8 +592,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Identities.IdentitiesAPI.ResetIdentityV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Identities.IdentitiesAPI.ResetIdentityV1(context.Background(), id).Execute()
+    r, err := apiClient.IdentitiesAPI.ResetIdentityV1(context.Background(), id).Execute()
+	  //r, err := apiClient.IdentitiesAPI.ResetIdentityV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.ResetIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -678,8 +678,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Identities.IdentitiesAPI.SendIdentityVerificationAccountTokenV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sendaccountverificationrequest(sendaccountverificationrequest).Execute()
-	  //r, err := apiClient.Identities.IdentitiesAPI.SendIdentityVerificationAccountTokenV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sendaccountverificationrequest(sendaccountverificationrequest).Execute()
+    r, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountTokenV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sendaccountverificationrequest(sendaccountverificationrequest).Execute()
+	  //r, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountTokenV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sendaccountverificationrequest(sendaccountverificationrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.SendIdentityVerificationAccountTokenV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -762,8 +762,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Identities.IdentitiesAPI.StartIdentitiesInviteV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Inviteidentitiesrequest(inviteidentitiesrequest).Execute()
-	  //resp, r, err := apiClient.Identities.IdentitiesAPI.StartIdentitiesInviteV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Inviteidentitiesrequest(inviteidentitiesrequest).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.StartIdentitiesInviteV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Inviteidentitiesrequest(inviteidentitiesrequest).Execute()
+	  //resp, r, err := apiClient.IdentitiesAPI.StartIdentitiesInviteV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Inviteidentitiesrequest(inviteidentitiesrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.StartIdentitiesInviteV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -849,8 +849,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Identities.IdentitiesAPI.StartIdentityProcessingV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Processidentitiesrequest(processidentitiesrequest).Execute()
-	  //resp, r, err := apiClient.Identities.IdentitiesAPI.StartIdentityProcessingV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Processidentitiesrequest(processidentitiesrequest).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.StartIdentityProcessingV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Processidentitiesrequest(processidentitiesrequest).Execute()
+	  //resp, r, err := apiClient.IdentitiesAPI.StartIdentityProcessingV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Processidentitiesrequest(processidentitiesrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.StartIdentityProcessingV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -928,8 +928,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Identities.IdentitiesAPI.SynchronizeAttributesForIdentityV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.Identities.IdentitiesAPI.SynchronizeAttributesForIdentityV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.SynchronizeAttributesForIdentityV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentitiesAPI.SynchronizeAttributesForIdentityV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.SynchronizeAttributesForIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

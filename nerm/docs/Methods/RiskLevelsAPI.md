@@ -72,8 +72,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RiskLevelsAPI.GetRiskLevel(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.RiskLevelsAPI.GetRiskLevel(context.Background(), id).Execute()
+    resp, r, err := apiClient.RiskLevelsAPI.GetRiskLevel(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.RiskLevelsAPI.GetRiskLevel(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RiskLevelsAPI.GetRiskLevel``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -142,8 +142,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RiskLevelsAPI.GetRiskLevels(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.RiskLevelsAPI.GetRiskLevels(context.Background()).Limit(limit).Offset(offset).Order(order).Label(label).Metadata(metadata).Execute()
+    resp, r, err := apiClient.RiskLevelsAPI.GetRiskLevels(context.Background()).Execute()
+	  //resp, r, err := apiClient.RiskLevelsAPI.GetRiskLevels(context.Background()).Limit(limit).Offset(offset).Order(order).Label(label).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RiskLevelsAPI.GetRiskLevels``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -97,8 +97,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordPolicies.PasswordPoliciesAPI.CreatePasswordPolicyV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
-	  //resp, r, err := apiClient.PasswordPolicies.PasswordPoliciesAPI.CreatePasswordPolicyV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
+    resp, r, err := apiClient.PasswordPoliciesAPI.CreatePasswordPolicyV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
+	  //resp, r, err := apiClient.PasswordPoliciesAPI.CreatePasswordPolicyV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesAPI.CreatePasswordPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -176,8 +176,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.PasswordPolicies.PasswordPoliciesAPI.DeletePasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.PasswordPolicies.PasswordPoliciesAPI.DeletePasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.PasswordPoliciesAPI.DeletePasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.PasswordPoliciesAPI.DeletePasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesAPI.DeletePasswordPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -254,8 +254,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordPolicies.PasswordPoliciesAPI.GetPasswordPolicyByIdV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.PasswordPolicies.PasswordPoliciesAPI.GetPasswordPolicyByIdV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.PasswordPoliciesAPI.GetPasswordPolicyByIdV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.PasswordPoliciesAPI.GetPasswordPolicyByIdV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesAPI.GetPasswordPolicyByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,8 +334,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordPolicies.PasswordPoliciesAPI.ListPasswordPoliciesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.PasswordPolicies.PasswordPoliciesAPI.ListPasswordPoliciesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.PasswordPoliciesAPI.ListPasswordPoliciesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.PasswordPoliciesAPI.ListPasswordPoliciesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesAPI.ListPasswordPoliciesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -420,8 +420,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordPolicies.PasswordPoliciesAPI.SetPasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
-	  //resp, r, err := apiClient.PasswordPolicies.PasswordPoliciesAPI.SetPasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
+    resp, r, err := apiClient.PasswordPoliciesAPI.SetPasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
+	  //resp, r, err := apiClient.PasswordPoliciesAPI.SetPasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesAPI.SetPasswordPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

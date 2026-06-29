@@ -72,8 +72,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.WorkflowActionPerformerAPI.CreateWorkflowActionPerformer(context.Background()).CreateWorkflowActionPerformerRequest(createWorkflowActionPerformerRequest).Execute()
-	  //resp, r, err := apiClient.NERM.WorkflowActionPerformerAPI.CreateWorkflowActionPerformer(context.Background()).CreateWorkflowActionPerformerRequest(createWorkflowActionPerformerRequest).Execute()
+    resp, r, err := apiClient.WorkflowActionPerformerAPI.CreateWorkflowActionPerformer(context.Background()).CreateWorkflowActionPerformerRequest(createWorkflowActionPerformerRequest).Execute()
+	  //resp, r, err := apiClient.WorkflowActionPerformerAPI.CreateWorkflowActionPerformer(context.Background()).CreateWorkflowActionPerformerRequest(createWorkflowActionPerformerRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowActionPerformerAPI.CreateWorkflowActionPerformer``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

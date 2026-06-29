@@ -78,8 +78,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaskManagement.TaskManagementAPI.GetTaskStatusListV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.TaskManagement.TaskManagementAPI.GetTaskStatusListV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.TaskManagementAPI.GetTaskStatusListV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.TaskManagementAPI.GetTaskStatusListV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.GetTaskStatusListV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -144,8 +144,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaskManagement.TaskManagementAPI.GetTaskStatusV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.TaskManagement.TaskManagementAPI.GetTaskStatusV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.TaskManagementAPI.GetTaskStatusV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.TaskManagementAPI.GetTaskStatusV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.GetTaskStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -217,8 +217,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaskManagement.TaskManagementAPI.UpdateTaskStatusV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.TaskManagement.TaskManagementAPI.UpdateTaskStatusV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.TaskManagementAPI.UpdateTaskStatusV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.TaskManagementAPI.UpdateTaskStatusV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.UpdateTaskStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

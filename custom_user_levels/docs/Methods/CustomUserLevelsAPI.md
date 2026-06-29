@@ -99,8 +99,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.CreateCustomUserLevelV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Userlevelrequest(userlevelrequest).Execute()
-	  //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.CreateCustomUserLevelV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Userlevelrequest(userlevelrequest).Execute()
+    resp, r, err := apiClient.CustomUserLevelsAPI.CreateCustomUserLevelV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Userlevelrequest(userlevelrequest).Execute()
+	  //resp, r, err := apiClient.CustomUserLevelsAPI.CreateCustomUserLevelV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Userlevelrequest(userlevelrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.CreateCustomUserLevelV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -178,8 +178,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.DeleteUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.DeleteUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.CustomUserLevelsAPI.DeleteUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.CustomUserLevelsAPI.DeleteUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.DeleteUserLevelV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -256,8 +256,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.GetUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.GetUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.CustomUserLevelsAPI.GetUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.CustomUserLevelsAPI.GetUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.GetUserLevelV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,8 +337,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListAllAuthorizationRightSetsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListAllAuthorizationRightSetsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.CustomUserLevelsAPI.ListAllAuthorizationRightSetsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.CustomUserLevelsAPI.ListAllAuthorizationRightSetsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ListAllAuthorizationRightSetsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -424,8 +424,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListUserLevelIdentitiesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListUserLevelIdentitiesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Count(count).Sorters(sorters).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.CustomUserLevelsAPI.ListUserLevelIdentitiesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.CustomUserLevelsAPI.ListUserLevelIdentitiesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Count(count).Sorters(sorters).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ListUserLevelIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -507,8 +507,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListUserLevelsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ListUserLevelsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).DetailLevel(detailLevel).Filters(filters).Sorters(sorters).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.CustomUserLevelsAPI.ListUserLevelsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.CustomUserLevelsAPI.ListUserLevelsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).DetailLevel(detailLevel).Filters(filters).Sorters(sorters).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ListUserLevelsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -586,8 +586,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.PublishCustomUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.PublishCustomUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.CustomUserLevelsAPI.PublishCustomUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.CustomUserLevelsAPI.PublishCustomUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.PublishCustomUserLevelV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -666,8 +666,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ShowUserLevelCountsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.ShowUserLevelCountsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.CustomUserLevelsAPI.ShowUserLevelCountsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.CustomUserLevelsAPI.ShowUserLevelCountsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ShowUserLevelCountsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -752,8 +752,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.UpdateUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
-	  //resp, r, err := apiClient.CustomUserLevels.CustomUserLevelsAPI.UpdateUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+    resp, r, err := apiClient.CustomUserLevelsAPI.UpdateUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+	  //resp, r, err := apiClient.CustomUserLevelsAPI.UpdateUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.UpdateUserLevelV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentTranslationsAPI.CreatePageContentTranslation(context.Background()).CreatePageContentTranslationRequest(createPageContentTranslationRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.CreatePageContentTranslation(context.Background()).CreatePageContentTranslationRequest(createPageContentTranslationRequest).Execute()
+    resp, r, err := apiClient.PageContentTranslationsAPI.CreatePageContentTranslation(context.Background()).CreatePageContentTranslationRequest(createPageContentTranslationRequest).Execute()
+	  //resp, r, err := apiClient.PageContentTranslationsAPI.CreatePageContentTranslation(context.Background()).CreatePageContentTranslationRequest(createPageContentTranslationRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.CreatePageContentTranslation``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,8 +145,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentTranslationsAPI.DeletePageContentTranslationById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.DeletePageContentTranslationById(context.Background(), id).Execute()
+    resp, r, err := apiClient.PageContentTranslationsAPI.DeletePageContentTranslationById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.PageContentTranslationsAPI.DeletePageContentTranslationById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.DeletePageContentTranslationById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,8 +211,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentTranslationsAPI.DeletePageContentTranslationByUid(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.DeletePageContentTranslationByUid(context.Background(), id).Execute()
+    resp, r, err := apiClient.PageContentTranslationsAPI.DeletePageContentTranslationByUid(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.PageContentTranslationsAPI.DeletePageContentTranslationByUid(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.DeletePageContentTranslationByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -268,8 +268,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslation(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslation(context.Background()).Execute()
+    resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslation(context.Background()).Execute()
+	  //resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslation(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.GetPageContentTranslation``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,8 +334,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslationById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslationById(context.Background(), id).Execute()
+    resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslationById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslationById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.GetPageContentTranslationById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,8 +400,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslationByUid(context.Background(), uid).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.GetPageContentTranslationByUid(context.Background(), uid).Execute()
+    resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslationByUid(context.Background(), uid).Execute()
+	  //resp, r, err := apiClient.PageContentTranslationsAPI.GetPageContentTranslationByUid(context.Background(), uid).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.GetPageContentTranslationByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -473,8 +473,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentTranslationsAPI.UpdatePageContentTranslationById(context.Background(), id).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.UpdatePageContentTranslationById(context.Background(), id).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
+    resp, r, err := apiClient.PageContentTranslationsAPI.UpdatePageContentTranslationById(context.Background(), id).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
+	  //resp, r, err := apiClient.PageContentTranslationsAPI.UpdatePageContentTranslationById(context.Background(), id).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.UpdatePageContentTranslationById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -546,8 +546,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.PageContentTranslationsAPI.UpdatePageContentTranslationByUid(context.Background(), uid).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
-	  //resp, r, err := apiClient.NERM.PageContentTranslationsAPI.UpdatePageContentTranslationByUid(context.Background(), uid).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
+    resp, r, err := apiClient.PageContentTranslationsAPI.UpdatePageContentTranslationByUid(context.Background(), uid).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
+	  //resp, r, err := apiClient.PageContentTranslationsAPI.UpdatePageContentTranslationByUid(context.Background(), uid).UpdatePageContentTranslationByIdRequest(updatePageContentTranslationByIdRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PageContentTranslationsAPI.UpdatePageContentTranslationByUid``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

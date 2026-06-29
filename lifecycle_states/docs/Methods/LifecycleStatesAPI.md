@@ -121,8 +121,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.CreateLifecycleStateV1(context.Background(), identityProfileId).Lifecyclestate(lifecyclestate).Execute()
-	  //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.CreateLifecycleStateV1(context.Background(), identityProfileId).Lifecyclestate(lifecyclestate).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.CreateLifecycleStateV1(context.Background(), identityProfileId).Lifecyclestate(lifecyclestate).Execute()
+	  //resp, r, err := apiClient.LifecycleStatesAPI.CreateLifecycleStateV1(context.Background(), identityProfileId).Lifecyclestate(lifecyclestate).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.CreateLifecycleStateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -190,8 +190,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.DeleteLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
-	  //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.DeleteLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.DeleteLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
+	  //resp, r, err := apiClient.LifecycleStatesAPI.DeleteLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.DeleteLifecycleStateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -259,8 +259,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.GetLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
-	  //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.GetLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.GetLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
+	  //resp, r, err := apiClient.LifecycleStatesAPI.GetLifecycleStateV1(context.Background(), identityProfileId, lifecycleStateId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.GetLifecycleStateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -333,8 +333,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.GetLifecycleStatesV1(context.Background(), identityProfileId).Execute()
-	  //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.GetLifecycleStatesV1(context.Background(), identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.GetLifecycleStatesV1(context.Background(), identityProfileId).Execute()
+	  //resp, r, err := apiClient.LifecycleStatesAPI.GetLifecycleStatesV1(context.Background(), identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.GetLifecycleStatesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -406,8 +406,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.SetLifecycleStateV1(context.Background(), identityId).SetLifecycleStateV1Request(setLifecycleStateV1Request).Execute()
-	  //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.SetLifecycleStateV1(context.Background(), identityId).SetLifecycleStateV1Request(setLifecycleStateV1Request).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.SetLifecycleStateV1(context.Background(), identityId).SetLifecycleStateV1Request(setLifecycleStateV1Request).Execute()
+	  //resp, r, err := apiClient.LifecycleStatesAPI.SetLifecycleStateV1(context.Background(), identityId).SetLifecycleStateV1Request(setLifecycleStateV1Request).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.SetLifecycleStateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -482,8 +482,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.UpdateLifecycleStatesV1(context.Background(), identityProfileId, lifecycleStateId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.LifecycleStates.LifecycleStatesAPI.UpdateLifecycleStatesV1(context.Background(), identityProfileId, lifecycleStateId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.UpdateLifecycleStatesV1(context.Background(), identityProfileId, lifecycleStateId).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.LifecycleStatesAPI.UpdateLifecycleStatesV1(context.Background(), identityProfileId, lifecycleStateId).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.UpdateLifecycleStatesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

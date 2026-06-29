@@ -96,8 +96,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.ApproveAccessRequestV1(context.Background(), approvalId).Execute()
-	  //resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.ApproveAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.ApproveAccessRequestV1(context.Background(), approvalId).Execute()
+	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.ApproveAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ApproveAccessRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -169,8 +169,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.ForwardAccessRequestV1(context.Background(), approvalId).Forwardapprovaldto(forwardapprovaldto).Execute()
-	  //resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.ForwardAccessRequestV1(context.Background(), approvalId).Forwardapprovaldto(forwardapprovaldto).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.ForwardAccessRequestV1(context.Background(), approvalId).Forwardapprovaldto(forwardapprovaldto).Execute()
+	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.ForwardAccessRequestV1(context.Background(), approvalId).Forwardapprovaldto(forwardapprovaldto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ForwardAccessRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -233,8 +233,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummaryV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummaryV1(context.Background()).OwnerId(ownerId).FromDate(fromDate).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummaryV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummaryV1(context.Background()).OwnerId(ownerId).FromDate(fromDate).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.GetAccessRequestApprovalSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -306,8 +306,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.ListAccessRequestApproversV1(context.Background(), accessRequestId).Execute()
-	  //resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.ListAccessRequestApproversV1(context.Background(), accessRequestId).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.ListAccessRequestApproversV1(context.Background(), accessRequestId).Execute()
+	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.ListAccessRequestApproversV1(context.Background(), accessRequestId).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ListAccessRequestApproversV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -378,8 +378,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.ListCompletedApprovalsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.ListCompletedApprovalsV1(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.ListCompletedApprovalsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.ListCompletedApprovalsV1(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ListCompletedApprovalsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -450,8 +450,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.ListPendingApprovalsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.ListPendingApprovalsV1(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.ListPendingApprovalsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.ListPendingApprovalsV1(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ListPendingApprovalsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -523,8 +523,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.RejectAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
-	  //resp, r, err := apiClient.AccessRequestApprovals.AccessRequestApprovalsAPI.RejectAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.RejectAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
+	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.RejectAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.RejectAccessRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

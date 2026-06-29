@@ -109,8 +109,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.CompareIdentitySnapshotsAccessTypeV1(context.Background(), id, accessType).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.CompareIdentitySnapshotsAccessTypeV1(context.Background(), id, accessType).XSailPointExperimental(xSailPointExperimental).AccessAssociated(accessAssociated).Snapshot1(snapshot1).Snapshot2(snapshot2).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.CompareIdentitySnapshotsAccessTypeV1(context.Background(), id, accessType).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentityHistoryAPI.CompareIdentitySnapshotsAccessTypeV1(context.Background(), id, accessType).XSailPointExperimental(xSailPointExperimental).AccessAssociated(accessAssociated).Snapshot1(snapshot1).Snapshot2(snapshot2).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.CompareIdentitySnapshotsAccessTypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -200,8 +200,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.CompareIdentitySnapshotsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.CompareIdentitySnapshotsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Snapshot1(snapshot1).Snapshot2(snapshot2).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.CompareIdentitySnapshotsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentityHistoryAPI.CompareIdentitySnapshotsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Snapshot1(snapshot1).Snapshot2(snapshot2).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.CompareIdentitySnapshotsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -291,8 +291,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.GetHistoricalIdentityEventsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.GetHistoricalIdentityEventsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).From(from).EventTypes(eventTypes).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.GetHistoricalIdentityEventsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentityHistoryAPI.GetHistoricalIdentityEventsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).From(from).EventTypes(eventTypes).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetHistoricalIdentityEventsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -370,8 +370,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.GetHistoricalIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.GetHistoricalIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.GetHistoricalIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentityHistoryAPI.GetHistoricalIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetHistoricalIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -461,8 +461,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.GetIdentitySnapshotSummaryV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.GetIdentitySnapshotSummaryV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Before(before).Interval(interval).TimeZone(timeZone).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.GetIdentitySnapshotSummaryV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentityHistoryAPI.GetIdentitySnapshotSummaryV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Before(before).Interval(interval).TimeZone(timeZone).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetIdentitySnapshotSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -543,8 +543,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.GetIdentitySnapshotV1(context.Background(), id, date).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.GetIdentitySnapshotV1(context.Background(), id, date).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.GetIdentitySnapshotV1(context.Background(), id, date).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentityHistoryAPI.GetIdentitySnapshotV1(context.Background(), id, date).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetIdentitySnapshotV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -622,8 +622,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.GetIdentityStartDateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.GetIdentityStartDateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.GetIdentityStartDateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentityHistoryAPI.GetIdentityStartDateV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetIdentityStartDateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -705,8 +705,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.ListHistoricalIdentitiesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.ListHistoricalIdentitiesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).StartsWithQuery(startsWithQuery).IsDeleted(isDeleted).IsActive(isActive).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.ListHistoricalIdentitiesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentityHistoryAPI.ListHistoricalIdentitiesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).StartsWithQuery(startsWithQuery).IsDeleted(isDeleted).IsActive(isActive).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListHistoricalIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -793,8 +793,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.ListIdentityAccessItemsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.ListIdentityAccessItemsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Type_(type_).Limit(limit).Count(count).Offset(offset).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItemsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItemsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Type_(type_).Limit(limit).Count(count).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentityAccessItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -877,8 +877,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.ListIdentitySnapshotAccessItemsV1(context.Background(), id, date).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.ListIdentitySnapshotAccessItemsV1(context.Background(), id, date).XSailPointExperimental(xSailPointExperimental).Type_(type_).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.ListIdentitySnapshotAccessItemsV1(context.Background(), id, date).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentityHistoryAPI.ListIdentitySnapshotAccessItemsV1(context.Background(), id, date).XSailPointExperimental(xSailPointExperimental).Type_(type_).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentitySnapshotAccessItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -966,8 +966,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.ListIdentitySnapshotsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IdentityHistory.IdentityHistoryAPI.ListIdentitySnapshotsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Start(start).Interval(interval).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.ListIdentitySnapshotsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IdentityHistoryAPI.ListIdentitySnapshotsV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Start(start).Interval(interval).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentitySnapshotsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

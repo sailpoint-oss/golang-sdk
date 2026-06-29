@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AuditsAPI.Search(context.Background()).SearchRequest(searchRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AuditsAPI.Search(context.Background()).SearchRequest(searchRequest).Execute()
+    resp, r, err := apiClient.AuditsAPI.Search(context.Background()).SearchRequest(searchRequest).Execute()
+	  //resp, r, err := apiClient.AuditsAPI.Search(context.Background()).SearchRequest(searchRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AuditsAPI.Search``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

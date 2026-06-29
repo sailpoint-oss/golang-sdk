@@ -81,8 +81,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERMV2025.DelegationsAPI.DelegationsGet(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERMV2025.DelegationsAPI.DelegationsGet(context.Background()).DelegateId(delegateId).DelegatorId(delegatorId).Expired(expired).Limit(limit).Offset(offset).Include(include).Execute()
+    resp, r, err := apiClient.DelegationsAPI.DelegationsGet(context.Background()).Execute()
+	  //resp, r, err := apiClient.DelegationsAPI.DelegationsGet(context.Background()).DelegateId(delegateId).DelegatorId(delegatorId).Expired(expired).Limit(limit).Offset(offset).Include(include).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DelegationsAPI.DelegationsGet``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -147,8 +147,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NERMV2025.DelegationsAPI.DelegationsIdDelete(context.Background(), id).Execute()
-	  //r, err := apiClient.NERMV2025.DelegationsAPI.DelegationsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.DelegationsAPI.DelegationsIdDelete(context.Background(), id).Execute()
+	  //r, err := apiClient.DelegationsAPI.DelegationsIdDelete(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DelegationsAPI.DelegationsIdDelete``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,8 +212,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERMV2025.DelegationsAPI.DelegationsIdGet(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERMV2025.DelegationsAPI.DelegationsIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.DelegationsAPI.DelegationsIdGet(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.DelegationsAPI.DelegationsIdGet(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DelegationsAPI.DelegationsIdGet``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -285,8 +285,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERMV2025.DelegationsAPI.DelegationsIdPatch(context.Background(), id).DelegationsPostRequest(delegationsPostRequest).Execute()
-	  //resp, r, err := apiClient.NERMV2025.DelegationsAPI.DelegationsIdPatch(context.Background(), id).DelegationsPostRequest(delegationsPostRequest).Execute()
+    resp, r, err := apiClient.DelegationsAPI.DelegationsIdPatch(context.Background(), id).DelegationsPostRequest(delegationsPostRequest).Execute()
+	  //resp, r, err := apiClient.DelegationsAPI.DelegationsIdPatch(context.Background(), id).DelegationsPostRequest(delegationsPostRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DelegationsAPI.DelegationsIdPatch``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -352,8 +352,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERMV2025.DelegationsAPI.DelegationsPost(context.Background()).DelegationsPostRequest(delegationsPostRequest).Execute()
-	  //resp, r, err := apiClient.NERMV2025.DelegationsAPI.DelegationsPost(context.Background()).DelegationsPostRequest(delegationsPostRequest).Execute()
+    resp, r, err := apiClient.DelegationsAPI.DelegationsPost(context.Background()).DelegationsPostRequest(delegationsPostRequest).Execute()
+	  //resp, r, err := apiClient.DelegationsAPI.DelegationsPost(context.Background()).DelegationsPostRequest(delegationsPostRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DelegationsAPI.DelegationsPost``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

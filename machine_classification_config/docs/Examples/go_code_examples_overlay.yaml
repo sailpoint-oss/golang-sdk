@@ -23,8 +23,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1(context.Background(), sourceId).Execute()
-          //r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1(context.Background(), sourceId).Execute()
+          r, err := apiClient.MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1(context.Background(), sourceId).Execute()
+          //r, err := apiClient.MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1(context.Background(), sourceId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -55,8 +55,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.GetMachineClassificationConfigV1(context.Background(), sourceId).Execute()
-          //resp, r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.GetMachineClassificationConfigV1(context.Background(), sourceId).Execute()
+          resp, r, err := apiClient.MachineClassificationConfigAPI.GetMachineClassificationConfigV1(context.Background(), sourceId).Execute()
+          //resp, r, err := apiClient.MachineClassificationConfigAPI.GetMachineClassificationConfigV1(context.Background(), sourceId).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.GetMachineClassificationConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -96,8 +96,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).Machineclassificationconfig(machineclassificationconfig).Execute()
-          //resp, r, err := apiClient.MachineClassificationConfig.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).Machineclassificationconfig(machineclassificationconfig).Execute()
+          resp, r, err := apiClient.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).Machineclassificationconfig(machineclassificationconfig).Execute()
+          //resp, r, err := apiClient.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).Machineclassificationconfig(machineclassificationconfig).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.SetMachineClassificationConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

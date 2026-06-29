@@ -1,12 +1,12 @@
 ---
-id: methods
+id: -methods
 title: Methods
 pagination_label: Methods
 sidebar_label: Methods
 sidebar_position: 3
 sidebar_key: -golang-methods
 sidebar_class_name: methods
-keywords: ['go', 'Golang', 'sdk', 'methods'] 
+keywords: ['go', 'Golang', 'sdk', '', 'methods'] 
 slug: /tools/sdk/go//methods
 tags: ['SDK', 'Software Development Kit', '', 'methods']
 ---

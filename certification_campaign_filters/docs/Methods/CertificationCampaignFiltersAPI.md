@@ -103,8 +103,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignFilters.CertificationCampaignFiltersAPI.CreateCampaignFilterV1(context.Background()).Campaignfilterdetails(campaignfilterdetails).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignFilters.CertificationCampaignFiltersAPI.CreateCampaignFilterV1(context.Background()).Campaignfilterdetails(campaignfilterdetails).Execute()
+    resp, r, err := apiClient.CertificationCampaignFiltersAPI.CreateCampaignFilterV1(context.Background()).Campaignfilterdetails(campaignfilterdetails).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignFiltersAPI.CreateCampaignFilterV1(context.Background()).Campaignfilterdetails(campaignfilterdetails).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.CreateCampaignFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -170,8 +170,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.CertificationCampaignFilters.CertificationCampaignFiltersAPI.DeleteCampaignFiltersV1(context.Background()).RequestBody(requestBody).Execute()
-	  //r, err := apiClient.CertificationCampaignFilters.CertificationCampaignFiltersAPI.DeleteCampaignFiltersV1(context.Background()).RequestBody(requestBody).Execute()
+    r, err := apiClient.CertificationCampaignFiltersAPI.DeleteCampaignFiltersV1(context.Background()).RequestBody(requestBody).Execute()
+	  //r, err := apiClient.CertificationCampaignFiltersAPI.DeleteCampaignFiltersV1(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.DeleteCampaignFiltersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -235,8 +235,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignFilters.CertificationCampaignFiltersAPI.GetCampaignFilterByIdV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignFilters.CertificationCampaignFiltersAPI.GetCampaignFilterByIdV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationCampaignFiltersAPI.GetCampaignFilterByIdV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignFiltersAPI.GetCampaignFilterByIdV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.GetCampaignFilterByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -301,8 +301,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignFilters.CertificationCampaignFiltersAPI.ListCampaignFiltersV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignFilters.CertificationCampaignFiltersAPI.ListCampaignFiltersV1(context.Background()).Limit(limit).Start(start).IncludeSystemFilters(includeSystemFilters).Execute()
+    resp, r, err := apiClient.CertificationCampaignFiltersAPI.ListCampaignFiltersV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignFiltersAPI.ListCampaignFiltersV1(context.Background()).Limit(limit).Start(start).IncludeSystemFilters(includeSystemFilters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.ListCampaignFiltersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -374,8 +374,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignFilters.CertificationCampaignFiltersAPI.UpdateCampaignFilterV1(context.Background(), id).Campaignfilterdetails(campaignfilterdetails).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignFilters.CertificationCampaignFiltersAPI.UpdateCampaignFilterV1(context.Background(), id).Campaignfilterdetails(campaignfilterdetails).Execute()
+    resp, r, err := apiClient.CertificationCampaignFiltersAPI.UpdateCampaignFilterV1(context.Background(), id).Campaignfilterdetails(campaignfilterdetails).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignFiltersAPI.UpdateCampaignFilterV1(context.Background(), id).Campaignfilterdetails(campaignfilterdetails).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.UpdateCampaignFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

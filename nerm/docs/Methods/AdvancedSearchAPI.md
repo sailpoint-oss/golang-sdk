@@ -66,8 +66,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AdvancedSearchAPI.GetAdvancedSearch(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.AdvancedSearchAPI.GetAdvancedSearch(context.Background()).Execute()
+    resp, r, err := apiClient.AdvancedSearchAPI.GetAdvancedSearch(context.Background()).Execute()
+	  //resp, r, err := apiClient.AdvancedSearchAPI.GetAdvancedSearch(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AdvancedSearchAPI.GetAdvancedSearch``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,8 +139,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AdvancedSearchAPI.PatchAdvancedSearch(context.Background(), id).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AdvancedSearchAPI.PatchAdvancedSearch(context.Background(), id).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
+    resp, r, err := apiClient.AdvancedSearchAPI.PatchAdvancedSearch(context.Background(), id).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
+	  //resp, r, err := apiClient.AdvancedSearchAPI.PatchAdvancedSearch(context.Background(), id).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AdvancedSearchAPI.PatchAdvancedSearch``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,8 +212,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AdvancedSearchAPI.SearchAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AdvancedSearchAPI.SearchAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Limit(limit).Offset(offset).Order(order).Execute()
+    resp, r, err := apiClient.AdvancedSearchAPI.SearchAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
+	  //resp, r, err := apiClient.AdvancedSearchAPI.SearchAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Limit(limit).Offset(offset).Order(order).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AdvancedSearchAPI.SearchAdvancedSearch``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -284,8 +284,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AdvancedSearchAPI.SearchAdvancedSearchbyID(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.AdvancedSearchAPI.SearchAdvancedSearchbyID(context.Background(), id).Limit(limit).Offset(offset).Order(order).Execute()
+    resp, r, err := apiClient.AdvancedSearchAPI.SearchAdvancedSearchbyID(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.AdvancedSearchAPI.SearchAdvancedSearchbyID(context.Background(), id).Limit(limit).Offset(offset).Order(order).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AdvancedSearchAPI.SearchAdvancedSearchbyID``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -351,8 +351,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.AdvancedSearchAPI.SubmitAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
-	  //resp, r, err := apiClient.NERM.AdvancedSearchAPI.SubmitAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
+    resp, r, err := apiClient.AdvancedSearchAPI.SubmitAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
+	  //resp, r, err := apiClient.AdvancedSearchAPI.SubmitAdvancedSearch(context.Background()).SubmitAdvancedSearchRequest(submitAdvancedSearchRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AdvancedSearchAPI.SubmitAdvancedSearch``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

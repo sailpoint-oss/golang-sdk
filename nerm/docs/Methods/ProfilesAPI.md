@@ -83,8 +83,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfilesAPI.CreateProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.ProfilesAPI.CreateProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+    resp, r, err := apiClient.ProfilesAPI.CreateProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+	  //resp, r, err := apiClient.ProfilesAPI.CreateProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.CreateProfiles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -149,8 +149,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NERM.ProfilesAPI.DeleteProfileById(context.Background(), id).Execute()
-	  //r, err := apiClient.NERM.ProfilesAPI.DeleteProfileById(context.Background(), id).Execute()
+    r, err := apiClient.ProfilesAPI.DeleteProfileById(context.Background(), id).Execute()
+	  //r, err := apiClient.ProfilesAPI.DeleteProfileById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.DeleteProfileById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,8 +215,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfilesAPI.DeleteProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.ProfilesAPI.DeleteProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+    resp, r, err := apiClient.ProfilesAPI.DeleteProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+	  //resp, r, err := apiClient.ProfilesAPI.DeleteProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.DeleteProfiles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -281,8 +281,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileAvatar(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileAvatar(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProfilesAPI.GetProfileAvatar(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ProfilesAPI.GetProfileAvatar(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.GetProfileAvatar``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -347,8 +347,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileById(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileById(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProfilesAPI.GetProfileById(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ProfilesAPI.GetProfileById(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.GetProfileById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -416,8 +416,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileUpload(context.Background(), id, attributeId).Execute()
-	  //resp, r, err := apiClient.NERM.ProfilesAPI.GetProfileUpload(context.Background(), id, attributeId).Execute()
+    resp, r, err := apiClient.ProfilesAPI.GetProfileUpload(context.Background(), id, attributeId).Execute()
+	  //resp, r, err := apiClient.ProfilesAPI.GetProfileUpload(context.Background(), id, attributeId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.GetProfileUpload``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -497,8 +497,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfilesAPI.GetProfiles(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.ProfilesAPI.GetProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).ExcludeAttributes(excludeAttributes).Name(name).ProfileTypeId(profileTypeId).Status(status).Metadata(metadata).AfterId(afterId).UpdatedAfter(updatedAfter).Execute()
+    resp, r, err := apiClient.ProfilesAPI.GetProfiles(context.Background()).Execute()
+	  //resp, r, err := apiClient.ProfilesAPI.GetProfiles(context.Background()).Limit(limit).Offset(offset).Order(order).ExcludeAttributes(excludeAttributes).Name(name).ProfileTypeId(profileTypeId).Status(status).Metadata(metadata).AfterId(afterId).UpdatedAfter(updatedAfter).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.GetProfiles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -570,8 +570,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfilesAPI.PatchProfileById(context.Background(), id).SubmitProfileRequest(submitProfileRequest).Execute()
-	  //resp, r, err := apiClient.NERM.ProfilesAPI.PatchProfileById(context.Background(), id).SubmitProfileRequest(submitProfileRequest).Execute()
+    resp, r, err := apiClient.ProfilesAPI.PatchProfileById(context.Background(), id).SubmitProfileRequest(submitProfileRequest).Execute()
+	  //resp, r, err := apiClient.ProfilesAPI.PatchProfileById(context.Background(), id).SubmitProfileRequest(submitProfileRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.PatchProfileById``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -637,8 +637,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfilesAPI.PatchProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.ProfilesAPI.PatchProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+    resp, r, err := apiClient.ProfilesAPI.PatchProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
+	  //resp, r, err := apiClient.ProfilesAPI.PatchProfiles(context.Background()).CreateProfilesRequest(createProfilesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.PatchProfiles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -704,8 +704,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfile(context.Background()).SubmitProfileRequest(submitProfileRequest).Execute()
-	  //resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfile(context.Background()).SubmitProfileRequest(submitProfileRequest).Execute()
+    resp, r, err := apiClient.ProfilesAPI.SubmitProfile(context.Background()).SubmitProfileRequest(submitProfileRequest).Execute()
+	  //resp, r, err := apiClient.ProfilesAPI.SubmitProfile(context.Background()).SubmitProfileRequest(submitProfileRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.SubmitProfile``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -772,8 +772,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfileAvatar(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfileAvatar(context.Background(), id).File(file).Execute()
+    resp, r, err := apiClient.ProfilesAPI.SubmitProfileAvatar(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ProfilesAPI.SubmitProfileAvatar(context.Background(), id).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.SubmitProfileAvatar``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -844,8 +844,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfileUpload(context.Background(), id, attributeId).Execute()
-	  //resp, r, err := apiClient.NERM.ProfilesAPI.SubmitProfileUpload(context.Background(), id, attributeId).File(file).Execute()
+    resp, r, err := apiClient.ProfilesAPI.SubmitProfileUpload(context.Background(), id, attributeId).Execute()
+	  //resp, r, err := apiClient.ProfilesAPI.SubmitProfileUpload(context.Background(), id, attributeId).File(file).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ProfilesAPI.SubmitProfileUpload``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

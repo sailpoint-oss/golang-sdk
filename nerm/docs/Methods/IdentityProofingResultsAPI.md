@@ -79,8 +79,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.IdentityProofingResultsAPI.GetIdentityProofingResults(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.IdentityProofingResultsAPI.GetIdentityProofingResults(context.Background()).Limit(limit).Offset(offset).Order(order).ProfileId(profileId).WorkflowSessionId(workflowSessionId).Result(result).Metadata(metadata).Execute()
+    resp, r, err := apiClient.IdentityProofingResultsAPI.GetIdentityProofingResults(context.Background()).Execute()
+	  //resp, r, err := apiClient.IdentityProofingResultsAPI.GetIdentityProofingResults(context.Background()).Limit(limit).Offset(offset).Order(order).ProfileId(profileId).WorkflowSessionId(workflowSessionId).Result(result).Metadata(metadata).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProofingResultsAPI.GetIdentityProofingResults``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

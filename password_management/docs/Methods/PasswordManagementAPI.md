@@ -112,8 +112,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.CreateDigitTokenV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passworddigittokenreset(passworddigittokenreset).Execute()
-	  //resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.CreateDigitTokenV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passworddigittokenreset(passworddigittokenreset).Execute()
+    resp, r, err := apiClient.PasswordManagementAPI.CreateDigitTokenV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passworddigittokenreset(passworddigittokenreset).Execute()
+	  //resp, r, err := apiClient.PasswordManagementAPI.CreateDigitTokenV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passworddigittokenreset(passworddigittokenreset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.CreateDigitTokenV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -178,8 +178,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.GetPasswordChangeStatusV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.GetPasswordChangeStatusV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.PasswordManagementAPI.GetPasswordChangeStatusV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.PasswordManagementAPI.GetPasswordChangeStatusV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.GetPasswordChangeStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -246,8 +246,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.QueryPasswordInfoV1(context.Background()).Passwordinfoquerydto(passwordinfoquerydto).Execute()
-	  //resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.QueryPasswordInfoV1(context.Background()).Passwordinfoquerydto(passwordinfoquerydto).Execute()
+    resp, r, err := apiClient.PasswordManagementAPI.QueryPasswordInfoV1(context.Background()).Passwordinfoquerydto(passwordinfoquerydto).Execute()
+	  //resp, r, err := apiClient.PasswordManagementAPI.QueryPasswordInfoV1(context.Background()).Passwordinfoquerydto(passwordinfoquerydto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.QueryPasswordInfoV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -332,8 +332,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.SetPasswordV1(context.Background()).Passwordchangerequest(passwordchangerequest).Execute()
-	  //resp, r, err := apiClient.PasswordManagement.PasswordManagementAPI.SetPasswordV1(context.Background()).Passwordchangerequest(passwordchangerequest).Execute()
+    resp, r, err := apiClient.PasswordManagementAPI.SetPasswordV1(context.Background()).Passwordchangerequest(passwordchangerequest).Execute()
+	  //resp, r, err := apiClient.PasswordManagementAPI.SetPasswordV1(context.Background()).Passwordchangerequest(passwordchangerequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.SetPasswordV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

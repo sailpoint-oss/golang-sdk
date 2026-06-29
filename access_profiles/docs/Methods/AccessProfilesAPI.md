@@ -116,8 +116,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.CreateAccessProfileV1(context.Background()).Accessprofile(accessprofile).Execute()
-	  //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.CreateAccessProfileV1(context.Background()).Accessprofile(accessprofile).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.CreateAccessProfileV1(context.Background()).Accessprofile(accessprofile).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.CreateAccessProfileV1(context.Background()).Accessprofile(accessprofile).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.CreateAccessProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,8 +186,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.AccessProfiles.AccessProfilesAPI.DeleteAccessProfileV1(context.Background(), id).Execute()
-	  //r, err := apiClient.AccessProfiles.AccessProfilesAPI.DeleteAccessProfileV1(context.Background(), id).Execute()
+    r, err := apiClient.AccessProfilesAPI.DeleteAccessProfileV1(context.Background(), id).Execute()
+	  //r, err := apiClient.AccessProfilesAPI.DeleteAccessProfileV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.DeleteAccessProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -256,8 +256,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.DeleteAccessProfilesInBulkV1(context.Background()).Accessprofilebulkdeleterequest(accessprofilebulkdeleterequest).Execute()
-	  //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.DeleteAccessProfilesInBulkV1(context.Background()).Accessprofilebulkdeleterequest(accessprofilebulkdeleterequest).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.DeleteAccessProfilesInBulkV1(context.Background()).Accessprofilebulkdeleterequest(accessprofilebulkdeleterequest).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.DeleteAccessProfilesInBulkV1(context.Background()).Accessprofilebulkdeleterequest(accessprofilebulkdeleterequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.DeleteAccessProfilesInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,8 +334,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.GetAccessProfileEntitlementsV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.GetAccessProfileEntitlementsV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.GetAccessProfileEntitlementsV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.GetAccessProfileEntitlementsV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.GetAccessProfileEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,8 +400,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.GetAccessProfileV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.GetAccessProfileV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.GetAccessProfileV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.GetAccessProfileV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.GetAccessProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -477,8 +477,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.ListAccessProfilesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.ListAccessProfilesV1(context.Background()).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.ListAccessProfilesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.ListAccessProfilesV1(context.Background()).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.ListAccessProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -581,8 +581,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.PatchAccessProfileV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.PatchAccessProfileV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.PatchAccessProfileV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.PatchAccessProfileV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.PatchAccessProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -667,8 +667,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessprofilebulkupdaterequestInner(accessprofilebulkupdaterequestInner).Execute()
-	  //resp, r, err := apiClient.AccessProfiles.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessprofilebulkupdaterequestInner(accessprofilebulkupdaterequestInner).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessprofilebulkupdaterequestInner(accessprofilebulkupdaterequestInner).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessprofilebulkupdaterequestInner(accessprofilebulkupdaterequestInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

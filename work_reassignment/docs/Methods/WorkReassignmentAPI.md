@@ -103,8 +103,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.CreateReassignmentConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
-	  //resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.CreateReassignmentConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
+    resp, r, err := apiClient.WorkReassignmentAPI.CreateReassignmentConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
+	  //resp, r, err := apiClient.WorkReassignmentAPI.CreateReassignmentConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.CreateReassignmentConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -185,8 +185,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.WorkReassignment.WorkReassignmentAPI.DeleteReassignmentConfigurationV1(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.WorkReassignment.WorkReassignmentAPI.DeleteReassignmentConfigurationV1(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.WorkReassignmentAPI.DeleteReassignmentConfigurationV1(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.WorkReassignmentAPI.DeleteReassignmentConfigurationV1(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.DeleteReassignmentConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -268,8 +268,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.GetEvaluateReassignmentConfigurationV1(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.GetEvaluateReassignmentConfigurationV1(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).ExclusionFilters(exclusionFilters).Execute()
+    resp, r, err := apiClient.WorkReassignmentAPI.GetEvaluateReassignmentConfigurationV1(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.WorkReassignmentAPI.GetEvaluateReassignmentConfigurationV1(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).ExclusionFilters(exclusionFilters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetEvaluateReassignmentConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -341,8 +341,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.GetReassignmentConfigTypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.GetReassignmentConfigTypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.WorkReassignmentAPI.GetReassignmentConfigTypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.WorkReassignmentAPI.GetReassignmentConfigTypesV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetReassignmentConfigTypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -420,8 +420,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.GetReassignmentConfigurationV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.GetReassignmentConfigurationV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.WorkReassignmentAPI.GetReassignmentConfigurationV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.WorkReassignmentAPI.GetReassignmentConfigurationV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetReassignmentConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -493,8 +493,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.GetTenantConfigConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.GetTenantConfigConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.WorkReassignmentAPI.GetTenantConfigConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.WorkReassignmentAPI.GetTenantConfigConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetTenantConfigConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -566,8 +566,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.ListReassignmentConfigurationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.ListReassignmentConfigurationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.WorkReassignmentAPI.ListReassignmentConfigurationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.WorkReassignmentAPI.ListReassignmentConfigurationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.ListReassignmentConfigurationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -652,8 +652,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.PutReassignmentConfigV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
-	  //resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.PutReassignmentConfigV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
+    resp, r, err := apiClient.WorkReassignmentAPI.PutReassignmentConfigV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
+	  //resp, r, err := apiClient.WorkReassignmentAPI.PutReassignmentConfigV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.PutReassignmentConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -732,8 +732,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.PutTenantConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantconfigurationrequest(tenantconfigurationrequest).Execute()
-	  //resp, r, err := apiClient.WorkReassignment.WorkReassignmentAPI.PutTenantConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantconfigurationrequest(tenantconfigurationrequest).Execute()
+    resp, r, err := apiClient.WorkReassignmentAPI.PutTenantConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantconfigurationrequest(tenantconfigurationrequest).Execute()
+	  //resp, r, err := apiClient.WorkReassignmentAPI.PutTenantConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantconfigurationrequest(tenantconfigurationrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.PutTenantConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

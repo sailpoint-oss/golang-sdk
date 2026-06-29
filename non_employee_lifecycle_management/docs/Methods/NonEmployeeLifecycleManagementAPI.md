@@ -140,8 +140,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequestV1(context.Background(), id).Nonemployeeapprovaldecision(nonemployeeapprovaldecision).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequestV1(context.Background(), id).Nonemployeeapprovaldecision(nonemployeeapprovaldecision).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequestV1(context.Background(), id).Nonemployeeapprovaldecision(nonemployeeapprovaldecision).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequestV1(context.Background(), id).Nonemployeeapprovaldecision(nonemployeeapprovaldecision).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,8 +209,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecordV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecordV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecordV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecordV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecordV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -277,8 +277,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequestV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequestV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequestV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequestV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -351,8 +351,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Nonemployeeschemaattributebody(nonemployeeschemaattributebody).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Nonemployeeschemaattributebody(nonemployeeschemaattributebody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Nonemployeeschemaattributebody(nonemployeeschemaattributebody).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Nonemployeeschemaattributebody(nonemployeeschemaattributebody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -418,8 +418,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceV1(context.Background()).Nonemployeesourcerequestbody(nonemployeesourcerequestbody).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceV1(context.Background()).Nonemployeesourcerequestbody(nonemployeesourcerequestbody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceV1(context.Background()).Nonemployeesourcerequestbody(nonemployeesourcerequestbody).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceV1(context.Background()).Nonemployeesourcerequestbody(nonemployeesourcerequestbody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -485,8 +485,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordV1(context.Background(), id).Execute()
-	  //r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordV1(context.Background(), id).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordV1(context.Background(), id).Execute()
+	  //r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -551,8 +551,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordsInBulkV1(context.Background()).DeleteNonEmployeeRecordsInBulkV1Request(deleteNonEmployeeRecordsInBulkV1Request).Execute()
-	  //r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordsInBulkV1(context.Background()).DeleteNonEmployeeRecordsInBulkV1Request(deleteNonEmployeeRecordsInBulkV1Request).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordsInBulkV1(context.Background()).DeleteNonEmployeeRecordsInBulkV1Request(deleteNonEmployeeRecordsInBulkV1Request).Execute()
+	  //r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordsInBulkV1(context.Background()).DeleteNonEmployeeRecordsInBulkV1Request(deleteNonEmployeeRecordsInBulkV1Request).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -617,8 +617,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRequestV1(context.Background(), id).Execute()
-	  //r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRequestV1(context.Background(), id).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRequestV1(context.Background(), id).Execute()
+	  //r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRequestV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -687,8 +687,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Execute()
-	  //r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Execute()
+	  //r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSchemaAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -752,8 +752,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Execute()
-	  //r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Execute()
+	  //r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceSchemaAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -817,8 +817,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceV1(context.Background(), sourceId).Execute()
-	  //r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceV1(context.Background(), sourceId).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceV1(context.Background(), sourceId).Execute()
+	  //r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -882,8 +882,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeRecordsV1(context.Background(), id).Execute()
-	  //r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeRecordsV1(context.Background(), id).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeRecordsV1(context.Background(), id).Execute()
+	  //r, err := apiClient.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeRecordsV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ExportNonEmployeeRecordsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -947,8 +947,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeSourceSchemaTemplateV1(context.Background(), id).Execute()
-	  //r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeSourceSchemaTemplateV1(context.Background(), id).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeSourceSchemaTemplateV1(context.Background(), id).Execute()
+	  //r, err := apiClient.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeSourceSchemaTemplateV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ExportNonEmployeeSourceSchemaTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1016,8 +1016,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummaryV1(context.Background(), requestedFor).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummaryV1(context.Background(), requestedFor).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummaryV1(context.Background(), requestedFor).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummaryV1(context.Background(), requestedFor).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1087,8 +1087,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalV1(context.Background(), id).IncludeDetail(includeDetail).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalV1(context.Background(), id).IncludeDetail(includeDetail).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1155,8 +1155,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatusV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatusV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatusV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatusV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1222,8 +1222,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecordV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecordV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecordV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecordV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecordV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1292,8 +1292,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummaryV1(context.Background(), requestedFor).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummaryV1(context.Background(), requestedFor).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummaryV1(context.Background(), requestedFor).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummaryV1(context.Background(), requestedFor).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1362,8 +1362,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1431,8 +1431,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1498,8 +1498,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1568,8 +1568,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceV1(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceV1(context.Background(), sourceId).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceV1(context.Background(), sourceId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1636,8 +1636,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulkV1(context.Background(), id).Data(data).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulkV1(context.Background(), id).Data(data).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulkV1(context.Background(), id).Data(data).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulkV1(context.Background(), id).Data(data).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1712,8 +1712,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovalsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovalsV1(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovalsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovalsV1(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovalsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1784,8 +1784,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecordsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecordsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecordsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecordsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecordsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1860,8 +1860,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequestsV1(context.Background()).RequestedFor(requestedFor).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequestsV1(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequestsV1(context.Background()).RequestedFor(requestedFor).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequestsV1(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequestsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1934,8 +1934,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ListNonEmployeeSourcesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.ListNonEmployeeSourcesV1(context.Background()).Limit(limit).Offset(offset).Count(count).RequestedFor(requestedFor).NonEmployeeCount(nonEmployeeCount).Sorters(sorters).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeSourcesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeSourcesV1(context.Background()).Limit(limit).Offset(offset).Count(count).RequestedFor(requestedFor).NonEmployeeCount(nonEmployeeCount).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeSourcesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2011,8 +2011,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecordV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecordV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecordV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecordV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecordV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2089,8 +2089,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2162,8 +2162,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSourceV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSourceV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSourceV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSourceV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2235,8 +2235,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequestV1(context.Background(), id).Nonemployeerejectapprovaldecision(nonemployeerejectapprovaldecision).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequestV1(context.Background(), id).Nonemployeerejectapprovaldecision(nonemployeerejectapprovaldecision).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequestV1(context.Background(), id).Nonemployeerejectapprovaldecision(nonemployeerejectapprovaldecision).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequestV1(context.Background(), id).Nonemployeerejectapprovaldecision(nonemployeerejectapprovaldecision).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2313,8 +2313,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecordV1(context.Background(), id).Nonemployeerequestbody(nonemployeerequestbody).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagement.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecordV1(context.Background(), id).Nonemployeerequestbody(nonemployeerequestbody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecordV1(context.Background(), id).Nonemployeerequestbody(nonemployeerequestbody).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecordV1(context.Background(), id).Nonemployeerequestbody(nonemployeerequestbody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecordV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

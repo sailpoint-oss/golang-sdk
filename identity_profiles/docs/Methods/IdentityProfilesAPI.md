@@ -92,8 +92,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.CreateIdentityProfileV1(context.Background()).Identityprofile(identityprofile).Execute()
-	  //resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.CreateIdentityProfileV1(context.Background()).Identityprofile(identityprofile).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.CreateIdentityProfileV1(context.Background()).Identityprofile(identityprofile).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.CreateIdentityProfileV1(context.Background()).Identityprofile(identityprofile).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.CreateIdentityProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -159,8 +159,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.DeleteIdentityProfileV1(context.Background(), identityProfileId).Execute()
-	  //resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.DeleteIdentityProfileV1(context.Background(), identityProfileId).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.DeleteIdentityProfileV1(context.Background(), identityProfileId).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.DeleteIdentityProfileV1(context.Background(), identityProfileId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.DeleteIdentityProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -230,8 +230,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.DeleteIdentityProfilesV1(context.Background()).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.DeleteIdentityProfilesV1(context.Background()).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.DeleteIdentityProfilesV1(context.Background()).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.DeleteIdentityProfilesV1(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.DeleteIdentityProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -300,8 +300,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.ExportIdentityProfilesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.ExportIdentityProfilesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.ExportIdentityProfilesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.ExportIdentityProfilesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ExportIdentityProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -367,8 +367,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.GenerateIdentityPreviewV1(context.Background()).Identitypreviewrequest(identitypreviewrequest).Execute()
-	  //resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.GenerateIdentityPreviewV1(context.Background()).Identitypreviewrequest(identitypreviewrequest).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.GenerateIdentityPreviewV1(context.Background()).Identitypreviewrequest(identitypreviewrequest).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.GenerateIdentityPreviewV1(context.Background()).Identitypreviewrequest(identitypreviewrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.GenerateIdentityPreviewV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -433,8 +433,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.GetDefaultIdentityAttributeConfigV1(context.Background(), identityProfileId).Execute()
-	  //resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.GetDefaultIdentityAttributeConfigV1(context.Background(), identityProfileId).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.GetDefaultIdentityAttributeConfigV1(context.Background(), identityProfileId).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.GetDefaultIdentityAttributeConfigV1(context.Background(), identityProfileId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.GetDefaultIdentityAttributeConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -499,8 +499,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.GetIdentityProfileV1(context.Background(), identityProfileId).Execute()
-	  //resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.GetIdentityProfileV1(context.Background(), identityProfileId).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.GetIdentityProfileV1(context.Background(), identityProfileId).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.GetIdentityProfileV1(context.Background(), identityProfileId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.GetIdentityProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -566,8 +566,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.ImportIdentityProfilesV1(context.Background()).Identityprofileexportedobject(identityprofileexportedobject).Execute()
-	  //resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.ImportIdentityProfilesV1(context.Background()).Identityprofileexportedobject(identityprofileexportedobject).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.ImportIdentityProfilesV1(context.Background()).Identityprofileexportedobject(identityprofileexportedobject).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.ImportIdentityProfilesV1(context.Background()).Identityprofileexportedobject(identityprofileexportedobject).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ImportIdentityProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -636,8 +636,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.ListIdentityProfilesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.ListIdentityProfilesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.ListIdentityProfilesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.ListIdentityProfilesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ListIdentityProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -706,8 +706,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.SyncIdentityProfileV1(context.Background(), identityProfileId).Execute()
-	  //resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.SyncIdentityProfileV1(context.Background(), identityProfileId).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.SyncIdentityProfileV1(context.Background(), identityProfileId).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.SyncIdentityProfileV1(context.Background(), identityProfileId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.SyncIdentityProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -787,8 +787,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.UpdateIdentityProfileV1(context.Background(), identityProfileId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.IdentityProfiles.IdentityProfilesAPI.UpdateIdentityProfileV1(context.Background(), identityProfileId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.UpdateIdentityProfileV1(context.Background(), identityProfileId).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.UpdateIdentityProfileV1(context.Background(), identityProfileId).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.UpdateIdentityProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

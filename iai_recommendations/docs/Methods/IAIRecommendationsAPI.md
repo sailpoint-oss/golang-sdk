@@ -80,8 +80,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRecommendations.IAIRecommendationsAPI.GetRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiRecommendations.IAIRecommendationsAPI.GetRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.GetRecommendationsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -160,8 +160,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRecommendations.IAIRecommendationsAPI.GetRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationrequestdto(recommendationrequestdto).Execute()
-	  //resp, r, err := apiClient.IaiRecommendations.IAIRecommendationsAPI.GetRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationrequestdto(recommendationrequestdto).Execute()
+    resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationrequestdto(recommendationrequestdto).Execute()
+	  //resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationrequestdto(recommendationrequestdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.GetRecommendationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -240,8 +240,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiRecommendations.IAIRecommendationsAPI.UpdateRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationconfigdto(recommendationconfigdto).Execute()
-	  //resp, r, err := apiClient.IaiRecommendations.IAIRecommendationsAPI.UpdateRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationconfigdto(recommendationconfigdto).Execute()
+    resp, r, err := apiClient.IAIRecommendationsAPI.UpdateRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationconfigdto(recommendationconfigdto).Execute()
+	  //resp, r, err := apiClient.IAIRecommendationsAPI.UpdateRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationconfigdto(recommendationconfigdto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.UpdateRecommendationsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

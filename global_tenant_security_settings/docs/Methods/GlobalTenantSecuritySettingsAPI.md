@@ -83,8 +83,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfigV1(context.Background()).Networkconfiguration(networkconfiguration).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfigV1(context.Background()).Networkconfiguration(networkconfiguration).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfigV1(context.Background()).Networkconfiguration(networkconfiguration).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfigV1(context.Background()).Networkconfiguration(networkconfiguration).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,8 +140,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.GetAuthOrgLockoutConfigV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.GetAuthOrgLockoutConfigV1(context.Background()).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.GetAuthOrgLockoutConfigV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.GetAuthOrgLockoutConfigV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.GetAuthOrgLockoutConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -197,8 +197,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfigV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfigV1(context.Background()).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfigV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfigV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -254,8 +254,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.GetAuthOrgServiceProviderConfigV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.GetAuthOrgServiceProviderConfigV1(context.Background()).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.GetAuthOrgServiceProviderConfigV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.GetAuthOrgServiceProviderConfigV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.GetAuthOrgServiceProviderConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -311,8 +311,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.GetAuthOrgSessionConfigV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.GetAuthOrgSessionConfigV1(context.Background()).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.GetAuthOrgSessionConfigV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.GetAuthOrgSessionConfigV1(context.Background()).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.GetAuthOrgSessionConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -379,8 +379,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -447,8 +447,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -514,8 +514,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -581,8 +581,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettings.GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

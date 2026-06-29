@@ -82,8 +82,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountUsages.AccountUsagesAPI.GetUsagesByAccountIdV1(context.Background(), accountId).Execute()
-	  //resp, r, err := apiClient.AccountUsages.AccountUsagesAPI.GetUsagesByAccountIdV1(context.Background(), accountId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccountUsagesAPI.GetUsagesByAccountIdV1(context.Background(), accountId).Execute()
+	  //resp, r, err := apiClient.AccountUsagesAPI.GetUsagesByAccountIdV1(context.Background(), accountId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountUsagesAPI.GetUsagesByAccountIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

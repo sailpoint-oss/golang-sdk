@@ -87,8 +87,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.RolePropagation.RolePropagationAPI.CancelRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.RolePropagation.RolePropagationAPI.CancelRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.RolePropagationAPI.CancelRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.RolePropagationAPI.CancelRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.CancelRolePropagationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -159,8 +159,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetOngoingRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetOngoingRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.RolePropagationAPI.GetOngoingRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RolePropagationAPI.GetOngoingRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetOngoingRolePropagationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -232,8 +232,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.RolePropagationAPI.GetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RolePropagationAPI.GetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetRolePropagationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -317,8 +317,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetRolePropagationStatusV1(context.Background(), rolePropagationId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RolePropagation.RolePropagationAPI.GetRolePropagationStatusV1(context.Background(), rolePropagationId).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.RolePropagationAPI.GetRolePropagationStatusV1(context.Background(), rolePropagationId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RolePropagationAPI.GetRolePropagationStatusV1(context.Background(), rolePropagationId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetRolePropagationStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -397,8 +397,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolePropagation.RolePropagationAPI.SetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
-	  //resp, r, err := apiClient.RolePropagation.RolePropagationAPI.SetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
+    resp, r, err := apiClient.RolePropagationAPI.SetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
+	  //resp, r, err := apiClient.RolePropagationAPI.SetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.SetRolePropagationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -473,8 +473,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolePropagation.RolePropagationAPI.StartRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.RolePropagation.RolePropagationAPI.StartRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SkipRoleRefresh(skipRoleRefresh).Execute()
+    resp, r, err := apiClient.RolePropagationAPI.StartRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.RolePropagationAPI.StartRolePropagationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SkipRoleRefresh(skipRoleRefresh).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.StartRolePropagationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -1,14 +1,14 @@
 ---
-id: models
+id: nermv2025-models
 title: Models
 pagination_label: Models
 sidebar_label: Models
 sidebar_position: 3
-sidebar_key: NERMV2025-golang-models
+sidebar_key: nermv2025-golang-models
 sidebar_class_name: models
-keywords: ['go', 'Golang', 'sdk', 'models'] 
-slug: /tools/sdk/go/NERMV2025/models
-tags: ['SDK', 'Software Development Kit', 'NERMV2025', 'models']
+keywords: ['go', 'Golang', 'sdk', 'nermv2025', 'models'] 
+slug: /tools/sdk/go/nermv2025/models
+tags: ['SDK', 'Software Development Kit', 'nermv2025', 'models']
 ---
 
 The Python SDK uses data models to structure and manage data within the API. These models provide essential details about the data, including their attributes, data types, and how the models relate to each other. Understanding these models is crucial to effectively interact with the API.

@@ -100,8 +100,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.ApproveApprovalItemV1(context.Background(), id, approvalItemId).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.ApproveApprovalItemV1(context.Background(), id, approvalItemId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.ApproveApprovalItemV1(context.Background(), id, approvalItemId).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.ApproveApprovalItemV1(context.Background(), id, approvalItemId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ApproveApprovalItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -166,8 +166,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.ApproveApprovalItemsInBulkV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.ApproveApprovalItemsInBulkV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.ApproveApprovalItemsInBulkV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.ApproveApprovalItemsInBulkV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ApproveApprovalItemsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -234,8 +234,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.CompleteWorkItemV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.CompleteWorkItemV1(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.CompleteWorkItemV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.CompleteWorkItemV1(context.Background(), id).Body(body).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.CompleteWorkItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -307,8 +307,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.WorkItems.WorkItemsAPI.ForwardWorkItemV1(context.Background(), id).Workitemforward(workitemforward).Execute()
-	  //r, err := apiClient.WorkItems.WorkItemsAPI.ForwardWorkItemV1(context.Background(), id).Workitemforward(workitemforward).Execute()
+    r, err := apiClient.WorkItemsAPI.ForwardWorkItemV1(context.Background(), id).Workitemforward(workitemforward).Execute()
+	  //r, err := apiClient.WorkItemsAPI.ForwardWorkItemV1(context.Background(), id).Workitemforward(workitemforward).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ForwardWorkItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -374,8 +374,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.GetCompletedWorkItemsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.GetCompletedWorkItemsV1(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.GetCompletedWorkItemsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.GetCompletedWorkItemsV1(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCompletedWorkItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -436,8 +436,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.GetCountCompletedWorkItemsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.GetCountCompletedWorkItemsV1(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.GetCountCompletedWorkItemsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.GetCountCompletedWorkItemsV1(context.Background()).OwnerId(ownerId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountCompletedWorkItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -498,8 +498,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.GetCountWorkItemsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.GetCountWorkItemsV1(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.GetCountWorkItemsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.GetCountWorkItemsV1(context.Background()).OwnerId(ownerId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountWorkItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -564,8 +564,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.GetWorkItemV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.GetWorkItemV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.GetWorkItemV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.GetWorkItemV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -626,8 +626,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.GetWorkItemsSummaryV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.GetWorkItemsSummaryV1(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.GetWorkItemsSummaryV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.GetWorkItemsSummaryV1(context.Background()).OwnerId(ownerId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItemsSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -694,8 +694,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.ListWorkItemsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.ListWorkItemsV1(context.Background()).Limit(limit).Offset(offset).Count(count).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.ListWorkItemsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.ListWorkItemsV1(context.Background()).Limit(limit).Offset(offset).Count(count).OwnerId(ownerId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ListWorkItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -763,8 +763,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.RejectApprovalItemV1(context.Background(), id, approvalItemId).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.RejectApprovalItemV1(context.Background(), id, approvalItemId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.RejectApprovalItemV1(context.Background(), id, approvalItemId).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.RejectApprovalItemV1(context.Background(), id, approvalItemId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.RejectApprovalItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -829,8 +829,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.RejectApprovalItemsInBulkV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.RejectApprovalItemsInBulkV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.RejectApprovalItemsInBulkV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.RejectApprovalItemsInBulkV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.RejectApprovalItemsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -902,8 +902,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItems.WorkItemsAPI.SubmitAccountSelectionV1(context.Background(), id).RequestBody(requestBody).Execute()
-	  //resp, r, err := apiClient.WorkItems.WorkItemsAPI.SubmitAccountSelectionV1(context.Background(), id).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.SubmitAccountSelectionV1(context.Background(), id).RequestBody(requestBody).Execute()
+	  //resp, r, err := apiClient.WorkItemsAPI.SubmitAccountSelectionV1(context.Background(), id).RequestBody(requestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.SubmitAccountSelectionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

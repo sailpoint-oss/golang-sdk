@@ -81,8 +81,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Transforms.TransformsAPI.CreateTransformV1(context.Background()).Transform(transform).Execute()
-	  //resp, r, err := apiClient.Transforms.TransformsAPI.CreateTransformV1(context.Background()).Transform(transform).Execute()
+    resp, r, err := apiClient.TransformsAPI.CreateTransformV1(context.Background()).Transform(transform).Execute()
+	  //resp, r, err := apiClient.TransformsAPI.CreateTransformV1(context.Background()).Transform(transform).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.CreateTransformV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -147,8 +147,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.Transforms.TransformsAPI.DeleteTransformV1(context.Background(), id).Execute()
-	  //r, err := apiClient.Transforms.TransformsAPI.DeleteTransformV1(context.Background(), id).Execute()
+    r, err := apiClient.TransformsAPI.DeleteTransformV1(context.Background(), id).Execute()
+	  //r, err := apiClient.TransformsAPI.DeleteTransformV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.DeleteTransformV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,8 +212,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Transforms.TransformsAPI.GetTransformV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Transforms.TransformsAPI.GetTransformV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.TransformsAPI.GetTransformV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.TransformsAPI.GetTransformV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.GetTransformV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,8 +282,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Transforms.TransformsAPI.ListTransformsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Transforms.TransformsAPI.ListTransformsV1(context.Background()).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
+    resp, r, err := apiClient.TransformsAPI.ListTransformsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.TransformsAPI.ListTransformsV1(context.Background()).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.ListTransformsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -350,8 +350,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Transforms.TransformsAPI.UpdateTransformV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Transforms.TransformsAPI.UpdateTransformV1(context.Background(), id).Transform(transform).Execute()
+    resp, r, err := apiClient.TransformsAPI.UpdateTransformV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.TransformsAPI.UpdateTransformV1(context.Background(), id).Transform(transform).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.UpdateTransformV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

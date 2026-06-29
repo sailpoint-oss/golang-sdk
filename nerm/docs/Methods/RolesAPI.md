@@ -76,8 +76,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RolesAPI.GetRole(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.NERM.RolesAPI.GetRole(context.Background(), id).Execute()
+    resp, r, err := apiClient.RolesAPI.GetRole(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.RolesAPI.GetRole(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRole``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,8 +146,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RolesAPI.GetRoles(context.Background()).Execute()
-	  //resp, r, err := apiClient.NERM.RolesAPI.GetRoles(context.Background()).Limit(limit).Offset(offset).Order(order).Metadata(metadata).Type_(type_).Execute()
+    resp, r, err := apiClient.RolesAPI.GetRoles(context.Background()).Execute()
+	  //resp, r, err := apiClient.RolesAPI.GetRoles(context.Background()).Limit(limit).Offset(offset).Order(order).Metadata(metadata).Type_(type_).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRoles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -219,8 +219,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RolesAPI.PatchRole(context.Background(), id).SubmitRoleRequest(submitRoleRequest).Execute()
-	  //resp, r, err := apiClient.NERM.RolesAPI.PatchRole(context.Background(), id).SubmitRoleRequest(submitRoleRequest).Execute()
+    resp, r, err := apiClient.RolesAPI.PatchRole(context.Background(), id).SubmitRoleRequest(submitRoleRequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.PatchRole(context.Background(), id).SubmitRoleRequest(submitRoleRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.PatchRole``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -286,8 +286,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RolesAPI.PatchRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.RolesAPI.PatchRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
+    resp, r, err := apiClient.RolesAPI.PatchRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.PatchRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.PatchRoles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -353,8 +353,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RolesAPI.SubmitRole(context.Background()).SubmitRoleRequest(submitRoleRequest).Execute()
-	  //resp, r, err := apiClient.NERM.RolesAPI.SubmitRole(context.Background()).SubmitRoleRequest(submitRoleRequest).Execute()
+    resp, r, err := apiClient.RolesAPI.SubmitRole(context.Background()).SubmitRoleRequest(submitRoleRequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.SubmitRole(context.Background()).SubmitRoleRequest(submitRoleRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.SubmitRole``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -420,8 +420,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NERM.RolesAPI.SubmitRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
-	  //resp, r, err := apiClient.NERM.RolesAPI.SubmitRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
+    resp, r, err := apiClient.RolesAPI.SubmitRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.SubmitRoles(context.Background()).SubmitRolesRequest(submitRolesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.SubmitRoles``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

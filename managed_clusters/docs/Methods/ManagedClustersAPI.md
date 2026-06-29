@@ -82,8 +82,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.CreateManagedClusterV1(context.Background()).Managedclusterrequest(managedclusterrequest).Execute()
-	  //resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.CreateManagedClusterV1(context.Background()).Managedclusterrequest(managedclusterrequest).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.CreateManagedClusterV1(context.Background()).Managedclusterrequest(managedclusterrequest).Execute()
+	  //resp, r, err := apiClient.ManagedClustersAPI.CreateManagedClusterV1(context.Background()).Managedclusterrequest(managedclusterrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.CreateManagedClusterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -150,8 +150,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ManagedClusters.ManagedClustersAPI.DeleteManagedClusterV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ManagedClusters.ManagedClustersAPI.DeleteManagedClusterV1(context.Background(), id).RemoveClients(removeClients).Execute()
+    r, err := apiClient.ManagedClustersAPI.DeleteManagedClusterV1(context.Background(), id).Execute()
+	  //r, err := apiClient.ManagedClustersAPI.DeleteManagedClusterV1(context.Background(), id).RemoveClients(removeClients).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.DeleteManagedClusterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,8 +215,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.GetClientLogConfigurationV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.GetClientLogConfigurationV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.GetClientLogConfigurationV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ManagedClustersAPI.GetClientLogConfigurationV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetClientLogConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -281,8 +281,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.GetManagedClusterV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.GetManagedClusterV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.GetManagedClusterV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ManagedClustersAPI.GetManagedClusterV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetManagedClusterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -349,8 +349,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.GetManagedClustersV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.GetManagedClustersV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.GetManagedClustersV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.ManagedClustersAPI.GetManagedClustersV1(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetManagedClustersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -422,8 +422,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.PutClientLogConfigurationV1(context.Background(), id).PutClientLogConfigurationV1Request(putClientLogConfigurationV1Request).Execute()
-	  //resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.PutClientLogConfigurationV1(context.Background(), id).PutClientLogConfigurationV1Request(putClientLogConfigurationV1Request).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.PutClientLogConfigurationV1(context.Background(), id).PutClientLogConfigurationV1Request(putClientLogConfigurationV1Request).Execute()
+	  //resp, r, err := apiClient.ManagedClustersAPI.PutClientLogConfigurationV1(context.Background(), id).PutClientLogConfigurationV1Request(putClientLogConfigurationV1Request).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.PutClientLogConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -495,8 +495,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.UpdateManagedClusterV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.UpdateManagedClusterV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.UpdateManagedClusterV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.ManagedClustersAPI.UpdateManagedClusterV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.UpdateManagedClusterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -562,8 +562,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.UpdateV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ManagedClusters.ManagedClustersAPI.UpdateV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.UpdateV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.ManagedClustersAPI.UpdateV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.UpdateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

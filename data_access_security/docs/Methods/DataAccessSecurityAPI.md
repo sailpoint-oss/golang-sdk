@@ -97,8 +97,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.CancelTaskV1(context.Background(), id).Execute()
-	  //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.CancelTaskV1(context.Background(), id).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.CancelTaskV1(context.Background(), id).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.CancelTaskV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.CancelTaskV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -163,8 +163,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.CreateApplicationV1(context.Background()).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
-	  //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.CreateApplicationV1(context.Background()).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.CreateApplicationV1(context.Background()).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.CreateApplicationV1(context.Background()).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.CreateApplicationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -229,8 +229,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.CreateIdentityCollectorV1(context.Background()).Createidentitycollectorrequest(createidentitycollectorrequest).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.CreateIdentityCollectorV1(context.Background()).Createidentitycollectorrequest(createidentitycollectorrequest).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.CreateIdentityCollectorV1(context.Background()).Createidentitycollectorrequest(createidentitycollectorrequest).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.CreateIdentityCollectorV1(context.Background()).Createidentitycollectorrequest(createidentitycollectorrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.CreateIdentityCollectorV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -296,8 +296,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.CreateScheduleV1(context.Background()).Createschedulerequest(createschedulerequest).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.CreateScheduleV1(context.Background()).Createschedulerequest(createschedulerequest).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.CreateScheduleV1(context.Background()).Createschedulerequest(createschedulerequest).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.CreateScheduleV1(context.Background()).Createschedulerequest(createschedulerequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.CreateScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -363,8 +363,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DasV1OwnersAssignPost(context.Background()).Assignresourceownerrequest(assignresourceownerrequest).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DasV1OwnersAssignPost(context.Background()).Assignresourceownerrequest(assignresourceownerrequest).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersAssignPost(context.Background()).Assignresourceownerrequest(assignresourceownerrequest).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersAssignPost(context.Background()).Assignresourceownerrequest(assignresourceownerrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DasV1OwnersAssignPost``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -433,8 +433,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DasV1OwnersOwnerIdentityIdResourcesGet(context.Background(), ownerIdentityId).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DasV1OwnersOwnerIdentityIdResourcesGet(context.Background(), ownerIdentityId).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersOwnerIdentityIdResourcesGet(context.Background(), ownerIdentityId).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersOwnerIdentityIdResourcesGet(context.Background(), ownerIdentityId).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DasV1OwnersOwnerIdentityIdResourcesGet``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -500,8 +500,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DasV1OwnersReelectPost(context.Background()).Reelectrequest(reelectrequest).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DasV1OwnersReelectPost(context.Background()).Reelectrequest(reelectrequest).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersReelectPost(context.Background()).Reelectrequest(reelectrequest).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersReelectPost(context.Background()).Reelectrequest(reelectrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DasV1OwnersReelectPost``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -570,8 +570,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DasV1OwnersResourcesResourceIdGet(context.Background(), resourceId).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DasV1OwnersResourcesResourceIdGet(context.Background(), resourceId).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersResourcesResourceIdGet(context.Background(), resourceId).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersResourcesResourceIdGet(context.Background(), resourceId).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DasV1OwnersResourcesResourceIdGet``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -639,8 +639,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DasV1OwnersSourceIdentityIdReassignDestinationIdentityIdPost(context.Background(), sourceIdentityId, destinationIdentityId).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DasV1OwnersSourceIdentityIdReassignDestinationIdentityIdPost(context.Background(), sourceIdentityId, destinationIdentityId).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersSourceIdentityIdReassignDestinationIdentityIdPost(context.Background(), sourceIdentityId, destinationIdentityId).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersSourceIdentityIdReassignDestinationIdentityIdPost(context.Background(), sourceIdentityId, destinationIdentityId).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DasV1OwnersSourceIdentityIdReassignDestinationIdentityIdPost``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -705,8 +705,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DeleteApplicationV1(context.Background(), id).Execute()
-	  //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DeleteApplicationV1(context.Background(), id).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.DeleteApplicationV1(context.Background(), id).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.DeleteApplicationV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DeleteApplicationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -770,8 +770,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DeleteIdentityCollectorV1(context.Background(), id).Execute()
-	  //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DeleteIdentityCollectorV1(context.Background(), id).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.DeleteIdentityCollectorV1(context.Background(), id).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.DeleteIdentityCollectorV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DeleteIdentityCollectorV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -835,8 +835,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DeleteScheduleV1(context.Background(), id).Execute()
-	  //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DeleteScheduleV1(context.Background(), id).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.DeleteScheduleV1(context.Background(), id).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.DeleteScheduleV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DeleteScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -901,8 +901,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DeleteTaskV1(context.Background(), id).Execute()
-	  //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.DeleteTaskV1(context.Background(), id).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.DeleteTaskV1(context.Background(), id).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.DeleteTaskV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DeleteTaskV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -966,8 +966,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetApplicationV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetApplicationV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.GetApplicationV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.GetApplicationV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetApplicationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1034,8 +1034,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetApplicationsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetApplicationsV1(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.GetApplicationsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.GetApplicationsV1(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetApplicationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1104,8 +1104,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetOwnersV1(context.Background(), appId).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetOwnersV1(context.Background(), appId).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.GetOwnersV1(context.Background(), appId).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.GetOwnersV1(context.Background(), appId).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetOwnersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1170,8 +1170,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetScheduleV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetScheduleV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.GetScheduleV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.GetScheduleV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1238,8 +1238,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetSchedulesV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetSchedulesV1(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.GetSchedulesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.GetSchedulesV1(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetSchedulesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1304,8 +1304,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetTaskV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetTaskV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.GetTaskV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.GetTaskV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetTaskV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1372,8 +1372,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetTasksV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.GetTasksV1(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.GetTasksV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.GetTasksV1(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetTasksV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1442,8 +1442,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.ListIdentityCollectorsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.ListIdentityCollectorsV1(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.ListIdentityCollectorsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.ListIdentityCollectorsV1(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.ListIdentityCollectorsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1515,8 +1515,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.PutApplicationV1(context.Background(), id).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
-	  //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.PutApplicationV1(context.Background(), id).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.PutApplicationV1(context.Background(), id).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.PutApplicationV1(context.Background(), id).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.PutApplicationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1587,8 +1587,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.PutIdentityCollectorV1(context.Background(), id).Updateidentitycollectorrequest(updateidentitycollectorrequest).Execute()
-	  //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.PutIdentityCollectorV1(context.Background(), id).Updateidentitycollectorrequest(updateidentitycollectorrequest).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.PutIdentityCollectorV1(context.Background(), id).Updateidentitycollectorrequest(updateidentitycollectorrequest).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.PutIdentityCollectorV1(context.Background(), id).Updateidentitycollectorrequest(updateidentitycollectorrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.PutIdentityCollectorV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1659,8 +1659,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.PutScheduleV1(context.Background(), id).Updateschedulerequest(updateschedulerequest).Execute()
-	  //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.PutScheduleV1(context.Background(), id).Updateschedulerequest(updateschedulerequest).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.PutScheduleV1(context.Background(), id).Updateschedulerequest(updateschedulerequest).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.PutScheduleV1(context.Background(), id).Updateschedulerequest(updateschedulerequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.PutScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1724,8 +1724,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.StartTaskRerunV1(context.Background(), id).Execute()
-	  //r, err := apiClient.DataAccessSecurity.DataAccessSecurityAPI.StartTaskRerunV1(context.Background(), id).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.StartTaskRerunV1(context.Background(), id).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.StartTaskRerunV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.StartTaskRerunV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

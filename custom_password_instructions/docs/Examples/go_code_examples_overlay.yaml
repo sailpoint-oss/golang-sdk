@@ -30,8 +30,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CustomPasswordInstructions.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Custompasswordinstruction(custompasswordinstruction).Execute()
-          //resp, r, err := apiClient.CustomPasswordInstructions.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Custompasswordinstruction(custompasswordinstruction).Execute()
+          resp, r, err := apiClient.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Custompasswordinstruction(custompasswordinstruction).Execute()
+          //resp, r, err := apiClient.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Custompasswordinstruction(custompasswordinstruction).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.CreateCustomPasswordInstructionsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,8 +66,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.CustomPasswordInstructions.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructionsV1(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //r, err := apiClient.CustomPasswordInstructions.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructionsV1(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Locale(locale).Execute()
+          r, err := apiClient.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructionsV1(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructionsV1(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Locale(locale).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructionsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -100,8 +100,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.CustomPasswordInstructions.CustomPasswordInstructionsAPI.GetCustomPasswordInstructionsV1(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.CustomPasswordInstructions.CustomPasswordInstructionsAPI.GetCustomPasswordInstructionsV1(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Locale(locale).Execute()
+          resp, r, err := apiClient.CustomPasswordInstructionsAPI.GetCustomPasswordInstructionsV1(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.CustomPasswordInstructionsAPI.GetCustomPasswordInstructionsV1(context.Background(), pageId).XSailPointExperimental(xSailPointExperimental).Locale(locale).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.GetCustomPasswordInstructionsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

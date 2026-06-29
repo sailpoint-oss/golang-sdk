@@ -108,8 +108,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroups.PasswordSyncGroupsAPI.CreatePasswordSyncGroupV1(context.Background()).Passwordsyncgroup(passwordsyncgroup).Execute()
-	  //resp, r, err := apiClient.PasswordSyncGroups.PasswordSyncGroupsAPI.CreatePasswordSyncGroupV1(context.Background()).Passwordsyncgroup(passwordsyncgroup).Execute()
+    resp, r, err := apiClient.PasswordSyncGroupsAPI.CreatePasswordSyncGroupV1(context.Background()).Passwordsyncgroup(passwordsyncgroup).Execute()
+	  //resp, r, err := apiClient.PasswordSyncGroupsAPI.CreatePasswordSyncGroupV1(context.Background()).Passwordsyncgroup(passwordsyncgroup).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.CreatePasswordSyncGroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -174,8 +174,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.PasswordSyncGroups.PasswordSyncGroupsAPI.DeletePasswordSyncGroupV1(context.Background(), id).Execute()
-	  //r, err := apiClient.PasswordSyncGroups.PasswordSyncGroupsAPI.DeletePasswordSyncGroupV1(context.Background(), id).Execute()
+    r, err := apiClient.PasswordSyncGroupsAPI.DeletePasswordSyncGroupV1(context.Background(), id).Execute()
+	  //r, err := apiClient.PasswordSyncGroupsAPI.DeletePasswordSyncGroupV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.DeletePasswordSyncGroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -239,8 +239,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroups.PasswordSyncGroupsAPI.GetPasswordSyncGroupV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.PasswordSyncGroups.PasswordSyncGroupsAPI.GetPasswordSyncGroupV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroupV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroupV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -305,8 +305,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroups.PasswordSyncGroupsAPI.GetPasswordSyncGroupsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.PasswordSyncGroups.PasswordSyncGroupsAPI.GetPasswordSyncGroupsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroupsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroupsV1(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroupsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -378,8 +378,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroups.PasswordSyncGroupsAPI.UpdatePasswordSyncGroupV1(context.Background(), id).Passwordsyncgroup(passwordsyncgroup).Execute()
-	  //resp, r, err := apiClient.PasswordSyncGroups.PasswordSyncGroupsAPI.UpdatePasswordSyncGroupV1(context.Background(), id).Passwordsyncgroup(passwordsyncgroup).Execute()
+    resp, r, err := apiClient.PasswordSyncGroupsAPI.UpdatePasswordSyncGroupV1(context.Background(), id).Passwordsyncgroup(passwordsyncgroup).Execute()
+	  //resp, r, err := apiClient.PasswordSyncGroupsAPI.UpdatePasswordSyncGroupV1(context.Background(), id).Passwordsyncgroup(passwordsyncgroup).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.UpdatePasswordSyncGroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

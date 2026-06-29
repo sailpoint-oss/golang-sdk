@@ -104,8 +104,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Certifications.CertificationsAPI.GetCertificationTaskV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Certifications.CertificationsAPI.GetCertificationTaskV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationsAPI.GetCertificationTaskV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.GetCertificationTaskV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetCertificationTaskV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,8 +181,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Certifications.CertificationsAPI.GetIdentityCertificationItemPermissionsV1(context.Background(), certificationId, itemId).Execute()
-	  //resp, r, err := apiClient.Certifications.CertificationsAPI.GetIdentityCertificationItemPermissionsV1(context.Background(), certificationId, itemId).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.CertificationsAPI.GetIdentityCertificationItemPermissionsV1(context.Background(), certificationId, itemId).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.GetIdentityCertificationItemPermissionsV1(context.Background(), certificationId, itemId).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetIdentityCertificationItemPermissionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -247,8 +247,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Certifications.CertificationsAPI.GetIdentityCertificationV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Certifications.CertificationsAPI.GetIdentityCertificationV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationsAPI.GetIdentityCertificationV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.GetIdentityCertificationV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetIdentityCertificationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -317,8 +317,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Certifications.CertificationsAPI.GetPendingCertificationTasksV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Certifications.CertificationsAPI.GetPendingCertificationTasksV1(context.Background()).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.CertificationsAPI.GetPendingCertificationTasksV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.GetPendingCertificationTasksV1(context.Background()).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetPendingCertificationTasksV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -393,8 +393,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Certifications.CertificationsAPI.ListCertificationReviewersV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Certifications.CertificationsAPI.ListCertificationReviewersV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CertificationsAPI.ListCertificationReviewersV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.ListCertificationReviewersV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListCertificationReviewersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -475,8 +475,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Certifications.CertificationsAPI.ListIdentityAccessReviewItemsV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Certifications.CertificationsAPI.ListIdentityAccessReviewItemsV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Entitlements(entitlements).AccessProfiles(accessProfiles).Roles(roles).Execute()
+    resp, r, err := apiClient.CertificationsAPI.ListIdentityAccessReviewItemsV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.ListIdentityAccessReviewItemsV1(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Entitlements(entitlements).AccessProfiles(accessProfiles).Roles(roles).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListIdentityAccessReviewItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -547,8 +547,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Certifications.CertificationsAPI.ListIdentityCertificationsV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.Certifications.CertificationsAPI.ListIdentityCertificationsV1(context.Background()).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CertificationsAPI.ListIdentityCertificationsV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.ListIdentityCertificationsV1(context.Background()).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListIdentityCertificationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -620,8 +620,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Certifications.CertificationsAPI.MakeIdentityDecisionV1(context.Background(), id).Reviewdecision(reviewdecision).Execute()
-	  //resp, r, err := apiClient.Certifications.CertificationsAPI.MakeIdentityDecisionV1(context.Background(), id).Reviewdecision(reviewdecision).Execute()
+    resp, r, err := apiClient.CertificationsAPI.MakeIdentityDecisionV1(context.Background(), id).Reviewdecision(reviewdecision).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.MakeIdentityDecisionV1(context.Background(), id).Reviewdecision(reviewdecision).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.MakeIdentityDecisionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -693,8 +693,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Certifications.CertificationsAPI.ReassignIdentityCertificationsV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
-	  //resp, r, err := apiClient.Certifications.CertificationsAPI.ReassignIdentityCertificationsV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
+    resp, r, err := apiClient.CertificationsAPI.ReassignIdentityCertificationsV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.ReassignIdentityCertificationsV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ReassignIdentityCertificationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -759,8 +759,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Certifications.CertificationsAPI.SignOffIdentityCertificationV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.Certifications.CertificationsAPI.SignOffIdentityCertificationV1(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationsAPI.SignOffIdentityCertificationV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.SignOffIdentityCertificationV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.SignOffIdentityCertificationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -837,8 +837,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.Certifications.CertificationsAPI.SubmitReassignCertsAsyncV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
-	  //resp, r, err := apiClient.Certifications.CertificationsAPI.SubmitReassignCertsAsyncV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
+    resp, r, err := apiClient.CertificationsAPI.SubmitReassignCertsAsyncV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.SubmitReassignCertsAsyncV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.SubmitReassignCertsAsyncV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -87,8 +87,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiCommonAccess.IAICommonAccessAPI.CreateCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessitemrequest(commonaccessitemrequest).Execute()
-	  //resp, r, err := apiClient.IaiCommonAccess.IAICommonAccessAPI.CreateCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessitemrequest(commonaccessitemrequest).Execute()
+    resp, r, err := apiClient.IAICommonAccessAPI.CreateCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessitemrequest(commonaccessitemrequest).Execute()
+	  //resp, r, err := apiClient.IAICommonAccessAPI.CreateCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessitemrequest(commonaccessitemrequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.CreateCommonAccessV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -170,8 +170,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiCommonAccess.IAICommonAccessAPI.GetCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IaiCommonAccess.IAICommonAccessAPI.GetCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAICommonAccessAPI.GetCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.IAICommonAccessAPI.GetCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.GetCommonAccessV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -250,8 +250,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IaiCommonAccess.IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessidstatus(commonaccessidstatus).Execute()
-	  //resp, r, err := apiClient.IaiCommonAccess.IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessidstatus(commonaccessidstatus).Execute()
+    resp, r, err := apiClient.IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessidstatus(commonaccessidstatus).Execute()
+	  //resp, r, err := apiClient.IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessidstatus(commonaccessidstatus).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
