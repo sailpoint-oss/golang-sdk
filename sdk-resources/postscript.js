@@ -384,6 +384,18 @@ const fixFiles = async function (myArray) {
         ["(list-error-message-dto)", "(error-message-dto)"],
         ["(array)", "(https://go.dev/tour/moretypes/6)"]
       ]);
+
+      // Fix API Spec links: add hyphen between version letter and number
+      // e.g., /docs/api/create-access-profile-v1 → /docs/api/create-access-profile-v-1
+      const content = rawDataArra.join("\n");
+      const fixedContent = content.replace(
+        /\[API Spec\]\(https:\/\/developer\.sailpoint\.com\/docs\/api\/([^)]+)\)/g,
+        (_, slug) => `[API Spec](https://developer.sailpoint.com/docs/api/${slug.replace(/-v(\d+)$/, '-v-$1')})`
+      );
+      if (fixedContent !== content) {
+        rawDataArra = fixedContent.split("\n");
+        madeChange = true;
+      }
     }
 
     if (path.basename(file).startsWith("model_") || file.endsWith(".md")) {
