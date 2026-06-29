@@ -407,7 +407,7 @@ node sdk-resources/build-versioned-sdk.js <path-to-apis>
 // Main
 // ---------------------------------------------------------------------------
 
-async function main() {
+function main() {
   if (!fs.existsSync(apisDir)) {
     console.error(`Error: apis directory not found: ${apisDir}`);
     process.exit(1);
@@ -793,7 +793,4 @@ func NewPartitionConfiguration(cfg *Configuration) (clientId, clientSecret, base
   console.log(`  Wrote client.go with ${partitionPkgs.length} partition client(s) + Generic/NERM/NERMV2025`);
 }
 
-main().catch(err => {
-  console.error(`Unexpected error: ${err.message}`);
-  process.exit(1);
-});
+main();
