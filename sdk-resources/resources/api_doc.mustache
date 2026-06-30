@@ -82,7 +82,7 @@ import (
 {{{vendorExtensions.x-go-import}}}
 {{/vendorExtensions.x-go-import}}
     {{#requiredAndNotNullableParams}}{{#isBodyParam}}{{apiVersion}} "{{moduleImportPath}}"{{/isBodyParam}}{{/requiredAndNotNullableParams}}
-	sailpoint "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}"
+	sailpoint "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}"
 )
 
 func main() {

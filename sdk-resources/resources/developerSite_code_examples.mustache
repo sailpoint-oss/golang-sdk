@@ -16,8 +16,8 @@
         {{#vendorExtensions.x-go-import}}
         {{{vendorExtensions.x-go-import}}}
         {{/vendorExtensions.x-go-import}}
-            {{apiVersion}} "{{moduleImportPath}}"
-          sailpoint "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}"
+            {{#requiredAndNotNullableParams}}{{#isBodyParam}}{{apiVersion}} "{{moduleImportPath}}"{{/isBodyParam}}{{/requiredAndNotNullableParams}}
+          sailpoint "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}"
         )
 
         func main() {
