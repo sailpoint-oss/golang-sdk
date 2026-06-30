@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitWorkflowSession200Response', 'N
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowSession** | Pointer to [**WorkflowSession**](workflow-session) |  | [optional] 
+**WorkflowSession** | Pointer to **WorkflowSession** |  | [optional] 
 
 ## Methods
 

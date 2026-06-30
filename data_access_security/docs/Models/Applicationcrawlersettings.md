@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IsEnabled** | Pointer to **bool** | Indicates whether the feature or configuration is enabled. | [optional] [default to false]
 **ClusterId** | Pointer to **NullableString** | The identifier of the cluster associated with this configuration, if applicable. | [optional] 
-**CalculateResourceSize** | Pointer to [**Crawlresourcessizesoptions**](crawlresourcessizesoptions) |  | [optional] 
+**CalculateResourceSize** | Pointer to **Crawlresourcessizesoptions** |  | [optional] 
 **CrawlSnapshotsFolder** | Pointer to **NullableBool** | Indicates whether to crawl the snapshots folder. | [optional] [default to false]
 **CrawlMailboxes** | Pointer to **NullableBool** | Indicates whether to crawl mailboxes. | [optional] [default to false]
 **CrawlPublicFolders** | Pointer to **NullableBool** | Indicates whether to crawl public folders. | [optional] [default to false]

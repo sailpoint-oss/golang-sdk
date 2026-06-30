@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create oauth client
 This creates an OAuth client.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-oauth-client-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-oauth-client-v-1)
 
 ### Path Parameters
 
@@ -96,7 +96,7 @@ func main() {
 Delete oauth client
 This deletes an OAuth client.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-oauth-client-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-oauth-client-v-1)
 
 ### Path Parameters
 
@@ -161,7 +161,7 @@ func main() {
 Get oauth client
 This gets details of an OAuth client.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-oauth-client-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-oauth-client-v-1)
 
 ### Path Parameters
 
@@ -227,7 +227,7 @@ func main() {
 List oauth clients
 This gets a list of OAuth clients.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/list-oauth-clients-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/list-oauth-clients-v-1)
 
 ### Path Parameters
 
@@ -289,7 +289,7 @@ func main() {
 Patch oauth client
 This performs a targeted update to the field(s) of an OAuth client.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/patch-oauth-client-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-oauth-client-v-1)
 
 ### Path Parameters
 

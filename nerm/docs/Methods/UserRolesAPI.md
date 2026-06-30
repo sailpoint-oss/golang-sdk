@@ -28,7 +28,7 @@ Method | HTTP request | Description
 Delete a user role assignment
 Delete a user role assignment
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-user-role)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-user-role)
 
 ### Path Parameters
 
@@ -94,7 +94,7 @@ func main() {
 Find user role pairing
 Info for a specific user role pairing
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-user-role)
+[API Spec](https://developer.sailpoint.com/docs/api/get-user-role)
 
 ### Path Parameters
 
@@ -160,7 +160,7 @@ func main() {
 Get user role pairings
 This endpoint can retrieve user role pairings from Lifecycle or you can search for user role pairings using parameters
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-user-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/get-user-roles)
 
 ### Path Parameters
 
@@ -232,7 +232,7 @@ func main() {
 Update a user role pairing
 Update a user role pairing by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-user-role)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-user-role)
 
 ### Path Parameters
 
@@ -305,7 +305,7 @@ func main() {
 Update multiple user role pairings
 Update multiple user role pairings
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-user-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-user-roles)
 
 ### Path Parameters
 
@@ -372,7 +372,7 @@ func main() {
 Assign new role to user
 Assign a new role to a user
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-user-role)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-user-role)
 
 ### Path Parameters
 
@@ -439,7 +439,7 @@ func main() {
 Create new user role pairings
 Create multiple new user role pairings
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-user-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-user-roles)
 
 ### Path Parameters
 

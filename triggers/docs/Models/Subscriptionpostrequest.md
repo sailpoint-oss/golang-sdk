@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Subscription name. | 
 **Description** | Pointer to **string** | Subscription description. | [optional] 
 **TriggerId** | **string** | ID of trigger subscribed to. | 
-**Type** | [**Subscriptiontype**](subscriptiontype) |  | 
+**Type** | **Subscriptiontype** |  | 
 **ResponseDeadline** | Pointer to **string** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [optional] [default to "PT1H"]
 **HttpConfig** | Pointer to [**Httpconfig**](httpconfig) |  | [optional] 
 **EventBridgeConfig** | Pointer to [**Eventbridgeconfig**](eventbridgeconfig) |  | [optional] 

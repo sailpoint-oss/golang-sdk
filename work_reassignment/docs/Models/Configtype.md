@@ -16,8 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'Configtype', 'V1Configtype']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Priority** | Pointer to **int32** |  | [optional] 
-**InternalName** | Pointer to [**Configtypeenumcamel**](configtypeenumcamel) |  | [optional] 
-**InternalNameCamel** | Pointer to [**Configtypeenum**](configtypeenum) |  | [optional] 
+**InternalName** | Pointer to **Configtypeenumcamel** |  | [optional] 
+**InternalNameCamel** | Pointer to **Configtypeenum** |  | [optional] 
 **DisplayName** | Pointer to **string** | Human readable display name of the type to be shown on UI | [optional] 
 **Description** | Pointer to **string** | Description of the type of work to be reassigned, displayed by the UI. | [optional] 
 

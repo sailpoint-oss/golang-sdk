@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'GetRiskLevel200Response', 'NERMGetRis
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RiskLevel** | Pointer to [**RiskLevel**](risk-level) |  | [optional] 
+**RiskLevel** | Pointer to **RiskLevel** |  | [optional] 
 
 ## Methods
 

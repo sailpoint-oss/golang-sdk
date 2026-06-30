@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PolicyId** | Pointer to **string** | The password policy Id. | [optional] 
 **PolicyName** | Pointer to **string** | The name of the password policy. | [optional] 
-**Selectors** | Pointer to [**Passwordpolicyholdersdtoattributes**](passwordpolicyholdersdtoattributes) |  | [optional] 
+**Selectors** | Pointer to **Passwordpolicyholdersdtoattributes** |  | [optional] 
 
 ## Methods
 

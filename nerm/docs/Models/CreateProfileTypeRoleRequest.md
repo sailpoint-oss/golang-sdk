@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateProfileTypeRoleRequest', 'NERMC
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProfileTypeRole** | Pointer to [**ProfileTypeRoles1**](profile-type-roles1) |  | [optional] 
+**ProfileTypeRole** | Pointer to **ProfileTypeRoles1** |  | [optional] 
 
 ## Methods
 

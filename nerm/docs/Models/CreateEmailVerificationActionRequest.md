@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateEmailVerificationActionRequest'
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**EmailVerificationAction**](email-verification-action) |  | [optional] 
+**WorkflowAction** | Pointer to **EmailVerificationAction** |  | [optional] 
 
 ## Methods
 

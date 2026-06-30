@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Accessrequestrecommendationitemdetail
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | ID of access item being recommended. | [optional] 
-**Type** | Pointer to [**Accessrequestrecommendationitemtype**](accessrequestrecommendationitemtype) |  | [optional] 
+**Type** | Pointer to **Accessrequestrecommendationitemtype** |  | [optional] 
 **Name** | Pointer to **string** | Name of the access item | [optional] 
 **Description** | Pointer to **string** | Description of the access item | [optional] 
 

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Dimensionmembershipselector', 'V1Dime
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**Dimensionmembershipselectortype**](dimensionmembershipselectortype) |  | [optional] 
+**Type** | Pointer to **Dimensionmembershipselectortype** |  | [optional] 
 **Criteria** | Pointer to [**NullableDimensioncriterialevel1**](dimensioncriterialevel1) |  | [optional] 
 
 ## Methods

@@ -30,7 +30,7 @@ Method | HTTP request | Description
 Create connector customizer
 Create a connector customizer.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-connector-customizer-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-connector-customizer-v-1)
 
 ### Path Parameters
 
@@ -97,7 +97,7 @@ func main() {
 Creates a connector customizer version
 Creates a new version for the customizer.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-connector-customizer-version-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-connector-customizer-version-v-1)
 
 ### Path Parameters
 
@@ -163,7 +163,7 @@ func main() {
 Delete connector customizer
 Delete the connector customizer for the given ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-connector-customizer-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-connector-customizer-v-1)
 
 ### Path Parameters
 
@@ -228,7 +228,7 @@ func main() {
 Get connector customizer
 Gets connector customizer by ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-connector-customizer-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-connector-customizer-v-1)
 
 ### Path Parameters
 
@@ -294,7 +294,7 @@ func main() {
 List all connector customizers
 List all connector customizers.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/list-connector-customizers-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/list-connector-customizers-v-1)
 
 ### Path Parameters
 
@@ -358,7 +358,7 @@ func main() {
 Update connector customizer
 Update an existing connector customizer with the one provided in the request body. These fields are immutable: `id`, `name`, `type`.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/put-connector-customizer-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/put-connector-customizer-v-1)
 
 ### Path Parameters
 

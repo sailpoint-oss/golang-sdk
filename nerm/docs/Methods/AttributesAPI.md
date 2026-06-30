@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create an attribute
 This endpoint can create an attribute
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-attribute)
+[API Spec](https://developer.sailpoint.com/docs/api/create-attribute)
 
 ### Path Parameters
 
@@ -96,7 +96,7 @@ func main() {
 Delete attribute by id
 Delete attribute by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-attribute-by-id)
 
 ### Path Parameters
 
@@ -162,7 +162,7 @@ func main() {
 Delete attribute
 Delete attribute by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-attribute-by-uid)
 
 ### Path Parameters
 
@@ -228,7 +228,7 @@ func main() {
 Find attribute data by id
 Info for a specific attribute
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attribute-by-id)
 
 ### Path Parameters
 
@@ -294,7 +294,7 @@ func main() {
 Find attribute data
 Info for a specific attribute by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attribute-by-uid)
 
 ### Path Parameters
 
@@ -360,7 +360,7 @@ func main() {
 Get attribute data in bulk
 This endpoint can retrieve attribute data in bulk from Lifecycle or you can search for attributes using parameters
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-attributes)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attributes)
 
 ### Path Parameters
 
@@ -432,7 +432,7 @@ func main() {
 Update attribute data by id
 Update info for a specific attribute
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/update-attribute-by-id)
 
 ### Path Parameters
 
@@ -505,7 +505,7 @@ func main() {
 Update attribute data
 Update info for a specific attribute by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/update-attribute-by-uid)
 
 ### Path Parameters
 

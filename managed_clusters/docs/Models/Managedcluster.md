@@ -19,13 +19,13 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | ManagedCluster name | [optional] 
 **Pod** | Pointer to **string** | ManagedCluster pod | [optional] 
 **Org** | Pointer to **string** | ManagedCluster org | [optional] 
-**Type** | Pointer to [**Managedclustertypes**](managedclustertypes) |  | [optional] 
+**Type** | Pointer to **Managedclustertypes** |  | [optional] 
 **Configuration** | Pointer to **map[string]string** | ManagedProcess configuration map | [optional] 
 **KeyPair** | Pointer to [**Managedclusterkeypair**](managedclusterkeypair) |  | [optional] 
 **Attributes** | Pointer to [**Managedclusterattributes**](managedclusterattributes) |  | [optional] 
 **Description** | Pointer to **string** | ManagedCluster description | [optional] [default to "q"]
 **Redis** | Pointer to [**Managedclusterredis**](managedclusterredis) |  | [optional] 
-**ClientType** | [**NullableManagedclienttype**](managedclienttype) |  | 
+**ClientType** | **NullableManagedclienttype** |  | 
 **CcgVersion** | **string** | CCG version used by the ManagedCluster | 
 **PinnedConfig** | Pointer to **bool** | boolean flag indicating whether or not the cluster configuration is pinned | [optional] [default to false]
 **LogConfiguration** | Pointer to [**NullableClientlogconfiguration**](clientlogconfiguration) |  | [optional] 

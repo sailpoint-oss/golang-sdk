@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **NullableString** | The display name or label for the resource. | [optional] 
 **FullPath** | Pointer to **NullableString** | The full path to the resource within the system or application. | [optional] 
 **ApplicationId** | Pointer to **int64** | The unique identifier of the application to which this resource belongs. | [optional] 
-**Type** | Pointer to [**Businessservicetype**](businessservicetype) |  | [optional] 
+**Type** | Pointer to **Businessservicetype** |  | [optional] 
 **Owners** | Pointer to **[]string** | A list of UUIDs representing the owners of the resource. | [optional] 
 
 ## Methods

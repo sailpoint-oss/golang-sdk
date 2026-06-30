@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The review item's id | [optional] 
 **Completed** | Pointer to **bool** | Whether the review item is complete | [optional] 
 **NewAccess** | Pointer to **bool** | Indicates whether the review item is for new access to a source | [optional] 
-**Decision** | Pointer to [**Certificationdecision**](certificationdecision) |  | [optional] 
+**Decision** | Pointer to **Certificationdecision** |  | [optional] 
 **Comments** | Pointer to **NullableString** | Comments for this review item | [optional] 
 
 ## Methods

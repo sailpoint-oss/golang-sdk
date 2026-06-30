@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Common Access Item ID | [optional] 
 **Access** | Pointer to [**Commonaccessitemaccess**](commonaccessitemaccess) |  | [optional] 
-**Status** | Pointer to [**Commonaccessitemstate**](commonaccessitemstate) |  | [optional] 
+**Status** | Pointer to **Commonaccessitemstate** |  | [optional] 
 **LastUpdated** | Pointer to **string** |  | [optional] 
 **ReviewedByUser** | Pointer to **bool** |  | [optional] 
 **LastReviewed** | Pointer to **string** |  | [optional] 

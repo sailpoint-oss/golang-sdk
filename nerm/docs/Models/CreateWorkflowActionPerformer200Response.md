@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateWorkflowActionPerformer200Respo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowActionPerformer** | Pointer to [**WorkflowActionPerformers**](workflow-action-performers) |  | [optional] 
+**WorkflowActionPerformer** | Pointer to **WorkflowActionPerformers** |  | [optional] 
 
 ## Methods
 

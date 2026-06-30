@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreatePasswordResetActionRequest', 'N
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**PasswordResetAction**](password-reset-action) |  | [optional] 
+**WorkflowAction** | Pointer to **PasswordResetAction** |  | [optional] 
 
 ## Methods
 

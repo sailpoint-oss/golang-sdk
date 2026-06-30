@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CompletedapprovalPreApprovalTriggerRe
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | The comment from the trigger | [optional] 
-**Decision** | Pointer to [**Completedapprovalstate**](completedapprovalstate) |  | [optional] 
+**Decision** | Pointer to **Completedapprovalstate** |  | [optional] 
 **Reviewer** | Pointer to **string** | The name of the approver | [optional] 
 **Date** | Pointer to **SailPointTime** | The date and time the trigger decided on the request | [optional] 
 

@@ -16,8 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'Httpconfig', 'V1Httpconfig']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | **string** | URL of the external/custom integration. | 
-**HttpDispatchMode** | [**Httpdispatchmode**](httpdispatchmode) |  | 
-**HttpAuthenticationType** | Pointer to [**Httpauthenticationtype**](httpauthenticationtype) |  | [optional] [default to HTTPAUTHENTICATIONTYPE_NO_AUTH]
+**HttpDispatchMode** | **Httpdispatchmode** |  | 
+**HttpAuthenticationType** | Pointer to **Httpauthenticationtype** |  | [optional] [default to HTTPAUTHENTICATIONTYPE_NO_AUTH]
 **BasicAuthConfig** | Pointer to [**NullableBasicauthconfig**](basicauthconfig) |  | [optional] 
 **BearerTokenAuthConfig** | Pointer to [**NullableBearertokenauthconfig**](bearertokenauthconfig) |  | [optional] 
 

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RequestedItems** | Pointer to [**[]Requesteditemaccountselections**](requesteditemaccountselections) | Available account selections for the identity, per requested item | [optional] 
 **AccountsSelectionRequired** | Pointer to **bool** | A boolean indicating whether any account selections will be required for the user to raise an access request | [optional] [default to false]
-**Type** | Pointer to [**Dtotype**](dtotype) |  | [optional] 
+**Type** | Pointer to **Dtotype** |  | [optional] 
 **Id** | Pointer to **string** | The identity id for the user | [optional] 
 **Name** | Pointer to **string** | The name of the identity | [optional] 
 

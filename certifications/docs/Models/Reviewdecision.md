@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Reviewdecision', 'V1Reviewdecision']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The id of the review decision | 
-**Decision** | [**Certificationdecision**](certificationdecision) |  | 
+**Decision** | **Certificationdecision** |  | 
 **ProposedEndDate** | Pointer to **SailPointTime** | The date at which a user's access should be taken away. Should only be set for `REVOKE` decisions. | [optional] 
 **Bulk** | **bool** | Indicates whether decision should be marked as part of a larger bulk decision | 
 **Recommendation** | Pointer to [**Reviewrecommendation**](reviewrecommendation) |  | [optional] 

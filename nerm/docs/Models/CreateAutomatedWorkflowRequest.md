@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateAutomatedWorkflowRequest', 'NER
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Workflow** | Pointer to [**AutomatedWorkflow**](automated-workflow) |  | [optional] 
+**Workflow** | Pointer to **AutomatedWorkflow** |  | [optional] 
 
 ## Methods
 

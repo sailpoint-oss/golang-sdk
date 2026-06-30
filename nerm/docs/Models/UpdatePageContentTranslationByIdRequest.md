@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'UpdatePageContentTranslationByIdReque
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PageContentTranslation** | Pointer to [**PageContent1**](page-content1) |  | [optional] 
+**PageContentTranslation** | Pointer to **PageContent1** |  | [optional] 
 
 ## Methods
 

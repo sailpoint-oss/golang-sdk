@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateFulfillmentActionRequest', 'NER
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**FulfillmentAction**](fulfillment-action) |  | [optional] 
+**WorkflowAction** | Pointer to **FulfillmentAction** |  | [optional] 
 
 ## Methods
 

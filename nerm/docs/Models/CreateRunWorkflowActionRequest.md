@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateRunWorkflowActionRequest', 'NER
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**RunWorkflowAction**](run-workflow-action) |  | [optional] 
+**WorkflowAction** | Pointer to **RunWorkflowAction** |  | [optional] 
 
 ## Methods
 

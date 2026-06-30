@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RequestedObjectId** | Pointer to **string** | Id of requested object | [optional] 
 **RequestedObjectName** | Pointer to **string** | Human-readable name of requested object | [optional] 
-**RequestedObjectType** | Pointer to [**Requestableobjecttype**](requestableobjecttype) |  | [optional] 
+**RequestedObjectType** | Pointer to **Requestableobjecttype** |  | [optional] 
 
 ## Methods
 

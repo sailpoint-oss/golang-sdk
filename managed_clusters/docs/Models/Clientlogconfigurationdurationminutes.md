@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientId** | Pointer to **string** | Log configuration's client ID | [optional] 
 **DurationMinutes** | Pointer to **int32** | Duration in minutes for log configuration to remain in effect before resetting to defaults. | [optional] [default to 240]
-**RootLevel** | [**Standardlevel**](standardlevel) |  | 
-**LogLevels** | Pointer to [**map[string]Standardlevel**](standardlevel) | Mapping of identifiers to Standard Log Level values | [optional] 
+**RootLevel** | **Standardlevel** |  | 
+**LogLevels** | Pointer to **map[string]Standardlevel** | Mapping of identifiers to Standard Log Level values | [optional] 
 
 ## Methods
 

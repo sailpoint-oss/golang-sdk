@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Sourceaccountselections', 'V1Sourceac
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**Dtotype**](dtotype) |  | [optional] 
+**Type** | Pointer to **Dtotype** |  | [optional] 
 **Id** | Pointer to **string** | The source id | [optional] 
 **Name** | Pointer to **string** | The source name | [optional] 
 **Accounts** | Pointer to [**[]Accountinforef**](accountinforef) | The accounts information for a particular source in the requested item | [optional] 

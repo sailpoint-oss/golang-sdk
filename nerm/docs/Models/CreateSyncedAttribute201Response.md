@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateSyncedAttribute201Response', 'N
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SyncedAttribute** | Pointer to [**SyncedAttribute**](synced-attribute) |  | [optional] 
+**SyncedAttribute** | Pointer to **SyncedAttribute** |  | [optional] 
 
 ## Methods
 

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Accountrequestphase', 'V1Accountreque
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Enum of account request phase type | [optional] 
-**State** | Pointer to [**Accountrequestphasestate**](accountrequestphasestate) |  | [optional] 
+**State** | Pointer to **Accountrequestphasestate** |  | [optional] 
 **Started** | Pointer to **SailPointTime** | Start date of account request phase. | [optional] [readonly] 
 **Finished** | Pointer to **SailPointTime** | Finish date of account request phase. | [optional] [readonly] 
 

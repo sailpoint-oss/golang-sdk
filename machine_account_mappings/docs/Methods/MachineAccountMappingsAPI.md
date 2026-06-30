@@ -26,7 +26,7 @@ Create machine account mappings
 Creates Machine Account Mappings for both identities and accounts for a source.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-machine-account-mappings-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-machine-account-mappings-v-1)
 
 ### Path Parameters
 
@@ -100,7 +100,7 @@ Delete source's machine account mappings
 Use this API to remove machine account attribute mappings for a Source. 
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-machine-account-mappings-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-machine-account-mappings-v-1)
 
 ### Path Parameters
 
@@ -165,7 +165,7 @@ func main() {
 Machine account mapping for source
 Retrieves Machine account mappings for a specified source using Source ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/list-machine-account-mappings-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/list-machine-account-mappings-v-1)
 
 ### Path Parameters
 
@@ -235,7 +235,7 @@ func main() {
 Update source's machine account mappings
 Use this API to update Machine Account Attribute Mapping for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/set-machine-account-mappings-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/set-machine-account-mappings-v-1)
 
 ### Path Parameters
 

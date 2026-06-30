@@ -21,9 +21,9 @@ Name | Type | Description | Notes
 **PruneThreshold** | Pointer to **NullableInt32** | The prune threshold to be used or null to calculate prescribedPruneThreshold | [optional] 
 **Saved** | Pointer to **bool** | The session's saved status | [optional] [default to true]
 **Scope** | Pointer to [**Roleminingsessionscope**](roleminingsessionscope) |  | [optional] 
-**Type** | Pointer to [**Roleminingroletype**](roleminingroletype) |  | [optional] 
-**State** | Pointer to [**Roleminingsessionstate**](roleminingsessionstate) |  | [optional] 
-**ScopingMethod** | Pointer to [**Roleminingsessionscopingmethod**](roleminingsessionscopingmethod) |  | [optional] 
+**Type** | Pointer to **Roleminingroletype** |  | [optional] 
+**State** | Pointer to **Roleminingsessionstate** |  | [optional] 
+**ScopingMethod** | Pointer to **Roleminingsessionscopingmethod** |  | [optional] 
 
 ## Methods
 

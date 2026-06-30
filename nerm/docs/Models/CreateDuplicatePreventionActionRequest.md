@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateDuplicatePreventionActionReques
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**DuplicatePreventionAction**](duplicate-prevention-action) |  | [optional] 
+**WorkflowAction** | Pointer to **DuplicatePreventionAction** |  | [optional] 
 
 ## Methods
 

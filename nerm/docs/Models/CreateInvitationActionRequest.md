@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateInvitationActionRequest', 'NERM
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**InvitationAction**](invitation-action) |  | [optional] 
+**WorkflowAction** | Pointer to **InvitationAction** |  | [optional] 
 
 ## Methods
 

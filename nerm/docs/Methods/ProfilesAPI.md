@@ -33,7 +33,7 @@ Method | HTTP request | Description
 Create multiple profiles
 Create multiple profiles
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/create-profiles)
 
 ### Path Parameters
 
@@ -100,7 +100,7 @@ func main() {
 Delete a single profile
 Delete a single profile
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-profile-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-profile-by-id)
 
 ### Path Parameters
 
@@ -165,7 +165,7 @@ func main() {
 Delete multiple profiles
 Delete multiple profiles
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-profiles)
 
 ### Path Parameters
 
@@ -232,7 +232,7 @@ func main() {
 Retrieves profile avatar URL
 Retrieves the URL of the profile avatar
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-profile-avatar)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profile-avatar)
 
 ### Path Parameters
 
@@ -298,7 +298,7 @@ func main() {
 Find profile by id
 Find profile by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-profile-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profile-by-id)
 
 ### Path Parameters
 
@@ -364,7 +364,7 @@ func main() {
 Retrieves profile attribute attachment URL
 Retrieves the URL of an attachment attribute value from a profile
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-profile-upload)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profile-upload)
 
 ### Path Parameters
 
@@ -433,7 +433,7 @@ func main() {
 Get profiles
 Get profiles
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profiles)
 
 ### Path Parameters
 
@@ -514,7 +514,7 @@ func main() {
 Update a profile by id
 Update a profile by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-profile-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-profile-by-id)
 
 ### Path Parameters
 
@@ -587,7 +587,7 @@ func main() {
 Update multiple profiles
 Update multiple profiles
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-profiles)
 
 ### Path Parameters
 
@@ -654,7 +654,7 @@ func main() {
 Create a profile
 Create a profile
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-profile)
 
 ### Path Parameters
 
@@ -721,7 +721,7 @@ func main() {
 Uploads new profile avatar
 Uploads a new profile avatar
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-profile-avatar)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-profile-avatar)
 
 ### Path Parameters
 
@@ -790,7 +790,7 @@ Uploads profile attachment attribute
 Uploads a new attachment attribute value to a profile. The upload must be a FORM data type; this is not a JSON API. The upload must include the binary content of the payload under the 'file' named form element. The upload must not attempt to include the file name or its content type as a other form or JSON as parameters. The upload must not attempt to upload the file body as the POST body payload; it has to arrive as a FORM parameter. Do not use a `File/Binary` payload type for the POST operation in your API client.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-profile-upload)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-profile-upload)
 
 ### Path Parameters
 

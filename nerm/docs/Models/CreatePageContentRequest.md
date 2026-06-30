@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreatePageContentRequest', 'NERMCreat
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PageContent** | Pointer to [**PageContent1**](page-content1) |  | [optional] 
+**PageContent** | Pointer to **PageContent1** |  | [optional] 
 
 ## Methods
 

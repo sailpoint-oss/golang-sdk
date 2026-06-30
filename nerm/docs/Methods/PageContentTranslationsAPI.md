@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create page content translation
 Create a page content translation record.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-page-content-translation)
+[API Spec](https://developer.sailpoint.com/docs/api/create-page-content-translation)
 
 ### Path Parameters
 
@@ -96,7 +96,7 @@ func main() {
 Delete page content translation
 Delete page content translation by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-page-content-translation-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-page-content-translation-by-id)
 
 ### Path Parameters
 
@@ -162,7 +162,7 @@ func main() {
 Delete page content translation
 Delete page content translation by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-page-content-translation-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-page-content-translation-by-uid)
 
 ### Path Parameters
 
@@ -228,7 +228,7 @@ func main() {
 Get page contents translation
 This endpoint can retrieve page content translation data.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-page-content-translation)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-content-translation)
 
 ### Path Parameters
 
@@ -285,7 +285,7 @@ func main() {
 Find page content translation
 Info for a specific page content translation record by Id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-page-content-translation-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-content-translation-by-id)
 
 ### Path Parameters
 
@@ -351,7 +351,7 @@ func main() {
 Find page content translation
 Info for a specific page content translation record by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-page-content-translation-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-content-translation-by-uid)
 
 ### Path Parameters
 
@@ -417,7 +417,7 @@ func main() {
 Update page content translation
 Update info for a specific page content translation record by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-page-content-translation-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/update-page-content-translation-by-id)
 
 ### Path Parameters
 
@@ -490,7 +490,7 @@ func main() {
 Update page content translation
 Update info for a specific page content translation record by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-page-content-translation-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/update-page-content-translation-by-uid)
 
 ### Path Parameters
 

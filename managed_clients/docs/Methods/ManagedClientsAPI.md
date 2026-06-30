@@ -31,7 +31,7 @@ Create managed client
 Create a new managed client.
 The API returns a result that includes the managed client ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-managed-client-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-managed-client-v-1)
 
 ### Path Parameters
 
@@ -98,7 +98,7 @@ func main() {
 Delete managed client
 Delete an existing managed client.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-managed-client-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-managed-client-v-1)
 
 ### Path Parameters
 
@@ -163,7 +163,7 @@ func main() {
 Get managed client health indicators
 Get a managed client's health indicators, using its ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-managed-client-health-indicators-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-managed-client-health-indicators-v-1)
 
 ### Path Parameters
 
@@ -229,7 +229,7 @@ func main() {
 Get managed client status
 Get a managed client's status, using its ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-managed-client-status-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-managed-client-status-v-1)
 
 ### Path Parameters
 
@@ -297,7 +297,7 @@ func main() {
 Get managed client
 Get managed client by ID. 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-managed-client-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-managed-client-v-1)
 
 ### Path Parameters
 
@@ -363,7 +363,7 @@ func main() {
 Get managed clients
 List managed clients.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-managed-clients-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-managed-clients-v-1)
 
 ### Path Parameters
 
@@ -431,7 +431,7 @@ func main() {
 Update managed client
 Update an existing managed client.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/update-managed-client-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/update-managed-client-v-1)
 
 ### Path Parameters
 

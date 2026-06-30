@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **NullableString** | the provisioning policy name | 
 **Description** | Pointer to **string** | the description of the provisioning policy | [optional] 
-**UsageType** | Pointer to [**Usagetype**](usagetype) |  | [optional] 
+**UsageType** | Pointer to **Usagetype** |  | [optional] 
 **Fields** | Pointer to [**[]Fielddetailsdto**](fielddetailsdto) |  | [optional] 
 
 ## Methods

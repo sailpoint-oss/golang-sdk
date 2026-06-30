@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitProfileType200Response', 'NERMS
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProfileType** | Pointer to [**ProfileType**](profile-type) |  | [optional] 
+**ProfileType** | Pointer to **ProfileType** |  | [optional] 
 
 ## Methods
 

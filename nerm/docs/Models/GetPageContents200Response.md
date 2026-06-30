@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'GetPageContents200Response', 'NERMGet
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Page** | Pointer to [**PageContent**](page-content) |  | [optional] 
+**Page** | Pointer to **PageContent** |  | [optional] 
 
 ## Methods
 

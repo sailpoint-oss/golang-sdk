@@ -26,7 +26,7 @@ Method | HTTP request | Description
 List delegations
 Returns a list of delegation records, optionally filtered by delegate, delegator, or expiration status.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delegations-get)
+[API Spec](https://developer.sailpoint.com/docs/api/delegations-get)
 
 ### Path Parameters
 
@@ -98,7 +98,7 @@ func main() {
 Delete a delegation
 Delete an existing delegation record.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delegations-id-delete)
+[API Spec](https://developer.sailpoint.com/docs/api/delegations-id-delete)
 
 ### Path Parameters
 
@@ -163,7 +163,7 @@ func main() {
 Get a single delegation
 Returns a single delegation record by its ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delegations-id-get)
+[API Spec](https://developer.sailpoint.com/docs/api/delegations-id-get)
 
 ### Path Parameters
 
@@ -229,7 +229,7 @@ func main() {
 Update a delegation
 Update an existing delegation record.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delegations-id-patch)
+[API Spec](https://developer.sailpoint.com/docs/api/delegations-id-patch)
 
 ### Path Parameters
 
@@ -302,7 +302,7 @@ func main() {
 Create a delegation
 Create a new delegation record.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delegations-post)
+[API Spec](https://developer.sailpoint.com/docs/api/delegations-post)
 
 ### Path Parameters
 

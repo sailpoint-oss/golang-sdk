@@ -50,7 +50,7 @@ Method | HTTP request | Description
 Create an approval action
 Create an approval action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - workflow_action_performers, workflow_action_roles, workflow_action_performer_notification_email, workflow_action_approval_email, workflow_action_rejection_email. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-approval-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-approval-action)
 
 ### Path Parameters
 
@@ -117,7 +117,7 @@ func main() {
 Create ask security question action
 Create an ask security question action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-ask-security-question-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-ask-security-question-action)
 
 ### Path Parameters
 
@@ -184,7 +184,7 @@ func main() {
 Create an auto assign action
 Create an auto assign action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - workflow_action_roles. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-auto-assign-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-auto-assign-action)
 
 ### Path Parameters
 
@@ -251,7 +251,7 @@ func main() {
 Create a batch update action
 Create a batch update action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-batch-update-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-batch-update-action)
 
 ### Path Parameters
 
@@ -318,7 +318,7 @@ func main() {
 Create a close session action
 Create a close session action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-close-session-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-close-session-action)
 
 ### Path Parameters
 
@@ -385,7 +385,7 @@ func main() {
 Create a contributors action
 Create a contributors action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - workflow_action_performers, workflow_action_roles, workflow_action_performer_notification_email. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-contributors-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-contributors-action)
 
 ### Path Parameters
 
@@ -452,7 +452,7 @@ func main() {
 Create a create profile action
 Create a create profile action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-create-profile-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-create-profile-action)
 
 ### Path Parameters
 
@@ -519,7 +519,7 @@ func main() {
 Create a duplicate prevention action
 Create a duplicate prevention action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - duplicatation_prevention_attributes, workflow_action_performers, workflow_action_roles, workflow_action_performer_notification_email. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-duplicate-prevention-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-duplicate-prevention-action)
 
 ### Path Parameters
 
@@ -586,7 +586,7 @@ func main() {
 Create an email verification action
 Create an email verification action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-email-verification-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-email-verification-action)
 
 ### Path Parameters
 
@@ -653,7 +653,7 @@ func main() {
 Create a fulfillment action
 Create a fulfillment action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - workflow_action_performers, workflow_action_roles, workflow_action_performer_notification_email. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-fulfillment-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-fulfillment-action)
 
 ### Path Parameters
 
@@ -720,7 +720,7 @@ func main() {
 Create an identity proofing action
 Create an identity proofing action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - identity_proofing_action_configuration, identity_proofing_action_mappings. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-identity-proofing-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-identity-proofing-action)
 
 ### Path Parameters
 
@@ -787,7 +787,7 @@ func main() {
 Create an invitation action
 Create an invitation action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - workflow_action_pause_action. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-invitation-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-invitation-action)
 
 ### Path Parameters
 
@@ -854,7 +854,7 @@ func main() {
 Create a ldap action
 Create a ldap action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - workflow_action_performers, workflow_action_roles. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-ldap-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-ldap-action)
 
 ### Path Parameters
 
@@ -921,7 +921,7 @@ func main() {
 Create a notification action
 Create a notification action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-notification-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-notification-action)
 
 ### Path Parameters
 
@@ -988,7 +988,7 @@ func main() {
 Create a password reset action
 Create a password reset action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-password-reset-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-password-reset-action)
 
 ### Path Parameters
 
@@ -1055,7 +1055,7 @@ func main() {
 Create a profile check action
 Create a profile check action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-profile-check-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-profile-check-action)
 
 ### Path Parameters
 
@@ -1122,7 +1122,7 @@ func main() {
 Create a profile select action
 Create a profile select action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-profile-select-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-profile-select-action)
 
 ### Path Parameters
 
@@ -1189,7 +1189,7 @@ func main() {
 Create a request action
 Create a request action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-request-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-request-action)
 
 ### Path Parameters
 
@@ -1256,7 +1256,7 @@ func main() {
 Create a REST API action
 Create a REST API action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - rest_api_action_configuration, api_configuration_attributes. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-rest-api-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-rest-api-action)
 
 ### Path Parameters
 
@@ -1323,7 +1323,7 @@ func main() {
 Create a review action
 Create a review action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - workflow_action_performer_notification_email. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-review-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-review-action)
 
 ### Path Parameters
 
@@ -1390,7 +1390,7 @@ func main() {
 Create a run workflow action
 Create a run workflow action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - configuration_profile_attribute. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-run-workflow-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-run-workflow-action)
 
 ### Path Parameters
 
@@ -1457,7 +1457,7 @@ func main() {
 Create a set attributes action
 Create a set attributes action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - workflow_action_set_attributes. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-set-attributes-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-set-attributes-action)
 
 ### Path Parameters
 
@@ -1524,7 +1524,7 @@ func main() {
 Create set security question action
 Create a set security question action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-set-security-question-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-set-security-question-action)
 
 ### Path Parameters
 
@@ -1591,7 +1591,7 @@ func main() {
 Create a SOAP API action
 Create a SOAP API action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - soap_api_action_configuration, api_configuration_attributes. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-soap-api-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-soap-api-action)
 
 ### Path Parameters
 
@@ -1658,7 +1658,7 @@ func main() {
 Create a status change action
 Create a status change action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-status-change-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-status-change-action)
 
 ### Path Parameters
 
@@ -1725,7 +1725,7 @@ func main() {
 Create an unassign action
 Create an unassign action. The following supporting objects will need to be created after this action is created (which are tied together via workflow_action_id) - workflow_action_roles. These supporting objects must be created for this action to be complete (APIs for these supporting objects not yet implemented, use UI).
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-unassign-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-unassign-action)
 
 ### Path Parameters
 
@@ -1792,7 +1792,7 @@ func main() {
 Create an update profile action
 Create an update profile action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-update-profile-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-update-profile-action)
 
 ### Path Parameters
 
@@ -1859,7 +1859,7 @@ func main() {
 Create a username password action
 Create a username password action
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-username-password-action)
+[API Spec](https://developer.sailpoint.com/docs/api/create-username-password-action)
 
 ### Path Parameters
 
@@ -1926,7 +1926,7 @@ func main() {
 Get Workflow Actions
 This endpoint can retrieve workflow actions
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-workflow-actions)
+[API Spec](https://developer.sailpoint.com/docs/api/get-workflow-actions)
 
 ### Path Parameters
 

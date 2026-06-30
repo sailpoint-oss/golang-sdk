@@ -27,7 +27,7 @@ Method | HTTP request | Description
 Find role by id
 Info for a specific user role
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-role)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role)
 
 ### Path Parameters
 
@@ -93,7 +93,7 @@ func main() {
 Get roles
 This endpoint can retrieve roles from NERM. Optionally you can provide parameters to filter results.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/get-roles)
 
 ### Path Parameters
 
@@ -163,7 +163,7 @@ func main() {
 Update an existing role
 Update an existing role
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-role)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-role)
 
 ### Path Parameters
 
@@ -236,7 +236,7 @@ func main() {
 Update multiple roles
 Update multiple users
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-roles)
 
 ### Path Parameters
 
@@ -303,7 +303,7 @@ func main() {
 Create a new role
 Create a new role
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-role)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-role)
 
 ### Path Parameters
 
@@ -370,7 +370,7 @@ func main() {
 Create multiple new roles
 Create multiple new users
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-roles)
 
 ### Path Parameters
 

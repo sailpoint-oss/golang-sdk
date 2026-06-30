@@ -44,7 +44,7 @@ Create segment
 This API creates a segment. 
 >**Note:** Segment definitions may take time to propagate to all identities.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-segment-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-segment-v-1)
 
 ### Path Parameters
 
@@ -112,7 +112,7 @@ Delete segment by id
 This API deletes the segment specified by the given ID.
 >**Note:** that segment deletion may take some time to become effective.    
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-segment-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-segment-v-1)
 
 ### Path Parameters
 
@@ -177,7 +177,7 @@ func main() {
 Get segment by id
 This API returns the segment specified by the given ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-segment-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-segment-v-1)
 
 ### Path Parameters
 
@@ -243,7 +243,7 @@ func main() {
 List segments
 This API returns a list of all segments. 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/list-segments-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/list-segments-v-1)
 
 ### Path Parameters
 
@@ -310,7 +310,7 @@ Update segment
 Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 >**Note:** Changes to a segment may take some time to propagate to all identities.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/patch-segment-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-segment-v-1)
 
 ### Path Parameters
 

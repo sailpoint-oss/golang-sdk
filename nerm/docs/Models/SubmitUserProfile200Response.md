@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitUserProfile200Response', 'NERMS
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserProfile** | Pointer to [**UserProfile**](user-profile) |  | [optional] 
+**UserProfile** | Pointer to **UserProfile** |  | [optional] 
 
 ## Methods
 

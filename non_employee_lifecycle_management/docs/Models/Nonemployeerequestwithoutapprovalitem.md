@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **Manager** | Pointer to **string** | The account ID of a valid identity to serve as this non-employee's manager. | [optional] 
 **NonEmployeeSource** | Pointer to [**Nonemployeesourcelitewithschemaattributes**](nonemployeesourcelitewithschemaattributes) |  | [optional] 
 **Data** | Pointer to **map[string]string** | Additional attributes for a non-employee. Up to 10 custom attributes can be added. | [optional] 
-**ApprovalStatus** | Pointer to [**Approvalstatus**](approvalstatus) |  | [optional] 
+**ApprovalStatus** | Pointer to **Approvalstatus** |  | [optional] 
 **Comment** | Pointer to **string** | Comment of requester | [optional] 
 **CompletionDate** | Pointer to **SailPointTime** | When the request was completely approved. | [optional] 
 **StartDate** | Pointer to **string** | Non-Employee employment start date. | [optional] 

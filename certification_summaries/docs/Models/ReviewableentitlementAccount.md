@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **NativeIdentity** | Pointer to **string** | The native identity for this account | [optional] 
 **Disabled** | Pointer to **bool** | Indicates whether this account is currently disabled | [optional] [default to false]
 **Locked** | Pointer to **bool** | Indicates whether this account is currently locked | [optional] [default to false]
-**Type** | Pointer to [**Dtotype**](dtotype) |  | [optional] 
+**Type** | Pointer to **Dtotype** |  | [optional] 
 **Id** | Pointer to **NullableString** | The id associated with the account | [optional] 
 **Name** | Pointer to **NullableString** | The account name | [optional] 
 **Created** | Pointer to **NullableTime** | When the account was created | [optional] 

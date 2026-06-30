@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Roleminingsessionstatus', 'V1Rolemini
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to [**Roleminingsessionstate**](roleminingsessionstate) |  | [optional] 
+**State** | Pointer to **Roleminingsessionstate** |  | [optional] 
 
 ## Methods
 

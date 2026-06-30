@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** | Specifies the type of system being managed e.g. Workday, Multi-Host - Microsoft SQL Server, etc.. If you are creating a delimited file source, you must set the `provisionasCsv` query parameter to `true`. | [optional] 
 **Connector** | **string** | Connector script name. | 
 **ConnectorClass** | Pointer to **string** | Fully qualified name of the Java class that implements the connector interface. | [optional] 
-**ConnectorAttributes** | Pointer to [**MultihostintegrationsConnectorAttributes**](multihostintegrations-connector-attributes) |  | [optional] 
+**ConnectorAttributes** | Pointer to **MultihostintegrationsConnectorAttributes** |  | [optional] 
 **DeleteThreshold** | Pointer to **int32** | Number from 0 to 100 that specifies when to skip the delete phase. | [optional] 
 **Authoritative** | Pointer to **bool** | When this is true, it indicates that the source is referenced by an identity profile. | [optional] [default to false]
 **ManagementWorkgroup** | Pointer to [**NullableMultihostintegrationsManagementWorkgroup**](multihostintegrations-management-workgroup) |  | [optional] 

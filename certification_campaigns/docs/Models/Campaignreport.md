@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | SOD policy violation report result ID. | [optional] 
 **Name** | Pointer to **string** | Human-readable name of the SOD policy violation report result. | [optional] 
 **Status** | Pointer to **string** | Status of a SOD policy violation report. | [optional] 
-**ReportType** | [**Reporttype**](reporttype) |  | 
+**ReportType** | **Reporttype** |  | 
 **LastRunAt** | Pointer to **SailPointTime** | The most recent date and time this report was run | [optional] [readonly] 
 
 ## Methods

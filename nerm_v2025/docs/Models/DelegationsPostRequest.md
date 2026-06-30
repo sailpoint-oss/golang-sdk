@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'DelegationsPostRequest', 'NERMV2025De
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Delegation** | Pointer to [**Delegation2**](delegation2) |  | [optional] 
+**Delegation** | Pointer to **Delegation2** |  | [optional] 
 
 ## Methods
 

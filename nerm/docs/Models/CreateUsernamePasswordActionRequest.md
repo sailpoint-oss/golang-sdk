@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateUsernamePasswordActionRequest',
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**UsernamePasswordAction**](username-password-action) |  | [optional] 
+**WorkflowAction** | Pointer to **UsernamePasswordAction** |  | [optional] 
 
 ## Methods
 

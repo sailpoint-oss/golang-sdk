@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **NullableString** | Comment made while forwarding. | [optional] 
 **Modified** | Pointer to **SailPointTime** | Time at which approval was forwarded. | [optional] 
 **ForwarderName** | Pointer to **NullableString** | Display name of forwarder who forwarded the approval. | [optional] 
-**ReassignmentType** | Pointer to [**Reassignmenttype**](reassignmenttype) |  | [optional] 
+**ReassignmentType** | Pointer to **Reassignmenttype** |  | [optional] 
 
 ## Methods
 

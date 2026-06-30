@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **MinNumIdentitiesInPotentialRole** | Pointer to **NullableInt32** | Minimum number of identities in a potential role | [optional] 
 **PotentialRoleCount** | Pointer to **int32** | Number of potential roles | [optional] 
 **PotentialRolesReadyCount** | Pointer to **int32** | Number of potential roles ready | [optional] 
-**Type** | Pointer to [**Roleminingroletype**](roleminingroletype) |  | [optional] 
+**Type** | Pointer to **Roleminingroletype** |  | [optional] 
 **EmailRecipientId** | Pointer to **NullableString** | The id of the user who will receive an email about the role mining session | [optional] 
 **IdentityCount** | Pointer to **int32** | Number of identities in the population which meet the search criteria or identity list provided | [optional] 
 **Saved** | Pointer to **bool** | The session's saved status | [optional] [default to false]

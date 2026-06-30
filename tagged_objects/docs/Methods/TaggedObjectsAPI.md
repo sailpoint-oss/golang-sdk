@@ -82,7 +82,7 @@ Method | HTTP request | Description
 Delete object tags
 Delete all tags from a tagged object.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-tagged-object-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-tagged-object-v-1)
 
 ### Path Parameters
 
@@ -150,7 +150,7 @@ func main() {
 Remove tags from multiple objects
 This API removes tags from multiple objects.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-tags-to-many-object-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-tags-to-many-object-v-1)
 
 ### Path Parameters
 
@@ -216,7 +216,7 @@ func main() {
 Get tagged object
 This gets a tagged object for the specified type.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-tagged-object-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-tagged-object-v-1)
 
 ### Path Parameters
 
@@ -285,7 +285,7 @@ func main() {
 List tagged objects by type
 This API returns a list of all tagged objects by type.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/list-tagged-objects-by-type-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/list-tagged-objects-by-type-v-1)
 
 ### Path Parameters
 
@@ -359,7 +359,7 @@ func main() {
 List tagged objects
 This API returns a list of all tagged objects.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/list-tagged-objects-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/list-tagged-objects-v-1)
 
 ### Path Parameters
 
@@ -427,7 +427,7 @@ func main() {
 Update tagged object
 This updates a tagged object for the specified type.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/put-tagged-object-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/put-tagged-object-v-1)
 
 ### Path Parameters
 
@@ -503,7 +503,7 @@ func main() {
 Add tag to object
 This adds a tag to an object.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/set-tag-to-object-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/set-tag-to-object-v-1)
 
 ### Path Parameters
 
@@ -569,7 +569,7 @@ func main() {
 Tag multiple objects
 This API adds tags to multiple objects.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/set-tags-to-many-objects-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/set-tags-to-many-objects-v-1)
 
 ### Path Parameters
 

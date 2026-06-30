@@ -22,9 +22,9 @@ Name | Type | Description | Notes
 **AccessTokenValiditySeconds** | **int32** | The number of seconds an access token generated for this API Client is valid for | 
 **RefreshTokenValiditySeconds** | Pointer to **int32** | The number of seconds a refresh token generated for this API Client is valid for | [optional] 
 **RedirectUris** | Pointer to **[]string** | A list of the approved redirect URIs. Provide one or more URIs when assigning the AUTHORIZATION_CODE grant type to a new OAuth Client. | [optional] 
-**GrantTypes** | [**[]Granttype**](granttype) | A list of OAuth 2.0 grant types this API Client can be used with | 
-**AccessType** | [**Accesstype**](accesstype) |  | 
-**Type** | Pointer to [**Clienttype**](clienttype) |  | [optional] 
+**GrantTypes** | **[]Granttype** | A list of OAuth 2.0 grant types this API Client can be used with | 
+**AccessType** | **Accesstype** |  | 
+**Type** | Pointer to **Clienttype** |  | [optional] 
 **Internal** | Pointer to **bool** | An indicator of whether the API Client can be used for requests internal within the product. | [optional] 
 **Enabled** | **bool** | An indicator of whether the API Client is enabled for use | 
 **StrongAuthSupported** | Pointer to **bool** | An indicator of whether the API Client supports strong authentication | [optional] 

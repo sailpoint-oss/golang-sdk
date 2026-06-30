@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Non-Employee approval item id | [optional] 
 **Approver** | Pointer to [**Nonemployeeidentityreferencewithid**](nonemployeeidentityreferencewithid) |  | [optional] 
 **AccountName** | Pointer to **string** | Requested identity account name | [optional] 
-**ApprovalStatus** | Pointer to [**Approvalstatus**](approvalstatus) |  | [optional] 
+**ApprovalStatus** | Pointer to **Approvalstatus** |  | [optional] 
 **ApprovalOrder** | Pointer to **float32** | Approval order | [optional] 
 **Comment** | Pointer to **string** | comment of approver | [optional] 
 **Modified** | Pointer to **SailPointTime** | When the request was last modified. | [optional] 

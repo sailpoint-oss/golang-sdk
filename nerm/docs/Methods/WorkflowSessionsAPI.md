@@ -27,7 +27,7 @@ Method | HTTP request | Description
 Find workflow session
 Find workflow session by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-workflow-session)
+[API Spec](https://developer.sailpoint.com/docs/api/get-workflow-session)
 
 ### Path Parameters
 
@@ -93,7 +93,7 @@ func main() {
 Retrieves workflow session attachment URL
 Retrieves the URL of an attachment attribute value from a workflow session
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-workflow-session-upload)
+[API Spec](https://developer.sailpoint.com/docs/api/get-workflow-session-upload)
 
 ### Path Parameters
 
@@ -162,7 +162,7 @@ func main() {
 Get workflow sessions
 Get workflow sessions
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-workflow-sessions)
+[API Spec](https://developer.sailpoint.com/docs/api/get-workflow-sessions)
 
 ### Path Parameters
 
@@ -244,7 +244,7 @@ func main() {
 Update a workflow session
 Update a workflow session by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-workflow-session)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-workflow-session)
 
 ### Path Parameters
 
@@ -319,7 +319,7 @@ func main() {
 Create a workflow session
 Create a workflow session
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-workflow-session)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-workflow-session)
 
 ### Path Parameters
 
@@ -389,7 +389,7 @@ Uploads workflow session attachment
 Uploads a new attachment attribute value to a workflow session. The upload must be a FORM data type; this is not a JSON API. The upload must include the binary content of the payload under the 'file' named form element. The upload must not attempt to include the file name or its content type as a other form or JSON as parameters. The upload must not attempt to upload the file body as the POST body payload; it has to arrive as a FORM parameter. Do not use a `File/Binary` payload type for the POST operation in your API client.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-workflow-session-upload)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-workflow-session-upload)
 
 ### Path Parameters
 

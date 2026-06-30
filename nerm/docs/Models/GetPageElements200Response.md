@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'GetPageElements200Response', 'NERMGet
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PageElement** | Pointer to [**PageElement**](page-element) |  | [optional] 
+**PageElement** | Pointer to **PageElement** |  | [optional] 
 
 ## Methods
 

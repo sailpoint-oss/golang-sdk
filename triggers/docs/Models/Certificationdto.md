@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Certificationdto', 'V1Certificationdt
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CampaignRef** | [**Campaignreference**](campaignreference) |  | 
-**Phase** | [**Certificationphase**](certificationphase) |  | 
+**Phase** | **Certificationphase** |  | 
 **Due** | **SailPointTime** | The due date of the certification. | 
 **Signed** | **SailPointTime** | The date the reviewer signed off on the certification. | 
 **Reviewer** | [**Reviewer**](reviewer) |  | 

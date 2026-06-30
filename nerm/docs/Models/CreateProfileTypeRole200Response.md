@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateProfileTypeRole200Response', 'N
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProfileTypeRoles** | Pointer to [**ProfileTypeRoles**](profile-type-roles) |  | [optional] 
+**ProfileTypeRoles** | Pointer to **ProfileTypeRoles** |  | [optional] 
 
 ## Methods
 

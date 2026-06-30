@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreatePermission200Response', 'NERMCr
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Permission** | Pointer to [**Permission**](permission) |  | [optional] 
+**Permission** | Pointer to **Permission** |  | [optional] 
 
 ## Methods
 

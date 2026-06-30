@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | Pointer to **string** | The uuid for the account, available under the 'objectguid' attribute | [optional] 
 **NativeIdentity** | Pointer to **string** | The 'distinguishedName' attribute for the account | [optional] 
-**Type** | Pointer to [**Dtotype**](dtotype) |  | [optional] 
+**Type** | Pointer to **Dtotype** |  | [optional] 
 **Id** | Pointer to **string** | The account id | [optional] 
 **Name** | Pointer to **string** | The account display name | [optional] 
 

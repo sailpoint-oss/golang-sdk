@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Requestedaccountref', 'V1Requestedacc
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Display name of the account for the user | [optional] 
-**Type** | Pointer to [**Dtotype**](dtotype) |  | [optional] 
+**Type** | Pointer to **Dtotype** |  | [optional] 
 **AccountUuid** | Pointer to **NullableString** | The uuid for the account | [optional] 
 **AccountId** | Pointer to **NullableString** | The native identity for the account | [optional] 
 **SourceName** | Pointer to **string** | Display name of the source for the account | [optional] 

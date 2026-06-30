@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Created** | **SailPointTime** | The date and time the certification was created. | 
 **Modified** | Pointer to **NullableTime** | The date and time the certification was last modified. | [optional] 
 **CampaignRef** | [**Campaignreference**](campaignreference) |  | 
-**Phase** | [**Certificationphase**](certificationphase) |  | 
+**Phase** | **Certificationphase** |  | 
 **Due** | **SailPointTime** | The due date of the certification. | 
 **Signed** | **SailPointTime** | The date the reviewer signed off on the certification. | 
 **Reviewer** | [**Reviewer**](reviewer) |  | 

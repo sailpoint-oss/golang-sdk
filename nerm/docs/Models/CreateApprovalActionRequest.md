@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateApprovalActionRequest', 'NERMCr
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**ApprovalAction**](approval-action) |  | [optional] 
+**WorkflowAction** | Pointer to **ApprovalAction** |  | [optional] 
 
 ## Methods
 

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'AccesssummaryAccess', 'V1Accesssummar
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**Dtotype**](dtotype) |  | [optional] 
+**Type** | Pointer to **Dtotype** |  | [optional] 
 **Id** | Pointer to **string** | The ID of the item being certified | [optional] 
 **Name** | Pointer to **string** | The name of the item being certified | [optional] 
 

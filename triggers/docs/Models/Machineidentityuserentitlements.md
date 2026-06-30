@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EntitlementId** | **string** | Entitlement identifier. | 
 **DisplayName** | **string** | Display name of the entitlement. | 
-**Source** | [**Machineidentitysourcereference**](machineidentitysourcereference) |  | 
+**Source** | **Machineidentitysourcereference** |  | 
 
 ## Methods
 

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Configurationdetailsresponse', 'V1Con
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConfigType** | Pointer to [**Configtypeenum**](configtypeenum) |  | [optional] 
+**ConfigType** | Pointer to **Configtypeenum** |  | [optional] 
 **TargetIdentity** | Pointer to [**Identity2**](identity2) |  | [optional] 
 **StartDate** | Pointer to **SailPointTime** | The date from which to start reassigning work items | [optional] 
 **EndDate** | Pointer to **SailPointTime** | The date from which to stop reassigning work items.  If this is an empty string it indicates a permanent reassignment. | [optional] 

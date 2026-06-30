@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitUserRequest', 'NERMSubmitUserRe
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**User** | Pointer to [**User1**](user1) |  | [optional] 
+**User** | Pointer to **User1** |  | [optional] 
 
 ## Methods
 

@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **RoleId** | Pointer to **NullableString** | The roleId of a potential role. | [optional] 
 **Saved** | Pointer to **bool** | The potential role's saved status. | [optional] [default to false]
 **Session** | Pointer to [**Roleminingsessionparametersdto**](roleminingsessionparametersdto) |  | [optional] 
-**Type** | Pointer to [**Roleminingroletype**](roleminingroletype) |  | [optional] 
+**Type** | Pointer to **Roleminingroletype** |  | [optional] 
 **Id** | Pointer to **string** | Id of the potential role | [optional] 
 **CreatedDate** | Pointer to **SailPointTime** | The date-time when this potential role was created. | [optional] 
 **ModifiedDate** | Pointer to **SailPointTime** | The date-time when this potential role was modified. | [optional] 

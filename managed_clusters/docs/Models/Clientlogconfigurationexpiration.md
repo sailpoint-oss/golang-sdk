@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientId** | Pointer to **string** | Log configuration's client ID | [optional] 
 **Expiration** | Pointer to **SailPointTime** | Expiration date-time of the log configuration request.  Can be no greater than 24 hours from current date-time. | [optional] 
-**RootLevel** | [**Standardlevel**](standardlevel) |  | 
-**LogLevels** | Pointer to [**map[string]Standardlevel**](standardlevel) | Mapping of identifiers to Standard Log Level values | [optional] 
+**RootLevel** | **Standardlevel** |  | 
+**LogLevels** | Pointer to **map[string]Standardlevel** | Mapping of identifiers to Standard Log Level values | [optional] 
 
 ## Methods
 

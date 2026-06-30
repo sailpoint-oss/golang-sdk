@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreatePageContentTranslationRequest',
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PageContentTranslation** | Pointer to [**PageContentTranslation1**](page-content-translation1) |  | [optional] 
+**PageContentTranslation** | Pointer to **PageContentTranslation1** |  | [optional] 
 
 ## Methods
 

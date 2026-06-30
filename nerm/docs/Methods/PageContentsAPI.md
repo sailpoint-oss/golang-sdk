@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create a page content entry
 This endpoint can create page content
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-page-content)
+[API Spec](https://developer.sailpoint.com/docs/api/create-page-content)
 
 ### Path Parameters
 
@@ -96,7 +96,7 @@ func main() {
 Delete page content record
 Delete page content by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-page-content-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-page-content-by-id)
 
 ### Path Parameters
 
@@ -162,7 +162,7 @@ func main() {
 Delete page content record
 Delete page content by by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-page-content-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-page-content-by-uid)
 
 ### Path Parameters
 
@@ -228,7 +228,7 @@ func main() {
 Find page content record
 Info for a specific page content record
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-page-content-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-content-by-id)
 
 ### Path Parameters
 
@@ -294,7 +294,7 @@ func main() {
 Find a page content record
 Info for a specific page content record by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-page-content-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-content-by-uid)
 
 ### Path Parameters
 
@@ -360,7 +360,7 @@ func main() {
 Get page contents data
 This endpoint can retrieve page content data.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-page-contents)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-contents)
 
 ### Path Parameters
 
@@ -417,7 +417,7 @@ func main() {
 Update page content record
 Update info for a specific page content record by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-page-content-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/update-page-content-by-id)
 
 ### Path Parameters
 
@@ -490,7 +490,7 @@ func main() {
 Update page content record
 Update info for a specific page content record by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-page-content-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/update-page-content-by-uid)
 
 ### Path Parameters
 

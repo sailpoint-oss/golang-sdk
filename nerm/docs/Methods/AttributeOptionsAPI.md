@@ -31,7 +31,7 @@ Method | HTTP request | Description
 Delete option based attribute value
 Delete a option based attribute value by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-attribute-option-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-attribute-option-by-id)
 
 ### Path Parameters
 
@@ -97,7 +97,7 @@ func main() {
 Delete option value
 Delete a option based attribute value by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-attribute-option-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-attribute-option-by-uid)
 
 ### Path Parameters
 
@@ -163,7 +163,7 @@ func main() {
 Find option based attribute value
 Info for a specific option based attribute value by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-attribute-option-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attribute-option-by-id)
 
 ### Path Parameters
 
@@ -229,7 +229,7 @@ func main() {
 Find option attribute value
 Get a specific option based attribute value by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-attribute-option-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attribute-option-by-uid)
 
 ### Path Parameters
 
@@ -295,7 +295,7 @@ func main() {
 Get option based attribute values
 Get option based attribute values
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-attribute-options)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attribute-options)
 
 ### Path Parameters
 
@@ -365,7 +365,7 @@ func main() {
 Update option based attribute value
 Update a option based attribute value by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-attribute-option-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-attribute-option-by-id)
 
 ### Path Parameters
 
@@ -438,7 +438,7 @@ func main() {
 Update option value
 Update a option based attribute value by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-attribute-option-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-attribute-option-by-uid)
 
 ### Path Parameters
 
@@ -511,7 +511,7 @@ func main() {
 Update multiple option values
 Update multiple option based attribute values
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-attribute-options)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-attribute-options)
 
 ### Path Parameters
 
@@ -578,7 +578,7 @@ func main() {
 Add value to option
 Adds a value to an option based attribute
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-attribute-option)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-attribute-option)
 
 ### Path Parameters
 
@@ -645,7 +645,7 @@ func main() {
 Create multiple option values
 Create multiple new option based attribute values
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-attribute-options)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-attribute-options)
 
 ### Path Parameters
 

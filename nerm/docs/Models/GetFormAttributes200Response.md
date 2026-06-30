@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'GetFormAttributes200Response', 'NERMG
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FormAttribute** | Pointer to [**FormAttribute**](form-attribute) |  | [optional] 
+**FormAttribute** | Pointer to **FormAttribute** |  | [optional] 
 
 ## Methods
 

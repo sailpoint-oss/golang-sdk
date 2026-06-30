@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'AccountactionrequestdtoCorrelatedIden
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**Dtotype**](dtotype) |  | [optional] 
+**Type** | Pointer to **Dtotype** |  | [optional] 
 **Id** | Pointer to **string** | Identity id | [optional] 
 **Name** | Pointer to **string** | Human-readable display name of identity. | [optional] 
 

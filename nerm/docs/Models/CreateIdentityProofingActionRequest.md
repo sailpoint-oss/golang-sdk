@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateIdentityProofingActionRequest',
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**IdentityProofingAction**](identity-proofing-action) |  | [optional] 
+**WorkflowAction** | Pointer to **IdentityProofingAction** |  | [optional] 
 
 ## Methods
 

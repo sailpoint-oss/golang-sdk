@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Session Id for this role mining session | [optional] 
 **CreatedDate** | Pointer to **SailPointTime** | The date-time when this role mining session was created. | [optional] 
 **ModifiedDate** | Pointer to **SailPointTime** | The date-time when this role mining session was completed. | [optional] 
-**Type** | Pointer to [**Roleminingroletype**](roleminingroletype) |  | [optional] 
+**Type** | Pointer to **Roleminingroletype** |  | [optional] 
 
 ## Methods
 

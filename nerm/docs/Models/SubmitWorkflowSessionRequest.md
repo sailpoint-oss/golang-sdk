@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitWorkflowSessionRequest', 'NERMS
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowSession** | Pointer to [**WorkflowSession1**](workflow-session1) |  | [optional] 
+**WorkflowSession** | Pointer to **WorkflowSession1** |  | [optional] 
 
 ## Methods
 

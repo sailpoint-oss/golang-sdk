@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'GetRiskScore200Response', 'NERMGetRis
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RiskScore** | Pointer to [**RiskScore**](risk-score) |  | [optional] 
+**RiskScore** | Pointer to **RiskScore** |  | [optional] 
 
 ## Methods
 

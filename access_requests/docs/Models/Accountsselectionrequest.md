@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Accountsselectionrequest', 'V1Account
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RequestedFor** | **[]string** | A list of Identity IDs for whom the Access is requested. | 
-**RequestType** | Pointer to [**NullableAccessrequesttype**](accessrequesttype) |  | [optional] 
+**RequestType** | Pointer to **NullableAccessrequesttype** |  | [optional] 
 **RequestedItems** | [**[]Accessrequestitem**](accessrequestitem) |  | 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.   | [optional] 
 

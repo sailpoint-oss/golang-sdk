@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitUserRole200Response', 'NERMSubm
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserRole** | Pointer to [**UserRole**](user-role) |  | [optional] 
+**UserRole** | Pointer to **UserRole** |  | [optional] 
 
 ## Methods
 

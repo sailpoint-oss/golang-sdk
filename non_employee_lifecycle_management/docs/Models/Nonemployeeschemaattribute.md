@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **System** | Pointer to **bool** | True if this schema attribute is mandatory on all non-employees sources. | [optional] [default to false]
 **Modified** | Pointer to **SailPointTime** | When the schema attribute was last modified. | [optional] 
 **Created** | Pointer to **SailPointTime** | When the schema attribute was created. | [optional] 
-**Type** | [**Nonemployeeschemaattributetype**](nonemployeeschemaattributetype) |  | 
+**Type** | **Nonemployeeschemaattributetype** |  | 
 **Label** | **string** | Label displayed on the UI for this schema attribute. | 
 **TechnicalName** | **string** | The technical name of the attribute. Must be unique per source. | 
 **HelpText** | Pointer to **string** | help text displayed by UI. | [optional] 

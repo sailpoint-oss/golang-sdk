@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Commonaccessitemrequest', 'V1Commonac
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Access** | Pointer to [**Commonaccessitemaccess**](commonaccessitemaccess) |  | [optional] 
-**Status** | Pointer to [**Commonaccessitemstate**](commonaccessitemstate) |  | [optional] 
+**Status** | Pointer to **Commonaccessitemstate** |  | [optional] 
 
 ## Methods
 

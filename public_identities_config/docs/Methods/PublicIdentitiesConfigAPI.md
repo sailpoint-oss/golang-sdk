@@ -33,7 +33,7 @@ Method | HTTP request | Description
 Get the public identities configuration
 Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-public-identity-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-public-identity-config-v-1)
 
 ### Path Parameters
 
@@ -90,7 +90,7 @@ func main() {
 Update the public identities configuration
 Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/update-public-identity-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/update-public-identity-config-v-1)
 
 ### Path Parameters
 

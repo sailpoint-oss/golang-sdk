@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateApprovalAction200Response', 'NE
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**WorkflowAction**](workflow-action) |  | [optional] 
+**WorkflowAction** | Pointer to **WorkflowAction** |  | [optional] 
 
 ## Methods
 

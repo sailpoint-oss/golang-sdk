@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateCreateWorkflowRequest', 'NERMCr
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Workflow** | Pointer to [**CreateWorkflow**](create-workflow) |  | [optional] 
+**Workflow** | Pointer to **CreateWorkflow** |  | [optional] 
 
 ## Methods
 

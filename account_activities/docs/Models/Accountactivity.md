@@ -20,14 +20,14 @@ Name | Type | Description | Notes
 **Created** | Pointer to **SailPointTime** | When the activity was first created | [optional] 
 **Modified** | Pointer to **NullableTime** | When the activity was last modified | [optional] 
 **Completed** | Pointer to **NullableTime** | When the activity was completed | [optional] 
-**CompletionStatus** | Pointer to [**NullableCompletionstatus**](completionstatus) |  | [optional] 
+**CompletionStatus** | Pointer to **NullableCompletionstatus** |  | [optional] 
 **Type** | Pointer to **NullableString** | The type of action the activity performed.  Please see the following list of types.  This list may grow over time.  - CloudAutomated - IdentityAttributeUpdate - appRequest - LifecycleStateChange - AccountStateUpdate - AccountAttributeUpdate - CloudPasswordRequest - Attribute Synchronization Refresh - Certification - Identity Refresh - Lifecycle Change Refresh   [Learn more here](https://documentation.sailpoint.com/saas/help/search/searchable-fields.html#searching-account-activity-data).  | [optional] 
 **RequesterIdentitySummary** | Pointer to [**NullableIdentitysummary**](identitysummary) |  | [optional] 
 **TargetIdentitySummary** | Pointer to [**NullableIdentitysummary**](identitysummary) |  | [optional] 
 **Errors** | Pointer to **[]string** | A list of error messages, if any, that were encountered. | [optional] 
 **Warnings** | Pointer to **[]string** | A list of warning messages, if any, that were encountered. | [optional] 
 **Items** | Pointer to [**[]Accountactivityitem**](accountactivityitem) | Individual actions performed as part of this account activity | [optional] 
-**ExecutionStatus** | Pointer to [**Executionstatus**](executionstatus) |  | [optional] 
+**ExecutionStatus** | Pointer to **Executionstatus** |  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs, if any were included in the corresponding access request | [optional] 
 
 ## Methods

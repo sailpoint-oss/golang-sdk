@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitRoleRequest', 'NERMSubmitRoleRe
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Role** | Pointer to [**Role1**](role1) |  | [optional] 
+**Role** | Pointer to **Role1** |  | [optional] 
 
 ## Methods
 

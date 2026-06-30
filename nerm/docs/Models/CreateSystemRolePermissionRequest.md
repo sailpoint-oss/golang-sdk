@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateSystemRolePermissionRequest', '
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SystemRolePermission** | Pointer to [**SystemRolePermission1**](system-role-permission1) |  | [optional] 
+**SystemRolePermission** | Pointer to **SystemRolePermission1** |  | [optional] 
 
 ## Methods
 

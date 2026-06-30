@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Commonaccessitemaccess', 'V1Commonacc
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Common access ID | [optional] 
-**Type** | Pointer to [**Commonaccesstype**](commonaccesstype) |  | [optional] 
+**Type** | Pointer to **Commonaccesstype** |  | [optional] 
 **Name** | Pointer to **string** | Common access name | [optional] 
 **Description** | Pointer to **NullableString** | Common access description | [optional] 
 **OwnerName** | Pointer to **string** | Common access owner name | [optional] 

@@ -26,7 +26,7 @@ Method | HTTP request | Description
 Generic DELETE request
 
 
-[API Spec](https://developer.sailpoint.com/docs/api//generic-delete)
+[API Spec](https://developer.sailpoint.com/docs/api/generic-delete)
 
 ### Path Parameters
 
@@ -92,7 +92,7 @@ func main() {
 Generic GET request
 
 
-[API Spec](https://developer.sailpoint.com/docs/api//generic-get)
+[API Spec](https://developer.sailpoint.com/docs/api/generic-get)
 
 ### Path Parameters
 
@@ -158,7 +158,7 @@ func main() {
 Generic PATCH request
 
 
-[API Spec](https://developer.sailpoint.com/docs/api//generic-patch)
+[API Spec](https://developer.sailpoint.com/docs/api/generic-patch)
 
 ### Path Parameters
 
@@ -226,7 +226,7 @@ func main() {
 Generic POST request
 
 
-[API Spec](https://developer.sailpoint.com/docs/api//generic-post)
+[API Spec](https://developer.sailpoint.com/docs/api/generic-post)
 
 ### Path Parameters
 
@@ -294,7 +294,7 @@ func main() {
 Generic PUT request
 
 
-[API Spec](https://developer.sailpoint.com/docs/api//generic-put)
+[API Spec](https://developer.sailpoint.com/docs/api/generic-put)
 
 ### Path Parameters
 

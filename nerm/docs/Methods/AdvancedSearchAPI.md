@@ -26,7 +26,7 @@ Method | HTTP request | Description
 Get saved advanced search queries
 Get saved advanced search queries
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-advanced-search)
+[API Spec](https://developer.sailpoint.com/docs/api/get-advanced-search)
 
 ### Path Parameters
 
@@ -83,7 +83,7 @@ func main() {
 Update a saved advanced search
 Update a saved advanced search query
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-advanced-search)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-advanced-search)
 
 ### Path Parameters
 
@@ -156,7 +156,7 @@ func main() {
 Run profiles advanced search
 Run an advanced search for profiles, without saving the query
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/search-advanced-search)
+[API Spec](https://developer.sailpoint.com/docs/api/search-advanced-search)
 
 ### Path Parameters
 
@@ -229,7 +229,7 @@ func main() {
 Run a saved advanced search
 Run a saved advanced search query
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/search-advanced-searchby-id)
+[API Spec](https://developer.sailpoint.com/docs/api/search-advanced-searchby-id)
 
 ### Path Parameters
 
@@ -301,7 +301,7 @@ func main() {
 Save an advanced search query
 Save an advanced search query for later use
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-advanced-search)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-advanced-search)
 
 ### Path Parameters
 

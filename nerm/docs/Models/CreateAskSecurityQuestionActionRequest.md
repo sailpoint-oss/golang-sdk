@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateAskSecurityQuestionActionReques
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**AskSecurityQuestionAction**](ask-security-question-action) |  | [optional] 
+**WorkflowAction** | Pointer to **AskSecurityQuestionAction** |  | [optional] 
 
 ## Methods
 

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Typedreference', 'V1Typedreference']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**Dtotype**](dtotype) |  | 
+**Type** | **Dtotype** |  | 
 **Id** | **string** | The id of the object.  | 
 
 ## Methods

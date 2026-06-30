@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Schedule', 'V1Schedule']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**Scheduletype**](scheduletype) |  | 
+**Type** | **Scheduletype** |  | 
 **Months** | Pointer to [**ScheduleMonths**](schedule-months) |  | [optional] 
 **Days** | Pointer to [**ScheduleDays**](schedule-days) |  | [optional] 
 **Hours** | [**ScheduleHours**](schedule-hours) |  | 

@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **Reassignment** | Pointer to [**NullableReassignment**](reassignment) |  | [optional] 
 **HasErrors** | Pointer to **bool** | Identifies if the certification has an error | [optional] 
 **ErrorMessage** | Pointer to **NullableString** | Description of the certification error | [optional] 
-**Phase** | Pointer to [**Certificationphase**](certificationphase) |  | [optional] 
+**Phase** | Pointer to **Certificationphase** |  | [optional] 
 
 ## Methods
 

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Sodexemptcriteria', 'V1Sodexemptcrite
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Existing** | Pointer to **bool** | If the entitlement already belonged to the user or not. | [optional] [default to false]
-**Type** | Pointer to [**Dtotype**](dtotype) |  | [optional] 
+**Type** | Pointer to **Dtotype** |  | [optional] 
 **Id** | Pointer to **string** | Entitlement ID | [optional] 
 **Name** | Pointer to **string** | Entitlement name | [optional] 
 

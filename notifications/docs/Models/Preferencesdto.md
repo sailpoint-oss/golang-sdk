@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Preferencesdto', 'V1Preferencesdto']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | Pointer to **string** | The template notification key. | [optional] 
-**Mediums** | Pointer to [**[]Medium**](medium) | List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future. | [optional] 
+**Mediums** | Pointer to **[]Medium** | List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future. | [optional] 
 **Modified** | Pointer to **SailPointTime** | Modified date of preference | [optional] 
 
 ## Methods

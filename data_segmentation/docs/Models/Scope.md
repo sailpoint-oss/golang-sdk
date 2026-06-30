@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'Scope', 'V1Scope']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Scope** | Pointer to [**Scopetype**](scopetype) |  | [optional] 
-**Visibility** | Pointer to [**Scopevisibilitytype**](scopevisibilitytype) |  | [optional] 
+**Scope** | Pointer to **Scopetype** |  | [optional] 
+**Visibility** | Pointer to **Scopevisibilitytype** |  | [optional] 
 **ScopeFilter** | Pointer to [**Visibilitycriteria**](visibilitycriteria) |  | [optional] 
 **ScopeSelection** | Pointer to [**[]Ref**](ref) | List of Identities that are assigned to the segment | [optional] 
 

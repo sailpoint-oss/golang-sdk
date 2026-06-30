@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Ref', 'V1Ref']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**Dtotype**](dtotype) |  | [optional] 
+**Type** | Pointer to **Dtotype** |  | [optional] 
 **Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
 
 ## Methods

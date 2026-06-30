@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'CampaignfilterdetailsCriteriaListInne
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**Criteriatype**](criteriatype) |  | 
-**Operation** | Pointer to [**NullableOperation**](operation) |  | [optional] 
+**Type** | **Criteriatype** |  | 
+**Operation** | Pointer to **NullableOperation** |  | [optional] 
 **Property** | **NullableString** | Specified key from the type of criteria. | 
 **Value** | **NullableString** | Value for the specified key from the type of criteria. | 
 **NegateResult** | Pointer to **bool** | If true, the filter will negate the result of the criteria. | [optional] [default to false]

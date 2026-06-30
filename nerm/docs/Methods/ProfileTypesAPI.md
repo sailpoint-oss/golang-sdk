@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Delete profile type
 Delete a profile type. All profiles of that type must first be destroyed before the profile type can be destroyed.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-profile-type-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-profile-type-by-id)
 
 ### Path Parameters
 
@@ -95,7 +95,7 @@ func main() {
 Delete profile type
 Delete a profile type by UID (user-specified identifier). All profiles of that type must first be destroyed before the profile type can be destroyed.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-profile-type-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-profile-type-by-uid)
 
 ### Path Parameters
 
@@ -161,7 +161,7 @@ func main() {
 Find profile type
 Find profile type by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-profile-type-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profile-type-by-id)
 
 ### Path Parameters
 
@@ -227,7 +227,7 @@ func main() {
 Find profile type
 Find profile type by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-profile-type-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profile-type-by-uid)
 
 ### Path Parameters
 
@@ -293,7 +293,7 @@ func main() {
 Get profile types
 Get option based attribute values
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-profile-types)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profile-types)
 
 ### Path Parameters
 
@@ -365,7 +365,7 @@ func main() {
 Update a profile type
 Update a profile type by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-profile-type-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-profile-type-by-id)
 
 ### Path Parameters
 
@@ -438,7 +438,7 @@ func main() {
 Update a profile type
 Update a profile type by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-profile-type-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-profile-type-by-uid)
 
 ### Path Parameters
 
@@ -511,7 +511,7 @@ func main() {
 Create a profile type
 Create a profile type
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-profile-type)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-profile-type)
 
 ### Path Parameters
 

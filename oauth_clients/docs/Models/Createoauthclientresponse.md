@@ -24,9 +24,9 @@ Name | Type | Description | Notes
 **AccessTokenValiditySeconds** | **int32** | The number of seconds an access token generated for this API Client is valid for | 
 **RefreshTokenValiditySeconds** | **int32** | The number of seconds a refresh token generated for this API Client is valid for | 
 **RedirectUris** | **[]string** | A list of the approved redirect URIs used with the authorization_code flow | 
-**GrantTypes** | [**[]Granttype**](granttype) | A list of OAuth 2.0 grant types this API Client can be used with | 
-**AccessType** | [**Accesstype**](accesstype) |  | 
-**Type** | [**Clienttype**](clienttype) |  | 
+**GrantTypes** | **[]Granttype** | A list of OAuth 2.0 grant types this API Client can be used with | 
+**AccessType** | **Accesstype** |  | 
+**Type** | **Clienttype** |  | 
 **Internal** | **bool** | An indicator of whether the API Client can be used for requests internal to IDN | 
 **Enabled** | **bool** | An indicator of whether the API Client is enabled for use | 
 **StrongAuthSupported** | **bool** | An indicator of whether the API Client supports strong authentication | 

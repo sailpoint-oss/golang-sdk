@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Basecreateapplicationrequest', 'V1Bas
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApplicationType** | [**Applicationtype**](applicationtype) |  | 
+**ApplicationType** | **Applicationtype** |  | 
 **Name** | **string** | The display name of the application. | 
 **Description** | Pointer to **NullableString** | A brief description of the application and its purpose. | [optional] 
 **Tags** | Pointer to [**[]Int64stringkeyvaluepair**](int64stringkeyvaluepair) | A list of tags to categorize or identify the application. | [optional] 

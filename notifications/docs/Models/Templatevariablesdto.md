@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Templatevariablesdto', 'V1Templatevar
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | Pointer to **string** | The notification template key. | [optional] 
-**Medium** | Pointer to [**Templatemediumdto**](templatemediumdto) |  | [optional] 
+**Medium** | Pointer to **Templatemediumdto** |  | [optional] 
 **GlobalVariables** | Pointer to [**[]Templatevariable**](templatevariable) | Global variables available to all templates for this tenant (e.g. __global.*, __recipient, __util.*, __dateTool.*, __esc.*). Includes both data variables and function-type helpers.  | [optional] 
 **TemplateVariables** | Pointer to [**[]Templatevariable**](templatevariable) | Template-specific variables for the given key and medium (e.g. approverPath, requester, attributes). | [optional] 
 

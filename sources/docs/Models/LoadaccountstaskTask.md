@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **ParentName** | Pointer to **NullableString** | Name of the parent task if exists. | [optional] 
 **Messages** | Pointer to [**[]LoadaccountstaskTaskMessagesInner**](loadaccountstask-task-messages-inner) | List of the messages dedicated to the report.  From task definition perspective here usually should be warnings or errors. | [optional] 
 **Progress** | Pointer to **NullableString** | Current task state. | [optional] 
-**Attributes** | Pointer to [**LoadaccountstaskTaskAttributes**](loadaccountstask-task-attributes) |  | [optional] 
+**Attributes** | Pointer to **LoadaccountstaskTaskAttributes** |  | [optional] 
 **Returns** | Pointer to [**[]LoadaccountstaskTaskReturnsInner**](loadaccountstask-task-returns-inner) | Return values from the task | [optional] 
 
 ## Methods

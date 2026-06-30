@@ -16,8 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'Managedclientstatus', 'V1Managedclien
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Body** | **map[string]interface{}** | ManagedClientStatus body information | 
-**Status** | [**Managedclientstatuscode**](managedclientstatuscode) |  | 
-**Type** | [**NullableManagedclienttype**](managedclienttype) |  | 
+**Status** | **Managedclientstatuscode** |  | 
+**Type** | **NullableManagedclienttype** |  | 
 **Timestamp** | **SailPointTime** | timestamp on the Client Status update | 
 
 ## Methods

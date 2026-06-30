@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create a page element entry
 Creates a page element.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-page-element)
+[API Spec](https://developer.sailpoint.com/docs/api/create-page-element)
 
 ### Path Parameters
 
@@ -96,7 +96,7 @@ func main() {
 Delete page element
 Delete page element by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-page-element-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-page-element-by-id)
 
 ### Path Parameters
 
@@ -162,7 +162,7 @@ func main() {
 Delete page element
 Delete page element by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-page-element-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-page-element-by-uid)
 
 ### Path Parameters
 
@@ -228,7 +228,7 @@ func main() {
 Find a page element
 Info for a specific page element record
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-page-element-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-element-by-id)
 
 ### Path Parameters
 
@@ -294,7 +294,7 @@ func main() {
 Find page element
 Info for a specific page element record by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-page-element-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-element-by-uid)
 
 ### Path Parameters
 
@@ -360,7 +360,7 @@ func main() {
 Get page element data
 Retrieves page elements data.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-page-elements)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-elements)
 
 ### Path Parameters
 
@@ -417,7 +417,7 @@ func main() {
 Update page element
 Update info for a specific page element record by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-page-element-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/update-page-element-by-id)
 
 ### Path Parameters
 
@@ -490,7 +490,7 @@ func main() {
 Update page element
 Update info for a specific page element record by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-page-element-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/update-page-element-by-uid)
 
 ### Path Parameters
 

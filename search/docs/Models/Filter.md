@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Filter', 'V1Filter']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**Filtertype**](filtertype) |  | [optional] 
+**Type** | Pointer to **Filtertype** |  | [optional] 
 **Range** | Pointer to [**ModelRange**](model-range) |  | [optional] 
 **Terms** | Pointer to **[]string** | The terms to be filtered. | [optional] 
 **Exclude** | Pointer to **bool** | Indicates if the filter excludes results. | [optional] [default to false]

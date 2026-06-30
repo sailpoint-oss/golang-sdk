@@ -28,7 +28,7 @@ Method | HTTP request | Description
 Create an automated workflow
 Create an automated workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-automated-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-automated-workflow)
 
 ### Path Parameters
 
@@ -95,7 +95,7 @@ func main() {
 Create a batch workflow
 Create a batch workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-batch-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-batch-workflow)
 
 ### Path Parameters
 
@@ -162,7 +162,7 @@ func main() {
 Create a create workflow
 Create a create workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-create-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-create-workflow)
 
 ### Path Parameters
 
@@ -229,7 +229,7 @@ func main() {
 Create a login workflow
 Create a login workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-login-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-login-workflow)
 
 ### Path Parameters
 
@@ -296,7 +296,7 @@ func main() {
 Create a password reset workflow
 Create a password reset workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-password-update-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-password-update-workflow)
 
 ### Path Parameters
 
@@ -363,7 +363,7 @@ func main() {
 Create a registration workflow
 Create a registration workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-registration-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-registration-workflow)
 
 ### Path Parameters
 
@@ -430,7 +430,7 @@ func main() {
 Create an update workflow
 Create an update workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-update-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-update-workflow)
 
 ### Path Parameters
 

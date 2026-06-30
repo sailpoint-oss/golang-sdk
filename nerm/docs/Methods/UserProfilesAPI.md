@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create multiple user-profile contributor relationships
 Create multiple user-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-user-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/create-user-profiles)
 
 ### Path Parameters
 
@@ -96,7 +96,7 @@ func main() {
 Delete a user profile assignment
 Delete a user profile assignment
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-user-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-user-profile)
 
 ### Path Parameters
 
@@ -162,7 +162,7 @@ func main() {
 Delete multiple user-profile contributor relationships
 Delete multiple user-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-user-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-user-profiles)
 
 ### Path Parameters
 
@@ -229,7 +229,7 @@ func main() {
 Find user-profile contributor relationship
 Find user-profile contributor relationship by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-user-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/get-user-profile)
 
 ### Path Parameters
 
@@ -295,7 +295,7 @@ func main() {
 Get user-profile contributor relationships
 Get user-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-user-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/get-user-profiles)
 
 ### Path Parameters
 
@@ -371,7 +371,7 @@ func main() {
 Update a user-profile contributor relationship
 Update a user-profile contributor relationship by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-user-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-user-profile)
 
 ### Path Parameters
 
@@ -444,7 +444,7 @@ func main() {
 Update multiple user-profile contributor relationships
 Update multiple user-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-user-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-user-profiles)
 
 ### Path Parameters
 
@@ -511,7 +511,7 @@ func main() {
 Create a user-profile contributor relationship
 Create a user-profile contributor relationship
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-user-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-user-profile)
 
 ### Path Parameters
 

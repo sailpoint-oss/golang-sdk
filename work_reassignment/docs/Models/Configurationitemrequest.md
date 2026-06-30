@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ReassignedFromId** | Pointer to **string** | The identity id to reassign an item from | [optional] 
 **ReassignedToId** | Pointer to **string** | The identity id to reassign an item to | [optional] 
-**ConfigType** | Pointer to [**Configtypeenum**](configtypeenum) |  | [optional] 
+**ConfigType** | Pointer to **Configtypeenum** |  | [optional] 
 **StartDate** | Pointer to **SailPointTime** | The date from which to start reassigning work items | [optional] 
 **EndDate** | Pointer to **NullableTime** | The date from which to stop reassigning work items.  If this is an null string it indicates a permanent reassignment. | [optional] 
 

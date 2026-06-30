@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'GetWorkflowActions200Response', 'NERM
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowActions** | Pointer to [**WorkflowAction**](workflow-action) |  | [optional] 
+**WorkflowActions** | Pointer to **WorkflowAction** |  | [optional] 
 
 ## Methods
 

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Filteraggregation', 'V1Filteraggregat
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The name of the filter aggregate to be included in the result. | 
-**Type** | Pointer to [**Searchfiltertype**](searchfiltertype) |  | [optional] [default to SEARCHFILTERTYPE_TERM]
+**Type** | Pointer to **Searchfiltertype** |  | [optional] [default to SEARCHFILTERTYPE_TERM]
 **Field** | **string** | The search field to apply the filter to.  Prefix the field name with '@' to reference a nested object.  | 
 **Value** | **string** | The value to filter on. | 
 

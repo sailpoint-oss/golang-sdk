@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **SailPointTime** | The time when the requestable object was created | [optional] 
 **Modified** | Pointer to **NullableTime** | The time when the requestable object was last modified | [optional] 
 **Description** | Pointer to **NullableString** | Description of the requestable object. | [optional] 
-**Type** | Pointer to [**Requestableobjecttype**](requestableobjecttype) |  | [optional] 
+**Type** | Pointer to **Requestableobjecttype** |  | [optional] 
 **RequestStatus** | Pointer to [**Requestableobjectrequeststatus**](requestableobjectrequeststatus) |  | [optional] 
 **IdentityRequestId** | Pointer to **NullableString** | If *requestStatus* is *PENDING*, indicates the id of the associated account activity. | [optional] 
 **OwnerRef** | Pointer to [**NullableIdentityreferencewithnameandemail**](identityreferencewithnameandemail) |  | [optional] 

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 Create a profile page
 Create a profile page
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-profile-page)
+[API Spec](https://developer.sailpoint.com/docs/api/create-profile-page)
 
 ### Path Parameters
 
@@ -90,7 +90,7 @@ func main() {
 Create a workflow page
 Create a workflow page
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-workflow-page)
+[API Spec](https://developer.sailpoint.com/docs/api/create-workflow-page)
 
 ### Path Parameters
 

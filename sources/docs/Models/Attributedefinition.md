@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | The name of the attribute. | [optional] 
 **NativeName** | Pointer to **NullableString** | Attribute name in the native system. | [optional] 
-**Type** | Pointer to [**Attributedefinitiontype**](attributedefinitiontype) |  | [optional] 
+**Type** | Pointer to **Attributedefinitiontype** |  | [optional] 
 **Schema** | Pointer to [**NullableAttributedefinitionSchema**](attributedefinition-schema) |  | [optional] 
 **Description** | Pointer to **string** | A human-readable description of the attribute. | [optional] 
 **IsMulti** | Pointer to **bool** | Flag indicating whether or not the attribute is multi-valued. | [optional] [default to false]

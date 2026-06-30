@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create a form
 This endpoint can create a form
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-form)
+[API Spec](https://developer.sailpoint.com/docs/api/create-form)
 
 ### Path Parameters
 
@@ -96,7 +96,7 @@ func main() {
 Delete form by id
 Delete form by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-form-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-form-by-id)
 
 ### Path Parameters
 
@@ -162,7 +162,7 @@ func main() {
 Delete form by UID
 Delete form by UID
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-form-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-form-by-uid)
 
 ### Path Parameters
 
@@ -228,7 +228,7 @@ func main() {
 Get form data by Id
 Info for a specific form
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-form-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-by-id)
 
 ### Path Parameters
 
@@ -294,7 +294,7 @@ func main() {
 Get form data by UID
 Info for a specific form
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-form-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-by-uid)
 
 ### Path Parameters
 
@@ -360,7 +360,7 @@ func main() {
 Get forms
 Get defined forms in the system
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-forms)
+[API Spec](https://developer.sailpoint.com/docs/api/get-forms)
 
 ### Path Parameters
 
@@ -417,7 +417,7 @@ func main() {
 Update form data by id
 Update info for a specific form
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-form-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/update-form-by-id)
 
 ### Path Parameters
 
@@ -490,7 +490,7 @@ func main() {
 Update form data by UID
 Update info for a specific form
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-form-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/update-form-by-uid)
 
 ### Path Parameters
 

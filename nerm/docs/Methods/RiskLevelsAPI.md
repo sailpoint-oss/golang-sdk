@@ -23,7 +23,7 @@ Method | HTTP request | Description
 Find risk level data
 Find risk level data by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-risk-level)
+[API Spec](https://developer.sailpoint.com/docs/api/get-risk-level)
 
 ### Path Parameters
 
@@ -89,7 +89,7 @@ func main() {
 Get risk level data
 This endpoint can retrieve risk level data in bulk from Lifecycle
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-risk-levels)
+[API Spec](https://developer.sailpoint.com/docs/api/get-risk-levels)
 
 ### Path Parameters
 

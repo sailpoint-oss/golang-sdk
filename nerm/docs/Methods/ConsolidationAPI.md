@@ -23,7 +23,7 @@ Method | HTTP request | Description
 Delete a master record
 Consolidation is a deprecated feature, this endpoint provides a mechanism to delete a master record to assist customers.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-master-record)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-master-record)
 
 ### Path Parameters
 
@@ -88,7 +88,7 @@ func main() {
 Reassign data record
 Consolidation is a deprecated feature, this endpoint provides a mechanism to reassign a data record to a new master record to assist customers.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-data-record)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-data-record)
 
 ### Path Parameters
 

@@ -24,7 +24,7 @@ Method | HTTP request | Description
 Create a synced attribute
 Create synced attribute
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-synced-attribute)
+[API Spec](https://developer.sailpoint.com/docs/api/create-synced-attribute)
 
 ### Path Parameters
 
@@ -91,7 +91,7 @@ func main() {
 Delete synced attribute
 Delete a synced attribute.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-synced-attribute)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-synced-attribute)
 
 ### Path Parameters
 
@@ -155,7 +155,7 @@ func main() {
 profile_types/ne_attributes synced status
 Get ne attributes and synced attribute relationship to profile type.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-profile-type-attributes)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profile-type-attributes)
 
 ### Path Parameters
 

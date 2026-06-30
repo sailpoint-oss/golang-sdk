@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create a form attribute
 This endpoint can create a form attribute
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/create-form-attribute)
+[API Spec](https://developer.sailpoint.com/docs/api/create-form-attribute)
 
 ### Path Parameters
 
@@ -96,7 +96,7 @@ func main() {
 Delete form attribute
 Delete form attribute by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-form-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-form-attribute-by-id)
 
 ### Path Parameters
 
@@ -162,7 +162,7 @@ func main() {
 Delete form attribute
 Delete form attribute by UID
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-form-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-form-attribute-by-uid)
 
 ### Path Parameters
 
@@ -228,7 +228,7 @@ func main() {
 Get form attribute data
 Gets info for a specific form attribute by ID
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-form-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-attribute-by-id)
 
 ### Path Parameters
 
@@ -294,7 +294,7 @@ func main() {
 Get form attribute data
 Get info for a specific form attribute by UID
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-form-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-attribute-by-uid)
 
 ### Path Parameters
 
@@ -360,7 +360,7 @@ func main() {
 Get form attributes
 Get defined form attribute in the system
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-form-attributes)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-attributes)
 
 ### Path Parameters
 
@@ -417,7 +417,7 @@ func main() {
 Update form attribute data
 Update info for a specific form attribute by ID
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-form-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/update-form-attribute-by-id)
 
 ### Path Parameters
 
@@ -490,7 +490,7 @@ func main() {
 Update form attribute data
 Update info for a specific form attribute by UID
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-form-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/update-form-attribute-by-uid)
 
 ### Path Parameters
 

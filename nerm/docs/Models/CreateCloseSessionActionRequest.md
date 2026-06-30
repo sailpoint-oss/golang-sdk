@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateCloseSessionActionRequest', 'NE
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**CloseSessionAction**](close-session-action) |  | [optional] 
+**WorkflowAction** | Pointer to **CloseSessionAction** |  | [optional] 
 
 ## Methods
 

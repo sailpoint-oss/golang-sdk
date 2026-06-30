@@ -23,15 +23,15 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the machine identity. | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | The attributes assigned to the identity. | [optional] 
 **Subtype** | **string** | Subtype of the machine identity. | 
-**Owners** | Pointer to [**[]Machineidentityownerreference**](machineidentityownerreference) | List of owners. | [optional] 
+**Owners** | Pointer to **[]Machineidentityownerreference** | List of owners. | [optional] 
 **SourceId** | Pointer to **string** | Source identifier. | [optional] 
 **Uuid** | Pointer to **string** | UUID of the machine identity. | [optional] 
 **NativeIdentity** | Pointer to **string** | Native identity value. | [optional] 
 **ManuallyEdited** | **bool** | Indicates if manually edited. | [default to false]
 **ManuallyCreated** | Pointer to **bool** | Indicates if manually created. | [optional] [default to false]
 **DatasetId** | Pointer to **string** | Dataset identifier. | [optional] 
-**Source** | Pointer to [**Machineidentitysourcereference**](machineidentitysourcereference) |  | [optional] 
-**UserEntitlements** | Pointer to [**[]Machineidentityuserentitlements**](machineidentityuserentitlements) | List of user entitlements. | [optional] 
+**Source** | Pointer to **Machineidentitysourcereference** |  | [optional] 
+**UserEntitlements** | Pointer to **[]Machineidentityuserentitlements** | List of user entitlements. | [optional] 
 **ExistsOnSource** | Pointer to **string** | Existence status on source. | [optional] 
 
 ## Methods

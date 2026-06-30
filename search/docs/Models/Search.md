@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'Search', 'V1Search']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Indices** | Pointer to [**[]Index**](index) | The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched. | [optional] 
-**QueryType** | Pointer to [**Querytype**](querytype) |  | [optional] [default to QUERYTYPE_SAILPOINT]
+**Indices** | Pointer to **[]Index** | The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched. | [optional] 
+**QueryType** | Pointer to **Querytype** |  | [optional] [default to QUERYTYPE_SAILPOINT]
 **QueryVersion** | Pointer to **string** |  | [optional] 
 **Query** | Pointer to [**Query**](query) |  | [optional] 
 **QueryDsl** | Pointer to **map[string]interface{}** | The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax. | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **TypeAheadQuery** | Pointer to [**Typeaheadquery**](typeaheadquery) |  | [optional] 
 **IncludeNested** | Pointer to **bool** | Indicates whether nested objects from returned search results should be included. | [optional] [default to true]
 **QueryResultFilter** | Pointer to [**Queryresultfilter**](queryresultfilter) |  | [optional] 
-**AggregationType** | Pointer to [**Aggregationtype**](aggregationtype) |  | [optional] [default to AGGREGATIONTYPE_DSL]
+**AggregationType** | Pointer to **Aggregationtype** |  | [optional] [default to AGGREGATIONTYPE_DSL]
 **AggregationsVersion** | Pointer to **string** |  | [optional] 
 **AggregationsDsl** | Pointer to **map[string]interface{}** | The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax. | [optional] 
 **Aggregations** | Pointer to [**Searchaggregationspecification**](searchaggregationspecification) |  | [optional] 

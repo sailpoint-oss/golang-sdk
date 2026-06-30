@@ -30,7 +30,7 @@ Method | HTTP request | Description
 Delete a user
 Delete a user
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-user)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-user)
 
 ### Path Parameters
 
@@ -96,7 +96,7 @@ func main() {
 Find user by id
 Info for a specific user
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-user)
+[API Spec](https://developer.sailpoint.com/docs/api/get-user)
 
 ### Path Parameters
 
@@ -162,7 +162,7 @@ func main() {
 Retrieves  URL user avatar
 Retrieves the URL of the user avatar
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-user-avatar)
+[API Spec](https://developer.sailpoint.com/docs/api/get-user-avatar)
 
 ### Path Parameters
 
@@ -228,7 +228,7 @@ func main() {
 Get users
 This endpoint can retrieve users from Lifecycle or you can search for users using parameters
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-users)
+[API Spec](https://developer.sailpoint.com/docs/api/get-users)
 
 ### Path Parameters
 
@@ -310,7 +310,7 @@ func main() {
 Update a user by id
 Update a user by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-user)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-user)
 
 ### Path Parameters
 
@@ -383,7 +383,7 @@ func main() {
 Update multiple users
 Update multiple users
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-users)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-users)
 
 ### Path Parameters
 
@@ -450,7 +450,7 @@ func main() {
 Create a new user
 Create a new user
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-user)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-user)
 
 ### Path Parameters
 
@@ -517,7 +517,7 @@ func main() {
 Uploads new user avatar
 Uploads a new user avatar
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-user-avatar)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-user-avatar)
 
 ### Path Parameters
 
@@ -585,7 +585,7 @@ func main() {
 Create multiple new users
 Create multiple new users
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-users)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-users)
 
 ### Path Parameters
 

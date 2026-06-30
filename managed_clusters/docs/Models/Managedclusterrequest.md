@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Managedclusterrequest', 'V1Managedclu
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | ManagedCluster name | 
-**Type** | Pointer to [**Managedclustertypes**](managedclustertypes) |  | [optional] 
+**Type** | Pointer to **Managedclustertypes** |  | [optional] 
 **Configuration** | Pointer to **map[string]string** | ManagedProcess configuration map | [optional] 
 **Description** | Pointer to **NullableString** | ManagedCluster description | [optional] 
 

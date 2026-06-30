@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Rolemembershipidentity', 'V1Rolemembe
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**Dtotype**](dtotype) |  | [optional] 
+**Type** | Pointer to **Dtotype** |  | [optional] 
 **Id** | Pointer to **string** | Identity id | [optional] 
 **Name** | Pointer to **NullableString** | Human-readable display name of the Identity. | [optional] 
 **AliasName** | Pointer to **NullableString** | User name of the Identity | [optional] 

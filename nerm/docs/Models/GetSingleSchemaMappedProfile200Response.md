@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'GetSingleSchemaMappedProfile200Respon
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Profile** | Pointer to [**Profile**](profile) |  | [optional] 
+**Profile** | Pointer to **Profile** |  | [optional] 
 
 ## Methods
 

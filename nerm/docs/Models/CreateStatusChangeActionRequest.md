@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateStatusChangeActionRequest', 'NE
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**StatusChangeAction**](status-change-action) |  | [optional] 
+**WorkflowAction** | Pointer to **StatusChangeAction** |  | [optional] 
 
 ## Methods
 

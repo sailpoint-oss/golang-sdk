@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateAutoAssignActionRequest', 'NERM
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**AutoAssignAction**](auto-assign-action) |  | [optional] 
+**WorkflowAction** | Pointer to **AutoAssignAction** |  | [optional] 
 
 ## Methods
 

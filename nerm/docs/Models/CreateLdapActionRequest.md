@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateLdapActionRequest', 'NERMCreate
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**LdapAction**](ldap-action) |  | [optional] 
+**WorkflowAction** | Pointer to **LdapAction** |  | [optional] 
 
 ## Methods
 

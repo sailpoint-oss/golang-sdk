@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitProfileTypeRequest', 'NERMSubmi
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProfileType** | Pointer to [**ProfileType1**](profile-type1) |  | [optional] 
+**ProfileType** | Pointer to **ProfileType1** |  | [optional] 
 
 ## Methods
 

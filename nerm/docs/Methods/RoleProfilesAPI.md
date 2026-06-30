@@ -28,7 +28,7 @@ Method | HTTP request | Description
 Delete a role profile assignment
 Delete a role profile assignment
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/delete-role-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-role-profile)
 
 ### Path Parameters
 
@@ -94,7 +94,7 @@ func main() {
 Find role-profile contributor relationship
 Find role-profile contributor relationship by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-role-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-profile)
 
 ### Path Parameters
 
@@ -160,7 +160,7 @@ func main() {
 Get role-profile contributor relationships
 Get role-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-role-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-profiles)
 
 ### Path Parameters
 
@@ -232,7 +232,7 @@ func main() {
 Update a role-profile contributor relationship
 Update a role-profile contributor relationship by id
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-role-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-role-profile)
 
 ### Path Parameters
 
@@ -305,7 +305,7 @@ func main() {
 Update multiple role-profile contributor relationships
 Update multiple role-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/patch-role-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-role-profiles)
 
 ### Path Parameters
 
@@ -372,7 +372,7 @@ func main() {
 Create a role-profile contributor relationship
 Create a role-profile contributor relationship
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-role-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-role-profile)
 
 ### Path Parameters
 
@@ -439,7 +439,7 @@ func main() {
 Create multiple role-profile contributor relationships
 Create multiple role-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/submit-role-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-role-profiles)
 
 ### Path Parameters
 

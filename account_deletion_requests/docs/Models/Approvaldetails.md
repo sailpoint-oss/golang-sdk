@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **ApproverComments** | Pointer to **string** | Comments added by approver while rejecting or approving the account deletion request. | [optional] 
 **DecisionDate** | Pointer to **SailPointTime** | Decision date of approval rejected or approved. | [optional] [readonly] 
 **SerialOrder** | Pointer to **int64** | SerialOrder of approval details. | [optional] 
-**Status** | Pointer to [**Accountrequestphasestate**](accountrequestphasestate) |  | [optional] 
+**Status** | Pointer to **Accountrequestphasestate** |  | [optional] 
 
 ## Methods
 

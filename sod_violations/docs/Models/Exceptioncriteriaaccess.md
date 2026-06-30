@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Exceptioncriteriaaccess', 'V1Exceptio
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**Dtotype**](dtotype) |  | [optional] 
+**Type** | Pointer to **Dtotype** |  | [optional] 
 **Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
 **Name** | Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
 **Existing** | Pointer to **bool** | Whether the subject identity already had that access or not | [optional] [default to false]

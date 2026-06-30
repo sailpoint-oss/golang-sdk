@@ -16,8 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'MachineidentityupdatedUserEntitlement
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AttributeName** | Pointer to **string** | Name of the attribute that changed. | [optional] 
-**Added** | Pointer to [**[]Machineidentityuserentitlements**](machineidentityuserentitlements) | User entitlements that were added. | [optional] 
-**Removed** | Pointer to [**[]Machineidentityuserentitlements**](machineidentityuserentitlements) | User entitlements that were removed. | [optional] 
+**Added** | Pointer to **[]Machineidentityuserentitlements** | User entitlements that were added. | [optional] 
+**Removed** | Pointer to **[]Machineidentityuserentitlements** | User entitlements that were removed. | [optional] 
 
 ## Methods
 

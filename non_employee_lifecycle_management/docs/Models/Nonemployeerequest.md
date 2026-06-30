@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **NonEmployeeSource** | Pointer to [**Nonemployeesourcelite**](nonemployeesourcelite) |  | [optional] 
 **Data** | Pointer to **map[string]string** | Additional attributes for a non-employee. Up to 10 custom attributes can be added. | [optional] 
 **ApprovalItems** | Pointer to [**[]Nonemployeeapprovalitembase**](nonemployeeapprovalitembase) | List of approval item for the request | [optional] 
-**ApprovalStatus** | Pointer to [**Approvalstatus**](approvalstatus) |  | [optional] 
+**ApprovalStatus** | Pointer to **Approvalstatus** |  | [optional] 
 **Comment** | Pointer to **string** | Comment of requester | [optional] 
 **CompletionDate** | Pointer to **SailPointTime** | When the request was completely approved. | [optional] 
 **StartDate** | Pointer to **SailPointTime** | Non-Employee employment start date. | [optional] 

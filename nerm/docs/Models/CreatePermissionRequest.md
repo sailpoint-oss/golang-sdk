@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreatePermissionRequest', 'NERMCreate
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Permission** | Pointer to [**Permission1**](permission1) |  | [optional] 
+**Permission** | Pointer to **Permission1** |  | [optional] 
 
 ## Methods
 

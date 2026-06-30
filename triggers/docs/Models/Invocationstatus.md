@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **TriggerId** | **string** | Trigger ID | 
 **SubscriptionName** | **string** | Subscription name | 
 **SubscriptionId** | **string** | Subscription ID | 
-**Type** | [**Invocationstatustype**](invocationstatustype) |  | 
+**Type** | **Invocationstatustype** |  | 
 **Created** | **SailPointTime** | Invocation created timestamp. ISO-8601 in UTC. | 
 **Completed** | Pointer to **SailPointTime** | Invocation completed timestamp; empty fields imply invocation is in-flight or not completed. ISO-8601 in UTC. | [optional] 
 **StartInvocationInput** | [**Startinvocationinput**](startinvocationinput) |  | 

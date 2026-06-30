@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **EntitlementIds** | Pointer to **[]string** | The list of entitlement ids for this role mining session. | [optional] 
 **ExcludedEntitlements** | Pointer to **[]string** | The list of excluded entitlement ids. | [optional] 
 **Modified** | Pointer to **SailPointTime** | Last modified date | [optional] 
-**Type** | Pointer to [**Roleminingroletype**](roleminingroletype) |  | [optional] 
+**Type** | Pointer to **Roleminingroletype** |  | [optional] 
 **Id** | Pointer to **string** | Id of the potential draft role | [optional] 
 **CreatedDate** | Pointer to **SailPointTime** | The date-time when this potential draft role was created. | [optional] 
 **ModifiedDate** | Pointer to **SailPointTime** | The date-time when this potential draft role was modified. | [optional] 

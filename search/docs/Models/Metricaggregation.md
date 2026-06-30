@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Metricaggregation', 'V1Metricaggregat
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The name of the metric aggregate to be included in the result. If the metric aggregation is omitted, the resulting aggregation will be a count of the documents in the search results. | 
-**Type** | Pointer to [**Metrictype**](metrictype) |  | [optional] [default to METRICTYPE_UNIQUE_COUNT]
+**Type** | Pointer to **Metrictype** |  | [optional] [default to METRICTYPE_UNIQUE_COUNT]
 **Field** | **string** | The field the calculation is performed on.  Prefix the field name with '@' to reference a nested object.  | 
 
 ## Methods

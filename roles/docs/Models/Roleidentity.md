@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **AliasName** | Pointer to **string** | The alias / username of the Identity | [optional] 
 **Name** | Pointer to **string** | The human-readable display name of the Identity | [optional] 
 **Email** | Pointer to **string** | Email address of the Identity | [optional] 
-**RoleAssignmentSource** | Pointer to [**Roleassignmentsourcetype**](roleassignmentsourcetype) |  | [optional] 
+**RoleAssignmentSource** | Pointer to **Roleassignmentsourcetype** |  | [optional] 
 
 ## Methods
 

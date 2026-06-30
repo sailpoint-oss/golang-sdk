@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateContributorsActionRequest', 'NE
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowAction** | Pointer to [**ContributorsAction**](contributors-action) |  | [optional] 
+**WorkflowAction** | Pointer to **ContributorsAction** |  | [optional] 
 
 ## Methods
 

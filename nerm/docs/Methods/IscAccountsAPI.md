@@ -24,7 +24,7 @@ Method | HTTP request | Description
 Get Profiles
 Retrieve schema-mapped profiles collection. It returns a collection of stored profiles, optionally using schema-mapped field names if requested.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-schema-mapped-profiles-collection)
+[API Spec](https://developer.sailpoint.com/docs/api/get-schema-mapped-profiles-collection)
 
 ### Path Parameters
 
@@ -96,7 +96,7 @@ func main() {
 Get Profile
 It returns a single stored profile, optionally with schema-mapped field names.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/get-single-schema-mapped-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/get-single-schema-mapped-profile)
 
 ### Path Parameters
 
@@ -162,7 +162,7 @@ func main() {
 Update Profile
 Updates a profile only through ISC schema-mapped attributes, performs a reverse mapping to match the NERM attributes to update.
 
-[API Spec](https://developer.sailpoint.com/docs/api/NERM/update-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/update-profile)
 
 ### Path Parameters
 

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Errormessagedto', 'V1Errormessagedto'
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Locale** | Pointer to **NullableString** | The locale for the message text, a BCP 47 language tag. | [optional] 
-**LocaleOrigin** | Pointer to [**NullableLocaleorigin**](localeorigin) |  | [optional] 
+**LocaleOrigin** | Pointer to **NullableLocaleorigin** |  | [optional] 
 **Text** | Pointer to **string** | Actual text of the error message in the indicated locale. | [optional] 
 
 ## Methods

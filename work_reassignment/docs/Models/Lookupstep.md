@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ReassignedToId** | Pointer to **string** | The ID of the Identity who work is reassigned to | [optional] 
 **ReassignedFromId** | Pointer to **string** | The ID of the Identity who work is reassigned from | [optional] 
-**ReassignmentType** | Pointer to [**Reassignmenttypeenum**](reassignmenttypeenum) |  | [optional] 
+**ReassignmentType** | Pointer to **Reassignmenttypeenum** |  | [optional] 
 
 ## Methods
 

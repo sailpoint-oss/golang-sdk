@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Bucketaggregation', 'V1Bucketaggregat
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The name of the bucket aggregate to be included in the result. | 
-**Type** | Pointer to [**Buckettype**](buckettype) |  | [optional] [default to BUCKETTYPE_TERMS]
+**Type** | Pointer to **Buckettype** |  | [optional] [default to BUCKETTYPE_TERMS]
 **Field** | **string** | The field to bucket on. Prefix the field name with '@' to reference a nested object. | 
 **Size** | Pointer to **int32** | Maximum number of buckets to include. | [optional] 
 **MinDocCount** | Pointer to **int32** | Minimum number of documents a bucket should have. | [optional] 

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateCreateWorkflow200Response', 'NE
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Workflow** | Pointer to [**WorkflowSession**](workflow-session) |  | [optional] 
+**Workflow** | Pointer to **WorkflowSession** |  | [optional] 
 
 ## Methods
 

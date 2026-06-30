@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **OriginalOwner** | Pointer to [**NullableManualworkitemdetailsOriginalOwner**](manualworkitemdetails-original-owner) |  | [optional] 
 **CurrentOwner** | Pointer to [**NullableManualworkitemdetailsCurrentOwner**](manualworkitemdetails-current-owner) |  | [optional] 
 **Modified** | Pointer to **SailPointTime** | Time at which item was modified. | [optional] 
-**Status** | Pointer to [**Manualworkitemstate**](manualworkitemstate) |  | [optional] 
+**Status** | Pointer to **Manualworkitemstate** |  | [optional] 
 **ForwardHistory** | Pointer to [**[]Approvalforwardhistory**](approvalforwardhistory) | The history of approval forward action. | [optional] 
 
 ## Methods

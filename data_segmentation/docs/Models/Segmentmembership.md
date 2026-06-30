@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Segmentmembership', 'V1Segmentmembers
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Segments** | Pointer to **[]string** | List of segment ids that the identity is associated with. | [optional] 
-**AllAccessScopes** | Pointer to [**[]Scopetype**](scopetype) | They type of scopes that are assigned to the identity. | [optional] 
+**AllAccessScopes** | Pointer to **[]Scopetype** | They type of scopes that are assigned to the identity. | [optional] 
 **RefreshBy** | Pointer to **SailPointTime** | Date time string that lets you know when the membership data is going to be refreshed. | [optional] 
 
 ## Methods

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'GetProfileTypeAttributes200Response',
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProfileTypeAttributes** | Pointer to [**ProfileTypeAttributes**](profile-type-attributes) |  | [optional] 
+**ProfileTypeAttributes** | Pointer to **ProfileTypeAttributes** |  | [optional] 
 
 ## Methods
 
