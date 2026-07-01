@@ -39,6 +39,49 @@
           // response from `CreateProvisioningPolicyV1`: Provisioningpolicydto
           fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateProvisioningPolicyV1`: %v\n", resp)
         }
+- path: /sources/v2/{sourceId}/provisioning-policies
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sources/methods/sources#create-provisioning-policy-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+        )
+
+        func main() {
+          sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id # string | The Source id
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           provisioningpolicydtov2 := []byte(`{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln<uniqueCounter>,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}`) // Provisioningpolicydtov2 | 
+          useDefaultFields := false // bool | If passed as true, then it uses default fields from the connector template. (optional) (default to false) # bool | If passed as true, then it uses default fields from the connector template. (optional) (default to false)
+
+          
+          var provisioningpolicydtov2 v1.Provisioningpolicydtov2
+          if err := json.Unmarshal(provisioningpolicydtov2, &provisioningpolicydtov2); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).Execute()
+          //resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).UseDefaultFields(useDefaultFields).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateProvisioningPolicyV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateProvisioningPolicyV2`: Provisioningpolicydtov2
+          fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateProvisioningPolicyV2`: %v\n", resp)
+        }
 - path: /sources/v1/{sourceId}/schedules
   method: Post
   xCodeSample:
@@ -258,6 +301,40 @@
           //r, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteProvisioningPolicyV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /sources/v2/{sourceId}/provisioning-policies/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sources/methods/sources#delete-provisioning-policy-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+        )
+
+        func main() {
+          sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
+          id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteProvisioningPolicyV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
         }
@@ -596,6 +673,42 @@
           }
           // response from `GetProvisioningPolicyV1`: Provisioningpolicydto
           fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetProvisioningPolicyV1`: %v\n", resp)
+        }
+- path: /sources/v2/{sourceId}/provisioning-policies/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sources/methods/sources#get-provisioning-policy-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+        )
+
+        func main() {
+          sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
+          id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SourcesAPI.GetProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.SourcesAPI.GetProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetProvisioningPolicyV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetProvisioningPolicyV2`: Provisioningpolicydtov2
+          fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetProvisioningPolicyV2`: %v\n", resp)
         }
 - path: /sources/v1/{id}/attribute-sync-config
   method: Get
@@ -1229,6 +1342,44 @@
           // response from `ListProvisioningPoliciesV1`: []Provisioningpolicydto
           fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ListProvisioningPoliciesV1`: %v\n", resp)
         }
+- path: /sources/v2/{sourceId}/provisioning-policies
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sources/methods/sources#list-provisioning-policies-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+        )
+
+        func main() {
+          sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id # string | The Source id
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          filters := `subtypeId eq "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq* (optional)
+          offset := 0 // int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0) # int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
+          limit := 250 // int64 | Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250) # int64 | Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SourcesAPI.ListProvisioningPoliciesV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.SourcesAPI.ListProvisioningPoliciesV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Filters(filters).Offset(offset).Limit(limit).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListProvisioningPoliciesV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListProvisioningPoliciesV2`: []Provisioningpolicydtov2
+          fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ListProvisioningPoliciesV2`: %v\n", resp)
+        }
 - path: /sources/v1
   method: Get
   xCodeSample:
@@ -1426,6 +1577,49 @@
           }
           // response from `PutProvisioningPolicyV1`: Provisioningpolicydto
           fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutProvisioningPolicyV1`: %v\n", resp)
+        }
+- path: /sources/v2/{sourceId}/provisioning-policies/{id}
+  method: Put
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sources/methods/sources#put-provisioning-policy-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+        )
+
+        func main() {
+          sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
+          id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           provisioningpolicydtov2 := []byte(``) // Provisioningpolicydtov2 | 
+
+          
+          var provisioningpolicydtov2 v1.Provisioningpolicydtov2
+          if err := json.Unmarshal(provisioningpolicydtov2, &provisioningpolicydtov2); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).Execute()
+          //resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutProvisioningPolicyV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PutProvisioningPolicyV2`: Provisioningpolicydtov2
+          fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutProvisioningPolicyV2`: %v\n", resp)
         }
 - path: /sources/v1/{id}/attribute-sync-config
   method: Put
@@ -1901,6 +2095,49 @@
           }
           // response from `UpdateProvisioningPolicyV1`: Provisioningpolicydto
           fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateProvisioningPolicyV1`: %v\n", resp)
+        }
+- path: /sources/v2/{sourceId}/provisioning-policies/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/sources/methods/sources#update-provisioning-policy-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+        )
+
+        func main() {
+          sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
+          id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          jsonpatchoperation := []byte(`[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schema.
+
+          
+          var jsonpatchoperation []v1.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateProvisioningPolicyV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateProvisioningPolicyV2`: Provisioningpolicydtov2
+          fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateProvisioningPolicyV2`: %v\n", resp)
         }
 - path: /sources/v1/{id}/entitlement-request-config
   method: Put

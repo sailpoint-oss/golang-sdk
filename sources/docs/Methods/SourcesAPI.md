@@ -73,12 +73,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-provisioning-policy-v1**](#create-provisioning-policy-v1) | **Post** `/sources/v1/{sourceId}/provisioning-policies` | Create provisioning policy
+[**create-provisioning-policy-v2**](#create-provisioning-policy-v2) | **Post** `/sources/v2/{sourceId}/provisioning-policies` | Create provisioning policy
 [**create-source-schedule-v1**](#create-source-schedule-v1) | **Post** `/sources/v1/{sourceId}/schedules` | Create schedule on source
 [**create-source-schema-v1**](#create-source-schema-v1) | **Post** `/sources/v1/{sourceId}/schemas` | Create schema on source
 [**create-source-v1**](#create-source-v1) | **Post** `/sources/v1` | Creates a source in identitynow.
 [**delete-accounts-async-v1**](#delete-accounts-async-v1) | **Post** `/sources/v1/{id}/remove-accounts` | Remove all accounts in source
 [**delete-native-change-detection-config-v1**](#delete-native-change-detection-config-v1) | **Delete** `/sources/v1/{sourceId}/native-change-detection-config` | Delete native change detection configuration
 [**delete-provisioning-policy-v1**](#delete-provisioning-policy-v1) | **Delete** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Delete provisioning policy by usagetype
+[**delete-provisioning-policy-v2**](#delete-provisioning-policy-v2) | **Delete** `/sources/v2/{sourceId}/provisioning-policies/{id}` | Delete provisioning policy by ID
 [**delete-source-schedule-v1**](#delete-source-schedule-v1) | **Delete** `/sources/v1/{sourceId}/schedules/{scheduleType}` | Delete source schedule by type.
 [**delete-source-schema-v1**](#delete-source-schema-v1) | **Delete** `/sources/v1/{sourceId}/schemas/{schemaId}` | Delete source schema by id
 [**delete-source-v1**](#delete-source-v1) | **Delete** `/sources/v1/{id}` | Delete source by id
@@ -89,6 +91,7 @@ Method | HTTP request | Description
 [**get-machine-account-deletion-approval-config-by-source-v1**](#get-machine-account-deletion-approval-config-by-source-v1) | **Get** `/sources/v1/{sourceId}/approval-config/machine-account-delete` | Machine Account Deletion Approval Config
 [**get-native-change-detection-config-v1**](#get-native-change-detection-config-v1) | **Get** `/sources/v1/{sourceId}/native-change-detection-config` | Native change detection configuration
 [**get-provisioning-policy-v1**](#get-provisioning-policy-v1) | **Get** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Get provisioning policy by usagetype
+[**get-provisioning-policy-v2**](#get-provisioning-policy-v2) | **Get** `/sources/v2/{sourceId}/provisioning-policies/{id}` | Get provisioning policy by ID
 [**get-source-attr-sync-config-v1**](#get-source-attr-sync-config-v1) | **Get** `/sources/v1/{id}/attribute-sync-config` | Attribute sync config
 [**get-source-config-v1**](#get-source-config-v1) | **Get** `/sources/v1/{id}/connectors/source-config` | Gets source config with language-translations
 [**get-source-connections-v1**](#get-source-connections-v1) | **Get** `/sources/v1/{sourceId}/connections` | Get source connections by id
@@ -107,11 +110,13 @@ Method | HTTP request | Description
 [**import-uncorrelated-accounts-v1**](#import-uncorrelated-accounts-v1) | **Post** `/sources/v1/{id}/load-uncorrelated-accounts` | Process uncorrelated accounts
 [**list-password-policy-holders-on-source-v1**](#list-password-policy-holders-on-source-v1) | **Get** `/sources/v1/{sourceId}/password-policies` | Get Password Policy for source
 [**list-provisioning-policies-v1**](#list-provisioning-policies-v1) | **Get** `/sources/v1/{sourceId}/provisioning-policies` | Lists provisioningpolicies
+[**list-provisioning-policies-v2**](#list-provisioning-policies-v2) | **Get** `/sources/v2/{sourceId}/provisioning-policies` | Lists Provisioning Policies
 [**list-sources-v1**](#list-sources-v1) | **Get** `/sources/v1` | Lists all sources in identitynow.
 [**ping-cluster-v1**](#ping-cluster-v1) | **Post** `/sources/v1/{sourceId}/connector/ping-cluster` | Ping cluster for source connector
 [**put-correlation-config-v1**](#put-correlation-config-v1) | **Put** `/sources/v1/{id}/correlation-config` | Update source correlation configuration
 [**put-native-change-detection-config-v1**](#put-native-change-detection-config-v1) | **Put** `/sources/v1/{sourceId}/native-change-detection-config` | Update native change detection configuration
 [**put-provisioning-policy-v1**](#put-provisioning-policy-v1) | **Put** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Update provisioning policy by usagetype
+[**put-provisioning-policy-v2**](#put-provisioning-policy-v2) | **Put** `/sources/v2/{sourceId}/provisioning-policies/{id}` | Update provisioning policy by ID
 [**put-source-attr-sync-config-v1**](#put-source-attr-sync-config-v1) | **Put** `/sources/v1/{id}/attribute-sync-config` | Update attribute sync config
 [**put-source-schema-v1**](#put-source-schema-v1) | **Put** `/sources/v1/{sourceId}/schemas/{schemaId}` | Update source schema (full)
 [**put-source-v1**](#put-source-v1) | **Put** `/sources/v1/{id}` | Update source (full)
@@ -124,6 +129,7 @@ Method | HTTP request | Description
 [**update-password-policy-holders-v1**](#update-password-policy-holders-v1) | **Patch** `/sources/v1/{sourceId}/password-policies` | Update password policy
 [**update-provisioning-policies-in-bulk-v1**](#update-provisioning-policies-in-bulk-v1) | **Post** `/sources/v1/{sourceId}/provisioning-policies/bulk-update` | Bulk update provisioning policies
 [**update-provisioning-policy-v1**](#update-provisioning-policy-v1) | **Patch** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Partial update of provisioning policy
+[**update-provisioning-policy-v2**](#update-provisioning-policy-v2) | **Patch** `/sources/v2/{sourceId}/provisioning-policies/{id}` | Partial update of provisioning policy
 [**update-source-entitlement-request-config-v1**](#update-source-entitlement-request-config-v1) | **Put** `/sources/v1/{id}/entitlement-request-config` | Update source entitlement request configuration
 [**update-source-schedule-v1**](#update-source-schedule-v1) | **Patch** `/sources/v1/{sourceId}/schedules/{scheduleType}` | Update source schedule (partial)
 [**update-source-schema-v1**](#update-source-schema-v1) | **Patch** `/sources/v1/{sourceId}/schemas/{schemaId}` | Update source schema (partial)
@@ -200,6 +206,98 @@ func main() {
     }
     // response from `CreateProvisioningPolicyV1`: Provisioningpolicydto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateProvisioningPolicyV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## create-provisioning-policy-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Create provisioning policy
+This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+The V2 API allows you to use a unique identifier (id) for each provisioning policy instead of usageType. This enables read, update, and delete operations on policies using their id.
+Note: The subtypeId field is required if usageType is CREATE_MACHINE_ACCOUNT.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+[API Spec](https://developer.sailpoint.com/docs/api/create-provisioning-policy-v-2)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateProvisioningPolicyV2Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **provisioningpolicydtov2** | [**Provisioningpolicydtov2**](../models/provisioningpolicydtov2) |  | 
+ **useDefaultFields** | **bool** | If passed as true, then it uses default fields from the connector template. | [default to false]
+
+### Return type
+
+[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id # string | The Source id
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    provisioningpolicydtov2 := []byte(`{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln<uniqueCounter>,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}`) // Provisioningpolicydtov2 | 
+    useDefaultFields := false // bool | If passed as true, then it uses default fields from the connector template. (optional) (default to false) # bool | If passed as true, then it uses default fields from the connector template. (optional) (default to false)
+
+    var provisioningpolicydtov2 v1.Provisioningpolicydtov2
+    if err := json.Unmarshal(provisioningpolicydtov2, &provisioningpolicydtov2); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).UseDefaultFields(useDefaultFields).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateProvisioningPolicyV2``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateProvisioningPolicyV2`: Provisioningpolicydtov2
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateProvisioningPolicyV2`: %v\n", resp)
 }
 ```
 
@@ -619,6 +717,87 @@ func main() {
 	  //r, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteProvisioningPolicyV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    
+}
+```
+
+[[Back to top]](#)
+
+## delete-provisioning-policy-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Delete provisioning policy by ID
+Deletes the provisioning policy with the specified ID on an application.
+
+[API Spec](https://developer.sailpoint.com/docs/api/delete-provisioning-policy-v-2)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source ID. | 
+**id** | **string** | The provisioning policy ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteProvisioningPolicyV2Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+### Return type
+
+ (empty response body)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
+    id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteProvisioningPolicyV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     
@@ -1294,6 +1473,88 @@ func main() {
     }
     // response from `GetProvisioningPolicyV1`: Provisioningpolicydto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetProvisioningPolicyV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## get-provisioning-policy-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Get provisioning policy by ID
+This end-point retrieves the ProvisioningPolicy with the specified ID on the specified Source in Identity Security Cloud.
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-provisioning-policy-v-2)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source ID. | 
+**id** | **string** | The provisioning policy ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetProvisioningPolicyV2Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+### Return type
+
+[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
+    id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.GetProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetProvisioningPolicyV2``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetProvisioningPolicyV2`: Provisioningpolicydtov2
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetProvisioningPolicyV2`: %v\n", resp)
 }
 ```
 
@@ -2584,6 +2845,91 @@ func main() {
 
 [[Back to top]](#)
 
+## list-provisioning-policies-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Lists Provisioning Policies
+This end-point lists all the ProvisioningPolicies in IdentityNow.
+
+[API Spec](https://developer.sailpoint.com/docs/api/list-provisioning-policies-v-2)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListProvisioningPoliciesV2Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq* | 
+ **offset** | **int64** | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. | [default to 0]
+ **limit** | **int64** | Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. | [default to 250]
+
+### Return type
+
+[**[]Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id # string | The Source id
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    filters := `subtypeId eq "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq* (optional)
+    offset := 0 // int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0) # int64 | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
+    limit := 250 // int64 | Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250) # int64 | Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.ListProvisioningPoliciesV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.ListProvisioningPoliciesV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Filters(filters).Offset(offset).Limit(limit).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListProvisioningPoliciesV2``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListProvisioningPoliciesV2`: []Provisioningpolicydtov2
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ListProvisioningPoliciesV2`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
 ## list-sources-v1
 Lists all sources in identitynow.
 This end-point lists all the sources in IdentityNow.
@@ -2943,6 +3289,97 @@ func main() {
     }
     // response from `PutProvisioningPolicyV1`: Provisioningpolicydto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutProvisioningPolicyV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## put-provisioning-policy-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Update provisioning policy by ID
+This end-point updates the provisioning policy with the specified ID on the specified source in Identity Security Cloud.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+[API Spec](https://developer.sailpoint.com/docs/api/put-provisioning-policy-v-2)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source ID. | 
+**id** | **string** | The provisioning policy ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutProvisioningPolicyV2Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **provisioningpolicydtov2** | [**Provisioningpolicydtov2**](../models/provisioningpolicydtov2) |  | 
+
+### Return type
+
+[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
+    id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    provisioningpolicydtov2 := []byte(``) // Provisioningpolicydtov2 | 
+
+    var provisioningpolicydtov2 v1.Provisioningpolicydtov2
+    if err := json.Unmarshal(provisioningpolicydtov2, &provisioningpolicydtov2); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutProvisioningPolicyV2``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutProvisioningPolicyV2`: Provisioningpolicydtov2
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutProvisioningPolicyV2`: %v\n", resp)
 }
 ```
 
@@ -3862,6 +4299,97 @@ func main() {
     }
     // response from `UpdateProvisioningPolicyV1`: Provisioningpolicydto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateProvisioningPolicyV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-provisioning-policy-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Partial update of provisioning policy
+This API selectively updates an existing Provisioning Policy using a JSONPatch payload.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-provisioning-policy-v-2)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id. | 
+**id** | **string** | The provisioning policy ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateProvisioningPolicyV2Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | The JSONPatch payload used to update the schema. | 
+
+### Return type
+
+[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
+    id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    jsonpatchoperation := []byte(`[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schema.
+
+    var jsonpatchoperation []v1.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateProvisioningPolicyV2``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateProvisioningPolicyV2`: Provisioningpolicydtov2
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateProvisioningPolicyV2`: %v\n", resp)
 }
 ```
 

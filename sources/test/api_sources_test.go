@@ -36,6 +36,20 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesAPIService CreateProvisioningPolicyV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.CreateProvisioningPolicyV2(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesAPIService CreateSourceScheduleV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -111,6 +125,20 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		var usageType Usagetype
 
 		httpRes, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService DeleteProvisioningPolicyV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var id string
+
+		httpRes, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV2(context.Background(), sourceId, id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -249,6 +277,21 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		var usageType Usagetype
 
 		resp, httpRes, err := apiClient.SourcesAPI.GetProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService GetProvisioningPolicyV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var id string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetProvisioningPolicyV2(context.Background(), sourceId, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -510,6 +553,20 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesAPIService ListProvisioningPoliciesV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.ListProvisioningPoliciesV2(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesAPIService ListSourcesV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -572,6 +629,21 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		var usageType Usagetype
 
 		resp, httpRes, err := apiClient.SourcesAPI.PutProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService PutProvisioningPolicyV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var id string
+
+		resp, httpRes, err := apiClient.SourcesAPI.PutProvisioningPolicyV2(context.Background(), sourceId, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -742,6 +814,21 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		var usageType Usagetype
 
 		resp, httpRes, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService UpdateProvisioningPolicyV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var id string
+
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV2(context.Background(), sourceId, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

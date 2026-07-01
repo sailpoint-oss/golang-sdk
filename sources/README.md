@@ -80,12 +80,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *SourcesAPI* | [**CreateProvisioningPolicyV1**](docs/SourcesAPI.md#createprovisioningpolicyv1) | **Post** /sources/v1/{sourceId}/provisioning-policies | Create provisioning policy
+*SourcesAPI* | [**CreateProvisioningPolicyV2**](docs/SourcesAPI.md#createprovisioningpolicyv2) | **Post** /sources/v2/{sourceId}/provisioning-policies | Create provisioning policy
 *SourcesAPI* | [**CreateSourceScheduleV1**](docs/SourcesAPI.md#createsourceschedulev1) | **Post** /sources/v1/{sourceId}/schedules | Create schedule on source
 *SourcesAPI* | [**CreateSourceSchemaV1**](docs/SourcesAPI.md#createsourceschemav1) | **Post** /sources/v1/{sourceId}/schemas | Create schema on source
 *SourcesAPI* | [**CreateSourceV1**](docs/SourcesAPI.md#createsourcev1) | **Post** /sources/v1 | Creates a source in identitynow.
 *SourcesAPI* | [**DeleteAccountsAsyncV1**](docs/SourcesAPI.md#deleteaccountsasyncv1) | **Post** /sources/v1/{id}/remove-accounts | Remove all accounts in source
 *SourcesAPI* | [**DeleteNativeChangeDetectionConfigV1**](docs/SourcesAPI.md#deletenativechangedetectionconfigv1) | **Delete** /sources/v1/{sourceId}/native-change-detection-config | Delete native change detection configuration
 *SourcesAPI* | [**DeleteProvisioningPolicyV1**](docs/SourcesAPI.md#deleteprovisioningpolicyv1) | **Delete** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Delete provisioning policy by usagetype
+*SourcesAPI* | [**DeleteProvisioningPolicyV2**](docs/SourcesAPI.md#deleteprovisioningpolicyv2) | **Delete** /sources/v2/{sourceId}/provisioning-policies/{id} | Delete provisioning policy by ID
 *SourcesAPI* | [**DeleteSourceScheduleV1**](docs/SourcesAPI.md#deletesourceschedulev1) | **Delete** /sources/v1/{sourceId}/schedules/{scheduleType} | Delete source schedule by type.
 *SourcesAPI* | [**DeleteSourceSchemaV1**](docs/SourcesAPI.md#deletesourceschemav1) | **Delete** /sources/v1/{sourceId}/schemas/{schemaId} | Delete source schema by id
 *SourcesAPI* | [**DeleteSourceV1**](docs/SourcesAPI.md#deletesourcev1) | **Delete** /sources/v1/{id} | Delete source by id
@@ -96,6 +98,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**GetMachineAccountDeletionApprovalConfigBySourceV1**](docs/SourcesAPI.md#getmachineaccountdeletionapprovalconfigbysourcev1) | **Get** /sources/v1/{sourceId}/approval-config/machine-account-delete | Machine Account Deletion Approval Config
 *SourcesAPI* | [**GetNativeChangeDetectionConfigV1**](docs/SourcesAPI.md#getnativechangedetectionconfigv1) | **Get** /sources/v1/{sourceId}/native-change-detection-config | Native change detection configuration
 *SourcesAPI* | [**GetProvisioningPolicyV1**](docs/SourcesAPI.md#getprovisioningpolicyv1) | **Get** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Get provisioning policy by usagetype
+*SourcesAPI* | [**GetProvisioningPolicyV2**](docs/SourcesAPI.md#getprovisioningpolicyv2) | **Get** /sources/v2/{sourceId}/provisioning-policies/{id} | Get provisioning policy by ID
 *SourcesAPI* | [**GetSourceAttrSyncConfigV1**](docs/SourcesAPI.md#getsourceattrsyncconfigv1) | **Get** /sources/v1/{id}/attribute-sync-config | Attribute sync config
 *SourcesAPI* | [**GetSourceConfigV1**](docs/SourcesAPI.md#getsourceconfigv1) | **Get** /sources/v1/{id}/connectors/source-config | Gets source config with language-translations
 *SourcesAPI* | [**GetSourceConnectionsV1**](docs/SourcesAPI.md#getsourceconnectionsv1) | **Get** /sources/v1/{sourceId}/connections | Get source connections by id
@@ -114,11 +117,13 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**ImportUncorrelatedAccountsV1**](docs/SourcesAPI.md#importuncorrelatedaccountsv1) | **Post** /sources/v1/{id}/load-uncorrelated-accounts | Process uncorrelated accounts
 *SourcesAPI* | [**ListPasswordPolicyHoldersOnSourceV1**](docs/SourcesAPI.md#listpasswordpolicyholdersonsourcev1) | **Get** /sources/v1/{sourceId}/password-policies | Get Password Policy for source
 *SourcesAPI* | [**ListProvisioningPoliciesV1**](docs/SourcesAPI.md#listprovisioningpoliciesv1) | **Get** /sources/v1/{sourceId}/provisioning-policies | Lists provisioningpolicies
+*SourcesAPI* | [**ListProvisioningPoliciesV2**](docs/SourcesAPI.md#listprovisioningpoliciesv2) | **Get** /sources/v2/{sourceId}/provisioning-policies | Lists Provisioning Policies
 *SourcesAPI* | [**ListSourcesV1**](docs/SourcesAPI.md#listsourcesv1) | **Get** /sources/v1 | Lists all sources in identitynow.
 *SourcesAPI* | [**PingClusterV1**](docs/SourcesAPI.md#pingclusterv1) | **Post** /sources/v1/{sourceId}/connector/ping-cluster | Ping cluster for source connector
 *SourcesAPI* | [**PutCorrelationConfigV1**](docs/SourcesAPI.md#putcorrelationconfigv1) | **Put** /sources/v1/{id}/correlation-config | Update source correlation configuration
 *SourcesAPI* | [**PutNativeChangeDetectionConfigV1**](docs/SourcesAPI.md#putnativechangedetectionconfigv1) | **Put** /sources/v1/{sourceId}/native-change-detection-config | Update native change detection configuration
 *SourcesAPI* | [**PutProvisioningPolicyV1**](docs/SourcesAPI.md#putprovisioningpolicyv1) | **Put** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Update provisioning policy by usagetype
+*SourcesAPI* | [**PutProvisioningPolicyV2**](docs/SourcesAPI.md#putprovisioningpolicyv2) | **Put** /sources/v2/{sourceId}/provisioning-policies/{id} | Update provisioning policy by ID
 *SourcesAPI* | [**PutSourceAttrSyncConfigV1**](docs/SourcesAPI.md#putsourceattrsyncconfigv1) | **Put** /sources/v1/{id}/attribute-sync-config | Update attribute sync config
 *SourcesAPI* | [**PutSourceSchemaV1**](docs/SourcesAPI.md#putsourceschemav1) | **Put** /sources/v1/{sourceId}/schemas/{schemaId} | Update source schema (full)
 *SourcesAPI* | [**PutSourceV1**](docs/SourcesAPI.md#putsourcev1) | **Put** /sources/v1/{id} | Update source (full)
@@ -131,6 +136,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**UpdatePasswordPolicyHoldersV1**](docs/SourcesAPI.md#updatepasswordpolicyholdersv1) | **Patch** /sources/v1/{sourceId}/password-policies | Update password policy
 *SourcesAPI* | [**UpdateProvisioningPoliciesInBulkV1**](docs/SourcesAPI.md#updateprovisioningpoliciesinbulkv1) | **Post** /sources/v1/{sourceId}/provisioning-policies/bulk-update | Bulk update provisioning policies
 *SourcesAPI* | [**UpdateProvisioningPolicyV1**](docs/SourcesAPI.md#updateprovisioningpolicyv1) | **Patch** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Partial update of provisioning policy
+*SourcesAPI* | [**UpdateProvisioningPolicyV2**](docs/SourcesAPI.md#updateprovisioningpolicyv2) | **Patch** /sources/v2/{sourceId}/provisioning-policies/{id} | Partial update of provisioning policy
 *SourcesAPI* | [**UpdateSourceEntitlementRequestConfigV1**](docs/SourcesAPI.md#updatesourceentitlementrequestconfigv1) | **Put** /sources/v1/{id}/entitlement-request-config | Update source entitlement request configuration
 *SourcesAPI* | [**UpdateSourceScheduleV1**](docs/SourcesAPI.md#updatesourceschedulev1) | **Patch** /sources/v1/{sourceId}/schedules/{scheduleType} | Update source schedule (partial)
 *SourcesAPI* | [**UpdateSourceSchemaV1**](docs/SourcesAPI.md#updatesourceschemav1) | **Patch** /sources/v1/{sourceId}/schemas/{schemaId} | Update source schema (partial)
@@ -172,6 +178,7 @@ Class | Method | HTTP request | Description
  - [Errormessagedto](docs/Errormessagedto.md)
  - [Errorresponsedto](docs/Errorresponsedto.md)
  - [Fielddetailsdto](docs/Fielddetailsdto.md)
+ - [Fielddetailsdtov2](docs/Fielddetailsdtov2.md)
  - [Identityprofilesconnections](docs/Identityprofilesconnections.md)
  - [ImportAccountsSchemaV1Request](docs/ImportAccountsSchemaV1Request.md)
  - [ImportAccountsV1Request](docs/ImportAccountsV1Request.md)
@@ -198,6 +205,7 @@ Class | Method | HTTP request | Description
  - [Passwordpolicyholdersdtoattributes](docs/Passwordpolicyholdersdtoattributes.md)
  - [PasswordpolicyholdersdtoattributesIdentityAttrInner](docs/PasswordpolicyholdersdtoattributesIdentityAttrInner.md)
  - [Provisioningpolicydto](docs/Provisioningpolicydto.md)
+ - [Provisioningpolicydtov2](docs/Provisioningpolicydtov2.md)
  - [Resourceobject](docs/Resourceobject.md)
  - [Resourceobjectsrequest](docs/Resourceobjectsrequest.md)
  - [Resourceobjectsresponse](docs/Resourceobjectsresponse.md)

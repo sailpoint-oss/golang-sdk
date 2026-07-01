@@ -66,6 +66,7 @@ import (
 	identity_attributes "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
 	identity_history "github.com/sailpoint-oss/golang-sdk/v3/identity_history"
 	identity_profiles "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	intelligence "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
 	jit_access "github.com/sailpoint-oss/golang-sdk/v3/jit_access"
 	jit_activations "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
 	launchers "github.com/sailpoint-oss/golang-sdk/v3/launchers"
@@ -201,6 +202,7 @@ type APIClient struct {
 	IdentityAttributesAPI *identity_attributes.IdentityAttributesAPIService
 	IdentityHistoryAPI *identity_history.IdentityHistoryAPIService
 	IdentityProfilesAPI *identity_profiles.IdentityProfilesAPIService
+	IntelligenceAPI *intelligence.IntelligenceAPIService
 	JITAccessAPI *jit_access.JITAccessAPIService
 	JITActivationsAPI *jit_activations.JITActivationsAPIService
 	LaunchersAPI *launchers.LaunchersAPIService
@@ -858,6 +860,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgIdentityProfiles.HTTPClient = cfg.HTTPClient
 	c.IdentityProfilesAPI = identity_profiles.NewAPIClient(_cfgIdentityProfiles).IdentityProfilesAPI
+
+	_cfgIntelligence := intelligence.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgIntelligence.HTTPClient = cfg.HTTPClient
+	c.IntelligenceAPI = intelligence.NewAPIClient(_cfgIntelligence).IntelligenceAPI
 
 	_cfgJITAccess := jit_access.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,

@@ -40,6 +40,7 @@ docs/Entitlementrevocationrequestconfig.md
 docs/Errormessagedto.md
 docs/Errorresponsedto.md
 docs/Fielddetailsdto.md
+docs/Fielddetailsdtov2.md
 docs/Identityprofilesconnections.md
 docs/ImportAccountsSchemaV1Request.md
 docs/ImportAccountsV1Request.md
@@ -67,6 +68,7 @@ docs/PasswordpolicyholdersdtoInner.md
 docs/Passwordpolicyholdersdtoattributes.md
 docs/PasswordpolicyholdersdtoattributesIdentityAttrInner.md
 docs/Provisioningpolicydto.md
+docs/Provisioningpolicydtov2.md
 docs/Resourceobject.md
 docs/Resourceobjectsrequest.md
 docs/Resourceobjectsresponse.md
@@ -131,6 +133,7 @@ model_entitlementrevocationrequestconfig.go
 model_errormessagedto.go
 model_errorresponsedto.go
 model_fielddetailsdto.go
+model_fielddetailsdtov2.go
 model_identityprofilesconnections.go
 model_import_accounts_schema_v1_request.go
 model_import_accounts_v1_request.go
@@ -157,6 +160,7 @@ model_passwordpolicyholdersdto_inner.go
 model_passwordpolicyholdersdtoattributes.go
 model_passwordpolicyholdersdtoattributes_identity_attr_inner.go
 model_provisioningpolicydto.go
+model_provisioningpolicydtov2.go
 model_resourceobject.go
 model_resourceobjectsrequest.go
 model_resourceobjectsresponse.go
