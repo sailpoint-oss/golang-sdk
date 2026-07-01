@@ -16,7 +16,7 @@
         {{#vendorExtensions.x-go-import}}
         {{{vendorExtensions.x-go-import}}}
         {{/vendorExtensions.x-go-import}}
-            {{#requiredAndNotNullableParams}}{{#isBodyParam}}{{apiVersion}} "{{moduleImportPath}}"{{/isBodyParam}}{{/requiredAndNotNullableParams}}
+            {{#requiredAndNotNullableParams}}{{#isBodyParam}}{{packageName}} "{{moduleImportPath}}"{{/isBodyParam}}{{/requiredAndNotNullableParams}}
           sailpoint "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}"
         )
 
@@ -24,7 +24,7 @@
           {{#allParams}}
           {{^isArray}}
           {{#isModel}}
-           {{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}} := []byte(`{{#lambda.indented_8}}{{#requestBodyExamples}}{{{example}}}{{/requestBodyExamples}}{{^requestBodyExamples}}{{#example}}{{{example}}}{{/example}}{{/requestBodyExamples}}`) // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}{{/lambda.indented_8}}
+           {{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}}Json := []byte(`{{#lambda.indented_8}}{{#requestBodyExamples}}{{{example}}}{{/requestBodyExamples}}{{^requestBodyExamples}}{{#example}}{{{example}}}{{/example}}{{/requestBodyExamples}}`) // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}{{/lambda.indented_8}}
           {{/isModel}}
           {{^isModel}}
           {{paramName}} := {{#isString}}`{{/isString}}{{{example}}}{{#isString}}`{{/isString}} // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
@@ -32,7 +32,7 @@
           {{/isArray}}
           {{#isArray}}
           {{#items.isModel}}
-          {{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}} := []byte(`{{{example}}}`) // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+          {{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}}Json := []byte(`{{{example}}}`) // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
           {{/items.isModel}}
           {{^items.isModel}}
           {{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}} := []byte(`{{{example}}}`) // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
@@ -41,8 +41,8 @@
           {{/allParams}}
 
           {{#requiredAndNotNullableParams}}{{#isBodyParam}}
-          var {{paramName}} {{#isArray}}[]{{/isArray}}{{apiVersion}}.{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}
-          if err := json.Unmarshal({{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}}, &{{paramName}}); err != nil {
+          var {{paramName}} {{#isArray}}[]{{/isArray}}{{packageName}}.{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}
+          if err := json.Unmarshal({{#lambda.lowercase}}{{paramName}}{{/lambda.lowercase}}Json, &{{paramName}}); err != nil {
             fmt.Println("Error:", err)
             return
           }
