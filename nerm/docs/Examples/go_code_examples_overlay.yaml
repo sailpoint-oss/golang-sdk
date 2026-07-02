@@ -11,8 +11,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -44,17 +44,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           submitadvancedsearchrequest := []byte(``) // SubmitAdvancedSearchRequest | 
+           submitadvancedsearchrequestJson := []byte(``) // SubmitAdvancedSearchRequest | 
 
           
-          var submitAdvancedSearchRequest NERM.SubmitAdvancedSearchRequest
-          if err := json.Unmarshal(submitadvancedsearchrequest, &submitAdvancedSearchRequest); err != nil {
+          var submitAdvancedSearchRequest nerm.SubmitAdvancedSearchRequest
+          if err := json.Unmarshal(submitadvancedsearchrequestJson, &submitAdvancedSearchRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -85,19 +85,19 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitadvancedsearchrequest := []byte(``) // SubmitAdvancedSearchRequest | 
+           submitadvancedsearchrequestJson := []byte(``) // SubmitAdvancedSearchRequest | 
           limit := 5 // int32 | The maximum number of items to return. (optional) # int32 | The maximum number of items to return. (optional)
           offset := 5 // int32 | The number of items to skip before starting to collect the result set. (optional) # int32 | The number of items to skip before starting to collect the result set. (optional)
           order := `created_at` // string | The field to order results by. (optional) # string | The field to order results by. (optional)
 
           
-          var submitAdvancedSearchRequest NERM.SubmitAdvancedSearchRequest
-          if err := json.Unmarshal(submitadvancedsearchrequest, &submitAdvancedSearchRequest); err != nil {
+          var submitAdvancedSearchRequest nerm.SubmitAdvancedSearchRequest
+          if err := json.Unmarshal(submitadvancedsearchrequestJson, &submitAdvancedSearchRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -128,8 +128,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -165,16 +165,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitadvancedsearchrequest := []byte(``) // SubmitAdvancedSearchRequest | 
+           submitadvancedsearchrequestJson := []byte(``) // SubmitAdvancedSearchRequest | 
 
           
-          var submitAdvancedSearchRequest NERM.SubmitAdvancedSearchRequest
-          if err := json.Unmarshal(submitadvancedsearchrequest, &submitAdvancedSearchRequest); err != nil {
+          var submitAdvancedSearchRequest nerm.SubmitAdvancedSearchRequest
+          if err := json.Unmarshal(submitadvancedsearchrequestJson, &submitAdvancedSearchRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -205,8 +205,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -239,8 +239,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -273,8 +273,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -307,8 +307,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -341,8 +341,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -379,17 +379,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           submitattributeoptionrequest := []byte(``) // SubmitAttributeOptionRequest | 
+           submitattributeoptionrequestJson := []byte(``) // SubmitAttributeOptionRequest | 
 
           
-          var submitAttributeOptionRequest NERM.SubmitAttributeOptionRequest
-          if err := json.Unmarshal(submitattributeoptionrequest, &submitAttributeOptionRequest); err != nil {
+          var submitAttributeOptionRequest nerm.SubmitAttributeOptionRequest
+          if err := json.Unmarshal(submitattributeoptionrequestJson, &submitAttributeOptionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -420,17 +420,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitattributeoptionrequest := []byte(``) // SubmitAttributeOptionRequest | 
+           submitattributeoptionrequestJson := []byte(``) // SubmitAttributeOptionRequest | 
           uid := `middle_initial_attribute` // string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional) # string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional)
 
           
-          var submitAttributeOptionRequest NERM.SubmitAttributeOptionRequest
-          if err := json.Unmarshal(submitattributeoptionrequest, &submitAttributeOptionRequest); err != nil {
+          var submitAttributeOptionRequest nerm.SubmitAttributeOptionRequest
+          if err := json.Unmarshal(submitattributeoptionrequestJson, &submitAttributeOptionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -461,16 +461,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitattributeoptionsrequest := []byte(``) // SubmitAttributeOptionsRequest | 
+           submitattributeoptionsrequestJson := []byte(``) // SubmitAttributeOptionsRequest | 
 
           
-          var submitAttributeOptionsRequest NERM.SubmitAttributeOptionsRequest
-          if err := json.Unmarshal(submitattributeoptionsrequest, &submitAttributeOptionsRequest); err != nil {
+          var submitAttributeOptionsRequest nerm.SubmitAttributeOptionsRequest
+          if err := json.Unmarshal(submitattributeoptionsrequestJson, &submitAttributeOptionsRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -501,16 +501,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitattributeoptionrequest := []byte(``) // SubmitAttributeOptionRequest | 
+           submitattributeoptionrequestJson := []byte(``) // SubmitAttributeOptionRequest | 
 
           
-          var submitAttributeOptionRequest NERM.SubmitAttributeOptionRequest
-          if err := json.Unmarshal(submitattributeoptionrequest, &submitAttributeOptionRequest); err != nil {
+          var submitAttributeOptionRequest nerm.SubmitAttributeOptionRequest
+          if err := json.Unmarshal(submitattributeoptionrequestJson, &submitAttributeOptionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -541,16 +541,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitattributeoptionsrequest := []byte(``) // SubmitAttributeOptionsRequest | 
+           submitattributeoptionsrequestJson := []byte(``) // SubmitAttributeOptionsRequest | 
 
           
-          var submitAttributeOptionsRequest NERM.SubmitAttributeOptionsRequest
-          if err := json.Unmarshal(submitattributeoptionsrequest, &submitAttributeOptionsRequest); err != nil {
+          var submitAttributeOptionsRequest nerm.SubmitAttributeOptionsRequest
+          if err := json.Unmarshal(submitattributeoptionsrequestJson, &submitAttributeOptionsRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -581,16 +581,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createattributerequest := []byte(``) // CreateAttributeRequest | 
+           createattributerequestJson := []byte(``) // CreateAttributeRequest | 
 
           
-          var createAttributeRequest NERM.CreateAttributeRequest
-          if err := json.Unmarshal(createattributerequest, &createAttributeRequest); err != nil {
+          var createAttributeRequest nerm.CreateAttributeRequest
+          if err := json.Unmarshal(createattributerequestJson, &createAttributeRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -621,8 +621,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -655,8 +655,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -689,8 +689,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -723,8 +723,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -757,8 +757,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -796,17 +796,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           createattributerequest := []byte(``) // CreateAttributeRequest | 
+           createattributerequestJson := []byte(``) // CreateAttributeRequest | 
 
           
-          var createAttributeRequest NERM.CreateAttributeRequest
-          if err := json.Unmarshal(createattributerequest, &createAttributeRequest); err != nil {
+          var createAttributeRequest nerm.CreateAttributeRequest
+          if err := json.Unmarshal(createattributerequestJson, &createAttributeRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -837,17 +837,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createattributerequest := []byte(``) // CreateAttributeRequest | 
+           createattributerequestJson := []byte(``) // CreateAttributeRequest | 
           uid := `middle_initial_attribute` // string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional) # string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional)
 
           
-          var createAttributeRequest NERM.CreateAttributeRequest
-          if err := json.Unmarshal(createattributerequest, &createAttributeRequest); err != nil {
+          var createAttributeRequest nerm.CreateAttributeRequest
+          if err := json.Unmarshal(createattributerequestJson, &createAttributeRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -878,16 +878,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           searchrequest := []byte(``) // SearchRequest | 
+           searchrequestJson := []byte(``) // SearchRequest | 
 
           
-          var searchRequest NERM.SearchRequest
-          if err := json.Unmarshal(searchrequest, &searchRequest); err != nil {
+          var searchRequest nerm.SearchRequest
+          if err := json.Unmarshal(searchrequestJson, &searchRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -918,8 +918,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -950,19 +950,19 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           datarecords := []byte(`{
+           datarecordsJson := []byte(`{
           "master_record_id" : "456738c9ba999a0076cf8a9b"
         }`) // DataRecords | 
 
           
-          var dataRecords NERM.DataRecords
-          if err := json.Unmarshal(datarecords, &dataRecords); err != nil {
+          var dataRecords nerm.DataRecords
+          if err := json.Unmarshal(datarecordsJson, &dataRecords); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -991,8 +991,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1030,8 +1030,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1062,8 +1062,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1096,17 +1096,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           delegationspostrequest := []byte(``) // DelegationsPostRequest | 
+           delegationspostrequestJson := []byte(``) // DelegationsPostRequest | 
 
           
-          var delegationsPostRequest NERM.DelegationsPostRequest
-          if err := json.Unmarshal(delegationspostrequest, &delegationsPostRequest); err != nil {
+          var delegationsPostRequest nerm.DelegationsPostRequest
+          if err := json.Unmarshal(delegationspostrequestJson, &delegationsPostRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -1137,16 +1137,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           delegationspostrequest := []byte(``) // DelegationsPostRequest | 
+           delegationspostrequestJson := []byte(``) // DelegationsPostRequest | 
 
           
-          var delegationsPostRequest NERM.DelegationsPostRequest
-          if err := json.Unmarshal(delegationspostrequest, &delegationsPostRequest); err != nil {
+          var delegationsPostRequest nerm.DelegationsPostRequest
+          if err := json.Unmarshal(delegationspostrequestJson, &delegationsPostRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -1177,16 +1177,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createformattributerequest := []byte(``) // CreateFormAttributeRequest | 
+           createformattributerequestJson := []byte(``) // CreateFormAttributeRequest | 
 
           
-          var createFormAttributeRequest NERM.CreateFormAttributeRequest
-          if err := json.Unmarshal(createformattributerequest, &createFormAttributeRequest); err != nil {
+          var createFormAttributeRequest nerm.CreateFormAttributeRequest
+          if err := json.Unmarshal(createformattributerequestJson, &createFormAttributeRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -1217,8 +1217,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1251,8 +1251,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1285,8 +1285,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1319,8 +1319,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1353,8 +1353,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1386,17 +1386,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           createformattributerequest := []byte(``) // CreateFormAttributeRequest | 
+           createformattributerequestJson := []byte(``) // CreateFormAttributeRequest | 
 
           
-          var createFormAttributeRequest NERM.CreateFormAttributeRequest
-          if err := json.Unmarshal(createformattributerequest, &createFormAttributeRequest); err != nil {
+          var createFormAttributeRequest nerm.CreateFormAttributeRequest
+          if err := json.Unmarshal(createformattributerequestJson, &createFormAttributeRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -1427,17 +1427,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createformattributerequest := []byte(``) // CreateFormAttributeRequest | 
+           createformattributerequestJson := []byte(``) // CreateFormAttributeRequest | 
           uid := `middle_initial_attribute` // string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional) # string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional)
 
           
-          var createFormAttributeRequest NERM.CreateFormAttributeRequest
-          if err := json.Unmarshal(createformattributerequest, &createFormAttributeRequest); err != nil {
+          var createFormAttributeRequest nerm.CreateFormAttributeRequest
+          if err := json.Unmarshal(createformattributerequestJson, &createFormAttributeRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -1468,16 +1468,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createformrequest := []byte(``) // CreateFormRequest | 
+           createformrequestJson := []byte(``) // CreateFormRequest | 
 
           
-          var createFormRequest NERM.CreateFormRequest
-          if err := json.Unmarshal(createformrequest, &createFormRequest); err != nil {
+          var createFormRequest nerm.CreateFormRequest
+          if err := json.Unmarshal(createformrequestJson, &createFormRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -1508,8 +1508,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1542,8 +1542,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1576,8 +1576,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1610,8 +1610,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1644,8 +1644,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1677,17 +1677,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           updateformbyidrequest := []byte(``) // UpdateFormByIdRequest | 
+           updateformbyidrequestJson := []byte(``) // UpdateFormByIdRequest | 
 
           
-          var updateFormByIdRequest NERM.UpdateFormByIdRequest
-          if err := json.Unmarshal(updateformbyidrequest, &updateFormByIdRequest); err != nil {
+          var updateFormByIdRequest nerm.UpdateFormByIdRequest
+          if err := json.Unmarshal(updateformbyidrequestJson, &updateFormByIdRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -1718,17 +1718,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           updateformbyidrequest := []byte(``) // UpdateFormByIdRequest | 
+           updateformbyidrequestJson := []byte(``) // UpdateFormByIdRequest | 
           uid := `middle_initial_attribute` // string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional) # string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional)
 
           
-          var updateFormByIdRequest NERM.UpdateFormByIdRequest
-          if err := json.Unmarshal(updateformbyidrequest, &updateFormByIdRequest); err != nil {
+          var updateFormByIdRequest nerm.UpdateFormByIdRequest
+          if err := json.Unmarshal(updateformbyidrequestJson, &updateFormByIdRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -1759,8 +1759,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1799,8 +1799,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1838,8 +1838,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1872,13 +1872,13 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           updateprofilerequest := []byte(``) // UpdateProfileRequest |  (optional)
+           updateprofilerequestJson := []byte(``) // UpdateProfileRequest |  (optional)
 
           
 
@@ -1907,8 +1907,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -1941,17 +1941,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           languageLocale := `es` // string | Language locale of the object # string | Language locale of the object
-           patchlanguagerequest := []byte(``) // PatchLanguageRequest | 
+           patchlanguagerequestJson := []byte(``) // PatchLanguageRequest | 
 
           
-          var patchLanguageRequest NERM.PatchLanguageRequest
-          if err := json.Unmarshal(patchlanguagerequest, &patchLanguageRequest); err != nil {
+          var patchLanguageRequest nerm.PatchLanguageRequest
+          if err := json.Unmarshal(patchlanguagerequestJson, &patchLanguageRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -1982,16 +1982,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createpagecontenttranslationrequest := []byte(``) // CreatePageContentTranslationRequest | 
+           createpagecontenttranslationrequestJson := []byte(``) // CreatePageContentTranslationRequest | 
 
           
-          var createPageContentTranslationRequest NERM.CreatePageContentTranslationRequest
-          if err := json.Unmarshal(createpagecontenttranslationrequest, &createPageContentTranslationRequest); err != nil {
+          var createPageContentTranslationRequest nerm.CreatePageContentTranslationRequest
+          if err := json.Unmarshal(createpagecontenttranslationrequestJson, &createPageContentTranslationRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2022,8 +2022,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2056,8 +2056,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2090,8 +2090,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2123,8 +2123,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2157,8 +2157,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2191,17 +2191,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           updatepagecontenttranslationbyidrequest := []byte(``) // UpdatePageContentTranslationByIdRequest | 
+           updatepagecontenttranslationbyidrequestJson := []byte(``) // UpdatePageContentTranslationByIdRequest | 
 
           
-          var updatePageContentTranslationByIdRequest NERM.UpdatePageContentTranslationByIdRequest
-          if err := json.Unmarshal(updatepagecontenttranslationbyidrequest, &updatePageContentTranslationByIdRequest); err != nil {
+          var updatePageContentTranslationByIdRequest nerm.UpdatePageContentTranslationByIdRequest
+          if err := json.Unmarshal(updatepagecontenttranslationbyidrequestJson, &updatePageContentTranslationByIdRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2232,17 +2232,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           updatepagecontenttranslationbyidrequest := []byte(``) // UpdatePageContentTranslationByIdRequest | 
+           updatepagecontenttranslationbyidrequestJson := []byte(``) // UpdatePageContentTranslationByIdRequest | 
           uid := `middle_initial_attribute` // string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional) # string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional)
 
           
-          var updatePageContentTranslationByIdRequest NERM.UpdatePageContentTranslationByIdRequest
-          if err := json.Unmarshal(updatepagecontenttranslationbyidrequest, &updatePageContentTranslationByIdRequest); err != nil {
+          var updatePageContentTranslationByIdRequest nerm.UpdatePageContentTranslationByIdRequest
+          if err := json.Unmarshal(updatepagecontenttranslationbyidrequestJson, &updatePageContentTranslationByIdRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2273,16 +2273,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createpagecontentrequest := []byte(``) // CreatePageContentRequest | 
+           createpagecontentrequestJson := []byte(``) // CreatePageContentRequest | 
 
           
-          var createPageContentRequest NERM.CreatePageContentRequest
-          if err := json.Unmarshal(createpagecontentrequest, &createPageContentRequest); err != nil {
+          var createPageContentRequest nerm.CreatePageContentRequest
+          if err := json.Unmarshal(createpagecontentrequestJson, &createPageContentRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2313,8 +2313,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2347,8 +2347,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2381,8 +2381,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2415,8 +2415,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2449,8 +2449,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2482,17 +2482,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           createpagecontentrequest := []byte(``) // CreatePageContentRequest | 
+           createpagecontentrequestJson := []byte(``) // CreatePageContentRequest | 
 
           
-          var createPageContentRequest NERM.CreatePageContentRequest
-          if err := json.Unmarshal(createpagecontentrequest, &createPageContentRequest); err != nil {
+          var createPageContentRequest nerm.CreatePageContentRequest
+          if err := json.Unmarshal(createpagecontentrequestJson, &createPageContentRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2523,17 +2523,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createpagecontentrequest := []byte(``) // CreatePageContentRequest | 
+           createpagecontentrequestJson := []byte(``) // CreatePageContentRequest | 
           uid := `middle_initial_attribute` // string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional) # string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional)
 
           
-          var createPageContentRequest NERM.CreatePageContentRequest
-          if err := json.Unmarshal(createpagecontentrequest, &createPageContentRequest); err != nil {
+          var createPageContentRequest nerm.CreatePageContentRequest
+          if err := json.Unmarshal(createpagecontentrequestJson, &createPageContentRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2564,16 +2564,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createpageelementrequest := []byte(``) // CreatePageElementRequest | 
+           createpageelementrequestJson := []byte(``) // CreatePageElementRequest | 
 
           
-          var createPageElementRequest NERM.CreatePageElementRequest
-          if err := json.Unmarshal(createpageelementrequest, &createPageElementRequest); err != nil {
+          var createPageElementRequest nerm.CreatePageElementRequest
+          if err := json.Unmarshal(createpageelementrequestJson, &createPageElementRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2604,8 +2604,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2638,8 +2638,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2672,8 +2672,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2706,8 +2706,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2740,8 +2740,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -2773,17 +2773,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           createpageelementrequest := []byte(``) // CreatePageElementRequest | 
+           createpageelementrequestJson := []byte(``) // CreatePageElementRequest | 
 
           
-          var createPageElementRequest NERM.CreatePageElementRequest
-          if err := json.Unmarshal(createpageelementrequest, &createPageElementRequest); err != nil {
+          var createPageElementRequest nerm.CreatePageElementRequest
+          if err := json.Unmarshal(createpageelementrequestJson, &createPageElementRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2814,17 +2814,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createpageelementrequest := []byte(``) // CreatePageElementRequest | 
+           createpageelementrequestJson := []byte(``) // CreatePageElementRequest | 
           uid := `middle_initial_attribute` // string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional) # string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional)
 
           
-          var createPageElementRequest NERM.CreatePageElementRequest
-          if err := json.Unmarshal(createpageelementrequest, &createPageElementRequest); err != nil {
+          var createPageElementRequest nerm.CreatePageElementRequest
+          if err := json.Unmarshal(createpageelementrequestJson, &createPageElementRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2855,16 +2855,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createprofilepagerequest := []byte(``) // CreateProfilePageRequest | 
+           createprofilepagerequestJson := []byte(``) // CreateProfilePageRequest | 
 
           
-          var createProfilePageRequest NERM.CreateProfilePageRequest
-          if err := json.Unmarshal(createprofilepagerequest, &createProfilePageRequest); err != nil {
+          var createProfilePageRequest nerm.CreateProfilePageRequest
+          if err := json.Unmarshal(createprofilepagerequestJson, &createProfilePageRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2895,16 +2895,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createworkflowpagerequest := []byte(``) // CreateWorkflowPageRequest | 
+           createworkflowpagerequestJson := []byte(``) // CreateWorkflowPageRequest | 
 
           
-          var createWorkflowPageRequest NERM.CreateWorkflowPageRequest
-          if err := json.Unmarshal(createworkflowpagerequest, &createWorkflowPageRequest); err != nil {
+          var createWorkflowPageRequest nerm.CreateWorkflowPageRequest
+          if err := json.Unmarshal(createworkflowpagerequestJson, &createWorkflowPageRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2935,16 +2935,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createpermissionrequest := []byte(``) // CreatePermissionRequest | 
+           createpermissionrequestJson := []byte(``) // CreatePermissionRequest | 
 
           
-          var createPermissionRequest NERM.CreatePermissionRequest
-          if err := json.Unmarshal(createpermissionrequest, &createPermissionRequest); err != nil {
+          var createPermissionRequest nerm.CreatePermissionRequest
+          if err := json.Unmarshal(createpermissionrequestJson, &createPermissionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -2975,16 +2975,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createprofiletyperolerequest := []byte(``) // CreateProfileTypeRoleRequest | 
+           createprofiletyperolerequestJson := []byte(``) // CreateProfileTypeRoleRequest | 
 
           
-          var createProfileTypeRoleRequest NERM.CreateProfileTypeRoleRequest
-          if err := json.Unmarshal(createprofiletyperolerequest, &createProfileTypeRoleRequest); err != nil {
+          var createProfileTypeRoleRequest nerm.CreateProfileTypeRoleRequest
+          if err := json.Unmarshal(createprofiletyperolerequestJson, &createProfileTypeRoleRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -3015,8 +3015,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3049,8 +3049,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3083,8 +3083,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3117,8 +3117,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3151,8 +3151,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3190,17 +3190,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           submitprofiletyperequest := []byte(``) // SubmitProfileTypeRequest | 
+           submitprofiletyperequestJson := []byte(``) // SubmitProfileTypeRequest | 
 
           
-          var submitProfileTypeRequest NERM.SubmitProfileTypeRequest
-          if err := json.Unmarshal(submitprofiletyperequest, &submitProfileTypeRequest); err != nil {
+          var submitProfileTypeRequest nerm.SubmitProfileTypeRequest
+          if err := json.Unmarshal(submitprofiletyperequestJson, &submitProfileTypeRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -3231,17 +3231,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitprofiletyperequest := []byte(``) // SubmitProfileTypeRequest | 
+           submitprofiletyperequestJson := []byte(``) // SubmitProfileTypeRequest | 
           uid := `middle_initial_attribute` // string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional) # string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional)
 
           
-          var submitProfileTypeRequest NERM.SubmitProfileTypeRequest
-          if err := json.Unmarshal(submitprofiletyperequest, &submitProfileTypeRequest); err != nil {
+          var submitProfileTypeRequest nerm.SubmitProfileTypeRequest
+          if err := json.Unmarshal(submitprofiletyperequestJson, &submitProfileTypeRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -3272,16 +3272,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitprofiletyperequest := []byte(``) // SubmitProfileTypeRequest | 
+           submitprofiletyperequestJson := []byte(``) // SubmitProfileTypeRequest | 
 
           
-          var submitProfileTypeRequest NERM.SubmitProfileTypeRequest
-          if err := json.Unmarshal(submitprofiletyperequest, &submitProfileTypeRequest); err != nil {
+          var submitProfileTypeRequest nerm.SubmitProfileTypeRequest
+          if err := json.Unmarshal(submitprofiletyperequestJson, &submitProfileTypeRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -3312,16 +3312,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createprofilesrequest := []byte(``) // CreateProfilesRequest | 
+           createprofilesrequestJson := []byte(``) // CreateProfilesRequest | 
 
           
-          var createProfilesRequest NERM.CreateProfilesRequest
-          if err := json.Unmarshal(createprofilesrequest, &createProfilesRequest); err != nil {
+          var createProfilesRequest nerm.CreateProfilesRequest
+          if err := json.Unmarshal(createprofilesrequestJson, &createProfilesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -3352,8 +3352,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3384,16 +3384,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createprofilesrequest := []byte(``) // CreateProfilesRequest | 
+           createprofilesrequestJson := []byte(``) // CreateProfilesRequest | 
 
           
-          var createProfilesRequest NERM.CreateProfilesRequest
-          if err := json.Unmarshal(createprofilesrequest, &createProfilesRequest); err != nil {
+          var createProfilesRequest nerm.CreateProfilesRequest
+          if err := json.Unmarshal(createprofilesrequestJson, &createProfilesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -3424,8 +3424,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3458,8 +3458,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3492,8 +3492,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3528,8 +3528,8 @@
           "os"
             
             "time"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3571,17 +3571,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           submitprofilerequest := []byte(``) // SubmitProfileRequest | 
+           submitprofilerequestJson := []byte(``) // SubmitProfileRequest | 
 
           
-          var submitProfileRequest NERM.SubmitProfileRequest
-          if err := json.Unmarshal(submitprofilerequest, &submitProfileRequest); err != nil {
+          var submitProfileRequest nerm.SubmitProfileRequest
+          if err := json.Unmarshal(submitprofilerequestJson, &submitProfileRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -3612,16 +3612,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createprofilesrequest := []byte(``) // CreateProfilesRequest | 
+           createprofilesrequestJson := []byte(``) // CreateProfilesRequest | 
 
           
-          var createProfilesRequest NERM.CreateProfilesRequest
-          if err := json.Unmarshal(createprofilesrequest, &createProfilesRequest); err != nil {
+          var createProfilesRequest nerm.CreateProfilesRequest
+          if err := json.Unmarshal(createprofilesrequestJson, &createProfilesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -3652,16 +3652,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitprofilerequest := []byte(``) // SubmitProfileRequest | 
+           submitprofilerequestJson := []byte(``) // SubmitProfileRequest | 
 
           
-          var submitProfileRequest NERM.SubmitProfileRequest
-          if err := json.Unmarshal(submitprofilerequest, &submitProfileRequest); err != nil {
+          var submitProfileRequest nerm.SubmitProfileRequest
+          if err := json.Unmarshal(submitprofilerequestJson, &submitProfileRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -3692,8 +3692,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3727,8 +3727,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3763,8 +3763,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3797,8 +3797,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3835,8 +3835,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3869,8 +3869,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3911,8 +3911,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3945,8 +3945,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -3979,8 +3979,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -4018,17 +4018,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           submitroleprofilerequest := []byte(``) // SubmitRoleProfileRequest | 
+           submitroleprofilerequestJson := []byte(``) // SubmitRoleProfileRequest | 
 
           
-          var submitRoleProfileRequest NERM.SubmitRoleProfileRequest
-          if err := json.Unmarshal(submitroleprofilerequest, &submitRoleProfileRequest); err != nil {
+          var submitRoleProfileRequest nerm.SubmitRoleProfileRequest
+          if err := json.Unmarshal(submitroleprofilerequestJson, &submitRoleProfileRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4059,16 +4059,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitroleprofilesrequest := []byte(``) // SubmitRoleProfilesRequest | 
+           submitroleprofilesrequestJson := []byte(``) // SubmitRoleProfilesRequest | 
 
           
-          var submitRoleProfilesRequest NERM.SubmitRoleProfilesRequest
-          if err := json.Unmarshal(submitroleprofilesrequest, &submitRoleProfilesRequest); err != nil {
+          var submitRoleProfilesRequest nerm.SubmitRoleProfilesRequest
+          if err := json.Unmarshal(submitroleprofilesrequestJson, &submitRoleProfilesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4099,16 +4099,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitroleprofilerequest := []byte(``) // SubmitRoleProfileRequest | 
+           submitroleprofilerequestJson := []byte(``) // SubmitRoleProfileRequest | 
 
           
-          var submitRoleProfileRequest NERM.SubmitRoleProfileRequest
-          if err := json.Unmarshal(submitroleprofilerequest, &submitRoleProfileRequest); err != nil {
+          var submitRoleProfileRequest nerm.SubmitRoleProfileRequest
+          if err := json.Unmarshal(submitroleprofilerequestJson, &submitRoleProfileRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4139,16 +4139,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitroleprofilesrequest := []byte(``) // SubmitRoleProfilesRequest | 
+           submitroleprofilesrequestJson := []byte(``) // SubmitRoleProfilesRequest | 
 
           
-          var submitRoleProfilesRequest NERM.SubmitRoleProfilesRequest
-          if err := json.Unmarshal(submitroleprofilesrequest, &submitRoleProfilesRequest); err != nil {
+          var submitRoleProfilesRequest nerm.SubmitRoleProfilesRequest
+          if err := json.Unmarshal(submitroleprofilesrequestJson, &submitRoleProfilesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4179,8 +4179,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -4213,8 +4213,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -4251,17 +4251,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           submitrolerequest := []byte(``) // SubmitRoleRequest | 
+           submitrolerequestJson := []byte(``) // SubmitRoleRequest | 
 
           
-          var submitRoleRequest NERM.SubmitRoleRequest
-          if err := json.Unmarshal(submitrolerequest, &submitRoleRequest); err != nil {
+          var submitRoleRequest nerm.SubmitRoleRequest
+          if err := json.Unmarshal(submitrolerequestJson, &submitRoleRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4292,16 +4292,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitrolesrequest := []byte(``) // SubmitRolesRequest | 
+           submitrolesrequestJson := []byte(``) // SubmitRolesRequest | 
 
           
-          var submitRolesRequest NERM.SubmitRolesRequest
-          if err := json.Unmarshal(submitrolesrequest, &submitRolesRequest); err != nil {
+          var submitRolesRequest nerm.SubmitRolesRequest
+          if err := json.Unmarshal(submitrolesrequestJson, &submitRolesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4332,16 +4332,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitrolerequest := []byte(``) // SubmitRoleRequest | 
+           submitrolerequestJson := []byte(``) // SubmitRoleRequest | 
 
           
-          var submitRoleRequest NERM.SubmitRoleRequest
-          if err := json.Unmarshal(submitrolerequest, &submitRoleRequest); err != nil {
+          var submitRoleRequest nerm.SubmitRoleRequest
+          if err := json.Unmarshal(submitrolerequestJson, &submitRoleRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4372,16 +4372,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitrolesrequest := []byte(``) // SubmitRolesRequest | 
+           submitrolesrequestJson := []byte(``) // SubmitRolesRequest | 
 
           
-          var submitRolesRequest NERM.SubmitRolesRequest
-          if err := json.Unmarshal(submitrolesrequest, &submitRolesRequest); err != nil {
+          var submitRolesRequest nerm.SubmitRolesRequest
+          if err := json.Unmarshal(submitrolesrequestJson, &submitRolesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4412,16 +4412,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           syncedattribute1 := []byte(`Object`) // SyncedAttribute1 | 
+           syncedattribute1Json := []byte(`Object`) // SyncedAttribute1 | 
 
           
-          var syncedAttribute1 NERM.SyncedAttribute1
-          if err := json.Unmarshal(syncedattribute1, &syncedAttribute1); err != nil {
+          var syncedAttribute1 nerm.SyncedAttribute1
+          if err := json.Unmarshal(syncedattribute1Json, &syncedAttribute1); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4452,8 +4452,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -4487,8 +4487,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -4496,7 +4496,7 @@
           activeFilter := `all` // string | Filter for profile type synced attributes (optional) # string | Filter for profile type synced attributes (optional)
           search := `search` // string | Filter by string (optional) # string | Filter by string (optional)
           page := 5 // int32 | Pagination items per page (optional) # int32 | Pagination items per page (optional)
-           sort := []byte(``) // GetProfileTypeAttributesSortParameter | How records should be sorted (optional)
+           sortJson := []byte(``) // GetProfileTypeAttributesSortParameter | How records should be sorted (optional)
 
           
 
@@ -4525,16 +4525,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createsystemrolepermissionrequest := []byte(``) // CreateSystemRolePermissionRequest | 
+           createsystemrolepermissionrequestJson := []byte(``) // CreateSystemRolePermissionRequest | 
 
           
-          var createSystemRolePermissionRequest NERM.CreateSystemRolePermissionRequest
-          if err := json.Unmarshal(createsystemrolepermissionrequest, &createSystemRolePermissionRequest); err != nil {
+          var createSystemRolePermissionRequest nerm.CreateSystemRolePermissionRequest
+          if err := json.Unmarshal(createsystemrolepermissionrequestJson, &createSystemRolePermissionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4565,8 +4565,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -4602,8 +4602,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -4636,8 +4636,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -4675,17 +4675,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           submitusermanagerrequest := []byte(``) // SubmitUserManagerRequest | 
+           submitusermanagerrequestJson := []byte(``) // SubmitUserManagerRequest | 
 
           
-          var submitUserManagerRequest NERM.SubmitUserManagerRequest
-          if err := json.Unmarshal(submitusermanagerrequest, &submitUserManagerRequest); err != nil {
+          var submitUserManagerRequest nerm.SubmitUserManagerRequest
+          if err := json.Unmarshal(submitusermanagerrequestJson, &submitUserManagerRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4716,16 +4716,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitusermanagersrequest := []byte(``) // SubmitUserManagersRequest | 
+           submitusermanagersrequestJson := []byte(``) // SubmitUserManagersRequest | 
 
           
-          var submitUserManagersRequest NERM.SubmitUserManagersRequest
-          if err := json.Unmarshal(submitusermanagersrequest, &submitUserManagersRequest); err != nil {
+          var submitUserManagersRequest nerm.SubmitUserManagersRequest
+          if err := json.Unmarshal(submitusermanagersrequestJson, &submitUserManagersRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4756,16 +4756,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitusermanagerrequest := []byte(``) // SubmitUserManagerRequest | 
+           submitusermanagerrequestJson := []byte(``) // SubmitUserManagerRequest | 
 
           
-          var submitUserManagerRequest NERM.SubmitUserManagerRequest
-          if err := json.Unmarshal(submitusermanagerrequest, &submitUserManagerRequest); err != nil {
+          var submitUserManagerRequest nerm.SubmitUserManagerRequest
+          if err := json.Unmarshal(submitusermanagerrequestJson, &submitUserManagerRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4796,16 +4796,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitusermanagersrequest := []byte(``) // SubmitUserManagersRequest | 
+           submitusermanagersrequestJson := []byte(``) // SubmitUserManagersRequest | 
 
           
-          var submitUserManagersRequest NERM.SubmitUserManagersRequest
-          if err := json.Unmarshal(submitusermanagersrequest, &submitUserManagersRequest); err != nil {
+          var submitUserManagersRequest nerm.SubmitUserManagersRequest
+          if err := json.Unmarshal(submitusermanagersrequestJson, &submitUserManagersRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4836,16 +4836,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createuserprofilesrequest := []byte(``) // CreateUserProfilesRequest | 
+           createuserprofilesrequestJson := []byte(``) // CreateUserProfilesRequest | 
 
           
-          var createUserProfilesRequest NERM.CreateUserProfilesRequest
-          if err := json.Unmarshal(createuserprofilesrequest, &createUserProfilesRequest); err != nil {
+          var createUserProfilesRequest nerm.CreateUserProfilesRequest
+          if err := json.Unmarshal(createuserprofilesrequestJson, &createUserProfilesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4876,8 +4876,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -4910,16 +4910,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createuserprofilesrequest := []byte(``) // CreateUserProfilesRequest | 
+           createuserprofilesrequestJson := []byte(``) // CreateUserProfilesRequest | 
 
           
-          var createUserProfilesRequest NERM.CreateUserProfilesRequest
-          if err := json.Unmarshal(createuserprofilesrequest, &createUserProfilesRequest); err != nil {
+          var createUserProfilesRequest nerm.CreateUserProfilesRequest
+          if err := json.Unmarshal(createuserprofilesrequestJson, &createUserProfilesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -4950,8 +4950,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -4984,8 +4984,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -5025,17 +5025,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           submituserprofilerequest := []byte(``) // SubmitUserProfileRequest | 
+           submituserprofilerequestJson := []byte(``) // SubmitUserProfileRequest | 
 
           
-          var submitUserProfileRequest NERM.SubmitUserProfileRequest
-          if err := json.Unmarshal(submituserprofilerequest, &submitUserProfileRequest); err != nil {
+          var submitUserProfileRequest nerm.SubmitUserProfileRequest
+          if err := json.Unmarshal(submituserprofilerequestJson, &submitUserProfileRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5066,16 +5066,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createuserprofilesrequest := []byte(``) // CreateUserProfilesRequest | 
+           createuserprofilesrequestJson := []byte(``) // CreateUserProfilesRequest | 
 
           
-          var createUserProfilesRequest NERM.CreateUserProfilesRequest
-          if err := json.Unmarshal(createuserprofilesrequest, &createUserProfilesRequest); err != nil {
+          var createUserProfilesRequest nerm.CreateUserProfilesRequest
+          if err := json.Unmarshal(createuserprofilesrequestJson, &createUserProfilesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5106,16 +5106,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submituserprofilerequest := []byte(``) // SubmitUserProfileRequest | 
+           submituserprofilerequestJson := []byte(``) // SubmitUserProfileRequest | 
 
           
-          var submitUserProfileRequest NERM.SubmitUserProfileRequest
-          if err := json.Unmarshal(submituserprofilerequest, &submitUserProfileRequest); err != nil {
+          var submitUserProfileRequest nerm.SubmitUserProfileRequest
+          if err := json.Unmarshal(submituserprofilerequestJson, &submitUserProfileRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5146,8 +5146,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -5180,8 +5180,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -5214,8 +5214,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -5253,17 +5253,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           submituserrolerequest := []byte(``) // SubmitUserRoleRequest | 
+           submituserrolerequestJson := []byte(``) // SubmitUserRoleRequest | 
 
           
-          var submitUserRoleRequest NERM.SubmitUserRoleRequest
-          if err := json.Unmarshal(submituserrolerequest, &submitUserRoleRequest); err != nil {
+          var submitUserRoleRequest nerm.SubmitUserRoleRequest
+          if err := json.Unmarshal(submituserrolerequestJson, &submitUserRoleRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5294,16 +5294,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submituserrolesrequest := []byte(``) // SubmitUserRolesRequest | 
+           submituserrolesrequestJson := []byte(``) // SubmitUserRolesRequest | 
 
           
-          var submitUserRolesRequest NERM.SubmitUserRolesRequest
-          if err := json.Unmarshal(submituserrolesrequest, &submitUserRolesRequest); err != nil {
+          var submitUserRolesRequest nerm.SubmitUserRolesRequest
+          if err := json.Unmarshal(submituserrolesrequestJson, &submitUserRolesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5334,16 +5334,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submituserrolerequest := []byte(``) // SubmitUserRoleRequest | 
+           submituserrolerequestJson := []byte(``) // SubmitUserRoleRequest | 
 
           
-          var submitUserRoleRequest NERM.SubmitUserRoleRequest
-          if err := json.Unmarshal(submituserrolerequest, &submitUserRoleRequest); err != nil {
+          var submitUserRoleRequest nerm.SubmitUserRoleRequest
+          if err := json.Unmarshal(submituserrolerequestJson, &submitUserRoleRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5374,16 +5374,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submituserrolesrequest := []byte(``) // SubmitUserRolesRequest | 
+           submituserrolesrequestJson := []byte(``) // SubmitUserRolesRequest | 
 
           
-          var submitUserRolesRequest NERM.SubmitUserRolesRequest
-          if err := json.Unmarshal(submituserrolesrequest, &submitUserRolesRequest); err != nil {
+          var submitUserRolesRequest nerm.SubmitUserRolesRequest
+          if err := json.Unmarshal(submituserrolesrequestJson, &submitUserRolesRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5414,8 +5414,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -5448,8 +5448,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -5482,8 +5482,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -5516,8 +5516,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -5560,17 +5560,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           submituserrequest := []byte(``) // SubmitUserRequest | 
+           submituserrequestJson := []byte(``) // SubmitUserRequest | 
 
           
-          var submitUserRequest NERM.SubmitUserRequest
-          if err := json.Unmarshal(submituserrequest, &submitUserRequest); err != nil {
+          var submitUserRequest nerm.SubmitUserRequest
+          if err := json.Unmarshal(submituserrequestJson, &submitUserRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5601,16 +5601,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitusersrequest := []byte(``) // SubmitUsersRequest | 
+           submitusersrequestJson := []byte(``) // SubmitUsersRequest | 
 
           
-          var submitUsersRequest NERM.SubmitUsersRequest
-          if err := json.Unmarshal(submitusersrequest, &submitUsersRequest); err != nil {
+          var submitUsersRequest nerm.SubmitUsersRequest
+          if err := json.Unmarshal(submitusersrequestJson, &submitUsersRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5641,16 +5641,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submituserrequest := []byte(``) // SubmitUserRequest | 
+           submituserrequestJson := []byte(``) // SubmitUserRequest | 
 
           
-          var submitUserRequest NERM.SubmitUserRequest
-          if err := json.Unmarshal(submituserrequest, &submitUserRequest); err != nil {
+          var submitUserRequest nerm.SubmitUserRequest
+          if err := json.Unmarshal(submituserrequestJson, &submitUserRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5681,8 +5681,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -5716,16 +5716,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitusersrequest := []byte(``) // SubmitUsersRequest | 
+           submitusersrequestJson := []byte(``) // SubmitUsersRequest | 
 
           
-          var submitUsersRequest NERM.SubmitUsersRequest
-          if err := json.Unmarshal(submitusersrequest, &submitUsersRequest); err != nil {
+          var submitUsersRequest nerm.SubmitUsersRequest
+          if err := json.Unmarshal(submitusersrequestJson, &submitUsersRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5756,16 +5756,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createworkflowactionperformerrequest := []byte(``) // CreateWorkflowActionPerformerRequest | 
+           createworkflowactionperformerrequestJson := []byte(``) // CreateWorkflowActionPerformerRequest | 
 
           
-          var createWorkflowActionPerformerRequest NERM.CreateWorkflowActionPerformerRequest
-          if err := json.Unmarshal(createworkflowactionperformerrequest, &createWorkflowActionPerformerRequest); err != nil {
+          var createWorkflowActionPerformerRequest nerm.CreateWorkflowActionPerformerRequest
+          if err := json.Unmarshal(createworkflowactionperformerrequestJson, &createWorkflowActionPerformerRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5796,16 +5796,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createapprovalactionrequest := []byte(``) // CreateApprovalActionRequest | 
+           createapprovalactionrequestJson := []byte(``) // CreateApprovalActionRequest | 
 
           
-          var createApprovalActionRequest NERM.CreateApprovalActionRequest
-          if err := json.Unmarshal(createapprovalactionrequest, &createApprovalActionRequest); err != nil {
+          var createApprovalActionRequest nerm.CreateApprovalActionRequest
+          if err := json.Unmarshal(createapprovalactionrequestJson, &createApprovalActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5836,16 +5836,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createasksecurityquestionactionrequest := []byte(``) // CreateAskSecurityQuestionActionRequest | 
+           createasksecurityquestionactionrequestJson := []byte(``) // CreateAskSecurityQuestionActionRequest | 
 
           
-          var createAskSecurityQuestionActionRequest NERM.CreateAskSecurityQuestionActionRequest
-          if err := json.Unmarshal(createasksecurityquestionactionrequest, &createAskSecurityQuestionActionRequest); err != nil {
+          var createAskSecurityQuestionActionRequest nerm.CreateAskSecurityQuestionActionRequest
+          if err := json.Unmarshal(createasksecurityquestionactionrequestJson, &createAskSecurityQuestionActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5876,16 +5876,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createautoassignactionrequest := []byte(``) // CreateAutoAssignActionRequest | 
+           createautoassignactionrequestJson := []byte(``) // CreateAutoAssignActionRequest | 
 
           
-          var createAutoAssignActionRequest NERM.CreateAutoAssignActionRequest
-          if err := json.Unmarshal(createautoassignactionrequest, &createAutoAssignActionRequest); err != nil {
+          var createAutoAssignActionRequest nerm.CreateAutoAssignActionRequest
+          if err := json.Unmarshal(createautoassignactionrequestJson, &createAutoAssignActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5916,16 +5916,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createbatchupdateactionrequest := []byte(``) // CreateBatchUpdateActionRequest | 
+           createbatchupdateactionrequestJson := []byte(``) // CreateBatchUpdateActionRequest | 
 
           
-          var createBatchUpdateActionRequest NERM.CreateBatchUpdateActionRequest
-          if err := json.Unmarshal(createbatchupdateactionrequest, &createBatchUpdateActionRequest); err != nil {
+          var createBatchUpdateActionRequest nerm.CreateBatchUpdateActionRequest
+          if err := json.Unmarshal(createbatchupdateactionrequestJson, &createBatchUpdateActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5956,16 +5956,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createclosesessionactionrequest := []byte(``) // CreateCloseSessionActionRequest | 
+           createclosesessionactionrequestJson := []byte(``) // CreateCloseSessionActionRequest | 
 
           
-          var createCloseSessionActionRequest NERM.CreateCloseSessionActionRequest
-          if err := json.Unmarshal(createclosesessionactionrequest, &createCloseSessionActionRequest); err != nil {
+          var createCloseSessionActionRequest nerm.CreateCloseSessionActionRequest
+          if err := json.Unmarshal(createclosesessionactionrequestJson, &createCloseSessionActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -5996,16 +5996,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createcontributorsactionrequest := []byte(``) // CreateContributorsActionRequest | 
+           createcontributorsactionrequestJson := []byte(``) // CreateContributorsActionRequest | 
 
           
-          var createContributorsActionRequest NERM.CreateContributorsActionRequest
-          if err := json.Unmarshal(createcontributorsactionrequest, &createContributorsActionRequest); err != nil {
+          var createContributorsActionRequest nerm.CreateContributorsActionRequest
+          if err := json.Unmarshal(createcontributorsactionrequestJson, &createContributorsActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6036,16 +6036,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createcreateprofileactionrequest := []byte(``) // CreateCreateProfileActionRequest | 
+           createcreateprofileactionrequestJson := []byte(``) // CreateCreateProfileActionRequest | 
 
           
-          var createCreateProfileActionRequest NERM.CreateCreateProfileActionRequest
-          if err := json.Unmarshal(createcreateprofileactionrequest, &createCreateProfileActionRequest); err != nil {
+          var createCreateProfileActionRequest nerm.CreateCreateProfileActionRequest
+          if err := json.Unmarshal(createcreateprofileactionrequestJson, &createCreateProfileActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6076,16 +6076,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createduplicatepreventionactionrequest := []byte(``) // CreateDuplicatePreventionActionRequest | 
+           createduplicatepreventionactionrequestJson := []byte(``) // CreateDuplicatePreventionActionRequest | 
 
           
-          var createDuplicatePreventionActionRequest NERM.CreateDuplicatePreventionActionRequest
-          if err := json.Unmarshal(createduplicatepreventionactionrequest, &createDuplicatePreventionActionRequest); err != nil {
+          var createDuplicatePreventionActionRequest nerm.CreateDuplicatePreventionActionRequest
+          if err := json.Unmarshal(createduplicatepreventionactionrequestJson, &createDuplicatePreventionActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6116,16 +6116,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createemailverificationactionrequest := []byte(``) // CreateEmailVerificationActionRequest | 
+           createemailverificationactionrequestJson := []byte(``) // CreateEmailVerificationActionRequest | 
 
           
-          var createEmailVerificationActionRequest NERM.CreateEmailVerificationActionRequest
-          if err := json.Unmarshal(createemailverificationactionrequest, &createEmailVerificationActionRequest); err != nil {
+          var createEmailVerificationActionRequest nerm.CreateEmailVerificationActionRequest
+          if err := json.Unmarshal(createemailverificationactionrequestJson, &createEmailVerificationActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6156,16 +6156,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createfulfillmentactionrequest := []byte(``) // CreateFulfillmentActionRequest | 
+           createfulfillmentactionrequestJson := []byte(``) // CreateFulfillmentActionRequest | 
 
           
-          var createFulfillmentActionRequest NERM.CreateFulfillmentActionRequest
-          if err := json.Unmarshal(createfulfillmentactionrequest, &createFulfillmentActionRequest); err != nil {
+          var createFulfillmentActionRequest nerm.CreateFulfillmentActionRequest
+          if err := json.Unmarshal(createfulfillmentactionrequestJson, &createFulfillmentActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6196,16 +6196,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createidentityproofingactionrequest := []byte(``) // CreateIdentityProofingActionRequest | 
+           createidentityproofingactionrequestJson := []byte(``) // CreateIdentityProofingActionRequest | 
 
           
-          var createIdentityProofingActionRequest NERM.CreateIdentityProofingActionRequest
-          if err := json.Unmarshal(createidentityproofingactionrequest, &createIdentityProofingActionRequest); err != nil {
+          var createIdentityProofingActionRequest nerm.CreateIdentityProofingActionRequest
+          if err := json.Unmarshal(createidentityproofingactionrequestJson, &createIdentityProofingActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6236,16 +6236,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createinvitationactionrequest := []byte(``) // CreateInvitationActionRequest | 
+           createinvitationactionrequestJson := []byte(``) // CreateInvitationActionRequest | 
 
           
-          var createInvitationActionRequest NERM.CreateInvitationActionRequest
-          if err := json.Unmarshal(createinvitationactionrequest, &createInvitationActionRequest); err != nil {
+          var createInvitationActionRequest nerm.CreateInvitationActionRequest
+          if err := json.Unmarshal(createinvitationactionrequestJson, &createInvitationActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6276,16 +6276,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createldapactionrequest := []byte(``) // CreateLdapActionRequest | 
+           createldapactionrequestJson := []byte(``) // CreateLdapActionRequest | 
 
           
-          var createLdapActionRequest NERM.CreateLdapActionRequest
-          if err := json.Unmarshal(createldapactionrequest, &createLdapActionRequest); err != nil {
+          var createLdapActionRequest nerm.CreateLdapActionRequest
+          if err := json.Unmarshal(createldapactionrequestJson, &createLdapActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6316,16 +6316,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createnotificationactionrequest := []byte(``) // CreateNotificationActionRequest | 
+           createnotificationactionrequestJson := []byte(``) // CreateNotificationActionRequest | 
 
           
-          var createNotificationActionRequest NERM.CreateNotificationActionRequest
-          if err := json.Unmarshal(createnotificationactionrequest, &createNotificationActionRequest); err != nil {
+          var createNotificationActionRequest nerm.CreateNotificationActionRequest
+          if err := json.Unmarshal(createnotificationactionrequestJson, &createNotificationActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6356,16 +6356,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createpasswordresetactionrequest := []byte(``) // CreatePasswordResetActionRequest | 
+           createpasswordresetactionrequestJson := []byte(``) // CreatePasswordResetActionRequest | 
 
           
-          var createPasswordResetActionRequest NERM.CreatePasswordResetActionRequest
-          if err := json.Unmarshal(createpasswordresetactionrequest, &createPasswordResetActionRequest); err != nil {
+          var createPasswordResetActionRequest nerm.CreatePasswordResetActionRequest
+          if err := json.Unmarshal(createpasswordresetactionrequestJson, &createPasswordResetActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6396,16 +6396,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createprofilecheckactionrequest := []byte(``) // CreateProfileCheckActionRequest | 
+           createprofilecheckactionrequestJson := []byte(``) // CreateProfileCheckActionRequest | 
 
           
-          var createProfileCheckActionRequest NERM.CreateProfileCheckActionRequest
-          if err := json.Unmarshal(createprofilecheckactionrequest, &createProfileCheckActionRequest); err != nil {
+          var createProfileCheckActionRequest nerm.CreateProfileCheckActionRequest
+          if err := json.Unmarshal(createprofilecheckactionrequestJson, &createProfileCheckActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6436,16 +6436,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createprofileselectactionrequest := []byte(``) // CreateProfileSelectActionRequest | 
+           createprofileselectactionrequestJson := []byte(``) // CreateProfileSelectActionRequest | 
 
           
-          var createProfileSelectActionRequest NERM.CreateProfileSelectActionRequest
-          if err := json.Unmarshal(createprofileselectactionrequest, &createProfileSelectActionRequest); err != nil {
+          var createProfileSelectActionRequest nerm.CreateProfileSelectActionRequest
+          if err := json.Unmarshal(createprofileselectactionrequestJson, &createProfileSelectActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6476,16 +6476,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createrequestactionrequest := []byte(``) // CreateRequestActionRequest | 
+           createrequestactionrequestJson := []byte(``) // CreateRequestActionRequest | 
 
           
-          var createRequestActionRequest NERM.CreateRequestActionRequest
-          if err := json.Unmarshal(createrequestactionrequest, &createRequestActionRequest); err != nil {
+          var createRequestActionRequest nerm.CreateRequestActionRequest
+          if err := json.Unmarshal(createrequestactionrequestJson, &createRequestActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6516,16 +6516,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createrestapiactionrequest := []byte(``) // CreateRestApiActionRequest | 
+           createrestapiactionrequestJson := []byte(``) // CreateRestApiActionRequest | 
 
           
-          var createRestApiActionRequest NERM.CreateRestApiActionRequest
-          if err := json.Unmarshal(createrestapiactionrequest, &createRestApiActionRequest); err != nil {
+          var createRestApiActionRequest nerm.CreateRestApiActionRequest
+          if err := json.Unmarshal(createrestapiactionrequestJson, &createRestApiActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6556,16 +6556,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createreviewactionrequest := []byte(``) // CreateReviewActionRequest | 
+           createreviewactionrequestJson := []byte(``) // CreateReviewActionRequest | 
 
           
-          var createReviewActionRequest NERM.CreateReviewActionRequest
-          if err := json.Unmarshal(createreviewactionrequest, &createReviewActionRequest); err != nil {
+          var createReviewActionRequest nerm.CreateReviewActionRequest
+          if err := json.Unmarshal(createreviewactionrequestJson, &createReviewActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6596,16 +6596,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createrunworkflowactionrequest := []byte(``) // CreateRunWorkflowActionRequest | 
+           createrunworkflowactionrequestJson := []byte(``) // CreateRunWorkflowActionRequest | 
 
           
-          var createRunWorkflowActionRequest NERM.CreateRunWorkflowActionRequest
-          if err := json.Unmarshal(createrunworkflowactionrequest, &createRunWorkflowActionRequest); err != nil {
+          var createRunWorkflowActionRequest nerm.CreateRunWorkflowActionRequest
+          if err := json.Unmarshal(createrunworkflowactionrequestJson, &createRunWorkflowActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6636,16 +6636,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createsetattributesactionrequest := []byte(``) // CreateSetAttributesActionRequest | 
+           createsetattributesactionrequestJson := []byte(``) // CreateSetAttributesActionRequest | 
 
           
-          var createSetAttributesActionRequest NERM.CreateSetAttributesActionRequest
-          if err := json.Unmarshal(createsetattributesactionrequest, &createSetAttributesActionRequest); err != nil {
+          var createSetAttributesActionRequest nerm.CreateSetAttributesActionRequest
+          if err := json.Unmarshal(createsetattributesactionrequestJson, &createSetAttributesActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6676,16 +6676,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createsetsecurityquestionactionrequest := []byte(``) // CreateSetSecurityQuestionActionRequest | 
+           createsetsecurityquestionactionrequestJson := []byte(``) // CreateSetSecurityQuestionActionRequest | 
 
           
-          var createSetSecurityQuestionActionRequest NERM.CreateSetSecurityQuestionActionRequest
-          if err := json.Unmarshal(createsetsecurityquestionactionrequest, &createSetSecurityQuestionActionRequest); err != nil {
+          var createSetSecurityQuestionActionRequest nerm.CreateSetSecurityQuestionActionRequest
+          if err := json.Unmarshal(createsetsecurityquestionactionrequestJson, &createSetSecurityQuestionActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6716,16 +6716,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createsoapapiactionrequest := []byte(``) // CreateSoapApiActionRequest | 
+           createsoapapiactionrequestJson := []byte(``) // CreateSoapApiActionRequest | 
 
           
-          var createSoapApiActionRequest NERM.CreateSoapApiActionRequest
-          if err := json.Unmarshal(createsoapapiactionrequest, &createSoapApiActionRequest); err != nil {
+          var createSoapApiActionRequest nerm.CreateSoapApiActionRequest
+          if err := json.Unmarshal(createsoapapiactionrequestJson, &createSoapApiActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6756,16 +6756,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createstatuschangeactionrequest := []byte(``) // CreateStatusChangeActionRequest | 
+           createstatuschangeactionrequestJson := []byte(``) // CreateStatusChangeActionRequest | 
 
           
-          var createStatusChangeActionRequest NERM.CreateStatusChangeActionRequest
-          if err := json.Unmarshal(createstatuschangeactionrequest, &createStatusChangeActionRequest); err != nil {
+          var createStatusChangeActionRequest nerm.CreateStatusChangeActionRequest
+          if err := json.Unmarshal(createstatuschangeactionrequestJson, &createStatusChangeActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6796,16 +6796,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createunassignactionrequest := []byte(``) // CreateUnassignActionRequest | 
+           createunassignactionrequestJson := []byte(``) // CreateUnassignActionRequest | 
 
           
-          var createUnassignActionRequest NERM.CreateUnassignActionRequest
-          if err := json.Unmarshal(createunassignactionrequest, &createUnassignActionRequest); err != nil {
+          var createUnassignActionRequest nerm.CreateUnassignActionRequest
+          if err := json.Unmarshal(createunassignactionrequestJson, &createUnassignActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6836,16 +6836,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createupdateprofileactionrequest := []byte(``) // CreateUpdateProfileActionRequest | 
+           createupdateprofileactionrequestJson := []byte(``) // CreateUpdateProfileActionRequest | 
 
           
-          var createUpdateProfileActionRequest NERM.CreateUpdateProfileActionRequest
-          if err := json.Unmarshal(createupdateprofileactionrequest, &createUpdateProfileActionRequest); err != nil {
+          var createUpdateProfileActionRequest nerm.CreateUpdateProfileActionRequest
+          if err := json.Unmarshal(createupdateprofileactionrequestJson, &createUpdateProfileActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6876,16 +6876,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createusernamepasswordactionrequest := []byte(``) // CreateUsernamePasswordActionRequest | 
+           createusernamepasswordactionrequestJson := []byte(``) // CreateUsernamePasswordActionRequest | 
 
           
-          var createUsernamePasswordActionRequest NERM.CreateUsernamePasswordActionRequest
-          if err := json.Unmarshal(createusernamepasswordactionrequest, &createUsernamePasswordActionRequest); err != nil {
+          var createUsernamePasswordActionRequest nerm.CreateUsernamePasswordActionRequest
+          if err := json.Unmarshal(createusernamepasswordactionrequestJson, &createUsernamePasswordActionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -6916,8 +6916,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -6950,8 +6950,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -6984,8 +6984,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -7019,8 +7019,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -7061,18 +7061,18 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-           submitworkflowsessionrequest := []byte(``) // SubmitWorkflowSessionRequest | 
+           submitworkflowsessionrequestJson := []byte(``) // SubmitWorkflowSessionRequest | 
           run := false // bool | Will run the created/updated workflow session if successful (optional) (default to false) # bool | Will run the created/updated workflow session if successful (optional) (default to false)
 
           
-          var submitWorkflowSessionRequest NERM.SubmitWorkflowSessionRequest
-          if err := json.Unmarshal(submitworkflowsessionrequest, &submitWorkflowSessionRequest); err != nil {
+          var submitWorkflowSessionRequest nerm.SubmitWorkflowSessionRequest
+          if err := json.Unmarshal(submitworkflowsessionrequestJson, &submitWorkflowSessionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -7103,17 +7103,17 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           submitworkflowsessionrequest := []byte(``) // SubmitWorkflowSessionRequest | 
+           submitworkflowsessionrequestJson := []byte(``) // SubmitWorkflowSessionRequest | 
           run := false // bool | Will run the created/updated workflow session if successful (optional) (default to false) # bool | Will run the created/updated workflow session if successful (optional) (default to false)
 
           
-          var submitWorkflowSessionRequest NERM.SubmitWorkflowSessionRequest
-          if err := json.Unmarshal(submitworkflowsessionrequest, &submitWorkflowSessionRequest); err != nil {
+          var submitWorkflowSessionRequest nerm.SubmitWorkflowSessionRequest
+          if err := json.Unmarshal(submitworkflowsessionrequestJson, &submitWorkflowSessionRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -7144,8 +7144,8 @@
           "fmt"
           "os"
             
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -7180,16 +7180,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createautomatedworkflowrequest := []byte(``) // CreateAutomatedWorkflowRequest | 
+           createautomatedworkflowrequestJson := []byte(``) // CreateAutomatedWorkflowRequest | 
 
           
-          var createAutomatedWorkflowRequest NERM.CreateAutomatedWorkflowRequest
-          if err := json.Unmarshal(createautomatedworkflowrequest, &createAutomatedWorkflowRequest); err != nil {
+          var createAutomatedWorkflowRequest nerm.CreateAutomatedWorkflowRequest
+          if err := json.Unmarshal(createautomatedworkflowrequestJson, &createAutomatedWorkflowRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -7220,16 +7220,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createbatchworkflowrequest := []byte(``) // CreateBatchWorkflowRequest | 
+           createbatchworkflowrequestJson := []byte(``) // CreateBatchWorkflowRequest | 
 
           
-          var createBatchWorkflowRequest NERM.CreateBatchWorkflowRequest
-          if err := json.Unmarshal(createbatchworkflowrequest, &createBatchWorkflowRequest); err != nil {
+          var createBatchWorkflowRequest nerm.CreateBatchWorkflowRequest
+          if err := json.Unmarshal(createbatchworkflowrequestJson, &createBatchWorkflowRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -7260,16 +7260,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createcreateworkflowrequest := []byte(``) // CreateCreateWorkflowRequest | 
+           createcreateworkflowrequestJson := []byte(``) // CreateCreateWorkflowRequest | 
 
           
-          var createCreateWorkflowRequest NERM.CreateCreateWorkflowRequest
-          if err := json.Unmarshal(createcreateworkflowrequest, &createCreateWorkflowRequest); err != nil {
+          var createCreateWorkflowRequest nerm.CreateCreateWorkflowRequest
+          if err := json.Unmarshal(createcreateworkflowrequestJson, &createCreateWorkflowRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -7300,16 +7300,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createloginworkflowrequest := []byte(``) // CreateLoginWorkflowRequest | 
+           createloginworkflowrequestJson := []byte(``) // CreateLoginWorkflowRequest | 
 
           
-          var createLoginWorkflowRequest NERM.CreateLoginWorkflowRequest
-          if err := json.Unmarshal(createloginworkflowrequest, &createLoginWorkflowRequest); err != nil {
+          var createLoginWorkflowRequest nerm.CreateLoginWorkflowRequest
+          if err := json.Unmarshal(createloginworkflowrequestJson, &createLoginWorkflowRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -7340,16 +7340,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createloginworkflowrequest := []byte(``) // CreateLoginWorkflowRequest | 
+           createloginworkflowrequestJson := []byte(``) // CreateLoginWorkflowRequest | 
 
           
-          var createLoginWorkflowRequest NERM.CreateLoginWorkflowRequest
-          if err := json.Unmarshal(createloginworkflowrequest, &createLoginWorkflowRequest); err != nil {
+          var createLoginWorkflowRequest nerm.CreateLoginWorkflowRequest
+          if err := json.Unmarshal(createloginworkflowrequestJson, &createLoginWorkflowRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -7380,16 +7380,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createcreateworkflowrequest := []byte(``) // CreateCreateWorkflowRequest | 
+           createcreateworkflowrequestJson := []byte(``) // CreateCreateWorkflowRequest | 
 
           
-          var createCreateWorkflowRequest NERM.CreateCreateWorkflowRequest
-          if err := json.Unmarshal(createcreateworkflowrequest, &createCreateWorkflowRequest); err != nil {
+          var createCreateWorkflowRequest nerm.CreateCreateWorkflowRequest
+          if err := json.Unmarshal(createcreateworkflowrequestJson, &createCreateWorkflowRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -7420,16 +7420,16 @@
           "fmt"
           "os"
              "encoding/json"
-            NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+            nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createupdateworkflowrequest := []byte(``) // CreateUpdateWorkflowRequest | 
+           createupdateworkflowrequestJson := []byte(``) // CreateUpdateWorkflowRequest | 
 
           
-          var createUpdateWorkflowRequest NERM.CreateUpdateWorkflowRequest
-          if err := json.Unmarshal(createupdateworkflowrequest, &createUpdateWorkflowRequest); err != nil {
+          var createUpdateWorkflowRequest nerm.CreateUpdateWorkflowRequest
+          if err := json.Unmarshal(createupdateworkflowrequestJson, &createUpdateWorkflowRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }

@@ -66,15 +66,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
+    data_segmentation "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    datasegment := []byte(``) // DataSegment | 
+    datasegmentJson := []byte(``) // DataSegment | 
 
-    var dataSegment v1.DataSegment
-    if err := json.Unmarshal(datasegment, &dataSegment); err != nil {
+    var dataSegment data_segmentation.DataSegment
+    if err := json.Unmarshal(datasegmentJson, &dataSegment); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -151,7 +151,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -230,7 +230,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -309,7 +309,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -388,7 +388,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -469,7 +469,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -554,8 +554,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
+    data_segmentation "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -563,8 +563,8 @@ func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     requestbody := []byte(`[{"op":"replace","path":"/memberFilter","value":{"expression":{"operator":"AND","children":[{"operator":"EQUALS","attribute":"location","value":{"type":"STRING","value":"Philadelphia"}},{"operator":"EQUALS","attribute":"department","value":{"type":"STRING","value":"HR"}}]}}}]`) // []map[string]interface{} | A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * membership * memberFilter * memberSelection * scopes * enabled 
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []data_segmentation.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -641,8 +641,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
+    data_segmentation "github.com/sailpoint-oss/golang-sdk/v3/data_segmentation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -651,8 +651,8 @@ func main() {
     requestbody := []byte(``) // []string | A list of segment ids that you wish to publish
     publishAll := true // bool | This flag decides whether you want to publish all unpublished or a list of specific segment ids (optional) (default to true) # bool | This flag decides whether you want to publish all unpublished or a list of specific segment ids (optional) (default to true)
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []data_segmentation.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }

@@ -82,15 +82,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/connectors"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+    connectors "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    v3createconnectordto := []byte(``) // V3createconnectordto | 
+    v3createconnectordtoJson := []byte(``) // V3createconnectordto | 
 
-    var v3createconnectordto v1.V3createconnectordto
-    if err := json.Unmarshal(v3createconnectordto, &v3createconnectordto); err != nil {
+    var v3createconnectordto connectors.V3createconnectordto
+    if err := json.Unmarshal(v3createconnectordtoJson, &v3createconnectordto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -154,7 +154,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -219,7 +219,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -285,7 +285,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -355,7 +355,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -421,7 +421,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -489,7 +489,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -557,7 +557,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -625,7 +625,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -693,7 +693,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -761,7 +761,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -830,7 +830,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -909,16 +909,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/connectors"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+    connectors "github.com/sailpoint-oss/golang-sdk/v3/connectors"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. # string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | A list of connector detail update operations 
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | A list of connector detail update operations 
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []connectors.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }

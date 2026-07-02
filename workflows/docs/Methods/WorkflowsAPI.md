@@ -80,7 +80,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -146,12 +146,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `c17bea3a-574d-453c-9e04-4365fbf5af0b` // string | Id of the workflow # string | Id of the workflow
-    createexternalexecuteworkflowv1request := []byte(``) // CreateExternalExecuteWorkflowV1Request |  (optional)
+    createexternalexecuteworkflowv1requestJson := []byte(``) // CreateExternalExecuteWorkflowV1Request |  (optional)
 
     
 
@@ -213,7 +213,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -274,15 +274,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/workflows"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+    workflows "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createworkflowv1request := []byte(`{"name":"Send Email","owner":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"William Wilson"},"description":"Send an email to the identity who's attributes changed.","definition":{"start":"Send Email Test","steps":{"Send Email":{"actionId":"sp:send-email","attributes":{"body":"This is a test","from":"sailpoint@sailpoint.com","recipientId.$":"$.identity.id","subject":"test"},"nextStep":"success","selectResult":null,"type":"action"},"success":{"type":"success"}}},"enabled":false,"trigger":{"type":"EVENT","attributes":{"id":"idn:identity-attributes-changed","filter":"$.changes[?(@.attribute == 'manager')]"}}}`) // CreateWorkflowV1Request | 
+    createworkflowv1requestJson := []byte(`{"name":"Send Email","owner":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"William Wilson"},"description":"Send an email to the identity who's attributes changed.","definition":{"start":"Send Email Test","steps":{"Send Email":{"actionId":"sp:send-email","attributes":{"body":"This is a test","from":"sailpoint@sailpoint.com","recipientId.$":"$.identity.id","subject":"test"},"nextStep":"success","selectResult":null,"type":"action"},"success":{"type":"success"}}},"enabled":false,"trigger":{"type":"EVENT","attributes":{"id":"idn:identity-attributes-changed","filter":"$.changes[?(@.attribute == 'manager')]"}}}`) // CreateWorkflowV1Request | 
 
-    var createWorkflowV1Request v1.CreateWorkflowV1Request
-    if err := json.Unmarshal(createworkflowv1request, &createWorkflowV1Request); err != nil {
+    var createWorkflowV1Request workflows.CreateWorkflowV1Request
+    if err := json.Unmarshal(createworkflowv1requestJson, &createWorkflowV1Request); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -346,7 +346,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -411,7 +411,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -477,7 +477,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -543,7 +543,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -622,7 +622,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -691,7 +691,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -754,7 +754,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -819,7 +819,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -879,7 +879,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -942,7 +942,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1002,7 +1002,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1067,16 +1067,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/workflows"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+    workflows "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `c17bea3a-574d-453c-9e04-4365fbf5af0b` // string | Id of the Workflow # string | Id of the Workflow
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/name","value":"Send Email"},{"op":"replace","path":"/owner","value":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"William Wilson"}},{"op":"replace","path":"/description","value":"Send an email to the identity who's attributes changed."},{"op":"replace","path":"/enabled","value":false},{"op":"replace","path":"/definition","value":{"start":"Send Email Test","steps":{"Send Email":{"actionId":"sp:send-email","attributes":{"body":"This is a test","from":"sailpoint@sailpoint.com","recipientId.$":"$.identity.id","subject":"test"},"nextStep":"success","selectResult":null,"type":"action"},"success":{"type":"success"}}}},{"op":"replace","path":"/trigger","value":{"type":"EVENT","attributes":{"id":"idn:identity-attributes-changed"}}}]`) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"Send Email"},{"op":"replace","path":"/owner","value":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"William Wilson"}},{"op":"replace","path":"/description","value":"Send an email to the identity who's attributes changed."},{"op":"replace","path":"/enabled","value":false},{"op":"replace","path":"/definition","value":{"start":"Send Email Test","steps":{"Send Email":{"actionId":"sp:send-email","attributes":{"body":"This is a test","from":"sailpoint@sailpoint.com","recipientId.$":"$.identity.id","subject":"test"},"nextStep":"success","selectResult":null,"type":"action"},"success":{"type":"success"}}}},{"op":"replace","path":"/trigger","value":{"type":"EVENT","attributes":{"id":"idn:identity-attributes-changed"}}}]`) // []Jsonpatchoperation | 
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []workflows.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1140,16 +1140,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/workflows"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+    workflows "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `c17bea3a-574d-453c-9e04-4365fbf5af0b` // string | Id of the Workflow # string | Id of the Workflow
-    workflowbody := []byte(``) // Workflowbody | 
+    workflowbodyJson := []byte(``) // Workflowbody | 
 
-    var workflowbody v1.Workflowbody
-    if err := json.Unmarshal(workflowbody, &workflowbody); err != nil {
+    var workflowbody workflows.Workflowbody
+    if err := json.Unmarshal(workflowbodyJson, &workflowbody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1214,12 +1214,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `c17bea3a-574d-453c-9e04-4365fbf5af0b` // string | Id of the workflow # string | Id of the workflow
-    testexternalexecuteworkflowv1request := []byte(``) // TestExternalExecuteWorkflowV1Request |  (optional)
+    testexternalexecuteworkflowv1requestJson := []byte(``) // TestExternalExecuteWorkflowV1Request |  (optional)
 
     
 
@@ -1292,16 +1292,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/workflows"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+    workflows "github.com/sailpoint-oss/golang-sdk/v3/workflows"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `c17bea3a-574d-453c-9e04-4365fbf5af0b` // string | Id of the workflow # string | Id of the workflow
-    testworkflowv1request := []byte(`{"input":{"identity":{"id":"ee769173319b41d19ccec6cea52f237b","name":"john.doe","type":"IDENTITY"},"changes":[{"attribute":"department","oldValue":"sales","newValue":"marketing"},{"attribute":"manager","oldValue":{"id":"ee769173319b41d19ccec6c235423237b","name":"nice.guy","type":"IDENTITY"},"newValue":{"id":"ee769173319b41d19ccec6c235423236c","name":"mean.guy","type":"IDENTITY"}},{"attribute":"email","oldValue":"john.doe@hotmail.com","newValue":"john.doe@gmail.com"}]}}`) // TestWorkflowV1Request | 
+    testworkflowv1requestJson := []byte(`{"input":{"identity":{"id":"ee769173319b41d19ccec6cea52f237b","name":"john.doe","type":"IDENTITY"},"changes":[{"attribute":"department","oldValue":"sales","newValue":"marketing"},{"attribute":"manager","oldValue":{"id":"ee769173319b41d19ccec6c235423237b","name":"nice.guy","type":"IDENTITY"},"newValue":{"id":"ee769173319b41d19ccec6c235423236c","name":"mean.guy","type":"IDENTITY"}},{"attribute":"email","oldValue":"john.doe@hotmail.com","newValue":"john.doe@gmail.com"}]}}`) // TestWorkflowV1Request | 
 
-    var testWorkflowV1Request v1.TestWorkflowV1Request
-    if err := json.Unmarshal(testworkflowv1request, &testWorkflowV1Request); err != nil {
+    var testWorkflowV1Request workflows.TestWorkflowV1Request
+    if err := json.Unmarshal(testworkflowv1requestJson, &testWorkflowV1Request); err != nil {
       fmt.Println("Error:", err)
       return
     }

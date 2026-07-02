@@ -73,15 +73,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+    approvals "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    bulkapproverequestdto := []byte(``) // Bulkapproverequestdto | 
+    bulkapproverequestdtoJson := []byte(``) // Bulkapproverequestdto | 
 
-    var bulkapproverequestdto v1.Bulkapproverequestdto
-    if err := json.Unmarshal(bulkapproverequestdto, &bulkapproverequestdto); err != nil {
+    var bulkapproverequestdto approvals.Bulkapproverequestdto
+    if err := json.Unmarshal(bulkapproverequestdtoJson, &bulkapproverequestdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -147,12 +147,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to approve. # string | Approval ID that correlates to an existing approval request that a user wants to approve.
-    approvalapproverequest := []byte(``) // Approvalapproverequest |  (optional)
+    approvalapproverequestJson := []byte(``) // Approvalapproverequest |  (optional)
 
     
 
@@ -217,12 +217,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | ID of the approval request to cancel. # string | ID of the approval request to cancel.
-    approvalcancelrequest := []byte(``) // Approvalcancelrequest |  (optional)
+    approvalcancelrequestJson := []byte(``) // Approvalcancelrequest |  (optional)
 
     
 
@@ -280,15 +280,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+    approvals "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    bulkcancelrequestdto := []byte(``) // Bulkcancelrequestdto | 
+    bulkcancelrequestdtoJson := []byte(``) // Bulkcancelrequestdto | 
 
-    var bulkcancelrequestdto v1.Bulkcancelrequestdto
-    if err := json.Unmarshal(bulkcancelrequestdto, &bulkcancelrequestdto); err != nil {
+    var bulkcancelrequestdto approvals.Bulkcancelrequestdto
+    if err := json.Unmarshal(bulkcancelrequestdtoJson, &bulkcancelrequestdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -355,7 +355,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -422,7 +422,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -488,7 +488,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -571,7 +571,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -644,15 +644,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+    approvals "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    bulkreassignrequestdto := []byte(``) // Bulkreassignrequestdto | 
+    bulkreassignrequestdtoJson := []byte(``) // Bulkreassignrequestdto | 
 
-    var bulkreassignrequestdto v1.Bulkreassignrequestdto
-    if err := json.Unmarshal(bulkreassignrequestdto, &bulkreassignrequestdto); err != nil {
+    var bulkreassignrequestdto approvals.Bulkreassignrequestdto
+    if err := json.Unmarshal(bulkreassignrequestdtoJson, &bulkreassignrequestdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -719,17 +719,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+    approvals "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ACCESS_REQUEST_APPROVAL` // string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
     scope := `APPROVAL_TYPE` // string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
-    approvalconfig := []byte(``) // Approvalconfig | 
+    approvalconfigJson := []byte(``) // Approvalconfig | 
 
-    var approvalconfig v1.Approvalconfig
-    if err := json.Unmarshal(approvalconfig, &approvalconfig); err != nil {
+    var approvalconfig approvals.Approvalconfig
+    if err := json.Unmarshal(approvalconfigJson, &approvalconfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -788,15 +788,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+    approvals "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    bulkrejectrequestdto := []byte(``) // Bulkrejectrequestdto | 
+    bulkrejectrequestdtoJson := []byte(``) // Bulkrejectrequestdto | 
 
-    var bulkrejectrequestdto v1.Bulkrejectrequestdto
-    if err := json.Unmarshal(bulkrejectrequestdto, &bulkrejectrequestdto); err != nil {
+    var bulkrejectrequestdto approvals.Bulkrejectrequestdto
+    if err := json.Unmarshal(bulkrejectrequestdtoJson, &bulkrejectrequestdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -862,12 +862,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to reject. # string | Approval ID that correlates to an existing approval request that a user wants to reject.
-    approvalrejectrequest := []byte(``) // Approvalrejectrequest |  (optional)
+    approvalrejectrequestJson := []byte(``) // Approvalrejectrequest |  (optional)
 
     
 
@@ -928,16 +928,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+    approvals "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to change the attributes of. # string | Approval ID that correlates to an existing approval request that a user wants to change the attributes of.
-    approvalattributesrequest := []byte(``) // Approvalattributesrequest | 
+    approvalattributesrequestJson := []byte(``) // Approvalattributesrequest | 
 
-    var approvalattributesrequest v1.Approvalattributesrequest
-    if err := json.Unmarshal(approvalattributesrequest, &approvalattributesrequest); err != nil {
+    var approvalattributesrequest approvals.Approvalattributesrequest
+    if err := json.Unmarshal(approvalattributesrequestJson, &approvalattributesrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1001,16 +1001,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+    approvals "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to add a comment to. # string | Approval ID that correlates to an existing approval request that a user wants to add a comment to.
-    approvalcommentsrequest := []byte(``) // Approvalcommentsrequest | 
+    approvalcommentsrequestJson := []byte(``) // Approvalcommentsrequest | 
 
-    var approvalcommentsrequest v1.Approvalcommentsrequest
-    if err := json.Unmarshal(approvalcommentsrequest, &approvalcommentsrequest); err != nil {
+    var approvalcommentsrequest approvals.Approvalcommentsrequest
+    if err := json.Unmarshal(approvalcommentsrequestJson, &approvalcommentsrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1074,16 +1074,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/approvals"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+    approvals "github.com/sailpoint-oss/golang-sdk/v3/approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to reassign. # string | Approval ID that correlates to an existing approval request that a user wants to reassign.
-    approvalreassignrequest := []byte(``) // Approvalreassignrequest | 
+    approvalreassignrequestJson := []byte(``) // Approvalreassignrequest | 
 
-    var approvalreassignrequest v1.Approvalreassignrequest
-    if err := json.Unmarshal(approvalreassignrequest, &approvalreassignrequest); err != nil {
+    var approvalreassignrequest approvals.Approvalreassignrequest
+    if err := json.Unmarshal(approvalreassignrequestJson, &approvalreassignrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

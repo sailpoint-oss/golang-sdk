@@ -51,12 +51,6 @@ access-history certifications. Paged slices include a next link only when more r
 The privilegedAccess slice contains the full result and is not paged.
 The outliers slice is omitted when the tenant lacks the IDA-outliers license.
 
-A single match returns HTTP 200 with IntelIdentityAggregate.
-
-Zero matches returns HTTP 404 with detailCode IDC_IDENTITY_NOT_FOUND.
-
-Multiple matches returns HTTP 409 with detailCode IDC_IDENTITY_AMBIGUOUS and candidates listing each match.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIdentityIntelligenceV1Request
@@ -133,7 +127,7 @@ func (a *IntelligenceAPIService) GetIdentityIntelligenceV1Execute(r ApiGetIdenti
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -166,7 +160,7 @@ func (a *IntelligenceAPIService) GetIdentityIntelligenceV1Execute(r ApiGetIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Intelidentitynotfoundbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -177,7 +171,7 @@ func (a *IntelligenceAPIService) GetIdentityIntelligenceV1Execute(r ApiGetIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v Intelidentityambiguousbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -199,7 +193,7 @@ func (a *IntelligenceAPIService) GetIdentityIntelligenceV1Execute(r ApiGetIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -348,7 +342,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccessItemHistoryV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -392,7 +386,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccessItemHistoryV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -540,7 +534,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntel
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -584,7 +578,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntel
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -733,7 +727,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityCertificationHistoryV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -777,7 +771,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityCertificationHistoryV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -927,7 +921,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityRareAccessV1Execute(r ApiGetInt
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -971,7 +965,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityRareAccessV1Execute(r ApiGetInt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorbody
+			var v Errorresponsedto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -65,16 +65,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_account_mappings"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_mappings"
+    machine_account_mappings "github.com/sailpoint-oss/golang-sdk/v3/machine_account_mappings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
-    attributemappings := []byte(``) // Attributemappings | 
+    attributemappingsJson := []byte(``) // Attributemappings | 
 
-    var attributemappings v1.Attributemappings
-    if err := json.Unmarshal(attributemappings, &attributemappings); err != nil {
+    var attributemappings machine_account_mappings.Attributemappings
+    if err := json.Unmarshal(attributemappingsJson, &attributemappings); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -139,7 +139,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_mappings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -206,7 +206,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_mappings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -274,16 +274,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_account_mappings"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_mappings"
+    machine_account_mappings "github.com/sailpoint-oss/golang-sdk/v3/machine_account_mappings"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
-    attributemappings := []byte(``) // Attributemappings | 
+    attributemappingsJson := []byte(``) // Attributemappings | 
 
-    var attributemappings v1.Attributemappings
-    if err := json.Unmarshal(attributemappings, &attributemappings); err != nil {
+    var attributemappings machine_account_mappings.Attributemappings
+    if err := json.Unmarshal(attributemappingsJson, &attributemappings); err != nil {
       fmt.Println("Error:", err)
       return
     }

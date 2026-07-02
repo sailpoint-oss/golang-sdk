@@ -114,15 +114,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/roles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+    roles "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    role := []byte(``) // Role | 
+    roleJson := []byte(``) // Role | 
 
-    var role v1.Role
-    if err := json.Unmarshal(role, &role); err != nil {
+    var role roles.Role
+    if err := json.Unmarshal(roleJson, &role); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -184,15 +184,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/roles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+    roles "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    rolebulkdeleterequest := []byte(`{"roleIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}`) // Rolebulkdeleterequest | 
+    rolebulkdeleterequestJson := []byte(`{"roleIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}`) // Rolebulkdeleterequest | 
 
-    var rolebulkdeleterequest v1.Rolebulkdeleterequest
-    if err := json.Unmarshal(rolebulkdeleterequest, &rolebulkdeleterequest); err != nil {
+    var rolebulkdeleterequest roles.Rolebulkdeleterequest
+    if err := json.Unmarshal(rolebulkdeleterequestJson, &rolebulkdeleterequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -260,7 +260,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -329,7 +329,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -396,7 +396,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -454,7 +454,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -524,7 +524,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -612,7 +612,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -685,7 +685,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -756,7 +756,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -850,16 +850,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/roles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+    roles "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c91808a7813090a017814121e121518` // string | ID of the Role to patch # string | ID of the Role to patch
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/requestable","value":true},{"op":"replace","path":"/enabled","value":true}]`) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/requestable","value":true},{"op":"replace","path":"/enabled","value":true}]`) // []Jsonpatchoperation | 
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []roles.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -927,7 +927,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -938,7 +938,7 @@ func main() {
     sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
     forSegmentIds := `0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d` // string | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional) # string | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional)
     includeUnsegmented := false // bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to true) # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to true)
-    rolelistfilterdto := []byte(`{"filters":"dimensional eq false","ammKeyValues":[{"attribute":"iscFederalClassifications","values":["secret"]}]}`) // Rolelistfilterdto |  (optional)
+    rolelistfilterdtoJson := []byte(`{"filters":"dimensional eq false","ammKeyValues":[{"attribute":"iscFederalClassifications","values":["secret"]}]}`) // Rolelistfilterdto |  (optional)
 
     
 
@@ -1004,7 +1004,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1070,15 +1070,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/roles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+    roles "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    rolemetadatabulkupdatebyfilterrequest := []byte(`{"operation":"ADD","replaceScope":"ALL","filters":"requestable eq false","values":[{"attribute":"iscFederalClassifications","values":["topSecret"]}]}`) // Rolemetadatabulkupdatebyfilterrequest | 
+    rolemetadatabulkupdatebyfilterrequestJson := []byte(`{"operation":"ADD","replaceScope":"ALL","filters":"requestable eq false","values":[{"attribute":"iscFederalClassifications","values":["topSecret"]}]}`) // Rolemetadatabulkupdatebyfilterrequest | 
 
-    var rolemetadatabulkupdatebyfilterrequest v1.Rolemetadatabulkupdatebyfilterrequest
-    if err := json.Unmarshal(rolemetadatabulkupdatebyfilterrequest, &rolemetadatabulkupdatebyfilterrequest); err != nil {
+    var rolemetadatabulkupdatebyfilterrequest roles.Rolemetadatabulkupdatebyfilterrequest
+    if err := json.Unmarshal(rolemetadatabulkupdatebyfilterrequestJson, &rolemetadatabulkupdatebyfilterrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1140,15 +1140,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/roles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+    roles "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    rolemetadatabulkupdatebyidrequest := []byte(``) // Rolemetadatabulkupdatebyidrequest | 
+    rolemetadatabulkupdatebyidrequestJson := []byte(``) // Rolemetadatabulkupdatebyidrequest | 
 
-    var rolemetadatabulkupdatebyidrequest v1.Rolemetadatabulkupdatebyidrequest
-    if err := json.Unmarshal(rolemetadatabulkupdatebyidrequest, &rolemetadatabulkupdatebyidrequest); err != nil {
+    var rolemetadatabulkupdatebyidrequest roles.Rolemetadatabulkupdatebyidrequest
+    if err := json.Unmarshal(rolemetadatabulkupdatebyidrequestJson, &rolemetadatabulkupdatebyidrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1210,15 +1210,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/roles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/roles"
+    roles "github.com/sailpoint-oss/golang-sdk/v3/roles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    rolemetadatabulkupdatebyqueryrequest := []byte(`{"example of a success update":{"query":{"indices":["roles"],"queryType":"TEXT","textQuery":{"terms":["test123"],"fields":["id"],"matchAny":false,"contains":true},"includeNested":false},"operation":"REPLACE","replaceScope":"ALL","values":[{"attribute":"iscFederalClassifications","values":["secret"]}]}}`) // Rolemetadatabulkupdatebyqueryrequest | 
+    rolemetadatabulkupdatebyqueryrequestJson := []byte(`{"example of a success update":{"query":{"indices":["roles"],"queryType":"TEXT","textQuery":{"terms":["test123"],"fields":["id"],"matchAny":false,"contains":true},"includeNested":false},"operation":"REPLACE","replaceScope":"ALL","values":[{"attribute":"iscFederalClassifications","values":["secret"]}]}}`) // Rolemetadatabulkupdatebyqueryrequest | 
 
-    var rolemetadatabulkupdatebyqueryrequest v1.Rolemetadatabulkupdatebyqueryrequest
-    if err := json.Unmarshal(rolemetadatabulkupdatebyqueryrequest, &rolemetadatabulkupdatebyqueryrequest); err != nil {
+    var rolemetadatabulkupdatebyqueryrequest roles.Rolemetadatabulkupdatebyqueryrequest
+    if err := json.Unmarshal(rolemetadatabulkupdatebyqueryrequestJson, &rolemetadatabulkupdatebyqueryrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

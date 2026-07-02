@@ -70,7 +70,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -143,16 +143,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_recommendations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_recommendations"
+    iai_recommendations "github.com/sailpoint-oss/golang-sdk/v3/iai_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    recommendationrequestdto := []byte(``) // Recommendationrequestdto | 
+    recommendationrequestdtoJson := []byte(``) // Recommendationrequestdto | 
 
-    var recommendationrequestdto v1.Recommendationrequestdto
-    if err := json.Unmarshal(recommendationrequestdto, &recommendationrequestdto); err != nil {
+    var recommendationrequestdto iai_recommendations.Recommendationrequestdto
+    if err := json.Unmarshal(recommendationrequestdtoJson, &recommendationrequestdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -223,16 +223,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_recommendations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_recommendations"
+    iai_recommendations "github.com/sailpoint-oss/golang-sdk/v3/iai_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    recommendationconfigdto := []byte(``) // Recommendationconfigdto | 
+    recommendationconfigdtoJson := []byte(``) // Recommendationconfigdto | 
 
-    var recommendationconfigdto v1.Recommendationconfigdto
-    if err := json.Unmarshal(recommendationconfigdto, &recommendationconfigdto); err != nil {
+    var recommendationconfigdto iai_recommendations.Recommendationconfigdto
+    if err := json.Unmarshal(recommendationconfigdtoJson, &recommendationconfigdto); err != nil {
       fmt.Println("Error:", err)
       return
     }

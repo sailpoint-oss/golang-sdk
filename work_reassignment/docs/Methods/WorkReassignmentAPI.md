@@ -86,16 +86,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+    work_reassignment "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    configurationitemrequest := []byte(``) // Configurationitemrequest | 
+    configurationitemrequestJson := []byte(``) // Configurationitemrequest | 
 
-    var configurationitemrequest v1.Configurationitemrequest
-    if err := json.Unmarshal(configurationitemrequest, &configurationitemrequest); err != nil {
+    var configurationitemrequest work_reassignment.Configurationitemrequest
+    if err := json.Unmarshal(configurationitemrequestJson, &configurationitemrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -173,7 +173,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -255,7 +255,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -331,7 +331,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -409,7 +409,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -483,7 +483,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -556,7 +556,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -634,17 +634,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+    work_reassignment "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     identityId := `2c91808781a71ddb0181b9090b5c504e` // string | unique identity id # string | unique identity id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    configurationitemrequest := []byte(``) // Configurationitemrequest | 
+    configurationitemrequestJson := []byte(``) // Configurationitemrequest | 
 
-    var configurationitemrequest v1.Configurationitemrequest
-    if err := json.Unmarshal(configurationitemrequest, &configurationitemrequest); err != nil {
+    var configurationitemrequest work_reassignment.Configurationitemrequest
+    if err := json.Unmarshal(configurationitemrequestJson, &configurationitemrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -715,16 +715,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+    work_reassignment "github.com/sailpoint-oss/golang-sdk/v3/work_reassignment"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    tenantconfigurationrequest := []byte(``) // Tenantconfigurationrequest | 
+    tenantconfigurationrequestJson := []byte(``) // Tenantconfigurationrequest | 
 
-    var tenantconfigurationrequest v1.Tenantconfigurationrequest
-    if err := json.Unmarshal(tenantconfigurationrequest, &tenantconfigurationrequest); err != nil {
+    var tenantconfigurationrequest work_reassignment.Tenantconfigurationrequest
+    if err := json.Unmarshal(tenantconfigurationrequestJson, &tenantconfigurationrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

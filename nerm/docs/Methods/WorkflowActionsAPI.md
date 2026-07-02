@@ -84,15 +84,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createapprovalactionrequest := []byte(``) // CreateApprovalActionRequest | 
+    createapprovalactionrequestJson := []byte(``) // CreateApprovalActionRequest | 
 
-    var createApprovalActionRequest NERM.CreateApprovalActionRequest
-    if err := json.Unmarshal(createapprovalactionrequest, &createApprovalActionRequest); err != nil {
+    var createApprovalActionRequest nerm.CreateApprovalActionRequest
+    if err := json.Unmarshal(createapprovalactionrequestJson, &createApprovalActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -151,15 +151,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createasksecurityquestionactionrequest := []byte(``) // CreateAskSecurityQuestionActionRequest | 
+    createasksecurityquestionactionrequestJson := []byte(``) // CreateAskSecurityQuestionActionRequest | 
 
-    var createAskSecurityQuestionActionRequest NERM.CreateAskSecurityQuestionActionRequest
-    if err := json.Unmarshal(createasksecurityquestionactionrequest, &createAskSecurityQuestionActionRequest); err != nil {
+    var createAskSecurityQuestionActionRequest nerm.CreateAskSecurityQuestionActionRequest
+    if err := json.Unmarshal(createasksecurityquestionactionrequestJson, &createAskSecurityQuestionActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -218,15 +218,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createautoassignactionrequest := []byte(``) // CreateAutoAssignActionRequest | 
+    createautoassignactionrequestJson := []byte(``) // CreateAutoAssignActionRequest | 
 
-    var createAutoAssignActionRequest NERM.CreateAutoAssignActionRequest
-    if err := json.Unmarshal(createautoassignactionrequest, &createAutoAssignActionRequest); err != nil {
+    var createAutoAssignActionRequest nerm.CreateAutoAssignActionRequest
+    if err := json.Unmarshal(createautoassignactionrequestJson, &createAutoAssignActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -285,15 +285,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createbatchupdateactionrequest := []byte(``) // CreateBatchUpdateActionRequest | 
+    createbatchupdateactionrequestJson := []byte(``) // CreateBatchUpdateActionRequest | 
 
-    var createBatchUpdateActionRequest NERM.CreateBatchUpdateActionRequest
-    if err := json.Unmarshal(createbatchupdateactionrequest, &createBatchUpdateActionRequest); err != nil {
+    var createBatchUpdateActionRequest nerm.CreateBatchUpdateActionRequest
+    if err := json.Unmarshal(createbatchupdateactionrequestJson, &createBatchUpdateActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -352,15 +352,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createclosesessionactionrequest := []byte(``) // CreateCloseSessionActionRequest | 
+    createclosesessionactionrequestJson := []byte(``) // CreateCloseSessionActionRequest | 
 
-    var createCloseSessionActionRequest NERM.CreateCloseSessionActionRequest
-    if err := json.Unmarshal(createclosesessionactionrequest, &createCloseSessionActionRequest); err != nil {
+    var createCloseSessionActionRequest nerm.CreateCloseSessionActionRequest
+    if err := json.Unmarshal(createclosesessionactionrequestJson, &createCloseSessionActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -419,15 +419,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createcontributorsactionrequest := []byte(``) // CreateContributorsActionRequest | 
+    createcontributorsactionrequestJson := []byte(``) // CreateContributorsActionRequest | 
 
-    var createContributorsActionRequest NERM.CreateContributorsActionRequest
-    if err := json.Unmarshal(createcontributorsactionrequest, &createContributorsActionRequest); err != nil {
+    var createContributorsActionRequest nerm.CreateContributorsActionRequest
+    if err := json.Unmarshal(createcontributorsactionrequestJson, &createContributorsActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -486,15 +486,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createcreateprofileactionrequest := []byte(``) // CreateCreateProfileActionRequest | 
+    createcreateprofileactionrequestJson := []byte(``) // CreateCreateProfileActionRequest | 
 
-    var createCreateProfileActionRequest NERM.CreateCreateProfileActionRequest
-    if err := json.Unmarshal(createcreateprofileactionrequest, &createCreateProfileActionRequest); err != nil {
+    var createCreateProfileActionRequest nerm.CreateCreateProfileActionRequest
+    if err := json.Unmarshal(createcreateprofileactionrequestJson, &createCreateProfileActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -553,15 +553,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createduplicatepreventionactionrequest := []byte(``) // CreateDuplicatePreventionActionRequest | 
+    createduplicatepreventionactionrequestJson := []byte(``) // CreateDuplicatePreventionActionRequest | 
 
-    var createDuplicatePreventionActionRequest NERM.CreateDuplicatePreventionActionRequest
-    if err := json.Unmarshal(createduplicatepreventionactionrequest, &createDuplicatePreventionActionRequest); err != nil {
+    var createDuplicatePreventionActionRequest nerm.CreateDuplicatePreventionActionRequest
+    if err := json.Unmarshal(createduplicatepreventionactionrequestJson, &createDuplicatePreventionActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -620,15 +620,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createemailverificationactionrequest := []byte(``) // CreateEmailVerificationActionRequest | 
+    createemailverificationactionrequestJson := []byte(``) // CreateEmailVerificationActionRequest | 
 
-    var createEmailVerificationActionRequest NERM.CreateEmailVerificationActionRequest
-    if err := json.Unmarshal(createemailverificationactionrequest, &createEmailVerificationActionRequest); err != nil {
+    var createEmailVerificationActionRequest nerm.CreateEmailVerificationActionRequest
+    if err := json.Unmarshal(createemailverificationactionrequestJson, &createEmailVerificationActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -687,15 +687,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createfulfillmentactionrequest := []byte(``) // CreateFulfillmentActionRequest | 
+    createfulfillmentactionrequestJson := []byte(``) // CreateFulfillmentActionRequest | 
 
-    var createFulfillmentActionRequest NERM.CreateFulfillmentActionRequest
-    if err := json.Unmarshal(createfulfillmentactionrequest, &createFulfillmentActionRequest); err != nil {
+    var createFulfillmentActionRequest nerm.CreateFulfillmentActionRequest
+    if err := json.Unmarshal(createfulfillmentactionrequestJson, &createFulfillmentActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -754,15 +754,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createidentityproofingactionrequest := []byte(``) // CreateIdentityProofingActionRequest | 
+    createidentityproofingactionrequestJson := []byte(``) // CreateIdentityProofingActionRequest | 
 
-    var createIdentityProofingActionRequest NERM.CreateIdentityProofingActionRequest
-    if err := json.Unmarshal(createidentityproofingactionrequest, &createIdentityProofingActionRequest); err != nil {
+    var createIdentityProofingActionRequest nerm.CreateIdentityProofingActionRequest
+    if err := json.Unmarshal(createidentityproofingactionrequestJson, &createIdentityProofingActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -821,15 +821,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createinvitationactionrequest := []byte(``) // CreateInvitationActionRequest | 
+    createinvitationactionrequestJson := []byte(``) // CreateInvitationActionRequest | 
 
-    var createInvitationActionRequest NERM.CreateInvitationActionRequest
-    if err := json.Unmarshal(createinvitationactionrequest, &createInvitationActionRequest); err != nil {
+    var createInvitationActionRequest nerm.CreateInvitationActionRequest
+    if err := json.Unmarshal(createinvitationactionrequestJson, &createInvitationActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -888,15 +888,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createldapactionrequest := []byte(``) // CreateLdapActionRequest | 
+    createldapactionrequestJson := []byte(``) // CreateLdapActionRequest | 
 
-    var createLdapActionRequest NERM.CreateLdapActionRequest
-    if err := json.Unmarshal(createldapactionrequest, &createLdapActionRequest); err != nil {
+    var createLdapActionRequest nerm.CreateLdapActionRequest
+    if err := json.Unmarshal(createldapactionrequestJson, &createLdapActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -955,15 +955,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createnotificationactionrequest := []byte(``) // CreateNotificationActionRequest | 
+    createnotificationactionrequestJson := []byte(``) // CreateNotificationActionRequest | 
 
-    var createNotificationActionRequest NERM.CreateNotificationActionRequest
-    if err := json.Unmarshal(createnotificationactionrequest, &createNotificationActionRequest); err != nil {
+    var createNotificationActionRequest nerm.CreateNotificationActionRequest
+    if err := json.Unmarshal(createnotificationactionrequestJson, &createNotificationActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1022,15 +1022,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createpasswordresetactionrequest := []byte(``) // CreatePasswordResetActionRequest | 
+    createpasswordresetactionrequestJson := []byte(``) // CreatePasswordResetActionRequest | 
 
-    var createPasswordResetActionRequest NERM.CreatePasswordResetActionRequest
-    if err := json.Unmarshal(createpasswordresetactionrequest, &createPasswordResetActionRequest); err != nil {
+    var createPasswordResetActionRequest nerm.CreatePasswordResetActionRequest
+    if err := json.Unmarshal(createpasswordresetactionrequestJson, &createPasswordResetActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1089,15 +1089,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createprofilecheckactionrequest := []byte(``) // CreateProfileCheckActionRequest | 
+    createprofilecheckactionrequestJson := []byte(``) // CreateProfileCheckActionRequest | 
 
-    var createProfileCheckActionRequest NERM.CreateProfileCheckActionRequest
-    if err := json.Unmarshal(createprofilecheckactionrequest, &createProfileCheckActionRequest); err != nil {
+    var createProfileCheckActionRequest nerm.CreateProfileCheckActionRequest
+    if err := json.Unmarshal(createprofilecheckactionrequestJson, &createProfileCheckActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1156,15 +1156,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createprofileselectactionrequest := []byte(``) // CreateProfileSelectActionRequest | 
+    createprofileselectactionrequestJson := []byte(``) // CreateProfileSelectActionRequest | 
 
-    var createProfileSelectActionRequest NERM.CreateProfileSelectActionRequest
-    if err := json.Unmarshal(createprofileselectactionrequest, &createProfileSelectActionRequest); err != nil {
+    var createProfileSelectActionRequest nerm.CreateProfileSelectActionRequest
+    if err := json.Unmarshal(createprofileselectactionrequestJson, &createProfileSelectActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1223,15 +1223,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createrequestactionrequest := []byte(``) // CreateRequestActionRequest | 
+    createrequestactionrequestJson := []byte(``) // CreateRequestActionRequest | 
 
-    var createRequestActionRequest NERM.CreateRequestActionRequest
-    if err := json.Unmarshal(createrequestactionrequest, &createRequestActionRequest); err != nil {
+    var createRequestActionRequest nerm.CreateRequestActionRequest
+    if err := json.Unmarshal(createrequestactionrequestJson, &createRequestActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1290,15 +1290,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createrestapiactionrequest := []byte(``) // CreateRestApiActionRequest | 
+    createrestapiactionrequestJson := []byte(``) // CreateRestApiActionRequest | 
 
-    var createRestApiActionRequest NERM.CreateRestApiActionRequest
-    if err := json.Unmarshal(createrestapiactionrequest, &createRestApiActionRequest); err != nil {
+    var createRestApiActionRequest nerm.CreateRestApiActionRequest
+    if err := json.Unmarshal(createrestapiactionrequestJson, &createRestApiActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1357,15 +1357,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createreviewactionrequest := []byte(``) // CreateReviewActionRequest | 
+    createreviewactionrequestJson := []byte(``) // CreateReviewActionRequest | 
 
-    var createReviewActionRequest NERM.CreateReviewActionRequest
-    if err := json.Unmarshal(createreviewactionrequest, &createReviewActionRequest); err != nil {
+    var createReviewActionRequest nerm.CreateReviewActionRequest
+    if err := json.Unmarshal(createreviewactionrequestJson, &createReviewActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1424,15 +1424,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createrunworkflowactionrequest := []byte(``) // CreateRunWorkflowActionRequest | 
+    createrunworkflowactionrequestJson := []byte(``) // CreateRunWorkflowActionRequest | 
 
-    var createRunWorkflowActionRequest NERM.CreateRunWorkflowActionRequest
-    if err := json.Unmarshal(createrunworkflowactionrequest, &createRunWorkflowActionRequest); err != nil {
+    var createRunWorkflowActionRequest nerm.CreateRunWorkflowActionRequest
+    if err := json.Unmarshal(createrunworkflowactionrequestJson, &createRunWorkflowActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1491,15 +1491,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createsetattributesactionrequest := []byte(``) // CreateSetAttributesActionRequest | 
+    createsetattributesactionrequestJson := []byte(``) // CreateSetAttributesActionRequest | 
 
-    var createSetAttributesActionRequest NERM.CreateSetAttributesActionRequest
-    if err := json.Unmarshal(createsetattributesactionrequest, &createSetAttributesActionRequest); err != nil {
+    var createSetAttributesActionRequest nerm.CreateSetAttributesActionRequest
+    if err := json.Unmarshal(createsetattributesactionrequestJson, &createSetAttributesActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1558,15 +1558,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createsetsecurityquestionactionrequest := []byte(``) // CreateSetSecurityQuestionActionRequest | 
+    createsetsecurityquestionactionrequestJson := []byte(``) // CreateSetSecurityQuestionActionRequest | 
 
-    var createSetSecurityQuestionActionRequest NERM.CreateSetSecurityQuestionActionRequest
-    if err := json.Unmarshal(createsetsecurityquestionactionrequest, &createSetSecurityQuestionActionRequest); err != nil {
+    var createSetSecurityQuestionActionRequest nerm.CreateSetSecurityQuestionActionRequest
+    if err := json.Unmarshal(createsetsecurityquestionactionrequestJson, &createSetSecurityQuestionActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1625,15 +1625,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createsoapapiactionrequest := []byte(``) // CreateSoapApiActionRequest | 
+    createsoapapiactionrequestJson := []byte(``) // CreateSoapApiActionRequest | 
 
-    var createSoapApiActionRequest NERM.CreateSoapApiActionRequest
-    if err := json.Unmarshal(createsoapapiactionrequest, &createSoapApiActionRequest); err != nil {
+    var createSoapApiActionRequest nerm.CreateSoapApiActionRequest
+    if err := json.Unmarshal(createsoapapiactionrequestJson, &createSoapApiActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1692,15 +1692,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createstatuschangeactionrequest := []byte(``) // CreateStatusChangeActionRequest | 
+    createstatuschangeactionrequestJson := []byte(``) // CreateStatusChangeActionRequest | 
 
-    var createStatusChangeActionRequest NERM.CreateStatusChangeActionRequest
-    if err := json.Unmarshal(createstatuschangeactionrequest, &createStatusChangeActionRequest); err != nil {
+    var createStatusChangeActionRequest nerm.CreateStatusChangeActionRequest
+    if err := json.Unmarshal(createstatuschangeactionrequestJson, &createStatusChangeActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1759,15 +1759,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createunassignactionrequest := []byte(``) // CreateUnassignActionRequest | 
+    createunassignactionrequestJson := []byte(``) // CreateUnassignActionRequest | 
 
-    var createUnassignActionRequest NERM.CreateUnassignActionRequest
-    if err := json.Unmarshal(createunassignactionrequest, &createUnassignActionRequest); err != nil {
+    var createUnassignActionRequest nerm.CreateUnassignActionRequest
+    if err := json.Unmarshal(createunassignactionrequestJson, &createUnassignActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1826,15 +1826,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createupdateprofileactionrequest := []byte(``) // CreateUpdateProfileActionRequest | 
+    createupdateprofileactionrequestJson := []byte(``) // CreateUpdateProfileActionRequest | 
 
-    var createUpdateProfileActionRequest NERM.CreateUpdateProfileActionRequest
-    if err := json.Unmarshal(createupdateprofileactionrequest, &createUpdateProfileActionRequest); err != nil {
+    var createUpdateProfileActionRequest nerm.CreateUpdateProfileActionRequest
+    if err := json.Unmarshal(createupdateprofileactionrequestJson, &createUpdateProfileActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1893,15 +1893,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createusernamepasswordactionrequest := []byte(``) // CreateUsernamePasswordActionRequest | 
+    createusernamepasswordactionrequestJson := []byte(``) // CreateUsernamePasswordActionRequest | 
 
-    var createUsernamePasswordActionRequest NERM.CreateUsernamePasswordActionRequest
-    if err := json.Unmarshal(createusernamepasswordactionrequest, &createUsernamePasswordActionRequest); err != nil {
+    var createUsernamePasswordActionRequest nerm.CreateUsernamePasswordActionRequest
+    if err := json.Unmarshal(createusernamepasswordactionrequestJson, &createUsernamePasswordActionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1961,7 +1961,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {

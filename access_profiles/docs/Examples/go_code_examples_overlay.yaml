@@ -11,16 +11,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+            access_profiles "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           accessprofile := []byte(``) // Accessprofile | 
+           accessprofileJson := []byte(``) // Accessprofile | 
 
           
-          var accessprofile v1.Accessprofile
-          if err := json.Unmarshal(accessprofile, &accessprofile); err != nil {
+          var accessprofile access_profiles.Accessprofile
+          if err := json.Unmarshal(accessprofileJson, &accessprofile); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -51,8 +51,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -83,16 +83,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+            access_profiles "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           accessprofilebulkdeleterequest := []byte(`{"bestEffortOnly":true,"accessProfileIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}`) // Accessprofilebulkdeleterequest | 
+           accessprofilebulkdeleterequestJson := []byte(`{"bestEffortOnly":true,"accessProfileIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}`) // Accessprofilebulkdeleterequest | 
 
           
-          var accessprofilebulkdeleterequest v1.Accessprofilebulkdeleterequest
-          if err := json.Unmarshal(accessprofilebulkdeleterequest, &accessprofilebulkdeleterequest); err != nil {
+          var accessprofilebulkdeleterequest access_profiles.Accessprofilebulkdeleterequest
+          if err := json.Unmarshal(accessprofilebulkdeleterequestJson, &accessprofilebulkdeleterequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -123,8 +123,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -162,8 +162,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -196,8 +196,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -237,17 +237,17 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+            access_profiles "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `2c91808a7813090a017814121919ecca` // string | ID of the Access Profile to patch # string | ID of the Access Profile to patch
-          jsonpatchoperation := []byte(`[{"op":"add","path":"/entitlements","value":[{"id":"2c9180857725c14301772a93bb77242d","type":"ENTITLEMENT","name":"AD User Group"}]}]`) // []Jsonpatchoperation | 
+          jsonpatchoperationJson := []byte(`[{"op":"add","path":"/entitlements","value":[{"id":"2c9180857725c14301772a93bb77242d","type":"ENTITLEMENT","name":"AD User Group"}]}]`) // []Jsonpatchoperation | 
 
           
-          var jsonpatchoperation []v1.Jsonpatchoperation
-          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+          var jsonpatchoperation []access_profiles.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -278,17 +278,17 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+            access_profiles "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          accessprofilebulkupdaterequestinner := []byte(`[{"id":"464ae7bf-791e-49fd-b746-06a2e4a89635","requestable":false}]`) // []AccessprofilebulkupdaterequestInner | 
+          accessprofilebulkupdaterequestinnerJson := []byte(`[{"id":"464ae7bf-791e-49fd-b746-06a2e4a89635","requestable":false}]`) // []AccessprofilebulkupdaterequestInner | 
 
           
-          var accessprofilebulkupdaterequestInner []v1.AccessprofilebulkupdaterequestInner
-          if err := json.Unmarshal(accessprofilebulkupdaterequestinner, &accessprofilebulkupdaterequestInner); err != nil {
+          var accessprofilebulkupdaterequestInner []access_profiles.AccessprofilebulkupdaterequestInner
+          if err := json.Unmarshal(accessprofilebulkupdaterequestinnerJson, &accessprofilebulkupdaterequestInner); err != nil {
             fmt.Println("Error:", err)
             return
           }

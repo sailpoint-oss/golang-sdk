@@ -67,7 +67,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/reports_data_extraction"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -133,7 +133,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/reports_data_extraction"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -203,7 +203,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/reports_data_extraction"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -267,15 +267,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/reports_data_extraction"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/reports_data_extraction"
+    reports_data_extraction "github.com/sailpoint-oss/golang-sdk/v3/reports_data_extraction"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    reportdetails := []byte(``) // Reportdetails | 
+    reportdetailsJson := []byte(``) // Reportdetails | 
 
-    var reportdetails v1.Reportdetails
-    if err := json.Unmarshal(reportdetails, &reportdetails); err != nil {
+    var reportdetails reports_data_extraction.Reportdetails
+    if err := json.Unmarshal(reportdetailsJson, &reportdetails); err != nil {
       fmt.Println("Error:", err)
       return
     }

@@ -89,7 +89,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -156,7 +156,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -223,7 +223,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -290,16 +290,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/work_items"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+    work_items "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the work item # string | The ID of the work item
-    workitemforward := []byte(``) // Workitemforward | 
+    workitemforwardJson := []byte(``) // Workitemforward | 
 
-    var workitemforward v1.Workitemforward
-    if err := json.Unmarshal(workitemforward, &workitemforward); err != nil {
+    var workitemforward work_items.Workitemforward
+    if err := json.Unmarshal(workitemforwardJson, &workitemforward); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -361,7 +361,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -426,7 +426,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -488,7 +488,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -554,7 +554,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -616,7 +616,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -681,7 +681,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -752,7 +752,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -819,7 +819,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -885,16 +885,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/work_items"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+    work_items "github.com/sailpoint-oss/golang-sdk/v3/work_items"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the work item # string | The ID of the work item
     requestBody := {"fieldName":"fieldValue"} // map[string]interface{} | Account Selection Data map, keyed on fieldName # map[string]interface{} | Account Selection Data map, keyed on fieldName
 
-    var requestBody v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody work_items.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }

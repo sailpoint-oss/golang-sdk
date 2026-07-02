@@ -76,16 +76,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+    machine_account_subtypes "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    createsourcesubtypev1request := []byte(`{"sourceId":"6d0458373bec4b4b80460992b76016da","technicalName":"foo","displayName":"Mr Foo","description":"fighters","type":"MACHINE"}`) // CreateSourceSubtypeV1Request | 
+    createsourcesubtypev1requestJson := []byte(`{"sourceId":"6d0458373bec4b4b80460992b76016da","technicalName":"foo","displayName":"Mr Foo","description":"fighters","type":"MACHINE"}`) // CreateSourceSubtypeV1Request | 
 
-    var createSourceSubtypeV1Request v1.CreateSourceSubtypeV1Request
-    if err := json.Unmarshal(createsourcesubtypev1request, &createSourceSubtypeV1Request); err != nil {
+    var createSourceSubtypeV1Request machine_account_subtypes.CreateSourceSubtypeV1Request
+    if err := json.Unmarshal(createsourcesubtypev1requestJson, &createSourceSubtypeV1Request); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -163,7 +163,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -241,7 +241,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -320,7 +320,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -399,7 +399,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -477,16 +477,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+    machine_account_subtypes "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     requestbody := []byte(``) // []string | 
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []machine_account_subtypes.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -563,8 +563,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+    machine_account_subtypes "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -572,8 +572,8 @@ func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     requestbody := []byte(`[{"op":"replace","path":"/displayName","value":"Test New DisplayName"}]`) // []map[string]interface{} | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []machine_account_subtypes.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -649,17 +649,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+    machine_account_subtypes "github.com/sailpoint-oss/golang-sdk/v3/machine_account_subtypes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     subtypeId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account subtype ID. # string | machine account subtype ID.
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []machine_account_subtypes.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }

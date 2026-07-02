@@ -11,8 +11,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/auth_profile"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/auth_profile"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -45,8 +45,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/auth_profile"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/auth_profile"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -80,18 +80,18 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/auth_profile"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/auth_profile"
+            auth_profile "github.com/sailpoint-oss/golang-sdk/v3/auth_profile"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `2c91808a7813090a017814121919ecca` // string | ID of the Auth Profile to patch. # string | ID of the Auth Profile to patch.
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          jsonpatchoperation := []byte(``) // []Jsonpatchoperation | 
+          jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | 
 
           
-          var jsonpatchoperation []v1.Jsonpatchoperation
-          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+          var jsonpatchoperation []auth_profile.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
             fmt.Println("Error:", err)
             return
           }

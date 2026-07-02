@@ -70,7 +70,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/ui_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -143,16 +143,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/ui_metadata"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/ui_metadata"
+    ui_metadata "github.com/sailpoint-oss/golang-sdk/v3/ui_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    tenantuimetadataitemupdaterequest := []byte(``) // Tenantuimetadataitemupdaterequest | 
+    tenantuimetadataitemupdaterequestJson := []byte(``) // Tenantuimetadataitemupdaterequest | 
 
-    var tenantuimetadataitemupdaterequest v1.Tenantuimetadataitemupdaterequest
-    if err := json.Unmarshal(tenantuimetadataitemupdaterequest, &tenantuimetadataitemupdaterequest); err != nil {
+    var tenantuimetadataitemupdaterequest ui_metadata.Tenantuimetadataitemupdaterequest
+    if err := json.Unmarshal(tenantuimetadataitemupdaterequestJson, &tenantuimetadataitemupdaterequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

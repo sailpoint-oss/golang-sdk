@@ -77,16 +77,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+    iai_access_request_recommendations "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accessrequestrecommendationactionitemdto := []byte(``) // Accessrequestrecommendationactionitemdto | The recommended access item to ignore for an identity.
+    accessrequestrecommendationactionitemdtoJson := []byte(``) // Accessrequestrecommendationactionitemdto | The recommended access item to ignore for an identity.
 
-    var accessrequestrecommendationactionitemdto v1.Accessrequestrecommendationactionitemdto
-    if err := json.Unmarshal(accessrequestrecommendationactionitemdto, &accessrequestrecommendationactionitemdto); err != nil {
+    var accessrequestrecommendationactionitemdto iai_access_request_recommendations.Accessrequestrecommendationactionitemdto
+    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessrequestrecommendationactionitemdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -157,16 +157,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+    iai_access_request_recommendations "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accessrequestrecommendationactionitemdto := []byte(``) // Accessrequestrecommendationactionitemdto | The recommended access item that was requested for an identity.
+    accessrequestrecommendationactionitemdtoJson := []byte(``) // Accessrequestrecommendationactionitemdto | The recommended access item that was requested for an identity.
 
-    var accessrequestrecommendationactionitemdto v1.Accessrequestrecommendationactionitemdto
-    if err := json.Unmarshal(accessrequestrecommendationactionitemdto, &accessrequestrecommendationactionitemdto); err != nil {
+    var accessrequestrecommendationactionitemdto iai_access_request_recommendations.Accessrequestrecommendationactionitemdto
+    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessrequestrecommendationactionitemdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -237,16 +237,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+    iai_access_request_recommendations "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accessrequestrecommendationactionitemdto := []byte(``) // Accessrequestrecommendationactionitemdto | The recommended access that was viewed for an identity.
+    accessrequestrecommendationactionitemdtoJson := []byte(``) // Accessrequestrecommendationactionitemdto | The recommended access that was viewed for an identity.
 
-    var accessrequestrecommendationactionitemdto v1.Accessrequestrecommendationactionitemdto
-    if err := json.Unmarshal(accessrequestrecommendationactionitemdto, &accessrequestrecommendationactionitemdto); err != nil {
+    var accessrequestrecommendationactionitemdto iai_access_request_recommendations.Accessrequestrecommendationactionitemdto
+    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessrequestrecommendationactionitemdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -317,16 +317,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+    iai_access_request_recommendations "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accessrequestrecommendationactionitemdto := []byte(``) // []Accessrequestrecommendationactionitemdto | The recommended access items that were viewed for an identity.
+    accessrequestrecommendationactionitemdtoJson := []byte(``) // []Accessrequestrecommendationactionitemdto | The recommended access items that were viewed for an identity.
 
-    var accessrequestrecommendationactionitemdto []v1.Accessrequestrecommendationactionitemdto
-    if err := json.Unmarshal(accessrequestrecommendationactionitemdto, &accessrequestrecommendationactionitemdto); err != nil {
+    var accessrequestrecommendationactionitemdto []iai_access_request_recommendations.Accessrequestrecommendationactionitemdto
+    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessrequestrecommendationactionitemdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -397,7 +397,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -475,7 +475,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -558,7 +558,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -643,7 +643,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -728,7 +728,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -806,16 +806,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+    iai_access_request_recommendations "github.com/sailpoint-oss/golang-sdk/v3/iai_access_request_recommendations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accessrequestrecommendationconfigdto := []byte(``) // Accessrequestrecommendationconfigdto | The desired configurations for Access Request Recommender for the tenant.
+    accessrequestrecommendationconfigdtoJson := []byte(``) // Accessrequestrecommendationconfigdto | The desired configurations for Access Request Recommender for the tenant.
 
-    var accessrequestrecommendationconfigdto v1.Accessrequestrecommendationconfigdto
-    if err := json.Unmarshal(accessrequestrecommendationconfigdto, &accessrequestrecommendationconfigdto); err != nil {
+    var accessrequestrecommendationconfigdto iai_access_request_recommendations.Accessrequestrecommendationconfigdto
+    if err := json.Unmarshal(accessrequestrecommendationconfigdtoJson, &accessrequestrecommendationconfigdto); err != nil {
       fmt.Println("Error:", err)
       return
     }

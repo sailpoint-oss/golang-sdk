@@ -63,15 +63,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/oauth_clients"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/oauth_clients"
+    oauth_clients "github.com/sailpoint-oss/golang-sdk/v3/oauth_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createoauthclientrequest := []byte(``) // Createoauthclientrequest | 
+    createoauthclientrequestJson := []byte(``) // Createoauthclientrequest | 
 
-    var createoauthclientrequest v1.Createoauthclientrequest
-    if err := json.Unmarshal(createoauthclientrequest, &createoauthclientrequest); err != nil {
+    var createoauthclientrequest oauth_clients.Createoauthclientrequest
+    if err := json.Unmarshal(createoauthclientrequestJson, &createoauthclientrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -135,7 +135,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/oauth_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -200,7 +200,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/oauth_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -262,7 +262,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/oauth_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -328,16 +328,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/oauth_clients"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/oauth_clients"
+    oauth_clients "github.com/sailpoint-oss/golang-sdk/v3/oauth_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The OAuth client id # string | The OAuth client id
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/strongAuthSupported","value":true},{"op":"replace","path":"/businessName","value":"acme-solar"}]`) // []Jsonpatchoperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/strongAuthSupported","value":true},{"op":"replace","path":"/businessName","value":"acme-solar"}]`) // []Jsonpatchoperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []oauth_clients.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }

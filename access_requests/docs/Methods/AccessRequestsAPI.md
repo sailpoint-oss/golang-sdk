@@ -68,15 +68,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+    access_requests "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    bulkapproveaccessrequest := []byte(`{"accessRequestIds":["2c91808568c529c60168cca6f90c1313","2c91808568c529c60168cca6f90c1314"],"comment":"I approve these request items"}`) // Bulkapproveaccessrequest | 
+    bulkapproveaccessrequestJson := []byte(`{"accessRequestIds":["2c91808568c529c60168cca6f90c1313","2c91808568c529c60168cca6f90c1314"],"comment":"I approve these request items"}`) // Bulkapproveaccessrequest | 
 
-    var bulkapproveaccessrequest v1.Bulkapproveaccessrequest
-    if err := json.Unmarshal(bulkapproveaccessrequest, &bulkapproveaccessrequest); err != nil {
+    var bulkapproveaccessrequest access_requests.Bulkapproveaccessrequest
+    if err := json.Unmarshal(bulkapproveaccessrequestJson, &bulkapproveaccessrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -136,15 +136,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+    access_requests "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    bulkcancelaccessrequest := []byte(`{"accessRequestIds":["2c91808568c529c60168cca6f90c1313","2c91808568c529c60168cca6f90c1314"],"comment":"I requested this role by mistake."}`) // Bulkcancelaccessrequest | 
+    bulkcancelaccessrequestJson := []byte(`{"accessRequestIds":["2c91808568c529c60168cca6f90c1313","2c91808568c529c60168cca6f90c1314"],"comment":"I requested this role by mistake."}`) // Bulkcancelaccessrequest | 
 
-    var bulkcancelaccessrequest v1.Bulkcancelaccessrequest
-    if err := json.Unmarshal(bulkcancelaccessrequest, &bulkcancelaccessrequest); err != nil {
+    var bulkcancelaccessrequest access_requests.Bulkcancelaccessrequest
+    if err := json.Unmarshal(bulkcancelaccessrequestJson, &bulkcancelaccessrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -204,15 +204,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+    access_requests "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    cancelaccessrequest := []byte(`{"accountActivityId":"2c91808568c529c60168cca6f90c1313","comment":"I requested this role by mistake."}`) // Cancelaccessrequest | 
+    cancelaccessrequestJson := []byte(`{"accountActivityId":"2c91808568c529c60168cca6f90c1313","comment":"I requested this role by mistake."}`) // Cancelaccessrequest | 
 
-    var cancelaccessrequest v1.Cancelaccessrequest
-    if err := json.Unmarshal(cancelaccessrequest, &cancelaccessrequest); err != nil {
+    var cancelaccessrequest access_requests.Cancelaccessrequest
+    if err := json.Unmarshal(cancelaccessrequestJson, &cancelaccessrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -282,15 +282,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+    access_requests "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    closeaccessrequest := []byte(`{"accessRequestIds":["2c90ad2a70ace7d50170acf22ca90010"],"executionStatus":"Terminated","completionStatus":"Failure","message":"The IdentityNow Administrator manually closed this request."}`) // Closeaccessrequest | 
+    closeaccessrequestJson := []byte(`{"accessRequestIds":["2c90ad2a70ace7d50170acf22ca90010"],"executionStatus":"Terminated","completionStatus":"Failure","message":"The IdentityNow Administrator manually closed this request."}`) // Closeaccessrequest | 
 
-    var closeaccessrequest v1.Closeaccessrequest
-    if err := json.Unmarshal(closeaccessrequest, &closeaccessrequest); err != nil {
+    var closeaccessrequest access_requests.Closeaccessrequest
+    if err := json.Unmarshal(closeaccessrequestJson, &closeaccessrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -399,15 +399,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+    access_requests "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    accessrequest := []byte(``) // Accessrequest | 
+    accessrequestJson := []byte(``) // Accessrequest | 
 
-    var accessrequest v1.Accessrequest
-    if err := json.Unmarshal(accessrequest, &accessrequest); err != nil {
+    var accessrequest access_requests.Accessrequest
+    if err := json.Unmarshal(accessrequestJson, &accessrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -466,7 +466,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -523,7 +523,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -590,7 +590,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -664,7 +664,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -757,7 +757,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -843,16 +843,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+    access_requests "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accountsselectionrequest := []byte(``) // Accountsselectionrequest | 
+    accountsselectionrequestJson := []byte(``) // Accountsselectionrequest | 
 
-    var accountsselectionrequest v1.Accountsselectionrequest
-    if err := json.Unmarshal(accountsselectionrequest, &accountsselectionrequest); err != nil {
+    var accountsselectionrequest access_requests.Accountsselectionrequest
+    if err := json.Unmarshal(accountsselectionrequestJson, &accountsselectionrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -914,15 +914,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+    access_requests "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    accessrequestconfig := []byte(``) // Accessrequestconfig | 
+    accessrequestconfigJson := []byte(``) // Accessrequestconfig | 
 
-    var accessrequestconfig v1.Accessrequestconfig
-    if err := json.Unmarshal(accessrequestconfig, &accessrequestconfig); err != nil {
+    var accessrequestconfig access_requests.Accessrequestconfig
+    if err := json.Unmarshal(accessrequestconfigJson, &accessrequestconfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -981,15 +981,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+    access_requests "github.com/sailpoint-oss/golang-sdk/v3/access_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    accessrequestconfigv2 := []byte(``) // Accessrequestconfigv2 | 
+    accessrequestconfigv2Json := []byte(``) // Accessrequestconfigv2 | 
 
-    var accessrequestconfigv2 v1.Accessrequestconfigv2
-    if err := json.Unmarshal(accessrequestconfigv2, &accessrequestconfigv2); err != nil {
+    var accessrequestconfigv2 access_requests.Accessrequestconfigv2
+    if err := json.Unmarshal(accessrequestconfigv2Json, &accessrequestconfigv2); err != nil {
       fmt.Println("Error:", err)
       return
     }

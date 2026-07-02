@@ -57,15 +57,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createprofilepagerequest := []byte(``) // CreateProfilePageRequest | 
+    createprofilepagerequestJson := []byte(``) // CreateProfilePageRequest | 
 
-    var createProfilePageRequest NERM.CreateProfilePageRequest
-    if err := json.Unmarshal(createprofilepagerequest, &createProfilePageRequest); err != nil {
+    var createProfilePageRequest nerm.CreateProfilePageRequest
+    if err := json.Unmarshal(createprofilepagerequestJson, &createProfilePageRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -124,15 +124,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createworkflowpagerequest := []byte(``) // CreateWorkflowPageRequest | 
+    createworkflowpagerequestJson := []byte(``) // CreateWorkflowPageRequest | 
 
-    var createWorkflowPageRequest NERM.CreateWorkflowPageRequest
-    if err := json.Unmarshal(createworkflowpagerequest, &createWorkflowPageRequest); err != nil {
+    var createWorkflowPageRequest nerm.CreateWorkflowPageRequest
+    if err := json.Unmarshal(createworkflowpagerequestJson, &createWorkflowPageRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

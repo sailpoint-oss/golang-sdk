@@ -100,16 +100,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+    triggers "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | The ID of the invocation to complete. # string | The ID of the invocation to complete.
-    completeinvocation := []byte(`{"secret":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","output":{"approved":false}}`) // Completeinvocation | 
+    completeinvocationJson := []byte(`{"secret":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","output":{"approved":false}}`) // Completeinvocation | 
 
-    var completeinvocation v1.Completeinvocation
-    if err := json.Unmarshal(completeinvocation, &completeinvocation); err != nil {
+    var completeinvocation triggers.Completeinvocation
+    if err := json.Unmarshal(completeinvocationJson, &completeinvocation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -169,15 +169,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+    triggers "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    subscriptionpostrequest := []byte(`{"name":"Access request subscription","description":"Access requested to site xyz","triggerId":"idn:access-requested","type":"HTTP","httpConfig":{"url":"https://www.example.com","httpDispatchMode":"SYNC","httpAuthenticationType":"BASIC_AUTH","basicAuthConfig":{"userName":"user@example.com","password":"eRtg4%6yuI!"}},"enabled":true,"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Subscriptionpostrequest | 
+    subscriptionpostrequestJson := []byte(`{"name":"Access request subscription","description":"Access requested to site xyz","triggerId":"idn:access-requested","type":"HTTP","httpConfig":{"url":"https://www.example.com","httpDispatchMode":"SYNC","httpAuthenticationType":"BASIC_AUTH","basicAuthConfig":{"userName":"user@example.com","password":"eRtg4%6yuI!"}},"enabled":true,"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Subscriptionpostrequest | 
 
-    var subscriptionpostrequest v1.Subscriptionpostrequest
-    if err := json.Unmarshal(subscriptionpostrequest, &subscriptionpostrequest); err != nil {
+    var subscriptionpostrequest triggers.Subscriptionpostrequest
+    if err := json.Unmarshal(subscriptionpostrequestJson, &subscriptionpostrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -241,7 +241,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -306,7 +306,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -378,7 +378,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -448,7 +448,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -520,16 +520,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+    triggers "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | ID of the Subscription to patch # string | ID of the Subscription to patch
-    subscriptionpatchrequestinner := []byte(``) // []SubscriptionpatchrequestInner | 
+    subscriptionpatchrequestinnerJson := []byte(``) // []SubscriptionpatchrequestInner | 
 
-    var subscriptionpatchrequestInner []v1.SubscriptionpatchrequestInner
-    if err := json.Unmarshal(subscriptionpatchrequestinner, &subscriptionpatchrequestInner); err != nil {
+    var subscriptionpatchrequestInner []triggers.SubscriptionpatchrequestInner
+    if err := json.Unmarshal(subscriptionpatchrequestinnerJson, &subscriptionpatchrequestInner); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -588,15 +588,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+    triggers "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    testinvocation := []byte(`{"triggerId":"idn:access-requested","input":{"identityId":"201327fda1c44704ac01181e963d463c"},"contentJson":{"workflowId":1234}}`) // Testinvocation | 
+    testinvocationJson := []byte(`{"triggerId":"idn:access-requested","input":{"identityId":"201327fda1c44704ac01181e963d463c"},"contentJson":{"workflowId":1234}}`) // Testinvocation | 
 
-    var testinvocation v1.Testinvocation
-    if err := json.Unmarshal(testinvocation, &testinvocation); err != nil {
+    var testinvocation triggers.Testinvocation
+    if err := json.Unmarshal(testinvocationJson, &testinvocation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -656,15 +656,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+    triggers "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    validatefilterinputdto := []byte(`{"input":{"identityId":"201327fda1c44704ac01181e963d463c"},"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Validatefilterinputdto | 
+    validatefilterinputdtoJson := []byte(`{"input":{"identityId":"201327fda1c44704ac01181e963d463c"},"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Validatefilterinputdto | 
 
-    var validatefilterinputdto v1.Validatefilterinputdto
-    if err := json.Unmarshal(validatefilterinputdto, &validatefilterinputdto); err != nil {
+    var validatefilterinputdto triggers.Validatefilterinputdto
+    if err := json.Unmarshal(validatefilterinputdtoJson, &validatefilterinputdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -737,16 +737,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/triggers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+    triggers "github.com/sailpoint-oss/golang-sdk/v3/triggers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | Subscription ID # string | Subscription ID
-    subscriptionputrequest := []byte(`{"name":"Access request subscription","description":"Access requested to site xyz","type":"HTTP","httpConfig":{"url":"https://www.example.com","httpDispatchMode":"SYNC","httpAuthenticationType":"BASIC_AUTH","basicAuthConfig":{"userName":"user@example.com","password":"eRtg4%6yuI!"}},"enabled":true,"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Subscriptionputrequest | 
+    subscriptionputrequestJson := []byte(`{"name":"Access request subscription","description":"Access requested to site xyz","type":"HTTP","httpConfig":{"url":"https://www.example.com","httpDispatchMode":"SYNC","httpAuthenticationType":"BASIC_AUTH","basicAuthConfig":{"userName":"user@example.com","password":"eRtg4%6yuI!"}},"enabled":true,"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Subscriptionputrequest | 
 
-    var subscriptionputrequest v1.Subscriptionputrequest
-    if err := json.Unmarshal(subscriptionputrequest, &subscriptionputrequest); err != nil {
+    var subscriptionputrequest triggers.Subscriptionputrequest
+    if err := json.Unmarshal(subscriptionputrequestJson, &subscriptionputrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

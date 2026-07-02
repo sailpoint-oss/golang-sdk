@@ -158,12 +158,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Campaign ID. # string | Campaign ID.
-    campaigncompleteoptions := []byte(``) // Campaigncompleteoptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
+    campaigncompleteoptionsJson := []byte(``) // Campaigncompleteoptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
 
     
 
@@ -222,15 +222,15 @@ import (
 	"os"
   "encoding/json"
     
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+    certification_campaigns "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    campaigntemplate := []byte(``) // Campaigntemplate | 
+    campaigntemplateJson := []byte(``) // Campaigntemplate | 
 
-    var campaigntemplate v1.Campaigntemplate
-    if err := json.Unmarshal(campaigntemplate, &campaigntemplate); err != nil {
+    var campaigntemplate certification_campaigns.Campaigntemplate
+    if err := json.Unmarshal(campaigntemplateJson, &campaigntemplate); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -290,15 +290,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+    certification_campaigns "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    campaign2 := []byte(``) // Campaign2 | 
+    campaign2Json := []byte(``) // Campaign2 | 
 
-    var campaign2 v1.Campaign2
-    if err := json.Unmarshal(campaign2, &campaign2); err != nil {
+    var campaign2 certification_campaigns.Campaign2
+    if err := json.Unmarshal(campaign2Json, &campaign2); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -363,7 +363,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -429,7 +429,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -490,15 +490,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+    certification_campaigns "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    campaignsdeleterequest := []byte(``) // Campaignsdeleterequest | IDs of the campaigns to delete.
+    campaignsdeleterequestJson := []byte(``) // Campaignsdeleterequest | IDs of the campaigns to delete.
 
-    var campaignsdeleterequest v1.Campaignsdeleterequest
-    if err := json.Unmarshal(campaignsdeleterequest, &campaignsdeleterequest); err != nil {
+    var campaignsdeleterequest certification_campaigns.Campaignsdeleterequest
+    if err := json.Unmarshal(campaignsdeleterequestJson, &campaignsdeleterequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -564,7 +564,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -628,7 +628,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -694,7 +694,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -761,7 +761,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -828,7 +828,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -897,7 +897,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -969,7 +969,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1037,16 +1037,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+    certification_campaigns "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The certification campaign ID # string | The certification campaign ID
-    adminreviewreassign := []byte(``) // Adminreviewreassign | 
+    adminreviewreassignJson := []byte(``) // Adminreviewreassign | 
 
-    var adminreviewreassign v1.Adminreviewreassign
-    if err := json.Unmarshal(adminreviewreassign, &adminreviewreassign); err != nil {
+    var adminreviewreassign certification_campaigns.Adminreviewreassign
+    if err := json.Unmarshal(adminreviewreassignJson, &adminreviewreassign); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1111,16 +1111,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+    certification_campaigns "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | ID of the campaign template being modified. # string | ID of the campaign template being modified.
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/campaign/filter/id","value":"ff80818155fe8c080155fe8d925b0316"}]`) // []Jsonpatchoperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/campaign/filter/id","value":"ff80818155fe8c080155fe8d925b0316"}]`) // []Jsonpatchoperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []certification_campaigns.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1180,15 +1180,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+    certification_campaigns "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    campaignreportsconfig := []byte(``) // Campaignreportsconfig | Campaign report configuration.
+    campaignreportsconfigJson := []byte(``) // Campaignreportsconfig | Campaign report configuration.
 
-    var campaignreportsconfig v1.Campaignreportsconfig
-    if err := json.Unmarshal(campaignreportsconfig, &campaignreportsconfig); err != nil {
+    var campaignreportsconfig certification_campaigns.Campaignreportsconfig
+    if err := json.Unmarshal(campaignreportsconfigJson, &campaignreportsconfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1254,12 +1254,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `04bedce387bd47b2ae1f86eb0bb36dee` // string | ID of the campaign template being scheduled. # string | ID of the campaign template being scheduled.
-    schedule2 := []byte(`{"type":"MONTHLY","hours":{"type":"LIST","values":["17"]},"days":{"type":"LIST","values":["15"]}}`) // Schedule2 |  (optional)
+    schedule2Json := []byte(`{"type":"MONTHLY","hours":{"type":"LIST","values":["17"]},"days":{"type":"LIST","values":["15"]}}`) // Schedule2 |  (optional)
 
     
 
@@ -1321,7 +1321,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1390,7 +1390,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1459,12 +1459,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Campaign ID. # string | Campaign ID.
-    activatecampaignoptions := []byte(``) // Activatecampaignoptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
+    activatecampaignoptionsJson := []byte(``) // Activatecampaignoptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
 
     
 
@@ -1537,7 +1537,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1604,16 +1604,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+    certification_campaigns "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign template being modified. # string | ID of the campaign template being modified.
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/name","value":"This field has been updated!"},{"op":"copy","from":"/name","path":"/description"}]`) // []Jsonpatchoperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"This field has been updated!"},{"op":"copy","from":"/name","path":"/description"}]`) // []Jsonpatchoperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []certification_campaigns.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }

@@ -83,16 +83,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/apps"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+    apps "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    sourceappcreatedto := []byte(`{"name":"new app name","description":"app description","matchAllAccounts":true,"accountSource":{"id":"edcb0951812949d085b60cd8bf35bc78"}}`) // Sourceappcreatedto | 
+    sourceappcreatedtoJson := []byte(`{"name":"new app name","description":"app description","matchAllAccounts":true,"accountSource":{"id":"edcb0951812949d085b60cd8bf35bc78"}}`) // Sourceappcreatedto | 
 
-    var sourceappcreatedto v1.Sourceappcreatedto
-    if err := json.Unmarshal(sourceappcreatedto, &sourceappcreatedto); err != nil {
+    var sourceappcreatedto apps.Sourceappcreatedto
+    if err := json.Unmarshal(sourceappcreatedtoJson, &sourceappcreatedto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -169,8 +169,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/apps"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+    apps "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -179,8 +179,8 @@ func main() {
     requestbody := []byte(`["c9575abb5e3a4e3db82b2f989a738aa2","c9dc28e148a24d65b3ccb5fb8ca5ddd9"]`) // []string | List of access profile IDs for removal
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []apps.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -256,7 +256,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -335,7 +335,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -417,7 +417,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -499,7 +499,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -582,7 +582,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -664,7 +664,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -749,7 +749,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -830,7 +830,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -912,7 +912,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -997,13 +997,13 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c91808a7813090a017814121e121518` // string | ID of the source app to patch # string | ID of the source app to patch
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/enabled","value":true},{"op":"replace","path":"/matchAllAccounts","value":true}]`) // []Jsonpatchoperation |  (optional)
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/enabled","value":true},{"op":"replace","path":"/matchAllAccounts","value":true}]`) // []Jsonpatchoperation |  (optional)
 
     
 
@@ -1079,13 +1079,13 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c91808a7813090a017814121e121518` // string | ID of the user app to patch # string | ID of the user app to patch
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation |  (optional)
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation |  (optional)
 
     
 
@@ -1157,12 +1157,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/apps"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    sourceappbulkupdaterequest := []byte(``) // Sourceappbulkupdaterequest |  (optional)
+    sourceappbulkupdaterequestJson := []byte(``) // Sourceappbulkupdaterequest |  (optional)
 
     
 

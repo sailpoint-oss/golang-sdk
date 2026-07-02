@@ -63,15 +63,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    searchrequest := []byte(``) // SearchRequest | 
+    searchrequestJson := []byte(``) // SearchRequest | 
 
-    var searchRequest NERM.SearchRequest
-    if err := json.Unmarshal(searchrequest, &searchRequest); err != nil {
+    var searchRequest nerm.SearchRequest
+    if err := json.Unmarshal(searchrequestJson, &searchRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

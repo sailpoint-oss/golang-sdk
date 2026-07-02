@@ -62,7 +62,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -127,18 +127,18 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-    datarecords := []byte(`{
+    datarecordsJson := []byte(`{
           "master_record_id" : "456738c9ba999a0076cf8a9b"
         }`) // DataRecords | 
 
-    var dataRecords NERM.DataRecords
-    if err := json.Unmarshal(datarecords, &dataRecords); err != nil {
+    var dataRecords nerm.DataRecords
+    if err := json.Unmarshal(datarecordsJson, &dataRecords); err != nil {
       fmt.Println("Error:", err)
       return
     }

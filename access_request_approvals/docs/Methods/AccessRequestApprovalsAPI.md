@@ -85,12 +85,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_request_approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     approvalId := `2c91808b7294bea301729568c68c002e` // string | Approval ID. # string | Approval ID.
-    commentdto := []byte(``) // Commentdto | Reviewer's comment. (optional)
+    commentdtoJson := []byte(``) // Commentdto | Reviewer's comment. (optional)
 
     
 
@@ -152,16 +152,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_request_approvals"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_request_approvals"
+    access_request_approvals "github.com/sailpoint-oss/golang-sdk/v3/access_request_approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     approvalId := `2c91808b7294bea301729568c68c002e` // string | Approval ID. # string | Approval ID.
-    forwardapprovaldto := []byte(``) // Forwardapprovaldto | Information about the forwarded approval.
+    forwardapprovaldtoJson := []byte(``) // Forwardapprovaldto | Information about the forwarded approval.
 
-    var forwardapprovaldto v1.Forwardapprovaldto
-    if err := json.Unmarshal(forwardapprovaldto, &forwardapprovaldto); err != nil {
+    var forwardapprovaldto access_request_approvals.Forwardapprovaldto
+    if err := json.Unmarshal(forwardapprovaldtoJson, &forwardapprovaldto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -222,7 +222,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_request_approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -293,7 +293,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_request_approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -363,7 +363,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_request_approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -435,7 +435,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_request_approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -506,16 +506,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_request_approvals"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_request_approvals"
+    access_request_approvals "github.com/sailpoint-oss/golang-sdk/v3/access_request_approvals"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     approvalId := `2c91808b7294bea301729568c68c002e` // string | Approval ID. # string | Approval ID.
-    commentdto := []byte(``) // Commentdto | Reviewer's comment.
+    commentdtoJson := []byte(``) // Commentdto | Reviewer's comment.
 
-    var commentdto v1.Commentdto
-    if err := json.Unmarshal(commentdto, &commentdto); err != nil {
+    var commentdto access_request_approvals.Commentdto
+    if err := json.Unmarshal(commentdtoJson, &commentdto); err != nil {
       fmt.Println("Error:", err)
       return
     }

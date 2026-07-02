@@ -61,15 +61,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/launchers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/launchers"
+    launchers "github.com/sailpoint-oss/golang-sdk/v3/launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    launcherrequest := []byte(``) // Launcherrequest | Payload to create a Launcher
+    launcherrequestJson := []byte(``) // Launcherrequest | Payload to create a Launcher
 
-    var launcherrequest v1.Launcherrequest
-    if err := json.Unmarshal(launcherrequest, &launcherrequest); err != nil {
+    var launcherrequest launchers.Launcherrequest
+    if err := json.Unmarshal(launcherrequestJson, &launcherrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -133,7 +133,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -198,7 +198,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -262,7 +262,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -330,16 +330,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/launchers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/launchers"
+    launchers "github.com/sailpoint-oss/golang-sdk/v3/launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     launcherID := `e3012408-8b61-4564-ad41-c5ec131c325b` // string | ID of the Launcher to be replaced # string | ID of the Launcher to be replaced
-    launcherrequest := []byte(``) // Launcherrequest | Payload to replace Launcher
+    launcherrequestJson := []byte(``) // Launcherrequest | Payload to replace Launcher
 
-    var launcherrequest v1.Launcherrequest
-    if err := json.Unmarshal(launcherrequest, &launcherrequest); err != nil {
+    var launcherrequest launchers.Launcherrequest
+    if err := json.Unmarshal(launcherrequestJson, &launcherrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -403,7 +403,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/launchers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {

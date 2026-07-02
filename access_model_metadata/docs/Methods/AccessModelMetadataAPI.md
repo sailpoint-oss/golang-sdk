@@ -77,15 +77,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+    access_model_metadata "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    attributedto := []byte(``) // Attributedto | Attribute to create
+    attributedtoJson := []byte(``) // Attributedto | Attribute to create
 
-    var attributedto v1.Attributedto
-    if err := json.Unmarshal(attributedto, &attributedto); err != nil {
+    var attributedto access_model_metadata.Attributedto
+    if err := json.Unmarshal(attributedtoJson, &attributedto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -150,16 +150,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+    access_model_metadata "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
-    attributevaluedto := []byte(``) // Attributevaluedto | Attribute value to create
+    attributevaluedtoJson := []byte(``) // Attributevaluedto | Attribute value to create
 
-    var attributevaluedto v1.Attributevaluedto
-    if err := json.Unmarshal(attributevaluedto, &attributevaluedto); err != nil {
+    var attributevaluedto access_model_metadata.Attributevaluedto
+    if err := json.Unmarshal(attributevaluedtoJson, &attributevaluedto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -223,7 +223,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -291,7 +291,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -357,7 +357,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -428,7 +428,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -498,16 +498,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+    access_model_metadata "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | JSON Patch array to apply
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | JSON Patch array to apply
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []access_model_metadata.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -575,17 +575,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+    access_model_metadata "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
     value := `public` // string | Technical name of the Attribute value. # string | Technical name of the Attribute value.
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | JSON Patch array to apply
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | JSON Patch array to apply
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []access_model_metadata.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -647,15 +647,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+    access_model_metadata "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    entitlementattributebulkupdatefilterrequest := []byte(``) // Entitlementattributebulkupdatefilterrequest | Attribute metadata bulk update request body.
+    entitlementattributebulkupdatefilterrequestJson := []byte(``) // Entitlementattributebulkupdatefilterrequest | Attribute metadata bulk update request body.
 
-    var entitlementattributebulkupdatefilterrequest v1.Entitlementattributebulkupdatefilterrequest
-    if err := json.Unmarshal(entitlementattributebulkupdatefilterrequest, &entitlementattributebulkupdatefilterrequest); err != nil {
+    var entitlementattributebulkupdatefilterrequest access_model_metadata.Entitlementattributebulkupdatefilterrequest
+    if err := json.Unmarshal(entitlementattributebulkupdatefilterrequestJson, &entitlementattributebulkupdatefilterrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -717,15 +717,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+    access_model_metadata "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    entitlementattributebulkupdateidsrequest := []byte(``) // Entitlementattributebulkupdateidsrequest | Attribute metadata bulk update request body.
+    entitlementattributebulkupdateidsrequestJson := []byte(``) // Entitlementattributebulkupdateidsrequest | Attribute metadata bulk update request body.
 
-    var entitlementattributebulkupdateidsrequest v1.Entitlementattributebulkupdateidsrequest
-    if err := json.Unmarshal(entitlementattributebulkupdateidsrequest, &entitlementattributebulkupdateidsrequest); err != nil {
+    var entitlementattributebulkupdateidsrequest access_model_metadata.Entitlementattributebulkupdateidsrequest
+    if err := json.Unmarshal(entitlementattributebulkupdateidsrequestJson, &entitlementattributebulkupdateidsrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -787,15 +787,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+    access_model_metadata "github.com/sailpoint-oss/golang-sdk/v3/access_model_metadata"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    entitlementattributebulkupdatequeryrequest := []byte(``) // Entitlementattributebulkupdatequeryrequest | Attribute metadata bulk update request body.
+    entitlementattributebulkupdatequeryrequestJson := []byte(``) // Entitlementattributebulkupdatequeryrequest | Attribute metadata bulk update request body.
 
-    var entitlementattributebulkupdatequeryrequest v1.Entitlementattributebulkupdatequeryrequest
-    if err := json.Unmarshal(entitlementattributebulkupdatequeryrequest, &entitlementattributebulkupdatequeryrequest); err != nil {
+    var entitlementattributebulkupdatequeryrequest access_model_metadata.Entitlementattributebulkupdatequeryrequest
+    if err := json.Unmarshal(entitlementattributebulkupdatequeryrequestJson, &entitlementattributebulkupdatequeryrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

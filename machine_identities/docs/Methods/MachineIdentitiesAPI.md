@@ -75,16 +75,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+    machine_identities "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    machineidentityrequest := []byte(``) // Machineidentityrequest | 
+    machineidentityrequestJson := []byte(``) // Machineidentityrequest | 
 
-    var machineidentityrequest v1.Machineidentityrequest
-    if err := json.Unmarshal(machineidentityrequest, &machineidentityrequest); err != nil {
+    var machineidentityrequest machine_identities.Machineidentityrequest
+    if err := json.Unmarshal(machineidentityrequestJson, &machineidentityrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -160,7 +160,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -238,7 +238,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -317,7 +317,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -400,7 +400,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -483,17 +483,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+    machine_identities "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    machineidentityaggregationrequest := []byte(``) // Machineidentityaggregationrequest | 
+    machineidentityaggregationrequestJson := []byte(``) // Machineidentityaggregationrequest | 
 
-    var machineidentityaggregationrequest v1.Machineidentityaggregationrequest
-    if err := json.Unmarshal(machineidentityaggregationrequest, &machineidentityaggregationrequest); err != nil {
+    var machineidentityaggregationrequest machine_identities.Machineidentityaggregationrequest
+    if err := json.Unmarshal(machineidentityaggregationrequestJson, &machineidentityaggregationrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -570,8 +570,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+    machine_identities "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -579,8 +579,8 @@ func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     requestbody := []byte(`[{"op":"add","path":"/attributes/securityRisk","value":"medium"}]`) // []map[string]interface{} | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []machine_identities.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }

@@ -78,15 +78,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/segments"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/segments"
+    segments "github.com/sailpoint-oss/golang-sdk/v3/segments"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    segment := []byte(``) // Segment | 
+    segmentJson := []byte(``) // Segment | 
 
-    var segment v1.Segment
-    if err := json.Unmarshal(segment, &segment); err != nil {
+    var segment segments.Segment
+    if err := json.Unmarshal(segmentJson, &segment); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -151,7 +151,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/segments"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -216,7 +216,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/segments"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -280,7 +280,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/segments"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -349,16 +349,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/segments"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/segments"
+    segments "github.com/sailpoint-oss/golang-sdk/v3/segments"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The segment ID to modify. # string | The segment ID to modify.
     requestbody := []byte(`[{"op":"replace","path":"/visibilityCriteria","value":{"expression":{"operator":"AND","children":[{"operator":"EQUALS","attribute":"location","value":{"type":"STRING","value":"Philadelphia"}},{"operator":"EQUALS","attribute":"department","value":{"type":"STRING","value":"HR"}}]}}}]`) // []map[string]interface{} | A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active 
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []segments.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }

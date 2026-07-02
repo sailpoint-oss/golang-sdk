@@ -66,15 +66,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
+    managed_clusters "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    managedclusterrequest := []byte(``) // Managedclusterrequest | 
+    managedclusterrequestJson := []byte(``) // Managedclusterrequest | 
 
-    var managedclusterrequest v1.Managedclusterrequest
-    if err := json.Unmarshal(managedclusterrequest, &managedclusterrequest); err != nil {
+    var managedclusterrequest managed_clusters.Managedclusterrequest
+    if err := json.Unmarshal(managedclusterrequestJson, &managedclusterrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -139,7 +139,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -205,7 +205,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -271,7 +271,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -336,7 +336,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -405,16 +405,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
+    managed_clusters "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2b838de9-db9b-abcf-e646-d4f274ad4238` // string | ID of the managed cluster to update the log configuration for. # string | ID of the managed cluster to update the log configuration for.
-    putclientlogconfigurationv1request := []byte(``) // PutClientLogConfigurationV1Request | Client log configuration for the given managed cluster.
+    putclientlogconfigurationv1requestJson := []byte(``) // PutClientLogConfigurationV1Request | Client log configuration for the given managed cluster.
 
-    var putClientLogConfigurationV1Request v1.PutClientLogConfigurationV1Request
-    if err := json.Unmarshal(putclientlogconfigurationv1request, &putClientLogConfigurationV1Request); err != nil {
+    var putClientLogConfigurationV1Request managed_clusters.PutClientLogConfigurationV1Request
+    if err := json.Unmarshal(putclientlogconfigurationv1requestJson, &putClientLogConfigurationV1Request); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -478,16 +478,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
+    managed_clusters "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c9180897de347a2017de8859e8c5039` // string | Managed cluster ID. # string | Managed cluster ID.
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | JSONPatch payload used to update the object.
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | JSONPatch payload used to update the object.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []managed_clusters.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -552,7 +552,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {

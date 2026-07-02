@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **Alias** | Pointer to **string** | Primary login or account alias for the identity. | [optional] 
 **Email** | Pointer to **string** | Primary business email address for the identity. | [optional] 
 **IdentityStatus** | Pointer to **string** | Current identity lifecycle status label from Identity Security Cloud. | [optional] 
-**IsManager** | **bool** | True when the identity is flagged as a people manager in the organization. | 
+**IsManager** | Pointer to **bool** | True when the identity is flagged as a people manager in the organization. | [optional] [default to false]
 **Accounts** | [**Intelaccountsslice**](intelaccountsslice) | First page of accounts for the identity. | 
 **PrivilegedAccess** | [**Intelprivilegedaccessslice**](intelprivilegedaccessslice) | Full privileged access result for the identity. | 
 **Outliers** | Pointer to [**Inteloutliersslice**](inteloutliersslice) | Rare access slice; omitted when the tenant lacks the IDA-outliers license. | [optional] 
@@ -37,7 +37,7 @@ Name | Type | Description | Notes
 
 ### NewIntelidentityaggregate
 
-`func NewIntelidentityaggregate(id string, type_ string, isManager bool, accounts Intelaccountsslice, privilegedAccess Intelprivilegedaccessslice, accessHistory Intelaccesshistory, ) *Intelidentityaggregate`
+`func NewIntelidentityaggregate(id string, type_ string, accounts Intelaccountsslice, privilegedAccess Intelprivilegedaccessslice, accessHistory Intelaccesshistory, ) *Intelidentityaggregate`
 
 NewIntelidentityaggregate instantiates a new Intelidentityaggregate object
 This constructor will assign default values to properties that have it defined,
@@ -391,6 +391,11 @@ and a boolean to check if the value has been set.
 
 SetIsManager sets IsManager field to given value.
 
+### HasIsManager
+
+`func (o *Intelidentityaggregate) HasIsManager() bool`
+
+HasIsManager returns a boolean if a field has been set.
 
 ### GetAccounts
 

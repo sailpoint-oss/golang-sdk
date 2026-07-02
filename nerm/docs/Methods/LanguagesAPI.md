@@ -61,16 +61,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     languageLocale := `es` // string | Language locale of the object # string | Language locale of the object
-    patchlanguagerequest := []byte(``) // PatchLanguageRequest | 
+    patchlanguagerequestJson := []byte(``) // PatchLanguageRequest | 
 
-    var patchLanguageRequest NERM.PatchLanguageRequest
-    if err := json.Unmarshal(patchlanguagerequest, &patchLanguageRequest); err != nil {
+    var patchLanguageRequest nerm.PatchLanguageRequest
+    if err := json.Unmarshal(patchlanguagerequestJson, &patchLanguageRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

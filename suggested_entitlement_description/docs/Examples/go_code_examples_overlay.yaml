@@ -11,16 +11,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            suggested_entitlement_description "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           bulkapproveentitlementrecommendationrequest := []byte(``) // Bulkapproveentitlementrecommendationrequest | The list of recommendation items to approve.
+           bulkapproveentitlementrecommendationrequestJson := []byte(``) // Bulkapproveentitlementrecommendationrequest | The list of recommendation items to approve.
 
           
-          var bulkapproveentitlementrecommendationrequest v1.Bulkapproveentitlementrecommendationrequest
-          if err := json.Unmarshal(bulkapproveentitlementrecommendationrequest, &bulkapproveentitlementrecommendationrequest); err != nil {
+          var bulkapproveentitlementrecommendationrequest suggested_entitlement_description.Bulkapproveentitlementrecommendationrequest
+          if err := json.Unmarshal(bulkapproveentitlementrecommendationrequestJson, &bulkapproveentitlementrecommendationrequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -51,16 +51,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            suggested_entitlement_description "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           autowritesetting := []byte(``) // Autowritesetting | Auto-write settings to create
+           autowritesettingJson := []byte(``) // Autowritesetting | Auto-write settings to create
 
           
-          var autowritesetting v1.Autowritesetting
-          if err := json.Unmarshal(autowritesetting, &autowritesetting); err != nil {
+          var autowritesetting suggested_entitlement_description.Autowritesetting
+          if err := json.Unmarshal(autowritesettingJson, &autowritesetting); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -91,8 +91,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -124,8 +124,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -158,8 +158,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -196,8 +196,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -231,8 +231,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -266,8 +266,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -307,17 +307,17 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            suggested_entitlement_description "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `79db50d4-723c-4aa0-a824-83c2205d82d1` // string | The unique identifier of the entitlement recommendation to update. # string | The unique identifier of the entitlement recommendation to update.
-          jsonpatchoperation := []byte(``) // []Jsonpatchoperation | The patch operations to apply to the entitlement recommendation record.
+          jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | The patch operations to apply to the entitlement recommendation record.
 
           
-          var jsonpatchoperation []v1.Jsonpatchoperation
-          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+          var jsonpatchoperation []suggested_entitlement_description.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -348,17 +348,17 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            suggested_entitlement_description "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `ebab396f-0af1-4050-89b7-dafc63ec70e7` // string | id is sed id # string | id is sed id
-          sedpatch := []byte(``) // []Sedpatch | Sed Patch Request
+          sedpatchJson := []byte(``) // []Sedpatch | Sed Patch Request
 
           
-          var sedpatch []v1.Sedpatch
-          if err := json.Unmarshal(sedpatch, &sedpatch); err != nil {
+          var sedpatch []suggested_entitlement_description.Sedpatch
+          if err := json.Unmarshal(sedpatchJson, &sedpatch); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -389,16 +389,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            suggested_entitlement_description "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           entitlementrecommendationassignrequest := []byte(``) // Entitlementrecommendationassignrequest | The recommendation IDs and the target assignee.
+           entitlementrecommendationassignrequestJson := []byte(``) // Entitlementrecommendationassignrequest | The recommendation IDs and the target assignee.
 
           
-          var entitlementrecommendationassignrequest v1.Entitlementrecommendationassignrequest
-          if err := json.Unmarshal(entitlementrecommendationassignrequest, &entitlementrecommendationassignrequest); err != nil {
+          var entitlementrecommendationassignrequest suggested_entitlement_description.Entitlementrecommendationassignrequest
+          if err := json.Unmarshal(entitlementrecommendationassignrequestJson, &entitlementrecommendationassignrequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -429,16 +429,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            suggested_entitlement_description "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-          sedapproval := []byte(``) // []Sedapproval | Sed Approval
+          sedapprovalJson := []byte(``) // []Sedapproval | Sed Approval
 
           
-          var sedapproval []v1.Sedapproval
-          if err := json.Unmarshal(sedapproval, &sedapproval); err != nil {
+          var sedapproval []suggested_entitlement_description.Sedapproval
+          if err := json.Unmarshal(sedapprovalJson, &sedapproval); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -469,16 +469,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            suggested_entitlement_description "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           sedassignment := []byte(``) // Sedassignment | Sed Assignment Request
+           sedassignmentJson := []byte(``) // Sedassignment | Sed Assignment Request
 
           
-          var sedassignment v1.Sedassignment
-          if err := json.Unmarshal(sedassignment, &sedassignment); err != nil {
+          var sedassignment suggested_entitlement_description.Sedassignment
+          if err := json.Unmarshal(sedassignmentJson, &sedassignment); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -509,12 +509,12 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           sedbatchrequest := []byte(``) // Sedbatchrequest | Sed Batch Request (optional)
+           sedbatchrequestJson := []byte(``) // Sedbatchrequest | Sed Batch Request (optional)
 
           
 
@@ -543,16 +543,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+            suggested_entitlement_description "github.com/sailpoint-oss/golang-sdk/v3/suggested_entitlement_description"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-          autowritesettingpatch := []byte(``) // []Autowritesettingpatch | Patch operations for auto-write settings
+          autowritesettingpatchJson := []byte(``) // []Autowritesettingpatch | Patch operations for auto-write settings
 
           
-          var autowritesettingpatch []v1.Autowritesettingpatch
-          if err := json.Unmarshal(autowritesettingpatch, &autowritesettingpatch); err != nil {
+          var autowritesettingpatch []suggested_entitlement_description.Autowritesettingpatch
+          if err := json.Unmarshal(autowritesettingpatchJson, &autowritesettingpatch); err != nil {
             fmt.Println("Error:", err)
             return
           }

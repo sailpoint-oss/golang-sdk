@@ -67,7 +67,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -133,7 +133,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -200,7 +200,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -271,16 +271,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-    submituserrolerequest := []byte(``) // SubmitUserRoleRequest | 
+    submituserrolerequestJson := []byte(``) // SubmitUserRoleRequest | 
 
-    var submitUserRoleRequest NERM.SubmitUserRoleRequest
-    if err := json.Unmarshal(submituserrolerequest, &submitUserRoleRequest); err != nil {
+    var submitUserRoleRequest nerm.SubmitUserRoleRequest
+    if err := json.Unmarshal(submituserrolerequestJson, &submitUserRoleRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -339,15 +339,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submituserrolesrequest := []byte(``) // SubmitUserRolesRequest | 
+    submituserrolesrequestJson := []byte(``) // SubmitUserRolesRequest | 
 
-    var submitUserRolesRequest NERM.SubmitUserRolesRequest
-    if err := json.Unmarshal(submituserrolesrequest, &submitUserRolesRequest); err != nil {
+    var submitUserRolesRequest nerm.SubmitUserRolesRequest
+    if err := json.Unmarshal(submituserrolesrequestJson, &submitUserRolesRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -406,15 +406,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submituserrolerequest := []byte(``) // SubmitUserRoleRequest | 
+    submituserrolerequestJson := []byte(``) // SubmitUserRoleRequest | 
 
-    var submitUserRoleRequest NERM.SubmitUserRoleRequest
-    if err := json.Unmarshal(submituserrolerequest, &submitUserRoleRequest); err != nil {
+    var submitUserRoleRequest nerm.SubmitUserRoleRequest
+    if err := json.Unmarshal(submituserrolerequestJson, &submitUserRoleRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -473,15 +473,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submituserrolesrequest := []byte(``) // SubmitUserRolesRequest | 
+    submituserrolesrequestJson := []byte(``) // SubmitUserRolesRequest | 
 
-    var submitUserRolesRequest NERM.SubmitUserRolesRequest
-    if err := json.Unmarshal(submituserrolesrequest, &submitUserRolesRequest); err != nil {
+    var submitUserRolesRequest nerm.SubmitUserRolesRequest
+    if err := json.Unmarshal(submituserrolesrequestJson, &submitUserRolesRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

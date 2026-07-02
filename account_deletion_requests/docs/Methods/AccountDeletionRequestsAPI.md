@@ -66,12 +66,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/account_deletion_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     accountId := `ef38f94347e94562b5bb8424a56498d8` // string | Account ID. # string | Account ID.
-    accountdeleterequestinput := []byte(`{"comments":"I requested this account deletion."}`) // Accountdeleterequestinput |  (optional)
+    accountdeleterequestinputJson := []byte(`{"comments":"I requested this account deletion."}`) // Accountdeleterequestinput |  (optional)
 
     
 
@@ -132,7 +132,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/account_deletion_requests"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {

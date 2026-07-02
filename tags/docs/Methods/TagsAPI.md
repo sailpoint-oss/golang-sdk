@@ -62,15 +62,15 @@ import (
 	"os"
   "encoding/json"
     
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/tags"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tags"
+    tags "github.com/sailpoint-oss/golang-sdk/v3/tags"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    tag2 := []byte(``) // Tag2 | 
+    tag2Json := []byte(``) // Tag2 | 
 
-    var tag2 v1.Tag2
-    if err := json.Unmarshal(tag2, &tag2); err != nil {
+    var tag2 tags.Tag2
+    if err := json.Unmarshal(tag2Json, &tag2); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -136,7 +136,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tags"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -203,7 +203,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tags"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -271,7 +271,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tags"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {

@@ -62,15 +62,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createautomatedworkflowrequest := []byte(``) // CreateAutomatedWorkflowRequest | 
+    createautomatedworkflowrequestJson := []byte(``) // CreateAutomatedWorkflowRequest | 
 
-    var createAutomatedWorkflowRequest NERM.CreateAutomatedWorkflowRequest
-    if err := json.Unmarshal(createautomatedworkflowrequest, &createAutomatedWorkflowRequest); err != nil {
+    var createAutomatedWorkflowRequest nerm.CreateAutomatedWorkflowRequest
+    if err := json.Unmarshal(createautomatedworkflowrequestJson, &createAutomatedWorkflowRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -129,15 +129,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createbatchworkflowrequest := []byte(``) // CreateBatchWorkflowRequest | 
+    createbatchworkflowrequestJson := []byte(``) // CreateBatchWorkflowRequest | 
 
-    var createBatchWorkflowRequest NERM.CreateBatchWorkflowRequest
-    if err := json.Unmarshal(createbatchworkflowrequest, &createBatchWorkflowRequest); err != nil {
+    var createBatchWorkflowRequest nerm.CreateBatchWorkflowRequest
+    if err := json.Unmarshal(createbatchworkflowrequestJson, &createBatchWorkflowRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -196,15 +196,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createcreateworkflowrequest := []byte(``) // CreateCreateWorkflowRequest | 
+    createcreateworkflowrequestJson := []byte(``) // CreateCreateWorkflowRequest | 
 
-    var createCreateWorkflowRequest NERM.CreateCreateWorkflowRequest
-    if err := json.Unmarshal(createcreateworkflowrequest, &createCreateWorkflowRequest); err != nil {
+    var createCreateWorkflowRequest nerm.CreateCreateWorkflowRequest
+    if err := json.Unmarshal(createcreateworkflowrequestJson, &createCreateWorkflowRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -263,15 +263,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createloginworkflowrequest := []byte(``) // CreateLoginWorkflowRequest | 
+    createloginworkflowrequestJson := []byte(``) // CreateLoginWorkflowRequest | 
 
-    var createLoginWorkflowRequest NERM.CreateLoginWorkflowRequest
-    if err := json.Unmarshal(createloginworkflowrequest, &createLoginWorkflowRequest); err != nil {
+    var createLoginWorkflowRequest nerm.CreateLoginWorkflowRequest
+    if err := json.Unmarshal(createloginworkflowrequestJson, &createLoginWorkflowRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -330,15 +330,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createloginworkflowrequest := []byte(``) // CreateLoginWorkflowRequest | 
+    createloginworkflowrequestJson := []byte(``) // CreateLoginWorkflowRequest | 
 
-    var createLoginWorkflowRequest NERM.CreateLoginWorkflowRequest
-    if err := json.Unmarshal(createloginworkflowrequest, &createLoginWorkflowRequest); err != nil {
+    var createLoginWorkflowRequest nerm.CreateLoginWorkflowRequest
+    if err := json.Unmarshal(createloginworkflowrequestJson, &createLoginWorkflowRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -397,15 +397,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createcreateworkflowrequest := []byte(``) // CreateCreateWorkflowRequest | 
+    createcreateworkflowrequestJson := []byte(``) // CreateCreateWorkflowRequest | 
 
-    var createCreateWorkflowRequest NERM.CreateCreateWorkflowRequest
-    if err := json.Unmarshal(createcreateworkflowrequest, &createCreateWorkflowRequest); err != nil {
+    var createCreateWorkflowRequest nerm.CreateCreateWorkflowRequest
+    if err := json.Unmarshal(createcreateworkflowrequestJson, &createCreateWorkflowRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -464,15 +464,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createupdateworkflowrequest := []byte(``) // CreateUpdateWorkflowRequest | 
+    createupdateworkflowrequestJson := []byte(``) // CreateUpdateWorkflowRequest | 
 
-    var createUpdateWorkflowRequest NERM.CreateUpdateWorkflowRequest
-    if err := json.Unmarshal(createupdateworkflowrequest, &createUpdateWorkflowRequest); err != nil {
+    var createUpdateWorkflowRequest nerm.CreateUpdateWorkflowRequest
+    if err := json.Unmarshal(createupdateworkflowrequestJson, &createUpdateWorkflowRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

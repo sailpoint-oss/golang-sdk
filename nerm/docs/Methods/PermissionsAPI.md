@@ -56,15 +56,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createpermissionrequest := []byte(``) // CreatePermissionRequest | 
+    createpermissionrequestJson := []byte(``) // CreatePermissionRequest | 
 
-    var createPermissionRequest NERM.CreatePermissionRequest
-    if err := json.Unmarshal(createpermissionrequest, &createPermissionRequest); err != nil {
+    var createPermissionRequest nerm.CreatePermissionRequest
+    if err := json.Unmarshal(createpermissionrequestJson, &createPermissionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

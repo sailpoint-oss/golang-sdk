@@ -66,7 +66,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -132,7 +132,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -202,16 +202,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-    submitrolerequest := []byte(``) // SubmitRoleRequest | 
+    submitrolerequestJson := []byte(``) // SubmitRoleRequest | 
 
-    var submitRoleRequest NERM.SubmitRoleRequest
-    if err := json.Unmarshal(submitrolerequest, &submitRoleRequest); err != nil {
+    var submitRoleRequest nerm.SubmitRoleRequest
+    if err := json.Unmarshal(submitrolerequestJson, &submitRoleRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -270,15 +270,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitrolesrequest := []byte(``) // SubmitRolesRequest | 
+    submitrolesrequestJson := []byte(``) // SubmitRolesRequest | 
 
-    var submitRolesRequest NERM.SubmitRolesRequest
-    if err := json.Unmarshal(submitrolesrequest, &submitRolesRequest); err != nil {
+    var submitRolesRequest nerm.SubmitRolesRequest
+    if err := json.Unmarshal(submitrolesrequestJson, &submitRolesRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -337,15 +337,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitrolerequest := []byte(``) // SubmitRoleRequest | 
+    submitrolerequestJson := []byte(``) // SubmitRoleRequest | 
 
-    var submitRoleRequest NERM.SubmitRoleRequest
-    if err := json.Unmarshal(submitrolerequest, &submitRoleRequest); err != nil {
+    var submitRoleRequest nerm.SubmitRoleRequest
+    if err := json.Unmarshal(submitrolerequestJson, &submitRoleRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -404,15 +404,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitrolesrequest := []byte(``) // SubmitRolesRequest | 
+    submitrolesrequestJson := []byte(``) // SubmitRolesRequest | 
 
-    var submitRolesRequest NERM.SubmitRolesRequest
-    if err := json.Unmarshal(submitrolesrequest, &submitRolesRequest); err != nil {
+    var submitRolesRequest nerm.SubmitRolesRequest
+    if err := json.Unmarshal(submitrolesrequestJson, &submitRolesRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

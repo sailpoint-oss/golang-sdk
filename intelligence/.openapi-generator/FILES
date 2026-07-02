@@ -7,7 +7,6 @@ api/openapi.yaml
 api_intelligence.go
 client.go
 configuration.go
-docs/Errorbody.md
 docs/Errormessagedto.md
 docs/Errorresponsedto.md
 docs/GetIdentityIntelligenceV1401Response.md
@@ -21,9 +20,6 @@ docs/Intelaccesssourcewire.md
 docs/Intelaccountsslice.md
 docs/Intelcertificationhistoryevent.md
 docs/Intelidentityaggregate.md
-docs/Intelidentityambiguousbody.md
-docs/Intelidentityambiguouscandidate.md
-docs/Intelidentitynotfoundbody.md
 docs/IntelligenceAPI.md
 docs/IntelligenceAPIdeveloperSite_code_examples.yaml
 docs/Inteloutlieraccessitem.md
@@ -37,7 +33,6 @@ docs/Methods/Index.md
 git_push.sh
 go.mod
 go.sum
-model_errorbody.go
 model_errormessagedto.go
 model_errorresponsedto.go
 model_get_identity_intelligence_v1_401_response.go
@@ -51,9 +46,6 @@ model_intelaccesssourcewire.go
 model_intelaccountsslice.go
 model_intelcertificationhistoryevent.go
 model_intelidentityaggregate.go
-model_intelidentityambiguousbody.go
-model_intelidentityambiguouscandidate.go
-model_intelidentitynotfoundbody.go
 model_inteloutlieraccessitem.go
 model_inteloutliersslice.go
 model_intelprivilegedaccessitemwire.go

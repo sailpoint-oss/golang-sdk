@@ -65,15 +65,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
+    managed_clients "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    managedclientrequest := []byte(``) // Managedclientrequest | 
+    managedclientrequestJson := []byte(``) // Managedclientrequest | 
 
-    var managedclientrequest v1.Managedclientrequest
-    if err := json.Unmarshal(managedclientrequest, &managedclientrequest); err != nil {
+    var managedclientrequest managed_clients.Managedclientrequest
+    if err := json.Unmarshal(managedclientrequestJson, &managedclientrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -137,7 +137,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -202,7 +202,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -269,7 +269,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -336,7 +336,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -401,7 +401,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -470,16 +470,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
+    managed_clients "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7` // string | Managed client ID. # string | Managed client ID.
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | JSONPatch payload used to update the object.
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | JSONPatch payload used to update the object.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []managed_clients.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }

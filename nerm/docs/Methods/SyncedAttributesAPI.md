@@ -58,15 +58,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    syncedattribute1 := []byte(`Object`) // SyncedAttribute1 | 
+    syncedattribute1Json := []byte(`Object`) // SyncedAttribute1 | 
 
-    var syncedAttribute1 NERM.SyncedAttribute1
-    if err := json.Unmarshal(syncedattribute1, &syncedAttribute1); err != nil {
+    var syncedAttribute1 nerm.SyncedAttribute1
+    if err := json.Unmarshal(syncedattribute1Json, &syncedAttribute1); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -127,7 +127,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -194,7 +194,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -202,7 +202,7 @@ func main() {
     activeFilter := `all` // string | Filter for profile type synced attributes (optional) # string | Filter for profile type synced attributes (optional)
     search := `search` // string | Filter by string (optional) # string | Filter by string (optional)
     page := 5 // int32 | Pagination items per page (optional) # int32 | Pagination items per page (optional)
-    sort := []byte(``) // GetProfileTypeAttributesSortParameter | How records should be sorted (optional)
+    sortJson := []byte(``) // GetProfileTypeAttributesSortParameter | How records should be sorted (optional)
 
     
 

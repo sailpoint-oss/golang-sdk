@@ -102,7 +102,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -111,7 +111,7 @@ func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     minEntitlementPopularity := 56 // int32 | Minimum popularity required for an entitlement to be included in the provisioned role. (optional) (default to 0) # int32 | Minimum popularity required for an entitlement to be included in the provisioned role. (optional) (default to 0)
     includeCommonAccess := true // bool | Boolean determining whether common access entitlements will be included in the provisioned role. (optional) (default to true) # bool | Boolean determining whether common access entitlements will be included in the provisioned role. (optional) (default to true)
-    roleminingpotentialroleprovisionrequest := []byte(``) // Roleminingpotentialroleprovisionrequest | Required information to create a new role (optional)
+    roleminingpotentialroleprovisionrequestJson := []byte(``) // Roleminingpotentialroleprovisionrequest | Required information to create a new role (optional)
 
     
 
@@ -180,16 +180,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+    iai_role_mining "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    roleminingsessiondto := []byte(``) // Roleminingsessiondto | Role mining session parameters
+    roleminingsessiondtoJson := []byte(``) // Roleminingsessiondto | Role mining session parameters
 
-    var roleminingsessiondto v1.Roleminingsessiondto
-    if err := json.Unmarshal(roleminingsessiondto, &roleminingsessiondto); err != nil {
+    var roleminingsessiondto iai_role_mining.Roleminingsessiondto
+    if err := json.Unmarshal(roleminingsessiondtoJson, &roleminingsessiondto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -269,7 +269,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -353,14 +353,14 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id # string | The role mining session id
     potentialRoleId := `278359a6-04b7-4669-9468-924cf580964a` // string | A potential role id in a role mining session # string | A potential role id in a role mining session
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    roleminingpotentialroleexportrequest := []byte(``) // Roleminingpotentialroleexportrequest |  (optional)
+    roleminingpotentialroleexportrequestJson := []byte(``) // Roleminingpotentialroleexportrequest |  (optional)
 
     
 
@@ -438,7 +438,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -521,7 +521,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -601,7 +601,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -687,7 +687,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -776,7 +776,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -869,7 +869,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -961,7 +961,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1052,7 +1052,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1142,7 +1142,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1232,7 +1232,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1321,7 +1321,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1407,7 +1407,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1487,7 +1487,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1566,7 +1566,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1645,7 +1645,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1724,7 +1724,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1806,7 +1806,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1902,18 +1902,18 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+    iai_role_mining "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id # string | The role mining session id
     potentialRoleId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The potential role summary id # string | The potential role summary id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperationrolemining := []byte(`[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]`) // []Jsonpatchoperationrolemining | 
+    jsonpatchoperationroleminingJson := []byte(`[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]`) // []Jsonpatchoperationrolemining | 
 
-    var jsonpatchoperationrolemining []v1.Jsonpatchoperationrolemining
-    if err := json.Unmarshal(jsonpatchoperationrolemining, &jsonpatchoperationrolemining); err != nil {
+    var jsonpatchoperationrolemining []iai_role_mining.Jsonpatchoperationrolemining
+    if err := json.Unmarshal(jsonpatchoperationroleminingJson, &jsonpatchoperationrolemining); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2003,18 +2003,18 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+    iai_role_mining "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id # string | The role mining session id
     potentialRoleId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The potential role summary id # string | The potential role summary id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperationrolemining := []byte(`[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]`) // []Jsonpatchoperationrolemining | 
+    jsonpatchoperationroleminingJson := []byte(`[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]`) // []Jsonpatchoperationrolemining | 
 
-    var jsonpatchoperationrolemining []v1.Jsonpatchoperationrolemining
-    if err := json.Unmarshal(jsonpatchoperationrolemining, &jsonpatchoperationrolemining); err != nil {
+    var jsonpatchoperationrolemining []iai_role_mining.Jsonpatchoperationrolemining
+    if err := json.Unmarshal(jsonpatchoperationroleminingJson, &jsonpatchoperationrolemining); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2090,17 +2090,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+    iai_role_mining "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id to be patched # string | The role mining session id to be patched
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/pruneThreshold","value":"83"},{"op":"replace","path":"/minNumIdentitiesInPotentialRole","value":"10"},{"op":"replace","path":"/saved","value":"false"},{"op":"replace","path":"/name","value":"RM Session - 07/10/22"},{"op":"add","path":"/name","value":"RM Session - 07/10/22"}]`) // []Jsonpatchoperation | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/pruneThreshold","value":"83"},{"op":"replace","path":"/minNumIdentitiesInPotentialRole","value":"10"},{"op":"replace","path":"/saved","value":"false"},{"op":"replace","path":"/name","value":"RM Session - 07/10/22"},{"op":"add","path":"/name","value":"RM Session - 07/10/22"}]`) // []Jsonpatchoperation | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []iai_role_mining.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2178,18 +2178,18 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+    iai_role_mining "github.com/sailpoint-oss/golang-sdk/v3/iai_role_mining"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id # string | The role mining session id
     potentialRoleId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | A potential role id in a role mining session # string | A potential role id in a role mining session
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    roleminingpotentialroleeditentitlements := []byte(``) // Roleminingpotentialroleeditentitlements | Role mining session parameters
+    roleminingpotentialroleeditentitlementsJson := []byte(``) // Roleminingpotentialroleeditentitlements | Role mining session parameters
 
-    var roleminingpotentialroleeditentitlements v1.Roleminingpotentialroleeditentitlements
-    if err := json.Unmarshal(roleminingpotentialroleeditentitlements, &roleminingpotentialroleeditentitlements); err != nil {
+    var roleminingpotentialroleeditentitlements iai_role_mining.Roleminingpotentialroleeditentitlements
+    if err := json.Unmarshal(roleminingpotentialroleeditentitlementsJson, &roleminingpotentialroleeditentitlements); err != nil {
       fmt.Println("Error:", err)
       return
     }

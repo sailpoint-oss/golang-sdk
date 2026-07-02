@@ -89,15 +89,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+    service_desk_integration "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    servicedeskintegrationdto := []byte(``) // Servicedeskintegrationdto | The specifics of a new integration to create
+    servicedeskintegrationdtoJson := []byte(``) // Servicedeskintegrationdto | The specifics of a new integration to create
 
-    var servicedeskintegrationdto v1.Servicedeskintegrationdto
-    if err := json.Unmarshal(servicedeskintegrationdto, &servicedeskintegrationdto); err != nil {
+    var servicedeskintegrationdto service_desk_integration.Servicedeskintegrationdto
+    if err := json.Unmarshal(servicedeskintegrationdtoJson, &servicedeskintegrationdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -161,7 +161,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -226,7 +226,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -284,7 +284,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -349,7 +349,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -415,7 +415,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -477,7 +477,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -542,16 +542,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+    service_desk_integration "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `anId` // string | ID of the Service Desk integration to update # string | ID of the Service Desk integration to update
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []service_desk_integration.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -615,16 +615,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+    service_desk_integration "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `anId` // string | ID of the Service Desk integration to update # string | ID of the Service Desk integration to update
-    servicedeskintegrationdto := []byte(``) // Servicedeskintegrationdto | The specifics of the integration to update
+    servicedeskintegrationdtoJson := []byte(``) // Servicedeskintegrationdto | The specifics of the integration to update
 
-    var servicedeskintegrationdto v1.Servicedeskintegrationdto
-    if err := json.Unmarshal(servicedeskintegrationdto, &servicedeskintegrationdto); err != nil {
+    var servicedeskintegrationdto service_desk_integration.Servicedeskintegrationdto
+    if err := json.Unmarshal(servicedeskintegrationdtoJson, &servicedeskintegrationdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -683,15 +683,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+    service_desk_integration "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    queuedcheckconfigdetails := []byte(``) // Queuedcheckconfigdetails | The modified time check configuration
+    queuedcheckconfigdetailsJson := []byte(``) // Queuedcheckconfigdetails | The modified time check configuration
 
-    var queuedcheckconfigdetails v1.Queuedcheckconfigdetails
-    if err := json.Unmarshal(queuedcheckconfigdetails, &queuedcheckconfigdetails); err != nil {
+    var queuedcheckconfigdetails service_desk_integration.Queuedcheckconfigdetails
+    if err := json.Unmarshal(queuedcheckconfigdetailsJson, &queuedcheckconfigdetails); err != nil {
       fmt.Println("Error:", err)
       return
     }

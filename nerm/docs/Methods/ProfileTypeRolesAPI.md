@@ -56,15 +56,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createprofiletyperolerequest := []byte(``) // CreateProfileTypeRoleRequest | 
+    createprofiletyperolerequestJson := []byte(``) // CreateProfileTypeRoleRequest | 
 
-    var createProfileTypeRoleRequest NERM.CreateProfileTypeRoleRequest
-    if err := json.Unmarshal(createprofiletyperolerequest, &createProfileTypeRoleRequest); err != nil {
+    var createProfileTypeRoleRequest nerm.CreateProfileTypeRoleRequest
+    if err := json.Unmarshal(createprofiletyperolerequestJson, &createProfileTypeRoleRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

@@ -11,16 +11,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/password_configuration"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_configuration"
+            password_configuration "github.com/sailpoint-oss/golang-sdk/v3/password_configuration"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           passwordorgconfig := []byte(`{"customInstructionsEnabled":true,"digitTokenEnabled":true,"digitTokenDurationMinutes":12,"digitTokenLength":9}`) // Passwordorgconfig | 
+           passwordorgconfigJson := []byte(`{"customInstructionsEnabled":true,"digitTokenEnabled":true,"digitTokenDurationMinutes":12,"digitTokenLength":9}`) // Passwordorgconfig | 
 
           
-          var passwordorgconfig v1.Passwordorgconfig
-          if err := json.Unmarshal(passwordorgconfig, &passwordorgconfig); err != nil {
+          var passwordorgconfig password_configuration.Passwordorgconfig
+          if err := json.Unmarshal(passwordorgconfigJson, &passwordorgconfig); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -51,8 +51,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/password_configuration"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_configuration"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -84,16 +84,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/password_configuration"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_configuration"
+            password_configuration "github.com/sailpoint-oss/golang-sdk/v3/password_configuration"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           passwordorgconfig := []byte(`{"digitTokenEnabled":true,"digitTokenDurationMinutes":12}`) // Passwordorgconfig | 
+           passwordorgconfigJson := []byte(`{"digitTokenEnabled":true,"digitTokenDurationMinutes":12}`) // Passwordorgconfig | 
 
           
-          var passwordorgconfig v1.Passwordorgconfig
-          if err := json.Unmarshal(passwordorgconfig, &passwordorgconfig); err != nil {
+          var passwordorgconfig password_configuration.Passwordorgconfig
+          if err := json.Unmarshal(passwordorgconfigJson, &passwordorgconfig); err != nil {
             fmt.Println("Error:", err)
             return
           }

@@ -95,16 +95,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/password_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_management"
+    password_management "github.com/sailpoint-oss/golang-sdk/v3/password_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    passworddigittokenreset := []byte(`{"userId":"Abby.Smith","length":8,"durationMinutes":5}`) // Passworddigittokenreset | 
+    passworddigittokenresetJson := []byte(`{"userId":"Abby.Smith","length":8,"durationMinutes":5}`) // Passworddigittokenreset | 
 
-    var passworddigittokenreset v1.Passworddigittokenreset
-    if err := json.Unmarshal(passworddigittokenreset, &passworddigittokenreset); err != nil {
+    var passworddigittokenreset password_management.Passworddigittokenreset
+    if err := json.Unmarshal(passworddigittokenresetJson, &passworddigittokenreset); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -168,7 +168,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -230,15 +230,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/password_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_management"
+    password_management "github.com/sailpoint-oss/golang-sdk/v3/password_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    passwordinfoquerydto := []byte(``) // Passwordinfoquerydto | 
+    passwordinfoquerydtoJson := []byte(``) // Passwordinfoquerydto | 
 
-    var passwordinfoquerydto v1.Passwordinfoquerydto
-    if err := json.Unmarshal(passwordinfoquerydto, &passwordinfoquerydto); err != nil {
+    var passwordinfoquerydto password_management.Passwordinfoquerydto
+    if err := json.Unmarshal(passwordinfoquerydtoJson, &passwordinfoquerydto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -316,15 +316,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/password_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_management"
+    password_management "github.com/sailpoint-oss/golang-sdk/v3/password_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    passwordchangerequest := []byte(``) // Passwordchangerequest | 
+    passwordchangerequestJson := []byte(``) // Passwordchangerequest | 
 
-    var passwordchangerequest v1.Passwordchangerequest
-    if err := json.Unmarshal(passwordchangerequest, &passwordchangerequest); err != nil {
+    var passwordchangerequest password_management.Passwordchangerequest
+    if err := json.Unmarshal(passwordchangerequestJson, &passwordchangerequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

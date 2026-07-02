@@ -70,7 +70,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/jit_access"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -141,16 +141,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/jit_access"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/jit_access"
+    jit_access "github.com/sailpoint-oss/golang-sdk/v3/jit_access"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     configType := `policy` // string | Configuration kind to update. Only **policy** (JIT activation policy) is supported today.  # string | Configuration kind to update. Only **policy** (JIT activation policy) is supported today. 
-    jitaccessoperationrequest := []byte(``) // []Jitaccessoperationrequest | 
+    jitaccessoperationrequestJson := []byte(``) // []Jitaccessoperationrequest | 
 
-    var jitaccessoperationrequest []v1.Jitaccessoperationrequest
-    if err := json.Unmarshal(jitaccessoperationrequest, &jitaccessoperationrequest); err != nil {
+    var jitaccessoperationrequest []jit_access.Jitaccessoperationrequest
+    if err := json.Unmarshal(jitaccessoperationrequestJson, &jitaccessoperationrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

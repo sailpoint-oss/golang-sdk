@@ -92,15 +92,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/password_sync_groups"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_sync_groups"
+    password_sync_groups "github.com/sailpoint-oss/golang-sdk/v3/password_sync_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    passwordsyncgroup := []byte(`{"name":"Password Sync Group 2","passwordPolicyId":"2c91808d744ba0ce01746f93b6204501","sourceIds":["2c918084660f45d6016617daa9210584","2c918084660f45d6016617daa9210500"]}`) // Passwordsyncgroup | 
+    passwordsyncgroupJson := []byte(`{"name":"Password Sync Group 2","passwordPolicyId":"2c91808d744ba0ce01746f93b6204501","sourceIds":["2c918084660f45d6016617daa9210584","2c918084660f45d6016617daa9210500"]}`) // Passwordsyncgroup | 
 
-    var passwordsyncgroup v1.Passwordsyncgroup
-    if err := json.Unmarshal(passwordsyncgroup, &passwordsyncgroup); err != nil {
+    var passwordsyncgroup password_sync_groups.Passwordsyncgroup
+    if err := json.Unmarshal(passwordsyncgroupJson, &passwordsyncgroup); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -164,7 +164,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_sync_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -229,7 +229,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_sync_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -293,7 +293,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_sync_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -361,16 +361,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/password_sync_groups"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/password_sync_groups"
+    password_sync_groups "github.com/sailpoint-oss/golang-sdk/v3/password_sync_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `6881f631-3bd5-4213-9c75-8e05cc3e35dd` // string | The ID of password sync group to update. # string | The ID of password sync group to update.
-    passwordsyncgroup := []byte(`{"id":"6881f631-3bd5-4213-9c75-8e05cc3e35dd","name":"Password Sync Group 2","passwordPolicyId":"2c91808d744ba0ce01746f93b6204501","sourceIds":["2c918084660f45d6016617daa9210584","2c918084660f45d6016617daa9210500"]}`) // Passwordsyncgroup | 
+    passwordsyncgroupJson := []byte(`{"id":"6881f631-3bd5-4213-9c75-8e05cc3e35dd","name":"Password Sync Group 2","passwordPolicyId":"2c91808d744ba0ce01746f93b6204501","sourceIds":["2c918084660f45d6016617daa9210584","2c918084660f45d6016617daa9210500"]}`) // Passwordsyncgroup | 
 
-    var passwordsyncgroup v1.Passwordsyncgroup
-    if err := json.Unmarshal(passwordsyncgroup, &passwordsyncgroup); err != nil {
+    var passwordsyncgroup password_sync_groups.Passwordsyncgroup
+    if err := json.Unmarshal(passwordsyncgroupJson, &passwordsyncgroup); err != nil {
       fmt.Println("Error:", err)
       return
     }

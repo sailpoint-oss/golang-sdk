@@ -67,7 +67,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/auth_users"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -137,16 +137,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/auth_users"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/auth_users"
+    auth_users "github.com/sailpoint-oss/golang-sdk/v3/auth_users"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Identity ID # string | Identity ID
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/capabilities","value":["ORG_ADMIN"]}]`) // []Jsonpatchoperation | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/capabilities","value":["ORG_ADMIN"]}]`) // []Jsonpatchoperation | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []auth_users.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }

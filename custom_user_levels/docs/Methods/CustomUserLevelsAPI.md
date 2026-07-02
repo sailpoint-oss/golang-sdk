@@ -82,16 +82,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+    custom_user_levels "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    userlevelrequest := []byte(`{"name":"Identity And Access Management","description":"This is a description of the custom user level.","owner":{"id":"29b9da8273b441239238bc041c386817","name":"John Doe"},"rightSets":["idn:ui-identity-manage-example","idn:ui-identity-manage-child-one-example"]}`) // Userlevelrequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+    userlevelrequestJson := []byte(`{"name":"Identity And Access Management","description":"This is a description of the custom user level.","owner":{"id":"29b9da8273b441239238bc041c386817","name":"John Doe"},"rightSets":["idn:ui-identity-manage-example","idn:ui-identity-manage-child-one-example"]}`) // Userlevelrequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
 
-    var userlevelrequest v1.Userlevelrequest
-    if err := json.Unmarshal(userlevelrequest, &userlevelrequest); err != nil {
+    var userlevelrequest custom_user_levels.Userlevelrequest
+    if err := json.Unmarshal(userlevelrequestJson, &userlevelrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -167,7 +167,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -245,7 +245,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -323,7 +323,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -409,7 +409,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -492,7 +492,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -575,7 +575,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -649,16 +649,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+    custom_user_levels "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     requestbody := []byte(``) // []string | List of user level ids. Max 50 identifiers can be passed in a single request.
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []custom_user_levels.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -734,17 +734,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+    custom_user_levels "github.com/sailpoint-oss/golang-sdk/v3/custom_user_levels"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     id := `6e110911-5984-491b-be74-2707980a46a7` // string | The unique identifier of the user level. # string | The unique identifier of the user level.
-    jsonpatch := []byte(`[{"op":"replace","path":"/rightSets","value":["idn:ui-identity-manage-example"]}]`) // Jsonpatch | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+    jsonpatchJson := []byte(`[{"op":"replace","path":"/rightSets","value":["idn:ui-identity-manage-example"]}]`) // Jsonpatch | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
 
-    var jsonpatch v1.Jsonpatch
-    if err := json.Unmarshal(jsonpatch, &jsonpatch); err != nil {
+    var jsonpatch custom_user_levels.Jsonpatch
+    if err := json.Unmarshal(jsonpatchJson, &jsonpatch); err != nil {
       fmt.Println("Error:", err)
       return
     }

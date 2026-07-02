@@ -77,7 +77,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/role_propagation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -149,7 +149,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/role_propagation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -222,7 +222,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/role_propagation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -306,7 +306,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/role_propagation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -380,16 +380,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/role_propagation"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/role_propagation"
+    role_propagation "github.com/sailpoint-oss/golang-sdk/v3/role_propagation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    rolepropagationconfiginput := []byte(``) // RolePropagationConfigInput | 
+    rolepropagationconfiginputJson := []byte(``) // RolePropagationConfigInput | 
 
-    var rolePropagationConfigInput v1.RolePropagationConfigInput
-    if err := json.Unmarshal(rolepropagationconfiginput, &rolePropagationConfigInput); err != nil {
+    var rolePropagationConfigInput role_propagation.RolePropagationConfigInput
+    if err := json.Unmarshal(rolepropagationconfiginputJson, &rolePropagationConfigInput); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -462,7 +462,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/role_propagation"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {

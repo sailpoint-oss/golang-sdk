@@ -64,7 +64,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_classification_config"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -129,7 +129,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_classification_config"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -195,16 +195,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_classification_config"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_classification_config"
+    machine_classification_config "github.com/sailpoint-oss/golang-sdk/v3/machine_classification_config"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
-    machineclassificationconfig := []byte(``) // Machineclassificationconfig | 
+    machineclassificationconfigJson := []byte(``) // Machineclassificationconfig | 
 
-    var machineclassificationconfig v1.Machineclassificationconfig
-    if err := json.Unmarshal(machineclassificationconfig, &machineclassificationconfig); err != nil {
+    var machineclassificationconfig machine_classification_config.Machineclassificationconfig
+    if err := json.Unmarshal(machineclassificationconfigJson, &machineclassificationconfig); err != nil {
       fmt.Println("Error:", err)
       return
     }

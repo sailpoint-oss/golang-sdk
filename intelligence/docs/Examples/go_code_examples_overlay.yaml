@@ -11,8 +11,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -45,8 +45,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -81,8 +81,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -117,8 +117,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -153,8 +153,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {

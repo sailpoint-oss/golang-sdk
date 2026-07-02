@@ -11,16 +11,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
+            certification_campaign_filters "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           campaignfilterdetails := []byte(``) // Campaignfilterdetails | 
+           campaignfilterdetailsJson := []byte(``) // Campaignfilterdetails | 
 
           
-          var campaignfilterdetails v1.Campaignfilterdetails
-          if err := json.Unmarshal(campaignfilterdetails, &campaignfilterdetails); err != nil {
+          var campaignfilterdetails certification_campaign_filters.Campaignfilterdetails
+          if err := json.Unmarshal(campaignfilterdetailsJson, &campaignfilterdetails); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -51,16 +51,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
+            certification_campaign_filters "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           requestbody := []byte(``) // []string | A json list of IDs of campaign filters to delete.
 
           
-          var requestBody []v1.RequestBody
-          if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+          var requestBody []certification_campaign_filters.RequestBody
+          if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -89,8 +89,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -123,8 +123,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -159,17 +159,17 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
+            certification_campaign_filters "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `e9f9a1397b842fd5a65842087040d3ac` // string | The ID of the campaign filter being modified. # string | The ID of the campaign filter being modified.
-           campaignfilterdetails := []byte(``) // Campaignfilterdetails | A campaign filter details with updated field values.
+           campaignfilterdetailsJson := []byte(``) // Campaignfilterdetails | A campaign filter details with updated field values.
 
           
-          var campaignfilterdetails v1.Campaignfilterdetails
-          if err := json.Unmarshal(campaignfilterdetails, &campaignfilterdetails); err != nil {
+          var campaignfilterdetails certification_campaign_filters.Campaignfilterdetails
+          if err := json.Unmarshal(campaignfilterdetailsJson, &campaignfilterdetails); err != nil {
             fmt.Println("Error:", err)
             return
           }

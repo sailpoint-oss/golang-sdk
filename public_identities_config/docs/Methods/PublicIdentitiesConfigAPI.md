@@ -64,7 +64,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/public_identities_config"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -124,15 +124,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/public_identities_config"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/public_identities_config"
+    public_identities_config "github.com/sailpoint-oss/golang-sdk/v3/public_identities_config"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    publicidentityconfig := []byte(``) // Publicidentityconfig | 
+    publicidentityconfigJson := []byte(``) // Publicidentityconfig | 
 
-    var publicidentityconfig v1.Publicidentityconfig
-    if err := json.Unmarshal(publicidentityconfig, &publicidentityconfig); err != nil {
+    var publicidentityconfig public_identities_config.Publicidentityconfig
+    if err := json.Unmarshal(publicidentityconfigJson, &publicidentityconfig); err != nil {
       fmt.Println("Error:", err)
       return
     }

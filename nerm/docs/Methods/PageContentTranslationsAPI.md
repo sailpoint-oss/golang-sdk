@@ -63,15 +63,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createpagecontenttranslationrequest := []byte(``) // CreatePageContentTranslationRequest | 
+    createpagecontenttranslationrequestJson := []byte(``) // CreatePageContentTranslationRequest | 
 
-    var createPageContentTranslationRequest NERM.CreatePageContentTranslationRequest
-    if err := json.Unmarshal(createpagecontenttranslationrequest, &createPageContentTranslationRequest); err != nil {
+    var createPageContentTranslationRequest nerm.CreatePageContentTranslationRequest
+    if err := json.Unmarshal(createpagecontenttranslationrequestJson, &createPageContentTranslationRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -135,7 +135,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -201,7 +201,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -259,7 +259,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -324,7 +324,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -390,7 +390,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -456,16 +456,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-    updatepagecontenttranslationbyidrequest := []byte(``) // UpdatePageContentTranslationByIdRequest | 
+    updatepagecontenttranslationbyidrequestJson := []byte(``) // UpdatePageContentTranslationByIdRequest | 
 
-    var updatePageContentTranslationByIdRequest NERM.UpdatePageContentTranslationByIdRequest
-    if err := json.Unmarshal(updatepagecontenttranslationbyidrequest, &updatePageContentTranslationByIdRequest); err != nil {
+    var updatePageContentTranslationByIdRequest nerm.UpdatePageContentTranslationByIdRequest
+    if err := json.Unmarshal(updatepagecontenttranslationbyidrequestJson, &updatePageContentTranslationByIdRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -529,16 +529,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    updatepagecontenttranslationbyidrequest := []byte(``) // UpdatePageContentTranslationByIdRequest | 
+    updatepagecontenttranslationbyidrequestJson := []byte(``) // UpdatePageContentTranslationByIdRequest | 
     uid := `middle_initial_attribute` // string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional) # string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional)
 
-    var updatePageContentTranslationByIdRequest NERM.UpdatePageContentTranslationByIdRequest
-    if err := json.Unmarshal(updatepagecontenttranslationbyidrequest, &updatePageContentTranslationByIdRequest); err != nil {
+    var updatePageContentTranslationByIdRequest nerm.UpdatePageContentTranslationByIdRequest
+    if err := json.Unmarshal(updatepagecontenttranslationbyidrequestJson, &updatePageContentTranslationByIdRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

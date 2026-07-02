@@ -76,15 +76,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+    shared_signals_framework_ssf "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createstreamrequest := []byte(`{"delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Production event stream for session revocation notifications"}`) // Createstreamrequest | 
+    createstreamrequestJson := []byte(`{"delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Production event stream for session revocation notifications"}`) // Createstreamrequest | 
 
-    var createstreamrequest v1.Createstreamrequest
-    if err := json.Unmarshal(createstreamrequest, &createstreamrequest); err != nil {
+    var createstreamrequest shared_signals_framework_ssf.Createstreamrequest
+    if err := json.Unmarshal(createstreamrequestJson, &createstreamrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -148,7 +148,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -205,7 +205,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -262,7 +262,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -323,7 +323,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -391,7 +391,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -452,15 +452,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+    shared_signals_framework_ssf "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    verificationrequest := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","state":"verification-challenge-state-123"}`) // Verificationrequest | 
+    verificationrequestJson := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","state":"verification-challenge-state-123"}`) // Verificationrequest | 
 
-    var verificationrequest v1.Verificationrequest
-    if err := json.Unmarshal(verificationrequest, &verificationrequest); err != nil {
+    var verificationrequest shared_signals_framework_ssf.Verificationrequest
+    if err := json.Unmarshal(verificationrequestJson, &verificationrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -521,15 +521,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+    shared_signals_framework_ssf "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    replacestreamconfigurationrequest := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Replaced stream configuration for production event delivery"}`) // Replacestreamconfigurationrequest | 
+    replacestreamconfigurationrequestJson := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Replaced stream configuration for production event delivery"}`) // Replacestreamconfigurationrequest | 
 
-    var replacestreamconfigurationrequest v1.Replacestreamconfigurationrequest
-    if err := json.Unmarshal(replacestreamconfigurationrequest, &replacestreamconfigurationrequest); err != nil {
+    var replacestreamconfigurationrequest shared_signals_framework_ssf.Replacestreamconfigurationrequest
+    if err := json.Unmarshal(replacestreamconfigurationrequestJson, &replacestreamconfigurationrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -591,15 +591,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+    shared_signals_framework_ssf "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    updatestreamconfigurationrequest := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","description":"Updated production event stream configuration"}`) // Updatestreamconfigurationrequest | 
+    updatestreamconfigurationrequestJson := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","description":"Updated production event stream configuration"}`) // Updatestreamconfigurationrequest | 
 
-    var updatestreamconfigurationrequest v1.Updatestreamconfigurationrequest
-    if err := json.Unmarshal(updatestreamconfigurationrequest, &updatestreamconfigurationrequest); err != nil {
+    var updatestreamconfigurationrequest shared_signals_framework_ssf.Updatestreamconfigurationrequest
+    if err := json.Unmarshal(updatestreamconfigurationrequestJson, &updatestreamconfigurationrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -658,15 +658,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+    shared_signals_framework_ssf "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    updatestreamstatusrequest := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","status":"paused","reason":"manually paused"}`) // Updatestreamstatusrequest | 
+    updatestreamstatusrequestJson := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","status":"paused","reason":"manually paused"}`) // Updatestreamstatusrequest | 
 
-    var updatestreamstatusrequest v1.Updatestreamstatusrequest
-    if err := json.Unmarshal(updatestreamstatusrequest, &updatestreamstatusrequest); err != nil {
+    var updatestreamstatusrequest shared_signals_framework_ssf.Updatestreamstatusrequest
+    if err := json.Unmarshal(updatestreamstatusrequestJson, &updatestreamstatusrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

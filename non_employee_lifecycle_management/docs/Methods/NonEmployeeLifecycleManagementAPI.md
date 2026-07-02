@@ -123,16 +123,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+    non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `e136567de87e4d029e60b3c3c55db56d` // string | Non-Employee approval item id (UUID) # string | Non-Employee approval item id (UUID)
-    nonemployeeapprovaldecision := []byte(``) // Nonemployeeapprovaldecision | 
+    nonemployeeapprovaldecisionJson := []byte(``) // Nonemployeeapprovaldecision | 
 
-    var nonemployeeapprovaldecision v1.Nonemployeeapprovaldecision
-    if err := json.Unmarshal(nonemployeeapprovaldecision, &nonemployeeapprovaldecision); err != nil {
+    var nonemployeeapprovaldecision non_employee_lifecycle_management.Nonemployeeapprovaldecision
+    if err := json.Unmarshal(nonemployeeapprovaldecisionJson, &nonemployeeapprovaldecision); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -193,15 +193,15 @@ import (
 	"os"
   "encoding/json"
     
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+    non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    nonemployeerequestbody := []byte(``) // Nonemployeerequestbody | Non-Employee record creation request body.
+    nonemployeerequestbodyJson := []byte(``) // Nonemployeerequestbody | Non-Employee record creation request body.
 
-    var nonemployeerequestbody v1.Nonemployeerequestbody
-    if err := json.Unmarshal(nonemployeerequestbody, &nonemployeerequestbody); err != nil {
+    var nonemployeerequestbody non_employee_lifecycle_management.Nonemployeerequestbody
+    if err := json.Unmarshal(nonemployeerequestbodyJson, &nonemployeerequestbody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -261,15 +261,15 @@ import (
 	"os"
   "encoding/json"
     
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+    non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    nonemployeerequestbody := []byte(``) // Nonemployeerequestbody | Non-Employee creation request body
+    nonemployeerequestbodyJson := []byte(``) // Nonemployeerequestbody | Non-Employee creation request body
 
-    var nonemployeerequestbody v1.Nonemployeerequestbody
-    if err := json.Unmarshal(nonemployeerequestbody, &nonemployeerequestbody); err != nil {
+    var nonemployeerequestbody non_employee_lifecycle_management.Nonemployeerequestbody
+    if err := json.Unmarshal(nonemployeerequestbodyJson, &nonemployeerequestbody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -334,16 +334,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+    non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | The Source id # string | The Source id
-    nonemployeeschemaattributebody := []byte(``) // Nonemployeeschemaattributebody | 
+    nonemployeeschemaattributebodyJson := []byte(``) // Nonemployeeschemaattributebody | 
 
-    var nonemployeeschemaattributebody v1.Nonemployeeschemaattributebody
-    if err := json.Unmarshal(nonemployeeschemaattributebody, &nonemployeeschemaattributebody); err != nil {
+    var nonemployeeschemaattributebody non_employee_lifecycle_management.Nonemployeeschemaattributebody
+    if err := json.Unmarshal(nonemployeeschemaattributebodyJson, &nonemployeeschemaattributebody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -402,15 +402,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+    non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    nonemployeesourcerequestbody := []byte(``) // Nonemployeesourcerequestbody | Non-Employee source creation request body.
+    nonemployeesourcerequestbodyJson := []byte(``) // Nonemployeesourcerequestbody | Non-Employee source creation request body.
 
-    var nonemployeesourcerequestbody v1.Nonemployeesourcerequestbody
-    if err := json.Unmarshal(nonemployeesourcerequestbody, &nonemployeesourcerequestbody); err != nil {
+    var nonemployeesourcerequestbody non_employee_lifecycle_management.Nonemployeesourcerequestbody
+    if err := json.Unmarshal(nonemployeesourcerequestbodyJson, &nonemployeesourcerequestbody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -475,7 +475,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -535,15 +535,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+    non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    deletenonemployeerecordsinbulkv1request := []byte(``) // DeleteNonEmployeeRecordsInBulkV1Request | Non-Employee bulk delete request body.
+    deletenonemployeerecordsinbulkv1requestJson := []byte(``) // DeleteNonEmployeeRecordsInBulkV1Request | Non-Employee bulk delete request body.
 
-    var deleteNonEmployeeRecordsInBulkV1Request v1.DeleteNonEmployeeRecordsInBulkV1Request
-    if err := json.Unmarshal(deletenonemployeerecordsinbulkv1request, &deleteNonEmployeeRecordsInBulkV1Request); err != nil {
+    var deleteNonEmployeeRecordsInBulkV1Request non_employee_lifecycle_management.DeleteNonEmployeeRecordsInBulkV1Request
+    if err := json.Unmarshal(deletenonemployeerecordsinbulkv1requestJson, &deleteNonEmployeeRecordsInBulkV1Request); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -607,7 +607,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -676,7 +676,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -742,7 +742,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -807,7 +807,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -872,7 +872,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -937,7 +937,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1006,7 +1006,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1076,7 +1076,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1145,7 +1145,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1212,7 +1212,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1282,7 +1282,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1352,7 +1352,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1420,7 +1420,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1488,7 +1488,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1558,7 +1558,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1625,7 +1625,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1697,7 +1697,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1770,7 +1770,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1845,7 +1845,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1919,7 +1919,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1994,16 +1994,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+    non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Non-employee record id (UUID) # string | Non-employee record id (UUID)
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/endDate","value":"2019-08-23T18:40:35.772Z"}]`) // []Jsonpatchoperation | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/endDate","value":"2019-08-23T18:40:35.772Z"}]`) // []Jsonpatchoperation | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []non_employee_lifecycle_management.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2071,17 +2071,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+    non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     attributeId := `ef38f94347e94562b5bb8424a56397d8` // string | The Schema Attribute Id (UUID) # string | The Schema Attribute Id (UUID)
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | The Source id # string | The Source id
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/label","value":{"new attribute label":null}}]`) // []Jsonpatchoperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/label","value":{"new attribute label":null}}]`) // []Jsonpatchoperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []non_employee_lifecycle_management.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2145,16 +2145,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+    non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `e136567de87e4d029e60b3c3c55db56d` // string | Source Id # string | Source Id
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/name","value":{"new name":null}},{"op":"replace","path":"/approvers","value":["2c91809f703bb37a017040a2fe8748c7","48b1f463c9e8427db5a5071bd81914b8"]}]`) // []Jsonpatchoperation | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":{"new name":null}},{"op":"replace","path":"/approvers","value":["2c91809f703bb37a017040a2fe8748c7","48b1f463c9e8427db5a5071bd81914b8"]}]`) // []Jsonpatchoperation | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []non_employee_lifecycle_management.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2218,16 +2218,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+    non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `e136567de87e4d029e60b3c3c55db56d` // string | Non-Employee approval item id (UUID) # string | Non-Employee approval item id (UUID)
-    nonemployeerejectapprovaldecision := []byte(``) // Nonemployeerejectapprovaldecision | 
+    nonemployeerejectapprovaldecisionJson := []byte(``) // Nonemployeerejectapprovaldecision | 
 
-    var nonemployeerejectapprovaldecision v1.Nonemployeerejectapprovaldecision
-    if err := json.Unmarshal(nonemployeerejectapprovaldecision, &nonemployeerejectapprovaldecision); err != nil {
+    var nonemployeerejectapprovaldecision non_employee_lifecycle_management.Nonemployeerejectapprovaldecision
+    if err := json.Unmarshal(nonemployeerejectapprovaldecisionJson, &nonemployeerejectapprovaldecision); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2296,16 +2296,16 @@ import (
 	"os"
   "encoding/json"
     
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+    non_employee_lifecycle_management "github.com/sailpoint-oss/golang-sdk/v3/non_employee_lifecycle_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Non-employee record id (UUID) # string | Non-employee record id (UUID)
-    nonemployeerequestbody := []byte(``) // Nonemployeerequestbody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+    nonemployeerequestbodyJson := []byte(``) // Nonemployeerequestbody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
-    var nonemployeerequestbody v1.Nonemployeerequestbody
-    if err := json.Unmarshal(nonemployeerequestbody, &nonemployeerequestbody); err != nil {
+    var nonemployeerequestbody non_employee_lifecycle_management.Nonemployeerequestbody
+    if err := json.Unmarshal(nonemployeerequestbodyJson, &nonemployeerequestbody); err != nil {
       fmt.Println("Error:", err)
       return
     }

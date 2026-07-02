@@ -11,16 +11,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
+            jit_activations "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           jitactivationactivaterequest := []byte(``) // Jitactivationactivaterequest | 
+           jitactivationactivaterequestJson := []byte(``) // Jitactivationactivaterequest | 
 
           
-          var jitactivationactivaterequest v1.Jitactivationactivaterequest
-          if err := json.Unmarshal(jitactivationactivaterequest, &jitactivationactivaterequest); err != nil {
+          var jitactivationactivaterequest jit_activations.Jitactivationactivaterequest
+          if err := json.Unmarshal(jitactivationactivaterequestJson, &jitactivationactivaterequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -51,16 +51,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
+            jit_activations "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           jitactivationdeactivaterequest := []byte(``) // Jitactivationdeactivaterequest | 
+           jitactivationdeactivaterequestJson := []byte(``) // Jitactivationdeactivaterequest | 
 
           
-          var jitactivationdeactivaterequest v1.Jitactivationdeactivaterequest
-          if err := json.Unmarshal(jitactivationdeactivaterequest, &jitactivationdeactivaterequest); err != nil {
+          var jitactivationdeactivaterequest jit_activations.Jitactivationdeactivaterequest
+          if err := json.Unmarshal(jitactivationdeactivaterequestJson, &jitactivationdeactivaterequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -91,16 +91,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
+            jit_activations "github.com/sailpoint-oss/golang-sdk/v3/jit_activations"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           jitactivationextendrequest := []byte(``) // Jitactivationextendrequest | 
+           jitactivationextendrequestJson := []byte(``) // Jitactivationextendrequest | 
 
           
-          var jitactivationextendrequest v1.Jitactivationextendrequest
-          if err := json.Unmarshal(jitactivationextendrequest, &jitactivationextendrequest); err != nil {
+          var jitactivationextendrequest jit_activations.Jitactivationextendrequest
+          if err := json.Unmarshal(jitactivationextendrequestJson, &jitactivationextendrequest); err != nil {
             fmt.Println("Error:", err)
             return
           }

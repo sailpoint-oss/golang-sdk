@@ -94,7 +94,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -166,7 +166,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -237,7 +237,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -303,7 +303,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -378,7 +378,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -457,7 +457,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -532,7 +532,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -603,16 +603,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/certifications"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+    certifications "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the identity campaign certification on which to make decisions # string | The ID of the identity campaign certification on which to make decisions
-    reviewdecision := []byte(`[{"id":"ef38f94347e94562b5bb8424a56396b5","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source."},{"id":"ef38f94347e94562b5bb8424a56397d8","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source too."}]`) // []Reviewdecision | A non-empty array of decisions to be made.
+    reviewdecisionJson := []byte(`[{"id":"ef38f94347e94562b5bb8424a56396b5","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source."},{"id":"ef38f94347e94562b5bb8424a56397d8","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source too."}]`) // []Reviewdecision | A non-empty array of decisions to be made.
 
-    var reviewdecision []v1.Reviewdecision
-    if err := json.Unmarshal(reviewdecision, &reviewdecision); err != nil {
+    var reviewdecision []certifications.Reviewdecision
+    if err := json.Unmarshal(reviewdecisionJson, &reviewdecision); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -676,16 +676,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/certifications"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+    certifications "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The identity campaign certification ID # string | The identity campaign certification ID
-    reviewreassign := []byte(``) // Reviewreassign | 
+    reviewreassignJson := []byte(``) // Reviewreassign | 
 
-    var reviewreassign v1.Reviewreassign
-    if err := json.Unmarshal(reviewreassign, &reviewreassign); err != nil {
+    var reviewreassign certifications.Reviewreassign
+    if err := json.Unmarshal(reviewreassignJson, &reviewreassign); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -749,7 +749,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -820,16 +820,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/certifications"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+    certifications "github.com/sailpoint-oss/golang-sdk/v3/certifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The identity campaign certification ID # string | The identity campaign certification ID
-    reviewreassign := []byte(``) // Reviewreassign | 
+    reviewreassignJson := []byte(``) // Reviewreassign | 
 
-    var reviewreassign v1.Reviewreassign
-    if err := json.Unmarshal(reviewreassign, &reviewreassign); err != nil {
+    var reviewreassign certifications.Reviewreassign
+    if err := json.Unmarshal(reviewreassignJson, &reviewreassign); err != nil {
       fmt.Println("Error:", err)
       return
     }

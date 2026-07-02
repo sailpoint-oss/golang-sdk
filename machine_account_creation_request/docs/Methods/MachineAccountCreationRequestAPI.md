@@ -76,16 +76,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_account_creation_request"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_creation_request"
+    machine_account_creation_request "github.com/sailpoint-oss/golang-sdk/v3/machine_account_creation_request"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    machineaccountcreaterequestinput := []byte(``) // Machineaccountcreaterequestinput | 
+    machineaccountcreaterequestinputJson := []byte(``) // Machineaccountcreaterequestinput | 
 
-    var machineaccountcreaterequestinput v1.Machineaccountcreaterequestinput
-    if err := json.Unmarshal(machineaccountcreaterequestinput, &machineaccountcreaterequestinput); err != nil {
+    var machineaccountcreaterequestinput machine_account_creation_request.Machineaccountcreaterequestinput
+    if err := json.Unmarshal(machineaccountcreaterequestinputJson, &machineaccountcreaterequestinput); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -161,7 +161,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_creation_request"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -238,7 +238,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_account_creation_request"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {

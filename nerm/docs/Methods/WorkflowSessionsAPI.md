@@ -66,7 +66,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -134,7 +134,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -209,7 +209,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -284,17 +284,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-    submitworkflowsessionrequest := []byte(``) // SubmitWorkflowSessionRequest | 
+    submitworkflowsessionrequestJson := []byte(``) // SubmitWorkflowSessionRequest | 
     run := false // bool | Will run the created/updated workflow session if successful (optional) (default to false) # bool | Will run the created/updated workflow session if successful (optional) (default to false)
 
-    var submitWorkflowSessionRequest NERM.SubmitWorkflowSessionRequest
-    if err := json.Unmarshal(submitworkflowsessionrequest, &submitWorkflowSessionRequest); err != nil {
+    var submitWorkflowSessionRequest nerm.SubmitWorkflowSessionRequest
+    if err := json.Unmarshal(submitworkflowsessionrequestJson, &submitWorkflowSessionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -354,16 +354,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitworkflowsessionrequest := []byte(``) // SubmitWorkflowSessionRequest | 
+    submitworkflowsessionrequestJson := []byte(``) // SubmitWorkflowSessionRequest | 
     run := false // bool | Will run the created/updated workflow session if successful (optional) (default to false) # bool | Will run the created/updated workflow session if successful (optional) (default to false)
 
-    var submitWorkflowSessionRequest NERM.SubmitWorkflowSessionRequest
-    if err := json.Unmarshal(submitworkflowsessionrequest, &submitWorkflowSessionRequest); err != nil {
+    var submitWorkflowSessionRequest nerm.SubmitWorkflowSessionRequest
+    if err := json.Unmarshal(submitworkflowsessionrequestJson, &submitWorkflowSessionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -431,7 +431,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {

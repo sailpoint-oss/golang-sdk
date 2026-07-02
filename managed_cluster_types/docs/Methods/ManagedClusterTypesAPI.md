@@ -64,15 +64,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/managed_cluster_types"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_cluster_types"
+    managed_cluster_types "github.com/sailpoint-oss/golang-sdk/v3/managed_cluster_types"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    managedclustertype := []byte(``) // Managedclustertype | 
+    managedclustertypeJson := []byte(``) // Managedclustertype | 
 
-    var managedclustertype v1.Managedclustertype
-    if err := json.Unmarshal(managedclustertype, &managedclustertype); err != nil {
+    var managedclustertype managed_cluster_types.Managedclustertype
+    if err := json.Unmarshal(managedclustertypeJson, &managedclustertype); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -136,7 +136,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_cluster_types"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -201,7 +201,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_cluster_types"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -267,7 +267,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_cluster_types"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -337,16 +337,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/managed_cluster_types"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/managed_cluster_types"
+    managed_cluster_types "github.com/sailpoint-oss/golang-sdk/v3/managed_cluster_types"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `aClusterTypeId` // string | The Managed Cluster Type ID # string | The Managed Cluster Type ID
-    jsonpatch := []byte(``) // Jsonpatch | The JSONPatch payload used to update the schema.
+    jsonpatchJson := []byte(``) // Jsonpatch | The JSONPatch payload used to update the schema.
 
-    var jsonpatch v1.Jsonpatch
-    if err := json.Unmarshal(jsonpatch, &jsonpatch); err != nil {
+    var jsonpatch managed_cluster_types.Jsonpatch
+    if err := json.Unmarshal(jsonpatchJson, &jsonpatch); err != nil {
       fmt.Println("Error:", err)
       return
     }

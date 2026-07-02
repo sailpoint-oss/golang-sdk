@@ -72,16 +72,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
+    dimensions "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     roleId := `6603fba3004f43c687610a29195252ce` // string | Parent Role Id of the dimension. # string | Parent Role Id of the dimension.
-    dimension := []byte(``) // Dimension | 
+    dimensionJson := []byte(``) // Dimension | 
 
-    var dimension v1.Dimension
-    if err := json.Unmarshal(dimension, &dimension); err != nil {
+    var dimension dimensions.Dimension
+    if err := json.Unmarshal(dimensionJson, &dimension); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -148,16 +148,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
+    dimensions "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     roleId := `6603fba3004f43c687610a29195252ce` // string | Parent Role Id of the dimensions. # string | Parent Role Id of the dimensions.
-    dimensionbulkdeleterequest := []byte(`{"dimensionIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}`) // Dimensionbulkdeleterequest | 
+    dimensionbulkdeleterequestJson := []byte(`{"dimensionIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}`) // Dimensionbulkdeleterequest | 
 
-    var dimensionbulkdeleterequest v1.Dimensionbulkdeleterequest
-    if err := json.Unmarshal(dimensionbulkdeleterequest, &dimensionbulkdeleterequest); err != nil {
+    var dimensionbulkdeleterequest dimensions.Dimensionbulkdeleterequest
+    if err := json.Unmarshal(dimensionbulkdeleterequestJson, &dimensionbulkdeleterequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -224,7 +224,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -299,7 +299,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -375,7 +375,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -451,7 +451,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -531,7 +531,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -609,17 +609,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
+    dimensions "github.com/sailpoint-oss/golang-sdk/v3/dimensions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     roleId := `6603fba3004f43c687610a29195252ce` // string | Parent Role Id of the dimension. # string | Parent Role Id of the dimension.
     dimensionId := `2c9180835d191a86015d28455b4a2329` // string | Id of the Dimension # string | Id of the Dimension
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/description","value":"Test Description"},{"op":"replace","path":"/name","value":"new name"}]`) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Test Description"},{"op":"replace","path":"/name","value":"new name"}]`) // []Jsonpatchoperation | 
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []dimensions.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }

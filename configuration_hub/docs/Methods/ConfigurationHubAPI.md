@@ -86,15 +86,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+    configuration_hub "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    deployrequest := []byte(`{"draftId":"c9a38d8c-5edf-4182-9d39-f6581d3ebd05"}`) // Deployrequest | The deploy request body.
+    deployrequestJson := []byte(`{"draftId":"c9a38d8c-5edf-4182-9d39-f6581d3ebd05"}`) // Deployrequest | The deploy request body.
 
-    var deployrequest v1.Deployrequest
-    if err := json.Unmarshal(deployrequest, &deployrequest); err != nil {
+    var deployrequest configuration_hub.Deployrequest
+    if err := json.Unmarshal(deployrequestJson, &deployrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -161,16 +161,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+    configuration_hub "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceOrg := `source-org` // string | The name of the source org. # string | The name of the source org.
-    objectmappingrequest := []byte(`{"objectType":"GOVERNANCE_GROUP","jsonPath":"$.description","sourceValue":"Sample Governance Group","targetValue":"Sample Governance Group - Updated","enabled":true}`) // Objectmappingrequest | The object mapping request body.
+    objectmappingrequestJson := []byte(`{"objectType":"GOVERNANCE_GROUP","jsonPath":"$.description","sourceValue":"Sample Governance Group","targetValue":"Sample Governance Group - Updated","enabled":true}`) // Objectmappingrequest | The object mapping request body.
 
-    var objectmappingrequest v1.Objectmappingrequest
-    if err := json.Unmarshal(objectmappingrequest, &objectmappingrequest); err != nil {
+    var objectmappingrequest configuration_hub.Objectmappingrequest
+    if err := json.Unmarshal(objectmappingrequestJson, &objectmappingrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -237,16 +237,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+    configuration_hub "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceOrg := `source-org` // string | The name of the source org. # string | The name of the source org.
-    objectmappingbulkcreaterequest := []byte(`{"newObjectsMappings":[{"objectType":"SOURCE","jsonPath":"$.name","sourceValue":"Original SOURCE Name","targetValue":"New SOURCE Name","enabled":true},{"objectType":"IDENTITY","jsonPath":"$.name","sourceValue":"Original IDENTITY Name","targetValue":"New IDENTITY Name ","enabled":true}]}`) // Objectmappingbulkcreaterequest | The bulk create object mapping request body.
+    objectmappingbulkcreaterequestJson := []byte(`{"newObjectsMappings":[{"objectType":"SOURCE","jsonPath":"$.name","sourceValue":"Original SOURCE Name","targetValue":"New SOURCE Name","enabled":true},{"objectType":"IDENTITY","jsonPath":"$.name","sourceValue":"Original IDENTITY Name","targetValue":"New IDENTITY Name ","enabled":true}]}`) // Objectmappingbulkcreaterequest | The bulk create object mapping request body.
 
-    var objectmappingbulkcreaterequest v1.Objectmappingbulkcreaterequest
-    if err := json.Unmarshal(objectmappingbulkcreaterequest, &objectmappingbulkcreaterequest); err != nil {
+    var objectmappingbulkcreaterequest configuration_hub.Objectmappingbulkcreaterequest
+    if err := json.Unmarshal(objectmappingbulkcreaterequestJson, &objectmappingbulkcreaterequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -305,15 +305,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+    configuration_hub "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    scheduledactionpayload := []byte(`{"jobType":"BACKUP","startTime":"2024-08-16T14:16:58.389Z","cronString":"0 0 * * * *","timeZoneId":"America/Chicago","content":{"name":"Daily Backup","backupOptions":{"includeTypes":["SOURCE","IDENTITY"],"objectOptions":{"SOURCE":{"includedNames":["Source1","Source2"]}}}}}`) // Scheduledactionpayload | The scheduled action creation request body.
+    scheduledactionpayloadJson := []byte(`{"jobType":"BACKUP","startTime":"2024-08-16T14:16:58.389Z","cronString":"0 0 * * * *","timeZoneId":"America/Chicago","content":{"name":"Daily Backup","backupOptions":{"includeTypes":["SOURCE","IDENTITY"],"objectOptions":{"SOURCE":{"includedNames":["Source1","Source2"]}}}}}`) // Scheduledactionpayload | The scheduled action creation request body.
 
-    var scheduledactionpayload v1.Scheduledactionpayload
-    if err := json.Unmarshal(scheduledactionpayload, &scheduledactionpayload); err != nil {
+    var scheduledactionpayload configuration_hub.Scheduledactionpayload
+    if err := json.Unmarshal(scheduledactionpayloadJson, &scheduledactionpayload); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -378,7 +378,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -449,7 +449,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -518,7 +518,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -588,7 +588,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -654,7 +654,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -723,7 +723,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -788,7 +788,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -857,7 +857,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -923,7 +923,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -985,7 +985,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1043,7 +1043,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1104,7 +1104,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1162,7 +1162,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1223,7 +1223,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1292,16 +1292,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+    configuration_hub "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceOrg := `source-org` // string | The name of the source org. # string | The name of the source org.
-    objectmappingbulkpatchrequest := []byte(`{"patches":{"603b1a61-d03d-4ed1-864f-a508fbd1995d":[{"op":"replace","path":"/enabled","value":true}],"00bece34-f50d-4227-8878-76f620b5a971":[{"op":"replace","path":"/targetValue","value":"New Target Value"}]}}`) // Objectmappingbulkpatchrequest | The object mapping request body.
+    objectmappingbulkpatchrequestJson := []byte(`{"patches":{"603b1a61-d03d-4ed1-864f-a508fbd1995d":[{"op":"replace","path":"/enabled","value":true}],"00bece34-f50d-4227-8878-76f620b5a971":[{"op":"replace","path":"/targetValue","value":"New Target Value"}]}}`) // Objectmappingbulkpatchrequest | The object mapping request body.
 
-    var objectmappingbulkpatchrequest v1.Objectmappingbulkpatchrequest
-    if err := json.Unmarshal(objectmappingbulkpatchrequest, &objectmappingbulkpatchrequest); err != nil {
+    var objectmappingbulkpatchrequest configuration_hub.Objectmappingbulkpatchrequest
+    if err := json.Unmarshal(objectmappingbulkpatchrequestJson, &objectmappingbulkpatchrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1365,16 +1365,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+    configuration_hub "github.com/sailpoint-oss/golang-sdk/v3/configuration_hub"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | The ID of the scheduled action. # string | The ID of the scheduled action.
-    jsonpatch := []byte(`[{"op":"replace","path":"/content/name","value":"Updated Backup Name"},{"op":"replace","path":"/cronString","value":"0 0 9 * * ?"}]`) // Jsonpatch | The JSON Patch document containing the changes to apply to the scheduled action.
+    jsonpatchJson := []byte(`[{"op":"replace","path":"/content/name","value":"Updated Backup Name"},{"op":"replace","path":"/cronString","value":"0 0 9 * * ?"}]`) // Jsonpatch | The JSON Patch document containing the changes to apply to the scheduled action.
 
-    var jsonpatch v1.Jsonpatch
-    if err := json.Unmarshal(jsonpatch, &jsonpatch); err != nil {
+    var jsonpatch configuration_hub.Jsonpatch
+    if err := json.Unmarshal(jsonpatchJson, &jsonpatch); err != nil {
       fmt.Println("Error:", err)
       return
     }

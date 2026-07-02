@@ -181,16 +181,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id # string | The Source id
-    provisioningpolicydto := []byte(`{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln${uniqueCounter},OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}`) // Provisioningpolicydto | 
+    provisioningpolicydtoJson := []byte(`{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln${uniqueCounter},OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}`) // Provisioningpolicydto | 
 
-    var provisioningpolicydto v1.Provisioningpolicydto
-    if err := json.Unmarshal(provisioningpolicydto, &provisioningpolicydto); err != nil {
+    var provisioningpolicydto sources.Provisioningpolicydto
+    if err := json.Unmarshal(provisioningpolicydtoJson, &provisioningpolicydto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -271,18 +271,18 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id # string | The Source id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    provisioningpolicydtov2 := []byte(`{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln<uniqueCounter>,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}`) // Provisioningpolicydtov2 | 
+    provisioningpolicydtov2Json := []byte(`{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln<uniqueCounter>,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}`) // Provisioningpolicydtov2 | 
     useDefaultFields := false // bool | If passed as true, then it uses default fields from the connector template. (optional) (default to false) # bool | If passed as true, then it uses default fields from the connector template. (optional) (default to false)
 
-    var provisioningpolicydtov2 v1.Provisioningpolicydtov2
-    if err := json.Unmarshal(provisioningpolicydtov2, &provisioningpolicydtov2); err != nil {
+    var provisioningpolicydtov2 sources.Provisioningpolicydtov2
+    if err := json.Unmarshal(provisioningpolicydtov2Json, &provisioningpolicydtov2); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -347,16 +347,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
-    schedule3 := []byte(``) // Schedule3 | 
+    schedule3Json := []byte(``) // Schedule3 | 
 
-    var schedule3 v1.Schedule3
-    if err := json.Unmarshal(schedule3, &schedule3); err != nil {
+    var schedule3 sources.Schedule3
+    if err := json.Unmarshal(schedule3Json, &schedule3); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -421,16 +421,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
-    schema := []byte(``) // Schema | 
+    schemaJson := []byte(``) // Schema | 
 
-    var schema v1.Schema
-    if err := json.Unmarshal(schema, &schema); err != nil {
+    var schema sources.Schema
+    if err := json.Unmarshal(schemaJson, &schema); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -490,16 +490,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    source := []byte(``) // Source | 
+    sourceJson := []byte(``) // Source | 
     provisionAsCsv := false // bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional) # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional)
 
-    var source v1.Source
-    if err := json.Unmarshal(source, &source); err != nil {
+    var source sources.Source
+    if err := json.Unmarshal(sourceJson, &source); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -569,7 +569,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -635,7 +635,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -702,7 +702,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -782,7 +782,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -851,7 +851,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -919,7 +919,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -986,7 +986,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1053,7 +1053,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1120,7 +1120,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1185,7 +1185,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1254,7 +1254,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1320,7 +1320,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1386,7 +1386,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1454,7 +1454,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1535,7 +1535,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1615,7 +1615,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1683,7 +1683,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1750,7 +1750,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1832,7 +1832,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1899,7 +1899,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1968,7 +1968,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2043,7 +2043,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2112,7 +2112,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2181,7 +2181,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2249,7 +2249,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2322,7 +2322,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2393,7 +2393,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2462,7 +2462,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2537,7 +2537,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2609,7 +2609,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2677,7 +2677,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2749,7 +2749,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2820,7 +2820,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2903,7 +2903,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -2975,7 +2975,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -3047,7 +3047,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -3113,16 +3113,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | The source id # string | The source id
-    correlationconfig := []byte(``) // Correlationconfig | 
+    correlationconfigJson := []byte(``) // Correlationconfig | 
 
-    var correlationconfig v1.Correlationconfig
-    if err := json.Unmarshal(correlationconfig, &correlationconfig); err != nil {
+    var correlationconfig sources.Correlationconfig
+    if err := json.Unmarshal(correlationconfigJson, &correlationconfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3186,16 +3186,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The source id # string | The source id
-    nativechangedetectionconfig := []byte(``) // Nativechangedetectionconfig | 
+    nativechangedetectionconfigJson := []byte(``) // Nativechangedetectionconfig | 
 
-    var nativechangedetectionconfig v1.Nativechangedetectionconfig
-    if err := json.Unmarshal(nativechangedetectionconfig, &nativechangedetectionconfig); err != nil {
+    var nativechangedetectionconfig sources.Nativechangedetectionconfig
+    if err := json.Unmarshal(nativechangedetectionconfigJson, &nativechangedetectionconfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3263,17 +3263,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
     usageType := CREATE // Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
-    provisioningpolicydto := []byte(``) // Provisioningpolicydto | 
+    provisioningpolicydtoJson := []byte(``) // Provisioningpolicydto | 
 
-    var provisioningpolicydto v1.Provisioningpolicydto
-    if err := json.Unmarshal(provisioningpolicydto, &provisioningpolicydto); err != nil {
+    var provisioningpolicydto sources.Provisioningpolicydto
+    if err := json.Unmarshal(provisioningpolicydtoJson, &provisioningpolicydto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3353,18 +3353,18 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
     id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    provisioningpolicydtov2 := []byte(``) // Provisioningpolicydtov2 | 
+    provisioningpolicydtov2Json := []byte(``) // Provisioningpolicydtov2 | 
 
-    var provisioningpolicydtov2 v1.Provisioningpolicydtov2
-    if err := json.Unmarshal(provisioningpolicydtov2, &provisioningpolicydtov2); err != nil {
+    var provisioningpolicydtov2 sources.Provisioningpolicydtov2
+    if err := json.Unmarshal(provisioningpolicydtov2Json, &provisioningpolicydtov2); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3441,17 +3441,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | The source id # string | The source id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    attrsyncsourceconfig := []byte(``) // Attrsyncsourceconfig | 
+    attrsyncsourceconfigJson := []byte(``) // Attrsyncsourceconfig | 
 
-    var attrsyncsourceconfig v1.Attrsyncsourceconfig
-    if err := json.Unmarshal(attrsyncsourceconfig, &attrsyncsourceconfig); err != nil {
+    var attrsyncsourceconfig sources.Attrsyncsourceconfig
+    if err := json.Unmarshal(attrsyncsourceconfigJson, &attrsyncsourceconfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3527,17 +3527,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
     schemaId := `2c9180835d191a86015d28455b4a2329` // string | The Schema id. # string | The Schema id.
-    schema := []byte(``) // Schema | 
+    schemaJson := []byte(``) // Schema | 
 
-    var schema v1.Schema
-    if err := json.Unmarshal(schema, &schema); err != nil {
+    var schema sources.Schema
+    if err := json.Unmarshal(schemaJson, &schema); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3613,16 +3613,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
-    source := []byte(``) // Source | 
+    sourceJson := []byte(``) // Source | 
 
-    var source v1.Source
-    if err := json.Unmarshal(source, &source); err != nil {
+    var source sources.Source
+    if err := json.Unmarshal(sourceJson, &source); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3686,16 +3686,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `cef3ee201db947c5912551015ba0c679` // string | The ID of the Source # string | The ID of the Source
-    resourceobjectsrequest := []byte(``) // Resourceobjectsrequest | 
+    resourceobjectsrequestJson := []byte(``) // Resourceobjectsrequest | 
 
-    var resourceobjectsrequest v1.Resourceobjectsrequest
-    if err := json.Unmarshal(resourceobjectsrequest, &resourceobjectsrequest); err != nil {
+    var resourceobjectsrequest sources.Resourceobjectsrequest
+    if err := json.Unmarshal(resourceobjectsrequestJson, &resourceobjectsrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3771,7 +3771,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -3838,7 +3838,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -3904,7 +3904,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -3971,16 +3971,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `00eebcf881994e419d72e757fd30dc0e` // string | Human account source ID. # string | Human account source ID.
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []sources.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4048,16 +4048,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account source ID. # string | machine account source ID.
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []sources.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4123,16 +4123,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `8c190e6787aa4ed9a90bd9d5344523fb` // string | The Source id # string | The Source id
-    passwordpolicyholdersdtoinner := []byte(``) // []PasswordpolicyholdersdtoInner | 
+    passwordpolicyholdersdtoinnerJson := []byte(``) // []PasswordpolicyholdersdtoInner | 
 
-    var passwordpolicyholdersdtoInner []v1.PasswordpolicyholdersdtoInner
-    if err := json.Unmarshal(passwordpolicyholdersdtoinner, &passwordpolicyholdersdtoInner); err != nil {
+    var passwordpolicyholdersdtoInner []sources.PasswordpolicyholdersdtoInner
+    if err := json.Unmarshal(passwordpolicyholdersdtoinnerJson, &passwordpolicyholdersdtoInner); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4196,16 +4196,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
-    provisioningpolicydto := []byte(``) // []Provisioningpolicydto | 
+    provisioningpolicydtoJson := []byte(``) // []Provisioningpolicydto | 
 
-    var provisioningpolicydto []v1.Provisioningpolicydto
-    if err := json.Unmarshal(provisioningpolicydto, &provisioningpolicydto); err != nil {
+    var provisioningpolicydto []sources.Provisioningpolicydto
+    if err := json.Unmarshal(provisioningpolicydtoJson, &provisioningpolicydto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4273,17 +4273,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
     usageType := CREATE // Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
-    jsonpatchoperation := []byte(`[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schema.
+    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schema.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []sources.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4363,18 +4363,18 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
     id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperation := []byte(`[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schema.
+    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schema.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []sources.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4454,17 +4454,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `8c190e6787aa4ed9a90bd9d5344523fb` // string | The Source id # string | The Source id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    sourceentitlementrequestconfig := []byte(`{"accessRequestConfig":{"approvalSchemes":[]}}`) // Sourceentitlementrequestconfig | 
+    sourceentitlementrequestconfigJson := []byte(`{"accessRequestConfig":{"approvalSchemes":[]}}`) // Sourceentitlementrequestconfig | 
 
-    var sourceentitlementrequestconfig v1.Sourceentitlementrequestconfig
-    if err := json.Unmarshal(sourceentitlementrequestconfig, &sourceentitlementrequestconfig); err != nil {
+    var sourceentitlementrequestconfig sources.Sourceentitlementrequestconfig
+    if err := json.Unmarshal(sourceentitlementrequestconfigJson, &sourceentitlementrequestconfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4535,17 +4535,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
     scheduleType := `ACCOUNT_AGGREGATION` // string | The Schedule type. # string | The Schedule type.
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/cronExpression","value":"0 0 6 * * ?"}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schedule.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/cronExpression","value":"0 0 6 * * ?"}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schedule.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []sources.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4640,17 +4640,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
     schemaId := `2c9180835d191a86015d28455b4a2329` // string | The Schema id. # string | The Schema id.
-    jsonpatchoperation := []byte(`[{"op":"add","path":"/attributes/-","value":{"name":"location","type":"STRING","schema":null,"description":"Employee location","isMulti":false,"isEntitlement":false,"isGroup":false}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schema.
+    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/attributes/-","value":{"name":"location","type":"STRING","schema":null,"description":"Employee location","isMulti":false,"isEntitlement":false,"isGroup":false}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schema.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []sources.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4729,16 +4729,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sources"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sources"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/description","value":"new description"}]`) // []Jsonpatchoperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"new description"}]`) // []Jsonpatchoperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []sources.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }

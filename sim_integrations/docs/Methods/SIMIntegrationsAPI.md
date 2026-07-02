@@ -81,16 +81,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+    sim_integrations "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    simintegrationdetails := []byte(``) // Simintegrationdetails | DTO containing the details of the SIM integration
+    simintegrationdetailsJson := []byte(``) // Simintegrationdetails | DTO containing the details of the SIM integration
 
-    var simintegrationdetails v1.Simintegrationdetails
-    if err := json.Unmarshal(simintegrationdetails, &simintegrationdetails); err != nil {
+    var simintegrationdetails sim_integrations.Simintegrationdetails
+    if err := json.Unmarshal(simintegrationdetailsJson, &simintegrationdetails); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -166,7 +166,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -244,7 +244,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -318,7 +318,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -396,17 +396,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+    sim_integrations "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `12345` // string | SIM integration id # string | SIM integration id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatch := []byte(``) // Jsonpatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
+    jsonpatchJson := []byte(``) // Jsonpatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
 
-    var jsonpatch v1.Jsonpatch
-    if err := json.Unmarshal(jsonpatch, &jsonpatch); err != nil {
+    var jsonpatch sim_integrations.Jsonpatch
+    if err := json.Unmarshal(jsonpatchJson, &jsonpatch); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -482,17 +482,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+    sim_integrations "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `12345` // string | SIM integration id # string | SIM integration id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatch := []byte(``) // Jsonpatch | The JsonPatch object that describes the changes of SIM
+    jsonpatchJson := []byte(``) // Jsonpatch | The JsonPatch object that describes the changes of SIM
 
-    var jsonpatch v1.Jsonpatch
-    if err := json.Unmarshal(jsonpatch, &jsonpatch); err != nil {
+    var jsonpatch sim_integrations.Jsonpatch
+    if err := json.Unmarshal(jsonpatchJson, &jsonpatch); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -568,17 +568,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+    sim_integrations "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `12345` // string | The id of the integration. # string | The id of the integration.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    simintegrationdetails := []byte(``) // Simintegrationdetails | The full DTO of the integration containing the updated model
+    simintegrationdetailsJson := []byte(``) // Simintegrationdetails | The full DTO of the integration containing the updated model
 
-    var simintegrationdetails v1.Simintegrationdetails
-    if err := json.Unmarshal(simintegrationdetails, &simintegrationdetails); err != nil {
+    var simintegrationdetails sim_integrations.Simintegrationdetails
+    if err := json.Unmarshal(simintegrationdetailsJson, &simintegrationdetails); err != nil {
       fmt.Println("Error:", err)
       return
     }

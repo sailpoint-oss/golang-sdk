@@ -67,7 +67,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -132,7 +132,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -194,7 +194,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -271,17 +271,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+    application_discovery "github.com/sailpoint-oss/golang-sdk/v3/application_discovery"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     sourceId := `sourceId_example` // string | The sourceId. # string | The sourceId.
-    applicationdiscoveryrequest := []byte(``) // Applicationdiscoveryrequest | 
+    applicationdiscoveryrequestJson := []byte(``) // Applicationdiscoveryrequest | 
 
-    var applicationdiscoveryrequest v1.Applicationdiscoveryrequest
-    if err := json.Unmarshal(applicationdiscoveryrequest, &applicationdiscoveryrequest); err != nil {
+    var applicationdiscoveryrequest application_discovery.Applicationdiscoveryrequest
+    if err := json.Unmarshal(applicationdiscoveryrequestJson, &applicationdiscoveryrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

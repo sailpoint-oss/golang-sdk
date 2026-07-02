@@ -11,17 +11,17 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
+            search_attribute_configuration "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-           searchattributeconfig := []byte(`{"name":"newMailAttribute","displayName":"New Mail Attribute","applicationAttributes":{"2c9180866166b5b0016167c32ef31a66":"mail","2c9180866166b5b0016167c32ef31a67":"mail"}}`) // Searchattributeconfig | 
+           searchattributeconfigJson := []byte(`{"name":"newMailAttribute","displayName":"New Mail Attribute","applicationAttributes":{"2c9180866166b5b0016167c32ef31a66":"mail","2c9180866166b5b0016167c32ef31a67":"mail"}}`) // Searchattributeconfig | 
 
           
-          var searchattributeconfig v1.Searchattributeconfig
-          if err := json.Unmarshal(searchattributeconfig, &searchattributeconfig); err != nil {
+          var searchattributeconfig search_attribute_configuration.Searchattributeconfig
+          if err := json.Unmarshal(searchattributeconfigJson, &searchattributeconfig); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -52,8 +52,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -85,8 +85,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -121,8 +121,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -156,18 +156,18 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
+            search_attribute_configuration "github.com/sailpoint-oss/golang-sdk/v3/search_attribute_configuration"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           name := `promotedMailAttribute` // string | Name of the search attribute configuration to patch. # string | Name of the search attribute configuration to patch.
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-          jsonpatchoperation := []byte(`[{"op":"replace","path":"/name","value":"newAttributeName"},{"op":"replace","path":"/displayName","value":"new attribute display name"},{"op":"add","path":"/applicationAttributes","value":{"2c91808b79fd2422017a0b35d30f3968":"employeeNumber"}}]`) // []Jsonpatchoperation | 
+          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"newAttributeName"},{"op":"replace","path":"/displayName","value":"new attribute display name"},{"op":"add","path":"/applicationAttributes","value":{"2c91808b79fd2422017a0b35d30f3968":"employeeNumber"}}]`) // []Jsonpatchoperation | 
 
           
-          var jsonpatchoperation []v1.Jsonpatchoperation
-          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+          var jsonpatchoperation []search_attribute_configuration.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
             fmt.Println("Error:", err)
             return
           }

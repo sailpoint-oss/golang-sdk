@@ -57,7 +57,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -122,16 +122,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-    submitadvancedsearchrequest := []byte(``) // SubmitAdvancedSearchRequest | 
+    submitadvancedsearchrequestJson := []byte(``) // SubmitAdvancedSearchRequest | 
 
-    var submitAdvancedSearchRequest NERM.SubmitAdvancedSearchRequest
-    if err := json.Unmarshal(submitadvancedsearchrequest, &submitAdvancedSearchRequest); err != nil {
+    var submitAdvancedSearchRequest nerm.SubmitAdvancedSearchRequest
+    if err := json.Unmarshal(submitadvancedsearchrequestJson, &submitAdvancedSearchRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -193,18 +193,18 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitadvancedsearchrequest := []byte(``) // SubmitAdvancedSearchRequest | 
+    submitadvancedsearchrequestJson := []byte(``) // SubmitAdvancedSearchRequest | 
     limit := 5 // int32 | The maximum number of items to return. (optional) # int32 | The maximum number of items to return. (optional)
     offset := 5 // int32 | The number of items to skip before starting to collect the result set. (optional) # int32 | The number of items to skip before starting to collect the result set. (optional)
     order := `created_at` // string | The field to order results by. (optional) # string | The field to order results by. (optional)
 
-    var submitAdvancedSearchRequest NERM.SubmitAdvancedSearchRequest
-    if err := json.Unmarshal(submitadvancedsearchrequest, &submitAdvancedSearchRequest); err != nil {
+    var submitAdvancedSearchRequest nerm.SubmitAdvancedSearchRequest
+    if err := json.Unmarshal(submitadvancedsearchrequestJson, &submitAdvancedSearchRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -271,7 +271,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -335,15 +335,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitadvancedsearchrequest := []byte(``) // SubmitAdvancedSearchRequest | 
+    submitadvancedsearchrequestJson := []byte(``) // SubmitAdvancedSearchRequest | 
 
-    var submitAdvancedSearchRequest NERM.SubmitAdvancedSearchRequest
-    if err := json.Unmarshal(submitadvancedsearchrequest, &submitAdvancedSearchRequest); err != nil {
+    var submitAdvancedSearchRequest nerm.SubmitAdvancedSearchRequest
+    if err := json.Unmarshal(submitadvancedsearchrequestJson, &submitAdvancedSearchRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

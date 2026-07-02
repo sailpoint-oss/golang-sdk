@@ -71,15 +71,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/notifications"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+    notifications "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    domainaddress := []byte(``) // Domainaddress | 
+    domainaddressJson := []byte(``) // Domainaddress | 
 
-    var domainaddress v1.Domainaddress
-    if err := json.Unmarshal(domainaddress, &domainaddress); err != nil {
+    var domainaddress notifications.Domainaddress
+    if err := json.Unmarshal(domainaddressJson, &domainaddress); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -141,15 +141,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/notifications"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+    notifications "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    templatedto := []byte(``) // Templatedto | 
+    templatedtoJson := []byte(``) // Templatedto | 
 
-    var templatedto v1.Templatedto
-    if err := json.Unmarshal(templatedto, &templatedto); err != nil {
+    var templatedto notifications.Templatedto
+    if err := json.Unmarshal(templatedtoJson, &templatedto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -208,15 +208,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/notifications"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+    notifications "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    emailstatusdto := []byte(`{"email":"sender@example.com"}`) // Emailstatusdto | 
+    emailstatusdtoJson := []byte(`{"email":"sender@example.com"}`) // Emailstatusdto | 
 
-    var emailstatusdto v1.Emailstatusdto
-    if err := json.Unmarshal(emailstatusdto, &emailstatusdto); err != nil {
+    var emailstatusdto notifications.Emailstatusdto
+    if err := json.Unmarshal(emailstatusdtoJson, &emailstatusdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -275,15 +275,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/notifications"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+    notifications "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    templatebulkdeletedto := []byte(``) // []Templatebulkdeletedto | 
+    templatebulkdeletedtoJson := []byte(``) // []Templatebulkdeletedto | 
 
-    var templatebulkdeletedto []v1.Templatebulkdeletedto
-    if err := json.Unmarshal(templatebulkdeletedto, &templatebulkdeletedto); err != nil {
+    var templatebulkdeletedto []notifications.Templatebulkdeletedto
+    if err := json.Unmarshal(templatebulkdeletedtoJson, &templatebulkdeletedto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -346,7 +346,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -408,7 +408,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -475,7 +475,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -541,7 +541,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -607,7 +607,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -679,7 +679,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -740,7 +740,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -805,7 +805,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -873,7 +873,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -940,7 +940,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1004,15 +1004,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/notifications"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+    notifications "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    mailfromattributesdto := []byte(`{"identity":"BobSmith@sailpoint.com","mailFromDomain":"example.sailpoint.com"}`) // Mailfromattributesdto | 
+    mailfromattributesdtoJson := []byte(`{"identity":"BobSmith@sailpoint.com","mailFromDomain":"example.sailpoint.com"}`) // Mailfromattributesdto | 
 
-    var mailfromattributesdto v1.Mailfromattributesdto
-    if err := json.Unmarshal(mailfromattributesdto, &mailfromattributesdto); err != nil {
+    var mailfromattributesdto notifications.Mailfromattributesdto
+    if err := json.Unmarshal(mailfromattributesdtoJson, &mailfromattributesdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1071,15 +1071,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/notifications"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+    notifications "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    sendtestnotificationrequestdto := []byte(`{"key":"cloud_manual_work_item_summary","medium":"EMAIL","context":{"numberOfPendingTasks":"4","ownerId":"201327fda1c44704ac01181e963d463c"}}`) // Sendtestnotificationrequestdto | 
+    sendtestnotificationrequestdtoJson := []byte(`{"key":"cloud_manual_work_item_summary","medium":"EMAIL","context":{"numberOfPendingTasks":"4","ownerId":"201327fda1c44704ac01181e963d463c"}}`) // Sendtestnotificationrequestdto | 
 
-    var sendtestnotificationrequestdto v1.Sendtestnotificationrequestdto
-    if err := json.Unmarshal(sendtestnotificationrequestdto, &sendtestnotificationrequestdto); err != nil {
+    var sendtestnotificationrequestdto notifications.Sendtestnotificationrequestdto
+    if err := json.Unmarshal(sendtestnotificationrequestdtoJson, &sendtestnotificationrequestdto); err != nil {
       fmt.Println("Error:", err)
       return
     }

@@ -68,7 +68,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -134,7 +134,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -200,7 +200,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -266,7 +266,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -333,7 +333,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -404,16 +404,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-    submitprofiletyperequest := []byte(``) // SubmitProfileTypeRequest | 
+    submitprofiletyperequestJson := []byte(``) // SubmitProfileTypeRequest | 
 
-    var submitProfileTypeRequest NERM.SubmitProfileTypeRequest
-    if err := json.Unmarshal(submitprofiletyperequest, &submitProfileTypeRequest); err != nil {
+    var submitProfileTypeRequest nerm.SubmitProfileTypeRequest
+    if err := json.Unmarshal(submitprofiletyperequestJson, &submitProfileTypeRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -477,16 +477,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitprofiletyperequest := []byte(``) // SubmitProfileTypeRequest | 
+    submitprofiletyperequestJson := []byte(``) // SubmitProfileTypeRequest | 
     uid := `middle_initial_attribute` // string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional) # string | UID of the object to retrieve, update, or delete.  A UID or \"specified identifier\" is a string typically in \"snake_case\" format that provides a human-readable description of the record.  They are commonly used to ensure sandbox, qa, staging and production tenants have the identical configuration items loaded.  Every record has a UID assigned when persisted. When not specified the system assigns one by default.  A default value looks like a 32 character string of random hexadecimal characters. (optional)
 
-    var submitProfileTypeRequest NERM.SubmitProfileTypeRequest
-    if err := json.Unmarshal(submitprofiletyperequest, &submitProfileTypeRequest); err != nil {
+    var submitProfileTypeRequest nerm.SubmitProfileTypeRequest
+    if err := json.Unmarshal(submitprofiletyperequestJson, &submitProfileTypeRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -545,15 +545,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitprofiletyperequest := []byte(``) // SubmitProfileTypeRequest | 
+    submitprofiletyperequestJson := []byte(``) // SubmitProfileTypeRequest | 
 
-    var submitProfileTypeRequest NERM.SubmitProfileTypeRequest
-    if err := json.Unmarshal(submitprofiletyperequest, &submitProfileTypeRequest); err != nil {
+    var submitProfileTypeRequest nerm.SubmitProfileTypeRequest
+    if err := json.Unmarshal(submitprofiletyperequestJson, &submitProfileTypeRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

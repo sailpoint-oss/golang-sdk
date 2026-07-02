@@ -74,15 +74,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+    multi_host_integration "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    multihostintegrationscreate := []byte(``) // Multihostintegrationscreate | The specifics of the Multi-Host Integration to create
+    multihostintegrationscreateJson := []byte(``) // Multihostintegrationscreate | The specifics of the Multi-Host Integration to create
 
-    var multihostintegrationscreate v1.Multihostintegrationscreate
-    if err := json.Unmarshal(multihostintegrationscreate, &multihostintegrationscreate); err != nil {
+    var multihostintegrationscreate multi_host_integration.Multihostintegrationscreate
+    if err := json.Unmarshal(multihostintegrationscreateJson, &multihostintegrationscreate); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -148,16 +148,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+    multi_host_integration "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     multihostId := `2c91808568c529c60168cca6f90c1326` // string | ID of the Multi-Host Integration. # string | ID of the Multi-Host Integration.
-    multihostintegrationscreatesources := []byte(``) // []Multihostintegrationscreatesources | The specifics of the sources to create within Multi-Host Integration.
+    multihostintegrationscreatesourcesJson := []byte(``) // []Multihostintegrationscreatesources | The specifics of the sources to create within Multi-Host Integration.
 
-    var multihostintegrationscreatesources []v1.Multihostintegrationscreatesources
-    if err := json.Unmarshal(multihostintegrationscreatesources, &multihostintegrationscreatesources); err != nil {
+    var multihostintegrationscreatesources []multi_host_integration.Multihostintegrationscreatesources
+    if err := json.Unmarshal(multihostintegrationscreatesourcesJson, &multihostintegrationscreatesources); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -222,16 +222,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+    multi_host_integration "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     multiHostId := `004091cb79b04636b88662afa50a4440` // string | ID of the Multi-Host Integration # string | ID of the Multi-Host Integration
     requestbody := []byte(``) // []string | The delete bulk sources within multi-host integration request body
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []multi_host_integration.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -296,7 +296,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -364,7 +364,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -436,7 +436,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -507,7 +507,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -580,7 +580,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -648,7 +648,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -708,7 +708,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -780,7 +780,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -853,7 +853,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -922,7 +922,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -991,16 +991,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+    multi_host_integration "github.com/sailpoint-oss/golang-sdk/v3/multi_host_integration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     multihostId := `anId` // string | ID of the Multi-Host Integration to update. # string | ID of the Multi-Host Integration to update.
-    updatemultihostsourcesv1requestinner := []byte(`[{"op":"add","path":"/description","value":"MDK Multi-Host Integration 222 description"}]`) // []UpdateMultiHostSourcesV1RequestInner | This endpoint allows you to update a Multi-Host Integration. 
+    updatemultihostsourcesv1requestinnerJson := []byte(`[{"op":"add","path":"/description","value":"MDK Multi-Host Integration 222 description"}]`) // []UpdateMultiHostSourcesV1RequestInner | This endpoint allows you to update a Multi-Host Integration. 
 
-    var updateMultiHostSourcesV1RequestInner []v1.UpdateMultiHostSourcesV1RequestInner
-    if err := json.Unmarshal(updatemultihostsourcesv1requestinner, &updateMultiHostSourcesV1RequestInner); err != nil {
+    var updateMultiHostSourcesV1RequestInner []multi_host_integration.UpdateMultiHostSourcesV1RequestInner
+    if err := json.Unmarshal(updatemultihostsourcesv1requestinnerJson, &updateMultiHostSourcesV1RequestInner); err != nil {
       fmt.Println("Error:", err)
       return
     }

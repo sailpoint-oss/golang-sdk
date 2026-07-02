@@ -11,8 +11,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/org_config"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/org_config"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -44,8 +44,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/org_config"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/org_config"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -81,16 +81,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/org_config"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/org_config"
+            org_config "github.com/sailpoint-oss/golang-sdk/v3/org_config"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-          jsonpatchoperation := []byte(`[{"op":"replace","path":"/timeZone","value":"America/Toronto"}]`) // []Jsonpatchoperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/timeZone","value":"America/Toronto"}]`) // []Jsonpatchoperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
           
-          var jsonpatchoperation []v1.Jsonpatchoperation
-          if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+          var jsonpatchoperation []org_config.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
             fmt.Println("Error:", err)
             return
           }

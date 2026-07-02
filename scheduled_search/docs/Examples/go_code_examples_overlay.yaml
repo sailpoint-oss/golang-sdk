@@ -11,16 +11,16 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
+            scheduled_search "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
-           createscheduledsearchv1request := []byte(`{"savedSearchId":"9c620e13-cd33-4804-a13d-403bd7bcdbad","schedule":{"type":"DAILY","hours":{"type":"LIST","values":["9"]}},"recipients":[{"type":"IDENTITY","id":"2c9180867624cbd7017642d8c8c81f67"}]}`) // CreateScheduledSearchV1Request | The scheduled search to persist.
+           createscheduledsearchv1requestJson := []byte(`{"savedSearchId":"9c620e13-cd33-4804-a13d-403bd7bcdbad","schedule":{"type":"DAILY","hours":{"type":"LIST","values":["9"]}},"recipients":[{"type":"IDENTITY","id":"2c9180867624cbd7017642d8c8c81f67"}]}`) // CreateScheduledSearchV1Request | The scheduled search to persist.
 
           
-          var createScheduledSearchV1Request v1.CreateScheduledSearchV1Request
-          if err := json.Unmarshal(createscheduledsearchv1request, &createScheduledSearchV1Request); err != nil {
+          var createScheduledSearchV1Request scheduled_search.CreateScheduledSearchV1Request
+          if err := json.Unmarshal(createscheduledsearchv1requestJson, &createScheduledSearchV1Request); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -51,8 +51,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -83,8 +83,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -117,8 +117,8 @@
           "fmt"
           "os"
             
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
@@ -154,17 +154,17 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
+            scheduled_search "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `2c91808568c529c60168cca6f90c1313` // string | ID of the requested document. # string | ID of the requested document.
-           typedreference := []byte(``) // Typedreference | The recipient to be removed from the scheduled search. 
+           typedreferenceJson := []byte(``) // Typedreference | The recipient to be removed from the scheduled search. 
 
           
-          var typedreference v1.Typedreference
-          if err := json.Unmarshal(typedreference, &typedreference); err != nil {
+          var typedreference scheduled_search.Typedreference
+          if err := json.Unmarshal(typedreferenceJson, &typedreference); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -193,17 +193,17 @@
           "fmt"
           "os"
              "encoding/json"
-            v1 "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
-          sailpoint "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
+            scheduled_search "github.com/sailpoint-oss/golang-sdk/v3/scheduled_search"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
         )
 
         func main() {
           id := `2c91808568c529c60168cca6f90c1313` // string | ID of the requested document. # string | ID of the requested document.
-           scheduledsearch := []byte(``) // Scheduledsearch | The scheduled search to persist.
+           scheduledsearchJson := []byte(``) // Scheduledsearch | The scheduled search to persist.
 
           
-          var scheduledsearch v1.Scheduledsearch
-          if err := json.Unmarshal(scheduledsearch, &scheduledsearch); err != nil {
+          var scheduledsearch scheduled_search.Scheduledsearch
+          if err := json.Unmarshal(scheduledsearchJson, &scheduledsearch); err != nil {
             fmt.Println("Error:", err)
             return
           }

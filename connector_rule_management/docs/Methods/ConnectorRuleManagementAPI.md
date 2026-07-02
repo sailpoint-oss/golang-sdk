@@ -68,15 +68,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+    connector_rule_management "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    connectorrulecreaterequest := []byte(``) // Connectorrulecreaterequest | Connector rule to create.
+    connectorrulecreaterequestJson := []byte(``) // Connectorrulecreaterequest | Connector rule to create.
 
-    var connectorrulecreaterequest v1.Connectorrulecreaterequest
-    if err := json.Unmarshal(connectorrulecreaterequest, &connectorrulecreaterequest); err != nil {
+    var connectorrulecreaterequest connector_rule_management.Connectorrulecreaterequest
+    if err := json.Unmarshal(connectorrulecreaterequestJson, &connectorrulecreaterequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -140,7 +140,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -203,7 +203,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -271,7 +271,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -338,12 +338,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `8c190e6787aa4ed9a90bd9d5344523fb` // string | ID of the connector rule to update. # string | ID of the connector rule to update.
-    connectorruleupdaterequest := []byte(``) // Connectorruleupdaterequest | Connector rule with updated data. (optional)
+    connectorruleupdaterequestJson := []byte(``) // Connectorruleupdaterequest | Connector rule with updated data. (optional)
 
     
 
@@ -400,15 +400,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+    connector_rule_management "github.com/sailpoint-oss/golang-sdk/v3/connector_rule_management"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    sourcecode := []byte(``) // Sourcecode | Code to validate.
+    sourcecodeJson := []byte(``) // Sourcecode | Code to validate.
 
-    var sourcecode v1.Sourcecode
-    if err := json.Unmarshal(sourcecode, &sourcecode); err != nil {
+    var sourcecode connector_rule_management.Sourcecode
+    if err := json.Unmarshal(sourcecodeJson, &sourcecode); err != nil {
       fmt.Println("Error:", err)
       return
     }

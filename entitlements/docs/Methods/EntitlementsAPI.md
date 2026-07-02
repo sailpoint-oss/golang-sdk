@@ -77,7 +77,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -149,7 +149,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -216,7 +216,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -282,7 +282,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -356,7 +356,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -429,7 +429,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -507,7 +507,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -584,7 +584,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -659,7 +659,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -738,12 +738,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c91808a7813090a017814121e121518` // string | ID of the entitlement to patch # string | ID of the entitlement to patch
-    jsonpatchoperation := []byte(`[{"op":"add","path":"/segments/-","value":"f7b1b8a3-5fed-4fd4-ad29-82014e137e19"}]`) // []Jsonpatchoperation |  (optional)
+    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/segments/-","value":"f7b1b8a3-5fed-4fd4-ad29-82014e137e19"}]`) // []Jsonpatchoperation |  (optional)
 
     
 
@@ -805,16 +805,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+    entitlements "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c91808a7813090a017814121e121518` // string | Entitlement ID # string | Entitlement ID
-    entitlementrequestconfig := []byte(``) // Entitlementrequestconfig | 
+    entitlementrequestconfigJson := []byte(``) // Entitlementrequestconfig | 
 
-    var entitlementrequestconfig v1.Entitlementrequestconfig
-    if err := json.Unmarshal(entitlementrequestconfig, &entitlementrequestconfig); err != nil {
+    var entitlementrequestconfig entitlements.Entitlementrequestconfig
+    if err := json.Unmarshal(entitlementrequestconfigJson, &entitlementrequestconfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -879,7 +879,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -952,15 +952,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+    entitlements "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    entitlementbulkupdaterequest := []byte(``) // Entitlementbulkupdaterequest | 
+    entitlementbulkupdaterequestJson := []byte(``) // Entitlementbulkupdaterequest | 
 
-    var entitlementbulkupdaterequest v1.Entitlementbulkupdaterequest
-    if err := json.Unmarshal(entitlementbulkupdaterequest, &entitlementbulkupdaterequest); err != nil {
+    var entitlementbulkupdaterequest entitlements.Entitlementbulkupdaterequest
+    if err := json.Unmarshal(entitlementbulkupdaterequestJson, &entitlementbulkupdaterequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

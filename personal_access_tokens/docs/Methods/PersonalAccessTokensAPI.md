@@ -78,15 +78,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/personal_access_tokens"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/personal_access_tokens"
+    personal_access_tokens "github.com/sailpoint-oss/golang-sdk/v3/personal_access_tokens"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createpersonalaccesstokenrequest := []byte(``) // Createpersonalaccesstokenrequest | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
+    createpersonalaccesstokenrequestJson := []byte(``) // Createpersonalaccesstokenrequest | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
 
-    var createpersonalaccesstokenrequest v1.Createpersonalaccesstokenrequest
-    if err := json.Unmarshal(createpersonalaccesstokenrequest, &createpersonalaccesstokenrequest); err != nil {
+    var createpersonalaccesstokenrequest personal_access_tokens.Createpersonalaccesstokenrequest
+    if err := json.Unmarshal(createpersonalaccesstokenrequestJson, &createpersonalaccesstokenrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -150,7 +150,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/personal_access_tokens"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -212,7 +212,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/personal_access_tokens"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -288,16 +288,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/personal_access_tokens"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/personal_access_tokens"
+    personal_access_tokens "github.com/sailpoint-oss/golang-sdk/v3/personal_access_tokens"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The Personal Access Token id # string | The Personal Access Token id
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/name","value":"New name"},{"op":"replace","path":"/scope","value":["sp:scopes:all"]},{"op":"replace","path":"/expirationDate","value":"2027-12-31T23:59:59.999Z"}]`) // []Jsonpatchoperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"New name"},{"op":"replace","path":"/scope","value":["sp:scopes:all"]},{"op":"replace","path":"/expirationDate","value":"2027-12-31T23:59:59.999Z"}]`) // []Jsonpatchoperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. 
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []personal_access_tokens.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }

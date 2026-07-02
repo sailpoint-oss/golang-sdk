@@ -46,7 +46,7 @@ type Intelidentityaggregate struct {
 	// Current identity lifecycle status label from Identity Security Cloud.
 	IdentityStatus *string `json:"identityStatus,omitempty"`
 	// True when the identity is flagged as a people manager in the organization.
-	IsManager bool `json:"isManager"`
+	IsManager *bool `json:"isManager,omitempty"`
 	// First page of accounts for the identity.
 	Accounts Intelaccountsslice `json:"accounts"`
 	// Full privileged access result for the identity.
@@ -64,11 +64,12 @@ type _Intelidentityaggregate Intelidentityaggregate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntelidentityaggregate(id string, type_ string, isManager bool, accounts Intelaccountsslice, privilegedAccess Intelprivilegedaccessslice, accessHistory Intelaccesshistory) *Intelidentityaggregate {
+func NewIntelidentityaggregate(id string, type_ string, accounts Intelaccountsslice, privilegedAccess Intelprivilegedaccessslice, accessHistory Intelaccesshistory) *Intelidentityaggregate {
 	this := Intelidentityaggregate{}
 	this.Id = id
 	this.Type = type_
-	this.IsManager = isManager
+	var isManager bool = false
+	this.IsManager = &isManager
 	this.Accounts = accounts
 	this.PrivilegedAccess = privilegedAccess
 	this.AccessHistory = accessHistory
@@ -80,6 +81,8 @@ func NewIntelidentityaggregate(id string, type_ string, isManager bool, accounts
 // but it doesn't guarantee that properties required by API are set
 func NewIntelidentityaggregateWithDefaults() *Intelidentityaggregate {
 	this := Intelidentityaggregate{}
+	var isManager bool = false
+	this.IsManager = &isManager
 	return &this
 }
 
@@ -481,28 +484,36 @@ func (o *Intelidentityaggregate) SetIdentityStatus(v string) {
 	o.IdentityStatus = &v
 }
 
-// GetIsManager returns the IsManager field value
+// GetIsManager returns the IsManager field value if set, zero value otherwise.
 func (o *Intelidentityaggregate) GetIsManager() bool {
-	if o == nil {
+	if o == nil || IsNil(o.IsManager) {
 		var ret bool
 		return ret
 	}
-
-	return o.IsManager
+	return *o.IsManager
 }
 
-// GetIsManagerOk returns a tuple with the IsManager field value
+// GetIsManagerOk returns a tuple with the IsManager field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Intelidentityaggregate) GetIsManagerOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IsManager) {
 		return nil, false
 	}
-	return &o.IsManager, true
+	return o.IsManager, true
 }
 
-// SetIsManager sets field value
+// HasIsManager returns a boolean if a field has been set.
+func (o *Intelidentityaggregate) HasIsManager() bool {
+	if o != nil && !IsNil(o.IsManager) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsManager gets a reference to the given bool and assigns it to the IsManager field.
 func (o *Intelidentityaggregate) SetIsManager(v bool) {
-	o.IsManager = v
+	o.IsManager = &v
 }
 
 // GetAccounts returns the Accounts field value
@@ -651,7 +662,9 @@ func (o Intelidentityaggregate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IdentityStatus) {
 		toSerialize["identityStatus"] = o.IdentityStatus
 	}
-	toSerialize["isManager"] = o.IsManager
+	if !IsNil(o.IsManager) {
+		toSerialize["isManager"] = o.IsManager
+	}
 	toSerialize["accounts"] = o.Accounts
 	toSerialize["privilegedAccess"] = o.PrivilegedAccess
 	if !IsNil(o.Outliers) {
@@ -673,7 +686,6 @@ func (o *Intelidentityaggregate) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"type",
-		"isManager",
 		"accounts",
 		"privilegedAccess",
 		"accessHistory",

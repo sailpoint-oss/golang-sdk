@@ -66,7 +66,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -133,7 +133,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -204,16 +204,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-    submitusermanagerrequest := []byte(``) // SubmitUserManagerRequest | 
+    submitusermanagerrequestJson := []byte(``) // SubmitUserManagerRequest | 
 
-    var submitUserManagerRequest NERM.SubmitUserManagerRequest
-    if err := json.Unmarshal(submitusermanagerrequest, &submitUserManagerRequest); err != nil {
+    var submitUserManagerRequest nerm.SubmitUserManagerRequest
+    if err := json.Unmarshal(submitusermanagerrequestJson, &submitUserManagerRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -272,15 +272,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitusermanagersrequest := []byte(``) // SubmitUserManagersRequest | 
+    submitusermanagersrequestJson := []byte(``) // SubmitUserManagersRequest | 
 
-    var submitUserManagersRequest NERM.SubmitUserManagersRequest
-    if err := json.Unmarshal(submitusermanagersrequest, &submitUserManagersRequest); err != nil {
+    var submitUserManagersRequest nerm.SubmitUserManagersRequest
+    if err := json.Unmarshal(submitusermanagersrequestJson, &submitUserManagersRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -339,15 +339,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitusermanagerrequest := []byte(``) // SubmitUserManagerRequest | 
+    submitusermanagerrequestJson := []byte(``) // SubmitUserManagerRequest | 
 
-    var submitUserManagerRequest NERM.SubmitUserManagerRequest
-    if err := json.Unmarshal(submitusermanagerrequest, &submitUserManagerRequest); err != nil {
+    var submitUserManagerRequest nerm.SubmitUserManagerRequest
+    if err := json.Unmarshal(submitusermanagerrequestJson, &submitUserManagerRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -406,15 +406,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitusermanagersrequest := []byte(``) // SubmitUserManagersRequest | 
+    submitusermanagersrequestJson := []byte(``) // SubmitUserManagersRequest | 
 
-    var submitUserManagersRequest NERM.SubmitUserManagersRequest
-    if err := json.Unmarshal(submitusermanagersrequest, &submitUserManagersRequest); err != nil {
+    var submitUserManagersRequest nerm.SubmitUserManagersRequest
+    if err := json.Unmarshal(submitusermanagersrequestJson, &submitUserManagersRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

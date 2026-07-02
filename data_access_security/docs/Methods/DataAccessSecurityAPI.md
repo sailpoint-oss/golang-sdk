@@ -87,7 +87,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -147,15 +147,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+    data_access_security "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    basecreateapplicationrequest := []byte(``) // Basecreateapplicationrequest | Request body containing the details required to create a new application.
+    basecreateapplicationrequestJson := []byte(``) // Basecreateapplicationrequest | Request body containing the details required to create a new application.
 
-    var basecreateapplicationrequest v1.Basecreateapplicationrequest
-    if err := json.Unmarshal(basecreateapplicationrequest, &basecreateapplicationrequest); err != nil {
+    var basecreateapplicationrequest data_access_security.Basecreateapplicationrequest
+    if err := json.Unmarshal(basecreateapplicationrequestJson, &basecreateapplicationrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -213,15 +213,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+    data_access_security "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createidentitycollectorrequest := []byte(``) // Createidentitycollectorrequest | Request body containing the details required to create a new identity collector.
+    createidentitycollectorrequestJson := []byte(``) // Createidentitycollectorrequest | Request body containing the details required to create a new identity collector.
 
-    var createidentitycollectorrequest v1.Createidentitycollectorrequest
-    if err := json.Unmarshal(createidentitycollectorrequest, &createidentitycollectorrequest); err != nil {
+    var createidentitycollectorrequest data_access_security.Createidentitycollectorrequest
+    if err := json.Unmarshal(createidentitycollectorrequestJson, &createidentitycollectorrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -280,15 +280,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+    data_access_security "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createschedulerequest := []byte(``) // Createschedulerequest | 
+    createschedulerequestJson := []byte(``) // Createschedulerequest | 
 
-    var createschedulerequest v1.Createschedulerequest
-    if err := json.Unmarshal(createschedulerequest, &createschedulerequest); err != nil {
+    var createschedulerequest data_access_security.Createschedulerequest
+    if err := json.Unmarshal(createschedulerequestJson, &createschedulerequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -347,15 +347,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+    data_access_security "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    assignresourceownerrequest := []byte(``) // Assignresourceownerrequest | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.
+    assignresourceownerrequestJson := []byte(``) // Assignresourceownerrequest | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.
 
-    var assignresourceownerrequest v1.Assignresourceownerrequest
-    if err := json.Unmarshal(assignresourceownerrequest, &assignresourceownerrequest); err != nil {
+    var assignresourceownerrequest data_access_security.Assignresourceownerrequest
+    if err := json.Unmarshal(assignresourceownerrequestJson, &assignresourceownerrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -421,7 +421,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -484,15 +484,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+    data_access_security "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    reelectrequest := []byte(``) // Reelectrequest | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
+    reelectrequestJson := []byte(``) // Reelectrequest | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
 
-    var reelectrequest v1.Reelectrequest
-    if err := json.Unmarshal(reelectrequest, &reelectrequest); err != nil {
+    var reelectrequest data_access_security.Reelectrequest
+    if err := json.Unmarshal(reelectrequestJson, &reelectrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -558,7 +558,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -628,7 +628,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -695,7 +695,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -760,7 +760,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -825,7 +825,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -891,7 +891,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -956,7 +956,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1021,7 +1021,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1092,7 +1092,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1160,7 +1160,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1225,7 +1225,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1294,7 +1294,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1359,7 +1359,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1429,7 +1429,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1498,16 +1498,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+    data_access_security "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := 12345 // int64 | The unique identifier of the application to update. # int64 | The unique identifier of the application to update.
-    basecreateapplicationrequest := []byte(``) // Basecreateapplicationrequest | Request body containing the updated details for the application.
+    basecreateapplicationrequestJson := []byte(``) // Basecreateapplicationrequest | Request body containing the updated details for the application.
 
-    var basecreateapplicationrequest v1.Basecreateapplicationrequest
-    if err := json.Unmarshal(basecreateapplicationrequest, &basecreateapplicationrequest); err != nil {
+    var basecreateapplicationrequest data_access_security.Basecreateapplicationrequest
+    if err := json.Unmarshal(basecreateapplicationrequestJson, &basecreateapplicationrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1570,16 +1570,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+    data_access_security "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := 12345 // int64 | The unique identifier of the identity collector to update. # int64 | The unique identifier of the identity collector to update.
-    updateidentitycollectorrequest := []byte(``) // Updateidentitycollectorrequest | Request body containing the updated details for the identity collector.
+    updateidentitycollectorrequestJson := []byte(``) // Updateidentitycollectorrequest | Request body containing the updated details for the identity collector.
 
-    var updateidentitycollectorrequest v1.Updateidentitycollectorrequest
-    if err := json.Unmarshal(updateidentitycollectorrequest, &updateidentitycollectorrequest); err != nil {
+    var updateidentitycollectorrequest data_access_security.Updateidentitycollectorrequest
+    if err := json.Unmarshal(updateidentitycollectorrequestJson, &updateidentitycollectorrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1642,16 +1642,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+    data_access_security "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := 1001 // int64 | The unique identifier of the schedule to update. # int64 | The unique identifier of the schedule to update.
-    updateschedulerequest := []byte(``) // Updateschedulerequest | 
+    updateschedulerequestJson := []byte(``) // Updateschedulerequest | 
 
-    var updateschedulerequest v1.Updateschedulerequest
-    if err := json.Unmarshal(updateschedulerequest, &updateschedulerequest); err != nil {
+    var updateschedulerequest data_access_security.Updateschedulerequest
+    if err := json.Unmarshal(updateschedulerequestJson, &updateschedulerequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1714,7 +1714,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/data_access_security"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {

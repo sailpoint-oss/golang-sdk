@@ -88,7 +88,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errorbody](docs/Errorbody.md)
  - [Errormessagedto](docs/Errormessagedto.md)
  - [Errorresponsedto](docs/Errorresponsedto.md)
  - [GetIdentityIntelligenceV1401Response](docs/GetIdentityIntelligenceV1401Response.md)
@@ -102,9 +101,6 @@ Class | Method | HTTP request | Description
  - [Intelaccountsslice](docs/Intelaccountsslice.md)
  - [Intelcertificationhistoryevent](docs/Intelcertificationhistoryevent.md)
  - [Intelidentityaggregate](docs/Intelidentityaggregate.md)
- - [Intelidentityambiguousbody](docs/Intelidentityambiguousbody.md)
- - [Intelidentityambiguouscandidate](docs/Intelidentityambiguouscandidate.md)
- - [Intelidentitynotfoundbody](docs/Intelidentitynotfoundbody.md)
  - [Inteloutlieraccessitem](docs/Inteloutlieraccessitem.md)
  - [Inteloutliersslice](docs/Inteloutliersslice.md)
  - [Intelprivilegedaccessitemwire](docs/Intelprivilegedaccessitemwire.md)

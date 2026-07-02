@@ -123,7 +123,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -184,15 +184,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+    tagged_objects "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    bulkremovetaggedobject := []byte(``) // Bulkremovetaggedobject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulkremovetaggedobjectJson := []byte(``) // Bulkremovetaggedobject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
-    var bulkremovetaggedobject v1.Bulkremovetaggedobject
-    if err := json.Unmarshal(bulkremovetaggedobject, &bulkremovetaggedobject); err != nil {
+    var bulkremovetaggedobject tagged_objects.Bulkremovetaggedobject
+    if err := json.Unmarshal(bulkremovetaggedobjectJson, &bulkremovetaggedobject); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -257,7 +257,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -328,7 +328,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -397,7 +397,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -468,17 +468,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+    tagged_objects "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     type_ := `ROLE` // string | The type of tagged object to update. # string | The type of tagged object to update.
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the object reference to update. # string | The ID of the object reference to update.
-    taggedobject := []byte(``) // Taggedobject | 
+    taggedobjectJson := []byte(``) // Taggedobject | 
 
-    var taggedobject v1.Taggedobject
-    if err := json.Unmarshal(taggedobject, &taggedobject); err != nil {
+    var taggedobject tagged_objects.Taggedobject
+    if err := json.Unmarshal(taggedobjectJson, &taggedobject); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -537,15 +537,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+    tagged_objects "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    taggedobject := []byte(``) // Taggedobject | 
+    taggedobjectJson := []byte(``) // Taggedobject | 
 
-    var taggedobject v1.Taggedobject
-    if err := json.Unmarshal(taggedobject, &taggedobject); err != nil {
+    var taggedobject tagged_objects.Taggedobject
+    if err := json.Unmarshal(taggedobjectJson, &taggedobject); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -603,15 +603,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+    tagged_objects "github.com/sailpoint-oss/golang-sdk/v3/tagged_objects"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    bulkaddtaggedobject := []byte(``) // Bulkaddtaggedobject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulkaddtaggedobjectJson := []byte(``) // Bulkaddtaggedobject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
-    var bulkaddtaggedobject v1.Bulkaddtaggedobject
-    if err := json.Unmarshal(bulkaddtaggedobject, &bulkaddtaggedobject); err != nil {
+    var bulkaddtaggedobject tagged_objects.Bulkaddtaggedobject
+    if err := json.Unmarshal(bulkaddtaggedobjectJson, &bulkaddtaggedobject); err != nil {
       fmt.Println("Error:", err)
       return
     }

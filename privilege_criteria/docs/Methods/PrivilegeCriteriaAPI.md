@@ -61,15 +61,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria"
+    privilege_criteria "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createprivilegecriteriarequest := []byte(``) // Createprivilegecriteriarequest | Create custom privilege criteria request body.
+    createprivilegecriteriarequestJson := []byte(``) // Createprivilegecriteriarequest | Create custom privilege criteria request body.
 
-    var createprivilegecriteriarequest v1.Createprivilegecriteriarequest
-    if err := json.Unmarshal(createprivilegecriteriarequest, &createprivilegecriteriarequest); err != nil {
+    var createprivilegecriteriarequest privilege_criteria.Createprivilegecriteriarequest
+    if err := json.Unmarshal(createprivilegecriteriarequestJson, &createprivilegecriteriarequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -133,7 +133,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -198,7 +198,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -260,7 +260,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -326,16 +326,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria"
+    privilege_criteria "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     criteriaId := `6d123044-5834-4e8d-a49f-9c70089b0de1` // string | The Id of the privilege criteria record to return. # string | The Id of the privilege criteria record to return.
-    privilegecriteriadto := []byte(``) // Privilegecriteriadto | The new version of the custom privilege criteria. This overwrites the existing privilege criteria.
+    privilegecriteriadtoJson := []byte(``) // Privilegecriteriadto | The new version of the custom privilege criteria. This overwrites the existing privilege criteria.
 
-    var privilegecriteriadto v1.Privilegecriteriadto
-    if err := json.Unmarshal(privilegecriteriadto, &privilegecriteriadto); err != nil {
+    var privilegecriteriadto privilege_criteria.Privilegecriteriadto
+    if err := json.Unmarshal(privilegecriteriadtoJson, &privilegecriteriadto); err != nil {
       fmt.Println("Error:", err)
       return
     }

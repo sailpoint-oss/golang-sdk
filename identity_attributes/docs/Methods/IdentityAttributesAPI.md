@@ -61,15 +61,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
+    identity_attributes "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    identityattribute2 := []byte(``) // Identityattribute2 | 
+    identityattribute2Json := []byte(``) // Identityattribute2 | 
 
-    var identityattribute2 v1.Identityattribute2
-    if err := json.Unmarshal(identityattribute2, &identityattribute2); err != nil {
+    var identityattribute2 identity_attributes.Identityattribute2
+    if err := json.Unmarshal(identityattribute2Json, &identityattribute2); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -133,7 +133,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -193,15 +193,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
+    identity_attributes "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    identityattributenames := []byte(``) // Identityattributenames | 
+    identityattributenamesJson := []byte(``) // Identityattributenames | 
 
-    var identityattributenames v1.Identityattributenames
-    if err := json.Unmarshal(identityattributenames, &identityattributenames); err != nil {
+    var identityattributenames identity_attributes.Identityattributenames
+    if err := json.Unmarshal(identityattributenamesJson, &identityattributenames); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -264,7 +264,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -329,7 +329,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -398,16 +398,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
+    identity_attributes "github.com/sailpoint-oss/golang-sdk/v3/identity_attributes"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     name := `displayName` // string | The attribute's technical name. # string | The attribute's technical name.
-    identityattribute2 := []byte(``) // Identityattribute2 | 
+    identityattribute2Json := []byte(``) // Identityattribute2 | 
 
-    var identityattribute2 v1.Identityattribute2
-    if err := json.Unmarshal(identityattribute2, &identityattribute2); err != nil {
+    var identityattribute2 identity_attributes.Identityattribute2
+    if err := json.Unmarshal(identityattribute2Json, &identityattribute2); err != nil {
       fmt.Println("Error:", err)
       return
     }

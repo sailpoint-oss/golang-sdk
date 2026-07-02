@@ -84,17 +84,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+    machine_accounts "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     sourceId := `6d0458373bec4b4b80460992b76016da` // string | The ID of the source. # string | The ID of the source.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    createmachineaccountsubtypev1request := []byte(`{"technicalName":"foo","displayName":"Mr Foo","description":"fighters","type":"MACHINE"}`) // CreateMachineAccountSubtypeV1Request | 
+    createmachineaccountsubtypev1requestJson := []byte(`{"technicalName":"foo","displayName":"Mr Foo","description":"fighters","type":"MACHINE"}`) // CreateMachineAccountSubtypeV1Request | 
 
-    var createMachineAccountSubtypeV1Request v1.CreateMachineAccountSubtypeV1Request
-    if err := json.Unmarshal(createmachineaccountsubtypev1request, &createMachineAccountSubtypeV1Request); err != nil {
+    var createMachineAccountSubtypeV1Request machine_accounts.CreateMachineAccountSubtypeV1Request
+    if err := json.Unmarshal(createmachineaccountsubtypev1requestJson, &createMachineAccountSubtypeV1Request); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -175,7 +175,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -257,7 +257,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -341,7 +341,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -421,7 +421,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -508,7 +508,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -592,7 +592,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -681,8 +681,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+    machine_accounts "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -691,8 +691,8 @@ func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     requestbody := []byte(`[{"op":"replace","path":"/displayName","value":"Test New DisplayName"}]`) // []map[string]interface{} | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []machine_accounts.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -769,8 +769,8 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+    machine_accounts "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -778,8 +778,8 @@ func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     requestbody := []byte(`[{"op":"add","path":"/environment","value":"test"}]`) // []map[string]interface{} | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following fields are patchable:           * description           * ownerIdentity           * subType           * accessType           * environment           * attributes           * classificationMethod           * manuallyEdited           * nativeIdentity           * uuid           * source           * manuallyCorrelated           * enabled           * locked           * hasEntitlements           * connectorAttributes
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []machine_accounts.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }

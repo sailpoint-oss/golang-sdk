@@ -76,15 +76,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+    identity_profiles "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    identityprofile := []byte(``) // Identityprofile | 
+    identityprofileJson := []byte(``) // Identityprofile | 
 
-    var identityprofile v1.Identityprofile
-    if err := json.Unmarshal(identityprofile, &identityprofile); err != nil {
+    var identityprofile identity_profiles.Identityprofile
+    if err := json.Unmarshal(identityprofileJson, &identityprofile); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -149,7 +149,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -214,15 +214,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+    identity_profiles "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     requestbody := []byte(``) // []string | Identity Profile bulk delete request body.
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []identity_profiles.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -286,7 +286,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -351,15 +351,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+    identity_profiles "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    identitypreviewrequest := []byte(``) // Identitypreviewrequest | Identity Preview request body.
+    identitypreviewrequestJson := []byte(``) // Identitypreviewrequest | Identity Preview request body.
 
-    var identitypreviewrequest v1.Identitypreviewrequest
-    if err := json.Unmarshal(identitypreviewrequest, &identitypreviewrequest); err != nil {
+    var identitypreviewrequest identity_profiles.Identitypreviewrequest
+    if err := json.Unmarshal(identitypreviewrequestJson, &identitypreviewrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -423,7 +423,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -489,7 +489,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -550,15 +550,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+    identity_profiles "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    identityprofileexportedobject := []byte(``) // []Identityprofileexportedobject | Previously exported Identity Profiles.
+    identityprofileexportedobjectJson := []byte(``) // []Identityprofileexportedobject | Previously exported Identity Profiles.
 
-    var identityprofileexportedobject []v1.Identityprofileexportedobject
-    if err := json.Unmarshal(identityprofileexportedobject, &identityprofileexportedobject); err != nil {
+    var identityprofileexportedobject []identity_profiles.Identityprofileexportedobject
+    if err := json.Unmarshal(identityprofileexportedobjectJson, &identityprofileexportedobject); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -622,7 +622,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -696,7 +696,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -770,16 +770,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+    identity_profiles "github.com/sailpoint-oss/golang-sdk/v3/identity_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     identityProfileId := `ef38f94347e94562b5bb8424a56397d8` // string | Identity profile ID. # string | Identity profile ID.
-    jsonpatchoperation := []byte(`[{"op":"add","path":"/identityAttributeConfig/attributeTransforms/0","value":{"identityAttributeName":"location","transformDefinition":{"type":"accountAttribute","attributes":{"sourceName":"Employees","attributeName":"location","sourceId":"2c91808878b7d63b0178c66ffcdc4ce4"}}}}]`) // []Jsonpatchoperation | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/identityAttributeConfig/attributeTransforms/0","value":{"identityAttributeName":"location","transformDefinition":{"type":"accountAttribute","attributes":{"sourceName":"Employees","attributeName":"location","sourceId":"2c91808878b7d63b0178c66ffcdc4ce4"}}}}]`) // []Jsonpatchoperation | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []identity_profiles.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }

@@ -64,15 +64,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/connector_customizers"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_customizers"
+    connector_customizers "github.com/sailpoint-oss/golang-sdk/v3/connector_customizers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    connectorcustomizercreaterequest := []byte(``) // Connectorcustomizercreaterequest | Connector customizer to create.
+    connectorcustomizercreaterequestJson := []byte(``) // Connectorcustomizercreaterequest | Connector customizer to create.
 
-    var connectorcustomizercreaterequest v1.Connectorcustomizercreaterequest
-    if err := json.Unmarshal(connectorcustomizercreaterequest, &connectorcustomizercreaterequest); err != nil {
+    var connectorcustomizercreaterequest connector_customizers.Connectorcustomizercreaterequest
+    if err := json.Unmarshal(connectorcustomizercreaterequestJson, &connectorcustomizercreaterequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -136,7 +136,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_customizers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -202,7 +202,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_customizers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -267,7 +267,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_customizers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -330,7 +330,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_customizers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -398,12 +398,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/connector_customizers"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `b07dc46a-1498-4de8-bfbb-259a68e70c8a` // string | ID of the connector customizer to update. # string | ID of the connector customizer to update.
-    connectorcustomizerupdaterequest := []byte(``) // Connectorcustomizerupdaterequest | Connector rule with updated data. (optional)
+    connectorcustomizerupdaterequestJson := []byte(``) // Connectorcustomizerupdaterequest | Connector rule with updated data. (optional)
 
     
 

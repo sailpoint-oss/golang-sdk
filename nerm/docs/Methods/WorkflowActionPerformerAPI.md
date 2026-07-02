@@ -56,15 +56,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createworkflowactionperformerrequest := []byte(``) // CreateWorkflowActionPerformerRequest | 
+    createworkflowactionperformerrequestJson := []byte(``) // CreateWorkflowActionPerformerRequest | 
 
-    var createWorkflowActionPerformerRequest NERM.CreateWorkflowActionPerformerRequest
-    if err := json.Unmarshal(createworkflowactionperformerrequest, &createWorkflowActionPerformerRequest); err != nil {
+    var createWorkflowActionPerformerRequest nerm.CreateWorkflowActionPerformerRequest
+    if err := json.Unmarshal(createworkflowactionperformerrequestJson, &createWorkflowActionPerformerRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }

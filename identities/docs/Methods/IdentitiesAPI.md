@@ -99,7 +99,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -167,7 +167,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -233,7 +233,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -301,7 +301,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -370,7 +370,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -441,7 +441,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -511,7 +511,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -582,7 +582,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -660,17 +660,17 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/identities"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+    identities "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Identity ID # string | Identity ID
-    sendaccountverificationrequest := []byte(``) // Sendaccountverificationrequest | 
+    sendaccountverificationrequestJson := []byte(``) // Sendaccountverificationrequest | 
 
-    var sendaccountverificationrequest v1.Sendaccountverificationrequest
-    if err := json.Unmarshal(sendaccountverificationrequest, &sendaccountverificationrequest); err != nil {
+    var sendaccountverificationrequest identities.Sendaccountverificationrequest
+    if err := json.Unmarshal(sendaccountverificationrequestJson, &sendaccountverificationrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -745,16 +745,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/identities"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+    identities "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    inviteidentitiesrequest := []byte(``) // Inviteidentitiesrequest | 
+    inviteidentitiesrequestJson := []byte(``) // Inviteidentitiesrequest | 
 
-    var inviteidentitiesrequest v1.Inviteidentitiesrequest
-    if err := json.Unmarshal(inviteidentitiesrequest, &inviteidentitiesrequest); err != nil {
+    var inviteidentitiesrequest identities.Inviteidentitiesrequest
+    if err := json.Unmarshal(inviteidentitiesrequestJson, &inviteidentitiesrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -832,16 +832,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/identities"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+    identities "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    processidentitiesrequest := []byte(``) // Processidentitiesrequest | 
+    processidentitiesrequestJson := []byte(``) // Processidentitiesrequest | 
 
-    var processidentitiesrequest v1.Processidentitiesrequest
-    if err := json.Unmarshal(processidentitiesrequest, &processidentitiesrequest); err != nil {
+    var processidentitiesrequest identities.Processidentitiesrequest
+    if err := json.Unmarshal(processidentitiesrequestJson, &processidentitiesrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -917,7 +917,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/identities"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {

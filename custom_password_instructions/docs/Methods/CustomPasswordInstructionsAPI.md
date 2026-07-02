@@ -81,16 +81,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/custom_password_instructions"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_password_instructions"
+    custom_password_instructions "github.com/sailpoint-oss/golang-sdk/v3/custom_password_instructions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    custompasswordinstruction := []byte(`{"pageId":"reset-password:enter-password","pageContent":"See company password policies for details by clicking <a href=\"url\">here</a>"}`) // Custompasswordinstruction | 
+    custompasswordinstructionJson := []byte(`{"pageId":"reset-password:enter-password","pageContent":"See company password policies for details by clicking <a href=\"url\">here</a>"}`) // Custompasswordinstruction | 
 
-    var custompasswordinstruction v1.Custompasswordinstruction
-    if err := json.Unmarshal(custompasswordinstruction, &custompasswordinstruction); err != nil {
+    var custompasswordinstruction custom_password_instructions.Custompasswordinstruction
+    if err := json.Unmarshal(custompasswordinstructionJson, &custompasswordinstruction); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -167,7 +167,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_password_instructions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -247,7 +247,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/custom_password_instructions"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {

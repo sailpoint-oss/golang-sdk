@@ -109,15 +109,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+    accounts "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    accountattributescreate := []byte(``) // Accountattributescreate | 
+    accountattributescreateJson := []byte(``) // Accountattributescreate | 
 
-    var accountattributescreate v1.Accountattributescreate
-    if err := json.Unmarshal(accountattributescreate, &accountattributescreate); err != nil {
+    var accountattributescreate accounts.Accountattributescreate
+    if err := json.Unmarshal(accountattributescreateJson, &accountattributescreate); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -187,7 +187,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -256,7 +256,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -322,7 +322,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -388,16 +388,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+    accounts "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The account id # string | The account id
-    accounttogglerequest := []byte(``) // Accounttogglerequest | 
+    accounttogglerequestJson := []byte(``) // Accounttogglerequest | 
 
-    var accounttogglerequest v1.Accounttogglerequest
-    if err := json.Unmarshal(accounttogglerequest, &accounttogglerequest); err != nil {
+    var accounttogglerequest accounts.Accounttogglerequest
+    if err := json.Unmarshal(accounttogglerequestJson, &accounttogglerequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -456,15 +456,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+    accounts "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    identitiesaccountsbulkrequest := []byte(``) // Identitiesaccountsbulkrequest | 
+    identitiesaccountsbulkrequestJson := []byte(``) // Identitiesaccountsbulkrequest | 
 
-    var identitiesaccountsbulkrequest v1.Identitiesaccountsbulkrequest
-    if err := json.Unmarshal(identitiesaccountsbulkrequest, &identitiesaccountsbulkrequest); err != nil {
+    var identitiesaccountsbulkrequest accounts.Identitiesaccountsbulkrequest
+    if err := json.Unmarshal(identitiesaccountsbulkrequestJson, &identitiesaccountsbulkrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -528,7 +528,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -594,16 +594,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+    accounts "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The account id # string | The account id
-    accounttogglerequest := []byte(``) // Accounttogglerequest | 
+    accounttogglerequestJson := []byte(``) // Accounttogglerequest | 
 
-    var accounttogglerequest v1.Accounttogglerequest
-    if err := json.Unmarshal(accounttogglerequest, &accounttogglerequest); err != nil {
+    var accounttogglerequest accounts.Accounttogglerequest
+    if err := json.Unmarshal(accounttogglerequestJson, &accounttogglerequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -662,15 +662,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+    accounts "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    identitiesaccountsbulkrequest := []byte(``) // Identitiesaccountsbulkrequest | 
+    identitiesaccountsbulkrequestJson := []byte(``) // Identitiesaccountsbulkrequest | 
 
-    var identitiesaccountsbulkrequest v1.Identitiesaccountsbulkrequest
-    if err := json.Unmarshal(identitiesaccountsbulkrequest, &identitiesaccountsbulkrequest); err != nil {
+    var identitiesaccountsbulkrequest accounts.Identitiesaccountsbulkrequest
+    if err := json.Unmarshal(identitiesaccountsbulkrequestJson, &identitiesaccountsbulkrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -737,7 +737,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -806,7 +806,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -873,7 +873,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -949,16 +949,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+    accounts "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Account ID. # string | Account ID.
-    accountattributes := []byte(``) // Accountattributes | 
+    accountattributesJson := []byte(``) // Accountattributes | 
 
-    var accountattributes v1.Accountattributes
-    if err := json.Unmarshal(accountattributes, &accountattributes); err != nil {
+    var accountattributes accounts.Accountattributes
+    if err := json.Unmarshal(accountattributesJson, &accountattributes); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1022,7 +1022,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -1089,16 +1089,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+    accounts "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The account ID. # string | The account ID.
-    accountunlockrequest := []byte(``) // Accountunlockrequest | 
+    accountunlockrequestJson := []byte(``) // Accountunlockrequest | 
 
-    var accountunlockrequest v1.Accountunlockrequest
-    if err := json.Unmarshal(accountunlockrequest, &accountunlockrequest); err != nil {
+    var accountunlockrequest accounts.Accountunlockrequest
+    if err := json.Unmarshal(accountunlockrequestJson, &accountunlockrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1172,16 +1172,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/accounts"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+    accounts "github.com/sailpoint-oss/golang-sdk/v3/accounts"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Account ID. # string | Account ID.
     requestbody := []byte(`[{"op":"remove","path":"/identityId"}]`) // []map[string]interface{} | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []accounts.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }

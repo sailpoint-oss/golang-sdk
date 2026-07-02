@@ -70,16 +70,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_common_access"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_common_access"
+    iai_common_access "github.com/sailpoint-oss/golang-sdk/v3/iai_common_access"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    commonaccessitemrequest := []byte(``) // Commonaccessitemrequest | 
+    commonaccessitemrequestJson := []byte(``) // Commonaccessitemrequest | 
 
-    var commonaccessitemrequest v1.Commonaccessitemrequest
-    if err := json.Unmarshal(commonaccessitemrequest, &commonaccessitemrequest); err != nil {
+    var commonaccessitemrequest iai_common_access.Commonaccessitemrequest
+    if err := json.Unmarshal(commonaccessitemrequestJson, &commonaccessitemrequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -155,7 +155,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_common_access"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -233,16 +233,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/iai_common_access"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/iai_common_access"
+    iai_common_access "github.com/sailpoint-oss/golang-sdk/v3/iai_common_access"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    commonaccessidstatus := []byte(``) // []Commonaccessidstatus | Confirm or deny in bulk the common access ids that are (or aren't) common access
+    commonaccessidstatusJson := []byte(``) // []Commonaccessidstatus | Confirm or deny in bulk the common access ids that are (or aren't) common access
 
-    var commonaccessidstatus []v1.Commonaccessidstatus
-    if err := json.Unmarshal(commonaccessidstatus, &commonaccessidstatus); err != nil {
+    var commonaccessidstatus []iai_common_access.Commonaccessidstatus
+    if err := json.Unmarshal(commonaccessidstatusJson, &commonaccessidstatus); err != nil {
       fmt.Println("Error:", err)
       return
     }

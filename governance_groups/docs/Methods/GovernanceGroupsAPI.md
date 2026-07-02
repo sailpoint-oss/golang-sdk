@@ -70,15 +70,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+    governance_groups "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    workgroupdto := []byte(``) // Workgroupdto | 
+    workgroupdtoJson := []byte(``) // Workgroupdto | 
 
-    var workgroupdto v1.Workgroupdto
-    if err := json.Unmarshal(workgroupdto, &workgroupdto); err != nil {
+    var workgroupdto governance_groups.Workgroupdto
+    if err := json.Unmarshal(workgroupdtoJson, &workgroupdto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -145,16 +145,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+    governance_groups "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-    bulkworkgroupmembersrequestinner := []byte(``) // []BulkworkgroupmembersrequestInner | List of identities to be removed from  a Governance Group members list.
+    bulkworkgroupmembersrequestinnerJson := []byte(``) // []BulkworkgroupmembersrequestInner | List of identities to be removed from  a Governance Group members list.
 
-    var bulkworkgroupmembersrequestInner []v1.BulkworkgroupmembersrequestInner
-    if err := json.Unmarshal(bulkworkgroupmembersrequestinner, &bulkworkgroupmembersrequestInner); err != nil {
+    var bulkworkgroupmembersrequestInner []governance_groups.BulkworkgroupmembersrequestInner
+    if err := json.Unmarshal(bulkworkgroupmembersrequestinnerJson, &bulkworkgroupmembersrequestInner); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -218,7 +218,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -289,15 +289,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+    governance_groups "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    workgroupbulkdeleterequest := []byte(`{"ids":["567a697e-885b-495a-afc5-d55e1c23a302","c7b0f7b2-1e78-4063-b294-a555333dacd2"]}`) // Workgroupbulkdeleterequest | 
+    workgroupbulkdeleterequestJson := []byte(`{"ids":["567a697e-885b-495a-afc5-d55e1c23a302","c7b0f7b2-1e78-4063-b294-a555333dacd2"]}`) // Workgroupbulkdeleterequest | 
 
-    var workgroupbulkdeleterequest v1.Workgroupbulkdeleterequest
-    if err := json.Unmarshal(workgroupbulkdeleterequest, &workgroupbulkdeleterequest); err != nil {
+    var workgroupbulkdeleterequest governance_groups.Workgroupbulkdeleterequest
+    if err := json.Unmarshal(workgroupbulkdeleterequestJson, &workgroupbulkdeleterequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -361,7 +361,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -431,7 +431,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -505,7 +505,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -575,7 +575,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -649,12 +649,12 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Governance Group # string | ID of the Governance Group
-    jsonpatchoperation := []byte(`[{"op":"replace","path":"/description","value":"Governance Group new description."}]`) // []Jsonpatchoperation |  (optional)
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Governance Group new description."}]`) // []Jsonpatchoperation |  (optional)
 
     
 
@@ -720,16 +720,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+    governance_groups "github.com/sailpoint-oss/golang-sdk/v3/governance_groups"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-    bulkworkgroupmembersrequestinner := []byte(``) // []BulkworkgroupmembersrequestInner | List of identities to be added to a Governance Group members list.
+    bulkworkgroupmembersrequestinnerJson := []byte(``) // []BulkworkgroupmembersrequestInner | List of identities to be added to a Governance Group members list.
 
-    var bulkworkgroupmembersrequestInner []v1.BulkworkgroupmembersrequestInner
-    if err := json.Unmarshal(bulkworkgroupmembersrequestinner, &bulkworkgroupmembersrequestInner); err != nil {
+    var bulkworkgroupmembersrequestInner []governance_groups.BulkworkgroupmembersrequestInner
+    if err := json.Unmarshal(bulkworkgroupmembersrequestinnerJson, &bulkworkgroupmembersrequestInner); err != nil {
       fmt.Println("Error:", err)
       return
     }

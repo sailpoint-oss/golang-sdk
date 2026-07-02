@@ -70,7 +70,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -146,7 +146,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -218,16 +218,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
+    entitlement_connections "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     connectionId := `6c692d9972f8400ca4560a68f62c4c5f` // string | Connection ID (UUID with or without hyphens). # string | Connection ID (UUID with or without hyphens).
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | 
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []entitlement_connections.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -291,18 +291,18 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
+    entitlement_connections "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     entitlementId := `dcfd09e551644ad5aa162ce977862031` // string | Entitlement ID (UUID with or without hyphens). # string | Entitlement ID (UUID with or without hyphens).
     identityId := `5470d8d4817a4207a8020bf533187da9` // string | Identity ID (UUID with or without hyphens). # string | Identity ID (UUID with or without hyphens).
     accountId := `323bfddfb3dd4197b8f10f7735307d27` // string | Account ID (UUID with or without hyphens). # string | Account ID (UUID with or without hyphens).
-    jsonpatchoperation := []byte(``) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | 
 
-    var jsonpatchoperation []v1.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperation, &jsonpatchoperation); err != nil {
+    var jsonpatchoperation []entitlement_connections.Jsonpatchoperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -363,15 +363,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
+    entitlement_connections "github.com/sailpoint-oss/golang-sdk/v3/entitlement_connections"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    entitlementconnectionbulkupdateitem := []byte(`[{"connectionId":"d532fa5cb15748e2873c6a01e5923ec4","type":"JIT"},{"connectionId":"57bdbfcab8a34afb91c0a9fb4dba52b8","type":"STANDING"},{"connectionId":"0f571cefc8a2411790e0ee09f77e25a3","type":"STANDING"},{"connectionId":"025542c7e42144258c6f2325b6feeba8","type":"JIT"},{"connectionId":"6bccbc42381f49028dac9bfe68dbad2e","type":"JIT"}]`) // []Entitlementconnectionbulkupdateitem | 
+    entitlementconnectionbulkupdateitemJson := []byte(`[{"connectionId":"d532fa5cb15748e2873c6a01e5923ec4","type":"JIT"},{"connectionId":"57bdbfcab8a34afb91c0a9fb4dba52b8","type":"STANDING"},{"connectionId":"0f571cefc8a2411790e0ee09f77e25a3","type":"STANDING"},{"connectionId":"025542c7e42144258c6f2325b6feeba8","type":"JIT"},{"connectionId":"6bccbc42381f49028dac9bfe68dbad2e","type":"JIT"}]`) // []Entitlementconnectionbulkupdateitem | 
 
-    var entitlementconnectionbulkupdateitem []v1.Entitlementconnectionbulkupdateitem
-    if err := json.Unmarshal(entitlementconnectionbulkupdateitem, &entitlementconnectionbulkupdateitem); err != nil {
+    var entitlementconnectionbulkupdateitem []entitlement_connections.Entitlementconnectionbulkupdateitem
+    if err := json.Unmarshal(entitlementconnectionbulkupdateitemJson, &entitlementconnectionbulkupdateitem); err != nil {
       fmt.Println("Error:", err)
       return
     }

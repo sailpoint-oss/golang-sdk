@@ -90,7 +90,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria_configuration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -152,7 +152,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria_configuration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -218,16 +218,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria_configuration"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria_configuration"
+    privilege_criteria_configuration "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria_configuration"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     criteriaConfigId := `6d123044-5834-4e8d-a49f-9c70089b0de1` // string | The Id of the privilege criteria configuration to update. # string | The Id of the privilege criteria configuration to update.
     requestbody := []byte(`[{"op":"replace","path":"/config/privilegeClassificationMode","value":"SINGLE_PRIVILEGE_LEVEL"},{"op":"replace","path":"/config/criteriaPrivilegeLevel/connectorMediumEnabled","value":true}]`) // []map[string]interface{} | A list of criteria configuration operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var requestBody []v1.RequestBody
-    if err := json.Unmarshal(requestbody, &requestBody); err != nil {
+    var requestBody []privilege_criteria_configuration.RequestBody
+    if err := json.Unmarshal(requestbodyJson, &requestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }

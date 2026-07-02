@@ -75,15 +75,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sod_violations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sod_violations"
+    sod_violations "github.com/sailpoint-oss/golang-sdk/v3/sod_violations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    identitywithnewaccess := []byte(`{"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]}`) // Identitywithnewaccess | 
+    identitywithnewaccessJson := []byte(`{"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]}`) // Identitywithnewaccess | 
 
-    var identitywithnewaccess v1.Identitywithnewaccess
-    if err := json.Unmarshal(identitywithnewaccess, &identitywithnewaccess); err != nil {
+    var identitywithnewaccess sod_violations.Identitywithnewaccess
+    if err := json.Unmarshal(identitywithnewaccessJson, &identitywithnewaccess); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -142,15 +142,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/sod_violations"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/sod_violations"
+    sod_violations "github.com/sailpoint-oss/golang-sdk/v3/sod_violations"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    identitywithnewaccess := []byte(`{"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}],"clientMetadata":{"additionalProp1":"string","additionalProp2":"string","additionalProp3":"string"}}`) // Identitywithnewaccess | 
+    identitywithnewaccessJson := []byte(`{"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}],"clientMetadata":{"additionalProp1":"string","additionalProp2":"string","additionalProp3":"string"}}`) // Identitywithnewaccess | 
 
-    var identitywithnewaccess v1.Identitywithnewaccess
-    if err := json.Unmarshal(identitywithnewaccess, &identitywithnewaccess); err != nil {
+    var identitywithnewaccess sod_violations.Identitywithnewaccess
+    if err := json.Unmarshal(identitywithnewaccessJson, &identitywithnewaccess); err != nil {
       fmt.Println("Error:", err)
       return
     }

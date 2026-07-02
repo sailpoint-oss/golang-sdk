@@ -72,15 +72,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
+    saved_search "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    createsavedsearchv1request := []byte(``) // CreateSavedSearchV1Request | The saved search to persist.
+    createsavedsearchv1requestJson := []byte(``) // CreateSavedSearchV1Request | The saved search to persist.
 
-    var createSavedSearchV1Request v1.CreateSavedSearchV1Request
-    if err := json.Unmarshal(createsavedsearchv1request, &createSavedSearchV1Request); err != nil {
+    var createSavedSearchV1Request saved_search.CreateSavedSearchV1Request
+    if err := json.Unmarshal(createsavedsearchv1requestJson, &createSavedSearchV1Request); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -145,7 +145,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -211,16 +211,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
+    saved_search "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c91808568c529c60168cca6f90c1313` // string | ID of the requested document. # string | ID of the requested document.
-    searcharguments := []byte(``) // Searcharguments | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. 
+    searchargumentsJson := []byte(``) // Searcharguments | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. 
 
-    var searcharguments v1.Searcharguments
-    if err := json.Unmarshal(searcharguments, &searcharguments); err != nil {
+    var searcharguments saved_search.Searcharguments
+    if err := json.Unmarshal(searchargumentsJson, &searcharguments); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -284,7 +284,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -350,7 +350,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -422,16 +422,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    v1 "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
+    saved_search "github.com/sailpoint-oss/golang-sdk/v3/saved_search"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `2c91808568c529c60168cca6f90c1313` // string | ID of the requested document. # string | ID of the requested document.
-    savedsearch := []byte(``) // Savedsearch | The saved search to persist.
+    savedsearchJson := []byte(``) // Savedsearch | The saved search to persist.
 
-    var savedsearch v1.Savedsearch
-    if err := json.Unmarshal(savedsearch, &savedsearch); err != nil {
+    var savedsearch saved_search.Savedsearch
+    if err := json.Unmarshal(savedsearchJson, &savedsearch); err != nil {
       fmt.Println("Error:", err)
       return
     }

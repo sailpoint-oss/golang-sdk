@@ -69,7 +69,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -135,7 +135,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -201,7 +201,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -273,7 +273,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -349,16 +349,16 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
     id := `1246d8b3-ac29-4015-8154-dea4434a73fa` // string | ID of the object to retrieve, update, or delete # string | ID of the object to retrieve, update, or delete
-    submituserrequest := []byte(``) // SubmitUserRequest | 
+    submituserrequestJson := []byte(``) // SubmitUserRequest | 
 
-    var submitUserRequest NERM.SubmitUserRequest
-    if err := json.Unmarshal(submituserrequest, &submitUserRequest); err != nil {
+    var submitUserRequest nerm.SubmitUserRequest
+    if err := json.Unmarshal(submituserrequestJson, &submitUserRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -417,15 +417,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitusersrequest := []byte(``) // SubmitUsersRequest | 
+    submitusersrequestJson := []byte(``) // SubmitUsersRequest | 
 
-    var submitUsersRequest NERM.SubmitUsersRequest
-    if err := json.Unmarshal(submitusersrequest, &submitUsersRequest); err != nil {
+    var submitUsersRequest nerm.SubmitUsersRequest
+    if err := json.Unmarshal(submitusersrequestJson, &submitUsersRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -484,15 +484,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submituserrequest := []byte(``) // SubmitUserRequest | 
+    submituserrequestJson := []byte(``) // SubmitUserRequest | 
 
-    var submitUserRequest NERM.SubmitUserRequest
-    if err := json.Unmarshal(submituserrequest, &submitUserRequest); err != nil {
+    var submitUserRequest nerm.SubmitUserRequest
+    if err := json.Unmarshal(submituserrequestJson, &submitUserRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -557,7 +557,7 @@ import (
 	"os"
   
     
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
@@ -619,15 +619,15 @@ import (
 	"fmt"
 	"os"
   "encoding/json"
-    NERM "github.com/sailpoint-oss/golang-sdk/v3/nerm"
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+    nerm "github.com/sailpoint-oss/golang-sdk/v3/nerm"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
-    submitusersrequest := []byte(``) // SubmitUsersRequest | 
+    submitusersrequestJson := []byte(``) // SubmitUsersRequest | 
 
-    var submitUsersRequest NERM.SubmitUsersRequest
-    if err := json.Unmarshal(submitusersrequest, &submitUsersRequest); err != nil {
+    var submitUsersRequest nerm.SubmitUsersRequest
+    if err := json.Unmarshal(submitusersrequestJson, &submitUsersRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
