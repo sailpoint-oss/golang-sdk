@@ -572,9 +572,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sed:read
+        - idn:privilege-rec:read
       - applicationAuth:
-        - idn:sed:read
+        - idn:privilege-rec:read
       summary: List privileged entitlement recommendations
       tags:
       - Suggested Entitlement Description

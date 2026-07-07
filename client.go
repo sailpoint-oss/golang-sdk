@@ -96,7 +96,6 @@ import (
 	personal_access_tokens "github.com/sailpoint-oss/golang-sdk/v3/personal_access_tokens"
 	privilege_criteria "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria"
 	privilege_criteria_configuration "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria_configuration"
-	prompt_insights "github.com/sailpoint-oss/golang-sdk/v3/prompt_insights"
 	public_identities "github.com/sailpoint-oss/golang-sdk/v3/public_identities"
 	public_identities_config "github.com/sailpoint-oss/golang-sdk/v3/public_identities_config"
 	reports_data_extraction "github.com/sailpoint-oss/golang-sdk/v3/reports_data_extraction"
@@ -232,7 +231,6 @@ type APIClient struct {
 	PersonalAccessTokensAPI *personal_access_tokens.PersonalAccessTokensAPIService
 	PrivilegeCriteriaAPI *privilege_criteria.PrivilegeCriteriaAPIService
 	PrivilegeCriteriaConfigurationAPI *privilege_criteria_configuration.PrivilegeCriteriaConfigurationAPIService
-	PromptInsightsAPI *prompt_insights.PromptInsightsAPIService
 	PublicIdentitiesAPI *public_identities.PublicIdentitiesAPIService
 	PublicIdentitiesConfigAPI *public_identities_config.PublicIdentitiesConfigAPIService
 	ReportsDataExtractionAPI *reports_data_extraction.ReportsDataExtractionAPIService
@@ -1220,18 +1218,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgPrivilegeCriteriaConfiguration.HTTPClient = cfg.HTTPClient
 	c.PrivilegeCriteriaConfigurationAPI = privilege_criteria_configuration.NewAPIClient(_cfgPrivilegeCriteriaConfiguration).PrivilegeCriteriaConfigurationAPI
-
-	_cfgPromptInsights := prompt_insights.NewConfiguration(
-		cfg.ClientConfiguration.ClientId,
-		cfg.ClientConfiguration.ClientSecret,
-		cfg.ClientConfiguration.BaseURL,
-		cfg.ClientConfiguration.TokenURL,
-		cfg.ClientConfiguration.Token,
-		consumerSuffix,
-		cfg.Experimental,
-	)
-	_cfgPromptInsights.HTTPClient = cfg.HTTPClient
-	c.PromptInsightsAPI = prompt_insights.NewAPIClient(_cfgPromptInsights).PromptInsightsAPI
 
 	_cfgPublicIdentities := public_identities.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
