@@ -42,6 +42,7 @@ Name | Type | Description | Notes
 **RequestedAccounts** | Pointer to [**[]Requestedaccountref**](requestedaccountref) | The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources. | [optional] 
 **PrivilegeLevel** | Pointer to **NullableString** | The privilege level of the requested access item, if applicable. | [optional] 
 **MaxPermittedAccessDuration** | Pointer to [**NullablePendingapprovalMaxPermittedAccessDuration**](pendingapproval-max-permitted-access-duration) |  | [optional] 
+**JitDetails** | Pointer to **[]Entitlementstatesnapshotjitdetail** | JIT (Just-In-Time) details for the requested access item, if applicable. | [optional] 
 
 ## Methods
 
@@ -797,4 +798,39 @@ HasMaxPermittedAccessDuration returns a boolean if a field has been set.
 `func (o *Pendingapproval) UnsetMaxPermittedAccessDuration()`
 
 UnsetMaxPermittedAccessDuration ensures that no value is present for MaxPermittedAccessDuration, not even an explicit nil
+### GetJitDetails
+
+`func (o *Pendingapproval) GetJitDetails() []Entitlementstatesnapshotjitdetail`
+
+GetJitDetails returns the JitDetails field if non-nil, zero value otherwise.
+
+### GetJitDetailsOk
+
+`func (o *Pendingapproval) GetJitDetailsOk() (*[]Entitlementstatesnapshotjitdetail, bool)`
+
+GetJitDetailsOk returns a tuple with the JitDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJitDetails
+
+`func (o *Pendingapproval) SetJitDetails(v []Entitlementstatesnapshotjitdetail)`
+
+SetJitDetails sets JitDetails field to given value.
+
+### HasJitDetails
+
+`func (o *Pendingapproval) HasJitDetails() bool`
+
+HasJitDetails returns a boolean if a field has been set.
+
+### SetJitDetailsNil
+
+`func (o *Pendingapproval) SetJitDetailsNil(b bool)`
+
+ SetJitDetailsNil sets the value for JitDetails to be an explicit nil
+
+### UnsetJitDetails
+`func (o *Pendingapproval) UnsetJitDetails()`
+
+UnsetJitDetails ensures that no value is present for JitDetails, not even an explicit nil
 

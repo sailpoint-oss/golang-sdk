@@ -66,6 +66,8 @@ type Completedapproval struct {
 	// The privilege level of the requested access item, if applicable.
 	PrivilegeLevel NullableString `json:"privilegeLevel,omitempty"`
 	MaxPermittedAccessDuration NullablePendingapprovalMaxPermittedAccessDuration `json:"maxPermittedAccessDuration,omitempty"`
+	// JIT (Just-In-Time) details for the requested access item, if applicable.
+	JitDetails []Entitlementstatesnapshotjitdetail `json:"jitDetails,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -1099,6 +1101,39 @@ func (o *Completedapproval) UnsetMaxPermittedAccessDuration() {
 	o.MaxPermittedAccessDuration.Unset()
 }
 
+// GetJitDetails returns the JitDetails field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Completedapproval) GetJitDetails() []Entitlementstatesnapshotjitdetail {
+	if o == nil {
+		var ret []Entitlementstatesnapshotjitdetail
+		return ret
+	}
+	return o.JitDetails
+}
+
+// GetJitDetailsOk returns a tuple with the JitDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Completedapproval) GetJitDetailsOk() ([]Entitlementstatesnapshotjitdetail, bool) {
+	if o == nil || IsNil(o.JitDetails) {
+		return nil, false
+	}
+	return o.JitDetails, true
+}
+
+// HasJitDetails returns a boolean if a field has been set.
+func (o *Completedapproval) HasJitDetails() bool {
+	if o != nil && !IsNil(o.JitDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetJitDetails gets a reference to the given []Entitlementstatesnapshotjitdetail and assigns it to the JitDetails field.
+func (o *Completedapproval) SetJitDetails(v []Entitlementstatesnapshotjitdetail) {
+	o.JitDetails = v
+}
+
 func (o Completedapproval) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1196,6 +1231,9 @@ func (o Completedapproval) ToMap() (map[string]interface{}, error) {
 	if o.MaxPermittedAccessDuration.IsSet() {
 		toSerialize["maxPermittedAccessDuration"] = o.MaxPermittedAccessDuration.Get()
 	}
+	if o.JitDetails != nil {
+		toSerialize["jitDetails"] = o.JitDetails
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1247,6 +1285,7 @@ func (o *Completedapproval) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "requestedAccounts")
 		delete(additionalProperties, "privilegeLevel")
 		delete(additionalProperties, "maxPermittedAccessDuration")
+		delete(additionalProperties, "jitDetails")
 		o.AdditionalProperties = additionalProperties
 	}
 

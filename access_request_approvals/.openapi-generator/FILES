@@ -25,6 +25,7 @@ docs/CompletedapprovalRequesterComment.md
 docs/CompletedapprovalReviewerComment.md
 docs/Completedapprovalstate.md
 docs/Dtotype.md
+docs/Entitlementstatesnapshotjitdetail.md
 docs/Errormessagedto.md
 docs/Errorresponsedto.md
 docs/Forwardapprovaldto.md
@@ -66,6 +67,7 @@ model_completedapproval_requester_comment.go
 model_completedapproval_reviewer_comment.go
 model_completedapprovalstate.go
 model_dtotype.go
+model_entitlementstatesnapshotjitdetail.go
 model_errormessagedto.go
 model_errorresponsedto.go
 model_forwardapprovaldto.go

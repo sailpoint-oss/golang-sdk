@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
  - [Entitlementrequestconfig](docs/Entitlementrequestconfig.md)
  - [Entitlementrequestconfigv2](docs/Entitlementrequestconfigv2.md)
  - [Entitlementrevocationrequestconfig](docs/Entitlementrevocationrequestconfig.md)
+ - [Entitlementstatesnapshotjitdetail](docs/Entitlementstatesnapshotjitdetail.md)
  - [Errormessagedto](docs/Errormessagedto.md)
  - [Errorresponsedto](docs/Errorresponsedto.md)
  - [GetAccessRequestConfigV1401Response](docs/GetAccessRequestConfigV1401Response.md)

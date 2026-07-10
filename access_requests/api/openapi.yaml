@@ -3621,6 +3621,32 @@ components:
           type: string
       title: Requested Account Ref
       type: object
+    entitlementstatesnapshotjitdetail:
+      additionalProperties: true
+      description: A single JIT entitlement snapshot entry from the provisioning plan.
+      example:
+        attributeValues:
+        - "CN=Engineering,OU=Groups,DC=example,DC=com"
+        attributeName: groups
+        applicationId: 2c9180835d2e5168015d32f890ca1581
+      properties:
+        applicationId:
+          description: Application id for the entitlement attribute (same as EntitlementStateSnapshot.applicationId).
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        attributeName:
+          description: Account attribute name for the entitlement (EntitlementStateSnapshot.attributeName).
+          example: groups
+          type: string
+        attributeValues:
+          description: Entitlement values for that attribute (EntitlementStateSnapshot.attributeValues).
+          example:
+          - "CN=Engineering,OU=Groups,DC=example,DC=com"
+          items:
+            type: string
+          type: array
+      title: Entitlement State Snapshot Jit Detail
+      type: object
     requesteditemstatus:
       example:
         requestedFor:
@@ -3867,6 +3893,15 @@ components:
             comment: Forwarding from Frank to Al
           forwarded: true
           status: PENDING
+        jitDetails:
+        - attributeValues:
+          - "CN=Engineering,OU=Groups,DC=example,DC=com"
+          attributeName: groups
+          applicationId: 2c9180835d2e5168015d32f890ca1581
+        - attributeValues:
+          - "CN=Engineering,OU=Groups,DC=example,DC=com"
+          attributeName: groups
+          applicationId: 2c9180835d2e5168015d32f890ca1581
         startDate: 2019-10-21T00:00:00Z
       properties:
         id:
@@ -4005,6 +4040,13 @@ components:
           example: High
           nullable: true
           type: string
+        jitDetails:
+          description: "JIT (Just-In-Time) details for the requested access item,\
+            \ if applicable."
+          items:
+            $ref: '#/components/schemas/entitlementstatesnapshotjitdetail'
+          nullable: true
+          type: array
       title: Requested Item Status
       type: object
     accessrequestadminitemstatus:

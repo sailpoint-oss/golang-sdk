@@ -106,6 +106,7 @@ Class | Method | HTTP request | Description
  - [CompletedapprovalReviewerComment](docs/CompletedapprovalReviewerComment.md)
  - [Completedapprovalstate](docs/Completedapprovalstate.md)
  - [Dtotype](docs/Dtotype.md)
+ - [Entitlementstatesnapshotjitdetail](docs/Entitlementstatesnapshotjitdetail.md)
  - [Errormessagedto](docs/Errormessagedto.md)
  - [Errorresponsedto](docs/Errorresponsedto.md)
  - [Forwardapprovaldto](docs/Forwardapprovaldto.md)

@@ -44,6 +44,7 @@ docs/Entitlementapprovalscheme.md
 docs/Entitlementrequestconfig.md
 docs/Entitlementrequestconfigv2.md
 docs/Entitlementrevocationrequestconfig.md
+docs/Entitlementstatesnapshotjitdetail.md
 docs/Errormessagedto.md
 docs/Errorresponsedto.md
 docs/GetAccessRequestConfigV1401Response.md
@@ -125,6 +126,7 @@ model_entitlementapprovalscheme.go
 model_entitlementrequestconfig.go
 model_entitlementrequestconfigv2.go
 model_entitlementrevocationrequestconfig.go
+model_entitlementstatesnapshotjitdetail.go
 model_errormessagedto.go
 model_errorresponsedto.go
 model_get_access_request_config_v1_401_response.go
