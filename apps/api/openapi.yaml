@@ -126,8 +126,6 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:manage
-      - applicationAuth:
-        - idn:app-roles:manage
       summary: Delete source app by id
       tags:
       - Apps
@@ -238,9 +236,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:app-roles:read
-        - idn:app-roles:manage
-      - applicationAuth:
         - idn:app-roles:read
         - idn:app-roles:manage
       summary: Get source app by id
@@ -421,8 +416,6 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:manage
-      - applicationAuth:
-        - idn:app-roles:manage
       summary: Patch source app by id
       tags:
       - Apps
@@ -529,8 +522,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:app-roles:manage
-      - applicationAuth:
         - idn:app-roles:manage
       summary: Bulk update source apps
       tags:
@@ -699,9 +690,6 @@ paths:
       - userAuth:
         - idn:app-roles:read
         - idn:app-roles:manage
-      - applicationAuth:
-        - idn:app-roles:read
-        - idn:app-roles:manage
       summary: List assigned source apps
       tags:
       - Apps
@@ -868,9 +856,6 @@ paths:
       - userAuth:
         - idn:app-roles:read
         - idn:app-roles:manage
-      - applicationAuth:
-        - idn:app-roles:read
-        - idn:app-roles:manage
       summary: List available source apps
       tags:
       - Apps
@@ -965,8 +950,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:app-roles:manage
-      - applicationAuth:
         - idn:app-roles:manage
       summary: Create source app
       tags:
@@ -1284,8 +1267,6 @@ paths:
       security:
       - userAuth:
         - idn:app-roles:manage
-      - applicationAuth:
-        - idn:app-roles:manage
       summary: List access profiles for the specified source app
       tags:
       - Apps
@@ -1410,8 +1391,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:app-roles:manage
-      - applicationAuth:
         - idn:app-roles:manage
       summary: Bulk remove access profiles from the specified source app
       tags:
@@ -1668,9 +1647,6 @@ paths:
       - userAuth:
         - idn:app-roles:read
         - idn:app-roles:manage
-      - applicationAuth:
-        - idn:app-roles:read
-        - idn:app-roles:manage
       summary: List available accounts for user app
       tags:
       - Apps
@@ -1822,9 +1798,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:app-roles:read
-        - idn:app-roles:manage
-      - applicationAuth:
         - idn:app-roles:read
         - idn:app-roles:manage
       summary: List owned user apps
@@ -1982,8 +1955,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:app-roles:manage
-      - applicationAuth:
         - idn:app-roles:manage
       summary: List all user apps
       tags:
