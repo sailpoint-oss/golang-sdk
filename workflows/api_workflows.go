@@ -1350,7 +1350,7 @@ func (r ApiGetWorkflowExecutionsV1Request) Execute() ([]Workflowexecution, *http
 /*
 GetWorkflowExecutionsV1 List workflow executions
 
-Use this API to list a specified workflow's executions. Workflow executions are available for up to 90 days before being archived. By default, you can get a maximum of 250 executions. To get executions past the first 250 records, you can do the following:
+[Deprecated] This endpoint will be removed in July 2028. Use this API to list a specified workflow's executions. Workflow executions are available for up to 90 days before being archived. By default, you can get a maximum of 250 executions. To get executions past the first 250 records, you can do the following:
 1. Use the [Get Workflows](https://developer.sailpoint.com/idn/api/beta/list-workflows) endpoint to get your workflows.
 2. Get your workflow ID from the response.
 3. You can then do either of the following:
@@ -1365,6 +1365,8 @@ Use this API to list a specified workflow's executions. Workflow executions are 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Workflow ID.
  @return ApiGetWorkflowExecutionsV1Request
+
+Deprecated
 */
 func (a *WorkflowsAPIService) GetWorkflowExecutionsV1(ctx context.Context, id string) ApiGetWorkflowExecutionsV1Request {
 	return ApiGetWorkflowExecutionsV1Request{
@@ -1376,6 +1378,7 @@ func (a *WorkflowsAPIService) GetWorkflowExecutionsV1(ctx context.Context, id st
 
 // Execute executes the request
 //  @return []Workflowexecution
+// Deprecated
 func (a *WorkflowsAPIService) GetWorkflowExecutionsV1Execute(r ApiGetWorkflowExecutionsV1Request) ([]Workflowexecution, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
