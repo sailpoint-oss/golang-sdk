@@ -177,7 +177,7 @@ func Test_workflows(t *testing.T) {
 	t.Run("Test create workflow", func(t *testing.T) {
 		randomName := fmt.Sprintf("Test Workflow %s", randString(8))
 
-		trigger := workflows.NewWorkflowtrigger("EVENT", map[string]interface{}{
+		trigger := workflows.NewWorkflowTrigger("EVENT", map[string]interface{}{
 			"id":     "idn:identity-attributes-changed",
 			"filter": "$.changes[?(@.attribute == 'manager')]",
 		})
