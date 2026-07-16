@@ -34,6 +34,18 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineIdentitiesAPIService CreateMachineIdentityV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineIdentitiesAPIService DeleteMachineIdentityV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -41,6 +53,34 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 		var id string
 
 		httpRes, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService DeleteMachineIdentityV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		httpRes, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService DeleteOwnershipCorrelationConfigV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var resourceId string
+		var configId string
+
+		httpRes, err := apiClient.MachineIdentitiesAPI.DeleteOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -61,6 +101,36 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineIdentitiesAPIService GetMachineIdentityV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityV2(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService GetOwnershipCorrelationConfigV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var resourceId string
+		var configId string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineIdentitiesAPIService ListMachineIdentitiesV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -73,11 +143,54 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineIdentitiesAPIService ListMachineIdentitiesV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.ListMachineIdentitiesV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineIdentitiesAPIService ListMachineIdentityUserEntitlementsV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService ListOwnershipCorrelationConfigsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var resourceId string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1(context.Background(), sourceId, resourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService PatchOwnershipCorrelationConfigV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var resourceId string
+		var configId string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -106,6 +219,20 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService UpdateMachineIdentityV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV2(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

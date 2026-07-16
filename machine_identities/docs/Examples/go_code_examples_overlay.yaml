@@ -39,6 +39,46 @@
           // response from `CreateMachineIdentityV1`: Machineidentityresponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.CreateMachineIdentityV1`: %v\n", resp)
         }
+- path: /machine-identities/v2
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentities/methods/machine-identities#create-machine-identity-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            machine_identities "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+           machineidentityv2Json := []byte(``) // Machineidentityv2 | 
+
+          
+          var machineidentityv2 machine_identities.Machineidentityv2
+          if err := json.Unmarshal(machineidentityv2Json, &machineidentityv2); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV2(context.Background()).Machineidentityv2(machineidentityv2).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV2(context.Background()).Machineidentityv2(machineidentityv2).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.CreateMachineIdentityV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateMachineIdentityV2`: Machineidentityv2
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.CreateMachineIdentityV2`: %v\n", resp)
+        }
 - path: /machine-identities/v1/{id}
   method: Delete
   xCodeSample:
@@ -69,6 +109,72 @@
           //r, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.DeleteMachineIdentityV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /machine-identities/v2/{id}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentities/methods/machine-identities#delete-machine-identity-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID. # string | Machine Identity ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityV2(context.Background(), id).Execute()
+          //r, err := apiClient.MachineIdentitiesAPI.DeleteMachineIdentityV2(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.DeleteMachineIdentityV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
+- path: /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentities/methods/machine-identities#delete-ownership-correlation-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
+          resourceId := `aws:iam-role` // string | The source resource ID (for example, account or aws:iam-role). # string | The source resource ID (for example, account or aws:iam-role).
+          configId := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The correlation config ID. # string | The correlation config ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.MachineIdentitiesAPI.DeleteOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
+          //r, err := apiClient.MachineIdentitiesAPI.DeleteOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.DeleteOwnershipCorrelationConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
         }
@@ -106,6 +212,76 @@
           }
           // response from `GetMachineIdentityV1`: Machineidentityresponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.GetMachineIdentityV1`: %v\n", resp)
+        }
+- path: /machine-identities/v2/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentities/methods/machine-identities#get-machine-identity-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID. # string | Machine Identity ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityV2(context.Background(), id).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesAPI.GetMachineIdentityV2(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.GetMachineIdentityV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineIdentityV2`: Machineidentityv2
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.GetMachineIdentityV2`: %v\n", resp)
+        }
+- path: /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentities/methods/machine-identities#get-ownership-correlation-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
+          resourceId := `aws:iam-role` // string | The source resource ID (for example, account or aws:iam-role). # string | The source resource ID (for example, account or aws:iam-role).
+          configId := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The correlation config ID. # string | The correlation config ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetOwnershipCorrelationConfigV1`: Correlationconfig
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1`: %v\n", resp)
         }
 - path: /machine-identities/v1
   method: Get
@@ -146,6 +322,44 @@
           // response from `ListMachineIdentitiesV1`: []Machineidentityresponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.ListMachineIdentitiesV1`: %v\n", resp)
         }
+- path: /machine-identities/v2
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentities/methods/machine-identities#list-machine-identities-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          filters := `identityId eq "2c9180858082150f0180893dbaf44201"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryGovernanceGroup.id**: *eq, in*  **owners.secondaryGovernanceGroup.name**: *eq, in, isnull, pr*  **source.id**: *eq, in*  **source.name**: *eq, in, sw*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw*  **risk.severity**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryGovernanceGroup.id**: *eq, in*  **owners.secondaryGovernanceGroup.name**: *eq, in, isnull, pr*  **source.id**: *eq, in*  **source.name**: *eq, in, sw*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw*  **risk.severity**: *eq, in* (optional)
+          sorters := `nativeIdentity` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesAPI.ListMachineIdentitiesV2(context.Background()).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesAPI.ListMachineIdentitiesV2(context.Background()).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListMachineIdentitiesV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListMachineIdentitiesV2`: []Machineidentityv2
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.ListMachineIdentitiesV2`: %v\n", resp)
+        }
 - path: /machine-identity-user-entitlements/v1
   method: Get
   xCodeSample:
@@ -184,6 +398,88 @@
           }
           // response from `ListMachineIdentityUserEntitlementsV1`: []Machineidentityuserentitlementresponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1`: %v\n", resp)
+        }
+- path: /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentities/methods/machine-identities#list-ownership-correlation-configs-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
+          resourceId := `aws:iam-role` // string | The source resource ID (for example, account or aws:iam-role). # string | The source resource ID (for example, account or aws:iam-role).
+          type_ := `OWNER_PRIMARY` // string | When set, filters to the given config type. (optional) # string | When set, filters to the given config type. (optional)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1(context.Background(), sourceId, resourceId).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1(context.Background(), sourceId, resourceId).Type_(type_).Count(count).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListOwnershipCorrelationConfigsV1`: []Correlationconfig
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1`: %v\n", resp)
+        }
+- path: /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentities/methods/machine-identities#patch-ownership-correlation-config-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            machine_identities "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
+          resourceId := `aws:iam-role` // string | The source resource ID (for example, account or aws:iam-role). # string | The source resource ID (for example, account or aws:iam-role).
+          configId := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The correlation config ID. # string | The correlation config ID.
+          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/attributes","value":{"syncPrimaryToMachineAccounts":true}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the correlation config.
+
+          
+          var jsonpatchoperation []machine_identities.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Jsonpatchoperation(jsonpatchoperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `PatchOwnershipCorrelationConfigV1`: Correlationconfig
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1`: %v\n", resp)
         }
 - path: /sources/v1/{sourceId}/aggregate-agents
   method: Post
@@ -268,4 +564,45 @@
           }
           // response from `UpdateMachineIdentityV1`: Machineidentityresponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.UpdateMachineIdentityV1`: %v\n", resp)
+        }
+- path: /machine-identities/v2/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentities/methods/machine-identities#update-machine-identity-v2
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            machine_identities "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID. # string | Machine Identity ID.
+          jsonpatchoperationJson := []byte(`[{"op":"add","path":"/attributes/securityRisk","value":"medium"}]`) // []Jsonpatchoperation | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          
+          var jsonpatchoperation []machine_identities.Jsonpatchoperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV2(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV2(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.UpdateMachineIdentityV2``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateMachineIdentityV2`: Machineidentityv2
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.UpdateMachineIdentityV2`: %v\n", resp)
         }

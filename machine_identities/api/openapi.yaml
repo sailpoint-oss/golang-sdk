@@ -726,6 +726,1219 @@ paths:
       - Machine Identities
       x-sailpoint-userLevels:
       - ORG_ADMIN
+  /machine-identities/v2:
+    get:
+      description: This API returns a list of machine identities.
+      operationId: listMachineIdentitiesV2
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in, sw*
+
+          **displayName**: *eq, in, sw*
+
+          **nativeIdentity**: *eq, in, sw*
+
+          **attributes**: *eq*
+
+          **manuallyEdited**: *eq*
+
+          **subtype**: *eq, in*
+
+          **owners.primaryIdentity.id**: *eq, in, sw*
+
+          **owners.primaryIdentity.name**: *eq, in, isnull, pr*
+
+          **owners.secondaryIdentity.id**: *eq, in, sw*
+
+          **owners.secondaryIdentity.name**: *eq, in, isnull, pr*
+
+          **owners.secondaryGovernanceGroup.id**: *eq, in*
+
+          **owners.secondaryGovernanceGroup.name**: *eq, in, isnull, pr*
+
+          **source.id**: *eq, in*
+
+          **source.name**: *eq, in, sw*
+
+          **entitlement.id**: *eq, in*
+
+          **entitlement.name**: *eq, in, sw*
+
+          **risk.severity**: *eq, in*
+        example: identityId eq "2c9180858082150f0180893dbaf44201"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified**
+        example: nativeIdentity
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/machineidentityv2'
+                type: array
+          description: List of machine identities.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: List machine identities
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+    post:
+      description: Use this API to create a machine identity. Additional owners may
+        be either up to ten human (IDENTITY) references or exactly one GOVERNANCE_GROUP
+        reference - not both. The maximum supported length for the description field
+        is 2000 characters.
+      operationId: createMachineIdentityV2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/machineidentityv2'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/machineidentityv2'
+          description: Machine identity created (same schema family as v2 GET/PATCH).
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:manage
+      summary: Create machine identity
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /machine-identities/v2/{id}:
+    delete:
+      description: The API returns a successful response if the requested machine
+        identity was deleted.
+      operationId: deleteMachineIdentityV2
+      parameters:
+      - description: Machine Identity ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineIdentitiesV2
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:manage
+      summary: Delete machine identity
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: This API returns a single machine identity using the Machine Identity
+        ID.
+      operationId: getMachineIdentityV2
+      parameters:
+      - description: Machine Identity ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineIdentitiesV2
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/machineidentityv2'
+          description: A machine identity object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:read
+        - idn:mis-identity:manage
+      summary: Get machine identity details
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
+    patch:
+      description: |
+        Use this API to selectively update machine identity details using a JSONPatch payload.
+
+        Patchable fields include **name**, **description**, **nativeIdentity**, **subtype**, **environment**, **attributes**, **owners**, **userEntitlements**, and **manuallyEdited** only.
+      operationId: updateMachineIdentityV2
+      parameters:
+      - description: Machine Identity ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineIdentitiesV2
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Add machine identity attribute:
+                value:
+                - op: add
+                  path: /attributes/securityRisk
+                  value: medium
+              Replace machine identity attribute:
+                value:
+                - op: replace
+                  path: /attributes/securityRisk
+                  value: medium
+              Remove machine identity attribute:
+                value:
+                - op: remove
+                  path: /attributes/securityRisk
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: "A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902)\
+          \ standard."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/machineidentityv2'
+          description: Updated machine identity object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:manage
+      - applicationAuth:
+        - idn:mis-identity:manage
+      summary: Partial update of machine identity
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs:
+    get:
+      description: "Returns the OWNER_PRIMARY and OWNER_SECONDARY correlation configs\
+        \ for the specified source resource, creating default rows if they are missing.\
+        \ Use the optional type query parameter to return a single matching config."
+      operationId: listOwnershipCorrelationConfigsV1
+      parameters:
+      - description: The Source ID.
+        example: 2c9180835d191a86015d28455b4a2329
+        explode: false
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourcesV1
+      - description: "The source resource ID (for example, account or aws:iam-role)."
+        example: aws:iam-role
+        explode: false
+        in: path
+        name: resourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: searchResourceObjectsV1
+      - description: "When set, filters to the given config type."
+        example: OWNER_PRIMARY
+        explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          enum:
+          - OWNER_PRIMARY
+          - OWNER_SECONDARY
+          type: string
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/correlationconfig'
+                type: array
+          description: List of correlation configs.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:read
+      summary: List ownership correlation configs
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId}:
+    delete:
+      description: Deletes the ownership correlation config with the specified ID
+        for the given source resource.
+      operationId: deleteOwnershipCorrelationConfigV1
+      parameters:
+      - description: The Source ID.
+        example: 2c9180835d191a86015d28455b4a2329
+        explode: false
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourcesV1
+      - description: "The source resource ID (for example, account or aws:iam-role)."
+        example: aws:iam-role
+        explode: false
+        in: path
+        name: resourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: searchResourceObjectsV1
+      - description: The correlation config ID.
+        example: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listOwnershipCorrelationConfigsV1
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:update
+      - applicationAuth:
+        - idn:sources:update
+      summary: Delete ownership correlation config
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: This end-point retrieves a single ownership correlation config
+        by ID for the specified source resource.
+      operationId: getOwnershipCorrelationConfigV1
+      parameters:
+      - description: The Source ID.
+        example: 2c9180835d191a86015d28455b4a2329
+        explode: false
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourcesV1
+      - description: "The source resource ID (for example, account or aws:iam-role)."
+        example: aws:iam-role
+        explode: false
+        in: path
+        name: resourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: searchResourceObjectsV1
+      - description: The correlation config ID.
+        example: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listOwnershipCorrelationConfigsV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/correlationconfig'
+          description: The requested correlation config.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:read
+      summary: Get ownership correlation config
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+    patch:
+      description: "Selectively updates an ownership correlation config using an RFC\
+        \ 6902 JSONPatch payload. Only replace on /attributes (full object) and replace\
+        \ on /rules (full array; merge by stable rule id, remove rules omitted from\
+        \ the array) are allowed."
+      operationId: patchOwnershipCorrelationConfigV1
+      parameters:
+      - description: The Source ID.
+        example: 2c9180835d191a86015d28455b4a2329
+        explode: false
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listSourcesV1
+      - description: "The source resource ID (for example, account or aws:iam-role)."
+        example: aws:iam-role
+        explode: false
+        in: path
+        name: resourceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: searchResourceObjectsV1
+      - description: The correlation config ID.
+        example: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listOwnershipCorrelationConfigsV1
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Replace attributes:
+                summary: Replace the full attributes object
+                value:
+                - op: replace
+                  path: /attributes
+                  value:
+                    syncPrimaryToMachineAccounts: true
+            schema:
+              items:
+                $ref: '#/components/schemas/jsonpatchoperation'
+              type: array
+        description: The JSONPatch payload used to update the correlation config.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/correlationconfig'
+          description: The updated correlation config.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/errorresponsedto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sources:update
+      - applicationAuth:
+        - idn:sources:update
+      summary: Patch ownership correlation config
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sources/v1/{sourceId}/aggregate-agents:
     post:
       description: Starts a machine identity (AI Agents) aggregation on the specified
@@ -1433,6 +2646,577 @@ components:
             type: array
         title: Machine Identity Request
         type: object
+    machineidentityownersv2:
+      description: Owner configuration for a machine identity. A single primary (human
+        IDENTITY) owner plus additional owners that are either up to ten human (IDENTITY)
+        references or exactly one GOVERNANCE_GROUP reference - not both.
+      example:
+        secondary:
+        - id: 2c9180858082150f0180893dbaf44202
+          name: Jane Doe
+          type: IDENTITY
+        primary:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+      properties:
+        primary:
+          $ref: '#/components/schemas/machineidentityownersv2_primary'
+        secondary:
+          description: Additional owners. Entries are either up to ten human (IDENTITY)
+            references or exactly one GOVERNANCE_GROUP reference - not both. Governance-group
+            owners appear here with type GOVERNANCE_GROUP.
+          example:
+          - id: 2c9180858082150f0180893dbaf44202
+            name: Jane Doe
+            type: IDENTITY
+          items:
+            $ref: '#/components/schemas/basereferencedto'
+          maxItems: 10
+          type: array
+      title: Machine Identity Owners V2
+      type: object
+    resourcev2:
+      description: The source resource a machine identity is derived from.
+      example:
+        features:
+        - PROVISIONING
+        - AUTHENTICATION
+        name: nightly-batch-role
+        id: 8886e5e3-63d0-462f-a195-d98da885b8dc
+        type: aws:iam-role
+      properties:
+        id:
+          description: The source resource identifier.
+          example: 8886e5e3-63d0-462f-a195-d98da885b8dc
+          type: string
+        type:
+          description: The type of the source resource.
+          example: aws:iam-role
+          type: string
+        name:
+          description: The display name of the source resource.
+          example: nightly-batch-role
+          type: string
+        features:
+          description: The set of features supported by the source resource.
+          example:
+          - PROVISIONING
+          - AUTHENTICATION
+          items:
+            type: string
+          type: array
+      title: Resource V2
+      type: object
+    userentitlementv2:
+      description: A user entitlement associated to a machine identity.
+      example:
+        sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+        displayName: Entitlement Name
+        entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        source:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+      properties:
+        sourceId:
+          description: The source ID of the entitlement.
+          example: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          type: string
+        entitlementId:
+          description: The ID of the entitlement.
+          example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          type: string
+        displayName:
+          description: The display name of the entitlement.
+          example: Entitlement Name
+          type: string
+        source:
+          $ref: '#/components/schemas/userentitlementv2_source'
+      title: User Entitlement V2
+      type: object
+    sanctionedstatus:
+      description: Sanctioned status for a Business Application or derived machine
+        identity effective status.
+      enum:
+      - SANCTIONED
+      - UNSANCTIONED
+      - UNKNOWN
+      example: SANCTIONED
+      title: Sanctioned Status
+      type: string
+    businessapplicationref:
+      description: Reference to a Business Application associated with a machine identity.
+      example:
+        name: Cursor
+        correlationType: MANUAL
+        id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        type: BUSINESS_APPLICATION
+        sanctionedStatus: SANCTIONED
+      properties:
+        type:
+          description: Reference type.
+          example: BUSINESS_APPLICATION
+          type: string
+        id:
+          description: Business Application ID.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          type: string
+        name:
+          description: Business Application display name.
+          example: Cursor
+          nullable: true
+          type: string
+        sanctionedStatus:
+          $ref: '#/components/schemas/sanctionedstatus'
+        correlationType:
+          description: Whether the Business Application reference was manually assigned
+            or automatically correlated.
+          enum:
+          - MANUAL
+          - AUTOMATIC
+          example: MANUAL
+          type: string
+      title: Business Application Ref
+      type: object
+    machineidentityv2:
+      allOf:
+      - $ref: '#/components/schemas/basecommondto'
+      - properties:
+          description:
+            description: Description of the machine identity.
+            example: Service account for nightly batch jobs
+            type: string
+          attributes:
+            additionalProperties: true
+            description: A map of custom machine identity attributes.
+            example:
+              privilegeLevel: HIGH
+              region: APAC
+            type: object
+          connectorAttributes:
+            additionalProperties: true
+            description: A map of attributes sourced from the connector during aggregation.
+            example:
+              objectguid: abc-123
+            type: object
+          manuallyEdited:
+            default: false
+            description: Indicates if the machine identity has been manually edited.
+            example: true
+            type: boolean
+          manuallyCreated:
+            default: false
+            description: Indicates if the machine identity has been manually created.
+            example: true
+            type: boolean
+          owners:
+            $ref: '#/components/schemas/machineidentityownersv2'
+          subtype:
+            description: The subtype value associated to the machine identity.
+            example: AI_AGENT
+            type: string
+          sourceId:
+            description: The source id associated to the machine identity.
+            example: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+            type: string
+          uuid:
+            description: The UUID associated to the machine identity directly aggregated
+              from a source.
+            example: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+            type: string
+          nativeIdentity:
+            description: The native identity associated to the machine identity directly
+              aggregated from a source.
+            example: abc:123:dddd
+            type: string
+          datasetId:
+            description: The dataset id associated to the source from which the identity
+              was retrieved.
+            example: 8886e5e3-63d0-462f-a195-d98da885b8dc
+            type: string
+          environment:
+            description: The environment the machine identity belongs to.
+            example: PRODUCTION
+            type: string
+          existsOnSource:
+            description: Indicates whether the machine identity still exists on the
+              source.
+            example: "TRUE"
+            type: string
+          status:
+            description: Operational status read from stored attributes.status; null
+              when absent.
+            example: ACTIVE
+            nullable: true
+            type: string
+          resource:
+            $ref: '#/components/schemas/resourcev2'
+          source:
+            $ref: '#/components/schemas/Machine_Identity_V2_source'
+          userEntitlements:
+            description: The user entitlements associated to the machine identity.
+            items:
+              $ref: '#/components/schemas/userentitlementv2'
+            type: array
+          businessApplicationRefs:
+            description: Optional Business Application references associated with
+              this machine identity.
+            items:
+              $ref: '#/components/schemas/businessapplicationref'
+            nullable: true
+            type: array
+          effectiveSanctionedStatus:
+            $ref: '#/components/schemas/sanctionedstatus'
+          risk:
+            $ref: '#/components/schemas/Machine_Identity_V2_risk'
+        title: Machine Identity V2
+        type: object
+      example:
+        sourceId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        resource:
+          features:
+          - PROVISIONING
+          - AUTHENTICATION
+          name: nightly-batch-role
+          id: 8886e5e3-63d0-462f-a195-d98da885b8dc
+          type: aws:iam-role
+        created: 2015-05-28T14:07:17Z
+        connectorAttributes:
+          objectguid: abc-123
+        description: Service account for nightly batch jobs
+        owners:
+          secondary:
+          - id: 2c9180858082150f0180893dbaf44202
+            name: Jane Doe
+            type: IDENTITY
+          primary:
+            name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+        source:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        uuid: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+        nativeIdentity: abc:123:dddd
+        effectiveSanctionedStatus: SANCTIONED
+        environment: PRODUCTION
+        subtype: AI_AGENT
+        businessApplicationRefs:
+        - name: Cursor
+          correlationType: MANUAL
+          id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          type: BUSINESS_APPLICATION
+          sanctionedStatus: SANCTIONED
+        - name: Cursor
+          correlationType: MANUAL
+          id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          type: BUSINESS_APPLICATION
+          sanctionedStatus: SANCTIONED
+        userEntitlements:
+        - sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          displayName: Entitlement Name
+          entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          source:
+            name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+        - sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          displayName: Entitlement Name
+          entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          source:
+            name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        datasetId: 8886e5e3-63d0-462f-a195-d98da885b8dc
+        attributes:
+          privilegeLevel: HIGH
+          region: APAC
+        risk:
+          severity: HIGH
+          score: 72.5
+        id: id12345
+        manuallyEdited: true
+        manuallyCreated: true
+        existsOnSource: "TRUE"
+        status: ACTIVE
+    jsonpatchoperation:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/jsonpatchoperation_value'
+      required:
+      - op
+      - path
+      title: Json Patch Operation
+      type: object
+    correlationruleaction:
+      description: The action applied when a correlation rule matches.
+      example:
+        payload:
+          identityId: 2c9180858082150f0180893dbaf44201
+        type: IDENTITY
+      properties:
+        type:
+          description: The target owner type resolved by this action.
+          enum:
+          - IDENTITY
+          - ACCOUNT
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+        payload:
+          additionalProperties: true
+          description: Action-specific payload.
+          example:
+            identityId: 2c9180858082150f0180893dbaf44201
+          type: object
+      required:
+      - type
+      title: Correlation Rule Action
+      type: object
+    correlationcondition:
+      description: A single condition expression within a correlation rule.
+      example:
+        transform: toUpper
+        rightAttributeName: owner
+        id: 1b2c3d4e-5f60-4a7b-8c9d-0e1f2a3b4c5d
+        operatorType: EQUALS
+        leftAttributeName: manager
+        ordinal: 0
+      properties:
+        id:
+          description: System-generated unique ID of the condition.
+          example: 1b2c3d4e-5f60-4a7b-8c9d-0e1f2a3b4c5d
+          format: uuid
+          type: string
+        leftAttributeName:
+          description: The left-hand attribute name of the condition.
+          example: manager
+          type: string
+        operatorType:
+          description: The comparison operator applied between the left and right
+            attributes.
+          example: EQUALS
+          type: string
+        rightAttributeName:
+          description: The right-hand attribute name. Use an empty string when there
+            is no RHS attribute.
+          example: owner
+          type: string
+        transform:
+          description: Optional transform applied before comparison.
+          example: toUpper
+          nullable: true
+          type: string
+        ordinal:
+          description: The position of this condition within the rule.
+          example: 0
+          format: int32
+          type: integer
+      required:
+      - leftAttributeName
+      - operatorType
+      - ordinal
+      - rightAttributeName
+      title: Correlation Condition
+      type: object
+    correlationrule:
+      description: A single correlation rule within an ownership correlation config.
+      example:
+        ruleAction:
+          payload:
+            identityId: 2c9180858082150f0180893dbaf44201
+          type: IDENTITY
+        ruleType: IDENTITY
+        id: 9c1f0b6a-2f2e-4a2b-8b7c-1a2b3c4d5e6f
+        priority: 1
+        conditionExpressions:
+        - transform: toUpper
+          rightAttributeName: owner
+          id: 1b2c3d4e-5f60-4a7b-8c9d-0e1f2a3b4c5d
+          operatorType: EQUALS
+          leftAttributeName: manager
+          ordinal: 0
+        - transform: toUpper
+          rightAttributeName: owner
+          id: 1b2c3d4e-5f60-4a7b-8c9d-0e1f2a3b4c5d
+          operatorType: EQUALS
+          leftAttributeName: manager
+          ordinal: 0
+        defaultRule: false
+      properties:
+        id:
+          description: Omit for new rules (server mints a UUID). Send only when updating
+            a rule that already exists on this config (merge on PATCH). Unknown ids
+            are rejected.
+          example: 9c1f0b6a-2f2e-4a2b-8b7c-1a2b3c4d5e6f
+          format: uuid
+          type: string
+        priority:
+          description: The evaluation priority of the rule. Lower values are evaluated
+            first.
+          example: 1
+          format: int32
+          type: integer
+        defaultRule:
+          description: Whether this rule is the default rule for the config.
+          example: false
+          type: boolean
+        ruleType:
+          description: "The rule subject type. When either ruleType or ruleAction.type\
+            \ is GOVERNANCE_GROUP, both must be; ruleType GOVERNANCE_GROUP is allowed\
+            \ only when the parent config type is OWNER_SECONDARY."
+          enum:
+          - IDENTITY
+          - ACCOUNT
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+        ruleAction:
+          $ref: '#/components/schemas/correlationruleaction'
+        conditionExpressions:
+          description: The conditions that must match for this rule to apply.
+          items:
+            $ref: '#/components/schemas/correlationcondition'
+          type: array
+      required:
+      - conditionExpressions
+      - defaultRule
+      - priority
+      - ruleAction
+      - ruleType
+      title: Correlation Rule
+      type: object
+    correlationconfig:
+      description: An ownership correlation config scoped to a source resource. Configs
+        are of type OWNER_PRIMARY or OWNER_SECONDARY and drive how machine identity
+        owners are correlated.
+      example:
+        sourceId: 2c9180835d191a86015d28455b4a2329
+        resourceId: aws:iam-role
+        created: 2015-05-28T14:07:17Z
+        modified: 2015-05-28T14:07:17Z
+        attributes:
+          syncPrimaryToMachineAccounts: true
+        rules:
+        - ruleAction:
+            payload:
+              identityId: 2c9180858082150f0180893dbaf44201
+            type: IDENTITY
+          ruleType: IDENTITY
+          id: 9c1f0b6a-2f2e-4a2b-8b7c-1a2b3c4d5e6f
+          priority: 1
+          conditionExpressions:
+          - transform: toUpper
+            rightAttributeName: owner
+            id: 1b2c3d4e-5f60-4a7b-8c9d-0e1f2a3b4c5d
+            operatorType: EQUALS
+            leftAttributeName: manager
+            ordinal: 0
+          - transform: toUpper
+            rightAttributeName: owner
+            id: 1b2c3d4e-5f60-4a7b-8c9d-0e1f2a3b4c5d
+            operatorType: EQUALS
+            leftAttributeName: manager
+            ordinal: 0
+          defaultRule: false
+        - ruleAction:
+            payload:
+              identityId: 2c9180858082150f0180893dbaf44201
+            type: IDENTITY
+          ruleType: IDENTITY
+          id: 9c1f0b6a-2f2e-4a2b-8b7c-1a2b3c4d5e6f
+          priority: 1
+          conditionExpressions:
+          - transform: toUpper
+            rightAttributeName: owner
+            id: 1b2c3d4e-5f60-4a7b-8c9d-0e1f2a3b4c5d
+            operatorType: EQUALS
+            leftAttributeName: manager
+            ordinal: 0
+          - transform: toUpper
+            rightAttributeName: owner
+            id: 1b2c3d4e-5f60-4a7b-8c9d-0e1f2a3b4c5d
+            operatorType: EQUALS
+            leftAttributeName: manager
+            ordinal: 0
+          defaultRule: false
+        id: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+        type: OWNER_PRIMARY
+      properties:
+        id:
+          description: System-generated unique ID of the correlation config.
+          example: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+          format: uuid
+          type: string
+        sourceId:
+          description: The source ID this config belongs to.
+          example: 2c9180835d191a86015d28455b4a2329
+          type: string
+        resourceId:
+          description: The source resource identifier for this config scope.
+          example: aws:iam-role
+          type: string
+        type:
+          description: The correlation config type.
+          enum:
+          - OWNER_PRIMARY
+          - OWNER_SECONDARY
+          example: OWNER_PRIMARY
+          type: string
+        attributes:
+          additionalProperties: true
+          description: JSON object of config attributes. May include syncPrimaryToMachineAccounts
+            (boolean) on OWNER_PRIMARY only.
+          example:
+            syncPrimaryToMachineAccounts: true
+          type: object
+        rules:
+          description: The ordered set of correlation rules for this config.
+          items:
+            $ref: '#/components/schemas/correlationrule'
+          type: array
+        created:
+          description: Creation date of the config.
+          example: 2015-05-28T14:07:17Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: Last modification date of the config.
+          example: 2015-05-28T14:07:17Z
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - attributes
+      - id
+      - resourceId
+      - rules
+      - sourceId
+      - type
+      title: Correlation Config
+      type: object
     machineidentityaggregationrequest:
       properties:
         datasetIds:
@@ -1859,6 +3643,98 @@ components:
       - entitlementId
       - sourceId
       type: object
+    machineidentityownersv2_primary:
+      allOf:
+      - $ref: '#/components/schemas/basereferencedto'
+      - example:
+          id: 2c9180858082150f0180893dbaf44201
+          name: John Doe
+          type: IDENTITY
+      description: The identity selected as the primary owner.
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+    userentitlementv2_source:
+      allOf:
+      - $ref: '#/components/schemas/basereferencedto'
+      - example:
+          id: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          name: Test Source
+          type: SOURCE
+      description: The source of the entitlement.
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+    Machine_Identity_V2_source:
+      allOf:
+      - $ref: '#/components/schemas/basereferencedto'
+      - example:
+          id: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+          name: Active Directory
+          type: SOURCE
+      description: The source of the machine identity.
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+      readOnly: true
+    Machine_Identity_V2_risk:
+      description: Risk data for the machine identity; null when no risk data has
+        landed yet.
+      example:
+        severity: HIGH
+        score: 72.5
+      properties:
+        score:
+          description: Normalised risk score 0.0-100.0.
+          example: 72.5
+          format: double
+          type: number
+        severity:
+          description: Risk severity bucket.
+          enum:
+          - CRITICAL
+          - HIGH
+          - MEDIUM
+          - LOW
+          example: HIGH
+          type: string
+      readOnly: true
+      type: object
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    jsonpatchoperation_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
     taskstatusmessage_parameters_inner:
       anyOf:
       - type: object

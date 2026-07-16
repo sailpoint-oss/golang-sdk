@@ -80,21 +80,38 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MachineIdentitiesAPI* | [**CreateMachineIdentityV1**](docs/MachineIdentitiesAPI.md#createmachineidentityv1) | **Post** /machine-identities/v1 | Create machine identity
+*MachineIdentitiesAPI* | [**CreateMachineIdentityV2**](docs/MachineIdentitiesAPI.md#createmachineidentityv2) | **Post** /machine-identities/v2 | Create machine identity
 *MachineIdentitiesAPI* | [**DeleteMachineIdentityV1**](docs/MachineIdentitiesAPI.md#deletemachineidentityv1) | **Delete** /machine-identities/v1/{id} | Delete machine identity
+*MachineIdentitiesAPI* | [**DeleteMachineIdentityV2**](docs/MachineIdentitiesAPI.md#deletemachineidentityv2) | **Delete** /machine-identities/v2/{id} | Delete machine identity
+*MachineIdentitiesAPI* | [**DeleteOwnershipCorrelationConfigV1**](docs/MachineIdentitiesAPI.md#deleteownershipcorrelationconfigv1) | **Delete** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Delete ownership correlation config
 *MachineIdentitiesAPI* | [**GetMachineIdentityV1**](docs/MachineIdentitiesAPI.md#getmachineidentityv1) | **Get** /machine-identities/v1/{id} | Get machine identity details
+*MachineIdentitiesAPI* | [**GetMachineIdentityV2**](docs/MachineIdentitiesAPI.md#getmachineidentityv2) | **Get** /machine-identities/v2/{id} | Get machine identity details
+*MachineIdentitiesAPI* | [**GetOwnershipCorrelationConfigV1**](docs/MachineIdentitiesAPI.md#getownershipcorrelationconfigv1) | **Get** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Get ownership correlation config
 *MachineIdentitiesAPI* | [**ListMachineIdentitiesV1**](docs/MachineIdentitiesAPI.md#listmachineidentitiesv1) | **Get** /machine-identities/v1 | List machine identities
+*MachineIdentitiesAPI* | [**ListMachineIdentitiesV2**](docs/MachineIdentitiesAPI.md#listmachineidentitiesv2) | **Get** /machine-identities/v2 | List machine identities
 *MachineIdentitiesAPI* | [**ListMachineIdentityUserEntitlementsV1**](docs/MachineIdentitiesAPI.md#listmachineidentityuserentitlementsv1) | **Get** /machine-identity-user-entitlements/v1 | List machine identity&#39;s user entitlements
+*MachineIdentitiesAPI* | [**ListOwnershipCorrelationConfigsV1**](docs/MachineIdentitiesAPI.md#listownershipcorrelationconfigsv1) | **Get** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs | List ownership correlation configs
+*MachineIdentitiesAPI* | [**PatchOwnershipCorrelationConfigV1**](docs/MachineIdentitiesAPI.md#patchownershipcorrelationconfigv1) | **Patch** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Patch ownership correlation config
 *MachineIdentitiesAPI* | [**StartMachineIdentityAggregationV1**](docs/MachineIdentitiesAPI.md#startmachineidentityaggregationv1) | **Post** /sources/v1/{sourceId}/aggregate-agents | Start machine identity aggregation
 *MachineIdentitiesAPI* | [**UpdateMachineIdentityV1**](docs/MachineIdentitiesAPI.md#updatemachineidentityv1) | **Patch** /machine-identities/v1/{id} | Update machine identity details
+*MachineIdentitiesAPI* | [**UpdateMachineIdentityV2**](docs/MachineIdentitiesAPI.md#updatemachineidentityv2) | **Patch** /machine-identities/v2/{id} | Partial update of machine identity
 
 
 ## Documentation For Models
 
+ - [ArrayInner](docs/ArrayInner.md)
  - [Basecommondto](docs/Basecommondto.md)
  - [Basereferencedto](docs/Basereferencedto.md)
+ - [Businessapplicationref](docs/Businessapplicationref.md)
+ - [Correlationcondition](docs/Correlationcondition.md)
+ - [Correlationconfig](docs/Correlationconfig.md)
+ - [Correlationrule](docs/Correlationrule.md)
+ - [Correlationruleaction](docs/Correlationruleaction.md)
  - [Dtotype](docs/Dtotype.md)
  - [Errormessagedto](docs/Errormessagedto.md)
  - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
+ - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
  - [ListMachineIdentitiesV1401Response](docs/ListMachineIdentitiesV1401Response.md)
  - [ListMachineIdentitiesV1429Response](docs/ListMachineIdentitiesV1429Response.md)
  - [Localeorigin](docs/Localeorigin.md)
@@ -102,19 +119,28 @@ Class | Method | HTTP request | Description
  - [MachineIdentityDtoOwners](docs/MachineIdentityDtoOwners.md)
  - [MachineIdentityRequestUserEntitlements](docs/MachineIdentityRequestUserEntitlements.md)
  - [MachineIdentityResponseUserEntitlements](docs/MachineIdentityResponseUserEntitlements.md)
+ - [MachineIdentityV2Risk](docs/MachineIdentityV2Risk.md)
+ - [MachineIdentityV2Source](docs/MachineIdentityV2Source.md)
  - [Machineidentity](docs/Machineidentity.md)
  - [Machineidentityaggregationrequest](docs/Machineidentityaggregationrequest.md)
  - [Machineidentityaggregationresponse](docs/Machineidentityaggregationresponse.md)
  - [MachineidentityaggregationresponseTarget](docs/MachineidentityaggregationresponseTarget.md)
+ - [Machineidentityownersv2](docs/Machineidentityownersv2.md)
+ - [Machineidentityownersv2Primary](docs/Machineidentityownersv2Primary.md)
  - [Machineidentityrequest](docs/Machineidentityrequest.md)
  - [Machineidentityresponse](docs/Machineidentityresponse.md)
  - [Machineidentityuserentitlementresponse](docs/Machineidentityuserentitlementresponse.md)
  - [MachineidentityuserentitlementresponseEntitlement](docs/MachineidentityuserentitlementresponseEntitlement.md)
  - [MachineidentityuserentitlementresponseSource](docs/MachineidentityuserentitlementresponseSource.md)
+ - [Machineidentityv2](docs/Machineidentityv2.md)
+ - [Resourcev2](docs/Resourcev2.md)
+ - [Sanctionedstatus](docs/Sanctionedstatus.md)
  - [Taskdefinitionsummary](docs/Taskdefinitionsummary.md)
  - [Taskreturndetails](docs/Taskreturndetails.md)
  - [Taskstatusmessage](docs/Taskstatusmessage.md)
  - [TaskstatusmessageParametersInner](docs/TaskstatusmessageParametersInner.md)
+ - [Userentitlementv2](docs/Userentitlementv2.md)
+ - [Userentitlementv2Source](docs/Userentitlementv2Source.md)
 
 
 ## Documentation For Authorization
