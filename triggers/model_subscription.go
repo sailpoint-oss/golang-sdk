@@ -30,11 +30,11 @@ type Subscription struct {
 	TriggerId string `json:"triggerId"`
 	// Trigger name of trigger subscribed to.
 	TriggerName string `json:"triggerName"`
-	Type Subscriptiontype `json:"type"`
+	Type SubscriptionType `json:"type"`
 	// Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format.
 	ResponseDeadline *string `json:"responseDeadline,omitempty"`
-	HttpConfig *Httpconfig `json:"httpConfig,omitempty"`
-	EventBridgeConfig *Eventbridgeconfig `json:"eventBridgeConfig,omitempty"`
+	HttpConfig *HttpConfig `json:"httpConfig,omitempty"`
+	EventBridgeConfig *EventBridgeConfig `json:"eventBridgeConfig,omitempty"`
 	// Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option.
 	Enabled bool `json:"enabled"`
 	// JSONPath filter to conditionally invoke trigger when expression evaluates to true.
@@ -48,7 +48,7 @@ type _Subscription Subscription
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscription(id string, name string, triggerId string, triggerName string, type_ Subscriptiontype, enabled bool) *Subscription {
+func NewSubscription(id string, name string, triggerId string, triggerName string, type_ SubscriptionType, enabled bool) *Subscription {
 	this := Subscription{}
 	this.Id = id
 	this.Name = name
@@ -202,9 +202,9 @@ func (o *Subscription) SetTriggerName(v string) {
 }
 
 // GetType returns the Type field value
-func (o *Subscription) GetType() Subscriptiontype {
+func (o *Subscription) GetType() SubscriptionType {
 	if o == nil {
-		var ret Subscriptiontype
+		var ret SubscriptionType
 		return ret
 	}
 
@@ -213,7 +213,7 @@ func (o *Subscription) GetType() Subscriptiontype {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Subscription) GetTypeOk() (*Subscriptiontype, bool) {
+func (o *Subscription) GetTypeOk() (*SubscriptionType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -221,7 +221,7 @@ func (o *Subscription) GetTypeOk() (*Subscriptiontype, bool) {
 }
 
 // SetType sets field value
-func (o *Subscription) SetType(v Subscriptiontype) {
+func (o *Subscription) SetType(v SubscriptionType) {
 	o.Type = v
 }
 
@@ -258,9 +258,9 @@ func (o *Subscription) SetResponseDeadline(v string) {
 }
 
 // GetHttpConfig returns the HttpConfig field value if set, zero value otherwise.
-func (o *Subscription) GetHttpConfig() Httpconfig {
+func (o *Subscription) GetHttpConfig() HttpConfig {
 	if o == nil || IsNil(o.HttpConfig) {
-		var ret Httpconfig
+		var ret HttpConfig
 		return ret
 	}
 	return *o.HttpConfig
@@ -268,7 +268,7 @@ func (o *Subscription) GetHttpConfig() Httpconfig {
 
 // GetHttpConfigOk returns a tuple with the HttpConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Subscription) GetHttpConfigOk() (*Httpconfig, bool) {
+func (o *Subscription) GetHttpConfigOk() (*HttpConfig, bool) {
 	if o == nil || IsNil(o.HttpConfig) {
 		return nil, false
 	}
@@ -284,15 +284,15 @@ func (o *Subscription) HasHttpConfig() bool {
 	return false
 }
 
-// SetHttpConfig gets a reference to the given Httpconfig and assigns it to the HttpConfig field.
-func (o *Subscription) SetHttpConfig(v Httpconfig) {
+// SetHttpConfig gets a reference to the given HttpConfig and assigns it to the HttpConfig field.
+func (o *Subscription) SetHttpConfig(v HttpConfig) {
 	o.HttpConfig = &v
 }
 
 // GetEventBridgeConfig returns the EventBridgeConfig field value if set, zero value otherwise.
-func (o *Subscription) GetEventBridgeConfig() Eventbridgeconfig {
+func (o *Subscription) GetEventBridgeConfig() EventBridgeConfig {
 	if o == nil || IsNil(o.EventBridgeConfig) {
-		var ret Eventbridgeconfig
+		var ret EventBridgeConfig
 		return ret
 	}
 	return *o.EventBridgeConfig
@@ -300,7 +300,7 @@ func (o *Subscription) GetEventBridgeConfig() Eventbridgeconfig {
 
 // GetEventBridgeConfigOk returns a tuple with the EventBridgeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Subscription) GetEventBridgeConfigOk() (*Eventbridgeconfig, bool) {
+func (o *Subscription) GetEventBridgeConfigOk() (*EventBridgeConfig, bool) {
 	if o == nil || IsNil(o.EventBridgeConfig) {
 		return nil, false
 	}
@@ -316,8 +316,8 @@ func (o *Subscription) HasEventBridgeConfig() bool {
 	return false
 }
 
-// SetEventBridgeConfig gets a reference to the given Eventbridgeconfig and assigns it to the EventBridgeConfig field.
-func (o *Subscription) SetEventBridgeConfig(v Eventbridgeconfig) {
+// SetEventBridgeConfig gets a reference to the given EventBridgeConfig and assigns it to the EventBridgeConfig field.
+func (o *Subscription) SetEventBridgeConfig(v EventBridgeConfig) {
 	o.EventBridgeConfig = &v
 }
 

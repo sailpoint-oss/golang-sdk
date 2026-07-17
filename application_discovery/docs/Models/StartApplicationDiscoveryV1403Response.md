@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DetailCode** | Pointer to **string** | Fine-grained error code providing more detail of the error. | [optional] 
 **TrackingId** | Pointer to **string** | Unique tracking id for the error. | [optional] 
-**Messages** | Pointer to [**[]Errormessagedto**](errormessagedto) | Generic localized reason for error | [optional] 
-**Causes** | Pointer to [**[]Errormessagedto**](errormessagedto) | Plain-text descriptive reasons to provide additional detail to the text provided in the messages field | [optional] 
+**Messages** | Pointer to [**[]ErrorMessageDto**](error-message-dto) | Generic localized reason for error | [optional] 
+**Causes** | Pointer to [**[]ErrorMessageDto**](error-message-dto) | Plain-text descriptive reasons to provide additional detail to the text provided in the messages field | [optional] 
 **Error** | **string** | Error message when quota is exceeded | 
 
 ## Methods
@@ -92,20 +92,20 @@ HasTrackingId returns a boolean if a field has been set.
 
 ### GetMessages
 
-`func (o *StartApplicationDiscoveryV1403Response) GetMessages() []Errormessagedto`
+`func (o *StartApplicationDiscoveryV1403Response) GetMessages() []ErrorMessageDto`
 
 GetMessages returns the Messages field if non-nil, zero value otherwise.
 
 ### GetMessagesOk
 
-`func (o *StartApplicationDiscoveryV1403Response) GetMessagesOk() (*[]Errormessagedto, bool)`
+`func (o *StartApplicationDiscoveryV1403Response) GetMessagesOk() (*[]ErrorMessageDto, bool)`
 
 GetMessagesOk returns a tuple with the Messages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessages
 
-`func (o *StartApplicationDiscoveryV1403Response) SetMessages(v []Errormessagedto)`
+`func (o *StartApplicationDiscoveryV1403Response) SetMessages(v []ErrorMessageDto)`
 
 SetMessages sets Messages field to given value.
 
@@ -117,20 +117,20 @@ HasMessages returns a boolean if a field has been set.
 
 ### GetCauses
 
-`func (o *StartApplicationDiscoveryV1403Response) GetCauses() []Errormessagedto`
+`func (o *StartApplicationDiscoveryV1403Response) GetCauses() []ErrorMessageDto`
 
 GetCauses returns the Causes field if non-nil, zero value otherwise.
 
 ### GetCausesOk
 
-`func (o *StartApplicationDiscoveryV1403Response) GetCausesOk() (*[]Errormessagedto, bool)`
+`func (o *StartApplicationDiscoveryV1403Response) GetCausesOk() (*[]ErrorMessageDto, bool)`
 
 GetCausesOk returns a tuple with the Causes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCauses
 
-`func (o *StartApplicationDiscoveryV1403Response) SetCauses(v []Errormessagedto)`
+`func (o *StartApplicationDiscoveryV1403Response) SetCauses(v []ErrorMessageDto)`
 
 SetCauses sets Causes field to given value.
 

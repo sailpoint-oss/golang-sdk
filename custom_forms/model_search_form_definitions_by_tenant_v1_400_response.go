@@ -20,7 +20,7 @@ var _ MappedNullable = &SearchFormDefinitionsByTenantV1400Response{}
 // SearchFormDefinitionsByTenantV1400Response struct for SearchFormDefinitionsByTenantV1400Response
 type SearchFormDefinitionsByTenantV1400Response struct {
 	DetailCode *string `json:"detailCode,omitempty"`
-	Messages []Errormessage `json:"messages,omitempty"`
+	Messages []ErrorMessage `json:"messages,omitempty"`
 	StatusCode *int64 `json:"statusCode,omitempty"`
 	TrackingId *string `json:"trackingId,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -78,9 +78,9 @@ func (o *SearchFormDefinitionsByTenantV1400Response) SetDetailCode(v string) {
 }
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
-func (o *SearchFormDefinitionsByTenantV1400Response) GetMessages() []Errormessage {
+func (o *SearchFormDefinitionsByTenantV1400Response) GetMessages() []ErrorMessage {
 	if o == nil || IsNil(o.Messages) {
-		var ret []Errormessage
+		var ret []ErrorMessage
 		return ret
 	}
 	return o.Messages
@@ -88,7 +88,7 @@ func (o *SearchFormDefinitionsByTenantV1400Response) GetMessages() []Errormessag
 
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchFormDefinitionsByTenantV1400Response) GetMessagesOk() ([]Errormessage, bool) {
+func (o *SearchFormDefinitionsByTenantV1400Response) GetMessagesOk() ([]ErrorMessage, bool) {
 	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *SearchFormDefinitionsByTenantV1400Response) HasMessages() bool {
 	return false
 }
 
-// SetMessages gets a reference to the given []Errormessage and assigns it to the Messages field.
-func (o *SearchFormDefinitionsByTenantV1400Response) SetMessages(v []Errormessage) {
+// SetMessages gets a reference to the given []ErrorMessage and assigns it to the Messages field.
+func (o *SearchFormDefinitionsByTenantV1400Response) SetMessages(v []ErrorMessage) {
 	o.Messages = v
 }
 

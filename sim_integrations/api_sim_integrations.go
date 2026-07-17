@@ -27,7 +27,7 @@ type ApiCreateSIMIntegrationV1Request struct {
 	ctx context.Context
 	ApiService *SIMIntegrationsAPIService
 	xSailPointExperimental *string
-	simintegrationdetails *Simintegrationdetails
+	simIntegrationDetails *SimIntegrationDetails
 }
 
 // Use this header to enable this experimental API.
@@ -37,12 +37,12 @@ func (r ApiCreateSIMIntegrationV1Request) XSailPointExperimental(xSailPointExper
 }
 
 // DTO containing the details of the SIM integration
-func (r ApiCreateSIMIntegrationV1Request) Simintegrationdetails(simintegrationdetails Simintegrationdetails) ApiCreateSIMIntegrationV1Request {
-	r.simintegrationdetails = &simintegrationdetails
+func (r ApiCreateSIMIntegrationV1Request) SimIntegrationDetails(simIntegrationDetails SimIntegrationDetails) ApiCreateSIMIntegrationV1Request {
+	r.simIntegrationDetails = &simIntegrationDetails
 	return r
 }
 
-func (r ApiCreateSIMIntegrationV1Request) Execute() (*Servicedeskintegrationdto, *http.Response, error) {
+func (r ApiCreateSIMIntegrationV1Request) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.CreateSIMIntegrationV1Execute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *SIMIntegrationsAPIService) CreateSIMIntegrationV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return Servicedeskintegrationdto
-func (a *SIMIntegrationsAPIService) CreateSIMIntegrationV1Execute(r ApiCreateSIMIntegrationV1Request) (*Servicedeskintegrationdto, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) CreateSIMIntegrationV1Execute(r ApiCreateSIMIntegrationV1Request) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Servicedeskintegrationdto
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.CreateSIMIntegrationV1")
@@ -96,8 +96,8 @@ func (a *SIMIntegrationsAPIService) CreateSIMIntegrationV1Execute(r ApiCreateSIM
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.simintegrationdetails == nil {
-		return localVarReturnValue, nil, reportError("simintegrationdetails is required and must be specified")
+	if r.simIntegrationDetails == nil {
+		return localVarReturnValue, nil, reportError("simIntegrationDetails is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -119,7 +119,7 @@ func (a *SIMIntegrationsAPIService) CreateSIMIntegrationV1Execute(r ApiCreateSIM
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.simintegrationdetails
+	localVarPostBody = r.simIntegrationDetails
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -143,7 +143,7 @@ func (a *SIMIntegrationsAPIService) CreateSIMIntegrationV1Execute(r ApiCreateSIM
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -165,7 +165,7 @@ func (a *SIMIntegrationsAPIService) CreateSIMIntegrationV1Execute(r ApiCreateSIM
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -176,7 +176,7 @@ func (a *SIMIntegrationsAPIService) CreateSIMIntegrationV1Execute(r ApiCreateSIM
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -198,7 +198,7 @@ func (a *SIMIntegrationsAPIService) CreateSIMIntegrationV1Execute(r ApiCreateSIM
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -326,7 +326,7 @@ func (a *SIMIntegrationsAPIService) DeleteSIMIntegrationV1Execute(r ApiDeleteSIM
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -348,7 +348,7 @@ func (a *SIMIntegrationsAPIService) DeleteSIMIntegrationV1Execute(r ApiDeleteSIM
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -359,7 +359,7 @@ func (a *SIMIntegrationsAPIService) DeleteSIMIntegrationV1Execute(r ApiDeleteSIM
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -381,7 +381,7 @@ func (a *SIMIntegrationsAPIService) DeleteSIMIntegrationV1Execute(r ApiDeleteSIM
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -409,7 +409,7 @@ func (r ApiGetSIMIntegrationV1Request) XSailPointExperimental(xSailPointExperime
 	return r
 }
 
-func (r ApiGetSIMIntegrationV1Request) Execute() (*Servicedeskintegrationdto, *http.Response, error) {
+func (r ApiGetSIMIntegrationV1Request) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.GetSIMIntegrationV1Execute(r)
 }
 
@@ -431,13 +431,13 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrationV1(ctx context.Context, id 
 }
 
 // Execute executes the request
-//  @return Servicedeskintegrationdto
-func (a *SIMIntegrationsAPIService) GetSIMIntegrationV1Execute(r ApiGetSIMIntegrationV1Request) (*Servicedeskintegrationdto, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) GetSIMIntegrationV1Execute(r ApiGetSIMIntegrationV1Request) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Servicedeskintegrationdto
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.GetSIMIntegrationV1")
@@ -502,7 +502,7 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrationV1Execute(r ApiGetSIMIntegr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -524,7 +524,7 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrationV1Execute(r ApiGetSIMIntegr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -535,7 +535,7 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrationV1Execute(r ApiGetSIMIntegr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -557,7 +557,7 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrationV1Execute(r ApiGetSIMIntegr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -593,7 +593,7 @@ func (r ApiGetSIMIntegrationsV1Request) XSailPointExperimental(xSailPointExperim
 	return r
 }
 
-func (r ApiGetSIMIntegrationsV1Request) Execute() ([]Servicedeskintegrationdto, *http.Response, error) {
+func (r ApiGetSIMIntegrationsV1Request) Execute() ([]ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.GetSIMIntegrationsV1Execute(r)
 }
 
@@ -613,13 +613,13 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrationsV1(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return []Servicedeskintegrationdto
-func (a *SIMIntegrationsAPIService) GetSIMIntegrationsV1Execute(r ApiGetSIMIntegrationsV1Request) ([]Servicedeskintegrationdto, *http.Response, error) {
+//  @return []ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) GetSIMIntegrationsV1Execute(r ApiGetSIMIntegrationsV1Request) ([]ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Servicedeskintegrationdto
+		localVarReturnValue  []ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.GetSIMIntegrationsV1")
@@ -683,7 +683,7 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrationsV1Execute(r ApiGetSIMInteg
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -705,7 +705,7 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrationsV1Execute(r ApiGetSIMInteg
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -716,7 +716,7 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrationsV1Execute(r ApiGetSIMInteg
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -738,7 +738,7 @@ func (a *SIMIntegrationsAPIService) GetSIMIntegrationsV1Execute(r ApiGetSIMInteg
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -767,7 +767,7 @@ type ApiPatchBeforeProvisioningRuleV1Request struct {
 	ApiService *SIMIntegrationsAPIService
 	id string
 	xSailPointExperimental *string
-	jsonpatch *Jsonpatch
+	jsonPatch *JsonPatch
 }
 
 // Use this header to enable this experimental API.
@@ -777,12 +777,12 @@ func (r ApiPatchBeforeProvisioningRuleV1Request) XSailPointExperimental(xSailPoi
 }
 
 // The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
-func (r ApiPatchBeforeProvisioningRuleV1Request) Jsonpatch(jsonpatch Jsonpatch) ApiPatchBeforeProvisioningRuleV1Request {
-	r.jsonpatch = &jsonpatch
+func (r ApiPatchBeforeProvisioningRuleV1Request) JsonPatch(jsonPatch JsonPatch) ApiPatchBeforeProvisioningRuleV1Request {
+	r.jsonPatch = &jsonPatch
 	return r
 }
 
-func (r ApiPatchBeforeProvisioningRuleV1Request) Execute() (*Servicedeskintegrationdto, *http.Response, error) {
+func (r ApiPatchBeforeProvisioningRuleV1Request) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.PatchBeforeProvisioningRuleV1Execute(r)
 }
 
@@ -804,13 +804,13 @@ func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRuleV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Servicedeskintegrationdto
-func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRuleV1Execute(r ApiPatchBeforeProvisioningRuleV1Request) (*Servicedeskintegrationdto, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRuleV1Execute(r ApiPatchBeforeProvisioningRuleV1Request) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Servicedeskintegrationdto
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.PatchBeforeProvisioningRuleV1")
@@ -839,8 +839,8 @@ func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRuleV1Execute(r ApiPa
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.jsonpatch == nil {
-		return localVarReturnValue, nil, reportError("jsonpatch is required and must be specified")
+	if r.jsonPatch == nil {
+		return localVarReturnValue, nil, reportError("jsonPatch is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -862,7 +862,7 @@ func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRuleV1Execute(r ApiPa
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatch
+	localVarPostBody = r.jsonPatch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -886,7 +886,7 @@ func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRuleV1Execute(r ApiPa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -908,7 +908,7 @@ func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRuleV1Execute(r ApiPa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -919,7 +919,7 @@ func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRuleV1Execute(r ApiPa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -941,7 +941,7 @@ func (a *SIMIntegrationsAPIService) PatchBeforeProvisioningRuleV1Execute(r ApiPa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -970,7 +970,7 @@ type ApiPatchSIMAttributesV1Request struct {
 	ApiService *SIMIntegrationsAPIService
 	id string
 	xSailPointExperimental *string
-	jsonpatch *Jsonpatch
+	jsonPatch *JsonPatch
 }
 
 // Use this header to enable this experimental API.
@@ -980,12 +980,12 @@ func (r ApiPatchSIMAttributesV1Request) XSailPointExperimental(xSailPointExperim
 }
 
 // The JsonPatch object that describes the changes of SIM
-func (r ApiPatchSIMAttributesV1Request) Jsonpatch(jsonpatch Jsonpatch) ApiPatchSIMAttributesV1Request {
-	r.jsonpatch = &jsonpatch
+func (r ApiPatchSIMAttributesV1Request) JsonPatch(jsonPatch JsonPatch) ApiPatchSIMAttributesV1Request {
+	r.jsonPatch = &jsonPatch
 	return r
 }
 
-func (r ApiPatchSIMAttributesV1Request) Execute() (*Servicedeskintegrationdto, *http.Response, error) {
+func (r ApiPatchSIMAttributesV1Request) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.PatchSIMAttributesV1Execute(r)
 }
 
@@ -1007,13 +1007,13 @@ func (a *SIMIntegrationsAPIService) PatchSIMAttributesV1(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return Servicedeskintegrationdto
-func (a *SIMIntegrationsAPIService) PatchSIMAttributesV1Execute(r ApiPatchSIMAttributesV1Request) (*Servicedeskintegrationdto, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) PatchSIMAttributesV1Execute(r ApiPatchSIMAttributesV1Request) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Servicedeskintegrationdto
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.PatchSIMAttributesV1")
@@ -1042,8 +1042,8 @@ func (a *SIMIntegrationsAPIService) PatchSIMAttributesV1Execute(r ApiPatchSIMAtt
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.jsonpatch == nil {
-		return localVarReturnValue, nil, reportError("jsonpatch is required and must be specified")
+	if r.jsonPatch == nil {
+		return localVarReturnValue, nil, reportError("jsonPatch is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1065,7 +1065,7 @@ func (a *SIMIntegrationsAPIService) PatchSIMAttributesV1Execute(r ApiPatchSIMAtt
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatch
+	localVarPostBody = r.jsonPatch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1089,7 +1089,7 @@ func (a *SIMIntegrationsAPIService) PatchSIMAttributesV1Execute(r ApiPatchSIMAtt
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1111,7 +1111,7 @@ func (a *SIMIntegrationsAPIService) PatchSIMAttributesV1Execute(r ApiPatchSIMAtt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1122,7 +1122,7 @@ func (a *SIMIntegrationsAPIService) PatchSIMAttributesV1Execute(r ApiPatchSIMAtt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1144,7 +1144,7 @@ func (a *SIMIntegrationsAPIService) PatchSIMAttributesV1Execute(r ApiPatchSIMAtt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1173,7 +1173,7 @@ type ApiPutSIMIntegrationV1Request struct {
 	ApiService *SIMIntegrationsAPIService
 	id string
 	xSailPointExperimental *string
-	simintegrationdetails *Simintegrationdetails
+	simIntegrationDetails *SimIntegrationDetails
 }
 
 // Use this header to enable this experimental API.
@@ -1183,12 +1183,12 @@ func (r ApiPutSIMIntegrationV1Request) XSailPointExperimental(xSailPointExperime
 }
 
 // The full DTO of the integration containing the updated model
-func (r ApiPutSIMIntegrationV1Request) Simintegrationdetails(simintegrationdetails Simintegrationdetails) ApiPutSIMIntegrationV1Request {
-	r.simintegrationdetails = &simintegrationdetails
+func (r ApiPutSIMIntegrationV1Request) SimIntegrationDetails(simIntegrationDetails SimIntegrationDetails) ApiPutSIMIntegrationV1Request {
+	r.simIntegrationDetails = &simIntegrationDetails
 	return r
 }
 
-func (r ApiPutSIMIntegrationV1Request) Execute() (*Servicedeskintegrationdto, *http.Response, error) {
+func (r ApiPutSIMIntegrationV1Request) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.PutSIMIntegrationV1Execute(r)
 }
 
@@ -1210,13 +1210,13 @@ func (a *SIMIntegrationsAPIService) PutSIMIntegrationV1(ctx context.Context, id 
 }
 
 // Execute executes the request
-//  @return Servicedeskintegrationdto
-func (a *SIMIntegrationsAPIService) PutSIMIntegrationV1Execute(r ApiPutSIMIntegrationV1Request) (*Servicedeskintegrationdto, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *SIMIntegrationsAPIService) PutSIMIntegrationV1Execute(r ApiPutSIMIntegrationV1Request) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Servicedeskintegrationdto
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SIMIntegrationsAPIService.PutSIMIntegrationV1")
@@ -1245,8 +1245,8 @@ func (a *SIMIntegrationsAPIService) PutSIMIntegrationV1Execute(r ApiPutSIMIntegr
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.simintegrationdetails == nil {
-		return localVarReturnValue, nil, reportError("simintegrationdetails is required and must be specified")
+	if r.simIntegrationDetails == nil {
+		return localVarReturnValue, nil, reportError("simIntegrationDetails is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1268,7 +1268,7 @@ func (a *SIMIntegrationsAPIService) PutSIMIntegrationV1Execute(r ApiPutSIMIntegr
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.simintegrationdetails
+	localVarPostBody = r.simIntegrationDetails
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1292,7 +1292,7 @@ func (a *SIMIntegrationsAPIService) PutSIMIntegrationV1Execute(r ApiPutSIMIntegr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1314,7 +1314,7 @@ func (a *SIMIntegrationsAPIService) PutSIMIntegrationV1Execute(r ApiPutSIMIntegr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1325,7 +1325,7 @@ func (a *SIMIntegrationsAPIService) PutSIMIntegrationV1Execute(r ApiPutSIMIntegr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1347,7 +1347,7 @@ func (a *SIMIntegrationsAPIService) PutSIMIntegrationV1Execute(r ApiPutSIMIntegr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

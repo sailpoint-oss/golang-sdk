@@ -28,15 +28,15 @@ type ApiApproveNonEmployeeRequestV1Request struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
-	nonemployeeapprovaldecision *Nonemployeeapprovaldecision
+	nonEmployeeApprovalDecision *NonEmployeeApprovalDecision
 }
 
-func (r ApiApproveNonEmployeeRequestV1Request) Nonemployeeapprovaldecision(nonemployeeapprovaldecision Nonemployeeapprovaldecision) ApiApproveNonEmployeeRequestV1Request {
-	r.nonemployeeapprovaldecision = &nonemployeeapprovaldecision
+func (r ApiApproveNonEmployeeRequestV1Request) NonEmployeeApprovalDecision(nonEmployeeApprovalDecision NonEmployeeApprovalDecision) ApiApproveNonEmployeeRequestV1Request {
+	r.nonEmployeeApprovalDecision = &nonEmployeeApprovalDecision
 	return r
 }
 
-func (r ApiApproveNonEmployeeRequestV1Request) Execute() (*Nonemployeeapprovalitem, *http.Response, error) {
+func (r ApiApproveNonEmployeeRequestV1Request) Execute() (*NonEmployeeApprovalItem, *http.Response, error) {
 	return r.ApiService.ApproveNonEmployeeRequestV1Execute(r)
 }
 
@@ -58,13 +58,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestV1(c
 }
 
 // Execute executes the request
-//  @return Nonemployeeapprovalitem
-func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestV1Execute(r ApiApproveNonEmployeeRequestV1Request) (*Nonemployeeapprovalitem, *http.Response, error) {
+//  @return NonEmployeeApprovalItem
+func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestV1Execute(r ApiApproveNonEmployeeRequestV1Request) (*NonEmployeeApprovalItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeeapprovalitem
+		localVarReturnValue  *NonEmployeeApprovalItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ApproveNonEmployeeRequestV1")
@@ -78,8 +78,8 @@ func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestV1Ex
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nonemployeeapprovaldecision == nil {
-		return localVarReturnValue, nil, reportError("nonemployeeapprovaldecision is required and must be specified")
+	if r.nonEmployeeApprovalDecision == nil {
+		return localVarReturnValue, nil, reportError("nonEmployeeApprovalDecision is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -100,7 +100,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestV1Ex
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.nonemployeeapprovaldecision
+	localVarPostBody = r.nonEmployeeApprovalDecision
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -124,7 +124,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestV1Ex
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -146,7 +146,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -168,7 +168,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -195,16 +195,16 @@ func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestV1Ex
 type ApiCreateNonEmployeeRecordV1Request struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
-	nonemployeerequestbody *Nonemployeerequestbody
+	nonEmployeeRequestBody *NonEmployeeRequestBody
 }
 
 // Non-Employee record creation request body.
-func (r ApiCreateNonEmployeeRecordV1Request) Nonemployeerequestbody(nonemployeerequestbody Nonemployeerequestbody) ApiCreateNonEmployeeRecordV1Request {
-	r.nonemployeerequestbody = &nonemployeerequestbody
+func (r ApiCreateNonEmployeeRecordV1Request) NonEmployeeRequestBody(nonEmployeeRequestBody NonEmployeeRequestBody) ApiCreateNonEmployeeRecordV1Request {
+	r.nonEmployeeRequestBody = &nonEmployeeRequestBody
 	return r
 }
 
-func (r ApiCreateNonEmployeeRecordV1Request) Execute() (*Nonemployeerecord, *http.Response, error) {
+func (r ApiCreateNonEmployeeRecordV1Request) Execute() (*NonEmployeeRecord, *http.Response, error) {
 	return r.ApiService.CreateNonEmployeeRecordV1Execute(r)
 }
 
@@ -225,13 +225,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordV1(ctx
 }
 
 // Execute executes the request
-//  @return Nonemployeerecord
-func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordV1Execute(r ApiCreateNonEmployeeRecordV1Request) (*Nonemployeerecord, *http.Response, error) {
+//  @return NonEmployeeRecord
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordV1Execute(r ApiCreateNonEmployeeRecordV1Request) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeerecord
+		localVarReturnValue  *NonEmployeeRecord
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.CreateNonEmployeeRecordV1")
@@ -244,8 +244,8 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordV1Exec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nonemployeerequestbody == nil {
-		return localVarReturnValue, nil, reportError("nonemployeerequestbody is required and must be specified")
+	if r.nonEmployeeRequestBody == nil {
+		return localVarReturnValue, nil, reportError("nonEmployeeRequestBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -266,7 +266,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordV1Exec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.nonemployeerequestbody
+	localVarPostBody = r.nonEmployeeRequestBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -290,7 +290,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -312,7 +312,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -334,7 +334,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -361,16 +361,16 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordV1Exec
 type ApiCreateNonEmployeeRequestV1Request struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
-	nonemployeerequestbody *Nonemployeerequestbody
+	nonEmployeeRequestBody *NonEmployeeRequestBody
 }
 
 // Non-Employee creation request body
-func (r ApiCreateNonEmployeeRequestV1Request) Nonemployeerequestbody(nonemployeerequestbody Nonemployeerequestbody) ApiCreateNonEmployeeRequestV1Request {
-	r.nonemployeerequestbody = &nonemployeerequestbody
+func (r ApiCreateNonEmployeeRequestV1Request) NonEmployeeRequestBody(nonEmployeeRequestBody NonEmployeeRequestBody) ApiCreateNonEmployeeRequestV1Request {
+	r.nonEmployeeRequestBody = &nonEmployeeRequestBody
 	return r
 }
 
-func (r ApiCreateNonEmployeeRequestV1Request) Execute() (*Nonemployeerequest, *http.Response, error) {
+func (r ApiCreateNonEmployeeRequestV1Request) Execute() (*NonEmployeeRequest, *http.Response, error) {
 	return r.ApiService.CreateNonEmployeeRequestV1Execute(r)
 }
 
@@ -390,13 +390,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestV1(ct
 }
 
 // Execute executes the request
-//  @return Nonemployeerequest
-func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestV1Execute(r ApiCreateNonEmployeeRequestV1Request) (*Nonemployeerequest, *http.Response, error) {
+//  @return NonEmployeeRequest
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestV1Execute(r ApiCreateNonEmployeeRequestV1Request) (*NonEmployeeRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeerequest
+		localVarReturnValue  *NonEmployeeRequest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.CreateNonEmployeeRequestV1")
@@ -409,8 +409,8 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestV1Exe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nonemployeerequestbody == nil {
-		return localVarReturnValue, nil, reportError("nonemployeerequestbody is required and must be specified")
+	if r.nonEmployeeRequestBody == nil {
+		return localVarReturnValue, nil, reportError("nonEmployeeRequestBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -431,7 +431,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestV1Exe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.nonemployeerequestbody
+	localVarPostBody = r.nonEmployeeRequestBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -455,7 +455,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestV1Exe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -477,7 +477,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -499,7 +499,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -527,15 +527,15 @@ type ApiCreateNonEmployeeSourceSchemaAttributesV1Request struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
 	sourceId string
-	nonemployeeschemaattributebody *Nonemployeeschemaattributebody
+	nonEmployeeSchemaAttributeBody *NonEmployeeSchemaAttributeBody
 }
 
-func (r ApiCreateNonEmployeeSourceSchemaAttributesV1Request) Nonemployeeschemaattributebody(nonemployeeschemaattributebody Nonemployeeschemaattributebody) ApiCreateNonEmployeeSourceSchemaAttributesV1Request {
-	r.nonemployeeschemaattributebody = &nonemployeeschemaattributebody
+func (r ApiCreateNonEmployeeSourceSchemaAttributesV1Request) NonEmployeeSchemaAttributeBody(nonEmployeeSchemaAttributeBody NonEmployeeSchemaAttributeBody) ApiCreateNonEmployeeSourceSchemaAttributesV1Request {
+	r.nonEmployeeSchemaAttributeBody = &nonEmployeeSchemaAttributeBody
 	return r
 }
 
-func (r ApiCreateNonEmployeeSourceSchemaAttributesV1Request) Execute() (*Nonemployeeschemaattribute, *http.Response, error) {
+func (r ApiCreateNonEmployeeSourceSchemaAttributesV1Request) Execute() (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	return r.ApiService.CreateNonEmployeeSourceSchemaAttributesV1Execute(r)
 }
 
@@ -558,13 +558,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchema
 }
 
 // Execute executes the request
-//  @return Nonemployeeschemaattribute
-func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchemaAttributesV1Execute(r ApiCreateNonEmployeeSourceSchemaAttributesV1Request) (*Nonemployeeschemaattribute, *http.Response, error) {
+//  @return NonEmployeeSchemaAttribute
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchemaAttributesV1Execute(r ApiCreateNonEmployeeSourceSchemaAttributesV1Request) (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeeschemaattribute
+		localVarReturnValue  *NonEmployeeSchemaAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.CreateNonEmployeeSourceSchemaAttributesV1")
@@ -578,8 +578,8 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchema
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nonemployeeschemaattributebody == nil {
-		return localVarReturnValue, nil, reportError("nonemployeeschemaattributebody is required and must be specified")
+	if r.nonEmployeeSchemaAttributeBody == nil {
+		return localVarReturnValue, nil, reportError("nonEmployeeSchemaAttributeBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -600,7 +600,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchema
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.nonemployeeschemaattributebody
+	localVarPostBody = r.nonEmployeeSchemaAttributeBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -624,7 +624,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchema
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -646,7 +646,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchema
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -668,7 +668,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchema
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -695,16 +695,16 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchema
 type ApiCreateNonEmployeeSourceV1Request struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
-	nonemployeesourcerequestbody *Nonemployeesourcerequestbody
+	nonEmployeeSourceRequestBody *NonEmployeeSourceRequestBody
 }
 
 // Non-Employee source creation request body.
-func (r ApiCreateNonEmployeeSourceV1Request) Nonemployeesourcerequestbody(nonemployeesourcerequestbody Nonemployeesourcerequestbody) ApiCreateNonEmployeeSourceV1Request {
-	r.nonemployeesourcerequestbody = &nonemployeesourcerequestbody
+func (r ApiCreateNonEmployeeSourceV1Request) NonEmployeeSourceRequestBody(nonEmployeeSourceRequestBody NonEmployeeSourceRequestBody) ApiCreateNonEmployeeSourceV1Request {
+	r.nonEmployeeSourceRequestBody = &nonEmployeeSourceRequestBody
 	return r
 }
 
-func (r ApiCreateNonEmployeeSourceV1Request) Execute() (*Nonemployeesourcewithcloudexternalid, *http.Response, error) {
+func (r ApiCreateNonEmployeeSourceV1Request) Execute() (*NonEmployeeSourceWithCloudExternalId, *http.Response, error) {
 	return r.ApiService.CreateNonEmployeeSourceV1Execute(r)
 }
 
@@ -724,13 +724,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceV1(ctx
 }
 
 // Execute executes the request
-//  @return Nonemployeesourcewithcloudexternalid
-func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceV1Execute(r ApiCreateNonEmployeeSourceV1Request) (*Nonemployeesourcewithcloudexternalid, *http.Response, error) {
+//  @return NonEmployeeSourceWithCloudExternalId
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceV1Execute(r ApiCreateNonEmployeeSourceV1Request) (*NonEmployeeSourceWithCloudExternalId, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeesourcewithcloudexternalid
+		localVarReturnValue  *NonEmployeeSourceWithCloudExternalId
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.CreateNonEmployeeSourceV1")
@@ -743,8 +743,8 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceV1Exec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nonemployeesourcerequestbody == nil {
-		return localVarReturnValue, nil, reportError("nonemployeesourcerequestbody is required and must be specified")
+	if r.nonEmployeeSourceRequestBody == nil {
+		return localVarReturnValue, nil, reportError("nonEmployeeSourceRequestBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -765,7 +765,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceV1Exec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.nonemployeesourcerequestbody
+	localVarPostBody = r.nonEmployeeSourceRequestBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -789,7 +789,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -811,7 +811,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -833,7 +833,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -945,7 +945,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -967,7 +967,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordV1Exec
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -989,7 +989,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordV1Exec
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1099,7 +1099,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordsInBul
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1121,7 +1121,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordsInBul
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1143,7 +1143,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordsInBul
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1246,7 +1246,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRequestV1Exe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1268,7 +1268,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRequestV1Exe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1279,7 +1279,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRequestV1Exe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1301,7 +1301,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRequestV1Exe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1409,7 +1409,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSchemaAttrib
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1431,7 +1431,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSchemaAttrib
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1453,7 +1453,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSchemaAttrib
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1555,7 +1555,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceSchema
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1577,7 +1577,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceSchema
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1599,7 +1599,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceSchema
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1701,7 +1701,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1723,7 +1723,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceV1Exec
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1745,7 +1745,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceV1Exec
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1847,7 +1847,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeRecordsV1Exe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1869,7 +1869,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeRecordsV1Exe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1880,7 +1880,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeRecordsV1Exe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1902,7 +1902,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeRecordsV1Exe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2004,7 +2004,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeSourceSchema
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2026,7 +2026,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeSourceSchema
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2037,7 +2037,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeSourceSchema
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2059,7 +2059,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeSourceSchema
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2080,7 +2080,7 @@ type ApiGetNonEmployeeApprovalSummaryV1Request struct {
 	requestedFor string
 }
 
-func (r ApiGetNonEmployeeApprovalSummaryV1Request) Execute() (*Nonemployeeapprovalsummary, *http.Response, error) {
+func (r ApiGetNonEmployeeApprovalSummaryV1Request) Execute() (*NonEmployeeApprovalSummary, *http.Response, error) {
 	return r.ApiService.GetNonEmployeeApprovalSummaryV1Execute(r)
 }
 
@@ -2106,13 +2106,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummary
 }
 
 // Execute executes the request
-//  @return Nonemployeeapprovalsummary
-func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummaryV1Execute(r ApiGetNonEmployeeApprovalSummaryV1Request) (*Nonemployeeapprovalsummary, *http.Response, error) {
+//  @return NonEmployeeApprovalSummary
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummaryV1Execute(r ApiGetNonEmployeeApprovalSummaryV1Request) (*NonEmployeeApprovalSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeeapprovalsummary
+		localVarReturnValue  *NonEmployeeApprovalSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeApprovalSummaryV1")
@@ -2167,7 +2167,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummary
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2189,7 +2189,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummary
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2211,7 +2211,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummary
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2248,7 +2248,7 @@ func (r ApiGetNonEmployeeApprovalV1Request) IncludeDetail(includeDetail bool) Ap
 	return r
 }
 
-func (r ApiGetNonEmployeeApprovalV1Request) Execute() (*Nonemployeeapprovalitemdetail, *http.Response, error) {
+func (r ApiGetNonEmployeeApprovalV1Request) Execute() (*NonEmployeeApprovalItemDetail, *http.Response, error) {
 	return r.ApiService.GetNonEmployeeApprovalV1Execute(r)
 }
 
@@ -2273,13 +2273,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalV1(ctx 
 }
 
 // Execute executes the request
-//  @return Nonemployeeapprovalitemdetail
-func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalV1Execute(r ApiGetNonEmployeeApprovalV1Request) (*Nonemployeeapprovalitemdetail, *http.Response, error) {
+//  @return NonEmployeeApprovalItemDetail
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalV1Execute(r ApiGetNonEmployeeApprovalV1Request) (*NonEmployeeApprovalItemDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeeapprovalitemdetail
+		localVarReturnValue  *NonEmployeeApprovalItemDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeApprovalV1")
@@ -2337,7 +2337,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2359,7 +2359,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2381,7 +2381,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2411,7 +2411,7 @@ type ApiGetNonEmployeeBulkUploadStatusV1Request struct {
 	id string
 }
 
-func (r ApiGetNonEmployeeBulkUploadStatusV1Request) Execute() (*Nonemployeebulkuploadstatus, *http.Response, error) {
+func (r ApiGetNonEmployeeBulkUploadStatusV1Request) Execute() (*NonEmployeeBulkUploadStatus, *http.Response, error) {
 	return r.ApiService.GetNonEmployeeBulkUploadStatusV1Execute(r)
 }
 
@@ -2435,13 +2435,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatu
 }
 
 // Execute executes the request
-//  @return Nonemployeebulkuploadstatus
-func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatusV1Execute(r ApiGetNonEmployeeBulkUploadStatusV1Request) (*Nonemployeebulkuploadstatus, *http.Response, error) {
+//  @return NonEmployeeBulkUploadStatus
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatusV1Execute(r ApiGetNonEmployeeBulkUploadStatusV1Request) (*NonEmployeeBulkUploadStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeebulkuploadstatus
+		localVarReturnValue  *NonEmployeeBulkUploadStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeBulkUploadStatusV1")
@@ -2496,7 +2496,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2518,7 +2518,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2540,7 +2540,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2570,7 +2570,7 @@ type ApiGetNonEmployeeRecordV1Request struct {
 	id string
 }
 
-func (r ApiGetNonEmployeeRecordV1Request) Execute() (*Nonemployeerecord, *http.Response, error) {
+func (r ApiGetNonEmployeeRecordV1Request) Execute() (*NonEmployeeRecord, *http.Response, error) {
 	return r.ApiService.GetNonEmployeeRecordV1Execute(r)
 }
 
@@ -2593,13 +2593,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecordV1(ctx co
 }
 
 // Execute executes the request
-//  @return Nonemployeerecord
-func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecordV1Execute(r ApiGetNonEmployeeRecordV1Request) (*Nonemployeerecord, *http.Response, error) {
+//  @return NonEmployeeRecord
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecordV1Execute(r ApiGetNonEmployeeRecordV1Request) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeerecord
+		localVarReturnValue  *NonEmployeeRecord
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeRecordV1")
@@ -2654,7 +2654,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecordV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2676,7 +2676,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecordV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2698,7 +2698,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecordV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2728,7 +2728,7 @@ type ApiGetNonEmployeeRequestSummaryV1Request struct {
 	requestedFor string
 }
 
-func (r ApiGetNonEmployeeRequestSummaryV1Request) Execute() (*Nonemployeerequestsummary, *http.Response, error) {
+func (r ApiGetNonEmployeeRequestSummaryV1Request) Execute() (*NonEmployeeRequestSummary, *http.Response, error) {
 	return r.ApiService.GetNonEmployeeRequestSummaryV1Execute(r)
 }
 
@@ -2754,13 +2754,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummaryV
 }
 
 // Execute executes the request
-//  @return Nonemployeerequestsummary
-func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummaryV1Execute(r ApiGetNonEmployeeRequestSummaryV1Request) (*Nonemployeerequestsummary, *http.Response, error) {
+//  @return NonEmployeeRequestSummary
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummaryV1Execute(r ApiGetNonEmployeeRequestSummaryV1Request) (*NonEmployeeRequestSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeerequestsummary
+		localVarReturnValue  *NonEmployeeRequestSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeRequestSummaryV1")
@@ -2815,7 +2815,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummaryV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2837,7 +2837,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummaryV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2859,7 +2859,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummaryV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2889,7 +2889,7 @@ type ApiGetNonEmployeeRequestV1Request struct {
 	id string
 }
 
-func (r ApiGetNonEmployeeRequestV1Request) Execute() (*Nonemployeerequest, *http.Response, error) {
+func (r ApiGetNonEmployeeRequestV1Request) Execute() (*NonEmployeeRequest, *http.Response, error) {
 	return r.ApiService.GetNonEmployeeRequestV1Execute(r)
 }
 
@@ -2915,13 +2915,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestV1(ctx c
 }
 
 // Execute executes the request
-//  @return Nonemployeerequest
-func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestV1Execute(r ApiGetNonEmployeeRequestV1Request) (*Nonemployeerequest, *http.Response, error) {
+//  @return NonEmployeeRequest
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestV1Execute(r ApiGetNonEmployeeRequestV1Request) (*NonEmployeeRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeerequest
+		localVarReturnValue  *NonEmployeeRequest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeRequestV1")
@@ -2976,7 +2976,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2998,7 +2998,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3009,7 +3009,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3031,7 +3031,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3062,7 +3062,7 @@ type ApiGetNonEmployeeSchemaAttributeV1Request struct {
 	sourceId string
 }
 
-func (r ApiGetNonEmployeeSchemaAttributeV1Request) Execute() (*Nonemployeeschemaattribute, *http.Response, error) {
+func (r ApiGetNonEmployeeSchemaAttributeV1Request) Execute() (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	return r.ApiService.GetNonEmployeeSchemaAttributeV1Execute(r)
 }
 
@@ -3086,13 +3086,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttribute
 }
 
 // Execute executes the request
-//  @return Nonemployeeschemaattribute
-func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttributeV1Execute(r ApiGetNonEmployeeSchemaAttributeV1Request) (*Nonemployeeschemaattribute, *http.Response, error) {
+//  @return NonEmployeeSchemaAttribute
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttributeV1Execute(r ApiGetNonEmployeeSchemaAttributeV1Request) (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeeschemaattribute
+		localVarReturnValue  *NonEmployeeSchemaAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeSchemaAttributeV1")
@@ -3148,7 +3148,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttribute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3170,7 +3170,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttribute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3192,7 +3192,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttribute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3222,7 +3222,7 @@ type ApiGetNonEmployeeSourceSchemaAttributesV1Request struct {
 	sourceId string
 }
 
-func (r ApiGetNonEmployeeSourceSchemaAttributesV1Request) Execute() ([]Nonemployeeschemaattribute, *http.Response, error) {
+func (r ApiGetNonEmployeeSourceSchemaAttributesV1Request) Execute() ([]NonEmployeeSchemaAttribute, *http.Response, error) {
 	return r.ApiService.GetNonEmployeeSourceSchemaAttributesV1Execute(r)
 }
 
@@ -3245,13 +3245,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAtt
 }
 
 // Execute executes the request
-//  @return []Nonemployeeschemaattribute
-func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAttributesV1Execute(r ApiGetNonEmployeeSourceSchemaAttributesV1Request) ([]Nonemployeeschemaattribute, *http.Response, error) {
+//  @return []NonEmployeeSchemaAttribute
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAttributesV1Execute(r ApiGetNonEmployeeSourceSchemaAttributesV1Request) ([]NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Nonemployeeschemaattribute
+		localVarReturnValue  []NonEmployeeSchemaAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeSourceSchemaAttributesV1")
@@ -3306,7 +3306,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAtt
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3328,7 +3328,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAtt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3339,7 +3339,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAtt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3361,7 +3361,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAtt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3391,7 +3391,7 @@ type ApiGetNonEmployeeSourceV1Request struct {
 	sourceId string
 }
 
-func (r ApiGetNonEmployeeSourceV1Request) Execute() (*Nonemployeesource, *http.Response, error) {
+func (r ApiGetNonEmployeeSourceV1Request) Execute() (*NonEmployeeSource, *http.Response, error) {
 	return r.ApiService.GetNonEmployeeSourceV1Execute(r)
 }
 
@@ -3417,13 +3417,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceV1(ctx co
 }
 
 // Execute executes the request
-//  @return Nonemployeesource
-func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceV1Execute(r ApiGetNonEmployeeSourceV1Request) (*Nonemployeesource, *http.Response, error) {
+//  @return NonEmployeeSource
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceV1Execute(r ApiGetNonEmployeeSourceV1Request) (*NonEmployeeSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeesource
+		localVarReturnValue  *NonEmployeeSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeSourceV1")
@@ -3478,7 +3478,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3500,7 +3500,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3522,7 +3522,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3558,7 +3558,7 @@ func (r ApiImportNonEmployeeRecordsInBulkV1Request) Data(data *os.File) ApiImpor
 	return r
 }
 
-func (r ApiImportNonEmployeeRecordsInBulkV1Request) Execute() (*Nonemployeebulkuploadjob, *http.Response, error) {
+func (r ApiImportNonEmployeeRecordsInBulkV1Request) Execute() (*NonEmployeeBulkUploadJob, *http.Response, error) {
 	return r.ApiService.ImportNonEmployeeRecordsInBulkV1Execute(r)
 }
 
@@ -3580,13 +3580,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBul
 }
 
 // Execute executes the request
-//  @return Nonemployeebulkuploadjob
-func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBulkV1Execute(r ApiImportNonEmployeeRecordsInBulkV1Request) (*Nonemployeebulkuploadjob, *http.Response, error) {
+//  @return NonEmployeeBulkUploadJob
+func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBulkV1Execute(r ApiImportNonEmployeeRecordsInBulkV1Request) (*NonEmployeeBulkUploadJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeebulkuploadjob
+		localVarReturnValue  *NonEmployeeBulkUploadJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ImportNonEmployeeRecordsInBulkV1")
@@ -3659,7 +3659,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBul
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3681,7 +3681,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBul
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3692,7 +3692,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBul
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3714,7 +3714,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBul
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3785,7 +3785,7 @@ func (r ApiListNonEmployeeApprovalsV1Request) Sorters(sorters string) ApiListNon
 	return r
 }
 
-func (r ApiListNonEmployeeApprovalsV1Request) Execute() ([]Nonemployeeapprovalitem, *http.Response, error) {
+func (r ApiListNonEmployeeApprovalsV1Request) Execute() ([]NonEmployeeApprovalItem, *http.Response, error) {
 	return r.ApiService.ListNonEmployeeApprovalsV1Execute(r)
 }
 
@@ -3809,13 +3809,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApprovalsV1(ct
 }
 
 // Execute executes the request
-//  @return []Nonemployeeapprovalitem
-func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApprovalsV1Execute(r ApiListNonEmployeeApprovalsV1Request) ([]Nonemployeeapprovalitem, *http.Response, error) {
+//  @return []NonEmployeeApprovalItem
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApprovalsV1Execute(r ApiListNonEmployeeApprovalsV1Request) ([]NonEmployeeApprovalItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Nonemployeeapprovalitem
+		localVarReturnValue  []NonEmployeeApprovalItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ListNonEmployeeApprovalsV1")
@@ -3896,7 +3896,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApprovalsV1Exe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3918,7 +3918,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApprovalsV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3940,7 +3940,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApprovalsV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4004,7 +4004,7 @@ func (r ApiListNonEmployeeRecordsV1Request) Filters(filters string) ApiListNonEm
 	return r
 }
 
-func (r ApiListNonEmployeeRecordsV1Request) Execute() ([]Nonemployeerecord, *http.Response, error) {
+func (r ApiListNonEmployeeRecordsV1Request) Execute() ([]NonEmployeeRecord, *http.Response, error) {
 	return r.ApiService.ListNonEmployeeRecordsV1Execute(r)
 }
 
@@ -4026,13 +4026,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecordsV1(ctx 
 }
 
 // Execute executes the request
-//  @return []Nonemployeerecord
-func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecordsV1Execute(r ApiListNonEmployeeRecordsV1Request) ([]Nonemployeerecord, *http.Response, error) {
+//  @return []NonEmployeeRecord
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecordsV1Execute(r ApiListNonEmployeeRecordsV1Request) ([]NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Nonemployeerecord
+		localVarReturnValue  []NonEmployeeRecord
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ListNonEmployeeRecordsV1")
@@ -4110,7 +4110,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecordsV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4132,7 +4132,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecordsV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4154,7 +4154,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecordsV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4225,7 +4225,7 @@ func (r ApiListNonEmployeeRequestsV1Request) Filters(filters string) ApiListNonE
 	return r
 }
 
-func (r ApiListNonEmployeeRequestsV1Request) Execute() ([]Nonemployeerequest, *http.Response, error) {
+func (r ApiListNonEmployeeRequestsV1Request) Execute() ([]NonEmployeeRequest, *http.Response, error) {
 	return r.ApiService.ListNonEmployeeRequestsV1Execute(r)
 }
 
@@ -4249,13 +4249,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequestsV1(ctx
 }
 
 // Execute executes the request
-//  @return []Nonemployeerequest
-func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequestsV1Execute(r ApiListNonEmployeeRequestsV1Request) ([]Nonemployeerequest, *http.Response, error) {
+//  @return []NonEmployeeRequest
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequestsV1Execute(r ApiListNonEmployeeRequestsV1Request) ([]NonEmployeeRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Nonemployeerequest
+		localVarReturnValue  []NonEmployeeRequest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ListNonEmployeeRequestsV1")
@@ -4337,7 +4337,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequestsV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4359,7 +4359,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequestsV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4381,7 +4381,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequestsV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4452,7 +4452,7 @@ func (r ApiListNonEmployeeSourcesV1Request) Sorters(sorters string) ApiListNonEm
 	return r
 }
 
-func (r ApiListNonEmployeeSourcesV1Request) Execute() ([]Nonemployeesourcewithnecount, *http.Response, error) {
+func (r ApiListNonEmployeeSourcesV1Request) Execute() ([]NonEmployeeSourceWithNECount, *http.Response, error) {
 	return r.ApiService.ListNonEmployeeSourcesV1Execute(r)
 }
 
@@ -4474,13 +4474,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesV1(ctx 
 }
 
 // Execute executes the request
-//  @return []Nonemployeesourcewithnecount
-func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesV1Execute(r ApiListNonEmployeeSourcesV1Request) ([]Nonemployeesourcewithnecount, *http.Response, error) {
+//  @return []NonEmployeeSourceWithNECount
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesV1Execute(r ApiListNonEmployeeSourcesV1Request) ([]NonEmployeeSourceWithNECount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Nonemployeesourcewithnecount
+		localVarReturnValue  []NonEmployeeSourceWithNECount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ListNonEmployeeSourcesV1")
@@ -4564,7 +4564,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4586,7 +4586,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4608,7 +4608,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4636,16 +4636,16 @@ type ApiPatchNonEmployeeRecordV1Request struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
-func (r ApiPatchNonEmployeeRecordV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchNonEmployeeRecordV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchNonEmployeeRecordV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchNonEmployeeRecordV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchNonEmployeeRecordV1Request) Execute() (*Nonemployeerecord, *http.Response, error) {
+func (r ApiPatchNonEmployeeRecordV1Request) Execute() (*NonEmployeeRecord, *http.Response, error) {
 	return r.ApiService.PatchNonEmployeeRecordV1Execute(r)
 }
 
@@ -4671,13 +4671,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordV1(ctx 
 }
 
 // Execute executes the request
-//  @return Nonemployeerecord
-func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordV1Execute(r ApiPatchNonEmployeeRecordV1Request) (*Nonemployeerecord, *http.Response, error) {
+//  @return NonEmployeeRecord
+func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordV1Execute(r ApiPatchNonEmployeeRecordV1Request) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeerecord
+		localVarReturnValue  *NonEmployeeRecord
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.PatchNonEmployeeRecordV1")
@@ -4691,8 +4691,8 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordV1Execu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4713,7 +4713,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordV1Execu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4737,7 +4737,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4759,7 +4759,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4770,7 +4770,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4792,7 +4792,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4821,16 +4821,16 @@ type ApiPatchNonEmployeeSchemaAttributeV1Request struct {
 	ApiService *NonEmployeeLifecycleManagementAPIService
 	attributeId string
 	sourceId string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update &#39;:&#39; &#39;label&#39;, &#39;helpText&#39;, &#39;placeholder&#39;, &#39;required&#39;.
-func (r ApiPatchNonEmployeeSchemaAttributeV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchNonEmployeeSchemaAttributeV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchNonEmployeeSchemaAttributeV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchNonEmployeeSchemaAttributeV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchNonEmployeeSchemaAttributeV1Request) Execute() (*Nonemployeeschemaattribute, *http.Response, error) {
+func (r ApiPatchNonEmployeeSchemaAttributeV1Request) Execute() (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	return r.ApiService.PatchNonEmployeeSchemaAttributeV1Execute(r)
 }
 
@@ -4856,13 +4856,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribu
 }
 
 // Execute executes the request
-//  @return Nonemployeeschemaattribute
-func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttributeV1Execute(r ApiPatchNonEmployeeSchemaAttributeV1Request) (*Nonemployeeschemaattribute, *http.Response, error) {
+//  @return NonEmployeeSchemaAttribute
+func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttributeV1Execute(r ApiPatchNonEmployeeSchemaAttributeV1Request) (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeeschemaattribute
+		localVarReturnValue  *NonEmployeeSchemaAttribute
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.PatchNonEmployeeSchemaAttributeV1")
@@ -4877,8 +4877,8 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4899,7 +4899,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4923,7 +4923,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4945,7 +4945,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4956,7 +4956,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4978,7 +4978,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5006,16 +5006,16 @@ type ApiPatchNonEmployeeSourceV1Request struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
 	sourceId string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-func (r ApiPatchNonEmployeeSourceV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchNonEmployeeSourceV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchNonEmployeeSourceV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchNonEmployeeSourceV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchNonEmployeeSourceV1Request) Execute() (*Nonemployeesource, *http.Response, error) {
+func (r ApiPatchNonEmployeeSourceV1Request) Execute() (*NonEmployeeSource, *http.Response, error) {
 	return r.ApiService.PatchNonEmployeeSourceV1Execute(r)
 }
 
@@ -5037,13 +5037,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceV1(ctx 
 }
 
 // Execute executes the request
-//  @return Nonemployeesource
-func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceV1Execute(r ApiPatchNonEmployeeSourceV1Request) (*Nonemployeesource, *http.Response, error) {
+//  @return NonEmployeeSource
+func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceV1Execute(r ApiPatchNonEmployeeSourceV1Request) (*NonEmployeeSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeesource
+		localVarReturnValue  *NonEmployeeSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.PatchNonEmployeeSourceV1")
@@ -5057,8 +5057,8 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceV1Execu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -5079,7 +5079,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceV1Execu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -5103,7 +5103,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5125,7 +5125,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5147,7 +5147,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5175,15 +5175,15 @@ type ApiRejectNonEmployeeRequestV1Request struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
-	nonemployeerejectapprovaldecision *Nonemployeerejectapprovaldecision
+	nonEmployeeRejectApprovalDecision *NonEmployeeRejectApprovalDecision
 }
 
-func (r ApiRejectNonEmployeeRequestV1Request) Nonemployeerejectapprovaldecision(nonemployeerejectapprovaldecision Nonemployeerejectapprovaldecision) ApiRejectNonEmployeeRequestV1Request {
-	r.nonemployeerejectapprovaldecision = &nonemployeerejectapprovaldecision
+func (r ApiRejectNonEmployeeRequestV1Request) NonEmployeeRejectApprovalDecision(nonEmployeeRejectApprovalDecision NonEmployeeRejectApprovalDecision) ApiRejectNonEmployeeRequestV1Request {
+	r.nonEmployeeRejectApprovalDecision = &nonEmployeeRejectApprovalDecision
 	return r
 }
 
-func (r ApiRejectNonEmployeeRequestV1Request) Execute() (*Nonemployeeapprovalitem, *http.Response, error) {
+func (r ApiRejectNonEmployeeRequestV1Request) Execute() (*NonEmployeeApprovalItem, *http.Response, error) {
 	return r.ApiService.RejectNonEmployeeRequestV1Execute(r)
 }
 
@@ -5205,13 +5205,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestV1(ct
 }
 
 // Execute executes the request
-//  @return Nonemployeeapprovalitem
-func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestV1Execute(r ApiRejectNonEmployeeRequestV1Request) (*Nonemployeeapprovalitem, *http.Response, error) {
+//  @return NonEmployeeApprovalItem
+func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestV1Execute(r ApiRejectNonEmployeeRequestV1Request) (*NonEmployeeApprovalItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeeapprovalitem
+		localVarReturnValue  *NonEmployeeApprovalItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.RejectNonEmployeeRequestV1")
@@ -5225,8 +5225,8 @@ func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestV1Exe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nonemployeerejectapprovaldecision == nil {
-		return localVarReturnValue, nil, reportError("nonemployeerejectapprovaldecision is required and must be specified")
+	if r.nonEmployeeRejectApprovalDecision == nil {
+		return localVarReturnValue, nil, reportError("nonEmployeeRejectApprovalDecision is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -5247,7 +5247,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestV1Exe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.nonemployeerejectapprovaldecision
+	localVarPostBody = r.nonEmployeeRejectApprovalDecision
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -5271,7 +5271,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestV1Exe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5293,7 +5293,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5315,7 +5315,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5343,16 +5343,16 @@ type ApiUpdateNonEmployeeRecordV1Request struct {
 	ctx context.Context
 	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
-	nonemployeerequestbody *Nonemployeerequestbody
+	nonEmployeeRequestBody *NonEmployeeRequestBody
 }
 
 // Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
-func (r ApiUpdateNonEmployeeRecordV1Request) Nonemployeerequestbody(nonemployeerequestbody Nonemployeerequestbody) ApiUpdateNonEmployeeRecordV1Request {
-	r.nonemployeerequestbody = &nonemployeerequestbody
+func (r ApiUpdateNonEmployeeRecordV1Request) NonEmployeeRequestBody(nonEmployeeRequestBody NonEmployeeRequestBody) ApiUpdateNonEmployeeRecordV1Request {
+	r.nonEmployeeRequestBody = &nonEmployeeRequestBody
 	return r
 }
 
-func (r ApiUpdateNonEmployeeRecordV1Request) Execute() (*Nonemployeerecord, *http.Response, error) {
+func (r ApiUpdateNonEmployeeRecordV1Request) Execute() (*NonEmployeeRecord, *http.Response, error) {
 	return r.ApiService.UpdateNonEmployeeRecordV1Execute(r)
 }
 
@@ -5378,13 +5378,13 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordV1(ctx
 }
 
 // Execute executes the request
-//  @return Nonemployeerecord
-func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordV1Execute(r ApiUpdateNonEmployeeRecordV1Request) (*Nonemployeerecord, *http.Response, error) {
+//  @return NonEmployeeRecord
+func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordV1Execute(r ApiUpdateNonEmployeeRecordV1Request) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nonemployeerecord
+		localVarReturnValue  *NonEmployeeRecord
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.UpdateNonEmployeeRecordV1")
@@ -5398,8 +5398,8 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordV1Exec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nonemployeerequestbody == nil {
-		return localVarReturnValue, nil, reportError("nonemployeerequestbody is required and must be specified")
+	if r.nonEmployeeRequestBody == nil {
+		return localVarReturnValue, nil, reportError("nonEmployeeRequestBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -5420,7 +5420,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordV1Exec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.nonemployeerequestbody
+	localVarPostBody = r.nonEmployeeRequestBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -5444,7 +5444,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5466,7 +5466,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5477,7 +5477,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5499,7 +5499,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

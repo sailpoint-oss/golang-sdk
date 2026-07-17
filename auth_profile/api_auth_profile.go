@@ -35,7 +35,7 @@ func (r ApiGetProfileConfigListV1Request) XSailPointExperimental(xSailPointExper
 	return r
 }
 
-func (r ApiGetProfileConfigListV1Request) Execute() ([]Authprofilesummary, *http.Response, error) {
+func (r ApiGetProfileConfigListV1Request) Execute() ([]AuthProfileSummary, *http.Response, error) {
 	return r.ApiService.GetProfileConfigListV1Execute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *AuthProfileAPIService) GetProfileConfigListV1(ctx context.Context) ApiG
 }
 
 // Execute executes the request
-//  @return []Authprofilesummary
-func (a *AuthProfileAPIService) GetProfileConfigListV1Execute(r ApiGetProfileConfigListV1Request) ([]Authprofilesummary, *http.Response, error) {
+//  @return []AuthProfileSummary
+func (a *AuthProfileAPIService) GetProfileConfigListV1Execute(r ApiGetProfileConfigListV1Request) ([]AuthProfileSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Authprofilesummary
+		localVarReturnValue  []AuthProfileSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthProfileAPIService.GetProfileConfigListV1")
@@ -125,7 +125,7 @@ func (a *AuthProfileAPIService) GetProfileConfigListV1Execute(r ApiGetProfileCon
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -147,7 +147,7 @@ func (a *AuthProfileAPIService) GetProfileConfigListV1Execute(r ApiGetProfileCon
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -169,7 +169,7 @@ func (a *AuthProfileAPIService) GetProfileConfigListV1Execute(r ApiGetProfileCon
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -206,7 +206,7 @@ func (r ApiGetProfileConfigV1Request) XSailPointExperimental(xSailPointExperimen
 	return r
 }
 
-func (r ApiGetProfileConfigV1Request) Execute() (*Authprofile, *http.Response, error) {
+func (r ApiGetProfileConfigV1Request) Execute() (*AuthProfile, *http.Response, error) {
 	return r.ApiService.GetProfileConfigV1Execute(r)
 }
 
@@ -228,13 +228,13 @@ func (a *AuthProfileAPIService) GetProfileConfigV1(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return Authprofile
-func (a *AuthProfileAPIService) GetProfileConfigV1Execute(r ApiGetProfileConfigV1Request) (*Authprofile, *http.Response, error) {
+//  @return AuthProfile
+func (a *AuthProfileAPIService) GetProfileConfigV1Execute(r ApiGetProfileConfigV1Request) (*AuthProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Authprofile
+		localVarReturnValue  *AuthProfile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthProfileAPIService.GetProfileConfigV1")
@@ -299,7 +299,7 @@ func (a *AuthProfileAPIService) GetProfileConfigV1Execute(r ApiGetProfileConfigV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -321,7 +321,7 @@ func (a *AuthProfileAPIService) GetProfileConfigV1Execute(r ApiGetProfileConfigV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -332,7 +332,7 @@ func (a *AuthProfileAPIService) GetProfileConfigV1Execute(r ApiGetProfileConfigV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -354,7 +354,7 @@ func (a *AuthProfileAPIService) GetProfileConfigV1Execute(r ApiGetProfileConfigV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -383,7 +383,7 @@ type ApiPatchProfileConfigV1Request struct {
 	ApiService *AuthProfileAPIService
 	id string
 	xSailPointExperimental *string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // Use this header to enable this experimental API.
@@ -392,12 +392,12 @@ func (r ApiPatchProfileConfigV1Request) XSailPointExperimental(xSailPointExperim
 	return r
 }
 
-func (r ApiPatchProfileConfigV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchProfileConfigV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchProfileConfigV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchProfileConfigV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchProfileConfigV1Request) Execute() (*Authprofile, *http.Response, error) {
+func (r ApiPatchProfileConfigV1Request) Execute() (*AuthProfile, *http.Response, error) {
 	return r.ApiService.PatchProfileConfigV1Execute(r)
 }
 
@@ -420,13 +420,13 @@ func (a *AuthProfileAPIService) PatchProfileConfigV1(ctx context.Context, id str
 }
 
 // Execute executes the request
-//  @return Authprofile
-func (a *AuthProfileAPIService) PatchProfileConfigV1Execute(r ApiPatchProfileConfigV1Request) (*Authprofile, *http.Response, error) {
+//  @return AuthProfile
+func (a *AuthProfileAPIService) PatchProfileConfigV1Execute(r ApiPatchProfileConfigV1Request) (*AuthProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Authprofile
+		localVarReturnValue  *AuthProfile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthProfileAPIService.PatchProfileConfigV1")
@@ -455,8 +455,8 @@ func (a *AuthProfileAPIService) PatchProfileConfigV1Execute(r ApiPatchProfileCon
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -478,7 +478,7 @@ func (a *AuthProfileAPIService) PatchProfileConfigV1Execute(r ApiPatchProfileCon
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -502,7 +502,7 @@ func (a *AuthProfileAPIService) PatchProfileConfigV1Execute(r ApiPatchProfileCon
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -524,7 +524,7 @@ func (a *AuthProfileAPIService) PatchProfileConfigV1Execute(r ApiPatchProfileCon
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -546,7 +546,7 @@ func (a *AuthProfileAPIService) PatchProfileConfigV1Execute(r ApiPatchProfileCon
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

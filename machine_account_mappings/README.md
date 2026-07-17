@@ -87,17 +87,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Attributemappings](docs/Attributemappings.md)
- - [AttributemappingsAllOfTarget](docs/AttributemappingsAllOfTarget.md)
- - [AttributemappingsAllOfTransformDefinition](docs/AttributemappingsAllOfTransformDefinition.md)
- - [AttributemappingsAllOfTransformDefinitionAttributes](docs/AttributemappingsAllOfTransformDefinitionAttributes.md)
- - [AttributemappingsAllOfTransformDefinitionAttributesInput](docs/AttributemappingsAllOfTransformDefinitionAttributesInput.md)
- - [AttributemappingsAllOfTransformDefinitionAttributesInputAttributes](docs/AttributemappingsAllOfTransformDefinitionAttributesInputAttributes.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [AttributeMappings](docs/AttributeMappings.md)
+ - [AttributeMappingsAllOfTarget](docs/AttributeMappingsAllOfTarget.md)
+ - [AttributeMappingsAllOfTransformDefinition](docs/AttributeMappingsAllOfTransformDefinition.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributes](docs/AttributeMappingsAllOfTransformDefinitionAttributes.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInput](docs/AttributeMappingsAllOfTransformDefinitionAttributesInput.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes](docs/AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [ListMachineAccountMappingsV1401Response](docs/ListMachineAccountMappingsV1401Response.md)
  - [ListMachineAccountMappingsV1429Response](docs/ListMachineAccountMappingsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

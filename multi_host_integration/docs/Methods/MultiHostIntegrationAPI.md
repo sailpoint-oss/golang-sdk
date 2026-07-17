@@ -53,11 +53,11 @@ Other parameters are passed through a pointer to a apiCreateMultiHostIntegration
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **multihostintegrationscreate** | [**Multihostintegrationscreate**](../models/multihostintegrationscreate) | The specifics of the Multi-Host Integration to create | 
+ **multiHostIntegrationsCreate** | [**MultiHostIntegrationsCreate**](../models/multi-host-integrations-create) | The specifics of the Multi-Host Integration to create | 
 
 ### Return type
 
-[**Multihostintegrations**](../models/multihostintegrations)
+[**MultiHostIntegrations**](../models/multi-host-integrations)
 
 ### HTTP request headers
 
@@ -79,10 +79,35 @@ import (
 )
 
 func main() {
-    multihostintegrationscreateJson := []byte(``) // Multihostintegrationscreate | The specifics of the Multi-Host Integration to create
+    multihostintegrationscreateJson := []byte(`{
+          "owner" : {
+            "name" : "MyName",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "managementWorkgroup" : {
+            "name" : "My Management Workgroup",
+            "id" : "2c91808568c529c60168cca6f90c2222",
+            "type" : "GOVERNANCE_GROUP"
+          },
+          "cluster" : {
+            "name" : "Corporate Cluster",
+            "id" : "2c9180866166b5b0016167c32ef31a66",
+            "type" : "CLUSTER"
+          },
+          "connector" : "multihost-microsoft-sql-server",
+          "connectorAttributes" : {
+            "maxSourcesPerAggGroup" : 10,
+            "maxAllowedSources" : 300
+          },
+          "created" : "2022-02-08T14:50:03.827Z",
+          "name" : "My Multi-Host Integration",
+          "description" : "This is the Multi-Host Integration.",
+          "modified" : "2024-01-23T18:08:50.897Z"
+        }`) // MultiHostIntegrationsCreate | The specifics of the Multi-Host Integration to create
 
-    var multihostintegrationscreate multi_host_integration.Multihostintegrationscreate
-    if err := json.Unmarshal(multihostintegrationscreateJson, &multihostintegrationscreate); err != nil {
+    var multiHostIntegrationsCreate multi_host_integration.MultiHostIntegrationsCreate
+    if err := json.Unmarshal(multihostintegrationscreateJson, &multiHostIntegrationsCreate); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -90,13 +115,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MultiHostIntegrationAPI.CreateMultiHostIntegrationV1(context.Background()).Multihostintegrationscreate(multihostintegrationscreate).Execute()
-	  //resp, r, err := apiClient.MultiHostIntegrationAPI.CreateMultiHostIntegrationV1(context.Background()).Multihostintegrationscreate(multihostintegrationscreate).Execute()
+    resp, r, err := apiClient.MultiHostIntegrationAPI.CreateMultiHostIntegrationV1(context.Background()).MultiHostIntegrationsCreate(multiHostIntegrationsCreate).Execute()
+	  //resp, r, err := apiClient.MultiHostIntegrationAPI.CreateMultiHostIntegrationV1(context.Background()).MultiHostIntegrationsCreate(multiHostIntegrationsCreate).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.CreateMultiHostIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateMultiHostIntegrationV1`: Multihostintegrations
+    // response from `CreateMultiHostIntegrationV1`: MultiHostIntegrations
     fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.CreateMultiHostIntegrationV1`: %v\n", resp)
 }
 ```
@@ -127,7 +152,7 @@ Other parameters are passed through a pointer to a apiCreateSourcesWithinMultiHo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **multihostintegrationscreatesources** | [**[]Multihostintegrationscreatesources**](../models/multihostintegrationscreatesources) | The specifics of the sources to create within Multi-Host Integration. | 
+ **multiHostIntegrationsCreateSources** | [**[]MultiHostIntegrationsCreateSources**](../models/multi-host-integrations-create-sources) | The specifics of the sources to create within Multi-Host Integration. | 
 
 ### Return type
 
@@ -154,10 +179,10 @@ import (
 
 func main() {
     multihostId := `2c91808568c529c60168cca6f90c1326` // string | ID of the Multi-Host Integration. # string | ID of the Multi-Host Integration.
-    multihostintegrationscreatesourcesJson := []byte(``) // []Multihostintegrationscreatesources | The specifics of the sources to create within Multi-Host Integration.
+    multihostintegrationscreatesourcesJson := []byte(``) // []MultiHostIntegrationsCreateSources | The specifics of the sources to create within Multi-Host Integration.
 
-    var multihostintegrationscreatesources []multi_host_integration.Multihostintegrationscreatesources
-    if err := json.Unmarshal(multihostintegrationscreatesourcesJson, &multihostintegrationscreatesources); err != nil {
+    var multiHostIntegrationsCreateSources []multi_host_integration.MultiHostIntegrationsCreateSources
+    if err := json.Unmarshal(multihostintegrationscreatesourcesJson, &multiHostIntegrationsCreateSources); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -165,8 +190,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1(context.Background(), multihostId).Multihostintegrationscreatesources(multihostintegrationscreatesources).Execute()
-	  //r, err := apiClient.MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1(context.Background(), multihostId).Multihostintegrationscreatesources(multihostintegrationscreatesources).Execute()
+    r, err := apiClient.MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1(context.Background(), multihostId).MultiHostIntegrationsCreateSources(multiHostIntegrationsCreateSources).Execute()
+	  //r, err := apiClient.MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1(context.Background(), multihostId).MultiHostIntegrationsCreateSources(multiHostIntegrationsCreateSources).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.CreateSourcesWithinMultiHostV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -346,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Multihostintegrationsaggscheduleupdate**](../models/multihostintegrationsaggscheduleupdate)
+[**[]MultiHostIntegrationsAggScheduleUpdate**](../models/multi-host-integrations-agg-schedule-update)
 
 ### HTTP request headers
 
@@ -382,7 +407,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetAcctAggregationGroupsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAcctAggregationGroupsV1`: []Multihostintegrationsaggscheduleupdate
+    // response from `GetAcctAggregationGroupsV1`: []MultiHostIntegrationsAggScheduleUpdate
     fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetAcctAggregationGroupsV1`: %v\n", resp)
 }
 ```
@@ -418,7 +443,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Multihostintegrationsaggscheduleupdate**](../models/multihostintegrationsaggscheduleupdate)
+[**[]MultiHostIntegrationsAggScheduleUpdate**](../models/multi-host-integrations-agg-schedule-update)
 
 ### HTTP request headers
 
@@ -454,7 +479,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetEntitlementAggregationGroupsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEntitlementAggregationGroupsV1`: []Multihostintegrationsaggscheduleupdate
+    // response from `GetEntitlementAggregationGroupsV1`: []MultiHostIntegrationsAggScheduleUpdate
     fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetEntitlementAggregationGroupsV1`: %v\n", resp)
 }
 ```
@@ -489,7 +514,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Multihostintegrations**](../models/multihostintegrations)
+[**[]MultiHostIntegrations**](../models/multi-host-integrations)
 
 ### HTTP request headers
 
@@ -528,7 +553,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultiHostIntegrationsListV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMultiHostIntegrationsListV1`: []Multihostintegrations
+    // response from `GetMultiHostIntegrationsListV1`: []MultiHostIntegrations
     fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetMultiHostIntegrationsListV1`: %v\n", resp)
 }
 ```
@@ -562,7 +587,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Multihostintegrations**](../models/multihostintegrations)
+[**MultiHostIntegrations**](../models/multi-host-integrations)
 
 ### HTTP request headers
 
@@ -596,7 +621,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultiHostIntegrationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMultiHostIntegrationsV1`: Multihostintegrations
+    // response from `GetMultiHostIntegrationsV1`: MultiHostIntegrations
     fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetMultiHostIntegrationsV1`: %v\n", resp)
 }
 ```
@@ -630,7 +655,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sourcecreationerrors**](../models/sourcecreationerrors)
+[**[]SourceCreationErrors**](../models/source-creation-errors)
 
 ### HTTP request headers
 
@@ -664,7 +689,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultiHostSourceCreationErrorsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMultiHostSourceCreationErrorsV1`: []Sourcecreationerrors
+    // response from `GetMultiHostSourceCreationErrorsV1`: []SourceCreationErrors
     fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetMultiHostSourceCreationErrorsV1`: %v\n", resp)
 }
 ```
@@ -690,7 +715,7 @@ Other parameters are passed through a pointer to a apiGetMultihostIntegrationTyp
 
 ### Return type
 
-[**[]Multihostintegrationtemplatetype**](../models/multihostintegrationtemplatetype)
+[**[]MultiHostIntegrationTemplateType**](../models/multi-host-integration-template-type)
 
 ### HTTP request headers
 
@@ -723,7 +748,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultihostIntegrationTypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMultihostIntegrationTypesV1`: []Multihostintegrationtemplatetype
+    // response from `GetMultihostIntegrationTypesV1`: []MultiHostIntegrationTemplateType
     fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetMultihostIntegrationTypesV1`: %v\n", resp)
 }
 ```
@@ -762,7 +787,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Multihostsources**](../models/multihostsources)
+[**[]MultiHostSources**](../models/multi-host-sources)
 
 ### HTTP request headers
 
@@ -801,7 +826,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetSourcesWithinMultiHostV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSourcesWithinMultiHostV1`: []Multihostsources
+    // response from `GetSourcesWithinMultiHostV1`: []MultiHostSources
     fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetSourcesWithinMultiHostV1`: %v\n", resp)
 }
 ```

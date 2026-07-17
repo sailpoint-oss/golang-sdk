@@ -41,7 +41,7 @@ Other parameters are passed through a pointer to a apiGetMFADuoConfigV1Request s
 
 ### Return type
 
-[**Mfaduoconfig**](../models/mfaduoconfig)
+[**MfaDuoConfig**](../models/mfa-duo-config)
 
 ### HTTP request headers
 
@@ -74,7 +74,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFADuoConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMFADuoConfigV1`: Mfaduoconfig
+    // response from `GetMFADuoConfigV1`: MfaDuoConfig
     fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFADuoConfigV1`: %v\n", resp)
 }
 ```
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Kbaquestion**](../models/kbaquestion)
+[**[]KbaQuestion**](../models/kba-question)
 
 ### HTTP request headers
 
@@ -136,7 +136,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFAKbaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMFAKbaConfigV1`: []Kbaquestion
+    // response from `GetMFAKbaConfigV1`: []KbaQuestion
     fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFAKbaConfigV1`: %v\n", resp)
 }
 ```
@@ -160,7 +160,7 @@ Other parameters are passed through a pointer to a apiGetMFAOktaConfigV1Request 
 
 ### Return type
 
-[**Mfaoktaconfig**](../models/mfaoktaconfig)
+[**MfaOktaConfig**](../models/mfa-okta-config)
 
 ### HTTP request headers
 
@@ -193,7 +193,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFAOktaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMFAOktaConfigV1`: Mfaoktaconfig
+    // response from `GetMFAOktaConfigV1`: MfaOktaConfig
     fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFAOktaConfigV1`: %v\n", resp)
 }
 ```
@@ -217,11 +217,11 @@ Other parameters are passed through a pointer to a apiSetMFADuoConfigV1Request s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mfaduoconfig** | [**Mfaduoconfig**](../models/mfaduoconfig) |  | 
+ **mfaDuoConfig** | [**MfaDuoConfig**](../models/mfa-duo-config) |  | 
 
 ### Return type
 
-[**Mfaduoconfig**](../models/mfaduoconfig)
+[**MfaDuoConfig**](../models/mfa-duo-config)
 
 ### HTTP request headers
 
@@ -243,10 +243,20 @@ import (
 )
 
 func main() {
-    mfaduoconfigJson := []byte(`{"mfaMethod":"duo-web","enabled":true,"host":"www.example.com","accessKey":"qw123Y3QlA5UqocYpdU3rEkzrK2D497y","identityAttribute":"email","configProperties":{"skey":"12q3WERlcUHWJmiMqyCXI3uOF7EaDJTbdeOp6E2B","ikey":"Q123WE45R6TY7890ZXCV"}}`) // Mfaduoconfig | 
+    mfaduoconfigJson := []byte(`{
+          "accessKey" : "qw123Y3QlA5UqocYpdU3rEkzrK2D497y",
+          "host" : "example.com",
+          "configProperties" : {
+            "skey" : "qwERttyZx1CdlQye2Vwtbsjr3HKddy4BAiCXjc5x",
+            "ikey" : "Q123WE45R6TY7890ZXCV"
+          },
+          "mfaMethod" : "duo-web",
+          "enabled" : true,
+          "identityAttribute" : "email"
+        }`) // MfaDuoConfig | 
 
-    var mfaduoconfig mfa_configuration.Mfaduoconfig
-    if err := json.Unmarshal(mfaduoconfigJson, &mfaduoconfig); err != nil {
+    var mfaDuoConfig mfa_configuration.MfaDuoConfig
+    if err := json.Unmarshal(mfaduoconfigJson, &mfaDuoConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -254,13 +264,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationAPI.SetMFADuoConfigV1(context.Background()).Mfaduoconfig(mfaduoconfig).Execute()
-	  //resp, r, err := apiClient.MFAConfigurationAPI.SetMFADuoConfigV1(context.Background()).Mfaduoconfig(mfaduoconfig).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.SetMFADuoConfigV1(context.Background()).MfaDuoConfig(mfaDuoConfig).Execute()
+	  //resp, r, err := apiClient.MFAConfigurationAPI.SetMFADuoConfigV1(context.Background()).MfaDuoConfig(mfaDuoConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFADuoConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetMFADuoConfigV1`: Mfaduoconfig
+    // response from `SetMFADuoConfigV1`: MfaDuoConfig
     fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFADuoConfigV1`: %v\n", resp)
 }
 ```
@@ -284,11 +294,11 @@ Other parameters are passed through a pointer to a apiSetMFAKBAConfigV1Request s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **kbaanswerrequestitem** | [**[]Kbaanswerrequestitem**](../models/kbaanswerrequestitem) |  | 
+ **kbaAnswerRequestItem** | [**[]KbaAnswerRequestItem**](../models/kba-answer-request-item) |  | 
 
 ### Return type
 
-[**[]Kbaanswerresponseitem**](../models/kbaanswerresponseitem)
+[**[]KbaAnswerResponseItem**](../models/kba-answer-response-item)
 
 ### HTTP request headers
 
@@ -310,10 +320,10 @@ import (
 )
 
 func main() {
-    kbaanswerrequestitemJson := []byte(`[{"id":"173423","answer":"822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34"},{"id":"c54fee53-2d63-4fc5-9259-3e93b9994135","answer":"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"}]`) // []Kbaanswerrequestitem | 
+    kbaanswerrequestitemJson := []byte(`[{"id":"173423","answer":"822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34"},{"id":"c54fee53-2d63-4fc5-9259-3e93b9994135","answer":"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"}]`) // []KbaAnswerRequestItem | 
 
-    var kbaanswerrequestitem []mfa_configuration.Kbaanswerrequestitem
-    if err := json.Unmarshal(kbaanswerrequestitemJson, &kbaanswerrequestitem); err != nil {
+    var kbaAnswerRequestItem []mfa_configuration.KbaAnswerRequestItem
+    if err := json.Unmarshal(kbaanswerrequestitemJson, &kbaAnswerRequestItem); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -321,13 +331,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationAPI.SetMFAKBAConfigV1(context.Background()).Kbaanswerrequestitem(kbaanswerrequestitem).Execute()
-	  //resp, r, err := apiClient.MFAConfigurationAPI.SetMFAKBAConfigV1(context.Background()).Kbaanswerrequestitem(kbaanswerrequestitem).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.SetMFAKBAConfigV1(context.Background()).KbaAnswerRequestItem(kbaAnswerRequestItem).Execute()
+	  //resp, r, err := apiClient.MFAConfigurationAPI.SetMFAKBAConfigV1(context.Background()).KbaAnswerRequestItem(kbaAnswerRequestItem).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFAKBAConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetMFAKBAConfigV1`: []Kbaanswerresponseitem
+    // response from `SetMFAKBAConfigV1`: []KbaAnswerResponseItem
     fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFAKBAConfigV1`: %v\n", resp)
 }
 ```
@@ -351,11 +361,11 @@ Other parameters are passed through a pointer to a apiSetMFAOktaConfigV1Request 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mfaoktaconfig** | [**Mfaoktaconfig**](../models/mfaoktaconfig) |  | 
+ **mfaOktaConfig** | [**MfaOktaConfig**](../models/mfa-okta-config) |  | 
 
 ### Return type
 
-[**Mfaoktaconfig**](../models/mfaoktaconfig)
+[**MfaOktaConfig**](../models/mfa-okta-config)
 
 ### HTTP request headers
 
@@ -377,10 +387,16 @@ import (
 )
 
 func main() {
-    mfaoktaconfigJson := []byte(`{"mfaMethod":"okta-verify","enabled":true,"host":"www.example.com","accessKey":"dk778Y3QlA5UqocYpdU3rEkzrK2D497y","identityAttribute":"email"}`) // Mfaoktaconfig | 
+    mfaoktaconfigJson := []byte(`{
+          "accessKey" : "qw123Y3QlA5UqocYpdU3rEkzrK2D497y",
+          "host" : "example.com",
+          "mfaMethod" : "okta-verify",
+          "enabled" : true,
+          "identityAttribute" : "email"
+        }`) // MfaOktaConfig | 
 
-    var mfaoktaconfig mfa_configuration.Mfaoktaconfig
-    if err := json.Unmarshal(mfaoktaconfigJson, &mfaoktaconfig); err != nil {
+    var mfaOktaConfig mfa_configuration.MfaOktaConfig
+    if err := json.Unmarshal(mfaoktaconfigJson, &mfaOktaConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -388,13 +404,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationAPI.SetMFAOktaConfigV1(context.Background()).Mfaoktaconfig(mfaoktaconfig).Execute()
-	  //resp, r, err := apiClient.MFAConfigurationAPI.SetMFAOktaConfigV1(context.Background()).Mfaoktaconfig(mfaoktaconfig).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.SetMFAOktaConfigV1(context.Background()).MfaOktaConfig(mfaOktaConfig).Execute()
+	  //resp, r, err := apiClient.MFAConfigurationAPI.SetMFAOktaConfigV1(context.Background()).MfaOktaConfig(mfaOktaConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFAOktaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetMFAOktaConfigV1`: Mfaoktaconfig
+    // response from `SetMFAOktaConfigV1`: MfaOktaConfig
     fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFAOktaConfigV1`: %v\n", resp)
 }
 ```
@@ -426,7 +442,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Mfaconfigtestresponse**](../models/mfaconfigtestresponse)
+[**MfaConfigTestResponse**](../models/mfa-config-test-response)
 
 ### HTTP request headers
 
@@ -460,7 +476,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.TestMFAConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TestMFAConfigV1`: Mfaconfigtestresponse
+    // response from `TestMFAConfigV1`: MfaConfigTestResponse
     fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.TestMFAConfigV1`: %v\n", resp)
 }
 ```

@@ -27,16 +27,16 @@ type ConfigurationHubAPIService service
 type ApiCreateDeployV1Request struct {
 	ctx context.Context
 	ApiService *ConfigurationHubAPIService
-	deployrequest *Deployrequest
+	deployRequest *DeployRequest
 }
 
 // The deploy request body.
-func (r ApiCreateDeployV1Request) Deployrequest(deployrequest Deployrequest) ApiCreateDeployV1Request {
-	r.deployrequest = &deployrequest
+func (r ApiCreateDeployV1Request) DeployRequest(deployRequest DeployRequest) ApiCreateDeployV1Request {
+	r.deployRequest = &deployRequest
 	return r
 }
 
-func (r ApiCreateDeployV1Request) Execute() (*Deployresponse, *http.Response, error) {
+func (r ApiCreateDeployV1Request) Execute() (*DeployResponse, *http.Response, error) {
 	return r.ApiService.CreateDeployV1Execute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *ConfigurationHubAPIService) CreateDeployV1(ctx context.Context) ApiCrea
 }
 
 // Execute executes the request
-//  @return Deployresponse
-func (a *ConfigurationHubAPIService) CreateDeployV1Execute(r ApiCreateDeployV1Request) (*Deployresponse, *http.Response, error) {
+//  @return DeployResponse
+func (a *ConfigurationHubAPIService) CreateDeployV1Execute(r ApiCreateDeployV1Request) (*DeployResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Deployresponse
+		localVarReturnValue  *DeployResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.CreateDeployV1")
@@ -75,8 +75,8 @@ func (a *ConfigurationHubAPIService) CreateDeployV1Execute(r ApiCreateDeployV1Re
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.deployrequest == nil {
-		return localVarReturnValue, nil, reportError("deployrequest is required and must be specified")
+	if r.deployRequest == nil {
+		return localVarReturnValue, nil, reportError("deployRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -97,7 +97,7 @@ func (a *ConfigurationHubAPIService) CreateDeployV1Execute(r ApiCreateDeployV1Re
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.deployrequest
+	localVarPostBody = r.deployRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -121,7 +121,7 @@ func (a *ConfigurationHubAPIService) CreateDeployV1Execute(r ApiCreateDeployV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -143,7 +143,7 @@ func (a *ConfigurationHubAPIService) CreateDeployV1Execute(r ApiCreateDeployV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -165,7 +165,7 @@ func (a *ConfigurationHubAPIService) CreateDeployV1Execute(r ApiCreateDeployV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -193,16 +193,16 @@ type ApiCreateObjectMappingV1Request struct {
 	ctx context.Context
 	ApiService *ConfigurationHubAPIService
 	sourceOrg string
-	objectmappingrequest *Objectmappingrequest
+	objectMappingRequest *ObjectMappingRequest
 }
 
 // The object mapping request body.
-func (r ApiCreateObjectMappingV1Request) Objectmappingrequest(objectmappingrequest Objectmappingrequest) ApiCreateObjectMappingV1Request {
-	r.objectmappingrequest = &objectmappingrequest
+func (r ApiCreateObjectMappingV1Request) ObjectMappingRequest(objectMappingRequest ObjectMappingRequest) ApiCreateObjectMappingV1Request {
+	r.objectMappingRequest = &objectMappingRequest
 	return r
 }
 
-func (r ApiCreateObjectMappingV1Request) Execute() (*Objectmappingresponse, *http.Response, error) {
+func (r ApiCreateObjectMappingV1Request) Execute() (*ObjectMappingResponse, *http.Response, error) {
 	return r.ApiService.CreateObjectMappingV1Execute(r)
 }
 
@@ -227,13 +227,13 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingV1(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return Objectmappingresponse
-func (a *ConfigurationHubAPIService) CreateObjectMappingV1Execute(r ApiCreateObjectMappingV1Request) (*Objectmappingresponse, *http.Response, error) {
+//  @return ObjectMappingResponse
+func (a *ConfigurationHubAPIService) CreateObjectMappingV1Execute(r ApiCreateObjectMappingV1Request) (*ObjectMappingResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Objectmappingresponse
+		localVarReturnValue  *ObjectMappingResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.CreateObjectMappingV1")
@@ -247,8 +247,8 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingV1Execute(r ApiCreateObj
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.objectmappingrequest == nil {
-		return localVarReturnValue, nil, reportError("objectmappingrequest is required and must be specified")
+	if r.objectMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("objectMappingRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -269,7 +269,7 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingV1Execute(r ApiCreateObj
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.objectmappingrequest
+	localVarPostBody = r.objectMappingRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -293,7 +293,7 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingV1Execute(r ApiCreateObj
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -315,7 +315,7 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingV1Execute(r ApiCreateObj
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -326,7 +326,7 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingV1Execute(r ApiCreateObj
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -348,7 +348,7 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingV1Execute(r ApiCreateObj
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -376,16 +376,16 @@ type ApiCreateObjectMappingsV1Request struct {
 	ctx context.Context
 	ApiService *ConfigurationHubAPIService
 	sourceOrg string
-	objectmappingbulkcreaterequest *Objectmappingbulkcreaterequest
+	objectMappingBulkCreateRequest *ObjectMappingBulkCreateRequest
 }
 
 // The bulk create object mapping request body.
-func (r ApiCreateObjectMappingsV1Request) Objectmappingbulkcreaterequest(objectmappingbulkcreaterequest Objectmappingbulkcreaterequest) ApiCreateObjectMappingsV1Request {
-	r.objectmappingbulkcreaterequest = &objectmappingbulkcreaterequest
+func (r ApiCreateObjectMappingsV1Request) ObjectMappingBulkCreateRequest(objectMappingBulkCreateRequest ObjectMappingBulkCreateRequest) ApiCreateObjectMappingsV1Request {
+	r.objectMappingBulkCreateRequest = &objectMappingBulkCreateRequest
 	return r
 }
 
-func (r ApiCreateObjectMappingsV1Request) Execute() (*Objectmappingbulkcreateresponse, *http.Response, error) {
+func (r ApiCreateObjectMappingsV1Request) Execute() (*ObjectMappingBulkCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateObjectMappingsV1Execute(r)
 }
 
@@ -410,13 +410,13 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingsV1(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Objectmappingbulkcreateresponse
-func (a *ConfigurationHubAPIService) CreateObjectMappingsV1Execute(r ApiCreateObjectMappingsV1Request) (*Objectmappingbulkcreateresponse, *http.Response, error) {
+//  @return ObjectMappingBulkCreateResponse
+func (a *ConfigurationHubAPIService) CreateObjectMappingsV1Execute(r ApiCreateObjectMappingsV1Request) (*ObjectMappingBulkCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Objectmappingbulkcreateresponse
+		localVarReturnValue  *ObjectMappingBulkCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.CreateObjectMappingsV1")
@@ -430,8 +430,8 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingsV1Execute(r ApiCreateOb
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.objectmappingbulkcreaterequest == nil {
-		return localVarReturnValue, nil, reportError("objectmappingbulkcreaterequest is required and must be specified")
+	if r.objectMappingBulkCreateRequest == nil {
+		return localVarReturnValue, nil, reportError("objectMappingBulkCreateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -452,7 +452,7 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingsV1Execute(r ApiCreateOb
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.objectmappingbulkcreaterequest
+	localVarPostBody = r.objectMappingBulkCreateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -476,7 +476,7 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingsV1Execute(r ApiCreateOb
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -498,7 +498,7 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingsV1Execute(r ApiCreateOb
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -509,7 +509,7 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingsV1Execute(r ApiCreateOb
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -531,7 +531,7 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingsV1Execute(r ApiCreateOb
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -558,16 +558,16 @@ func (a *ConfigurationHubAPIService) CreateObjectMappingsV1Execute(r ApiCreateOb
 type ApiCreateScheduledActionV1Request struct {
 	ctx context.Context
 	ApiService *ConfigurationHubAPIService
-	scheduledactionpayload *Scheduledactionpayload
+	scheduledActionPayload *ScheduledActionPayload
 }
 
 // The scheduled action creation request body.
-func (r ApiCreateScheduledActionV1Request) Scheduledactionpayload(scheduledactionpayload Scheduledactionpayload) ApiCreateScheduledActionV1Request {
-	r.scheduledactionpayload = &scheduledactionpayload
+func (r ApiCreateScheduledActionV1Request) ScheduledActionPayload(scheduledActionPayload ScheduledActionPayload) ApiCreateScheduledActionV1Request {
+	r.scheduledActionPayload = &scheduledActionPayload
 	return r
 }
 
-func (r ApiCreateScheduledActionV1Request) Execute() (*Scheduledactionresponse, *http.Response, error) {
+func (r ApiCreateScheduledActionV1Request) Execute() (*ScheduledActionResponse, *http.Response, error) {
 	return r.ApiService.CreateScheduledActionV1Execute(r)
 }
 
@@ -587,13 +587,13 @@ func (a *ConfigurationHubAPIService) CreateScheduledActionV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Scheduledactionresponse
-func (a *ConfigurationHubAPIService) CreateScheduledActionV1Execute(r ApiCreateScheduledActionV1Request) (*Scheduledactionresponse, *http.Response, error) {
+//  @return ScheduledActionResponse
+func (a *ConfigurationHubAPIService) CreateScheduledActionV1Execute(r ApiCreateScheduledActionV1Request) (*ScheduledActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Scheduledactionresponse
+		localVarReturnValue  *ScheduledActionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.CreateScheduledActionV1")
@@ -606,8 +606,8 @@ func (a *ConfigurationHubAPIService) CreateScheduledActionV1Execute(r ApiCreateS
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.scheduledactionpayload == nil {
-		return localVarReturnValue, nil, reportError("scheduledactionpayload is required and must be specified")
+	if r.scheduledActionPayload == nil {
+		return localVarReturnValue, nil, reportError("scheduledActionPayload is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -628,7 +628,7 @@ func (a *ConfigurationHubAPIService) CreateScheduledActionV1Execute(r ApiCreateS
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.scheduledactionpayload
+	localVarPostBody = r.scheduledActionPayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -652,7 +652,7 @@ func (a *ConfigurationHubAPIService) CreateScheduledActionV1Execute(r ApiCreateS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -674,7 +674,7 @@ func (a *ConfigurationHubAPIService) CreateScheduledActionV1Execute(r ApiCreateS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -696,7 +696,7 @@ func (a *ConfigurationHubAPIService) CreateScheduledActionV1Execute(r ApiCreateS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -739,7 +739,7 @@ func (r ApiCreateUploadedConfigurationV1Request) Name(name string) ApiCreateUplo
 	return r
 }
 
-func (r ApiCreateUploadedConfigurationV1Request) Execute() (*Backupresponse, *http.Response, error) {
+func (r ApiCreateUploadedConfigurationV1Request) Execute() (*BackupResponse, *http.Response, error) {
 	return r.ApiService.CreateUploadedConfigurationV1Execute(r)
 }
 
@@ -763,13 +763,13 @@ func (a *ConfigurationHubAPIService) CreateUploadedConfigurationV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return Backupresponse
-func (a *ConfigurationHubAPIService) CreateUploadedConfigurationV1Execute(r ApiCreateUploadedConfigurationV1Request) (*Backupresponse, *http.Response, error) {
+//  @return BackupResponse
+func (a *ConfigurationHubAPIService) CreateUploadedConfigurationV1Execute(r ApiCreateUploadedConfigurationV1Request) (*BackupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Backupresponse
+		localVarReturnValue  *BackupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.CreateUploadedConfigurationV1")
@@ -845,7 +845,7 @@ func (a *ConfigurationHubAPIService) CreateUploadedConfigurationV1Execute(r ApiC
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -867,7 +867,7 @@ func (a *ConfigurationHubAPIService) CreateUploadedConfigurationV1Execute(r ApiC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -889,7 +889,7 @@ func (a *ConfigurationHubAPIService) CreateUploadedConfigurationV1Execute(r ApiC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1004,7 +1004,7 @@ func (a *ConfigurationHubAPIService) DeleteBackupV1Execute(r ApiDeleteBackupV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1026,7 +1026,7 @@ func (a *ConfigurationHubAPIService) DeleteBackupV1Execute(r ApiDeleteBackupV1Re
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1037,7 +1037,7 @@ func (a *ConfigurationHubAPIService) DeleteBackupV1Execute(r ApiDeleteBackupV1Re
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1059,7 +1059,7 @@ func (a *ConfigurationHubAPIService) DeleteBackupV1Execute(r ApiDeleteBackupV1Re
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1165,7 +1165,7 @@ func (a *ConfigurationHubAPIService) DeleteDraftV1Execute(r ApiDeleteDraftV1Requ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1187,7 +1187,7 @@ func (a *ConfigurationHubAPIService) DeleteDraftV1Execute(r ApiDeleteDraftV1Requ
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1198,7 +1198,7 @@ func (a *ConfigurationHubAPIService) DeleteDraftV1Execute(r ApiDeleteDraftV1Requ
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1220,7 +1220,7 @@ func (a *ConfigurationHubAPIService) DeleteDraftV1Execute(r ApiDeleteDraftV1Requ
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1329,7 +1329,7 @@ func (a *ConfigurationHubAPIService) DeleteObjectMappingV1Execute(r ApiDeleteObj
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1351,7 +1351,7 @@ func (a *ConfigurationHubAPIService) DeleteObjectMappingV1Execute(r ApiDeleteObj
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1362,7 +1362,7 @@ func (a *ConfigurationHubAPIService) DeleteObjectMappingV1Execute(r ApiDeleteObj
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1384,7 +1384,7 @@ func (a *ConfigurationHubAPIService) DeleteObjectMappingV1Execute(r ApiDeleteObj
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1486,7 +1486,7 @@ func (a *ConfigurationHubAPIService) DeleteScheduledActionV1Execute(r ApiDeleteS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1508,7 +1508,7 @@ func (a *ConfigurationHubAPIService) DeleteScheduledActionV1Execute(r ApiDeleteS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1519,7 +1519,7 @@ func (a *ConfigurationHubAPIService) DeleteScheduledActionV1Execute(r ApiDeleteS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1541,7 +1541,7 @@ func (a *ConfigurationHubAPIService) DeleteScheduledActionV1Execute(r ApiDeleteS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1647,7 +1647,7 @@ func (a *ConfigurationHubAPIService) DeleteUploadedConfigurationV1Execute(r ApiD
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1669,7 +1669,7 @@ func (a *ConfigurationHubAPIService) DeleteUploadedConfigurationV1Execute(r ApiD
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1680,7 +1680,7 @@ func (a *ConfigurationHubAPIService) DeleteUploadedConfigurationV1Execute(r ApiD
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1702,7 +1702,7 @@ func (a *ConfigurationHubAPIService) DeleteUploadedConfigurationV1Execute(r ApiD
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1723,7 +1723,7 @@ type ApiGetDeployV1Request struct {
 	id string
 }
 
-func (r ApiGetDeployV1Request) Execute() (*Deployresponse, *http.Response, error) {
+func (r ApiGetDeployV1Request) Execute() (*DeployResponse, *http.Response, error) {
 	return r.ApiService.GetDeployV1Execute(r)
 }
 
@@ -1745,13 +1745,13 @@ func (a *ConfigurationHubAPIService) GetDeployV1(ctx context.Context, id string)
 }
 
 // Execute executes the request
-//  @return Deployresponse
-func (a *ConfigurationHubAPIService) GetDeployV1Execute(r ApiGetDeployV1Request) (*Deployresponse, *http.Response, error) {
+//  @return DeployResponse
+func (a *ConfigurationHubAPIService) GetDeployV1Execute(r ApiGetDeployV1Request) (*DeployResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Deployresponse
+		localVarReturnValue  *DeployResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.GetDeployV1")
@@ -1806,7 +1806,7 @@ func (a *ConfigurationHubAPIService) GetDeployV1Execute(r ApiGetDeployV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1828,7 +1828,7 @@ func (a *ConfigurationHubAPIService) GetDeployV1Execute(r ApiGetDeployV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1839,7 +1839,7 @@ func (a *ConfigurationHubAPIService) GetDeployV1Execute(r ApiGetDeployV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1861,7 +1861,7 @@ func (a *ConfigurationHubAPIService) GetDeployV1Execute(r ApiGetDeployV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1891,7 +1891,7 @@ type ApiGetObjectMappingsV1Request struct {
 	sourceOrg string
 }
 
-func (r ApiGetObjectMappingsV1Request) Execute() ([]Objectmappingresponse, *http.Response, error) {
+func (r ApiGetObjectMappingsV1Request) Execute() ([]ObjectMappingResponse, *http.Response, error) {
 	return r.ApiService.GetObjectMappingsV1Execute(r)
 }
 
@@ -1916,13 +1916,13 @@ func (a *ConfigurationHubAPIService) GetObjectMappingsV1(ctx context.Context, so
 }
 
 // Execute executes the request
-//  @return []Objectmappingresponse
-func (a *ConfigurationHubAPIService) GetObjectMappingsV1Execute(r ApiGetObjectMappingsV1Request) ([]Objectmappingresponse, *http.Response, error) {
+//  @return []ObjectMappingResponse
+func (a *ConfigurationHubAPIService) GetObjectMappingsV1Execute(r ApiGetObjectMappingsV1Request) ([]ObjectMappingResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Objectmappingresponse
+		localVarReturnValue  []ObjectMappingResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.GetObjectMappingsV1")
@@ -1977,7 +1977,7 @@ func (a *ConfigurationHubAPIService) GetObjectMappingsV1Execute(r ApiGetObjectMa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1999,7 +1999,7 @@ func (a *ConfigurationHubAPIService) GetObjectMappingsV1Execute(r ApiGetObjectMa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2010,7 +2010,7 @@ func (a *ConfigurationHubAPIService) GetObjectMappingsV1Execute(r ApiGetObjectMa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2032,7 +2032,7 @@ func (a *ConfigurationHubAPIService) GetObjectMappingsV1Execute(r ApiGetObjectMa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2062,7 +2062,7 @@ type ApiGetUploadedConfigurationV1Request struct {
 	id string
 }
 
-func (r ApiGetUploadedConfigurationV1Request) Execute() (*Backupresponse, *http.Response, error) {
+func (r ApiGetUploadedConfigurationV1Request) Execute() (*BackupResponse, *http.Response, error) {
 	return r.ApiService.GetUploadedConfigurationV1Execute(r)
 }
 
@@ -2084,13 +2084,13 @@ func (a *ConfigurationHubAPIService) GetUploadedConfigurationV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return Backupresponse
-func (a *ConfigurationHubAPIService) GetUploadedConfigurationV1Execute(r ApiGetUploadedConfigurationV1Request) (*Backupresponse, *http.Response, error) {
+//  @return BackupResponse
+func (a *ConfigurationHubAPIService) GetUploadedConfigurationV1Execute(r ApiGetUploadedConfigurationV1Request) (*BackupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Backupresponse
+		localVarReturnValue  *BackupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.GetUploadedConfigurationV1")
@@ -2145,7 +2145,7 @@ func (a *ConfigurationHubAPIService) GetUploadedConfigurationV1Execute(r ApiGetU
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2167,7 +2167,7 @@ func (a *ConfigurationHubAPIService) GetUploadedConfigurationV1Execute(r ApiGetU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2178,7 +2178,7 @@ func (a *ConfigurationHubAPIService) GetUploadedConfigurationV1Execute(r ApiGetU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2200,7 +2200,7 @@ func (a *ConfigurationHubAPIService) GetUploadedConfigurationV1Execute(r ApiGetU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2236,7 +2236,7 @@ func (r ApiListBackupsV1Request) Filters(filters string) ApiListBackupsV1Request
 	return r
 }
 
-func (r ApiListBackupsV1Request) Execute() ([]Backupresponse, *http.Response, error) {
+func (r ApiListBackupsV1Request) Execute() ([]BackupResponse, *http.Response, error) {
 	return r.ApiService.ListBackupsV1Execute(r)
 }
 
@@ -2256,13 +2256,13 @@ func (a *ConfigurationHubAPIService) ListBackupsV1(ctx context.Context) ApiListB
 }
 
 // Execute executes the request
-//  @return []Backupresponse
-func (a *ConfigurationHubAPIService) ListBackupsV1Execute(r ApiListBackupsV1Request) ([]Backupresponse, *http.Response, error) {
+//  @return []BackupResponse
+func (a *ConfigurationHubAPIService) ListBackupsV1Execute(r ApiListBackupsV1Request) ([]BackupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Backupresponse
+		localVarReturnValue  []BackupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.ListBackupsV1")
@@ -2319,7 +2319,7 @@ func (a *ConfigurationHubAPIService) ListBackupsV1Execute(r ApiListBackupsV1Requ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2341,7 +2341,7 @@ func (a *ConfigurationHubAPIService) ListBackupsV1Execute(r ApiListBackupsV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2363,7 +2363,7 @@ func (a *ConfigurationHubAPIService) ListBackupsV1Execute(r ApiListBackupsV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2472,7 +2472,7 @@ func (a *ConfigurationHubAPIService) ListDeploysV1Execute(r ApiListDeploysV1Requ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2494,7 +2494,7 @@ func (a *ConfigurationHubAPIService) ListDeploysV1Execute(r ApiListDeploysV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2516,7 +2516,7 @@ func (a *ConfigurationHubAPIService) ListDeploysV1Execute(r ApiListDeploysV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2552,7 +2552,7 @@ func (r ApiListDraftsV1Request) Filters(filters string) ApiListDraftsV1Request {
 	return r
 }
 
-func (r ApiListDraftsV1Request) Execute() ([]Draftresponse, *http.Response, error) {
+func (r ApiListDraftsV1Request) Execute() ([]DraftResponse, *http.Response, error) {
 	return r.ApiService.ListDraftsV1Execute(r)
 }
 
@@ -2572,13 +2572,13 @@ func (a *ConfigurationHubAPIService) ListDraftsV1(ctx context.Context) ApiListDr
 }
 
 // Execute executes the request
-//  @return []Draftresponse
-func (a *ConfigurationHubAPIService) ListDraftsV1Execute(r ApiListDraftsV1Request) ([]Draftresponse, *http.Response, error) {
+//  @return []DraftResponse
+func (a *ConfigurationHubAPIService) ListDraftsV1Execute(r ApiListDraftsV1Request) ([]DraftResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Draftresponse
+		localVarReturnValue  []DraftResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.ListDraftsV1")
@@ -2635,7 +2635,7 @@ func (a *ConfigurationHubAPIService) ListDraftsV1Execute(r ApiListDraftsV1Reques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2657,7 +2657,7 @@ func (a *ConfigurationHubAPIService) ListDraftsV1Execute(r ApiListDraftsV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2679,7 +2679,7 @@ func (a *ConfigurationHubAPIService) ListDraftsV1Execute(r ApiListDraftsV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2708,7 +2708,7 @@ type ApiListScheduledActionsV1Request struct {
 	ApiService *ConfigurationHubAPIService
 }
 
-func (r ApiListScheduledActionsV1Request) Execute() ([]Scheduledactionresponse, *http.Response, error) {
+func (r ApiListScheduledActionsV1Request) Execute() ([]ScheduledActionResponse, *http.Response, error) {
 	return r.ApiService.ListScheduledActionsV1Execute(r)
 }
 
@@ -2728,13 +2728,13 @@ func (a *ConfigurationHubAPIService) ListScheduledActionsV1(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return []Scheduledactionresponse
-func (a *ConfigurationHubAPIService) ListScheduledActionsV1Execute(r ApiListScheduledActionsV1Request) ([]Scheduledactionresponse, *http.Response, error) {
+//  @return []ScheduledActionResponse
+func (a *ConfigurationHubAPIService) ListScheduledActionsV1Execute(r ApiListScheduledActionsV1Request) ([]ScheduledActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Scheduledactionresponse
+		localVarReturnValue  []ScheduledActionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.ListScheduledActionsV1")
@@ -2788,7 +2788,7 @@ func (a *ConfigurationHubAPIService) ListScheduledActionsV1Execute(r ApiListSche
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2810,7 +2810,7 @@ func (a *ConfigurationHubAPIService) ListScheduledActionsV1Execute(r ApiListSche
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2832,7 +2832,7 @@ func (a *ConfigurationHubAPIService) ListScheduledActionsV1Execute(r ApiListSche
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2868,7 +2868,7 @@ func (r ApiListUploadedConfigurationsV1Request) Filters(filters string) ApiListU
 	return r
 }
 
-func (r ApiListUploadedConfigurationsV1Request) Execute() ([]Backupresponse, *http.Response, error) {
+func (r ApiListUploadedConfigurationsV1Request) Execute() ([]BackupResponse, *http.Response, error) {
 	return r.ApiService.ListUploadedConfigurationsV1Execute(r)
 }
 
@@ -2888,13 +2888,13 @@ func (a *ConfigurationHubAPIService) ListUploadedConfigurationsV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []Backupresponse
-func (a *ConfigurationHubAPIService) ListUploadedConfigurationsV1Execute(r ApiListUploadedConfigurationsV1Request) ([]Backupresponse, *http.Response, error) {
+//  @return []BackupResponse
+func (a *ConfigurationHubAPIService) ListUploadedConfigurationsV1Execute(r ApiListUploadedConfigurationsV1Request) ([]BackupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Backupresponse
+		localVarReturnValue  []BackupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.ListUploadedConfigurationsV1")
@@ -2951,7 +2951,7 @@ func (a *ConfigurationHubAPIService) ListUploadedConfigurationsV1Execute(r ApiLi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2973,7 +2973,7 @@ func (a *ConfigurationHubAPIService) ListUploadedConfigurationsV1Execute(r ApiLi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2984,7 +2984,7 @@ func (a *ConfigurationHubAPIService) ListUploadedConfigurationsV1Execute(r ApiLi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3006,7 +3006,7 @@ func (a *ConfigurationHubAPIService) ListUploadedConfigurationsV1Execute(r ApiLi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3034,16 +3034,16 @@ type ApiUpdateObjectMappingsV1Request struct {
 	ctx context.Context
 	ApiService *ConfigurationHubAPIService
 	sourceOrg string
-	objectmappingbulkpatchrequest *Objectmappingbulkpatchrequest
+	objectMappingBulkPatchRequest *ObjectMappingBulkPatchRequest
 }
 
 // The object mapping request body.
-func (r ApiUpdateObjectMappingsV1Request) Objectmappingbulkpatchrequest(objectmappingbulkpatchrequest Objectmappingbulkpatchrequest) ApiUpdateObjectMappingsV1Request {
-	r.objectmappingbulkpatchrequest = &objectmappingbulkpatchrequest
+func (r ApiUpdateObjectMappingsV1Request) ObjectMappingBulkPatchRequest(objectMappingBulkPatchRequest ObjectMappingBulkPatchRequest) ApiUpdateObjectMappingsV1Request {
+	r.objectMappingBulkPatchRequest = &objectMappingBulkPatchRequest
 	return r
 }
 
-func (r ApiUpdateObjectMappingsV1Request) Execute() (*Objectmappingbulkpatchresponse, *http.Response, error) {
+func (r ApiUpdateObjectMappingsV1Request) Execute() (*ObjectMappingBulkPatchResponse, *http.Response, error) {
 	return r.ApiService.UpdateObjectMappingsV1Execute(r)
 }
 
@@ -3068,13 +3068,13 @@ func (a *ConfigurationHubAPIService) UpdateObjectMappingsV1(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Objectmappingbulkpatchresponse
-func (a *ConfigurationHubAPIService) UpdateObjectMappingsV1Execute(r ApiUpdateObjectMappingsV1Request) (*Objectmappingbulkpatchresponse, *http.Response, error) {
+//  @return ObjectMappingBulkPatchResponse
+func (a *ConfigurationHubAPIService) UpdateObjectMappingsV1Execute(r ApiUpdateObjectMappingsV1Request) (*ObjectMappingBulkPatchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Objectmappingbulkpatchresponse
+		localVarReturnValue  *ObjectMappingBulkPatchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.UpdateObjectMappingsV1")
@@ -3088,8 +3088,8 @@ func (a *ConfigurationHubAPIService) UpdateObjectMappingsV1Execute(r ApiUpdateOb
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.objectmappingbulkpatchrequest == nil {
-		return localVarReturnValue, nil, reportError("objectmappingbulkpatchrequest is required and must be specified")
+	if r.objectMappingBulkPatchRequest == nil {
+		return localVarReturnValue, nil, reportError("objectMappingBulkPatchRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -3110,7 +3110,7 @@ func (a *ConfigurationHubAPIService) UpdateObjectMappingsV1Execute(r ApiUpdateOb
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.objectmappingbulkpatchrequest
+	localVarPostBody = r.objectMappingBulkPatchRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3134,7 +3134,7 @@ func (a *ConfigurationHubAPIService) UpdateObjectMappingsV1Execute(r ApiUpdateOb
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3156,7 +3156,7 @@ func (a *ConfigurationHubAPIService) UpdateObjectMappingsV1Execute(r ApiUpdateOb
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3167,7 +3167,7 @@ func (a *ConfigurationHubAPIService) UpdateObjectMappingsV1Execute(r ApiUpdateOb
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3189,7 +3189,7 @@ func (a *ConfigurationHubAPIService) UpdateObjectMappingsV1Execute(r ApiUpdateOb
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3217,16 +3217,16 @@ type ApiUpdateScheduledActionV1Request struct {
 	ctx context.Context
 	ApiService *ConfigurationHubAPIService
 	id string
-	jsonpatch *Jsonpatch
+	jsonPatch *JsonPatch
 }
 
 // The JSON Patch document containing the changes to apply to the scheduled action.
-func (r ApiUpdateScheduledActionV1Request) Jsonpatch(jsonpatch Jsonpatch) ApiUpdateScheduledActionV1Request {
-	r.jsonpatch = &jsonpatch
+func (r ApiUpdateScheduledActionV1Request) JsonPatch(jsonPatch JsonPatch) ApiUpdateScheduledActionV1Request {
+	r.jsonPatch = &jsonPatch
 	return r
 }
 
-func (r ApiUpdateScheduledActionV1Request) Execute() (*Scheduledactionresponse, *http.Response, error) {
+func (r ApiUpdateScheduledActionV1Request) Execute() (*ScheduledActionResponse, *http.Response, error) {
 	return r.ApiService.UpdateScheduledActionV1Execute(r)
 }
 
@@ -3248,13 +3248,13 @@ func (a *ConfigurationHubAPIService) UpdateScheduledActionV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Scheduledactionresponse
-func (a *ConfigurationHubAPIService) UpdateScheduledActionV1Execute(r ApiUpdateScheduledActionV1Request) (*Scheduledactionresponse, *http.Response, error) {
+//  @return ScheduledActionResponse
+func (a *ConfigurationHubAPIService) UpdateScheduledActionV1Execute(r ApiUpdateScheduledActionV1Request) (*ScheduledActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Scheduledactionresponse
+		localVarReturnValue  *ScheduledActionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationHubAPIService.UpdateScheduledActionV1")
@@ -3268,8 +3268,8 @@ func (a *ConfigurationHubAPIService) UpdateScheduledActionV1Execute(r ApiUpdateS
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatch == nil {
-		return localVarReturnValue, nil, reportError("jsonpatch is required and must be specified")
+	if r.jsonPatch == nil {
+		return localVarReturnValue, nil, reportError("jsonPatch is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -3290,7 +3290,7 @@ func (a *ConfigurationHubAPIService) UpdateScheduledActionV1Execute(r ApiUpdateS
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatch
+	localVarPostBody = r.jsonPatch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3314,7 +3314,7 @@ func (a *ConfigurationHubAPIService) UpdateScheduledActionV1Execute(r ApiUpdateS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3336,7 +3336,7 @@ func (a *ConfigurationHubAPIService) UpdateScheduledActionV1Execute(r ApiUpdateS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3347,7 +3347,7 @@ func (a *ConfigurationHubAPIService) UpdateScheduledActionV1Execute(r ApiUpdateS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3369,7 +3369,7 @@ func (a *ConfigurationHubAPIService) UpdateScheduledActionV1Execute(r ApiUpdateS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

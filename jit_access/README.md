@@ -85,14 +85,14 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetJitActivationConfigV1401Response](docs/GetJitActivationConfigV1401Response.md)
  - [GetJitActivationConfigV1429Response](docs/GetJitActivationConfigV1429Response.md)
- - [Jitaccessoperationrequest](docs/Jitaccessoperationrequest.md)
- - [JitaccessoperationrequestValue](docs/JitaccessoperationrequestValue.md)
- - [Jitactivationconfigresponse](docs/Jitactivationconfigresponse.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [JITActivationConfigResponse](docs/JITActivationConfigResponse.md)
+ - [JitAccessOperationRequest](docs/JitAccessOperationRequest.md)
+ - [JitAccessOperationRequestValue](docs/JitAccessOperationRequestValue.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

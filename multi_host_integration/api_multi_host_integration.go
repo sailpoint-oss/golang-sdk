@@ -26,16 +26,16 @@ type MultiHostIntegrationAPIService service
 type ApiCreateMultiHostIntegrationV1Request struct {
 	ctx context.Context
 	ApiService *MultiHostIntegrationAPIService
-	multihostintegrationscreate *Multihostintegrationscreate
+	multiHostIntegrationsCreate *MultiHostIntegrationsCreate
 }
 
 // The specifics of the Multi-Host Integration to create
-func (r ApiCreateMultiHostIntegrationV1Request) Multihostintegrationscreate(multihostintegrationscreate Multihostintegrationscreate) ApiCreateMultiHostIntegrationV1Request {
-	r.multihostintegrationscreate = &multihostintegrationscreate
+func (r ApiCreateMultiHostIntegrationV1Request) MultiHostIntegrationsCreate(multiHostIntegrationsCreate MultiHostIntegrationsCreate) ApiCreateMultiHostIntegrationV1Request {
+	r.multiHostIntegrationsCreate = &multiHostIntegrationsCreate
 	return r
 }
 
-func (r ApiCreateMultiHostIntegrationV1Request) Execute() (*Multihostintegrations, *http.Response, error) {
+func (r ApiCreateMultiHostIntegrationV1Request) Execute() (*MultiHostIntegrations, *http.Response, error) {
 	return r.ApiService.CreateMultiHostIntegrationV1Execute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *MultiHostIntegrationAPIService) CreateMultiHostIntegrationV1(ctx contex
 }
 
 // Execute executes the request
-//  @return Multihostintegrations
-func (a *MultiHostIntegrationAPIService) CreateMultiHostIntegrationV1Execute(r ApiCreateMultiHostIntegrationV1Request) (*Multihostintegrations, *http.Response, error) {
+//  @return MultiHostIntegrations
+func (a *MultiHostIntegrationAPIService) CreateMultiHostIntegrationV1Execute(r ApiCreateMultiHostIntegrationV1Request) (*MultiHostIntegrations, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Multihostintegrations
+		localVarReturnValue  *MultiHostIntegrations
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiHostIntegrationAPIService.CreateMultiHostIntegrationV1")
@@ -76,8 +76,8 @@ func (a *MultiHostIntegrationAPIService) CreateMultiHostIntegrationV1Execute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.multihostintegrationscreate == nil {
-		return localVarReturnValue, nil, reportError("multihostintegrationscreate is required and must be specified")
+	if r.multiHostIntegrationsCreate == nil {
+		return localVarReturnValue, nil, reportError("multiHostIntegrationsCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -98,7 +98,7 @@ func (a *MultiHostIntegrationAPIService) CreateMultiHostIntegrationV1Execute(r A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.multihostintegrationscreate
+	localVarPostBody = r.multiHostIntegrationsCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -122,7 +122,7 @@ func (a *MultiHostIntegrationAPIService) CreateMultiHostIntegrationV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -144,7 +144,7 @@ func (a *MultiHostIntegrationAPIService) CreateMultiHostIntegrationV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -155,7 +155,7 @@ func (a *MultiHostIntegrationAPIService) CreateMultiHostIntegrationV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -177,7 +177,7 @@ func (a *MultiHostIntegrationAPIService) CreateMultiHostIntegrationV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -205,12 +205,12 @@ type ApiCreateSourcesWithinMultiHostV1Request struct {
 	ctx context.Context
 	ApiService *MultiHostIntegrationAPIService
 	multihostId string
-	multihostintegrationscreatesources *[]Multihostintegrationscreatesources
+	multiHostIntegrationsCreateSources *[]MultiHostIntegrationsCreateSources
 }
 
 // The specifics of the sources to create within Multi-Host Integration.
-func (r ApiCreateSourcesWithinMultiHostV1Request) Multihostintegrationscreatesources(multihostintegrationscreatesources []Multihostintegrationscreatesources) ApiCreateSourcesWithinMultiHostV1Request {
-	r.multihostintegrationscreatesources = &multihostintegrationscreatesources
+func (r ApiCreateSourcesWithinMultiHostV1Request) MultiHostIntegrationsCreateSources(multiHostIntegrationsCreateSources []MultiHostIntegrationsCreateSources) ApiCreateSourcesWithinMultiHostV1Request {
+	r.multiHostIntegrationsCreateSources = &multiHostIntegrationsCreateSources
 	return r
 }
 
@@ -256,8 +256,8 @@ func (a *MultiHostIntegrationAPIService) CreateSourcesWithinMultiHostV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.multihostintegrationscreatesources == nil {
-		return nil, reportError("multihostintegrationscreatesources is required and must be specified")
+	if r.multiHostIntegrationsCreateSources == nil {
+		return nil, reportError("multiHostIntegrationsCreateSources is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -278,7 +278,7 @@ func (a *MultiHostIntegrationAPIService) CreateSourcesWithinMultiHostV1Execute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.multihostintegrationscreatesources
+	localVarPostBody = r.multiHostIntegrationsCreateSources
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -302,7 +302,7 @@ func (a *MultiHostIntegrationAPIService) CreateSourcesWithinMultiHostV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -324,7 +324,7 @@ func (a *MultiHostIntegrationAPIService) CreateSourcesWithinMultiHostV1Execute(r
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -335,7 +335,7 @@ func (a *MultiHostIntegrationAPIService) CreateSourcesWithinMultiHostV1Execute(r
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -357,7 +357,7 @@ func (a *MultiHostIntegrationAPIService) CreateSourcesWithinMultiHostV1Execute(r
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -473,7 +473,7 @@ func (a *MultiHostIntegrationAPIService) DeleteMultiHostSourcesV1Execute(r ApiDe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -495,7 +495,7 @@ func (a *MultiHostIntegrationAPIService) DeleteMultiHostSourcesV1Execute(r ApiDe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -506,7 +506,7 @@ func (a *MultiHostIntegrationAPIService) DeleteMultiHostSourcesV1Execute(r ApiDe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -528,7 +528,7 @@ func (a *MultiHostIntegrationAPIService) DeleteMultiHostSourcesV1Execute(r ApiDe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -632,7 +632,7 @@ func (a *MultiHostIntegrationAPIService) DeleteMultiHostV1Execute(r ApiDeleteMul
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -654,7 +654,7 @@ func (a *MultiHostIntegrationAPIService) DeleteMultiHostV1Execute(r ApiDeleteMul
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -665,7 +665,7 @@ func (a *MultiHostIntegrationAPIService) DeleteMultiHostV1Execute(r ApiDeleteMul
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -687,7 +687,7 @@ func (a *MultiHostIntegrationAPIService) DeleteMultiHostV1Execute(r ApiDeleteMul
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -722,7 +722,7 @@ func (r ApiGetAcctAggregationGroupsV1Request) Limit(limit int32) ApiGetAcctAggre
 	return r
 }
 
-func (r ApiGetAcctAggregationGroupsV1Request) Execute() ([]Multihostintegrationsaggscheduleupdate, *http.Response, error) {
+func (r ApiGetAcctAggregationGroupsV1Request) Execute() ([]MultiHostIntegrationsAggScheduleUpdate, *http.Response, error) {
 	return r.ApiService.GetAcctAggregationGroupsV1Execute(r)
 }
 
@@ -745,13 +745,13 @@ func (a *MultiHostIntegrationAPIService) GetAcctAggregationGroupsV1(ctx context.
 }
 
 // Execute executes the request
-//  @return []Multihostintegrationsaggscheduleupdate
-func (a *MultiHostIntegrationAPIService) GetAcctAggregationGroupsV1Execute(r ApiGetAcctAggregationGroupsV1Request) ([]Multihostintegrationsaggscheduleupdate, *http.Response, error) {
+//  @return []MultiHostIntegrationsAggScheduleUpdate
+func (a *MultiHostIntegrationAPIService) GetAcctAggregationGroupsV1Execute(r ApiGetAcctAggregationGroupsV1Request) ([]MultiHostIntegrationsAggScheduleUpdate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Multihostintegrationsaggscheduleupdate
+		localVarReturnValue  []MultiHostIntegrationsAggScheduleUpdate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiHostIntegrationAPIService.GetAcctAggregationGroupsV1")
@@ -818,7 +818,7 @@ func (a *MultiHostIntegrationAPIService) GetAcctAggregationGroupsV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -840,7 +840,7 @@ func (a *MultiHostIntegrationAPIService) GetAcctAggregationGroupsV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -851,7 +851,7 @@ func (a *MultiHostIntegrationAPIService) GetAcctAggregationGroupsV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -873,7 +873,7 @@ func (a *MultiHostIntegrationAPIService) GetAcctAggregationGroupsV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -917,7 +917,7 @@ func (r ApiGetEntitlementAggregationGroupsV1Request) Limit(limit int32) ApiGetEn
 	return r
 }
 
-func (r ApiGetEntitlementAggregationGroupsV1Request) Execute() ([]Multihostintegrationsaggscheduleupdate, *http.Response, error) {
+func (r ApiGetEntitlementAggregationGroupsV1Request) Execute() ([]MultiHostIntegrationsAggScheduleUpdate, *http.Response, error) {
 	return r.ApiService.GetEntitlementAggregationGroupsV1Execute(r)
 }
 
@@ -941,13 +941,13 @@ func (a *MultiHostIntegrationAPIService) GetEntitlementAggregationGroupsV1(ctx c
 }
 
 // Execute executes the request
-//  @return []Multihostintegrationsaggscheduleupdate
-func (a *MultiHostIntegrationAPIService) GetEntitlementAggregationGroupsV1Execute(r ApiGetEntitlementAggregationGroupsV1Request) ([]Multihostintegrationsaggscheduleupdate, *http.Response, error) {
+//  @return []MultiHostIntegrationsAggScheduleUpdate
+func (a *MultiHostIntegrationAPIService) GetEntitlementAggregationGroupsV1Execute(r ApiGetEntitlementAggregationGroupsV1Request) ([]MultiHostIntegrationsAggScheduleUpdate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Multihostintegrationsaggscheduleupdate
+		localVarReturnValue  []MultiHostIntegrationsAggScheduleUpdate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiHostIntegrationAPIService.GetEntitlementAggregationGroupsV1")
@@ -1014,7 +1014,7 @@ func (a *MultiHostIntegrationAPIService) GetEntitlementAggregationGroupsV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1036,7 +1036,7 @@ func (a *MultiHostIntegrationAPIService) GetEntitlementAggregationGroupsV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1047,7 +1047,7 @@ func (a *MultiHostIntegrationAPIService) GetEntitlementAggregationGroupsV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1069,7 +1069,7 @@ func (a *MultiHostIntegrationAPIService) GetEntitlementAggregationGroupsV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1140,7 +1140,7 @@ func (r ApiGetMultiHostIntegrationsListV1Request) ForSubadmin(forSubadmin string
 	return r
 }
 
-func (r ApiGetMultiHostIntegrationsListV1Request) Execute() ([]Multihostintegrations, *http.Response, error) {
+func (r ApiGetMultiHostIntegrationsListV1Request) Execute() ([]MultiHostIntegrations, *http.Response, error) {
 	return r.ApiService.GetMultiHostIntegrationsListV1Execute(r)
 }
 
@@ -1162,13 +1162,13 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsListV1(ctx cont
 }
 
 // Execute executes the request
-//  @return []Multihostintegrations
-func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsListV1Execute(r ApiGetMultiHostIntegrationsListV1Request) ([]Multihostintegrations, *http.Response, error) {
+//  @return []MultiHostIntegrations
+func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsListV1Execute(r ApiGetMultiHostIntegrationsListV1Request) ([]MultiHostIntegrations, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Multihostintegrations
+		localVarReturnValue  []MultiHostIntegrations
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiHostIntegrationAPIService.GetMultiHostIntegrationsListV1")
@@ -1249,7 +1249,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsListV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1271,7 +1271,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsListV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1282,7 +1282,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsListV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1304,7 +1304,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsListV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1334,7 +1334,7 @@ type ApiGetMultiHostIntegrationsV1Request struct {
 	multihostId string
 }
 
-func (r ApiGetMultiHostIntegrationsV1Request) Execute() (*Multihostintegrations, *http.Response, error) {
+func (r ApiGetMultiHostIntegrationsV1Request) Execute() (*MultiHostIntegrations, *http.Response, error) {
 	return r.ApiService.GetMultiHostIntegrationsV1Execute(r)
 }
 
@@ -1358,13 +1358,13 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsV1(ctx context.
 }
 
 // Execute executes the request
-//  @return Multihostintegrations
-func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsV1Execute(r ApiGetMultiHostIntegrationsV1Request) (*Multihostintegrations, *http.Response, error) {
+//  @return MultiHostIntegrations
+func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsV1Execute(r ApiGetMultiHostIntegrationsV1Request) (*MultiHostIntegrations, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Multihostintegrations
+		localVarReturnValue  *MultiHostIntegrations
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiHostIntegrationAPIService.GetMultiHostIntegrationsV1")
@@ -1419,7 +1419,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1441,7 +1441,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1452,7 +1452,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1474,7 +1474,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1504,7 +1504,7 @@ type ApiGetMultiHostSourceCreationErrorsV1Request struct {
 	multiHostId string
 }
 
-func (r ApiGetMultiHostSourceCreationErrorsV1Request) Execute() ([]Sourcecreationerrors, *http.Response, error) {
+func (r ApiGetMultiHostSourceCreationErrorsV1Request) Execute() ([]SourceCreationErrors, *http.Response, error) {
 	return r.ApiService.GetMultiHostSourceCreationErrorsV1Execute(r)
 }
 
@@ -1528,13 +1528,13 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostSourceCreationErrorsV1(ctx 
 }
 
 // Execute executes the request
-//  @return []Sourcecreationerrors
-func (a *MultiHostIntegrationAPIService) GetMultiHostSourceCreationErrorsV1Execute(r ApiGetMultiHostSourceCreationErrorsV1Request) ([]Sourcecreationerrors, *http.Response, error) {
+//  @return []SourceCreationErrors
+func (a *MultiHostIntegrationAPIService) GetMultiHostSourceCreationErrorsV1Execute(r ApiGetMultiHostSourceCreationErrorsV1Request) ([]SourceCreationErrors, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sourcecreationerrors
+		localVarReturnValue  []SourceCreationErrors
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiHostIntegrationAPIService.GetMultiHostSourceCreationErrorsV1")
@@ -1589,7 +1589,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostSourceCreationErrorsV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1611,7 +1611,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostSourceCreationErrorsV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1622,7 +1622,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostSourceCreationErrorsV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1644,7 +1644,7 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostSourceCreationErrorsV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1673,7 +1673,7 @@ type ApiGetMultihostIntegrationTypesV1Request struct {
 	ApiService *MultiHostIntegrationAPIService
 }
 
-func (r ApiGetMultihostIntegrationTypesV1Request) Execute() ([]Multihostintegrationtemplatetype, *http.Response, error) {
+func (r ApiGetMultihostIntegrationTypesV1Request) Execute() ([]MultiHostIntegrationTemplateType, *http.Response, error) {
 	return r.ApiService.GetMultihostIntegrationTypesV1Execute(r)
 }
 
@@ -1695,13 +1695,13 @@ func (a *MultiHostIntegrationAPIService) GetMultihostIntegrationTypesV1(ctx cont
 }
 
 // Execute executes the request
-//  @return []Multihostintegrationtemplatetype
-func (a *MultiHostIntegrationAPIService) GetMultihostIntegrationTypesV1Execute(r ApiGetMultihostIntegrationTypesV1Request) ([]Multihostintegrationtemplatetype, *http.Response, error) {
+//  @return []MultiHostIntegrationTemplateType
+func (a *MultiHostIntegrationAPIService) GetMultihostIntegrationTypesV1Execute(r ApiGetMultihostIntegrationTypesV1Request) ([]MultiHostIntegrationTemplateType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Multihostintegrationtemplatetype
+		localVarReturnValue  []MultiHostIntegrationTemplateType
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiHostIntegrationAPIService.GetMultihostIntegrationTypesV1")
@@ -1755,7 +1755,7 @@ func (a *MultiHostIntegrationAPIService) GetMultihostIntegrationTypesV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1777,7 +1777,7 @@ func (a *MultiHostIntegrationAPIService) GetMultihostIntegrationTypesV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1788,7 +1788,7 @@ func (a *MultiHostIntegrationAPIService) GetMultihostIntegrationTypesV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1810,7 +1810,7 @@ func (a *MultiHostIntegrationAPIService) GetMultihostIntegrationTypesV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1875,7 +1875,7 @@ func (r ApiGetSourcesWithinMultiHostV1Request) Count(count bool) ApiGetSourcesWi
 	return r
 }
 
-func (r ApiGetSourcesWithinMultiHostV1Request) Execute() ([]Multihostsources, *http.Response, error) {
+func (r ApiGetSourcesWithinMultiHostV1Request) Execute() ([]MultiHostSources, *http.Response, error) {
 	return r.ApiService.GetSourcesWithinMultiHostV1Execute(r)
 }
 
@@ -1899,13 +1899,13 @@ func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHostV1(ctx context
 }
 
 // Execute executes the request
-//  @return []Multihostsources
-func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHostV1Execute(r ApiGetSourcesWithinMultiHostV1Request) ([]Multihostsources, *http.Response, error) {
+//  @return []MultiHostSources
+func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHostV1Execute(r ApiGetSourcesWithinMultiHostV1Request) ([]MultiHostSources, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Multihostsources
+		localVarReturnValue  []MultiHostSources
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiHostIntegrationAPIService.GetSourcesWithinMultiHostV1")
@@ -1984,7 +1984,7 @@ func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHostV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2006,7 +2006,7 @@ func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHostV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2017,7 +2017,7 @@ func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHostV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2039,7 +2039,7 @@ func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHostV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2152,7 +2152,7 @@ func (a *MultiHostIntegrationAPIService) TestConnectionMultiHostSourcesV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2174,7 +2174,7 @@ func (a *MultiHostIntegrationAPIService) TestConnectionMultiHostSourcesV1Execute
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2185,7 +2185,7 @@ func (a *MultiHostIntegrationAPIService) TestConnectionMultiHostSourcesV1Execute
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2207,7 +2207,7 @@ func (a *MultiHostIntegrationAPIService) TestConnectionMultiHostSourcesV1Execute
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2317,7 +2317,7 @@ func (a *MultiHostIntegrationAPIService) TestSourceConnectionMultihostV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2339,7 +2339,7 @@ func (a *MultiHostIntegrationAPIService) TestSourceConnectionMultihostV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2350,7 +2350,7 @@ func (a *MultiHostIntegrationAPIService) TestSourceConnectionMultihostV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2372,7 +2372,7 @@ func (a *MultiHostIntegrationAPIService) TestSourceConnectionMultihostV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2497,7 +2497,7 @@ func (a *MultiHostIntegrationAPIService) UpdateMultiHostSourcesV1Execute(r ApiUp
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2519,7 +2519,7 @@ func (a *MultiHostIntegrationAPIService) UpdateMultiHostSourcesV1Execute(r ApiUp
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2530,7 +2530,7 @@ func (a *MultiHostIntegrationAPIService) UpdateMultiHostSourcesV1Execute(r ApiUp
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2552,7 +2552,7 @@ func (a *MultiHostIntegrationAPIService) UpdateMultiHostSourcesV1Execute(r ApiUp
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

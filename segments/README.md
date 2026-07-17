@@ -88,18 +88,18 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [Expression](docs/Expression.md)
  - [ExpressionChildrenInner](docs/ExpressionChildrenInner.md)
  - [ListSegmentsV1401Response](docs/ListSegmentsV1401Response.md)
  - [ListSegmentsV1429Response](docs/ListSegmentsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Ownerreferencesegments](docs/Ownerreferencesegments.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [OwnerReferenceSegments](docs/OwnerReferenceSegments.md)
  - [Segment](docs/Segment.md)
  - [SegmentVisibilityCriteria](docs/SegmentVisibilityCriteria.md)
  - [Value](docs/Value.md)
- - [Visibilitycriteria](docs/Visibilitycriteria.md)
+ - [VisibilityCriteria](docs/VisibilityCriteria.md)
 
 
 ## Documentation For Authorization

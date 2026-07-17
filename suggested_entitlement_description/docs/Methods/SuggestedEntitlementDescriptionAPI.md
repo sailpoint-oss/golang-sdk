@@ -52,11 +52,11 @@ Other parameters are passed through a pointer to a apiApproveBulkEntitlementReco
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkapproveentitlementrecommendationrequest** | [**Bulkapproveentitlementrecommendationrequest**](../models/bulkapproveentitlementrecommendationrequest) | The list of recommendation items to approve. | 
+ **bulkApproveEntitlementRecommendationRequest** | [**BulkApproveEntitlementRecommendationRequest**](../models/bulk-approve-entitlement-recommendation-request) | The list of recommendation items to approve. | 
 
 ### Return type
 
-[**[]Bulkapproveentitlementrecommendationresult**](../models/bulkapproveentitlementrecommendationresult)
+[**[]BulkApproveEntitlementRecommendationResult**](../models/bulk-approve-entitlement-recommendation-result)
 
 ### HTTP request headers
 
@@ -78,10 +78,20 @@ import (
 )
 
 func main() {
-    bulkapproveentitlementrecommendationrequestJson := []byte(``) // Bulkapproveentitlementrecommendationrequest | The list of recommendation items to approve.
+    bulkapproveentitlementrecommendationrequestJson := []byte(`{
+          "items" : [ {
+            "id" : "79db50d4-723c-4aa0-a824-83c2205d82d1",
+            "recordType" : "SED",
+            "description" : "Provides access and permissions related to the Delinea Secret Server Cloud system."
+          }, {
+            "id" : "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "recordType" : "privilege",
+            "privilegeLevel" : "high"
+          } ]
+        }`) // BulkApproveEntitlementRecommendationRequest | The list of recommendation items to approve.
 
-    var bulkapproveentitlementrecommendationrequest suggested_entitlement_description.Bulkapproveentitlementrecommendationrequest
-    if err := json.Unmarshal(bulkapproveentitlementrecommendationrequestJson, &bulkapproveentitlementrecommendationrequest); err != nil {
+    var bulkApproveEntitlementRecommendationRequest suggested_entitlement_description.BulkApproveEntitlementRecommendationRequest
+    if err := json.Unmarshal(bulkapproveentitlementrecommendationrequestJson, &bulkApproveEntitlementRecommendationRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -89,13 +99,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).Bulkapproveentitlementrecommendationrequest(bulkapproveentitlementrecommendationrequest).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).Bulkapproveentitlementrecommendationrequest(bulkapproveentitlementrecommendationrequest).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).BulkApproveEntitlementRecommendationRequest(bulkApproveEntitlementRecommendationRequest).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).BulkApproveEntitlementRecommendationRequest(bulkApproveEntitlementRecommendationRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApproveBulkEntitlementRecommendationsV1`: []Bulkapproveentitlementrecommendationresult
+    // response from `ApproveBulkEntitlementRecommendationsV1`: []BulkApproveEntitlementRecommendationResult
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1`: %v\n", resp)
 }
 ```
@@ -119,11 +129,11 @@ Other parameters are passed through a pointer to a apiCreateAutoWriteSettingsV1R
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **autowritesetting** | [**Autowritesetting**](../models/autowritesetting) | Auto-write settings to create | 
+ **autoWriteSetting** | [**AutoWriteSetting**](../models/auto-write-setting) | Auto-write settings to create | 
 
 ### Return type
 
-[**Autowritesettingresponse**](../models/autowritesettingresponse)
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
 
 ### HTTP request headers
 
@@ -145,10 +155,14 @@ import (
 )
 
 func main() {
-    autowritesettingJson := []byte(``) // Autowritesetting | Auto-write settings to create
+    autowritesettingJson := []byte(`{
+          "excludedSourceIds" : [ "2c91808a7813090a017814552e526350" ],
+          "includedSourceIds" : [ "2c91808a7813090a017814552e526349", "2c91808a7813090a017814552e52634a" ],
+          "enabled" : true
+        }`) // AutoWriteSetting | Auto-write settings to create
 
-    var autowritesetting suggested_entitlement_description.Autowritesetting
-    if err := json.Unmarshal(autowritesettingJson, &autowritesetting); err != nil {
+    var autoWriteSetting suggested_entitlement_description.AutoWriteSetting
+    if err := json.Unmarshal(autowritesettingJson, &autoWriteSetting); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -156,13 +170,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettingsV1(context.Background()).Autowritesetting(autowritesetting).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettingsV1(context.Background()).Autowritesetting(autowritesetting).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettingsV1(context.Background()).AutoWriteSetting(autoWriteSetting).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettingsV1(context.Background()).AutoWriteSetting(autoWriteSetting).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAutoWriteSettingsV1`: Autowritesettingresponse
+    // response from `CreateAutoWriteSettingsV1`: AutoWriteSettingResponse
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.CreateAutoWriteSettingsV1`: %v\n", resp)
 }
 ```
@@ -186,7 +200,7 @@ Other parameters are passed through a pointer to a apiGetAutoWriteSettingsV1Requ
 
 ### Return type
 
-[**Autowritesettingresponse**](../models/autowritesettingresponse)
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
 
 ### HTTP request headers
 
@@ -219,7 +233,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.GetAutoWriteSettingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAutoWriteSettingsV1`: Autowritesettingresponse
+    // response from `GetAutoWriteSettingsV1`: AutoWriteSettingResponse
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.GetAutoWriteSettingsV1`: %v\n", resp)
 }
 ```
@@ -255,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sedbatchstats**](../models/sedbatchstats)
+[**SedBatchStats**](../models/sed-batch-stats)
 
 ### HTTP request headers
 
@@ -289,7 +303,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.GetSedBatchStatsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSedBatchStatsV1`: Sedbatchstats
+    // response from `GetSedBatchStatsV1`: SedBatchStats
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.GetSedBatchStatsV1`: %v\n", resp)
 }
 ```
@@ -322,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sedbatchrecord**](../models/sedbatchrecord)
+[**[]SedBatchRecord**](../models/sed-batch-record)
 
 ### HTTP request headers
 
@@ -360,7 +374,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.GetSedBatchesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSedBatchesV1`: []Sedbatchrecord
+    // response from `GetSedBatchesV1`: []SedBatchRecord
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.GetSedBatchesV1`: %v\n", resp)
 }
 ```
@@ -389,7 +403,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Entitlementrecommendationrecord**](../models/entitlementrecommendationrecord)
+[**[]EntitlementRecommendationRecord**](../models/entitlement-recommendation-record)
 
 ### HTTP request headers
 
@@ -424,7 +438,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListPendingEntitlementRecommendationApprovalsV1`: []Entitlementrecommendationrecord
+    // response from `ListPendingEntitlementRecommendationApprovalsV1`: []EntitlementRecommendationRecord
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1`: %v\n", resp)
 }
 ```
@@ -453,7 +467,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Privilegedrecommendationgroup**](../models/privilegedrecommendationgroup)
+[**[]PrivilegedRecommendationGroup**](../models/privileged-recommendation-group)
 
 ### HTTP request headers
 
@@ -488,7 +502,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListPrivilegedEntitlementRecommendationsV1`: []Privilegedrecommendationgroup
+    // response from `ListPrivilegedEntitlementRecommendationsV1`: []PrivilegedRecommendationGroup
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1`: %v\n", resp)
 }
 ```
@@ -607,11 +621,11 @@ Other parameters are passed through a pointer to a apiPatchEntitlementRecommenda
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | The patch operations to apply to the entitlement recommendation record. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The patch operations to apply to the entitlement recommendation record. | 
 
 ### Return type
 
-[**Entitlementrecommendationrecord**](../models/entitlementrecommendationrecord)
+[**EntitlementRecommendationRecord**](../models/entitlement-recommendation-record)
 
 ### HTTP request headers
 
@@ -634,10 +648,10 @@ import (
 
 func main() {
     id := `79db50d4-723c-4aa0-a824-83c2205d82d1` // string | The unique identifier of the entitlement recommendation to update. # string | The unique identifier of the entitlement recommendation to update.
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | The patch operations to apply to the entitlement recommendation record.
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | The patch operations to apply to the entitlement recommendation record.
 
-    var jsonpatchoperation []suggested_entitlement_description.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []suggested_entitlement_description.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -645,13 +659,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchEntitlementRecommendationV1`: Entitlementrecommendationrecord
+    // response from `PatchEntitlementRecommendationV1`: EntitlementRecommendationRecord
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1`: %v\n", resp)
 }
 ```
@@ -680,7 +694,7 @@ Other parameters are passed through a pointer to a apiPatchSedV1Request struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sedpatch** | [**[]Sedpatch**](../models/sedpatch) | Sed Patch Request | 
+ **sedPatch** | [**[]SedPatch**](../models/sed-patch) | Sed Patch Request | 
 
 ### Return type
 
@@ -707,10 +721,10 @@ import (
 
 func main() {
     id := `ebab396f-0af1-4050-89b7-dafc63ec70e7` // string | id is sed id # string | id is sed id
-    sedpatchJson := []byte(``) // []Sedpatch | Sed Patch Request
+    sedpatchJson := []byte(``) // []SedPatch | Sed Patch Request
 
-    var sedpatch []suggested_entitlement_description.Sedpatch
-    if err := json.Unmarshal(sedpatchJson, &sedpatch); err != nil {
+    var sedPatch []suggested_entitlement_description.SedPatch
+    if err := json.Unmarshal(sedpatchJson, &sedPatch); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -718,8 +732,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchSedV1(context.Background(), id).Sedpatch(sedpatch).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchSedV1(context.Background(), id).Sedpatch(sedpatch).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchSedV1(context.Background(), id).SedPatch(sedPatch).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchSedV1(context.Background(), id).SedPatch(sedPatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.PatchSedV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -748,11 +762,11 @@ Other parameters are passed through a pointer to a apiSubmitEntitlementRecommend
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entitlementrecommendationassignrequest** | [**Entitlementrecommendationassignrequest**](../models/entitlementrecommendationassignrequest) | The recommendation IDs and the target assignee. | 
+ **entitlementRecommendationAssignRequest** | [**EntitlementRecommendationAssignRequest**](../models/entitlement-recommendation-assign-request) | The recommendation IDs and the target assignee. | 
 
 ### Return type
 
-[**Entitlementrecommendationassignresult**](../models/entitlementrecommendationassignresult)
+[**EntitlementRecommendationAssignResult**](../models/entitlement-recommendation-assign-result)
 
 ### HTTP request headers
 
@@ -774,10 +788,16 @@ import (
 )
 
 func main() {
-    entitlementrecommendationassignrequestJson := []byte(``) // Entitlementrecommendationassignrequest | The recommendation IDs and the target assignee.
+    entitlementrecommendationassignrequestJson := []byte(`{
+          "assignee" : {
+            "type" : "IDENTITY",
+            "value" : "2c91808a7f3b2e8a017f3c3e5f6d0099"
+          },
+          "items" : [ "79db50d4-723c-4aa0-a824-83c2205d82d1", "a1b2c3d4-e5f6-7890-abcd-ef1234567890" ]
+        }`) // EntitlementRecommendationAssignRequest | The recommendation IDs and the target assignee.
 
-    var entitlementrecommendationassignrequest suggested_entitlement_description.Entitlementrecommendationassignrequest
-    if err := json.Unmarshal(entitlementrecommendationassignrequestJson, &entitlementrecommendationassignrequest); err != nil {
+    var entitlementRecommendationAssignRequest suggested_entitlement_description.EntitlementRecommendationAssignRequest
+    if err := json.Unmarshal(entitlementrecommendationassignrequestJson, &entitlementRecommendationAssignRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -785,13 +805,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).Entitlementrecommendationassignrequest(entitlementrecommendationassignrequest).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).Entitlementrecommendationassignrequest(entitlementrecommendationassignrequest).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).EntitlementRecommendationAssignRequest(entitlementRecommendationAssignRequest).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).EntitlementRecommendationAssignRequest(entitlementRecommendationAssignRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SubmitEntitlementRecommendationsAssignmentV1`: Entitlementrecommendationassignresult
+    // response from `SubmitEntitlementRecommendationsAssignmentV1`: EntitlementRecommendationAssignResult
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1`: %v\n", resp)
 }
 ```
@@ -816,11 +836,11 @@ Other parameters are passed through a pointer to a apiSubmitSedApprovalV1Request
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sedapproval** | [**[]Sedapproval**](../models/sedapproval) | Sed Approval | 
+ **sedApproval** | [**[]SedApproval**](../models/sed-approval) | Sed Approval | 
 
 ### Return type
 
-[**[]Sedapprovalstatus**](../models/sedapprovalstatus)
+[**[]SedApprovalStatus**](../models/sed-approval-status)
 
 ### HTTP request headers
 
@@ -842,10 +862,10 @@ import (
 )
 
 func main() {
-    sedapprovalJson := []byte(``) // []Sedapproval | Sed Approval
+    sedapprovalJson := []byte(``) // []SedApproval | Sed Approval
 
-    var sedapproval []suggested_entitlement_description.Sedapproval
-    if err := json.Unmarshal(sedapprovalJson, &sedapproval); err != nil {
+    var sedApproval []suggested_entitlement_description.SedApproval
+    if err := json.Unmarshal(sedapprovalJson, &sedApproval); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -853,13 +873,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedApprovalV1(context.Background()).Sedapproval(sedapproval).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedApprovalV1(context.Background()).Sedapproval(sedapproval).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedApprovalV1(context.Background()).SedApproval(sedApproval).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedApprovalV1(context.Background()).SedApproval(sedApproval).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitSedApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SubmitSedApprovalV1`: []Sedapprovalstatus
+    // response from `SubmitSedApprovalV1`: []SedApprovalStatus
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.SubmitSedApprovalV1`: %v\n", resp)
 }
 ```
@@ -884,11 +904,11 @@ Other parameters are passed through a pointer to a apiSubmitSedAssignmentV1Reque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sedassignment** | [**Sedassignment**](../models/sedassignment) | Sed Assignment Request | 
+ **sedAssignment** | [**SedAssignment**](../models/sed-assignment) | Sed Assignment Request | 
 
 ### Return type
 
-[**Sedassignmentresponse**](../models/sedassignmentresponse)
+[**SedAssignmentResponse**](../models/sed-assignment-response)
 
 ### HTTP request headers
 
@@ -910,10 +930,16 @@ import (
 )
 
 func main() {
-    sedassignmentJson := []byte(``) // Sedassignment | Sed Assignment Request
+    sedassignmentJson := []byte(`{
+          "assignee" : {
+            "type" : "SOURCE_OWNER",
+            "value" : "016629d1-1d25-463f-97f3-c6686846650"
+          },
+          "items" : [ "016629d1-1d25-463f-97f3-0c6686846650", "016629d1-1d25-463f-97f3-0c6686846650" ]
+        }`) // SedAssignment | Sed Assignment Request
 
-    var sedassignment suggested_entitlement_description.Sedassignment
-    if err := json.Unmarshal(sedassignmentJson, &sedassignment); err != nil {
+    var sedAssignment suggested_entitlement_description.SedAssignment
+    if err := json.Unmarshal(sedassignmentJson, &sedAssignment); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -921,13 +947,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedAssignmentV1(context.Background()).Sedassignment(sedassignment).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedAssignmentV1(context.Background()).Sedassignment(sedassignment).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedAssignmentV1(context.Background()).SedAssignment(sedAssignment).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedAssignmentV1(context.Background()).SedAssignment(sedAssignment).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitSedAssignmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SubmitSedAssignmentV1`: Sedassignmentresponse
+    // response from `SubmitSedAssignmentV1`: SedAssignmentResponse
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.SubmitSedAssignmentV1`: %v\n", resp)
 }
 ```
@@ -952,11 +978,11 @@ Other parameters are passed through a pointer to a apiSubmitSedBatchRequestV1Req
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sedbatchrequest** | [**Sedbatchrequest**](../models/sedbatchrequest) | Sed Batch Request | 
+ **sedBatchRequest** | [**SedBatchRequest**](../models/sed-batch-request) | Sed Batch Request | 
 
 ### Return type
 
-[**Sedbatchresponse**](../models/sedbatchresponse)
+[**SedBatchResponse**](../models/sed-batch-response)
 
 ### HTTP request headers
 
@@ -978,19 +1004,45 @@ import (
 )
 
 func main() {
-    sedbatchrequestJson := []byte(``) // Sedbatchrequest | Sed Batch Request (optional)
+    sedbatchrequestJson := []byte(`{
+          "entitlements" : [ "016629d1-1d25-463f-97f3-c6686846650", "016629d1-1d25-463f-97f3-c6686846650" ],
+          "seds" : [ "016629d1-1d25-463f-97f3-c6686846650", "016629d1-1d25-463f-97f3-c6686846650" ],
+          "searchCriteria" : {
+            "key" : {
+              "indices" : [ "entitlements" ],
+              "query" : {
+                "query" : "status:active"
+              },
+              "textQuery" : {
+                "terms" : [ "admin", "user" ],
+                "matchAny" : true,
+                "fields" : [ "role", "name" ]
+              },
+              "searchAfter" : [ "12345", "67890" ],
+              "filters" : {
+                "status" : {
+                  "type" : "TERMS",
+                  "terms" : [ "active", "inactive" ]
+                }
+              },
+              "sort" : [ "name:asc", "createdAt:desc" ],
+              "queryType" : "TEXT",
+              "includeNested" : true
+            }
+          }
+        }`) // SedBatchRequest | Sed Batch Request (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequestV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequestV1(context.Background()).Sedbatchrequest(sedbatchrequest).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequestV1(context.Background()).SedBatchRequest(sedBatchRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SubmitSedBatchRequestV1`: Sedbatchresponse
+    // response from `SubmitSedBatchRequestV1`: SedBatchResponse
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequestV1`: %v\n", resp)
 }
 ```
@@ -1014,11 +1066,11 @@ Other parameters are passed through a pointer to a apiUpdateAutoWriteSettingsV1R
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **autowritesettingpatch** | [**[]Autowritesettingpatch**](../models/autowritesettingpatch) | Patch operations for auto-write settings | 
+ **autoWriteSettingPatch** | [**[]AutoWriteSettingPatch**](../models/auto-write-setting-patch) | Patch operations for auto-write settings | 
 
 ### Return type
 
-[**Autowritesettingresponse**](../models/autowritesettingresponse)
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
 
 ### HTTP request headers
 
@@ -1040,10 +1092,10 @@ import (
 )
 
 func main() {
-    autowritesettingpatchJson := []byte(``) // []Autowritesettingpatch | Patch operations for auto-write settings
+    autowritesettingpatchJson := []byte(``) // []AutoWriteSettingPatch | Patch operations for auto-write settings
 
-    var autowritesettingpatch []suggested_entitlement_description.Autowritesettingpatch
-    if err := json.Unmarshal(autowritesettingpatchJson, &autowritesettingpatch); err != nil {
+    var autoWriteSettingPatch []suggested_entitlement_description.AutoWriteSettingPatch
+    if err := json.Unmarshal(autowritesettingpatchJson, &autoWriteSettingPatch); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1051,13 +1103,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettingsV1(context.Background()).Autowritesettingpatch(autowritesettingpatch).Execute()
-	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettingsV1(context.Background()).Autowritesettingpatch(autowritesettingpatch).Execute()
+    resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettingsV1(context.Background()).AutoWriteSettingPatch(autoWriteSettingPatch).Execute()
+	  //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettingsV1(context.Background()).AutoWriteSettingPatch(autoWriteSettingPatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAutoWriteSettingsV1`: Autowritesettingresponse
+    // response from `UpdateAutoWriteSettingsV1`: AutoWriteSettingResponse
     fmt.Fprintf(os.Stdout, "Response from `SuggestedEntitlementDescriptionAPI.UpdateAutoWriteSettingsV1`: %v\n", resp)
 }
 ```

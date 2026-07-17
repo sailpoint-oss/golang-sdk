@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accesssummary**](../models/accesssummary)
+[**[]AccessSummary**](../models/access-summary)
 
 ### HTTP request headers
 
@@ -107,7 +107,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentityAccessSummariesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentityAccessSummariesV1`: []Accesssummary
+    // response from `GetIdentityAccessSummariesV1`: []AccessSummary
     fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentityAccessSummariesV1`: %v\n", resp)
 }
 ```
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Identitycertdecisionsummary**](../models/identitycertdecisionsummary)
+[**IdentityCertDecisionSummary**](../models/identity-cert-decision-summary)
 
 ### HTTP request headers
 
@@ -175,7 +175,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentityDecisionSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentityDecisionSummaryV1`: Identitycertdecisionsummary
+    // response from `GetIdentityDecisionSummaryV1`: IdentityCertDecisionSummary
     fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentityDecisionSummaryV1`: %v\n", resp)
 }
 ```
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Certificationidentitysummary**](../models/certificationidentitysummary)
+[**[]CertificationIdentitySummary**](../models/certification-identity-summary)
 
 ### HTTP request headers
 
@@ -251,7 +251,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentitySummariesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentitySummariesV1`: []Certificationidentitysummary
+    // response from `GetIdentitySummariesV1`: []CertificationIdentitySummary
     fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentitySummariesV1`: %v\n", resp)
 }
 ```
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Certificationidentitysummary**](../models/certificationidentitysummary)
+[**CertificationIdentitySummary**](../models/certification-identity-summary)
 
 ### HTTP request headers
 
@@ -320,7 +320,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentitySummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentitySummaryV1`: Certificationidentitysummary
+    // response from `GetIdentitySummaryV1`: CertificationIdentitySummary
     fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentitySummaryV1`: %v\n", resp)
 }
 ```

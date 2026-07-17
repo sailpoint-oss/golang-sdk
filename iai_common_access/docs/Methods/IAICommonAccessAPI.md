@@ -49,11 +49,11 @@ Other parameters are passed through a pointer to a apiCreateCommonAccessV1Reques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **commonaccessitemrequest** | [**Commonaccessitemrequest**](../models/commonaccessitemrequest) |  | 
+ **commonAccessItemRequest** | [**CommonAccessItemRequest**](../models/common-access-item-request) |  | 
 
 ### Return type
 
-[**Commonaccessitemresponse**](../models/commonaccessitemresponse)
+[**CommonAccessItemResponse**](../models/common-access-item-response)
 
 ### HTTP request headers
 
@@ -76,10 +76,20 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    commonaccessitemrequestJson := []byte(``) // Commonaccessitemrequest | 
+    commonaccessitemrequestJson := []byte(`{
+          "access" : {
+            "ownerName" : "ownerName",
+            "name" : "name",
+            "description" : "description",
+            "id" : "id",
+            "type" : "ACCESS_PROFILE",
+            "ownerId" : "ownerId"
+          },
+          "status" : "CONFIRMED"
+        }`) // CommonAccessItemRequest | 
 
-    var commonaccessitemrequest iai_common_access.Commonaccessitemrequest
-    if err := json.Unmarshal(commonaccessitemrequestJson, &commonaccessitemrequest); err != nil {
+    var commonAccessItemRequest iai_common_access.CommonAccessItemRequest
+    if err := json.Unmarshal(commonaccessitemrequestJson, &commonAccessItemRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -87,13 +97,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAICommonAccessAPI.CreateCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessitemrequest(commonaccessitemrequest).Execute()
-	  //resp, r, err := apiClient.IAICommonAccessAPI.CreateCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessitemrequest(commonaccessitemrequest).Execute()
+    resp, r, err := apiClient.IAICommonAccessAPI.CreateCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CommonAccessItemRequest(commonAccessItemRequest).Execute()
+	  //resp, r, err := apiClient.IAICommonAccessAPI.CreateCommonAccessV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CommonAccessItemRequest(commonAccessItemRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.CreateCommonAccessV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateCommonAccessV1`: Commonaccessitemresponse
+    // response from `CreateCommonAccessV1`: CommonAccessItemResponse
     fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessAPI.CreateCommonAccessV1`: %v\n", resp)
 }
 ```
@@ -137,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Commonaccessresponse**](../models/commonaccessresponse)
+[**[]CommonAccessResponse**](../models/common-access-response)
 
 ### HTTP request headers
 
@@ -176,7 +186,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.GetCommonAccessV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCommonAccessV1`: []Commonaccessresponse
+    // response from `GetCommonAccessV1`: []CommonAccessResponse
     fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessAPI.GetCommonAccessV1`: %v\n", resp)
 }
 ```
@@ -212,7 +222,7 @@ Other parameters are passed through a pointer to a apiUpdateCommonAccessStatusIn
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **commonaccessidstatus** | [**[]Commonaccessidstatus**](../models/commonaccessidstatus) | Confirm or deny in bulk the common access ids that are (or aren&#39;t) common access | 
+ **commonAccessIDStatus** | [**[]CommonAccessIDStatus**](../models/common-access-id-status) | Confirm or deny in bulk the common access ids that are (or aren&#39;t) common access | 
 
 ### Return type
 
@@ -239,10 +249,10 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    commonaccessidstatusJson := []byte(``) // []Commonaccessidstatus | Confirm or deny in bulk the common access ids that are (or aren't) common access
+    commonaccessidstatusJson := []byte(``) // []CommonAccessIDStatus | Confirm or deny in bulk the common access ids that are (or aren't) common access
 
-    var commonaccessidstatus []iai_common_access.Commonaccessidstatus
-    if err := json.Unmarshal(commonaccessidstatusJson, &commonaccessidstatus); err != nil {
+    var commonAccessIDStatus []iai_common_access.CommonAccessIDStatus
+    if err := json.Unmarshal(commonaccessidstatusJson, &commonAccessIDStatus); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -250,8 +260,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessidstatus(commonaccessidstatus).Execute()
-	  //resp, r, err := apiClient.IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Commonaccessidstatus(commonaccessidstatus).Execute()
+    resp, r, err := apiClient.IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CommonAccessIDStatus(commonAccessIDStatus).Execute()
+	  //resp, r, err := apiClient.IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CommonAccessIDStatus(commonAccessIDStatus).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.UpdateCommonAccessStatusInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

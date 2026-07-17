@@ -72,13 +72,13 @@ paths:
               example:
                 rolePropagationId: 47b9fb02-e12e-42ba-8bfe-1860d78c88eb
               schema:
-                $ref: '#/components/schemas/role-propagation-response'
+                $ref: '#/components/schemas/Rolepropagationresponse'
           description: Role Propagation has sucessfully started.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -102,7 +102,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -127,7 +127,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -193,13 +193,13 @@ paths:
                 completed: 2025-05-29T17:21:19Z
                 skipRoleRefresh: false
               schema:
-                $ref: '#/components/schemas/role-propagation-status-response'
+                $ref: '#/components/schemas/Rolepropagationstatusresponse'
           description: Information of the role propagation process.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -223,7 +223,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -241,7 +241,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -266,7 +266,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -325,13 +325,13 @@ paths:
                     name: support
                   skipRoleRefresh: false
               schema:
-                $ref: '#/components/schemas/role-propagation-ongoing-response'
+                $ref: '#/components/schemas/Rolepropagationongoingresponse'
           description: Information of ongoing role propagation process.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -355,7 +355,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -380,7 +380,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -420,7 +420,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -444,7 +444,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -469,7 +469,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -512,13 +512,13 @@ paths:
                 createdDate: 2025-02-18T20:20:36Z
                 modifiedDate: 2026-01-27T08:07:20Z
               schema:
-                $ref: '#/components/schemas/role-propagation-config-response'
+                $ref: '#/components/schemas/Rolepropagationconfigresponse'
           description: Role Change Propagation configuration for the tenant.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -542,7 +542,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -567,7 +567,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -603,7 +603,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/role-propagation-config-input'
+              $ref: '#/components/schemas/Rolepropagationconfiginput'
         required: true
       responses:
         "200":
@@ -615,14 +615,14 @@ paths:
                 createdDate: 2025-02-18T20:20:36Z
                 modifiedDate: 2026-01-27T08:07:20Z
               schema:
-                $ref: '#/components/schemas/role-propagation-config-response'
+                $ref: '#/components/schemas/Rolepropagationconfigresponse'
           description: Role Change Propagation configuration for the tenant is successfully
             updated.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -646,7 +646,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -671,7 +671,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -694,7 +694,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -718,7 +718,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -736,7 +736,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -761,10 +761,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    role-propagation-response:
+    Rolepropagationresponse:
       description: Role Propagation Response
       example:
         rolePropagationId: 47b9fb02-e12e-42ba-8bfe-1860d78c88eb
@@ -774,7 +774,7 @@ components:
           example: 47b9fb02-e12e-42ba-8bfe-1860d78c88eb
           type: string
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -786,7 +786,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -799,7 +799,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -807,7 +807,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -841,17 +841,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    role-propagation-status-response:
+    Rolepropagationstatusresponse:
       description: Role Propagation Status Response
       example:
         launchedBy:
@@ -898,9 +898,9 @@ components:
           format: date-time
           type: string
         launchedBy:
-          $ref: '#/components/schemas/role_propagation_status_response_launchedBy'
+          $ref: '#/components/schemas/Rolepropagationstatusresponse_launchedBy'
         terminatedBy:
-          $ref: '#/components/schemas/role_propagation_status_response_terminatedBy'
+          $ref: '#/components/schemas/Rolepropagationstatusresponse_terminatedBy'
         completed:
           description: Time when the Role Propagation process was completed.
           example: 2023-10-01T12:30:00Z
@@ -917,7 +917,7 @@ components:
           example: false
           type: boolean
       type: object
-    role-propagation-ongoing-response:
+    Rolepropagationongoingresponse:
       description: Running Role Propagation Response
       example:
         isRunning: true
@@ -945,9 +945,9 @@ components:
           example: true
           type: boolean
         rolePropagationDetails:
-          $ref: '#/components/schemas/role_propagation_ongoing_response_rolePropagationDetails'
+          $ref: '#/components/schemas/Rolepropagationongoingresponse_rolePropagationDetails'
       type: object
-    role-propagation-config-response:
+    Rolepropagationconfigresponse:
       description: Role Change Propagation Config Response
       example:
         createdDate: 2025-02-18T20:20:36Z
@@ -980,8 +980,10 @@ components:
           format: date-time
           type: string
       type: object
-    role-propagation-config-input:
+    Rolepropagationconfiginput:
       description: Role Change Propagation Config Input
+      example:
+        enabled: true
       properties:
         enabled:
           default: false
@@ -1006,7 +1008,7 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    role_propagation_status_response_launchedBy:
+    Rolepropagationstatusresponse_launchedBy:
       description: Identity who launched the Role Propagation process.
       example:
         name: William Wilson
@@ -1029,7 +1031,7 @@ components:
           example: William Wilson
           type: string
       type: object
-    role_propagation_status_response_terminatedBy:
+    Rolepropagationstatusresponse_terminatedBy:
       description: Identity who terminated the Role Propagation process.
       example:
         name: William Wilson
@@ -1052,7 +1054,7 @@ components:
           example: William Wilson
           type: string
       type: object
-    role_propagation_ongoing_response_rolePropagationDetails:
+    Rolepropagationongoingresponse_rolePropagationDetails:
       description: Details of the ongoing role propagation process
       example:
         launchedBy:
@@ -1099,9 +1101,9 @@ components:
           format: date-time
           type: string
         launchedBy:
-          $ref: '#/components/schemas/role_propagation_status_response_launchedBy'
+          $ref: '#/components/schemas/Rolepropagationstatusresponse_launchedBy'
         terminatedBy:
-          $ref: '#/components/schemas/role_propagation_status_response_terminatedBy'
+          $ref: '#/components/schemas/Rolepropagationstatusresponse_terminatedBy'
         completed:
           description: Time when the Role Propagation process was completed.
           example: 2023-10-01T12:30:00Z

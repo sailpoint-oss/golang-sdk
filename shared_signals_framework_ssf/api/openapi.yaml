@@ -61,14 +61,14 @@ paths:
                 - spec_urn: urn:ietf:rfc:6749
                 - spec_urn: urn:ietf:rfc:6750
               schema:
-                $ref: '#/components/schemas/transmittermetadata'
+                $ref: '#/components/schemas/TransmitterMetadata'
           description: "SSF transmitter configuration (issuer, jwks_uri, endpoints,\
             \ authorization_schemes)."
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -92,7 +92,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -117,7 +117,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -143,14 +143,14 @@ paths:
                   "n": xMPKL_ccvjTDQAJ60jg5kP9XJmEIpeSb1FIjzvAnM9RP-vSiY5iW2eK0-VLHYB_XbcDT8jzneUmX90mCfiwF_F4Mjh3f0D79ncrXDglnBLKnuqmvNcblUOuOyNFts3jQSBAqB_GR_dSjKLzbs1wP3K8EJqosQGfPNuh5HxFfU79v-uZFdtkYzf_xtu8phrO84VT_DLuFJyIxLOcY5MVJ6uHlmlKXSJbMO8xTKzvcz6TTZM8XrrT73GpTCdtmNVpCLz2v14XQb-6sNeya2v037ktrgdUWFLC63iIgNKzgNr88L7x3j5AeeOi1VX_2ZAxLrz4BUtJxxyWxVthrpDCYuQ
                   use: sig
               schema:
-                $ref: '#/components/schemas/jwks'
+                $ref: '#/components/schemas/JWKS'
           description: JSON Web Key Set (RFC 7517) containing the transmitter's public
             keys.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -174,7 +174,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -199,7 +199,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -234,7 +234,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -258,7 +258,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -276,7 +276,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -301,7 +301,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -396,7 +396,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -420,7 +420,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -438,7 +438,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -463,7 +463,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -487,7 +487,7 @@ paths:
               stream_id: 550e8400-e29b-41d4-a716-446655440000
               description: Updated production event stream configuration
             schema:
-              $ref: '#/components/schemas/updatestreamconfigurationrequest'
+              $ref: '#/components/schemas/UpdateStreamConfigurationRequest'
         required: true
       responses:
         "200":
@@ -511,14 +511,14 @@ paths:
                 min_verification_interval: 300
                 updatedAt: 2025-02-11T14:30:00Z
               schema:
-                $ref: '#/components/schemas/updatestreamconfigresponse'
+                $ref: '#/components/schemas/UpdateStreamConfigResponse'
           description: "Updated stream configuration (same JSON shape as GET single\
             \ stream, plus updatedAt)."
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -542,7 +542,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -560,7 +560,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -585,7 +585,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -614,7 +614,7 @@ paths:
               - https://schemas.openid.net/secevent/caep/event-type/session-revoked
               description: Production event stream for session revocation notifications
             schema:
-              $ref: '#/components/schemas/createstreamrequest'
+              $ref: '#/components/schemas/CreateStreamRequest'
         required: true
       responses:
         "201":
@@ -637,13 +637,13 @@ paths:
                 inactivity_timeout: 3600
                 min_verification_interval: 300
               schema:
-                $ref: '#/components/schemas/streamconfigresponse'
+                $ref: '#/components/schemas/StreamConfigResponse'
           description: Stream created.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -667,7 +667,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -692,7 +692,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -721,7 +721,7 @@ paths:
               - https://schemas.openid.net/secevent/caep/event-type/session-revoked
               description: Replaced stream configuration for production event delivery
             schema:
-              $ref: '#/components/schemas/replacestreamconfigurationrequest'
+              $ref: '#/components/schemas/ReplaceStreamConfigurationRequest'
         required: true
       responses:
         "200":
@@ -745,14 +745,14 @@ paths:
                 min_verification_interval: 300
                 updatedAt: 2025-02-11T14:35:00Z
               schema:
-                $ref: '#/components/schemas/updatestreamconfigresponse'
+                $ref: '#/components/schemas/UpdateStreamConfigResponse'
           description: Replaced stream configuration (same JSON shape as PATCH/GET
             single stream).
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -776,7 +776,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -794,7 +794,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -819,7 +819,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -855,14 +855,14 @@ paths:
                 status: enabled
                 reason: ""
               schema:
-                $ref: '#/components/schemas/streamstatusresponse'
+                $ref: '#/components/schemas/StreamStatusResponse'
           description: "Stream status (enabled, paused, or disabled; reason may be\
             \ set when status was updated)."
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -886,7 +886,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -904,7 +904,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -929,7 +929,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -953,7 +953,7 @@ paths:
               status: paused
               reason: manually paused
             schema:
-              $ref: '#/components/schemas/updatestreamstatusrequest'
+              $ref: '#/components/schemas/UpdateStreamStatusRequest'
         required: true
       responses:
         "200":
@@ -964,13 +964,13 @@ paths:
                 status: paused
                 reason: manually paused
               schema:
-                $ref: '#/components/schemas/streamstatusresponse'
+                $ref: '#/components/schemas/StreamStatusResponse'
           description: Updated stream status (same JSON shape as GET /ssf/streams/status).
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -994,7 +994,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1012,7 +1012,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1037,7 +1037,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1060,7 +1060,7 @@ paths:
               stream_id: 550e8400-e29b-41d4-a716-446655440000
               state: verification-challenge-state-123
             schema:
-              $ref: '#/components/schemas/verificationrequest'
+              $ref: '#/components/schemas/VerificationRequest'
         required: true
       responses:
         "204":
@@ -1070,7 +1070,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1094,7 +1094,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1119,7 +1119,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1139,7 +1139,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1163,7 +1163,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -1181,7 +1181,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -1206,10 +1206,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    authorizationscheme:
+    AuthorizationScheme:
       description: Authorization scheme supported by the transmitter.
       example:
         spec_urn: urn:ietf:rfc:6749
@@ -1221,7 +1221,7 @@ components:
           example: urn:ietf:rfc:6749
           type: string
       type: object
-    transmittermetadata:
+    TransmitterMetadata:
       description: SSF transmitter discovery metadata per the SSF specification.
       example:
         delivery_methods_supported:
@@ -1271,10 +1271,10 @@ components:
         authorization_schemes:
           description: "Supported authorization schemes (e.g. OAuth2, Bearer)."
           items:
-            $ref: '#/components/schemas/authorizationscheme'
+            $ref: '#/components/schemas/AuthorizationScheme'
           type: array
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1286,7 +1286,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1299,7 +1299,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1307,7 +1307,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1341,17 +1341,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    jwk:
+    JWK:
       description: A single JSON Web Key used for verifying signed delivery requests.
       properties:
         alg:
@@ -1379,7 +1379,7 @@ components:
           example: sig
           type: string
       type: object
-    jwks:
+    JWKS:
       description: JSON Web Key Set containing the transmitter's public keys for verifying
         signed delivery requests.
       example:
@@ -1401,12 +1401,12 @@ components:
             "n": xMPKL_ccvjTDQAJ60jg5kP9XJmEIpeSb1FIjzvAnM9RP-vSiY5iW2eK0-VLHYB_XbcDT8jzneUmX90mCfiwF_F4Mjh3f0D79ncrXDglnBLKnuqmvNcblUOuOyNFts3jQSBAqB_GR_dSjKLzbs1wP3K8EJqosQGfPNuh5HxFfU79v-uZFdtkYzf_xtu8phrO84VT_DLuFJyIxLOcY5MVJ6uHlmlKXSJbMO8xTKzvcz6TTZM8XrrT73GpTCdtmNVpCLz2v14XQb-6sNeya2v037ktrgdUWFLC63iIgNKzgNr88L7x3j5AeeOi1VX_2ZAxLrz4BUtJxxyWxVthrpDCYuQ
             use: sig
           items:
-            $ref: '#/components/schemas/jwk'
+            $ref: '#/components/schemas/JWK'
           type: array
       required:
       - keys
       type: object
-    deliveryresponse:
+    DeliveryResponse:
       description: Delivery configuration returned in stream responses.
       example:
         method: urn:ietf:rfc:8935
@@ -1421,7 +1421,7 @@ components:
           example: https://receiver.example.com/ssf/events
           type: string
       type: object
-    streamconfigresponse:
+    StreamConfigResponse:
       description: Full stream configuration returned by create/get/update/replace.
       example:
         aud: https://receiver.example.com
@@ -1453,7 +1453,7 @@ components:
           example: https://receiver.example.com
           type: string
         delivery:
-          $ref: '#/components/schemas/deliveryresponse'
+          $ref: '#/components/schemas/DeliveryResponse'
         events_supported:
           description: |
             Event types supported by the transmitter. Use CAEP event-type URIs in the form:
@@ -1498,8 +1498,12 @@ components:
           format: int32
           type: integer
       type: object
-    createstreamdeliveryrequest:
+    CreateStreamDeliveryRequest:
       description: Full delivery configuration. method and endpoint_url are required.
+      example:
+        method: urn:ietf:rfc:8935
+        endpoint_url: https://receiver.example.com/ssf/events
+        authorization_header: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
       properties:
         method:
           description: Delivery method (only push is supported).
@@ -1518,15 +1522,24 @@ components:
       - endpoint_url
       - method
       type: object
-    replacestreamconfigurationrequest:
+    ReplaceStreamConfigurationRequest:
       description: Request body for PUT /ssf/streams (full replace).
+      example:
+        delivery:
+          method: urn:ietf:rfc:8935
+          endpoint_url: https://receiver.example.com/ssf/events
+          authorization_header: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+        stream_id: 550e8400-e29b-41d4-a716-446655440000
+        description: Production event stream
+        events_requested:
+        - https://schemas.openid.net/secevent/caep/event-type/session-revoked
       properties:
         stream_id:
           description: ID of the stream to replace.
           example: 550e8400-e29b-41d4-a716-446655440000
           type: string
         delivery:
-          $ref: '#/components/schemas/replacestreamconfigurationrequest_delivery'
+          $ref: '#/components/schemas/ReplaceStreamConfigurationRequest_delivery'
         events_requested:
           description: Event types the receiver wants. Use CAEP event-type URIs.
           example:
@@ -1543,9 +1556,9 @@ components:
       - delivery
       - stream_id
       type: object
-    updatestreamconfigresponse:
+    UpdateStreamConfigResponse:
       allOf:
-      - $ref: '#/components/schemas/streamconfigresponse'
+      - $ref: '#/components/schemas/StreamConfigResponse'
       - properties:
           updatedAt:
             description: Timestamp of the last configuration update.
@@ -1573,11 +1586,19 @@ components:
         min_verification_interval: 300
         updatedAt: 2025-02-11T14:30:00Z
       type: object
-    createstreamrequest:
+    CreateStreamRequest:
       description: Request body for POST /ssf/streams (create stream).
+      example:
+        delivery:
+          method: urn:ietf:rfc:8935
+          endpoint_url: https://receiver.example.com/ssf/events
+          authorization_header: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+        description: Production event stream
+        events_requested:
+        - https://schemas.openid.net/secevent/caep/event-type/session-revoked
       properties:
         delivery:
-          $ref: '#/components/schemas/createstreamdeliveryrequest'
+          $ref: '#/components/schemas/CreateStreamDeliveryRequest'
         events_requested:
           description: |
             Optional list of event types the receiver wants. Use CAEP event-type URIs in the form:
@@ -1595,9 +1616,13 @@ components:
       required:
       - delivery
       type: object
-    deliveryrequest:
+    DeliveryRequest:
       description: Delivery configuration for PATCH /ssf/streams (partial update).
         All fields are optional; only provided fields are updated.
+      example:
+        method: urn:ietf:rfc:8935
+        endpoint_url: https://receiver.example.com/ssf/events
+        authorization_header: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
       properties:
         method:
           description: Delivery method (optional for PATCH).
@@ -1613,15 +1638,24 @@ components:
           example: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
           type: string
       type: object
-    updatestreamconfigurationrequest:
+    UpdateStreamConfigurationRequest:
       description: Request body for PATCH /ssf/streams (partial update).
+      example:
+        delivery:
+          method: urn:ietf:rfc:8935
+          endpoint_url: https://receiver.example.com/ssf/events
+          authorization_header: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+        stream_id: 550e8400-e29b-41d4-a716-446655440000
+        description: Updated production event stream configuration
+        events_requested:
+        - https://schemas.openid.net/secevent/caep/event-type/session-revoked
       properties:
         stream_id:
           description: ID of the stream to update.
           example: 550e8400-e29b-41d4-a716-446655440000
           type: string
         delivery:
-          $ref: '#/components/schemas/deliveryrequest'
+          $ref: '#/components/schemas/DeliveryRequest'
         events_requested:
           description: Event types the receiver wants. Use CAEP event-type URIs.
           example:
@@ -1637,7 +1671,7 @@ components:
       required:
       - stream_id
       type: object
-    streamstatusresponse:
+    StreamStatusResponse:
       description: Stream status returned by GET/POST /ssf/streams/status.
       example:
         reason: ""
@@ -1662,8 +1696,12 @@ components:
           example: ""
           type: string
       type: object
-    updatestreamstatusrequest:
+    UpdateStreamStatusRequest:
       description: Request body for POST /ssf/streams/status.
+      example:
+        reason: manually paused
+        stream_id: 550e8400-e29b-41d4-a716-446655440000
+        status: paused
       properties:
         stream_id:
           description: ID of the stream whose status to update.
@@ -1685,8 +1723,11 @@ components:
       - status
       - stream_id
       type: object
-    verificationrequest:
+    VerificationRequest:
       description: Request body for POST /ssf/streams/verify (receiver verification).
+      example:
+        stream_id: 550e8400-e29b-41d4-a716-446655440000
+        state: verification-challenge-state-123
       properties:
         stream_id:
           description: Stream ID for verification.
@@ -1717,12 +1758,16 @@ components:
       type: object
     getStreamV1_200_response:
       oneOf:
-      - $ref: '#/components/schemas/streamconfigresponse'
+      - $ref: '#/components/schemas/StreamConfigResponse'
       - items:
-          $ref: '#/components/schemas/streamconfigresponse'
+          $ref: '#/components/schemas/StreamConfigResponse'
         type: array
-    replacestreamconfigurationrequest_delivery:
+    ReplaceStreamConfigurationRequest_delivery:
       allOf:
-      - $ref: '#/components/schemas/createstreamdeliveryrequest'
+      - $ref: '#/components/schemas/CreateStreamDeliveryRequest'
       - description: Full delivery configuration required for PUT (replace). method
           and endpoint_url are required.
+      example:
+        method: urn:ietf:rfc:8935
+        endpoint_url: https://receiver.example.com/ssf/events
+        authorization_header: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...

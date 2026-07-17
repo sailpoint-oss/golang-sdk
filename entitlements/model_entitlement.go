@@ -38,12 +38,12 @@ type Entitlement struct {
 	CloudGoverned *bool `json:"cloudGoverned,omitempty"`
 	// True if the entitlement is able to be directly requested
 	Requestable *bool `json:"requestable,omitempty"`
-	Owner NullableEntitlementv2Owner `json:"owner,omitempty"`
+	Owner NullableEntitlementV2Owner `json:"owner,omitempty"`
 	// List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
-	AdditionalOwners []Additionalownerref `json:"additionalOwners,omitempty"`
+	AdditionalOwners []AdditionalOwnerRef `json:"additionalOwners,omitempty"`
 	// A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated.
 	ManuallyUpdatedFields map[string]interface{} `json:"manuallyUpdatedFields,omitempty"`
-	AccessModelMetadata *Entitlementv2AccessModelMetadata `json:"accessModelMetadata,omitempty"`
+	AccessModelMetadata *EntitlementV2AccessModelMetadata `json:"accessModelMetadata,omitempty"`
 	// Time when the entitlement was created
 	Created *SailPointTime `json:"created,omitempty"`
 	// Time when the entitlement was last modified
@@ -53,7 +53,7 @@ type Entitlement struct {
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	// List of IDs of segments, if any, to which this Entitlement is assigned.
 	Segments []string `json:"segments,omitempty"`
-	DirectPermissions []Permissiondto `json:"directPermissions,omitempty"`
+	DirectPermissions []PermissionDTO `json:"directPermissions,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -387,9 +387,9 @@ func (o *Entitlement) SetRequestable(v bool) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Entitlement) GetOwner() Entitlementv2Owner {
+func (o *Entitlement) GetOwner() EntitlementV2Owner {
 	if o == nil || IsNil(o.Owner.Get()) {
-		var ret Entitlementv2Owner
+		var ret EntitlementV2Owner
 		return ret
 	}
 	return *o.Owner.Get()
@@ -398,7 +398,7 @@ func (o *Entitlement) GetOwner() Entitlementv2Owner {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Entitlement) GetOwnerOk() (*Entitlementv2Owner, bool) {
+func (o *Entitlement) GetOwnerOk() (*EntitlementV2Owner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -414,8 +414,8 @@ func (o *Entitlement) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given NullableEntitlementv2Owner and assigns it to the Owner field.
-func (o *Entitlement) SetOwner(v Entitlementv2Owner) {
+// SetOwner gets a reference to the given NullableEntitlementV2Owner and assigns it to the Owner field.
+func (o *Entitlement) SetOwner(v EntitlementV2Owner) {
 	o.Owner.Set(&v)
 }
 // SetOwnerNil sets the value for Owner to be an explicit nil
@@ -429,9 +429,9 @@ func (o *Entitlement) UnsetOwner() {
 }
 
 // GetAdditionalOwners returns the AdditionalOwners field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Entitlement) GetAdditionalOwners() []Additionalownerref {
+func (o *Entitlement) GetAdditionalOwners() []AdditionalOwnerRef {
 	if o == nil {
-		var ret []Additionalownerref
+		var ret []AdditionalOwnerRef
 		return ret
 	}
 	return o.AdditionalOwners
@@ -440,7 +440,7 @@ func (o *Entitlement) GetAdditionalOwners() []Additionalownerref {
 // GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Entitlement) GetAdditionalOwnersOk() ([]Additionalownerref, bool) {
+func (o *Entitlement) GetAdditionalOwnersOk() ([]AdditionalOwnerRef, bool) {
 	if o == nil || IsNil(o.AdditionalOwners) {
 		return nil, false
 	}
@@ -456,8 +456,8 @@ func (o *Entitlement) HasAdditionalOwners() bool {
 	return false
 }
 
-// SetAdditionalOwners gets a reference to the given []Additionalownerref and assigns it to the AdditionalOwners field.
-func (o *Entitlement) SetAdditionalOwners(v []Additionalownerref) {
+// SetAdditionalOwners gets a reference to the given []AdditionalOwnerRef and assigns it to the AdditionalOwners field.
+func (o *Entitlement) SetAdditionalOwners(v []AdditionalOwnerRef) {
 	o.AdditionalOwners = v
 }
 
@@ -495,9 +495,9 @@ func (o *Entitlement) SetManuallyUpdatedFields(v map[string]interface{}) {
 }
 
 // GetAccessModelMetadata returns the AccessModelMetadata field value if set, zero value otherwise.
-func (o *Entitlement) GetAccessModelMetadata() Entitlementv2AccessModelMetadata {
+func (o *Entitlement) GetAccessModelMetadata() EntitlementV2AccessModelMetadata {
 	if o == nil || IsNil(o.AccessModelMetadata) {
-		var ret Entitlementv2AccessModelMetadata
+		var ret EntitlementV2AccessModelMetadata
 		return ret
 	}
 	return *o.AccessModelMetadata
@@ -505,7 +505,7 @@ func (o *Entitlement) GetAccessModelMetadata() Entitlementv2AccessModelMetadata 
 
 // GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlement) GetAccessModelMetadataOk() (*Entitlementv2AccessModelMetadata, bool) {
+func (o *Entitlement) GetAccessModelMetadataOk() (*EntitlementV2AccessModelMetadata, bool) {
 	if o == nil || IsNil(o.AccessModelMetadata) {
 		return nil, false
 	}
@@ -521,8 +521,8 @@ func (o *Entitlement) HasAccessModelMetadata() bool {
 	return false
 }
 
-// SetAccessModelMetadata gets a reference to the given Entitlementv2AccessModelMetadata and assigns it to the AccessModelMetadata field.
-func (o *Entitlement) SetAccessModelMetadata(v Entitlementv2AccessModelMetadata) {
+// SetAccessModelMetadata gets a reference to the given EntitlementV2AccessModelMetadata and assigns it to the AccessModelMetadata field.
+func (o *Entitlement) SetAccessModelMetadata(v EntitlementV2AccessModelMetadata) {
 	o.AccessModelMetadata = &v
 }
 
@@ -688,9 +688,9 @@ func (o *Entitlement) SetSegments(v []string) {
 }
 
 // GetDirectPermissions returns the DirectPermissions field value if set, zero value otherwise.
-func (o *Entitlement) GetDirectPermissions() []Permissiondto {
+func (o *Entitlement) GetDirectPermissions() []PermissionDTO {
 	if o == nil || IsNil(o.DirectPermissions) {
-		var ret []Permissiondto
+		var ret []PermissionDTO
 		return ret
 	}
 	return o.DirectPermissions
@@ -698,7 +698,7 @@ func (o *Entitlement) GetDirectPermissions() []Permissiondto {
 
 // GetDirectPermissionsOk returns a tuple with the DirectPermissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlement) GetDirectPermissionsOk() ([]Permissiondto, bool) {
+func (o *Entitlement) GetDirectPermissionsOk() ([]PermissionDTO, bool) {
 	if o == nil || IsNil(o.DirectPermissions) {
 		return nil, false
 	}
@@ -714,8 +714,8 @@ func (o *Entitlement) HasDirectPermissions() bool {
 	return false
 }
 
-// SetDirectPermissions gets a reference to the given []Permissiondto and assigns it to the DirectPermissions field.
-func (o *Entitlement) SetDirectPermissions(v []Permissiondto) {
+// SetDirectPermissions gets a reference to the given []PermissionDTO and assigns it to the DirectPermissions field.
+func (o *Entitlement) SetDirectPermissions(v []PermissionDTO) {
 	o.DirectPermissions = v
 }
 

@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workitems**](../models/workitems)
+[**WorkItems**](../models/work-items)
 
 ### HTTP request headers
 
@@ -106,7 +106,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ApproveApprovalItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApproveApprovalItemV1`: Workitems
+    // response from `ApproveApprovalItemV1`: WorkItems
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.ApproveApprovalItemV1`: %v\n", resp)
 }
 ```
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workitems**](../models/workitems)
+[**WorkItems**](../models/work-items)
 
 ### HTTP request headers
 
@@ -172,7 +172,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ApproveApprovalItemsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApproveApprovalItemsInBulkV1`: Workitems
+    // response from `ApproveApprovalItemsInBulkV1`: WorkItems
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.ApproveApprovalItemsInBulkV1`: %v\n", resp)
 }
 ```
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workitems**](../models/workitems)
+[**WorkItems**](../models/work-items)
 
 ### HTTP request headers
 
@@ -240,7 +240,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.CompleteWorkItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CompleteWorkItemV1`: Workitems
+    // response from `CompleteWorkItemV1`: WorkItems
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.CompleteWorkItemV1`: %v\n", resp)
 }
 ```
@@ -269,7 +269,7 @@ Other parameters are passed through a pointer to a apiForwardWorkItemV1Request s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **workitemforward** | [**Workitemforward**](../models/workitemforward) |  | 
+ **workItemForward** | [**WorkItemForward**](../models/work-item-forward) |  | 
 
 ### Return type
 
@@ -296,10 +296,14 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the work item # string | The ID of the work item
-    workitemforwardJson := []byte(``) // Workitemforward | 
+    workitemforwardJson := []byte(`{
+          "targetOwnerId" : "2c9180835d2e5168015d32f890ca1581",
+          "comment" : "I'm going on vacation.",
+          "sendNotifications" : true
+        }`) // WorkItemForward | 
 
-    var workitemforward work_items.Workitemforward
-    if err := json.Unmarshal(workitemforwardJson, &workitemforward); err != nil {
+    var workItemForward work_items.WorkItemForward
+    if err := json.Unmarshal(workitemforwardJson, &workItemForward); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -307,8 +311,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.WorkItemsAPI.ForwardWorkItemV1(context.Background(), id).Workitemforward(workitemforward).Execute()
-	  //r, err := apiClient.WorkItemsAPI.ForwardWorkItemV1(context.Background(), id).Workitemforward(workitemforward).Execute()
+    r, err := apiClient.WorkItemsAPI.ForwardWorkItemV1(context.Background(), id).WorkItemForward(workItemForward).Execute()
+	  //r, err := apiClient.WorkItemsAPI.ForwardWorkItemV1(context.Background(), id).WorkItemForward(workItemForward).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ForwardWorkItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -343,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Workitems**](../models/workitems)
+[**[]WorkItems**](../models/work-items)
 
 ### HTTP request headers
 
@@ -380,7 +384,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCompletedWorkItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCompletedWorkItemsV1`: []Workitems
+    // response from `GetCompletedWorkItemsV1`: []WorkItems
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetCompletedWorkItemsV1`: %v\n", resp)
 }
 ```
@@ -408,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workitemscount**](../models/workitemscount)
+[**WorkItemsCount**](../models/work-items-count)
 
 ### HTTP request headers
 
@@ -442,7 +446,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountCompletedWorkItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCountCompletedWorkItemsV1`: Workitemscount
+    // response from `GetCountCompletedWorkItemsV1`: WorkItemsCount
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetCountCompletedWorkItemsV1`: %v\n", resp)
 }
 ```
@@ -470,7 +474,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workitemscount**](../models/workitemscount)
+[**WorkItemsCount**](../models/work-items-count)
 
 ### HTTP request headers
 
@@ -504,7 +508,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountWorkItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCountWorkItemsV1`: Workitemscount
+    // response from `GetCountWorkItemsV1`: WorkItemsCount
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetCountWorkItemsV1`: %v\n", resp)
 }
 ```
@@ -536,7 +540,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workitems**](../models/workitems)
+[**WorkItems**](../models/work-items)
 
 ### HTTP request headers
 
@@ -570,7 +574,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWorkItemV1`: Workitems
+    // response from `GetWorkItemV1`: WorkItems
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetWorkItemV1`: %v\n", resp)
 }
 ```
@@ -598,7 +602,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workitemssummary**](../models/workitemssummary)
+[**WorkItemsSummary**](../models/work-items-summary)
 
 ### HTTP request headers
 
@@ -632,7 +636,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItemsSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWorkItemsSummaryV1`: Workitemssummary
+    // response from `GetWorkItemsSummaryV1`: WorkItemsSummary
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetWorkItemsSummaryV1`: %v\n", resp)
 }
 ```
@@ -663,7 +667,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Workitems**](../models/workitems)
+[**[]WorkItems**](../models/work-items)
 
 ### HTTP request headers
 
@@ -700,7 +704,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ListWorkItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListWorkItemsV1`: []Workitems
+    // response from `ListWorkItemsV1`: []WorkItems
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.ListWorkItemsV1`: %v\n", resp)
 }
 ```
@@ -734,7 +738,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workitems**](../models/workitems)
+[**WorkItems**](../models/work-items)
 
 ### HTTP request headers
 
@@ -769,7 +773,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.RejectApprovalItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RejectApprovalItemV1`: Workitems
+    // response from `RejectApprovalItemV1`: WorkItems
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.RejectApprovalItemV1`: %v\n", resp)
 }
 ```
@@ -801,7 +805,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workitems**](../models/workitems)
+[**WorkItems**](../models/work-items)
 
 ### HTTP request headers
 
@@ -835,7 +839,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.RejectApprovalItemsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RejectApprovalItemsInBulkV1`: Workitems
+    // response from `RejectApprovalItemsInBulkV1`: WorkItems
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.RejectApprovalItemsInBulkV1`: %v\n", resp)
 }
 ```
@@ -868,7 +872,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workitems**](../models/workitems)
+[**WorkItems**](../models/work-items)
 
 ### HTTP request headers
 
@@ -908,7 +912,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.SubmitAccountSelectionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SubmitAccountSelectionV1`: Workitems
+    // response from `SubmitAccountSelectionV1`: WorkItems
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.SubmitAccountSelectionV1`: %v\n", resp)
 }
 ```

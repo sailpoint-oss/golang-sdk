@@ -17,11 +17,23 @@
 
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-           machineaccountcreaterequestinputJson := []byte(``) // Machineaccountcreaterequestinput | 
+           machineaccountcreaterequestinputJson := []byte(`{
+          "formId" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "entitlementIds" : [ "6d28b7c1620c49c6b6d5cbf81eb4b5fa", "2c91808a7624751a01762f19d67c220e" ],
+          "environment" : "Dev",
+          "description" : "Requesting machine account for tracking the inventory.",
+          "machineIdentityId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "ownerIdentityId" : "18104e7e499b4e23882d6323344ab6bc",
+          "userInput" : {
+            "target" : "AD Source",
+            "description" : "Inventory tracking"
+          },
+          "subtypeId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+        }`) // MachineAccountCreateRequestInput | 
 
           
-          var machineaccountcreaterequestinput machine_account_creation_request.Machineaccountcreaterequestinput
-          if err := json.Unmarshal(machineaccountcreaterequestinputJson, &machineaccountcreaterequestinput); err != nil {
+          var machineAccountCreateRequestInput machine_account_creation_request.MachineAccountCreateRequestInput
+          if err := json.Unmarshal(machineaccountcreaterequestinputJson, &machineAccountCreateRequestInput); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -30,13 +42,13 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineaccountcreaterequestinput(machineaccountcreaterequestinput).Execute()
-          //resp, r, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineaccountcreaterequestinput(machineaccountcreaterequestinput).Execute()
+          resp, r, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineAccountCreateRequestInput(machineAccountCreateRequestInput).Execute()
+          //resp, r, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineAccountCreateRequestInput(machineAccountCreateRequestInput).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `CreateMachineAccountRequestV1`: Accountrequestasyncresult
+          // response from `CreateMachineAccountRequestV1`: AccountRequestAsyncResult
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1`: %v\n", resp)
         }
 - path: /account-requests/v1/machine-account-create/{accountRequestId}
@@ -71,7 +83,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetCreateMachineAccountRequestV1`: Accountrequestdetailsdto
+          // response from `GetCreateMachineAccountRequestV1`: AccountRequestDetailsDto
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1`: %v\n", resp)
         }
 - path: /source-subtypes/v1/machine-account-create-access
@@ -107,6 +119,6 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetMachineAccountCreateAccessInfoV1`: []Machineaccountcreateaccessdto
+          // response from `GetMachineAccountCreateAccessInfoV1`: []MachineAccountCreateAccessDto
           fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1`: %v\n", resp)
         }

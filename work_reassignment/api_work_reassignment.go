@@ -28,7 +28,7 @@ type ApiCreateReassignmentConfigurationV1Request struct {
 	ctx context.Context
 	ApiService *WorkReassignmentAPIService
 	xSailPointExperimental *string
-	configurationitemrequest *Configurationitemrequest
+	configurationItemRequest *ConfigurationItemRequest
 }
 
 // Use this header to enable this experimental API.
@@ -37,12 +37,12 @@ func (r ApiCreateReassignmentConfigurationV1Request) XSailPointExperimental(xSai
 	return r
 }
 
-func (r ApiCreateReassignmentConfigurationV1Request) Configurationitemrequest(configurationitemrequest Configurationitemrequest) ApiCreateReassignmentConfigurationV1Request {
-	r.configurationitemrequest = &configurationitemrequest
+func (r ApiCreateReassignmentConfigurationV1Request) ConfigurationItemRequest(configurationItemRequest ConfigurationItemRequest) ApiCreateReassignmentConfigurationV1Request {
+	r.configurationItemRequest = &configurationItemRequest
 	return r
 }
 
-func (r ApiCreateReassignmentConfigurationV1Request) Execute() (*Configurationitemresponse, *http.Response, error) {
+func (r ApiCreateReassignmentConfigurationV1Request) Execute() (*ConfigurationItemResponse, *http.Response, error) {
 	return r.ApiService.CreateReassignmentConfigurationV1Execute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *WorkReassignmentAPIService) CreateReassignmentConfigurationV1(ctx conte
 }
 
 // Execute executes the request
-//  @return Configurationitemresponse
-func (a *WorkReassignmentAPIService) CreateReassignmentConfigurationV1Execute(r ApiCreateReassignmentConfigurationV1Request) (*Configurationitemresponse, *http.Response, error) {
+//  @return ConfigurationItemResponse
+func (a *WorkReassignmentAPIService) CreateReassignmentConfigurationV1Execute(r ApiCreateReassignmentConfigurationV1Request) (*ConfigurationItemResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Configurationitemresponse
+		localVarReturnValue  *ConfigurationItemResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.CreateReassignmentConfigurationV1")
@@ -96,8 +96,8 @@ func (a *WorkReassignmentAPIService) CreateReassignmentConfigurationV1Execute(r 
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.configurationitemrequest == nil {
-		return localVarReturnValue, nil, reportError("configurationitemrequest is required and must be specified")
+	if r.configurationItemRequest == nil {
+		return localVarReturnValue, nil, reportError("configurationItemRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -119,7 +119,7 @@ func (a *WorkReassignmentAPIService) CreateReassignmentConfigurationV1Execute(r 
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.configurationitemrequest
+	localVarPostBody = r.configurationItemRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -143,7 +143,7 @@ func (a *WorkReassignmentAPIService) CreateReassignmentConfigurationV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -165,7 +165,7 @@ func (a *WorkReassignmentAPIService) CreateReassignmentConfigurationV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -187,7 +187,7 @@ func (a *WorkReassignmentAPIService) CreateReassignmentConfigurationV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -215,7 +215,7 @@ type ApiDeleteReassignmentConfigurationV1Request struct {
 	ctx context.Context
 	ApiService *WorkReassignmentAPIService
 	identityId string
-	configType Configtypeenum
+	configType ConfigTypeEnum
 	xSailPointExperimental *string
 }
 
@@ -239,7 +239,7 @@ Deletes a single reassignment configuration for the specified identity
  @param configType
  @return ApiDeleteReassignmentConfigurationV1Request
 */
-func (a *WorkReassignmentAPIService) DeleteReassignmentConfigurationV1(ctx context.Context, identityId string, configType Configtypeenum) ApiDeleteReassignmentConfigurationV1Request {
+func (a *WorkReassignmentAPIService) DeleteReassignmentConfigurationV1(ctx context.Context, identityId string, configType ConfigTypeEnum) ApiDeleteReassignmentConfigurationV1Request {
 	return ApiDeleteReassignmentConfigurationV1Request{
 		ApiService: a,
 		ctx: ctx,
@@ -319,7 +319,7 @@ func (a *WorkReassignmentAPIService) DeleteReassignmentConfigurationV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -341,7 +341,7 @@ func (a *WorkReassignmentAPIService) DeleteReassignmentConfigurationV1Execute(r 
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -363,7 +363,7 @@ func (a *WorkReassignmentAPIService) DeleteReassignmentConfigurationV1Execute(r 
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -382,7 +382,7 @@ type ApiGetEvaluateReassignmentConfigurationV1Request struct {
 	ctx context.Context
 	ApiService *WorkReassignmentAPIService
 	identityId string
-	configType Configtypeenum
+	configType ConfigTypeEnum
 	xSailPointExperimental *string
 	exclusionFilters *[]string
 }
@@ -399,7 +399,7 @@ func (r ApiGetEvaluateReassignmentConfigurationV1Request) ExclusionFilters(exclu
 	return r
 }
 
-func (r ApiGetEvaluateReassignmentConfigurationV1Request) Execute() ([]Evaluateresponse, *http.Response, error) {
+func (r ApiGetEvaluateReassignmentConfigurationV1Request) Execute() ([]EvaluateResponse, *http.Response, error) {
 	return r.ApiService.GetEvaluateReassignmentConfigurationV1Execute(r)
 }
 
@@ -413,7 +413,7 @@ Evaluates the Reassignment Configuration for an `Identity` to determine if work 
  @param configType Reassignment work type
  @return ApiGetEvaluateReassignmentConfigurationV1Request
 */
-func (a *WorkReassignmentAPIService) GetEvaluateReassignmentConfigurationV1(ctx context.Context, identityId string, configType Configtypeenum) ApiGetEvaluateReassignmentConfigurationV1Request {
+func (a *WorkReassignmentAPIService) GetEvaluateReassignmentConfigurationV1(ctx context.Context, identityId string, configType ConfigTypeEnum) ApiGetEvaluateReassignmentConfigurationV1Request {
 	return ApiGetEvaluateReassignmentConfigurationV1Request{
 		ApiService: a,
 		ctx: ctx,
@@ -423,13 +423,13 @@ func (a *WorkReassignmentAPIService) GetEvaluateReassignmentConfigurationV1(ctx 
 }
 
 // Execute executes the request
-//  @return []Evaluateresponse
-func (a *WorkReassignmentAPIService) GetEvaluateReassignmentConfigurationV1Execute(r ApiGetEvaluateReassignmentConfigurationV1Request) ([]Evaluateresponse, *http.Response, error) {
+//  @return []EvaluateResponse
+func (a *WorkReassignmentAPIService) GetEvaluateReassignmentConfigurationV1Execute(r ApiGetEvaluateReassignmentConfigurationV1Request) ([]EvaluateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Evaluateresponse
+		localVarReturnValue  []EvaluateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.GetEvaluateReassignmentConfigurationV1")
@@ -506,7 +506,7 @@ func (a *WorkReassignmentAPIService) GetEvaluateReassignmentConfigurationV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -528,7 +528,7 @@ func (a *WorkReassignmentAPIService) GetEvaluateReassignmentConfigurationV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -550,7 +550,7 @@ func (a *WorkReassignmentAPIService) GetEvaluateReassignmentConfigurationV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -586,7 +586,7 @@ func (r ApiGetReassignmentConfigTypesV1Request) XSailPointExperimental(xSailPoin
 	return r
 }
 
-func (r ApiGetReassignmentConfigTypesV1Request) Execute() ([]Configtype, *http.Response, error) {
+func (r ApiGetReassignmentConfigTypesV1Request) Execute() ([]ConfigType, *http.Response, error) {
 	return r.ApiService.GetReassignmentConfigTypesV1Execute(r)
 }
 
@@ -606,13 +606,13 @@ func (a *WorkReassignmentAPIService) GetReassignmentConfigTypesV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []Configtype
-func (a *WorkReassignmentAPIService) GetReassignmentConfigTypesV1Execute(r ApiGetReassignmentConfigTypesV1Request) ([]Configtype, *http.Response, error) {
+//  @return []ConfigType
+func (a *WorkReassignmentAPIService) GetReassignmentConfigTypesV1Execute(r ApiGetReassignmentConfigTypesV1Request) ([]ConfigType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Configtype
+		localVarReturnValue  []ConfigType
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.GetReassignmentConfigTypesV1")
@@ -676,7 +676,7 @@ func (a *WorkReassignmentAPIService) GetReassignmentConfigTypesV1Execute(r ApiGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -698,7 +698,7 @@ func (a *WorkReassignmentAPIService) GetReassignmentConfigTypesV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -720,7 +720,7 @@ func (a *WorkReassignmentAPIService) GetReassignmentConfigTypesV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -757,7 +757,7 @@ func (r ApiGetReassignmentConfigurationV1Request) XSailPointExperimental(xSailPo
 	return r
 }
 
-func (r ApiGetReassignmentConfigurationV1Request) Execute() (*Configurationresponse, *http.Response, error) {
+func (r ApiGetReassignmentConfigurationV1Request) Execute() (*ConfigurationResponse, *http.Response, error) {
 	return r.ApiService.GetReassignmentConfigurationV1Execute(r)
 }
 
@@ -779,13 +779,13 @@ func (a *WorkReassignmentAPIService) GetReassignmentConfigurationV1(ctx context.
 }
 
 // Execute executes the request
-//  @return Configurationresponse
-func (a *WorkReassignmentAPIService) GetReassignmentConfigurationV1Execute(r ApiGetReassignmentConfigurationV1Request) (*Configurationresponse, *http.Response, error) {
+//  @return ConfigurationResponse
+func (a *WorkReassignmentAPIService) GetReassignmentConfigurationV1Execute(r ApiGetReassignmentConfigurationV1Request) (*ConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Configurationresponse
+		localVarReturnValue  *ConfigurationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.GetReassignmentConfigurationV1")
@@ -850,7 +850,7 @@ func (a *WorkReassignmentAPIService) GetReassignmentConfigurationV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -872,7 +872,7 @@ func (a *WorkReassignmentAPIService) GetReassignmentConfigurationV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -883,7 +883,7 @@ func (a *WorkReassignmentAPIService) GetReassignmentConfigurationV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -905,7 +905,7 @@ func (a *WorkReassignmentAPIService) GetReassignmentConfigurationV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -941,7 +941,7 @@ func (r ApiGetTenantConfigConfigurationV1Request) XSailPointExperimental(xSailPo
 	return r
 }
 
-func (r ApiGetTenantConfigConfigurationV1Request) Execute() (*Tenantconfigurationresponse, *http.Response, error) {
+func (r ApiGetTenantConfigConfigurationV1Request) Execute() (*TenantConfigurationResponse, *http.Response, error) {
 	return r.ApiService.GetTenantConfigConfigurationV1Execute(r)
 }
 
@@ -961,13 +961,13 @@ func (a *WorkReassignmentAPIService) GetTenantConfigConfigurationV1(ctx context.
 }
 
 // Execute executes the request
-//  @return Tenantconfigurationresponse
-func (a *WorkReassignmentAPIService) GetTenantConfigConfigurationV1Execute(r ApiGetTenantConfigConfigurationV1Request) (*Tenantconfigurationresponse, *http.Response, error) {
+//  @return TenantConfigurationResponse
+func (a *WorkReassignmentAPIService) GetTenantConfigConfigurationV1Execute(r ApiGetTenantConfigConfigurationV1Request) (*TenantConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Tenantconfigurationresponse
+		localVarReturnValue  *TenantConfigurationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.GetTenantConfigConfigurationV1")
@@ -1031,7 +1031,7 @@ func (a *WorkReassignmentAPIService) GetTenantConfigConfigurationV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1053,7 +1053,7 @@ func (a *WorkReassignmentAPIService) GetTenantConfigConfigurationV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1064,7 +1064,7 @@ func (a *WorkReassignmentAPIService) GetTenantConfigConfigurationV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1086,7 +1086,7 @@ func (a *WorkReassignmentAPIService) GetTenantConfigConfigurationV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1122,7 +1122,7 @@ func (r ApiListReassignmentConfigurationsV1Request) XSailPointExperimental(xSail
 	return r
 }
 
-func (r ApiListReassignmentConfigurationsV1Request) Execute() ([]Configurationresponse, *http.Response, error) {
+func (r ApiListReassignmentConfigurationsV1Request) Execute() ([]ConfigurationResponse, *http.Response, error) {
 	return r.ApiService.ListReassignmentConfigurationsV1Execute(r)
 }
 
@@ -1142,13 +1142,13 @@ func (a *WorkReassignmentAPIService) ListReassignmentConfigurationsV1(ctx contex
 }
 
 // Execute executes the request
-//  @return []Configurationresponse
-func (a *WorkReassignmentAPIService) ListReassignmentConfigurationsV1Execute(r ApiListReassignmentConfigurationsV1Request) ([]Configurationresponse, *http.Response, error) {
+//  @return []ConfigurationResponse
+func (a *WorkReassignmentAPIService) ListReassignmentConfigurationsV1Execute(r ApiListReassignmentConfigurationsV1Request) ([]ConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Configurationresponse
+		localVarReturnValue  []ConfigurationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.ListReassignmentConfigurationsV1")
@@ -1212,7 +1212,7 @@ func (a *WorkReassignmentAPIService) ListReassignmentConfigurationsV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1234,7 +1234,7 @@ func (a *WorkReassignmentAPIService) ListReassignmentConfigurationsV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1245,7 +1245,7 @@ func (a *WorkReassignmentAPIService) ListReassignmentConfigurationsV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1267,7 +1267,7 @@ func (a *WorkReassignmentAPIService) ListReassignmentConfigurationsV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1296,7 +1296,7 @@ type ApiPutReassignmentConfigV1Request struct {
 	ApiService *WorkReassignmentAPIService
 	identityId string
 	xSailPointExperimental *string
-	configurationitemrequest *Configurationitemrequest
+	configurationItemRequest *ConfigurationItemRequest
 }
 
 // Use this header to enable this experimental API.
@@ -1305,12 +1305,12 @@ func (r ApiPutReassignmentConfigV1Request) XSailPointExperimental(xSailPointExpe
 	return r
 }
 
-func (r ApiPutReassignmentConfigV1Request) Configurationitemrequest(configurationitemrequest Configurationitemrequest) ApiPutReassignmentConfigV1Request {
-	r.configurationitemrequest = &configurationitemrequest
+func (r ApiPutReassignmentConfigV1Request) ConfigurationItemRequest(configurationItemRequest ConfigurationItemRequest) ApiPutReassignmentConfigV1Request {
+	r.configurationItemRequest = &configurationItemRequest
 	return r
 }
 
-func (r ApiPutReassignmentConfigV1Request) Execute() (*Configurationitemresponse, *http.Response, error) {
+func (r ApiPutReassignmentConfigV1Request) Execute() (*ConfigurationItemResponse, *http.Response, error) {
 	return r.ApiService.PutReassignmentConfigV1Execute(r)
 }
 
@@ -1332,13 +1332,13 @@ func (a *WorkReassignmentAPIService) PutReassignmentConfigV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Configurationitemresponse
-func (a *WorkReassignmentAPIService) PutReassignmentConfigV1Execute(r ApiPutReassignmentConfigV1Request) (*Configurationitemresponse, *http.Response, error) {
+//  @return ConfigurationItemResponse
+func (a *WorkReassignmentAPIService) PutReassignmentConfigV1Execute(r ApiPutReassignmentConfigV1Request) (*ConfigurationItemResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Configurationitemresponse
+		localVarReturnValue  *ConfigurationItemResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.PutReassignmentConfigV1")
@@ -1367,8 +1367,8 @@ func (a *WorkReassignmentAPIService) PutReassignmentConfigV1Execute(r ApiPutReas
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.configurationitemrequest == nil {
-		return localVarReturnValue, nil, reportError("configurationitemrequest is required and must be specified")
+	if r.configurationItemRequest == nil {
+		return localVarReturnValue, nil, reportError("configurationItemRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1390,7 +1390,7 @@ func (a *WorkReassignmentAPIService) PutReassignmentConfigV1Execute(r ApiPutReas
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.configurationitemrequest
+	localVarPostBody = r.configurationItemRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1414,7 +1414,7 @@ func (a *WorkReassignmentAPIService) PutReassignmentConfigV1Execute(r ApiPutReas
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1436,7 +1436,7 @@ func (a *WorkReassignmentAPIService) PutReassignmentConfigV1Execute(r ApiPutReas
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1458,7 +1458,7 @@ func (a *WorkReassignmentAPIService) PutReassignmentConfigV1Execute(r ApiPutReas
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1486,7 +1486,7 @@ type ApiPutTenantConfigurationV1Request struct {
 	ctx context.Context
 	ApiService *WorkReassignmentAPIService
 	xSailPointExperimental *string
-	tenantconfigurationrequest *Tenantconfigurationrequest
+	tenantConfigurationRequest *TenantConfigurationRequest
 }
 
 // Use this header to enable this experimental API.
@@ -1495,12 +1495,12 @@ func (r ApiPutTenantConfigurationV1Request) XSailPointExperimental(xSailPointExp
 	return r
 }
 
-func (r ApiPutTenantConfigurationV1Request) Tenantconfigurationrequest(tenantconfigurationrequest Tenantconfigurationrequest) ApiPutTenantConfigurationV1Request {
-	r.tenantconfigurationrequest = &tenantconfigurationrequest
+func (r ApiPutTenantConfigurationV1Request) TenantConfigurationRequest(tenantConfigurationRequest TenantConfigurationRequest) ApiPutTenantConfigurationV1Request {
+	r.tenantConfigurationRequest = &tenantConfigurationRequest
 	return r
 }
 
-func (r ApiPutTenantConfigurationV1Request) Execute() (*Tenantconfigurationresponse, *http.Response, error) {
+func (r ApiPutTenantConfigurationV1Request) Execute() (*TenantConfigurationResponse, *http.Response, error) {
 	return r.ApiService.PutTenantConfigurationV1Execute(r)
 }
 
@@ -1520,13 +1520,13 @@ func (a *WorkReassignmentAPIService) PutTenantConfigurationV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Tenantconfigurationresponse
-func (a *WorkReassignmentAPIService) PutTenantConfigurationV1Execute(r ApiPutTenantConfigurationV1Request) (*Tenantconfigurationresponse, *http.Response, error) {
+//  @return TenantConfigurationResponse
+func (a *WorkReassignmentAPIService) PutTenantConfigurationV1Execute(r ApiPutTenantConfigurationV1Request) (*TenantConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Tenantconfigurationresponse
+		localVarReturnValue  *TenantConfigurationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.PutTenantConfigurationV1")
@@ -1554,8 +1554,8 @@ func (a *WorkReassignmentAPIService) PutTenantConfigurationV1Execute(r ApiPutTen
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.tenantconfigurationrequest == nil {
-		return localVarReturnValue, nil, reportError("tenantconfigurationrequest is required and must be specified")
+	if r.tenantConfigurationRequest == nil {
+		return localVarReturnValue, nil, reportError("tenantConfigurationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1577,7 +1577,7 @@ func (a *WorkReassignmentAPIService) PutTenantConfigurationV1Execute(r ApiPutTen
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.tenantconfigurationrequest
+	localVarPostBody = r.tenantConfigurationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1601,7 +1601,7 @@ func (a *WorkReassignmentAPIService) PutTenantConfigurationV1Execute(r ApiPutTen
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1623,7 +1623,7 @@ func (a *WorkReassignmentAPIService) PutTenantConfigurationV1Execute(r ApiPutTen
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1645,7 +1645,7 @@ func (a *WorkReassignmentAPIService) PutTenantConfigurationV1Execute(r ApiPutTen
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -16,18 +16,18 @@ tags: ['SDK', 'Software Development Kit', 'Search', 'V1Search']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Indices** | Pointer to **[]Index** | The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched. | [optional] 
-**QueryType** | Pointer to **Querytype** |  | [optional] [default to QUERYTYPE_SAILPOINT]
+**QueryType** | Pointer to **QueryType** |  | [optional] [default to QUERYTYPE_SAILPOINT]
 **QueryVersion** | Pointer to **string** |  | [optional] 
 **Query** | Pointer to [**Query**](query) |  | [optional] 
 **QueryDsl** | Pointer to **map[string]interface{}** | The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax. | [optional] 
-**TextQuery** | Pointer to [**Textquery**](textquery) |  | [optional] 
-**TypeAheadQuery** | Pointer to [**Typeaheadquery**](typeaheadquery) |  | [optional] 
+**TextQuery** | Pointer to [**TextQuery**](text-query) |  | [optional] 
+**TypeAheadQuery** | Pointer to [**TypeAheadQuery**](type-ahead-query) |  | [optional] 
 **IncludeNested** | Pointer to **bool** | Indicates whether nested objects from returned search results should be included. | [optional] [default to true]
-**QueryResultFilter** | Pointer to [**Queryresultfilter**](queryresultfilter) |  | [optional] 
-**AggregationType** | Pointer to **Aggregationtype** |  | [optional] [default to AGGREGATIONTYPE_DSL]
+**QueryResultFilter** | Pointer to [**QueryResultFilter**](query-result-filter) |  | [optional] 
+**AggregationType** | Pointer to **AggregationType** |  | [optional] [default to AGGREGATIONTYPE_DSL]
 **AggregationsVersion** | Pointer to **string** |  | [optional] 
 **AggregationsDsl** | Pointer to **map[string]interface{}** | The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax. | [optional] 
-**Aggregations** | Pointer to [**Searchaggregationspecification**](searchaggregationspecification) |  | [optional] 
+**Aggregations** | Pointer to [**SearchAggregationSpecification**](search-aggregation-specification) |  | [optional] 
 **Sort** | Pointer to **[]string** | The fields to be used to sort the search results. Use + or - to specify the sort direction. | [optional] 
 **SearchAfter** | Pointer to **[]string** | Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set. This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value. It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging. For example, when searching for identities, if you are sorting by displayName you will also want to include ID, for example [\"displayName\", \"id\"].  If the last identity ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last displayName is \"John Doe\", then using that displayName and ID will start a new search after this identity. The searchAfter value will look like [\"John Doe\",\"2c91808375d8e80a0175e1f88a575221\"] | [optional] 
 **Filters** | Pointer to [**map[string]Filter**](filter) | The filters to be applied for each filtered field name. | [optional] 
@@ -78,20 +78,20 @@ HasIndices returns a boolean if a field has been set.
 
 ### GetQueryType
 
-`func (o *Search) GetQueryType() Querytype`
+`func (o *Search) GetQueryType() QueryType`
 
 GetQueryType returns the QueryType field if non-nil, zero value otherwise.
 
 ### GetQueryTypeOk
 
-`func (o *Search) GetQueryTypeOk() (*Querytype, bool)`
+`func (o *Search) GetQueryTypeOk() (*QueryType, bool)`
 
 GetQueryTypeOk returns a tuple with the QueryType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQueryType
 
-`func (o *Search) SetQueryType(v Querytype)`
+`func (o *Search) SetQueryType(v QueryType)`
 
 SetQueryType sets QueryType field to given value.
 
@@ -178,20 +178,20 @@ HasQueryDsl returns a boolean if a field has been set.
 
 ### GetTextQuery
 
-`func (o *Search) GetTextQuery() Textquery`
+`func (o *Search) GetTextQuery() TextQuery`
 
 GetTextQuery returns the TextQuery field if non-nil, zero value otherwise.
 
 ### GetTextQueryOk
 
-`func (o *Search) GetTextQueryOk() (*Textquery, bool)`
+`func (o *Search) GetTextQueryOk() (*TextQuery, bool)`
 
 GetTextQueryOk returns a tuple with the TextQuery field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTextQuery
 
-`func (o *Search) SetTextQuery(v Textquery)`
+`func (o *Search) SetTextQuery(v TextQuery)`
 
 SetTextQuery sets TextQuery field to given value.
 
@@ -203,20 +203,20 @@ HasTextQuery returns a boolean if a field has been set.
 
 ### GetTypeAheadQuery
 
-`func (o *Search) GetTypeAheadQuery() Typeaheadquery`
+`func (o *Search) GetTypeAheadQuery() TypeAheadQuery`
 
 GetTypeAheadQuery returns the TypeAheadQuery field if non-nil, zero value otherwise.
 
 ### GetTypeAheadQueryOk
 
-`func (o *Search) GetTypeAheadQueryOk() (*Typeaheadquery, bool)`
+`func (o *Search) GetTypeAheadQueryOk() (*TypeAheadQuery, bool)`
 
 GetTypeAheadQueryOk returns a tuple with the TypeAheadQuery field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTypeAheadQuery
 
-`func (o *Search) SetTypeAheadQuery(v Typeaheadquery)`
+`func (o *Search) SetTypeAheadQuery(v TypeAheadQuery)`
 
 SetTypeAheadQuery sets TypeAheadQuery field to given value.
 
@@ -253,20 +253,20 @@ HasIncludeNested returns a boolean if a field has been set.
 
 ### GetQueryResultFilter
 
-`func (o *Search) GetQueryResultFilter() Queryresultfilter`
+`func (o *Search) GetQueryResultFilter() QueryResultFilter`
 
 GetQueryResultFilter returns the QueryResultFilter field if non-nil, zero value otherwise.
 
 ### GetQueryResultFilterOk
 
-`func (o *Search) GetQueryResultFilterOk() (*Queryresultfilter, bool)`
+`func (o *Search) GetQueryResultFilterOk() (*QueryResultFilter, bool)`
 
 GetQueryResultFilterOk returns a tuple with the QueryResultFilter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQueryResultFilter
 
-`func (o *Search) SetQueryResultFilter(v Queryresultfilter)`
+`func (o *Search) SetQueryResultFilter(v QueryResultFilter)`
 
 SetQueryResultFilter sets QueryResultFilter field to given value.
 
@@ -278,20 +278,20 @@ HasQueryResultFilter returns a boolean if a field has been set.
 
 ### GetAggregationType
 
-`func (o *Search) GetAggregationType() Aggregationtype`
+`func (o *Search) GetAggregationType() AggregationType`
 
 GetAggregationType returns the AggregationType field if non-nil, zero value otherwise.
 
 ### GetAggregationTypeOk
 
-`func (o *Search) GetAggregationTypeOk() (*Aggregationtype, bool)`
+`func (o *Search) GetAggregationTypeOk() (*AggregationType, bool)`
 
 GetAggregationTypeOk returns a tuple with the AggregationType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAggregationType
 
-`func (o *Search) SetAggregationType(v Aggregationtype)`
+`func (o *Search) SetAggregationType(v AggregationType)`
 
 SetAggregationType sets AggregationType field to given value.
 
@@ -353,20 +353,20 @@ HasAggregationsDsl returns a boolean if a field has been set.
 
 ### GetAggregations
 
-`func (o *Search) GetAggregations() Searchaggregationspecification`
+`func (o *Search) GetAggregations() SearchAggregationSpecification`
 
 GetAggregations returns the Aggregations field if non-nil, zero value otherwise.
 
 ### GetAggregationsOk
 
-`func (o *Search) GetAggregationsOk() (*Searchaggregationspecification, bool)`
+`func (o *Search) GetAggregationsOk() (*SearchAggregationSpecification, bool)`
 
 GetAggregationsOk returns a tuple with the Aggregations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAggregations
 
-`func (o *Search) SetAggregations(v Searchaggregationspecification)`
+`func (o *Search) SetAggregations(v SearchAggregationSpecification)`
 
 SetAggregations sets Aggregations field to given value.
 

@@ -42,11 +42,11 @@ Other parameters are passed through a pointer to a apiExportSpConfigV1Request st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exportpayload** | [**Exportpayload**](../models/exportpayload) | Export options control what will be included in the export. | 
+ **exportPayload** | [**ExportPayload**](../models/export-payload) | Export options control what will be included in the export. | 
 
 ### Return type
 
-[**Spconfigexportjob**](../models/spconfigexportjob)
+[**SpConfigExportJob**](../models/sp-config-export-job)
 
 ### HTTP request headers
 
@@ -68,10 +68,12 @@ import (
 )
 
 func main() {
-    exportpayloadJson := []byte(`{"description":"Export all available objects","excludeTypes":[],"includeTypes":["ACCESS_PROFILE","ACCESS_REQUEST_CONFIG","ATTR_SYNC_SOURCE_CONFIG","AUTH_ORG","CAMPAIGN_FILTER","CONNECTOR_RULE","FORM_DEFINITION","GOVERNANCE_GROUP","IDENTITY_OBJECT_CONFIG","IDENTITY_PROFILE","LIFECYCLE_STATE","NOTIFICATION_TEMPLATE","PASSWORD_POLICY","PASSWORD_SYNC_GROUP","PUBLIC_IDENTITIES_CONFIG","ROLE","RULE","SEGMENT","SERVICE_DESK_INTEGRATION","SOD_POLICY","SOURCE","TAG","TRANSFORM","TRIGGER_SUBSCRIPTION","WORKFLOW"],"objectOptions":{}}`) // Exportpayload | Export options control what will be included in the export.
+    exportpayloadJson := []byte(`{
+          "description" : "Export Job 1 Test"
+        }`) // ExportPayload | Export options control what will be included in the export.
 
-    var exportpayload sp_config.Exportpayload
-    if err := json.Unmarshal(exportpayloadJson, &exportpayload); err != nil {
+    var exportPayload sp_config.ExportPayload
+    if err := json.Unmarshal(exportpayloadJson, &exportPayload); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -79,13 +81,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigAPI.ExportSpConfigV1(context.Background()).Exportpayload(exportpayload).Execute()
-	  //resp, r, err := apiClient.SPConfigAPI.ExportSpConfigV1(context.Background()).Exportpayload(exportpayload).Execute()
+    resp, r, err := apiClient.SPConfigAPI.ExportSpConfigV1(context.Background()).ExportPayload(exportPayload).Execute()
+	  //resp, r, err := apiClient.SPConfigAPI.ExportSpConfigV1(context.Background()).ExportPayload(exportPayload).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ExportSpConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ExportSpConfigV1`: Spconfigexportjob
+    // response from `ExportSpConfigV1`: SpConfigExportJob
     fmt.Fprintf(os.Stdout, "Response from `SPConfigAPI.ExportSpConfigV1`: %v\n", resp)
 }
 ```
@@ -119,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Spconfigexportjobstatus**](../models/spconfigexportjobstatus)
+[**SpConfigExportJobStatus**](../models/sp-config-export-job-status)
 
 ### HTTP request headers
 
@@ -153,7 +155,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigExportStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSpConfigExportStatusV1`: Spconfigexportjobstatus
+    // response from `GetSpConfigExportStatusV1`: SpConfigExportJobStatus
     fmt.Fprintf(os.Stdout, "Response from `SPConfigAPI.GetSpConfigExportStatusV1`: %v\n", resp)
 }
 ```
@@ -187,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Spconfigexportresults**](../models/spconfigexportresults)
+[**SpConfigExportResults**](../models/sp-config-export-results)
 
 ### HTTP request headers
 
@@ -221,7 +223,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigExportV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSpConfigExportV1`: Spconfigexportresults
+    // response from `GetSpConfigExportV1`: SpConfigExportResults
     fmt.Fprintf(os.Stdout, "Response from `SPConfigAPI.GetSpConfigExportV1`: %v\n", resp)
 }
 ```
@@ -257,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Spconfigimportjobstatus**](../models/spconfigimportjobstatus)
+[**SpConfigImportJobStatus**](../models/sp-config-import-job-status)
 
 ### HTTP request headers
 
@@ -291,7 +293,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigImportStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSpConfigImportStatusV1`: Spconfigimportjobstatus
+    // response from `GetSpConfigImportStatusV1`: SpConfigImportJobStatus
     fmt.Fprintf(os.Stdout, "Response from `SPConfigAPI.GetSpConfigImportStatusV1`: %v\n", resp)
 }
 ```
@@ -325,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Spconfigimportresults**](../models/spconfigimportresults)
+[**SpConfigImportResults**](../models/sp-config-import-results)
 
 ### HTTP request headers
 
@@ -359,7 +361,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigImportV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSpConfigImportV1`: Spconfigimportresults
+    // response from `GetSpConfigImportV1`: SpConfigImportResults
     fmt.Fprintf(os.Stdout, "Response from `SPConfigAPI.GetSpConfigImportV1`: %v\n", resp)
 }
 ```
@@ -395,11 +397,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | ***os.File** | JSON file containing the objects to be imported. | 
  **preview** | **bool** | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \&quot;true\&quot;, no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  | [default to false]
- **options** | [**Importoptions**](../models/importoptions) |  | 
+ **options** | [**ImportOptions**](../models/import-options) |  | 
 
 ### Return type
 
-[**Spconfigjob**](../models/spconfigjob)
+[**SpConfigJob**](../models/sp-config-job)
 
 ### HTTP request headers
 
@@ -423,7 +425,7 @@ import (
 func main() {
     data := BINARY_DATA_HERE // *os.File | JSON file containing the objects to be imported. # *os.File | JSON file containing the objects to be imported.
     preview := true // bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  (optional) (default to false) # bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  (optional) (default to false)
-    optionsJson := []byte(``) // Importoptions |  (optional)
+    optionsJson := []byte(``) // ImportOptions |  (optional)
 
     
 
@@ -435,7 +437,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ImportSpConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ImportSpConfigV1`: Spconfigjob
+    // response from `ImportSpConfigV1`: SpConfigJob
     fmt.Fprintf(os.Stdout, "Response from `SPConfigAPI.ImportSpConfigV1`: %v\n", resp)
 }
 ```
@@ -459,7 +461,7 @@ Other parameters are passed through a pointer to a apiListSpConfigObjectsV1Reque
 
 ### Return type
 
-[**[]Spconfigobject**](../models/spconfigobject)
+[**[]SpConfigObject**](../models/sp-config-object)
 
 ### HTTP request headers
 
@@ -492,7 +494,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ListSpConfigObjectsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListSpConfigObjectsV1`: []Spconfigobject
+    // response from `ListSpConfigObjectsV1`: []SpConfigObject
     fmt.Fprintf(os.Stdout, "Response from `SPConfigAPI.ListSpConfigObjectsV1`: %v\n", resp)
 }
 ```

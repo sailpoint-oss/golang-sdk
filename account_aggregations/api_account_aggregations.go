@@ -29,7 +29,7 @@ type ApiGetAccountAggregationStatusV1Request struct {
 	id string
 }
 
-func (r ApiGetAccountAggregationStatusV1Request) Execute() (*Accountaggregationstatus, *http.Response, error) {
+func (r ApiGetAccountAggregationStatusV1Request) Execute() (*AccountAggregationStatus, *http.Response, error) {
 	return r.ApiService.GetAccountAggregationStatusV1Execute(r)
 }
 
@@ -58,13 +58,13 @@ func (a *AccountAggregationsAPIService) GetAccountAggregationStatusV1(ctx contex
 }
 
 // Execute executes the request
-//  @return Accountaggregationstatus
-func (a *AccountAggregationsAPIService) GetAccountAggregationStatusV1Execute(r ApiGetAccountAggregationStatusV1Request) (*Accountaggregationstatus, *http.Response, error) {
+//  @return AccountAggregationStatus
+func (a *AccountAggregationsAPIService) GetAccountAggregationStatusV1Execute(r ApiGetAccountAggregationStatusV1Request) (*AccountAggregationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountaggregationstatus
+		localVarReturnValue  *AccountAggregationStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAggregationsAPIService.GetAccountAggregationStatusV1")
@@ -141,7 +141,7 @@ func (a *AccountAggregationsAPIService) GetAccountAggregationStatusV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -152,7 +152,7 @@ func (a *AccountAggregationsAPIService) GetAccountAggregationStatusV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -174,7 +174,7 @@ func (a *AccountAggregationsAPIService) GetAccountAggregationStatusV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

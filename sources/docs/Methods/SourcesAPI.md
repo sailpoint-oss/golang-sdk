@@ -160,11 +160,11 @@ Other parameters are passed through a pointer to a apiCreateProvisioningPolicyV1
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **provisioningpolicydto** | [**Provisioningpolicydto**](../models/provisioningpolicydto) |  | 
+ **provisioningPolicyDto** | [**ProvisioningPolicyDto**](../models/provisioning-policy-dto) |  | 
 
 ### Return type
 
-[**Provisioningpolicydto**](../models/provisioningpolicydto)
+[**ProvisioningPolicyDto**](../models/provisioning-policy-dto)
 
 ### HTTP request headers
 
@@ -187,10 +187,49 @@ import (
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id # string | The Source id
-    provisioningpolicydtoJson := []byte(`{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln${uniqueCounter},OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}`) // Provisioningpolicydto | 
+    provisioningpolicydtoJson := []byte(`{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }`) // ProvisioningPolicyDto | 
 
-    var provisioningpolicydto sources.Provisioningpolicydto
-    if err := json.Unmarshal(provisioningpolicydtoJson, &provisioningpolicydto); err != nil {
+    var provisioningPolicyDto sources.ProvisioningPolicyDto
+    if err := json.Unmarshal(provisioningpolicydtoJson, &provisioningPolicyDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -198,13 +237,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
+    resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV1(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV1(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateProvisioningPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateProvisioningPolicyV1`: Provisioningpolicydto
+    // response from `CreateProvisioningPolicyV1`: ProvisioningPolicyDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateProvisioningPolicyV1`: %v\n", resp)
 }
 ```
@@ -249,12 +288,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **provisioningpolicydtov2** | [**Provisioningpolicydtov2**](../models/provisioningpolicydtov2) |  | 
+ **provisioningPolicyDtoV2** | [**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2) |  | 
  **useDefaultFields** | **bool** | If passed as true, then it uses default fields from the connector template. | [default to false]
 
 ### Return type
 
-[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+[**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2)
 
 ### HTTP request headers
 
@@ -278,11 +317,52 @@ import (
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id # string | The Source id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    provisioningpolicydtov2Json := []byte(`{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln<uniqueCounter>,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}`) // Provisioningpolicydtov2 | 
+    provisioningpolicydtov2Json := []byte(`{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "id" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "subtypeId" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }`) // ProvisioningPolicyDtoV2 | 
     useDefaultFields := false // bool | If passed as true, then it uses default fields from the connector template. (optional) (default to false) # bool | If passed as true, then it uses default fields from the connector template. (optional) (default to false)
 
-    var provisioningpolicydtov2 sources.Provisioningpolicydtov2
-    if err := json.Unmarshal(provisioningpolicydtov2Json, &provisioningpolicydtov2); err != nil {
+    var provisioningPolicyDtoV2 sources.ProvisioningPolicyDtoV2
+    if err := json.Unmarshal(provisioningpolicydtov2Json, &provisioningPolicyDtoV2); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -290,13 +370,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).UseDefaultFields(useDefaultFields).Execute()
+    resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).ProvisioningPolicyDtoV2(provisioningPolicyDtoV2).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicyV2(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).ProvisioningPolicyDtoV2(provisioningPolicyDtoV2).UseDefaultFields(useDefaultFields).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateProvisioningPolicyV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateProvisioningPolicyV2`: Provisioningpolicydtov2
+    // response from `CreateProvisioningPolicyV2`: ProvisioningPolicyDtoV2
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateProvisioningPolicyV2`: %v\n", resp)
 }
 ```
@@ -427,7 +507,40 @@ import (
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
-    schemaJson := []byte(``) // Schema | 
+    schemaJson := []byte(`{
+          "features" : [ "PROVISIONING", "NO_PERMISSIONS_PROVISIONING", "GROUPS_HAVE_MEMBERS" ],
+          "nativeObjectType" : "User",
+          "configuration" : {
+            "groupMemberAttribute" : "member"
+          },
+          "created" : "2019-12-24T22:32:58.104Z",
+          "includePermissions" : false,
+          "name" : "account",
+          "hierarchyAttribute" : "memberOf",
+          "modified" : "2019-12-31T20:22:28.104Z",
+          "attributes" : [ {
+            "name" : "sAMAccountName",
+            "type" : "STRING",
+            "isMultiValued" : false,
+            "isEntitlement" : false,
+            "isGroup" : false
+          }, {
+            "name" : "memberOf",
+            "type" : "STRING",
+            "schema" : {
+              "type" : "CONNECTOR_SCHEMA",
+              "id" : "2c9180887671ff8c01767b4671fc7d60",
+              "name" : "group"
+            },
+            "description" : "Group membership",
+            "isMultiValued" : true,
+            "isEntitlement" : true,
+            "isGroup" : true
+          } ],
+          "id" : "2c9180835d191a86015d28455b4a2329",
+          "displayAttribute" : "distinguishedName",
+          "identityAttribute" : "sAMAccountName"
+        }`) // Schema | 
 
     var schema sources.Schema
     if err := json.Unmarshal(schemaJson, &schema); err != nil {
@@ -495,7 +608,89 @@ import (
 )
 
 func main() {
-    sourceJson := []byte(``) // Source | 
+    sourceJson := []byte(`{
+          "cluster" : {
+            "name" : "Corporate Cluster",
+            "id" : "2c9180866166b5b0016167c32ef31a66",
+            "type" : "CLUSTER"
+          },
+          "deleteThreshold" : 10,
+          "connectorId" : "active-directory",
+          "description" : "This is the corporate directory.",
+          "type" : "OpenLDAP - Direct",
+          "connectorClass" : "sailpoint.connector.LDAPConnector",
+          "connectionType" : "file",
+          "features" : [ "PROVISIONING", "NO_PERMISSIONS_PROVISIONING", "GROUPS_HAVE_MEMBERS" ],
+          "passwordPolicies" : [ {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb053980",
+            "name" : "Corporate Password Policy"
+          }, {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb057777",
+            "name" : "Vendor Password Policy"
+          } ],
+          "modified" : "2024-01-23T18:08:50.897Z",
+          "id" : "2c91808568c529c60168cca6f90c1324",
+          "connectorImplementationId" : "delimited-file",
+          "managerCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "owner" : {
+            "name" : "MyName",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "managementWorkgroup" : {
+            "name" : "My Management Workgroup",
+            "id" : "2c91808568c529c60168cca6f90c2222",
+            "type" : "GOVERNANCE_GROUP"
+          },
+          "accountCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "authoritative" : false,
+          "connectorAttributes" : {
+            "healthCheckTimeout" : 30,
+            "authSearchAttributes" : [ "cn", "uid", "mail" ]
+          },
+          "created" : "2022-02-08T14:50:03.827Z",
+          "managerCorrelationMapping" : {
+            "accountAttributeName" : "manager",
+            "identityAttributeName" : "manager"
+          },
+          "credentialProviderEnabled" : false,
+          "accountCorrelationConfig" : {
+            "name" : "Directory [source-62867] Account Correlation",
+            "id" : "2c9180855d191c59015d28583727245a",
+            "type" : "ACCOUNT_CORRELATION_CONFIG"
+          },
+          "connector" : "active-directory",
+          "healthy" : true,
+          "schemas" : [ {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "name" : "account"
+          }, {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232b",
+            "name" : "group"
+          } ],
+          "name" : "My Source",
+          "connectorName" : "Active Directory",
+          "category" : "CredentialProvider",
+          "beforeProvisioningRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "status" : "SOURCE_STATE_HEALTHY",
+          "since" : "2021-09-28T15:48:29.3801666300Z"
+        }`) // Source | 
     provisionAsCsv := false // bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional) # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional)
 
     var source sources.Source
@@ -551,7 +746,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Taskresultdto**](../models/taskresultdto)
+[**TaskResultDto**](../models/task-result-dto)
 
 ### HTTP request headers
 
@@ -585,7 +780,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteAccountsAsyncV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAccountsAsyncV1`: Taskresultdto
+    // response from `DeleteAccountsAsyncV1`: TaskResultDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.DeleteAccountsAsyncV1`: %v\n", resp)
 }
 ```
@@ -670,7 +865,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **sourceId** | **string** | The Source ID. | 
-**usageType** | [**Usagetype**](../models/) | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to &#39;Create Account Profile&#39;, the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to &#39;Update Account Profile&#39;, the provisioning template for the &#39;Update&#39; connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to &#39;Enable Account Profile&#39;, the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner&#39;s account is created.  DISABLE - This usage type relates to &#39;Disable Account Profile&#39;, the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. | 
+**usageType** | [**UsageType**](../models/) | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to &#39;Create Account Profile&#39;, the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to &#39;Update Account Profile&#39;, the provisioning template for the &#39;Update&#39; connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to &#39;Enable Account Profile&#39;, the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner&#39;s account is created.  DISABLE - This usage type relates to &#39;Disable Account Profile&#39;, the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. | 
 
 ### Other Parameters
 
@@ -707,7 +902,7 @@ import (
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
-    usageType := CREATE // Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+    usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
 
     
 
@@ -1035,7 +1230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accountdeleteconfigdto**](../models/accountdeleteconfigdto)
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
 
 ### HTTP request headers
 
@@ -1069,7 +1264,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetAccountDeleteApprovalConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccountDeleteApprovalConfigV1`: Accountdeleteconfigdto
+    // response from `GetAccountDeleteApprovalConfigV1`: AccountDeleteConfigDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetAccountDeleteApprovalConfigV1`: %v\n", resp)
 }
 ```
@@ -1167,7 +1362,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Correlationconfig**](../models/correlationconfig)
+[**CorrelationConfig**](../models/correlation-config)
 
 ### HTTP request headers
 
@@ -1201,7 +1396,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetCorrelationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCorrelationConfigV1`: Correlationconfig
+    // response from `GetCorrelationConfigV1`: CorrelationConfig
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetCorrelationConfigV1`: %v\n", resp)
 }
 ```
@@ -1302,7 +1497,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accountdeleteconfigdto**](../models/accountdeleteconfigdto)
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
 
 ### HTTP request headers
 
@@ -1336,7 +1531,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetMachineAccountDeletionApprovalConfigBySourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMachineAccountDeletionApprovalConfigBySourceV1`: Accountdeleteconfigdto
+    // response from `GetMachineAccountDeletionApprovalConfigBySourceV1`: AccountDeleteConfigDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetMachineAccountDeletionApprovalConfigBySourceV1`: %v\n", resp)
 }
 ```
@@ -1368,7 +1563,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Nativechangedetectionconfig**](../models/nativechangedetectionconfig)
+[**NativeChangeDetectionConfig**](../models/native-change-detection-config)
 
 ### HTTP request headers
 
@@ -1402,7 +1597,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetNativeChangeDetectionConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNativeChangeDetectionConfigV1`: Nativechangedetectionconfig
+    // response from `GetNativeChangeDetectionConfigV1`: NativeChangeDetectionConfig
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetNativeChangeDetectionConfigV1`: %v\n", resp)
 }
 ```
@@ -1422,7 +1617,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **sourceId** | **string** | The Source ID. | 
-**usageType** | [**Usagetype**](../models/) | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to &#39;Create Account Profile&#39;, the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to &#39;Update Account Profile&#39;, the provisioning template for the &#39;Update&#39; connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to &#39;Enable Account Profile&#39;, the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner&#39;s account is created.  DISABLE - This usage type relates to &#39;Disable Account Profile&#39;, the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. | 
+**usageType** | [**UsageType**](../models/) | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to &#39;Create Account Profile&#39;, the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to &#39;Update Account Profile&#39;, the provisioning template for the &#39;Update&#39; connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to &#39;Enable Account Profile&#39;, the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner&#39;s account is created.  DISABLE - This usage type relates to &#39;Disable Account Profile&#39;, the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. | 
 
 ### Other Parameters
 
@@ -1436,7 +1631,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Provisioningpolicydto**](../models/provisioningpolicydto)
+[**ProvisioningPolicyDto**](../models/provisioning-policy-dto)
 
 ### HTTP request headers
 
@@ -1459,7 +1654,7 @@ import (
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
-    usageType := CREATE // Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+    usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
 
     
 
@@ -1471,7 +1666,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetProvisioningPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetProvisioningPolicyV1`: Provisioningpolicydto
+    // response from `GetProvisioningPolicyV1`: ProvisioningPolicyDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetProvisioningPolicyV1`: %v\n", resp)
 }
 ```
@@ -1517,7 +1712,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+[**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2)
 
 ### HTTP request headers
 
@@ -1553,7 +1748,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetProvisioningPolicyV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetProvisioningPolicyV2`: Provisioningpolicydtov2
+    // response from `GetProvisioningPolicyV2`: ProvisioningPolicyDtoV2
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetProvisioningPolicyV2`: %v\n", resp)
 }
 ```
@@ -1597,7 +1792,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Attrsyncsourceconfig**](../models/attrsyncsourceconfig)
+[**AttrSyncSourceConfig**](../models/attr-sync-source-config)
 
 ### HTTP request headers
 
@@ -1632,7 +1827,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceAttrSyncConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSourceAttrSyncConfigV1`: Attrsyncsourceconfig
+    // response from `GetSourceAttrSyncConfigV1`: AttrSyncSourceConfig
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceAttrSyncConfigV1`: %v\n", resp)
 }
 ```
@@ -1665,7 +1860,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Connectordetail**](../models/connectordetail)
+[**ConnectorDetail**](../models/connector-detail)
 
 ### HTTP request headers
 
@@ -1700,7 +1895,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSourceConfigV1`: Connectordetail
+    // response from `GetSourceConfigV1`: ConnectorDetail
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceConfigV1`: %v\n", resp)
 }
 ```
@@ -1732,7 +1927,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourceconnectionsdto**](../models/sourceconnectionsdto)
+[**SourceConnectionsDto**](../models/source-connections-dto)
 
 ### HTTP request headers
 
@@ -1766,7 +1961,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceConnectionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSourceConnectionsV1`: Sourceconnectionsdto
+    // response from `GetSourceConnectionsV1`: SourceConnectionsDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceConnectionsV1`: %v\n", resp)
 }
 ```
@@ -1814,7 +2009,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourceentitlementrequestconfig**](../models/sourceentitlementrequestconfig)
+[**SourceEntitlementRequestConfig**](../models/source-entitlement-request-config)
 
 ### HTTP request headers
 
@@ -1849,7 +2044,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceEntitlementRequestConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSourceEntitlementRequestConfigV1`: Sourceentitlementrequestconfig
+    // response from `GetSourceEntitlementRequestConfigV1`: SourceEntitlementRequestConfig
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceEntitlementRequestConfigV1`: %v\n", resp)
 }
 ```
@@ -1881,7 +2076,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourcehealthdto**](../models/sourcehealthdto)
+[**SourceHealthDto**](../models/source-health-dto)
 
 ### HTTP request headers
 
@@ -1915,7 +2110,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceHealthV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSourceHealthV1`: Sourcehealthdto
+    // response from `GetSourceHealthV1`: SourceHealthDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceHealthV1`: %v\n", resp)
 }
 ```
@@ -2375,7 +2570,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Loadaccountstask**](../models/loadaccountstask)
+[**LoadAccountsTask**](../models/load-accounts-task)
 
 ### HTTP request headers
 
@@ -2411,7 +2606,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportAccountsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ImportAccountsV1`: Loadaccountstask
+    // response from `ImportAccountsV1`: LoadAccountsTask
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ImportAccountsV1`: %v\n", resp)
 }
 ```
@@ -2591,7 +2786,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Loadentitlementtask**](../models/loadentitlementtask)
+[**LoadEntitlementTask**](../models/load-entitlement-task)
 
 ### HTTP request headers
 
@@ -2626,7 +2821,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ImportEntitlementsV1`: Loadentitlementtask
+    // response from `ImportEntitlementsV1`: LoadEntitlementTask
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ImportEntitlementsV1`: %v\n", resp)
 }
 ```
@@ -2659,7 +2854,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Loaduncorrelatedaccountstask**](../models/loaduncorrelatedaccountstask)
+[**LoadUncorrelatedAccountsTask**](../models/load-uncorrelated-accounts-task)
 
 ### HTTP request headers
 
@@ -2694,7 +2889,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportUncorrelatedAccountsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ImportUncorrelatedAccountsV1`: Loaduncorrelatedaccountstask
+    // response from `ImportUncorrelatedAccountsV1`: LoadUncorrelatedAccountsTask
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ImportUncorrelatedAccountsV1`: %v\n", resp)
 }
 ```
@@ -2731,7 +2926,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]PasswordpolicyholdersdtoInner**](../models/passwordpolicyholdersdto-inner)
+[**[]PasswordPolicyHoldersDtoInner**](../models/password-policy-holders-dto-inner)
 
 ### HTTP request headers
 
@@ -2768,7 +2963,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListPasswordPolicyHoldersOnSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListPasswordPolicyHoldersOnSourceV1`: []PasswordpolicyholdersdtoInner
+    // response from `ListPasswordPolicyHoldersOnSourceV1`: []PasswordPolicyHoldersDtoInner
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ListPasswordPolicyHoldersOnSourceV1`: %v\n", resp)
 }
 ```
@@ -2802,7 +2997,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Provisioningpolicydto**](../models/provisioningpolicydto)
+[**[]ProvisioningPolicyDto**](../models/provisioning-policy-dto)
 
 ### HTTP request headers
 
@@ -2838,7 +3033,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListProvisioningPoliciesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListProvisioningPoliciesV1`: []Provisioningpolicydto
+    // response from `ListProvisioningPoliciesV1`: []ProvisioningPolicyDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ListProvisioningPoliciesV1`: %v\n", resp)
 }
 ```
@@ -2885,7 +3080,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+[**[]ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2)
 
 ### HTTP request headers
 
@@ -2923,7 +3118,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListProvisioningPoliciesV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListProvisioningPoliciesV2`: []Provisioningpolicydtov2
+    // response from `ListProvisioningPoliciesV2`: []ProvisioningPolicyDtoV2
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ListProvisioningPoliciesV2`: %v\n", resp)
 }
 ```
@@ -3029,7 +3224,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Statusresponse**](../models/statusresponse)
+[**StatusResponse**](../models/status-response)
 
 ### HTTP request headers
 
@@ -3063,7 +3258,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PingClusterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PingClusterV1`: Statusresponse
+    // response from `PingClusterV1`: StatusResponse
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PingClusterV1`: %v\n", resp)
 }
 ```
@@ -3092,11 +3287,11 @@ Other parameters are passed through a pointer to a apiPutCorrelationConfigV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **correlationconfig** | [**Correlationconfig**](../models/correlationconfig) |  | 
+ **correlationConfig** | [**CorrelationConfig**](../models/correlation-config) |  | 
 
 ### Return type
 
-[**Correlationconfig**](../models/correlationconfig)
+[**CorrelationConfig**](../models/correlation-config)
 
 ### HTTP request headers
 
@@ -3119,10 +3314,30 @@ import (
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | The source id # string | The source id
-    correlationconfigJson := []byte(``) // Correlationconfig | 
+    correlationconfigJson := []byte(`{
+          "attributeAssignments" : [ {
+            "filterString" : "first_name == \"John\"",
+            "ignoreCase" : false,
+            "complex" : false,
+            "property" : "first_name",
+            "value" : "firstName",
+            "operation" : "EQ",
+            "matchMode" : "ANYWHERE"
+          }, {
+            "filterString" : "first_name == \"John\"",
+            "ignoreCase" : false,
+            "complex" : false,
+            "property" : "first_name",
+            "value" : "firstName",
+            "operation" : "EQ",
+            "matchMode" : "ANYWHERE"
+          } ],
+          "name" : "Source [source] Account Correlation",
+          "id" : "2c9180835d191a86015d28455b4a2329"
+        }`) // CorrelationConfig | 
 
-    var correlationconfig sources.Correlationconfig
-    if err := json.Unmarshal(correlationconfigJson, &correlationconfig); err != nil {
+    var correlationConfig sources.CorrelationConfig
+    if err := json.Unmarshal(correlationconfigJson, &correlationConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3130,13 +3345,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.PutCorrelationConfigV1(context.Background(), id).Correlationconfig(correlationconfig).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.PutCorrelationConfigV1(context.Background(), id).Correlationconfig(correlationconfig).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutCorrelationConfigV1(context.Background(), id).CorrelationConfig(correlationConfig).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutCorrelationConfigV1(context.Background(), id).CorrelationConfig(correlationConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutCorrelationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutCorrelationConfigV1`: Correlationconfig
+    // response from `PutCorrelationConfigV1`: CorrelationConfig
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutCorrelationConfigV1`: %v\n", resp)
 }
 ```
@@ -3165,11 +3380,11 @@ Other parameters are passed through a pointer to a apiPutNativeChangeDetectionCo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **nativechangedetectionconfig** | [**Nativechangedetectionconfig**](../models/nativechangedetectionconfig) |  | 
+ **nativeChangeDetectionConfig** | [**NativeChangeDetectionConfig**](../models/native-change-detection-config) |  | 
 
 ### Return type
 
-[**Nativechangedetectionconfig**](../models/nativechangedetectionconfig)
+[**NativeChangeDetectionConfig**](../models/native-change-detection-config)
 
 ### HTTP request headers
 
@@ -3192,10 +3407,17 @@ import (
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The source id # string | The source id
-    nativechangedetectionconfigJson := []byte(``) // Nativechangedetectionconfig | 
+    nativechangedetectionconfigJson := []byte(`{
+          "selectedEntitlements" : [ "memberOf", "memberOfSharedMailbox" ],
+          "operations" : [ "ACCOUNT_UPDATED", "ACCOUNT_DELETED" ],
+          "selectedNonEntitlementAttributes" : [ "lastName", "phoneNumber", "objectType", "servicePrincipalName" ],
+          "allNonEntitlementAttributes" : false,
+          "allEntitlements" : false,
+          "enabled" : true
+        }`) // NativeChangeDetectionConfig | 
 
-    var nativechangedetectionconfig sources.Nativechangedetectionconfig
-    if err := json.Unmarshal(nativechangedetectionconfigJson, &nativechangedetectionconfig); err != nil {
+    var nativeChangeDetectionConfig sources.NativeChangeDetectionConfig
+    if err := json.Unmarshal(nativechangedetectionconfigJson, &nativeChangeDetectionConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3203,13 +3425,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.PutNativeChangeDetectionConfigV1(context.Background(), sourceId).Nativechangedetectionconfig(nativechangedetectionconfig).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.PutNativeChangeDetectionConfigV1(context.Background(), sourceId).Nativechangedetectionconfig(nativechangedetectionconfig).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutNativeChangeDetectionConfigV1(context.Background(), sourceId).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutNativeChangeDetectionConfigV1(context.Background(), sourceId).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutNativeChangeDetectionConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutNativeChangeDetectionConfigV1`: Nativechangedetectionconfig
+    // response from `PutNativeChangeDetectionConfigV1`: NativeChangeDetectionConfig
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutNativeChangeDetectionConfigV1`: %v\n", resp)
 }
 ```
@@ -3231,7 +3453,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **sourceId** | **string** | The Source ID. | 
-**usageType** | [**Usagetype**](../models/) | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to &#39;Create Account Profile&#39;, the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to &#39;Update Account Profile&#39;, the provisioning template for the &#39;Update&#39; connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to &#39;Enable Account Profile&#39;, the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner&#39;s account is created.  DISABLE - This usage type relates to &#39;Disable Account Profile&#39;, the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. | 
+**usageType** | [**UsageType**](../models/) | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to &#39;Create Account Profile&#39;, the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to &#39;Update Account Profile&#39;, the provisioning template for the &#39;Update&#39; connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to &#39;Enable Account Profile&#39;, the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner&#39;s account is created.  DISABLE - This usage type relates to &#39;Disable Account Profile&#39;, the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. | 
 
 ### Other Parameters
 
@@ -3242,11 +3464,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **provisioningpolicydto** | [**Provisioningpolicydto**](../models/provisioningpolicydto) |  | 
+ **provisioningPolicyDto** | [**ProvisioningPolicyDto**](../models/provisioning-policy-dto) |  | 
 
 ### Return type
 
-[**Provisioningpolicydto**](../models/provisioningpolicydto)
+[**ProvisioningPolicyDto**](../models/provisioning-policy-dto)
 
 ### HTTP request headers
 
@@ -3269,11 +3491,50 @@ import (
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
-    usageType := CREATE // Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
-    provisioningpolicydtoJson := []byte(``) // Provisioningpolicydto | 
+    usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+    provisioningpolicydtoJson := []byte(`{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "${firstname}.${lastname}${uniqueCounter}",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }`) // ProvisioningPolicyDto | 
 
-    var provisioningpolicydto sources.Provisioningpolicydto
-    if err := json.Unmarshal(provisioningpolicydtoJson, &provisioningpolicydto); err != nil {
+    var provisioningPolicyDto sources.ProvisioningPolicyDto
+    if err := json.Unmarshal(provisioningpolicydtoJson, &provisioningPolicyDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3281,13 +3542,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV1(context.Background(), sourceId, usageType).Provisioningpolicydto(provisioningpolicydto).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV1(context.Background(), sourceId, usageType).Provisioningpolicydto(provisioningpolicydto).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV1(context.Background(), sourceId, usageType).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV1(context.Background(), sourceId, usageType).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutProvisioningPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutProvisioningPolicyV1`: Provisioningpolicydto
+    // response from `PutProvisioningPolicyV1`: ProvisioningPolicyDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutProvisioningPolicyV1`: %v\n", resp)
 }
 ```
@@ -3332,11 +3593,11 @@ Name | Type | Description  | Notes
 
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **provisioningpolicydtov2** | [**Provisioningpolicydtov2**](../models/provisioningpolicydtov2) |  | 
+ **provisioningPolicyDtoV2** | [**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2) |  | 
 
 ### Return type
 
-[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+[**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2)
 
 ### HTTP request headers
 
@@ -3361,10 +3622,51 @@ func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
     id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    provisioningpolicydtov2Json := []byte(``) // Provisioningpolicydtov2 | 
+    provisioningpolicydtov2Json := []byte(`{
+          "name" : "example provisioning policy for inactive identities",
+          "description" : "this provisioning policy creates access based on an identity going inactive",
+          "id" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "subtypeId" : "d7ae9ea3-507f-4d00-9d4f-b4464b344b88",
+          "fields" : [ {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          }, {
+            "isRequired" : false,
+            "transform" : {
+              "type" : "rule",
+              "attributes" : {
+                "name" : "Create Unique LDAP Attribute"
+              }
+            },
+            "isMultiValued" : false,
+            "name" : "userName",
+            "attributes" : {
+              "template" : "firstname.lastname.uniqueCounter",
+              "cloudMaxUniqueChecks" : "50",
+              "cloudMaxSize" : "20",
+              "cloudRequired" : "true"
+            },
+            "type" : "string"
+          } ],
+          "usageType" : "CREATE"
+        }`) // ProvisioningPolicyDtoV2 | 
 
-    var provisioningpolicydtov2 sources.Provisioningpolicydtov2
-    if err := json.Unmarshal(provisioningpolicydtov2Json, &provisioningpolicydtov2); err != nil {
+    var provisioningPolicyDtoV2 sources.ProvisioningPolicyDtoV2
+    if err := json.Unmarshal(provisioningpolicydtov2Json, &provisioningPolicyDtoV2); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3372,13 +3674,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Provisioningpolicydtov2(provisioningpolicydtov2).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).ProvisioningPolicyDtoV2(provisioningPolicyDtoV2).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).ProvisioningPolicyDtoV2(provisioningPolicyDtoV2).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutProvisioningPolicyV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutProvisioningPolicyV2`: Provisioningpolicydtov2
+    // response from `PutProvisioningPolicyV2`: ProvisioningPolicyDtoV2
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutProvisioningPolicyV2`: %v\n", resp)
 }
 ```
@@ -3420,11 +3722,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **attrsyncsourceconfig** | [**Attrsyncsourceconfig**](../models/attrsyncsourceconfig) |  | 
+ **attrSyncSourceConfig** | [**AttrSyncSourceConfig**](../models/attr-sync-source-config) |  | 
 
 ### Return type
 
-[**Attrsyncsourceconfig**](../models/attrsyncsourceconfig)
+[**AttrSyncSourceConfig**](../models/attr-sync-source-config)
 
 ### HTTP request headers
 
@@ -3448,10 +3750,27 @@ import (
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | The source id # string | The source id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    attrsyncsourceconfigJson := []byte(``) // Attrsyncsourceconfig | 
+    attrsyncsourceconfigJson := []byte(`{
+          "attributes" : [ {
+            "name" : "email",
+            "displayName" : "Email",
+            "enabled" : true,
+            "target" : "mail"
+          }, {
+            "name" : "firstname",
+            "displayName" : "First Name",
+            "enabled" : false,
+            "target" : "givenName"
+          } ],
+          "source" : {
+            "name" : "HR Active Directory",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "type" : "SOURCE"
+          }
+        }`) // AttrSyncSourceConfig | 
 
-    var attrsyncsourceconfig sources.Attrsyncsourceconfig
-    if err := json.Unmarshal(attrsyncsourceconfigJson, &attrsyncsourceconfig); err != nil {
+    var attrSyncSourceConfig sources.AttrSyncSourceConfig
+    if err := json.Unmarshal(attrsyncsourceconfigJson, &attrSyncSourceConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3459,13 +3778,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.PutSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Attrsyncsourceconfig(attrsyncsourceconfig).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.PutSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Attrsyncsourceconfig(attrsyncsourceconfig).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).AttrSyncSourceConfig(attrSyncSourceConfig).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutSourceAttrSyncConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).AttrSyncSourceConfig(attrSyncSourceConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutSourceAttrSyncConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutSourceAttrSyncConfigV1`: Attrsyncsourceconfig
+    // response from `PutSourceAttrSyncConfigV1`: AttrSyncSourceConfig
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutSourceAttrSyncConfigV1`: %v\n", resp)
 }
 ```
@@ -3534,7 +3853,40 @@ import (
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
     schemaId := `2c9180835d191a86015d28455b4a2329` // string | The Schema id. # string | The Schema id.
-    schemaJson := []byte(``) // Schema | 
+    schemaJson := []byte(`{
+          "features" : [ "PROVISIONING", "NO_PERMISSIONS_PROVISIONING", "GROUPS_HAVE_MEMBERS" ],
+          "nativeObjectType" : "User",
+          "configuration" : {
+            "groupMemberAttribute" : "member"
+          },
+          "created" : "2019-12-24T22:32:58.104Z",
+          "includePermissions" : false,
+          "name" : "account",
+          "hierarchyAttribute" : "memberOf",
+          "modified" : "2019-12-31T20:22:28.104Z",
+          "attributes" : [ {
+            "name" : "sAMAccountName",
+            "type" : "STRING",
+            "isMultiValued" : false,
+            "isEntitlement" : false,
+            "isGroup" : false
+          }, {
+            "name" : "memberOf",
+            "type" : "STRING",
+            "schema" : {
+              "type" : "CONNECTOR_SCHEMA",
+              "id" : "2c9180887671ff8c01767b4671fc7d60",
+              "name" : "group"
+            },
+            "description" : "Group membership",
+            "isMultiValued" : true,
+            "isEntitlement" : true,
+            "isGroup" : true
+          } ],
+          "id" : "2c9180835d191a86015d28455b4a2329",
+          "displayAttribute" : "distinguishedName",
+          "identityAttribute" : "sAMAccountName"
+        }`) // Schema | 
 
     var schema sources.Schema
     if err := json.Unmarshal(schemaJson, &schema); err != nil {
@@ -3619,7 +3971,89 @@ import (
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
-    sourceJson := []byte(``) // Source | 
+    sourceJson := []byte(`{
+          "cluster" : {
+            "name" : "Corporate Cluster",
+            "id" : "2c9180866166b5b0016167c32ef31a66",
+            "type" : "CLUSTER"
+          },
+          "deleteThreshold" : 10,
+          "connectorId" : "active-directory",
+          "description" : "This is the corporate directory.",
+          "type" : "OpenLDAP - Direct",
+          "connectorClass" : "sailpoint.connector.LDAPConnector",
+          "connectionType" : "file",
+          "features" : [ "PROVISIONING", "NO_PERMISSIONS_PROVISIONING", "GROUPS_HAVE_MEMBERS" ],
+          "passwordPolicies" : [ {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb053980",
+            "name" : "Corporate Password Policy"
+          }, {
+            "type" : "PASSWORD_POLICY",
+            "id" : "2c9180855d191c59015d291ceb057777",
+            "name" : "Vendor Password Policy"
+          } ],
+          "modified" : "2024-01-23T18:08:50.897Z",
+          "id" : "2c91808568c529c60168cca6f90c1324",
+          "connectorImplementationId" : "delimited-file",
+          "managerCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "owner" : {
+            "name" : "MyName",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "managementWorkgroup" : {
+            "name" : "My Management Workgroup",
+            "id" : "2c91808568c529c60168cca6f90c2222",
+            "type" : "GOVERNANCE_GROUP"
+          },
+          "accountCorrelationRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "authoritative" : false,
+          "connectorAttributes" : {
+            "healthCheckTimeout" : 30,
+            "authSearchAttributes" : [ "cn", "uid", "mail" ]
+          },
+          "created" : "2022-02-08T14:50:03.827Z",
+          "managerCorrelationMapping" : {
+            "accountAttributeName" : "manager",
+            "identityAttributeName" : "manager"
+          },
+          "credentialProviderEnabled" : false,
+          "accountCorrelationConfig" : {
+            "name" : "Directory [source-62867] Account Correlation",
+            "id" : "2c9180855d191c59015d28583727245a",
+            "type" : "ACCOUNT_CORRELATION_CONFIG"
+          },
+          "connector" : "active-directory",
+          "healthy" : true,
+          "schemas" : [ {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "name" : "account"
+          }, {
+            "type" : "CONNECTOR_SCHEMA",
+            "id" : "2c9180835d191a86015d28455b4b232b",
+            "name" : "group"
+          } ],
+          "name" : "My Source",
+          "connectorName" : "Active Directory",
+          "category" : "CredentialProvider",
+          "beforeProvisioningRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "RULE"
+          },
+          "status" : "SOURCE_STATE_HEALTHY",
+          "since" : "2021-09-28T15:48:29.3801666300Z"
+        }`) // Source | 
 
     var source sources.Source
     if err := json.Unmarshal(sourceJson, &source); err != nil {
@@ -3665,11 +4099,11 @@ Other parameters are passed through a pointer to a apiSearchResourceObjectsV1Req
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **resourceobjectsrequest** | [**Resourceobjectsrequest**](../models/resourceobjectsrequest) |  | 
+ **resourceObjectsRequest** | [**ResourceObjectsRequest**](../models/resource-objects-request) |  | 
 
 ### Return type
 
-[**Resourceobjectsresponse**](../models/resourceobjectsresponse)
+[**ResourceObjectsResponse**](../models/resource-objects-response)
 
 ### HTTP request headers
 
@@ -3692,10 +4126,13 @@ import (
 
 func main() {
     sourceId := `cef3ee201db947c5912551015ba0c679` // string | The ID of the Source # string | The ID of the Source
-    resourceobjectsrequestJson := []byte(``) // Resourceobjectsrequest | 
+    resourceobjectsrequestJson := []byte(`{
+          "maxCount" : 100,
+          "objectType" : "group"
+        }`) // ResourceObjectsRequest | 
 
-    var resourceobjectsrequest sources.Resourceobjectsrequest
-    if err := json.Unmarshal(resourceobjectsrequestJson, &resourceobjectsrequest); err != nil {
+    var resourceObjectsRequest sources.ResourceObjectsRequest
+    if err := json.Unmarshal(resourceobjectsrequestJson, &resourceObjectsRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3703,13 +4140,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.SearchResourceObjectsV1(context.Background(), sourceId).Resourceobjectsrequest(resourceobjectsrequest).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.SearchResourceObjectsV1(context.Background(), sourceId).Resourceobjectsrequest(resourceobjectsrequest).Execute()
+    resp, r, err := apiClient.SourcesAPI.SearchResourceObjectsV1(context.Background(), sourceId).ResourceObjectsRequest(resourceObjectsRequest).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.SearchResourceObjectsV1(context.Background(), sourceId).ResourceObjectsRequest(resourceObjectsRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SearchResourceObjectsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchResourceObjectsV1`: Resourceobjectsresponse
+    // response from `SearchResourceObjectsV1`: ResourceObjectsResponse
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SearchResourceObjectsV1`: %v\n", resp)
 }
 ```
@@ -3753,7 +4190,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourcesyncjob**](../models/sourcesyncjob)
+[**SourceSyncJob**](../models/source-sync-job)
 
 ### HTTP request headers
 
@@ -3788,7 +4225,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SyncAttributesForSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SyncAttributesForSourceV1`: Sourcesyncjob
+    // response from `SyncAttributesForSourceV1`: SourceSyncJob
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SyncAttributesForSourceV1`: %v\n", resp)
 }
 ```
@@ -3820,7 +4257,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Statusresponse**](../models/statusresponse)
+[**StatusResponse**](../models/status-response)
 
 ### HTTP request headers
 
@@ -3854,7 +4291,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.TestSourceConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TestSourceConfigurationV1`: Statusresponse
+    // response from `TestSourceConfigurationV1`: StatusResponse
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.TestSourceConfigurationV1`: %v\n", resp)
 }
 ```
@@ -3886,7 +4323,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Statusresponse**](../models/statusresponse)
+[**StatusResponse**](../models/status-response)
 
 ### HTTP request headers
 
@@ -3920,7 +4357,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.TestSourceConnectionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TestSourceConnectionV1`: Statusresponse
+    // response from `TestSourceConnectionV1`: StatusResponse
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.TestSourceConnectionV1`: %v\n", resp)
 }
 ```
@@ -3950,11 +4387,11 @@ Other parameters are passed through a pointer to a apiUpdateAccountDeletionAppro
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | The JSONPatch payload used to update the object. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the object. | 
 
 ### Return type
 
-[**Accountdeleteconfigdto**](../models/accountdeleteconfigdto)
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
 
 ### HTTP request headers
 
@@ -3977,10 +4414,10 @@ import (
 
 func main() {
     sourceId := `00eebcf881994e419d72e757fd30dc0e` // string | Human account source ID. # string | Human account source ID.
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
-    var jsonpatchoperation []sources.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []sources.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -3988,13 +4425,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.UpdateAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateAccountDeletionApprovalConfigV1(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateAccountDeletionApprovalConfigV1(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateAccountDeletionApprovalConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAccountDeletionApprovalConfigV1`: Accountdeleteconfigdto
+    // response from `UpdateAccountDeletionApprovalConfigV1`: AccountDeleteConfigDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateAccountDeletionApprovalConfigV1`: %v\n", resp)
 }
 ```
@@ -4027,11 +4464,11 @@ Other parameters are passed through a pointer to a apiUpdateMachineAccountDeleti
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | The JSONPatch payload used to update the object. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the object. | 
 
 ### Return type
 
-[**Accountdeleteconfigdto**](../models/accountdeleteconfigdto)
+[**AccountDeleteConfigDto**](../models/account-delete-config-dto)
 
 ### HTTP request headers
 
@@ -4054,10 +4491,10 @@ import (
 
 func main() {
     sourceId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account source ID. # string | machine account source ID.
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
-    var jsonpatchoperation []sources.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []sources.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4065,13 +4502,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateMachineAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.UpdateMachineAccountDeletionApprovalConfigV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateMachineAccountDeletionApprovalConfigV1(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateMachineAccountDeletionApprovalConfigV1(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateMachineAccountDeletionApprovalConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateMachineAccountDeletionApprovalConfigV1`: Accountdeleteconfigdto
+    // response from `UpdateMachineAccountDeletionApprovalConfigV1`: AccountDeleteConfigDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateMachineAccountDeletionApprovalConfigV1`: %v\n", resp)
 }
 ```
@@ -4102,11 +4539,11 @@ Other parameters are passed through a pointer to a apiUpdatePasswordPolicyHolder
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **passwordpolicyholdersdtoInner** | [**[]PasswordpolicyholdersdtoInner**](../models/passwordpolicyholdersdto-inner) |  | 
+ **passwordPolicyHoldersDtoInner** | [**[]PasswordPolicyHoldersDtoInner**](../models/password-policy-holders-dto-inner) |  | 
 
 ### Return type
 
-[**[]PasswordpolicyholdersdtoInner**](../models/passwordpolicyholdersdto-inner)
+[**[]PasswordPolicyHoldersDtoInner**](../models/password-policy-holders-dto-inner)
 
 ### HTTP request headers
 
@@ -4129,10 +4566,10 @@ import (
 
 func main() {
     sourceId := `8c190e6787aa4ed9a90bd9d5344523fb` // string | The Source id # string | The Source id
-    passwordpolicyholdersdtoinnerJson := []byte(``) // []PasswordpolicyholdersdtoInner | 
+    passwordpolicyholdersdtoinnerJson := []byte(``) // []PasswordPolicyHoldersDtoInner | 
 
-    var passwordpolicyholdersdtoInner []sources.PasswordpolicyholdersdtoInner
-    if err := json.Unmarshal(passwordpolicyholdersdtoinnerJson, &passwordpolicyholdersdtoInner); err != nil {
+    var passwordPolicyHoldersDtoInner []sources.PasswordPolicyHoldersDtoInner
+    if err := json.Unmarshal(passwordpolicyholdersdtoinnerJson, &passwordPolicyHoldersDtoInner); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4140,13 +4577,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdatePasswordPolicyHoldersV1(context.Background(), sourceId).PasswordpolicyholdersdtoInner(passwordpolicyholdersdtoInner).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.UpdatePasswordPolicyHoldersV1(context.Background(), sourceId).PasswordpolicyholdersdtoInner(passwordpolicyholdersdtoInner).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdatePasswordPolicyHoldersV1(context.Background(), sourceId).PasswordPolicyHoldersDtoInner(passwordPolicyHoldersDtoInner).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdatePasswordPolicyHoldersV1(context.Background(), sourceId).PasswordPolicyHoldersDtoInner(passwordPolicyHoldersDtoInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdatePasswordPolicyHoldersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatePasswordPolicyHoldersV1`: []PasswordpolicyholdersdtoInner
+    // response from `UpdatePasswordPolicyHoldersV1`: []PasswordPolicyHoldersDtoInner
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdatePasswordPolicyHoldersV1`: %v\n", resp)
 }
 ```
@@ -4175,11 +4612,11 @@ Other parameters are passed through a pointer to a apiUpdateProvisioningPolicies
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **provisioningpolicydto** | [**[]Provisioningpolicydto**](../models/provisioningpolicydto) |  | 
+ **provisioningPolicyDto** | [**[]ProvisioningPolicyDto**](../models/provisioning-policy-dto) |  | 
 
 ### Return type
 
-[**[]Provisioningpolicydto**](../models/provisioningpolicydto)
+[**[]ProvisioningPolicyDto**](../models/provisioning-policy-dto)
 
 ### HTTP request headers
 
@@ -4202,10 +4639,10 @@ import (
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
-    provisioningpolicydtoJson := []byte(``) // []Provisioningpolicydto | 
+    provisioningpolicydtoJson := []byte(``) // []ProvisioningPolicyDto | 
 
-    var provisioningpolicydto []sources.Provisioningpolicydto
-    if err := json.Unmarshal(provisioningpolicydtoJson, &provisioningpolicydto); err != nil {
+    var provisioningPolicyDto []sources.ProvisioningPolicyDto
+    if err := json.Unmarshal(provisioningpolicydtoJson, &provisioningPolicyDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4213,13 +4650,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPoliciesInBulkV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPoliciesInBulkV1(context.Background(), sourceId).Provisioningpolicydto(provisioningpolicydto).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPoliciesInBulkV1(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPoliciesInBulkV1(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateProvisioningPoliciesInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateProvisioningPoliciesInBulkV1`: []Provisioningpolicydto
+    // response from `UpdateProvisioningPoliciesInBulkV1`: []ProvisioningPolicyDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateProvisioningPoliciesInBulkV1`: %v\n", resp)
 }
 ```
@@ -4241,7 +4678,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **sourceId** | **string** | The Source id. | 
-**usageType** | [**Usagetype**](../models/) | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to &#39;Create Account Profile&#39;, the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to &#39;Update Account Profile&#39;, the provisioning template for the &#39;Update&#39; connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to &#39;Enable Account Profile&#39;, the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner&#39;s account is created.  DISABLE - This usage type relates to &#39;Disable Account Profile&#39;, the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. | 
+**usageType** | [**UsageType**](../models/) | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to &#39;Create Account Profile&#39;, the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to &#39;Update Account Profile&#39;, the provisioning template for the &#39;Update&#39; connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to &#39;Enable Account Profile&#39;, the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner&#39;s account is created.  DISABLE - This usage type relates to &#39;Disable Account Profile&#39;, the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. | 
 
 ### Other Parameters
 
@@ -4252,11 +4689,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | The JSONPatch payload used to update the schema. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the schema. | 
 
 ### Return type
 
-[**Provisioningpolicydto**](../models/provisioningpolicydto)
+[**ProvisioningPolicyDto**](../models/provisioning-policy-dto)
 
 ### HTTP request headers
 
@@ -4279,11 +4716,11 @@ import (
 
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
-    usageType := CREATE // Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
-    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schema.
+    usageType := CREATE // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
+    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
-    var jsonpatchoperation []sources.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []sources.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4291,13 +4728,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV1(context.Background(), sourceId, usageType).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV1(context.Background(), sourceId, usageType).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV1(context.Background(), sourceId, usageType).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV1(context.Background(), sourceId, usageType).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateProvisioningPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateProvisioningPolicyV1`: Provisioningpolicydto
+    // response from `UpdateProvisioningPolicyV1`: ProvisioningPolicyDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateProvisioningPolicyV1`: %v\n", resp)
 }
 ```
@@ -4342,11 +4779,11 @@ Name | Type | Description  | Notes
 
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | The JSONPatch payload used to update the schema. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the schema. | 
 
 ### Return type
 
-[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+[**ProvisioningPolicyDtoV2**](../models/provisioning-policy-dto-v2)
 
 ### HTTP request headers
 
@@ -4371,10 +4808,10 @@ func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
     id := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The provisioning policy ID. # string | The provisioning policy ID.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schema.
+    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
-    var jsonpatchoperation []sources.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []sources.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4382,13 +4819,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateProvisioningPolicyV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateProvisioningPolicyV2`: Provisioningpolicydtov2
+    // response from `UpdateProvisioningPolicyV2`: ProvisioningPolicyDtoV2
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateProvisioningPolicyV2`: %v\n", resp)
 }
 ```
@@ -4433,11 +4870,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **sourceentitlementrequestconfig** | [**Sourceentitlementrequestconfig**](../models/sourceentitlementrequestconfig) |  | 
+ **sourceEntitlementRequestConfig** | [**SourceEntitlementRequestConfig**](../models/source-entitlement-request-config) |  | 
 
 ### Return type
 
-[**Sourceentitlementrequestconfig**](../models/sourceentitlementrequestconfig)
+[**SourceEntitlementRequestConfig**](../models/source-entitlement-request-config)
 
 ### HTTP request headers
 
@@ -4461,10 +4898,37 @@ import (
 func main() {
     id := `8c190e6787aa4ed9a90bd9d5344523fb` // string | The Source id # string | The Source id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    sourceentitlementrequestconfigJson := []byte(`{"accessRequestConfig":{"approvalSchemes":[]}}`) // Sourceentitlementrequestconfig | 
+    sourceentitlementrequestconfigJson := []byte(`{
+          "accessRequestConfig" : {
+            "denialCommentRequired" : false,
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "reauthorizationRequired" : false,
+            "requestCommentRequired" : true,
+            "requireEndDate" : true,
+            "maxPermittedAccessDuration" : {
+              "value" : 5,
+              "timeUnit" : "DAYS"
+            }
+          },
+          "revocationRequestConfig" : {
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ]
+          }
+        }`) // SourceEntitlementRequestConfig | 
 
-    var sourceentitlementrequestconfig sources.Sourceentitlementrequestconfig
-    if err := json.Unmarshal(sourceentitlementrequestconfigJson, &sourceentitlementrequestconfig); err != nil {
+    var sourceEntitlementRequestConfig sources.SourceEntitlementRequestConfig
+    if err := json.Unmarshal(sourceentitlementrequestconfigJson, &sourceEntitlementRequestConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4472,13 +4936,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sourceentitlementrequestconfig(sourceentitlementrequestconfig).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sourceentitlementrequestconfig(sourceentitlementrequestconfig).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceEntitlementRequestConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateSourceEntitlementRequestConfigV1`: Sourceentitlementrequestconfig
+    // response from `UpdateSourceEntitlementRequestConfigV1`: SourceEntitlementRequestConfig
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateSourceEntitlementRequestConfigV1`: %v\n", resp)
 }
 ```
@@ -4514,7 +4978,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | The JSONPatch payload used to update the schedule. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the schedule. | 
 
 ### Return type
 
@@ -4542,10 +5006,10 @@ import (
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
     scheduleType := `ACCOUNT_AGGREGATION` // string | The Schedule type. # string | The Schedule type.
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/cronExpression","value":"0 0 6 * * ?"}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schedule.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/cronExpression","value":"0 0 6 * * ?"}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schedule.
 
-    var jsonpatchoperation []sources.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []sources.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4553,8 +5017,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateSourceScheduleV1(context.Background(), sourceId, scheduleType).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceScheduleV1(context.Background(), sourceId, scheduleType).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateSourceScheduleV1(context.Background(), sourceId, scheduleType).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceScheduleV1(context.Background(), sourceId, scheduleType).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4619,7 +5083,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | The JSONPatch payload used to update the schema. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the schema. | 
 
 ### Return type
 
@@ -4647,10 +5111,10 @@ import (
 func main() {
     sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source id. # string | The Source id.
     schemaId := `2c9180835d191a86015d28455b4a2329` // string | The Schema id. # string | The Schema id.
-    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/attributes/-","value":{"name":"location","type":"STRING","schema":null,"description":"Employee location","isMulti":false,"isEntitlement":false,"isGroup":false}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the schema.
+    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/attributes/-","value":{"name":"location","type":"STRING","schema":null,"description":"Employee location","isMulti":false,"isEntitlement":false,"isGroup":false}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
-    var jsonpatchoperation []sources.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []sources.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4658,8 +5122,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateSourceSchemaV1(context.Background(), sourceId, schemaId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceSchemaV1(context.Background(), sourceId, schemaId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateSourceSchemaV1(context.Background(), sourceId, schemaId).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceSchemaV1(context.Background(), sourceId, schemaId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4708,7 +5172,7 @@ Other parameters are passed through a pointer to a apiUpdateSourceV1Request stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC). | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC). | 
 
 ### Return type
 
@@ -4735,10 +5199,10 @@ import (
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"new description"}]`) // []Jsonpatchoperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"new description"}]`) // []JsonPatchOperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
 
-    var jsonpatchoperation []sources.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []sources.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -4746,8 +5210,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateSourceV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateSourceV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -53,7 +53,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/bulkretrievesourcesubtypesrequest'
+              $ref: '#/components/schemas/BulkRetrieveSourceSubtypesRequest'
         required: true
       responses:
         "200":
@@ -61,14 +61,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sourcesubtypewithsource'
+                  $ref: '#/components/schemas/SourceSubtypeWithSource'
                 type: array
           description: List of source subtypes.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -92,7 +92,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -110,7 +110,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -135,7 +135,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -264,14 +264,14 @@ paths:
                     systemManaged: false
               schema:
                 items:
-                  $ref: '#/components/schemas/sourcesubtypewithsource'
+                  $ref: '#/components/schemas/SourceSubtypeWithSource'
                 type: array
           description: List of machine account subtypes.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -295,7 +295,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -320,7 +320,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -386,13 +386,13 @@ paths:
                       name: Test Source
                     systemManaged: false
               schema:
-                $ref: '#/components/schemas/sourcesubtypewithsource'
+                $ref: '#/components/schemas/SourceSubtypeWithSource'
           description: Created machine account subtype.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -416,7 +416,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -441,7 +441,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -491,7 +491,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -515,7 +515,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -540,7 +540,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -584,13 +584,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sourcesubtypewithsource'
+                $ref: '#/components/schemas/SourceSubtypeWithSource'
           description: Machine account subtype object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -614,7 +614,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -632,7 +632,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -657,7 +657,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -721,13 +721,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sourcesubtypewithsource'
+                $ref: '#/components/schemas/SourceSubtypeWithSource'
           description: Updated machine account subtype.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -751,7 +751,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -776,7 +776,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -830,14 +830,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/machineaccountsubtypeconfigdto'
+                $ref: '#/components/schemas/MachineAccountSubtypeConfigDto'
           description: Responds with a MachineAccountSubtypeConfigDto for machine
             account creation and deletion approval config by subtypeId.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -861,7 +861,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -879,7 +879,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -904,7 +904,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -957,7 +957,7 @@ paths:
                 path: /machineAccountDelete/approvalConfig/approvers
                 value: sourceOwner
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: The JSONPatch payload used to update the object.
         required: true
@@ -981,14 +981,14 @@ paths:
                     approvers: sourceOwner
                     comments: REJECTION
               schema:
-                $ref: '#/components/schemas/machineaccountsubtypeconfigdto'
+                $ref: '#/components/schemas/MachineAccountSubtypeConfigDto'
           description: This response indicates the PATCH operation succeeded and the
             API returns the updated MachineAccountSubtypeConfigDto object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1012,7 +1012,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1030,7 +1030,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1055,7 +1055,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1125,7 +1125,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1149,7 +1149,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -1167,7 +1167,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -1192,10 +1192,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    bulkretrievesourcesubtypesrequest:
+    BulkRetrieveSourceSubtypesRequest:
       description: List of source subtype IDs.
       example:
       - 38453251-6be2-5f8f-df93-5ce19e295838
@@ -1207,7 +1207,7 @@ components:
       minItems: 1
       title: Bulk Retrieve Request for Source Subtypes
       type: array
-    sourcesubtypewithsource:
+    SourceSubtypeWithSource:
       example:
         sourceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         displayName: Mr Foo
@@ -1260,14 +1260,14 @@ components:
           example: MACHINE
           type: string
         source:
-          $ref: '#/components/schemas/sourcesubtypewithsource_source'
+          $ref: '#/components/schemas/SourceSubtypeWithSource_source'
         systemManaged:
           default: false
           description: Indicates if the subtype is managed by the system.
           example: true
           type: boolean
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1279,7 +1279,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1292,7 +1292,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1300,7 +1300,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1334,17 +1334,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    machinesubtypeapprovalconfig:
+    MachineSubtypeApprovalConfig:
       example:
         comments: ALL
         approvers: "manager, workgroup:1419fc28-a8ed-4a07-9f5c-0cb5dfad6311"
@@ -1371,7 +1371,7 @@ components:
           type: string
       title: Machine Subtype Approval Config Dto
       type: object
-    machineaccountsubtypeconfigdto:
+    MachineAccountSubtypeConfigDto:
       description: "Contains comprehensive configuration details for machine account\
         \ subtype approval, including creation and deletion approval requirements,\
         \ approver lists, form and entitlement references, and approval status options."
@@ -1400,13 +1400,17 @@ components:
           example: 1419fc28-a8ed-4a07-9f5c-0cb5dfad6311
           type: string
         machineAccountCreate:
-          $ref: '#/components/schemas/machineaccountsubtypeconfigdto_machineAccountCreate'
+          $ref: '#/components/schemas/MachineAccountSubtypeConfigDto_machineAccountCreate'
         machineAccountDelete:
-          $ref: '#/components/schemas/machineaccountsubtypeconfigdto_machineAccountDelete'
+          $ref: '#/components/schemas/MachineAccountSubtypeConfigDto_machineAccountDelete'
       title: Machine Account Subtype Approval Config
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -1425,7 +1429,7 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
@@ -1475,7 +1479,7 @@ components:
       - sourceId
       - technicalName
       type: object
-    sourcesubtypewithsource_source:
+    SourceSubtypeWithSource_source:
       description: Source reference of the subtype.
       example:
         name: Test Source
@@ -1497,7 +1501,7 @@ components:
           example: Test Source
           type: string
       type: object
-    machineaccountsubtypeconfigdto_machineAccountCreate:
+    MachineAccountSubtypeConfigDto_machineAccountCreate:
       description: "Configuration options for machine account creation, including\
         \ whether creation is enabled, if approval is required, associated form and\
         \ entitlement IDs, and detailed approval settings such as approvers and allowed\
@@ -1549,9 +1553,9 @@ components:
           example: accountName
           type: string
         approvalConfig:
-          $ref: '#/components/schemas/machinesubtypeapprovalconfig'
+          $ref: '#/components/schemas/MachineSubtypeApprovalConfig'
       type: object
-    machineaccountsubtypeconfigdto_machineAccountDelete:
+    MachineAccountSubtypeConfigDto_machineAccountDelete:
       description: "Configuration options for machine account deletion, including\
         \ whether approval is required, the list of authorized approvers, and the\
         \ types of comments permitted during the approval workflow."
@@ -1568,7 +1572,7 @@ components:
           example: true
           type: boolean
         approvalConfig:
-          $ref: '#/components/schemas/machinesubtypeapprovalconfig'
+          $ref: '#/components/schemas/MachineSubtypeApprovalConfig'
       type: object
     array_inner:
       anyOf:
@@ -1579,7 +1583,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description

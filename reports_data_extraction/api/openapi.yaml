@@ -72,13 +72,13 @@ paths:
                 identityDetailsReport:
                   $ref: '#/components/examples/identities-details-report-results'
               schema:
-                $ref: '#/components/schemas/reportresults'
+                $ref: '#/components/schemas/ReportResults'
           description: Details about report that was run or is running.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -102,7 +102,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -127,7 +127,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -165,7 +165,7 @@ paths:
               Uncorrelated Accounts Report:
                 $ref: '#/components/examples/uncorrelated-accounts-report-details'
             schema:
-              $ref: '#/components/schemas/reportdetails'
+              $ref: '#/components/schemas/ReportDetails'
         required: true
       responses:
         "200":
@@ -177,13 +177,13 @@ paths:
                 searchExportReport:
                   $ref: '#/components/examples/search-export-report-task-result'
               schema:
-                $ref: '#/components/schemas/taskresultdetails'
+                $ref: '#/components/schemas/TaskResultDetails'
           description: Details about running report task.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -207,7 +207,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -232,7 +232,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -274,7 +274,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -298,7 +298,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -323,7 +323,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -405,7 +405,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -429,7 +429,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -447,7 +447,7 @@ paths:
                       text: <h1>File Not Found - 404 Error</h1> The requested file
                         was not found.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -472,7 +472,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -602,7 +602,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -626,7 +626,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "429":
@@ -651,10 +651,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    reportresults:
+    ReportResults:
       description: Details about report result or current state.
       example:
         reportType: IDENTITIES_DETAILS
@@ -725,7 +725,7 @@ components:
             type: string
           type: array
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -737,7 +737,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -750,7 +750,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -758,7 +758,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -792,17 +792,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    accounts-export-report-arguments:
+    Accountsexportreportarguments:
       description: Arguments for Account Export report (ACCOUNTS)
       properties:
         application:
@@ -818,7 +818,7 @@ components:
       - sourceName
       title: ACCOUNTS
       type: object
-    identities-details-report-arguments:
+    Identitiesdetailsreportarguments:
       description: Arguments for Identities Details report (IDENTITIES_DETAILS)
       properties:
         correlatedOnly:
@@ -831,7 +831,7 @@ components:
       - correlatedOnly
       title: IDENTITIES_DETAILS
       type: object
-    identities-report-arguments:
+    Identitiesreportarguments:
       description: Arguments for Identities report (IDENTITIES)
       properties:
         correlatedOnly:
@@ -842,7 +842,7 @@ components:
           type: boolean
       title: IDENTITIES
       type: object
-    identity-profile-identity-error-report-arguments:
+    Identityprofileidentityerrorreportarguments:
       description: Arguments for Identity Profile Identity Error report (IDENTITY_PROFILE_IDENTITY_ERROR)
       properties:
         authoritativeSource:
@@ -853,7 +853,7 @@ components:
       - authoritativeSource
       title: IDENTITY_PROFILE_IDENTITY_ERROR
       type: object
-    orphan-identities-report-arguments:
+    Orphanidentitiesreportarguments:
       description: Arguments for Orphan Identities report (ORPHAN_IDENTITIES)
       properties:
         selectedFormats:
@@ -870,7 +870,7 @@ components:
           type: array
       title: ORPHAN_IDENTITIES
       type: object
-    index:
+    Index:
       description: |-
         Enum representing the currently supported indices.
         Additional values may be added in the future without notice.
@@ -884,7 +884,7 @@ components:
       - '*'
       example: identities
       type: string
-    search-export-report-arguments:
+    Searchexportreportarguments:
       description: |
         Arguments for Search Export report (SEARCH_EXPORT)
 
@@ -899,7 +899,7 @@ components:
             description: Learn more about search indices here.
             url: https://documentation.sailpoint.com/saas/help/search/searchable-fields.html
           items:
-            $ref: '#/components/schemas/index'
+            $ref: '#/components/schemas/Index'
           type: array
         query:
           description: "The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string)\
@@ -930,7 +930,7 @@ components:
       - query
       title: SEARCH_EXPORT
       type: object
-    uncorrelated-accounts-report-arguments:
+    Uncorrelatedaccountsreportarguments:
       description: Arguments for Uncorrelated Accounts report (UNCORRELATED_ACCOUNTS)
       properties:
         selectedFormats:
@@ -947,8 +947,13 @@ components:
           type: array
       title: UNCORRELATED_ACCOUNTS
       type: object
-    reportdetails:
+    ReportDetails:
       description: Details about report to be processed.
+      example:
+        reportType: ACCOUNTS
+        arguments:
+          application: 2c9180897e7742b2017e781782f705b9
+          sourceName: Active Directory
       properties:
         reportType:
           description: Use this property to define what report should be processed
@@ -964,9 +969,9 @@ components:
           example: ACCOUNTS
           type: string
         arguments:
-          $ref: '#/components/schemas/reportdetails_arguments'
+          $ref: '#/components/schemas/ReportDetails_arguments'
       type: object
-    taskresultdetails:
+    TaskResultDetails:
       description: "Details about job or task type, state and lifecycle."
       example:
         created: 2000-01-23T04:56:07.000+00:00
@@ -1055,13 +1060,13 @@ components:
             perspective here usually should be warnings or errors.
           example: []
           items:
-            $ref: '#/components/schemas/taskresultdetails_messages_inner'
+            $ref: '#/components/schemas/TaskResultDetails_messages_inner'
           type: array
         returns:
           description: "Task definition results, if necessary."
           example: []
           items:
-            $ref: '#/components/schemas/taskresultdetails_returns_inner'
+            $ref: '#/components/schemas/TaskResultDetails_returns_inner'
           type: array
         attributes:
           description: Extra attributes map(dictionary) needed for the report.
@@ -1090,21 +1095,21 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    reportdetails_arguments:
+    ReportDetails_arguments:
       anyOf:
-      - $ref: '#/components/schemas/accounts-export-report-arguments'
-      - $ref: '#/components/schemas/identities-details-report-arguments'
-      - $ref: '#/components/schemas/identities-report-arguments'
-      - $ref: '#/components/schemas/identity-profile-identity-error-report-arguments'
-      - $ref: '#/components/schemas/orphan-identities-report-arguments'
-      - $ref: '#/components/schemas/search-export-report-arguments'
-      - $ref: '#/components/schemas/uncorrelated-accounts-report-arguments'
+      - $ref: '#/components/schemas/Accountsexportreportarguments'
+      - $ref: '#/components/schemas/Identitiesdetailsreportarguments'
+      - $ref: '#/components/schemas/Identitiesreportarguments'
+      - $ref: '#/components/schemas/Identityprofileidentityerrorreportarguments'
+      - $ref: '#/components/schemas/Orphanidentitiesreportarguments'
+      - $ref: '#/components/schemas/Searchexportreportarguments'
+      - $ref: '#/components/schemas/Uncorrelatedaccountsreportarguments'
       description: The string-object map(dictionary) with the arguments needed for
         report processing.
       example:
         application: 2c9180897e7742b2017e781782f705b9
         sourceName: Active Directory
-    taskresultdetails_messages_inner:
+    TaskResultDetails_messages_inner:
       properties:
         type:
           description: Type of the message.
@@ -1133,7 +1138,7 @@ components:
           example: "The following account(s) failed to correlate: A,B,C"
           type: string
       type: object
-    taskresultdetails_returns_inner:
+    TaskResultDetails_returns_inner:
       properties:
         displayLabel:
           description: Attribute description.

@@ -55,7 +55,7 @@ func (r ApiSearchAggregateV1Request) Count(count bool) ApiSearchAggregateV1Reque
 	return r
 }
 
-func (r ApiSearchAggregateV1Request) Execute() (*Aggregationresult, *http.Response, error) {
+func (r ApiSearchAggregateV1Request) Execute() (*AggregationResult, *http.Response, error) {
 	return r.ApiService.SearchAggregateV1Execute(r)
 }
 
@@ -75,13 +75,13 @@ func (a *SearchAPIService) SearchAggregateV1(ctx context.Context) ApiSearchAggre
 }
 
 // Execute executes the request
-//  @return Aggregationresult
-func (a *SearchAPIService) SearchAggregateV1Execute(r ApiSearchAggregateV1Request) (*Aggregationresult, *http.Response, error) {
+//  @return AggregationResult
+func (a *SearchAPIService) SearchAggregateV1Execute(r ApiSearchAggregateV1Request) (*AggregationResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Aggregationresult
+		localVarReturnValue  *AggregationResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchAggregateV1")
@@ -158,7 +158,7 @@ func (a *SearchAPIService) SearchAggregateV1Execute(r ApiSearchAggregateV1Reques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -180,7 +180,7 @@ func (a *SearchAPIService) SearchAggregateV1Execute(r ApiSearchAggregateV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -202,7 +202,7 @@ func (a *SearchAPIService) SearchAggregateV1Execute(r ApiSearchAggregateV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -320,7 +320,7 @@ func (a *SearchAPIService) SearchCountV1Execute(r ApiSearchCountV1Request) (*htt
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -342,7 +342,7 @@ func (a *SearchAPIService) SearchCountV1Execute(r ApiSearchCountV1Request) (*htt
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -364,7 +364,7 @@ func (a *SearchAPIService) SearchCountV1Execute(r ApiSearchCountV1Request) (*htt
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -472,7 +472,7 @@ func (a *SearchAPIService) SearchGetV1Execute(r ApiSearchGetV1Request) (map[stri
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -494,7 +494,7 @@ func (a *SearchAPIService) SearchGetV1Execute(r ApiSearchGetV1Request) (map[stri
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -505,7 +505,7 @@ func (a *SearchAPIService) SearchGetV1Execute(r ApiSearchGetV1Request) (map[stri
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -527,7 +527,7 @@ func (a *SearchAPIService) SearchGetV1Execute(r ApiSearchGetV1Request) (map[stri
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -686,7 +686,7 @@ func (a *SearchAPIService) SearchPostV1Execute(r ApiSearchPostV1Request) ([]map[
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -708,7 +708,7 @@ func (a *SearchAPIService) SearchPostV1Execute(r ApiSearchPostV1Request) ([]map[
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -730,7 +730,7 @@ func (a *SearchAPIService) SearchPostV1Execute(r ApiSearchPostV1Request) ([]map[
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

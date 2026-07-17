@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ListCampaignFiltersV1200Response', 'V
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | Pointer to [**[]Campaignfilterdetails**](campaignfilterdetails) | List of campaign filters. | [optional] 
+**Items** | Pointer to [**[]CampaignFilterDetails**](campaign-filter-details) | List of campaign filters. | [optional] 
 **Count** | Pointer to **int32** | Number of filters returned. | [optional] 
 
 ## Methods
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetItems
 
-`func (o *ListCampaignFiltersV1200Response) GetItems() []Campaignfilterdetails`
+`func (o *ListCampaignFiltersV1200Response) GetItems() []CampaignFilterDetails`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *ListCampaignFiltersV1200Response) GetItemsOk() (*[]Campaignfilterdetails, bool)`
+`func (o *ListCampaignFiltersV1200Response) GetItemsOk() (*[]CampaignFilterDetails, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *ListCampaignFiltersV1200Response) SetItems(v []Campaignfilterdetails)`
+`func (o *ListCampaignFiltersV1200Response) SetItems(v []CampaignFilterDetails)`
 
 SetItems sets Items field to given value.
 

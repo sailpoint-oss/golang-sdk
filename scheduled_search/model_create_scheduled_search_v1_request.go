@@ -33,7 +33,7 @@ type CreateScheduledSearchV1Request struct {
 	Modified NullableTime `json:"modified,omitempty"`
 	Schedule Schedule `json:"schedule"`
 	// A list of identities that should receive the scheduled search report via email.
-	Recipients []SearchscheduleRecipientsInner `json:"recipients"`
+	Recipients []SearchScheduleRecipientsInner `json:"recipients"`
 	// Indicates if the scheduled search is enabled. 
 	Enabled *bool `json:"enabled,omitempty"`
 	// Indicates if email generation should occur when search returns no results. 
@@ -49,7 +49,7 @@ type _CreateScheduledSearchV1Request CreateScheduledSearchV1Request
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateScheduledSearchV1Request(savedSearchId string, schedule Schedule, recipients []SearchscheduleRecipientsInner) *CreateScheduledSearchV1Request {
+func NewCreateScheduledSearchV1Request(savedSearchId string, schedule Schedule, recipients []SearchScheduleRecipientsInner) *CreateScheduledSearchV1Request {
 	this := CreateScheduledSearchV1Request{}
 	this.SavedSearchId = savedSearchId
 	this.Schedule = schedule
@@ -294,9 +294,9 @@ func (o *CreateScheduledSearchV1Request) SetSchedule(v Schedule) {
 }
 
 // GetRecipients returns the Recipients field value
-func (o *CreateScheduledSearchV1Request) GetRecipients() []SearchscheduleRecipientsInner {
+func (o *CreateScheduledSearchV1Request) GetRecipients() []SearchScheduleRecipientsInner {
 	if o == nil {
-		var ret []SearchscheduleRecipientsInner
+		var ret []SearchScheduleRecipientsInner
 		return ret
 	}
 
@@ -305,7 +305,7 @@ func (o *CreateScheduledSearchV1Request) GetRecipients() []SearchscheduleRecipie
 
 // GetRecipientsOk returns a tuple with the Recipients field value
 // and a boolean to check if the value has been set.
-func (o *CreateScheduledSearchV1Request) GetRecipientsOk() ([]SearchscheduleRecipientsInner, bool) {
+func (o *CreateScheduledSearchV1Request) GetRecipientsOk() ([]SearchScheduleRecipientsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -313,7 +313,7 @@ func (o *CreateScheduledSearchV1Request) GetRecipientsOk() ([]SearchscheduleReci
 }
 
 // SetRecipients sets field value
-func (o *CreateScheduledSearchV1Request) SetRecipients(v []SearchscheduleRecipientsInner) {
+func (o *CreateScheduledSearchV1Request) SetRecipients(v []SearchScheduleRecipientsInner) {
 	o.Recipients = v
 }
 

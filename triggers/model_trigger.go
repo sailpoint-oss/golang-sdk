@@ -24,7 +24,7 @@ type Trigger struct {
 	Id string `json:"id"`
 	// Trigger Name.
 	Name string `json:"name"`
-	Type Triggertype `json:"type"`
+	Type TriggerType `json:"type"`
 	// Trigger Description.
 	Description *string `json:"description,omitempty"`
 	// The JSON schema of the payload that will be sent by the trigger to the subscribed service.
@@ -42,7 +42,7 @@ type _Trigger Trigger
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTrigger(id string, name string, type_ Triggertype, inputSchema string, exampleInput TriggerExampleInput) *Trigger {
+func NewTrigger(id string, name string, type_ TriggerType, inputSchema string, exampleInput TriggerExampleInput) *Trigger {
 	this := Trigger{}
 	this.Id = id
 	this.Name = name
@@ -109,9 +109,9 @@ func (o *Trigger) SetName(v string) {
 }
 
 // GetType returns the Type field value
-func (o *Trigger) GetType() Triggertype {
+func (o *Trigger) GetType() TriggerType {
 	if o == nil {
-		var ret Triggertype
+		var ret TriggerType
 		return ret
 	}
 
@@ -120,7 +120,7 @@ func (o *Trigger) GetType() Triggertype {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Trigger) GetTypeOk() (*Triggertype, bool) {
+func (o *Trigger) GetTypeOk() (*TriggerType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -128,7 +128,7 @@ func (o *Trigger) GetTypeOk() (*Triggertype, bool) {
 }
 
 // SetType sets field value
-func (o *Trigger) SetType(v Triggertype) {
+func (o *Trigger) SetType(v TriggerType) {
 	o.Type = v
 }
 

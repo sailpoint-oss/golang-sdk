@@ -87,15 +87,15 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](docs/ArrayInner.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetOrgConfigV1401Response](docs/GetOrgConfigV1401Response.md)
  - [GetOrgConfigV1429Response](docs/GetOrgConfigV1429Response.md)
- - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Orgconfig](docs/Orgconfig.md)
- - [Reportconfigdto](docs/Reportconfigdto.md)
+ - [JsonPatchOperation](docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [OrgConfig](docs/OrgConfig.md)
+ - [ReportConfigDTO](docs/ReportConfigDTO.md)
 
 
 ## Documentation For Authorization

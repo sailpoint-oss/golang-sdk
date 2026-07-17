@@ -26,16 +26,16 @@ type ServiceDeskIntegrationAPIService service
 type ApiCreateServiceDeskIntegrationV1Request struct {
 	ctx context.Context
 	ApiService *ServiceDeskIntegrationAPIService
-	servicedeskintegrationdto *Servicedeskintegrationdto
+	serviceDeskIntegrationDto *ServiceDeskIntegrationDto
 }
 
 // The specifics of a new integration to create
-func (r ApiCreateServiceDeskIntegrationV1Request) Servicedeskintegrationdto(servicedeskintegrationdto Servicedeskintegrationdto) ApiCreateServiceDeskIntegrationV1Request {
-	r.servicedeskintegrationdto = &servicedeskintegrationdto
+func (r ApiCreateServiceDeskIntegrationV1Request) ServiceDeskIntegrationDto(serviceDeskIntegrationDto ServiceDeskIntegrationDto) ApiCreateServiceDeskIntegrationV1Request {
+	r.serviceDeskIntegrationDto = &serviceDeskIntegrationDto
 	return r
 }
 
-func (r ApiCreateServiceDeskIntegrationV1Request) Execute() (*Servicedeskintegrationdto, *http.Response, error) {
+func (r ApiCreateServiceDeskIntegrationV1Request) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.CreateServiceDeskIntegrationV1Execute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *ServiceDeskIntegrationAPIService) CreateServiceDeskIntegrationV1(ctx co
 }
 
 // Execute executes the request
-//  @return Servicedeskintegrationdto
-func (a *ServiceDeskIntegrationAPIService) CreateServiceDeskIntegrationV1Execute(r ApiCreateServiceDeskIntegrationV1Request) (*Servicedeskintegrationdto, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *ServiceDeskIntegrationAPIService) CreateServiceDeskIntegrationV1Execute(r ApiCreateServiceDeskIntegrationV1Request) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Servicedeskintegrationdto
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.CreateServiceDeskIntegrationV1")
@@ -74,8 +74,8 @@ func (a *ServiceDeskIntegrationAPIService) CreateServiceDeskIntegrationV1Execute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.servicedeskintegrationdto == nil {
-		return localVarReturnValue, nil, reportError("servicedeskintegrationdto is required and must be specified")
+	if r.serviceDeskIntegrationDto == nil {
+		return localVarReturnValue, nil, reportError("serviceDeskIntegrationDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -96,7 +96,7 @@ func (a *ServiceDeskIntegrationAPIService) CreateServiceDeskIntegrationV1Execute
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.servicedeskintegrationdto
+	localVarPostBody = r.serviceDeskIntegrationDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -120,7 +120,7 @@ func (a *ServiceDeskIntegrationAPIService) CreateServiceDeskIntegrationV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,7 +142,7 @@ func (a *ServiceDeskIntegrationAPIService) CreateServiceDeskIntegrationV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -153,7 +153,7 @@ func (a *ServiceDeskIntegrationAPIService) CreateServiceDeskIntegrationV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -175,7 +175,7 @@ func (a *ServiceDeskIntegrationAPIService) CreateServiceDeskIntegrationV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -286,7 +286,7 @@ func (a *ServiceDeskIntegrationAPIService) DeleteServiceDeskIntegrationV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -308,7 +308,7 @@ func (a *ServiceDeskIntegrationAPIService) DeleteServiceDeskIntegrationV1Execute
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -319,7 +319,7 @@ func (a *ServiceDeskIntegrationAPIService) DeleteServiceDeskIntegrationV1Execute
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -341,7 +341,7 @@ func (a *ServiceDeskIntegrationAPIService) DeleteServiceDeskIntegrationV1Execute
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -362,7 +362,7 @@ type ApiGetServiceDeskIntegrationTemplateV1Request struct {
 	scriptName string
 }
 
-func (r ApiGetServiceDeskIntegrationTemplateV1Request) Execute() (*Servicedeskintegrationtemplatedto, *http.Response, error) {
+func (r ApiGetServiceDeskIntegrationTemplateV1Request) Execute() (*ServiceDeskIntegrationTemplateDto, *http.Response, error) {
 	return r.ApiService.GetServiceDeskIntegrationTemplateV1Execute(r)
 }
 
@@ -384,13 +384,13 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTemplateV1(c
 }
 
 // Execute executes the request
-//  @return Servicedeskintegrationtemplatedto
-func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTemplateV1Execute(r ApiGetServiceDeskIntegrationTemplateV1Request) (*Servicedeskintegrationtemplatedto, *http.Response, error) {
+//  @return ServiceDeskIntegrationTemplateDto
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTemplateV1Execute(r ApiGetServiceDeskIntegrationTemplateV1Request) (*ServiceDeskIntegrationTemplateDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Servicedeskintegrationtemplatedto
+		localVarReturnValue  *ServiceDeskIntegrationTemplateDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.GetServiceDeskIntegrationTemplateV1")
@@ -445,7 +445,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTemplateV1Ex
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -467,7 +467,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTemplateV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -478,7 +478,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTemplateV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -500,7 +500,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTemplateV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -529,7 +529,7 @@ type ApiGetServiceDeskIntegrationTypesV1Request struct {
 	ApiService *ServiceDeskIntegrationAPIService
 }
 
-func (r ApiGetServiceDeskIntegrationTypesV1Request) Execute() ([]Servicedeskintegrationtemplatetype, *http.Response, error) {
+func (r ApiGetServiceDeskIntegrationTypesV1Request) Execute() ([]ServiceDeskIntegrationTemplateType, *http.Response, error) {
 	return r.ApiService.GetServiceDeskIntegrationTypesV1Execute(r)
 }
 
@@ -549,13 +549,13 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTypesV1(ctx 
 }
 
 // Execute executes the request
-//  @return []Servicedeskintegrationtemplatetype
-func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTypesV1Execute(r ApiGetServiceDeskIntegrationTypesV1Request) ([]Servicedeskintegrationtemplatetype, *http.Response, error) {
+//  @return []ServiceDeskIntegrationTemplateType
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTypesV1Execute(r ApiGetServiceDeskIntegrationTypesV1Request) ([]ServiceDeskIntegrationTemplateType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Servicedeskintegrationtemplatetype
+		localVarReturnValue  []ServiceDeskIntegrationTemplateType
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.GetServiceDeskIntegrationTypesV1")
@@ -609,7 +609,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTypesV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -631,7 +631,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTypesV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -642,7 +642,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTypesV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -664,7 +664,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTypesV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -694,7 +694,7 @@ type ApiGetServiceDeskIntegrationV1Request struct {
 	id string
 }
 
-func (r ApiGetServiceDeskIntegrationV1Request) Execute() (*Servicedeskintegrationdto, *http.Response, error) {
+func (r ApiGetServiceDeskIntegrationV1Request) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.GetServiceDeskIntegrationV1Execute(r)
 }
 
@@ -716,13 +716,13 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationV1(ctx conte
 }
 
 // Execute executes the request
-//  @return Servicedeskintegrationdto
-func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationV1Execute(r ApiGetServiceDeskIntegrationV1Request) (*Servicedeskintegrationdto, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationV1Execute(r ApiGetServiceDeskIntegrationV1Request) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Servicedeskintegrationdto
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.GetServiceDeskIntegrationV1")
@@ -777,7 +777,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -799,7 +799,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -810,7 +810,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -832,7 +832,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -896,7 +896,7 @@ func (r ApiGetServiceDeskIntegrationsV1Request) Count(count bool) ApiGetServiceD
 	return r
 }
 
-func (r ApiGetServiceDeskIntegrationsV1Request) Execute() ([]Servicedeskintegrationdto, *http.Response, error) {
+func (r ApiGetServiceDeskIntegrationsV1Request) Execute() ([]ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.GetServiceDeskIntegrationsV1Execute(r)
 }
 
@@ -916,13 +916,13 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationsV1(ctx cont
 }
 
 // Execute executes the request
-//  @return []Servicedeskintegrationdto
-func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationsV1Execute(r ApiGetServiceDeskIntegrationsV1Request) ([]Servicedeskintegrationdto, *http.Response, error) {
+//  @return []ServiceDeskIntegrationDto
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationsV1Execute(r ApiGetServiceDeskIntegrationsV1Request) ([]ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Servicedeskintegrationdto
+		localVarReturnValue  []ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.GetServiceDeskIntegrationsV1")
@@ -1000,7 +1000,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationsV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1022,7 +1022,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationsV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1033,7 +1033,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationsV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1055,7 +1055,7 @@ func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationsV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1084,7 +1084,7 @@ type ApiGetStatusCheckDetailsV1Request struct {
 	ApiService *ServiceDeskIntegrationAPIService
 }
 
-func (r ApiGetStatusCheckDetailsV1Request) Execute() (*Queuedcheckconfigdetails, *http.Response, error) {
+func (r ApiGetStatusCheckDetailsV1Request) Execute() (*QueuedCheckConfigDetails, *http.Response, error) {
 	return r.ApiService.GetStatusCheckDetailsV1Execute(r)
 }
 
@@ -1104,13 +1104,13 @@ func (a *ServiceDeskIntegrationAPIService) GetStatusCheckDetailsV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return Queuedcheckconfigdetails
-func (a *ServiceDeskIntegrationAPIService) GetStatusCheckDetailsV1Execute(r ApiGetStatusCheckDetailsV1Request) (*Queuedcheckconfigdetails, *http.Response, error) {
+//  @return QueuedCheckConfigDetails
+func (a *ServiceDeskIntegrationAPIService) GetStatusCheckDetailsV1Execute(r ApiGetStatusCheckDetailsV1Request) (*QueuedCheckConfigDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Queuedcheckconfigdetails
+		localVarReturnValue  *QueuedCheckConfigDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.GetStatusCheckDetailsV1")
@@ -1164,7 +1164,7 @@ func (a *ServiceDeskIntegrationAPIService) GetStatusCheckDetailsV1Execute(r ApiG
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1186,7 +1186,7 @@ func (a *ServiceDeskIntegrationAPIService) GetStatusCheckDetailsV1Execute(r ApiG
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1197,7 +1197,7 @@ func (a *ServiceDeskIntegrationAPIService) GetStatusCheckDetailsV1Execute(r ApiG
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1219,7 +1219,7 @@ func (a *ServiceDeskIntegrationAPIService) GetStatusCheckDetailsV1Execute(r ApiG
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1247,16 +1247,16 @@ type ApiPatchServiceDeskIntegrationV1Request struct {
 	ctx context.Context
 	ApiService *ServiceDeskIntegrationAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
-func (r ApiPatchServiceDeskIntegrationV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchServiceDeskIntegrationV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchServiceDeskIntegrationV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchServiceDeskIntegrationV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchServiceDeskIntegrationV1Request) Execute() (*Servicedeskintegrationdto, *http.Response, error) {
+func (r ApiPatchServiceDeskIntegrationV1Request) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.PatchServiceDeskIntegrationV1Execute(r)
 }
 
@@ -1278,13 +1278,13 @@ func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationV1(ctx con
 }
 
 // Execute executes the request
-//  @return Servicedeskintegrationdto
-func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationV1Execute(r ApiPatchServiceDeskIntegrationV1Request) (*Servicedeskintegrationdto, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationV1Execute(r ApiPatchServiceDeskIntegrationV1Request) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Servicedeskintegrationdto
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.PatchServiceDeskIntegrationV1")
@@ -1298,8 +1298,8 @@ func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationV1Execute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1320,7 +1320,7 @@ func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationV1Execute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1344,7 +1344,7 @@ func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1366,7 +1366,7 @@ func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1377,7 +1377,7 @@ func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1399,7 +1399,7 @@ func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1427,16 +1427,16 @@ type ApiPutServiceDeskIntegrationV1Request struct {
 	ctx context.Context
 	ApiService *ServiceDeskIntegrationAPIService
 	id string
-	servicedeskintegrationdto *Servicedeskintegrationdto
+	serviceDeskIntegrationDto *ServiceDeskIntegrationDto
 }
 
 // The specifics of the integration to update
-func (r ApiPutServiceDeskIntegrationV1Request) Servicedeskintegrationdto(servicedeskintegrationdto Servicedeskintegrationdto) ApiPutServiceDeskIntegrationV1Request {
-	r.servicedeskintegrationdto = &servicedeskintegrationdto
+func (r ApiPutServiceDeskIntegrationV1Request) ServiceDeskIntegrationDto(serviceDeskIntegrationDto ServiceDeskIntegrationDto) ApiPutServiceDeskIntegrationV1Request {
+	r.serviceDeskIntegrationDto = &serviceDeskIntegrationDto
 	return r
 }
 
-func (r ApiPutServiceDeskIntegrationV1Request) Execute() (*Servicedeskintegrationdto, *http.Response, error) {
+func (r ApiPutServiceDeskIntegrationV1Request) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
 	return r.ApiService.PutServiceDeskIntegrationV1Execute(r)
 }
 
@@ -1458,13 +1458,13 @@ func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegrationV1(ctx conte
 }
 
 // Execute executes the request
-//  @return Servicedeskintegrationdto
-func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegrationV1Execute(r ApiPutServiceDeskIntegrationV1Request) (*Servicedeskintegrationdto, *http.Response, error) {
+//  @return ServiceDeskIntegrationDto
+func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegrationV1Execute(r ApiPutServiceDeskIntegrationV1Request) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Servicedeskintegrationdto
+		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.PutServiceDeskIntegrationV1")
@@ -1478,8 +1478,8 @@ func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegrationV1Execute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.servicedeskintegrationdto == nil {
-		return localVarReturnValue, nil, reportError("servicedeskintegrationdto is required and must be specified")
+	if r.serviceDeskIntegrationDto == nil {
+		return localVarReturnValue, nil, reportError("serviceDeskIntegrationDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1500,7 +1500,7 @@ func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegrationV1Execute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.servicedeskintegrationdto
+	localVarPostBody = r.serviceDeskIntegrationDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1524,7 +1524,7 @@ func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegrationV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1546,7 +1546,7 @@ func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegrationV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1557,7 +1557,7 @@ func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegrationV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1579,7 +1579,7 @@ func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegrationV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1606,16 +1606,16 @@ func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegrationV1Execute(r 
 type ApiUpdateStatusCheckDetailsV1Request struct {
 	ctx context.Context
 	ApiService *ServiceDeskIntegrationAPIService
-	queuedcheckconfigdetails *Queuedcheckconfigdetails
+	queuedCheckConfigDetails *QueuedCheckConfigDetails
 }
 
 // The modified time check configuration
-func (r ApiUpdateStatusCheckDetailsV1Request) Queuedcheckconfigdetails(queuedcheckconfigdetails Queuedcheckconfigdetails) ApiUpdateStatusCheckDetailsV1Request {
-	r.queuedcheckconfigdetails = &queuedcheckconfigdetails
+func (r ApiUpdateStatusCheckDetailsV1Request) QueuedCheckConfigDetails(queuedCheckConfigDetails QueuedCheckConfigDetails) ApiUpdateStatusCheckDetailsV1Request {
+	r.queuedCheckConfigDetails = &queuedCheckConfigDetails
 	return r
 }
 
-func (r ApiUpdateStatusCheckDetailsV1Request) Execute() (*Queuedcheckconfigdetails, *http.Response, error) {
+func (r ApiUpdateStatusCheckDetailsV1Request) Execute() (*QueuedCheckConfigDetails, *http.Response, error) {
 	return r.ApiService.UpdateStatusCheckDetailsV1Execute(r)
 }
 
@@ -1635,13 +1635,13 @@ func (a *ServiceDeskIntegrationAPIService) UpdateStatusCheckDetailsV1(ctx contex
 }
 
 // Execute executes the request
-//  @return Queuedcheckconfigdetails
-func (a *ServiceDeskIntegrationAPIService) UpdateStatusCheckDetailsV1Execute(r ApiUpdateStatusCheckDetailsV1Request) (*Queuedcheckconfigdetails, *http.Response, error) {
+//  @return QueuedCheckConfigDetails
+func (a *ServiceDeskIntegrationAPIService) UpdateStatusCheckDetailsV1Execute(r ApiUpdateStatusCheckDetailsV1Request) (*QueuedCheckConfigDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Queuedcheckconfigdetails
+		localVarReturnValue  *QueuedCheckConfigDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.UpdateStatusCheckDetailsV1")
@@ -1654,8 +1654,8 @@ func (a *ServiceDeskIntegrationAPIService) UpdateStatusCheckDetailsV1Execute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.queuedcheckconfigdetails == nil {
-		return localVarReturnValue, nil, reportError("queuedcheckconfigdetails is required and must be specified")
+	if r.queuedCheckConfigDetails == nil {
+		return localVarReturnValue, nil, reportError("queuedCheckConfigDetails is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1676,7 +1676,7 @@ func (a *ServiceDeskIntegrationAPIService) UpdateStatusCheckDetailsV1Execute(r A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.queuedcheckconfigdetails
+	localVarPostBody = r.queuedCheckConfigDetails
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1700,7 +1700,7 @@ func (a *ServiceDeskIntegrationAPIService) UpdateStatusCheckDetailsV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1722,7 +1722,7 @@ func (a *ServiceDeskIntegrationAPIService) UpdateStatusCheckDetailsV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1733,7 +1733,7 @@ func (a *ServiceDeskIntegrationAPIService) UpdateStatusCheckDetailsV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1755,7 +1755,7 @@ func (a *ServiceDeskIntegrationAPIService) UpdateStatusCheckDetailsV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

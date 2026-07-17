@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accountactivity**](../models/accountactivity)
+[**AccountActivity**](../models/account-activity)
 
 ### HTTP request headers
 
@@ -111,7 +111,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountActivitiesAPI.GetAccountActivityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccountActivityV1`: Accountactivity
+    // response from `GetAccountActivityV1`: AccountActivity
     fmt.Fprintf(os.Stdout, "Response from `AccountActivitiesAPI.GetAccountActivityV1`: %v\n", resp)
 }
 ```
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accountactivity**](../models/accountactivity)
+[**[]AccountActivity**](../models/account-activity)
 
 ### HTTP request headers
 
@@ -187,7 +187,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountActivitiesAPI.ListAccountActivitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAccountActivitiesV1`: []Accountactivity
+    // response from `ListAccountActivitiesV1`: []AccountActivity
     fmt.Fprintf(os.Stdout, "Response from `AccountActivitiesAPI.ListAccountActivitiesV1`: %v\n", resp)
 }
 ```

@@ -27,7 +27,7 @@ type ApiCreateCustomUserLevelV1Request struct {
 	ctx context.Context
 	ApiService *CustomUserLevelsAPIService
 	xSailPointExperimental *string
-	userlevelrequest *Userlevelrequest
+	userLevelRequest *UserLevelRequest
 }
 
 // Use this header to enable this experimental API.
@@ -37,12 +37,12 @@ func (r ApiCreateCustomUserLevelV1Request) XSailPointExperimental(xSailPointExpe
 }
 
 // Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
-func (r ApiCreateCustomUserLevelV1Request) Userlevelrequest(userlevelrequest Userlevelrequest) ApiCreateCustomUserLevelV1Request {
-	r.userlevelrequest = &userlevelrequest
+func (r ApiCreateCustomUserLevelV1Request) UserLevelRequest(userLevelRequest UserLevelRequest) ApiCreateCustomUserLevelV1Request {
+	r.userLevelRequest = &userLevelRequest
 	return r
 }
 
-func (r ApiCreateCustomUserLevelV1Request) Execute() (*Userlevelsummarydto, *http.Response, error) {
+func (r ApiCreateCustomUserLevelV1Request) Execute() (*UserLevelSummaryDTO, *http.Response, error) {
 	return r.ApiService.CreateCustomUserLevelV1Execute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *CustomUserLevelsAPIService) CreateCustomUserLevelV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Userlevelsummarydto
-func (a *CustomUserLevelsAPIService) CreateCustomUserLevelV1Execute(r ApiCreateCustomUserLevelV1Request) (*Userlevelsummarydto, *http.Response, error) {
+//  @return UserLevelSummaryDTO
+func (a *CustomUserLevelsAPIService) CreateCustomUserLevelV1Execute(r ApiCreateCustomUserLevelV1Request) (*UserLevelSummaryDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Userlevelsummarydto
+		localVarReturnValue  *UserLevelSummaryDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomUserLevelsAPIService.CreateCustomUserLevelV1")
@@ -96,8 +96,8 @@ func (a *CustomUserLevelsAPIService) CreateCustomUserLevelV1Execute(r ApiCreateC
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.userlevelrequest == nil {
-		return localVarReturnValue, nil, reportError("userlevelrequest is required and must be specified")
+	if r.userLevelRequest == nil {
+		return localVarReturnValue, nil, reportError("userLevelRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -119,7 +119,7 @@ func (a *CustomUserLevelsAPIService) CreateCustomUserLevelV1Execute(r ApiCreateC
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.userlevelrequest
+	localVarPostBody = r.userLevelRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -143,7 +143,7 @@ func (a *CustomUserLevelsAPIService) CreateCustomUserLevelV1Execute(r ApiCreateC
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -165,7 +165,7 @@ func (a *CustomUserLevelsAPIService) CreateCustomUserLevelV1Execute(r ApiCreateC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -176,7 +176,7 @@ func (a *CustomUserLevelsAPIService) CreateCustomUserLevelV1Execute(r ApiCreateC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -198,7 +198,7 @@ func (a *CustomUserLevelsAPIService) CreateCustomUserLevelV1Execute(r ApiCreateC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -326,7 +326,7 @@ func (a *CustomUserLevelsAPIService) DeleteUserLevelV1Execute(r ApiDeleteUserLev
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -348,7 +348,7 @@ func (a *CustomUserLevelsAPIService) DeleteUserLevelV1Execute(r ApiDeleteUserLev
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -359,7 +359,7 @@ func (a *CustomUserLevelsAPIService) DeleteUserLevelV1Execute(r ApiDeleteUserLev
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -381,7 +381,7 @@ func (a *CustomUserLevelsAPIService) DeleteUserLevelV1Execute(r ApiDeleteUserLev
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -409,7 +409,7 @@ func (r ApiGetUserLevelV1Request) XSailPointExperimental(xSailPointExperimental 
 	return r
 }
 
-func (r ApiGetUserLevelV1Request) Execute() (*Userlevelsummarydto, *http.Response, error) {
+func (r ApiGetUserLevelV1Request) Execute() (*UserLevelSummaryDTO, *http.Response, error) {
 	return r.ApiService.GetUserLevelV1Execute(r)
 }
 
@@ -431,13 +431,13 @@ func (a *CustomUserLevelsAPIService) GetUserLevelV1(ctx context.Context, id stri
 }
 
 // Execute executes the request
-//  @return Userlevelsummarydto
-func (a *CustomUserLevelsAPIService) GetUserLevelV1Execute(r ApiGetUserLevelV1Request) (*Userlevelsummarydto, *http.Response, error) {
+//  @return UserLevelSummaryDTO
+func (a *CustomUserLevelsAPIService) GetUserLevelV1Execute(r ApiGetUserLevelV1Request) (*UserLevelSummaryDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Userlevelsummarydto
+		localVarReturnValue  *UserLevelSummaryDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomUserLevelsAPIService.GetUserLevelV1")
@@ -502,7 +502,7 @@ func (a *CustomUserLevelsAPIService) GetUserLevelV1Execute(r ApiGetUserLevelV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -524,7 +524,7 @@ func (a *CustomUserLevelsAPIService) GetUserLevelV1Execute(r ApiGetUserLevelV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -535,7 +535,7 @@ func (a *CustomUserLevelsAPIService) GetUserLevelV1Execute(r ApiGetUserLevelV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -557,7 +557,7 @@ func (a *CustomUserLevelsAPIService) GetUserLevelV1Execute(r ApiGetUserLevelV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -621,7 +621,7 @@ func (r ApiListAllAuthorizationRightSetsV1Request) Offset(offset int32) ApiListA
 	return r
 }
 
-func (r ApiListAllAuthorizationRightSetsV1Request) Execute() ([]Hierarchicalrightset, *http.Response, error) {
+func (r ApiListAllAuthorizationRightSetsV1Request) Execute() ([]HierarchicalRightSet, *http.Response, error) {
 	return r.ApiService.ListAllAuthorizationRightSetsV1Execute(r)
 }
 
@@ -641,13 +641,13 @@ func (a *CustomUserLevelsAPIService) ListAllAuthorizationRightSetsV1(ctx context
 }
 
 // Execute executes the request
-//  @return []Hierarchicalrightset
-func (a *CustomUserLevelsAPIService) ListAllAuthorizationRightSetsV1Execute(r ApiListAllAuthorizationRightSetsV1Request) ([]Hierarchicalrightset, *http.Response, error) {
+//  @return []HierarchicalRightSet
+func (a *CustomUserLevelsAPIService) ListAllAuthorizationRightSetsV1Execute(r ApiListAllAuthorizationRightSetsV1Request) ([]HierarchicalRightSet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Hierarchicalrightset
+		localVarReturnValue  []HierarchicalRightSet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomUserLevelsAPIService.ListAllAuthorizationRightSetsV1")
@@ -729,7 +729,7 @@ func (a *CustomUserLevelsAPIService) ListAllAuthorizationRightSetsV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -751,7 +751,7 @@ func (a *CustomUserLevelsAPIService) ListAllAuthorizationRightSetsV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -762,7 +762,7 @@ func (a *CustomUserLevelsAPIService) ListAllAuthorizationRightSetsV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -784,7 +784,7 @@ func (a *CustomUserLevelsAPIService) ListAllAuthorizationRightSetsV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -849,7 +849,7 @@ func (r ApiListUserLevelIdentitiesV1Request) Offset(offset int32) ApiListUserLev
 	return r
 }
 
-func (r ApiListUserLevelIdentitiesV1Request) Execute() ([]Authuserslimresponse, *http.Response, error) {
+func (r ApiListUserLevelIdentitiesV1Request) Execute() ([]AuthUserSlimResponse, *http.Response, error) {
 	return r.ApiService.ListUserLevelIdentitiesV1Execute(r)
 }
 
@@ -871,13 +871,13 @@ func (a *CustomUserLevelsAPIService) ListUserLevelIdentitiesV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return []Authuserslimresponse
-func (a *CustomUserLevelsAPIService) ListUserLevelIdentitiesV1Execute(r ApiListUserLevelIdentitiesV1Request) ([]Authuserslimresponse, *http.Response, error) {
+//  @return []AuthUserSlimResponse
+func (a *CustomUserLevelsAPIService) ListUserLevelIdentitiesV1Execute(r ApiListUserLevelIdentitiesV1Request) ([]AuthUserSlimResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Authuserslimresponse
+		localVarReturnValue  []AuthUserSlimResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomUserLevelsAPIService.ListUserLevelIdentitiesV1")
@@ -963,7 +963,7 @@ func (a *CustomUserLevelsAPIService) ListUserLevelIdentitiesV1Execute(r ApiListU
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -985,7 +985,7 @@ func (a *CustomUserLevelsAPIService) ListUserLevelIdentitiesV1Execute(r ApiListU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -996,7 +996,7 @@ func (a *CustomUserLevelsAPIService) ListUserLevelIdentitiesV1Execute(r ApiListU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1018,7 +1018,7 @@ func (a *CustomUserLevelsAPIService) ListUserLevelIdentitiesV1Execute(r ApiListU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1089,7 +1089,7 @@ func (r ApiListUserLevelsV1Request) Offset(offset int32) ApiListUserLevelsV1Requ
 	return r
 }
 
-func (r ApiListUserLevelsV1Request) Execute() ([]Userlevelsummarydto, *http.Response, error) {
+func (r ApiListUserLevelsV1Request) Execute() ([]UserLevelSummaryDTO, *http.Response, error) {
 	return r.ApiService.ListUserLevelsV1Execute(r)
 }
 
@@ -1109,13 +1109,13 @@ func (a *CustomUserLevelsAPIService) ListUserLevelsV1(ctx context.Context) ApiLi
 }
 
 // Execute executes the request
-//  @return []Userlevelsummarydto
-func (a *CustomUserLevelsAPIService) ListUserLevelsV1Execute(r ApiListUserLevelsV1Request) ([]Userlevelsummarydto, *http.Response, error) {
+//  @return []UserLevelSummaryDTO
+func (a *CustomUserLevelsAPIService) ListUserLevelsV1Execute(r ApiListUserLevelsV1Request) ([]UserLevelSummaryDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Userlevelsummarydto
+		localVarReturnValue  []UserLevelSummaryDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomUserLevelsAPIService.ListUserLevelsV1")
@@ -1203,7 +1203,7 @@ func (a *CustomUserLevelsAPIService) ListUserLevelsV1Execute(r ApiListUserLevels
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1225,7 +1225,7 @@ func (a *CustomUserLevelsAPIService) ListUserLevelsV1Execute(r ApiListUserLevels
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1236,7 +1236,7 @@ func (a *CustomUserLevelsAPIService) ListUserLevelsV1Execute(r ApiListUserLevels
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1258,7 +1258,7 @@ func (a *CustomUserLevelsAPIService) ListUserLevelsV1Execute(r ApiListUserLevels
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1295,7 +1295,7 @@ func (r ApiPublishCustomUserLevelV1Request) XSailPointExperimental(xSailPointExp
 	return r
 }
 
-func (r ApiPublishCustomUserLevelV1Request) Execute() (*Userlevelpublishsummary, *http.Response, error) {
+func (r ApiPublishCustomUserLevelV1Request) Execute() (*UserLevelPublishSummary, *http.Response, error) {
 	return r.ApiService.PublishCustomUserLevelV1Execute(r)
 }
 
@@ -1317,13 +1317,13 @@ func (a *CustomUserLevelsAPIService) PublishCustomUserLevelV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Userlevelpublishsummary
-func (a *CustomUserLevelsAPIService) PublishCustomUserLevelV1Execute(r ApiPublishCustomUserLevelV1Request) (*Userlevelpublishsummary, *http.Response, error) {
+//  @return UserLevelPublishSummary
+func (a *CustomUserLevelsAPIService) PublishCustomUserLevelV1Execute(r ApiPublishCustomUserLevelV1Request) (*UserLevelPublishSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Userlevelpublishsummary
+		localVarReturnValue  *UserLevelPublishSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomUserLevelsAPIService.PublishCustomUserLevelV1")
@@ -1388,7 +1388,7 @@ func (a *CustomUserLevelsAPIService) PublishCustomUserLevelV1Execute(r ApiPublis
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1410,7 +1410,7 @@ func (a *CustomUserLevelsAPIService) PublishCustomUserLevelV1Execute(r ApiPublis
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1421,7 +1421,7 @@ func (a *CustomUserLevelsAPIService) PublishCustomUserLevelV1Execute(r ApiPublis
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1443,7 +1443,7 @@ func (a *CustomUserLevelsAPIService) PublishCustomUserLevelV1Execute(r ApiPublis
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1486,7 +1486,7 @@ func (r ApiShowUserLevelCountsV1Request) RequestBody(requestBody []string) ApiSh
 	return r
 }
 
-func (r ApiShowUserLevelCountsV1Request) Execute() ([]Authuserlevelsidentitycount, *http.Response, error) {
+func (r ApiShowUserLevelCountsV1Request) Execute() ([]AuthUserLevelsIdentityCount, *http.Response, error) {
 	return r.ApiService.ShowUserLevelCountsV1Execute(r)
 }
 
@@ -1506,13 +1506,13 @@ func (a *CustomUserLevelsAPIService) ShowUserLevelCountsV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return []Authuserlevelsidentitycount
-func (a *CustomUserLevelsAPIService) ShowUserLevelCountsV1Execute(r ApiShowUserLevelCountsV1Request) ([]Authuserlevelsidentitycount, *http.Response, error) {
+//  @return []AuthUserLevelsIdentityCount
+func (a *CustomUserLevelsAPIService) ShowUserLevelCountsV1Execute(r ApiShowUserLevelCountsV1Request) ([]AuthUserLevelsIdentityCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Authuserlevelsidentitycount
+		localVarReturnValue  []AuthUserLevelsIdentityCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomUserLevelsAPIService.ShowUserLevelCountsV1")
@@ -1587,7 +1587,7 @@ func (a *CustomUserLevelsAPIService) ShowUserLevelCountsV1Execute(r ApiShowUserL
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1609,7 +1609,7 @@ func (a *CustomUserLevelsAPIService) ShowUserLevelCountsV1Execute(r ApiShowUserL
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1620,7 +1620,7 @@ func (a *CustomUserLevelsAPIService) ShowUserLevelCountsV1Execute(r ApiShowUserL
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1642,7 +1642,7 @@ func (a *CustomUserLevelsAPIService) ShowUserLevelCountsV1Execute(r ApiShowUserL
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1671,7 +1671,7 @@ type ApiUpdateUserLevelV1Request struct {
 	ApiService *CustomUserLevelsAPIService
 	xSailPointExperimental *string
 	id string
-	jsonpatch *Jsonpatch
+	jsonPatch *JsonPatch
 }
 
 // Use this header to enable this experimental API.
@@ -1681,12 +1681,12 @@ func (r ApiUpdateUserLevelV1Request) XSailPointExperimental(xSailPointExperiment
 }
 
 // JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
-func (r ApiUpdateUserLevelV1Request) Jsonpatch(jsonpatch Jsonpatch) ApiUpdateUserLevelV1Request {
-	r.jsonpatch = &jsonpatch
+func (r ApiUpdateUserLevelV1Request) JsonPatch(jsonPatch JsonPatch) ApiUpdateUserLevelV1Request {
+	r.jsonPatch = &jsonPatch
 	return r
 }
 
-func (r ApiUpdateUserLevelV1Request) Execute() (*Userlevelsummarydto, *http.Response, error) {
+func (r ApiUpdateUserLevelV1Request) Execute() (*UserLevelSummaryDTO, *http.Response, error) {
 	return r.ApiService.UpdateUserLevelV1Execute(r)
 }
 
@@ -1708,13 +1708,13 @@ func (a *CustomUserLevelsAPIService) UpdateUserLevelV1(ctx context.Context, id s
 }
 
 // Execute executes the request
-//  @return Userlevelsummarydto
-func (a *CustomUserLevelsAPIService) UpdateUserLevelV1Execute(r ApiUpdateUserLevelV1Request) (*Userlevelsummarydto, *http.Response, error) {
+//  @return UserLevelSummaryDTO
+func (a *CustomUserLevelsAPIService) UpdateUserLevelV1Execute(r ApiUpdateUserLevelV1Request) (*UserLevelSummaryDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Userlevelsummarydto
+		localVarReturnValue  *UserLevelSummaryDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomUserLevelsAPIService.UpdateUserLevelV1")
@@ -1743,8 +1743,8 @@ func (a *CustomUserLevelsAPIService) UpdateUserLevelV1Execute(r ApiUpdateUserLev
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.jsonpatch == nil {
-		return localVarReturnValue, nil, reportError("jsonpatch is required and must be specified")
+	if r.jsonPatch == nil {
+		return localVarReturnValue, nil, reportError("jsonPatch is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1766,7 +1766,7 @@ func (a *CustomUserLevelsAPIService) UpdateUserLevelV1Execute(r ApiUpdateUserLev
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatch
+	localVarPostBody = r.jsonPatch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1790,7 +1790,7 @@ func (a *CustomUserLevelsAPIService) UpdateUserLevelV1Execute(r ApiUpdateUserLev
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1812,7 +1812,7 @@ func (a *CustomUserLevelsAPIService) UpdateUserLevelV1Execute(r ApiUpdateUserLev
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1823,7 +1823,7 @@ func (a *CustomUserLevelsAPIService) UpdateUserLevelV1Execute(r ApiUpdateUserLev
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1845,7 +1845,7 @@ func (a *CustomUserLevelsAPIService) UpdateUserLevelV1Execute(r ApiUpdateUserLev
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

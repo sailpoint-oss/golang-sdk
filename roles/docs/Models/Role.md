@@ -20,27 +20,27 @@ Name | Type | Description | Notes
 **Created** | Pointer to **SailPointTime** | Date the Role was created | [optional] [readonly] 
 **Modified** | Pointer to **SailPointTime** | Date the Role was last modified. | [optional] [readonly] 
 **Description** | Pointer to **NullableString** | A human-readable description of the Role | [optional] 
-**Owner** | [**NullableOwnerreference**](ownerreference) |  | 
-**AdditionalOwners** | Pointer to [**[]Additionalownerref**](additionalownerref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
-**AccessProfiles** | Pointer to [**[]Accessprofileref**](accessprofileref) |  | [optional] 
-**Entitlements** | Pointer to [**[]Entitlementref**](entitlementref) |  | [optional] 
-**Membership** | Pointer to [**NullableRolemembershipselector**](rolemembershipselector) |  | [optional] 
+**Owner** | [**NullableOwnerReference**](owner-reference) |  | 
+**AdditionalOwners** | Pointer to [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
+**AccessProfiles** | Pointer to [**[]AccessProfileRef**](access-profile-ref) |  | [optional] 
+**Entitlements** | Pointer to [**[]EntitlementRef**](entitlement-ref) |  | [optional] 
+**Membership** | Pointer to [**NullableRoleMembershipSelector**](role-membership-selector) |  | [optional] 
 **LegacyMembershipInfo** | Pointer to **map[string]interface{}** | This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration. | [optional] 
 **Enabled** | Pointer to **bool** | Whether the Role is enabled or not. | [optional] [default to false]
 **Requestable** | Pointer to **bool** | Whether the Role can be the target of access requests. | [optional] [default to false]
-**AccessRequestConfig** | Pointer to [**Requestabilityforrole**](requestabilityforrole) |  | [optional] 
-**RevocationRequestConfig** | Pointer to [**Revocabilityforrole**](revocabilityforrole) |  | [optional] 
+**AccessRequestConfig** | Pointer to [**RequestabilityForRole**](requestability-for-role) |  | [optional] 
+**RevocationRequestConfig** | Pointer to [**RevocabilityForRole**](revocability-for-role) |  | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Role is assigned. | [optional] 
 **Dimensional** | Pointer to **NullableBool** | Whether the Role is dimensional. | [optional] [default to false]
-**DimensionRefs** | Pointer to [**[]Dimensionref**](dimensionref) | List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional. | [optional] 
-**AccessModelMetadata** | Pointer to [**Attributedtolist**](attributedtolist) |  | [optional] 
+**DimensionRefs** | Pointer to [**[]DimensionRef**](dimension-ref) | List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional. | [optional] 
+**AccessModelMetadata** | Pointer to [**AttributeDTOList**](attribute-dto-list) |  | [optional] 
 **PrivilegeLevel** | Pointer to **NullableString** | The privilege level of the role, if applicable. | [optional] 
 
 ## Methods
 
 ### NewRole
 
-`func NewRole(name string, owner NullableOwnerreference, ) *Role`
+`func NewRole(name string, owner NullableOwnerReference, ) *Role`
 
 NewRole instantiates a new Role object
 This constructor will assign default values to properties that have it defined,
@@ -187,20 +187,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetOwner
 
-`func (o *Role) GetOwner() Ownerreference`
+`func (o *Role) GetOwner() OwnerReference`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *Role) GetOwnerOk() (*Ownerreference, bool)`
+`func (o *Role) GetOwnerOk() (*OwnerReference, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *Role) SetOwner(v Ownerreference)`
+`func (o *Role) SetOwner(v OwnerReference)`
 
 SetOwner sets Owner field to given value.
 
@@ -217,20 +217,20 @@ SetOwner sets Owner field to given value.
 UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 ### GetAdditionalOwners
 
-`func (o *Role) GetAdditionalOwners() []Additionalownerref`
+`func (o *Role) GetAdditionalOwners() []AdditionalOwnerRef`
 
 GetAdditionalOwners returns the AdditionalOwners field if non-nil, zero value otherwise.
 
 ### GetAdditionalOwnersOk
 
-`func (o *Role) GetAdditionalOwnersOk() (*[]Additionalownerref, bool)`
+`func (o *Role) GetAdditionalOwnersOk() (*[]AdditionalOwnerRef, bool)`
 
 GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAdditionalOwners
 
-`func (o *Role) SetAdditionalOwners(v []Additionalownerref)`
+`func (o *Role) SetAdditionalOwners(v []AdditionalOwnerRef)`
 
 SetAdditionalOwners sets AdditionalOwners field to given value.
 
@@ -252,20 +252,20 @@ HasAdditionalOwners returns a boolean if a field has been set.
 UnsetAdditionalOwners ensures that no value is present for AdditionalOwners, not even an explicit nil
 ### GetAccessProfiles
 
-`func (o *Role) GetAccessProfiles() []Accessprofileref`
+`func (o *Role) GetAccessProfiles() []AccessProfileRef`
 
 GetAccessProfiles returns the AccessProfiles field if non-nil, zero value otherwise.
 
 ### GetAccessProfilesOk
 
-`func (o *Role) GetAccessProfilesOk() (*[]Accessprofileref, bool)`
+`func (o *Role) GetAccessProfilesOk() (*[]AccessProfileRef, bool)`
 
 GetAccessProfilesOk returns a tuple with the AccessProfiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessProfiles
 
-`func (o *Role) SetAccessProfiles(v []Accessprofileref)`
+`func (o *Role) SetAccessProfiles(v []AccessProfileRef)`
 
 SetAccessProfiles sets AccessProfiles field to given value.
 
@@ -287,20 +287,20 @@ HasAccessProfiles returns a boolean if a field has been set.
 UnsetAccessProfiles ensures that no value is present for AccessProfiles, not even an explicit nil
 ### GetEntitlements
 
-`func (o *Role) GetEntitlements() []Entitlementref`
+`func (o *Role) GetEntitlements() []EntitlementRef`
 
 GetEntitlements returns the Entitlements field if non-nil, zero value otherwise.
 
 ### GetEntitlementsOk
 
-`func (o *Role) GetEntitlementsOk() (*[]Entitlementref, bool)`
+`func (o *Role) GetEntitlementsOk() (*[]EntitlementRef, bool)`
 
 GetEntitlementsOk returns a tuple with the Entitlements field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEntitlements
 
-`func (o *Role) SetEntitlements(v []Entitlementref)`
+`func (o *Role) SetEntitlements(v []EntitlementRef)`
 
 SetEntitlements sets Entitlements field to given value.
 
@@ -312,20 +312,20 @@ HasEntitlements returns a boolean if a field has been set.
 
 ### GetMembership
 
-`func (o *Role) GetMembership() Rolemembershipselector`
+`func (o *Role) GetMembership() RoleMembershipSelector`
 
 GetMembership returns the Membership field if non-nil, zero value otherwise.
 
 ### GetMembershipOk
 
-`func (o *Role) GetMembershipOk() (*Rolemembershipselector, bool)`
+`func (o *Role) GetMembershipOk() (*RoleMembershipSelector, bool)`
 
 GetMembershipOk returns a tuple with the Membership field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMembership
 
-`func (o *Role) SetMembership(v Rolemembershipselector)`
+`func (o *Role) SetMembership(v RoleMembershipSelector)`
 
 SetMembership sets Membership field to given value.
 
@@ -432,20 +432,20 @@ HasRequestable returns a boolean if a field has been set.
 
 ### GetAccessRequestConfig
 
-`func (o *Role) GetAccessRequestConfig() Requestabilityforrole`
+`func (o *Role) GetAccessRequestConfig() RequestabilityForRole`
 
 GetAccessRequestConfig returns the AccessRequestConfig field if non-nil, zero value otherwise.
 
 ### GetAccessRequestConfigOk
 
-`func (o *Role) GetAccessRequestConfigOk() (*Requestabilityforrole, bool)`
+`func (o *Role) GetAccessRequestConfigOk() (*RequestabilityForRole, bool)`
 
 GetAccessRequestConfigOk returns a tuple with the AccessRequestConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessRequestConfig
 
-`func (o *Role) SetAccessRequestConfig(v Requestabilityforrole)`
+`func (o *Role) SetAccessRequestConfig(v RequestabilityForRole)`
 
 SetAccessRequestConfig sets AccessRequestConfig field to given value.
 
@@ -457,20 +457,20 @@ HasAccessRequestConfig returns a boolean if a field has been set.
 
 ### GetRevocationRequestConfig
 
-`func (o *Role) GetRevocationRequestConfig() Revocabilityforrole`
+`func (o *Role) GetRevocationRequestConfig() RevocabilityForRole`
 
 GetRevocationRequestConfig returns the RevocationRequestConfig field if non-nil, zero value otherwise.
 
 ### GetRevocationRequestConfigOk
 
-`func (o *Role) GetRevocationRequestConfigOk() (*Revocabilityforrole, bool)`
+`func (o *Role) GetRevocationRequestConfigOk() (*RevocabilityForRole, bool)`
 
 GetRevocationRequestConfigOk returns a tuple with the RevocationRequestConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRevocationRequestConfig
 
-`func (o *Role) SetRevocationRequestConfig(v Revocabilityforrole)`
+`func (o *Role) SetRevocationRequestConfig(v RevocabilityForRole)`
 
 SetRevocationRequestConfig sets RevocationRequestConfig field to given value.
 
@@ -552,20 +552,20 @@ HasDimensional returns a boolean if a field has been set.
 UnsetDimensional ensures that no value is present for Dimensional, not even an explicit nil
 ### GetDimensionRefs
 
-`func (o *Role) GetDimensionRefs() []Dimensionref`
+`func (o *Role) GetDimensionRefs() []DimensionRef`
 
 GetDimensionRefs returns the DimensionRefs field if non-nil, zero value otherwise.
 
 ### GetDimensionRefsOk
 
-`func (o *Role) GetDimensionRefsOk() (*[]Dimensionref, bool)`
+`func (o *Role) GetDimensionRefsOk() (*[]DimensionRef, bool)`
 
 GetDimensionRefsOk returns a tuple with the DimensionRefs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDimensionRefs
 
-`func (o *Role) SetDimensionRefs(v []Dimensionref)`
+`func (o *Role) SetDimensionRefs(v []DimensionRef)`
 
 SetDimensionRefs sets DimensionRefs field to given value.
 
@@ -587,20 +587,20 @@ HasDimensionRefs returns a boolean if a field has been set.
 UnsetDimensionRefs ensures that no value is present for DimensionRefs, not even an explicit nil
 ### GetAccessModelMetadata
 
-`func (o *Role) GetAccessModelMetadata() Attributedtolist`
+`func (o *Role) GetAccessModelMetadata() AttributeDTOList`
 
 GetAccessModelMetadata returns the AccessModelMetadata field if non-nil, zero value otherwise.
 
 ### GetAccessModelMetadataOk
 
-`func (o *Role) GetAccessModelMetadataOk() (*Attributedtolist, bool)`
+`func (o *Role) GetAccessModelMetadataOk() (*AttributeDTOList, bool)`
 
 GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessModelMetadata
 
-`func (o *Role) SetAccessModelMetadata(v Attributedtolist)`
+`func (o *Role) SetAccessModelMetadata(v AttributeDTOList)`
 
 SetAccessModelMetadata sets AccessModelMetadata field to given value.
 

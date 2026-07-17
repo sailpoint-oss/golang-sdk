@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Reportresults**](../models/reportresults)
+[**ReportResults**](../models/report-results)
 
 ### HTTP request headers
 
@@ -150,7 +150,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.GetReportResultV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetReportResultV1`: Reportresults
+    // response from `GetReportResultV1`: ReportResults
     fmt.Fprintf(os.Stdout, "Response from `ReportsDataExtractionAPI.GetReportResultV1`: %v\n", resp)
 }
 ```
@@ -246,11 +246,11 @@ Other parameters are passed through a pointer to a apiStartReportV1Request struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reportdetails** | [**Reportdetails**](../models/reportdetails) |  | 
+ **reportDetails** | [**ReportDetails**](../models/report-details) |  | 
 
 ### Return type
 
-[**Taskresultdetails**](../models/taskresultdetails)
+[**TaskResultDetails**](../models/task-result-details)
 
 ### HTTP request headers
 
@@ -272,10 +272,16 @@ import (
 )
 
 func main() {
-    reportdetailsJson := []byte(``) // Reportdetails | 
+    reportdetailsJson := []byte(`{
+          "reportType" : "ACCOUNTS",
+          "arguments" : {
+            "application" : "2c9180897e7742b2017e781782f705b9",
+            "sourceName" : "Active Directory"
+          }
+        }`) // ReportDetails | 
 
-    var reportdetails reports_data_extraction.Reportdetails
-    if err := json.Unmarshal(reportdetailsJson, &reportdetails); err != nil {
+    var reportDetails reports_data_extraction.ReportDetails
+    if err := json.Unmarshal(reportdetailsJson, &reportDetails); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -283,13 +289,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReportsDataExtractionAPI.StartReportV1(context.Background()).Reportdetails(reportdetails).Execute()
-	  //resp, r, err := apiClient.ReportsDataExtractionAPI.StartReportV1(context.Background()).Reportdetails(reportdetails).Execute()
+    resp, r, err := apiClient.ReportsDataExtractionAPI.StartReportV1(context.Background()).ReportDetails(reportDetails).Execute()
+	  //resp, r, err := apiClient.ReportsDataExtractionAPI.StartReportV1(context.Background()).ReportDetails(reportDetails).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.StartReportV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartReportV1`: Taskresultdetails
+    // response from `StartReportV1`: TaskResultDetails
     fmt.Fprintf(os.Stdout, "Response from `ReportsDataExtractionAPI.StartReportV1`: %v\n", resp)
 }
 ```

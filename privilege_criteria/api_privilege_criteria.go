@@ -26,16 +26,16 @@ type PrivilegeCriteriaAPIService service
 type ApiCreateCustomPrivilegeCriteriaV1Request struct {
 	ctx context.Context
 	ApiService *PrivilegeCriteriaAPIService
-	createprivilegecriteriarequest *Createprivilegecriteriarequest
+	createPrivilegeCriteriaRequest *CreatePrivilegeCriteriaRequest
 }
 
 // Create custom privilege criteria request body.
-func (r ApiCreateCustomPrivilegeCriteriaV1Request) Createprivilegecriteriarequest(createprivilegecriteriarequest Createprivilegecriteriarequest) ApiCreateCustomPrivilegeCriteriaV1Request {
-	r.createprivilegecriteriarequest = &createprivilegecriteriarequest
+func (r ApiCreateCustomPrivilegeCriteriaV1Request) CreatePrivilegeCriteriaRequest(createPrivilegeCriteriaRequest CreatePrivilegeCriteriaRequest) ApiCreateCustomPrivilegeCriteriaV1Request {
+	r.createPrivilegeCriteriaRequest = &createPrivilegeCriteriaRequest
 	return r
 }
 
-func (r ApiCreateCustomPrivilegeCriteriaV1Request) Execute() (*Privilegecriteriadto, *http.Response, error) {
+func (r ApiCreateCustomPrivilegeCriteriaV1Request) Execute() (*PrivilegeCriteriaDTO, *http.Response, error) {
 	return r.ApiService.CreateCustomPrivilegeCriteriaV1Execute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *PrivilegeCriteriaAPIService) CreateCustomPrivilegeCriteriaV1(ctx contex
 }
 
 // Execute executes the request
-//  @return Privilegecriteriadto
-func (a *PrivilegeCriteriaAPIService) CreateCustomPrivilegeCriteriaV1Execute(r ApiCreateCustomPrivilegeCriteriaV1Request) (*Privilegecriteriadto, *http.Response, error) {
+//  @return PrivilegeCriteriaDTO
+func (a *PrivilegeCriteriaAPIService) CreateCustomPrivilegeCriteriaV1Execute(r ApiCreateCustomPrivilegeCriteriaV1Request) (*PrivilegeCriteriaDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Privilegecriteriadto
+		localVarReturnValue  *PrivilegeCriteriaDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivilegeCriteriaAPIService.CreateCustomPrivilegeCriteriaV1")
@@ -74,8 +74,8 @@ func (a *PrivilegeCriteriaAPIService) CreateCustomPrivilegeCriteriaV1Execute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createprivilegecriteriarequest == nil {
-		return localVarReturnValue, nil, reportError("createprivilegecriteriarequest is required and must be specified")
+	if r.createPrivilegeCriteriaRequest == nil {
+		return localVarReturnValue, nil, reportError("createPrivilegeCriteriaRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -96,7 +96,7 @@ func (a *PrivilegeCriteriaAPIService) CreateCustomPrivilegeCriteriaV1Execute(r A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createprivilegecriteriarequest
+	localVarPostBody = r.createPrivilegeCriteriaRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -120,7 +120,7 @@ func (a *PrivilegeCriteriaAPIService) CreateCustomPrivilegeCriteriaV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,7 +142,7 @@ func (a *PrivilegeCriteriaAPIService) CreateCustomPrivilegeCriteriaV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *PrivilegeCriteriaAPIService) CreateCustomPrivilegeCriteriaV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -275,7 +275,7 @@ func (a *PrivilegeCriteriaAPIService) DeleteCustomPrivilegeCriteriaV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -297,7 +297,7 @@ func (a *PrivilegeCriteriaAPIService) DeleteCustomPrivilegeCriteriaV1Execute(r A
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -319,7 +319,7 @@ func (a *PrivilegeCriteriaAPIService) DeleteCustomPrivilegeCriteriaV1Execute(r A
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -340,7 +340,7 @@ type ApiGetPrivilegeCriteriaV1Request struct {
 	criteriaId string
 }
 
-func (r ApiGetPrivilegeCriteriaV1Request) Execute() (*Privilegecriteriadto, *http.Response, error) {
+func (r ApiGetPrivilegeCriteriaV1Request) Execute() (*PrivilegeCriteriaDTO, *http.Response, error) {
 	return r.ApiService.GetPrivilegeCriteriaV1Execute(r)
 }
 
@@ -362,13 +362,13 @@ func (a *PrivilegeCriteriaAPIService) GetPrivilegeCriteriaV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Privilegecriteriadto
-func (a *PrivilegeCriteriaAPIService) GetPrivilegeCriteriaV1Execute(r ApiGetPrivilegeCriteriaV1Request) (*Privilegecriteriadto, *http.Response, error) {
+//  @return PrivilegeCriteriaDTO
+func (a *PrivilegeCriteriaAPIService) GetPrivilegeCriteriaV1Execute(r ApiGetPrivilegeCriteriaV1Request) (*PrivilegeCriteriaDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Privilegecriteriadto
+		localVarReturnValue  *PrivilegeCriteriaDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivilegeCriteriaAPIService.GetPrivilegeCriteriaV1")
@@ -423,7 +423,7 @@ func (a *PrivilegeCriteriaAPIService) GetPrivilegeCriteriaV1Execute(r ApiGetPriv
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -445,7 +445,7 @@ func (a *PrivilegeCriteriaAPIService) GetPrivilegeCriteriaV1Execute(r ApiGetPriv
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -467,7 +467,7 @@ func (a *PrivilegeCriteriaAPIService) GetPrivilegeCriteriaV1Execute(r ApiGetPriv
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -503,7 +503,7 @@ func (r ApiListPrivilegeCriteriaV1Request) Filters(filters string) ApiListPrivil
 	return r
 }
 
-func (r ApiListPrivilegeCriteriaV1Request) Execute() ([]Privilegecriteriadto, *http.Response, error) {
+func (r ApiListPrivilegeCriteriaV1Request) Execute() ([]PrivilegeCriteriaDTO, *http.Response, error) {
 	return r.ApiService.ListPrivilegeCriteriaV1Execute(r)
 }
 
@@ -523,13 +523,13 @@ func (a *PrivilegeCriteriaAPIService) ListPrivilegeCriteriaV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Privilegecriteriadto
-func (a *PrivilegeCriteriaAPIService) ListPrivilegeCriteriaV1Execute(r ApiListPrivilegeCriteriaV1Request) ([]Privilegecriteriadto, *http.Response, error) {
+//  @return []PrivilegeCriteriaDTO
+func (a *PrivilegeCriteriaAPIService) ListPrivilegeCriteriaV1Execute(r ApiListPrivilegeCriteriaV1Request) ([]PrivilegeCriteriaDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Privilegecriteriadto
+		localVarReturnValue  []PrivilegeCriteriaDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivilegeCriteriaAPIService.ListPrivilegeCriteriaV1")
@@ -587,7 +587,7 @@ func (a *PrivilegeCriteriaAPIService) ListPrivilegeCriteriaV1Execute(r ApiListPr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -609,7 +609,7 @@ func (a *PrivilegeCriteriaAPIService) ListPrivilegeCriteriaV1Execute(r ApiListPr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -631,7 +631,7 @@ func (a *PrivilegeCriteriaAPIService) ListPrivilegeCriteriaV1Execute(r ApiListPr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -659,16 +659,16 @@ type ApiPutCustomPrivilegeCriteriaValueV1Request struct {
 	ctx context.Context
 	ApiService *PrivilegeCriteriaAPIService
 	criteriaId string
-	privilegecriteriadto *Privilegecriteriadto
+	privilegeCriteriaDTO *PrivilegeCriteriaDTO
 }
 
 // The new version of the custom privilege criteria. This overwrites the existing privilege criteria.
-func (r ApiPutCustomPrivilegeCriteriaValueV1Request) Privilegecriteriadto(privilegecriteriadto Privilegecriteriadto) ApiPutCustomPrivilegeCriteriaValueV1Request {
-	r.privilegecriteriadto = &privilegecriteriadto
+func (r ApiPutCustomPrivilegeCriteriaValueV1Request) PrivilegeCriteriaDTO(privilegeCriteriaDTO PrivilegeCriteriaDTO) ApiPutCustomPrivilegeCriteriaValueV1Request {
+	r.privilegeCriteriaDTO = &privilegeCriteriaDTO
 	return r
 }
 
-func (r ApiPutCustomPrivilegeCriteriaValueV1Request) Execute() (*Privilegecriteriadto, *http.Response, error) {
+func (r ApiPutCustomPrivilegeCriteriaValueV1Request) Execute() (*PrivilegeCriteriaDTO, *http.Response, error) {
 	return r.ApiService.PutCustomPrivilegeCriteriaValueV1Execute(r)
 }
 
@@ -690,13 +690,13 @@ func (a *PrivilegeCriteriaAPIService) PutCustomPrivilegeCriteriaValueV1(ctx cont
 }
 
 // Execute executes the request
-//  @return Privilegecriteriadto
-func (a *PrivilegeCriteriaAPIService) PutCustomPrivilegeCriteriaValueV1Execute(r ApiPutCustomPrivilegeCriteriaValueV1Request) (*Privilegecriteriadto, *http.Response, error) {
+//  @return PrivilegeCriteriaDTO
+func (a *PrivilegeCriteriaAPIService) PutCustomPrivilegeCriteriaValueV1Execute(r ApiPutCustomPrivilegeCriteriaValueV1Request) (*PrivilegeCriteriaDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Privilegecriteriadto
+		localVarReturnValue  *PrivilegeCriteriaDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivilegeCriteriaAPIService.PutCustomPrivilegeCriteriaValueV1")
@@ -710,8 +710,8 @@ func (a *PrivilegeCriteriaAPIService) PutCustomPrivilegeCriteriaValueV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.privilegecriteriadto == nil {
-		return localVarReturnValue, nil, reportError("privilegecriteriadto is required and must be specified")
+	if r.privilegeCriteriaDTO == nil {
+		return localVarReturnValue, nil, reportError("privilegeCriteriaDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -732,7 +732,7 @@ func (a *PrivilegeCriteriaAPIService) PutCustomPrivilegeCriteriaValueV1Execute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.privilegecriteriadto
+	localVarPostBody = r.privilegeCriteriaDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -756,7 +756,7 @@ func (a *PrivilegeCriteriaAPIService) PutCustomPrivilegeCriteriaValueV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -778,7 +778,7 @@ func (a *PrivilegeCriteriaAPIService) PutCustomPrivilegeCriteriaValueV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -800,7 +800,7 @@ func (a *PrivilegeCriteriaAPIService) PutCustomPrivilegeCriteriaValueV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -123,7 +123,7 @@ func (a *RolePropagationAPIService) CancelRolePropagationV1Execute(r ApiCancelRo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -145,7 +145,7 @@ func (a *RolePropagationAPIService) CancelRolePropagationV1Execute(r ApiCancelRo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -167,7 +167,7 @@ func (a *RolePropagationAPIService) CancelRolePropagationV1Execute(r ApiCancelRo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -194,7 +194,7 @@ func (r ApiGetOngoingRolePropagationV1Request) XSailPointExperimental(xSailPoint
 	return r
 }
 
-func (r ApiGetOngoingRolePropagationV1Request) Execute() (*RolePropagationOngoingResponse, *http.Response, error) {
+func (r ApiGetOngoingRolePropagationV1Request) Execute() (*Rolepropagationongoingresponse, *http.Response, error) {
 	return r.ApiService.GetOngoingRolePropagationV1Execute(r)
 }
 
@@ -214,13 +214,13 @@ func (a *RolePropagationAPIService) GetOngoingRolePropagationV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return RolePropagationOngoingResponse
-func (a *RolePropagationAPIService) GetOngoingRolePropagationV1Execute(r ApiGetOngoingRolePropagationV1Request) (*RolePropagationOngoingResponse, *http.Response, error) {
+//  @return Rolepropagationongoingresponse
+func (a *RolePropagationAPIService) GetOngoingRolePropagationV1Execute(r ApiGetOngoingRolePropagationV1Request) (*Rolepropagationongoingresponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *RolePropagationOngoingResponse
+		localVarReturnValue  *Rolepropagationongoingresponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolePropagationAPIService.GetOngoingRolePropagationV1")
@@ -284,7 +284,7 @@ func (a *RolePropagationAPIService) GetOngoingRolePropagationV1Execute(r ApiGetO
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -306,7 +306,7 @@ func (a *RolePropagationAPIService) GetOngoingRolePropagationV1Execute(r ApiGetO
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -328,7 +328,7 @@ func (a *RolePropagationAPIService) GetOngoingRolePropagationV1Execute(r ApiGetO
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -364,7 +364,7 @@ func (r ApiGetRolePropagationConfigV1Request) XSailPointExperimental(xSailPointE
 	return r
 }
 
-func (r ApiGetRolePropagationConfigV1Request) Execute() (*RolePropagationConfigResponse, *http.Response, error) {
+func (r ApiGetRolePropagationConfigV1Request) Execute() (*Rolepropagationconfigresponse, *http.Response, error) {
 	return r.ApiService.GetRolePropagationConfigV1Execute(r)
 }
 
@@ -384,13 +384,13 @@ func (a *RolePropagationAPIService) GetRolePropagationConfigV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return RolePropagationConfigResponse
-func (a *RolePropagationAPIService) GetRolePropagationConfigV1Execute(r ApiGetRolePropagationConfigV1Request) (*RolePropagationConfigResponse, *http.Response, error) {
+//  @return Rolepropagationconfigresponse
+func (a *RolePropagationAPIService) GetRolePropagationConfigV1Execute(r ApiGetRolePropagationConfigV1Request) (*Rolepropagationconfigresponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *RolePropagationConfigResponse
+		localVarReturnValue  *Rolepropagationconfigresponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolePropagationAPIService.GetRolePropagationConfigV1")
@@ -454,7 +454,7 @@ func (a *RolePropagationAPIService) GetRolePropagationConfigV1Execute(r ApiGetRo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -476,7 +476,7 @@ func (a *RolePropagationAPIService) GetRolePropagationConfigV1Execute(r ApiGetRo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -498,7 +498,7 @@ func (a *RolePropagationAPIService) GetRolePropagationConfigV1Execute(r ApiGetRo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -535,7 +535,7 @@ func (r ApiGetRolePropagationStatusV1Request) XSailPointExperimental(xSailPointE
 	return r
 }
 
-func (r ApiGetRolePropagationStatusV1Request) Execute() (*RolePropagationStatusResponse, *http.Response, error) {
+func (r ApiGetRolePropagationStatusV1Request) Execute() (*Rolepropagationstatusresponse, *http.Response, error) {
 	return r.ApiService.GetRolePropagationStatusV1Execute(r)
 }
 
@@ -563,13 +563,13 @@ func (a *RolePropagationAPIService) GetRolePropagationStatusV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return RolePropagationStatusResponse
-func (a *RolePropagationAPIService) GetRolePropagationStatusV1Execute(r ApiGetRolePropagationStatusV1Request) (*RolePropagationStatusResponse, *http.Response, error) {
+//  @return Rolepropagationstatusresponse
+func (a *RolePropagationAPIService) GetRolePropagationStatusV1Execute(r ApiGetRolePropagationStatusV1Request) (*Rolepropagationstatusresponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *RolePropagationStatusResponse
+		localVarReturnValue  *Rolepropagationstatusresponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolePropagationAPIService.GetRolePropagationStatusV1")
@@ -634,7 +634,7 @@ func (a *RolePropagationAPIService) GetRolePropagationStatusV1Execute(r ApiGetRo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -656,7 +656,7 @@ func (a *RolePropagationAPIService) GetRolePropagationStatusV1Execute(r ApiGetRo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -667,7 +667,7 @@ func (a *RolePropagationAPIService) GetRolePropagationStatusV1Execute(r ApiGetRo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -689,7 +689,7 @@ func (a *RolePropagationAPIService) GetRolePropagationStatusV1Execute(r ApiGetRo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -717,7 +717,7 @@ type ApiSetRolePropagationConfigV1Request struct {
 	ctx context.Context
 	ApiService *RolePropagationAPIService
 	xSailPointExperimental *string
-	rolePropagationConfigInput *RolePropagationConfigInput
+	rolepropagationconfiginput *Rolepropagationconfiginput
 }
 
 // Use this header to enable this experimental API.
@@ -726,12 +726,12 @@ func (r ApiSetRolePropagationConfigV1Request) XSailPointExperimental(xSailPointE
 	return r
 }
 
-func (r ApiSetRolePropagationConfigV1Request) RolePropagationConfigInput(rolePropagationConfigInput RolePropagationConfigInput) ApiSetRolePropagationConfigV1Request {
-	r.rolePropagationConfigInput = &rolePropagationConfigInput
+func (r ApiSetRolePropagationConfigV1Request) Rolepropagationconfiginput(rolepropagationconfiginput Rolepropagationconfiginput) ApiSetRolePropagationConfigV1Request {
+	r.rolepropagationconfiginput = &rolepropagationconfiginput
 	return r
 }
 
-func (r ApiSetRolePropagationConfigV1Request) Execute() (*RolePropagationConfigResponse, *http.Response, error) {
+func (r ApiSetRolePropagationConfigV1Request) Execute() (*Rolepropagationconfigresponse, *http.Response, error) {
 	return r.ApiService.SetRolePropagationConfigV1Execute(r)
 }
 
@@ -751,13 +751,13 @@ func (a *RolePropagationAPIService) SetRolePropagationConfigV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return RolePropagationConfigResponse
-func (a *RolePropagationAPIService) SetRolePropagationConfigV1Execute(r ApiSetRolePropagationConfigV1Request) (*RolePropagationConfigResponse, *http.Response, error) {
+//  @return Rolepropagationconfigresponse
+func (a *RolePropagationAPIService) SetRolePropagationConfigV1Execute(r ApiSetRolePropagationConfigV1Request) (*Rolepropagationconfigresponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *RolePropagationConfigResponse
+		localVarReturnValue  *Rolepropagationconfigresponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolePropagationAPIService.SetRolePropagationConfigV1")
@@ -785,8 +785,8 @@ func (a *RolePropagationAPIService) SetRolePropagationConfigV1Execute(r ApiSetRo
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.rolePropagationConfigInput == nil {
-		return localVarReturnValue, nil, reportError("rolePropagationConfigInput is required and must be specified")
+	if r.rolepropagationconfiginput == nil {
+		return localVarReturnValue, nil, reportError("rolepropagationconfiginput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -808,7 +808,7 @@ func (a *RolePropagationAPIService) SetRolePropagationConfigV1Execute(r ApiSetRo
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.rolePropagationConfigInput
+	localVarPostBody = r.rolepropagationconfiginput
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -832,7 +832,7 @@ func (a *RolePropagationAPIService) SetRolePropagationConfigV1Execute(r ApiSetRo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -854,7 +854,7 @@ func (a *RolePropagationAPIService) SetRolePropagationConfigV1Execute(r ApiSetRo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -876,7 +876,7 @@ func (a *RolePropagationAPIService) SetRolePropagationConfigV1Execute(r ApiSetRo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -919,7 +919,7 @@ func (r ApiStartRolePropagationV1Request) SkipRoleRefresh(skipRoleRefresh bool) 
 	return r
 }
 
-func (r ApiStartRolePropagationV1Request) Execute() (*RolePropagationResponse, *http.Response, error) {
+func (r ApiStartRolePropagationV1Request) Execute() (*Rolepropagationresponse, *http.Response, error) {
 	return r.ApiService.StartRolePropagationV1Execute(r)
 }
 
@@ -940,13 +940,13 @@ func (a *RolePropagationAPIService) StartRolePropagationV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return RolePropagationResponse
-func (a *RolePropagationAPIService) StartRolePropagationV1Execute(r ApiStartRolePropagationV1Request) (*RolePropagationResponse, *http.Response, error) {
+//  @return Rolepropagationresponse
+func (a *RolePropagationAPIService) StartRolePropagationV1Execute(r ApiStartRolePropagationV1Request) (*Rolepropagationresponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *RolePropagationResponse
+		localVarReturnValue  *Rolepropagationresponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolePropagationAPIService.StartRolePropagationV1")
@@ -1016,7 +1016,7 @@ func (a *RolePropagationAPIService) StartRolePropagationV1Execute(r ApiStartRole
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1038,7 +1038,7 @@ func (a *RolePropagationAPIService) StartRolePropagationV1Execute(r ApiStartRole
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1060,7 +1060,7 @@ func (a *RolePropagationAPIService) StartRolePropagationV1Execute(r ApiStartRole
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

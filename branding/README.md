@@ -88,13 +88,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Brandingitem](docs/Brandingitem.md)
- - [Brandingitemcreate](docs/Brandingitemcreate.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [BrandingItem](docs/BrandingItem.md)
+ - [BrandingItemCreate](docs/BrandingItemCreate.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetBrandingListV1401Response](docs/GetBrandingListV1401Response.md)
  - [GetBrandingListV1429Response](docs/GetBrandingListV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

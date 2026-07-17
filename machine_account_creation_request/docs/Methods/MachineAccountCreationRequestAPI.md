@@ -55,11 +55,11 @@ Other parameters are passed through a pointer to a apiCreateMachineAccountReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **machineaccountcreaterequestinput** | [**Machineaccountcreaterequestinput**](../models/machineaccountcreaterequestinput) |  | 
+ **machineAccountCreateRequestInput** | [**MachineAccountCreateRequestInput**](../models/machine-account-create-request-input) |  | 
 
 ### Return type
 
-[**Accountrequestasyncresult**](../models/accountrequestasyncresult)
+[**AccountRequestAsyncResult**](../models/account-request-async-result)
 
 ### HTTP request headers
 
@@ -82,10 +82,22 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    machineaccountcreaterequestinputJson := []byte(``) // Machineaccountcreaterequestinput | 
+    machineaccountcreaterequestinputJson := []byte(`{
+          "formId" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "entitlementIds" : [ "6d28b7c1620c49c6b6d5cbf81eb4b5fa", "2c91808a7624751a01762f19d67c220e" ],
+          "environment" : "Dev",
+          "description" : "Requesting machine account for tracking the inventory.",
+          "machineIdentityId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "ownerIdentityId" : "18104e7e499b4e23882d6323344ab6bc",
+          "userInput" : {
+            "target" : "AD Source",
+            "description" : "Inventory tracking"
+          },
+          "subtypeId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+        }`) // MachineAccountCreateRequestInput | 
 
-    var machineaccountcreaterequestinput machine_account_creation_request.Machineaccountcreaterequestinput
-    if err := json.Unmarshal(machineaccountcreaterequestinputJson, &machineaccountcreaterequestinput); err != nil {
+    var machineAccountCreateRequestInput machine_account_creation_request.MachineAccountCreateRequestInput
+    if err := json.Unmarshal(machineaccountcreaterequestinputJson, &machineAccountCreateRequestInput); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -93,13 +105,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineaccountcreaterequestinput(machineaccountcreaterequestinput).Execute()
-	  //resp, r, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineaccountcreaterequestinput(machineaccountcreaterequestinput).Execute()
+    resp, r, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineAccountCreateRequestInput(machineAccountCreateRequestInput).Execute()
+	  //resp, r, err := apiClient.MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineAccountCreateRequestInput(machineAccountCreateRequestInput).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateMachineAccountRequestV1`: Accountrequestasyncresult
+    // response from `CreateMachineAccountRequestV1`: AccountRequestAsyncResult
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.CreateMachineAccountRequestV1`: %v\n", resp)
 }
 ```
@@ -143,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accountrequestdetailsdto**](../models/accountrequestdetailsdto)
+[**AccountRequestDetailsDto**](../models/account-request-details-dto)
 
 ### HTTP request headers
 
@@ -178,7 +190,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCreateMachineAccountRequestV1`: Accountrequestdetailsdto
+    // response from `GetCreateMachineAccountRequestV1`: AccountRequestDetailsDto
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.GetCreateMachineAccountRequestV1`: %v\n", resp)
 }
 ```
@@ -220,7 +232,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Machineaccountcreateaccessdto**](../models/machineaccountcreateaccessdto)
+[**[]MachineAccountCreateAccessDto**](../models/machine-account-create-access-dto)
 
 ### HTTP request headers
 
@@ -256,7 +268,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMachineAccountCreateAccessInfoV1`: []Machineaccountcreateaccessdto
+    // response from `GetMachineAccountCreateAccessInfoV1`: []MachineAccountCreateAccessDto
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountCreationRequestAPI.GetMachineAccountCreateAccessInfoV1`: %v\n", resp)
 }
 ```

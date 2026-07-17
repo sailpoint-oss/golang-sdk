@@ -19,10 +19,10 @@ var _ MappedNullable = &Aggregations{}
 
 // Aggregations struct for Aggregations
 type Aggregations struct {
-	Nested *Nestedaggregation `json:"nested,omitempty"`
-	Metric *Metricaggregation `json:"metric,omitempty"`
-	Filter *Filteraggregation `json:"filter,omitempty"`
-	Bucket *Bucketaggregation `json:"bucket,omitempty"`
+	Nested *NestedAggregation `json:"nested,omitempty"`
+	Metric *MetricAggregation `json:"metric,omitempty"`
+	Filter *FilterAggregation `json:"filter,omitempty"`
+	Bucket *BucketAggregation `json:"bucket,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,9 +46,9 @@ func NewAggregationsWithDefaults() *Aggregations {
 }
 
 // GetNested returns the Nested field value if set, zero value otherwise.
-func (o *Aggregations) GetNested() Nestedaggregation {
+func (o *Aggregations) GetNested() NestedAggregation {
 	if o == nil || IsNil(o.Nested) {
-		var ret Nestedaggregation
+		var ret NestedAggregation
 		return ret
 	}
 	return *o.Nested
@@ -56,7 +56,7 @@ func (o *Aggregations) GetNested() Nestedaggregation {
 
 // GetNestedOk returns a tuple with the Nested field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Aggregations) GetNestedOk() (*Nestedaggregation, bool) {
+func (o *Aggregations) GetNestedOk() (*NestedAggregation, bool) {
 	if o == nil || IsNil(o.Nested) {
 		return nil, false
 	}
@@ -72,15 +72,15 @@ func (o *Aggregations) HasNested() bool {
 	return false
 }
 
-// SetNested gets a reference to the given Nestedaggregation and assigns it to the Nested field.
-func (o *Aggregations) SetNested(v Nestedaggregation) {
+// SetNested gets a reference to the given NestedAggregation and assigns it to the Nested field.
+func (o *Aggregations) SetNested(v NestedAggregation) {
 	o.Nested = &v
 }
 
 // GetMetric returns the Metric field value if set, zero value otherwise.
-func (o *Aggregations) GetMetric() Metricaggregation {
+func (o *Aggregations) GetMetric() MetricAggregation {
 	if o == nil || IsNil(o.Metric) {
-		var ret Metricaggregation
+		var ret MetricAggregation
 		return ret
 	}
 	return *o.Metric
@@ -88,7 +88,7 @@ func (o *Aggregations) GetMetric() Metricaggregation {
 
 // GetMetricOk returns a tuple with the Metric field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Aggregations) GetMetricOk() (*Metricaggregation, bool) {
+func (o *Aggregations) GetMetricOk() (*MetricAggregation, bool) {
 	if o == nil || IsNil(o.Metric) {
 		return nil, false
 	}
@@ -104,15 +104,15 @@ func (o *Aggregations) HasMetric() bool {
 	return false
 }
 
-// SetMetric gets a reference to the given Metricaggregation and assigns it to the Metric field.
-func (o *Aggregations) SetMetric(v Metricaggregation) {
+// SetMetric gets a reference to the given MetricAggregation and assigns it to the Metric field.
+func (o *Aggregations) SetMetric(v MetricAggregation) {
 	o.Metric = &v
 }
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
-func (o *Aggregations) GetFilter() Filteraggregation {
+func (o *Aggregations) GetFilter() FilterAggregation {
 	if o == nil || IsNil(o.Filter) {
-		var ret Filteraggregation
+		var ret FilterAggregation
 		return ret
 	}
 	return *o.Filter
@@ -120,7 +120,7 @@ func (o *Aggregations) GetFilter() Filteraggregation {
 
 // GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Aggregations) GetFilterOk() (*Filteraggregation, bool) {
+func (o *Aggregations) GetFilterOk() (*FilterAggregation, bool) {
 	if o == nil || IsNil(o.Filter) {
 		return nil, false
 	}
@@ -136,15 +136,15 @@ func (o *Aggregations) HasFilter() bool {
 	return false
 }
 
-// SetFilter gets a reference to the given Filteraggregation and assigns it to the Filter field.
-func (o *Aggregations) SetFilter(v Filteraggregation) {
+// SetFilter gets a reference to the given FilterAggregation and assigns it to the Filter field.
+func (o *Aggregations) SetFilter(v FilterAggregation) {
 	o.Filter = &v
 }
 
 // GetBucket returns the Bucket field value if set, zero value otherwise.
-func (o *Aggregations) GetBucket() Bucketaggregation {
+func (o *Aggregations) GetBucket() BucketAggregation {
 	if o == nil || IsNil(o.Bucket) {
-		var ret Bucketaggregation
+		var ret BucketAggregation
 		return ret
 	}
 	return *o.Bucket
@@ -152,7 +152,7 @@ func (o *Aggregations) GetBucket() Bucketaggregation {
 
 // GetBucketOk returns a tuple with the Bucket field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Aggregations) GetBucketOk() (*Bucketaggregation, bool) {
+func (o *Aggregations) GetBucketOk() (*BucketAggregation, bool) {
 	if o == nil || IsNil(o.Bucket) {
 		return nil, false
 	}
@@ -168,8 +168,8 @@ func (o *Aggregations) HasBucket() bool {
 	return false
 }
 
-// SetBucket gets a reference to the given Bucketaggregation and assigns it to the Bucket field.
-func (o *Aggregations) SetBucket(v Bucketaggregation) {
+// SetBucket gets a reference to the given BucketAggregation and assigns it to the Bucket field.
+func (o *Aggregations) SetBucket(v BucketAggregation) {
 	o.Bucket = &v
 }
 

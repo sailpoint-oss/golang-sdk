@@ -20,7 +20,7 @@ var _ MappedNullable = &ScheduleMonths{}
 
 // ScheduleMonths struct for ScheduleMonths
 type ScheduleMonths struct {
-	Type Selectortype `json:"type"`
+	Type SelectorType `json:"type"`
 	// The selected values. 
 	Values []string `json:"values"`
 	// The selected interval for RANGE selectors. 
@@ -34,7 +34,7 @@ type _ScheduleMonths ScheduleMonths
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScheduleMonths(type_ Selectortype, values []string) *ScheduleMonths {
+func NewScheduleMonths(type_ SelectorType, values []string) *ScheduleMonths {
 	this := ScheduleMonths{}
 	this.Type = type_
 	this.Values = values
@@ -50,9 +50,9 @@ func NewScheduleMonthsWithDefaults() *ScheduleMonths {
 }
 
 // GetType returns the Type field value
-func (o *ScheduleMonths) GetType() Selectortype {
+func (o *ScheduleMonths) GetType() SelectorType {
 	if o == nil {
-		var ret Selectortype
+		var ret SelectorType
 		return ret
 	}
 
@@ -61,7 +61,7 @@ func (o *ScheduleMonths) GetType() Selectortype {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ScheduleMonths) GetTypeOk() (*Selectortype, bool) {
+func (o *ScheduleMonths) GetTypeOk() (*SelectorType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,7 +69,7 @@ func (o *ScheduleMonths) GetTypeOk() (*Selectortype, bool) {
 }
 
 // SetType sets field value
-func (o *ScheduleMonths) SetType(v Selectortype) {
+func (o *ScheduleMonths) SetType(v SelectorType) {
 	o.Type = v
 }
 

@@ -26,15 +26,15 @@ type ManagedClusterTypesAPIService service
 type ApiCreateManagedClusterTypeV1Request struct {
 	ctx context.Context
 	ApiService *ManagedClusterTypesAPIService
-	managedclustertype *Managedclustertype
+	managedClusterType *ManagedClusterType
 }
 
-func (r ApiCreateManagedClusterTypeV1Request) Managedclustertype(managedclustertype Managedclustertype) ApiCreateManagedClusterTypeV1Request {
-	r.managedclustertype = &managedclustertype
+func (r ApiCreateManagedClusterTypeV1Request) ManagedClusterType(managedClusterType ManagedClusterType) ApiCreateManagedClusterTypeV1Request {
+	r.managedClusterType = &managedClusterType
 	return r
 }
 
-func (r ApiCreateManagedClusterTypeV1Request) Execute() (*Managedclustertype, *http.Response, error) {
+func (r ApiCreateManagedClusterTypeV1Request) Execute() (*ManagedClusterType, *http.Response, error) {
 	return r.ApiService.CreateManagedClusterTypeV1Execute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *ManagedClusterTypesAPIService) CreateManagedClusterTypeV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return Managedclustertype
-func (a *ManagedClusterTypesAPIService) CreateManagedClusterTypeV1Execute(r ApiCreateManagedClusterTypeV1Request) (*Managedclustertype, *http.Response, error) {
+//  @return ManagedClusterType
+func (a *ManagedClusterTypesAPIService) CreateManagedClusterTypeV1Execute(r ApiCreateManagedClusterTypeV1Request) (*ManagedClusterType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Managedclustertype
+		localVarReturnValue  *ManagedClusterType
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClusterTypesAPIService.CreateManagedClusterTypeV1")
@@ -75,8 +75,8 @@ func (a *ManagedClusterTypesAPIService) CreateManagedClusterTypeV1Execute(r ApiC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.managedclustertype == nil {
-		return localVarReturnValue, nil, reportError("managedclustertype is required and must be specified")
+	if r.managedClusterType == nil {
+		return localVarReturnValue, nil, reportError("managedClusterType is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -97,7 +97,7 @@ func (a *ManagedClusterTypesAPIService) CreateManagedClusterTypeV1Execute(r ApiC
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.managedclustertype
+	localVarPostBody = r.managedClusterType
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -121,7 +121,7 @@ func (a *ManagedClusterTypesAPIService) CreateManagedClusterTypeV1Execute(r ApiC
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -143,7 +143,7 @@ func (a *ManagedClusterTypesAPIService) CreateManagedClusterTypeV1Execute(r ApiC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -154,7 +154,7 @@ func (a *ManagedClusterTypesAPIService) CreateManagedClusterTypeV1Execute(r ApiC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -176,7 +176,7 @@ func (a *ManagedClusterTypesAPIService) CreateManagedClusterTypeV1Execute(r ApiC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -287,7 +287,7 @@ func (a *ManagedClusterTypesAPIService) DeleteManagedClusterTypeV1Execute(r ApiD
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -309,7 +309,7 @@ func (a *ManagedClusterTypesAPIService) DeleteManagedClusterTypeV1Execute(r ApiD
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -331,7 +331,7 @@ func (a *ManagedClusterTypesAPIService) DeleteManagedClusterTypeV1Execute(r ApiD
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -352,7 +352,7 @@ type ApiGetManagedClusterTypeV1Request struct {
 	id string
 }
 
-func (r ApiGetManagedClusterTypeV1Request) Execute() (*Managedclustertype, *http.Response, error) {
+func (r ApiGetManagedClusterTypeV1Request) Execute() (*ManagedClusterType, *http.Response, error) {
 	return r.ApiService.GetManagedClusterTypeV1Execute(r)
 }
 
@@ -374,13 +374,13 @@ func (a *ManagedClusterTypesAPIService) GetManagedClusterTypeV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return Managedclustertype
-func (a *ManagedClusterTypesAPIService) GetManagedClusterTypeV1Execute(r ApiGetManagedClusterTypeV1Request) (*Managedclustertype, *http.Response, error) {
+//  @return ManagedClusterType
+func (a *ManagedClusterTypesAPIService) GetManagedClusterTypeV1Execute(r ApiGetManagedClusterTypeV1Request) (*ManagedClusterType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Managedclustertype
+		localVarReturnValue  *ManagedClusterType
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClusterTypesAPIService.GetManagedClusterTypeV1")
@@ -435,7 +435,7 @@ func (a *ManagedClusterTypesAPIService) GetManagedClusterTypeV1Execute(r ApiGetM
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -457,7 +457,7 @@ func (a *ManagedClusterTypesAPIService) GetManagedClusterTypeV1Execute(r ApiGetM
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -468,7 +468,7 @@ func (a *ManagedClusterTypesAPIService) GetManagedClusterTypeV1Execute(r ApiGetM
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -490,7 +490,7 @@ func (a *ManagedClusterTypesAPIService) GetManagedClusterTypeV1Execute(r ApiGetM
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -554,7 +554,7 @@ func (r ApiGetManagedClusterTypesV1Request) Limit(limit int32) ApiGetManagedClus
 	return r
 }
 
-func (r ApiGetManagedClusterTypesV1Request) Execute() ([]Managedclustertype, *http.Response, error) {
+func (r ApiGetManagedClusterTypesV1Request) Execute() ([]ManagedClusterType, *http.Response, error) {
 	return r.ApiService.GetManagedClusterTypesV1Execute(r)
 }
 
@@ -574,13 +574,13 @@ func (a *ManagedClusterTypesAPIService) GetManagedClusterTypesV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return []Managedclustertype
-func (a *ManagedClusterTypesAPIService) GetManagedClusterTypesV1Execute(r ApiGetManagedClusterTypesV1Request) ([]Managedclustertype, *http.Response, error) {
+//  @return []ManagedClusterType
+func (a *ManagedClusterTypesAPIService) GetManagedClusterTypesV1Execute(r ApiGetManagedClusterTypesV1Request) ([]ManagedClusterType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Managedclustertype
+		localVarReturnValue  []ManagedClusterType
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClusterTypesAPIService.GetManagedClusterTypesV1")
@@ -655,7 +655,7 @@ func (a *ManagedClusterTypesAPIService) GetManagedClusterTypesV1Execute(r ApiGet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -677,7 +677,7 @@ func (a *ManagedClusterTypesAPIService) GetManagedClusterTypesV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -688,7 +688,7 @@ func (a *ManagedClusterTypesAPIService) GetManagedClusterTypesV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -710,7 +710,7 @@ func (a *ManagedClusterTypesAPIService) GetManagedClusterTypesV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -738,16 +738,16 @@ type ApiUpdateManagedClusterTypeV1Request struct {
 	ctx context.Context
 	ApiService *ManagedClusterTypesAPIService
 	id string
-	jsonpatch *Jsonpatch
+	jsonPatch *JsonPatch
 }
 
 // The JSONPatch payload used to update the schema.
-func (r ApiUpdateManagedClusterTypeV1Request) Jsonpatch(jsonpatch Jsonpatch) ApiUpdateManagedClusterTypeV1Request {
-	r.jsonpatch = &jsonpatch
+func (r ApiUpdateManagedClusterTypeV1Request) JsonPatch(jsonPatch JsonPatch) ApiUpdateManagedClusterTypeV1Request {
+	r.jsonPatch = &jsonPatch
 	return r
 }
 
-func (r ApiUpdateManagedClusterTypeV1Request) Execute() (*Managedclustertype, *http.Response, error) {
+func (r ApiUpdateManagedClusterTypeV1Request) Execute() (*ManagedClusterType, *http.Response, error) {
 	return r.ApiService.UpdateManagedClusterTypeV1Execute(r)
 }
 
@@ -769,13 +769,13 @@ func (a *ManagedClusterTypesAPIService) UpdateManagedClusterTypeV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return Managedclustertype
-func (a *ManagedClusterTypesAPIService) UpdateManagedClusterTypeV1Execute(r ApiUpdateManagedClusterTypeV1Request) (*Managedclustertype, *http.Response, error) {
+//  @return ManagedClusterType
+func (a *ManagedClusterTypesAPIService) UpdateManagedClusterTypeV1Execute(r ApiUpdateManagedClusterTypeV1Request) (*ManagedClusterType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Managedclustertype
+		localVarReturnValue  *ManagedClusterType
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClusterTypesAPIService.UpdateManagedClusterTypeV1")
@@ -789,8 +789,8 @@ func (a *ManagedClusterTypesAPIService) UpdateManagedClusterTypeV1Execute(r ApiU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatch == nil {
-		return localVarReturnValue, nil, reportError("jsonpatch is required and must be specified")
+	if r.jsonPatch == nil {
+		return localVarReturnValue, nil, reportError("jsonPatch is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -811,7 +811,7 @@ func (a *ManagedClusterTypesAPIService) UpdateManagedClusterTypeV1Execute(r ApiU
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatch
+	localVarPostBody = r.jsonPatch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -835,7 +835,7 @@ func (a *ManagedClusterTypesAPIService) UpdateManagedClusterTypeV1Execute(r ApiU
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -857,7 +857,7 @@ func (a *ManagedClusterTypesAPIService) UpdateManagedClusterTypeV1Execute(r ApiU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -868,7 +868,7 @@ func (a *ManagedClusterTypesAPIService) UpdateManagedClusterTypeV1Execute(r ApiU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -890,7 +890,7 @@ func (a *ManagedClusterTypesAPIService) UpdateManagedClusterTypeV1Execute(r ApiU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

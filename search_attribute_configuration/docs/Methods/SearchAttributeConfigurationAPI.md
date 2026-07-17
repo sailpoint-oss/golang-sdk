@@ -70,7 +70,7 @@ Other parameters are passed through a pointer to a apiCreateSearchAttributeConfi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **searchattributeconfig** | [**Searchattributeconfig**](../models/searchattributeconfig) |  | 
+ **searchAttributeConfig** | [**SearchAttributeConfig**](../models/search-attribute-config) |  | 
 
 ### Return type
 
@@ -97,10 +97,17 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    searchattributeconfigJson := []byte(`{"name":"newMailAttribute","displayName":"New Mail Attribute","applicationAttributes":{"2c9180866166b5b0016167c32ef31a66":"mail","2c9180866166b5b0016167c32ef31a67":"mail"}}`) // Searchattributeconfig | 
+    searchattributeconfigJson := []byte(`{
+          "displayName" : "New Mail Attribute",
+          "name" : "newMailAttribute",
+          "applicationAttributes" : {
+            "2c91808b79fd2422017a0b35d30f3968" : "employeeNumber",
+            "2c91808b79fd2422017a0b36008f396b" : "employeeNumber"
+          }
+        }`) // SearchAttributeConfig | 
 
-    var searchattributeconfig search_attribute_configuration.Searchattributeconfig
-    if err := json.Unmarshal(searchattributeconfigJson, &searchattributeconfig); err != nil {
+    var searchAttributeConfig search_attribute_configuration.SearchAttributeConfig
+    if err := json.Unmarshal(searchattributeconfigJson, &searchAttributeConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -108,8 +115,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Searchattributeconfig(searchattributeconfig).Execute()
-	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Searchattributeconfig(searchattributeconfig).Execute()
+    resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SearchAttributeConfig(searchAttributeConfig).Execute()
+	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SearchAttributeConfig(searchAttributeConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.CreateSearchAttributeConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -233,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Searchattributeconfig**](../models/searchattributeconfig)
+[**[]SearchAttributeConfig**](../models/search-attribute-config)
 
 ### HTTP request headers
 
@@ -269,7 +276,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSearchAttributeConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSearchAttributeConfigV1`: []Searchattributeconfig
+    // response from `GetSearchAttributeConfigV1`: []SearchAttributeConfig
     fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.GetSearchAttributeConfigV1`: %v\n", resp)
 }
 ```
@@ -313,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Searchattributeconfig**](../models/searchattributeconfig)
+[**SearchAttributeConfig**](../models/search-attribute-config)
 
 ### HTTP request headers
 
@@ -348,7 +355,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSingleSearchAttributeConfigV1`: Searchattributeconfig
+    // response from `GetSingleSearchAttributeConfigV1`: SearchAttributeConfig
     fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfigV1`: %v\n", resp)
 }
 ```
@@ -391,11 +398,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
-[**Searchattributeconfig**](../models/searchattributeconfig)
+[**SearchAttributeConfig**](../models/search-attribute-config)
 
 ### HTTP request headers
 
@@ -419,10 +426,10 @@ import (
 func main() {
     name := `promotedMailAttribute` // string | Name of the search attribute configuration to patch. # string | Name of the search attribute configuration to patch.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"newAttributeName"},{"op":"replace","path":"/displayName","value":"new attribute display name"},{"op":"add","path":"/applicationAttributes","value":{"2c91808b79fd2422017a0b35d30f3968":"employeeNumber"}}]`) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"newAttributeName"},{"op":"replace","path":"/displayName","value":"new attribute display name"},{"op":"add","path":"/applicationAttributes","value":{"2c91808b79fd2422017a0b35d30f3968":"employeeNumber"}}]`) // []JsonPatchOperation | 
 
-    var jsonpatchoperation []search_attribute_configuration.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []search_attribute_configuration.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -430,13 +437,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfigV1(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfigV1(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfigV1(context.Background(), name).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfigV1(context.Background(), name).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.PatchSearchAttributeConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchSearchAttributeConfigV1`: Searchattributeconfig
+    // response from `PatchSearchAttributeConfigV1`: SearchAttributeConfig
     fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.PatchSearchAttributeConfigV1`: %v\n", resp)
 }
 ```

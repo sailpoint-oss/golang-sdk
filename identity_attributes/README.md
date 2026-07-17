@@ -89,13 +89,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Identityattribute2](docs/Identityattribute2.md)
- - [Identityattributenames](docs/Identityattributenames.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [IdentityAttribute2](docs/IdentityAttribute2.md)
+ - [IdentityAttributeNames](docs/IdentityAttributeNames.md)
  - [ListIdentityAttributesV1401Response](docs/ListIdentityAttributesV1401Response.md)
  - [ListIdentityAttributesV1429Response](docs/ListIdentityAttributesV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [Source2](docs/Source2.md)
 
 

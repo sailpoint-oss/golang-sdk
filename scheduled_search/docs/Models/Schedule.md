@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Schedule', 'V1Schedule']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **Scheduletype** |  | 
+**Type** | **ScheduleType** |  | 
 **Months** | Pointer to [**ScheduleMonths**](schedule-months) |  | [optional] 
 **Days** | Pointer to [**ScheduleDays**](schedule-days) |  | [optional] 
 **Hours** | [**ScheduleHours**](schedule-hours) |  | 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewSchedule
 
-`func NewSchedule(type_ Scheduletype, hours ScheduleHours, ) *Schedule`
+`func NewSchedule(type_ ScheduleType, hours ScheduleHours, ) *Schedule`
 
 NewSchedule instantiates a new Schedule object
 This constructor will assign default values to properties that have it defined,
@@ -43,20 +43,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *Schedule) GetType() Scheduletype`
+`func (o *Schedule) GetType() ScheduleType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Schedule) GetTypeOk() (*Scheduletype, bool)`
+`func (o *Schedule) GetTypeOk() (*ScheduleType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Schedule) SetType(v Scheduletype)`
+`func (o *Schedule) SetType(v ScheduleType)`
 
 SetType sets Type field to given value.
 

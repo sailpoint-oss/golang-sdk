@@ -54,11 +54,11 @@ Other parameters are passed through a pointer to a apiStartPredictSodViolationsV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identitywithnewaccess** | [**Identitywithnewaccess**](../models/identitywithnewaccess) |  | 
+ **identityWithNewAccess** | [**IdentityWithNewAccess**](../models/identity-with-new-access) |  | 
 
 ### Return type
 
-[**Violationprediction**](../models/violationprediction)
+[**ViolationPrediction**](../models/violation-prediction)
 
 ### HTTP request headers
 
@@ -80,10 +80,19 @@ import (
 )
 
 func main() {
-    identitywithnewaccessJson := []byte(`{"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]}`) // Identitywithnewaccess | 
+    identitywithnewaccessJson := []byte(`{
+          "identityId" : "2c91808568c529c60168cca6f90c1313",
+          "accessRefs" : [ {
+            "type" : "ENTITLEMENT",
+            "id" : "2c918087682f9a86016839c050861ab1"
+          }, {
+            "type" : "ENTITLEMENT",
+            "id" : "2c918087682f9a86016839c0509c1ab2"
+          } ]
+        }`) // IdentityWithNewAccess | 
 
-    var identitywithnewaccess sod_violations.Identitywithnewaccess
-    if err := json.Unmarshal(identitywithnewaccessJson, &identitywithnewaccess); err != nil {
+    var identityWithNewAccess sod_violations.IdentityWithNewAccess
+    if err := json.Unmarshal(identitywithnewaccessJson, &identityWithNewAccess); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -91,13 +100,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODViolationsAPI.StartPredictSodViolationsV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
-	  //resp, r, err := apiClient.SODViolationsAPI.StartPredictSodViolationsV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
+    resp, r, err := apiClient.SODViolationsAPI.StartPredictSodViolationsV1(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
+	  //resp, r, err := apiClient.SODViolationsAPI.StartPredictSodViolationsV1(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.StartPredictSodViolationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartPredictSodViolationsV1`: Violationprediction
+    // response from `StartPredictSodViolationsV1`: ViolationPrediction
     fmt.Fprintf(os.Stdout, "Response from `SODViolationsAPI.StartPredictSodViolationsV1`: %v\n", resp)
 }
 ```
@@ -121,11 +130,11 @@ Other parameters are passed through a pointer to a apiStartViolationCheckV1Reque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identitywithnewaccess** | [**Identitywithnewaccess**](../models/identitywithnewaccess) |  | 
+ **identityWithNewAccess** | [**IdentityWithNewAccess**](../models/identity-with-new-access) |  | 
 
 ### Return type
 
-[**Sodviolationcheck**](../models/sodviolationcheck)
+[**SodViolationCheck**](../models/sod-violation-check)
 
 ### HTTP request headers
 
@@ -147,10 +156,19 @@ import (
 )
 
 func main() {
-    identitywithnewaccessJson := []byte(`{"identityId":"2c91808568c529c60168cca6f90c1313","accessRefs":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c050861ab1"},{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}],"clientMetadata":{"additionalProp1":"string","additionalProp2":"string","additionalProp3":"string"}}`) // Identitywithnewaccess | 
+    identitywithnewaccessJson := []byte(`{
+          "identityId" : "2c91808568c529c60168cca6f90c1313",
+          "accessRefs" : [ {
+            "type" : "ENTITLEMENT",
+            "id" : "2c918087682f9a86016839c050861ab1"
+          }, {
+            "type" : "ENTITLEMENT",
+            "id" : "2c918087682f9a86016839c0509c1ab2"
+          } ]
+        }`) // IdentityWithNewAccess | 
 
-    var identitywithnewaccess sod_violations.Identitywithnewaccess
-    if err := json.Unmarshal(identitywithnewaccessJson, &identitywithnewaccess); err != nil {
+    var identityWithNewAccess sod_violations.IdentityWithNewAccess
+    if err := json.Unmarshal(identitywithnewaccessJson, &identityWithNewAccess); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -158,13 +176,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODViolationsAPI.StartViolationCheckV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
-	  //resp, r, err := apiClient.SODViolationsAPI.StartViolationCheckV1(context.Background()).Identitywithnewaccess(identitywithnewaccess).Execute()
+    resp, r, err := apiClient.SODViolationsAPI.StartViolationCheckV1(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
+	  //resp, r, err := apiClient.SODViolationsAPI.StartViolationCheckV1(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.StartViolationCheckV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartViolationCheckV1`: Sodviolationcheck
+    // response from `StartViolationCheckV1`: SodViolationCheck
     fmt.Fprintf(os.Stdout, "Response from `SODViolationsAPI.StartViolationCheckV1`: %v\n", resp)
 }
 ```

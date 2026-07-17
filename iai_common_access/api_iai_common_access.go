@@ -26,7 +26,7 @@ type ApiCreateCommonAccessV1Request struct {
 	ctx context.Context
 	ApiService *IAICommonAccessAPIService
 	xSailPointExperimental *string
-	commonaccessitemrequest *Commonaccessitemrequest
+	commonAccessItemRequest *CommonAccessItemRequest
 }
 
 // Use this header to enable this experimental API.
@@ -35,12 +35,12 @@ func (r ApiCreateCommonAccessV1Request) XSailPointExperimental(xSailPointExperim
 	return r
 }
 
-func (r ApiCreateCommonAccessV1Request) Commonaccessitemrequest(commonaccessitemrequest Commonaccessitemrequest) ApiCreateCommonAccessV1Request {
-	r.commonaccessitemrequest = &commonaccessitemrequest
+func (r ApiCreateCommonAccessV1Request) CommonAccessItemRequest(commonAccessItemRequest CommonAccessItemRequest) ApiCreateCommonAccessV1Request {
+	r.commonAccessItemRequest = &commonAccessItemRequest
 	return r
 }
 
-func (r ApiCreateCommonAccessV1Request) Execute() (*Commonaccessitemresponse, *http.Response, error) {
+func (r ApiCreateCommonAccessV1Request) Execute() (*CommonAccessItemResponse, *http.Response, error) {
 	return r.ApiService.CreateCommonAccessV1Execute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *IAICommonAccessAPIService) CreateCommonAccessV1(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return Commonaccessitemresponse
-func (a *IAICommonAccessAPIService) CreateCommonAccessV1Execute(r ApiCreateCommonAccessV1Request) (*Commonaccessitemresponse, *http.Response, error) {
+//  @return CommonAccessItemResponse
+func (a *IAICommonAccessAPIService) CreateCommonAccessV1Execute(r ApiCreateCommonAccessV1Request) (*CommonAccessItemResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Commonaccessitemresponse
+		localVarReturnValue  *CommonAccessItemResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAICommonAccessAPIService.CreateCommonAccessV1")
@@ -94,8 +94,8 @@ func (a *IAICommonAccessAPIService) CreateCommonAccessV1Execute(r ApiCreateCommo
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.commonaccessitemrequest == nil {
-		return localVarReturnValue, nil, reportError("commonaccessitemrequest is required and must be specified")
+	if r.commonAccessItemRequest == nil {
+		return localVarReturnValue, nil, reportError("commonAccessItemRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -117,7 +117,7 @@ func (a *IAICommonAccessAPIService) CreateCommonAccessV1Execute(r ApiCreateCommo
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.commonaccessitemrequest
+	localVarPostBody = r.commonAccessItemRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -141,7 +141,7 @@ func (a *IAICommonAccessAPIService) CreateCommonAccessV1Execute(r ApiCreateCommo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -163,7 +163,7 @@ func (a *IAICommonAccessAPIService) CreateCommonAccessV1Execute(r ApiCreateCommo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -185,7 +185,7 @@ func (a *IAICommonAccessAPIService) CreateCommonAccessV1Execute(r ApiCreateCommo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -256,7 +256,7 @@ func (r ApiGetCommonAccessV1Request) Sorters(sorters string) ApiGetCommonAccessV
 	return r
 }
 
-func (r ApiGetCommonAccessV1Request) Execute() ([]Commonaccessresponse, *http.Response, error) {
+func (r ApiGetCommonAccessV1Request) Execute() ([]CommonAccessResponse, *http.Response, error) {
 	return r.ApiService.GetCommonAccessV1Execute(r)
 }
 
@@ -276,13 +276,13 @@ func (a *IAICommonAccessAPIService) GetCommonAccessV1(ctx context.Context) ApiGe
 }
 
 // Execute executes the request
-//  @return []Commonaccessresponse
-func (a *IAICommonAccessAPIService) GetCommonAccessV1Execute(r ApiGetCommonAccessV1Request) ([]Commonaccessresponse, *http.Response, error) {
+//  @return []CommonAccessResponse
+func (a *IAICommonAccessAPIService) GetCommonAccessV1Execute(r ApiGetCommonAccessV1Request) ([]CommonAccessResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Commonaccessresponse
+		localVarReturnValue  []CommonAccessResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAICommonAccessAPIService.GetCommonAccessV1")
@@ -370,7 +370,7 @@ func (a *IAICommonAccessAPIService) GetCommonAccessV1Execute(r ApiGetCommonAcces
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -392,7 +392,7 @@ func (a *IAICommonAccessAPIService) GetCommonAccessV1Execute(r ApiGetCommonAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -403,7 +403,7 @@ func (a *IAICommonAccessAPIService) GetCommonAccessV1Execute(r ApiGetCommonAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -431,7 +431,7 @@ type ApiUpdateCommonAccessStatusInBulkV1Request struct {
 	ctx context.Context
 	ApiService *IAICommonAccessAPIService
 	xSailPointExperimental *string
-	commonaccessidstatus *[]Commonaccessidstatus
+	commonAccessIDStatus *[]CommonAccessIDStatus
 }
 
 // Use this header to enable this experimental API.
@@ -441,8 +441,8 @@ func (r ApiUpdateCommonAccessStatusInBulkV1Request) XSailPointExperimental(xSail
 }
 
 // Confirm or deny in bulk the common access ids that are (or aren&#39;t) common access
-func (r ApiUpdateCommonAccessStatusInBulkV1Request) Commonaccessidstatus(commonaccessidstatus []Commonaccessidstatus) ApiUpdateCommonAccessStatusInBulkV1Request {
-	r.commonaccessidstatus = &commonaccessidstatus
+func (r ApiUpdateCommonAccessStatusInBulkV1Request) CommonAccessIDStatus(commonAccessIDStatus []CommonAccessIDStatus) ApiUpdateCommonAccessStatusInBulkV1Request {
+	r.commonAccessIDStatus = &commonAccessIDStatus
 	return r
 }
 
@@ -500,8 +500,8 @@ func (a *IAICommonAccessAPIService) UpdateCommonAccessStatusInBulkV1Execute(r Ap
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.commonaccessidstatus == nil {
-		return localVarReturnValue, nil, reportError("commonaccessidstatus is required and must be specified")
+	if r.commonAccessIDStatus == nil {
+		return localVarReturnValue, nil, reportError("commonAccessIDStatus is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -523,7 +523,7 @@ func (a *IAICommonAccessAPIService) UpdateCommonAccessStatusInBulkV1Execute(r Ap
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.commonaccessidstatus
+	localVarPostBody = r.commonAccessIDStatus
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -547,7 +547,7 @@ func (a *IAICommonAccessAPIService) UpdateCommonAccessStatusInBulkV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -569,7 +569,7 @@ func (a *IAICommonAccessAPIService) UpdateCommonAccessStatusInBulkV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -591,7 +591,7 @@ func (a *IAICommonAccessAPIService) UpdateCommonAccessStatusInBulkV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

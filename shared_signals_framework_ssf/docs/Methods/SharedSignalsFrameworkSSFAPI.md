@@ -55,11 +55,11 @@ Other parameters are passed through a pointer to a apiCreateStreamV1Request stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createstreamrequest** | [**Createstreamrequest**](../models/createstreamrequest) |  | 
+ **createStreamRequest** | [**CreateStreamRequest**](../models/create-stream-request) |  | 
 
 ### Return type
 
-[**Streamconfigresponse**](../models/streamconfigresponse)
+[**StreamConfigResponse**](../models/stream-config-response)
 
 ### HTTP request headers
 
@@ -81,10 +81,18 @@ import (
 )
 
 func main() {
-    createstreamrequestJson := []byte(`{"delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Production event stream for session revocation notifications"}`) // Createstreamrequest | 
+    createstreamrequestJson := []byte(`{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "description" : "Production event stream",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }`) // CreateStreamRequest | 
 
-    var createstreamrequest shared_signals_framework_ssf.Createstreamrequest
-    if err := json.Unmarshal(createstreamrequestJson, &createstreamrequest); err != nil {
+    var createStreamRequest shared_signals_framework_ssf.CreateStreamRequest
+    if err := json.Unmarshal(createstreamrequestJson, &createStreamRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -92,13 +100,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.CreateStreamV1(context.Background()).Createstreamrequest(createstreamrequest).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.CreateStreamV1(context.Background()).Createstreamrequest(createstreamrequest).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.CreateStreamV1(context.Background()).CreateStreamRequest(createStreamRequest).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.CreateStreamV1(context.Background()).CreateStreamRequest(createStreamRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.CreateStreamV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateStreamV1`: Streamconfigresponse
+    // response from `CreateStreamV1`: StreamConfigResponse
     fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.CreateStreamV1`: %v\n", resp)
 }
 ```
@@ -187,7 +195,7 @@ Other parameters are passed through a pointer to a apiGetJWKSDataV1Request struc
 
 ### Return type
 
-[**Jwks**](../models/jwks)
+[**JWKS**](../models/jwks)
 
 ### HTTP request headers
 
@@ -220,7 +228,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetJWKSDataV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetJWKSDataV1`: Jwks
+    // response from `GetJWKSDataV1`: JWKS
     fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.GetJWKSDataV1`: %v\n", resp)
 }
 ```
@@ -244,7 +252,7 @@ Other parameters are passed through a pointer to a apiGetSSFConfigurationV1Reque
 
 ### Return type
 
-[**Transmittermetadata**](../models/transmittermetadata)
+[**TransmitterMetadata**](../models/transmitter-metadata)
 
 ### HTTP request headers
 
@@ -277,7 +285,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetSSFConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSSFConfigurationV1`: Transmittermetadata
+    // response from `GetSSFConfigurationV1`: TransmitterMetadata
     fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.GetSSFConfigurationV1`: %v\n", resp)
 }
 ```
@@ -305,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Streamstatusresponse**](../models/streamstatusresponse)
+[**StreamStatusResponse**](../models/stream-status-response)
 
 ### HTTP request headers
 
@@ -339,7 +347,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.GetStreamStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetStreamStatusV1`: Streamstatusresponse
+    // response from `GetStreamStatusV1`: StreamStatusResponse
     fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.GetStreamStatusV1`: %v\n", resp)
 }
 ```
@@ -431,7 +439,7 @@ Other parameters are passed through a pointer to a apiSendStreamVerificationV1Re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **verificationrequest** | [**Verificationrequest**](../models/verificationrequest) |  | 
+ **verificationRequest** | [**VerificationRequest**](../models/verification-request) |  | 
 
 ### Return type
 
@@ -457,10 +465,13 @@ import (
 )
 
 func main() {
-    verificationrequestJson := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","state":"verification-challenge-state-123"}`) // Verificationrequest | 
+    verificationrequestJson := []byte(`{
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "state" : "verification-challenge-state-123"
+        }`) // VerificationRequest | 
 
-    var verificationrequest shared_signals_framework_ssf.Verificationrequest
-    if err := json.Unmarshal(verificationrequestJson, &verificationrequest); err != nil {
+    var verificationRequest shared_signals_framework_ssf.VerificationRequest
+    if err := json.Unmarshal(verificationrequestJson, &verificationRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -468,8 +479,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1(context.Background()).Verificationrequest(verificationrequest).Execute()
-	  //r, err := apiClient.SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1(context.Background()).Verificationrequest(verificationrequest).Execute()
+    r, err := apiClient.SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1(context.Background()).VerificationRequest(verificationRequest).Execute()
+	  //r, err := apiClient.SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1(context.Background()).VerificationRequest(verificationRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.SendStreamVerificationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -500,11 +511,11 @@ Other parameters are passed through a pointer to a apiSetStreamConfigurationV1Re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **replacestreamconfigurationrequest** | [**Replacestreamconfigurationrequest**](../models/replacestreamconfigurationrequest) |  | 
+ **replaceStreamConfigurationRequest** | [**ReplaceStreamConfigurationRequest**](../models/replace-stream-configuration-request) |  | 
 
 ### Return type
 
-[**Updatestreamconfigresponse**](../models/updatestreamconfigresponse)
+[**UpdateStreamConfigResponse**](../models/update-stream-config-response)
 
 ### HTTP request headers
 
@@ -526,10 +537,19 @@ import (
 )
 
 func main() {
-    replacestreamconfigurationrequestJson := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","delivery":{"method":"urn:ietf:rfc:8935","endpoint_url":"https://receiver.example.com/ssf/events"},"events_requested":["https://schemas.openid.net/secevent/caep/event-type/session-revoked"],"description":"Replaced stream configuration for production event delivery"}`) // Replacestreamconfigurationrequest | 
+    replacestreamconfigurationrequestJson := []byte(`{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "description" : "Production event stream",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }`) // ReplaceStreamConfigurationRequest | 
 
-    var replacestreamconfigurationrequest shared_signals_framework_ssf.Replacestreamconfigurationrequest
-    if err := json.Unmarshal(replacestreamconfigurationrequestJson, &replacestreamconfigurationrequest); err != nil {
+    var replaceStreamConfigurationRequest shared_signals_framework_ssf.ReplaceStreamConfigurationRequest
+    if err := json.Unmarshal(replacestreamconfigurationrequestJson, &replaceStreamConfigurationRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -537,13 +557,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1(context.Background()).Replacestreamconfigurationrequest(replacestreamconfigurationrequest).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1(context.Background()).Replacestreamconfigurationrequest(replacestreamconfigurationrequest).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1(context.Background()).ReplaceStreamConfigurationRequest(replaceStreamConfigurationRequest).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1(context.Background()).ReplaceStreamConfigurationRequest(replaceStreamConfigurationRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetStreamConfigurationV1`: Updatestreamconfigresponse
+    // response from `SetStreamConfigurationV1`: UpdateStreamConfigResponse
     fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.SetStreamConfigurationV1`: %v\n", resp)
 }
 ```
@@ -570,11 +590,11 @@ Other parameters are passed through a pointer to a apiUpdateStreamConfigurationV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updatestreamconfigurationrequest** | [**Updatestreamconfigurationrequest**](../models/updatestreamconfigurationrequest) |  | 
+ **updateStreamConfigurationRequest** | [**UpdateStreamConfigurationRequest**](../models/update-stream-configuration-request) |  | 
 
 ### Return type
 
-[**Updatestreamconfigresponse**](../models/updatestreamconfigresponse)
+[**UpdateStreamConfigResponse**](../models/update-stream-config-response)
 
 ### HTTP request headers
 
@@ -596,10 +616,19 @@ import (
 )
 
 func main() {
-    updatestreamconfigurationrequestJson := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","description":"Updated production event stream configuration"}`) // Updatestreamconfigurationrequest | 
+    updatestreamconfigurationrequestJson := []byte(`{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "description" : "Updated production event stream configuration",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }`) // UpdateStreamConfigurationRequest | 
 
-    var updatestreamconfigurationrequest shared_signals_framework_ssf.Updatestreamconfigurationrequest
-    if err := json.Unmarshal(updatestreamconfigurationrequestJson, &updatestreamconfigurationrequest); err != nil {
+    var updateStreamConfigurationRequest shared_signals_framework_ssf.UpdateStreamConfigurationRequest
+    if err := json.Unmarshal(updatestreamconfigurationrequestJson, &updateStreamConfigurationRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -607,13 +636,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1(context.Background()).Updatestreamconfigurationrequest(updatestreamconfigurationrequest).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1(context.Background()).Updatestreamconfigurationrequest(updatestreamconfigurationrequest).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1(context.Background()).UpdateStreamConfigurationRequest(updateStreamConfigurationRequest).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1(context.Background()).UpdateStreamConfigurationRequest(updateStreamConfigurationRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateStreamConfigurationV1`: Updatestreamconfigresponse
+    // response from `UpdateStreamConfigurationV1`: UpdateStreamConfigResponse
     fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.UpdateStreamConfigurationV1`: %v\n", resp)
 }
 ```
@@ -637,11 +666,11 @@ Other parameters are passed through a pointer to a apiUpdateStreamStatusV1Reques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updatestreamstatusrequest** | [**Updatestreamstatusrequest**](../models/updatestreamstatusrequest) |  | 
+ **updateStreamStatusRequest** | [**UpdateStreamStatusRequest**](../models/update-stream-status-request) |  | 
 
 ### Return type
 
-[**Streamstatusresponse**](../models/streamstatusresponse)
+[**StreamStatusResponse**](../models/stream-status-response)
 
 ### HTTP request headers
 
@@ -663,10 +692,14 @@ import (
 )
 
 func main() {
-    updatestreamstatusrequestJson := []byte(`{"stream_id":"550e8400-e29b-41d4-a716-446655440000","status":"paused","reason":"manually paused"}`) // Updatestreamstatusrequest | 
+    updatestreamstatusrequestJson := []byte(`{
+          "reason" : "manually paused",
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "status" : "paused"
+        }`) // UpdateStreamStatusRequest | 
 
-    var updatestreamstatusrequest shared_signals_framework_ssf.Updatestreamstatusrequest
-    if err := json.Unmarshal(updatestreamstatusrequestJson, &updatestreamstatusrequest); err != nil {
+    var updateStreamStatusRequest shared_signals_framework_ssf.UpdateStreamStatusRequest
+    if err := json.Unmarshal(updatestreamstatusrequestJson, &updateStreamStatusRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -674,13 +707,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1(context.Background()).Updatestreamstatusrequest(updatestreamstatusrequest).Execute()
-	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1(context.Background()).Updatestreamstatusrequest(updatestreamstatusrequest).Execute()
+    resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1(context.Background()).UpdateStreamStatusRequest(updateStreamStatusRequest).Execute()
+	  //resp, r, err := apiClient.SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1(context.Background()).UpdateStreamStatusRequest(updateStreamStatusRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateStreamStatusV1`: Streamstatusresponse
+    // response from `UpdateStreamStatusV1`: StreamStatusResponse
     fmt.Fprintf(os.Stdout, "Response from `SharedSignalsFrameworkSSFAPI.UpdateStreamStatusV1`: %v\n", resp)
 }
 ```

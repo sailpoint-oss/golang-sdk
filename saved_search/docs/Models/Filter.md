@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'Filter', 'V1Filter']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **Filtertype** |  | [optional] 
-**Range** | Pointer to [**ModelRange**](model-range) |  | [optional] 
+**Type** | Pointer to **FilterType** |  | [optional] 
+**Range** | Pointer to [**Range**](range) |  | [optional] 
 **Terms** | Pointer to **[]string** | The terms to be filtered. | [optional] 
 **Exclude** | Pointer to **bool** | Indicates if the filter excludes results. | [optional] [default to false]
 
@@ -41,20 +41,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *Filter) GetType() Filtertype`
+`func (o *Filter) GetType() FilterType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Filter) GetTypeOk() (*Filtertype, bool)`
+`func (o *Filter) GetTypeOk() (*FilterType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Filter) SetType(v Filtertype)`
+`func (o *Filter) SetType(v FilterType)`
 
 SetType sets Type field to given value.
 
@@ -66,20 +66,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetRange
 
-`func (o *Filter) GetRange() ModelRange`
+`func (o *Filter) GetRange() Range`
 
 GetRange returns the Range field if non-nil, zero value otherwise.
 
 ### GetRangeOk
 
-`func (o *Filter) GetRangeOk() (*ModelRange, bool)`
+`func (o *Filter) GetRangeOk() (*Range, bool)`
 
 GetRangeOk returns a tuple with the Range field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRange
 
-`func (o *Filter) SetRange(v ModelRange)`
+`func (o *Filter) SetRange(v Range)`
 
 SetRange sets Range field to given value.
 

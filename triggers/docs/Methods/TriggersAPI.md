@@ -79,7 +79,7 @@ Other parameters are passed through a pointer to a apiCompleteTriggerInvocationV
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **completeinvocation** | [**Completeinvocation**](../models/completeinvocation) |  | 
+ **completeInvocation** | [**CompleteInvocation**](../models/complete-invocation) |  | 
 
 ### Return type
 
@@ -106,10 +106,16 @@ import (
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | The ID of the invocation to complete. # string | The ID of the invocation to complete.
-    completeinvocationJson := []byte(`{"secret":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","output":{"approved":false}}`) // Completeinvocation | 
+    completeinvocationJson := []byte(`{
+          "output" : {
+            "approved" : false
+          },
+          "secret" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "error" : "Access request is denied."
+        }`) // CompleteInvocation | 
 
-    var completeinvocation triggers.Completeinvocation
-    if err := json.Unmarshal(completeinvocationJson, &completeinvocation); err != nil {
+    var completeInvocation triggers.CompleteInvocation
+    if err := json.Unmarshal(completeinvocationJson, &completeInvocation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -117,8 +123,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.TriggersAPI.CompleteTriggerInvocationV1(context.Background(), id).Completeinvocation(completeinvocation).Execute()
-	  //r, err := apiClient.TriggersAPI.CompleteTriggerInvocationV1(context.Background(), id).Completeinvocation(completeinvocation).Execute()
+    r, err := apiClient.TriggersAPI.CompleteTriggerInvocationV1(context.Background(), id).CompleteInvocation(completeInvocation).Execute()
+	  //r, err := apiClient.TriggersAPI.CompleteTriggerInvocationV1(context.Background(), id).CompleteInvocation(completeInvocation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CompleteTriggerInvocationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -148,7 +154,7 @@ Other parameters are passed through a pointer to a apiCreateSubscriptionV1Reques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subscriptionpostrequest** | [**Subscriptionpostrequest**](../models/subscriptionpostrequest) |  | 
+ **subscriptionPostRequest** | [**SubscriptionPostRequest**](../models/subscription-post-request) |  | 
 
 ### Return type
 
@@ -174,10 +180,34 @@ import (
 )
 
 func main() {
-    subscriptionpostrequestJson := []byte(`{"name":"Access request subscription","description":"Access requested to site xyz","triggerId":"idn:access-requested","type":"HTTP","httpConfig":{"url":"https://www.example.com","httpDispatchMode":"SYNC","httpAuthenticationType":"BASIC_AUTH","basicAuthConfig":{"userName":"user@example.com","password":"eRtg4%6yuI!"}},"enabled":true,"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Subscriptionpostrequest | 
+    subscriptionpostrequestJson := []byte(`{
+          "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
+          "httpConfig" : {
+            "bearerTokenAuthConfig" : {
+              "bearerToken" : "bearerToken"
+            },
+            "httpAuthenticationType" : "BASIC_AUTH",
+            "httpDispatchMode" : "SYNC",
+            "basicAuthConfig" : {
+              "password" : "password",
+              "userName" : "user@example.com"
+            },
+            "url" : "https://www.example.com"
+          },
+          "triggerId" : "idn:access-requested",
+          "name" : "Access request subscription",
+          "description" : "Access requested to site xyz",
+          "eventBridgeConfig" : {
+            "awsRegion" : "us-west-1",
+            "awsAccount" : "123456789012"
+          },
+          "responseDeadline" : "PT1H",
+          "type" : "HTTP",
+          "enabled" : true
+        }`) // SubscriptionPostRequest | 
 
-    var subscriptionpostrequest triggers.Subscriptionpostrequest
-    if err := json.Unmarshal(subscriptionpostrequestJson, &subscriptionpostrequest); err != nil {
+    var subscriptionPostRequest triggers.SubscriptionPostRequest
+    if err := json.Unmarshal(subscriptionpostrequestJson, &subscriptionPostRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -185,8 +215,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersAPI.CreateSubscriptionV1(context.Background()).Subscriptionpostrequest(subscriptionpostrequest).Execute()
-	  //resp, r, err := apiClient.TriggersAPI.CreateSubscriptionV1(context.Background()).Subscriptionpostrequest(subscriptionpostrequest).Execute()
+    resp, r, err := apiClient.TriggersAPI.CreateSubscriptionV1(context.Background()).SubscriptionPostRequest(subscriptionPostRequest).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.CreateSubscriptionV1(context.Background()).SubscriptionPostRequest(subscriptionPostRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CreateSubscriptionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -360,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Invocationstatus**](../models/invocationstatus)
+[**[]InvocationStatus**](../models/invocation-status)
 
 ### HTTP request headers
 
@@ -398,7 +428,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggerInvocationStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListTriggerInvocationStatusV1`: []Invocationstatus
+    // response from `ListTriggerInvocationStatusV1`: []InvocationStatus
     fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.ListTriggerInvocationStatusV1`: %v\n", resp)
 }
 ```
@@ -499,7 +529,7 @@ Other parameters are passed through a pointer to a apiPatchSubscriptionV1Request
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **subscriptionpatchrequestInner** | [**[]SubscriptionpatchrequestInner**](../models/subscriptionpatchrequest-inner) |  | 
+ **subscriptionPatchRequestInner** | [**[]SubscriptionPatchRequestInner**](../models/subscription-patch-request-inner) |  | 
 
 ### Return type
 
@@ -526,10 +556,10 @@ import (
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | ID of the Subscription to patch # string | ID of the Subscription to patch
-    subscriptionpatchrequestinnerJson := []byte(``) // []SubscriptionpatchrequestInner | 
+    subscriptionpatchrequestinnerJson := []byte(``) // []SubscriptionPatchRequestInner | 
 
-    var subscriptionpatchrequestInner []triggers.SubscriptionpatchrequestInner
-    if err := json.Unmarshal(subscriptionpatchrequestinnerJson, &subscriptionpatchrequestInner); err != nil {
+    var subscriptionPatchRequestInner []triggers.SubscriptionPatchRequestInner
+    if err := json.Unmarshal(subscriptionpatchrequestinnerJson, &subscriptionPatchRequestInner); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -537,8 +567,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersAPI.PatchSubscriptionV1(context.Background(), id).SubscriptionpatchrequestInner(subscriptionpatchrequestInner).Execute()
-	  //resp, r, err := apiClient.TriggersAPI.PatchSubscriptionV1(context.Background(), id).SubscriptionpatchrequestInner(subscriptionpatchrequestInner).Execute()
+    resp, r, err := apiClient.TriggersAPI.PatchSubscriptionV1(context.Background(), id).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.PatchSubscriptionV1(context.Background(), id).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.PatchSubscriptionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -567,7 +597,7 @@ Other parameters are passed through a pointer to a apiStartTestTriggerInvocation
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testinvocation** | [**Testinvocation**](../models/testinvocation) |  | 
+ **testInvocation** | [**TestInvocation**](../models/test-invocation) |  | 
 
 ### Return type
 
@@ -593,10 +623,19 @@ import (
 )
 
 func main() {
-    testinvocationJson := []byte(`{"triggerId":"idn:access-requested","input":{"identityId":"201327fda1c44704ac01181e963d463c"},"contentJson":{"workflowId":1234}}`) // Testinvocation | 
+    testinvocationJson := []byte(`{
+          "input" : {
+            "identityId" : "201327fda1c44704ac01181e963d463c"
+          },
+          "subscriptionIds" : [ "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde" ],
+          "triggerId" : "idn:access-request-post-approval",
+          "contentJson" : {
+            "workflowId" : 1234
+          }
+        }`) // TestInvocation | 
 
-    var testinvocation triggers.Testinvocation
-    if err := json.Unmarshal(testinvocationJson, &testinvocation); err != nil {
+    var testInvocation triggers.TestInvocation
+    if err := json.Unmarshal(testinvocationJson, &testInvocation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -604,8 +643,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersAPI.StartTestTriggerInvocationV1(context.Background()).Testinvocation(testinvocation).Execute()
-	  //resp, r, err := apiClient.TriggersAPI.StartTestTriggerInvocationV1(context.Background()).Testinvocation(testinvocation).Execute()
+    resp, r, err := apiClient.TriggersAPI.StartTestTriggerInvocationV1(context.Background()).TestInvocation(testInvocation).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.StartTestTriggerInvocationV1(context.Background()).TestInvocation(testInvocation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.StartTestTriggerInvocationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -635,11 +674,11 @@ Other parameters are passed through a pointer to a apiTestSubscriptionFilterV1Re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **validatefilterinputdto** | [**Validatefilterinputdto**](../models/validatefilterinputdto) |  | 
+ **validateFilterInputDto** | [**ValidateFilterInputDto**](../models/validate-filter-input-dto) |  | 
 
 ### Return type
 
-[**Validatefilteroutputdto**](../models/validatefilteroutputdto)
+[**ValidateFilterOutputDto**](../models/validate-filter-output-dto)
 
 ### HTTP request headers
 
@@ -661,10 +700,15 @@ import (
 )
 
 func main() {
-    validatefilterinputdtoJson := []byte(`{"input":{"identityId":"201327fda1c44704ac01181e963d463c"},"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Validatefilterinputdto | 
+    validatefilterinputdtoJson := []byte(`{
+          "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
+          "input" : {
+            "identityId" : "201327fda1c44704ac01181e963d463c"
+          }
+        }`) // ValidateFilterInputDto | 
 
-    var validatefilterinputdto triggers.Validatefilterinputdto
-    if err := json.Unmarshal(validatefilterinputdtoJson, &validatefilterinputdto); err != nil {
+    var validateFilterInputDto triggers.ValidateFilterInputDto
+    if err := json.Unmarshal(validatefilterinputdtoJson, &validateFilterInputDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -672,13 +716,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersAPI.TestSubscriptionFilterV1(context.Background()).Validatefilterinputdto(validatefilterinputdto).Execute()
-	  //resp, r, err := apiClient.TriggersAPI.TestSubscriptionFilterV1(context.Background()).Validatefilterinputdto(validatefilterinputdto).Execute()
+    resp, r, err := apiClient.TriggersAPI.TestSubscriptionFilterV1(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.TestSubscriptionFilterV1(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.TestSubscriptionFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TestSubscriptionFilterV1`: Validatefilteroutputdto
+    // response from `TestSubscriptionFilterV1`: ValidateFilterOutputDto
     fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.TestSubscriptionFilterV1`: %v\n", resp)
 }
 ```
@@ -716,7 +760,7 @@ Other parameters are passed through a pointer to a apiUpdateSubscriptionV1Reques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **subscriptionputrequest** | [**Subscriptionputrequest**](../models/subscriptionputrequest) |  | 
+ **subscriptionPutRequest** | [**SubscriptionPutRequest**](../models/subscription-put-request) |  | 
 
 ### Return type
 
@@ -743,10 +787,33 @@ import (
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | Subscription ID # string | Subscription ID
-    subscriptionputrequestJson := []byte(`{"name":"Access request subscription","description":"Access requested to site xyz","type":"HTTP","httpConfig":{"url":"https://www.example.com","httpDispatchMode":"SYNC","httpAuthenticationType":"BASIC_AUTH","basicAuthConfig":{"userName":"user@example.com","password":"eRtg4%6yuI!"}},"enabled":true,"filter":"$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]"}`) // Subscriptionputrequest | 
+    subscriptionputrequestJson := []byte(`{
+          "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
+          "httpConfig" : {
+            "bearerTokenAuthConfig" : {
+              "bearerToken" : "bearerToken"
+            },
+            "httpAuthenticationType" : "BASIC_AUTH",
+            "httpDispatchMode" : "SYNC",
+            "basicAuthConfig" : {
+              "password" : "password",
+              "userName" : "user@example.com"
+            },
+            "url" : "https://www.example.com"
+          },
+          "name" : "Access request subscription",
+          "description" : "Access requested to site xyz",
+          "eventBridgeConfig" : {
+            "awsRegion" : "us-west-1",
+            "awsAccount" : "123456789012"
+          },
+          "responseDeadline" : "PT1H",
+          "type" : "HTTP",
+          "enabled" : true
+        }`) // SubscriptionPutRequest | 
 
-    var subscriptionputrequest triggers.Subscriptionputrequest
-    if err := json.Unmarshal(subscriptionputrequestJson, &subscriptionputrequest); err != nil {
+    var subscriptionPutRequest triggers.SubscriptionPutRequest
+    if err := json.Unmarshal(subscriptionputrequestJson, &subscriptionPutRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -754,8 +821,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersAPI.UpdateSubscriptionV1(context.Background(), id).Subscriptionputrequest(subscriptionputrequest).Execute()
-	  //resp, r, err := apiClient.TriggersAPI.UpdateSubscriptionV1(context.Background(), id).Subscriptionputrequest(subscriptionputrequest).Execute()
+    resp, r, err := apiClient.TriggersAPI.UpdateSubscriptionV1(context.Background(), id).SubscriptionPutRequest(subscriptionPutRequest).Execute()
+	  //resp, r, err := apiClient.TriggersAPI.UpdateSubscriptionV1(context.Background(), id).SubscriptionPutRequest(subscriptionPutRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.UpdateSubscriptionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

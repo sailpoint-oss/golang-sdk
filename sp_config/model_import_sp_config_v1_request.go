@@ -23,7 +23,7 @@ var _ MappedNullable = &ImportSpConfigV1Request{}
 type ImportSpConfigV1Request struct {
 	// JSON file containing the objects to be imported.
 	Data *os.File `json:"data"`
-	Options *Importoptions `json:"options,omitempty"`
+	Options *ImportOptions `json:"options,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -72,9 +72,9 @@ func (o *ImportSpConfigV1Request) SetData(v *os.File) {
 }
 
 // GetOptions returns the Options field value if set, zero value otherwise.
-func (o *ImportSpConfigV1Request) GetOptions() Importoptions {
+func (o *ImportSpConfigV1Request) GetOptions() ImportOptions {
 	if o == nil || IsNil(o.Options) {
-		var ret Importoptions
+		var ret ImportOptions
 		return ret
 	}
 	return *o.Options
@@ -82,7 +82,7 @@ func (o *ImportSpConfigV1Request) GetOptions() Importoptions {
 
 // GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ImportSpConfigV1Request) GetOptionsOk() (*Importoptions, bool) {
+func (o *ImportSpConfigV1Request) GetOptionsOk() (*ImportOptions, bool) {
 	if o == nil || IsNil(o.Options) {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *ImportSpConfigV1Request) HasOptions() bool {
 	return false
 }
 
-// SetOptions gets a reference to the given Importoptions and assigns it to the Options field.
-func (o *ImportSpConfigV1Request) SetOptions(v Importoptions) {
+// SetOptions gets a reference to the given ImportOptions and assigns it to the Options field.
+func (o *ImportSpConfigV1Request) SetOptions(v ImportOptions) {
 	o.Options = &v
 }
 

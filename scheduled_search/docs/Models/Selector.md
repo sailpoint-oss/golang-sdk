@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Selector', 'V1Selector']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **Selectortype** |  | 
+**Type** | **SelectorType** |  | 
 **Values** | **[]string** | The selected values.  | 
 **Interval** | Pointer to **NullableInt32** | The selected interval for RANGE selectors.  | [optional] 
 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewSelector
 
-`func NewSelector(type_ Selectortype, values []string, ) *Selector`
+`func NewSelector(type_ SelectorType, values []string, ) *Selector`
 
 NewSelector instantiates a new Selector object
 This constructor will assign default values to properties that have it defined,
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *Selector) GetType() Selectortype`
+`func (o *Selector) GetType() SelectorType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Selector) GetTypeOk() (*Selectortype, bool)`
+`func (o *Selector) GetTypeOk() (*SelectorType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Selector) SetType(v Selectortype)`
+`func (o *Selector) SetType(v SelectorType)`
 
 SetType sets Type field to given value.
 

@@ -26,15 +26,15 @@ type IdentityAttributesAPIService service
 type ApiCreateIdentityAttributeV1Request struct {
 	ctx context.Context
 	ApiService *IdentityAttributesAPIService
-	identityattribute2 *Identityattribute2
+	identityAttribute2 *IdentityAttribute2
 }
 
-func (r ApiCreateIdentityAttributeV1Request) Identityattribute2(identityattribute2 Identityattribute2) ApiCreateIdentityAttributeV1Request {
-	r.identityattribute2 = &identityattribute2
+func (r ApiCreateIdentityAttributeV1Request) IdentityAttribute2(identityAttribute2 IdentityAttribute2) ApiCreateIdentityAttributeV1Request {
+	r.identityAttribute2 = &identityAttribute2
 	return r
 }
 
-func (r ApiCreateIdentityAttributeV1Request) Execute() (*Identityattribute2, *http.Response, error) {
+func (r ApiCreateIdentityAttributeV1Request) Execute() (*IdentityAttribute2, *http.Response, error) {
 	return r.ApiService.CreateIdentityAttributeV1Execute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *IdentityAttributesAPIService) CreateIdentityAttributeV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return Identityattribute2
-func (a *IdentityAttributesAPIService) CreateIdentityAttributeV1Execute(r ApiCreateIdentityAttributeV1Request) (*Identityattribute2, *http.Response, error) {
+//  @return IdentityAttribute2
+func (a *IdentityAttributesAPIService) CreateIdentityAttributeV1Execute(r ApiCreateIdentityAttributeV1Request) (*IdentityAttribute2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Identityattribute2
+		localVarReturnValue  *IdentityAttribute2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesAPIService.CreateIdentityAttributeV1")
@@ -73,8 +73,8 @@ func (a *IdentityAttributesAPIService) CreateIdentityAttributeV1Execute(r ApiCre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.identityattribute2 == nil {
-		return localVarReturnValue, nil, reportError("identityattribute2 is required and must be specified")
+	if r.identityAttribute2 == nil {
+		return localVarReturnValue, nil, reportError("identityAttribute2 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -95,7 +95,7 @@ func (a *IdentityAttributesAPIService) CreateIdentityAttributeV1Execute(r ApiCre
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.identityattribute2
+	localVarPostBody = r.identityAttribute2
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -119,7 +119,7 @@ func (a *IdentityAttributesAPIService) CreateIdentityAttributeV1Execute(r ApiCre
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -141,7 +141,7 @@ func (a *IdentityAttributesAPIService) CreateIdentityAttributeV1Execute(r ApiCre
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -152,7 +152,7 @@ func (a *IdentityAttributesAPIService) CreateIdentityAttributeV1Execute(r ApiCre
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -174,7 +174,7 @@ func (a *IdentityAttributesAPIService) CreateIdentityAttributeV1Execute(r ApiCre
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -285,7 +285,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributeV1Execute(r ApiDel
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -307,7 +307,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributeV1Execute(r ApiDel
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -318,7 +318,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributeV1Execute(r ApiDel
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -340,7 +340,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributeV1Execute(r ApiDel
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -358,11 +358,11 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributeV1Execute(r ApiDel
 type ApiDeleteIdentityAttributesInBulkV1Request struct {
 	ctx context.Context
 	ApiService *IdentityAttributesAPIService
-	identityattributenames *Identityattributenames
+	identityAttributeNames *IdentityAttributeNames
 }
 
-func (r ApiDeleteIdentityAttributesInBulkV1Request) Identityattributenames(identityattributenames Identityattributenames) ApiDeleteIdentityAttributesInBulkV1Request {
-	r.identityattributenames = &identityattributenames
+func (r ApiDeleteIdentityAttributesInBulkV1Request) IdentityAttributeNames(identityAttributeNames IdentityAttributeNames) ApiDeleteIdentityAttributesInBulkV1Request {
+	r.identityAttributeNames = &identityAttributeNames
 	return r
 }
 
@@ -403,8 +403,8 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.identityattributenames == nil {
-		return nil, reportError("identityattributenames is required and must be specified")
+	if r.identityAttributeNames == nil {
+		return nil, reportError("identityAttributeNames is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -425,7 +425,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkV1Execute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.identityattributenames
+	localVarPostBody = r.identityAttributeNames
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -449,7 +449,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -471,7 +471,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkV1Execute(r
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -482,7 +482,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkV1Execute(r
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -504,7 +504,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkV1Execute(r
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -525,7 +525,7 @@ type ApiGetIdentityAttributeV1Request struct {
 	name string
 }
 
-func (r ApiGetIdentityAttributeV1Request) Execute() (*Identityattribute2, *http.Response, error) {
+func (r ApiGetIdentityAttributeV1Request) Execute() (*IdentityAttribute2, *http.Response, error) {
 	return r.ApiService.GetIdentityAttributeV1Execute(r)
 }
 
@@ -547,13 +547,13 @@ func (a *IdentityAttributesAPIService) GetIdentityAttributeV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Identityattribute2
-func (a *IdentityAttributesAPIService) GetIdentityAttributeV1Execute(r ApiGetIdentityAttributeV1Request) (*Identityattribute2, *http.Response, error) {
+//  @return IdentityAttribute2
+func (a *IdentityAttributesAPIService) GetIdentityAttributeV1Execute(r ApiGetIdentityAttributeV1Request) (*IdentityAttribute2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Identityattribute2
+		localVarReturnValue  *IdentityAttribute2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesAPIService.GetIdentityAttributeV1")
@@ -608,7 +608,7 @@ func (a *IdentityAttributesAPIService) GetIdentityAttributeV1Execute(r ApiGetIde
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -630,7 +630,7 @@ func (a *IdentityAttributesAPIService) GetIdentityAttributeV1Execute(r ApiGetIde
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -641,7 +641,7 @@ func (a *IdentityAttributesAPIService) GetIdentityAttributeV1Execute(r ApiGetIde
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -663,7 +663,7 @@ func (a *IdentityAttributesAPIService) GetIdentityAttributeV1Execute(r ApiGetIde
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -720,7 +720,7 @@ func (r ApiListIdentityAttributesV1Request) Count(count bool) ApiListIdentityAtt
 	return r
 }
 
-func (r ApiListIdentityAttributesV1Request) Execute() ([]Identityattribute2, *http.Response, error) {
+func (r ApiListIdentityAttributesV1Request) Execute() ([]IdentityAttribute2, *http.Response, error) {
 	return r.ApiService.ListIdentityAttributesV1Execute(r)
 }
 
@@ -740,13 +740,13 @@ func (a *IdentityAttributesAPIService) ListIdentityAttributesV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []Identityattribute2
-func (a *IdentityAttributesAPIService) ListIdentityAttributesV1Execute(r ApiListIdentityAttributesV1Request) ([]Identityattribute2, *http.Response, error) {
+//  @return []IdentityAttribute2
+func (a *IdentityAttributesAPIService) ListIdentityAttributesV1Execute(r ApiListIdentityAttributesV1Request) ([]IdentityAttribute2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Identityattribute2
+		localVarReturnValue  []IdentityAttribute2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesAPIService.ListIdentityAttributesV1")
@@ -824,7 +824,7 @@ func (a *IdentityAttributesAPIService) ListIdentityAttributesV1Execute(r ApiList
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -846,7 +846,7 @@ func (a *IdentityAttributesAPIService) ListIdentityAttributesV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -868,7 +868,7 @@ func (a *IdentityAttributesAPIService) ListIdentityAttributesV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -896,15 +896,15 @@ type ApiPutIdentityAttributeV1Request struct {
 	ctx context.Context
 	ApiService *IdentityAttributesAPIService
 	name string
-	identityattribute2 *Identityattribute2
+	identityAttribute2 *IdentityAttribute2
 }
 
-func (r ApiPutIdentityAttributeV1Request) Identityattribute2(identityattribute2 Identityattribute2) ApiPutIdentityAttributeV1Request {
-	r.identityattribute2 = &identityattribute2
+func (r ApiPutIdentityAttributeV1Request) IdentityAttribute2(identityAttribute2 IdentityAttribute2) ApiPutIdentityAttributeV1Request {
+	r.identityAttribute2 = &identityAttribute2
 	return r
 }
 
-func (r ApiPutIdentityAttributeV1Request) Execute() (*Identityattribute2, *http.Response, error) {
+func (r ApiPutIdentityAttributeV1Request) Execute() (*IdentityAttribute2, *http.Response, error) {
 	return r.ApiService.PutIdentityAttributeV1Execute(r)
 }
 
@@ -926,13 +926,13 @@ func (a *IdentityAttributesAPIService) PutIdentityAttributeV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Identityattribute2
-func (a *IdentityAttributesAPIService) PutIdentityAttributeV1Execute(r ApiPutIdentityAttributeV1Request) (*Identityattribute2, *http.Response, error) {
+//  @return IdentityAttribute2
+func (a *IdentityAttributesAPIService) PutIdentityAttributeV1Execute(r ApiPutIdentityAttributeV1Request) (*IdentityAttribute2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Identityattribute2
+		localVarReturnValue  *IdentityAttribute2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesAPIService.PutIdentityAttributeV1")
@@ -946,8 +946,8 @@ func (a *IdentityAttributesAPIService) PutIdentityAttributeV1Execute(r ApiPutIde
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.identityattribute2 == nil {
-		return localVarReturnValue, nil, reportError("identityattribute2 is required and must be specified")
+	if r.identityAttribute2 == nil {
+		return localVarReturnValue, nil, reportError("identityAttribute2 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -968,7 +968,7 @@ func (a *IdentityAttributesAPIService) PutIdentityAttributeV1Execute(r ApiPutIde
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.identityattribute2
+	localVarPostBody = r.identityAttribute2
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -992,7 +992,7 @@ func (a *IdentityAttributesAPIService) PutIdentityAttributeV1Execute(r ApiPutIde
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1014,7 +1014,7 @@ func (a *IdentityAttributesAPIService) PutIdentityAttributeV1Execute(r ApiPutIde
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1025,7 +1025,7 @@ func (a *IdentityAttributesAPIService) PutIdentityAttributeV1Execute(r ApiPutIde
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1047,7 +1047,7 @@ func (a *IdentityAttributesAPIService) PutIdentityAttributeV1Execute(r ApiPutIde
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

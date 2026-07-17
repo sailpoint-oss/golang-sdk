@@ -90,17 +90,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetMFAOktaConfigV1401Response](docs/GetMFAOktaConfigV1401Response.md)
  - [GetMFAOktaConfigV1429Response](docs/GetMFAOktaConfigV1429Response.md)
- - [Kbaanswerrequestitem](docs/Kbaanswerrequestitem.md)
- - [Kbaanswerresponseitem](docs/Kbaanswerresponseitem.md)
- - [Kbaquestion](docs/Kbaquestion.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Mfaconfigtestresponse](docs/Mfaconfigtestresponse.md)
- - [Mfaduoconfig](docs/Mfaduoconfig.md)
- - [Mfaoktaconfig](docs/Mfaoktaconfig.md)
+ - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)
+ - [KbaAnswerResponseItem](docs/KbaAnswerResponseItem.md)
+ - [KbaQuestion](docs/KbaQuestion.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [MfaConfigTestResponse](docs/MfaConfigTestResponse.md)
+ - [MfaDuoConfig](docs/MfaDuoConfig.md)
+ - [MfaOktaConfig](docs/MfaOktaConfig.md)
 
 
 ## Documentation For Authorization

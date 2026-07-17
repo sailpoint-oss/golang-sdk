@@ -40,11 +40,11 @@ Other parameters are passed through a pointer to a apiCreateIdentityAttributeV1R
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identityattribute2** | [**Identityattribute2**](../models/identityattribute2) |  | 
+ **identityAttribute2** | [**IdentityAttribute2**](../models/identity-attribute2) |  | 
 
 ### Return type
 
-[**Identityattribute2**](../models/identityattribute2)
+[**IdentityAttribute2**](../models/identity-attribute2)
 
 ### HTTP request headers
 
@@ -66,10 +66,10 @@ import (
 )
 
 func main() {
-    identityattribute2Json := []byte(``) // Identityattribute2 | 
+    identityattribute2Json := []byte(``) // IdentityAttribute2 | 
 
-    var identityattribute2 identity_attributes.Identityattribute2
-    if err := json.Unmarshal(identityattribute2Json, &identityattribute2); err != nil {
+    var identityAttribute2 identity_attributes.IdentityAttribute2
+    if err := json.Unmarshal(identityattribute2Json, &identityAttribute2); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -77,13 +77,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesAPI.CreateIdentityAttributeV1(context.Background()).Identityattribute2(identityattribute2).Execute()
-	  //resp, r, err := apiClient.IdentityAttributesAPI.CreateIdentityAttributeV1(context.Background()).Identityattribute2(identityattribute2).Execute()
+    resp, r, err := apiClient.IdentityAttributesAPI.CreateIdentityAttributeV1(context.Background()).IdentityAttribute2(identityAttribute2).Execute()
+	  //resp, r, err := apiClient.IdentityAttributesAPI.CreateIdentityAttributeV1(context.Background()).IdentityAttribute2(identityAttribute2).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.CreateIdentityAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateIdentityAttributeV1`: Identityattribute2
+    // response from `CreateIdentityAttributeV1`: IdentityAttribute2
     fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.CreateIdentityAttributeV1`: %v\n", resp)
 }
 ```
@@ -172,7 +172,7 @@ Other parameters are passed through a pointer to a apiDeleteIdentityAttributesIn
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identityattributenames** | [**Identityattributenames**](../models/identityattributenames) |  | 
+ **identityAttributeNames** | [**IdentityAttributeNames**](../models/identity-attribute-names) |  | 
 
 ### Return type
 
@@ -198,10 +198,12 @@ import (
 )
 
 func main() {
-    identityattributenamesJson := []byte(``) // Identityattributenames | 
+    identityattributenamesJson := []byte(`{
+          "ids" : [ "name", "displayName" ]
+        }`) // IdentityAttributeNames | 
 
-    var identityattributenames identity_attributes.Identityattributenames
-    if err := json.Unmarshal(identityattributenamesJson, &identityattributenames); err != nil {
+    var identityAttributeNames identity_attributes.IdentityAttributeNames
+    if err := json.Unmarshal(identityattributenamesJson, &identityAttributeNames); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -209,8 +211,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttributesInBulkV1(context.Background()).Identityattributenames(identityattributenames).Execute()
-	  //r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttributesInBulkV1(context.Background()).Identityattributenames(identityattributenames).Execute()
+    r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttributesInBulkV1(context.Background()).IdentityAttributeNames(identityAttributeNames).Execute()
+	  //r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttributesInBulkV1(context.Background()).IdentityAttributeNames(identityAttributeNames).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.DeleteIdentityAttributesInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -246,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Identityattribute2**](../models/identityattribute2)
+[**IdentityAttribute2**](../models/identity-attribute2)
 
 ### HTTP request headers
 
@@ -280,7 +282,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.GetIdentityAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentityAttributeV1`: Identityattribute2
+    // response from `GetIdentityAttributeV1`: IdentityAttribute2
     fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.GetIdentityAttributeV1`: %v\n", resp)
 }
 ```
@@ -311,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Identityattribute2**](../models/identityattribute2)
+[**[]IdentityAttribute2**](../models/identity-attribute2)
 
 ### HTTP request headers
 
@@ -348,7 +350,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.ListIdentityAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListIdentityAttributesV1`: []Identityattribute2
+    // response from `ListIdentityAttributesV1`: []IdentityAttribute2
     fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.ListIdentityAttributesV1`: %v\n", resp)
 }
 ```
@@ -377,11 +379,11 @@ Other parameters are passed through a pointer to a apiPutIdentityAttributeV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **identityattribute2** | [**Identityattribute2**](../models/identityattribute2) |  | 
+ **identityAttribute2** | [**IdentityAttribute2**](../models/identity-attribute2) |  | 
 
 ### Return type
 
-[**Identityattribute2**](../models/identityattribute2)
+[**IdentityAttribute2**](../models/identity-attribute2)
 
 ### HTTP request headers
 
@@ -404,10 +406,10 @@ import (
 
 func main() {
     name := `displayName` // string | The attribute's technical name. # string | The attribute's technical name.
-    identityattribute2Json := []byte(``) // Identityattribute2 | 
+    identityattribute2Json := []byte(``) // IdentityAttribute2 | 
 
-    var identityattribute2 identity_attributes.Identityattribute2
-    if err := json.Unmarshal(identityattribute2Json, &identityattribute2); err != nil {
+    var identityAttribute2 identity_attributes.IdentityAttribute2
+    if err := json.Unmarshal(identityattribute2Json, &identityAttribute2); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -415,13 +417,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesAPI.PutIdentityAttributeV1(context.Background(), name).Identityattribute2(identityattribute2).Execute()
-	  //resp, r, err := apiClient.IdentityAttributesAPI.PutIdentityAttributeV1(context.Background(), name).Identityattribute2(identityattribute2).Execute()
+    resp, r, err := apiClient.IdentityAttributesAPI.PutIdentityAttributeV1(context.Background(), name).IdentityAttribute2(identityAttribute2).Execute()
+	  //resp, r, err := apiClient.IdentityAttributesAPI.PutIdentityAttributeV1(context.Background(), name).IdentityAttribute2(identityAttribute2).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.PutIdentityAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutIdentityAttributeV1`: Identityattribute2
+    // response from `PutIdentityAttributeV1`: IdentityAttribute2
     fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.PutIdentityAttributeV1`: %v\n", resp)
 }
 ```

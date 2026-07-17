@@ -49,14 +49,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/brandingitem'
+                  $ref: '#/components/schemas/BrandingItem'
                 type: array
           description: A list of branding items.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -80,7 +80,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -105,7 +105,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -125,20 +125,20 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/brandingitemcreate'
+              $ref: '#/components/schemas/BrandingItemCreate'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/brandingitem'
+                $ref: '#/components/schemas/BrandingItem'
           description: Branding item created
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -162,7 +162,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -187,7 +187,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -224,7 +224,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -248,7 +248,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -266,7 +266,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -291,7 +291,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -324,13 +324,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/brandingitem'
+                $ref: '#/components/schemas/BrandingItem'
           description: A branding item object
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -354,7 +354,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -372,7 +372,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -397,7 +397,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -429,20 +429,20 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/brandingitemcreate'
+              $ref: '#/components/schemas/BrandingItemCreate'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/brandingitem'
+                $ref: '#/components/schemas/BrandingItem'
           description: Branding item updated
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -466,7 +466,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -484,7 +484,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -509,7 +509,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -531,7 +531,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -555,7 +555,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -573,7 +573,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -598,10 +598,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    brandingitem:
+    BrandingItem:
       example:
         standardLogoURL: ""
         emailFromAddress: no-reply@sailpoint.com
@@ -653,7 +653,7 @@ components:
           type: string
       title: Branding Item
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -665,7 +665,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -678,7 +678,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -686,7 +686,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -720,17 +720,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    brandingitemcreate:
+    BrandingItemCreate:
       properties:
         name:
           description: name of branding item

@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Certificationtask**](../models/certificationtask)
+[**CertificationTask**](../models/certification-task)
 
 ### HTTP request headers
 
@@ -110,7 +110,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetCertificationTaskV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCertificationTaskV1`: Certificationtask
+    // response from `GetCertificationTaskV1`: CertificationTask
     fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.GetCertificationTaskV1`: %v\n", resp)
 }
 ```
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Permissiondto**](../models/permissiondto)
+[**[]PermissionDTO**](../models/permission-dto)
 
 ### HTTP request headers
 
@@ -187,7 +187,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetIdentityCertificationItemPermissionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentityCertificationItemPermissionsV1`: []Permissiondto
+    // response from `GetIdentityCertificationItemPermissionsV1`: []PermissionDTO
     fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.GetIdentityCertificationItemPermissionsV1`: %v\n", resp)
 }
 ```
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Identitycertificationdto**](../models/identitycertificationdto)
+[**IdentityCertificationDto**](../models/identity-certification-dto)
 
 ### HTTP request headers
 
@@ -253,7 +253,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetIdentityCertificationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentityCertificationV1`: Identitycertificationdto
+    // response from `GetIdentityCertificationV1`: IdentityCertificationDto
     fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.GetIdentityCertificationV1`: %v\n", resp)
 }
 ```
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Certificationtask**](../models/certificationtask)
+[**[]CertificationTask**](../models/certification-task)
 
 ### HTTP request headers
 
@@ -323,7 +323,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetPendingCertificationTasksV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPendingCertificationTasksV1`: []Certificationtask
+    // response from `GetPendingCertificationTasksV1`: []CertificationTask
     fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.GetPendingCertificationTasksV1`: %v\n", resp)
 }
 ```
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Identityreferencewithnameandemail**](../models/identityreferencewithnameandemail)
+[**[]IdentityReferenceWithNameAndEmail**](../models/identity-reference-with-name-and-email)
 
 ### HTTP request headers
 
@@ -399,7 +399,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListCertificationReviewersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListCertificationReviewersV1`: []Identityreferencewithnameandemail
+    // response from `ListCertificationReviewersV1`: []IdentityReferenceWithNameAndEmail
     fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.ListCertificationReviewersV1`: %v\n", resp)
 }
 ```
@@ -439,7 +439,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessreviewitem**](../models/accessreviewitem)
+[**[]AccessReviewItem**](../models/access-review-item)
 
 ### HTTP request headers
 
@@ -481,7 +481,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListIdentityAccessReviewItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListIdentityAccessReviewItemsV1`: []Accessreviewitem
+    // response from `ListIdentityAccessReviewItemsV1`: []AccessReviewItem
     fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.ListIdentityAccessReviewItemsV1`: %v\n", resp)
 }
 ```
@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Identitycertificationdto**](../models/identitycertificationdto)
+[**[]IdentityCertificationDto**](../models/identity-certification-dto)
 
 ### HTTP request headers
 
@@ -553,7 +553,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListIdentityCertificationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListIdentityCertificationsV1`: []Identitycertificationdto
+    // response from `ListIdentityCertificationsV1`: []IdentityCertificationDto
     fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.ListIdentityCertificationsV1`: %v\n", resp)
 }
 ```
@@ -582,11 +582,11 @@ Other parameters are passed through a pointer to a apiMakeIdentityDecisionV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **reviewdecision** | [**[]Reviewdecision**](../models/reviewdecision) | A non-empty array of decisions to be made. | 
+ **reviewDecision** | [**[]ReviewDecision**](../models/review-decision) | A non-empty array of decisions to be made. | 
 
 ### Return type
 
-[**Identitycertificationdto**](../models/identitycertificationdto)
+[**IdentityCertificationDto**](../models/identity-certification-dto)
 
 ### HTTP request headers
 
@@ -609,10 +609,10 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the identity campaign certification on which to make decisions # string | The ID of the identity campaign certification on which to make decisions
-    reviewdecisionJson := []byte(`[{"id":"ef38f94347e94562b5bb8424a56396b5","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source."},{"id":"ef38f94347e94562b5bb8424a56397d8","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source too."}]`) // []Reviewdecision | A non-empty array of decisions to be made.
+    reviewdecisionJson := []byte(`[{"id":"ef38f94347e94562b5bb8424a56396b5","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source."},{"id":"ef38f94347e94562b5bb8424a56397d8","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source too."}]`) // []ReviewDecision | A non-empty array of decisions to be made.
 
-    var reviewdecision []certifications.Reviewdecision
-    if err := json.Unmarshal(reviewdecisionJson, &reviewdecision); err != nil {
+    var reviewDecision []certifications.ReviewDecision
+    if err := json.Unmarshal(reviewdecisionJson, &reviewDecision); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -620,13 +620,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsAPI.MakeIdentityDecisionV1(context.Background(), id).Reviewdecision(reviewdecision).Execute()
-	  //resp, r, err := apiClient.CertificationsAPI.MakeIdentityDecisionV1(context.Background(), id).Reviewdecision(reviewdecision).Execute()
+    resp, r, err := apiClient.CertificationsAPI.MakeIdentityDecisionV1(context.Background(), id).ReviewDecision(reviewDecision).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.MakeIdentityDecisionV1(context.Background(), id).ReviewDecision(reviewDecision).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.MakeIdentityDecisionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `MakeIdentityDecisionV1`: Identitycertificationdto
+    // response from `MakeIdentityDecisionV1`: IdentityCertificationDto
     fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.MakeIdentityDecisionV1`: %v\n", resp)
 }
 ```
@@ -655,11 +655,11 @@ Other parameters are passed through a pointer to a apiReassignIdentityCertificat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **reviewreassign** | [**Reviewreassign**](../models/reviewreassign) |  | 
+ **reviewReassign** | [**ReviewReassign**](../models/review-reassign) |  | 
 
 ### Return type
 
-[**Identitycertificationdto**](../models/identitycertificationdto)
+[**IdentityCertificationDto**](../models/identity-certification-dto)
 
 ### HTTP request headers
 
@@ -682,10 +682,20 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The identity campaign certification ID # string | The identity campaign certification ID
-    reviewreassignJson := []byte(``) // Reviewreassign | 
+    reviewreassignJson := []byte(`{
+          "reason" : "reassigned for some reason",
+          "reassignTo" : "ef38f94347e94562b5bb8424a56397d8",
+          "reassign" : [ {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          }, {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          } ]
+        }`) // ReviewReassign | 
 
-    var reviewreassign certifications.Reviewreassign
-    if err := json.Unmarshal(reviewreassignJson, &reviewreassign); err != nil {
+    var reviewReassign certifications.ReviewReassign
+    if err := json.Unmarshal(reviewreassignJson, &reviewReassign); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -693,13 +703,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsAPI.ReassignIdentityCertificationsV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
-	  //resp, r, err := apiClient.CertificationsAPI.ReassignIdentityCertificationsV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
+    resp, r, err := apiClient.CertificationsAPI.ReassignIdentityCertificationsV1(context.Background(), id).ReviewReassign(reviewReassign).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.ReassignIdentityCertificationsV1(context.Background(), id).ReviewReassign(reviewReassign).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ReassignIdentityCertificationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReassignIdentityCertificationsV1`: Identitycertificationdto
+    // response from `ReassignIdentityCertificationsV1`: IdentityCertificationDto
     fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.ReassignIdentityCertificationsV1`: %v\n", resp)
 }
 ```
@@ -731,7 +741,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Identitycertificationdto**](../models/identitycertificationdto)
+[**IdentityCertificationDto**](../models/identity-certification-dto)
 
 ### HTTP request headers
 
@@ -765,7 +775,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.SignOffIdentityCertificationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SignOffIdentityCertificationV1`: Identitycertificationdto
+    // response from `SignOffIdentityCertificationV1`: IdentityCertificationDto
     fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.SignOffIdentityCertificationV1`: %v\n", resp)
 }
 ```
@@ -799,11 +809,11 @@ Other parameters are passed through a pointer to a apiSubmitReassignCertsAsyncV1
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **reviewreassign** | [**Reviewreassign**](../models/reviewreassign) |  | 
+ **reviewReassign** | [**ReviewReassign**](../models/review-reassign) |  | 
 
 ### Return type
 
-[**Certificationtask**](../models/certificationtask)
+[**CertificationTask**](../models/certification-task)
 
 ### HTTP request headers
 
@@ -826,10 +836,20 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The identity campaign certification ID # string | The identity campaign certification ID
-    reviewreassignJson := []byte(``) // Reviewreassign | 
+    reviewreassignJson := []byte(`{
+          "reason" : "reassigned for some reason",
+          "reassignTo" : "ef38f94347e94562b5bb8424a56397d8",
+          "reassign" : [ {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          }, {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "ITEM"
+          } ]
+        }`) // ReviewReassign | 
 
-    var reviewreassign certifications.Reviewreassign
-    if err := json.Unmarshal(reviewreassignJson, &reviewreassign); err != nil {
+    var reviewReassign certifications.ReviewReassign
+    if err := json.Unmarshal(reviewreassignJson, &reviewReassign); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -837,13 +857,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsAPI.SubmitReassignCertsAsyncV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
-	  //resp, r, err := apiClient.CertificationsAPI.SubmitReassignCertsAsyncV1(context.Background(), id).Reviewreassign(reviewreassign).Execute()
+    resp, r, err := apiClient.CertificationsAPI.SubmitReassignCertsAsyncV1(context.Background(), id).ReviewReassign(reviewReassign).Execute()
+	  //resp, r, err := apiClient.CertificationsAPI.SubmitReassignCertsAsyncV1(context.Background(), id).ReviewReassign(reviewReassign).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.SubmitReassignCertsAsyncV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SubmitReassignCertsAsyncV1`: Certificationtask
+    // response from `SubmitReassignCertsAsyncV1`: CertificationTask
     fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.SubmitReassignCertsAsyncV1`: %v\n", resp)
 }
 ```

@@ -111,7 +111,7 @@ func (a *MachineClassificationConfigAPIService) DeleteMachineClassificationConfi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -133,7 +133,7 @@ func (a *MachineClassificationConfigAPIService) DeleteMachineClassificationConfi
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -144,7 +144,7 @@ func (a *MachineClassificationConfigAPIService) DeleteMachineClassificationConfi
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -166,7 +166,7 @@ func (a *MachineClassificationConfigAPIService) DeleteMachineClassificationConfi
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -187,7 +187,7 @@ type ApiGetMachineClassificationConfigV1Request struct {
 	sourceId string
 }
 
-func (r ApiGetMachineClassificationConfigV1Request) Execute() (*Machineclassificationconfig, *http.Response, error) {
+func (r ApiGetMachineClassificationConfigV1Request) Execute() (*MachineClassificationConfig, *http.Response, error) {
 	return r.ApiService.GetMachineClassificationConfigV1Execute(r)
 }
 
@@ -209,13 +209,13 @@ func (a *MachineClassificationConfigAPIService) GetMachineClassificationConfigV1
 }
 
 // Execute executes the request
-//  @return Machineclassificationconfig
-func (a *MachineClassificationConfigAPIService) GetMachineClassificationConfigV1Execute(r ApiGetMachineClassificationConfigV1Request) (*Machineclassificationconfig, *http.Response, error) {
+//  @return MachineClassificationConfig
+func (a *MachineClassificationConfigAPIService) GetMachineClassificationConfigV1Execute(r ApiGetMachineClassificationConfigV1Request) (*MachineClassificationConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Machineclassificationconfig
+		localVarReturnValue  *MachineClassificationConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineClassificationConfigAPIService.GetMachineClassificationConfigV1")
@@ -270,7 +270,7 @@ func (a *MachineClassificationConfigAPIService) GetMachineClassificationConfigV1
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -292,7 +292,7 @@ func (a *MachineClassificationConfigAPIService) GetMachineClassificationConfigV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -303,7 +303,7 @@ func (a *MachineClassificationConfigAPIService) GetMachineClassificationConfigV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -325,7 +325,7 @@ func (a *MachineClassificationConfigAPIService) GetMachineClassificationConfigV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -353,15 +353,15 @@ type ApiSetMachineClassificationConfigV1Request struct {
 	ctx context.Context
 	ApiService *MachineClassificationConfigAPIService
 	sourceId string
-	machineclassificationconfig *Machineclassificationconfig
+	machineClassificationConfig *MachineClassificationConfig
 }
 
-func (r ApiSetMachineClassificationConfigV1Request) Machineclassificationconfig(machineclassificationconfig Machineclassificationconfig) ApiSetMachineClassificationConfigV1Request {
-	r.machineclassificationconfig = &machineclassificationconfig
+func (r ApiSetMachineClassificationConfigV1Request) MachineClassificationConfig(machineClassificationConfig MachineClassificationConfig) ApiSetMachineClassificationConfigV1Request {
+	r.machineClassificationConfig = &machineClassificationConfig
 	return r
 }
 
-func (r ApiSetMachineClassificationConfigV1Request) Execute() (*Machineclassificationconfig, *http.Response, error) {
+func (r ApiSetMachineClassificationConfigV1Request) Execute() (*MachineClassificationConfig, *http.Response, error) {
 	return r.ApiService.SetMachineClassificationConfigV1Execute(r)
 }
 
@@ -383,13 +383,13 @@ func (a *MachineClassificationConfigAPIService) SetMachineClassificationConfigV1
 }
 
 // Execute executes the request
-//  @return Machineclassificationconfig
-func (a *MachineClassificationConfigAPIService) SetMachineClassificationConfigV1Execute(r ApiSetMachineClassificationConfigV1Request) (*Machineclassificationconfig, *http.Response, error) {
+//  @return MachineClassificationConfig
+func (a *MachineClassificationConfigAPIService) SetMachineClassificationConfigV1Execute(r ApiSetMachineClassificationConfigV1Request) (*MachineClassificationConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Machineclassificationconfig
+		localVarReturnValue  *MachineClassificationConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineClassificationConfigAPIService.SetMachineClassificationConfigV1")
@@ -403,8 +403,8 @@ func (a *MachineClassificationConfigAPIService) SetMachineClassificationConfigV1
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.machineclassificationconfig == nil {
-		return localVarReturnValue, nil, reportError("machineclassificationconfig is required and must be specified")
+	if r.machineClassificationConfig == nil {
+		return localVarReturnValue, nil, reportError("machineClassificationConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -425,7 +425,7 @@ func (a *MachineClassificationConfigAPIService) SetMachineClassificationConfigV1
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.machineclassificationconfig
+	localVarPostBody = r.machineClassificationConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -449,7 +449,7 @@ func (a *MachineClassificationConfigAPIService) SetMachineClassificationConfigV1
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -471,7 +471,7 @@ func (a *MachineClassificationConfigAPIService) SetMachineClassificationConfigV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -482,7 +482,7 @@ func (a *MachineClassificationConfigAPIService) SetMachineClassificationConfigV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -504,7 +504,7 @@ func (a *MachineClassificationConfigAPIService) SetMachineClassificationConfigV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

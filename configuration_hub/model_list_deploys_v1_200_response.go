@@ -20,7 +20,7 @@ var _ MappedNullable = &ListDeploysV1200Response{}
 // ListDeploysV1200Response struct for ListDeploysV1200Response
 type ListDeploysV1200Response struct {
 	// list of deployments
-	Items []Deployresponse `json:"items,omitempty"`
+	Items []DeployResponse `json:"items,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,9 +44,9 @@ func NewListDeploysV1200ResponseWithDefaults() *ListDeploysV1200Response {
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
-func (o *ListDeploysV1200Response) GetItems() []Deployresponse {
+func (o *ListDeploysV1200Response) GetItems() []DeployResponse {
 	if o == nil || IsNil(o.Items) {
-		var ret []Deployresponse
+		var ret []DeployResponse
 		return ret
 	}
 	return o.Items
@@ -54,7 +54,7 @@ func (o *ListDeploysV1200Response) GetItems() []Deployresponse {
 
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListDeploysV1200Response) GetItemsOk() ([]Deployresponse, bool) {
+func (o *ListDeploysV1200Response) GetItemsOk() ([]DeployResponse, bool) {
 	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *ListDeploysV1200Response) HasItems() bool {
 	return false
 }
 
-// SetItems gets a reference to the given []Deployresponse and assigns it to the Items field.
-func (o *ListDeploysV1200Response) SetItems(v []Deployresponse) {
+// SetItems gets a reference to the given []DeployResponse and assigns it to the Items field.
+func (o *ListDeploysV1200Response) SetItems(v []DeployResponse) {
 	o.Items = v
 }
 

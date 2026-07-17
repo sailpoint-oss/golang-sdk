@@ -84,12 +84,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetPeerGroupOutliersV1401Response](docs/GetPeerGroupOutliersV1401Response.md)
  - [GetPeerGroupOutliersV1429Response](docs/GetPeerGroupOutliersV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Peergroupmember](docs/Peergroupmember.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [PeerGroupMember](docs/PeerGroupMember.md)
 
 
 ## Documentation For Authorization

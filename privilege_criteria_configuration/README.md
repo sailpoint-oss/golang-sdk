@@ -86,12 +86,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetPrivilegeCriteriaConfigV1401Response](docs/GetPrivilegeCriteriaConfigV1401Response.md)
  - [GetPrivilegeCriteriaConfigV1429Response](docs/GetPrivilegeCriteriaConfigV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Privilegecriteriaconfigdto](docs/Privilegecriteriaconfigdto.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [PrivilegeCriteriaConfigDTO](docs/PrivilegeCriteriaConfigDTO.md)
 
 
 ## Documentation For Authorization

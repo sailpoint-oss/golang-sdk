@@ -84,11 +84,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetAccessRequestIdentityMetricsV1401Response](docs/GetAccessRequestIdentityMetricsV1401Response.md)
  - [GetAccessRequestIdentityMetricsV1429Response](docs/GetAccessRequestIdentityMetricsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

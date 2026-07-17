@@ -55,11 +55,11 @@ Other parameters are passed through a pointer to a apiCreateIdentityProfileV1Req
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identityprofile** | [**Identityprofile**](../models/identityprofile) |  | 
+ **identityProfile** | [**IdentityProfile**](../models/identity-profile) |  | 
 
 ### Return type
 
-[**Identityprofile**](../models/identityprofile)
+[**IdentityProfile**](../models/identity-profile)
 
 ### HTTP request headers
 
@@ -81,10 +81,58 @@ import (
 )
 
 func main() {
-    identityprofileJson := []byte(``) // Identityprofile | 
+    identityprofileJson := []byte(`{
+          "owner" : {
+            "name" : "William Wilson",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "type" : "IDENTITY"
+          },
+          "identityExceptionReportReference" : {
+            "reportName" : "My annual report",
+            "taskResultId" : "2b838de9-db9b-abcf-e646-d4f274ad4238"
+          },
+          "authoritativeSource" : {
+            "name" : "HR Active Directory",
+            "id" : "2c9180835d191a86015d28455b4b232a",
+            "type" : "SOURCE"
+          },
+          "hasTimeBasedAttr" : true,
+          "created" : "2015-05-28T14:07:17Z",
+          "description" : "My custom flat file profile",
+          "identityRefreshRequired" : true,
+          "identityCount" : 8,
+          "priority" : 10,
+          "identityAttributeConfig" : {
+            "attributeTransforms" : [ {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            }, {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            } ],
+            "enabled" : true
+          },
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "id" : "id12345"
+        }`) // IdentityProfile | 
 
-    var identityprofile identity_profiles.Identityprofile
-    if err := json.Unmarshal(identityprofileJson, &identityprofile); err != nil {
+    var identityProfile identity_profiles.IdentityProfile
+    if err := json.Unmarshal(identityprofileJson, &identityProfile); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -92,13 +140,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.CreateIdentityProfileV1(context.Background()).Identityprofile(identityprofile).Execute()
-	  //resp, r, err := apiClient.IdentityProfilesAPI.CreateIdentityProfileV1(context.Background()).Identityprofile(identityprofile).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.CreateIdentityProfileV1(context.Background()).IdentityProfile(identityProfile).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.CreateIdentityProfileV1(context.Background()).IdentityProfile(identityProfile).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.CreateIdentityProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateIdentityProfileV1`: Identityprofile
+    // response from `CreateIdentityProfileV1`: IdentityProfile
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.CreateIdentityProfileV1`: %v\n", resp)
 }
 ```
@@ -131,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Taskresultsimplified**](../models/taskresultsimplified)
+[**TaskResultSimplified**](../models/task-result-simplified)
 
 ### HTTP request headers
 
@@ -165,7 +213,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.DeleteIdentityProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteIdentityProfileV1`: Taskresultsimplified
+    // response from `DeleteIdentityProfileV1`: TaskResultSimplified
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.DeleteIdentityProfileV1`: %v\n", resp)
 }
 ```
@@ -197,7 +245,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Taskresultsimplified**](../models/taskresultsimplified)
+[**TaskResultSimplified**](../models/task-result-simplified)
 
 ### HTTP request headers
 
@@ -236,7 +284,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.DeleteIdentityProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteIdentityProfilesV1`: Taskresultsimplified
+    // response from `DeleteIdentityProfilesV1`: TaskResultSimplified
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.DeleteIdentityProfilesV1`: %v\n", resp)
 }
 ```
@@ -268,7 +316,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Identityprofileexportedobject**](../models/identityprofileexportedobject)
+[**[]IdentityProfileExportedObject**](../models/identity-profile-exported-object)
 
 ### HTTP request headers
 
@@ -306,7 +354,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ExportIdentityProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ExportIdentityProfilesV1`: []Identityprofileexportedobject
+    // response from `ExportIdentityProfilesV1`: []IdentityProfileExportedObject
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.ExportIdentityProfilesV1`: %v\n", resp)
 }
 ```
@@ -330,11 +378,11 @@ Other parameters are passed through a pointer to a apiGenerateIdentityPreviewV1R
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identitypreviewrequest** | [**Identitypreviewrequest**](../models/identitypreviewrequest) | Identity Preview request body. | 
+ **identityPreviewRequest** | [**IdentityPreviewRequest**](../models/identity-preview-request) | Identity Preview request body. | 
 
 ### Return type
 
-[**Identitypreviewresponse**](../models/identitypreviewresponse)
+[**IdentityPreviewResponse**](../models/identity-preview-response)
 
 ### HTTP request headers
 
@@ -356,10 +404,36 @@ import (
 )
 
 func main() {
-    identitypreviewrequestJson := []byte(``) // Identitypreviewrequest | Identity Preview request body.
+    identitypreviewrequestJson := []byte(`{
+          "identityId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+          "identityAttributeConfig" : {
+            "attributeTransforms" : [ {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            }, {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            } ],
+            "enabled" : true
+          }
+        }`) // IdentityPreviewRequest | Identity Preview request body.
 
-    var identitypreviewrequest identity_profiles.Identitypreviewrequest
-    if err := json.Unmarshal(identitypreviewrequestJson, &identitypreviewrequest); err != nil {
+    var identityPreviewRequest identity_profiles.IdentityPreviewRequest
+    if err := json.Unmarshal(identitypreviewrequestJson, &identityPreviewRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -367,13 +441,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.GenerateIdentityPreviewV1(context.Background()).Identitypreviewrequest(identitypreviewrequest).Execute()
-	  //resp, r, err := apiClient.IdentityProfilesAPI.GenerateIdentityPreviewV1(context.Background()).Identitypreviewrequest(identitypreviewrequest).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.GenerateIdentityPreviewV1(context.Background()).IdentityPreviewRequest(identityPreviewRequest).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.GenerateIdentityPreviewV1(context.Background()).IdentityPreviewRequest(identityPreviewRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.GenerateIdentityPreviewV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GenerateIdentityPreviewV1`: Identitypreviewresponse
+    // response from `GenerateIdentityPreviewV1`: IdentityPreviewResponse
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.GenerateIdentityPreviewV1`: %v\n", resp)
 }
 ```
@@ -405,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Identityattributeconfig**](../models/identityattributeconfig)
+[**IdentityAttributeConfig**](../models/identity-attribute-config)
 
 ### HTTP request headers
 
@@ -439,7 +513,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.GetDefaultIdentityAttributeConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDefaultIdentityAttributeConfigV1`: Identityattributeconfig
+    // response from `GetDefaultIdentityAttributeConfigV1`: IdentityAttributeConfig
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.GetDefaultIdentityAttributeConfigV1`: %v\n", resp)
 }
 ```
@@ -471,7 +545,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Identityprofile**](../models/identityprofile)
+[**IdentityProfile**](../models/identity-profile)
 
 ### HTTP request headers
 
@@ -505,7 +579,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.GetIdentityProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentityProfileV1`: Identityprofile
+    // response from `GetIdentityProfileV1`: IdentityProfile
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.GetIdentityProfileV1`: %v\n", resp)
 }
 ```
@@ -529,11 +603,11 @@ Other parameters are passed through a pointer to a apiImportIdentityProfilesV1Re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identityprofileexportedobject** | [**[]Identityprofileexportedobject**](../models/identityprofileexportedobject) | Previously exported Identity Profiles. | 
+ **identityProfileExportedObject** | [**[]IdentityProfileExportedObject**](../models/identity-profile-exported-object) | Previously exported Identity Profiles. | 
 
 ### Return type
 
-[**Objectimportresult**](../models/objectimportresult)
+[**ObjectImportResult**](../models/object-import-result)
 
 ### HTTP request headers
 
@@ -555,10 +629,10 @@ import (
 )
 
 func main() {
-    identityprofileexportedobjectJson := []byte(``) // []Identityprofileexportedobject | Previously exported Identity Profiles.
+    identityprofileexportedobjectJson := []byte(``) // []IdentityProfileExportedObject | Previously exported Identity Profiles.
 
-    var identityprofileexportedobject []identity_profiles.Identityprofileexportedobject
-    if err := json.Unmarshal(identityprofileexportedobjectJson, &identityprofileexportedobject); err != nil {
+    var identityProfileExportedObject []identity_profiles.IdentityProfileExportedObject
+    if err := json.Unmarshal(identityprofileexportedobjectJson, &identityProfileExportedObject); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -566,13 +640,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.ImportIdentityProfilesV1(context.Background()).Identityprofileexportedobject(identityprofileexportedobject).Execute()
-	  //resp, r, err := apiClient.IdentityProfilesAPI.ImportIdentityProfilesV1(context.Background()).Identityprofileexportedobject(identityprofileexportedobject).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.ImportIdentityProfilesV1(context.Background()).IdentityProfileExportedObject(identityProfileExportedObject).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.ImportIdentityProfilesV1(context.Background()).IdentityProfileExportedObject(identityProfileExportedObject).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ImportIdentityProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ImportIdentityProfilesV1`: Objectimportresult
+    // response from `ImportIdentityProfilesV1`: ObjectImportResult
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.ImportIdentityProfilesV1`: %v\n", resp)
 }
 ```
@@ -604,7 +678,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Identityprofile**](../models/identityprofile)
+[**[]IdentityProfile**](../models/identity-profile)
 
 ### HTTP request headers
 
@@ -642,7 +716,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ListIdentityProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListIdentityProfilesV1`: []Identityprofile
+    // response from `ListIdentityProfilesV1`: []IdentityProfile
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.ListIdentityProfilesV1`: %v\n", resp)
 }
 ```
@@ -749,11 +823,11 @@ Other parameters are passed through a pointer to a apiUpdateIdentityProfileV1Req
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
 
 ### Return type
 
-[**Identityprofile**](../models/identityprofile)
+[**IdentityProfile**](../models/identity-profile)
 
 ### HTTP request headers
 
@@ -776,10 +850,10 @@ import (
 
 func main() {
     identityProfileId := `ef38f94347e94562b5bb8424a56397d8` // string | Identity profile ID. # string | Identity profile ID.
-    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/identityAttributeConfig/attributeTransforms/0","value":{"identityAttributeName":"location","transformDefinition":{"type":"accountAttribute","attributes":{"sourceName":"Employees","attributeName":"location","sourceId":"2c91808878b7d63b0178c66ffcdc4ce4"}}}}]`) // []Jsonpatchoperation | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/identityAttributeConfig/attributeTransforms/0","value":{"identityAttributeName":"location","transformDefinition":{"type":"accountAttribute","attributes":{"sourceName":"Employees","attributeName":"location","sourceId":"2c91808878b7d63b0178c66ffcdc4ce4"}}}}]`) // []JsonPatchOperation | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var jsonpatchoperation []identity_profiles.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []identity_profiles.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -787,13 +861,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.UpdateIdentityProfileV1(context.Background(), identityProfileId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.IdentityProfilesAPI.UpdateIdentityProfileV1(context.Background(), identityProfileId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.IdentityProfilesAPI.UpdateIdentityProfileV1(context.Background(), identityProfileId).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.IdentityProfilesAPI.UpdateIdentityProfileV1(context.Background(), identityProfileId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.UpdateIdentityProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateIdentityProfileV1`: Identityprofile
+    // response from `UpdateIdentityProfileV1`: IdentityProfile
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.UpdateIdentityProfileV1`: %v\n", resp)
 }
 ```

@@ -78,11 +78,11 @@ Other parameters are passed through a pointer to a apiCreateSodPolicyV1Request s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sodpolicy** | [**Sodpolicy**](../models/sodpolicy) |  | 
+ **sodPolicy** | [**SodPolicy**](../models/sod-policy) |  | 
 
 ### Return type
 
-[**Sodpolicy**](../models/sodpolicy)
+[**SodPolicy**](../models/sod-policy)
 
 ### HTTP request headers
 
@@ -104,10 +104,65 @@ import (
 )
 
 func main() {
-    sodpolicyJson := []byte(`{"name":"Conflicting-Policy-Name","description":"This policy ensures compliance of xyz","ownerRef":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"Owner Name"},"externalPolicyReference":"XYZ policy","compensatingControls":"Have a manager review the transaction decisions for their \"out of compliance\" employee","correctionAdvice":"Based on the role of the employee, managers should remove access that is not required for their job function.","state":"ENFORCED","tags":["string"],"creatorId":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","modifierId":"0f11f2a4-7c94-4bf3-a2bd-742580fe3bde","violationOwnerAssignmentConfig":{"assignmentRule":"MANAGER","ownerRef":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"Violation Owner Name"}},"scheduled":true,"type":"CONFLICTING_ACCESS_BASED","conflictingAccessCriteria":{"leftCriteria":{"name":"money-in","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a66"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a67"}]},"rightCriteria":{"name":"money-out","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a68"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a69"}]}}}`) // Sodpolicy | 
+    sodpolicyJson := []byte(`{
+          "conflictingAccessCriteria" : {
+            "leftCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            },
+            "rightCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            }
+          },
+          "ownerRef" : {
+            "name" : "Support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "created" : "2020-01-01T00:00:00Z",
+          "scheduled" : true,
+          "creatorId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "modifierId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "description" : "This policy ensures compliance of xyz",
+          "violationOwnerAssignmentConfig" : {
+            "assignmentRule" : "MANAGER",
+            "ownerRef" : {
+              "name" : "Support",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            }
+          },
+          "correctionAdvice" : "Based on the role of the employee, managers should remove access that is not required for their job function.",
+          "type" : "GENERAL",
+          "tags" : [ "TAG1", "TAG2" ],
+          "name" : "policy-xyz",
+          "modified" : "2020-01-01T00:00:00Z",
+          "policyQuery" : "@access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdg) AND @access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdf)",
+          "compensatingControls" : "Have a manager review the transaction decisions for their \"out of compliance\" employee",
+          "id" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "state" : "ENFORCED",
+          "externalPolicyReference" : "XYZ policy"
+        }`) // SodPolicy | 
 
-    var sodpolicy sod_policies.Sodpolicy
-    if err := json.Unmarshal(sodpolicyJson, &sodpolicy); err != nil {
+    var sodPolicy sod_policies.SodPolicy
+    if err := json.Unmarshal(sodpolicyJson, &sodPolicy); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -115,13 +170,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.CreateSodPolicyV1(context.Background()).Sodpolicy(sodpolicy).Execute()
-	  //resp, r, err := apiClient.SODPoliciesAPI.CreateSodPolicyV1(context.Background()).Sodpolicy(sodpolicy).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.CreateSodPolicyV1(context.Background()).SodPolicy(sodPolicy).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.CreateSodPolicyV1(context.Background()).SodPolicy(sodPolicy).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.CreateSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateSodPolicyV1`: Sodpolicy
+    // response from `CreateSodPolicyV1`: SodPolicy
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.CreateSodPolicyV1`: %v\n", resp)
 }
 ```
@@ -413,7 +468,7 @@ Other parameters are passed through a pointer to a apiGetSodAllReportRunStatusV1
 
 ### Return type
 
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### HTTP request headers
 
@@ -446,7 +501,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodAllReportRunStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSodAllReportRunStatusV1`: Reportresultreference
+    // response from `GetSodAllReportRunStatusV1`: ReportResultReference
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodAllReportRunStatusV1`: %v\n", resp)
 }
 ```
@@ -478,7 +533,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sodpolicyschedule**](../models/sodpolicyschedule)
+[**SodPolicySchedule**](../models/sod-policy-schedule)
 
 ### HTTP request headers
 
@@ -512,7 +567,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodPolicyScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSodPolicyScheduleV1`: Sodpolicyschedule
+    // response from `GetSodPolicyScheduleV1`: SodPolicySchedule
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodPolicyScheduleV1`: %v\n", resp)
 }
 ```
@@ -545,7 +600,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sodpolicy**](../models/sodpolicy)
+[**SodPolicy**](../models/sod-policy)
 
 ### HTTP request headers
 
@@ -579,7 +634,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSodPolicyV1`: Sodpolicy
+    // response from `GetSodPolicyV1`: SodPolicy
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodPolicyV1`: %v\n", resp)
 }
 ```
@@ -611,7 +666,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### HTTP request headers
 
@@ -645,7 +700,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodViolationReportRunStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSodViolationReportRunStatusV1`: Reportresultreference
+    // response from `GetSodViolationReportRunStatusV1`: ReportResultReference
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodViolationReportRunStatusV1`: %v\n", resp)
 }
 ```
@@ -677,7 +732,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### HTTP request headers
 
@@ -711,7 +766,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodViolationReportStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSodViolationReportStatusV1`: Reportresultreference
+    // response from `GetSodViolationReportStatusV1`: ReportResultReference
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodViolationReportStatusV1`: %v\n", resp)
 }
 ```
@@ -744,7 +799,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sodpolicy**](../models/sodpolicy)
+[**[]SodPolicy**](../models/sod-policy)
 
 ### HTTP request headers
 
@@ -782,7 +837,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.ListSodPoliciesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListSodPoliciesV1`: []Sodpolicy
+    // response from `ListSodPoliciesV1`: []SodPolicy
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.ListSodPoliciesV1`: %v\n", resp)
 }
 ```
@@ -813,11 +868,11 @@ Other parameters are passed through a pointer to a apiPatchSodPolicyV1Request st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria  | 
 
 ### Return type
 
-[**Sodpolicy**](../models/sodpolicy)
+[**SodPolicy**](../models/sod-policy)
 
 ### HTTP request headers
 
@@ -840,10 +895,10 @@ import (
 
 func main() {
     id := `2c918083-5d19-1a86-015d-28455b4a2329` // string | The ID of the SOD policy being modified. # string | The ID of the SOD policy being modified.
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Modified description"},{"op":"replace","path":"/conflictingAccessCriteria/leftCriteria/name","value":"money-in-modified"},{"op":"replace","path":"/conflictingAccessCriteria/rightCriteria","value":{"name":"money-out-modified","criteriaList":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]}}]`) // []Jsonpatchoperation | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Modified description"},{"op":"replace","path":"/conflictingAccessCriteria/leftCriteria/name","value":"money-in-modified"},{"op":"replace","path":"/conflictingAccessCriteria/rightCriteria","value":{"name":"money-out-modified","criteriaList":[{"type":"ENTITLEMENT","id":"2c918087682f9a86016839c0509c1ab2"}]}}]`) // []JsonPatchOperation | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
 
-    var jsonpatchoperation []sod_policies.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []sod_policies.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -851,13 +906,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.PatchSodPolicyV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.SODPoliciesAPI.PatchSodPolicyV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.PatchSodPolicyV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.PatchSodPolicyV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PatchSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchSodPolicyV1`: Sodpolicy
+    // response from `PatchSodPolicyV1`: SodPolicy
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.PatchSodPolicyV1`: %v\n", resp)
 }
 ```
@@ -886,11 +941,11 @@ Other parameters are passed through a pointer to a apiPutPolicyScheduleV1Request
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sodpolicyschedule** | [**Sodpolicyschedule**](../models/sodpolicyschedule) |  | 
+ **sodPolicySchedule** | [**SodPolicySchedule**](../models/sod-policy-schedule) |  | 
 
 ### Return type
 
-[**Sodpolicyschedule**](../models/sodpolicyschedule)
+[**SodPolicySchedule**](../models/sod-policy-schedule)
 
 ### HTTP request headers
 
@@ -913,10 +968,47 @@ import (
 
 func main() {
     id := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The ID of the SOD policy to update its schedule. # string | The ID of the SOD policy to update its schedule.
-    sodpolicyscheduleJson := []byte(``) // Sodpolicyschedule | 
+    sodpolicyscheduleJson := []byte(`{
+          "schedule" : {
+            "hours" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "months" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "timeZoneId" : "America/Chicago",
+            "days" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "expiration" : "2018-06-25T20:22:28.104Z",
+            "type" : "WEEKLY"
+          },
+          "created" : "2020-01-01T00:00:00Z",
+          "recipients" : [ {
+            "name" : "Michael Michaels",
+            "id" : "2c7180a46faadee4016fb4e018c20642",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "Michael Michaels",
+            "id" : "2c7180a46faadee4016fb4e018c20642",
+            "type" : "IDENTITY"
+          } ],
+          "name" : "SCH-1584312283015",
+          "creatorId" : "0f11f2a47c944bf3a2bd742580fe3bde",
+          "modifierId" : "0f11f2a47c944bf3a2bd742580fe3bde",
+          "modified" : "2020-01-01T00:00:00Z",
+          "description" : "Schedule for policy xyz",
+          "emailEmptyResults" : false
+        }`) // SodPolicySchedule | 
 
-    var sodpolicyschedule sod_policies.Sodpolicyschedule
-    if err := json.Unmarshal(sodpolicyscheduleJson, &sodpolicyschedule); err != nil {
+    var sodPolicySchedule sod_policies.SodPolicySchedule
+    if err := json.Unmarshal(sodpolicyscheduleJson, &sodPolicySchedule); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -924,13 +1016,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.PutPolicyScheduleV1(context.Background(), id).Sodpolicyschedule(sodpolicyschedule).Execute()
-	  //resp, r, err := apiClient.SODPoliciesAPI.PutPolicyScheduleV1(context.Background(), id).Sodpolicyschedule(sodpolicyschedule).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.PutPolicyScheduleV1(context.Background(), id).SodPolicySchedule(sodPolicySchedule).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.PutPolicyScheduleV1(context.Background(), id).SodPolicySchedule(sodPolicySchedule).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PutPolicyScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutPolicyScheduleV1`: Sodpolicyschedule
+    // response from `PutPolicyScheduleV1`: SodPolicySchedule
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.PutPolicyScheduleV1`: %v\n", resp)
 }
 ```
@@ -960,11 +1052,11 @@ Other parameters are passed through a pointer to a apiPutSodPolicyV1Request stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sodpolicy** | [**Sodpolicy**](../models/sodpolicy) |  | 
+ **sodPolicy** | [**SodPolicy**](../models/sod-policy) |  | 
 
 ### Return type
 
-[**Sodpolicy**](../models/sodpolicy)
+[**SodPolicy**](../models/sod-policy)
 
 ### HTTP request headers
 
@@ -987,10 +1079,65 @@ import (
 
 func main() {
     id := `ef38f943-47e9-4562-b5bb-8424a56397d8` // string | The ID of the SOD policy to update. # string | The ID of the SOD policy to update.
-    sodpolicyJson := []byte(`{"name":"Conflicting-Policy-Name","description":"Modified Description","externalPolicyReference":"XYZ policy","compensatingControls":"Have a manager review the transaction decisions for their \"out of compliance\" employee","correctionAdvice":"Based on the role of the employee, managers should remove access that is not required for their job function.","state":"ENFORCED","tags":["string"],"violationOwnerAssignmentConfig":{"assignmentRule":"MANAGER","ownerRef":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"Violation Owner Name"}},"scheduled":true,"type":"CONFLICTING_ACCESS_BASED","conflictingAccessCriteria":{"leftCriteria":{"name":"money-in","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a66"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a67"}]},"rightCriteria":{"name":"money-out","criteriaList":[{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a68"},{"type":"ENTITLEMENT","id":"2c9180866166b5b0016167c32ef31a69"}]}}}`) // Sodpolicy | 
+    sodpolicyJson := []byte(`{
+          "conflictingAccessCriteria" : {
+            "leftCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            },
+            "rightCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            }
+          },
+          "ownerRef" : {
+            "name" : "Support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "created" : "2020-01-01T00:00:00Z",
+          "scheduled" : true,
+          "creatorId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "modifierId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "description" : "This policy ensures compliance of xyz",
+          "violationOwnerAssignmentConfig" : {
+            "assignmentRule" : "MANAGER",
+            "ownerRef" : {
+              "name" : "Support",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            }
+          },
+          "correctionAdvice" : "Based on the role of the employee, managers should remove access that is not required for their job function.",
+          "type" : "GENERAL",
+          "tags" : [ "TAG1", "TAG2" ],
+          "name" : "policy-xyz",
+          "modified" : "2020-01-01T00:00:00Z",
+          "policyQuery" : "@access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdg) AND @access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdf)",
+          "compensatingControls" : "Have a manager review the transaction decisions for their \"out of compliance\" employee",
+          "id" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "state" : "ENFORCED",
+          "externalPolicyReference" : "XYZ policy"
+        }`) // SodPolicy | 
 
-    var sodpolicy sod_policies.Sodpolicy
-    if err := json.Unmarshal(sodpolicyJson, &sodpolicy); err != nil {
+    var sodPolicy sod_policies.SodPolicy
+    if err := json.Unmarshal(sodpolicyJson, &sodPolicy); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -998,13 +1145,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.PutSodPolicyV1(context.Background(), id).Sodpolicy(sodpolicy).Execute()
-	  //resp, r, err := apiClient.SODPoliciesAPI.PutSodPolicyV1(context.Background(), id).Sodpolicy(sodpolicy).Execute()
+    resp, r, err := apiClient.SODPoliciesAPI.PutSodPolicyV1(context.Background(), id).SodPolicy(sodPolicy).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.PutSodPolicyV1(context.Background(), id).SodPolicy(sodPolicy).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PutSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutSodPolicyV1`: Sodpolicy
+    // response from `PutSodPolicyV1`: SodPolicy
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.PutSodPolicyV1`: %v\n", resp)
 }
 ```
@@ -1036,7 +1183,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### HTTP request headers
 
@@ -1070,7 +1217,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.StartEvaluateSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartEvaluateSodPolicyV1`: Reportresultreference
+    // response from `StartEvaluateSodPolicyV1`: ReportResultReference
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.StartEvaluateSodPolicyV1`: %v\n", resp)
 }
 ```
@@ -1094,11 +1241,11 @@ Other parameters are passed through a pointer to a apiStartSodAllPoliciesForOrgV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **multipolicyrequest** | [**Multipolicyrequest**](../models/multipolicyrequest) |  | 
+ **multiPolicyRequest** | [**MultiPolicyRequest**](../models/multi-policy-request) |  | 
 
 ### Return type
 
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### HTTP request headers
 
@@ -1120,19 +1267,21 @@ import (
 )
 
 func main() {
-    multipolicyrequestJson := []byte(`{"filteredPolicyList":["b868cd40-ffa4-4337-9c07-1a51846cfa94","63a07a7b-39a4-48aa-956d-50c827deba2a"]}`) // Multipolicyrequest |  (optional)
+    multipolicyrequestJson := []byte(`{
+          "filteredPolicyList" : [ "[\"b868cd40-ffa4-4337-9c07-1a51846cfa94\",\"63a07a7b-39a4-48aa-956d-50c827deba2a\"]", "[\"b868cd40-ffa4-4337-9c07-1a51846cfa94\",\"63a07a7b-39a4-48aa-956d-50c827deba2a\"]" ]
+        }`) // MultiPolicyRequest |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.SODPoliciesAPI.StartSodAllPoliciesForOrgV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.SODPoliciesAPI.StartSodAllPoliciesForOrgV1(context.Background()).Multipolicyrequest(multipolicyrequest).Execute()
+	  //resp, r, err := apiClient.SODPoliciesAPI.StartSodAllPoliciesForOrgV1(context.Background()).MultiPolicyRequest(multiPolicyRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.StartSodAllPoliciesForOrgV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartSodAllPoliciesForOrgV1`: Reportresultreference
+    // response from `StartSodAllPoliciesForOrgV1`: ReportResultReference
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.StartSodAllPoliciesForOrgV1`: %v\n", resp)
 }
 ```
@@ -1164,7 +1313,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Reportresultreference**](../models/reportresultreference)
+[**ReportResultReference**](../models/report-result-reference)
 
 ### HTTP request headers
 
@@ -1198,7 +1347,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.StartSodPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartSodPolicyV1`: Reportresultreference
+    // response from `StartSodPolicyV1`: ReportResultReference
     fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.StartSodPolicyV1`: %v\n", resp)
 }
 ```

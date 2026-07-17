@@ -27,16 +27,16 @@ type SPConfigAPIService service
 type ApiExportSpConfigV1Request struct {
 	ctx context.Context
 	ApiService *SPConfigAPIService
-	exportpayload *Exportpayload
+	exportPayload *ExportPayload
 }
 
 // Export options control what will be included in the export.
-func (r ApiExportSpConfigV1Request) Exportpayload(exportpayload Exportpayload) ApiExportSpConfigV1Request {
-	r.exportpayload = &exportpayload
+func (r ApiExportSpConfigV1Request) ExportPayload(exportPayload ExportPayload) ApiExportSpConfigV1Request {
+	r.exportPayload = &exportPayload
 	return r
 }
 
-func (r ApiExportSpConfigV1Request) Execute() (*Spconfigexportjob, *http.Response, error) {
+func (r ApiExportSpConfigV1Request) Execute() (*SpConfigExportJob, *http.Response, error) {
 	return r.ApiService.ExportSpConfigV1Execute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *SPConfigAPIService) ExportSpConfigV1(ctx context.Context) ApiExportSpCo
 }
 
 // Execute executes the request
-//  @return Spconfigexportjob
-func (a *SPConfigAPIService) ExportSpConfigV1Execute(r ApiExportSpConfigV1Request) (*Spconfigexportjob, *http.Response, error) {
+//  @return SpConfigExportJob
+func (a *SPConfigAPIService) ExportSpConfigV1Execute(r ApiExportSpConfigV1Request) (*SpConfigExportJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Spconfigexportjob
+		localVarReturnValue  *SpConfigExportJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.ExportSpConfigV1")
@@ -76,8 +76,8 @@ func (a *SPConfigAPIService) ExportSpConfigV1Execute(r ApiExportSpConfigV1Reques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.exportpayload == nil {
-		return localVarReturnValue, nil, reportError("exportpayload is required and must be specified")
+	if r.exportPayload == nil {
+		return localVarReturnValue, nil, reportError("exportPayload is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -98,7 +98,7 @@ func (a *SPConfigAPIService) ExportSpConfigV1Execute(r ApiExportSpConfigV1Reques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.exportpayload
+	localVarPostBody = r.exportPayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -122,7 +122,7 @@ func (a *SPConfigAPIService) ExportSpConfigV1Execute(r ApiExportSpConfigV1Reques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -144,7 +144,7 @@ func (a *SPConfigAPIService) ExportSpConfigV1Execute(r ApiExportSpConfigV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -155,7 +155,7 @@ func (a *SPConfigAPIService) ExportSpConfigV1Execute(r ApiExportSpConfigV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -177,7 +177,7 @@ func (a *SPConfigAPIService) ExportSpConfigV1Execute(r ApiExportSpConfigV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -207,7 +207,7 @@ type ApiGetSpConfigExportStatusV1Request struct {
 	id string
 }
 
-func (r ApiGetSpConfigExportStatusV1Request) Execute() (*Spconfigexportjobstatus, *http.Response, error) {
+func (r ApiGetSpConfigExportStatusV1Request) Execute() (*SpConfigExportJobStatus, *http.Response, error) {
 	return r.ApiService.GetSpConfigExportStatusV1Execute(r)
 }
 
@@ -231,13 +231,13 @@ func (a *SPConfigAPIService) GetSpConfigExportStatusV1(ctx context.Context, id s
 }
 
 // Execute executes the request
-//  @return Spconfigexportjobstatus
-func (a *SPConfigAPIService) GetSpConfigExportStatusV1Execute(r ApiGetSpConfigExportStatusV1Request) (*Spconfigexportjobstatus, *http.Response, error) {
+//  @return SpConfigExportJobStatus
+func (a *SPConfigAPIService) GetSpConfigExportStatusV1Execute(r ApiGetSpConfigExportStatusV1Request) (*SpConfigExportJobStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Spconfigexportjobstatus
+		localVarReturnValue  *SpConfigExportJobStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.GetSpConfigExportStatusV1")
@@ -292,7 +292,7 @@ func (a *SPConfigAPIService) GetSpConfigExportStatusV1Execute(r ApiGetSpConfigEx
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -314,7 +314,7 @@ func (a *SPConfigAPIService) GetSpConfigExportStatusV1Execute(r ApiGetSpConfigEx
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -325,7 +325,7 @@ func (a *SPConfigAPIService) GetSpConfigExportStatusV1Execute(r ApiGetSpConfigEx
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -347,7 +347,7 @@ func (a *SPConfigAPIService) GetSpConfigExportStatusV1Execute(r ApiGetSpConfigEx
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -377,7 +377,7 @@ type ApiGetSpConfigExportV1Request struct {
 	id string
 }
 
-func (r ApiGetSpConfigExportV1Request) Execute() (*Spconfigexportresults, *http.Response, error) {
+func (r ApiGetSpConfigExportV1Request) Execute() (*SpConfigExportResults, *http.Response, error) {
 	return r.ApiService.GetSpConfigExportV1Execute(r)
 }
 
@@ -401,13 +401,13 @@ func (a *SPConfigAPIService) GetSpConfigExportV1(ctx context.Context, id string)
 }
 
 // Execute executes the request
-//  @return Spconfigexportresults
-func (a *SPConfigAPIService) GetSpConfigExportV1Execute(r ApiGetSpConfigExportV1Request) (*Spconfigexportresults, *http.Response, error) {
+//  @return SpConfigExportResults
+func (a *SPConfigAPIService) GetSpConfigExportV1Execute(r ApiGetSpConfigExportV1Request) (*SpConfigExportResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Spconfigexportresults
+		localVarReturnValue  *SpConfigExportResults
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.GetSpConfigExportV1")
@@ -462,7 +462,7 @@ func (a *SPConfigAPIService) GetSpConfigExportV1Execute(r ApiGetSpConfigExportV1
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -484,7 +484,7 @@ func (a *SPConfigAPIService) GetSpConfigExportV1Execute(r ApiGetSpConfigExportV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -495,7 +495,7 @@ func (a *SPConfigAPIService) GetSpConfigExportV1Execute(r ApiGetSpConfigExportV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -517,7 +517,7 @@ func (a *SPConfigAPIService) GetSpConfigExportV1Execute(r ApiGetSpConfigExportV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -547,7 +547,7 @@ type ApiGetSpConfigImportStatusV1Request struct {
 	id string
 }
 
-func (r ApiGetSpConfigImportStatusV1Request) Execute() (*Spconfigimportjobstatus, *http.Response, error) {
+func (r ApiGetSpConfigImportStatusV1Request) Execute() (*SpConfigImportJobStatus, *http.Response, error) {
 	return r.ApiService.GetSpConfigImportStatusV1Execute(r)
 }
 
@@ -573,13 +573,13 @@ func (a *SPConfigAPIService) GetSpConfigImportStatusV1(ctx context.Context, id s
 }
 
 // Execute executes the request
-//  @return Spconfigimportjobstatus
-func (a *SPConfigAPIService) GetSpConfigImportStatusV1Execute(r ApiGetSpConfigImportStatusV1Request) (*Spconfigimportjobstatus, *http.Response, error) {
+//  @return SpConfigImportJobStatus
+func (a *SPConfigAPIService) GetSpConfigImportStatusV1Execute(r ApiGetSpConfigImportStatusV1Request) (*SpConfigImportJobStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Spconfigimportjobstatus
+		localVarReturnValue  *SpConfigImportJobStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.GetSpConfigImportStatusV1")
@@ -634,7 +634,7 @@ func (a *SPConfigAPIService) GetSpConfigImportStatusV1Execute(r ApiGetSpConfigIm
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -656,7 +656,7 @@ func (a *SPConfigAPIService) GetSpConfigImportStatusV1Execute(r ApiGetSpConfigIm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -667,7 +667,7 @@ func (a *SPConfigAPIService) GetSpConfigImportStatusV1Execute(r ApiGetSpConfigIm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -689,7 +689,7 @@ func (a *SPConfigAPIService) GetSpConfigImportStatusV1Execute(r ApiGetSpConfigIm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -719,7 +719,7 @@ type ApiGetSpConfigImportV1Request struct {
 	id string
 }
 
-func (r ApiGetSpConfigImportV1Request) Execute() (*Spconfigimportresults, *http.Response, error) {
+func (r ApiGetSpConfigImportV1Request) Execute() (*SpConfigImportResults, *http.Response, error) {
 	return r.ApiService.GetSpConfigImportV1Execute(r)
 }
 
@@ -743,13 +743,13 @@ func (a *SPConfigAPIService) GetSpConfigImportV1(ctx context.Context, id string)
 }
 
 // Execute executes the request
-//  @return Spconfigimportresults
-func (a *SPConfigAPIService) GetSpConfigImportV1Execute(r ApiGetSpConfigImportV1Request) (*Spconfigimportresults, *http.Response, error) {
+//  @return SpConfigImportResults
+func (a *SPConfigAPIService) GetSpConfigImportV1Execute(r ApiGetSpConfigImportV1Request) (*SpConfigImportResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Spconfigimportresults
+		localVarReturnValue  *SpConfigImportResults
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.GetSpConfigImportV1")
@@ -804,7 +804,7 @@ func (a *SPConfigAPIService) GetSpConfigImportV1Execute(r ApiGetSpConfigImportV1
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -826,7 +826,7 @@ func (a *SPConfigAPIService) GetSpConfigImportV1Execute(r ApiGetSpConfigImportV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -837,7 +837,7 @@ func (a *SPConfigAPIService) GetSpConfigImportV1Execute(r ApiGetSpConfigImportV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -859,7 +859,7 @@ func (a *SPConfigAPIService) GetSpConfigImportV1Execute(r ApiGetSpConfigImportV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -888,7 +888,7 @@ type ApiImportSpConfigV1Request struct {
 	ApiService *SPConfigAPIService
 	data *os.File
 	preview *bool
-	options *Importoptions
+	options *ImportOptions
 }
 
 // JSON file containing the objects to be imported.
@@ -903,12 +903,12 @@ func (r ApiImportSpConfigV1Request) Preview(preview bool) ApiImportSpConfigV1Req
 	return r
 }
 
-func (r ApiImportSpConfigV1Request) Options(options Importoptions) ApiImportSpConfigV1Request {
+func (r ApiImportSpConfigV1Request) Options(options ImportOptions) ApiImportSpConfigV1Request {
 	r.options = &options
 	return r
 }
 
-func (r ApiImportSpConfigV1Request) Execute() (*Spconfigjob, *http.Response, error) {
+func (r ApiImportSpConfigV1Request) Execute() (*SpConfigJob, *http.Response, error) {
 	return r.ApiService.ImportSpConfigV1Execute(r)
 }
 
@@ -938,13 +938,13 @@ func (a *SPConfigAPIService) ImportSpConfigV1(ctx context.Context) ApiImportSpCo
 }
 
 // Execute executes the request
-//  @return Spconfigjob
-func (a *SPConfigAPIService) ImportSpConfigV1Execute(r ApiImportSpConfigV1Request) (*Spconfigjob, *http.Response, error) {
+//  @return SpConfigJob
+func (a *SPConfigAPIService) ImportSpConfigV1Execute(r ApiImportSpConfigV1Request) (*SpConfigJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Spconfigjob
+		localVarReturnValue  *SpConfigJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.ImportSpConfigV1")
@@ -1029,7 +1029,7 @@ func (a *SPConfigAPIService) ImportSpConfigV1Execute(r ApiImportSpConfigV1Reques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1051,7 +1051,7 @@ func (a *SPConfigAPIService) ImportSpConfigV1Execute(r ApiImportSpConfigV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1062,7 +1062,7 @@ func (a *SPConfigAPIService) ImportSpConfigV1Execute(r ApiImportSpConfigV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1084,7 +1084,7 @@ func (a *SPConfigAPIService) ImportSpConfigV1Execute(r ApiImportSpConfigV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1113,7 +1113,7 @@ type ApiListSpConfigObjectsV1Request struct {
 	ApiService *SPConfigAPIService
 }
 
-func (r ApiListSpConfigObjectsV1Request) Execute() ([]Spconfigobject, *http.Response, error) {
+func (r ApiListSpConfigObjectsV1Request) Execute() ([]SpConfigObject, *http.Response, error) {
 	return r.ApiService.ListSpConfigObjectsV1Execute(r)
 }
 
@@ -1133,13 +1133,13 @@ func (a *SPConfigAPIService) ListSpConfigObjectsV1(ctx context.Context) ApiListS
 }
 
 // Execute executes the request
-//  @return []Spconfigobject
-func (a *SPConfigAPIService) ListSpConfigObjectsV1Execute(r ApiListSpConfigObjectsV1Request) ([]Spconfigobject, *http.Response, error) {
+//  @return []SpConfigObject
+func (a *SPConfigAPIService) ListSpConfigObjectsV1Execute(r ApiListSpConfigObjectsV1Request) ([]SpConfigObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Spconfigobject
+		localVarReturnValue  []SpConfigObject
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.ListSpConfigObjectsV1")
@@ -1193,7 +1193,7 @@ func (a *SPConfigAPIService) ListSpConfigObjectsV1Execute(r ApiListSpConfigObjec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1215,7 +1215,7 @@ func (a *SPConfigAPIService) ListSpConfigObjectsV1Execute(r ApiListSpConfigObjec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1226,7 +1226,7 @@ func (a *SPConfigAPIService) ListSpConfigObjectsV1Execute(r ApiListSpConfigObjec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1248,7 +1248,7 @@ func (a *SPConfigAPIService) ListSpConfigObjectsV1Execute(r ApiListSpConfigObjec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

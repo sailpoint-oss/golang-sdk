@@ -97,20 +97,20 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](docs/ArrayInner.md)
- - [Connectordetail](docs/Connectordetail.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ConnectorDetail](docs/ConnectorDetail.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetConnectorV1401Response](docs/GetConnectorV1401Response.md)
  - [GetConnectorV1429Response](docs/GetConnectorV1429Response.md)
- - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [JsonPatchOperation](docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [PutConnectorCorrelationConfigV1Request](docs/PutConnectorCorrelationConfigV1Request.md)
  - [PutConnectorSourceConfigV1Request](docs/PutConnectorSourceConfigV1Request.md)
  - [PutConnectorSourceTemplateV1Request](docs/PutConnectorSourceTemplateV1Request.md)
- - [Updatedetail](docs/Updatedetail.md)
- - [V3connectordto](docs/V3connectordto.md)
- - [V3createconnectordto](docs/V3createconnectordto.md)
+ - [UpdateDetail](docs/UpdateDetail.md)
+ - [V3ConnectorDto](docs/V3ConnectorDto.md)
+ - [V3CreateConnectorDto](docs/V3CreateConnectorDto.md)
 
 
 ## Documentation For Authorization

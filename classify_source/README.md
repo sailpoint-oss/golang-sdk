@@ -86,14 +86,14 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetClassifyMachineAccountFromSourceStatusV1401Response](docs/GetClassifyMachineAccountFromSourceStatusV1401Response.md)
  - [GetClassifyMachineAccountFromSourceStatusV1429Response](docs/GetClassifyMachineAccountFromSourceStatusV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [SendClassifyMachineAccountFromSourceV1200Response](docs/SendClassifyMachineAccountFromSourceV1200Response.md)
- - [Sourceclassificationstatus](docs/Sourceclassificationstatus.md)
- - [SourceclassificationstatusAllOfCounts](docs/SourceclassificationstatusAllOfCounts.md)
+ - [SourceClassificationStatus](docs/SourceClassificationStatus.md)
+ - [SourceClassificationStatusAllOfCounts](docs/SourceClassificationStatusAllOfCounts.md)
 
 
 ## Documentation For Authorization

@@ -27,7 +27,7 @@ type ApiCreateMachineIdentityV1Request struct {
 	ctx context.Context
 	ApiService *MachineIdentitiesAPIService
 	xSailPointExperimental *string
-	machineidentityrequest *Machineidentityrequest
+	machineIdentityRequest *MachineIdentityRequest
 }
 
 // Use this header to enable this experimental API.
@@ -36,12 +36,12 @@ func (r ApiCreateMachineIdentityV1Request) XSailPointExperimental(xSailPointExpe
 	return r
 }
 
-func (r ApiCreateMachineIdentityV1Request) Machineidentityrequest(machineidentityrequest Machineidentityrequest) ApiCreateMachineIdentityV1Request {
-	r.machineidentityrequest = &machineidentityrequest
+func (r ApiCreateMachineIdentityV1Request) MachineIdentityRequest(machineIdentityRequest MachineIdentityRequest) ApiCreateMachineIdentityV1Request {
+	r.machineIdentityRequest = &machineIdentityRequest
 	return r
 }
 
-func (r ApiCreateMachineIdentityV1Request) Execute() (*Machineidentityresponse, *http.Response, error) {
+func (r ApiCreateMachineIdentityV1Request) Execute() (*MachineIdentityResponse, *http.Response, error) {
 	return r.ApiService.CreateMachineIdentityV1Execute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Machineidentityresponse
-func (a *MachineIdentitiesAPIService) CreateMachineIdentityV1Execute(r ApiCreateMachineIdentityV1Request) (*Machineidentityresponse, *http.Response, error) {
+//  @return MachineIdentityResponse
+func (a *MachineIdentitiesAPIService) CreateMachineIdentityV1Execute(r ApiCreateMachineIdentityV1Request) (*MachineIdentityResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Machineidentityresponse
+		localVarReturnValue  *MachineIdentityResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.CreateMachineIdentityV1")
@@ -96,8 +96,8 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV1Execute(r ApiCreate
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.machineidentityrequest == nil {
-		return localVarReturnValue, nil, reportError("machineidentityrequest is required and must be specified")
+	if r.machineIdentityRequest == nil {
+		return localVarReturnValue, nil, reportError("machineIdentityRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -119,7 +119,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV1Execute(r ApiCreate
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.machineidentityrequest
+	localVarPostBody = r.machineIdentityRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -143,7 +143,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV1Execute(r ApiCreate
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -165,7 +165,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV1Execute(r ApiCreate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -176,7 +176,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV1Execute(r ApiCreate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -198,7 +198,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV1Execute(r ApiCreate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -318,7 +318,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV2Execute(r ApiCreate
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -340,7 +340,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV2Execute(r ApiCreate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -351,7 +351,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV2Execute(r ApiCreate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -373,7 +373,7 @@ func (a *MachineIdentitiesAPIService) CreateMachineIdentityV2Execute(r ApiCreate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -501,7 +501,7 @@ func (a *MachineIdentitiesAPIService) DeleteMachineIdentityV1Execute(r ApiDelete
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -523,7 +523,7 @@ func (a *MachineIdentitiesAPIService) DeleteMachineIdentityV1Execute(r ApiDelete
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -534,7 +534,7 @@ func (a *MachineIdentitiesAPIService) DeleteMachineIdentityV1Execute(r ApiDelete
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -556,7 +556,7 @@ func (a *MachineIdentitiesAPIService) DeleteMachineIdentityV1Execute(r ApiDelete
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -658,7 +658,7 @@ func (a *MachineIdentitiesAPIService) DeleteMachineIdentityV2Execute(r ApiDelete
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -680,7 +680,7 @@ func (a *MachineIdentitiesAPIService) DeleteMachineIdentityV2Execute(r ApiDelete
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -691,7 +691,7 @@ func (a *MachineIdentitiesAPIService) DeleteMachineIdentityV2Execute(r ApiDelete
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -713,7 +713,7 @@ func (a *MachineIdentitiesAPIService) DeleteMachineIdentityV2Execute(r ApiDelete
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -823,7 +823,7 @@ func (a *MachineIdentitiesAPIService) DeleteOwnershipCorrelationConfigV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -845,7 +845,7 @@ func (a *MachineIdentitiesAPIService) DeleteOwnershipCorrelationConfigV1Execute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -856,7 +856,7 @@ func (a *MachineIdentitiesAPIService) DeleteOwnershipCorrelationConfigV1Execute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -878,7 +878,7 @@ func (a *MachineIdentitiesAPIService) DeleteOwnershipCorrelationConfigV1Execute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -906,7 +906,7 @@ func (r ApiGetMachineIdentityV1Request) XSailPointExperimental(xSailPointExperim
 	return r
 }
 
-func (r ApiGetMachineIdentityV1Request) Execute() (*Machineidentityresponse, *http.Response, error) {
+func (r ApiGetMachineIdentityV1Request) Execute() (*MachineIdentityResponse, *http.Response, error) {
 	return r.ApiService.GetMachineIdentityV1Execute(r)
 }
 
@@ -928,13 +928,13 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentityV1(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return Machineidentityresponse
-func (a *MachineIdentitiesAPIService) GetMachineIdentityV1Execute(r ApiGetMachineIdentityV1Request) (*Machineidentityresponse, *http.Response, error) {
+//  @return MachineIdentityResponse
+func (a *MachineIdentitiesAPIService) GetMachineIdentityV1Execute(r ApiGetMachineIdentityV1Request) (*MachineIdentityResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Machineidentityresponse
+		localVarReturnValue  *MachineIdentityResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.GetMachineIdentityV1")
@@ -999,7 +999,7 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentityV1Execute(r ApiGetMachin
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1021,7 +1021,7 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentityV1Execute(r ApiGetMachin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1032,7 +1032,7 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentityV1Execute(r ApiGetMachin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1054,7 +1054,7 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentityV1Execute(r ApiGetMachin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1167,7 +1167,7 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentityV2Execute(r ApiGetMachin
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1189,7 +1189,7 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentityV2Execute(r ApiGetMachin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1200,7 +1200,7 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentityV2Execute(r ApiGetMachin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1222,7 +1222,7 @@ func (a *MachineIdentitiesAPIService) GetMachineIdentityV2Execute(r ApiGetMachin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1254,7 +1254,7 @@ type ApiGetOwnershipCorrelationConfigV1Request struct {
 	configId string
 }
 
-func (r ApiGetOwnershipCorrelationConfigV1Request) Execute() (*Correlationconfig, *http.Response, error) {
+func (r ApiGetOwnershipCorrelationConfigV1Request) Execute() (*CorrelationConfig, *http.Response, error) {
 	return r.ApiService.GetOwnershipCorrelationConfigV1Execute(r)
 }
 
@@ -1280,13 +1280,13 @@ func (a *MachineIdentitiesAPIService) GetOwnershipCorrelationConfigV1(ctx contex
 }
 
 // Execute executes the request
-//  @return Correlationconfig
-func (a *MachineIdentitiesAPIService) GetOwnershipCorrelationConfigV1Execute(r ApiGetOwnershipCorrelationConfigV1Request) (*Correlationconfig, *http.Response, error) {
+//  @return CorrelationConfig
+func (a *MachineIdentitiesAPIService) GetOwnershipCorrelationConfigV1Execute(r ApiGetOwnershipCorrelationConfigV1Request) (*CorrelationConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Correlationconfig
+		localVarReturnValue  *CorrelationConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.GetOwnershipCorrelationConfigV1")
@@ -1343,7 +1343,7 @@ func (a *MachineIdentitiesAPIService) GetOwnershipCorrelationConfigV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1365,7 +1365,7 @@ func (a *MachineIdentitiesAPIService) GetOwnershipCorrelationConfigV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1376,7 +1376,7 @@ func (a *MachineIdentitiesAPIService) GetOwnershipCorrelationConfigV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1398,7 +1398,7 @@ func (a *MachineIdentitiesAPIService) GetOwnershipCorrelationConfigV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1469,7 +1469,7 @@ func (r ApiListMachineIdentitiesV1Request) Offset(offset int32) ApiListMachineId
 	return r
 }
 
-func (r ApiListMachineIdentitiesV1Request) Execute() ([]Machineidentityresponse, *http.Response, error) {
+func (r ApiListMachineIdentitiesV1Request) Execute() ([]MachineIdentityResponse, *http.Response, error) {
 	return r.ApiService.ListMachineIdentitiesV1Execute(r)
 }
 
@@ -1489,13 +1489,13 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Machineidentityresponse
-func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV1Execute(r ApiListMachineIdentitiesV1Request) ([]Machineidentityresponse, *http.Response, error) {
+//  @return []MachineIdentityResponse
+func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV1Execute(r ApiListMachineIdentitiesV1Request) ([]MachineIdentityResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Machineidentityresponse
+		localVarReturnValue  []MachineIdentityResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.ListMachineIdentitiesV1")
@@ -1583,7 +1583,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV1Execute(r ApiListMa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1605,7 +1605,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV1Execute(r ApiListMa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1616,7 +1616,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV1Execute(r ApiListMa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1638,7 +1638,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV1Execute(r ApiListMa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1806,7 +1806,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV2Execute(r ApiListMa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1828,7 +1828,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV2Execute(r ApiListMa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1839,7 +1839,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV2Execute(r ApiListMa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1861,7 +1861,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentitiesV2Execute(r ApiListMa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1932,7 +1932,7 @@ func (r ApiListMachineIdentityUserEntitlementsV1Request) Offset(offset int32) Ap
 	return r
 }
 
-func (r ApiListMachineIdentityUserEntitlementsV1Request) Execute() ([]Machineidentityuserentitlementresponse, *http.Response, error) {
+func (r ApiListMachineIdentityUserEntitlementsV1Request) Execute() ([]MachineIdentityUserEntitlementResponse, *http.Response, error) {
 	return r.ApiService.ListMachineIdentityUserEntitlementsV1Execute(r)
 }
 
@@ -1952,13 +1952,13 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentityUserEntitlementsV1(ctx 
 }
 
 // Execute executes the request
-//  @return []Machineidentityuserentitlementresponse
-func (a *MachineIdentitiesAPIService) ListMachineIdentityUserEntitlementsV1Execute(r ApiListMachineIdentityUserEntitlementsV1Request) ([]Machineidentityuserentitlementresponse, *http.Response, error) {
+//  @return []MachineIdentityUserEntitlementResponse
+func (a *MachineIdentitiesAPIService) ListMachineIdentityUserEntitlementsV1Execute(r ApiListMachineIdentityUserEntitlementsV1Request) ([]MachineIdentityUserEntitlementResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Machineidentityuserentitlementresponse
+		localVarReturnValue  []MachineIdentityUserEntitlementResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.ListMachineIdentityUserEntitlementsV1")
@@ -2046,7 +2046,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentityUserEntitlementsV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2068,7 +2068,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentityUserEntitlementsV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2079,7 +2079,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentityUserEntitlementsV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2101,7 +2101,7 @@ func (a *MachineIdentitiesAPIService) ListMachineIdentityUserEntitlementsV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2160,7 +2160,7 @@ func (r ApiListOwnershipCorrelationConfigsV1Request) Offset(offset int32) ApiLis
 	return r
 }
 
-func (r ApiListOwnershipCorrelationConfigsV1Request) Execute() ([]Correlationconfig, *http.Response, error) {
+func (r ApiListOwnershipCorrelationConfigsV1Request) Execute() ([]CorrelationConfig, *http.Response, error) {
 	return r.ApiService.ListOwnershipCorrelationConfigsV1Execute(r)
 }
 
@@ -2184,13 +2184,13 @@ func (a *MachineIdentitiesAPIService) ListOwnershipCorrelationConfigsV1(ctx cont
 }
 
 // Execute executes the request
-//  @return []Correlationconfig
-func (a *MachineIdentitiesAPIService) ListOwnershipCorrelationConfigsV1Execute(r ApiListOwnershipCorrelationConfigsV1Request) ([]Correlationconfig, *http.Response, error) {
+//  @return []CorrelationConfig
+func (a *MachineIdentitiesAPIService) ListOwnershipCorrelationConfigsV1Execute(r ApiListOwnershipCorrelationConfigsV1Request) ([]CorrelationConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Correlationconfig
+		localVarReturnValue  []CorrelationConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.ListOwnershipCorrelationConfigsV1")
@@ -2267,7 +2267,7 @@ func (a *MachineIdentitiesAPIService) ListOwnershipCorrelationConfigsV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2289,7 +2289,7 @@ func (a *MachineIdentitiesAPIService) ListOwnershipCorrelationConfigsV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2311,7 +2311,7 @@ func (a *MachineIdentitiesAPIService) ListOwnershipCorrelationConfigsV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2341,16 +2341,16 @@ type ApiPatchOwnershipCorrelationConfigV1Request struct {
 	sourceId string
 	resourceId string
 	configId string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // The JSONPatch payload used to update the correlation config.
-func (r ApiPatchOwnershipCorrelationConfigV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchOwnershipCorrelationConfigV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchOwnershipCorrelationConfigV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchOwnershipCorrelationConfigV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchOwnershipCorrelationConfigV1Request) Execute() (*Correlationconfig, *http.Response, error) {
+func (r ApiPatchOwnershipCorrelationConfigV1Request) Execute() (*CorrelationConfig, *http.Response, error) {
 	return r.ApiService.PatchOwnershipCorrelationConfigV1Execute(r)
 }
 
@@ -2376,13 +2376,13 @@ func (a *MachineIdentitiesAPIService) PatchOwnershipCorrelationConfigV1(ctx cont
 }
 
 // Execute executes the request
-//  @return Correlationconfig
-func (a *MachineIdentitiesAPIService) PatchOwnershipCorrelationConfigV1Execute(r ApiPatchOwnershipCorrelationConfigV1Request) (*Correlationconfig, *http.Response, error) {
+//  @return CorrelationConfig
+func (a *MachineIdentitiesAPIService) PatchOwnershipCorrelationConfigV1Execute(r ApiPatchOwnershipCorrelationConfigV1Request) (*CorrelationConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Correlationconfig
+		localVarReturnValue  *CorrelationConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.PatchOwnershipCorrelationConfigV1")
@@ -2398,8 +2398,8 @@ func (a *MachineIdentitiesAPIService) PatchOwnershipCorrelationConfigV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2420,7 +2420,7 @@ func (a *MachineIdentitiesAPIService) PatchOwnershipCorrelationConfigV1Execute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2444,7 +2444,7 @@ func (a *MachineIdentitiesAPIService) PatchOwnershipCorrelationConfigV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2466,7 +2466,7 @@ func (a *MachineIdentitiesAPIService) PatchOwnershipCorrelationConfigV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2477,7 +2477,7 @@ func (a *MachineIdentitiesAPIService) PatchOwnershipCorrelationConfigV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2499,7 +2499,7 @@ func (a *MachineIdentitiesAPIService) PatchOwnershipCorrelationConfigV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2528,7 +2528,7 @@ type ApiStartMachineIdentityAggregationV1Request struct {
 	ApiService *MachineIdentitiesAPIService
 	sourceId string
 	xSailPointExperimental *string
-	machineidentityaggregationrequest *Machineidentityaggregationrequest
+	machineIdentityAggregationRequest *MachineIdentityAggregationRequest
 }
 
 // Use this header to enable this experimental API.
@@ -2537,12 +2537,12 @@ func (r ApiStartMachineIdentityAggregationV1Request) XSailPointExperimental(xSai
 	return r
 }
 
-func (r ApiStartMachineIdentityAggregationV1Request) Machineidentityaggregationrequest(machineidentityaggregationrequest Machineidentityaggregationrequest) ApiStartMachineIdentityAggregationV1Request {
-	r.machineidentityaggregationrequest = &machineidentityaggregationrequest
+func (r ApiStartMachineIdentityAggregationV1Request) MachineIdentityAggregationRequest(machineIdentityAggregationRequest MachineIdentityAggregationRequest) ApiStartMachineIdentityAggregationV1Request {
+	r.machineIdentityAggregationRequest = &machineIdentityAggregationRequest
 	return r
 }
 
-func (r ApiStartMachineIdentityAggregationV1Request) Execute() (*Machineidentityaggregationresponse, *http.Response, error) {
+func (r ApiStartMachineIdentityAggregationV1Request) Execute() (*MachineIdentityAggregationResponse, *http.Response, error) {
 	return r.ApiService.StartMachineIdentityAggregationV1Execute(r)
 }
 
@@ -2564,13 +2564,13 @@ func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregationV1(ctx cont
 }
 
 // Execute executes the request
-//  @return Machineidentityaggregationresponse
-func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregationV1Execute(r ApiStartMachineIdentityAggregationV1Request) (*Machineidentityaggregationresponse, *http.Response, error) {
+//  @return MachineIdentityAggregationResponse
+func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregationV1Execute(r ApiStartMachineIdentityAggregationV1Request) (*MachineIdentityAggregationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Machineidentityaggregationresponse
+		localVarReturnValue  *MachineIdentityAggregationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.StartMachineIdentityAggregationV1")
@@ -2599,8 +2599,8 @@ func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregationV1Execute(r
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.machineidentityaggregationrequest == nil {
-		return localVarReturnValue, nil, reportError("machineidentityaggregationrequest is required and must be specified")
+	if r.machineIdentityAggregationRequest == nil {
+		return localVarReturnValue, nil, reportError("machineIdentityAggregationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2622,7 +2622,7 @@ func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregationV1Execute(r
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.machineidentityaggregationrequest
+	localVarPostBody = r.machineIdentityAggregationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2646,7 +2646,7 @@ func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregationV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2668,7 +2668,7 @@ func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregationV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2679,7 +2679,7 @@ func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregationV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2701,7 +2701,7 @@ func (a *MachineIdentitiesAPIService) StartMachineIdentityAggregationV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2745,7 +2745,7 @@ func (r ApiUpdateMachineIdentityV1Request) RequestBody(requestBody []map[string]
 	return r
 }
 
-func (r ApiUpdateMachineIdentityV1Request) Execute() (*Machineidentityresponse, *http.Response, error) {
+func (r ApiUpdateMachineIdentityV1Request) Execute() (*MachineIdentityResponse, *http.Response, error) {
 	return r.ApiService.UpdateMachineIdentityV1Execute(r)
 }
 
@@ -2768,13 +2768,13 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Machineidentityresponse
-func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV1Execute(r ApiUpdateMachineIdentityV1Request) (*Machineidentityresponse, *http.Response, error) {
+//  @return MachineIdentityResponse
+func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV1Execute(r ApiUpdateMachineIdentityV1Request) (*MachineIdentityResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Machineidentityresponse
+		localVarReturnValue  *MachineIdentityResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineIdentitiesAPIService.UpdateMachineIdentityV1")
@@ -2850,7 +2850,7 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV1Execute(r ApiUpdate
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2872,7 +2872,7 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV1Execute(r ApiUpdate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2883,7 +2883,7 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV1Execute(r ApiUpdate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2905,7 +2905,7 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV1Execute(r ApiUpdate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2933,12 +2933,12 @@ type ApiUpdateMachineIdentityV2Request struct {
 	ctx context.Context
 	ApiService *MachineIdentitiesAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-func (r ApiUpdateMachineIdentityV2Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateMachineIdentityV2Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateMachineIdentityV2Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateMachineIdentityV2Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -2987,8 +2987,8 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV2Execute(r ApiUpdate
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -3009,7 +3009,7 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV2Execute(r ApiUpdate
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3033,7 +3033,7 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV2Execute(r ApiUpdate
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3055,7 +3055,7 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV2Execute(r ApiUpdate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3066,7 +3066,7 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV2Execute(r ApiUpdate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3088,7 +3088,7 @@ func (a *MachineIdentitiesAPIService) UpdateMachineIdentityV2Execute(r ApiUpdate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

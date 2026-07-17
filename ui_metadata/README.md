@@ -85,13 +85,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetTenantUiMetadataV1401Response](docs/GetTenantUiMetadataV1401Response.md)
  - [GetTenantUiMetadataV1429Response](docs/GetTenantUiMetadataV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Tenantuimetadataitemresponse](docs/Tenantuimetadataitemresponse.md)
- - [Tenantuimetadataitemupdaterequest](docs/Tenantuimetadataitemupdaterequest.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [TenantUiMetadataItemResponse](docs/TenantUiMetadataItemResponse.md)
+ - [TenantUiMetadataItemUpdateRequest](docs/TenantUiMetadataItemUpdateRequest.md)
 
 
 ## Documentation For Authorization

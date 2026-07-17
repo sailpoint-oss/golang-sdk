@@ -124,7 +124,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listformdefinitionsbytenantresponse'
+                $ref: '#/components/schemas/ListFormDefinitionsByTenantResponse'
           description: Returns a list of form definitions by tenant
         "400":
           content:
@@ -148,7 +148,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -199,7 +199,7 @@ paths:
                       required: false
                     validations: []
             schema:
-              $ref: '#/components/schemas/createformdefinitionrequest'
+              $ref: '#/components/schemas/CreateFormDefinitionRequest'
         description: Body is the request payload to create form definition request
         required: false
       responses:
@@ -207,7 +207,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/formdefinitionresponse'
+                $ref: '#/components/schemas/FormDefinitionResponse'
           description: Returns a new form definition
         "400":
           content:
@@ -231,7 +231,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -271,7 +271,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nil'
+                $ref: '#/components/schemas/Nil'
           description: Returns an empty body
         "400":
           content:
@@ -301,7 +301,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -337,7 +337,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/formdefinitionresponse'
+                $ref: '#/components/schemas/FormDefinitionResponse'
           description: Returns a form definition
         "400":
           content:
@@ -367,7 +367,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -407,7 +407,7 @@ paths:
               path: /description
               value: test-description
             schema:
-              $ref: '#/components/schemas/patch'
+              $ref: '#/components/schemas/Patch'
         description: "Body is the request payload to patch a form definition, check:\
           \ https://jsonpatch.com"
         required: false
@@ -416,7 +416,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/formdefinitionresponse'
+                $ref: '#/components/schemas/FormDefinitionResponse'
           description: Returns the form definition updated
         "400":
           content:
@@ -446,7 +446,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -534,7 +534,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/formelementpreviewrequest'
+              $ref: '#/components/schemas/FormElementPreviewRequest'
         description: Body is the request payload to create a form definition dynamic
           schema
         required: false
@@ -543,7 +543,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/previewdatasourceresponse'
+                $ref: '#/components/schemas/PreviewDataSourceResponse'
           description: Returns a preview of a form definition data source
         "400":
           content:
@@ -573,7 +573,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -699,7 +699,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -731,7 +731,7 @@ paths:
               type: action
               versionNumber: 1
             schema:
-              $ref: '#/components/schemas/formdefinitiondynamicschemarequest'
+              $ref: '#/components/schemas/FormDefinitionDynamicSchemaRequest'
         description: Body is the request payload to create a form definition dynamic
           schema
         required: false
@@ -740,7 +740,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/formdefinitiondynamicschemaresponse'
+                $ref: '#/components/schemas/FormDefinitionDynamicSchemaResponse'
           description: Returns a form elements dynamic schema
         "400":
           content:
@@ -770,7 +770,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -881,7 +881,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -933,7 +933,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/formdefinitionfileuploadresponse'
+                $ref: '#/components/schemas/FormDefinitionFileUploadResponse'
           description: Returns a new form definition file
         "400":
           content:
@@ -975,7 +975,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -1115,7 +1115,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -1217,7 +1217,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/listforminstancesbytenantresponse'
+                  $ref: '#/components/schemas/ListFormInstancesByTenantResponse'
                 type: array
           description: Returns a list of form instances by tenant
         "400":
@@ -1242,7 +1242,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests. The list form instances operation is limited
             to 50 requests per 10 seconds per tenant; reduce call frequency or wait
             before retrying.
@@ -1276,7 +1276,7 @@ paths:
                 type: WORKFLOW_EXECUTION
                 id: a-workflow-execution-id
             schema:
-              $ref: '#/components/schemas/createforminstancerequest'
+              $ref: '#/components/schemas/CreateFormInstanceRequest'
         description: Body is the request payload to create a form instance
         required: false
       responses:
@@ -1284,7 +1284,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/forminstanceresponse'
+                $ref: '#/components/schemas/FormInstanceResponse'
           description: Returns a new form instance
         "400":
           content:
@@ -1308,7 +1308,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -1350,7 +1350,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/forminstanceresponse'
+                $ref: '#/components/schemas/FormInstanceResponse'
           description: Returns a form instance by its key
         "400":
           content:
@@ -1380,7 +1380,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -1428,7 +1428,7 @@ paths:
                 a-key-2: true
                 a-key-3: 1
             schema:
-              $ref: '#/components/schemas/patch'
+              $ref: '#/components/schemas/Patch'
         description: "Body is the request payload to patch a form instance, check:\
           \ https://jsonpatch.com"
         required: false
@@ -1437,7 +1437,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/forminstanceresponse'
+                $ref: '#/components/schemas/FormInstanceResponse'
           description: Returns the form instance updated
         "400":
           content:
@@ -1473,7 +1473,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -1578,7 +1578,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listformelementdatabyelementidresponse'
+                $ref: '#/components/schemas/ListFormElementDataByElementIDResponse'
           description: Retrieves dynamic data to aid in correctly completing a valid
             form by form element ID from data source configuration
         "400":
@@ -1609,7 +1609,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -1741,7 +1741,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -1789,7 +1789,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listpredefinedselectoptionsresponse'
+                $ref: '#/components/schemas/ListPredefinedSelectOptionsResponse'
           description: Returns a list of available predefined select options
         "400":
           content:
@@ -1813,7 +1813,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/Error'
           description: Too many requests
         "500":
           content:
@@ -1830,7 +1830,7 @@ paths:
       - Custom Forms
 components:
   schemas:
-    formowner:
+    FormOwner:
       example:
         name: Grant Smith
         id: 2c9180867624cbd7017642d8c8c81f67
@@ -1857,7 +1857,7 @@ components:
           type: string
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formusedby:
+    FormUsedBy:
       example:
         name: Access Request Form
         id: 61940a92-5484-42bc-bc10-b9982b218cdf
@@ -1887,7 +1887,7 @@ components:
           type: string
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formdefinitioninput:
+    FormDefinitionInput:
       example:
         description: "A single dynamic scalar value (i.e. number, string, date, etc.)\
           \ that can be passed into the form for use in conditional logic"
@@ -1924,7 +1924,7 @@ components:
           x-go-name: Description
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formelementvalidationsset:
+    FormElementValidationsSet:
       description: Set of FormElementValidation items.
       example:
         validationType: REQUIRED
@@ -1949,7 +1949,7 @@ components:
           type: string
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formelement:
+    FormElement:
       example:
         id: 00000000-0000-0000-0000-000000000000
         validations:
@@ -2012,12 +2012,12 @@ components:
           x-go-name: Key
         validations:
           items:
-            $ref: '#/components/schemas/formelementvalidationsset'
+            $ref: '#/components/schemas/FormElementValidationsSet'
           nullable: true
           type: array
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    conditionrule:
+    ConditionRule:
       example:
         sourceType: ELEMENT
         valueType: STRING
@@ -2123,7 +2123,7 @@ components:
           x-go-name: Value
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    conditioneffect:
+    ConditionEffect:
       description: Effect produced by a condition.
       example:
         config:
@@ -2167,10 +2167,10 @@ components:
             SET_DEFAULT_VALUE ConditionEffectTypeSetDefaultValue  This value is ignored on purpose.
           x-go-name: EffectType
         config:
-          $ref: '#/components/schemas/conditioneffect_config'
+          $ref: '#/components/schemas/ConditionEffect_config'
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formcondition:
+    FormCondition:
       description: Represent a form conditional.
       example:
         ruleOperator: AND
@@ -2212,18 +2212,18 @@ components:
         rules:
           description: List of rules.
           items:
-            $ref: '#/components/schemas/conditionrule'
+            $ref: '#/components/schemas/ConditionRule'
           type: array
           x-go-name: Rules
         effects:
           description: List of effects.
           items:
-            $ref: '#/components/schemas/conditioneffect'
+            $ref: '#/components/schemas/ConditionEffect'
           type: array
           x-go-name: Effects
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formdefinitionresponse:
+    FormDefinitionResponse:
       example:
         owner:
           name: Grant Smith
@@ -2329,32 +2329,32 @@ components:
           type: string
           x-go-name: Description
         owner:
-          $ref: '#/components/schemas/formowner'
+          $ref: '#/components/schemas/FormOwner'
         usedBy:
           description: "List of objects using the form definition. Whenever a system\
             \ uses a form, the API reaches out to the form service to record that\
             \ the system is currently using it."
           items:
-            $ref: '#/components/schemas/formusedby'
+            $ref: '#/components/schemas/FormUsedBy'
           type: array
           x-go-name: UsedBy
         formInput:
           description: List of form inputs required to create a form-instance object.
           items:
-            $ref: '#/components/schemas/formdefinitioninput'
+            $ref: '#/components/schemas/FormDefinitionInput'
           type: array
           x-go-name: FormInput
         formElements:
           description: List of nested form elements.
           items:
-            $ref: '#/components/schemas/formelement'
+            $ref: '#/components/schemas/FormElement'
           type: array
           x-go-name: FormElements
         formConditions:
           description: Conditional logic that can dynamically modify the form as the
             recipient is interacting with it.
           items:
-            $ref: '#/components/schemas/formcondition'
+            $ref: '#/components/schemas/FormCondition'
           type: array
           x-go-name: FormConditions
         created:
@@ -2371,7 +2371,7 @@ components:
           x-go-name: Modified
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    listformdefinitionsbytenantresponse:
+    ListFormDefinitionsByTenantResponse:
       example:
         count: 1
         results:
@@ -2558,10 +2558,10 @@ components:
         results:
           description: List of FormDefinitionResponse items.
           items:
-            $ref: '#/components/schemas/formdefinitionresponse'
+            $ref: '#/components/schemas/FormDefinitionResponse'
           type: array
       type: object
-    errormessage:
+    ErrorMessage:
       example:
         localeOrigin: DEFAULT
         text: This is an error
@@ -2585,7 +2585,7 @@ components:
       title: ErrorMessage is the standard API error response message type.
       type: object
       x-go-package: github.com/sailpoint/atlas-go/atlas/web
-    error:
+    Error:
       example:
         messages:
         - localeOrigin: DEFAULT
@@ -2604,7 +2604,7 @@ components:
           x-go-name: DetailCode
         messages:
           items:
-            $ref: '#/components/schemas/errormessage'
+            $ref: '#/components/schemas/ErrorMessage'
           type: array
           x-go-name: Messages
         trackingId:
@@ -2615,7 +2615,92 @@ components:
       title: Error is the standard API error response type.
       type: object
       x-go-package: github.com/sailpoint/atlas-go/atlas/web
-    createformdefinitionrequest:
+    CreateFormDefinitionRequest:
+      example:
+        owner:
+          name: Grant Smith
+          id: 2c9180867624cbd7017642d8c8c81f67
+          type: IDENTITY
+        formConditions:
+        - ruleOperator: AND
+          effects:
+          - config:
+              defaultValueLabel: Access to Remove
+              element: "8110662963316867"
+            effectType: HIDE
+          - config:
+              defaultValueLabel: Access to Remove
+              element: "8110662963316867"
+            effectType: HIDE
+          rules:
+          - sourceType: ELEMENT
+            valueType: STRING
+            source: department
+            value: Engineering
+            operator: EQ
+          - sourceType: ELEMENT
+            valueType: STRING
+            source: department
+            value: Engineering
+            operator: EQ
+        - ruleOperator: AND
+          effects:
+          - config:
+              defaultValueLabel: Access to Remove
+              element: "8110662963316867"
+            effectType: HIDE
+          - config:
+              defaultValueLabel: Access to Remove
+              element: "8110662963316867"
+            effectType: HIDE
+          rules:
+          - sourceType: ELEMENT
+            valueType: STRING
+            source: department
+            value: Engineering
+            operator: EQ
+          - sourceType: ELEMENT
+            valueType: STRING
+            source: department
+            value: Engineering
+            operator: EQ
+        formInput:
+        - description: "A single dynamic scalar value (i.e. number, string, date,\
+            \ etc.) that can be passed into the form for use in conditional logic"
+          id: 00000000-0000-0000-0000-000000000000
+          label: input1
+          type: STRING
+        - description: "A single dynamic scalar value (i.e. number, string, date,\
+            \ etc.) that can be passed into the form for use in conditional logic"
+          id: 00000000-0000-0000-0000-000000000000
+          label: input1
+          type: STRING
+        name: My form
+        description: My form description
+        usedBy:
+        - name: Access Request Form
+          id: 61940a92-5484-42bc-bc10-b9982b218cdf
+          type: WORKFLOW
+        - name: Access Request Form
+          id: 61940a92-5484-42bc-bc10-b9982b218cdf
+          type: WORKFLOW
+        formElements:
+        - id: 00000000-0000-0000-0000-000000000000
+          validations:
+          - validationType: REQUIRED
+          - validationType: REQUIRED
+          elementType: TEXT
+          config:
+            label: Department
+          key: department
+        - id: 00000000-0000-0000-0000-000000000000
+          validations:
+          - validationType: REQUIRED
+          - validationType: REQUIRED
+          elementType: TEXT
+          config:
+            label: Department
+          key: department
       properties:
         description:
           description: Description is the form definition description
@@ -2628,20 +2713,20 @@ components:
           description: FormConditions is the conditional logic that modify the form
             dynamically modify the form as the recipient is interacting out the form
           items:
-            $ref: '#/components/schemas/formcondition'
+            $ref: '#/components/schemas/FormCondition'
           type: array
           x-go-name: FormConditions
         formElements:
           description: FormElements is a list of nested form elements
           items:
-            $ref: '#/components/schemas/formelement'
+            $ref: '#/components/schemas/FormElement'
           type: array
           x-go-name: FormElements
         formInput:
           description: FormInput is a list of form inputs that are required when creating
             a form-instance object
           items:
-            $ref: '#/components/schemas/formdefinitioninput'
+            $ref: '#/components/schemas/FormDefinitionInput'
           type: array
           x-go-name: FormInput
         name:
@@ -2651,13 +2736,13 @@ components:
           type: string
           x-go-name: Name
         owner:
-          $ref: '#/components/schemas/formowner'
+          $ref: '#/components/schemas/FormOwner'
         usedBy:
           description: UsedBy is a list of objects where when any system uses a particular
             form it reaches out to the form service to record it is currently being
             used
           items:
-            $ref: '#/components/schemas/formusedby'
+            $ref: '#/components/schemas/FormUsedBy'
           type: array
           x-go-name: UsedBy
       required:
@@ -2665,29 +2750,35 @@ components:
       - owner
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    nil:
+    Nil:
       title: Nil represents the predeclared value nil.
       type: object
       x-go-package: go/types
-    operation-2:
+    Operation_2:
       additionalProperties:
         properties: {}
         type: object
       title: "Operation is a single JSON-Patch step, such as a single 'add' operation."
       type: object
       x-go-package: github.com/evanphx/json-patch
-    patch:
+    Patch:
       description: Patch is an ordered collection of Operations.
       example:
       - op: replace
         path: /description
         value: a new description
       items:
-        $ref: '#/components/schemas/operation-2'
+        $ref: '#/components/schemas/Operation_2'
       title: Patch is an ordered collection of Operations.
       type: array
       x-go-package: github.com/evanphx/json-patch
-    formelementdynamicdatasourceconfig:
+    FormElementDynamicDataSourceConfig:
+      example:
+        indices:
+        - identities
+        query: '*'
+        aggregationBucketField: attributes.cloudStatus.exact
+        objectType: IDENTITY
       properties:
         aggregationBucketField:
           description: AggregationBucketField is the aggregation bucket field name
@@ -2748,10 +2839,18 @@ components:
           x-go-name: Query
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formelementdynamicdatasource:
+    FormElementDynamicDataSource:
+      example:
+        config:
+          indices:
+          - identities
+          query: '*'
+          aggregationBucketField: attributes.cloudStatus.exact
+          objectType: IDENTITY
+        dataSourceType: STATIC
       properties:
         config:
-          $ref: '#/components/schemas/formelementdynamicdatasourceconfig'
+          $ref: '#/components/schemas/FormElementDynamicDataSourceConfig'
         dataSourceType:
           description: |-
             DataSourceType is a FormElementDataSourceType value
@@ -2774,13 +2873,22 @@ components:
           x-go-name: DataSourceType
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formelementpreviewrequest:
+    FormElementPreviewRequest:
+      example:
+        dataSource:
+          config:
+            indices:
+            - identities
+            query: '*'
+            aggregationBucketField: attributes.cloudStatus.exact
+            objectType: IDENTITY
+          dataSourceType: STATIC
       properties:
         dataSource:
-          $ref: '#/components/schemas/formelementdynamicdatasource'
+          $ref: '#/components/schemas/FormElementDynamicDataSource'
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formelementdatasourceconfigoptions:
+    FormElementDataSourceConfigOptions:
       properties:
         label:
           description: Label is the main label to display to the user when selecting
@@ -2802,7 +2910,7 @@ components:
           x-go-name: Value
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    previewdatasourceresponse:
+    PreviewDataSourceResponse:
       description: "PreviewDataSourceResponse is the response sent by `/form-definitions/{formDefinitionID}/data-source`\
         \ endpoint"
       example:
@@ -2851,12 +2959,12 @@ components:
             ,\"subLabel\":\"Brock.e76b56ae4d49@testmail.identitysoon.com\",\"value\"\
             :\"2c91808582184782018227ced28b6aef\"}]}"
           items:
-            $ref: '#/components/schemas/formelementdatasourceconfigoptions'
+            $ref: '#/components/schemas/FormElementDataSourceConfigOptions'
           type: array
           x-go-name: Results
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formdefinitionselfimportexportdto:
+    FormDefinitionSelfImportExportDto:
       description: Self block for imported/exported object.
       example:
         name: Temporary User Level Permissions - Requester
@@ -2878,10 +2986,17 @@ components:
           example: Temporary User Level Permissions - Requester
           type: string
       type: object
-    formdefinitiondynamicschemarequest:
+    FormDefinitionDynamicSchemaRequest:
+      example:
+        description: A description
+        attributes:
+          formDefinitionId: 00000000-0000-0000-0000-000000000000
+        id: 00000000-0000-0000-0000-000000000000
+        type: action
+        versionNumber: 1
       properties:
         attributes:
-          $ref: '#/components/schemas/formdefinitiondynamicschemarequest_attributes'
+          $ref: '#/components/schemas/FormDefinitionDynamicSchemaRequest_attributes'
         description:
           description: Description is the form definition dynamic schema description
             text
@@ -2907,7 +3022,7 @@ components:
           x-go-name: VersionNumber
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formdefinitiondynamicschemaresponse:
+    FormDefinitionDynamicSchemaResponse:
       example:
         outputSchema:
           outputSchema:
@@ -2955,7 +3070,7 @@ components:
           x-go-name: OutputSchema
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formdefinitionfileuploadresponse:
+    FormDefinitionFileUploadResponse:
       example:
         created: 2023-07-12T20:14:57.74486Z
         formDefinitionId: 00000000-0000-0000-0000-000000000000
@@ -2979,7 +3094,7 @@ components:
           x-go-name: FormDefinitionID
       type: object
       x-go-package: github.com/sailpoint/sp-forms/internal/rest/response
-    forminstancecreatedby:
+    FormInstanceCreatedBy:
       example:
         id: 00000000-0000-0000-0000-000000000000
         type: WORKFLOW_EXECUTION
@@ -3005,7 +3120,7 @@ components:
           x-go-name: Type
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    formerror:
+    FormError:
       example:
         messages:
         - localeOrigin: DEFAULT
@@ -3025,7 +3140,7 @@ components:
         messages:
           description: Messages is a list of web.ErrorMessage items
           items:
-            $ref: '#/components/schemas/errormessage'
+            $ref: '#/components/schemas/ErrorMessage'
           type: array
           x-go-name: Messages
         value:
@@ -3034,7 +3149,7 @@ components:
           x-go-name: Value
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    forminstancerecipient:
+    FormInstanceRecipient:
       example:
         id: 00000000-0000-0000-0000-000000000000
         type: IDENTITY
@@ -3056,7 +3171,7 @@ components:
           x-go-name: Type
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    listforminstancesbytenantresponse:
+    ListFormInstancesByTenantResponse:
       description: List of FormInstanceResponse items
       example:
         formInput:
@@ -3211,7 +3326,7 @@ components:
           type: string
           x-go-name: StandAloneFormURL
         createdBy:
-          $ref: '#/components/schemas/forminstancecreatedby'
+          $ref: '#/components/schemas/FormInstanceCreatedBy'
         formDefinitionId:
           description: FormDefinitionID is the id of the form definition that created
             this form
@@ -3230,7 +3345,7 @@ components:
           description: "FormElements is the configuration of the form, this would\
             \ be a repeat of the fields from the form-config"
           items:
-            $ref: '#/components/schemas/formelement'
+            $ref: '#/components/schemas/FormElement'
           type: array
           x-go-name: FormElements
         formData:
@@ -3248,14 +3363,14 @@ components:
             form instance had validation errors then it would be moved to the IN PROGRESS
             state where the client can retrieve these errors
           items:
-            $ref: '#/components/schemas/formerror'
+            $ref: '#/components/schemas/FormError'
           type: array
           x-go-name: FormErrors
         formConditions:
           description: FormConditions is the conditional logic that modify the form
             dynamically modify the form as the recipient is interacting out the form
           items:
-            $ref: '#/components/schemas/formcondition'
+            $ref: '#/components/schemas/FormCondition'
           type: array
           x-go-name: FormConditions
         created:
@@ -3274,15 +3389,31 @@ components:
           description: Recipients references to the recipient of a form. The recipients
             are those who are responsible for filling out a form and completing it
           items:
-            $ref: '#/components/schemas/forminstancerecipient'
+            $ref: '#/components/schemas/FormInstanceRecipient'
           type: array
           x-go-name: Recipients
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    createforminstancerequest:
+    CreateFormInstanceRequest:
+      example:
+        formInput:
+          input1: Sales
+        standAloneForm: false
+        createdBy:
+          id: 00000000-0000-0000-0000-000000000000
+          type: WORKFLOW_EXECUTION
+        recipients:
+        - id: 00000000-0000-0000-0000-000000000000
+          type: IDENTITY
+        - id: 00000000-0000-0000-0000-000000000000
+          type: IDENTITY
+        expire: 2023-08-12T20:14:57.74486Z
+        formDefinitionId: 00000000-0000-0000-0000-000000000000
+        state: ASSIGNED
+        ttl: 1571827560
       properties:
         createdBy:
-          $ref: '#/components/schemas/forminstancecreatedby'
+          $ref: '#/components/schemas/FormInstanceCreatedBy'
         expire:
           description: Expire is required
           example: 2023-08-12T20:14:57.74486Z
@@ -3304,7 +3435,7 @@ components:
         recipients:
           description: Recipients is required
           items:
-            $ref: '#/components/schemas/forminstancerecipient'
+            $ref: '#/components/schemas/FormInstanceRecipient'
           type: array
           x-go-name: Recipients
         standAloneForm:
@@ -3353,7 +3484,7 @@ components:
       - recipients
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    forminstanceresponse:
+    FormInstanceResponse:
       example:
         formInput:
           input1: Sales
@@ -3507,7 +3638,7 @@ components:
           type: string
           x-go-name: StandAloneFormURL
         createdBy:
-          $ref: '#/components/schemas/forminstancecreatedby'
+          $ref: '#/components/schemas/FormInstanceCreatedBy'
         formDefinitionId:
           description: FormDefinitionID is the id of the form definition that created
             this form
@@ -3526,7 +3657,7 @@ components:
           description: "FormElements is the configuration of the form, this would\
             \ be a repeat of the fields from the form-config"
           items:
-            $ref: '#/components/schemas/formelement'
+            $ref: '#/components/schemas/FormElement'
           type: array
           x-go-name: FormElements
         formData:
@@ -3544,14 +3675,14 @@ components:
             form instance had validation errors then it would be moved to the IN PROGRESS
             state where the client can retrieve these errors
           items:
-            $ref: '#/components/schemas/formerror'
+            $ref: '#/components/schemas/FormError'
           type: array
           x-go-name: FormErrors
         formConditions:
           description: FormConditions is the conditional logic that modify the form
             dynamically modify the form as the recipient is interacting out the form
           items:
-            $ref: '#/components/schemas/formcondition'
+            $ref: '#/components/schemas/FormCondition'
           type: array
           x-go-name: FormConditions
         created:
@@ -3570,12 +3701,12 @@ components:
           description: Recipients references to the recipient of a form. The recipients
             are those who are responsible for filling out a form and completing it
           items:
-            $ref: '#/components/schemas/forminstancerecipient'
+            $ref: '#/components/schemas/FormInstanceRecipient'
           type: array
           x-go-name: Recipients
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    listformelementdatabyelementidresponse:
+    ListFormElementDataByElementIDResponse:
       example:
         results: "{\"results\":[{\"label\":\"Alfred 255e71dfc6e\",\"subLabel\":\"\
           Alfred.255e71dfc6e@testmail.identitysoon.com\",\"value\":\"2c918084821847c5018227ced2e16676\"\
@@ -3622,17 +3753,17 @@ components:
             ,\"subLabel\":\"Brock.e76b56ae4d49@testmail.identitysoon.com\",\"value\"\
             :\"2c91808582184782018227ced28b6aef\"}]}"
           items:
-            $ref: '#/components/schemas/formelementdatasourceconfigoptions'
+            $ref: '#/components/schemas/FormElementDataSourceConfigOptions'
           type: array
           x-go-name: Results
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    predefinedselectoption:
+    PreDefinedSelectOption:
       description: PreDefinedSelectOption pre-defined select options
       example: IDENTITY
       type: string
       x-go-package: github.com/sailpoint/sp-forms/domain
-    listpredefinedselectoptionsresponse:
+    ListPredefinedSelectOptionsResponse:
       example:
         results:
         - IDENTITY
@@ -3641,7 +3772,7 @@ components:
         results:
           description: Results holds a list of PreDefinedSelectOption items
           items:
-            $ref: '#/components/schemas/predefinedselectoption'
+            $ref: '#/components/schemas/PreDefinedSelectOption'
           type: array
           x-go-name: Results
       type: object
@@ -3664,7 +3795,7 @@ components:
           x-go-name: DetailCode
         messages:
           items:
-            $ref: '#/components/schemas/errormessage'
+            $ref: '#/components/schemas/ErrorMessage'
           type: array
           x-go-name: Messages
         statusCode:
@@ -3683,7 +3814,7 @@ components:
           type: FORM_DEFINITION
       properties:
         object:
-          $ref: '#/components/schemas/formdefinitionselfimportexportdto'
+          $ref: '#/components/schemas/FormDefinitionSelfImportExportDto'
       type: object
       x-go-name: Self
     exportFormDefinitionsByTenantV1_200_response_inner:
@@ -3784,7 +3915,7 @@ components:
             key: department
       properties:
         object:
-          $ref: '#/components/schemas/formdefinitionresponse'
+          $ref: '#/components/schemas/FormDefinitionResponse'
         self:
           $ref: '#/components/schemas/exportFormDefinitionsByTenantV1_200_response_inner_self'
         version:
@@ -3886,7 +4017,7 @@ components:
             key: department
       properties:
         object:
-          $ref: '#/components/schemas/formdefinitionresponse'
+          $ref: '#/components/schemas/FormDefinitionResponse'
         self:
           type: string
           x-go-name: Self
@@ -4156,7 +4287,7 @@ components:
       required:
       - file
       type: object
-    conditioneffect_config:
+    ConditionEffect_config:
       description: Arbitrary map containing a configuration based on the EffectType.
       example:
         defaultValueLabel: Access to Remove
@@ -4172,7 +4303,9 @@ components:
           type: string
       type: object
       x-go-name: Config
-    formdefinitiondynamicschemarequest_attributes:
+    FormDefinitionDynamicSchemaRequest_attributes:
+      example:
+        formDefinitionId: 00000000-0000-0000-0000-000000000000
       properties:
         formDefinitionId:
           description: FormDefinitionID is a unique guid identifying this form definition

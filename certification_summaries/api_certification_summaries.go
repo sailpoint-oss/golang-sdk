@@ -65,7 +65,7 @@ func (r ApiGetIdentityAccessSummariesV1Request) Sorters(sorters string) ApiGetId
 	return r
 }
 
-func (r ApiGetIdentityAccessSummariesV1Request) Execute() ([]Accesssummary, *http.Response, error) {
+func (r ApiGetIdentityAccessSummariesV1Request) Execute() ([]AccessSummary, *http.Response, error) {
 	return r.ApiService.GetIdentityAccessSummariesV1Execute(r)
 }
 
@@ -89,13 +89,13 @@ func (a *CertificationSummariesAPIService) GetIdentityAccessSummariesV1(ctx cont
 }
 
 // Execute executes the request
-//  @return []Accesssummary
-func (a *CertificationSummariesAPIService) GetIdentityAccessSummariesV1Execute(r ApiGetIdentityAccessSummariesV1Request) ([]Accesssummary, *http.Response, error) {
+//  @return []AccessSummary
+func (a *CertificationSummariesAPIService) GetIdentityAccessSummariesV1Execute(r ApiGetIdentityAccessSummariesV1Request) ([]AccessSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accesssummary
+		localVarReturnValue  []AccessSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesAPIService.GetIdentityAccessSummariesV1")
@@ -175,7 +175,7 @@ func (a *CertificationSummariesAPIService) GetIdentityAccessSummariesV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -197,7 +197,7 @@ func (a *CertificationSummariesAPIService) GetIdentityAccessSummariesV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -208,7 +208,7 @@ func (a *CertificationSummariesAPIService) GetIdentityAccessSummariesV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -230,7 +230,7 @@ func (a *CertificationSummariesAPIService) GetIdentityAccessSummariesV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -267,7 +267,7 @@ func (r ApiGetIdentityDecisionSummaryV1Request) Filters(filters string) ApiGetId
 	return r
 }
 
-func (r ApiGetIdentityDecisionSummaryV1Request) Execute() (*Identitycertdecisionsummary, *http.Response, error) {
+func (r ApiGetIdentityDecisionSummaryV1Request) Execute() (*IdentityCertDecisionSummary, *http.Response, error) {
 	return r.ApiService.GetIdentityDecisionSummaryV1Execute(r)
 }
 
@@ -289,13 +289,13 @@ func (a *CertificationSummariesAPIService) GetIdentityDecisionSummaryV1(ctx cont
 }
 
 // Execute executes the request
-//  @return Identitycertdecisionsummary
-func (a *CertificationSummariesAPIService) GetIdentityDecisionSummaryV1Execute(r ApiGetIdentityDecisionSummaryV1Request) (*Identitycertdecisionsummary, *http.Response, error) {
+//  @return IdentityCertDecisionSummary
+func (a *CertificationSummariesAPIService) GetIdentityDecisionSummaryV1Execute(r ApiGetIdentityDecisionSummaryV1Request) (*IdentityCertDecisionSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Identitycertdecisionsummary
+		localVarReturnValue  *IdentityCertDecisionSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesAPIService.GetIdentityDecisionSummaryV1")
@@ -353,7 +353,7 @@ func (a *CertificationSummariesAPIService) GetIdentityDecisionSummaryV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -375,7 +375,7 @@ func (a *CertificationSummariesAPIService) GetIdentityDecisionSummaryV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -386,7 +386,7 @@ func (a *CertificationSummariesAPIService) GetIdentityDecisionSummaryV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -408,7 +408,7 @@ func (a *CertificationSummariesAPIService) GetIdentityDecisionSummaryV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -473,7 +473,7 @@ func (r ApiGetIdentitySummariesV1Request) Sorters(sorters string) ApiGetIdentity
 	return r
 }
 
-func (r ApiGetIdentitySummariesV1Request) Execute() ([]Certificationidentitysummary, *http.Response, error) {
+func (r ApiGetIdentitySummariesV1Request) Execute() ([]CertificationIdentitySummary, *http.Response, error) {
 	return r.ApiService.GetIdentitySummariesV1Execute(r)
 }
 
@@ -495,13 +495,13 @@ func (a *CertificationSummariesAPIService) GetIdentitySummariesV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []Certificationidentitysummary
-func (a *CertificationSummariesAPIService) GetIdentitySummariesV1Execute(r ApiGetIdentitySummariesV1Request) ([]Certificationidentitysummary, *http.Response, error) {
+//  @return []CertificationIdentitySummary
+func (a *CertificationSummariesAPIService) GetIdentitySummariesV1Execute(r ApiGetIdentitySummariesV1Request) ([]CertificationIdentitySummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Certificationidentitysummary
+		localVarReturnValue  []CertificationIdentitySummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesAPIService.GetIdentitySummariesV1")
@@ -580,7 +580,7 @@ func (a *CertificationSummariesAPIService) GetIdentitySummariesV1Execute(r ApiGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -602,7 +602,7 @@ func (a *CertificationSummariesAPIService) GetIdentitySummariesV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -613,7 +613,7 @@ func (a *CertificationSummariesAPIService) GetIdentitySummariesV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -635,7 +635,7 @@ func (a *CertificationSummariesAPIService) GetIdentitySummariesV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -666,7 +666,7 @@ type ApiGetIdentitySummaryV1Request struct {
 	identitySummaryId string
 }
 
-func (r ApiGetIdentitySummaryV1Request) Execute() (*Certificationidentitysummary, *http.Response, error) {
+func (r ApiGetIdentitySummaryV1Request) Execute() (*CertificationIdentitySummary, *http.Response, error) {
 	return r.ApiService.GetIdentitySummaryV1Execute(r)
 }
 
@@ -690,13 +690,13 @@ func (a *CertificationSummariesAPIService) GetIdentitySummaryV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return Certificationidentitysummary
-func (a *CertificationSummariesAPIService) GetIdentitySummaryV1Execute(r ApiGetIdentitySummaryV1Request) (*Certificationidentitysummary, *http.Response, error) {
+//  @return CertificationIdentitySummary
+func (a *CertificationSummariesAPIService) GetIdentitySummaryV1Execute(r ApiGetIdentitySummaryV1Request) (*CertificationIdentitySummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Certificationidentitysummary
+		localVarReturnValue  *CertificationIdentitySummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesAPIService.GetIdentitySummaryV1")
@@ -752,7 +752,7 @@ func (a *CertificationSummariesAPIService) GetIdentitySummaryV1Execute(r ApiGetI
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -774,7 +774,7 @@ func (a *CertificationSummariesAPIService) GetIdentitySummaryV1Execute(r ApiGetI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -785,7 +785,7 @@ func (a *CertificationSummariesAPIService) GetIdentitySummaryV1Execute(r ApiGetI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -807,7 +807,7 @@ func (a *CertificationSummariesAPIService) GetIdentitySummaryV1Execute(r ApiGetI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

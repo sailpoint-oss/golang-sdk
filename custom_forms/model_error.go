@@ -14,40 +14,40 @@ import (
 	"encoding/json"
 )
 
-// checks if the ModelError type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ModelError{}
+// checks if the Error type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Error{}
 
-// ModelError struct for ModelError
-type ModelError struct {
+// Error struct for Error
+type Error struct {
 	// DetailCode is the text of the status code returned
 	DetailCode *string `json:"detailCode,omitempty"`
-	Messages []Errormessage `json:"messages,omitempty"`
+	Messages []ErrorMessage `json:"messages,omitempty"`
 	// TrackingID is the request tracking unique identifier
 	TrackingId *string `json:"trackingId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _ModelError ModelError
+type _Error Error
 
-// NewModelError instantiates a new ModelError object
+// NewError instantiates a new Error object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelError() *ModelError {
-	this := ModelError{}
+func NewError() *Error {
+	this := Error{}
 	return &this
 }
 
-// NewModelErrorWithDefaults instantiates a new ModelError object
+// NewErrorWithDefaults instantiates a new Error object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewModelErrorWithDefaults() *ModelError {
-	this := ModelError{}
+func NewErrorWithDefaults() *Error {
+	this := Error{}
 	return &this
 }
 
 // GetDetailCode returns the DetailCode field value if set, zero value otherwise.
-func (o *ModelError) GetDetailCode() string {
+func (o *Error) GetDetailCode() string {
 	if o == nil || IsNil(o.DetailCode) {
 		var ret string
 		return ret
@@ -57,7 +57,7 @@ func (o *ModelError) GetDetailCode() string {
 
 // GetDetailCodeOk returns a tuple with the DetailCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelError) GetDetailCodeOk() (*string, bool) {
+func (o *Error) GetDetailCodeOk() (*string, bool) {
 	if o == nil || IsNil(o.DetailCode) {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *ModelError) GetDetailCodeOk() (*string, bool) {
 }
 
 // HasDetailCode returns a boolean if a field has been set.
-func (o *ModelError) HasDetailCode() bool {
+func (o *Error) HasDetailCode() bool {
 	if o != nil && !IsNil(o.DetailCode) {
 		return true
 	}
@@ -74,14 +74,14 @@ func (o *ModelError) HasDetailCode() bool {
 }
 
 // SetDetailCode gets a reference to the given string and assigns it to the DetailCode field.
-func (o *ModelError) SetDetailCode(v string) {
+func (o *Error) SetDetailCode(v string) {
 	o.DetailCode = &v
 }
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
-func (o *ModelError) GetMessages() []Errormessage {
+func (o *Error) GetMessages() []ErrorMessage {
 	if o == nil || IsNil(o.Messages) {
-		var ret []Errormessage
+		var ret []ErrorMessage
 		return ret
 	}
 	return o.Messages
@@ -89,7 +89,7 @@ func (o *ModelError) GetMessages() []Errormessage {
 
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelError) GetMessagesOk() ([]Errormessage, bool) {
+func (o *Error) GetMessagesOk() ([]ErrorMessage, bool) {
 	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
@@ -97,7 +97,7 @@ func (o *ModelError) GetMessagesOk() ([]Errormessage, bool) {
 }
 
 // HasMessages returns a boolean if a field has been set.
-func (o *ModelError) HasMessages() bool {
+func (o *Error) HasMessages() bool {
 	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
@@ -105,13 +105,13 @@ func (o *ModelError) HasMessages() bool {
 	return false
 }
 
-// SetMessages gets a reference to the given []Errormessage and assigns it to the Messages field.
-func (o *ModelError) SetMessages(v []Errormessage) {
+// SetMessages gets a reference to the given []ErrorMessage and assigns it to the Messages field.
+func (o *Error) SetMessages(v []ErrorMessage) {
 	o.Messages = v
 }
 
 // GetTrackingId returns the TrackingId field value if set, zero value otherwise.
-func (o *ModelError) GetTrackingId() string {
+func (o *Error) GetTrackingId() string {
 	if o == nil || IsNil(o.TrackingId) {
 		var ret string
 		return ret
@@ -121,7 +121,7 @@ func (o *ModelError) GetTrackingId() string {
 
 // GetTrackingIdOk returns a tuple with the TrackingId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelError) GetTrackingIdOk() (*string, bool) {
+func (o *Error) GetTrackingIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TrackingId) {
 		return nil, false
 	}
@@ -129,7 +129,7 @@ func (o *ModelError) GetTrackingIdOk() (*string, bool) {
 }
 
 // HasTrackingId returns a boolean if a field has been set.
-func (o *ModelError) HasTrackingId() bool {
+func (o *Error) HasTrackingId() bool {
 	if o != nil && !IsNil(o.TrackingId) {
 		return true
 	}
@@ -138,11 +138,11 @@ func (o *ModelError) HasTrackingId() bool {
 }
 
 // SetTrackingId gets a reference to the given string and assigns it to the TrackingId field.
-func (o *ModelError) SetTrackingId(v string) {
+func (o *Error) SetTrackingId(v string) {
 	o.TrackingId = &v
 }
 
-func (o ModelError) MarshalJSON() ([]byte, error) {
+func (o Error) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -150,7 +150,7 @@ func (o ModelError) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ModelError) ToMap() (map[string]interface{}, error) {
+func (o Error) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DetailCode) {
 		toSerialize["detailCode"] = o.DetailCode
@@ -169,16 +169,16 @@ func (o ModelError) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ModelError) UnmarshalJSON(data []byte) (err error) {
-	varModelError := _ModelError{}
+func (o *Error) UnmarshalJSON(data []byte) (err error) {
+	varError := _Error{}
 
-	err = json.Unmarshal(data, &varModelError)
+	err = json.Unmarshal(data, &varError)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ModelError(varModelError)
+	*o = Error(varError)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -192,38 +192,38 @@ func (o *ModelError) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableModelError struct {
-	value *ModelError
+type NullableError struct {
+	value *Error
 	isSet bool
 }
 
-func (v NullableModelError) Get() *ModelError {
+func (v NullableError) Get() *Error {
 	return v.value
 }
 
-func (v *NullableModelError) Set(val *ModelError) {
+func (v *NullableError) Set(val *Error) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableModelError) IsSet() bool {
+func (v NullableError) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableModelError) Unset() {
+func (v *NullableError) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableModelError(val *ModelError) *NullableModelError {
-	return &NullableModelError{value: val, isSet: true}
+func NewNullableError(val *Error) *NullableError {
+	return &NullableError{value: val, isSet: true}
 }
 
-func (v NullableModelError) MarshalJSON() ([]byte, error) {
+func (v NullableError) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableModelError) UnmarshalJSON(src []byte) error {
+func (v *NullableError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

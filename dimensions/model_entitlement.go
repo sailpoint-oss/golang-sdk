@@ -40,7 +40,7 @@ type Entitlement struct {
 	Requestable *bool `json:"requestable,omitempty"`
 	Owner NullableEntitlementOwner `json:"owner,omitempty"`
 	// List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
-	AdditionalOwners []Additionalownerref `json:"additionalOwners,omitempty"`
+	AdditionalOwners []AdditionalOwnerRef `json:"additionalOwners,omitempty"`
 	// A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated.
 	ManuallyUpdatedFields map[string]interface{} `json:"manuallyUpdatedFields,omitempty"`
 	AccessModelMetadata *EntitlementAccessModelMetadata `json:"accessModelMetadata,omitempty"`
@@ -53,7 +53,7 @@ type Entitlement struct {
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	// List of IDs of segments, if any, to which this Entitlement is assigned.
 	Segments []string `json:"segments,omitempty"`
-	DirectPermissions []Permissiondto `json:"directPermissions,omitempty"`
+	DirectPermissions []PermissionDTO `json:"directPermissions,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -429,9 +429,9 @@ func (o *Entitlement) UnsetOwner() {
 }
 
 // GetAdditionalOwners returns the AdditionalOwners field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Entitlement) GetAdditionalOwners() []Additionalownerref {
+func (o *Entitlement) GetAdditionalOwners() []AdditionalOwnerRef {
 	if o == nil {
-		var ret []Additionalownerref
+		var ret []AdditionalOwnerRef
 		return ret
 	}
 	return o.AdditionalOwners
@@ -440,7 +440,7 @@ func (o *Entitlement) GetAdditionalOwners() []Additionalownerref {
 // GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Entitlement) GetAdditionalOwnersOk() ([]Additionalownerref, bool) {
+func (o *Entitlement) GetAdditionalOwnersOk() ([]AdditionalOwnerRef, bool) {
 	if o == nil || IsNil(o.AdditionalOwners) {
 		return nil, false
 	}
@@ -456,8 +456,8 @@ func (o *Entitlement) HasAdditionalOwners() bool {
 	return false
 }
 
-// SetAdditionalOwners gets a reference to the given []Additionalownerref and assigns it to the AdditionalOwners field.
-func (o *Entitlement) SetAdditionalOwners(v []Additionalownerref) {
+// SetAdditionalOwners gets a reference to the given []AdditionalOwnerRef and assigns it to the AdditionalOwners field.
+func (o *Entitlement) SetAdditionalOwners(v []AdditionalOwnerRef) {
 	o.AdditionalOwners = v
 }
 
@@ -688,9 +688,9 @@ func (o *Entitlement) SetSegments(v []string) {
 }
 
 // GetDirectPermissions returns the DirectPermissions field value if set, zero value otherwise.
-func (o *Entitlement) GetDirectPermissions() []Permissiondto {
+func (o *Entitlement) GetDirectPermissions() []PermissionDTO {
 	if o == nil || IsNil(o.DirectPermissions) {
-		var ret []Permissiondto
+		var ret []PermissionDTO
 		return ret
 	}
 	return o.DirectPermissions
@@ -698,7 +698,7 @@ func (o *Entitlement) GetDirectPermissions() []Permissiondto {
 
 // GetDirectPermissionsOk returns a tuple with the DirectPermissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlement) GetDirectPermissionsOk() ([]Permissiondto, bool) {
+func (o *Entitlement) GetDirectPermissionsOk() ([]PermissionDTO, bool) {
 	if o == nil || IsNil(o.DirectPermissions) {
 		return nil, false
 	}
@@ -714,8 +714,8 @@ func (o *Entitlement) HasDirectPermissions() bool {
 	return false
 }
 
-// SetDirectPermissions gets a reference to the given []Permissiondto and assigns it to the DirectPermissions field.
-func (o *Entitlement) SetDirectPermissions(v []Permissiondto) {
+// SetDirectPermissions gets a reference to the given []PermissionDTO and assigns it to the DirectPermissions field.
+func (o *Entitlement) SetDirectPermissions(v []PermissionDTO) {
 	o.DirectPermissions = v
 }
 

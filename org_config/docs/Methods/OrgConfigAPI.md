@@ -39,7 +39,7 @@ Other parameters are passed through a pointer to a apiGetOrgConfigV1Request stru
 
 ### Return type
 
-[**Orgconfig**](../models/orgconfig)
+[**OrgConfig**](../models/org-config)
 
 ### HTTP request headers
 
@@ -72,7 +72,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OrgConfigAPI.GetOrgConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrgConfigV1`: Orgconfig
+    // response from `GetOrgConfigV1`: OrgConfig
     fmt.Fprintf(os.Stdout, "Response from `OrgConfigAPI.GetOrgConfigV1`: %v\n", resp)
 }
 ```
@@ -175,11 +175,11 @@ Other parameters are passed through a pointer to a apiPatchOrgConfigV1Request st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
 
 ### Return type
 
-[**Orgconfig**](../models/orgconfig)
+[**OrgConfig**](../models/org-config)
 
 ### HTTP request headers
 
@@ -201,10 +201,10 @@ import (
 )
 
 func main() {
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/timeZone","value":"America/Toronto"}]`) // []Jsonpatchoperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/timeZone","value":"America/Toronto"}]`) // []JsonPatchOperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var jsonpatchoperation []org_config.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []org_config.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -212,13 +212,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrgConfigAPI.PatchOrgConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.OrgConfigAPI.PatchOrgConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.OrgConfigAPI.PatchOrgConfigV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.OrgConfigAPI.PatchOrgConfigV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OrgConfigAPI.PatchOrgConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchOrgConfigV1`: Orgconfig
+    // response from `PatchOrgConfigV1`: OrgConfig
     fmt.Fprintf(os.Stdout, "Response from `OrgConfigAPI.PatchOrgConfigV1`: %v\n", resp)
 }
 ```

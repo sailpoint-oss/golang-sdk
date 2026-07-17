@@ -30,7 +30,7 @@ type Segment struct {
 	Modified *SailPointTime `json:"modified,omitempty"`
 	// The segment's optional description.
 	Description *string `json:"description,omitempty"`
-	Owner NullableOwnerreferencesegments `json:"owner,omitempty"`
+	Owner NullableOwnerReferenceSegments `json:"owner,omitempty"`
 	VisibilityCriteria *SegmentVisibilityCriteria `json:"visibilityCriteria,omitempty"`
 	// This boolean indicates whether the segment is currently active. Inactive segments have no effect.
 	Active *bool `json:"active,omitempty"`
@@ -221,9 +221,9 @@ func (o *Segment) SetDescription(v string) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Segment) GetOwner() Ownerreferencesegments {
+func (o *Segment) GetOwner() OwnerReferenceSegments {
 	if o == nil || IsNil(o.Owner.Get()) {
-		var ret Ownerreferencesegments
+		var ret OwnerReferenceSegments
 		return ret
 	}
 	return *o.Owner.Get()
@@ -232,7 +232,7 @@ func (o *Segment) GetOwner() Ownerreferencesegments {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Segment) GetOwnerOk() (*Ownerreferencesegments, bool) {
+func (o *Segment) GetOwnerOk() (*OwnerReferenceSegments, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -248,8 +248,8 @@ func (o *Segment) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given NullableOwnerreferencesegments and assigns it to the Owner field.
-func (o *Segment) SetOwner(v Ownerreferencesegments) {
+// SetOwner gets a reference to the given NullableOwnerReferenceSegments and assigns it to the Owner field.
+func (o *Segment) SetOwner(v OwnerReferenceSegments) {
 	o.Owner.Set(&v)
 }
 // SetOwnerNil sets the value for Owner to be an explicit nil

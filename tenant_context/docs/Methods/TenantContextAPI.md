@@ -102,7 +102,7 @@ Other parameters are passed through a pointer to a apiPatchTenantContextV1Reques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jsonpatchoperation** | [**Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
@@ -128,10 +128,14 @@ import (
 )
 
 func main() {
-    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/Key/IAS","value":"Integrated Automation System"},{"op":"replace","path":"/Key/IAS","value":"International Accounting Standards"},{"op":"remove","path":"/Key/NDR"}]`) // Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(`{
+          "op" : "replace",
+          "path" : "/description",
+          "value" : "New description"
+        }`) // JsonPatchOperation | 
 
-    var jsonpatchoperation tenant_context.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation tenant_context.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -139,8 +143,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.TenantContextAPI.PatchTenantContextV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //r, err := apiClient.TenantContextAPI.PatchTenantContextV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    r, err := apiClient.TenantContextAPI.PatchTenantContextV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //r, err := apiClient.TenantContextAPI.PatchTenantContextV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TenantContextAPI.PatchTenantContextV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

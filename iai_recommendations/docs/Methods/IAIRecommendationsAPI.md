@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Recommendationconfigdto**](../models/recommendationconfigdto)
+[**RecommendationConfigDto**](../models/recommendation-config-dto)
 
 ### HTTP request headers
 
@@ -86,7 +86,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.GetRecommendationsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRecommendationsConfigV1`: Recommendationconfigdto
+    // response from `GetRecommendationsConfigV1`: RecommendationConfigDto
     fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsAPI.GetRecommendationsConfigV1`: %v\n", resp)
 }
 ```
@@ -122,11 +122,11 @@ Other parameters are passed through a pointer to a apiGetRecommendationsV1Reques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **recommendationrequestdto** | [**Recommendationrequestdto**](../models/recommendationrequestdto) |  | 
+ **recommendationRequestDto** | [**RecommendationRequestDto**](../models/recommendation-request-dto) |  | 
 
 ### Return type
 
-[**Recommendationresponsedto**](../models/recommendationresponsedto)
+[**RecommendationResponseDto**](../models/recommendation-response-dto)
 
 ### HTTP request headers
 
@@ -149,10 +149,28 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    recommendationrequestdtoJson := []byte(``) // Recommendationrequestdto | 
+    recommendationrequestdtoJson := []byte(`{
+          "prescribeMode" : false,
+          "excludeInterpretations" : false,
+          "requests" : [ {
+            "item" : {
+              "id" : "2c938083633d259901633d2623ec0375",
+              "type" : "ENTITLEMENT"
+            },
+            "identityId" : "2c938083633d259901633d25c68c00fa"
+          }, {
+            "item" : {
+              "id" : "2c938083633d259901633d2623ec0375",
+              "type" : "ENTITLEMENT"
+            },
+            "identityId" : "2c938083633d259901633d25c68c00fa"
+          } ],
+          "includeTranslationMessages" : false,
+          "includeDebugInformation" : true
+        }`) // RecommendationRequestDto | 
 
-    var recommendationrequestdto iai_recommendations.Recommendationrequestdto
-    if err := json.Unmarshal(recommendationrequestdtoJson, &recommendationrequestdto); err != nil {
+    var recommendationRequestDto iai_recommendations.RecommendationRequestDto
+    if err := json.Unmarshal(recommendationrequestdtoJson, &recommendationRequestDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -160,13 +178,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationrequestdto(recommendationrequestdto).Execute()
-	  //resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationrequestdto(recommendationrequestdto).Execute()
+    resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RecommendationRequestDto(recommendationRequestDto).Execute()
+	  //resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RecommendationRequestDto(recommendationRequestDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.GetRecommendationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRecommendationsV1`: Recommendationresponsedto
+    // response from `GetRecommendationsV1`: RecommendationResponseDto
     fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsAPI.GetRecommendationsV1`: %v\n", resp)
 }
 ```
@@ -202,11 +220,11 @@ Other parameters are passed through a pointer to a apiUpdateRecommendationsConfi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **recommendationconfigdto** | [**Recommendationconfigdto**](../models/recommendationconfigdto) |  | 
+ **recommendationConfigDto** | [**RecommendationConfigDto**](../models/recommendation-config-dto) |  | 
 
 ### Return type
 
-[**Recommendationconfigdto**](../models/recommendationconfigdto)
+[**RecommendationConfigDto**](../models/recommendation-config-dto)
 
 ### HTTP request headers
 
@@ -229,10 +247,15 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    recommendationconfigdtoJson := []byte(``) // Recommendationconfigdto | 
+    recommendationconfigdtoJson := []byte(`{
+          "recommenderFeatures" : [ "jobTitle", "location", "peer_group", "department", "active" ],
+          "peerGroupPercentageThreshold" : 0.5,
+          "runAutoSelectOnce" : false,
+          "onlyTuneThreshold" : false
+        }`) // RecommendationConfigDto | 
 
-    var recommendationconfigdto iai_recommendations.Recommendationconfigdto
-    if err := json.Unmarshal(recommendationconfigdtoJson, &recommendationconfigdto); err != nil {
+    var recommendationConfigDto iai_recommendations.RecommendationConfigDto
+    if err := json.Unmarshal(recommendationconfigdtoJson, &recommendationConfigDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -240,13 +263,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRecommendationsAPI.UpdateRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationconfigdto(recommendationconfigdto).Execute()
-	  //resp, r, err := apiClient.IAIRecommendationsAPI.UpdateRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Recommendationconfigdto(recommendationconfigdto).Execute()
+    resp, r, err := apiClient.IAIRecommendationsAPI.UpdateRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RecommendationConfigDto(recommendationConfigDto).Execute()
+	  //resp, r, err := apiClient.IAIRecommendationsAPI.UpdateRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RecommendationConfigDto(recommendationConfigDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.UpdateRecommendationsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateRecommendationsConfigV1`: Recommendationconfigdto
+    // response from `UpdateRecommendationsConfigV1`: RecommendationConfigDto
     fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsAPI.UpdateRecommendationsConfigV1`: %v\n", resp)
 }
 ```

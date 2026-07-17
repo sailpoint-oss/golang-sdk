@@ -16,17 +16,17 @@ tags: ['SDK', 'Software Development Kit', 'Workflow', 'V1Workflow']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | The name of the workflow | [optional] 
-**Owner** | Pointer to [**WorkflowbodyOwner**](workflowbody-owner) |  | [optional] 
+**Owner** | Pointer to [**WorkflowBodyOwner**](workflow-body-owner) |  | [optional] 
 **Description** | Pointer to **string** | Description of what the workflow accomplishes | [optional] 
-**Definition** | Pointer to [**Workflowdefinition**](workflowdefinition) |  | [optional] 
+**Definition** | Pointer to [**WorkflowDefinition**](workflow-definition) |  | [optional] 
 **Enabled** | Pointer to **bool** | Enable or disable the workflow.  Workflows cannot be created in an enabled state. | [optional] [default to false]
-**Trigger** | Pointer to [**Workflowtrigger**](workflowtrigger) |  | [optional] 
+**Trigger** | Pointer to [**WorkflowTrigger**](workflow-trigger) |  | [optional] 
 **Id** | Pointer to **string** | Workflow ID. This is a UUID generated upon creation. | [optional] 
 **ExecutionCount** | Pointer to **int32** | The number of times this workflow has been executed. | [optional] 
 **FailureCount** | Pointer to **int32** | The number of times this workflow has failed during execution. | [optional] 
 **Created** | Pointer to **SailPointTime** | The date and time the workflow was created. | [optional] 
 **Modified** | Pointer to **SailPointTime** | The date and time the workflow was modified. | [optional] 
-**ModifiedBy** | Pointer to [**Workflowmodifiedby**](workflowmodifiedby) |  | [optional] 
+**ModifiedBy** | Pointer to [**WorkflowModifiedBy**](workflow-modified-by) |  | [optional] 
 **Creator** | Pointer to [**WorkflowAllOfCreator**](workflow-all-of-creator) |  | [optional] 
 
 ## Methods
@@ -75,20 +75,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *Workflow) GetOwner() WorkflowbodyOwner`
+`func (o *Workflow) GetOwner() WorkflowBodyOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *Workflow) GetOwnerOk() (*WorkflowbodyOwner, bool)`
+`func (o *Workflow) GetOwnerOk() (*WorkflowBodyOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *Workflow) SetOwner(v WorkflowbodyOwner)`
+`func (o *Workflow) SetOwner(v WorkflowBodyOwner)`
 
 SetOwner sets Owner field to given value.
 
@@ -125,20 +125,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetDefinition
 
-`func (o *Workflow) GetDefinition() Workflowdefinition`
+`func (o *Workflow) GetDefinition() WorkflowDefinition`
 
 GetDefinition returns the Definition field if non-nil, zero value otherwise.
 
 ### GetDefinitionOk
 
-`func (o *Workflow) GetDefinitionOk() (*Workflowdefinition, bool)`
+`func (o *Workflow) GetDefinitionOk() (*WorkflowDefinition, bool)`
 
 GetDefinitionOk returns a tuple with the Definition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefinition
 
-`func (o *Workflow) SetDefinition(v Workflowdefinition)`
+`func (o *Workflow) SetDefinition(v WorkflowDefinition)`
 
 SetDefinition sets Definition field to given value.
 
@@ -175,20 +175,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetTrigger
 
-`func (o *Workflow) GetTrigger() Workflowtrigger`
+`func (o *Workflow) GetTrigger() WorkflowTrigger`
 
 GetTrigger returns the Trigger field if non-nil, zero value otherwise.
 
 ### GetTriggerOk
 
-`func (o *Workflow) GetTriggerOk() (*Workflowtrigger, bool)`
+`func (o *Workflow) GetTriggerOk() (*WorkflowTrigger, bool)`
 
 GetTriggerOk returns a tuple with the Trigger field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrigger
 
-`func (o *Workflow) SetTrigger(v Workflowtrigger)`
+`func (o *Workflow) SetTrigger(v WorkflowTrigger)`
 
 SetTrigger sets Trigger field to given value.
 
@@ -325,20 +325,20 @@ HasModified returns a boolean if a field has been set.
 
 ### GetModifiedBy
 
-`func (o *Workflow) GetModifiedBy() Workflowmodifiedby`
+`func (o *Workflow) GetModifiedBy() WorkflowModifiedBy`
 
 GetModifiedBy returns the ModifiedBy field if non-nil, zero value otherwise.
 
 ### GetModifiedByOk
 
-`func (o *Workflow) GetModifiedByOk() (*Workflowmodifiedby, bool)`
+`func (o *Workflow) GetModifiedByOk() (*WorkflowModifiedBy, bool)`
 
 GetModifiedByOk returns a tuple with the ModifiedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModifiedBy
 
-`func (o *Workflow) SetModifiedBy(v Workflowmodifiedby)`
+`func (o *Workflow) SetModifiedBy(v WorkflowModifiedBy)`
 
 SetModifiedBy sets ModifiedBy field to given value.
 

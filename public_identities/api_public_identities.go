@@ -69,7 +69,7 @@ func (r ApiGetPublicIdentitiesV1Request) Sorters(sorters string) ApiGetPublicIde
 	return r
 }
 
-func (r ApiGetPublicIdentitiesV1Request) Execute() ([]Publicidentity, *http.Response, error) {
+func (r ApiGetPublicIdentitiesV1Request) Execute() ([]PublicIdentity, *http.Response, error) {
 	return r.ApiService.GetPublicIdentitiesV1Execute(r)
 }
 
@@ -89,13 +89,13 @@ func (a *PublicIdentitiesAPIService) GetPublicIdentitiesV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return []Publicidentity
-func (a *PublicIdentitiesAPIService) GetPublicIdentitiesV1Execute(r ApiGetPublicIdentitiesV1Request) ([]Publicidentity, *http.Response, error) {
+//  @return []PublicIdentity
+func (a *PublicIdentitiesAPIService) GetPublicIdentitiesV1Execute(r ApiGetPublicIdentitiesV1Request) ([]PublicIdentity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Publicidentity
+		localVarReturnValue  []PublicIdentity
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PublicIdentitiesAPIService.GetPublicIdentitiesV1")
@@ -179,7 +179,7 @@ func (a *PublicIdentitiesAPIService) GetPublicIdentitiesV1Execute(r ApiGetPublic
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -201,7 +201,7 @@ func (a *PublicIdentitiesAPIService) GetPublicIdentitiesV1Execute(r ApiGetPublic
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -223,7 +223,7 @@ func (a *PublicIdentitiesAPIService) GetPublicIdentitiesV1Execute(r ApiGetPublic
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

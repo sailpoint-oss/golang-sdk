@@ -45,11 +45,11 @@ Other parameters are passed through a pointer to a apiCreatePasswordOrgConfigV1R
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **passwordorgconfig** | [**Passwordorgconfig**](../models/passwordorgconfig) |  | 
+ **passwordOrgConfig** | [**PasswordOrgConfig**](../models/password-org-config) |  | 
 
 ### Return type
 
-[**Passwordorgconfig**](../models/passwordorgconfig)
+[**PasswordOrgConfig**](../models/password-org-config)
 
 ### HTTP request headers
 
@@ -71,10 +71,15 @@ import (
 )
 
 func main() {
-    passwordorgconfigJson := []byte(`{"customInstructionsEnabled":true,"digitTokenEnabled":true,"digitTokenDurationMinutes":12,"digitTokenLength":9}`) // Passwordorgconfig | 
+    passwordorgconfigJson := []byte(`{
+          "digitTokenLength" : 9,
+          "digitTokenEnabled" : true,
+          "digitTokenDurationMinutes" : 10,
+          "customInstructionsEnabled" : true
+        }`) // PasswordOrgConfig | 
 
-    var passwordorgconfig password_configuration.Passwordorgconfig
-    if err := json.Unmarshal(passwordorgconfigJson, &passwordorgconfig); err != nil {
+    var passwordOrgConfig password_configuration.PasswordOrgConfig
+    if err := json.Unmarshal(passwordorgconfigJson, &passwordOrgConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -82,13 +87,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationAPI.CreatePasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
-	  //resp, r, err := apiClient.PasswordConfigurationAPI.CreatePasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
+    resp, r, err := apiClient.PasswordConfigurationAPI.CreatePasswordOrgConfigV1(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
+	  //resp, r, err := apiClient.PasswordConfigurationAPI.CreatePasswordOrgConfigV1(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.CreatePasswordOrgConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreatePasswordOrgConfigV1`: Passwordorgconfig
+    // response from `CreatePasswordOrgConfigV1`: PasswordOrgConfig
     fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.CreatePasswordOrgConfigV1`: %v\n", resp)
 }
 ```
@@ -112,7 +117,7 @@ Other parameters are passed through a pointer to a apiGetPasswordOrgConfigV1Requ
 
 ### Return type
 
-[**Passwordorgconfig**](../models/passwordorgconfig)
+[**PasswordOrgConfig**](../models/password-org-config)
 
 ### HTTP request headers
 
@@ -145,7 +150,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.GetPasswordOrgConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPasswordOrgConfigV1`: Passwordorgconfig
+    // response from `GetPasswordOrgConfigV1`: PasswordOrgConfig
     fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.GetPasswordOrgConfigV1`: %v\n", resp)
 }
 ```
@@ -171,11 +176,11 @@ Other parameters are passed through a pointer to a apiPutPasswordOrgConfigV1Requ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **passwordorgconfig** | [**Passwordorgconfig**](../models/passwordorgconfig) |  | 
+ **passwordOrgConfig** | [**PasswordOrgConfig**](../models/password-org-config) |  | 
 
 ### Return type
 
-[**Passwordorgconfig**](../models/passwordorgconfig)
+[**PasswordOrgConfig**](../models/password-org-config)
 
 ### HTTP request headers
 
@@ -197,10 +202,15 @@ import (
 )
 
 func main() {
-    passwordorgconfigJson := []byte(`{"digitTokenEnabled":true,"digitTokenDurationMinutes":12}`) // Passwordorgconfig | 
+    passwordorgconfigJson := []byte(`{
+          "digitTokenLength" : 9,
+          "digitTokenEnabled" : true,
+          "digitTokenDurationMinutes" : 10,
+          "customInstructionsEnabled" : true
+        }`) // PasswordOrgConfig | 
 
-    var passwordorgconfig password_configuration.Passwordorgconfig
-    if err := json.Unmarshal(passwordorgconfigJson, &passwordorgconfig); err != nil {
+    var passwordOrgConfig password_configuration.PasswordOrgConfig
+    if err := json.Unmarshal(passwordorgconfigJson, &passwordOrgConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -208,13 +218,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationAPI.PutPasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
-	  //resp, r, err := apiClient.PasswordConfigurationAPI.PutPasswordOrgConfigV1(context.Background()).Passwordorgconfig(passwordorgconfig).Execute()
+    resp, r, err := apiClient.PasswordConfigurationAPI.PutPasswordOrgConfigV1(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
+	  //resp, r, err := apiClient.PasswordConfigurationAPI.PutPasswordOrgConfigV1(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.PutPasswordOrgConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutPasswordOrgConfigV1`: Passwordorgconfig
+    // response from `PutPasswordOrgConfigV1`: PasswordOrgConfig
     fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.PutPasswordOrgConfigV1`: %v\n", resp)
 }
 ```

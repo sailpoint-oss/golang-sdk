@@ -31,27 +31,27 @@ type Role struct {
 	Modified *SailPointTime `json:"modified,omitempty"`
 	// A human-readable description of the Role
 	Description NullableString `json:"description,omitempty"`
-	Owner NullableOwnerreference `json:"owner"`
+	Owner NullableOwnerReference `json:"owner"`
 	// List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
-	AdditionalOwners []Additionalownerref `json:"additionalOwners,omitempty"`
-	AccessProfiles []Accessprofileref `json:"accessProfiles,omitempty"`
-	Entitlements []Entitlementref `json:"entitlements,omitempty"`
-	Membership NullableRolemembershipselector `json:"membership,omitempty"`
+	AdditionalOwners []AdditionalOwnerRef `json:"additionalOwners,omitempty"`
+	AccessProfiles []AccessProfileRef `json:"accessProfiles,omitempty"`
+	Entitlements []EntitlementRef `json:"entitlements,omitempty"`
+	Membership NullableRoleMembershipSelector `json:"membership,omitempty"`
 	// This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration.
 	LegacyMembershipInfo map[string]interface{} `json:"legacyMembershipInfo,omitempty"`
 	// Whether the Role is enabled or not.
 	Enabled *bool `json:"enabled,omitempty"`
 	// Whether the Role can be the target of access requests.
 	Requestable *bool `json:"requestable,omitempty"`
-	AccessRequestConfig *Requestabilityforrole `json:"accessRequestConfig,omitempty"`
-	RevocationRequestConfig *Revocabilityforrole `json:"revocationRequestConfig,omitempty"`
+	AccessRequestConfig *RequestabilityForRole `json:"accessRequestConfig,omitempty"`
+	RevocationRequestConfig *RevocabilityForRole `json:"revocationRequestConfig,omitempty"`
 	// List of IDs of segments, if any, to which this Role is assigned.
 	Segments []string `json:"segments,omitempty"`
 	// Whether the Role is dimensional.
 	Dimensional NullableBool `json:"dimensional,omitempty"`
 	// List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional.
-	DimensionRefs []Dimensionref `json:"dimensionRefs,omitempty"`
-	AccessModelMetadata *Attributedtolist `json:"accessModelMetadata,omitempty"`
+	DimensionRefs []DimensionRef `json:"dimensionRefs,omitempty"`
+	AccessModelMetadata *AttributeDTOList `json:"accessModelMetadata,omitempty"`
 	// The privilege level of the role, if applicable.
 	PrivilegeLevel NullableString `json:"privilegeLevel,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -63,7 +63,7 @@ type _Role Role
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRole(name string, owner NullableOwnerreference) *Role {
+func NewRole(name string, owner NullableOwnerReference) *Role {
 	this := Role{}
 	this.Name = name
 	this.Owner = owner
@@ -253,10 +253,10 @@ func (o *Role) UnsetDescription() {
 }
 
 // GetOwner returns the Owner field value
-// If the value is explicit nil, the zero value for Ownerreference will be returned
-func (o *Role) GetOwner() Ownerreference {
+// If the value is explicit nil, the zero value for OwnerReference will be returned
+func (o *Role) GetOwner() OwnerReference {
 	if o == nil || o.Owner.Get() == nil {
-		var ret Ownerreference
+		var ret OwnerReference
 		return ret
 	}
 
@@ -266,7 +266,7 @@ func (o *Role) GetOwner() Ownerreference {
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Role) GetOwnerOk() (*Ownerreference, bool) {
+func (o *Role) GetOwnerOk() (*OwnerReference, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -274,14 +274,14 @@ func (o *Role) GetOwnerOk() (*Ownerreference, bool) {
 }
 
 // SetOwner sets field value
-func (o *Role) SetOwner(v Ownerreference) {
+func (o *Role) SetOwner(v OwnerReference) {
 	o.Owner.Set(&v)
 }
 
 // GetAdditionalOwners returns the AdditionalOwners field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Role) GetAdditionalOwners() []Additionalownerref {
+func (o *Role) GetAdditionalOwners() []AdditionalOwnerRef {
 	if o == nil {
-		var ret []Additionalownerref
+		var ret []AdditionalOwnerRef
 		return ret
 	}
 	return o.AdditionalOwners
@@ -290,7 +290,7 @@ func (o *Role) GetAdditionalOwners() []Additionalownerref {
 // GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Role) GetAdditionalOwnersOk() ([]Additionalownerref, bool) {
+func (o *Role) GetAdditionalOwnersOk() ([]AdditionalOwnerRef, bool) {
 	if o == nil || IsNil(o.AdditionalOwners) {
 		return nil, false
 	}
@@ -306,15 +306,15 @@ func (o *Role) HasAdditionalOwners() bool {
 	return false
 }
 
-// SetAdditionalOwners gets a reference to the given []Additionalownerref and assigns it to the AdditionalOwners field.
-func (o *Role) SetAdditionalOwners(v []Additionalownerref) {
+// SetAdditionalOwners gets a reference to the given []AdditionalOwnerRef and assigns it to the AdditionalOwners field.
+func (o *Role) SetAdditionalOwners(v []AdditionalOwnerRef) {
 	o.AdditionalOwners = v
 }
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Role) GetAccessProfiles() []Accessprofileref {
+func (o *Role) GetAccessProfiles() []AccessProfileRef {
 	if o == nil {
-		var ret []Accessprofileref
+		var ret []AccessProfileRef
 		return ret
 	}
 	return o.AccessProfiles
@@ -323,7 +323,7 @@ func (o *Role) GetAccessProfiles() []Accessprofileref {
 // GetAccessProfilesOk returns a tuple with the AccessProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Role) GetAccessProfilesOk() ([]Accessprofileref, bool) {
+func (o *Role) GetAccessProfilesOk() ([]AccessProfileRef, bool) {
 	if o == nil || IsNil(o.AccessProfiles) {
 		return nil, false
 	}
@@ -339,15 +339,15 @@ func (o *Role) HasAccessProfiles() bool {
 	return false
 }
 
-// SetAccessProfiles gets a reference to the given []Accessprofileref and assigns it to the AccessProfiles field.
-func (o *Role) SetAccessProfiles(v []Accessprofileref) {
+// SetAccessProfiles gets a reference to the given []AccessProfileRef and assigns it to the AccessProfiles field.
+func (o *Role) SetAccessProfiles(v []AccessProfileRef) {
 	o.AccessProfiles = v
 }
 
 // GetEntitlements returns the Entitlements field value if set, zero value otherwise.
-func (o *Role) GetEntitlements() []Entitlementref {
+func (o *Role) GetEntitlements() []EntitlementRef {
 	if o == nil || IsNil(o.Entitlements) {
-		var ret []Entitlementref
+		var ret []EntitlementRef
 		return ret
 	}
 	return o.Entitlements
@@ -355,7 +355,7 @@ func (o *Role) GetEntitlements() []Entitlementref {
 
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetEntitlementsOk() ([]Entitlementref, bool) {
+func (o *Role) GetEntitlementsOk() ([]EntitlementRef, bool) {
 	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
 	}
@@ -371,15 +371,15 @@ func (o *Role) HasEntitlements() bool {
 	return false
 }
 
-// SetEntitlements gets a reference to the given []Entitlementref and assigns it to the Entitlements field.
-func (o *Role) SetEntitlements(v []Entitlementref) {
+// SetEntitlements gets a reference to the given []EntitlementRef and assigns it to the Entitlements field.
+func (o *Role) SetEntitlements(v []EntitlementRef) {
 	o.Entitlements = v
 }
 
 // GetMembership returns the Membership field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Role) GetMembership() Rolemembershipselector {
+func (o *Role) GetMembership() RoleMembershipSelector {
 	if o == nil || IsNil(o.Membership.Get()) {
-		var ret Rolemembershipselector
+		var ret RoleMembershipSelector
 		return ret
 	}
 	return *o.Membership.Get()
@@ -388,7 +388,7 @@ func (o *Role) GetMembership() Rolemembershipselector {
 // GetMembershipOk returns a tuple with the Membership field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Role) GetMembershipOk() (*Rolemembershipselector, bool) {
+func (o *Role) GetMembershipOk() (*RoleMembershipSelector, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -404,8 +404,8 @@ func (o *Role) HasMembership() bool {
 	return false
 }
 
-// SetMembership gets a reference to the given NullableRolemembershipselector and assigns it to the Membership field.
-func (o *Role) SetMembership(v Rolemembershipselector) {
+// SetMembership gets a reference to the given NullableRoleMembershipSelector and assigns it to the Membership field.
+func (o *Role) SetMembership(v RoleMembershipSelector) {
 	o.Membership.Set(&v)
 }
 // SetMembershipNil sets the value for Membership to be an explicit nil
@@ -516,9 +516,9 @@ func (o *Role) SetRequestable(v bool) {
 }
 
 // GetAccessRequestConfig returns the AccessRequestConfig field value if set, zero value otherwise.
-func (o *Role) GetAccessRequestConfig() Requestabilityforrole {
+func (o *Role) GetAccessRequestConfig() RequestabilityForRole {
 	if o == nil || IsNil(o.AccessRequestConfig) {
-		var ret Requestabilityforrole
+		var ret RequestabilityForRole
 		return ret
 	}
 	return *o.AccessRequestConfig
@@ -526,7 +526,7 @@ func (o *Role) GetAccessRequestConfig() Requestabilityforrole {
 
 // GetAccessRequestConfigOk returns a tuple with the AccessRequestConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetAccessRequestConfigOk() (*Requestabilityforrole, bool) {
+func (o *Role) GetAccessRequestConfigOk() (*RequestabilityForRole, bool) {
 	if o == nil || IsNil(o.AccessRequestConfig) {
 		return nil, false
 	}
@@ -542,15 +542,15 @@ func (o *Role) HasAccessRequestConfig() bool {
 	return false
 }
 
-// SetAccessRequestConfig gets a reference to the given Requestabilityforrole and assigns it to the AccessRequestConfig field.
-func (o *Role) SetAccessRequestConfig(v Requestabilityforrole) {
+// SetAccessRequestConfig gets a reference to the given RequestabilityForRole and assigns it to the AccessRequestConfig field.
+func (o *Role) SetAccessRequestConfig(v RequestabilityForRole) {
 	o.AccessRequestConfig = &v
 }
 
 // GetRevocationRequestConfig returns the RevocationRequestConfig field value if set, zero value otherwise.
-func (o *Role) GetRevocationRequestConfig() Revocabilityforrole {
+func (o *Role) GetRevocationRequestConfig() RevocabilityForRole {
 	if o == nil || IsNil(o.RevocationRequestConfig) {
-		var ret Revocabilityforrole
+		var ret RevocabilityForRole
 		return ret
 	}
 	return *o.RevocationRequestConfig
@@ -558,7 +558,7 @@ func (o *Role) GetRevocationRequestConfig() Revocabilityforrole {
 
 // GetRevocationRequestConfigOk returns a tuple with the RevocationRequestConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetRevocationRequestConfigOk() (*Revocabilityforrole, bool) {
+func (o *Role) GetRevocationRequestConfigOk() (*RevocabilityForRole, bool) {
 	if o == nil || IsNil(o.RevocationRequestConfig) {
 		return nil, false
 	}
@@ -574,8 +574,8 @@ func (o *Role) HasRevocationRequestConfig() bool {
 	return false
 }
 
-// SetRevocationRequestConfig gets a reference to the given Revocabilityforrole and assigns it to the RevocationRequestConfig field.
-func (o *Role) SetRevocationRequestConfig(v Revocabilityforrole) {
+// SetRevocationRequestConfig gets a reference to the given RevocabilityForRole and assigns it to the RevocationRequestConfig field.
+func (o *Role) SetRevocationRequestConfig(v RevocabilityForRole) {
 	o.RevocationRequestConfig = &v
 }
 
@@ -655,9 +655,9 @@ func (o *Role) UnsetDimensional() {
 }
 
 // GetDimensionRefs returns the DimensionRefs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Role) GetDimensionRefs() []Dimensionref {
+func (o *Role) GetDimensionRefs() []DimensionRef {
 	if o == nil {
-		var ret []Dimensionref
+		var ret []DimensionRef
 		return ret
 	}
 	return o.DimensionRefs
@@ -666,7 +666,7 @@ func (o *Role) GetDimensionRefs() []Dimensionref {
 // GetDimensionRefsOk returns a tuple with the DimensionRefs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Role) GetDimensionRefsOk() ([]Dimensionref, bool) {
+func (o *Role) GetDimensionRefsOk() ([]DimensionRef, bool) {
 	if o == nil || IsNil(o.DimensionRefs) {
 		return nil, false
 	}
@@ -682,15 +682,15 @@ func (o *Role) HasDimensionRefs() bool {
 	return false
 }
 
-// SetDimensionRefs gets a reference to the given []Dimensionref and assigns it to the DimensionRefs field.
-func (o *Role) SetDimensionRefs(v []Dimensionref) {
+// SetDimensionRefs gets a reference to the given []DimensionRef and assigns it to the DimensionRefs field.
+func (o *Role) SetDimensionRefs(v []DimensionRef) {
 	o.DimensionRefs = v
 }
 
 // GetAccessModelMetadata returns the AccessModelMetadata field value if set, zero value otherwise.
-func (o *Role) GetAccessModelMetadata() Attributedtolist {
+func (o *Role) GetAccessModelMetadata() AttributeDTOList {
 	if o == nil || IsNil(o.AccessModelMetadata) {
-		var ret Attributedtolist
+		var ret AttributeDTOList
 		return ret
 	}
 	return *o.AccessModelMetadata
@@ -698,7 +698,7 @@ func (o *Role) GetAccessModelMetadata() Attributedtolist {
 
 // GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetAccessModelMetadataOk() (*Attributedtolist, bool) {
+func (o *Role) GetAccessModelMetadataOk() (*AttributeDTOList, bool) {
 	if o == nil || IsNil(o.AccessModelMetadata) {
 		return nil, false
 	}
@@ -714,8 +714,8 @@ func (o *Role) HasAccessModelMetadata() bool {
 	return false
 }
 
-// SetAccessModelMetadata gets a reference to the given Attributedtolist and assigns it to the AccessModelMetadata field.
-func (o *Role) SetAccessModelMetadata(v Attributedtolist) {
+// SetAccessModelMetadata gets a reference to the given AttributeDTOList and assigns it to the AccessModelMetadata field.
+func (o *Role) SetAccessModelMetadata(v AttributeDTOList) {
 	o.AccessModelMetadata = &v
 }
 

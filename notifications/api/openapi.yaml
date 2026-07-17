@@ -115,14 +115,14 @@ paths:
                     name: Rebecca Requester
                     email: rebecca@testmail.identitysoon.com
               schema:
-                $ref: '#/components/schemas/templatevariablesdto'
+                $ref: '#/components/schemas/TemplateVariablesDto'
           description: Global and template-specific variables for the given key and
             medium.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -146,7 +146,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -164,7 +164,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -189,7 +189,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -213,20 +213,20 @@ paths:
               identity: BobSmith@sailpoint.com
               mailFromDomain: example.sailpoint.com
             schema:
-              $ref: '#/components/schemas/mailfromattributesdto'
+              $ref: '#/components/schemas/MailFromAttributesDto'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/mailfromattributes'
+                $ref: '#/components/schemas/MailFromAttributes'
           description: MAIL FROM Attributes required to verify the change
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -250,7 +250,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -275,7 +275,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -307,13 +307,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/mailfromattributes'
+                $ref: '#/components/schemas/MailFromAttributes'
           description: MAIL FROM Attributes object
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -337,7 +337,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -362,7 +362,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -432,14 +432,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/templatedtodefault'
+                  $ref: '#/components/schemas/TemplateDtoDefault'
                 type: array
           description: A list of the default template objects
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -463,7 +463,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -488,7 +488,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -570,14 +570,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/templatedto'
+                  $ref: '#/components/schemas/TemplateDto'
                 type: array
           description: A list of template objects for your site
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -601,7 +601,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -626,7 +626,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -650,20 +650,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/templatedto'
+              $ref: '#/components/schemas/TemplateDto'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/templatedto'
+                $ref: '#/components/schemas/TemplateDto'
           description: A template object for your site
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -687,7 +687,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -712,7 +712,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -743,13 +743,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/templatedto'
+                $ref: '#/components/schemas/TemplateDto'
           description: A template object for your site
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -773,7 +773,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -798,7 +798,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -819,7 +819,7 @@ paths:
           application/json:
             schema:
               items:
-                $ref: '#/components/schemas/templatebulkdeletedto'
+                $ref: '#/components/schemas/TemplateBulkDeleteDto'
               type: array
         required: true
       responses:
@@ -830,7 +830,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -854,7 +854,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -879,7 +879,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -901,13 +901,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/notificationtemplatecontext'
+                $ref: '#/components/schemas/NotificationTemplateContext'
           description: Notification template context attributes for a specific tenant.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -931,7 +931,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -956,7 +956,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -985,13 +985,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/preferencesdto'
+                $ref: '#/components/schemas/PreferencesDto'
           description: Return preference for the given notification key.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1015,7 +1015,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1033,7 +1033,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1058,7 +1058,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1083,7 +1083,7 @@ paths:
                 numberOfPendingTasks: "4"
                 ownerId: 201327fda1c44704ac01181e963d463c
             schema:
-              $ref: '#/components/schemas/sendtestnotificationrequestdto'
+              $ref: '#/components/schemas/SendTestNotificationRequestDto'
         required: true
       responses:
         "204":
@@ -1093,7 +1093,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1117,7 +1117,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1135,7 +1135,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1160,7 +1160,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1254,14 +1254,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/emailstatusdto'
+                  $ref: '#/components/schemas/EmailStatusDto'
                 type: array
           description: List of Email Status
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1285,7 +1285,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1310,7 +1310,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1330,20 +1330,20 @@ paths:
             example:
               email: sender@example.com
             schema:
-              $ref: '#/components/schemas/emailstatusdto'
+              $ref: '#/components/schemas/EmailStatusDto'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/emailstatusdto'
+                $ref: '#/components/schemas/EmailStatusDto'
           description: New Verified Email Status
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1367,7 +1367,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1392,7 +1392,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1426,7 +1426,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1450,7 +1450,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1468,7 +1468,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1493,7 +1493,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1545,14 +1545,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/dkimattributes'
+                  $ref: '#/components/schemas/DkimAttributes'
                 type: array
           description: List of DKIM Attributes
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1576,7 +1576,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1601,7 +1601,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1620,20 +1620,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/domainaddress'
+              $ref: '#/components/schemas/DomainAddress'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/domainstatusdto'
+                $ref: '#/components/schemas/DomainStatusDto'
           description: List of DKIM tokens required for the verification process.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1657,7 +1657,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "405":
@@ -1689,7 +1689,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1757,7 +1757,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1781,7 +1781,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -1799,7 +1799,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "405":
@@ -1831,10 +1831,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    templatemediumdto:
+    TemplateMediumDto:
       description: The notification delivery medium.
       enum:
       - EMAIL
@@ -1843,7 +1843,7 @@ components:
       example: EMAIL
       title: Template Medium
       type: string
-    templatevariable:
+    TemplateVariable:
       description: |
         A variable available for use in a notification template. Variables can be template-specific (from domain events)
         or global (available to all templates like __recipient, __global, __util). Template variables provide
@@ -1879,7 +1879,7 @@ components:
           nullable: true
       title: Template Variable
       type: object
-    templatevariablesdto:
+    TemplateVariablesDto:
       description: |
         Variables available for use in a notification template. Variables can be template-specific (from domain events)
         or global (available to all templates like __recipient, __global, __util).
@@ -1919,7 +1919,7 @@ components:
           example: approval_request_notification
           type: string
         medium:
-          $ref: '#/components/schemas/templatemediumdto'
+          $ref: '#/components/schemas/TemplateMediumDto'
         globalVariables:
           description: |
             Global variables available to all templates for this tenant (e.g. __global.*, __recipient, __util.*, __dateTool.*, __esc.*).
@@ -1939,7 +1939,7 @@ components:
             description: URL for the standard size logo displayed on various pages.
             example: null
           items:
-            $ref: '#/components/schemas/templatevariable'
+            $ref: '#/components/schemas/TemplateVariable'
           nullable: true
           type: array
         templateVariables:
@@ -1959,12 +1959,12 @@ components:
               name: Rebecca Requester
               email: rebecca@testmail.identitysoon.com
           items:
-            $ref: '#/components/schemas/templatevariable'
+            $ref: '#/components/schemas/TemplateVariable'
           nullable: true
           type: array
       title: Template Variables DTO
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1976,7 +1976,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1989,7 +1989,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1997,7 +1997,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -2031,18 +2031,21 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    mailfromattributesdto:
+    MailFromAttributesDto:
       description: MAIL FROM attributes for a domain / identity
+      example:
+        identity: BobSmith@sailpoint.com
+        mailFromDomain: example.sailpoint.com
       properties:
         identity:
           description: The identity or domain address
@@ -2055,7 +2058,7 @@ components:
           type: string
       title: Mail From Attributes Dto
       type: object
-    mailfromattributes:
+    MailFromAttributes:
       description: MAIL FROM attributes for a domain / identity
       example:
         identity: bob.smith@sailpoint.com
@@ -2094,7 +2097,7 @@ components:
           type: string
       title: Mail From Attributes
       type: object
-    templateslack:
+    TemplateSlack:
       example:
         isSubscription: false
         attachments: "[]"
@@ -2156,12 +2159,12 @@ components:
           nullable: true
           type: boolean
         autoApprovalData:
-          $ref: '#/components/schemas/templateslack_autoApprovalData'
+          $ref: '#/components/schemas/TemplateSlack_autoApprovalData'
         customFields:
-          $ref: '#/components/schemas/templateslack_customFields'
+          $ref: '#/components/schemas/TemplateSlack_customFields'
       title: Template Slack
       type: object
-    templateteams:
+    TemplateTeams:
       example:
         isSubscription: false
         requestId: requestId
@@ -2223,12 +2226,12 @@ components:
           nullable: true
           type: string
         autoApprovalData:
-          $ref: '#/components/schemas/templateslack_autoApprovalData'
+          $ref: '#/components/schemas/TemplateSlack_autoApprovalData'
         customFields:
-          $ref: '#/components/schemas/templateslack_customFields'
+          $ref: '#/components/schemas/TemplateSlack_customFields'
       title: Template Teams
       type: object
-    templatedtodefault:
+    TemplateDtoDefault:
       example:
         slackTemplate:
           isSubscription: false
@@ -2345,12 +2348,12 @@ components:
           nullable: true
           type: string
         slackTemplate:
-          $ref: '#/components/schemas/templateslack'
+          $ref: '#/components/schemas/TemplateSlack'
         teamsTemplate:
-          $ref: '#/components/schemas/templateteams'
+          $ref: '#/components/schemas/TemplateTeams'
       title: Template Dto Default
       type: object
-    templatedto:
+    TemplateDto:
       example:
         slackTemplate:
           isSubscription: false
@@ -2480,16 +2483,20 @@ components:
           format: date-time
           type: string
         slackTemplate:
-          $ref: '#/components/schemas/templatedto_slackTemplate'
+          $ref: '#/components/schemas/TemplateDto_slackTemplate'
         teamsTemplate:
-          $ref: '#/components/schemas/templatedto_teamsTemplate'
+          $ref: '#/components/schemas/TemplateDto_teamsTemplate'
       required:
       - key
       - locale
       - medium
       title: Template Dto
       type: object
-    templatebulkdeletedto:
+    TemplateBulkDeleteDto:
+      example:
+        medium: EMAIL
+        locale: en
+        key: cloud_manual_work_item_summary
       properties:
         key:
           description: The template key to delete
@@ -2511,7 +2518,7 @@ components:
       - key
       title: Template Bulk Delete Dto
       type: object
-    notificationtemplatecontext:
+    NotificationTemplateContext:
       example:
         created: 2020-04-15T16:16:47.525Z
         modified: 2020-04-15T16:16:47.525Z
@@ -2556,7 +2563,7 @@ components:
           type: string
       title: Notification Template Context
       type: object
-    medium:
+    Medium:
       description: "The notification medium (EMAIL, SLACK, or TEAMS)"
       enum:
       - EMAIL
@@ -2564,7 +2571,7 @@ components:
       - TEAMS
       example: EMAIL
       type: string
-    preferencesdto:
+    PreferencesDto:
       description: Maps an Identity's attribute key to a list of preferred notification
         mediums.
       example:
@@ -2584,7 +2591,7 @@ components:
           example:
           - EMAIL
           items:
-            $ref: '#/components/schemas/medium'
+            $ref: '#/components/schemas/Medium'
           type: array
         modified:
           description: Modified date of preference
@@ -2593,7 +2600,20 @@ components:
           type: string
       title: Preferences Dto
       type: object
-    sendtestnotificationrequestdto:
+    SendTestNotificationRequestDto:
+      example:
+        carbonCopy:
+        - cc@example.com
+        context:
+          numberOfPendingTasks: "4"
+          taskTasks: tasks
+        blindCarbonCopy:
+        - bcc@example.com
+        medium: EMAIL
+        locale: en
+        recipientEmailList:
+        - test@example.com
+        key: cloud_manual_work_item_summary
       properties:
         key:
           description: The template notification key.
@@ -2641,7 +2661,7 @@ components:
           type: array
       title: Send Test Notification Request Dto
       type: object
-    emailstatusdto:
+    EmailStatusDto:
       example:
         isVerifiedByDomain: false
         verificationStatus: SUCCESS
@@ -2678,7 +2698,7 @@ components:
           type: string
       title: Email Status Dto
       type: object
-    dkimattributes:
+    DkimAttributes:
       description: DKIM attributes for a domain or identity
       example:
         address: BobSmith@sailpoint.com
@@ -2724,7 +2744,9 @@ components:
           type: string
       title: Dkim Attributes
       type: object
-    domainaddress:
+    DomainAddress:
+      example:
+        domain: sailpoint.com
       properties:
         domain:
           description: A domain address
@@ -2732,7 +2754,7 @@ components:
           type: string
       title: Domain Address
       type: object
-    domainstatusdto:
+    DomainStatusDto:
       description: Domain status DTO containing everything required to verify via
         DKIM
       example:
@@ -2811,7 +2833,7 @@ components:
           example: e7eab60924f64aa284175b9fa3309599
           type: string
       type: object
-    templateslack_autoApprovalData:
+    TemplateSlack_autoApprovalData:
       example:
         itemId: itemId
         itemType: itemType
@@ -2841,7 +2863,7 @@ components:
           nullable: true
           type: string
       type: object
-    templateslack_customFields:
+    TemplateSlack_customFields:
       example:
         requestType: requestType
         campaignId: campaignId
@@ -2866,9 +2888,9 @@ components:
           nullable: true
           type: string
       type: object
-    templatedto_slackTemplate:
+    TemplateDto_slackTemplate:
       allOf:
-      - $ref: '#/components/schemas/templateslack'
+      - $ref: '#/components/schemas/TemplateSlack'
       - nullable: true
       example:
         isSubscription: false
@@ -2891,9 +2913,9 @@ components:
         text: You have a new approval request
         notificationType: notificationType
         key: key
-    templatedto_teamsTemplate:
+    TemplateDto_teamsTemplate:
       allOf:
-      - $ref: '#/components/schemas/templateteams'
+      - $ref: '#/components/schemas/TemplateTeams'
       - nullable: true
       example:
         isSubscription: false

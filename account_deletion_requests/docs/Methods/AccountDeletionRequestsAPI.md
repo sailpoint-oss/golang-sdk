@@ -44,11 +44,11 @@ Other parameters are passed through a pointer to a apiDeleteAccountRequestV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **accountdeleterequestinput** | [**Accountdeleterequestinput**](../models/accountdeleterequestinput) |  | 
+ **accountDeleteRequestInput** | [**AccountDeleteRequestInput**](../models/account-delete-request-input) |  | 
 
 ### Return type
 
-[**Accountrequestasyncresult**](../models/accountrequestasyncresult)
+[**AccountRequestAsyncResult**](../models/account-request-async-result)
 
 ### HTTP request headers
 
@@ -71,19 +71,21 @@ import (
 
 func main() {
     accountId := `ef38f94347e94562b5bb8424a56498d8` // string | Account ID. # string | Account ID.
-    accountdeleterequestinputJson := []byte(`{"comments":"I requested this account deletion."}`) // Accountdeleterequestinput |  (optional)
+    accountdeleterequestinputJson := []byte(`{
+          "comments" : "Requesting account deletion request"
+        }`) // AccountDeleteRequestInput |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.AccountDeletionRequestsAPI.DeleteAccountRequestV1(context.Background(), accountId).Execute()
-	  //resp, r, err := apiClient.AccountDeletionRequestsAPI.DeleteAccountRequestV1(context.Background(), accountId).Accountdeleterequestinput(accountdeleterequestinput).Execute()
+	  //resp, r, err := apiClient.AccountDeletionRequestsAPI.DeleteAccountRequestV1(context.Background(), accountId).AccountDeleteRequestInput(accountDeleteRequestInput).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountDeletionRequestsAPI.DeleteAccountRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAccountRequestV1`: Accountrequestasyncresult
+    // response from `DeleteAccountRequestV1`: AccountRequestAsyncResult
     fmt.Fprintf(os.Stdout, "Response from `AccountDeletionRequestsAPI.DeleteAccountRequestV1`: %v\n", resp)
 }
 ```
@@ -114,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accountactionrequestdto**](../models/accountactionrequestdto)
+[**[]AccountActionRequestDto**](../models/account-action-request-dto)
 
 ### HTTP request headers
 
@@ -151,7 +153,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountDeletionRequestsAPI.GetAccountDeletionRequestsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccountDeletionRequestsV1`: []Accountactionrequestdto
+    // response from `GetAccountDeletionRequestsV1`: []AccountActionRequestDto
     fmt.Fprintf(os.Stdout, "Response from `AccountDeletionRequestsAPI.GetAccountDeletionRequestsV1`: %v\n", resp)
 }
 ```

@@ -27,7 +27,7 @@ type ApiCreateCustomPasswordInstructionsV1Request struct {
 	ctx context.Context
 	ApiService *CustomPasswordInstructionsAPIService
 	xSailPointExperimental *string
-	custompasswordinstruction *Custompasswordinstruction
+	customPasswordInstruction *CustomPasswordInstruction
 }
 
 // Use this header to enable this experimental API.
@@ -36,12 +36,12 @@ func (r ApiCreateCustomPasswordInstructionsV1Request) XSailPointExperimental(xSa
 	return r
 }
 
-func (r ApiCreateCustomPasswordInstructionsV1Request) Custompasswordinstruction(custompasswordinstruction Custompasswordinstruction) ApiCreateCustomPasswordInstructionsV1Request {
-	r.custompasswordinstruction = &custompasswordinstruction
+func (r ApiCreateCustomPasswordInstructionsV1Request) CustomPasswordInstruction(customPasswordInstruction CustomPasswordInstruction) ApiCreateCustomPasswordInstructionsV1Request {
+	r.customPasswordInstruction = &customPasswordInstruction
 	return r
 }
 
-func (r ApiCreateCustomPasswordInstructionsV1Request) Execute() (*Custompasswordinstruction, *http.Response, error) {
+func (r ApiCreateCustomPasswordInstructionsV1Request) Execute() (*CustomPasswordInstruction, *http.Response, error) {
 	return r.ApiService.CreateCustomPasswordInstructionsV1Execute(r)
 }
 
@@ -49,6 +49,26 @@ func (r ApiCreateCustomPasswordInstructionsV1Request) Execute() (*Custompassword
 CreateCustomPasswordInstructionsV1 Create custom password instructions
 
 This API creates the custom password instructions for the specified page ID.
+
+The `pageId` determines which login and password-recovery screen your custom instructions appear on. The following table describes each supported page ID and where its text is displayed:
+
+| Page ID | Where the custom text appears |
+| --- | --- |
+| `flow-selection:select` | Flow-selection landing screen, under "Need help signing in?", above the navigation links. |
+| `reset-password:enter-username` | Reset-password "enter username" step, under the prompt, above the username field. |
+| `unlock-account:enter-username` | Unlock-account "enter username" step, under the prompt, above the username field. |
+| `forget-username:user-email` | Forgot-username screen, under "Enter the email address for", above the email field. |
+| `reset-password:enter-password` | Reset-password "new password" step, under the header, above the password fields. |
+| `change-password:enter-password` | Same "new password" screen, but the authenticated app/sync-group change variant. |
+| `reset-password:finish` | Reset-password success screen, under the success icon/heading, above the return button. |
+| `change-password:finish` | Success screen for the authenticated app/sync-group change, under the heading. |
+| `mfa:select` | MFA method-selection step, under the prompt, above the list of MFA options. |
+| `mfa:enter-code` | MFA code-entry step, under the option label, above the code field. |
+| `mfa:enter-kba` | KBA step, under "Please answer these security questions", above the questions form. |
+| `unlock-account:finish` | Unlock-account success screen, under the success icon/heading, above the return button. |
+
+In every case the text shows as an info-icon + paragraph block that only appears if custom text is configured for that page ID, positioned between the screen's built-in heading and its form controls.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCustomPasswordInstructionsV1Request
@@ -61,13 +81,13 @@ func (a *CustomPasswordInstructionsAPIService) CreateCustomPasswordInstructionsV
 }
 
 // Execute executes the request
-//  @return Custompasswordinstruction
-func (a *CustomPasswordInstructionsAPIService) CreateCustomPasswordInstructionsV1Execute(r ApiCreateCustomPasswordInstructionsV1Request) (*Custompasswordinstruction, *http.Response, error) {
+//  @return CustomPasswordInstruction
+func (a *CustomPasswordInstructionsAPIService) CreateCustomPasswordInstructionsV1Execute(r ApiCreateCustomPasswordInstructionsV1Request) (*CustomPasswordInstruction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Custompasswordinstruction
+		localVarReturnValue  *CustomPasswordInstruction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPasswordInstructionsAPIService.CreateCustomPasswordInstructionsV1")
@@ -95,8 +115,8 @@ func (a *CustomPasswordInstructionsAPIService) CreateCustomPasswordInstructionsV
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.custompasswordinstruction == nil {
-		return localVarReturnValue, nil, reportError("custompasswordinstruction is required and must be specified")
+	if r.customPasswordInstruction == nil {
+		return localVarReturnValue, nil, reportError("customPasswordInstruction is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -118,7 +138,7 @@ func (a *CustomPasswordInstructionsAPIService) CreateCustomPasswordInstructionsV
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.custompasswordinstruction
+	localVarPostBody = r.customPasswordInstruction
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -142,7 +162,7 @@ func (a *CustomPasswordInstructionsAPIService) CreateCustomPasswordInstructionsV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -153,7 +173,7 @@ func (a *CustomPasswordInstructionsAPIService) CreateCustomPasswordInstructionsV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +184,7 @@ func (a *CustomPasswordInstructionsAPIService) CreateCustomPasswordInstructionsV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -302,7 +322,7 @@ func (a *CustomPasswordInstructionsAPIService) DeleteCustomPasswordInstructionsV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -313,7 +333,7 @@ func (a *CustomPasswordInstructionsAPIService) DeleteCustomPasswordInstructionsV
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -324,7 +344,7 @@ func (a *CustomPasswordInstructionsAPIService) DeleteCustomPasswordInstructionsV
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -335,7 +355,7 @@ func (a *CustomPasswordInstructionsAPIService) DeleteCustomPasswordInstructionsV
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -370,7 +390,7 @@ func (r ApiGetCustomPasswordInstructionsV1Request) Locale(locale string) ApiGetC
 	return r
 }
 
-func (r ApiGetCustomPasswordInstructionsV1Request) Execute() (*Custompasswordinstruction, *http.Response, error) {
+func (r ApiGetCustomPasswordInstructionsV1Request) Execute() (*CustomPasswordInstruction, *http.Response, error) {
 	return r.ApiService.GetCustomPasswordInstructionsV1Execute(r)
 }
 
@@ -392,13 +412,13 @@ func (a *CustomPasswordInstructionsAPIService) GetCustomPasswordInstructionsV1(c
 }
 
 // Execute executes the request
-//  @return Custompasswordinstruction
-func (a *CustomPasswordInstructionsAPIService) GetCustomPasswordInstructionsV1Execute(r ApiGetCustomPasswordInstructionsV1Request) (*Custompasswordinstruction, *http.Response, error) {
+//  @return CustomPasswordInstruction
+func (a *CustomPasswordInstructionsAPIService) GetCustomPasswordInstructionsV1Execute(r ApiGetCustomPasswordInstructionsV1Request) (*CustomPasswordInstruction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Custompasswordinstruction
+		localVarReturnValue  *CustomPasswordInstruction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPasswordInstructionsAPIService.GetCustomPasswordInstructionsV1")
@@ -466,7 +486,7 @@ func (a *CustomPasswordInstructionsAPIService) GetCustomPasswordInstructionsV1Ex
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -477,7 +497,7 @@ func (a *CustomPasswordInstructionsAPIService) GetCustomPasswordInstructionsV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -488,7 +508,7 @@ func (a *CustomPasswordInstructionsAPIService) GetCustomPasswordInstructionsV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -499,7 +519,7 @@ func (a *CustomPasswordInstructionsAPIService) GetCustomPasswordInstructionsV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

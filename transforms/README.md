@@ -88,13 +88,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [ListTransformsV1401Response](docs/ListTransformsV1401Response.md)
  - [ListTransformsV1429Response](docs/ListTransformsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [Transform](docs/Transform.md)
- - [Transformread](docs/Transformread.md)
+ - [TransformRead](docs/TransformRead.md)
 
 
 ## Documentation For Authorization

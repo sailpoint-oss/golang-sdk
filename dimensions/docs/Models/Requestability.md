@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 **DenialCommentsRequired** | Pointer to **NullableBool** | Indicates whether an approver must provide comments when denying the request. | [optional] [default to false]
 **ReauthorizationRequired** | Pointer to **NullableBool** | Indicates whether reauthorization is required for the request. | [optional] [default to false]
 **RequireEndDate** | Pointer to **NullableBool** | Indicates whether the requester of the containing object must provide access end date. | [optional] [default to false]
-**MaxPermittedAccessDuration** | Pointer to [**NullableAccessduration**](accessduration) |  | [optional] 
-**ApprovalSchemes** | Pointer to [**[]Accessprofileapprovalscheme**](accessprofileapprovalscheme) | List describing the steps involved in approving the request. | [optional] 
+**MaxPermittedAccessDuration** | Pointer to [**NullableAccessDuration**](access-duration) |  | [optional] 
+**ApprovalSchemes** | Pointer to [**[]AccessProfileApprovalScheme**](access-profile-approval-scheme) | List describing the steps involved in approving the request. | [optional] 
 
 ## Methods
 
@@ -183,20 +183,20 @@ HasRequireEndDate returns a boolean if a field has been set.
 UnsetRequireEndDate ensures that no value is present for RequireEndDate, not even an explicit nil
 ### GetMaxPermittedAccessDuration
 
-`func (o *Requestability) GetMaxPermittedAccessDuration() Accessduration`
+`func (o *Requestability) GetMaxPermittedAccessDuration() AccessDuration`
 
 GetMaxPermittedAccessDuration returns the MaxPermittedAccessDuration field if non-nil, zero value otherwise.
 
 ### GetMaxPermittedAccessDurationOk
 
-`func (o *Requestability) GetMaxPermittedAccessDurationOk() (*Accessduration, bool)`
+`func (o *Requestability) GetMaxPermittedAccessDurationOk() (*AccessDuration, bool)`
 
 GetMaxPermittedAccessDurationOk returns a tuple with the MaxPermittedAccessDuration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxPermittedAccessDuration
 
-`func (o *Requestability) SetMaxPermittedAccessDuration(v Accessduration)`
+`func (o *Requestability) SetMaxPermittedAccessDuration(v AccessDuration)`
 
 SetMaxPermittedAccessDuration sets MaxPermittedAccessDuration field to given value.
 
@@ -218,20 +218,20 @@ HasMaxPermittedAccessDuration returns a boolean if a field has been set.
 UnsetMaxPermittedAccessDuration ensures that no value is present for MaxPermittedAccessDuration, not even an explicit nil
 ### GetApprovalSchemes
 
-`func (o *Requestability) GetApprovalSchemes() []Accessprofileapprovalscheme`
+`func (o *Requestability) GetApprovalSchemes() []AccessProfileApprovalScheme`
 
 GetApprovalSchemes returns the ApprovalSchemes field if non-nil, zero value otherwise.
 
 ### GetApprovalSchemesOk
 
-`func (o *Requestability) GetApprovalSchemesOk() (*[]Accessprofileapprovalscheme, bool)`
+`func (o *Requestability) GetApprovalSchemesOk() (*[]AccessProfileApprovalScheme, bool)`
 
 GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovalSchemes
 
-`func (o *Requestability) SetApprovalSchemes(v []Accessprofileapprovalscheme)`
+`func (o *Requestability) SetApprovalSchemes(v []AccessProfileApprovalScheme)`
 
 SetApprovalSchemes sets ApprovalSchemes field to given value.
 

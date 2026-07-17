@@ -44,14 +44,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/workflow'
+                  $ref: '#/components/schemas/Workflow'
                 type: array
           description: List of workflows
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -75,7 +75,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -100,7 +100,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -215,13 +215,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workflow'
+                $ref: '#/components/schemas/Workflow'
           description: The Workflow object
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -245,7 +245,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -270,7 +270,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -303,7 +303,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -327,7 +327,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -352,7 +352,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -380,13 +380,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workflow'
+                $ref: '#/components/schemas/Workflow'
           description: The workflow object
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -410,7 +410,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -428,7 +428,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -453,7 +453,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -526,7 +526,7 @@ paths:
                       id: idn:identity-attributes-changed
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         required: true
       responses:
@@ -534,13 +534,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workflow'
+                $ref: '#/components/schemas/Workflow'
           description: The Workflow object
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -564,7 +564,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -589,7 +589,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -617,20 +617,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/workflowbody'
+              $ref: '#/components/schemas/WorkflowBody'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workflow'
+                $ref: '#/components/schemas/Workflow'
           description: The Workflow object
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -654,7 +654,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -679,7 +679,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -756,7 +756,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -780,7 +780,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -805,7 +805,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -894,14 +894,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/workflowexecution'
+                  $ref: '#/components/schemas/WorkflowExecution'
                 type: array
           description: List of workflow executions for the specified workflow.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -925,7 +925,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -943,7 +943,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -968,7 +968,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1005,14 +1005,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/workflowexecution'
+                  $ref: '#/components/schemas/WorkflowExecution'
                 type: array
           description: Workflow execution.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1036,7 +1036,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1054,7 +1054,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1079,7 +1079,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1112,14 +1112,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/workflowexecutionevent'
+                  $ref: '#/components/schemas/WorkflowExecutionEvent'
                 type: array
           description: List of workflow execution events for the given workflow execution
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1143,7 +1143,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1161,7 +1161,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1186,7 +1186,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1219,14 +1219,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workflowexecutionhistory'
+                $ref: '#/components/schemas/WorkflowExecutionHistory'
           description: "List of workflow workflow definition, execution events, and\
             \ workflow trigger for the given workflow execution"
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1250,7 +1250,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1268,7 +1268,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1293,7 +1293,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1329,7 +1329,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1353,7 +1353,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1371,7 +1371,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1396,7 +1396,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1455,7 +1455,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1479,7 +1479,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1504,7 +1504,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1571,14 +1571,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/workflowlibraryaction'
+                  $ref: '#/components/schemas/WorkflowLibraryAction'
                 type: array
           description: List of workflow actions
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1602,7 +1602,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1627,7 +1627,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1698,14 +1698,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/workflowlibrarytrigger'
+                  $ref: '#/components/schemas/WorkflowLibraryTrigger'
                 type: array
           description: List of workflow triggers
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1729,7 +1729,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1754,7 +1754,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1778,14 +1778,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/workflowlibraryoperator'
+                  $ref: '#/components/schemas/WorkflowLibraryOperator'
                 type: array
           description: List of workflow operators
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1809,7 +1809,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1834,7 +1834,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1866,13 +1866,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workflowoauthclient'
+                $ref: '#/components/schemas/WorkflowOAuthClient'
           description: The OAuth Client object
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1896,7 +1896,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1921,7 +1921,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1964,7 +1964,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1988,7 +1988,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2013,7 +2013,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2057,7 +2057,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2081,7 +2081,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2106,7 +2106,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2158,7 +2158,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -2182,7 +2182,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -2200,7 +2200,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -2225,10 +2225,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    workflowmodifiedby:
+    WorkflowModifiedBy:
       example:
         name: Thomas Edison
         id: 2c9180a46faadee4016fb4e018c20639
@@ -2248,7 +2248,7 @@ components:
           example: Thomas Edison
           type: string
       type: object
-    workflowdefinition:
+    WorkflowDefinition:
       description: The map of steps that the workflow will execute.
       example:
         start: Send Email Test
@@ -2289,7 +2289,7 @@ components:
               type: success
           type: object
       type: object
-    workflowtrigger:
+    WorkflowTrigger:
       description: The trigger that starts the workflow
       example:
         displayName: displayName
@@ -2317,20 +2317,47 @@ components:
       - attributes
       - type
       type: object
-    workflowbody:
+    WorkflowBody:
+      example:
+        owner:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        name: Send Email
+        description: Send an email to the identity who's attributes changed.
+        definition:
+          start: Send Email Test
+          steps:
+            Send Email:
+              actionId: sp:send-email
+              attributes:
+                body: This is a test
+                from: sailpoint@sailpoint.com
+                recipientId.$: $.identity.id
+                subject: test
+              nextStep: success
+              selectResult: null
+              type: ACTION
+            success:
+              type: success
+        trigger:
+          displayName: displayName
+          attributes: "{}"
+          type: EVENT
+        enabled: false
       properties:
         name:
           description: The name of the workflow
           example: Send Email
           type: string
         owner:
-          $ref: '#/components/schemas/workflowbody_owner'
+          $ref: '#/components/schemas/WorkflowBody_owner'
         description:
           description: Description of what the workflow accomplishes
           example: Send an email to the identity who's attributes changed.
           type: string
         definition:
-          $ref: '#/components/schemas/workflowdefinition'
+          $ref: '#/components/schemas/WorkflowDefinition'
         enabled:
           default: false
           description: Enable or disable the workflow.  Workflows cannot be created
@@ -2338,9 +2365,9 @@ components:
           example: false
           type: boolean
         trigger:
-          $ref: '#/components/schemas/workflowtrigger'
+          $ref: '#/components/schemas/WorkflowTrigger'
       type: object
-    workflow:
+    Workflow:
       allOf:
       - properties:
           id:
@@ -2368,11 +2395,11 @@ components:
             format: date-time
             type: string
           modifiedBy:
-            $ref: '#/components/schemas/workflowmodifiedby'
+            $ref: '#/components/schemas/WorkflowModifiedBy'
           creator:
-            $ref: '#/components/schemas/workflow_allOf_creator'
+            $ref: '#/components/schemas/Workflow_allOf_creator'
         type: object
-      - $ref: '#/components/schemas/workflowbody'
+      - $ref: '#/components/schemas/WorkflowBody'
       example:
         owner:
           name: William Wilson
@@ -2413,7 +2440,7 @@ components:
               type: success
         id: d201c5e9-d37b-4aff-af14-66414f39d569
         failureCount: 0
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -2425,7 +2452,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -2438,7 +2465,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -2446,7 +2473,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -2480,18 +2507,22 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -2510,13 +2541,13 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    workflowexecution:
+    WorkflowExecution:
       example:
         requestId: 41e12a74fa7b4a6a98ae47887b64acdb
         closeTime: 2022-02-07T20:13:31.682410165Z
@@ -2559,7 +2590,7 @@ components:
           example: Completed
           type: string
       type: object
-    workflowexecutionevent:
+    WorkflowExecutionEvent:
       example:
         attributes: {}
         type: WorkflowTaskScheduled
@@ -2596,21 +2627,21 @@ components:
           example: {}
           type: object
       type: object
-    workflowexecutionhistory:
+    WorkflowExecutionHistory:
       allOf:
       - properties:
           definition:
-            $ref: '#/components/schemas/workflowexecutionhistory_allOf_definition'
+            $ref: '#/components/schemas/WorkflowExecutionHistory_allOf_definition'
           history:
-            $ref: '#/components/schemas/workflowexecutionhistory_allOf_definition'
+            $ref: '#/components/schemas/WorkflowExecutionHistory_allOf_definition'
           trigger:
-            $ref: '#/components/schemas/workflowexecutionhistory_allOf_definition'
+            $ref: '#/components/schemas/WorkflowExecutionHistory_allOf_definition'
         type: object
       example:
         definition: null
         history: null
         trigger: null
-    workflowlibraryformfields:
+    WorkflowLibraryFormFields:
       example:
         helpText: The name to give to this certification campaign.
         name: name
@@ -2672,7 +2703,7 @@ components:
           nullable: true
           type: string
       type: object
-    workflowlibraryaction:
+    WorkflowLibraryAction:
       example:
         outputSchema:
           definitions: {}
@@ -2805,11 +2836,11 @@ components:
         formFields:
           description: One or more inputs that the action accepts
           items:
-            $ref: '#/components/schemas/workflowlibraryformfields'
+            $ref: '#/components/schemas/WorkflowLibraryFormFields'
           nullable: true
           type: array
         exampleOutput:
-          $ref: '#/components/schemas/workflowlibraryaction_exampleOutput'
+          $ref: '#/components/schemas/WorkflowLibraryAction_exampleOutput'
         deprecated:
           type: boolean
         deprecatedBy:
@@ -2921,7 +2952,7 @@ components:
           type: object
       title: Workflow Action
       type: object
-    workflowlibrarytrigger:
+    WorkflowLibraryTrigger:
       example:
         outputSchema: {}
         deprecated: false
@@ -3035,12 +3066,12 @@ components:
           description: One or more inputs that the trigger accepts
           example: []
           items:
-            $ref: '#/components/schemas/workflowlibraryformfields'
+            $ref: '#/components/schemas/WorkflowLibraryFormFields'
           nullable: true
           type: array
       title: Workflow Trigger
       type: object
-    workflowlibraryoperator:
+    WorkflowLibraryOperator:
       example:
         deprecated: true
         isSimulationEnabled: true
@@ -3144,12 +3175,12 @@ components:
             required: false
             type: text
           items:
-            $ref: '#/components/schemas/workflowlibraryformfields'
+            $ref: '#/components/schemas/WorkflowLibraryFormFields'
           nullable: true
           type: array
       title: Workflow Operator
       type: object
-    workflowoauthclient:
+    WorkflowOAuthClient:
       example:
         id: 1a58c03a6bf64dc2876f6988c6e2c7b7
         secret: 00cc24a7fe810fe06a7cb38bc168ae104d703c7abb296f9944dc68e69ddb578b
@@ -3189,7 +3220,7 @@ components:
       allOf:
       - required:
         - name
-      - $ref: '#/components/schemas/workflowbody'
+      - $ref: '#/components/schemas/WorkflowBody'
     testWorkflowV1_request:
       properties:
         input:
@@ -3209,9 +3240,9 @@ components:
       type: object
     listCompleteWorkflowLibraryV1_200_response_inner:
       anyOf:
-      - $ref: '#/components/schemas/workflowlibraryaction'
-      - $ref: '#/components/schemas/workflowlibrarytrigger'
-      - $ref: '#/components/schemas/workflowlibraryoperator'
+      - $ref: '#/components/schemas/WorkflowLibraryAction'
+      - $ref: '#/components/schemas/WorkflowLibraryTrigger'
+      - $ref: '#/components/schemas/WorkflowLibraryOperator'
     createExternalExecuteWorkflowV1_request:
       properties:
         input:
@@ -3256,7 +3287,7 @@ components:
             test: hello world
           type: object
       type: object
-    workflowbody_owner:
+    WorkflowBody_owner:
       description: The identity that owns the workflow.  The owner's permissions in
         IDN will determine what actions the workflow is allowed to perform.  Ownership
         can be changed by updating the owner in a PUT or PATCH request.
@@ -3280,7 +3311,7 @@ components:
           example: William Wilson
           type: string
       type: object
-    workflow_allOf_creator:
+    Workflow_allOf_creator:
       description: Workflow creator's identity.
       example:
         name: Michael Michaels
@@ -3311,7 +3342,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description
@@ -3334,9 +3365,9 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    workflowexecutionhistory_allOf_definition:
+    WorkflowExecutionHistory_allOf_definition:
       type: object
-    workflowlibraryaction_exampleOutput:
+    WorkflowLibraryAction_exampleOutput:
       oneOf:
       - description: Example output
         type: object

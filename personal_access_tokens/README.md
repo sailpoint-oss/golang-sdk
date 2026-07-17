@@ -88,17 +88,17 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](docs/ArrayInner.md)
- - [Createpersonalaccesstokenrequest](docs/Createpersonalaccesstokenrequest.md)
- - [Createpersonalaccesstokenresponse](docs/Createpersonalaccesstokenresponse.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Getpersonalaccesstokenresponse](docs/Getpersonalaccesstokenresponse.md)
- - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
+ - [CreatePersonalAccessTokenRequest](docs/CreatePersonalAccessTokenRequest.md)
+ - [CreatePersonalAccessTokenResponse](docs/CreatePersonalAccessTokenResponse.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [GetPersonalAccessTokenResponse](docs/GetPersonalAccessTokenResponse.md)
+ - [JsonPatchOperation](docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [ListPersonalAccessTokensV1401Response](docs/ListPersonalAccessTokensV1401Response.md)
  - [ListPersonalAccessTokensV1429Response](docs/ListPersonalAccessTokensV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Patowner](docs/Patowner.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [PatOwner](docs/PatOwner.md)
 
 
 ## Documentation For Authorization

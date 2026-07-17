@@ -17,15 +17,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientId** | Pointer to **string** | Log configuration's client ID | [optional] 
 **DurationMinutes** | Pointer to **int32** | Duration in minutes for log configuration to remain in effect before resetting to defaults. | [optional] [default to 240]
-**RootLevel** | **Standardlevel** |  | 
-**LogLevels** | Pointer to **map[string]Standardlevel** | Mapping of identifiers to Standard Log Level values | [optional] 
+**RootLevel** | **StandardLevel** |  | 
+**LogLevels** | Pointer to **map[string]StandardLevel** | Mapping of identifiers to Standard Log Level values | [optional] 
 **Expiration** | Pointer to **SailPointTime** | Expiration date-time of the log configuration request.  Can be no greater than 24 hours from current date-time. | [optional] 
 
 ## Methods
 
 ### NewPutClientLogConfigurationV1Request
 
-`func NewPutClientLogConfigurationV1Request(rootLevel Standardlevel, ) *PutClientLogConfigurationV1Request`
+`func NewPutClientLogConfigurationV1Request(rootLevel StandardLevel, ) *PutClientLogConfigurationV1Request`
 
 NewPutClientLogConfigurationV1Request instantiates a new PutClientLogConfigurationV1Request object
 This constructor will assign default values to properties that have it defined,
@@ -92,40 +92,40 @@ HasDurationMinutes returns a boolean if a field has been set.
 
 ### GetRootLevel
 
-`func (o *PutClientLogConfigurationV1Request) GetRootLevel() Standardlevel`
+`func (o *PutClientLogConfigurationV1Request) GetRootLevel() StandardLevel`
 
 GetRootLevel returns the RootLevel field if non-nil, zero value otherwise.
 
 ### GetRootLevelOk
 
-`func (o *PutClientLogConfigurationV1Request) GetRootLevelOk() (*Standardlevel, bool)`
+`func (o *PutClientLogConfigurationV1Request) GetRootLevelOk() (*StandardLevel, bool)`
 
 GetRootLevelOk returns a tuple with the RootLevel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRootLevel
 
-`func (o *PutClientLogConfigurationV1Request) SetRootLevel(v Standardlevel)`
+`func (o *PutClientLogConfigurationV1Request) SetRootLevel(v StandardLevel)`
 
 SetRootLevel sets RootLevel field to given value.
 
 
 ### GetLogLevels
 
-`func (o *PutClientLogConfigurationV1Request) GetLogLevels() map[string]Standardlevel`
+`func (o *PutClientLogConfigurationV1Request) GetLogLevels() map[string]StandardLevel`
 
 GetLogLevels returns the LogLevels field if non-nil, zero value otherwise.
 
 ### GetLogLevelsOk
 
-`func (o *PutClientLogConfigurationV1Request) GetLogLevelsOk() (*map[string]Standardlevel, bool)`
+`func (o *PutClientLogConfigurationV1Request) GetLogLevelsOk() (*map[string]StandardLevel, bool)`
 
 GetLogLevelsOk returns a tuple with the LogLevels field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogLevels
 
-`func (o *PutClientLogConfigurationV1Request) SetLogLevels(v map[string]Standardlevel)`
+`func (o *PutClientLogConfigurationV1Request) SetLogLevels(v map[string]StandardLevel)`
 
 SetLogLevels sets LogLevels field to given value.
 

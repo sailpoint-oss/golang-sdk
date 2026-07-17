@@ -22,13 +22,13 @@ var _ MappedNullable = &CreateWorkflowV1Request{}
 type CreateWorkflowV1Request struct {
 	// The name of the workflow
 	Name string `json:"name"`
-	Owner *WorkflowbodyOwner `json:"owner,omitempty"`
+	Owner *WorkflowBodyOwner `json:"owner,omitempty"`
 	// Description of what the workflow accomplishes
 	Description *string `json:"description,omitempty"`
-	Definition *Workflowdefinition `json:"definition,omitempty"`
+	Definition *WorkflowDefinition `json:"definition,omitempty"`
 	// Enable or disable the workflow.  Workflows cannot be created in an enabled state.
 	Enabled *bool `json:"enabled,omitempty"`
-	Trigger *Workflowtrigger `json:"trigger,omitempty"`
+	Trigger *WorkflowTrigger `json:"trigger,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,9 +81,9 @@ func (o *CreateWorkflowV1Request) SetName(v string) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *CreateWorkflowV1Request) GetOwner() WorkflowbodyOwner {
+func (o *CreateWorkflowV1Request) GetOwner() WorkflowBodyOwner {
 	if o == nil || IsNil(o.Owner) {
-		var ret WorkflowbodyOwner
+		var ret WorkflowBodyOwner
 		return ret
 	}
 	return *o.Owner
@@ -91,7 +91,7 @@ func (o *CreateWorkflowV1Request) GetOwner() WorkflowbodyOwner {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateWorkflowV1Request) GetOwnerOk() (*WorkflowbodyOwner, bool) {
+func (o *CreateWorkflowV1Request) GetOwnerOk() (*WorkflowBodyOwner, bool) {
 	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
@@ -107,8 +107,8 @@ func (o *CreateWorkflowV1Request) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given WorkflowbodyOwner and assigns it to the Owner field.
-func (o *CreateWorkflowV1Request) SetOwner(v WorkflowbodyOwner) {
+// SetOwner gets a reference to the given WorkflowBodyOwner and assigns it to the Owner field.
+func (o *CreateWorkflowV1Request) SetOwner(v WorkflowBodyOwner) {
 	o.Owner = &v
 }
 
@@ -145,9 +145,9 @@ func (o *CreateWorkflowV1Request) SetDescription(v string) {
 }
 
 // GetDefinition returns the Definition field value if set, zero value otherwise.
-func (o *CreateWorkflowV1Request) GetDefinition() Workflowdefinition {
+func (o *CreateWorkflowV1Request) GetDefinition() WorkflowDefinition {
 	if o == nil || IsNil(o.Definition) {
-		var ret Workflowdefinition
+		var ret WorkflowDefinition
 		return ret
 	}
 	return *o.Definition
@@ -155,7 +155,7 @@ func (o *CreateWorkflowV1Request) GetDefinition() Workflowdefinition {
 
 // GetDefinitionOk returns a tuple with the Definition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateWorkflowV1Request) GetDefinitionOk() (*Workflowdefinition, bool) {
+func (o *CreateWorkflowV1Request) GetDefinitionOk() (*WorkflowDefinition, bool) {
 	if o == nil || IsNil(o.Definition) {
 		return nil, false
 	}
@@ -171,8 +171,8 @@ func (o *CreateWorkflowV1Request) HasDefinition() bool {
 	return false
 }
 
-// SetDefinition gets a reference to the given Workflowdefinition and assigns it to the Definition field.
-func (o *CreateWorkflowV1Request) SetDefinition(v Workflowdefinition) {
+// SetDefinition gets a reference to the given WorkflowDefinition and assigns it to the Definition field.
+func (o *CreateWorkflowV1Request) SetDefinition(v WorkflowDefinition) {
 	o.Definition = &v
 }
 
@@ -209,9 +209,9 @@ func (o *CreateWorkflowV1Request) SetEnabled(v bool) {
 }
 
 // GetTrigger returns the Trigger field value if set, zero value otherwise.
-func (o *CreateWorkflowV1Request) GetTrigger() Workflowtrigger {
+func (o *CreateWorkflowV1Request) GetTrigger() WorkflowTrigger {
 	if o == nil || IsNil(o.Trigger) {
-		var ret Workflowtrigger
+		var ret WorkflowTrigger
 		return ret
 	}
 	return *o.Trigger
@@ -219,7 +219,7 @@ func (o *CreateWorkflowV1Request) GetTrigger() Workflowtrigger {
 
 // GetTriggerOk returns a tuple with the Trigger field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateWorkflowV1Request) GetTriggerOk() (*Workflowtrigger, bool) {
+func (o *CreateWorkflowV1Request) GetTriggerOk() (*WorkflowTrigger, bool) {
 	if o == nil || IsNil(o.Trigger) {
 		return nil, false
 	}
@@ -235,8 +235,8 @@ func (o *CreateWorkflowV1Request) HasTrigger() bool {
 	return false
 }
 
-// SetTrigger gets a reference to the given Workflowtrigger and assigns it to the Trigger field.
-func (o *CreateWorkflowV1Request) SetTrigger(v Workflowtrigger) {
+// SetTrigger gets a reference to the given WorkflowTrigger and assigns it to the Trigger field.
+func (o *CreateWorkflowV1Request) SetTrigger(v WorkflowTrigger) {
 	o.Trigger = &v
 }
 

@@ -17,11 +17,41 @@
 
         func main() {
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-           machineidentityrequestJson := []byte(``) // Machineidentityrequest | 
+           machineidentityrequestJson := []byte(`{
+          "sourceId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "subtype" : "Application",
+          "created" : "2015-05-28T14:07:17Z",
+          "userEntitlements" : [ {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          }, {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          } ],
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "description" : "",
+          "attributes" : "{\"Region\":\"EU\"}",
+          "owners" : {
+            "primaryIdentity" : "{}",
+            "secondaryIdentities" : [ {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            }, {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            } ]
+          },
+          "id" : "id12345",
+          "uuid" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "nativeIdentity" : "abc:123:dddd"
+        }`) // MachineIdentityRequest | 
 
           
-          var machineidentityrequest machine_identities.Machineidentityrequest
-          if err := json.Unmarshal(machineidentityrequestJson, &machineidentityrequest); err != nil {
+          var machineIdentityRequest machine_identities.MachineIdentityRequest
+          if err := json.Unmarshal(machineidentityrequestJson, &machineIdentityRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -30,13 +60,13 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineidentityrequest(machineidentityrequest).Execute()
-          //resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Machineidentityrequest(machineidentityrequest).Execute()
+          resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV1(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineIdentityRequest(machineIdentityRequest).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesAPI.CreateMachineIdentityV1(context.Background()).XSailPointExperimental(xSailPointExperimental).MachineIdentityRequest(machineIdentityRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.CreateMachineIdentityV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `CreateMachineIdentityV1`: Machineidentityresponse
+          // response from `CreateMachineIdentityV1`: MachineIdentityResponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.CreateMachineIdentityV1`: %v\n", resp)
         }
 - path: /machine-identities/v2
@@ -57,7 +87,90 @@
         )
 
         func main() {
-           machineidentityv2Json := []byte(``) // Machineidentityv2 | 
+           machineidentityv2Json := []byte(`{
+          "sourceId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "resource" : {
+            "features" : [ "PROVISIONING", "AUTHENTICATION" ],
+            "name" : "nightly-batch-role",
+            "id" : "8886e5e3-63d0-462f-a195-d98da885b8dc",
+            "type" : "aws:iam-role"
+          },
+          "created" : "2015-05-28T14:07:17Z",
+          "connectorAttributes" : {
+            "objectguid" : "abc-123"
+          },
+          "description" : "Service account for nightly batch jobs",
+          "owners" : {
+            "secondary" : [ {
+              "id" : "2c9180858082150f0180893dbaf44202",
+              "name" : "Jane Doe",
+              "type" : "IDENTITY"
+            } ],
+            "primary" : {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            }
+          },
+          "source" : {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "uuid" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "nativeIdentity" : "abc:123:dddd",
+          "effectiveSanctionedStatus" : "SANCTIONED",
+          "environment" : "PRODUCTION",
+          "subtype" : "AI_AGENT",
+          "businessApplicationRefs" : [ {
+            "name" : "Cursor",
+            "correlationType" : "MANUAL",
+            "id" : "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "type" : "BUSINESS_APPLICATION",
+            "sanctionedStatus" : "SANCTIONED"
+          }, {
+            "name" : "Cursor",
+            "correlationType" : "MANUAL",
+            "id" : "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "type" : "BUSINESS_APPLICATION",
+            "sanctionedStatus" : "SANCTIONED"
+          } ],
+          "userEntitlements" : [ {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "displayName" : "Entitlement Name",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+            "source" : {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            }
+          }, {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "displayName" : "Entitlement Name",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+            "source" : {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            }
+          } ],
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "datasetId" : "8886e5e3-63d0-462f-a195-d98da885b8dc",
+          "attributes" : {
+            "privilegeLevel" : "HIGH",
+            "region" : "APAC"
+          },
+          "risk" : {
+            "severity" : "HIGH",
+            "score" : 72.5
+          },
+          "id" : "id12345",
+          "manuallyEdited" : true,
+          "manuallyCreated" : true,
+          "existsOnSource" : "TRUE",
+          "status" : "ACTIVE"
+        }`) // Machineidentityv2 | 
 
           
           var machineidentityv2 machine_identities.Machineidentityv2
@@ -210,7 +323,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.GetMachineIdentityV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetMachineIdentityV1`: Machineidentityresponse
+          // response from `GetMachineIdentityV1`: MachineIdentityResponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.GetMachineIdentityV1`: %v\n", resp)
         }
 - path: /machine-identities/v2/{id}
@@ -280,7 +393,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetOwnershipCorrelationConfigV1`: Correlationconfig
+          // response from `GetOwnershipCorrelationConfigV1`: CorrelationConfig
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.GetOwnershipCorrelationConfigV1`: %v\n", resp)
         }
 - path: /machine-identities/v1
@@ -319,7 +432,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListMachineIdentitiesV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `ListMachineIdentitiesV1`: []Machineidentityresponse
+          // response from `ListMachineIdentitiesV1`: []MachineIdentityResponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.ListMachineIdentitiesV1`: %v\n", resp)
         }
 - path: /machine-identities/v2
@@ -396,7 +509,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `ListMachineIdentityUserEntitlementsV1`: []Machineidentityuserentitlementresponse
+          // response from `ListMachineIdentityUserEntitlementsV1`: []MachineIdentityUserEntitlementResponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.ListMachineIdentityUserEntitlementsV1`: %v\n", resp)
         }
 - path: /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs
@@ -435,7 +548,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `ListOwnershipCorrelationConfigsV1`: []Correlationconfig
+          // response from `ListOwnershipCorrelationConfigsV1`: []CorrelationConfig
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.ListOwnershipCorrelationConfigsV1`: %v\n", resp)
         }
 - path: /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId}
@@ -459,11 +572,11 @@
           sourceId := `2c9180835d191a86015d28455b4a2329` // string | The Source ID. # string | The Source ID.
           resourceId := `aws:iam-role` // string | The source resource ID (for example, account or aws:iam-role). # string | The source resource ID (for example, account or aws:iam-role).
           configId := `f5dd23fe-3414-42b7-bb1c-869400ad7a10` // string | The correlation config ID. # string | The correlation config ID.
-          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/attributes","value":{"syncPrimaryToMachineAccounts":true}}]`) // []Jsonpatchoperation | The JSONPatch payload used to update the correlation config.
+          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/attributes","value":{"syncPrimaryToMachineAccounts":true}}]`) // []JsonPatchOperation | The JSONPatch payload used to update the correlation config.
 
           
-          var jsonpatchoperation []machine_identities.Jsonpatchoperation
-          if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+          var jsonPatchOperation []machine_identities.JsonPatchOperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -472,13 +585,13 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Jsonpatchoperation(jsonpatchoperation).Execute()
-          //resp, r, err := apiClient.MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).Jsonpatchoperation(jsonpatchoperation).Execute()
+          resp, r, err := apiClient.MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1(context.Background(), sourceId, resourceId, configId).JsonPatchOperation(jsonPatchOperation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `PatchOwnershipCorrelationConfigV1`: Correlationconfig
+          // response from `PatchOwnershipCorrelationConfigV1`: CorrelationConfig
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.PatchOwnershipCorrelationConfigV1`: %v\n", resp)
         }
 - path: /sources/v1/{sourceId}/aggregate-agents
@@ -501,11 +614,14 @@
         func main() {
           sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
           xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-           machineidentityaggregationrequestJson := []byte(``) // Machineidentityaggregationrequest | 
+           machineidentityaggregationrequestJson := []byte(`{
+          "datasetIds" : [ "source:datasetId12345", "source:datasetId12345" ],
+          "disableOptimization" : false
+        }`) // MachineIdentityAggregationRequest | 
 
           
-          var machineidentityaggregationrequest machine_identities.Machineidentityaggregationrequest
-          if err := json.Unmarshal(machineidentityaggregationrequestJson, &machineidentityaggregationrequest); err != nil {
+          var machineIdentityAggregationRequest machine_identities.MachineIdentityAggregationRequest
+          if err := json.Unmarshal(machineidentityaggregationrequestJson, &machineIdentityAggregationRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -514,13 +630,13 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineIdentitiesAPI.StartMachineIdentityAggregationV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Machineidentityaggregationrequest(machineidentityaggregationrequest).Execute()
-          //resp, r, err := apiClient.MachineIdentitiesAPI.StartMachineIdentityAggregationV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Machineidentityaggregationrequest(machineidentityaggregationrequest).Execute()
+          resp, r, err := apiClient.MachineIdentitiesAPI.StartMachineIdentityAggregationV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).MachineIdentityAggregationRequest(machineIdentityAggregationRequest).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesAPI.StartMachineIdentityAggregationV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).MachineIdentityAggregationRequest(machineIdentityAggregationRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.StartMachineIdentityAggregationV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `StartMachineIdentityAggregationV1`: Machineidentityaggregationresponse
+          // response from `StartMachineIdentityAggregationV1`: MachineIdentityAggregationResponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.StartMachineIdentityAggregationV1`: %v\n", resp)
         }
 - path: /machine-identities/v1/{id}
@@ -562,7 +678,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.UpdateMachineIdentityV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `UpdateMachineIdentityV1`: Machineidentityresponse
+          // response from `UpdateMachineIdentityV1`: MachineIdentityResponse
           fmt.Fprintf(os.Stdout, "Response from `MachineIdentitiesAPI.UpdateMachineIdentityV1`: %v\n", resp)
         }
 - path: /machine-identities/v2/{id}
@@ -584,11 +700,11 @@
 
         func main() {
           id := `ef38f94347e94562b5bb8424a56397d8` // string | Machine Identity ID. # string | Machine Identity ID.
-          jsonpatchoperationJson := []byte(`[{"op":"add","path":"/attributes/securityRisk","value":"medium"}]`) // []Jsonpatchoperation | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          jsonpatchoperationJson := []byte(`[{"op":"add","path":"/attributes/securityRisk","value":"medium"}]`) // []JsonPatchOperation | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
           
-          var jsonpatchoperation []machine_identities.Jsonpatchoperation
-          if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+          var jsonPatchOperation []machine_identities.JsonPatchOperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -597,8 +713,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV2(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-          //resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV2(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+          resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV2(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.MachineIdentitiesAPI.UpdateMachineIdentityV2(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentitiesAPI.UpdateMachineIdentityV2``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -26,15 +26,15 @@ type AccountsAPIService service
 type ApiCreateAccountV1Request struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
-	accountattributescreate *Accountattributescreate
+	accountAttributesCreate *AccountAttributesCreate
 }
 
-func (r ApiCreateAccountV1Request) Accountattributescreate(accountattributescreate Accountattributescreate) ApiCreateAccountV1Request {
-	r.accountattributescreate = &accountattributescreate
+func (r ApiCreateAccountV1Request) AccountAttributesCreate(accountAttributesCreate AccountAttributesCreate) ApiCreateAccountV1Request {
+	r.accountAttributesCreate = &accountAttributesCreate
 	return r
 }
 
-func (r ApiCreateAccountV1Request) Execute() (*Accountsasyncresult, *http.Response, error) {
+func (r ApiCreateAccountV1Request) Execute() (*AccountsAsyncResult, *http.Response, error) {
 	return r.ApiService.CreateAccountV1Execute(r)
 }
 
@@ -65,13 +65,13 @@ func (a *AccountsAPIService) CreateAccountV1(ctx context.Context) ApiCreateAccou
 }
 
 // Execute executes the request
-//  @return Accountsasyncresult
-func (a *AccountsAPIService) CreateAccountV1Execute(r ApiCreateAccountV1Request) (*Accountsasyncresult, *http.Response, error) {
+//  @return AccountsAsyncResult
+func (a *AccountsAPIService) CreateAccountV1Execute(r ApiCreateAccountV1Request) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountsasyncresult
+		localVarReturnValue  *AccountsAsyncResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.CreateAccountV1")
@@ -84,8 +84,8 @@ func (a *AccountsAPIService) CreateAccountV1Execute(r ApiCreateAccountV1Request)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accountattributescreate == nil {
-		return localVarReturnValue, nil, reportError("accountattributescreate is required and must be specified")
+	if r.accountAttributesCreate == nil {
+		return localVarReturnValue, nil, reportError("accountAttributesCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -106,7 +106,7 @@ func (a *AccountsAPIService) CreateAccountV1Execute(r ApiCreateAccountV1Request)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accountattributescreate
+	localVarPostBody = r.accountAttributesCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -130,7 +130,7 @@ func (a *AccountsAPIService) CreateAccountV1Execute(r ApiCreateAccountV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -152,7 +152,7 @@ func (a *AccountsAPIService) CreateAccountV1Execute(r ApiCreateAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -174,7 +174,7 @@ func (a *AccountsAPIService) CreateAccountV1Execute(r ApiCreateAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -204,7 +204,7 @@ type ApiDeleteAccountAsyncV1Request struct {
 	id string
 }
 
-func (r ApiDeleteAccountAsyncV1Request) Execute() (*Taskresultdto, *http.Response, error) {
+func (r ApiDeleteAccountAsyncV1Request) Execute() (*TaskResultDto, *http.Response, error) {
 	return r.ApiService.DeleteAccountAsyncV1Execute(r)
 }
 
@@ -232,13 +232,13 @@ func (a *AccountsAPIService) DeleteAccountAsyncV1(ctx context.Context, id string
 }
 
 // Execute executes the request
-//  @return Taskresultdto
-func (a *AccountsAPIService) DeleteAccountAsyncV1Execute(r ApiDeleteAccountAsyncV1Request) (*Taskresultdto, *http.Response, error) {
+//  @return TaskResultDto
+func (a *AccountsAPIService) DeleteAccountAsyncV1Execute(r ApiDeleteAccountAsyncV1Request) (*TaskResultDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Taskresultdto
+		localVarReturnValue  *TaskResultDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.DeleteAccountAsyncV1")
@@ -293,7 +293,7 @@ func (a *AccountsAPIService) DeleteAccountAsyncV1Execute(r ApiDeleteAccountAsync
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -315,7 +315,7 @@ func (a *AccountsAPIService) DeleteAccountAsyncV1Execute(r ApiDeleteAccountAsync
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -337,7 +337,7 @@ func (a *AccountsAPIService) DeleteAccountAsyncV1Execute(r ApiDeleteAccountAsync
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -367,7 +367,7 @@ type ApiDeleteAccountV1Request struct {
 	id string
 }
 
-func (r ApiDeleteAccountV1Request) Execute() (*Accountsasyncresult, *http.Response, error) {
+func (r ApiDeleteAccountV1Request) Execute() (*AccountsAsyncResult, *http.Response, error) {
 	return r.ApiService.DeleteAccountV1Execute(r)
 }
 
@@ -392,13 +392,13 @@ func (a *AccountsAPIService) DeleteAccountV1(ctx context.Context, id string) Api
 }
 
 // Execute executes the request
-//  @return Accountsasyncresult
-func (a *AccountsAPIService) DeleteAccountV1Execute(r ApiDeleteAccountV1Request) (*Accountsasyncresult, *http.Response, error) {
+//  @return AccountsAsyncResult
+func (a *AccountsAPIService) DeleteAccountV1Execute(r ApiDeleteAccountV1Request) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountsasyncresult
+		localVarReturnValue  *AccountsAsyncResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.DeleteAccountV1")
@@ -453,7 +453,7 @@ func (a *AccountsAPIService) DeleteAccountV1Execute(r ApiDeleteAccountV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -475,7 +475,7 @@ func (a *AccountsAPIService) DeleteAccountV1Execute(r ApiDeleteAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -486,7 +486,7 @@ func (a *AccountsAPIService) DeleteAccountV1Execute(r ApiDeleteAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -508,7 +508,7 @@ func (a *AccountsAPIService) DeleteAccountV1Execute(r ApiDeleteAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -621,7 +621,7 @@ func (a *AccountsAPIService) DisableAccountForIdentityV1Execute(r ApiDisableAcco
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -643,7 +643,7 @@ func (a *AccountsAPIService) DisableAccountForIdentityV1Execute(r ApiDisableAcco
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -654,7 +654,7 @@ func (a *AccountsAPIService) DisableAccountForIdentityV1Execute(r ApiDisableAcco
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -676,7 +676,7 @@ func (a *AccountsAPIService) DisableAccountForIdentityV1Execute(r ApiDisableAcco
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -704,15 +704,15 @@ type ApiDisableAccountV1Request struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	id string
-	accounttogglerequest *Accounttogglerequest
+	accountToggleRequest *AccountToggleRequest
 }
 
-func (r ApiDisableAccountV1Request) Accounttogglerequest(accounttogglerequest Accounttogglerequest) ApiDisableAccountV1Request {
-	r.accounttogglerequest = &accounttogglerequest
+func (r ApiDisableAccountV1Request) AccountToggleRequest(accountToggleRequest AccountToggleRequest) ApiDisableAccountV1Request {
+	r.accountToggleRequest = &accountToggleRequest
 	return r
 }
 
-func (r ApiDisableAccountV1Request) Execute() (*Accountsasyncresult, *http.Response, error) {
+func (r ApiDisableAccountV1Request) Execute() (*AccountsAsyncResult, *http.Response, error) {
 	return r.ApiService.DisableAccountV1Execute(r)
 }
 
@@ -734,13 +734,13 @@ func (a *AccountsAPIService) DisableAccountV1(ctx context.Context, id string) Ap
 }
 
 // Execute executes the request
-//  @return Accountsasyncresult
-func (a *AccountsAPIService) DisableAccountV1Execute(r ApiDisableAccountV1Request) (*Accountsasyncresult, *http.Response, error) {
+//  @return AccountsAsyncResult
+func (a *AccountsAPIService) DisableAccountV1Execute(r ApiDisableAccountV1Request) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountsasyncresult
+		localVarReturnValue  *AccountsAsyncResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.DisableAccountV1")
@@ -754,8 +754,8 @@ func (a *AccountsAPIService) DisableAccountV1Execute(r ApiDisableAccountV1Reques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accounttogglerequest == nil {
-		return localVarReturnValue, nil, reportError("accounttogglerequest is required and must be specified")
+	if r.accountToggleRequest == nil {
+		return localVarReturnValue, nil, reportError("accountToggleRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -776,7 +776,7 @@ func (a *AccountsAPIService) DisableAccountV1Execute(r ApiDisableAccountV1Reques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accounttogglerequest
+	localVarPostBody = r.accountToggleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -800,7 +800,7 @@ func (a *AccountsAPIService) DisableAccountV1Execute(r ApiDisableAccountV1Reques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -822,7 +822,7 @@ func (a *AccountsAPIService) DisableAccountV1Execute(r ApiDisableAccountV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -833,7 +833,7 @@ func (a *AccountsAPIService) DisableAccountV1Execute(r ApiDisableAccountV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -855,7 +855,7 @@ func (a *AccountsAPIService) DisableAccountV1Execute(r ApiDisableAccountV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -882,15 +882,15 @@ func (a *AccountsAPIService) DisableAccountV1Execute(r ApiDisableAccountV1Reques
 type ApiDisableAccountsForIdentitiesV1Request struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
-	identitiesaccountsbulkrequest *Identitiesaccountsbulkrequest
+	identitiesAccountsBulkRequest *IdentitiesAccountsBulkRequest
 }
 
-func (r ApiDisableAccountsForIdentitiesV1Request) Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest Identitiesaccountsbulkrequest) ApiDisableAccountsForIdentitiesV1Request {
-	r.identitiesaccountsbulkrequest = &identitiesaccountsbulkrequest
+func (r ApiDisableAccountsForIdentitiesV1Request) IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest IdentitiesAccountsBulkRequest) ApiDisableAccountsForIdentitiesV1Request {
+	r.identitiesAccountsBulkRequest = &identitiesAccountsBulkRequest
 	return r
 }
 
-func (r ApiDisableAccountsForIdentitiesV1Request) Execute() ([]Bulkidentitiesaccountsresponse, *http.Response, error) {
+func (r ApiDisableAccountsForIdentitiesV1Request) Execute() ([]BulkIdentitiesAccountsResponse, *http.Response, error) {
 	return r.ApiService.DisableAccountsForIdentitiesV1Execute(r)
 }
 
@@ -910,13 +910,13 @@ func (a *AccountsAPIService) DisableAccountsForIdentitiesV1(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return []Bulkidentitiesaccountsresponse
-func (a *AccountsAPIService) DisableAccountsForIdentitiesV1Execute(r ApiDisableAccountsForIdentitiesV1Request) ([]Bulkidentitiesaccountsresponse, *http.Response, error) {
+//  @return []BulkIdentitiesAccountsResponse
+func (a *AccountsAPIService) DisableAccountsForIdentitiesV1Execute(r ApiDisableAccountsForIdentitiesV1Request) ([]BulkIdentitiesAccountsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Bulkidentitiesaccountsresponse
+		localVarReturnValue  []BulkIdentitiesAccountsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.DisableAccountsForIdentitiesV1")
@@ -929,8 +929,8 @@ func (a *AccountsAPIService) DisableAccountsForIdentitiesV1Execute(r ApiDisableA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.identitiesaccountsbulkrequest == nil {
-		return localVarReturnValue, nil, reportError("identitiesaccountsbulkrequest is required and must be specified")
+	if r.identitiesAccountsBulkRequest == nil {
+		return localVarReturnValue, nil, reportError("identitiesAccountsBulkRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -951,7 +951,7 @@ func (a *AccountsAPIService) DisableAccountsForIdentitiesV1Execute(r ApiDisableA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.identitiesaccountsbulkrequest
+	localVarPostBody = r.identitiesAccountsBulkRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -975,7 +975,7 @@ func (a *AccountsAPIService) DisableAccountsForIdentitiesV1Execute(r ApiDisableA
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -997,7 +997,7 @@ func (a *AccountsAPIService) DisableAccountsForIdentitiesV1Execute(r ApiDisableA
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1019,7 +1019,7 @@ func (a *AccountsAPIService) DisableAccountsForIdentitiesV1Execute(r ApiDisableA
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1132,7 +1132,7 @@ func (a *AccountsAPIService) EnableAccountForIdentityV1Execute(r ApiEnableAccoun
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1154,7 +1154,7 @@ func (a *AccountsAPIService) EnableAccountForIdentityV1Execute(r ApiEnableAccoun
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1165,7 +1165,7 @@ func (a *AccountsAPIService) EnableAccountForIdentityV1Execute(r ApiEnableAccoun
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1187,7 +1187,7 @@ func (a *AccountsAPIService) EnableAccountForIdentityV1Execute(r ApiEnableAccoun
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1215,15 +1215,15 @@ type ApiEnableAccountV1Request struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	id string
-	accounttogglerequest *Accounttogglerequest
+	accountToggleRequest *AccountToggleRequest
 }
 
-func (r ApiEnableAccountV1Request) Accounttogglerequest(accounttogglerequest Accounttogglerequest) ApiEnableAccountV1Request {
-	r.accounttogglerequest = &accounttogglerequest
+func (r ApiEnableAccountV1Request) AccountToggleRequest(accountToggleRequest AccountToggleRequest) ApiEnableAccountV1Request {
+	r.accountToggleRequest = &accountToggleRequest
 	return r
 }
 
-func (r ApiEnableAccountV1Request) Execute() (*Accountsasyncresult, *http.Response, error) {
+func (r ApiEnableAccountV1Request) Execute() (*AccountsAsyncResult, *http.Response, error) {
 	return r.ApiService.EnableAccountV1Execute(r)
 }
 
@@ -1245,13 +1245,13 @@ func (a *AccountsAPIService) EnableAccountV1(ctx context.Context, id string) Api
 }
 
 // Execute executes the request
-//  @return Accountsasyncresult
-func (a *AccountsAPIService) EnableAccountV1Execute(r ApiEnableAccountV1Request) (*Accountsasyncresult, *http.Response, error) {
+//  @return AccountsAsyncResult
+func (a *AccountsAPIService) EnableAccountV1Execute(r ApiEnableAccountV1Request) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountsasyncresult
+		localVarReturnValue  *AccountsAsyncResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.EnableAccountV1")
@@ -1265,8 +1265,8 @@ func (a *AccountsAPIService) EnableAccountV1Execute(r ApiEnableAccountV1Request)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accounttogglerequest == nil {
-		return localVarReturnValue, nil, reportError("accounttogglerequest is required and must be specified")
+	if r.accountToggleRequest == nil {
+		return localVarReturnValue, nil, reportError("accountToggleRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1287,7 +1287,7 @@ func (a *AccountsAPIService) EnableAccountV1Execute(r ApiEnableAccountV1Request)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accounttogglerequest
+	localVarPostBody = r.accountToggleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1311,7 +1311,7 @@ func (a *AccountsAPIService) EnableAccountV1Execute(r ApiEnableAccountV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1333,7 +1333,7 @@ func (a *AccountsAPIService) EnableAccountV1Execute(r ApiEnableAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1344,7 +1344,7 @@ func (a *AccountsAPIService) EnableAccountV1Execute(r ApiEnableAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1366,7 +1366,7 @@ func (a *AccountsAPIService) EnableAccountV1Execute(r ApiEnableAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1393,15 +1393,15 @@ func (a *AccountsAPIService) EnableAccountV1Execute(r ApiEnableAccountV1Request)
 type ApiEnableAccountsForIdentitiesV1Request struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
-	identitiesaccountsbulkrequest *Identitiesaccountsbulkrequest
+	identitiesAccountsBulkRequest *IdentitiesAccountsBulkRequest
 }
 
-func (r ApiEnableAccountsForIdentitiesV1Request) Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest Identitiesaccountsbulkrequest) ApiEnableAccountsForIdentitiesV1Request {
-	r.identitiesaccountsbulkrequest = &identitiesaccountsbulkrequest
+func (r ApiEnableAccountsForIdentitiesV1Request) IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest IdentitiesAccountsBulkRequest) ApiEnableAccountsForIdentitiesV1Request {
+	r.identitiesAccountsBulkRequest = &identitiesAccountsBulkRequest
 	return r
 }
 
-func (r ApiEnableAccountsForIdentitiesV1Request) Execute() ([]Bulkidentitiesaccountsresponse, *http.Response, error) {
+func (r ApiEnableAccountsForIdentitiesV1Request) Execute() ([]BulkIdentitiesAccountsResponse, *http.Response, error) {
 	return r.ApiService.EnableAccountsForIdentitiesV1Execute(r)
 }
 
@@ -1421,13 +1421,13 @@ func (a *AccountsAPIService) EnableAccountsForIdentitiesV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return []Bulkidentitiesaccountsresponse
-func (a *AccountsAPIService) EnableAccountsForIdentitiesV1Execute(r ApiEnableAccountsForIdentitiesV1Request) ([]Bulkidentitiesaccountsresponse, *http.Response, error) {
+//  @return []BulkIdentitiesAccountsResponse
+func (a *AccountsAPIService) EnableAccountsForIdentitiesV1Execute(r ApiEnableAccountsForIdentitiesV1Request) ([]BulkIdentitiesAccountsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Bulkidentitiesaccountsresponse
+		localVarReturnValue  []BulkIdentitiesAccountsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.EnableAccountsForIdentitiesV1")
@@ -1440,8 +1440,8 @@ func (a *AccountsAPIService) EnableAccountsForIdentitiesV1Execute(r ApiEnableAcc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.identitiesaccountsbulkrequest == nil {
-		return localVarReturnValue, nil, reportError("identitiesaccountsbulkrequest is required and must be specified")
+	if r.identitiesAccountsBulkRequest == nil {
+		return localVarReturnValue, nil, reportError("identitiesAccountsBulkRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1462,7 +1462,7 @@ func (a *AccountsAPIService) EnableAccountsForIdentitiesV1Execute(r ApiEnableAcc
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.identitiesaccountsbulkrequest
+	localVarPostBody = r.identitiesAccountsBulkRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1486,7 +1486,7 @@ func (a *AccountsAPIService) EnableAccountsForIdentitiesV1Execute(r ApiEnableAcc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1508,7 +1508,7 @@ func (a *AccountsAPIService) EnableAccountsForIdentitiesV1Execute(r ApiEnableAcc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1530,7 +1530,7 @@ func (a *AccountsAPIService) EnableAccountsForIdentitiesV1Execute(r ApiEnableAcc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1682,7 +1682,7 @@ func (a *AccountsAPIService) GetAccountEntitlementsV1Execute(r ApiGetAccountEnti
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1704,7 +1704,7 @@ func (a *AccountsAPIService) GetAccountEntitlementsV1Execute(r ApiGetAccountEnti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1715,7 +1715,7 @@ func (a *AccountsAPIService) GetAccountEntitlementsV1Execute(r ApiGetAccountEnti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1737,7 +1737,7 @@ func (a *AccountsAPIService) GetAccountEntitlementsV1Execute(r ApiGetAccountEnti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1850,7 +1850,7 @@ func (a *AccountsAPIService) GetAccountV1Execute(r ApiGetAccountV1Request) (*Acc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1872,7 +1872,7 @@ func (a *AccountsAPIService) GetAccountV1Execute(r ApiGetAccountV1Request) (*Acc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1883,7 +1883,7 @@ func (a *AccountsAPIService) GetAccountV1Execute(r ApiGetAccountV1Request) (*Acc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1905,7 +1905,7 @@ func (a *AccountsAPIService) GetAccountV1Execute(r ApiGetAccountV1Request) (*Acc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2083,7 +2083,7 @@ func (a *AccountsAPIService) ListAccountsV1Execute(r ApiListAccountsV1Request) (
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2105,7 +2105,7 @@ func (a *AccountsAPIService) ListAccountsV1Execute(r ApiListAccountsV1Request) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2127,7 +2127,7 @@ func (a *AccountsAPIService) ListAccountsV1Execute(r ApiListAccountsV1Request) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2155,15 +2155,15 @@ type ApiPutAccountV1Request struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	id string
-	accountattributes *Accountattributes
+	accountAttributes *AccountAttributes
 }
 
-func (r ApiPutAccountV1Request) Accountattributes(accountattributes Accountattributes) ApiPutAccountV1Request {
-	r.accountattributes = &accountattributes
+func (r ApiPutAccountV1Request) AccountAttributes(accountAttributes AccountAttributes) ApiPutAccountV1Request {
+	r.accountAttributes = &accountAttributes
 	return r
 }
 
-func (r ApiPutAccountV1Request) Execute() (*Accountsasyncresult, *http.Response, error) {
+func (r ApiPutAccountV1Request) Execute() (*AccountsAsyncResult, *http.Response, error) {
 	return r.ApiService.PutAccountV1Execute(r)
 }
 
@@ -2190,13 +2190,13 @@ func (a *AccountsAPIService) PutAccountV1(ctx context.Context, id string) ApiPut
 }
 
 // Execute executes the request
-//  @return Accountsasyncresult
-func (a *AccountsAPIService) PutAccountV1Execute(r ApiPutAccountV1Request) (*Accountsasyncresult, *http.Response, error) {
+//  @return AccountsAsyncResult
+func (a *AccountsAPIService) PutAccountV1Execute(r ApiPutAccountV1Request) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountsasyncresult
+		localVarReturnValue  *AccountsAsyncResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.PutAccountV1")
@@ -2210,8 +2210,8 @@ func (a *AccountsAPIService) PutAccountV1Execute(r ApiPutAccountV1Request) (*Acc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accountattributes == nil {
-		return localVarReturnValue, nil, reportError("accountattributes is required and must be specified")
+	if r.accountAttributes == nil {
+		return localVarReturnValue, nil, reportError("accountAttributes is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2232,7 +2232,7 @@ func (a *AccountsAPIService) PutAccountV1Execute(r ApiPutAccountV1Request) (*Acc
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accountattributes
+	localVarPostBody = r.accountAttributes
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2256,7 +2256,7 @@ func (a *AccountsAPIService) PutAccountV1Execute(r ApiPutAccountV1Request) (*Acc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2278,7 +2278,7 @@ func (a *AccountsAPIService) PutAccountV1Execute(r ApiPutAccountV1Request) (*Acc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2289,7 +2289,7 @@ func (a *AccountsAPIService) PutAccountV1Execute(r ApiPutAccountV1Request) (*Acc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2311,7 +2311,7 @@ func (a *AccountsAPIService) PutAccountV1Execute(r ApiPutAccountV1Request) (*Acc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2341,7 +2341,7 @@ type ApiSubmitReloadAccountV1Request struct {
 	id string
 }
 
-func (r ApiSubmitReloadAccountV1Request) Execute() (*Accountsasyncresult, *http.Response, error) {
+func (r ApiSubmitReloadAccountV1Request) Execute() (*AccountsAsyncResult, *http.Response, error) {
 	return r.ApiService.SubmitReloadAccountV1Execute(r)
 }
 
@@ -2363,13 +2363,13 @@ func (a *AccountsAPIService) SubmitReloadAccountV1(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return Accountsasyncresult
-func (a *AccountsAPIService) SubmitReloadAccountV1Execute(r ApiSubmitReloadAccountV1Request) (*Accountsasyncresult, *http.Response, error) {
+//  @return AccountsAsyncResult
+func (a *AccountsAPIService) SubmitReloadAccountV1Execute(r ApiSubmitReloadAccountV1Request) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountsasyncresult
+		localVarReturnValue  *AccountsAsyncResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.SubmitReloadAccountV1")
@@ -2424,7 +2424,7 @@ func (a *AccountsAPIService) SubmitReloadAccountV1Execute(r ApiSubmitReloadAccou
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2446,7 +2446,7 @@ func (a *AccountsAPIService) SubmitReloadAccountV1Execute(r ApiSubmitReloadAccou
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2457,7 +2457,7 @@ func (a *AccountsAPIService) SubmitReloadAccountV1Execute(r ApiSubmitReloadAccou
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2479,7 +2479,7 @@ func (a *AccountsAPIService) SubmitReloadAccountV1Execute(r ApiSubmitReloadAccou
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2507,15 +2507,15 @@ type ApiUnlockAccountV1Request struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	id string
-	accountunlockrequest *Accountunlockrequest
+	accountUnlockRequest *AccountUnlockRequest
 }
 
-func (r ApiUnlockAccountV1Request) Accountunlockrequest(accountunlockrequest Accountunlockrequest) ApiUnlockAccountV1Request {
-	r.accountunlockrequest = &accountunlockrequest
+func (r ApiUnlockAccountV1Request) AccountUnlockRequest(accountUnlockRequest AccountUnlockRequest) ApiUnlockAccountV1Request {
+	r.accountUnlockRequest = &accountUnlockRequest
 	return r
 }
 
-func (r ApiUnlockAccountV1Request) Execute() (*Accountsasyncresult, *http.Response, error) {
+func (r ApiUnlockAccountV1Request) Execute() (*AccountsAsyncResult, *http.Response, error) {
 	return r.ApiService.UnlockAccountV1Execute(r)
 }
 
@@ -2538,13 +2538,13 @@ func (a *AccountsAPIService) UnlockAccountV1(ctx context.Context, id string) Api
 }
 
 // Execute executes the request
-//  @return Accountsasyncresult
-func (a *AccountsAPIService) UnlockAccountV1Execute(r ApiUnlockAccountV1Request) (*Accountsasyncresult, *http.Response, error) {
+//  @return AccountsAsyncResult
+func (a *AccountsAPIService) UnlockAccountV1Execute(r ApiUnlockAccountV1Request) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountsasyncresult
+		localVarReturnValue  *AccountsAsyncResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.UnlockAccountV1")
@@ -2558,8 +2558,8 @@ func (a *AccountsAPIService) UnlockAccountV1Execute(r ApiUnlockAccountV1Request)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accountunlockrequest == nil {
-		return localVarReturnValue, nil, reportError("accountunlockrequest is required and must be specified")
+	if r.accountUnlockRequest == nil {
+		return localVarReturnValue, nil, reportError("accountUnlockRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2580,7 +2580,7 @@ func (a *AccountsAPIService) UnlockAccountV1Execute(r ApiUnlockAccountV1Request)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accountunlockrequest
+	localVarPostBody = r.accountUnlockRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2604,7 +2604,7 @@ func (a *AccountsAPIService) UnlockAccountV1Execute(r ApiUnlockAccountV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2626,7 +2626,7 @@ func (a *AccountsAPIService) UnlockAccountV1Execute(r ApiUnlockAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2637,7 +2637,7 @@ func (a *AccountsAPIService) UnlockAccountV1Execute(r ApiUnlockAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2659,7 +2659,7 @@ func (a *AccountsAPIService) UnlockAccountV1Execute(r ApiUnlockAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2794,7 +2794,7 @@ func (a *AccountsAPIService) UpdateAccountV1Execute(r ApiUpdateAccountV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2816,7 +2816,7 @@ func (a *AccountsAPIService) UpdateAccountV1Execute(r ApiUpdateAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2827,7 +2827,7 @@ func (a *AccountsAPIService) UpdateAccountV1Execute(r ApiUpdateAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2849,7 +2849,7 @@ func (a *AccountsAPIService) UpdateAccountV1Execute(r ApiUpdateAccountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

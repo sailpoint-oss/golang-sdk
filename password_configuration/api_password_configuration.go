@@ -25,15 +25,15 @@ type PasswordConfigurationAPIService service
 type ApiCreatePasswordOrgConfigV1Request struct {
 	ctx context.Context
 	ApiService *PasswordConfigurationAPIService
-	passwordorgconfig *Passwordorgconfig
+	passwordOrgConfig *PasswordOrgConfig
 }
 
-func (r ApiCreatePasswordOrgConfigV1Request) Passwordorgconfig(passwordorgconfig Passwordorgconfig) ApiCreatePasswordOrgConfigV1Request {
-	r.passwordorgconfig = &passwordorgconfig
+func (r ApiCreatePasswordOrgConfigV1Request) PasswordOrgConfig(passwordOrgConfig PasswordOrgConfig) ApiCreatePasswordOrgConfigV1Request {
+	r.passwordOrgConfig = &passwordOrgConfig
 	return r
 }
 
-func (r ApiCreatePasswordOrgConfigV1Request) Execute() (*Passwordorgconfig, *http.Response, error) {
+func (r ApiCreatePasswordOrgConfigV1Request) Execute() (*PasswordOrgConfig, *http.Response, error) {
 	return r.ApiService.CreatePasswordOrgConfigV1Execute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *PasswordConfigurationAPIService) CreatePasswordOrgConfigV1(ctx context.
 }
 
 // Execute executes the request
-//  @return Passwordorgconfig
-func (a *PasswordConfigurationAPIService) CreatePasswordOrgConfigV1Execute(r ApiCreatePasswordOrgConfigV1Request) (*Passwordorgconfig, *http.Response, error) {
+//  @return PasswordOrgConfig
+func (a *PasswordConfigurationAPIService) CreatePasswordOrgConfigV1Execute(r ApiCreatePasswordOrgConfigV1Request) (*PasswordOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordorgconfig
+		localVarReturnValue  *PasswordOrgConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordConfigurationAPIService.CreatePasswordOrgConfigV1")
@@ -74,8 +74,8 @@ func (a *PasswordConfigurationAPIService) CreatePasswordOrgConfigV1Execute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.passwordorgconfig == nil {
-		return localVarReturnValue, nil, reportError("passwordorgconfig is required and must be specified")
+	if r.passwordOrgConfig == nil {
+		return localVarReturnValue, nil, reportError("passwordOrgConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -96,7 +96,7 @@ func (a *PasswordConfigurationAPIService) CreatePasswordOrgConfigV1Execute(r Api
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.passwordorgconfig
+	localVarPostBody = r.passwordOrgConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -120,7 +120,7 @@ func (a *PasswordConfigurationAPIService) CreatePasswordOrgConfigV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,7 +142,7 @@ func (a *PasswordConfigurationAPIService) CreatePasswordOrgConfigV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *PasswordConfigurationAPIService) CreatePasswordOrgConfigV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -193,7 +193,7 @@ type ApiGetPasswordOrgConfigV1Request struct {
 	ApiService *PasswordConfigurationAPIService
 }
 
-func (r ApiGetPasswordOrgConfigV1Request) Execute() (*Passwordorgconfig, *http.Response, error) {
+func (r ApiGetPasswordOrgConfigV1Request) Execute() (*PasswordOrgConfig, *http.Response, error) {
 	return r.ApiService.GetPasswordOrgConfigV1Execute(r)
 }
 
@@ -213,13 +213,13 @@ func (a *PasswordConfigurationAPIService) GetPasswordOrgConfigV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return Passwordorgconfig
-func (a *PasswordConfigurationAPIService) GetPasswordOrgConfigV1Execute(r ApiGetPasswordOrgConfigV1Request) (*Passwordorgconfig, *http.Response, error) {
+//  @return PasswordOrgConfig
+func (a *PasswordConfigurationAPIService) GetPasswordOrgConfigV1Execute(r ApiGetPasswordOrgConfigV1Request) (*PasswordOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordorgconfig
+		localVarReturnValue  *PasswordOrgConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordConfigurationAPIService.GetPasswordOrgConfigV1")
@@ -273,7 +273,7 @@ func (a *PasswordConfigurationAPIService) GetPasswordOrgConfigV1Execute(r ApiGet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -295,7 +295,7 @@ func (a *PasswordConfigurationAPIService) GetPasswordOrgConfigV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -317,7 +317,7 @@ func (a *PasswordConfigurationAPIService) GetPasswordOrgConfigV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -344,15 +344,15 @@ func (a *PasswordConfigurationAPIService) GetPasswordOrgConfigV1Execute(r ApiGet
 type ApiPutPasswordOrgConfigV1Request struct {
 	ctx context.Context
 	ApiService *PasswordConfigurationAPIService
-	passwordorgconfig *Passwordorgconfig
+	passwordOrgConfig *PasswordOrgConfig
 }
 
-func (r ApiPutPasswordOrgConfigV1Request) Passwordorgconfig(passwordorgconfig Passwordorgconfig) ApiPutPasswordOrgConfigV1Request {
-	r.passwordorgconfig = &passwordorgconfig
+func (r ApiPutPasswordOrgConfigV1Request) PasswordOrgConfig(passwordOrgConfig PasswordOrgConfig) ApiPutPasswordOrgConfigV1Request {
+	r.passwordOrgConfig = &passwordOrgConfig
 	return r
 }
 
-func (r ApiPutPasswordOrgConfigV1Request) Execute() (*Passwordorgconfig, *http.Response, error) {
+func (r ApiPutPasswordOrgConfigV1Request) Execute() (*PasswordOrgConfig, *http.Response, error) {
 	return r.ApiService.PutPasswordOrgConfigV1Execute(r)
 }
 
@@ -374,13 +374,13 @@ func (a *PasswordConfigurationAPIService) PutPasswordOrgConfigV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return Passwordorgconfig
-func (a *PasswordConfigurationAPIService) PutPasswordOrgConfigV1Execute(r ApiPutPasswordOrgConfigV1Request) (*Passwordorgconfig, *http.Response, error) {
+//  @return PasswordOrgConfig
+func (a *PasswordConfigurationAPIService) PutPasswordOrgConfigV1Execute(r ApiPutPasswordOrgConfigV1Request) (*PasswordOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordorgconfig
+		localVarReturnValue  *PasswordOrgConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordConfigurationAPIService.PutPasswordOrgConfigV1")
@@ -393,8 +393,8 @@ func (a *PasswordConfigurationAPIService) PutPasswordOrgConfigV1Execute(r ApiPut
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.passwordorgconfig == nil {
-		return localVarReturnValue, nil, reportError("passwordorgconfig is required and must be specified")
+	if r.passwordOrgConfig == nil {
+		return localVarReturnValue, nil, reportError("passwordOrgConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -415,7 +415,7 @@ func (a *PasswordConfigurationAPIService) PutPasswordOrgConfigV1Execute(r ApiPut
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.passwordorgconfig
+	localVarPostBody = r.passwordOrgConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -439,7 +439,7 @@ func (a *PasswordConfigurationAPIService) PutPasswordOrgConfigV1Execute(r ApiPut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -461,7 +461,7 @@ func (a *PasswordConfigurationAPIService) PutPasswordOrgConfigV1Execute(r ApiPut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -483,7 +483,7 @@ func (a *PasswordConfigurationAPIService) PutPasswordOrgConfigV1Execute(r ApiPut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

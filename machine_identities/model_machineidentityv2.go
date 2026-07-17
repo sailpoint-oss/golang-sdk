@@ -39,7 +39,7 @@ type Machineidentityv2 struct {
 	ManuallyEdited *bool `json:"manuallyEdited,omitempty"`
 	// Indicates if the machine identity has been manually created.
 	ManuallyCreated *bool `json:"manuallyCreated,omitempty"`
-	Owners *Machineidentityownersv2 `json:"owners,omitempty"`
+	Owners *MachineIdentityOwnersV2 `json:"owners,omitempty"`
 	// The subtype value associated to the machine identity.
 	Subtype *string `json:"subtype,omitempty"`
 	// The source id associated to the machine identity.
@@ -56,13 +56,13 @@ type Machineidentityv2 struct {
 	ExistsOnSource *string `json:"existsOnSource,omitempty"`
 	// Operational status read from stored attributes.status; null when absent.
 	Status NullableString `json:"status,omitempty"`
-	Resource *Resourcev2 `json:"resource,omitempty"`
+	Resource *ResourceV2 `json:"resource,omitempty"`
 	Source *MachineIdentityV2Source `json:"source,omitempty"`
 	// The user entitlements associated to the machine identity.
-	UserEntitlements []Userentitlementv2 `json:"userEntitlements,omitempty"`
+	UserEntitlements []UserEntitlementV2 `json:"userEntitlements,omitempty"`
 	// Optional Business Application references associated with this machine identity.
-	BusinessApplicationRefs []Businessapplicationref `json:"businessApplicationRefs,omitempty"`
-	EffectiveSanctionedStatus *Sanctionedstatus `json:"effectiveSanctionedStatus,omitempty"`
+	BusinessApplicationRefs []BusinessApplicationRef `json:"businessApplicationRefs,omitempty"`
+	EffectiveSanctionedStatus *SanctionedStatus `json:"effectiveSanctionedStatus,omitempty"`
 	Risk *MachineIdentityV2Risk `json:"risk,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -378,9 +378,9 @@ func (o *Machineidentityv2) SetManuallyCreated(v bool) {
 }
 
 // GetOwners returns the Owners field value if set, zero value otherwise.
-func (o *Machineidentityv2) GetOwners() Machineidentityownersv2 {
+func (o *Machineidentityv2) GetOwners() MachineIdentityOwnersV2 {
 	if o == nil || IsNil(o.Owners) {
-		var ret Machineidentityownersv2
+		var ret MachineIdentityOwnersV2
 		return ret
 	}
 	return *o.Owners
@@ -388,7 +388,7 @@ func (o *Machineidentityv2) GetOwners() Machineidentityownersv2 {
 
 // GetOwnersOk returns a tuple with the Owners field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Machineidentityv2) GetOwnersOk() (*Machineidentityownersv2, bool) {
+func (o *Machineidentityv2) GetOwnersOk() (*MachineIdentityOwnersV2, bool) {
 	if o == nil || IsNil(o.Owners) {
 		return nil, false
 	}
@@ -404,8 +404,8 @@ func (o *Machineidentityv2) HasOwners() bool {
 	return false
 }
 
-// SetOwners gets a reference to the given Machineidentityownersv2 and assigns it to the Owners field.
-func (o *Machineidentityv2) SetOwners(v Machineidentityownersv2) {
+// SetOwners gets a reference to the given MachineIdentityOwnersV2 and assigns it to the Owners field.
+func (o *Machineidentityv2) SetOwners(v MachineIdentityOwnersV2) {
 	o.Owners = &v
 }
 
@@ -676,9 +676,9 @@ func (o *Machineidentityv2) UnsetStatus() {
 }
 
 // GetResource returns the Resource field value if set, zero value otherwise.
-func (o *Machineidentityv2) GetResource() Resourcev2 {
+func (o *Machineidentityv2) GetResource() ResourceV2 {
 	if o == nil || IsNil(o.Resource) {
-		var ret Resourcev2
+		var ret ResourceV2
 		return ret
 	}
 	return *o.Resource
@@ -686,7 +686,7 @@ func (o *Machineidentityv2) GetResource() Resourcev2 {
 
 // GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Machineidentityv2) GetResourceOk() (*Resourcev2, bool) {
+func (o *Machineidentityv2) GetResourceOk() (*ResourceV2, bool) {
 	if o == nil || IsNil(o.Resource) {
 		return nil, false
 	}
@@ -702,8 +702,8 @@ func (o *Machineidentityv2) HasResource() bool {
 	return false
 }
 
-// SetResource gets a reference to the given Resourcev2 and assigns it to the Resource field.
-func (o *Machineidentityv2) SetResource(v Resourcev2) {
+// SetResource gets a reference to the given ResourceV2 and assigns it to the Resource field.
+func (o *Machineidentityv2) SetResource(v ResourceV2) {
 	o.Resource = &v
 }
 
@@ -740,9 +740,9 @@ func (o *Machineidentityv2) SetSource(v MachineIdentityV2Source) {
 }
 
 // GetUserEntitlements returns the UserEntitlements field value if set, zero value otherwise.
-func (o *Machineidentityv2) GetUserEntitlements() []Userentitlementv2 {
+func (o *Machineidentityv2) GetUserEntitlements() []UserEntitlementV2 {
 	if o == nil || IsNil(o.UserEntitlements) {
-		var ret []Userentitlementv2
+		var ret []UserEntitlementV2
 		return ret
 	}
 	return o.UserEntitlements
@@ -750,7 +750,7 @@ func (o *Machineidentityv2) GetUserEntitlements() []Userentitlementv2 {
 
 // GetUserEntitlementsOk returns a tuple with the UserEntitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Machineidentityv2) GetUserEntitlementsOk() ([]Userentitlementv2, bool) {
+func (o *Machineidentityv2) GetUserEntitlementsOk() ([]UserEntitlementV2, bool) {
 	if o == nil || IsNil(o.UserEntitlements) {
 		return nil, false
 	}
@@ -766,15 +766,15 @@ func (o *Machineidentityv2) HasUserEntitlements() bool {
 	return false
 }
 
-// SetUserEntitlements gets a reference to the given []Userentitlementv2 and assigns it to the UserEntitlements field.
-func (o *Machineidentityv2) SetUserEntitlements(v []Userentitlementv2) {
+// SetUserEntitlements gets a reference to the given []UserEntitlementV2 and assigns it to the UserEntitlements field.
+func (o *Machineidentityv2) SetUserEntitlements(v []UserEntitlementV2) {
 	o.UserEntitlements = v
 }
 
 // GetBusinessApplicationRefs returns the BusinessApplicationRefs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Machineidentityv2) GetBusinessApplicationRefs() []Businessapplicationref {
+func (o *Machineidentityv2) GetBusinessApplicationRefs() []BusinessApplicationRef {
 	if o == nil {
-		var ret []Businessapplicationref
+		var ret []BusinessApplicationRef
 		return ret
 	}
 	return o.BusinessApplicationRefs
@@ -783,7 +783,7 @@ func (o *Machineidentityv2) GetBusinessApplicationRefs() []Businessapplicationre
 // GetBusinessApplicationRefsOk returns a tuple with the BusinessApplicationRefs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Machineidentityv2) GetBusinessApplicationRefsOk() ([]Businessapplicationref, bool) {
+func (o *Machineidentityv2) GetBusinessApplicationRefsOk() ([]BusinessApplicationRef, bool) {
 	if o == nil || IsNil(o.BusinessApplicationRefs) {
 		return nil, false
 	}
@@ -799,15 +799,15 @@ func (o *Machineidentityv2) HasBusinessApplicationRefs() bool {
 	return false
 }
 
-// SetBusinessApplicationRefs gets a reference to the given []Businessapplicationref and assigns it to the BusinessApplicationRefs field.
-func (o *Machineidentityv2) SetBusinessApplicationRefs(v []Businessapplicationref) {
+// SetBusinessApplicationRefs gets a reference to the given []BusinessApplicationRef and assigns it to the BusinessApplicationRefs field.
+func (o *Machineidentityv2) SetBusinessApplicationRefs(v []BusinessApplicationRef) {
 	o.BusinessApplicationRefs = v
 }
 
 // GetEffectiveSanctionedStatus returns the EffectiveSanctionedStatus field value if set, zero value otherwise.
-func (o *Machineidentityv2) GetEffectiveSanctionedStatus() Sanctionedstatus {
+func (o *Machineidentityv2) GetEffectiveSanctionedStatus() SanctionedStatus {
 	if o == nil || IsNil(o.EffectiveSanctionedStatus) {
-		var ret Sanctionedstatus
+		var ret SanctionedStatus
 		return ret
 	}
 	return *o.EffectiveSanctionedStatus
@@ -815,7 +815,7 @@ func (o *Machineidentityv2) GetEffectiveSanctionedStatus() Sanctionedstatus {
 
 // GetEffectiveSanctionedStatusOk returns a tuple with the EffectiveSanctionedStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Machineidentityv2) GetEffectiveSanctionedStatusOk() (*Sanctionedstatus, bool) {
+func (o *Machineidentityv2) GetEffectiveSanctionedStatusOk() (*SanctionedStatus, bool) {
 	if o == nil || IsNil(o.EffectiveSanctionedStatus) {
 		return nil, false
 	}
@@ -831,8 +831,8 @@ func (o *Machineidentityv2) HasEffectiveSanctionedStatus() bool {
 	return false
 }
 
-// SetEffectiveSanctionedStatus gets a reference to the given Sanctionedstatus and assigns it to the EffectiveSanctionedStatus field.
-func (o *Machineidentityv2) SetEffectiveSanctionedStatus(v Sanctionedstatus) {
+// SetEffectiveSanctionedStatus gets a reference to the given SanctionedStatus and assigns it to the EffectiveSanctionedStatus field.
+func (o *Machineidentityv2) SetEffectiveSanctionedStatus(v SanctionedStatus) {
 	o.EffectiveSanctionedStatus = &v
 }
 

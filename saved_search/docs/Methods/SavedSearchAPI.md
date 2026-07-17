@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Savedsearch**](../models/savedsearch)
+[**SavedSearch**](../models/saved-search)
 
 ### HTTP request headers
 
@@ -94,7 +94,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.CreateSavedSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateSavedSearchV1`: Savedsearch
+    // response from `CreateSavedSearchV1`: SavedSearch
     fmt.Fprintf(os.Stdout, "Response from `SavedSearchAPI.CreateSavedSearchV1`: %v\n", resp)
 }
 ```
@@ -190,7 +190,7 @@ Other parameters are passed through a pointer to a apiExecuteSavedSearchV1Reques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **searcharguments** | [**Searcharguments**](../models/searcharguments) | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided.  | 
+ **searchArguments** | [**SearchArguments**](../models/search-arguments) | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided.  | 
 
 ### Return type
 
@@ -217,10 +217,20 @@ import (
 
 func main() {
     id := `2c91808568c529c60168cca6f90c1313` // string | ID of the requested document. # string | ID of the requested document.
-    searchargumentsJson := []byte(``) // Searcharguments | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. 
+    searchargumentsJson := []byte(`{
+          "owner" : "",
+          "recipients" : [ {
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          }, {
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          } ],
+          "scheduleId" : "7a724640-0c17-4ce9-a8c3-4a89738459c8"
+        }`) // SearchArguments | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. 
 
-    var searcharguments saved_search.Searcharguments
-    if err := json.Unmarshal(searchargumentsJson, &searcharguments); err != nil {
+    var searchArguments saved_search.SearchArguments
+    if err := json.Unmarshal(searchargumentsJson, &searchArguments); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -228,8 +238,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.SavedSearchAPI.ExecuteSavedSearchV1(context.Background(), id).Searcharguments(searcharguments).Execute()
-	  //r, err := apiClient.SavedSearchAPI.ExecuteSavedSearchV1(context.Background(), id).Searcharguments(searcharguments).Execute()
+    r, err := apiClient.SavedSearchAPI.ExecuteSavedSearchV1(context.Background(), id).SearchArguments(searchArguments).Execute()
+	  //r, err := apiClient.SavedSearchAPI.ExecuteSavedSearchV1(context.Background(), id).SearchArguments(searchArguments).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.ExecuteSavedSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -266,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Savedsearch**](../models/savedsearch)
+[**SavedSearch**](../models/saved-search)
 
 ### HTTP request headers
 
@@ -300,7 +310,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.GetSavedSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSavedSearchV1`: Savedsearch
+    // response from `GetSavedSearchV1`: SavedSearch
     fmt.Fprintf(os.Stdout, "Response from `SavedSearchAPI.GetSavedSearchV1`: %v\n", resp)
 }
 ```
@@ -332,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Savedsearch**](../models/savedsearch)
+[**[]SavedSearch**](../models/saved-search)
 
 ### HTTP request headers
 
@@ -369,7 +379,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.ListSavedSearchesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListSavedSearchesV1`: []Savedsearch
+    // response from `ListSavedSearchesV1`: []SavedSearch
     fmt.Fprintf(os.Stdout, "Response from `SavedSearchAPI.ListSavedSearchesV1`: %v\n", resp)
 }
 ```
@@ -401,11 +411,11 @@ Other parameters are passed through a pointer to a apiPutSavedSearchV1Request st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **savedsearch** | [**Savedsearch**](../models/savedsearch) | The saved search to persist. | 
+ **savedSearch** | [**SavedSearch**](../models/saved-search) | The saved search to persist. | 
 
 ### Return type
 
-[**Savedsearch**](../models/savedsearch)
+[**SavedSearch**](../models/saved-search)
 
 ### HTTP request headers
 
@@ -428,10 +438,54 @@ import (
 
 func main() {
     id := `2c91808568c529c60168cca6f90c1313` // string | ID of the requested document. # string | ID of the requested document.
-    savedsearchJson := []byte(``) // Savedsearch | The saved search to persist.
+    savedsearchJson := []byte(`{
+          "owner" : {
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "created" : "2018-06-25T20:22:28.104Z",
+          "columns" : {
+            "identity" : [ {
+              "field" : "displayName",
+              "header" : "Display Name"
+            }, {
+              "field" : "e-mail",
+              "header" : "Work Email"
+            } ]
+          },
+          "query" : "@accounts(disabled:true)",
+          "description" : "Disabled accounts",
+          "orderBy" : {
+            "identity" : [ "lastName", "firstName" ],
+            "role" : [ "name" ]
+          },
+          "sort" : [ "displayName" ],
+          "filters" : {
+            "terms" : [ "account_count", "account_count" ],
+            "range" : {
+              "lower" : {
+                "inclusive" : false,
+                "value" : "1"
+              },
+              "upper" : {
+                "inclusive" : false,
+                "value" : "1"
+              }
+            },
+            "exclude" : false,
+            "type" : "RANGE"
+          },
+          "ownerId" : "2c91808568c529c60168cca6f90c1313",
+          "indices" : [ "identities" ],
+          "public" : false,
+          "name" : "Disabled accounts",
+          "modified" : "2018-06-25T20:22:28.104Z",
+          "id" : "0de46054-fe90-434a-b84e-c6b3359d0c64",
+          "fields" : [ "disabled" ]
+        }`) // SavedSearch | The saved search to persist.
 
-    var savedsearch saved_search.Savedsearch
-    if err := json.Unmarshal(savedsearchJson, &savedsearch); err != nil {
+    var savedSearch saved_search.SavedSearch
+    if err := json.Unmarshal(savedsearchJson, &savedSearch); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -439,13 +493,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchAPI.PutSavedSearchV1(context.Background(), id).Savedsearch(savedsearch).Execute()
-	  //resp, r, err := apiClient.SavedSearchAPI.PutSavedSearchV1(context.Background(), id).Savedsearch(savedsearch).Execute()
+    resp, r, err := apiClient.SavedSearchAPI.PutSavedSearchV1(context.Background(), id).SavedSearch(savedSearch).Execute()
+	  //resp, r, err := apiClient.SavedSearchAPI.PutSavedSearchV1(context.Background(), id).SavedSearch(savedSearch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.PutSavedSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutSavedSearchV1`: Savedsearch
+    // response from `PutSavedSearchV1`: SavedSearch
     fmt.Fprintf(os.Stdout, "Response from `SavedSearchAPI.PutSavedSearchV1`: %v\n", resp)
 }
 ```

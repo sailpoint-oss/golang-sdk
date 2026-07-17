@@ -85,13 +85,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetStatusBySourceIdV1401Response](docs/GetStatusBySourceIdV1401Response.md)
  - [GetStatusBySourceIdV1429Response](docs/GetStatusBySourceIdV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Sourceusage](docs/Sourceusage.md)
- - [Sourceusagestatus](docs/Sourceusagestatus.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [SourceUsage](docs/SourceUsage.md)
+ - [SourceUsageStatus](docs/SourceUsageStatus.md)
 
 
 ## Documentation For Authorization

@@ -65,11 +65,11 @@ Other parameters are passed through a pointer to a apiCreateReassignmentConfigur
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **configurationitemrequest** | [**Configurationitemrequest**](../models/configurationitemrequest) |  | 
+ **configurationItemRequest** | [**ConfigurationItemRequest**](../models/configuration-item-request) |  | 
 
 ### Return type
 
-[**Configurationitemresponse**](../models/configurationitemresponse)
+[**ConfigurationItemResponse**](../models/configuration-item-response)
 
 ### HTTP request headers
 
@@ -92,10 +92,16 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    configurationitemrequestJson := []byte(``) // Configurationitemrequest | 
+    configurationitemrequestJson := []byte(`{
+          "endDate" : "2022-07-30T17:00:00Z",
+          "reassignedFromId" : "2c91808781a71ddb0181b9090b5c504e",
+          "configType" : "ACCESS_REQUESTS",
+          "reassignedToId" : "2c91808781a71ddb0181b9090b53504a",
+          "startDate" : "2022-07-21T11:13:12.345Z"
+        }`) // ConfigurationItemRequest | 
 
-    var configurationitemrequest work_reassignment.Configurationitemrequest
-    if err := json.Unmarshal(configurationitemrequestJson, &configurationitemrequest); err != nil {
+    var configurationItemRequest work_reassignment.ConfigurationItemRequest
+    if err := json.Unmarshal(configurationitemrequestJson, &configurationItemRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -103,13 +109,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignmentAPI.CreateReassignmentConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
-	  //resp, r, err := apiClient.WorkReassignmentAPI.CreateReassignmentConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
+    resp, r, err := apiClient.WorkReassignmentAPI.CreateReassignmentConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).ConfigurationItemRequest(configurationItemRequest).Execute()
+	  //resp, r, err := apiClient.WorkReassignmentAPI.CreateReassignmentConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).ConfigurationItemRequest(configurationItemRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.CreateReassignmentConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateReassignmentConfigurationV1`: Configurationitemresponse
+    // response from `CreateReassignmentConfigurationV1`: ConfigurationItemResponse
     fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.CreateReassignmentConfigurationV1`: %v\n", resp)
 }
 ```
@@ -140,7 +146,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **identityId** | **string** | unique identity id | 
-**configType** | [**Configtypeenum**](../models/) |  | 
+**configType** | [**ConfigTypeEnum**](../models/) |  | 
 
 ### Other Parameters
 
@@ -178,7 +184,7 @@ import (
 
 func main() {
     identityId := `2c91808781a71ddb0181b9090b5c504e` // string | unique identity id # string | unique identity id
-    configType :=  // Configtypeenum |  # Configtypeenum | 
+    configType :=  // ConfigTypeEnum |  # ConfigTypeEnum | 
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
@@ -221,7 +227,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **identityId** | **string** | unique identity id | 
-**configType** | [**Configtypeenum**](../models/) | Reassignment work type | 
+**configType** | [**ConfigTypeEnum**](../models/) | Reassignment work type | 
 
 ### Other Parameters
 
@@ -237,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Evaluateresponse**](../models/evaluateresponse)
+[**[]EvaluateResponse**](../models/evaluate-response)
 
 ### HTTP request headers
 
@@ -260,7 +266,7 @@ import (
 
 func main() {
     identityId := `2c91808781a71ddb0181b9090b5c504e` // string | unique identity id # string | unique identity id
-    configType := accessRequests // Configtypeenum | Reassignment work type # Configtypeenum | Reassignment work type
+    configType := accessRequests // ConfigTypeEnum | Reassignment work type # ConfigTypeEnum | Reassignment work type
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     exclusionfilters := []byte(`SELF_REVIEW_DELEGATION`) // []string | Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments (optional)
 
@@ -274,7 +280,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetEvaluateReassignmentConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEvaluateReassignmentConfigurationV1`: []Evaluateresponse
+    // response from `GetEvaluateReassignmentConfigurationV1`: []EvaluateResponse
     fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.GetEvaluateReassignmentConfigurationV1`: %v\n", resp)
 }
 ```
@@ -313,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Configtype**](../models/configtype)
+[**[]ConfigType**](../models/config-type)
 
 ### HTTP request headers
 
@@ -347,7 +353,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetReassignmentConfigTypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetReassignmentConfigTypesV1`: []Configtype
+    // response from `GetReassignmentConfigTypesV1`: []ConfigType
     fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.GetReassignmentConfigTypesV1`: %v\n", resp)
 }
 ```
@@ -391,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Configurationresponse**](../models/configurationresponse)
+[**ConfigurationResponse**](../models/configuration-response)
 
 ### HTTP request headers
 
@@ -426,7 +432,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetReassignmentConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetReassignmentConfigurationV1`: Configurationresponse
+    // response from `GetReassignmentConfigurationV1`: ConfigurationResponse
     fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.GetReassignmentConfigurationV1`: %v\n", resp)
 }
 ```
@@ -465,7 +471,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Tenantconfigurationresponse**](../models/tenantconfigurationresponse)
+[**TenantConfigurationResponse**](../models/tenant-configuration-response)
 
 ### HTTP request headers
 
@@ -499,7 +505,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetTenantConfigConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTenantConfigConfigurationV1`: Tenantconfigurationresponse
+    // response from `GetTenantConfigConfigurationV1`: TenantConfigurationResponse
     fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.GetTenantConfigConfigurationV1`: %v\n", resp)
 }
 ```
@@ -538,7 +544,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Configurationresponse**](../models/configurationresponse)
+[**[]ConfigurationResponse**](../models/configuration-response)
 
 ### HTTP request headers
 
@@ -572,7 +578,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.ListReassignmentConfigurationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListReassignmentConfigurationsV1`: []Configurationresponse
+    // response from `ListReassignmentConfigurationsV1`: []ConfigurationResponse
     fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.ListReassignmentConfigurationsV1`: %v\n", resp)
 }
 ```
@@ -613,11 +619,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **configurationitemrequest** | [**Configurationitemrequest**](../models/configurationitemrequest) |  | 
+ **configurationItemRequest** | [**ConfigurationItemRequest**](../models/configuration-item-request) |  | 
 
 ### Return type
 
-[**Configurationitemresponse**](../models/configurationitemresponse)
+[**ConfigurationItemResponse**](../models/configuration-item-response)
 
 ### HTTP request headers
 
@@ -641,10 +647,16 @@ import (
 func main() {
     identityId := `2c91808781a71ddb0181b9090b5c504e` // string | unique identity id # string | unique identity id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    configurationitemrequestJson := []byte(``) // Configurationitemrequest | 
+    configurationitemrequestJson := []byte(`{
+          "endDate" : "2022-07-30T17:00:00Z",
+          "reassignedFromId" : "2c91808781a71ddb0181b9090b5c504e",
+          "configType" : "ACCESS_REQUESTS",
+          "reassignedToId" : "2c91808781a71ddb0181b9090b53504a",
+          "startDate" : "2022-07-21T11:13:12.345Z"
+        }`) // ConfigurationItemRequest | 
 
-    var configurationitemrequest work_reassignment.Configurationitemrequest
-    if err := json.Unmarshal(configurationitemrequestJson, &configurationitemrequest); err != nil {
+    var configurationItemRequest work_reassignment.ConfigurationItemRequest
+    if err := json.Unmarshal(configurationitemrequestJson, &configurationItemRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -652,13 +664,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignmentAPI.PutReassignmentConfigV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
-	  //resp, r, err := apiClient.WorkReassignmentAPI.PutReassignmentConfigV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Configurationitemrequest(configurationitemrequest).Execute()
+    resp, r, err := apiClient.WorkReassignmentAPI.PutReassignmentConfigV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).ConfigurationItemRequest(configurationItemRequest).Execute()
+	  //resp, r, err := apiClient.WorkReassignmentAPI.PutReassignmentConfigV1(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).ConfigurationItemRequest(configurationItemRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.PutReassignmentConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutReassignmentConfigV1`: Configurationitemresponse
+    // response from `PutReassignmentConfigV1`: ConfigurationItemResponse
     fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.PutReassignmentConfigV1`: %v\n", resp)
 }
 ```
@@ -694,11 +706,11 @@ Other parameters are passed through a pointer to a apiPutTenantConfigurationV1Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **tenantconfigurationrequest** | [**Tenantconfigurationrequest**](../models/tenantconfigurationrequest) |  | 
+ **tenantConfigurationRequest** | [**TenantConfigurationRequest**](../models/tenant-configuration-request) |  | 
 
 ### Return type
 
-[**Tenantconfigurationresponse**](../models/tenantconfigurationresponse)
+[**TenantConfigurationResponse**](../models/tenant-configuration-response)
 
 ### HTTP request headers
 
@@ -721,10 +733,14 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    tenantconfigurationrequestJson := []byte(``) // Tenantconfigurationrequest | 
+    tenantconfigurationrequestJson := []byte(`{
+          "configDetails" : {
+            "disabled" : true
+          }
+        }`) // TenantConfigurationRequest | 
 
-    var tenantconfigurationrequest work_reassignment.Tenantconfigurationrequest
-    if err := json.Unmarshal(tenantconfigurationrequestJson, &tenantconfigurationrequest); err != nil {
+    var tenantConfigurationRequest work_reassignment.TenantConfigurationRequest
+    if err := json.Unmarshal(tenantconfigurationrequestJson, &tenantConfigurationRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -732,13 +748,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignmentAPI.PutTenantConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantconfigurationrequest(tenantconfigurationrequest).Execute()
-	  //resp, r, err := apiClient.WorkReassignmentAPI.PutTenantConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantconfigurationrequest(tenantconfigurationrequest).Execute()
+    resp, r, err := apiClient.WorkReassignmentAPI.PutTenantConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).TenantConfigurationRequest(tenantConfigurationRequest).Execute()
+	  //resp, r, err := apiClient.WorkReassignmentAPI.PutTenantConfigurationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).TenantConfigurationRequest(tenantConfigurationRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.PutTenantConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutTenantConfigurationV1`: Tenantconfigurationresponse
+    // response from `PutTenantConfigurationV1`: TenantConfigurationResponse
     fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.PutTenantConfigurationV1`: %v\n", resp)
 }
 ```

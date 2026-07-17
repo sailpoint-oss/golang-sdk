@@ -65,11 +65,11 @@ Other parameters are passed through a pointer to a apiCreateDeployV1Request stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deployrequest** | [**Deployrequest**](../models/deployrequest) | The deploy request body. | 
+ **deployRequest** | [**DeployRequest**](../models/deploy-request) | The deploy request body. | 
 
 ### Return type
 
-[**Deployresponse**](../models/deployresponse)
+[**DeployResponse**](../models/deploy-response)
 
 ### HTTP request headers
 
@@ -91,10 +91,12 @@ import (
 )
 
 func main() {
-    deployrequestJson := []byte(`{"draftId":"c9a38d8c-5edf-4182-9d39-f6581d3ebd05"}`) // Deployrequest | The deploy request body.
+    deployrequestJson := []byte(`{
+          "draftId" : "3d0fe04b-57df-4a46-a83b-8f04b0f9d10b"
+        }`) // DeployRequest | The deploy request body.
 
-    var deployrequest configuration_hub.Deployrequest
-    if err := json.Unmarshal(deployrequestJson, &deployrequest); err != nil {
+    var deployRequest configuration_hub.DeployRequest
+    if err := json.Unmarshal(deployrequestJson, &deployRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -102,13 +104,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.CreateDeployV1(context.Background()).Deployrequest(deployrequest).Execute()
-	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateDeployV1(context.Background()).Deployrequest(deployrequest).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.CreateDeployV1(context.Background()).DeployRequest(deployRequest).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateDeployV1(context.Background()).DeployRequest(deployRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateDeployV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateDeployV1`: Deployresponse
+    // response from `CreateDeployV1`: DeployResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateDeployV1`: %v\n", resp)
 }
 ```
@@ -140,11 +142,11 @@ Other parameters are passed through a pointer to a apiCreateObjectMappingV1Reque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **objectmappingrequest** | [**Objectmappingrequest**](../models/objectmappingrequest) | The object mapping request body. | 
+ **objectMappingRequest** | [**ObjectMappingRequest**](../models/object-mapping-request) | The object mapping request body. | 
 
 ### Return type
 
-[**Objectmappingresponse**](../models/objectmappingresponse)
+[**ObjectMappingResponse**](../models/object-mapping-response)
 
 ### HTTP request headers
 
@@ -167,10 +169,16 @@ import (
 
 func main() {
     sourceOrg := `source-org` // string | The name of the source org. # string | The name of the source org.
-    objectmappingrequestJson := []byte(`{"objectType":"GOVERNANCE_GROUP","jsonPath":"$.description","sourceValue":"Sample Governance Group","targetValue":"Sample Governance Group - Updated","enabled":true}`) // Objectmappingrequest | The object mapping request body.
+    objectmappingrequestJson := []byte(`{
+          "targetValue" : "My New Governance Group Name",
+          "jsonPath" : "$.name",
+          "sourceValue" : "My Governance Group Name",
+          "enabled" : false,
+          "objectType" : "IDENTITY"
+        }`) // ObjectMappingRequest | The object mapping request body.
 
-    var objectmappingrequest configuration_hub.Objectmappingrequest
-    if err := json.Unmarshal(objectmappingrequestJson, &objectmappingrequest); err != nil {
+    var objectMappingRequest configuration_hub.ObjectMappingRequest
+    if err := json.Unmarshal(objectmappingrequestJson, &objectMappingRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -178,13 +186,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingV1(context.Background(), sourceOrg).Objectmappingrequest(objectmappingrequest).Execute()
-	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingV1(context.Background(), sourceOrg).Objectmappingrequest(objectmappingrequest).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingV1(context.Background(), sourceOrg).ObjectMappingRequest(objectMappingRequest).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingV1(context.Background(), sourceOrg).ObjectMappingRequest(objectMappingRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateObjectMappingV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateObjectMappingV1`: Objectmappingresponse
+    // response from `CreateObjectMappingV1`: ObjectMappingResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateObjectMappingV1`: %v\n", resp)
 }
 ```
@@ -216,11 +224,11 @@ Other parameters are passed through a pointer to a apiCreateObjectMappingsV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **objectmappingbulkcreaterequest** | [**Objectmappingbulkcreaterequest**](../models/objectmappingbulkcreaterequest) | The bulk create object mapping request body. | 
+ **objectMappingBulkCreateRequest** | [**ObjectMappingBulkCreateRequest**](../models/object-mapping-bulk-create-request) | The bulk create object mapping request body. | 
 
 ### Return type
 
-[**Objectmappingbulkcreateresponse**](../models/objectmappingbulkcreateresponse)
+[**ObjectMappingBulkCreateResponse**](../models/object-mapping-bulk-create-response)
 
 ### HTTP request headers
 
@@ -243,10 +251,24 @@ import (
 
 func main() {
     sourceOrg := `source-org` // string | The name of the source org. # string | The name of the source org.
-    objectmappingbulkcreaterequestJson := []byte(`{"newObjectsMappings":[{"objectType":"SOURCE","jsonPath":"$.name","sourceValue":"Original SOURCE Name","targetValue":"New SOURCE Name","enabled":true},{"objectType":"IDENTITY","jsonPath":"$.name","sourceValue":"Original IDENTITY Name","targetValue":"New IDENTITY Name ","enabled":true}]}`) // Objectmappingbulkcreaterequest | The bulk create object mapping request body.
+    objectmappingbulkcreaterequestJson := []byte(`{
+          "newObjectsMappings" : [ {
+            "targetValue" : "My New Governance Group Name",
+            "jsonPath" : "$.name",
+            "sourceValue" : "My Governance Group Name",
+            "enabled" : false,
+            "objectType" : "IDENTITY"
+          }, {
+            "targetValue" : "My New Governance Group Name",
+            "jsonPath" : "$.name",
+            "sourceValue" : "My Governance Group Name",
+            "enabled" : false,
+            "objectType" : "IDENTITY"
+          } ]
+        }`) // ObjectMappingBulkCreateRequest | The bulk create object mapping request body.
 
-    var objectmappingbulkcreaterequest configuration_hub.Objectmappingbulkcreaterequest
-    if err := json.Unmarshal(objectmappingbulkcreaterequestJson, &objectmappingbulkcreaterequest); err != nil {
+    var objectMappingBulkCreateRequest configuration_hub.ObjectMappingBulkCreateRequest
+    if err := json.Unmarshal(objectmappingbulkcreaterequestJson, &objectMappingBulkCreateRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -254,13 +276,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkcreaterequest(objectmappingbulkcreaterequest).Execute()
-	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkcreaterequest(objectmappingbulkcreaterequest).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingsV1(context.Background(), sourceOrg).ObjectMappingBulkCreateRequest(objectMappingBulkCreateRequest).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappingsV1(context.Background(), sourceOrg).ObjectMappingBulkCreateRequest(objectMappingBulkCreateRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateObjectMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateObjectMappingsV1`: Objectmappingbulkcreateresponse
+    // response from `CreateObjectMappingsV1`: ObjectMappingBulkCreateResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateObjectMappingsV1`: %v\n", resp)
 }
 ```
@@ -284,11 +306,11 @@ Other parameters are passed through a pointer to a apiCreateScheduledActionV1Req
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scheduledactionpayload** | [**Scheduledactionpayload**](../models/scheduledactionpayload) | The scheduled action creation request body. | 
+ **scheduledActionPayload** | [**ScheduledActionPayload**](../models/scheduled-action-payload) | The scheduled action creation request body. | 
 
 ### Return type
 
-[**Scheduledactionresponse**](../models/scheduledactionresponse)
+[**ScheduledActionResponse**](../models/scheduled-action-response)
 
 ### HTTP request headers
 
@@ -310,10 +332,32 @@ import (
 )
 
 func main() {
-    scheduledactionpayloadJson := []byte(`{"jobType":"BACKUP","startTime":"2024-08-16T14:16:58.389Z","cronString":"0 0 * * * *","timeZoneId":"America/Chicago","content":{"name":"Daily Backup","backupOptions":{"includeTypes":["SOURCE","IDENTITY"],"objectOptions":{"SOURCE":{"includedNames":["Source1","Source2"]}}}}}`) // Scheduledactionpayload | The scheduled action creation request body.
+    scheduledactionpayloadJson := []byte(`{
+          "cronString" : "0 0 * * * *",
+          "timeZoneId" : "America/Chicago",
+          "startTime" : "2024-08-16T14:16:58.389Z",
+          "jobType" : "BACKUP",
+          "content" : {
+            "sourceTenant" : "tenant-name",
+            "draftId" : "9012b87d-48ca-439a-868f-2160001da8c3",
+            "name" : "Daily Backup",
+            "backupOptions" : {
+              "includeTypes" : [ "ROLE", "IDENTITY_PROFILE" ],
+              "objectOptions" : {
+                "SOURCE" : {
+                  "includedNames" : [ "Source1", "Source2" ]
+                },
+                "ROLE" : {
+                  "includedNames" : [ "Admin Role", "User Role" ]
+                }
+              }
+            },
+            "sourceBackupId" : "5678b87d-48ca-439a-868f-2160001da8c2"
+          }
+        }`) // ScheduledActionPayload | The scheduled action creation request body.
 
-    var scheduledactionpayload configuration_hub.Scheduledactionpayload
-    if err := json.Unmarshal(scheduledactionpayloadJson, &scheduledactionpayload); err != nil {
+    var scheduledActionPayload configuration_hub.ScheduledActionPayload
+    if err := json.Unmarshal(scheduledactionpayloadJson, &scheduledActionPayload); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -321,13 +365,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.CreateScheduledActionV1(context.Background()).Scheduledactionpayload(scheduledactionpayload).Execute()
-	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateScheduledActionV1(context.Background()).Scheduledactionpayload(scheduledactionpayload).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.CreateScheduledActionV1(context.Background()).ScheduledActionPayload(scheduledActionPayload).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.CreateScheduledActionV1(context.Background()).ScheduledActionPayload(scheduledActionPayload).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateScheduledActionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateScheduledActionV1`: Scheduledactionresponse
+    // response from `CreateScheduledActionV1`: ScheduledActionResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateScheduledActionV1`: %v\n", resp)
 }
 ```
@@ -360,7 +404,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Backupresponse**](../models/backupresponse)
+[**BackupResponse**](../models/backup-response)
 
 ### HTTP request headers
 
@@ -395,7 +439,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateUploadedConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateUploadedConfigurationV1`: Backupresponse
+    // response from `CreateUploadedConfigurationV1`: BackupResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateUploadedConfigurationV1`: %v\n", resp)
 }
 ```
@@ -770,7 +814,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Deployresponse**](../models/deployresponse)
+[**DeployResponse**](../models/deploy-response)
 
 ### HTTP request headers
 
@@ -804,7 +848,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetDeployV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDeployV1`: Deployresponse
+    // response from `GetDeployV1`: DeployResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetDeployV1`: %v\n", resp)
 }
 ```
@@ -839,7 +883,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Objectmappingresponse**](../models/objectmappingresponse)
+[**[]ObjectMappingResponse**](../models/object-mapping-response)
 
 ### HTTP request headers
 
@@ -873,7 +917,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetObjectMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetObjectMappingsV1`: []Objectmappingresponse
+    // response from `GetObjectMappingsV1`: []ObjectMappingResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetObjectMappingsV1`: %v\n", resp)
 }
 ```
@@ -905,7 +949,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Backupresponse**](../models/backupresponse)
+[**BackupResponse**](../models/backup-response)
 
 ### HTTP request headers
 
@@ -939,7 +983,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetUploadedConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetUploadedConfigurationV1`: Backupresponse
+    // response from `GetUploadedConfigurationV1`: BackupResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetUploadedConfigurationV1`: %v\n", resp)
 }
 ```
@@ -967,7 +1011,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Backupresponse**](../models/backupresponse)
+[**[]BackupResponse**](../models/backup-response)
 
 ### HTTP request headers
 
@@ -1001,7 +1045,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListBackupsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListBackupsV1`: []Backupresponse
+    // response from `ListBackupsV1`: []BackupResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ListBackupsV1`: %v\n", resp)
 }
 ```
@@ -1086,7 +1130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Draftresponse**](../models/draftresponse)
+[**[]DraftResponse**](../models/draft-response)
 
 ### HTTP request headers
 
@@ -1120,7 +1164,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListDraftsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListDraftsV1`: []Draftresponse
+    // response from `ListDraftsV1`: []DraftResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ListDraftsV1`: %v\n", resp)
 }
 ```
@@ -1144,7 +1188,7 @@ Other parameters are passed through a pointer to a apiListScheduledActionsV1Requ
 
 ### Return type
 
-[**[]Scheduledactionresponse**](../models/scheduledactionresponse)
+[**[]ScheduledActionResponse**](../models/scheduled-action-response)
 
 ### HTTP request headers
 
@@ -1177,7 +1221,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListScheduledActionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListScheduledActionsV1`: []Scheduledactionresponse
+    // response from `ListScheduledActionsV1`: []ScheduledActionResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ListScheduledActionsV1`: %v\n", resp)
 }
 ```
@@ -1205,7 +1249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Backupresponse**](../models/backupresponse)
+[**[]BackupResponse**](../models/backup-response)
 
 ### HTTP request headers
 
@@ -1239,7 +1283,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListUploadedConfigurationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListUploadedConfigurationsV1`: []Backupresponse
+    // response from `ListUploadedConfigurationsV1`: []BackupResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ListUploadedConfigurationsV1`: %v\n", resp)
 }
 ```
@@ -1271,11 +1315,11 @@ Other parameters are passed through a pointer to a apiUpdateObjectMappingsV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **objectmappingbulkpatchrequest** | [**Objectmappingbulkpatchrequest**](../models/objectmappingbulkpatchrequest) | The object mapping request body. | 
+ **objectMappingBulkPatchRequest** | [**ObjectMappingBulkPatchRequest**](../models/object-mapping-bulk-patch-request) | The object mapping request body. | 
 
 ### Return type
 
-[**Objectmappingbulkpatchresponse**](../models/objectmappingbulkpatchresponse)
+[**ObjectMappingBulkPatchResponse**](../models/object-mapping-bulk-patch-response)
 
 ### HTTP request headers
 
@@ -1298,10 +1342,23 @@ import (
 
 func main() {
     sourceOrg := `source-org` // string | The name of the source org. # string | The name of the source org.
-    objectmappingbulkpatchrequestJson := []byte(`{"patches":{"603b1a61-d03d-4ed1-864f-a508fbd1995d":[{"op":"replace","path":"/enabled","value":true}],"00bece34-f50d-4227-8878-76f620b5a971":[{"op":"replace","path":"/targetValue","value":"New Target Value"}]}}`) // Objectmappingbulkpatchrequest | The object mapping request body.
+    objectmappingbulkpatchrequestJson := []byte(`{
+          "patches" : {
+            "603b1a61-d03d-4ed1-864f-a508fbd1995d" : [ {
+              "op" : "replace",
+              "path" : "/enabled",
+              "value" : true
+            } ],
+            "00bece34-f50d-4227-8878-76f620b5a971" : [ {
+              "op" : "replace",
+              "path" : "/targetValue",
+              "value" : "New Target Value"
+            } ]
+          }
+        }`) // ObjectMappingBulkPatchRequest | The object mapping request body.
 
-    var objectmappingbulkpatchrequest configuration_hub.Objectmappingbulkpatchrequest
-    if err := json.Unmarshal(objectmappingbulkpatchrequestJson, &objectmappingbulkpatchrequest); err != nil {
+    var objectMappingBulkPatchRequest configuration_hub.ObjectMappingBulkPatchRequest
+    if err := json.Unmarshal(objectmappingbulkpatchrequestJson, &objectMappingBulkPatchRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1309,13 +1366,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.UpdateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkpatchrequest(objectmappingbulkpatchrequest).Execute()
-	  //resp, r, err := apiClient.ConfigurationHubAPI.UpdateObjectMappingsV1(context.Background(), sourceOrg).Objectmappingbulkpatchrequest(objectmappingbulkpatchrequest).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.UpdateObjectMappingsV1(context.Background(), sourceOrg).ObjectMappingBulkPatchRequest(objectMappingBulkPatchRequest).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.UpdateObjectMappingsV1(context.Background(), sourceOrg).ObjectMappingBulkPatchRequest(objectMappingBulkPatchRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.UpdateObjectMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateObjectMappingsV1`: Objectmappingbulkpatchresponse
+    // response from `UpdateObjectMappingsV1`: ObjectMappingBulkPatchResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.UpdateObjectMappingsV1`: %v\n", resp)
 }
 ```
@@ -1344,11 +1401,11 @@ Other parameters are passed through a pointer to a apiUpdateScheduledActionV1Req
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatch** | [**Jsonpatch**](../models/jsonpatch) | The JSON Patch document containing the changes to apply to the scheduled action. | 
+ **jsonPatch** | [**JsonPatch**](../models/json-patch) | The JSON Patch document containing the changes to apply to the scheduled action. | 
 
 ### Return type
 
-[**Scheduledactionresponse**](../models/scheduledactionresponse)
+[**ScheduledActionResponse**](../models/scheduled-action-response)
 
 ### HTTP request headers
 
@@ -1371,10 +1428,20 @@ import (
 
 func main() {
     id := `0f11f2a4-7c94-4bf3-a2bd-742580fe3bde` // string | The ID of the scheduled action. # string | The ID of the scheduled action.
-    jsonpatchJson := []byte(`[{"op":"replace","path":"/content/name","value":"Updated Backup Name"},{"op":"replace","path":"/cronString","value":"0 0 9 * * ?"}]`) // Jsonpatch | The JSON Patch document containing the changes to apply to the scheduled action.
+    jsonpatchJson := []byte(`{
+          "operations" : [ {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          }, {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          } ]
+        }`) // JsonPatch | The JSON Patch document containing the changes to apply to the scheduled action.
 
-    var jsonpatch configuration_hub.Jsonpatch
-    if err := json.Unmarshal(jsonpatchJson, &jsonpatch); err != nil {
+    var jsonPatch configuration_hub.JsonPatch
+    if err := json.Unmarshal(jsonpatchJson, &jsonPatch); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1382,13 +1449,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.UpdateScheduledActionV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
-	  //resp, r, err := apiClient.ConfigurationHubAPI.UpdateScheduledActionV1(context.Background(), id).Jsonpatch(jsonpatch).Execute()
+    resp, r, err := apiClient.ConfigurationHubAPI.UpdateScheduledActionV1(context.Background(), id).JsonPatch(jsonPatch).Execute()
+	  //resp, r, err := apiClient.ConfigurationHubAPI.UpdateScheduledActionV1(context.Background(), id).JsonPatch(jsonPatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.UpdateScheduledActionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateScheduledActionV1`: Scheduledactionresponse
+    // response from `UpdateScheduledActionV1`: ScheduledActionResponse
     fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.UpdateScheduledActionV1`: %v\n", resp)
 }
 ```

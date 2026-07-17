@@ -88,11 +88,11 @@ Other parameters are passed through a pointer to a apiCreateAccountV1Request str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountattributescreate** | [**Accountattributescreate**](../models/accountattributescreate) |  | 
+ **accountAttributesCreate** | [**AccountAttributesCreate**](../models/account-attributes-create) |  | 
 
 ### Return type
 
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### HTTP request headers
 
@@ -114,10 +114,19 @@ import (
 )
 
 func main() {
-    accountattributescreateJson := []byte(``) // Accountattributescreate | 
+    accountattributescreateJson := []byte(`{
+          "attributes" : {
+            "sourceId" : "34bfcbe116c9407464af37acbaf7a4dc",
+            "city" : "Austin",
+            "displayName" : "John Doe",
+            "userName" : "jdoe",
+            "sAMAccountName" : "jDoe",
+            "mail" : "john.doe@sailpoint.com"
+          }
+        }`) // AccountAttributesCreate | 
 
-    var accountattributescreate accounts.Accountattributescreate
-    if err := json.Unmarshal(accountattributescreateJson, &accountattributescreate); err != nil {
+    var accountAttributesCreate accounts.AccountAttributesCreate
+    if err := json.Unmarshal(accountattributescreateJson, &accountAttributesCreate); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -125,13 +134,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.CreateAccountV1(context.Background()).Accountattributescreate(accountattributescreate).Execute()
-	  //resp, r, err := apiClient.AccountsAPI.CreateAccountV1(context.Background()).Accountattributescreate(accountattributescreate).Execute()
+    resp, r, err := apiClient.AccountsAPI.CreateAccountV1(context.Background()).AccountAttributesCreate(accountAttributesCreate).Execute()
+	  //resp, r, err := apiClient.AccountsAPI.CreateAccountV1(context.Background()).AccountAttributesCreate(accountAttributesCreate).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.CreateAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAccountV1`: Accountsasyncresult
+    // response from `CreateAccountV1`: AccountsAsyncResult
     fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.CreateAccountV1`: %v\n", resp)
 }
 ```
@@ -169,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Taskresultdto**](../models/taskresultdto)
+[**TaskResultDto**](../models/task-result-dto)
 
 ### HTTP request headers
 
@@ -203,7 +212,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DeleteAccountAsyncV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAccountAsyncV1`: Taskresultdto
+    // response from `DeleteAccountAsyncV1`: TaskResultDto
     fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.DeleteAccountAsyncV1`: %v\n", resp)
 }
 ```
@@ -238,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### HTTP request headers
 
@@ -272,7 +281,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DeleteAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAccountV1`: Accountsasyncresult
+    // response from `DeleteAccountV1`: AccountsAsyncResult
     fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.DeleteAccountV1`: %v\n", resp)
 }
 ```
@@ -367,11 +376,11 @@ Other parameters are passed through a pointer to a apiDisableAccountV1Request st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **accounttogglerequest** | [**Accounttogglerequest**](../models/accounttogglerequest) |  | 
+ **accountToggleRequest** | [**AccountToggleRequest**](../models/account-toggle-request) |  | 
 
 ### Return type
 
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### HTTP request headers
 
@@ -394,10 +403,13 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The account id # string | The account id
-    accounttogglerequestJson := []byte(``) // Accounttogglerequest | 
+    accounttogglerequestJson := []byte(`{
+          "forceProvisioning" : false,
+          "externalVerificationId" : "3f9180835d2e5168015d32f890ca1581"
+        }`) // AccountToggleRequest | 
 
-    var accounttogglerequest accounts.Accounttogglerequest
-    if err := json.Unmarshal(accounttogglerequestJson, &accounttogglerequest); err != nil {
+    var accountToggleRequest accounts.AccountToggleRequest
+    if err := json.Unmarshal(accounttogglerequestJson, &accountToggleRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -405,13 +417,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.DisableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
-	  //resp, r, err := apiClient.AccountsAPI.DisableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
+    resp, r, err := apiClient.AccountsAPI.DisableAccountV1(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
+	  //resp, r, err := apiClient.AccountsAPI.DisableAccountV1(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DisableAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DisableAccountV1`: Accountsasyncresult
+    // response from `DisableAccountV1`: AccountsAsyncResult
     fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.DisableAccountV1`: %v\n", resp)
 }
 ```
@@ -435,11 +447,11 @@ Other parameters are passed through a pointer to a apiDisableAccountsForIdentiti
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identitiesaccountsbulkrequest** | [**Identitiesaccountsbulkrequest**](../models/identitiesaccountsbulkrequest) |  | 
+ **identitiesAccountsBulkRequest** | [**IdentitiesAccountsBulkRequest**](../models/identities-accounts-bulk-request) |  | 
 
 ### Return type
 
-[**[]Bulkidentitiesaccountsresponse**](../models/bulkidentitiesaccountsresponse)
+[**[]BulkIdentitiesAccountsResponse**](../models/bulk-identities-accounts-response)
 
 ### HTTP request headers
 
@@ -461,10 +473,12 @@ import (
 )
 
 func main() {
-    identitiesaccountsbulkrequestJson := []byte(``) // Identitiesaccountsbulkrequest | 
+    identitiesaccountsbulkrequestJson := []byte(`{
+          "identityIds" : [ "2c91808384203c2d018437e631158308", "2c9180858082150f0180893dbaf553fe" ]
+        }`) // IdentitiesAccountsBulkRequest | 
 
-    var identitiesaccountsbulkrequest accounts.Identitiesaccountsbulkrequest
-    if err := json.Unmarshal(identitiesaccountsbulkrequestJson, &identitiesaccountsbulkrequest); err != nil {
+    var identitiesAccountsBulkRequest accounts.IdentitiesAccountsBulkRequest
+    if err := json.Unmarshal(identitiesaccountsbulkrequestJson, &identitiesAccountsBulkRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -472,13 +486,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.DisableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
-	  //resp, r, err := apiClient.AccountsAPI.DisableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
+    resp, r, err := apiClient.AccountsAPI.DisableAccountsForIdentitiesV1(context.Background()).IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest).Execute()
+	  //resp, r, err := apiClient.AccountsAPI.DisableAccountsForIdentitiesV1(context.Background()).IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DisableAccountsForIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DisableAccountsForIdentitiesV1`: []Bulkidentitiesaccountsresponse
+    // response from `DisableAccountsForIdentitiesV1`: []BulkIdentitiesAccountsResponse
     fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.DisableAccountsForIdentitiesV1`: %v\n", resp)
 }
 ```
@@ -573,11 +587,11 @@ Other parameters are passed through a pointer to a apiEnableAccountV1Request str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **accounttogglerequest** | [**Accounttogglerequest**](../models/accounttogglerequest) |  | 
+ **accountToggleRequest** | [**AccountToggleRequest**](../models/account-toggle-request) |  | 
 
 ### Return type
 
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### HTTP request headers
 
@@ -600,10 +614,13 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The account id # string | The account id
-    accounttogglerequestJson := []byte(``) // Accounttogglerequest | 
+    accounttogglerequestJson := []byte(`{
+          "forceProvisioning" : false,
+          "externalVerificationId" : "3f9180835d2e5168015d32f890ca1581"
+        }`) // AccountToggleRequest | 
 
-    var accounttogglerequest accounts.Accounttogglerequest
-    if err := json.Unmarshal(accounttogglerequestJson, &accounttogglerequest); err != nil {
+    var accountToggleRequest accounts.AccountToggleRequest
+    if err := json.Unmarshal(accounttogglerequestJson, &accountToggleRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -611,13 +628,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.EnableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
-	  //resp, r, err := apiClient.AccountsAPI.EnableAccountV1(context.Background(), id).Accounttogglerequest(accounttogglerequest).Execute()
+    resp, r, err := apiClient.AccountsAPI.EnableAccountV1(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
+	  //resp, r, err := apiClient.AccountsAPI.EnableAccountV1(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.EnableAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EnableAccountV1`: Accountsasyncresult
+    // response from `EnableAccountV1`: AccountsAsyncResult
     fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.EnableAccountV1`: %v\n", resp)
 }
 ```
@@ -641,11 +658,11 @@ Other parameters are passed through a pointer to a apiEnableAccountsForIdentitie
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identitiesaccountsbulkrequest** | [**Identitiesaccountsbulkrequest**](../models/identitiesaccountsbulkrequest) |  | 
+ **identitiesAccountsBulkRequest** | [**IdentitiesAccountsBulkRequest**](../models/identities-accounts-bulk-request) |  | 
 
 ### Return type
 
-[**[]Bulkidentitiesaccountsresponse**](../models/bulkidentitiesaccountsresponse)
+[**[]BulkIdentitiesAccountsResponse**](../models/bulk-identities-accounts-response)
 
 ### HTTP request headers
 
@@ -667,10 +684,12 @@ import (
 )
 
 func main() {
-    identitiesaccountsbulkrequestJson := []byte(``) // Identitiesaccountsbulkrequest | 
+    identitiesaccountsbulkrequestJson := []byte(`{
+          "identityIds" : [ "2c91808384203c2d018437e631158308", "2c9180858082150f0180893dbaf553fe" ]
+        }`) // IdentitiesAccountsBulkRequest | 
 
-    var identitiesaccountsbulkrequest accounts.Identitiesaccountsbulkrequest
-    if err := json.Unmarshal(identitiesaccountsbulkrequestJson, &identitiesaccountsbulkrequest); err != nil {
+    var identitiesAccountsBulkRequest accounts.IdentitiesAccountsBulkRequest
+    if err := json.Unmarshal(identitiesaccountsbulkrequestJson, &identitiesAccountsBulkRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -678,13 +697,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.EnableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
-	  //resp, r, err := apiClient.AccountsAPI.EnableAccountsForIdentitiesV1(context.Background()).Identitiesaccountsbulkrequest(identitiesaccountsbulkrequest).Execute()
+    resp, r, err := apiClient.AccountsAPI.EnableAccountsForIdentitiesV1(context.Background()).IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest).Execute()
+	  //resp, r, err := apiClient.AccountsAPI.EnableAccountsForIdentitiesV1(context.Background()).IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.EnableAccountsForIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EnableAccountsForIdentitiesV1`: []Bulkidentitiesaccountsresponse
+    // response from `EnableAccountsForIdentitiesV1`: []BulkIdentitiesAccountsResponse
     fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.EnableAccountsForIdentitiesV1`: %v\n", resp)
 }
 ```
@@ -928,11 +947,11 @@ Other parameters are passed through a pointer to a apiPutAccountV1Request struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **accountattributes** | [**Accountattributes**](../models/accountattributes) |  | 
+ **accountAttributes** | [**AccountAttributes**](../models/account-attributes) |  | 
 
 ### Return type
 
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### HTTP request headers
 
@@ -955,10 +974,18 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Account ID. # string | Account ID.
-    accountattributesJson := []byte(``) // Accountattributes | 
+    accountattributesJson := []byte(`{
+          "attributes" : {
+            "city" : "Austin",
+            "displayName" : "John Doe",
+            "userName" : "jdoe",
+            "sAMAccountName" : "jDoe",
+            "mail" : "john.doe@sailpoint.com"
+          }
+        }`) // AccountAttributes | 
 
-    var accountattributes accounts.Accountattributes
-    if err := json.Unmarshal(accountattributesJson, &accountattributes); err != nil {
+    var accountAttributes accounts.AccountAttributes
+    if err := json.Unmarshal(accountattributesJson, &accountAttributes); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -966,13 +993,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.PutAccountV1(context.Background(), id).Accountattributes(accountattributes).Execute()
-	  //resp, r, err := apiClient.AccountsAPI.PutAccountV1(context.Background(), id).Accountattributes(accountattributes).Execute()
+    resp, r, err := apiClient.AccountsAPI.PutAccountV1(context.Background(), id).AccountAttributes(accountAttributes).Execute()
+	  //resp, r, err := apiClient.AccountsAPI.PutAccountV1(context.Background(), id).AccountAttributes(accountAttributes).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.PutAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutAccountV1`: Accountsasyncresult
+    // response from `PutAccountV1`: AccountsAsyncResult
     fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.PutAccountV1`: %v\n", resp)
 }
 ```
@@ -1004,7 +1031,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### HTTP request headers
 
@@ -1038,7 +1065,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.SubmitReloadAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SubmitReloadAccountV1`: Accountsasyncresult
+    // response from `SubmitReloadAccountV1`: AccountsAsyncResult
     fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.SubmitReloadAccountV1`: %v\n", resp)
 }
 ```
@@ -1068,11 +1095,11 @@ Other parameters are passed through a pointer to a apiUnlockAccountV1Request str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **accountunlockrequest** | [**Accountunlockrequest**](../models/accountunlockrequest) |  | 
+ **accountUnlockRequest** | [**AccountUnlockRequest**](../models/account-unlock-request) |  | 
 
 ### Return type
 
-[**Accountsasyncresult**](../models/accountsasyncresult)
+[**AccountsAsyncResult**](../models/accounts-async-result)
 
 ### HTTP request headers
 
@@ -1095,10 +1122,14 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The account ID. # string | The account ID.
-    accountunlockrequestJson := []byte(``) // Accountunlockrequest | 
+    accountunlockrequestJson := []byte(`{
+          "forceProvisioning" : false,
+          "externalVerificationId" : "3f9180835d2e5168015d32f890ca1581",
+          "unlockIDNAccount" : false
+        }`) // AccountUnlockRequest | 
 
-    var accountunlockrequest accounts.Accountunlockrequest
-    if err := json.Unmarshal(accountunlockrequestJson, &accountunlockrequest); err != nil {
+    var accountUnlockRequest accounts.AccountUnlockRequest
+    if err := json.Unmarshal(accountunlockrequestJson, &accountUnlockRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1106,13 +1137,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.UnlockAccountV1(context.Background(), id).Accountunlockrequest(accountunlockrequest).Execute()
-	  //resp, r, err := apiClient.AccountsAPI.UnlockAccountV1(context.Background(), id).Accountunlockrequest(accountunlockrequest).Execute()
+    resp, r, err := apiClient.AccountsAPI.UnlockAccountV1(context.Background(), id).AccountUnlockRequest(accountUnlockRequest).Execute()
+	  //resp, r, err := apiClient.AccountsAPI.UnlockAccountV1(context.Background(), id).AccountUnlockRequest(accountUnlockRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.UnlockAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UnlockAccountV1`: Accountsasyncresult
+    // response from `UnlockAccountV1`: AccountsAsyncResult
     fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.UnlockAccountV1`: %v\n", resp)
 }
 ```

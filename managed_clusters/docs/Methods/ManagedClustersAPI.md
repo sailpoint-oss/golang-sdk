@@ -45,11 +45,11 @@ Other parameters are passed through a pointer to a apiCreateManagedClusterV1Requ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **managedclusterrequest** | [**Managedclusterrequest**](../models/managedclusterrequest) |  | 
+ **managedClusterRequest** | [**ManagedClusterRequest**](../models/managed-cluster-request) |  | 
 
 ### Return type
 
-[**Managedcluster**](../models/managedcluster)
+[**ManagedCluster**](../models/managed-cluster)
 
 ### HTTP request headers
 
@@ -71,10 +71,18 @@ import (
 )
 
 func main() {
-    managedclusterrequestJson := []byte(``) // Managedclusterrequest | 
+    managedclusterrequestJson := []byte(`{
+          "configuration" : {
+            "clusterExternalId" : "externalId",
+            "ccgVersion" : "77.0.0"
+          },
+          "name" : "Managed Cluster Name",
+          "description" : "A short description of the managed cluster.",
+          "type" : "idn"
+        }`) // ManagedClusterRequest | 
 
-    var managedclusterrequest managed_clusters.Managedclusterrequest
-    if err := json.Unmarshal(managedclusterrequestJson, &managedclusterrequest); err != nil {
+    var managedClusterRequest managed_clusters.ManagedClusterRequest
+    if err := json.Unmarshal(managedclusterrequestJson, &managedClusterRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -82,13 +90,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClustersAPI.CreateManagedClusterV1(context.Background()).Managedclusterrequest(managedclusterrequest).Execute()
-	  //resp, r, err := apiClient.ManagedClustersAPI.CreateManagedClusterV1(context.Background()).Managedclusterrequest(managedclusterrequest).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.CreateManagedClusterV1(context.Background()).ManagedClusterRequest(managedClusterRequest).Execute()
+	  //resp, r, err := apiClient.ManagedClustersAPI.CreateManagedClusterV1(context.Background()).ManagedClusterRequest(managedClusterRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.CreateManagedClusterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateManagedClusterV1`: Managedcluster
+    // response from `CreateManagedClusterV1`: ManagedCluster
     fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.CreateManagedClusterV1`: %v\n", resp)
 }
 ```
@@ -187,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Clientlogconfiguration**](../models/clientlogconfiguration)
+[**ClientLogConfiguration**](../models/client-log-configuration)
 
 ### HTTP request headers
 
@@ -221,7 +229,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetClientLogConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetClientLogConfigurationV1`: Clientlogconfiguration
+    // response from `GetClientLogConfigurationV1`: ClientLogConfiguration
     fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.GetClientLogConfigurationV1`: %v\n", resp)
 }
 ```
@@ -253,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Managedcluster**](../models/managedcluster)
+[**ManagedCluster**](../models/managed-cluster)
 
 ### HTTP request headers
 
@@ -287,7 +295,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetManagedClusterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetManagedClusterV1`: Managedcluster
+    // response from `GetManagedClusterV1`: ManagedCluster
     fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.GetManagedClusterV1`: %v\n", resp)
 }
 ```
@@ -318,7 +326,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Managedcluster**](../models/managedcluster)
+[**[]ManagedCluster**](../models/managed-cluster)
 
 ### HTTP request headers
 
@@ -355,7 +363,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetManagedClustersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetManagedClustersV1`: []Managedcluster
+    // response from `GetManagedClustersV1`: []ManagedCluster
     fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.GetManagedClustersV1`: %v\n", resp)
 }
 ```
@@ -388,7 +396,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Clientlogconfiguration**](../models/clientlogconfiguration)
+[**ClientLogConfiguration**](../models/client-log-configuration)
 
 ### HTTP request headers
 
@@ -428,7 +436,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.PutClientLogConfigurationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutClientLogConfigurationV1`: Clientlogconfiguration
+    // response from `PutClientLogConfigurationV1`: ClientLogConfiguration
     fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.PutClientLogConfigurationV1`: %v\n", resp)
 }
 ```
@@ -457,11 +465,11 @@ Other parameters are passed through a pointer to a apiUpdateManagedClusterV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | JSONPatch payload used to update the object. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | JSONPatch payload used to update the object. | 
 
 ### Return type
 
-[**Managedcluster**](../models/managedcluster)
+[**ManagedCluster**](../models/managed-cluster)
 
 ### HTTP request headers
 
@@ -484,10 +492,10 @@ import (
 
 func main() {
     id := `2c9180897de347a2017de8859e8c5039` // string | Managed cluster ID. # string | Managed cluster ID.
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | JSONPatch payload used to update the object.
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | JSONPatch payload used to update the object.
 
-    var jsonpatchoperation []managed_clusters.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []managed_clusters.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -495,13 +503,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClustersAPI.UpdateManagedClusterV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.ManagedClustersAPI.UpdateManagedClusterV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.UpdateManagedClusterV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.ManagedClustersAPI.UpdateManagedClusterV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.UpdateManagedClusterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateManagedClusterV1`: Managedcluster
+    // response from `UpdateManagedClusterV1`: ManagedCluster
     fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.UpdateManagedClusterV1`: %v\n", resp)
 }
 ```
@@ -534,7 +542,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Clustermanualupgrade**](../models/clustermanualupgrade)
+[**ClusterManualUpgrade**](../models/cluster-manual-upgrade)
 
 ### HTTP request headers
 
@@ -568,7 +576,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.UpdateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateV1`: Clustermanualupgrade
+    // response from `UpdateV1`: ClusterManualUpgrade
     fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.UpdateV1`: %v\n", resp)
 }
 ```

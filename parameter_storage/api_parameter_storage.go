@@ -26,16 +26,16 @@ type ParameterStorageAPIService service
 type ApiCreateParameterV1Request struct {
 	ctx context.Context
 	ApiService *ParameterStorageAPIService
-	parameterstoragenewparameter *Parameterstoragenewparameter
+	parameterStorageNewParameter *ParameterStorageNewParameter
 }
 
 // The parameter to add to the store.
-func (r ApiCreateParameterV1Request) Parameterstoragenewparameter(parameterstoragenewparameter Parameterstoragenewparameter) ApiCreateParameterV1Request {
-	r.parameterstoragenewparameter = &parameterstoragenewparameter
+func (r ApiCreateParameterV1Request) ParameterStorageNewParameter(parameterStorageNewParameter ParameterStorageNewParameter) ApiCreateParameterV1Request {
+	r.parameterStorageNewParameter = &parameterStorageNewParameter
 	return r
 }
 
-func (r ApiCreateParameterV1Request) Execute() (*Parameterstorageparameter, *http.Response, error) {
+func (r ApiCreateParameterV1Request) Execute() (*ParameterStorageParameter, *http.Response, error) {
 	return r.ApiService.CreateParameterV1Execute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *ParameterStorageAPIService) CreateParameterV1(ctx context.Context) ApiC
 }
 
 // Execute executes the request
-//  @return Parameterstorageparameter
-func (a *ParameterStorageAPIService) CreateParameterV1Execute(r ApiCreateParameterV1Request) (*Parameterstorageparameter, *http.Response, error) {
+//  @return ParameterStorageParameter
+func (a *ParameterStorageAPIService) CreateParameterV1Execute(r ApiCreateParameterV1Request) (*ParameterStorageParameter, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Parameterstorageparameter
+		localVarReturnValue  *ParameterStorageParameter
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParameterStorageAPIService.CreateParameterV1")
@@ -93,7 +93,7 @@ func (a *ParameterStorageAPIService) CreateParameterV1Execute(r ApiCreateParamet
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.parameterstoragenewparameter
+	localVarPostBody = r.parameterStorageNewParameter
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -117,7 +117,7 @@ func (a *ParameterStorageAPIService) CreateParameterV1Execute(r ApiCreateParamet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -139,7 +139,7 @@ func (a *ParameterStorageAPIService) CreateParameterV1Execute(r ApiCreateParamet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -161,7 +161,7 @@ func (a *ParameterStorageAPIService) CreateParameterV1Execute(r ApiCreateParamet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -272,7 +272,7 @@ func (a *ParameterStorageAPIService) DeleteParameterV1Execute(r ApiDeleteParamet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -294,7 +294,7 @@ func (a *ParameterStorageAPIService) DeleteParameterV1Execute(r ApiDeleteParamet
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -305,7 +305,7 @@ func (a *ParameterStorageAPIService) DeleteParameterV1Execute(r ApiDeleteParamet
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -338,7 +338,7 @@ func (a *ParameterStorageAPIService) DeleteParameterV1Execute(r ApiDeleteParamet
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -365,7 +365,7 @@ func (r ApiGetAttestationDocumentV1Request) Key(key string) ApiGetAttestationDoc
 	return r
 }
 
-func (r ApiGetAttestationDocumentV1Request) Execute() (*Parameterstorageattestationdocument, *http.Response, error) {
+func (r ApiGetAttestationDocumentV1Request) Execute() (*ParameterStorageAttestationDocument, *http.Response, error) {
 	return r.ApiService.GetAttestationDocumentV1Execute(r)
 }
 
@@ -385,13 +385,13 @@ func (a *ParameterStorageAPIService) GetAttestationDocumentV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Parameterstorageattestationdocument
-func (a *ParameterStorageAPIService) GetAttestationDocumentV1Execute(r ApiGetAttestationDocumentV1Request) (*Parameterstorageattestationdocument, *http.Response, error) {
+//  @return ParameterStorageAttestationDocument
+func (a *ParameterStorageAPIService) GetAttestationDocumentV1Execute(r ApiGetAttestationDocumentV1Request) (*ParameterStorageAttestationDocument, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Parameterstorageattestationdocument
+		localVarReturnValue  *ParameterStorageAttestationDocument
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParameterStorageAPIService.GetAttestationDocumentV1")
@@ -449,7 +449,7 @@ func (a *ParameterStorageAPIService) GetAttestationDocumentV1Execute(r ApiGetAtt
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -471,7 +471,7 @@ func (a *ParameterStorageAPIService) GetAttestationDocumentV1Execute(r ApiGetAtt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -493,7 +493,7 @@ func (a *ParameterStorageAPIService) GetAttestationDocumentV1Execute(r ApiGetAtt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -544,7 +544,7 @@ func (r ApiGetParameterReferencesV1Request) Offset(offset int32) ApiGetParameter
 	return r
 }
 
-func (r ApiGetParameterReferencesV1Request) Execute() ([]Parameterstoragereference, *http.Response, error) {
+func (r ApiGetParameterReferencesV1Request) Execute() ([]ParameterStorageReference, *http.Response, error) {
 	return r.ApiService.GetParameterReferencesV1Execute(r)
 }
 
@@ -566,13 +566,13 @@ func (a *ParameterStorageAPIService) GetParameterReferencesV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Parameterstoragereference
-func (a *ParameterStorageAPIService) GetParameterReferencesV1Execute(r ApiGetParameterReferencesV1Request) ([]Parameterstoragereference, *http.Response, error) {
+//  @return []ParameterStorageReference
+func (a *ParameterStorageAPIService) GetParameterReferencesV1Execute(r ApiGetParameterReferencesV1Request) ([]ParameterStorageReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Parameterstoragereference
+		localVarReturnValue  []ParameterStorageReference
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParameterStorageAPIService.GetParameterReferencesV1")
@@ -642,7 +642,7 @@ func (a *ParameterStorageAPIService) GetParameterReferencesV1Execute(r ApiGetPar
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -664,7 +664,7 @@ func (a *ParameterStorageAPIService) GetParameterReferencesV1Execute(r ApiGetPar
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -675,7 +675,7 @@ func (a *ParameterStorageAPIService) GetParameterReferencesV1Execute(r ApiGetPar
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -697,7 +697,7 @@ func (a *ParameterStorageAPIService) GetParameterReferencesV1Execute(r ApiGetPar
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -814,7 +814,7 @@ func (a *ParameterStorageAPIService) GetParameterStorageSpecificationV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -836,7 +836,7 @@ func (a *ParameterStorageAPIService) GetParameterStorageSpecificationV1Execute(r
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -858,7 +858,7 @@ func (a *ParameterStorageAPIService) GetParameterStorageSpecificationV1Execute(r
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -879,7 +879,7 @@ type ApiGetParameterV1Request struct {
 	id string
 }
 
-func (r ApiGetParameterV1Request) Execute() (*Parameterstorageparameter, *http.Response, error) {
+func (r ApiGetParameterV1Request) Execute() (*ParameterStorageParameter, *http.Response, error) {
 	return r.ApiService.GetParameterV1Execute(r)
 }
 
@@ -901,13 +901,13 @@ func (a *ParameterStorageAPIService) GetParameterV1(ctx context.Context, id stri
 }
 
 // Execute executes the request
-//  @return Parameterstorageparameter
-func (a *ParameterStorageAPIService) GetParameterV1Execute(r ApiGetParameterV1Request) (*Parameterstorageparameter, *http.Response, error) {
+//  @return ParameterStorageParameter
+func (a *ParameterStorageAPIService) GetParameterV1Execute(r ApiGetParameterV1Request) (*ParameterStorageParameter, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Parameterstorageparameter
+		localVarReturnValue  *ParameterStorageParameter
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParameterStorageAPIService.GetParameterV1")
@@ -962,7 +962,7 @@ func (a *ParameterStorageAPIService) GetParameterV1Execute(r ApiGetParameterV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -984,7 +984,7 @@ func (a *ParameterStorageAPIService) GetParameterV1Execute(r ApiGetParameterV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -995,7 +995,7 @@ func (a *ParameterStorageAPIService) GetParameterV1Execute(r ApiGetParameterV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1017,7 +1017,7 @@ func (a *ParameterStorageAPIService) GetParameterV1Execute(r ApiGetParameterV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1074,7 +1074,7 @@ func (r ApiSearchParametersV1Request) Limit(limit int32) ApiSearchParametersV1Re
 	return r
 }
 
-func (r ApiSearchParametersV1Request) Execute() ([]Parameterstorageparameter, *http.Response, error) {
+func (r ApiSearchParametersV1Request) Execute() ([]ParameterStorageParameter, *http.Response, error) {
 	return r.ApiService.SearchParametersV1Execute(r)
 }
 
@@ -1094,13 +1094,13 @@ func (a *ParameterStorageAPIService) SearchParametersV1(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return []Parameterstorageparameter
-func (a *ParameterStorageAPIService) SearchParametersV1Execute(r ApiSearchParametersV1Request) ([]Parameterstorageparameter, *http.Response, error) {
+//  @return []ParameterStorageParameter
+func (a *ParameterStorageAPIService) SearchParametersV1Execute(r ApiSearchParametersV1Request) ([]ParameterStorageParameter, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Parameterstorageparameter
+		localVarReturnValue  []ParameterStorageParameter
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParameterStorageAPIService.SearchParametersV1")
@@ -1172,7 +1172,7 @@ func (a *ParameterStorageAPIService) SearchParametersV1Execute(r ApiSearchParame
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1194,7 +1194,7 @@ func (a *ParameterStorageAPIService) SearchParametersV1Execute(r ApiSearchParame
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1216,7 +1216,7 @@ func (a *ParameterStorageAPIService) SearchParametersV1Execute(r ApiSearchParame
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1244,16 +1244,16 @@ type ApiUpdateParameterV1Request struct {
 	ctx context.Context
 	ApiService *ParameterStorageAPIService
 	id string
-	parameterstorageupdateparameter *Parameterstorageupdateparameter
+	parameterStorageUpdateParameter *ParameterStorageUpdateParameter
 }
 
 // The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates.
-func (r ApiUpdateParameterV1Request) Parameterstorageupdateparameter(parameterstorageupdateparameter Parameterstorageupdateparameter) ApiUpdateParameterV1Request {
-	r.parameterstorageupdateparameter = &parameterstorageupdateparameter
+func (r ApiUpdateParameterV1Request) ParameterStorageUpdateParameter(parameterStorageUpdateParameter ParameterStorageUpdateParameter) ApiUpdateParameterV1Request {
+	r.parameterStorageUpdateParameter = &parameterStorageUpdateParameter
 	return r
 }
 
-func (r ApiUpdateParameterV1Request) Execute() (*Parameterstorageparameter, *http.Response, error) {
+func (r ApiUpdateParameterV1Request) Execute() (*ParameterStorageParameter, *http.Response, error) {
 	return r.ApiService.UpdateParameterV1Execute(r)
 }
 
@@ -1275,13 +1275,13 @@ func (a *ParameterStorageAPIService) UpdateParameterV1(ctx context.Context, id s
 }
 
 // Execute executes the request
-//  @return Parameterstorageparameter
-func (a *ParameterStorageAPIService) UpdateParameterV1Execute(r ApiUpdateParameterV1Request) (*Parameterstorageparameter, *http.Response, error) {
+//  @return ParameterStorageParameter
+func (a *ParameterStorageAPIService) UpdateParameterV1Execute(r ApiUpdateParameterV1Request) (*ParameterStorageParameter, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Parameterstorageparameter
+		localVarReturnValue  *ParameterStorageParameter
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParameterStorageAPIService.UpdateParameterV1")
@@ -1314,7 +1314,7 @@ func (a *ParameterStorageAPIService) UpdateParameterV1Execute(r ApiUpdateParamet
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.parameterstorageupdateparameter
+	localVarPostBody = r.parameterStorageUpdateParameter
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1338,7 +1338,7 @@ func (a *ParameterStorageAPIService) UpdateParameterV1Execute(r ApiUpdateParamet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1360,7 +1360,7 @@ func (a *ParameterStorageAPIService) UpdateParameterV1Execute(r ApiUpdateParamet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1371,7 +1371,7 @@ func (a *ParameterStorageAPIService) UpdateParameterV1Execute(r ApiUpdateParamet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1404,7 +1404,7 @@ func (a *ParameterStorageAPIService) UpdateParameterV1Execute(r ApiUpdateParamet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

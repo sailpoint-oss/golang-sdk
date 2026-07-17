@@ -14,37 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the ModelRange type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ModelRange{}
+// checks if the Range type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Range{}
 
-// ModelRange The range of values to be filtered.
-type ModelRange struct {
+// Range The range of values to be filtered.
+type Range struct {
 	Lower *Bound `json:"lower,omitempty"`
 	Upper *Bound `json:"upper,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _ModelRange ModelRange
+type _Range Range
 
-// NewModelRange instantiates a new ModelRange object
+// NewRange instantiates a new Range object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModelRange() *ModelRange {
-	this := ModelRange{}
+func NewRange() *Range {
+	this := Range{}
 	return &this
 }
 
-// NewModelRangeWithDefaults instantiates a new ModelRange object
+// NewRangeWithDefaults instantiates a new Range object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewModelRangeWithDefaults() *ModelRange {
-	this := ModelRange{}
+func NewRangeWithDefaults() *Range {
+	this := Range{}
 	return &this
 }
 
 // GetLower returns the Lower field value if set, zero value otherwise.
-func (o *ModelRange) GetLower() Bound {
+func (o *Range) GetLower() Bound {
 	if o == nil || IsNil(o.Lower) {
 		var ret Bound
 		return ret
@@ -54,7 +54,7 @@ func (o *ModelRange) GetLower() Bound {
 
 // GetLowerOk returns a tuple with the Lower field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelRange) GetLowerOk() (*Bound, bool) {
+func (o *Range) GetLowerOk() (*Bound, bool) {
 	if o == nil || IsNil(o.Lower) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *ModelRange) GetLowerOk() (*Bound, bool) {
 }
 
 // HasLower returns a boolean if a field has been set.
-func (o *ModelRange) HasLower() bool {
+func (o *Range) HasLower() bool {
 	if o != nil && !IsNil(o.Lower) {
 		return true
 	}
@@ -71,12 +71,12 @@ func (o *ModelRange) HasLower() bool {
 }
 
 // SetLower gets a reference to the given Bound and assigns it to the Lower field.
-func (o *ModelRange) SetLower(v Bound) {
+func (o *Range) SetLower(v Bound) {
 	o.Lower = &v
 }
 
 // GetUpper returns the Upper field value if set, zero value otherwise.
-func (o *ModelRange) GetUpper() Bound {
+func (o *Range) GetUpper() Bound {
 	if o == nil || IsNil(o.Upper) {
 		var ret Bound
 		return ret
@@ -86,7 +86,7 @@ func (o *ModelRange) GetUpper() Bound {
 
 // GetUpperOk returns a tuple with the Upper field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelRange) GetUpperOk() (*Bound, bool) {
+func (o *Range) GetUpperOk() (*Bound, bool) {
 	if o == nil || IsNil(o.Upper) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *ModelRange) GetUpperOk() (*Bound, bool) {
 }
 
 // HasUpper returns a boolean if a field has been set.
-func (o *ModelRange) HasUpper() bool {
+func (o *Range) HasUpper() bool {
 	if o != nil && !IsNil(o.Upper) {
 		return true
 	}
@@ -103,11 +103,11 @@ func (o *ModelRange) HasUpper() bool {
 }
 
 // SetUpper gets a reference to the given Bound and assigns it to the Upper field.
-func (o *ModelRange) SetUpper(v Bound) {
+func (o *Range) SetUpper(v Bound) {
 	o.Upper = &v
 }
 
-func (o ModelRange) MarshalJSON() ([]byte, error) {
+func (o Range) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -115,7 +115,7 @@ func (o ModelRange) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ModelRange) ToMap() (map[string]interface{}, error) {
+func (o Range) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Lower) {
 		toSerialize["lower"] = o.Lower
@@ -131,16 +131,16 @@ func (o ModelRange) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ModelRange) UnmarshalJSON(data []byte) (err error) {
-	varModelRange := _ModelRange{}
+func (o *Range) UnmarshalJSON(data []byte) (err error) {
+	varRange := _Range{}
 
-	err = json.Unmarshal(data, &varModelRange)
+	err = json.Unmarshal(data, &varRange)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ModelRange(varModelRange)
+	*o = Range(varRange)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -153,38 +153,38 @@ func (o *ModelRange) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableModelRange struct {
-	value *ModelRange
+type NullableRange struct {
+	value *Range
 	isSet bool
 }
 
-func (v NullableModelRange) Get() *ModelRange {
+func (v NullableRange) Get() *Range {
 	return v.value
 }
 
-func (v *NullableModelRange) Set(val *ModelRange) {
+func (v *NullableRange) Set(val *Range) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableModelRange) IsSet() bool {
+func (v NullableRange) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableModelRange) Unset() {
+func (v *NullableRange) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableModelRange(val *ModelRange) *NullableModelRange {
-	return &NullableModelRange{value: val, isSet: true}
+func NewNullableRange(val *Range) *NullableRange {
+	return &NullableRange{value: val, isSet: true}
 }
 
-func (v NullableModelRange) MarshalJSON() ([]byte, error) {
+func (v NullableRange) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableModelRange) UnmarshalJSON(src []byte) error {
+func (v *NullableRange) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

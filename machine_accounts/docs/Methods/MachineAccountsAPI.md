@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourcesubtype**](../models/sourcesubtype)
+[**SourceSubtype**](../models/source-subtype)
 
 ### HTTP request headers
 
@@ -108,7 +108,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.CreateMachineAccountSubtypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateMachineAccountSubtypeV1`: Sourcesubtype
+    // response from `CreateMachineAccountSubtypeV1`: SourceSubtype
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.CreateMachineAccountSubtypeV1`: %v\n", resp)
 }
 ```
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourcesubtype**](../models/sourcesubtype)
+[**SourceSubtype**](../models/source-subtype)
 
 ### HTTP request headers
 
@@ -274,7 +274,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.GetMachineAccountSubtypeByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMachineAccountSubtypeByIdV1`: Sourcesubtype
+    // response from `GetMachineAccountSubtypeByIdV1`: SourceSubtype
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.GetMachineAccountSubtypeByIdV1`: %v\n", resp)
 }
 ```
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourcesubtype**](../models/sourcesubtype)
+[**SourceSubtype**](../models/source-subtype)
 
 ### HTTP request headers
 
@@ -359,7 +359,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.GetMachineAccountSubtypeByTechnicalNameV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMachineAccountSubtypeByTechnicalNameV1`: Sourcesubtype
+    // response from `GetMachineAccountSubtypeByTechnicalNameV1`: SourceSubtype
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.GetMachineAccountSubtypeByTechnicalNameV1`: %v\n", resp)
 }
 ```
@@ -403,7 +403,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Machineaccount**](../models/machineaccount)
+[**MachineAccount**](../models/machine-account)
 
 ### HTTP request headers
 
@@ -438,7 +438,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.GetMachineAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMachineAccountV1`: Machineaccount
+    // response from `GetMachineAccountV1`: MachineAccount
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.GetMachineAccountV1`: %v\n", resp)
 }
 ```
@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sourcesubtype**](../models/sourcesubtype)
+[**[]SourceSubtype**](../models/source-subtype)
 
 ### HTTP request headers
 
@@ -530,7 +530,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.ListMachineAccountSubtypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListMachineAccountSubtypesV1`: []Sourcesubtype
+    // response from `ListMachineAccountSubtypesV1`: []SourceSubtype
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.ListMachineAccountSubtypesV1`: %v\n", resp)
 }
 ```
@@ -574,7 +574,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Machineaccount**](../models/machineaccount)
+[**[]MachineAccount**](../models/machine-account)
 
 ### HTTP request headers
 
@@ -613,7 +613,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.ListMachineAccountsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListMachineAccountsV1`: []Machineaccount
+    // response from `ListMachineAccountsV1`: []MachineAccount
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.ListMachineAccountsV1`: %v\n", resp)
 }
 ```
@@ -664,7 +664,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourcesubtype**](../models/sourcesubtype)
+[**SourceSubtype**](../models/source-subtype)
 
 ### HTTP request headers
 
@@ -706,7 +706,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.PatchMachineAccountSubtypeByTechnicalNameV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchMachineAccountSubtypeByTechnicalNameV1`: Sourcesubtype
+    // response from `PatchMachineAccountSubtypeByTechnicalNameV1`: SourceSubtype
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.PatchMachineAccountSubtypeByTechnicalNameV1`: %v\n", resp)
 }
 ```
@@ -752,7 +752,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Machineaccount**](../models/machineaccount)
+[**MachineAccount**](../models/machine-account)
 
 ### HTTP request headers
 
@@ -793,7 +793,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountsAPI.UpdateMachineAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateMachineAccountV1`: Machineaccount
+    // response from `UpdateMachineAccountV1`: MachineAccount
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountsAPI.UpdateMachineAccountV1`: %v\n", resp)
 }
 ```

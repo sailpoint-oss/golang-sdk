@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transformread**](../models/transformread)
+[**TransformRead**](../models/transform-read)
 
 ### HTTP request headers
 
@@ -70,7 +70,11 @@ import (
 )
 
 func main() {
-    transformJson := []byte(`{"name":"Timestamp To Date","type":"dateFormat","attributes":{"inputFormat":"MMM dd yyyy, HH:mm:ss.SSS","outputFormat":"yyyy/dd/MM"}}`) // Transform | The transform to be created.
+    transformJson := []byte(`{
+          "name" : "Timestamp To Date",
+          "attributes" : "{}",
+          "type" : "dateFormat"
+        }`) // Transform | The transform to be created.
 
     var transform transforms.Transform
     if err := json.Unmarshal(transformJson, &transform); err != nil {
@@ -87,7 +91,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.CreateTransformV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateTransformV1`: Transformread
+    // response from `CreateTransformV1`: TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.CreateTransformV1`: %v\n", resp)
 }
 ```
@@ -184,7 +188,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transformread**](../models/transformread)
+[**TransformRead**](../models/transform-read)
 
 ### HTTP request headers
 
@@ -218,7 +222,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.GetTransformV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTransformV1`: Transformread
+    // response from `GetTransformV1`: TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.GetTransformV1`: %v\n", resp)
 }
 ```
@@ -250,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Transformread**](../models/transformread)
+[**[]TransformRead**](../models/transform-read)
 
 ### HTTP request headers
 
@@ -288,7 +292,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.ListTransformsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListTransformsV1`: []Transformread
+    // response from `ListTransformsV1`: []TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.ListTransformsV1`: %v\n", resp)
 }
 ```
@@ -321,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transformread**](../models/transformread)
+[**TransformRead**](../models/transform-read)
 
 ### HTTP request headers
 
@@ -344,7 +348,11 @@ import (
 
 func main() {
     id := `2cd78adghjkja34jh2b1hkjhasuecd` // string | ID of the transform to update # string | ID of the transform to update
-    transformJson := []byte(`{"name":"Timestamp To Date","type":"dateFormat","attributes":{"inputFormat":"MMM-dd-yyyy, HH:mm:ss.SSS","outputFormat":"yyyy/dd/MM"}}`) // Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
+    transformJson := []byte(`{
+          "name" : "Timestamp To Date",
+          "attributes" : "{}",
+          "type" : "dateFormat"
+        }`) // Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
 
     
 
@@ -356,7 +364,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.UpdateTransformV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateTransformV1`: Transformread
+    // response from `UpdateTransformV1`: TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.UpdateTransformV1`: %v\n", resp)
 }
 ```

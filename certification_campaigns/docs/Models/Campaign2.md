@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **NullableTime** | Created time of the campaign | [optional] [readonly] 
 **TotalCertifications** | Pointer to **NullableInt32** | The total number of certifications in this campaign. | [optional] [readonly] 
 **CompletedCertifications** | Pointer to **NullableInt32** | The number of completed certifications in this campaign. | [optional] [readonly] 
-**Alerts** | Pointer to [**[]Campaignalert**](campaignalert) | A list of errors and warnings that have accumulated. | [optional] [readonly] 
+**Alerts** | Pointer to [**[]CampaignAlert**](campaign-alert) | A list of errors and warnings that have accumulated. | [optional] [readonly] 
 **Modified** | Pointer to **NullableTime** | Modified time of the campaign | [optional] [readonly] 
 **Filter** | Pointer to [**NullableCampaign2AllOfFilter**](campaign2-all-of-filter) |  | [optional] 
 **SunsetCommentsRequired** | Pointer to **bool** | Determines if comments on sunset date changes are required. | [optional] [default to true]
@@ -440,20 +440,20 @@ HasCompletedCertifications returns a boolean if a field has been set.
 UnsetCompletedCertifications ensures that no value is present for CompletedCertifications, not even an explicit nil
 ### GetAlerts
 
-`func (o *Campaign2) GetAlerts() []Campaignalert`
+`func (o *Campaign2) GetAlerts() []CampaignAlert`
 
 GetAlerts returns the Alerts field if non-nil, zero value otherwise.
 
 ### GetAlertsOk
 
-`func (o *Campaign2) GetAlertsOk() (*[]Campaignalert, bool)`
+`func (o *Campaign2) GetAlertsOk() (*[]CampaignAlert, bool)`
 
 GetAlertsOk returns a tuple with the Alerts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlerts
 
-`func (o *Campaign2) SetAlerts(v []Campaignalert)`
+`func (o *Campaign2) SetAlerts(v []CampaignAlert)`
 
 SetAlerts sets Alerts field to given value.
 

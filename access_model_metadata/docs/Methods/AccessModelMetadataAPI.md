@@ -56,11 +56,11 @@ Other parameters are passed through a pointer to a apiCreateAccessModelMetadataA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **attributedto** | [**Attributedto**](../models/attributedto) | Attribute to create | 
+ **attributeDTO** | [**AttributeDTO**](../models/attribute-dto) | Attribute to create | 
 
 ### Return type
 
-[**Attributedto**](../models/attributedto)
+[**AttributeDTO**](../models/attribute-dto)
 
 ### HTTP request headers
 
@@ -82,10 +82,27 @@ import (
 )
 
 func main() {
-    attributedtoJson := []byte(``) // Attributedto | Attribute to create
+    attributedtoJson := []byte(`{
+          "multiselect" : false,
+          "values" : [ {
+            "name" : "Public",
+            "value" : "public",
+            "status" : "active"
+          }, {
+            "name" : "Public",
+            "value" : "public",
+            "status" : "active"
+          } ],
+          "name" : "Privacy",
+          "description" : "Specifies the level of privacy associated with an access item.",
+          "type" : "governance",
+          "objectTypes" : [ "entitlement" ],
+          "key" : "iscPrivacy",
+          "status" : "active"
+        }`) // AttributeDTO | Attribute to create
 
-    var attributedto access_model_metadata.Attributedto
-    if err := json.Unmarshal(attributedtoJson, &attributedto); err != nil {
+    var attributeDTO access_model_metadata.AttributeDTO
+    if err := json.Unmarshal(attributedtoJson, &attributeDTO); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -93,13 +110,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeV1(context.Background()).Attributedto(attributedto).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeV1(context.Background()).Attributedto(attributedto).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeV1(context.Background()).AttributeDTO(attributeDTO).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeV1(context.Background()).AttributeDTO(attributeDTO).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.CreateAccessModelMetadataAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAccessModelMetadataAttributeV1`: Attributedto
+    // response from `CreateAccessModelMetadataAttributeV1`: AttributeDTO
     fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.CreateAccessModelMetadataAttributeV1`: %v\n", resp)
 }
 ```
@@ -129,11 +146,11 @@ Other parameters are passed through a pointer to a apiCreateAccessModelMetadataA
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **attributevaluedto** | [**Attributevaluedto**](../models/attributevaluedto) | Attribute value to create | 
+ **attributeValueDTO** | [**AttributeValueDTO**](../models/attribute-value-dto) | Attribute value to create | 
 
 ### Return type
 
-[**Attributevaluedto**](../models/attributevaluedto)
+[**AttributeValueDTO**](../models/attribute-value-dto)
 
 ### HTTP request headers
 
@@ -156,10 +173,14 @@ import (
 
 func main() {
     key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
-    attributevaluedtoJson := []byte(``) // Attributevaluedto | Attribute value to create
+    attributevaluedtoJson := []byte(`{
+          "name" : "Public",
+          "value" : "public",
+          "status" : "active"
+        }`) // AttributeValueDTO | Attribute value to create
 
-    var attributevaluedto access_model_metadata.Attributevaluedto
-    if err := json.Unmarshal(attributevaluedtoJson, &attributevaluedto); err != nil {
+    var attributeValueDTO access_model_metadata.AttributeValueDTO
+    if err := json.Unmarshal(attributevaluedtoJson, &attributeValueDTO); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -167,13 +188,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1(context.Background(), key).Attributevaluedto(attributevaluedto).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1(context.Background(), key).Attributevaluedto(attributevaluedto).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1(context.Background(), key).AttributeValueDTO(attributeValueDTO).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1(context.Background(), key).AttributeValueDTO(attributeValueDTO).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAccessModelMetadataAttributeValueV1`: Attributevaluedto
+    // response from `CreateAccessModelMetadataAttributeValueV1`: AttributeValueDTO
     fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1`: %v\n", resp)
 }
 ```
@@ -205,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Attributedto**](../models/attributedto)
+[**AttributeDTO**](../models/attribute-dto)
 
 ### HTTP request headers
 
@@ -239,7 +260,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.GetAccessModelMetadataAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccessModelMetadataAttributeV1`: Attributedto
+    // response from `GetAccessModelMetadataAttributeV1`: AttributeDTO
     fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.GetAccessModelMetadataAttributeV1`: %v\n", resp)
 }
 ```
@@ -273,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Attributevaluedto**](../models/attributevaluedto)
+[**AttributeValueDTO**](../models/attribute-value-dto)
 
 ### HTTP request headers
 
@@ -308,7 +329,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.GetAccessModelMetadataAttributeValueV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccessModelMetadataAttributeValueV1`: Attributevaluedto
+    // response from `GetAccessModelMetadataAttributeValueV1`: AttributeValueDTO
     fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.GetAccessModelMetadataAttributeValueV1`: %v\n", resp)
 }
 ```
@@ -339,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Attributedto**](../models/attributedto)
+[**[]AttributeDTO**](../models/attribute-dto)
 
 ### HTTP request headers
 
@@ -376,7 +397,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.ListAccessModelMetadataAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAccessModelMetadataAttributeV1`: []Attributedto
+    // response from `ListAccessModelMetadataAttributeV1`: []AttributeDTO
     fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.ListAccessModelMetadataAttributeV1`: %v\n", resp)
 }
 ```
@@ -410,7 +431,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Attributevaluedto**](../models/attributevaluedto)
+[**[]AttributeValueDTO**](../models/attribute-value-dto)
 
 ### HTTP request headers
 
@@ -446,7 +467,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.ListAccessModelMetadataAttributeValueV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAccessModelMetadataAttributeValueV1`: []Attributevaluedto
+    // response from `ListAccessModelMetadataAttributeValueV1`: []AttributeValueDTO
     fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.ListAccessModelMetadataAttributeValueV1`: %v\n", resp)
 }
 ```
@@ -477,11 +498,11 @@ Other parameters are passed through a pointer to a apiUpdateAccessModelMetadataA
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | JSON Patch array to apply | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | JSON Patch array to apply | 
 
 ### Return type
 
-[**Attributedto**](../models/attributedto)
+[**AttributeDTO**](../models/attribute-dto)
 
 ### HTTP request headers
 
@@ -504,10 +525,10 @@ import (
 
 func main() {
     key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | JSON Patch array to apply
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | JSON Patch array to apply
 
-    var jsonpatchoperation []access_model_metadata.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []access_model_metadata.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -515,13 +536,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeV1(context.Background(), key).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeV1(context.Background(), key).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeV1(context.Background(), key).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeV1(context.Background(), key).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAccessModelMetadataAttributeV1`: Attributedto
+    // response from `UpdateAccessModelMetadataAttributeV1`: AttributeDTO
     fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeV1`: %v\n", resp)
 }
 ```
@@ -554,11 +575,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | JSON Patch array to apply | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | JSON Patch array to apply | 
 
 ### Return type
 
-[**Attributevaluedto**](../models/attributevaluedto)
+[**AttributeValueDTO**](../models/attribute-value-dto)
 
 ### HTTP request headers
 
@@ -582,10 +603,10 @@ import (
 func main() {
     key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
     value := `public` // string | Technical name of the Attribute value. # string | Technical name of the Attribute value.
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | JSON Patch array to apply
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | JSON Patch array to apply
 
-    var jsonpatchoperation []access_model_metadata.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []access_model_metadata.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -593,13 +614,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeValueV1(context.Background(), key, value).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeValueV1(context.Background(), key, value).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeValueV1(context.Background(), key, value).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeValueV1(context.Background(), key, value).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeValueV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAccessModelMetadataAttributeValueV1`: Attributevaluedto
+    // response from `UpdateAccessModelMetadataAttributeValueV1`: AttributeValueDTO
     fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.UpdateAccessModelMetadataAttributeValueV1`: %v\n", resp)
 }
 ```
@@ -626,11 +647,11 @@ Other parameters are passed through a pointer to a apiUpdateAccessModelMetadataB
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entitlementattributebulkupdatefilterrequest** | [**Entitlementattributebulkupdatefilterrequest**](../models/entitlementattributebulkupdatefilterrequest) | Attribute metadata bulk update request body. | 
+ **entitlementAttributeBulkUpdateFilterRequest** | [**EntitlementAttributeBulkUpdateFilterRequest**](../models/entitlement-attribute-bulk-update-filter-request) | Attribute metadata bulk update request body. | 
 
 ### Return type
 
-[**Accessmodelmetadatabulkupdateresponse**](../models/accessmodelmetadatabulkupdateresponse)
+[**AccessModelMetadataBulkUpdateResponse**](../models/access-model-metadata-bulk-update-response)
 
 ### HTTP request headers
 
@@ -652,10 +673,18 @@ import (
 )
 
 func main() {
-    entitlementattributebulkupdatefilterrequestJson := []byte(``) // Entitlementattributebulkupdatefilterrequest | Attribute metadata bulk update request body.
+    entitlementattributebulkupdatefilterrequestJson := []byte(`{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : "id eq 2c9180867817ac4d017817c491119a20",
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }`) // EntitlementAttributeBulkUpdateFilterRequest | Attribute metadata bulk update request body.
 
-    var entitlementattributebulkupdatefilterrequest access_model_metadata.Entitlementattributebulkupdatefilterrequest
-    if err := json.Unmarshal(entitlementattributebulkupdatefilterrequestJson, &entitlementattributebulkupdatefilterrequest); err != nil {
+    var entitlementAttributeBulkUpdateFilterRequest access_model_metadata.EntitlementAttributeBulkUpdateFilterRequest
+    if err := json.Unmarshal(entitlementattributebulkupdatefilterrequestJson, &entitlementAttributeBulkUpdateFilterRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -663,13 +692,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByFilterV1(context.Background()).Entitlementattributebulkupdatefilterrequest(entitlementattributebulkupdatefilterrequest).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByFilterV1(context.Background()).Entitlementattributebulkupdatefilterrequest(entitlementattributebulkupdatefilterrequest).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByFilterV1(context.Background()).EntitlementAttributeBulkUpdateFilterRequest(entitlementAttributeBulkUpdateFilterRequest).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByFilterV1(context.Background()).EntitlementAttributeBulkUpdateFilterRequest(entitlementAttributeBulkUpdateFilterRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.UpdateAccessModelMetadataByFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAccessModelMetadataByFilterV1`: Accessmodelmetadatabulkupdateresponse
+    // response from `UpdateAccessModelMetadataByFilterV1`: AccessModelMetadataBulkUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.UpdateAccessModelMetadataByFilterV1`: %v\n", resp)
 }
 ```
@@ -696,11 +725,11 @@ Other parameters are passed through a pointer to a apiUpdateAccessModelMetadataB
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entitlementattributebulkupdateidsrequest** | [**Entitlementattributebulkupdateidsrequest**](../models/entitlementattributebulkupdateidsrequest) | Attribute metadata bulk update request body. | 
+ **entitlementAttributeBulkUpdateIdsRequest** | [**EntitlementAttributeBulkUpdateIdsRequest**](../models/entitlement-attribute-bulk-update-ids-request) | Attribute metadata bulk update request body. | 
 
 ### Return type
 
-[**Accessmodelmetadatabulkupdateresponse**](../models/accessmodelmetadatabulkupdateresponse)
+[**AccessModelMetadataBulkUpdateResponse**](../models/access-model-metadata-bulk-update-response)
 
 ### HTTP request headers
 
@@ -722,10 +751,18 @@ import (
 )
 
 func main() {
-    entitlementattributebulkupdateidsrequestJson := []byte(``) // Entitlementattributebulkupdateidsrequest | Attribute metadata bulk update request body.
+    entitlementattributebulkupdateidsrequestJson := []byte(`{
+          "entitlements" : [ "2c9180867817ac4d017817c491119a20", "2c9180867817ac4d017817c491119a21" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }`) // EntitlementAttributeBulkUpdateIdsRequest | Attribute metadata bulk update request body.
 
-    var entitlementattributebulkupdateidsrequest access_model_metadata.Entitlementattributebulkupdateidsrequest
-    if err := json.Unmarshal(entitlementattributebulkupdateidsrequestJson, &entitlementattributebulkupdateidsrequest); err != nil {
+    var entitlementAttributeBulkUpdateIdsRequest access_model_metadata.EntitlementAttributeBulkUpdateIdsRequest
+    if err := json.Unmarshal(entitlementattributebulkupdateidsrequestJson, &entitlementAttributeBulkUpdateIdsRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -733,13 +770,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByIdsV1(context.Background()).Entitlementattributebulkupdateidsrequest(entitlementattributebulkupdateidsrequest).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByIdsV1(context.Background()).Entitlementattributebulkupdateidsrequest(entitlementattributebulkupdateidsrequest).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByIdsV1(context.Background()).EntitlementAttributeBulkUpdateIdsRequest(entitlementAttributeBulkUpdateIdsRequest).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByIdsV1(context.Background()).EntitlementAttributeBulkUpdateIdsRequest(entitlementAttributeBulkUpdateIdsRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.UpdateAccessModelMetadataByIdsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAccessModelMetadataByIdsV1`: Accessmodelmetadatabulkupdateresponse
+    // response from `UpdateAccessModelMetadataByIdsV1`: AccessModelMetadataBulkUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.UpdateAccessModelMetadataByIdsV1`: %v\n", resp)
 }
 ```
@@ -766,11 +803,11 @@ Other parameters are passed through a pointer to a apiUpdateAccessModelMetadataB
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entitlementattributebulkupdatequeryrequest** | [**Entitlementattributebulkupdatequeryrequest**](../models/entitlementattributebulkupdatequeryrequest) | Attribute metadata bulk update request body. | 
+ **entitlementAttributeBulkUpdateQueryRequest** | [**EntitlementAttributeBulkUpdateQueryRequest**](../models/entitlement-attribute-bulk-update-query-request) | Attribute metadata bulk update request body. | 
 
 ### Return type
 
-[**Accessmodelmetadatabulkupdateresponse**](../models/accessmodelmetadatabulkupdateresponse)
+[**AccessModelMetadataBulkUpdateResponse**](../models/access-model-metadata-bulk-update-response)
 
 ### HTTP request headers
 
@@ -792,10 +829,134 @@ import (
 )
 
 func main() {
-    entitlementattributebulkupdatequeryrequestJson := []byte(``) // Entitlementattributebulkupdatequeryrequest | Attribute metadata bulk update request body.
+    entitlementattributebulkupdatequeryrequestJson := []byte(`{
+          "query" : {
+            "queryDsl" : {
+              "match" : {
+                "name" : "john.doe"
+              }
+            },
+            "aggregationType" : "DSL",
+            "aggregationsVersion" : "",
+            "query" : {
+              "query" : "name:a*",
+              "timeZone" : "America/Chicago",
+              "fields" : "[\"firstName,lastName,email\"]",
+              "innerHit" : {
+                "query" : "source.name:\\\"Active Directory\\\"",
+                "type" : "access"
+              }
+            },
+            "aggregationsDsl" : { },
+            "sort" : [ "displayName", "+id" ],
+            "filters" : { },
+            "queryVersion" : "",
+            "queryType" : "SAILPOINT",
+            "includeNested" : true,
+            "queryResultFilter" : {
+              "excludes" : [ "stacktrace" ],
+              "includes" : [ "name", "displayName" ]
+            },
+            "indices" : [ "identities" ],
+            "typeAheadQuery" : {
+              "field" : "source.name",
+              "size" : 100,
+              "query" : "Work",
+              "sortByValue" : true,
+              "nestedType" : "access",
+              "sort" : "asc",
+              "maxExpansions" : 10
+            },
+            "textQuery" : {
+              "contains" : true,
+              "terms" : [ "The quick brown fox", "3141592", "7" ],
+              "matchAny" : false,
+              "fields" : [ "displayName", "employeeNumber", "roleCount" ]
+            },
+            "searchAfter" : [ "John Doe", "2c91808375d8e80a0175e1f88a575221" ],
+            "aggregations" : {
+              "filter" : {
+                "field" : "access.type",
+                "name" : "Entitlements",
+                "type" : "TERM",
+                "value" : "ENTITLEMENT"
+              },
+              "bucket" : {
+                "field" : "attributes.city",
+                "size" : 100,
+                "minDocCount" : 2,
+                "name" : "Identity Locations",
+                "type" : "TERMS"
+              },
+              "metric" : {
+                "field" : "@access.name",
+                "name" : "Access Name Count",
+                "type" : "COUNT"
+              },
+              "subAggregation" : {
+                "filter" : {
+                  "field" : "access.type",
+                  "name" : "Entitlements",
+                  "type" : "TERM",
+                  "value" : "ENTITLEMENT"
+                },
+                "bucket" : {
+                  "field" : "attributes.city",
+                  "size" : 100,
+                  "minDocCount" : 2,
+                  "name" : "Identity Locations",
+                  "type" : "TERMS"
+                },
+                "metric" : {
+                  "field" : "@access.name",
+                  "name" : "Access Name Count",
+                  "type" : "COUNT"
+                },
+                "subAggregation" : {
+                  "filter" : {
+                    "field" : "access.type",
+                    "name" : "Entitlements",
+                    "type" : "TERM",
+                    "value" : "ENTITLEMENT"
+                  },
+                  "bucket" : {
+                    "field" : "attributes.city",
+                    "size" : 100,
+                    "minDocCount" : 2,
+                    "name" : "Identity Locations",
+                    "type" : "TERMS"
+                  },
+                  "metric" : {
+                    "field" : "@access.name",
+                    "name" : "Access Name Count",
+                    "type" : "COUNT"
+                  },
+                  "nested" : {
+                    "name" : "id",
+                    "type" : "access"
+                  }
+                },
+                "nested" : {
+                  "name" : "id",
+                  "type" : "access"
+                }
+              },
+              "nested" : {
+                "name" : "id",
+                "type" : "access"
+              }
+            }
+          },
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }`) // EntitlementAttributeBulkUpdateQueryRequest | Attribute metadata bulk update request body.
 
-    var entitlementattributebulkupdatequeryrequest access_model_metadata.Entitlementattributebulkupdatequeryrequest
-    if err := json.Unmarshal(entitlementattributebulkupdatequeryrequestJson, &entitlementattributebulkupdatequeryrequest); err != nil {
+    var entitlementAttributeBulkUpdateQueryRequest access_model_metadata.EntitlementAttributeBulkUpdateQueryRequest
+    if err := json.Unmarshal(entitlementattributebulkupdatequeryrequestJson, &entitlementAttributeBulkUpdateQueryRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -803,13 +964,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByQueryV1(context.Background()).Entitlementattributebulkupdatequeryrequest(entitlementattributebulkupdatequeryrequest).Execute()
-	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByQueryV1(context.Background()).Entitlementattributebulkupdatequeryrequest(entitlementattributebulkupdatequeryrequest).Execute()
+    resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByQueryV1(context.Background()).EntitlementAttributeBulkUpdateQueryRequest(entitlementAttributeBulkUpdateQueryRequest).Execute()
+	  //resp, r, err := apiClient.AccessModelMetadataAPI.UpdateAccessModelMetadataByQueryV1(context.Background()).EntitlementAttributeBulkUpdateQueryRequest(entitlementAttributeBulkUpdateQueryRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.UpdateAccessModelMetadataByQueryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAccessModelMetadataByQueryV1`: Accessmodelmetadatabulkupdateresponse
+    // response from `UpdateAccessModelMetadataByQueryV1`: AccessModelMetadataBulkUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.UpdateAccessModelMetadataByQueryV1`: %v\n", resp)
 }
 ```

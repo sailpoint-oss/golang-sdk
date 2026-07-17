@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Aggregationresult**](../models/aggregationresult)
+[**AggregationResult**](../models/aggregation-result)
 
 ### HTTP request headers
 
@@ -90,7 +90,123 @@ import (
 )
 
 func main() {
-    searchJson := []byte(``) // Search | 
+    searchJson := []byte(`{
+          "queryDsl" : {
+            "match" : {
+              "name" : "john.doe"
+            }
+          },
+          "aggregationType" : "DSL",
+          "aggregationsVersion" : "",
+          "query" : {
+            "query" : "name:a*",
+            "timeZone" : "America/Chicago",
+            "fields" : "[\"firstName,lastName,email\"]",
+            "innerHit" : {
+              "query" : "source.name:\\\"Active Directory\\\"",
+              "type" : "access"
+            }
+          },
+          "aggregationsDsl" : { },
+          "sort" : [ "displayName", "+id" ],
+          "filters" : { },
+          "queryVersion" : "",
+          "queryType" : "SAILPOINT",
+          "includeNested" : true,
+          "queryResultFilter" : {
+            "excludes" : [ "stacktrace" ],
+            "includes" : [ "name", "displayName" ]
+          },
+          "indices" : [ "identities" ],
+          "typeAheadQuery" : {
+            "field" : "source.name",
+            "size" : 100,
+            "query" : "Work",
+            "sortByValue" : true,
+            "nestedType" : "access",
+            "sort" : "asc",
+            "maxExpansions" : 10
+          },
+          "textQuery" : {
+            "contains" : true,
+            "terms" : [ "The quick brown fox", "3141592", "7" ],
+            "matchAny" : false,
+            "fields" : [ "displayName", "employeeNumber", "roleCount" ]
+          },
+          "searchAfter" : [ "John Doe", "2c91808375d8e80a0175e1f88a575221" ],
+          "aggregations" : {
+            "filter" : {
+              "field" : "access.type",
+              "name" : "Entitlements",
+              "type" : "TERM",
+              "value" : "ENTITLEMENT"
+            },
+            "bucket" : {
+              "field" : "attributes.city",
+              "size" : 100,
+              "minDocCount" : 2,
+              "name" : "Identity Locations",
+              "type" : "TERMS"
+            },
+            "metric" : {
+              "field" : "@access.name",
+              "name" : "Access Name Count",
+              "type" : "COUNT"
+            },
+            "subAggregation" : {
+              "filter" : {
+                "field" : "access.type",
+                "name" : "Entitlements",
+                "type" : "TERM",
+                "value" : "ENTITLEMENT"
+              },
+              "bucket" : {
+                "field" : "attributes.city",
+                "size" : 100,
+                "minDocCount" : 2,
+                "name" : "Identity Locations",
+                "type" : "TERMS"
+              },
+              "metric" : {
+                "field" : "@access.name",
+                "name" : "Access Name Count",
+                "type" : "COUNT"
+              },
+              "subAggregation" : {
+                "filter" : {
+                  "field" : "access.type",
+                  "name" : "Entitlements",
+                  "type" : "TERM",
+                  "value" : "ENTITLEMENT"
+                },
+                "bucket" : {
+                  "field" : "attributes.city",
+                  "size" : 100,
+                  "minDocCount" : 2,
+                  "name" : "Identity Locations",
+                  "type" : "TERMS"
+                },
+                "metric" : {
+                  "field" : "@access.name",
+                  "name" : "Access Name Count",
+                  "type" : "COUNT"
+                },
+                "nested" : {
+                  "name" : "id",
+                  "type" : "access"
+                }
+              },
+              "nested" : {
+                "name" : "id",
+                "type" : "access"
+              }
+            },
+            "nested" : {
+              "name" : "id",
+              "type" : "access"
+            }
+          }
+        }`) // Search | 
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -110,7 +226,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchAggregateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchAggregateV1`: Aggregationresult
+    // response from `SearchAggregateV1`: AggregationResult
     fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchAggregateV1`: %v\n", resp)
 }
 ```
@@ -160,7 +276,123 @@ import (
 )
 
 func main() {
-    searchJson := []byte(``) // Search | 
+    searchJson := []byte(`{
+          "queryDsl" : {
+            "match" : {
+              "name" : "john.doe"
+            }
+          },
+          "aggregationType" : "DSL",
+          "aggregationsVersion" : "",
+          "query" : {
+            "query" : "name:a*",
+            "timeZone" : "America/Chicago",
+            "fields" : "[\"firstName,lastName,email\"]",
+            "innerHit" : {
+              "query" : "source.name:\\\"Active Directory\\\"",
+              "type" : "access"
+            }
+          },
+          "aggregationsDsl" : { },
+          "sort" : [ "displayName", "+id" ],
+          "filters" : { },
+          "queryVersion" : "",
+          "queryType" : "SAILPOINT",
+          "includeNested" : true,
+          "queryResultFilter" : {
+            "excludes" : [ "stacktrace" ],
+            "includes" : [ "name", "displayName" ]
+          },
+          "indices" : [ "identities" ],
+          "typeAheadQuery" : {
+            "field" : "source.name",
+            "size" : 100,
+            "query" : "Work",
+            "sortByValue" : true,
+            "nestedType" : "access",
+            "sort" : "asc",
+            "maxExpansions" : 10
+          },
+          "textQuery" : {
+            "contains" : true,
+            "terms" : [ "The quick brown fox", "3141592", "7" ],
+            "matchAny" : false,
+            "fields" : [ "displayName", "employeeNumber", "roleCount" ]
+          },
+          "searchAfter" : [ "John Doe", "2c91808375d8e80a0175e1f88a575221" ],
+          "aggregations" : {
+            "filter" : {
+              "field" : "access.type",
+              "name" : "Entitlements",
+              "type" : "TERM",
+              "value" : "ENTITLEMENT"
+            },
+            "bucket" : {
+              "field" : "attributes.city",
+              "size" : 100,
+              "minDocCount" : 2,
+              "name" : "Identity Locations",
+              "type" : "TERMS"
+            },
+            "metric" : {
+              "field" : "@access.name",
+              "name" : "Access Name Count",
+              "type" : "COUNT"
+            },
+            "subAggregation" : {
+              "filter" : {
+                "field" : "access.type",
+                "name" : "Entitlements",
+                "type" : "TERM",
+                "value" : "ENTITLEMENT"
+              },
+              "bucket" : {
+                "field" : "attributes.city",
+                "size" : 100,
+                "minDocCount" : 2,
+                "name" : "Identity Locations",
+                "type" : "TERMS"
+              },
+              "metric" : {
+                "field" : "@access.name",
+                "name" : "Access Name Count",
+                "type" : "COUNT"
+              },
+              "subAggregation" : {
+                "filter" : {
+                  "field" : "access.type",
+                  "name" : "Entitlements",
+                  "type" : "TERM",
+                  "value" : "ENTITLEMENT"
+                },
+                "bucket" : {
+                  "field" : "attributes.city",
+                  "size" : 100,
+                  "minDocCount" : 2,
+                  "name" : "Identity Locations",
+                  "type" : "TERMS"
+                },
+                "metric" : {
+                  "field" : "@access.name",
+                  "name" : "Access Name Count",
+                  "type" : "COUNT"
+                },
+                "nested" : {
+                  "name" : "id",
+                  "type" : "access"
+                }
+              },
+              "nested" : {
+                "name" : "id",
+                "type" : "access"
+              }
+            },
+            "nested" : {
+              "name" : "id",
+              "type" : "access"
+            }
+          }
+        }`) // Search | 
 
     var search search.Search
     if err := json.Unmarshal(searchJson, &search); err != nil {
@@ -298,7 +530,123 @@ import (
 )
 
 func main() {
-    searchJson := []byte(``) // Search | 
+    searchJson := []byte(`{
+          "queryDsl" : {
+            "match" : {
+              "name" : "john.doe"
+            }
+          },
+          "aggregationType" : "DSL",
+          "aggregationsVersion" : "",
+          "query" : {
+            "query" : "name:a*",
+            "timeZone" : "America/Chicago",
+            "fields" : "[\"firstName,lastName,email\"]",
+            "innerHit" : {
+              "query" : "source.name:\\\"Active Directory\\\"",
+              "type" : "access"
+            }
+          },
+          "aggregationsDsl" : { },
+          "sort" : [ "displayName", "+id" ],
+          "filters" : { },
+          "queryVersion" : "",
+          "queryType" : "SAILPOINT",
+          "includeNested" : true,
+          "queryResultFilter" : {
+            "excludes" : [ "stacktrace" ],
+            "includes" : [ "name", "displayName" ]
+          },
+          "indices" : [ "identities" ],
+          "typeAheadQuery" : {
+            "field" : "source.name",
+            "size" : 100,
+            "query" : "Work",
+            "sortByValue" : true,
+            "nestedType" : "access",
+            "sort" : "asc",
+            "maxExpansions" : 10
+          },
+          "textQuery" : {
+            "contains" : true,
+            "terms" : [ "The quick brown fox", "3141592", "7" ],
+            "matchAny" : false,
+            "fields" : [ "displayName", "employeeNumber", "roleCount" ]
+          },
+          "searchAfter" : [ "John Doe", "2c91808375d8e80a0175e1f88a575221" ],
+          "aggregations" : {
+            "filter" : {
+              "field" : "access.type",
+              "name" : "Entitlements",
+              "type" : "TERM",
+              "value" : "ENTITLEMENT"
+            },
+            "bucket" : {
+              "field" : "attributes.city",
+              "size" : 100,
+              "minDocCount" : 2,
+              "name" : "Identity Locations",
+              "type" : "TERMS"
+            },
+            "metric" : {
+              "field" : "@access.name",
+              "name" : "Access Name Count",
+              "type" : "COUNT"
+            },
+            "subAggregation" : {
+              "filter" : {
+                "field" : "access.type",
+                "name" : "Entitlements",
+                "type" : "TERM",
+                "value" : "ENTITLEMENT"
+              },
+              "bucket" : {
+                "field" : "attributes.city",
+                "size" : 100,
+                "minDocCount" : 2,
+                "name" : "Identity Locations",
+                "type" : "TERMS"
+              },
+              "metric" : {
+                "field" : "@access.name",
+                "name" : "Access Name Count",
+                "type" : "COUNT"
+              },
+              "subAggregation" : {
+                "filter" : {
+                  "field" : "access.type",
+                  "name" : "Entitlements",
+                  "type" : "TERM",
+                  "value" : "ENTITLEMENT"
+                },
+                "bucket" : {
+                  "field" : "attributes.city",
+                  "size" : 100,
+                  "minDocCount" : 2,
+                  "name" : "Identity Locations",
+                  "type" : "TERMS"
+                },
+                "metric" : {
+                  "field" : "@access.name",
+                  "name" : "Access Name Count",
+                  "type" : "COUNT"
+                },
+                "nested" : {
+                  "name" : "id",
+                  "type" : "access"
+                }
+              },
+              "nested" : {
+                "name" : "id",
+                "type" : "access"
+              }
+            },
+            "nested" : {
+              "name" : "id",
+              "type" : "access"
+            }
+          }
+        }`) // Search | 
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := 10000 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)

@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Outliersummary**](../models/outliersummary)
+[**[]OutlierSummary**](../models/outlier-summary)
 
 ### HTTP request headers
 
@@ -180,7 +180,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetIdentityOutlierSnapshotsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentityOutlierSnapshotsV1`: []Outliersummary
+    // response from `GetIdentityOutlierSnapshotsV1`: []OutlierSummary
     fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetIdentityOutlierSnapshotsV1`: %v\n", resp)
 }
 ```
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Latestoutliersummary**](../models/latestoutliersummary)
+[**[]LatestOutlierSummary**](../models/latest-outlier-summary)
 
 ### HTTP request headers
 
@@ -340,7 +340,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetLatestIdentityOutlierSnapshotsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetLatestIdentityOutlierSnapshotsV1`: []Latestoutliersummary
+    // response from `GetLatestIdentityOutlierSnapshotsV1`: []LatestOutlierSummary
     fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetLatestIdentityOutlierSnapshotsV1`: %v\n", resp)
 }
 ```
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Outlierfeaturesummary**](../models/outlierfeaturesummary)
+[**OutlierFeatureSummary**](../models/outlier-feature-summary)
 
 ### HTTP request headers
 
@@ -422,7 +422,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetOutlierContributingFeatureSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOutlierContributingFeatureSummaryV1`: Outlierfeaturesummary
+    // response from `GetOutlierContributingFeatureSummaryV1`: OutlierFeatureSummary
     fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetOutlierContributingFeatureSummaryV1`: %v\n", resp)
 }
 ```
@@ -474,7 +474,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Outliercontributingfeature**](../models/outliercontributingfeature)
+[**[]OutlierContributingFeature**](../models/outlier-contributing-feature)
 
 ### HTTP request headers
 
@@ -514,7 +514,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetPeerGroupOutliersContributingFeaturesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPeerGroupOutliersContributingFeaturesV1`: []Outliercontributingfeature
+    // response from `GetPeerGroupOutliersContributingFeaturesV1`: []OutlierContributingFeature
     fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetPeerGroupOutliersContributingFeaturesV1`: %v\n", resp)
 }
 ```
@@ -647,7 +647,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Outlierscontributingfeatureaccessitems**](../models/outlierscontributingfeatureaccessitems)
+[**[]OutliersContributingFeatureAccessItems**](../models/outliers-contributing-feature-access-items)
 
 ### HTTP request headers
 
@@ -688,7 +688,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.ListOutliersContributingFeatureAccessItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListOutliersContributingFeatureAccessItemsV1`: []Outlierscontributingfeatureaccessitems
+    // response from `ListOutliersContributingFeatureAccessItemsV1`: []OutliersContributingFeatureAccessItems
     fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.ListOutliersContributingFeatureAccessItemsV1`: %v\n", resp)
 }
 ```

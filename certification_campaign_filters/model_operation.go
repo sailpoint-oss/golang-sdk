@@ -17,7 +17,7 @@ import (
 // Operation Operation on a specific criteria
 type Operation string
 
-// List of operation
+// List of Operation
 const (
 	OPERATION_EQUALS Operation = "EQUALS"
 	OPERATION_NOT_EQUALS Operation = "NOT_EQUALS"
@@ -75,7 +75,7 @@ func (v Operation) IsValid() bool {
 	return false
 }
 
-// Ptr returns reference to operation value
+// Ptr returns reference to Operation value
 func (v Operation) Ptr() *Operation {
 	return &v
 }

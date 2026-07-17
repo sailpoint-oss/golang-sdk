@@ -19,7 +19,7 @@ var _ MappedNullable = &EntitlementAccessModelMetadata{}
 
 // EntitlementAccessModelMetadata Additional data to classify the entitlement
 type EntitlementAccessModelMetadata struct {
-	Attributes []Accessmodelmetadata `json:"attributes,omitempty"`
+	Attributes []AccessModelMetadata `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,9 +43,9 @@ func NewEntitlementAccessModelMetadataWithDefaults() *EntitlementAccessModelMeta
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *EntitlementAccessModelMetadata) GetAttributes() []Accessmodelmetadata {
+func (o *EntitlementAccessModelMetadata) GetAttributes() []AccessModelMetadata {
 	if o == nil || IsNil(o.Attributes) {
-		var ret []Accessmodelmetadata
+		var ret []AccessModelMetadata
 		return ret
 	}
 	return o.Attributes
@@ -53,7 +53,7 @@ func (o *EntitlementAccessModelMetadata) GetAttributes() []Accessmodelmetadata {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementAccessModelMetadata) GetAttributesOk() ([]Accessmodelmetadata, bool) {
+func (o *EntitlementAccessModelMetadata) GetAttributesOk() ([]AccessModelMetadata, bool) {
 	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *EntitlementAccessModelMetadata) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given []Accessmodelmetadata and assigns it to the Attributes field.
-func (o *EntitlementAccessModelMetadata) SetAttributes(v []Accessmodelmetadata) {
+// SetAttributes gets a reference to the given []AccessModelMetadata and assigns it to the Attributes field.
+func (o *EntitlementAccessModelMetadata) SetAttributes(v []AccessModelMetadata) {
 	o.Attributes = v
 }
 

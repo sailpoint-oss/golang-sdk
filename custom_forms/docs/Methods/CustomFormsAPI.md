@@ -60,11 +60,11 @@ Other parameters are passed through a pointer to a apiCreateFormDefinitionDynami
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Formdefinitiondynamicschemarequest**](../models/formdefinitiondynamicschemarequest) | Body is the request payload to create a form definition dynamic schema | 
+ **body** | [**FormDefinitionDynamicSchemaRequest**](../models/form-definition-dynamic-schema-request) | Body is the request payload to create a form definition dynamic schema | 
 
 ### Return type
 
-[**Formdefinitiondynamicschemaresponse**](../models/formdefinitiondynamicschemaresponse)
+[**FormDefinitionDynamicSchemaResponse**](../models/form-definition-dynamic-schema-response)
 
 ### HTTP request headers
 
@@ -86,7 +86,15 @@ import (
 )
 
 func main() {
-    bodyJson := []byte(`{"id":"sp:forms","attributes":{"formDefinitionId":"00000000-0000-0000-0000-000000000000"},"description":"AnotherDescription","type":"action","versionNumber":1}`) // Formdefinitiondynamicschemarequest | Body is the request payload to create a form definition dynamic schema (optional)
+    bodyJson := []byte(`{
+          "description" : "A description",
+          "attributes" : {
+            "formDefinitionId" : "00000000-0000-0000-0000-000000000000"
+          },
+          "id" : "00000000-0000-0000-0000-000000000000",
+          "type" : "action",
+          "versionNumber" : 1
+        }`) // FormDefinitionDynamicSchemaRequest | Body is the request payload to create a form definition dynamic schema (optional)
 
     
 
@@ -98,7 +106,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinitionDynamicSchemaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateFormDefinitionDynamicSchemaV1`: Formdefinitiondynamicschemaresponse
+    // response from `CreateFormDefinitionDynamicSchemaV1`: FormDefinitionDynamicSchemaResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.CreateFormDefinitionDynamicSchemaV1`: %v\n", resp)
 }
 ```
@@ -131,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Formdefinitionfileuploadresponse**](../models/formdefinitionfileuploadresponse)
+[**FormDefinitionFileUploadResponse**](../models/form-definition-file-upload-response)
 
 ### HTTP request headers
 
@@ -166,7 +174,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinitionFileRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateFormDefinitionFileRequestV1`: Formdefinitionfileuploadresponse
+    // response from `CreateFormDefinitionFileRequestV1`: FormDefinitionFileUploadResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.CreateFormDefinitionFileRequestV1`: %v\n", resp)
 }
 ```
@@ -190,11 +198,11 @@ Other parameters are passed through a pointer to a apiCreateFormDefinitionV1Requ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Createformdefinitionrequest**](../models/createformdefinitionrequest) | Body is the request payload to create form definition request | 
+ **body** | [**CreateFormDefinitionRequest**](../models/create-form-definition-request) | Body is the request payload to create form definition request | 
 
 ### Return type
 
-[**Formdefinitionresponse**](../models/formdefinitionresponse)
+[**FormDefinitionResponse**](../models/form-definition-response)
 
 ### HTTP request headers
 
@@ -216,7 +224,117 @@ import (
 )
 
 func main() {
-    bodyJson := []byte(`{"name":"my form","description":"my form description","owner":{"type":"IDENTITY","id":"00000000-0000-0000-0000-000000000000"},"formElements":[{"id":"000000000000","elementType":"SECTION","config":{"alignment":"LEFT","description":"elementType must be 'SECTION' for the root formElements,  child formElements must be within the 'config' attribute","label":"Section","labelStyle":"h2","showLabel":true,"formElements":[{"id":"0000000000000","key":"textField","elementType":"TEXT","config":{"default":"","description":"","helpText":"form element type text","label":"Text Field","placeholder":"","required":false},"validations":[]}]}}]}`) // Createformdefinitionrequest | Body is the request payload to create form definition request (optional)
+    bodyJson := []byte(`{
+          "owner" : {
+            "name" : "Grant Smith",
+            "id" : "2c9180867624cbd7017642d8c8c81f67",
+            "type" : "IDENTITY"
+          },
+          "formConditions" : [ {
+            "ruleOperator" : "AND",
+            "effects" : [ {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            }, {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            } ],
+            "rules" : [ {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            }, {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            } ]
+          }, {
+            "ruleOperator" : "AND",
+            "effects" : [ {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            }, {
+              "config" : {
+                "defaultValueLabel" : "Access to Remove",
+                "element" : "8110662963316867"
+              },
+              "effectType" : "HIDE"
+            } ],
+            "rules" : [ {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            }, {
+              "sourceType" : "ELEMENT",
+              "valueType" : "STRING",
+              "source" : "department",
+              "value" : "Engineering",
+              "operator" : "EQ"
+            } ]
+          } ],
+          "formInput" : [ {
+            "description" : "A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic",
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "label" : "input1",
+            "type" : "STRING"
+          }, {
+            "description" : "A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic",
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "label" : "input1",
+            "type" : "STRING"
+          } ],
+          "name" : "My form",
+          "description" : "My form description",
+          "usedBy" : [ {
+            "name" : "Access Request Form",
+            "id" : "61940a92-5484-42bc-bc10-b9982b218cdf",
+            "type" : "WORKFLOW"
+          }, {
+            "name" : "Access Request Form",
+            "id" : "61940a92-5484-42bc-bc10-b9982b218cdf",
+            "type" : "WORKFLOW"
+          } ],
+          "formElements" : [ {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "validations" : [ {
+              "validationType" : "REQUIRED"
+            }, {
+              "validationType" : "REQUIRED"
+            } ],
+            "elementType" : "TEXT",
+            "config" : {
+              "label" : "Department"
+            },
+            "key" : "department"
+          }, {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "validations" : [ {
+              "validationType" : "REQUIRED"
+            }, {
+              "validationType" : "REQUIRED"
+            } ],
+            "elementType" : "TEXT",
+            "config" : {
+              "label" : "Department"
+            },
+            "key" : "department"
+          } ]
+        }`) // CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
 
     
 
@@ -228,7 +346,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinitionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateFormDefinitionV1`: Formdefinitionresponse
+    // response from `CreateFormDefinitionV1`: FormDefinitionResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.CreateFormDefinitionV1`: %v\n", resp)
 }
 ```
@@ -252,11 +370,11 @@ Other parameters are passed through a pointer to a apiCreateFormInstanceV1Reques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Createforminstancerequest**](../models/createforminstancerequest) | Body is the request payload to create a form instance | 
+ **body** | [**CreateFormInstanceRequest**](../models/create-form-instance-request) | Body is the request payload to create a form instance | 
 
 ### Return type
 
-[**Forminstanceresponse**](../models/forminstanceresponse)
+[**FormInstanceResponse**](../models/form-instance-response)
 
 ### HTTP request headers
 
@@ -278,7 +396,27 @@ import (
 )
 
 func main() {
-    bodyJson := []byte(`{"expire":"2023-06-20T15:57:55.332882Z","formDefinitionId":"00000000-0000-0000-0000-000000000000","recipients":[{"type":"IDENTITY","id":"an-identity-id"}],"createdBy":{"type":"WORKFLOW_EXECUTION","id":"a-workflow-execution-id"}}`) // Createforminstancerequest | Body is the request payload to create a form instance (optional)
+    bodyJson := []byte(`{
+          "formInput" : {
+            "input1" : "Sales"
+          },
+          "standAloneForm" : false,
+          "createdBy" : {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "type" : "WORKFLOW_EXECUTION"
+          },
+          "recipients" : [ {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "type" : "IDENTITY"
+          }, {
+            "id" : "00000000-0000-0000-0000-000000000000",
+            "type" : "IDENTITY"
+          } ],
+          "expire" : "2023-08-12T20:14:57.74486Z",
+          "formDefinitionId" : "00000000-0000-0000-0000-000000000000",
+          "state" : "ASSIGNED",
+          "ttl" : 1571827560
+        }`) // CreateFormInstanceRequest | Body is the request payload to create a form instance (optional)
 
     
 
@@ -290,7 +428,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormInstanceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateFormInstanceV1`: Forminstanceresponse
+    // response from `CreateFormInstanceV1`: FormInstanceResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.CreateFormInstanceV1`: %v\n", resp)
 }
 ```
@@ -525,7 +663,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Formdefinitionresponse**](../models/formdefinitionresponse)
+[**FormDefinitionResponse**](../models/form-definition-response)
 
 ### HTTP request headers
 
@@ -559,7 +697,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.GetFormDefinitionByKeyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetFormDefinitionByKeyV1`: Formdefinitionresponse
+    // response from `GetFormDefinitionByKeyV1`: FormDefinitionResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.GetFormDefinitionByKeyV1`: %v\n", resp)
 }
 ```
@@ -593,7 +731,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Forminstanceresponse**](../models/forminstanceresponse)
+[**FormInstanceResponse**](../models/form-instance-response)
 
 ### HTTP request headers
 
@@ -627,7 +765,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.GetFormInstanceByKeyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetFormInstanceByKeyV1`: Forminstanceresponse
+    // response from `GetFormInstanceByKeyV1`: FormInstanceResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.GetFormInstanceByKeyV1`: %v\n", resp)
 }
 ```
@@ -791,7 +929,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Formdefinitionresponse**](../models/formdefinitionresponse)
+[**FormDefinitionResponse**](../models/form-definition-response)
 
 ### HTTP request headers
 
@@ -826,7 +964,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.PatchFormDefinitionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchFormDefinitionV1`: Formdefinitionresponse
+    // response from `PatchFormDefinitionV1`: FormDefinitionResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.PatchFormDefinitionV1`: %v\n", resp)
 }
 ```
@@ -861,7 +999,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Forminstanceresponse**](../models/forminstanceresponse)
+[**FormInstanceResponse**](../models/form-instance-response)
 
 ### HTTP request headers
 
@@ -896,7 +1034,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.PatchFormInstanceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchFormInstanceV1`: Forminstanceresponse
+    // response from `PatchFormInstanceV1`: FormInstanceResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.PatchFormInstanceV1`: %v\n", resp)
 }
 ```
@@ -927,7 +1065,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Listformdefinitionsbytenantresponse**](../models/listformdefinitionsbytenantresponse)
+[**ListFormDefinitionsByTenantResponse**](../models/list-form-definitions-by-tenant-response)
 
 ### HTTP request headers
 
@@ -964,7 +1102,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormDefinitionsByTenantV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchFormDefinitionsByTenantV1`: Listformdefinitionsbytenantresponse
+    // response from `SearchFormDefinitionsByTenantV1`: ListFormDefinitionsByTenantResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.SearchFormDefinitionsByTenantV1`: %v\n", resp)
 }
 ```
@@ -1002,7 +1140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Listformelementdatabyelementidresponse**](../models/listformelementdatabyelementidresponse)
+[**ListFormElementDataByElementIDResponse**](../models/list-form-element-data-by-element-id-response)
 
 ### HTTP request headers
 
@@ -1040,7 +1178,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormElementDataByElementIDV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchFormElementDataByElementIDV1`: Listformelementdatabyelementidresponse
+    // response from `SearchFormElementDataByElementIDV1`: ListFormElementDataByElementIDResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.SearchFormElementDataByElementIDV1`: %v\n", resp)
 }
 ```
@@ -1070,7 +1208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Listforminstancesbytenantresponse**](../models/listforminstancesbytenantresponse)
+[**[]ListFormInstancesByTenantResponse**](../models/list-form-instances-by-tenant-response)
 
 ### HTTP request headers
 
@@ -1106,7 +1244,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormInstancesByTenantV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchFormInstancesByTenantV1`: []Listforminstancesbytenantresponse
+    // response from `SearchFormInstancesByTenantV1`: []ListFormInstancesByTenantResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.SearchFormInstancesByTenantV1`: %v\n", resp)
 }
 ```
@@ -1130,7 +1268,7 @@ Other parameters are passed through a pointer to a apiSearchPreDefinedSelectOpti
 
 ### Return type
 
-[**Listpredefinedselectoptionsresponse**](../models/listpredefinedselectoptionsresponse)
+[**ListPredefinedSelectOptionsResponse**](../models/list-predefined-select-options-response)
 
 ### HTTP request headers
 
@@ -1163,7 +1301,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchPreDefinedSelectOptionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchPreDefinedSelectOptionsV1`: Listpredefinedselectoptionsresponse
+    // response from `SearchPreDefinedSelectOptionsV1`: ListPredefinedSelectOptionsResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.SearchPreDefinedSelectOptionsV1`: %v\n", resp)
 }
 ```
@@ -1195,11 +1333,11 @@ Name | Type | Description  | Notes
  **limit** | **int64** | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. | [default to 10]
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60; | 
  **query** | **string** | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \&quot;starts with\&quot; filter against  several fields. | 
- **formelementpreviewrequest** | [**Formelementpreviewrequest**](../models/formelementpreviewrequest) | Body is the request payload to create a form definition dynamic schema | 
+ **formElementPreviewRequest** | [**FormElementPreviewRequest**](../models/form-element-preview-request) | Body is the request payload to create a form definition dynamic schema | 
 
 ### Return type
 
-[**Previewdatasourceresponse**](../models/previewdatasourceresponse)
+[**PreviewDataSourceResponse**](../models/preview-data-source-response)
 
 ### HTTP request headers
 
@@ -1225,19 +1363,29 @@ func main() {
     limit := 10 // int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 10) # int64 | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 10)
     filters := `value eq "ID01"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")` (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")` (optional)
     query := `ac` // string | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields. (optional) # string | String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields. (optional)
-    formelementpreviewrequestJson := []byte(``) // Formelementpreviewrequest | Body is the request payload to create a form definition dynamic schema (optional)
+    formelementpreviewrequestJson := []byte(`{
+          "dataSource" : {
+            "config" : {
+              "indices" : [ "identities" ],
+              "query" : "*",
+              "aggregationBucketField" : "attributes.cloudStatus.exact",
+              "objectType" : "IDENTITY"
+            },
+            "dataSourceType" : "STATIC"
+          }
+        }`) // FormElementPreviewRequest | Body is the request payload to create a form definition dynamic schema (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.CustomFormsAPI.ShowPreviewDataSourceV1(context.Background(), formDefinitionID).Execute()
-	  //resp, r, err := apiClient.CustomFormsAPI.ShowPreviewDataSourceV1(context.Background(), formDefinitionID).Limit(limit).Filters(filters).Query(query).Formelementpreviewrequest(formelementpreviewrequest).Execute()
+	  //resp, r, err := apiClient.CustomFormsAPI.ShowPreviewDataSourceV1(context.Background(), formDefinitionID).Limit(limit).Filters(filters).Query(query).FormElementPreviewRequest(formElementPreviewRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.ShowPreviewDataSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ShowPreviewDataSourceV1`: Previewdatasourceresponse
+    // response from `ShowPreviewDataSourceV1`: PreviewDataSourceResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.ShowPreviewDataSourceV1`: %v\n", resp)
 }
 ```

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ScheduleHours', 'V1ScheduleHours']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **Selectortype** |  | 
+**Type** | **SelectorType** |  | 
 **Values** | **[]string** | The selected values.  | 
 **Interval** | Pointer to **NullableInt32** | The selected interval for RANGE selectors.  | [optional] 
 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewScheduleHours
 
-`func NewScheduleHours(type_ Selectortype, values []string, ) *ScheduleHours`
+`func NewScheduleHours(type_ SelectorType, values []string, ) *ScheduleHours`
 
 NewScheduleHours instantiates a new ScheduleHours object
 This constructor will assign default values to properties that have it defined,
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ScheduleHours) GetType() Selectortype`
+`func (o *ScheduleHours) GetType() SelectorType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ScheduleHours) GetTypeOk() (*Selectortype, bool)`
+`func (o *ScheduleHours) GetTypeOk() (*SelectorType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ScheduleHours) SetType(v Selectortype)`
+`func (o *ScheduleHours) SetType(v SelectorType)`
 
 SetType sets Type field to given value.
 

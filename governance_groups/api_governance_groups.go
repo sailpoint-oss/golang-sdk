@@ -26,15 +26,15 @@ type GovernanceGroupsAPIService service
 type ApiCreateWorkgroupV1Request struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
-	workgroupdto *Workgroupdto
+	workgroupDto *WorkgroupDto
 }
 
-func (r ApiCreateWorkgroupV1Request) Workgroupdto(workgroupdto Workgroupdto) ApiCreateWorkgroupV1Request {
-	r.workgroupdto = &workgroupdto
+func (r ApiCreateWorkgroupV1Request) WorkgroupDto(workgroupDto WorkgroupDto) ApiCreateWorkgroupV1Request {
+	r.workgroupDto = &workgroupDto
 	return r
 }
 
-func (r ApiCreateWorkgroupV1Request) Execute() (*Workgroupdto, *http.Response, error) {
+func (r ApiCreateWorkgroupV1Request) Execute() (*WorkgroupDto, *http.Response, error) {
 	return r.ApiService.CreateWorkgroupV1Execute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *GovernanceGroupsAPIService) CreateWorkgroupV1(ctx context.Context) ApiC
 }
 
 // Execute executes the request
-//  @return Workgroupdto
-func (a *GovernanceGroupsAPIService) CreateWorkgroupV1Execute(r ApiCreateWorkgroupV1Request) (*Workgroupdto, *http.Response, error) {
+//  @return WorkgroupDto
+func (a *GovernanceGroupsAPIService) CreateWorkgroupV1Execute(r ApiCreateWorkgroupV1Request) (*WorkgroupDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workgroupdto
+		localVarReturnValue  *WorkgroupDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.CreateWorkgroupV1")
@@ -73,8 +73,8 @@ func (a *GovernanceGroupsAPIService) CreateWorkgroupV1Execute(r ApiCreateWorkgro
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.workgroupdto == nil {
-		return localVarReturnValue, nil, reportError("workgroupdto is required and must be specified")
+	if r.workgroupDto == nil {
+		return localVarReturnValue, nil, reportError("workgroupDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -95,7 +95,7 @@ func (a *GovernanceGroupsAPIService) CreateWorkgroupV1Execute(r ApiCreateWorkgro
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.workgroupdto
+	localVarPostBody = r.workgroupDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -119,7 +119,7 @@ func (a *GovernanceGroupsAPIService) CreateWorkgroupV1Execute(r ApiCreateWorkgro
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -141,7 +141,7 @@ func (a *GovernanceGroupsAPIService) CreateWorkgroupV1Execute(r ApiCreateWorkgro
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -163,7 +163,7 @@ func (a *GovernanceGroupsAPIService) CreateWorkgroupV1Execute(r ApiCreateWorkgro
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -191,16 +191,16 @@ type ApiDeleteWorkgroupMembersV1Request struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
 	workgroupId string
-	bulkworkgroupmembersrequestInner *[]BulkworkgroupmembersrequestInner
+	bulkWorkgroupMembersRequestInner *[]BulkWorkgroupMembersRequestInner
 }
 
 // List of identities to be removed from  a Governance Group members list.
-func (r ApiDeleteWorkgroupMembersV1Request) BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner []BulkworkgroupmembersrequestInner) ApiDeleteWorkgroupMembersV1Request {
-	r.bulkworkgroupmembersrequestInner = &bulkworkgroupmembersrequestInner
+func (r ApiDeleteWorkgroupMembersV1Request) BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner []BulkWorkgroupMembersRequestInner) ApiDeleteWorkgroupMembersV1Request {
+	r.bulkWorkgroupMembersRequestInner = &bulkWorkgroupMembersRequestInner
 	return r
 }
 
-func (r ApiDeleteWorkgroupMembersV1Request) Execute() ([]Workgroupmemberdeleteitem, *http.Response, error) {
+func (r ApiDeleteWorkgroupMembersV1Request) Execute() ([]WorkgroupMemberDeleteItem, *http.Response, error) {
 	return r.ApiService.DeleteWorkgroupMembersV1Execute(r)
 }
 
@@ -225,13 +225,13 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Workgroupmemberdeleteitem
-func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersV1Execute(r ApiDeleteWorkgroupMembersV1Request) ([]Workgroupmemberdeleteitem, *http.Response, error) {
+//  @return []WorkgroupMemberDeleteItem
+func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersV1Execute(r ApiDeleteWorkgroupMembersV1Request) ([]WorkgroupMemberDeleteItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Workgroupmemberdeleteitem
+		localVarReturnValue  []WorkgroupMemberDeleteItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.DeleteWorkgroupMembersV1")
@@ -245,8 +245,8 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersV1Execute(r ApiDelete
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkworkgroupmembersrequestInner == nil {
-		return localVarReturnValue, nil, reportError("bulkworkgroupmembersrequestInner is required and must be specified")
+	if r.bulkWorkgroupMembersRequestInner == nil {
+		return localVarReturnValue, nil, reportError("bulkWorkgroupMembersRequestInner is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -267,7 +267,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersV1Execute(r ApiDelete
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkworkgroupmembersrequestInner
+	localVarPostBody = r.bulkWorkgroupMembersRequestInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -291,7 +291,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersV1Execute(r ApiDelete
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -313,7 +313,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersV1Execute(r ApiDelete
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -335,7 +335,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersV1Execute(r ApiDelete
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -446,7 +446,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupV1Execute(r ApiDeleteWorkgro
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -468,7 +468,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupV1Execute(r ApiDeleteWorkgro
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -490,7 +490,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupV1Execute(r ApiDeleteWorkgro
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -508,15 +508,15 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupV1Execute(r ApiDeleteWorkgro
 type ApiDeleteWorkgroupsInBulkV1Request struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
-	workgroupbulkdeleterequest *Workgroupbulkdeleterequest
+	workgroupBulkDeleteRequest *WorkgroupBulkDeleteRequest
 }
 
-func (r ApiDeleteWorkgroupsInBulkV1Request) Workgroupbulkdeleterequest(workgroupbulkdeleterequest Workgroupbulkdeleterequest) ApiDeleteWorkgroupsInBulkV1Request {
-	r.workgroupbulkdeleterequest = &workgroupbulkdeleterequest
+func (r ApiDeleteWorkgroupsInBulkV1Request) WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest WorkgroupBulkDeleteRequest) ApiDeleteWorkgroupsInBulkV1Request {
+	r.workgroupBulkDeleteRequest = &workgroupBulkDeleteRequest
 	return r
 }
 
-func (r ApiDeleteWorkgroupsInBulkV1Request) Execute() ([]Workgroupdeleteitem, *http.Response, error) {
+func (r ApiDeleteWorkgroupsInBulkV1Request) Execute() ([]WorkgroupDeleteItem, *http.Response, error) {
 	return r.ApiService.DeleteWorkgroupsInBulkV1Execute(r)
 }
 
@@ -547,13 +547,13 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulkV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Workgroupdeleteitem
-func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulkV1Execute(r ApiDeleteWorkgroupsInBulkV1Request) ([]Workgroupdeleteitem, *http.Response, error) {
+//  @return []WorkgroupDeleteItem
+func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulkV1Execute(r ApiDeleteWorkgroupsInBulkV1Request) ([]WorkgroupDeleteItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Workgroupdeleteitem
+		localVarReturnValue  []WorkgroupDeleteItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.DeleteWorkgroupsInBulkV1")
@@ -566,8 +566,8 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulkV1Execute(r ApiDelete
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.workgroupbulkdeleterequest == nil {
-		return localVarReturnValue, nil, reportError("workgroupbulkdeleterequest is required and must be specified")
+	if r.workgroupBulkDeleteRequest == nil {
+		return localVarReturnValue, nil, reportError("workgroupBulkDeleteRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -588,7 +588,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulkV1Execute(r ApiDelete
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.workgroupbulkdeleterequest
+	localVarPostBody = r.workgroupBulkDeleteRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -612,7 +612,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulkV1Execute(r ApiDelete
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -634,7 +634,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulkV1Execute(r ApiDelete
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -656,7 +656,7 @@ func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulkV1Execute(r ApiDelete
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -686,7 +686,7 @@ type ApiGetWorkgroupV1Request struct {
 	id string
 }
 
-func (r ApiGetWorkgroupV1Request) Execute() (*Workgroupdto, *http.Response, error) {
+func (r ApiGetWorkgroupV1Request) Execute() (*WorkgroupDto, *http.Response, error) {
 	return r.ApiService.GetWorkgroupV1Execute(r)
 }
 
@@ -708,13 +708,13 @@ func (a *GovernanceGroupsAPIService) GetWorkgroupV1(ctx context.Context, id stri
 }
 
 // Execute executes the request
-//  @return Workgroupdto
-func (a *GovernanceGroupsAPIService) GetWorkgroupV1Execute(r ApiGetWorkgroupV1Request) (*Workgroupdto, *http.Response, error) {
+//  @return WorkgroupDto
+func (a *GovernanceGroupsAPIService) GetWorkgroupV1Execute(r ApiGetWorkgroupV1Request) (*WorkgroupDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workgroupdto
+		localVarReturnValue  *WorkgroupDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.GetWorkgroupV1")
@@ -769,7 +769,7 @@ func (a *GovernanceGroupsAPIService) GetWorkgroupV1Execute(r ApiGetWorkgroupV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -791,7 +791,7 @@ func (a *GovernanceGroupsAPIService) GetWorkgroupV1Execute(r ApiGetWorkgroupV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -813,7 +813,7 @@ func (a *GovernanceGroupsAPIService) GetWorkgroupV1Execute(r ApiGetWorkgroupV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -871,7 +871,7 @@ func (r ApiListConnectionsV1Request) Sorters(sorters string) ApiListConnectionsV
 	return r
 }
 
-func (r ApiListConnectionsV1Request) Execute() ([]Workgroupconnectiondto, *http.Response, error) {
+func (r ApiListConnectionsV1Request) Execute() ([]WorkgroupConnectionDto, *http.Response, error) {
 	return r.ApiService.ListConnectionsV1Execute(r)
 }
 
@@ -893,13 +893,13 @@ func (a *GovernanceGroupsAPIService) ListConnectionsV1(ctx context.Context, work
 }
 
 // Execute executes the request
-//  @return []Workgroupconnectiondto
-func (a *GovernanceGroupsAPIService) ListConnectionsV1Execute(r ApiListConnectionsV1Request) ([]Workgroupconnectiondto, *http.Response, error) {
+//  @return []WorkgroupConnectionDto
+func (a *GovernanceGroupsAPIService) ListConnectionsV1Execute(r ApiListConnectionsV1Request) ([]WorkgroupConnectionDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Workgroupconnectiondto
+		localVarReturnValue  []WorkgroupConnectionDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.ListConnectionsV1")
@@ -975,7 +975,7 @@ func (a *GovernanceGroupsAPIService) ListConnectionsV1Execute(r ApiListConnectio
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -997,7 +997,7 @@ func (a *GovernanceGroupsAPIService) ListConnectionsV1Execute(r ApiListConnectio
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1019,7 +1019,7 @@ func (a *GovernanceGroupsAPIService) ListConnectionsV1Execute(r ApiListConnectio
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1181,7 +1181,7 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupMembersV1Execute(r ApiListWork
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1203,7 +1203,7 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupMembersV1Execute(r ApiListWork
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1225,7 +1225,7 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupMembersV1Execute(r ApiListWork
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1289,7 +1289,7 @@ func (r ApiListWorkgroupsV1Request) Sorters(sorters string) ApiListWorkgroupsV1R
 	return r
 }
 
-func (r ApiListWorkgroupsV1Request) Execute() ([]Workgroupdto, *http.Response, error) {
+func (r ApiListWorkgroupsV1Request) Execute() ([]WorkgroupDto, *http.Response, error) {
 	return r.ApiService.ListWorkgroupsV1Execute(r)
 }
 
@@ -1309,13 +1309,13 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupsV1(ctx context.Context) ApiLi
 }
 
 // Execute executes the request
-//  @return []Workgroupdto
-func (a *GovernanceGroupsAPIService) ListWorkgroupsV1Execute(r ApiListWorkgroupsV1Request) ([]Workgroupdto, *http.Response, error) {
+//  @return []WorkgroupDto
+func (a *GovernanceGroupsAPIService) ListWorkgroupsV1Execute(r ApiListWorkgroupsV1Request) ([]WorkgroupDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Workgroupdto
+		localVarReturnValue  []WorkgroupDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.ListWorkgroupsV1")
@@ -1393,7 +1393,7 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupsV1Execute(r ApiListWorkgroups
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1415,7 +1415,7 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupsV1Execute(r ApiListWorkgroups
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1437,7 +1437,7 @@ func (a *GovernanceGroupsAPIService) ListWorkgroupsV1Execute(r ApiListWorkgroups
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1465,15 +1465,15 @@ type ApiPatchWorkgroupV1Request struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
-func (r ApiPatchWorkgroupV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchWorkgroupV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchWorkgroupV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchWorkgroupV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchWorkgroupV1Request) Execute() (*Workgroupdto, *http.Response, error) {
+func (r ApiPatchWorkgroupV1Request) Execute() (*WorkgroupDto, *http.Response, error) {
 	return r.ApiService.PatchWorkgroupV1Execute(r)
 }
 
@@ -1498,13 +1498,13 @@ func (a *GovernanceGroupsAPIService) PatchWorkgroupV1(ctx context.Context, id st
 }
 
 // Execute executes the request
-//  @return Workgroupdto
-func (a *GovernanceGroupsAPIService) PatchWorkgroupV1Execute(r ApiPatchWorkgroupV1Request) (*Workgroupdto, *http.Response, error) {
+//  @return WorkgroupDto
+func (a *GovernanceGroupsAPIService) PatchWorkgroupV1Execute(r ApiPatchWorkgroupV1Request) (*WorkgroupDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workgroupdto
+		localVarReturnValue  *WorkgroupDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.PatchWorkgroupV1")
@@ -1537,7 +1537,7 @@ func (a *GovernanceGroupsAPIService) PatchWorkgroupV1Execute(r ApiPatchWorkgroup
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1561,7 +1561,7 @@ func (a *GovernanceGroupsAPIService) PatchWorkgroupV1Execute(r ApiPatchWorkgroup
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1583,7 +1583,7 @@ func (a *GovernanceGroupsAPIService) PatchWorkgroupV1Execute(r ApiPatchWorkgroup
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1605,7 +1605,7 @@ func (a *GovernanceGroupsAPIService) PatchWorkgroupV1Execute(r ApiPatchWorkgroup
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1633,16 +1633,16 @@ type ApiUpdateWorkgroupMembersV1Request struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsAPIService
 	workgroupId string
-	bulkworkgroupmembersrequestInner *[]BulkworkgroupmembersrequestInner
+	bulkWorkgroupMembersRequestInner *[]BulkWorkgroupMembersRequestInner
 }
 
 // List of identities to be added to a Governance Group members list.
-func (r ApiUpdateWorkgroupMembersV1Request) BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner []BulkworkgroupmembersrequestInner) ApiUpdateWorkgroupMembersV1Request {
-	r.bulkworkgroupmembersrequestInner = &bulkworkgroupmembersrequestInner
+func (r ApiUpdateWorkgroupMembersV1Request) BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner []BulkWorkgroupMembersRequestInner) ApiUpdateWorkgroupMembersV1Request {
+	r.bulkWorkgroupMembersRequestInner = &bulkWorkgroupMembersRequestInner
 	return r
 }
 
-func (r ApiUpdateWorkgroupMembersV1Request) Execute() ([]Workgroupmemberadditem, *http.Response, error) {
+func (r ApiUpdateWorkgroupMembersV1Request) Execute() ([]WorkgroupMemberAddItem, *http.Response, error) {
 	return r.ApiService.UpdateWorkgroupMembersV1Execute(r)
 }
 
@@ -1668,13 +1668,13 @@ func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembersV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Workgroupmemberadditem
-func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembersV1Execute(r ApiUpdateWorkgroupMembersV1Request) ([]Workgroupmemberadditem, *http.Response, error) {
+//  @return []WorkgroupMemberAddItem
+func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembersV1Execute(r ApiUpdateWorkgroupMembersV1Request) ([]WorkgroupMemberAddItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Workgroupmemberadditem
+		localVarReturnValue  []WorkgroupMemberAddItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.UpdateWorkgroupMembersV1")
@@ -1688,8 +1688,8 @@ func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembersV1Execute(r ApiUpdate
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkworkgroupmembersrequestInner == nil {
-		return localVarReturnValue, nil, reportError("bulkworkgroupmembersrequestInner is required and must be specified")
+	if r.bulkWorkgroupMembersRequestInner == nil {
+		return localVarReturnValue, nil, reportError("bulkWorkgroupMembersRequestInner is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1710,7 +1710,7 @@ func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembersV1Execute(r ApiUpdate
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkworkgroupmembersrequestInner
+	localVarPostBody = r.bulkWorkgroupMembersRequestInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1734,7 +1734,7 @@ func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembersV1Execute(r ApiUpdate
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1756,7 +1756,7 @@ func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembersV1Execute(r ApiUpdate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1778,7 +1778,7 @@ func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembersV1Execute(r ApiUpdate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

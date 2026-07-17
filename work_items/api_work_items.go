@@ -30,7 +30,7 @@ type ApiApproveApprovalItemV1Request struct {
 	approvalItemId string
 }
 
-func (r ApiApproveApprovalItemV1Request) Execute() (*Workitems, *http.Response, error) {
+func (r ApiApproveApprovalItemV1Request) Execute() (*WorkItems, *http.Response, error) {
 	return r.ApiService.ApproveApprovalItemV1Execute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *WorkItemsAPIService) ApproveApprovalItemV1(ctx context.Context, id stri
 }
 
 // Execute executes the request
-//  @return Workitems
-func (a *WorkItemsAPIService) ApproveApprovalItemV1Execute(r ApiApproveApprovalItemV1Request) (*Workitems, *http.Response, error) {
+//  @return WorkItems
+func (a *WorkItemsAPIService) ApproveApprovalItemV1Execute(r ApiApproveApprovalItemV1Request) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workitems
+		localVarReturnValue  *WorkItems
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.ApproveApprovalItemV1")
@@ -116,7 +116,7 @@ func (a *WorkItemsAPIService) ApproveApprovalItemV1Execute(r ApiApproveApprovalI
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -138,7 +138,7 @@ func (a *WorkItemsAPIService) ApproveApprovalItemV1Execute(r ApiApproveApprovalI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -149,7 +149,7 @@ func (a *WorkItemsAPIService) ApproveApprovalItemV1Execute(r ApiApproveApprovalI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -171,7 +171,7 @@ func (a *WorkItemsAPIService) ApproveApprovalItemV1Execute(r ApiApproveApprovalI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -201,7 +201,7 @@ type ApiApproveApprovalItemsInBulkV1Request struct {
 	id string
 }
 
-func (r ApiApproveApprovalItemsInBulkV1Request) Execute() (*Workitems, *http.Response, error) {
+func (r ApiApproveApprovalItemsInBulkV1Request) Execute() (*WorkItems, *http.Response, error) {
 	return r.ApiService.ApproveApprovalItemsInBulkV1Execute(r)
 }
 
@@ -223,13 +223,13 @@ func (a *WorkItemsAPIService) ApproveApprovalItemsInBulkV1(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return Workitems
-func (a *WorkItemsAPIService) ApproveApprovalItemsInBulkV1Execute(r ApiApproveApprovalItemsInBulkV1Request) (*Workitems, *http.Response, error) {
+//  @return WorkItems
+func (a *WorkItemsAPIService) ApproveApprovalItemsInBulkV1Execute(r ApiApproveApprovalItemsInBulkV1Request) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workitems
+		localVarReturnValue  *WorkItems
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.ApproveApprovalItemsInBulkV1")
@@ -284,7 +284,7 @@ func (a *WorkItemsAPIService) ApproveApprovalItemsInBulkV1Execute(r ApiApproveAp
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -306,7 +306,7 @@ func (a *WorkItemsAPIService) ApproveApprovalItemsInBulkV1Execute(r ApiApproveAp
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -317,7 +317,7 @@ func (a *WorkItemsAPIService) ApproveApprovalItemsInBulkV1Execute(r ApiApproveAp
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -339,7 +339,7 @@ func (a *WorkItemsAPIService) ApproveApprovalItemsInBulkV1Execute(r ApiApproveAp
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -376,7 +376,7 @@ func (r ApiCompleteWorkItemV1Request) Body(body string) ApiCompleteWorkItemV1Req
 	return r
 }
 
-func (r ApiCompleteWorkItemV1Request) Execute() (*Workitems, *http.Response, error) {
+func (r ApiCompleteWorkItemV1Request) Execute() (*WorkItems, *http.Response, error) {
 	return r.ApiService.CompleteWorkItemV1Execute(r)
 }
 
@@ -398,13 +398,13 @@ func (a *WorkItemsAPIService) CompleteWorkItemV1(ctx context.Context, id string)
 }
 
 // Execute executes the request
-//  @return Workitems
-func (a *WorkItemsAPIService) CompleteWorkItemV1Execute(r ApiCompleteWorkItemV1Request) (*Workitems, *http.Response, error) {
+//  @return WorkItems
+func (a *WorkItemsAPIService) CompleteWorkItemV1Execute(r ApiCompleteWorkItemV1Request) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workitems
+		localVarReturnValue  *WorkItems
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.CompleteWorkItemV1")
@@ -461,7 +461,7 @@ func (a *WorkItemsAPIService) CompleteWorkItemV1Execute(r ApiCompleteWorkItemV1R
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -483,7 +483,7 @@ func (a *WorkItemsAPIService) CompleteWorkItemV1Execute(r ApiCompleteWorkItemV1R
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -494,7 +494,7 @@ func (a *WorkItemsAPIService) CompleteWorkItemV1Execute(r ApiCompleteWorkItemV1R
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -516,7 +516,7 @@ func (a *WorkItemsAPIService) CompleteWorkItemV1Execute(r ApiCompleteWorkItemV1R
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -544,11 +544,11 @@ type ApiForwardWorkItemV1Request struct {
 	ctx context.Context
 	ApiService *WorkItemsAPIService
 	id string
-	workitemforward *Workitemforward
+	workItemForward *WorkItemForward
 }
 
-func (r ApiForwardWorkItemV1Request) Workitemforward(workitemforward Workitemforward) ApiForwardWorkItemV1Request {
-	r.workitemforward = &workitemforward
+func (r ApiForwardWorkItemV1Request) WorkItemForward(workItemForward WorkItemForward) ApiForwardWorkItemV1Request {
+	r.workItemForward = &workItemForward
 	return r
 }
 
@@ -592,8 +592,8 @@ func (a *WorkItemsAPIService) ForwardWorkItemV1Execute(r ApiForwardWorkItemV1Req
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.workitemforward == nil {
-		return nil, reportError("workitemforward is required and must be specified")
+	if r.workItemForward == nil {
+		return nil, reportError("workItemForward is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -614,7 +614,7 @@ func (a *WorkItemsAPIService) ForwardWorkItemV1Execute(r ApiForwardWorkItemV1Req
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.workitemforward
+	localVarPostBody = r.workItemForward
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -638,7 +638,7 @@ func (a *WorkItemsAPIService) ForwardWorkItemV1Execute(r ApiForwardWorkItemV1Req
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -660,7 +660,7 @@ func (a *WorkItemsAPIService) ForwardWorkItemV1Execute(r ApiForwardWorkItemV1Req
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -682,7 +682,7 @@ func (a *WorkItemsAPIService) ForwardWorkItemV1Execute(r ApiForwardWorkItemV1Req
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -730,7 +730,7 @@ func (r ApiGetCompletedWorkItemsV1Request) Count(count bool) ApiGetCompletedWork
 	return r
 }
 
-func (r ApiGetCompletedWorkItemsV1Request) Execute() ([]Workitems, *http.Response, error) {
+func (r ApiGetCompletedWorkItemsV1Request) Execute() ([]WorkItems, *http.Response, error) {
 	return r.ApiService.GetCompletedWorkItemsV1Execute(r)
 }
 
@@ -750,13 +750,13 @@ func (a *WorkItemsAPIService) GetCompletedWorkItemsV1(ctx context.Context) ApiGe
 }
 
 // Execute executes the request
-//  @return []Workitems
-func (a *WorkItemsAPIService) GetCompletedWorkItemsV1Execute(r ApiGetCompletedWorkItemsV1Request) ([]Workitems, *http.Response, error) {
+//  @return []WorkItems
+func (a *WorkItemsAPIService) GetCompletedWorkItemsV1Execute(r ApiGetCompletedWorkItemsV1Request) ([]WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Workitems
+		localVarReturnValue  []WorkItems
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetCompletedWorkItemsV1")
@@ -842,7 +842,7 @@ func (a *WorkItemsAPIService) GetCompletedWorkItemsV1Execute(r ApiGetCompletedWo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -853,7 +853,7 @@ func (a *WorkItemsAPIService) GetCompletedWorkItemsV1Execute(r ApiGetCompletedWo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -875,7 +875,7 @@ func (a *WorkItemsAPIService) GetCompletedWorkItemsV1Execute(r ApiGetCompletedWo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -911,7 +911,7 @@ func (r ApiGetCountCompletedWorkItemsV1Request) OwnerId(ownerId string) ApiGetCo
 	return r
 }
 
-func (r ApiGetCountCompletedWorkItemsV1Request) Execute() (*Workitemscount, *http.Response, error) {
+func (r ApiGetCountCompletedWorkItemsV1Request) Execute() (*WorkItemsCount, *http.Response, error) {
 	return r.ApiService.GetCountCompletedWorkItemsV1Execute(r)
 }
 
@@ -931,13 +931,13 @@ func (a *WorkItemsAPIService) GetCountCompletedWorkItemsV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return Workitemscount
-func (a *WorkItemsAPIService) GetCountCompletedWorkItemsV1Execute(r ApiGetCountCompletedWorkItemsV1Request) (*Workitemscount, *http.Response, error) {
+//  @return WorkItemsCount
+func (a *WorkItemsAPIService) GetCountCompletedWorkItemsV1Execute(r ApiGetCountCompletedWorkItemsV1Request) (*WorkItemsCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workitemscount
+		localVarReturnValue  *WorkItemsCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetCountCompletedWorkItemsV1")
@@ -994,7 +994,7 @@ func (a *WorkItemsAPIService) GetCountCompletedWorkItemsV1Execute(r ApiGetCountC
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1005,7 +1005,7 @@ func (a *WorkItemsAPIService) GetCountCompletedWorkItemsV1Execute(r ApiGetCountC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1016,7 +1016,7 @@ func (a *WorkItemsAPIService) GetCountCompletedWorkItemsV1Execute(r ApiGetCountC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1052,7 +1052,7 @@ func (r ApiGetCountWorkItemsV1Request) OwnerId(ownerId string) ApiGetCountWorkIt
 	return r
 }
 
-func (r ApiGetCountWorkItemsV1Request) Execute() (*Workitemscount, *http.Response, error) {
+func (r ApiGetCountWorkItemsV1Request) Execute() (*WorkItemsCount, *http.Response, error) {
 	return r.ApiService.GetCountWorkItemsV1Execute(r)
 }
 
@@ -1072,13 +1072,13 @@ func (a *WorkItemsAPIService) GetCountWorkItemsV1(ctx context.Context) ApiGetCou
 }
 
 // Execute executes the request
-//  @return Workitemscount
-func (a *WorkItemsAPIService) GetCountWorkItemsV1Execute(r ApiGetCountWorkItemsV1Request) (*Workitemscount, *http.Response, error) {
+//  @return WorkItemsCount
+func (a *WorkItemsAPIService) GetCountWorkItemsV1Execute(r ApiGetCountWorkItemsV1Request) (*WorkItemsCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workitemscount
+		localVarReturnValue  *WorkItemsCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetCountWorkItemsV1")
@@ -1146,7 +1146,7 @@ func (a *WorkItemsAPIService) GetCountWorkItemsV1Execute(r ApiGetCountWorkItemsV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1157,7 +1157,7 @@ func (a *WorkItemsAPIService) GetCountWorkItemsV1Execute(r ApiGetCountWorkItemsV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1179,7 +1179,7 @@ func (a *WorkItemsAPIService) GetCountWorkItemsV1Execute(r ApiGetCountWorkItemsV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1209,7 +1209,7 @@ type ApiGetWorkItemV1Request struct {
 	id string
 }
 
-func (r ApiGetWorkItemV1Request) Execute() (*Workitems, *http.Response, error) {
+func (r ApiGetWorkItemV1Request) Execute() (*WorkItems, *http.Response, error) {
 	return r.ApiService.GetWorkItemV1Execute(r)
 }
 
@@ -1231,13 +1231,13 @@ func (a *WorkItemsAPIService) GetWorkItemV1(ctx context.Context, id string) ApiG
 }
 
 // Execute executes the request
-//  @return Workitems
-func (a *WorkItemsAPIService) GetWorkItemV1Execute(r ApiGetWorkItemV1Request) (*Workitems, *http.Response, error) {
+//  @return WorkItems
+func (a *WorkItemsAPIService) GetWorkItemV1Execute(r ApiGetWorkItemV1Request) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workitems
+		localVarReturnValue  *WorkItems
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetWorkItemV1")
@@ -1303,7 +1303,7 @@ func (a *WorkItemsAPIService) GetWorkItemV1Execute(r ApiGetWorkItemV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1314,7 +1314,7 @@ func (a *WorkItemsAPIService) GetWorkItemV1Execute(r ApiGetWorkItemV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1336,7 +1336,7 @@ func (a *WorkItemsAPIService) GetWorkItemV1Execute(r ApiGetWorkItemV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1372,7 +1372,7 @@ func (r ApiGetWorkItemsSummaryV1Request) OwnerId(ownerId string) ApiGetWorkItems
 	return r
 }
 
-func (r ApiGetWorkItemsSummaryV1Request) Execute() (*Workitemssummary, *http.Response, error) {
+func (r ApiGetWorkItemsSummaryV1Request) Execute() (*WorkItemsSummary, *http.Response, error) {
 	return r.ApiService.GetWorkItemsSummaryV1Execute(r)
 }
 
@@ -1392,13 +1392,13 @@ func (a *WorkItemsAPIService) GetWorkItemsSummaryV1(ctx context.Context) ApiGetW
 }
 
 // Execute executes the request
-//  @return Workitemssummary
-func (a *WorkItemsAPIService) GetWorkItemsSummaryV1Execute(r ApiGetWorkItemsSummaryV1Request) (*Workitemssummary, *http.Response, error) {
+//  @return WorkItemsSummary
+func (a *WorkItemsAPIService) GetWorkItemsSummaryV1Execute(r ApiGetWorkItemsSummaryV1Request) (*WorkItemsSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workitemssummary
+		localVarReturnValue  *WorkItemsSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetWorkItemsSummaryV1")
@@ -1466,7 +1466,7 @@ func (a *WorkItemsAPIService) GetWorkItemsSummaryV1Execute(r ApiGetWorkItemsSumm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1477,7 +1477,7 @@ func (a *WorkItemsAPIService) GetWorkItemsSummaryV1Execute(r ApiGetWorkItemsSumm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1499,7 +1499,7 @@ func (a *WorkItemsAPIService) GetWorkItemsSummaryV1Execute(r ApiGetWorkItemsSumm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1556,7 +1556,7 @@ func (r ApiListWorkItemsV1Request) OwnerId(ownerId string) ApiListWorkItemsV1Req
 	return r
 }
 
-func (r ApiListWorkItemsV1Request) Execute() ([]Workitems, *http.Response, error) {
+func (r ApiListWorkItemsV1Request) Execute() ([]WorkItems, *http.Response, error) {
 	return r.ApiService.ListWorkItemsV1Execute(r)
 }
 
@@ -1576,13 +1576,13 @@ func (a *WorkItemsAPIService) ListWorkItemsV1(ctx context.Context) ApiListWorkIt
 }
 
 // Execute executes the request
-//  @return []Workitems
-func (a *WorkItemsAPIService) ListWorkItemsV1Execute(r ApiListWorkItemsV1Request) ([]Workitems, *http.Response, error) {
+//  @return []WorkItems
+func (a *WorkItemsAPIService) ListWorkItemsV1Execute(r ApiListWorkItemsV1Request) ([]WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Workitems
+		localVarReturnValue  []WorkItems
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.ListWorkItemsV1")
@@ -1668,7 +1668,7 @@ func (a *WorkItemsAPIService) ListWorkItemsV1Execute(r ApiListWorkItemsV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1679,7 +1679,7 @@ func (a *WorkItemsAPIService) ListWorkItemsV1Execute(r ApiListWorkItemsV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1701,7 +1701,7 @@ func (a *WorkItemsAPIService) ListWorkItemsV1Execute(r ApiListWorkItemsV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1732,7 +1732,7 @@ type ApiRejectApprovalItemV1Request struct {
 	approvalItemId string
 }
 
-func (r ApiRejectApprovalItemV1Request) Execute() (*Workitems, *http.Response, error) {
+func (r ApiRejectApprovalItemV1Request) Execute() (*WorkItems, *http.Response, error) {
 	return r.ApiService.RejectApprovalItemV1Execute(r)
 }
 
@@ -1756,13 +1756,13 @@ func (a *WorkItemsAPIService) RejectApprovalItemV1(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return Workitems
-func (a *WorkItemsAPIService) RejectApprovalItemV1Execute(r ApiRejectApprovalItemV1Request) (*Workitems, *http.Response, error) {
+//  @return WorkItems
+func (a *WorkItemsAPIService) RejectApprovalItemV1Execute(r ApiRejectApprovalItemV1Request) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workitems
+		localVarReturnValue  *WorkItems
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.RejectApprovalItemV1")
@@ -1818,7 +1818,7 @@ func (a *WorkItemsAPIService) RejectApprovalItemV1Execute(r ApiRejectApprovalIte
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1840,7 +1840,7 @@ func (a *WorkItemsAPIService) RejectApprovalItemV1Execute(r ApiRejectApprovalIte
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1851,7 +1851,7 @@ func (a *WorkItemsAPIService) RejectApprovalItemV1Execute(r ApiRejectApprovalIte
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1873,7 +1873,7 @@ func (a *WorkItemsAPIService) RejectApprovalItemV1Execute(r ApiRejectApprovalIte
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1903,7 +1903,7 @@ type ApiRejectApprovalItemsInBulkV1Request struct {
 	id string
 }
 
-func (r ApiRejectApprovalItemsInBulkV1Request) Execute() (*Workitems, *http.Response, error) {
+func (r ApiRejectApprovalItemsInBulkV1Request) Execute() (*WorkItems, *http.Response, error) {
 	return r.ApiService.RejectApprovalItemsInBulkV1Execute(r)
 }
 
@@ -1925,13 +1925,13 @@ func (a *WorkItemsAPIService) RejectApprovalItemsInBulkV1(ctx context.Context, i
 }
 
 // Execute executes the request
-//  @return Workitems
-func (a *WorkItemsAPIService) RejectApprovalItemsInBulkV1Execute(r ApiRejectApprovalItemsInBulkV1Request) (*Workitems, *http.Response, error) {
+//  @return WorkItems
+func (a *WorkItemsAPIService) RejectApprovalItemsInBulkV1Execute(r ApiRejectApprovalItemsInBulkV1Request) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workitems
+		localVarReturnValue  *WorkItems
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.RejectApprovalItemsInBulkV1")
@@ -1986,7 +1986,7 @@ func (a *WorkItemsAPIService) RejectApprovalItemsInBulkV1Execute(r ApiRejectAppr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2008,7 +2008,7 @@ func (a *WorkItemsAPIService) RejectApprovalItemsInBulkV1Execute(r ApiRejectAppr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2019,7 +2019,7 @@ func (a *WorkItemsAPIService) RejectApprovalItemsInBulkV1Execute(r ApiRejectAppr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2041,7 +2041,7 @@ func (a *WorkItemsAPIService) RejectApprovalItemsInBulkV1Execute(r ApiRejectAppr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2078,7 +2078,7 @@ func (r ApiSubmitAccountSelectionV1Request) RequestBody(requestBody map[string]i
 	return r
 }
 
-func (r ApiSubmitAccountSelectionV1Request) Execute() (*Workitems, *http.Response, error) {
+func (r ApiSubmitAccountSelectionV1Request) Execute() (*WorkItems, *http.Response, error) {
 	return r.ApiService.SubmitAccountSelectionV1Execute(r)
 }
 
@@ -2100,13 +2100,13 @@ func (a *WorkItemsAPIService) SubmitAccountSelectionV1(ctx context.Context, id s
 }
 
 // Execute executes the request
-//  @return Workitems
-func (a *WorkItemsAPIService) SubmitAccountSelectionV1Execute(r ApiSubmitAccountSelectionV1Request) (*Workitems, *http.Response, error) {
+//  @return WorkItems
+func (a *WorkItemsAPIService) SubmitAccountSelectionV1Execute(r ApiSubmitAccountSelectionV1Request) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Workitems
+		localVarReturnValue  *WorkItems
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.SubmitAccountSelectionV1")
@@ -2166,7 +2166,7 @@ func (a *WorkItemsAPIService) SubmitAccountSelectionV1Execute(r ApiSubmitAccount
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2188,7 +2188,7 @@ func (a *WorkItemsAPIService) SubmitAccountSelectionV1Execute(r ApiSubmitAccount
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2199,7 +2199,7 @@ func (a *WorkItemsAPIService) SubmitAccountSelectionV1Execute(r ApiSubmitAccount
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2221,7 +2221,7 @@ func (a *WorkItemsAPIService) SubmitAccountSelectionV1Execute(r ApiSubmitAccount
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -46,11 +46,11 @@ Other parameters are passed through a pointer to a apiCreateAuthOrgNetworkConfig
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **networkconfiguration** | [**Networkconfiguration**](../models/networkconfiguration) | Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. | 
+ **networkConfiguration** | [**NetworkConfiguration**](../models/network-configuration) | Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. | 
 
 ### Return type
 
-[**Networkconfiguration**](../models/networkconfiguration)
+[**NetworkConfiguration**](../models/network-configuration)
 
 ### HTTP request headers
 
@@ -72,10 +72,14 @@ import (
 )
 
 func main() {
-    networkconfigurationJson := []byte(``) // Networkconfiguration | Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
+    networkconfigurationJson := []byte(`{
+          "range" : [ "1.3.7.2", "255.255.255.252/30" ],
+          "whitelisted" : true,
+          "geolocation" : [ "CA", "FR", "HT" ]
+        }`) // NetworkConfiguration | Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
 
-    var networkconfiguration global_tenant_security_settings.Networkconfiguration
-    if err := json.Unmarshal(networkconfigurationJson, &networkconfiguration); err != nil {
+    var networkConfiguration global_tenant_security_settings.NetworkConfiguration
+    if err := json.Unmarshal(networkconfigurationJson, &networkConfiguration); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -83,13 +87,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfigV1(context.Background()).Networkconfiguration(networkconfiguration).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfigV1(context.Background()).Networkconfiguration(networkconfiguration).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfigV1(context.Background()).NetworkConfiguration(networkConfiguration).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfigV1(context.Background()).NetworkConfiguration(networkConfiguration).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAuthOrgNetworkConfigV1`: Networkconfiguration
+    // response from `CreateAuthOrgNetworkConfigV1`: NetworkConfiguration
     fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfigV1`: %v\n", resp)
 }
 ```
@@ -113,7 +117,7 @@ Other parameters are passed through a pointer to a apiGetAuthOrgLockoutConfigV1R
 
 ### Return type
 
-[**Lockoutconfiguration**](../models/lockoutconfiguration)
+[**LockoutConfiguration**](../models/lockout-configuration)
 
 ### HTTP request headers
 
@@ -146,7 +150,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.GetAuthOrgLockoutConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAuthOrgLockoutConfigV1`: Lockoutconfiguration
+    // response from `GetAuthOrgLockoutConfigV1`: LockoutConfiguration
     fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.GetAuthOrgLockoutConfigV1`: %v\n", resp)
 }
 ```
@@ -170,7 +174,7 @@ Other parameters are passed through a pointer to a apiGetAuthOrgNetworkConfigV1R
 
 ### Return type
 
-[**Networkconfiguration**](../models/networkconfiguration)
+[**NetworkConfiguration**](../models/network-configuration)
 
 ### HTTP request headers
 
@@ -203,7 +207,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAuthOrgNetworkConfigV1`: Networkconfiguration
+    // response from `GetAuthOrgNetworkConfigV1`: NetworkConfiguration
     fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfigV1`: %v\n", resp)
 }
 ```
@@ -227,7 +231,7 @@ Other parameters are passed through a pointer to a apiGetAuthOrgServiceProviderC
 
 ### Return type
 
-[**Serviceproviderconfiguration**](../models/serviceproviderconfiguration)
+[**ServiceProviderConfiguration**](../models/service-provider-configuration)
 
 ### HTTP request headers
 
@@ -260,7 +264,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.GetAuthOrgServiceProviderConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAuthOrgServiceProviderConfigV1`: Serviceproviderconfiguration
+    // response from `GetAuthOrgServiceProviderConfigV1`: ServiceProviderConfiguration
     fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.GetAuthOrgServiceProviderConfigV1`: %v\n", resp)
 }
 ```
@@ -284,7 +288,7 @@ Other parameters are passed through a pointer to a apiGetAuthOrgSessionConfigV1R
 
 ### Return type
 
-[**Sessionconfiguration**](../models/sessionconfiguration)
+[**SessionConfiguration**](../models/session-configuration)
 
 ### HTTP request headers
 
@@ -317,7 +321,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.GetAuthOrgSessionConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAuthOrgSessionConfigV1`: Sessionconfiguration
+    // response from `GetAuthOrgSessionConfigV1`: SessionConfiguration
     fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.GetAuthOrgSessionConfigV1`: %v\n", resp)
 }
 ```
@@ -342,11 +346,11 @@ Other parameters are passed through a pointer to a apiPatchAuthOrgLockoutConfigV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   &#x60;1. maximumAttempts &gt;&#x3D; 1 &amp;&amp; maximumAttempts &lt;&#x3D; 15   2. lockoutDuration &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60   3. lockoutWindow &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60&#x60; | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   &#x60;1. maximumAttempts &gt;&#x3D; 1 &amp;&amp; maximumAttempts &lt;&#x3D; 15   2. lockoutDuration &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60   3. lockoutWindow &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60&#x60; | 
 
 ### Return type
 
-[**Lockoutconfiguration**](../models/lockoutconfiguration)
+[**LockoutConfiguration**](../models/lockout-configuration)
 
 ### HTTP request headers
 
@@ -368,10 +372,10 @@ import (
 )
 
 func main() {
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/maximumAttempts","value":"7,"},{"op":"add","path":"/lockoutDuration","value":35}]`) // []Jsonpatchoperation | A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/maximumAttempts","value":"7,"},{"op":"add","path":"/lockoutDuration","value":35}]`) // []JsonPatchOperation | A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`
 
-    var jsonpatchoperation []global_tenant_security_settings.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []global_tenant_security_settings.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -379,13 +383,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfigV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfigV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchAuthOrgLockoutConfigV1`: Lockoutconfiguration
+    // response from `PatchAuthOrgLockoutConfigV1`: LockoutConfiguration
     fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfigV1`: %v\n", resp)
 }
 ```
@@ -410,11 +414,11 @@ Other parameters are passed through a pointer to a apiPatchAuthOrgNetworkConfigV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. | 
 
 ### Return type
 
-[**Networkconfiguration**](../models/networkconfiguration)
+[**NetworkConfiguration**](../models/network-configuration)
 
 ### HTTP request headers
 
@@ -436,10 +440,10 @@ import (
 )
 
 func main() {
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/whitelisted","value":"false,"},{"op":"add","path":"/geolocation","value":["AF","HN","ES"]}]`) // []Jsonpatchoperation | A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/whitelisted","value":"false,"},{"op":"add","path":"/geolocation","value":["AF","HN","ES"]}]`) // []JsonPatchOperation | A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
 
-    var jsonpatchoperation []global_tenant_security_settings.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []global_tenant_security_settings.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -447,13 +451,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfigV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfigV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchAuthOrgNetworkConfigV1`: Networkconfiguration
+    // response from `PatchAuthOrgNetworkConfigV1`: NetworkConfiguration
     fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfigV1`: %v\n", resp)
 }
 ```
@@ -477,11 +481,11 @@ Other parameters are passed through a pointer to a apiPatchAuthOrgServiceProvide
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email) | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email) | 
 
 ### Return type
 
-[**Serviceproviderconfiguration**](../models/serviceproviderconfiguration)
+[**ServiceProviderConfiguration**](../models/service-provider-configuration)
 
 ### HTTP request headers
 
@@ -503,10 +507,10 @@ import (
 )
 
 func main() {
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/enabled","value":"true,"},{"op":"add","path":"/federationProtocolDetails/0/jitConfiguration","value":{"enabled":true,"sourceId":"2c9180857377ed2901739c12a2da5ac8","sourceAttributeMappings":{"firstName":"okta.firstName","lastName":"okta.lastName","email":"okta.email","employeeNumber":"okta.employeeNumber"}}}]`) // []Jsonpatchoperation | A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email)
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/enabled","value":"true,"},{"op":"add","path":"/federationProtocolDetails/0/jitConfiguration","value":{"enabled":true,"sourceId":"2c9180857377ed2901739c12a2da5ac8","sourceAttributeMappings":{"firstName":"okta.firstName","lastName":"okta.lastName","email":"okta.email","employeeNumber":"okta.employeeNumber"}}}]`) // []JsonPatchOperation | A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email)
 
-    var jsonpatchoperation []global_tenant_security_settings.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []global_tenant_security_settings.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -514,13 +518,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfigV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfigV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchAuthOrgServiceProviderConfigV1`: Serviceproviderconfiguration
+    // response from `PatchAuthOrgServiceProviderConfigV1`: ServiceProviderConfiguration
     fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfigV1`: %v\n", resp)
 }
 ```
@@ -544,11 +548,11 @@ Other parameters are passed through a pointer to a apiPatchAuthOrgSessionConfigV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   &#x60;1. maxSessionTime &gt;&#x3D; 1 &amp;&amp; maxSessionTime &lt;&#x3D; 10080 (1 week)   2. maxIdleTime &gt;&#x3D; 1 &amp;&amp; maxIdleTime &lt;&#x3D; 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.&#x60;  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   &#x60;1. maxSessionTime &gt;&#x3D; 1 &amp;&amp; maxSessionTime &lt;&#x3D; 10080 (1 week)   2. maxIdleTime &gt;&#x3D; 1 &amp;&amp; maxIdleTime &lt;&#x3D; 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.&#x60;  | 
 
 ### Return type
 
-[**Sessionconfiguration**](../models/sessionconfiguration)
+[**SessionConfiguration**](../models/session-configuration)
 
 ### HTTP request headers
 
@@ -570,10 +574,10 @@ import (
 )
 
 func main() {
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/rememberMe","value":"true,"},{"op":"add","path":"/maxSessionTime","value":480}]`) // []Jsonpatchoperation | A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/rememberMe","value":"true,"},{"op":"add","path":"/maxSessionTime","value":480}]`) // []JsonPatchOperation | A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` 
 
-    var jsonpatchoperation []global_tenant_security_settings.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []global_tenant_security_settings.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -581,13 +585,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfigV1(context.Background()).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfigV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfigV1(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchAuthOrgSessionConfigV1`: Sessionconfiguration
+    // response from `PatchAuthOrgSessionConfigV1`: SessionConfiguration
     fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfigV1`: %v\n", resp)
 }
 ```

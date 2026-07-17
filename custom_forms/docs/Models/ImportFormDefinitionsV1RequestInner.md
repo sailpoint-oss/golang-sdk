@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ImportFormDefinitionsV1RequestInner',
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | Pointer to [**Formdefinitionresponse**](formdefinitionresponse) |  | [optional] 
+**Object** | Pointer to [**FormDefinitionResponse**](form-definition-response) |  | [optional] 
 **Self** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
 
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetObject
 
-`func (o *ImportFormDefinitionsV1RequestInner) GetObject() Formdefinitionresponse`
+`func (o *ImportFormDefinitionsV1RequestInner) GetObject() FormDefinitionResponse`
 
 GetObject returns the Object field if non-nil, zero value otherwise.
 
 ### GetObjectOk
 
-`func (o *ImportFormDefinitionsV1RequestInner) GetObjectOk() (*Formdefinitionresponse, bool)`
+`func (o *ImportFormDefinitionsV1RequestInner) GetObjectOk() (*FormDefinitionResponse, bool)`
 
 GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObject
 
-`func (o *ImportFormDefinitionsV1RequestInner) SetObject(v Formdefinitionresponse)`
+`func (o *ImportFormDefinitionsV1RequestInner) SetObject(v FormDefinitionResponse)`
 
 SetObject sets Object field to given value.
 

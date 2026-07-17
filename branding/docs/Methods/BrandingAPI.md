@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Brandingitem**](../models/brandingitem)
+[**BrandingItem**](../models/branding-item)
 
 ### HTTP request headers
 
@@ -96,7 +96,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.CreateBrandingItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateBrandingItemV1`: Brandingitem
+    // response from `CreateBrandingItemV1`: BrandingItem
     fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.CreateBrandingItemV1`: %v\n", resp)
 }
 ```
@@ -185,7 +185,7 @@ Other parameters are passed through a pointer to a apiGetBrandingListV1Request s
 
 ### Return type
 
-[**[]Brandingitem**](../models/brandingitem)
+[**[]BrandingItem**](../models/branding-item)
 
 ### HTTP request headers
 
@@ -218,7 +218,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBrandingListV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetBrandingListV1`: []Brandingitem
+    // response from `GetBrandingListV1`: []BrandingItem
     fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.GetBrandingListV1`: %v\n", resp)
 }
 ```
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Brandingitem**](../models/brandingitem)
+[**BrandingItem**](../models/branding-item)
 
 ### HTTP request headers
 
@@ -284,7 +284,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBrandingV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetBrandingV1`: Brandingitem
+    // response from `GetBrandingV1`: BrandingItem
     fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.GetBrandingV1`: %v\n", resp)
 }
 ```
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Brandingitem**](../models/brandingitem)
+[**BrandingItem**](../models/branding-item)
 
 ### HTTP request headers
 
@@ -366,7 +366,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.SetBrandingItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetBrandingItemV1`: Brandingitem
+    // response from `SetBrandingItemV1`: BrandingItem
     fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.SetBrandingItemV1`: %v\n", resp)
 }
 ```

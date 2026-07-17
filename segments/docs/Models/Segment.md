@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **SailPointTime** | The time when the segment is created. | [optional] 
 **Modified** | Pointer to **SailPointTime** | The time when the segment is modified. | [optional] 
 **Description** | Pointer to **string** | The segment's optional description. | [optional] 
-**Owner** | Pointer to [**NullableOwnerreferencesegments**](ownerreferencesegments) |  | [optional] 
+**Owner** | Pointer to [**NullableOwnerReferenceSegments**](owner-reference-segments) |  | [optional] 
 **VisibilityCriteria** | Pointer to [**SegmentVisibilityCriteria**](segment-visibility-criteria) |  | [optional] 
 **Active** | Pointer to **bool** | This boolean indicates whether the segment is currently active. Inactive segments have no effect. | [optional] [default to false]
 
@@ -170,20 +170,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *Segment) GetOwner() Ownerreferencesegments`
+`func (o *Segment) GetOwner() OwnerReferenceSegments`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *Segment) GetOwnerOk() (*Ownerreferencesegments, bool)`
+`func (o *Segment) GetOwnerOk() (*OwnerReferenceSegments, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *Segment) SetOwner(v Ownerreferencesegments)`
+`func (o *Segment) SetOwner(v OwnerReferenceSegments)`
 
 SetOwner sets Owner field to given value.
 

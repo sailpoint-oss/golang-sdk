@@ -26,15 +26,15 @@ type AccessProfilesAPIService service
 type ApiCreateAccessProfileV1Request struct {
 	ctx context.Context
 	ApiService *AccessProfilesAPIService
-	accessprofile *Accessprofile
+	accessProfile *AccessProfile
 }
 
-func (r ApiCreateAccessProfileV1Request) Accessprofile(accessprofile Accessprofile) ApiCreateAccessProfileV1Request {
-	r.accessprofile = &accessprofile
+func (r ApiCreateAccessProfileV1Request) AccessProfile(accessProfile AccessProfile) ApiCreateAccessProfileV1Request {
+	r.accessProfile = &accessProfile
 	return r
 }
 
-func (r ApiCreateAccessProfileV1Request) Execute() (*Accessprofile, *http.Response, error) {
+func (r ApiCreateAccessProfileV1Request) Execute() (*AccessProfile, *http.Response, error) {
 	return r.ApiService.CreateAccessProfileV1Execute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *AccessProfilesAPIService) CreateAccessProfileV1(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return Accessprofile
-func (a *AccessProfilesAPIService) CreateAccessProfileV1Execute(r ApiCreateAccessProfileV1Request) (*Accessprofile, *http.Response, error) {
+//  @return AccessProfile
+func (a *AccessProfilesAPIService) CreateAccessProfileV1Execute(r ApiCreateAccessProfileV1Request) (*AccessProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessprofile
+		localVarReturnValue  *AccessProfile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.CreateAccessProfileV1")
@@ -76,8 +76,8 @@ func (a *AccessProfilesAPIService) CreateAccessProfileV1Execute(r ApiCreateAcces
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accessprofile == nil {
-		return localVarReturnValue, nil, reportError("accessprofile is required and must be specified")
+	if r.accessProfile == nil {
+		return localVarReturnValue, nil, reportError("accessProfile is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -98,7 +98,7 @@ func (a *AccessProfilesAPIService) CreateAccessProfileV1Execute(r ApiCreateAcces
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accessprofile
+	localVarPostBody = r.accessProfile
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -122,7 +122,7 @@ func (a *AccessProfilesAPIService) CreateAccessProfileV1Execute(r ApiCreateAcces
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -144,7 +144,7 @@ func (a *AccessProfilesAPIService) CreateAccessProfileV1Execute(r ApiCreateAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -166,7 +166,7 @@ func (a *AccessProfilesAPIService) CreateAccessProfileV1Execute(r ApiCreateAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -281,7 +281,7 @@ func (a *AccessProfilesAPIService) DeleteAccessProfileV1Execute(r ApiDeleteAcces
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -303,7 +303,7 @@ func (a *AccessProfilesAPIService) DeleteAccessProfileV1Execute(r ApiDeleteAcces
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -325,7 +325,7 @@ func (a *AccessProfilesAPIService) DeleteAccessProfileV1Execute(r ApiDeleteAcces
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -343,15 +343,15 @@ func (a *AccessProfilesAPIService) DeleteAccessProfileV1Execute(r ApiDeleteAcces
 type ApiDeleteAccessProfilesInBulkV1Request struct {
 	ctx context.Context
 	ApiService *AccessProfilesAPIService
-	accessprofilebulkdeleterequest *Accessprofilebulkdeleterequest
+	accessProfileBulkDeleteRequest *AccessProfileBulkDeleteRequest
 }
 
-func (r ApiDeleteAccessProfilesInBulkV1Request) Accessprofilebulkdeleterequest(accessprofilebulkdeleterequest Accessprofilebulkdeleterequest) ApiDeleteAccessProfilesInBulkV1Request {
-	r.accessprofilebulkdeleterequest = &accessprofilebulkdeleterequest
+func (r ApiDeleteAccessProfilesInBulkV1Request) AccessProfileBulkDeleteRequest(accessProfileBulkDeleteRequest AccessProfileBulkDeleteRequest) ApiDeleteAccessProfilesInBulkV1Request {
+	r.accessProfileBulkDeleteRequest = &accessProfileBulkDeleteRequest
 	return r
 }
 
-func (r ApiDeleteAccessProfilesInBulkV1Request) Execute() (*Accessprofilebulkdeleteresponse, *http.Response, error) {
+func (r ApiDeleteAccessProfilesInBulkV1Request) Execute() (*AccessProfileBulkDeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteAccessProfilesInBulkV1Execute(r)
 }
 
@@ -375,13 +375,13 @@ func (a *AccessProfilesAPIService) DeleteAccessProfilesInBulkV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return Accessprofilebulkdeleteresponse
-func (a *AccessProfilesAPIService) DeleteAccessProfilesInBulkV1Execute(r ApiDeleteAccessProfilesInBulkV1Request) (*Accessprofilebulkdeleteresponse, *http.Response, error) {
+//  @return AccessProfileBulkDeleteResponse
+func (a *AccessProfilesAPIService) DeleteAccessProfilesInBulkV1Execute(r ApiDeleteAccessProfilesInBulkV1Request) (*AccessProfileBulkDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessprofilebulkdeleteresponse
+		localVarReturnValue  *AccessProfileBulkDeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.DeleteAccessProfilesInBulkV1")
@@ -394,8 +394,8 @@ func (a *AccessProfilesAPIService) DeleteAccessProfilesInBulkV1Execute(r ApiDele
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accessprofilebulkdeleterequest == nil {
-		return localVarReturnValue, nil, reportError("accessprofilebulkdeleterequest is required and must be specified")
+	if r.accessProfileBulkDeleteRequest == nil {
+		return localVarReturnValue, nil, reportError("accessProfileBulkDeleteRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -416,7 +416,7 @@ func (a *AccessProfilesAPIService) DeleteAccessProfilesInBulkV1Execute(r ApiDele
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accessprofilebulkdeleterequest
+	localVarPostBody = r.accessProfileBulkDeleteRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -440,7 +440,7 @@ func (a *AccessProfilesAPIService) DeleteAccessProfilesInBulkV1Execute(r ApiDele
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -462,7 +462,7 @@ func (a *AccessProfilesAPIService) DeleteAccessProfilesInBulkV1Execute(r ApiDele
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -484,7 +484,7 @@ func (a *AccessProfilesAPIService) DeleteAccessProfilesInBulkV1Execute(r ApiDele
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -658,7 +658,7 @@ func (a *AccessProfilesAPIService) GetAccessProfileEntitlementsV1Execute(r ApiGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -680,7 +680,7 @@ func (a *AccessProfilesAPIService) GetAccessProfileEntitlementsV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -702,7 +702,7 @@ func (a *AccessProfilesAPIService) GetAccessProfileEntitlementsV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -732,7 +732,7 @@ type ApiGetAccessProfileV1Request struct {
 	id string
 }
 
-func (r ApiGetAccessProfileV1Request) Execute() (*Accessprofile, *http.Response, error) {
+func (r ApiGetAccessProfileV1Request) Execute() (*AccessProfile, *http.Response, error) {
 	return r.ApiService.GetAccessProfileV1Execute(r)
 }
 
@@ -754,13 +754,13 @@ func (a *AccessProfilesAPIService) GetAccessProfileV1(ctx context.Context, id st
 }
 
 // Execute executes the request
-//  @return Accessprofile
-func (a *AccessProfilesAPIService) GetAccessProfileV1Execute(r ApiGetAccessProfileV1Request) (*Accessprofile, *http.Response, error) {
+//  @return AccessProfile
+func (a *AccessProfilesAPIService) GetAccessProfileV1Execute(r ApiGetAccessProfileV1Request) (*AccessProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessprofile
+		localVarReturnValue  *AccessProfile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.GetAccessProfileV1")
@@ -815,7 +815,7 @@ func (a *AccessProfilesAPIService) GetAccessProfileV1Execute(r ApiGetAccessProfi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -837,7 +837,7 @@ func (a *AccessProfilesAPIService) GetAccessProfileV1Execute(r ApiGetAccessProfi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -859,7 +859,7 @@ func (a *AccessProfilesAPIService) GetAccessProfileV1Execute(r ApiGetAccessProfi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -944,7 +944,7 @@ func (r ApiListAccessProfilesV1Request) IncludeUnsegmented(includeUnsegmented bo
 	return r
 }
 
-func (r ApiListAccessProfilesV1Request) Execute() ([]Accessprofile, *http.Response, error) {
+func (r ApiListAccessProfilesV1Request) Execute() ([]AccessProfile, *http.Response, error) {
 	return r.ApiService.ListAccessProfilesV1Execute(r)
 }
 
@@ -965,13 +965,13 @@ func (a *AccessProfilesAPIService) ListAccessProfilesV1(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return []Accessprofile
-func (a *AccessProfilesAPIService) ListAccessProfilesV1Execute(r ApiListAccessProfilesV1Request) ([]Accessprofile, *http.Response, error) {
+//  @return []AccessProfile
+func (a *AccessProfilesAPIService) ListAccessProfilesV1Execute(r ApiListAccessProfilesV1Request) ([]AccessProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessprofile
+		localVarReturnValue  []AccessProfile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.ListAccessProfilesV1")
@@ -1061,7 +1061,7 @@ func (a *AccessProfilesAPIService) ListAccessProfilesV1Execute(r ApiListAccessPr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1083,7 +1083,7 @@ func (a *AccessProfilesAPIService) ListAccessProfilesV1Execute(r ApiListAccessPr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1105,7 +1105,7 @@ func (a *AccessProfilesAPIService) ListAccessProfilesV1Execute(r ApiListAccessPr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1133,15 +1133,15 @@ type ApiPatchAccessProfileV1Request struct {
 	ctx context.Context
 	ApiService *AccessProfilesAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
-func (r ApiPatchAccessProfileV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchAccessProfileV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchAccessProfileV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchAccessProfileV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchAccessProfileV1Request) Execute() (*Accessprofile, *http.Response, error) {
+func (r ApiPatchAccessProfileV1Request) Execute() (*AccessProfile, *http.Response, error) {
 	return r.ApiService.PatchAccessProfileV1Execute(r)
 }
 
@@ -1194,13 +1194,13 @@ func (a *AccessProfilesAPIService) PatchAccessProfileV1(ctx context.Context, id 
 }
 
 // Execute executes the request
-//  @return Accessprofile
-func (a *AccessProfilesAPIService) PatchAccessProfileV1Execute(r ApiPatchAccessProfileV1Request) (*Accessprofile, *http.Response, error) {
+//  @return AccessProfile
+func (a *AccessProfilesAPIService) PatchAccessProfileV1Execute(r ApiPatchAccessProfileV1Request) (*AccessProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessprofile
+		localVarReturnValue  *AccessProfile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.PatchAccessProfileV1")
@@ -1214,8 +1214,8 @@ func (a *AccessProfilesAPIService) PatchAccessProfileV1Execute(r ApiPatchAccessP
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1236,7 +1236,7 @@ func (a *AccessProfilesAPIService) PatchAccessProfileV1Execute(r ApiPatchAccessP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1260,7 +1260,7 @@ func (a *AccessProfilesAPIService) PatchAccessProfileV1Execute(r ApiPatchAccessP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1282,7 +1282,7 @@ func (a *AccessProfilesAPIService) PatchAccessProfileV1Execute(r ApiPatchAccessP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1304,7 +1304,7 @@ func (a *AccessProfilesAPIService) PatchAccessProfileV1Execute(r ApiPatchAccessP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1332,7 +1332,7 @@ type ApiUpdateAccessProfilesInBulkV1Request struct {
 	ctx context.Context
 	ApiService *AccessProfilesAPIService
 	xSailPointExperimental *string
-	accessprofilebulkupdaterequestInner *[]AccessprofilebulkupdaterequestInner
+	accessProfileBulkUpdateRequestInner *[]AccessProfileBulkUpdateRequestInner
 }
 
 // Use this header to enable this experimental API.
@@ -1341,12 +1341,12 @@ func (r ApiUpdateAccessProfilesInBulkV1Request) XSailPointExperimental(xSailPoin
 	return r
 }
 
-func (r ApiUpdateAccessProfilesInBulkV1Request) AccessprofilebulkupdaterequestInner(accessprofilebulkupdaterequestInner []AccessprofilebulkupdaterequestInner) ApiUpdateAccessProfilesInBulkV1Request {
-	r.accessprofilebulkupdaterequestInner = &accessprofilebulkupdaterequestInner
+func (r ApiUpdateAccessProfilesInBulkV1Request) AccessProfileBulkUpdateRequestInner(accessProfileBulkUpdateRequestInner []AccessProfileBulkUpdateRequestInner) ApiUpdateAccessProfilesInBulkV1Request {
+	r.accessProfileBulkUpdateRequestInner = &accessProfileBulkUpdateRequestInner
 	return r
 }
 
-func (r ApiUpdateAccessProfilesInBulkV1Request) Execute() ([]Accessprofileupdateitem, *http.Response, error) {
+func (r ApiUpdateAccessProfilesInBulkV1Request) Execute() ([]AccessProfileUpdateItem, *http.Response, error) {
 	return r.ApiService.UpdateAccessProfilesInBulkV1Execute(r)
 }
 
@@ -1372,13 +1372,13 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []Accessprofileupdateitem
-func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkV1Execute(r ApiUpdateAccessProfilesInBulkV1Request) ([]Accessprofileupdateitem, *http.Response, error) {
+//  @return []AccessProfileUpdateItem
+func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkV1Execute(r ApiUpdateAccessProfilesInBulkV1Request) ([]AccessProfileUpdateItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessprofileupdateitem
+		localVarReturnValue  []AccessProfileUpdateItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.UpdateAccessProfilesInBulkV1")
@@ -1406,8 +1406,8 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkV1Execute(r ApiUpda
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.accessprofilebulkupdaterequestInner == nil {
-		return localVarReturnValue, nil, reportError("accessprofilebulkupdaterequestInner is required and must be specified")
+	if r.accessProfileBulkUpdateRequestInner == nil {
+		return localVarReturnValue, nil, reportError("accessProfileBulkUpdateRequestInner is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1429,7 +1429,7 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkV1Execute(r ApiUpda
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.accessprofilebulkupdaterequestInner
+	localVarPostBody = r.accessProfileBulkUpdateRequestInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1453,7 +1453,7 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkV1Execute(r ApiUpda
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1475,7 +1475,7 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkV1Execute(r ApiUpda
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1508,7 +1508,7 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkV1Execute(r ApiUpda
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

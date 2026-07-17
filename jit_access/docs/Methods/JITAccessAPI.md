@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Jitactivationconfigresponse**](../models/jitactivationconfigresponse)
+[**JITActivationConfigResponse**](../models/jit-activation-config-response)
 
 ### HTTP request headers
 
@@ -86,7 +86,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITAccessAPI.GetJitActivationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetJitActivationConfigV1`: Jitactivationconfigresponse
+    // response from `GetJitActivationConfigV1`: JITActivationConfigResponse
     fmt.Fprintf(os.Stdout, "Response from `JITAccessAPI.GetJitActivationConfigV1`: %v\n", resp)
 }
 ```
@@ -120,11 +120,11 @@ Other parameters are passed through a pointer to a apiPatchJitActivationConfigV1
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jitaccessoperationrequest** | [**[]Jitaccessoperationrequest**](../models/jitaccessoperationrequest) |  | 
+ **jitAccessOperationRequest** | [**[]JitAccessOperationRequest**](../models/jit-access-operation-request) |  | 
 
 ### Return type
 
-[**Jitactivationconfigresponse**](../models/jitactivationconfigresponse)
+[**JITActivationConfigResponse**](../models/jit-activation-config-response)
 
 ### HTTP request headers
 
@@ -147,10 +147,10 @@ import (
 
 func main() {
     configType := `policy` // string | Configuration kind to update. Only **policy** (JIT activation policy) is supported today.  # string | Configuration kind to update. Only **policy** (JIT activation policy) is supported today. 
-    jitaccessoperationrequestJson := []byte(``) // []Jitaccessoperationrequest | 
+    jitaccessoperationrequestJson := []byte(``) // []JitAccessOperationRequest | 
 
-    var jitaccessoperationrequest []jit_access.Jitaccessoperationrequest
-    if err := json.Unmarshal(jitaccessoperationrequestJson, &jitaccessoperationrequest); err != nil {
+    var jitAccessOperationRequest []jit_access.JitAccessOperationRequest
+    if err := json.Unmarshal(jitaccessoperationrequestJson, &jitAccessOperationRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -158,13 +158,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).Jitaccessoperationrequest(jitaccessoperationrequest).Execute()
-	  //resp, r, err := apiClient.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).Jitaccessoperationrequest(jitaccessoperationrequest).Execute()
+    resp, r, err := apiClient.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).JitAccessOperationRequest(jitAccessOperationRequest).Execute()
+	  //resp, r, err := apiClient.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).JitAccessOperationRequest(jitAccessOperationRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITAccessAPI.PatchJitActivationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchJitActivationConfigV1`: Jitactivationconfigresponse
+    // response from `PatchJitActivationConfigV1`: JITActivationConfigResponse
     fmt.Fprintf(os.Stdout, "Response from `JITAccessAPI.PatchJitActivationConfigV1`: %v\n", resp)
 }
 ```

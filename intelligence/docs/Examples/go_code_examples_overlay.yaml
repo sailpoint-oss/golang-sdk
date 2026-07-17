@@ -29,7 +29,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIdentityIntelligenceV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIdentityIntelligenceV1`: Intelidentityaggregate
+          // response from `GetIdentityIntelligenceV1`: IntelIdentityAggregate
           fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIdentityIntelligenceV1`: %v\n", resp)
         }
 - path: /intelligence/v1/identities/{id}/access-history/access-items
@@ -65,7 +65,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIntelIdentityAccessItemHistoryV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIntelIdentityAccessItemHistoryV1`: []Intelaccessitemhistoryevent
+          // response from `GetIntelIdentityAccessItemHistoryV1`: []IntelAccessItemHistoryEvent
           fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityAccessItemHistoryV1`: %v\n", resp)
         }
 - path: /intelligence/v1/identities/{id}/accounts
@@ -101,7 +101,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIntelIdentityAccountsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIntelIdentityAccountsV1`: []Intelaccessaccountwire
+          // response from `GetIntelIdentityAccountsV1`: []IntelAccessAccountWire
           fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityAccountsV1`: %v\n", resp)
         }
 - path: /intelligence/v1/identities/{id}/access-history/certifications
@@ -137,7 +137,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIntelIdentityCertificationHistoryV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIntelIdentityCertificationHistoryV1`: []Intelcertificationhistoryevent
+          // response from `GetIntelIdentityCertificationHistoryV1`: []IntelCertificationHistoryEvent
           fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityCertificationHistoryV1`: %v\n", resp)
         }
 - path: /intelligence/v1/identities/{id}/outliers/rare-access
@@ -173,6 +173,6 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIntelIdentityRareAccessV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIntelIdentityRareAccessV1`: []Inteloutlieraccessitem
+          // response from `GetIntelIdentityRareAccessV1`: []IntelOutlierAccessItem
           fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityRareAccessV1`: %v\n", resp)
         }

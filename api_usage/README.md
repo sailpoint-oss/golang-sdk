@@ -85,12 +85,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetTotalCountV1401Response](docs/GetTotalCountV1401Response.md)
  - [GetTotalCountV1429Response](docs/GetTotalCountV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Summaryresponse](docs/Summaryresponse.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [SummaryResponse](docs/SummaryResponse.md)
 
 
 ## Documentation For Authorization

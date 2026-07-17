@@ -53,20 +53,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/recommendationrequestdto'
+              $ref: '#/components/schemas/RecommendationRequestDto'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/recommendationresponsedto'
+                $ref: '#/components/schemas/RecommendationResponseDto'
           description: The recommendations for a customer
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -90,7 +90,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -115,7 +115,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -146,13 +146,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/recommendationconfigdto'
+                $ref: '#/components/schemas/RecommendationConfigDto'
           description: Cert recommendation configuration attributes
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -176,7 +176,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -201,7 +201,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -230,20 +230,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/recommendationconfigdto'
+              $ref: '#/components/schemas/RecommendationConfigDto'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/recommendationconfigdto'
+                $ref: '#/components/schemas/RecommendationConfigDto'
           description: Cert recommendation configuration attributes after update
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -267,7 +267,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -292,7 +292,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -309,7 +309,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -333,7 +333,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "429":
@@ -358,10 +358,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    accessitemref:
+    AccessItemRef:
       example:
         id: 2c938083633d259901633d2623ec0375
         type: ENTITLEMENT
@@ -380,7 +380,7 @@ components:
           type: string
       title: Access Item Ref
       type: object
-    recommendationrequest:
+    RecommendationRequest:
       example:
         item:
           id: 2c938083633d259901633d2623ec0375
@@ -392,14 +392,28 @@ components:
           example: 2c938083633d259901633d25c68c00fa
           type: string
         item:
-          $ref: '#/components/schemas/accessitemref'
+          $ref: '#/components/schemas/AccessItemRef'
       title: Recommendation Request
       type: object
-    recommendationrequestdto:
+    RecommendationRequestDto:
+      example:
+        prescribeMode: false
+        excludeInterpretations: false
+        requests:
+        - item:
+            id: 2c938083633d259901633d2623ec0375
+            type: ENTITLEMENT
+          identityId: 2c938083633d259901633d25c68c00fa
+        - item:
+            id: 2c938083633d259901633d2623ec0375
+            type: ENTITLEMENT
+          identityId: 2c938083633d259901633d25c68c00fa
+        includeTranslationMessages: false
+        includeDebugInformation: true
       properties:
         requests:
           items:
-            $ref: '#/components/schemas/recommendationrequest'
+            $ref: '#/components/schemas/RecommendationRequest'
           type: array
         excludeInterpretations:
           default: false
@@ -427,7 +441,7 @@ components:
           type: boolean
       title: Recommendation Request Dto
       type: object
-    translationmessage:
+    TranslationMessage:
       properties:
         key:
           description: The key of the translation message
@@ -443,7 +457,7 @@ components:
           type: array
       title: Translation Message
       type: object
-    featurevaluedto:
+    FeatureValueDto:
       example:
         feature: department
         numerator: 14
@@ -465,7 +479,7 @@ components:
           type: integer
       title: Feature Value Dto
       type: object
-    recommendercalculations:
+    RecommenderCalculations:
       example:
         identityId: 2c91808457d8f3ab0157e3e62cb4213c
         entitlementId: 2c91809050db617d0150e0bf3215385e
@@ -508,12 +522,12 @@ components:
           type: number
         identityAttributes:
           additionalProperties:
-            $ref: '#/components/schemas/recommendercalculations_identityAttributes_value'
+            $ref: '#/components/schemas/RecommenderCalculations_identityAttributes_value'
           description: The values for your configured features
           type: object
         featureValues:
-          $ref: '#/components/schemas/featurevaluedto'
-    recommendationresponse:
+          $ref: '#/components/schemas/FeatureValueDto'
+    RecommendationResponse:
       example:
         request:
           item:
@@ -550,7 +564,7 @@ components:
           had a low impact on the overall score.
       properties:
         request:
-          $ref: '#/components/schemas/recommendationrequest'
+          $ref: '#/components/schemas/RecommendationRequest'
         recommendation:
           description: "The recommendation - YES if the access is recommended, NO\
             \ if not recommended, MAYBE if there is not enough information to make\
@@ -587,13 +601,13 @@ components:
             - "75"
             - department
           items:
-            $ref: '#/components/schemas/translationmessage'
+            $ref: '#/components/schemas/TranslationMessage'
           type: array
         recommenderCalculations:
-          $ref: '#/components/schemas/recommendercalculations'
+          $ref: '#/components/schemas/RecommenderCalculations'
       title: Recommendation Response
       type: object
-    recommendationresponsedto:
+    RecommendationResponseDto:
       example:
         response:
         - request:
@@ -665,11 +679,11 @@ components:
       properties:
         response:
           items:
-            $ref: '#/components/schemas/recommendationresponse'
+            $ref: '#/components/schemas/RecommendationResponse'
           type: array
       title: Recommendation Response Dto
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -681,7 +695,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -694,7 +708,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -702,7 +716,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -736,17 +750,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    recommendationconfigdto:
+    RecommendationConfigDto:
       example:
         recommenderFeatures:
         - jobTitle
@@ -809,7 +823,7 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    recommendercalculations_identityAttributes_value:
+    RecommenderCalculations_identityAttributes_value:
       example:
         value: value
       properties:

@@ -20,10 +20,10 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Subscription description. | [optional] 
 **TriggerId** | **string** | ID of trigger subscribed to. | 
 **TriggerName** | **string** | Trigger name of trigger subscribed to. | 
-**Type** | **Subscriptiontype** |  | 
+**Type** | **SubscriptionType** |  | 
 **ResponseDeadline** | Pointer to **string** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [optional] [default to "PT1H"]
-**HttpConfig** | Pointer to [**Httpconfig**](httpconfig) |  | [optional] 
-**EventBridgeConfig** | Pointer to [**Eventbridgeconfig**](eventbridgeconfig) |  | [optional] 
+**HttpConfig** | Pointer to [**HttpConfig**](http-config) |  | [optional] 
+**EventBridgeConfig** | Pointer to [**EventBridgeConfig**](event-bridge-config) |  | [optional] 
 **Enabled** | **bool** | Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option. | [default to true]
 **Filter** | Pointer to **string** | JSONPath filter to conditionally invoke trigger when expression evaluates to true. | [optional] 
 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewSubscription
 
-`func NewSubscription(id string, name string, triggerId string, triggerName string, type_ Subscriptiontype, enabled bool, ) *Subscription`
+`func NewSubscription(id string, name string, triggerId string, triggerName string, type_ SubscriptionType, enabled bool, ) *Subscription`
 
 NewSubscription instantiates a new Subscription object
 This constructor will assign default values to properties that have it defined,
@@ -153,20 +153,20 @@ SetTriggerName sets TriggerName field to given value.
 
 ### GetType
 
-`func (o *Subscription) GetType() Subscriptiontype`
+`func (o *Subscription) GetType() SubscriptionType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Subscription) GetTypeOk() (*Subscriptiontype, bool)`
+`func (o *Subscription) GetTypeOk() (*SubscriptionType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Subscription) SetType(v Subscriptiontype)`
+`func (o *Subscription) SetType(v SubscriptionType)`
 
 SetType sets Type field to given value.
 
@@ -198,20 +198,20 @@ HasResponseDeadline returns a boolean if a field has been set.
 
 ### GetHttpConfig
 
-`func (o *Subscription) GetHttpConfig() Httpconfig`
+`func (o *Subscription) GetHttpConfig() HttpConfig`
 
 GetHttpConfig returns the HttpConfig field if non-nil, zero value otherwise.
 
 ### GetHttpConfigOk
 
-`func (o *Subscription) GetHttpConfigOk() (*Httpconfig, bool)`
+`func (o *Subscription) GetHttpConfigOk() (*HttpConfig, bool)`
 
 GetHttpConfigOk returns a tuple with the HttpConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpConfig
 
-`func (o *Subscription) SetHttpConfig(v Httpconfig)`
+`func (o *Subscription) SetHttpConfig(v HttpConfig)`
 
 SetHttpConfig sets HttpConfig field to given value.
 
@@ -223,20 +223,20 @@ HasHttpConfig returns a boolean if a field has been set.
 
 ### GetEventBridgeConfig
 
-`func (o *Subscription) GetEventBridgeConfig() Eventbridgeconfig`
+`func (o *Subscription) GetEventBridgeConfig() EventBridgeConfig`
 
 GetEventBridgeConfig returns the EventBridgeConfig field if non-nil, zero value otherwise.
 
 ### GetEventBridgeConfigOk
 
-`func (o *Subscription) GetEventBridgeConfigOk() (*Eventbridgeconfig, bool)`
+`func (o *Subscription) GetEventBridgeConfigOk() (*EventBridgeConfig, bool)`
 
 GetEventBridgeConfigOk returns a tuple with the EventBridgeConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEventBridgeConfig
 
-`func (o *Subscription) SetEventBridgeConfig(v Eventbridgeconfig)`
+`func (o *Subscription) SetEventBridgeConfig(v EventBridgeConfig)`
 
 SetEventBridgeConfig sets EventBridgeConfig field to given value.
 

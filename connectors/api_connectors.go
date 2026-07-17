@@ -27,15 +27,15 @@ type ConnectorsAPIService service
 type ApiCreateCustomConnectorV1Request struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
-	v3createconnectordto *V3createconnectordto
+	v3CreateConnectorDto *V3CreateConnectorDto
 }
 
-func (r ApiCreateCustomConnectorV1Request) V3createconnectordto(v3createconnectordto V3createconnectordto) ApiCreateCustomConnectorV1Request {
-	r.v3createconnectordto = &v3createconnectordto
+func (r ApiCreateCustomConnectorV1Request) V3CreateConnectorDto(v3CreateConnectorDto V3CreateConnectorDto) ApiCreateCustomConnectorV1Request {
+	r.v3CreateConnectorDto = &v3CreateConnectorDto
 	return r
 }
 
-func (r ApiCreateCustomConnectorV1Request) Execute() (*V3connectordto, *http.Response, error) {
+func (r ApiCreateCustomConnectorV1Request) Execute() (*V3ConnectorDto, *http.Response, error) {
 	return r.ApiService.CreateCustomConnectorV1Execute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *ConnectorsAPIService) CreateCustomConnectorV1(ctx context.Context) ApiC
 }
 
 // Execute executes the request
-//  @return V3connectordto
-func (a *ConnectorsAPIService) CreateCustomConnectorV1Execute(r ApiCreateCustomConnectorV1Request) (*V3connectordto, *http.Response, error) {
+//  @return V3ConnectorDto
+func (a *ConnectorsAPIService) CreateCustomConnectorV1Execute(r ApiCreateCustomConnectorV1Request) (*V3ConnectorDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *V3connectordto
+		localVarReturnValue  *V3ConnectorDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.CreateCustomConnectorV1")
@@ -74,8 +74,8 @@ func (a *ConnectorsAPIService) CreateCustomConnectorV1Execute(r ApiCreateCustomC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.v3createconnectordto == nil {
-		return localVarReturnValue, nil, reportError("v3createconnectordto is required and must be specified")
+	if r.v3CreateConnectorDto == nil {
+		return localVarReturnValue, nil, reportError("v3CreateConnectorDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -96,7 +96,7 @@ func (a *ConnectorsAPIService) CreateCustomConnectorV1Execute(r ApiCreateCustomC
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.v3createconnectordto
+	localVarPostBody = r.v3CreateConnectorDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -120,7 +120,7 @@ func (a *ConnectorsAPIService) CreateCustomConnectorV1Execute(r ApiCreateCustomC
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,7 +142,7 @@ func (a *ConnectorsAPIService) CreateCustomConnectorV1Execute(r ApiCreateCustomC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -153,7 +153,7 @@ func (a *ConnectorsAPIService) CreateCustomConnectorV1Execute(r ApiCreateCustomC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -175,7 +175,7 @@ func (a *ConnectorsAPIService) CreateCustomConnectorV1Execute(r ApiCreateCustomC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -286,7 +286,7 @@ func (a *ConnectorsAPIService) DeleteCustomConnectorV1Execute(r ApiDeleteCustomC
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -308,7 +308,7 @@ func (a *ConnectorsAPIService) DeleteCustomConnectorV1Execute(r ApiDeleteCustomC
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -319,7 +319,7 @@ func (a *ConnectorsAPIService) DeleteCustomConnectorV1Execute(r ApiDeleteCustomC
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -341,7 +341,7 @@ func (a *ConnectorsAPIService) DeleteCustomConnectorV1Execute(r ApiDeleteCustomC
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -445,7 +445,7 @@ func (a *ConnectorsAPIService) GetConnectorCorrelationConfigV1Execute(r ApiGetCo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -467,7 +467,7 @@ func (a *ConnectorsAPIService) GetConnectorCorrelationConfigV1Execute(r ApiGetCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -478,7 +478,7 @@ func (a *ConnectorsAPIService) GetConnectorCorrelationConfigV1Execute(r ApiGetCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -500,7 +500,7 @@ func (a *ConnectorsAPIService) GetConnectorCorrelationConfigV1Execute(r ApiGetCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -564,7 +564,7 @@ func (r ApiGetConnectorListV1Request) Locale(locale string) ApiGetConnectorListV
 	return r
 }
 
-func (r ApiGetConnectorListV1Request) Execute() ([]V3connectordto, *http.Response, error) {
+func (r ApiGetConnectorListV1Request) Execute() ([]V3ConnectorDto, *http.Response, error) {
 	return r.ApiService.GetConnectorListV1Execute(r)
 }
 
@@ -584,13 +584,13 @@ func (a *ConnectorsAPIService) GetConnectorListV1(ctx context.Context) ApiGetCon
 }
 
 // Execute executes the request
-//  @return []V3connectordto
-func (a *ConnectorsAPIService) GetConnectorListV1Execute(r ApiGetConnectorListV1Request) ([]V3connectordto, *http.Response, error) {
+//  @return []V3ConnectorDto
+func (a *ConnectorsAPIService) GetConnectorListV1Execute(r ApiGetConnectorListV1Request) ([]V3ConnectorDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []V3connectordto
+		localVarReturnValue  []V3ConnectorDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.GetConnectorListV1")
@@ -668,7 +668,7 @@ func (a *ConnectorsAPIService) GetConnectorListV1Execute(r ApiGetConnectorListV1
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -690,7 +690,7 @@ func (a *ConnectorsAPIService) GetConnectorListV1Execute(r ApiGetConnectorListV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -701,7 +701,7 @@ func (a *ConnectorsAPIService) GetConnectorListV1Execute(r ApiGetConnectorListV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -723,7 +723,7 @@ func (a *ConnectorsAPIService) GetConnectorListV1Execute(r ApiGetConnectorListV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -836,7 +836,7 @@ func (a *ConnectorsAPIService) GetConnectorSourceConfigV1Execute(r ApiGetConnect
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -858,7 +858,7 @@ func (a *ConnectorsAPIService) GetConnectorSourceConfigV1Execute(r ApiGetConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -869,7 +869,7 @@ func (a *ConnectorsAPIService) GetConnectorSourceConfigV1Execute(r ApiGetConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -891,7 +891,7 @@ func (a *ConnectorsAPIService) GetConnectorSourceConfigV1Execute(r ApiGetConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1004,7 +1004,7 @@ func (a *ConnectorsAPIService) GetConnectorSourceTemplateV1Execute(r ApiGetConne
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1026,7 +1026,7 @@ func (a *ConnectorsAPIService) GetConnectorSourceTemplateV1Execute(r ApiGetConne
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1037,7 +1037,7 @@ func (a *ConnectorsAPIService) GetConnectorSourceTemplateV1Execute(r ApiGetConne
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1059,7 +1059,7 @@ func (a *ConnectorsAPIService) GetConnectorSourceTemplateV1Execute(r ApiGetConne
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1176,7 +1176,7 @@ func (a *ConnectorsAPIService) GetConnectorTranslationsV1Execute(r ApiGetConnect
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1198,7 +1198,7 @@ func (a *ConnectorsAPIService) GetConnectorTranslationsV1Execute(r ApiGetConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1209,7 +1209,7 @@ func (a *ConnectorsAPIService) GetConnectorTranslationsV1Execute(r ApiGetConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1231,7 +1231,7 @@ func (a *ConnectorsAPIService) GetConnectorTranslationsV1Execute(r ApiGetConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1268,7 +1268,7 @@ func (r ApiGetConnectorV1Request) Locale(locale string) ApiGetConnectorV1Request
 	return r
 }
 
-func (r ApiGetConnectorV1Request) Execute() (*Connectordetail, *http.Response, error) {
+func (r ApiGetConnectorV1Request) Execute() (*ConnectorDetail, *http.Response, error) {
 	return r.ApiService.GetConnectorV1Execute(r)
 }
 
@@ -1290,13 +1290,13 @@ func (a *ConnectorsAPIService) GetConnectorV1(ctx context.Context, scriptName st
 }
 
 // Execute executes the request
-//  @return Connectordetail
-func (a *ConnectorsAPIService) GetConnectorV1Execute(r ApiGetConnectorV1Request) (*Connectordetail, *http.Response, error) {
+//  @return ConnectorDetail
+func (a *ConnectorsAPIService) GetConnectorV1Execute(r ApiGetConnectorV1Request) (*ConnectorDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Connectordetail
+		localVarReturnValue  *ConnectorDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.GetConnectorV1")
@@ -1354,7 +1354,7 @@ func (a *ConnectorsAPIService) GetConnectorV1Execute(r ApiGetConnectorV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1376,7 +1376,7 @@ func (a *ConnectorsAPIService) GetConnectorV1Execute(r ApiGetConnectorV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1387,7 +1387,7 @@ func (a *ConnectorsAPIService) GetConnectorV1Execute(r ApiGetConnectorV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1409,7 +1409,7 @@ func (a *ConnectorsAPIService) GetConnectorV1Execute(r ApiGetConnectorV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1446,7 +1446,7 @@ func (r ApiPutConnectorCorrelationConfigV1Request) File(file *os.File) ApiPutCon
 	return r
 }
 
-func (r ApiPutConnectorCorrelationConfigV1Request) Execute() (*Updatedetail, *http.Response, error) {
+func (r ApiPutConnectorCorrelationConfigV1Request) Execute() (*UpdateDetail, *http.Response, error) {
 	return r.ApiService.PutConnectorCorrelationConfigV1Execute(r)
 }
 
@@ -1468,13 +1468,13 @@ func (a *ConnectorsAPIService) PutConnectorCorrelationConfigV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return Updatedetail
-func (a *ConnectorsAPIService) PutConnectorCorrelationConfigV1Execute(r ApiPutConnectorCorrelationConfigV1Request) (*Updatedetail, *http.Response, error) {
+//  @return UpdateDetail
+func (a *ConnectorsAPIService) PutConnectorCorrelationConfigV1Execute(r ApiPutConnectorCorrelationConfigV1Request) (*UpdateDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Updatedetail
+		localVarReturnValue  *UpdateDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutConnectorCorrelationConfigV1")
@@ -1547,7 +1547,7 @@ func (a *ConnectorsAPIService) PutConnectorCorrelationConfigV1Execute(r ApiPutCo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1569,7 +1569,7 @@ func (a *ConnectorsAPIService) PutConnectorCorrelationConfigV1Execute(r ApiPutCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1580,7 +1580,7 @@ func (a *ConnectorsAPIService) PutConnectorCorrelationConfigV1Execute(r ApiPutCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1602,7 +1602,7 @@ func (a *ConnectorsAPIService) PutConnectorCorrelationConfigV1Execute(r ApiPutCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1639,7 +1639,7 @@ func (r ApiPutConnectorSourceConfigV1Request) File(file *os.File) ApiPutConnecto
 	return r
 }
 
-func (r ApiPutConnectorSourceConfigV1Request) Execute() (*Updatedetail, *http.Response, error) {
+func (r ApiPutConnectorSourceConfigV1Request) Execute() (*UpdateDetail, *http.Response, error) {
 	return r.ApiService.PutConnectorSourceConfigV1Execute(r)
 }
 
@@ -1661,13 +1661,13 @@ func (a *ConnectorsAPIService) PutConnectorSourceConfigV1(ctx context.Context, s
 }
 
 // Execute executes the request
-//  @return Updatedetail
-func (a *ConnectorsAPIService) PutConnectorSourceConfigV1Execute(r ApiPutConnectorSourceConfigV1Request) (*Updatedetail, *http.Response, error) {
+//  @return UpdateDetail
+func (a *ConnectorsAPIService) PutConnectorSourceConfigV1Execute(r ApiPutConnectorSourceConfigV1Request) (*UpdateDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Updatedetail
+		localVarReturnValue  *UpdateDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutConnectorSourceConfigV1")
@@ -1740,7 +1740,7 @@ func (a *ConnectorsAPIService) PutConnectorSourceConfigV1Execute(r ApiPutConnect
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1762,7 +1762,7 @@ func (a *ConnectorsAPIService) PutConnectorSourceConfigV1Execute(r ApiPutConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1773,7 +1773,7 @@ func (a *ConnectorsAPIService) PutConnectorSourceConfigV1Execute(r ApiPutConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1795,7 +1795,7 @@ func (a *ConnectorsAPIService) PutConnectorSourceConfigV1Execute(r ApiPutConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1832,7 +1832,7 @@ func (r ApiPutConnectorSourceTemplateV1Request) File(file *os.File) ApiPutConnec
 	return r
 }
 
-func (r ApiPutConnectorSourceTemplateV1Request) Execute() (*Updatedetail, *http.Response, error) {
+func (r ApiPutConnectorSourceTemplateV1Request) Execute() (*UpdateDetail, *http.Response, error) {
 	return r.ApiService.PutConnectorSourceTemplateV1Execute(r)
 }
 
@@ -1854,13 +1854,13 @@ func (a *ConnectorsAPIService) PutConnectorSourceTemplateV1(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Updatedetail
-func (a *ConnectorsAPIService) PutConnectorSourceTemplateV1Execute(r ApiPutConnectorSourceTemplateV1Request) (*Updatedetail, *http.Response, error) {
+//  @return UpdateDetail
+func (a *ConnectorsAPIService) PutConnectorSourceTemplateV1Execute(r ApiPutConnectorSourceTemplateV1Request) (*UpdateDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Updatedetail
+		localVarReturnValue  *UpdateDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutConnectorSourceTemplateV1")
@@ -1933,7 +1933,7 @@ func (a *ConnectorsAPIService) PutConnectorSourceTemplateV1Execute(r ApiPutConne
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1955,7 +1955,7 @@ func (a *ConnectorsAPIService) PutConnectorSourceTemplateV1Execute(r ApiPutConne
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1966,7 +1966,7 @@ func (a *ConnectorsAPIService) PutConnectorSourceTemplateV1Execute(r ApiPutConne
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1988,7 +1988,7 @@ func (a *ConnectorsAPIService) PutConnectorSourceTemplateV1Execute(r ApiPutConne
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2019,7 +2019,7 @@ type ApiPutConnectorTranslationsV1Request struct {
 	locale string
 }
 
-func (r ApiPutConnectorTranslationsV1Request) Execute() (*Updatedetail, *http.Response, error) {
+func (r ApiPutConnectorTranslationsV1Request) Execute() (*UpdateDetail, *http.Response, error) {
 	return r.ApiService.PutConnectorTranslationsV1Execute(r)
 }
 
@@ -2043,13 +2043,13 @@ func (a *ConnectorsAPIService) PutConnectorTranslationsV1(ctx context.Context, s
 }
 
 // Execute executes the request
-//  @return Updatedetail
-func (a *ConnectorsAPIService) PutConnectorTranslationsV1Execute(r ApiPutConnectorTranslationsV1Request) (*Updatedetail, *http.Response, error) {
+//  @return UpdateDetail
+func (a *ConnectorsAPIService) PutConnectorTranslationsV1Execute(r ApiPutConnectorTranslationsV1Request) (*UpdateDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Updatedetail
+		localVarReturnValue  *UpdateDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutConnectorTranslationsV1")
@@ -2105,7 +2105,7 @@ func (a *ConnectorsAPIService) PutConnectorTranslationsV1Execute(r ApiPutConnect
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2127,7 +2127,7 @@ func (a *ConnectorsAPIService) PutConnectorTranslationsV1Execute(r ApiPutConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2138,7 +2138,7 @@ func (a *ConnectorsAPIService) PutConnectorTranslationsV1Execute(r ApiPutConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2160,7 +2160,7 @@ func (a *ConnectorsAPIService) PutConnectorTranslationsV1Execute(r ApiPutConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2188,16 +2188,16 @@ type ApiUpdateConnectorV1Request struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
 	scriptName string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of connector detail update operations 
-func (r ApiUpdateConnectorV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateConnectorV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateConnectorV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateConnectorV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiUpdateConnectorV1Request) Execute() (*Connectordetail, *http.Response, error) {
+func (r ApiUpdateConnectorV1Request) Execute() (*ConnectorDetail, *http.Response, error) {
 	return r.ApiService.UpdateConnectorV1Execute(r)
 }
 
@@ -2231,13 +2231,13 @@ func (a *ConnectorsAPIService) UpdateConnectorV1(ctx context.Context, scriptName
 }
 
 // Execute executes the request
-//  @return Connectordetail
-func (a *ConnectorsAPIService) UpdateConnectorV1Execute(r ApiUpdateConnectorV1Request) (*Connectordetail, *http.Response, error) {
+//  @return ConnectorDetail
+func (a *ConnectorsAPIService) UpdateConnectorV1Execute(r ApiUpdateConnectorV1Request) (*ConnectorDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Connectordetail
+		localVarReturnValue  *ConnectorDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.UpdateConnectorV1")
@@ -2251,8 +2251,8 @@ func (a *ConnectorsAPIService) UpdateConnectorV1Execute(r ApiUpdateConnectorV1Re
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2273,7 +2273,7 @@ func (a *ConnectorsAPIService) UpdateConnectorV1Execute(r ApiUpdateConnectorV1Re
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2297,7 +2297,7 @@ func (a *ConnectorsAPIService) UpdateConnectorV1Execute(r ApiUpdateConnectorV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2319,7 +2319,7 @@ func (a *ConnectorsAPIService) UpdateConnectorV1Execute(r ApiUpdateConnectorV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2330,7 +2330,7 @@ func (a *ConnectorsAPIService) UpdateConnectorV1Execute(r ApiUpdateConnectorV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2352,7 +2352,7 @@ func (a *ConnectorsAPIService) UpdateConnectorV1Execute(r ApiUpdateConnectorV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

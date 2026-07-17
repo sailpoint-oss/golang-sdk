@@ -88,15 +88,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Campaignfilterdetails](docs/Campaignfilterdetails.md)
- - [CampaignfilterdetailsCriteriaListInner](docs/CampaignfilterdetailsCriteriaListInner.md)
- - [Criteriatype](docs/Criteriatype.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [CampaignFilterDetails](docs/CampaignFilterDetails.md)
+ - [CampaignFilterDetailsCriteriaListInner](docs/CampaignFilterDetailsCriteriaListInner.md)
+ - [CriteriaType](docs/CriteriaType.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [ListCampaignFiltersV1200Response](docs/ListCampaignFiltersV1200Response.md)
  - [ListCampaignFiltersV1401Response](docs/ListCampaignFiltersV1401Response.md)
  - [ListCampaignFiltersV1429Response](docs/ListCampaignFiltersV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [Operation](docs/Operation.md)
 
 

@@ -39,7 +39,7 @@ func Test_work_reassignment_WorkReassignmentAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var identityId string
-		var configType Configtypeenum
+		var configType ConfigTypeEnum
 
 		httpRes, err := apiClient.WorkReassignmentAPI.DeleteReassignmentConfigurationV1(context.Background(), identityId, configType).Execute()
 
@@ -53,7 +53,7 @@ func Test_work_reassignment_WorkReassignmentAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var identityId string
-		var configType Configtypeenum
+		var configType ConfigTypeEnum
 
 		resp, httpRes, err := apiClient.WorkReassignmentAPI.GetEvaluateReassignmentConfigurationV1(context.Background(), identityId, configType).Execute()
 

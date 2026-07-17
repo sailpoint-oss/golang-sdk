@@ -18,93 +18,93 @@ import (
 
 // GetHistoricalIdentityEventsV1200ResponseInner struct for GetHistoricalIdentityEventsV1200ResponseInner
 type GetHistoricalIdentityEventsV1200ResponseInner struct {
-	Accessitemassociated *Accessitemassociated
-	Accessitemremoved *Accessitemremoved
-	Accessrequested *Accessrequested
-	Accountstatuschanged *Accountstatuschanged
-	Attributeschanged *Attributeschanged
-	Identitycertified *Identitycertified
+	AccessItemAssociated *AccessItemAssociated
+	AccessItemRemoved *AccessItemRemoved
+	AccessRequested *AccessRequested
+	AccountStatusChanged *AccountStatusChanged
+	AttributesChanged *AttributesChanged
+	IdentityCertified *IdentityCertified
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *GetHistoricalIdentityEventsV1200ResponseInner) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into Accessitemassociated
-	err = json.Unmarshal(data, &dst.Accessitemassociated);
+	// try to unmarshal JSON data into AccessItemAssociated
+	err = json.Unmarshal(data, &dst.AccessItemAssociated);
 	if err == nil {
-		jsonAccessitemassociated, _ := json.Marshal(dst.Accessitemassociated)
-		if string(jsonAccessitemassociated) == "{}" { // empty struct
-			dst.Accessitemassociated = nil
+		jsonAccessItemAssociated, _ := json.Marshal(dst.AccessItemAssociated)
+		if string(jsonAccessItemAssociated) == "{}" { // empty struct
+			dst.AccessItemAssociated = nil
 		} else {
-			return nil // data stored in dst.Accessitemassociated, return on the first match
+			return nil // data stored in dst.AccessItemAssociated, return on the first match
 		}
 	} else {
-		dst.Accessitemassociated = nil
+		dst.AccessItemAssociated = nil
 	}
 
-	// try to unmarshal JSON data into Accessitemremoved
-	err = json.Unmarshal(data, &dst.Accessitemremoved);
+	// try to unmarshal JSON data into AccessItemRemoved
+	err = json.Unmarshal(data, &dst.AccessItemRemoved);
 	if err == nil {
-		jsonAccessitemremoved, _ := json.Marshal(dst.Accessitemremoved)
-		if string(jsonAccessitemremoved) == "{}" { // empty struct
-			dst.Accessitemremoved = nil
+		jsonAccessItemRemoved, _ := json.Marshal(dst.AccessItemRemoved)
+		if string(jsonAccessItemRemoved) == "{}" { // empty struct
+			dst.AccessItemRemoved = nil
 		} else {
-			return nil // data stored in dst.Accessitemremoved, return on the first match
+			return nil // data stored in dst.AccessItemRemoved, return on the first match
 		}
 	} else {
-		dst.Accessitemremoved = nil
+		dst.AccessItemRemoved = nil
 	}
 
-	// try to unmarshal JSON data into Accessrequested
-	err = json.Unmarshal(data, &dst.Accessrequested);
+	// try to unmarshal JSON data into AccessRequested
+	err = json.Unmarshal(data, &dst.AccessRequested);
 	if err == nil {
-		jsonAccessrequested, _ := json.Marshal(dst.Accessrequested)
-		if string(jsonAccessrequested) == "{}" { // empty struct
-			dst.Accessrequested = nil
+		jsonAccessRequested, _ := json.Marshal(dst.AccessRequested)
+		if string(jsonAccessRequested) == "{}" { // empty struct
+			dst.AccessRequested = nil
 		} else {
-			return nil // data stored in dst.Accessrequested, return on the first match
+			return nil // data stored in dst.AccessRequested, return on the first match
 		}
 	} else {
-		dst.Accessrequested = nil
+		dst.AccessRequested = nil
 	}
 
-	// try to unmarshal JSON data into Accountstatuschanged
-	err = json.Unmarshal(data, &dst.Accountstatuschanged);
+	// try to unmarshal JSON data into AccountStatusChanged
+	err = json.Unmarshal(data, &dst.AccountStatusChanged);
 	if err == nil {
-		jsonAccountstatuschanged, _ := json.Marshal(dst.Accountstatuschanged)
-		if string(jsonAccountstatuschanged) == "{}" { // empty struct
-			dst.Accountstatuschanged = nil
+		jsonAccountStatusChanged, _ := json.Marshal(dst.AccountStatusChanged)
+		if string(jsonAccountStatusChanged) == "{}" { // empty struct
+			dst.AccountStatusChanged = nil
 		} else {
-			return nil // data stored in dst.Accountstatuschanged, return on the first match
+			return nil // data stored in dst.AccountStatusChanged, return on the first match
 		}
 	} else {
-		dst.Accountstatuschanged = nil
+		dst.AccountStatusChanged = nil
 	}
 
-	// try to unmarshal JSON data into Attributeschanged
-	err = json.Unmarshal(data, &dst.Attributeschanged);
+	// try to unmarshal JSON data into AttributesChanged
+	err = json.Unmarshal(data, &dst.AttributesChanged);
 	if err == nil {
-		jsonAttributeschanged, _ := json.Marshal(dst.Attributeschanged)
-		if string(jsonAttributeschanged) == "{}" { // empty struct
-			dst.Attributeschanged = nil
+		jsonAttributesChanged, _ := json.Marshal(dst.AttributesChanged)
+		if string(jsonAttributesChanged) == "{}" { // empty struct
+			dst.AttributesChanged = nil
 		} else {
-			return nil // data stored in dst.Attributeschanged, return on the first match
+			return nil // data stored in dst.AttributesChanged, return on the first match
 		}
 	} else {
-		dst.Attributeschanged = nil
+		dst.AttributesChanged = nil
 	}
 
-	// try to unmarshal JSON data into Identitycertified
-	err = json.Unmarshal(data, &dst.Identitycertified);
+	// try to unmarshal JSON data into IdentityCertified
+	err = json.Unmarshal(data, &dst.IdentityCertified);
 	if err == nil {
-		jsonIdentitycertified, _ := json.Marshal(dst.Identitycertified)
-		if string(jsonIdentitycertified) == "{}" { // empty struct
-			dst.Identitycertified = nil
+		jsonIdentityCertified, _ := json.Marshal(dst.IdentityCertified)
+		if string(jsonIdentityCertified) == "{}" { // empty struct
+			dst.IdentityCertified = nil
 		} else {
-			return nil // data stored in dst.Identitycertified, return on the first match
+			return nil // data stored in dst.IdentityCertified, return on the first match
 		}
 	} else {
-		dst.Identitycertified = nil
+		dst.IdentityCertified = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(GetHistoricalIdentityEventsV1200ResponseInner)")
@@ -112,28 +112,28 @@ func (dst *GetHistoricalIdentityEventsV1200ResponseInner) UnmarshalJSON(data []b
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *GetHistoricalIdentityEventsV1200ResponseInner) MarshalJSON() ([]byte, error) {
-	if src.Accessitemassociated != nil {
-		return json.Marshal(&src.Accessitemassociated)
+	if src.AccessItemAssociated != nil {
+		return json.Marshal(&src.AccessItemAssociated)
 	}
 
-	if src.Accessitemremoved != nil {
-		return json.Marshal(&src.Accessitemremoved)
+	if src.AccessItemRemoved != nil {
+		return json.Marshal(&src.AccessItemRemoved)
 	}
 
-	if src.Accessrequested != nil {
-		return json.Marshal(&src.Accessrequested)
+	if src.AccessRequested != nil {
+		return json.Marshal(&src.AccessRequested)
 	}
 
-	if src.Accountstatuschanged != nil {
-		return json.Marshal(&src.Accountstatuschanged)
+	if src.AccountStatusChanged != nil {
+		return json.Marshal(&src.AccountStatusChanged)
 	}
 
-	if src.Attributeschanged != nil {
-		return json.Marshal(&src.Attributeschanged)
+	if src.AttributesChanged != nil {
+		return json.Marshal(&src.AttributesChanged)
 	}
 
-	if src.Identitycertified != nil {
-		return json.Marshal(&src.Identitycertified)
+	if src.IdentityCertified != nil {
+		return json.Marshal(&src.IdentityCertified)
 	}
 
 	return nil, nil // no data in anyOf schemas

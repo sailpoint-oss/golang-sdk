@@ -120,7 +120,7 @@ func (a *DataSegmentationAPIService) CreateDataSegmentV1Execute(r ApiCreateDataS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,7 +142,7 @@ func (a *DataSegmentationAPIService) CreateDataSegmentV1Execute(r ApiCreateDataS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *DataSegmentationAPIService) CreateDataSegmentV1Execute(r ApiCreateDataS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -305,7 +305,7 @@ func (a *DataSegmentationAPIService) DeleteDataSegmentV1Execute(r ApiDeleteDataS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -327,7 +327,7 @@ func (a *DataSegmentationAPIService) DeleteDataSegmentV1Execute(r ApiDeleteDataS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -338,7 +338,7 @@ func (a *DataSegmentationAPIService) DeleteDataSegmentV1Execute(r ApiDeleteDataS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -360,7 +360,7 @@ func (a *DataSegmentationAPIService) DeleteDataSegmentV1Execute(r ApiDeleteDataS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -388,7 +388,7 @@ func (r ApiGetDataSegmentIdentityMembershipV1Request) XSailPointExperimental(xSa
 	return r
 }
 
-func (r ApiGetDataSegmentIdentityMembershipV1Request) Execute() ([]Segmentmembership, *http.Response, error) {
+func (r ApiGetDataSegmentIdentityMembershipV1Request) Execute() ([]SegmentMembership, *http.Response, error) {
 	return r.ApiService.GetDataSegmentIdentityMembershipV1Execute(r)
 }
 
@@ -410,13 +410,13 @@ func (a *DataSegmentationAPIService) GetDataSegmentIdentityMembershipV1(ctx cont
 }
 
 // Execute executes the request
-//  @return []Segmentmembership
-func (a *DataSegmentationAPIService) GetDataSegmentIdentityMembershipV1Execute(r ApiGetDataSegmentIdentityMembershipV1Request) ([]Segmentmembership, *http.Response, error) {
+//  @return []SegmentMembership
+func (a *DataSegmentationAPIService) GetDataSegmentIdentityMembershipV1Execute(r ApiGetDataSegmentIdentityMembershipV1Request) ([]SegmentMembership, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Segmentmembership
+		localVarReturnValue  []SegmentMembership
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataSegmentationAPIService.GetDataSegmentIdentityMembershipV1")
@@ -481,7 +481,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentIdentityMembershipV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -503,7 +503,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentIdentityMembershipV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -514,7 +514,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentIdentityMembershipV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -536,7 +536,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentIdentityMembershipV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -666,7 +666,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentV1Execute(r ApiGetDataSegment
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -688,7 +688,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentV1Execute(r ApiGetDataSegment
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -699,7 +699,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentV1Execute(r ApiGetDataSegment
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -721,7 +721,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentV1Execute(r ApiGetDataSegment
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -851,7 +851,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentationEnabledForUserV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -873,7 +873,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentationEnabledForUserV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -884,7 +884,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentationEnabledForUserV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -906,7 +906,7 @@ func (a *DataSegmentationAPIService) GetDataSegmentationEnabledForUserV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1120,7 +1120,7 @@ func (a *DataSegmentationAPIService) ListDataSegmentsV1Execute(r ApiListDataSegm
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1142,7 +1142,7 @@ func (a *DataSegmentationAPIService) ListDataSegmentsV1Execute(r ApiListDataSegm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1153,7 +1153,7 @@ func (a *DataSegmentationAPIService) ListDataSegmentsV1Execute(r ApiListDataSegm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1175,7 +1175,7 @@ func (a *DataSegmentationAPIService) ListDataSegmentsV1Execute(r ApiListDataSegm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1323,7 +1323,7 @@ func (a *DataSegmentationAPIService) PatchDataSegmentV1Execute(r ApiPatchDataSeg
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1345,7 +1345,7 @@ func (a *DataSegmentationAPIService) PatchDataSegmentV1Execute(r ApiPatchDataSeg
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1356,7 +1356,7 @@ func (a *DataSegmentationAPIService) PatchDataSegmentV1Execute(r ApiPatchDataSeg
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1378,7 +1378,7 @@ func (a *DataSegmentationAPIService) PatchDataSegmentV1Execute(r ApiPatchDataSeg
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1537,7 +1537,7 @@ func (a *DataSegmentationAPIService) PublishDataSegmentV1Execute(r ApiPublishDat
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1559,7 +1559,7 @@ func (a *DataSegmentationAPIService) PublishDataSegmentV1Execute(r ApiPublishDat
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1570,7 +1570,7 @@ func (a *DataSegmentationAPIService) PublishDataSegmentV1Execute(r ApiPublishDat
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1592,7 +1592,7 @@ func (a *DataSegmentationAPIService) PublishDataSegmentV1Execute(r ApiPublishDat
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

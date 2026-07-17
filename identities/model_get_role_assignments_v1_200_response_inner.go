@@ -18,37 +18,37 @@ import (
 
 // GetRoleAssignmentsV1200ResponseInner struct for GetRoleAssignmentsV1200ResponseInner
 type GetRoleAssignmentsV1200ResponseInner struct {
-	Roleassignmentdto *Roleassignmentdto
-	Roleassignmentref *Roleassignmentref
+	RoleAssignmentDto *RoleAssignmentDto
+	RoleAssignmentRef *RoleAssignmentRef
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *GetRoleAssignmentsV1200ResponseInner) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into Roleassignmentdto
-	err = json.Unmarshal(data, &dst.Roleassignmentdto);
+	// try to unmarshal JSON data into RoleAssignmentDto
+	err = json.Unmarshal(data, &dst.RoleAssignmentDto);
 	if err == nil {
-		jsonRoleassignmentdto, _ := json.Marshal(dst.Roleassignmentdto)
-		if string(jsonRoleassignmentdto) == "{}" { // empty struct
-			dst.Roleassignmentdto = nil
+		jsonRoleAssignmentDto, _ := json.Marshal(dst.RoleAssignmentDto)
+		if string(jsonRoleAssignmentDto) == "{}" { // empty struct
+			dst.RoleAssignmentDto = nil
 		} else {
-			return nil // data stored in dst.Roleassignmentdto, return on the first match
+			return nil // data stored in dst.RoleAssignmentDto, return on the first match
 		}
 	} else {
-		dst.Roleassignmentdto = nil
+		dst.RoleAssignmentDto = nil
 	}
 
-	// try to unmarshal JSON data into Roleassignmentref
-	err = json.Unmarshal(data, &dst.Roleassignmentref);
+	// try to unmarshal JSON data into RoleAssignmentRef
+	err = json.Unmarshal(data, &dst.RoleAssignmentRef);
 	if err == nil {
-		jsonRoleassignmentref, _ := json.Marshal(dst.Roleassignmentref)
-		if string(jsonRoleassignmentref) == "{}" { // empty struct
-			dst.Roleassignmentref = nil
+		jsonRoleAssignmentRef, _ := json.Marshal(dst.RoleAssignmentRef)
+		if string(jsonRoleAssignmentRef) == "{}" { // empty struct
+			dst.RoleAssignmentRef = nil
 		} else {
-			return nil // data stored in dst.Roleassignmentref, return on the first match
+			return nil // data stored in dst.RoleAssignmentRef, return on the first match
 		}
 	} else {
-		dst.Roleassignmentref = nil
+		dst.RoleAssignmentRef = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(GetRoleAssignmentsV1200ResponseInner)")
@@ -56,12 +56,12 @@ func (dst *GetRoleAssignmentsV1200ResponseInner) UnmarshalJSON(data []byte) erro
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *GetRoleAssignmentsV1200ResponseInner) MarshalJSON() ([]byte, error) {
-	if src.Roleassignmentdto != nil {
-		return json.Marshal(&src.Roleassignmentdto)
+	if src.RoleAssignmentDto != nil {
+		return json.Marshal(&src.RoleAssignmentDto)
 	}
 
-	if src.Roleassignmentref != nil {
-		return json.Marshal(&src.Roleassignmentref)
+	if src.RoleAssignmentRef != nil {
+		return json.Marshal(&src.RoleAssignmentRef)
 	}
 
 	return nil, nil // no data in anyOf schemas

@@ -89,20 +89,20 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](docs/ArrayInner.md)
- - [Entitlementconnection](docs/Entitlementconnection.md)
- - [Entitlementconnectionbulkupdateitem](docs/Entitlementconnectionbulkupdateitem.md)
- - [Entitlementconnectionbulkupdateresultitem](docs/Entitlementconnectionbulkupdateresultitem.md)
- - [Entitlementconnectionsearchhit](docs/Entitlementconnectionsearchhit.md)
- - [Entitlementconnectionsearchhitentitlement](docs/Entitlementconnectionsearchhitentitlement.md)
- - [EntitlementconnectionsearchhitentitlementPrivilegeLevel](docs/EntitlementconnectionsearchhitentitlementPrivilegeLevel.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
+ - [EntitlementConnection](docs/EntitlementConnection.md)
+ - [EntitlementConnectionBulkUpdateItem](docs/EntitlementConnectionBulkUpdateItem.md)
+ - [EntitlementConnectionBulkUpdateResultItem](docs/EntitlementConnectionBulkUpdateResultItem.md)
+ - [EntitlementConnectionSearchHit](docs/EntitlementConnectionSearchHit.md)
+ - [EntitlementConnectionSearchHitEntitlement](docs/EntitlementConnectionSearchHitEntitlement.md)
+ - [EntitlementConnectionSearchHitEntitlementPrivilegeLevel](docs/EntitlementConnectionSearchHitEntitlementPrivilegeLevel.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [JsonPatchOperation](docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [ListEntitlementConnectionsV1401Response](docs/ListEntitlementConnectionsV1401Response.md)
  - [ListEntitlementConnectionsV1412Response](docs/ListEntitlementConnectionsV1412Response.md)
  - [ListEntitlementConnectionsV1429Response](docs/ListEntitlementConnectionsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

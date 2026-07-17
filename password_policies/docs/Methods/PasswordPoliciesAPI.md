@@ -59,11 +59,11 @@ Other parameters are passed through a pointer to a apiCreatePasswordPolicyV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **passwordpolicyv3dto** | [**Passwordpolicyv3dto**](../models/passwordpolicyv3dto) |  | 
+ **passwordPolicyV3Dto** | [**PasswordPolicyV3Dto**](../models/password-policy-v3-dto) |  | 
 
 ### Return type
 
-[**Passwordpolicyv3dto**](../models/passwordpolicyv3dto)
+[**PasswordPolicyV3Dto**](../models/password-policy-v3-dto)
 
 ### HTTP request headers
 
@@ -86,10 +86,42 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    passwordpolicyv3dtoJson := []byte(`{"description":"New Password Policy with high requirements to password complexity.","id":null,"name":"High security Password Policy","dateCreated":1639056206564,"lastUpdated":1662385430753,"firstExpirationReminder":90,"accountIdMinWordLength":3,"accountNameMinWordLength":3,"maxLength":0,"maxRepeatedChars":4,"minAlpha":1,"minCharacterTypes":-1,"minLength":8,"minLower":0,"minNumeric":1,"minSpecial":0,"minUpper":0,"passwordExpiration":90,"defaultPolicy":false,"enablePasswdExpiration":false,"requireStrongAuthn":false,"requireStrongAuthOffNetwork":false,"requireStrongAuthUntrustedGeographies":false,"useAccountAttributes":false,"useDictionary":false,"useIdentityAttributes":false,"validateAgainstAccountId":true,"validateAgainstAccountName":true,"sourceIds":["2c91808382ffee0b01830de154f14034","2c91808582ffee0c01830de36511405f"]}`) // Passwordpolicyv3dto | 
+    passwordpolicyv3dtoJson := []byte(`{
+          "validateAgainstAccountName" : true,
+          "minLength" : 8,
+          "description" : "Information about the Password Policy",
+          "requireStrongAuthUntrustedGeographies" : true,
+          "enablePasswdExpiration" : true,
+          "minNumeric" : 8,
+          "lastUpdated" : 1939056206564,
+          "validateAgainstAccountId" : false,
+          "dateCreated" : 1639056206564,
+          "accountNameMinWordLength" : 6,
+          "minUpper" : 8,
+          "firstExpirationReminder" : 45,
+          "modified" : "modified",
+          "id" : "2c91808e7d976f3b017d9f5ceae440c8",
+          "requireStrongAuthn" : true,
+          "useDictionary" : false,
+          "minSpecial" : 8,
+          "sourceIds" : [ "2c91808382ffee0b01830de154f14034", "2f98808382ffee0b01830de154f12134" ],
+          "passwordExpiration" : 8,
+          "maxRepeatedChars" : 3,
+          "minCharacterTypes" : 5,
+          "minAlpha" : 5,
+          "created" : "created",
+          "useAccountAttributes" : false,
+          "accountIdMinWordLength" : 4,
+          "minLower" : 8,
+          "useIdentityAttributes" : false,
+          "defaultPolicy" : true,
+          "requireStrongAuthOffNetwork" : true,
+          "name" : "PasswordPolicy Example",
+          "maxLength" : 25
+        }`) // PasswordPolicyV3Dto | 
 
-    var passwordpolicyv3dto password_policies.Passwordpolicyv3dto
-    if err := json.Unmarshal(passwordpolicyv3dtoJson, &passwordpolicyv3dto); err != nil {
+    var passwordPolicyV3Dto password_policies.PasswordPolicyV3Dto
+    if err := json.Unmarshal(passwordpolicyv3dtoJson, &passwordPolicyV3Dto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -97,13 +129,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordPoliciesAPI.CreatePasswordPolicyV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
-	  //resp, r, err := apiClient.PasswordPoliciesAPI.CreatePasswordPolicyV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
+    resp, r, err := apiClient.PasswordPoliciesAPI.CreatePasswordPolicyV1(context.Background()).XSailPointExperimental(xSailPointExperimental).PasswordPolicyV3Dto(passwordPolicyV3Dto).Execute()
+	  //resp, r, err := apiClient.PasswordPoliciesAPI.CreatePasswordPolicyV1(context.Background()).XSailPointExperimental(xSailPointExperimental).PasswordPolicyV3Dto(passwordPolicyV3Dto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesAPI.CreatePasswordPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreatePasswordPolicyV1`: Passwordpolicyv3dto
+    // response from `CreatePasswordPolicyV1`: PasswordPolicyV3Dto
     fmt.Fprintf(os.Stdout, "Response from `PasswordPoliciesAPI.CreatePasswordPolicyV1`: %v\n", resp)
 }
 ```
@@ -225,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Passwordpolicyv3dto**](../models/passwordpolicyv3dto)
+[**PasswordPolicyV3Dto**](../models/password-policy-v3-dto)
 
 ### HTTP request headers
 
@@ -260,7 +292,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesAPI.GetPasswordPolicyByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPasswordPolicyByIdV1`: Passwordpolicyv3dto
+    // response from `GetPasswordPolicyByIdV1`: PasswordPolicyV3Dto
     fmt.Fprintf(os.Stdout, "Response from `PasswordPoliciesAPI.GetPasswordPolicyByIdV1`: %v\n", resp)
 }
 ```
@@ -303,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Passwordpolicyv3dto**](../models/passwordpolicyv3dto)
+[**[]PasswordPolicyV3Dto**](../models/password-policy-v3-dto)
 
 ### HTTP request headers
 
@@ -340,7 +372,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesAPI.ListPasswordPoliciesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListPasswordPoliciesV1`: []Passwordpolicyv3dto
+    // response from `ListPasswordPoliciesV1`: []PasswordPolicyV3Dto
     fmt.Fprintf(os.Stdout, "Response from `PasswordPoliciesAPI.ListPasswordPoliciesV1`: %v\n", resp)
 }
 ```
@@ -381,11 +413,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **passwordpolicyv3dto** | [**Passwordpolicyv3dto**](../models/passwordpolicyv3dto) |  | 
+ **passwordPolicyV3Dto** | [**PasswordPolicyV3Dto**](../models/password-policy-v3-dto) |  | 
 
 ### Return type
 
-[**Passwordpolicyv3dto**](../models/passwordpolicyv3dto)
+[**PasswordPolicyV3Dto**](../models/password-policy-v3-dto)
 
 ### HTTP request headers
 
@@ -409,10 +441,42 @@ import (
 func main() {
     id := `ff808081838d9e9d01838da6a03e0007` // string | The ID of password policy to update. # string | The ID of password policy to update.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    passwordpolicyv3dtoJson := []byte(`{"description":"Password Policy after update.","id":"2c91808e7d976f3b017d9f5ceae440c8","name":"Improved Password Policy","dateCreated":1639056206564,"lastUpdated":1662385430753,"firstExpirationReminder":90,"accountIdMinWordLength":3,"accountNameMinWordLength":3,"maxLength":0,"maxRepeatedChars":4,"minAlpha":1,"minCharacterTypes":-1,"minLength":8,"minLower":0,"minNumeric":1,"minSpecial":0,"minUpper":0,"passwordExpiration":90,"defaultPolicy":false,"enablePasswdExpiration":false,"requireStrongAuthn":false,"requireStrongAuthOffNetwork":false,"requireStrongAuthUntrustedGeographies":false,"useAccountAttributes":false,"useDictionary":false,"useIdentityAttributes":false,"validateAgainstAccountId":true,"validateAgainstAccountName":true,"sourceIds":["2c91808382ffee0b01830de154f14034","2c91808582ffee0c01830de36511405f"]}`) // Passwordpolicyv3dto | 
+    passwordpolicyv3dtoJson := []byte(`{
+          "validateAgainstAccountName" : true,
+          "minLength" : 8,
+          "description" : "Information about the Password Policy",
+          "requireStrongAuthUntrustedGeographies" : true,
+          "enablePasswdExpiration" : true,
+          "minNumeric" : 8,
+          "lastUpdated" : 1939056206564,
+          "validateAgainstAccountId" : false,
+          "dateCreated" : 1639056206564,
+          "accountNameMinWordLength" : 6,
+          "minUpper" : 8,
+          "firstExpirationReminder" : 45,
+          "modified" : "modified",
+          "id" : "2c91808e7d976f3b017d9f5ceae440c8",
+          "requireStrongAuthn" : true,
+          "useDictionary" : false,
+          "minSpecial" : 8,
+          "sourceIds" : [ "2c91808382ffee0b01830de154f14034", "2f98808382ffee0b01830de154f12134" ],
+          "passwordExpiration" : 8,
+          "maxRepeatedChars" : 3,
+          "minCharacterTypes" : 5,
+          "minAlpha" : 5,
+          "created" : "created",
+          "useAccountAttributes" : false,
+          "accountIdMinWordLength" : 4,
+          "minLower" : 8,
+          "useIdentityAttributes" : false,
+          "defaultPolicy" : true,
+          "requireStrongAuthOffNetwork" : true,
+          "name" : "PasswordPolicy Example",
+          "maxLength" : 25
+        }`) // PasswordPolicyV3Dto | 
 
-    var passwordpolicyv3dto password_policies.Passwordpolicyv3dto
-    if err := json.Unmarshal(passwordpolicyv3dtoJson, &passwordpolicyv3dto); err != nil {
+    var passwordPolicyV3Dto password_policies.PasswordPolicyV3Dto
+    if err := json.Unmarshal(passwordpolicyv3dtoJson, &passwordPolicyV3Dto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -420,13 +484,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordPoliciesAPI.SetPasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
-	  //resp, r, err := apiClient.PasswordPoliciesAPI.SetPasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Passwordpolicyv3dto(passwordpolicyv3dto).Execute()
+    resp, r, err := apiClient.PasswordPoliciesAPI.SetPasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).PasswordPolicyV3Dto(passwordPolicyV3Dto).Execute()
+	  //resp, r, err := apiClient.PasswordPoliciesAPI.SetPasswordPolicyV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).PasswordPolicyV3Dto(passwordPolicyV3Dto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordPoliciesAPI.SetPasswordPolicyV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetPasswordPolicyV1`: Passwordpolicyv3dto
+    // response from `SetPasswordPolicyV1`: PasswordPolicyV3Dto
     fmt.Fprintf(os.Stdout, "Response from `PasswordPoliciesAPI.SetPasswordPolicyV1`: %v\n", resp)
 }
 ```

@@ -18,21 +18,21 @@ import (
 
 // PutClientLogConfigurationV1Request - struct for PutClientLogConfigurationV1Request
 type PutClientLogConfigurationV1Request struct {
-	Clientlogconfigurationdurationminutes *Clientlogconfigurationdurationminutes
-	Clientlogconfigurationexpiration *Clientlogconfigurationexpiration
+	ClientLogConfigurationDurationMinutes *ClientLogConfigurationDurationMinutes
+	ClientLogConfigurationExpiration *ClientLogConfigurationExpiration
 }
 
-// ClientlogconfigurationdurationminutesAsPutClientLogConfigurationV1Request is a convenience function that returns Clientlogconfigurationdurationminutes wrapped in PutClientLogConfigurationV1Request
-func ClientlogconfigurationdurationminutesAsPutClientLogConfigurationV1Request(v *Clientlogconfigurationdurationminutes) PutClientLogConfigurationV1Request {
+// ClientLogConfigurationDurationMinutesAsPutClientLogConfigurationV1Request is a convenience function that returns ClientLogConfigurationDurationMinutes wrapped in PutClientLogConfigurationV1Request
+func ClientLogConfigurationDurationMinutesAsPutClientLogConfigurationV1Request(v *ClientLogConfigurationDurationMinutes) PutClientLogConfigurationV1Request {
 	return PutClientLogConfigurationV1Request{
-		Clientlogconfigurationdurationminutes: v,
+		ClientLogConfigurationDurationMinutes: v,
 	}
 }
 
-// ClientlogconfigurationexpirationAsPutClientLogConfigurationV1Request is a convenience function that returns Clientlogconfigurationexpiration wrapped in PutClientLogConfigurationV1Request
-func ClientlogconfigurationexpirationAsPutClientLogConfigurationV1Request(v *Clientlogconfigurationexpiration) PutClientLogConfigurationV1Request {
+// ClientLogConfigurationExpirationAsPutClientLogConfigurationV1Request is a convenience function that returns ClientLogConfigurationExpiration wrapped in PutClientLogConfigurationV1Request
+func ClientLogConfigurationExpirationAsPutClientLogConfigurationV1Request(v *ClientLogConfigurationExpiration) PutClientLogConfigurationV1Request {
 	return PutClientLogConfigurationV1Request{
-		Clientlogconfigurationexpiration: v,
+		ClientLogConfigurationExpiration: v,
 	}
 }
 
@@ -41,44 +41,44 @@ func ClientlogconfigurationexpirationAsPutClientLogConfigurationV1Request(v *Cli
 func (dst *PutClientLogConfigurationV1Request) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into Clientlogconfigurationdurationminutes
-	err = newStrictDecoder(data).Decode(&dst.Clientlogconfigurationdurationminutes)
+	// try to unmarshal data into ClientLogConfigurationDurationMinutes
+	err = newStrictDecoder(data).Decode(&dst.ClientLogConfigurationDurationMinutes)
 	if err == nil {
-		jsonClientlogconfigurationdurationminutes, _ := json.Marshal(dst.Clientlogconfigurationdurationminutes)
-		if string(jsonClientlogconfigurationdurationminutes) == "{}" { // empty struct
-			dst.Clientlogconfigurationdurationminutes = nil
+		jsonClientLogConfigurationDurationMinutes, _ := json.Marshal(dst.ClientLogConfigurationDurationMinutes)
+		if string(jsonClientLogConfigurationDurationMinutes) == "{}" { // empty struct
+			dst.ClientLogConfigurationDurationMinutes = nil
 		} else {
-			if err = validator.Validate(dst.Clientlogconfigurationdurationminutes); err != nil {
-				dst.Clientlogconfigurationdurationminutes = nil
+			if err = validator.Validate(dst.ClientLogConfigurationDurationMinutes); err != nil {
+				dst.ClientLogConfigurationDurationMinutes = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Clientlogconfigurationdurationminutes = nil
+		dst.ClientLogConfigurationDurationMinutes = nil
 	}
 
-	// try to unmarshal data into Clientlogconfigurationexpiration
-	err = newStrictDecoder(data).Decode(&dst.Clientlogconfigurationexpiration)
+	// try to unmarshal data into ClientLogConfigurationExpiration
+	err = newStrictDecoder(data).Decode(&dst.ClientLogConfigurationExpiration)
 	if err == nil {
-		jsonClientlogconfigurationexpiration, _ := json.Marshal(dst.Clientlogconfigurationexpiration)
-		if string(jsonClientlogconfigurationexpiration) == "{}" { // empty struct
-			dst.Clientlogconfigurationexpiration = nil
+		jsonClientLogConfigurationExpiration, _ := json.Marshal(dst.ClientLogConfigurationExpiration)
+		if string(jsonClientLogConfigurationExpiration) == "{}" { // empty struct
+			dst.ClientLogConfigurationExpiration = nil
 		} else {
-			if err = validator.Validate(dst.Clientlogconfigurationexpiration); err != nil {
-				dst.Clientlogconfigurationexpiration = nil
+			if err = validator.Validate(dst.ClientLogConfigurationExpiration); err != nil {
+				dst.ClientLogConfigurationExpiration = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Clientlogconfigurationexpiration = nil
+		dst.ClientLogConfigurationExpiration = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.Clientlogconfigurationdurationminutes = nil
-		dst.Clientlogconfigurationexpiration = nil
+		dst.ClientLogConfigurationDurationMinutes = nil
+		dst.ClientLogConfigurationExpiration = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(PutClientLogConfigurationV1Request)")
 	} else if match == 1 {
@@ -90,12 +90,12 @@ func (dst *PutClientLogConfigurationV1Request) UnmarshalJSON(data []byte) error 
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src PutClientLogConfigurationV1Request) MarshalJSON() ([]byte, error) {
-	if src.Clientlogconfigurationdurationminutes != nil {
-		return json.Marshal(&src.Clientlogconfigurationdurationminutes)
+	if src.ClientLogConfigurationDurationMinutes != nil {
+		return json.Marshal(&src.ClientLogConfigurationDurationMinutes)
 	}
 
-	if src.Clientlogconfigurationexpiration != nil {
-		return json.Marshal(&src.Clientlogconfigurationexpiration)
+	if src.ClientLogConfigurationExpiration != nil {
+		return json.Marshal(&src.ClientLogConfigurationExpiration)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -106,12 +106,12 @@ func (obj *PutClientLogConfigurationV1Request) GetActualInstance() (interface{})
 	if obj == nil {
 		return nil
 	}
-	if obj.Clientlogconfigurationdurationminutes != nil {
-		return obj.Clientlogconfigurationdurationminutes
+	if obj.ClientLogConfigurationDurationMinutes != nil {
+		return obj.ClientLogConfigurationDurationMinutes
 	}
 
-	if obj.Clientlogconfigurationexpiration != nil {
-		return obj.Clientlogconfigurationexpiration
+	if obj.ClientLogConfigurationExpiration != nil {
+		return obj.ClientLogConfigurationExpiration
 	}
 
 	// all schemas are nil
@@ -120,12 +120,12 @@ func (obj *PutClientLogConfigurationV1Request) GetActualInstance() (interface{})
 
 // Get the actual instance value
 func (obj PutClientLogConfigurationV1Request) GetActualInstanceValue() (interface{}) {
-	if obj.Clientlogconfigurationdurationminutes != nil {
-		return *obj.Clientlogconfigurationdurationminutes
+	if obj.ClientLogConfigurationDurationMinutes != nil {
+		return *obj.ClientLogConfigurationDurationMinutes
 	}
 
-	if obj.Clientlogconfigurationexpiration != nil {
-		return *obj.Clientlogconfigurationexpiration
+	if obj.ClientLogConfigurationExpiration != nil {
+		return *obj.ClientLogConfigurationExpiration
 	}
 
 	// all schemas are nil

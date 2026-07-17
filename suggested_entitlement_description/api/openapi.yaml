@@ -46,13 +46,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/autowritesettingresponse'
+                $ref: '#/components/schemas/AutoWriteSettingResponse'
           description: Current auto-write settings
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -76,7 +76,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -94,7 +94,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -119,7 +119,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -144,7 +144,7 @@ paths:
           application/json-patch+json:
             schema:
               items:
-                $ref: '#/components/schemas/autowritesettingpatch'
+                $ref: '#/components/schemas/AutoWriteSettingPatch'
               type: array
         description: Patch operations for auto-write settings
         required: true
@@ -153,13 +153,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/autowritesettingresponse'
+                $ref: '#/components/schemas/AutoWriteSettingResponse'
           description: Updated auto-write settings
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -183,7 +183,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -201,7 +201,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -226,7 +226,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -249,7 +249,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/autowritesetting'
+              $ref: '#/components/schemas/AutoWriteSetting'
         description: Auto-write settings to create
         required: true
       responses:
@@ -257,13 +257,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/autowritesettingresponse'
+                $ref: '#/components/schemas/AutoWriteSettingResponse'
           description: Auto-write settings created successfully
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -287,7 +287,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "409":
@@ -319,7 +319,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -376,7 +376,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/entitlementrecommendationrecord'
+                  $ref: '#/components/schemas/EntitlementRecommendationRecord'
                 type: array
           description: A list of pending entitlement recommendation records.
           headers:
@@ -390,7 +390,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -414,7 +414,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -439,7 +439,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -497,7 +497,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/privilegedrecommendationgroup'
+                  $ref: '#/components/schemas/PrivilegedRecommendationGroup'
                 type: array
           description: A list of privileged recommendation groups.
           headers:
@@ -518,7 +518,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -542,7 +542,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -567,7 +567,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -594,7 +594,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/bulkapproveentitlementrecommendationrequest'
+              $ref: '#/components/schemas/BulkApproveEntitlementRecommendationRequest'
         description: The list of recommendation items to approve.
         required: true
       responses:
@@ -603,14 +603,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/bulkapproveentitlementrecommendationresult'
+                  $ref: '#/components/schemas/BulkApproveEntitlementRecommendationResult'
                 type: array
           description: Per-item approval results.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -634,7 +634,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -659,7 +659,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -685,7 +685,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/entitlementrecommendationassignrequest'
+              $ref: '#/components/schemas/EntitlementRecommendationAssignRequest'
         description: The recommendation IDs and the target assignee.
         required: true
       responses:
@@ -693,13 +693,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/entitlementrecommendationassignresult'
+                $ref: '#/components/schemas/EntitlementRecommendationAssignResult'
           description: Assignment queued successfully. Returns the batch ID for tracking.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -723,7 +723,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -748,7 +748,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -786,7 +786,7 @@ paths:
           application/json-patch+json:
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: The patch operations to apply to the entitlement recommendation
           record.
@@ -796,13 +796,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/entitlementrecommendationrecord'
+                $ref: '#/components/schemas/EntitlementRecommendationRecord'
           description: The updated entitlement recommendation record.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -826,7 +826,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -844,7 +844,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -869,7 +869,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -909,13 +909,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sedbatchstats'
+                $ref: '#/components/schemas/SedBatchStats'
           description: Stats of Sed batch.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -939,7 +939,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -957,7 +957,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -982,7 +982,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1081,14 +1081,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sedbatchrecord'
+                  $ref: '#/components/schemas/SedBatchRecord'
                 type: array
           description: List of Sed Batch Records
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1112,7 +1112,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1130,7 +1130,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1155,7 +1155,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1178,20 +1178,20 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/sedbatchrequest'
+              $ref: '#/components/schemas/SedBatchRequest'
         description: Sed Batch Request
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sedbatchresponse'
+                $ref: '#/components/schemas/SedBatchResponse'
           description: Sed Batch Response
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1215,7 +1215,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1233,7 +1233,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1258,7 +1258,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1283,7 +1283,7 @@ paths:
           application/json-patch+json:
             schema:
               items:
-                $ref: '#/components/schemas/sedapproval'
+                $ref: '#/components/schemas/SedApproval'
               type: array
         description: Sed Approval
         required: true
@@ -1293,14 +1293,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sedapprovalstatus'
+                  $ref: '#/components/schemas/SedApprovalStatus'
                 type: array
           description: List of SED Approval Status
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1324,7 +1324,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1342,7 +1342,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1367,7 +1367,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1391,7 +1391,7 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/sedassignment'
+              $ref: '#/components/schemas/SedAssignment'
         description: Sed Assignment Request
         required: true
       responses:
@@ -1399,13 +1399,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sedassignmentresponse'
+                $ref: '#/components/schemas/SedAssignmentResponse'
           description: Sed Assignment Response
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1429,7 +1429,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1447,7 +1447,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1472,7 +1472,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1627,14 +1627,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sed'
+                  $ref: '#/components/schemas/Sed'
                 type: array
           description: List of Suggested Entitlement Details
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1658,7 +1658,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1676,7 +1676,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1701,7 +1701,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1736,7 +1736,7 @@ paths:
           application/json-patch+json:
             schema:
               items:
-                $ref: '#/components/schemas/sedpatch'
+                $ref: '#/components/schemas/SedPatch'
               type: array
         description: Sed Patch Request
         required: true
@@ -1745,13 +1745,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sed'
+                $ref: '#/components/schemas/Sed'
           description: detail of patched sed
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1775,7 +1775,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1793,7 +1793,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1818,7 +1818,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1887,7 +1887,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1911,7 +1911,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -1929,7 +1929,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "409":
@@ -1961,11 +1961,18 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    autowritesetting:
+    AutoWriteSetting:
       description: Auto-Write Setting for SED
+      example:
+        excludedSourceIds:
+        - 2c91808a7813090a017814552e526350
+        includedSourceIds:
+        - 2c91808a7813090a017814552e526349
+        - 2c91808a7813090a017814552e52634a
+        enabled: true
       properties:
         enabled:
           default: false
@@ -1992,9 +1999,9 @@ components:
           type: array
       title: Auto-Write Setting
       type: object
-    autowritesettingresponse:
+    AutoWriteSettingResponse:
       allOf:
-      - $ref: '#/components/schemas/autowritesetting'
+      - $ref: '#/components/schemas/AutoWriteSetting'
       - properties:
           createdAt:
             description: When settings were first created
@@ -2018,7 +2025,7 @@ components:
         enabled: true
         updatedAt: 2026-03-09T14:22:00Z
       title: Auto-Write Setting Response
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -2030,7 +2037,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -2043,7 +2050,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -2051,7 +2058,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -2085,18 +2092,22 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    autowritesettingpatch:
+    AutoWriteSettingPatch:
       description: Patch operation for Auto-Write Setting
+      example:
+        op: replace
+        path: /enabled
+        value: true
       properties:
         op:
           description: The operation to perform. Only "replace" is supported.
@@ -2110,14 +2121,14 @@ components:
           example: /enabled
           type: string
         value:
-          $ref: '#/components/schemas/autowritesettingpatch_value'
+          $ref: '#/components/schemas/AutoWriteSettingPatch_value'
       required:
       - op
       - path
       - value
       title: Auto-Write Setting Patch
       type: object
-    entitlementrecommendationrecord:
+    EntitlementRecommendationRecord:
       description: A unified entitlement recommendation record representing either
         a SED (Suggested Entitlement Description) or a privilege recommendation.
       example:
@@ -2236,7 +2247,7 @@ components:
           type: string
       title: Entitlement Recommendation Record
       type: object
-    privilegedrecommendationinstance:
+    PrivilegedRecommendationInstance:
       description: An individual entitlement instance within a privileged recommendation
         group.
       example:
@@ -2297,7 +2308,7 @@ components:
           type: string
       title: Privileged Recommendation Instance
       type: object
-    privilegedrecommendationgroup:
+    PrivilegedRecommendationGroup:
       description: "A group of entitlement instances that share the same entitlement\
         \ name and connector type, aggregated for privileged-access review."
       example:
@@ -2357,11 +2368,11 @@ components:
         instances:
           description: The individual entitlement instances belonging to this group.
           items:
-            $ref: '#/components/schemas/privilegedrecommendationinstance'
+            $ref: '#/components/schemas/PrivilegedRecommendationInstance'
           type: array
       title: Privileged Recommendation Group
       type: object
-    bulkapproveentitlementrecommendationitem:
+    BulkApproveEntitlementRecommendationItem:
       description: A single item in a bulk entitlement recommendation approval request.
         The recordType is optional; the backend resolves the type by ID lookup when
         omitted. Description applies to SED items only; privilegeLevel is required
@@ -2398,8 +2409,17 @@ components:
       - id
       title: Bulk Approve Entitlement Recommendation Item
       type: object
-    bulkapproveentitlementrecommendationrequest:
+    BulkApproveEntitlementRecommendationRequest:
       description: Request body for bulk-approving a set of entitlement recommendations.
+      example:
+        items:
+        - id: 79db50d4-723c-4aa0-a824-83c2205d82d1
+          recordType: SED
+          description: Provides access and permissions related to the Delinea Secret
+            Server Cloud system.
+        - id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          recordType: privilege
+          privilegeLevel: high
       properties:
         items:
           description: The list of recommendation items to approve.
@@ -2412,13 +2432,13 @@ components:
             recordType: privilege
             privilegeLevel: high
           items:
-            $ref: '#/components/schemas/bulkapproveentitlementrecommendationitem'
+            $ref: '#/components/schemas/BulkApproveEntitlementRecommendationItem'
           type: array
       required:
       - items
       title: Bulk Approve Entitlement Recommendation Request
       type: object
-    bulkapproveentitlementrecommendationresult:
+    BulkApproveEntitlementRecommendationResult:
       description: The result for a single item in a bulk entitlement recommendation
         approval response.
       example:
@@ -2445,15 +2465,22 @@ components:
           example: null
       title: Bulk Approve Entitlement Recommendation Result
       type: object
-    entitlementrecommendationassignee:
+    EntitlementRecommendationAssignee:
       description: Describes the target assignee for entitlement recommendations.
       oneOf:
-      - $ref: '#/components/schemas/entitlementrecommendationassignee_oneOf'
-      - $ref: '#/components/schemas/entitlementrecommendationassignee_oneOf_1'
+      - $ref: '#/components/schemas/EntitlementRecommendationAssignee_oneOf'
+      - $ref: '#/components/schemas/EntitlementRecommendationAssignee_oneOf_1'
       title: Entitlement Recommendation Assignee
-    entitlementrecommendationassignrequest:
+    EntitlementRecommendationAssignRequest:
       description: Request body for assigning a set of entitlement recommendations
         to a reviewer.
+      example:
+        assignee:
+          type: IDENTITY
+          value: 2c91808a7f3b2e8a017f3c3e5f6d0099
+        items:
+        - 79db50d4-723c-4aa0-a824-83c2205d82d1
+        - a1b2c3d4-e5f6-7890-abcd-ef1234567890
       properties:
         items:
           description: The list of recommendation record IDs to assign.
@@ -2465,13 +2492,13 @@ components:
             type: string
           type: array
         assignee:
-          $ref: '#/components/schemas/entitlementrecommendationassignee'
+          $ref: '#/components/schemas/EntitlementRecommendationAssignee'
       required:
       - assignee
       - items
       title: Entitlement Recommendation Assign Request
       type: object
-    entitlementrecommendationassignresult:
+    EntitlementRecommendationAssignResult:
       description: Response body returned when entitlement recommendations are successfully
         queued for assignment.
       example:
@@ -2485,8 +2512,12 @@ components:
           type: string
       title: Entitlement Recommendation Assign Result
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -2505,13 +2536,13 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    sedbatchstats:
+    SedBatchStats:
       description: Sed Batch Stats
       example:
         discoveredCount: 100
@@ -2547,7 +2578,7 @@ components:
           type: integer
       title: Sed Batch Stats
       type: object
-    sedbatchrecord:
+    SedBatchRecord:
       description: Sed Batch Record
       example:
         requestedBy: 987e6543-e21b-45d3-b123-123456789abc
@@ -2609,8 +2640,35 @@ components:
           type: string
       title: Sed Batch Record
       type: object
-    searchcriteria:
+    SearchCriteria:
       description: Represents the search criteria for querying entitlements.
+      example:
+        indices:
+        - entitlements
+        query:
+          query: status:active
+        textQuery:
+          terms:
+          - admin
+          - user
+          matchAny: true
+          fields:
+          - role
+          - name
+        searchAfter:
+        - "12345"
+        - "67890"
+        filters:
+          status:
+            type: TERMS
+            terms:
+            - active
+            - inactive
+        sort:
+        - name:asc
+        - createdAt:desc
+        queryType: TEXT
+        includeNested: true
       properties:
         indices:
           description: "A list of indices to search within. Must contain exactly one\
@@ -2622,7 +2680,7 @@ components:
           type: array
         filters:
           additionalProperties:
-            $ref: '#/components/schemas/searchcriteria_filters_value'
+            $ref: '#/components/schemas/SearchCriteria_filters_value'
           description: "A map of filters applied to the search. Keys are filter names,\
             \ and values are filter definitions."
           example:
@@ -2633,14 +2691,14 @@ components:
               - inactive
           type: object
         query:
-          $ref: '#/components/schemas/searchcriteria_query'
+          $ref: '#/components/schemas/SearchCriteria_query'
         queryType:
           description: Specifies the type of query. Must be "TEXT" if `textQuery`
             is used.
           example: TEXT
           type: string
         textQuery:
-          $ref: '#/components/schemas/searchcriteria_textQuery'
+          $ref: '#/components/schemas/SearchCriteria_textQuery'
         includeNested:
           default: false
           description: Whether to include nested objects in the search results.
@@ -2666,8 +2724,43 @@ components:
       - indices
       title: Search Criteria
       type: object
-    sedbatchrequest:
+    SedBatchRequest:
       description: Sed Batch Request
+      example:
+        entitlements:
+        - 016629d1-1d25-463f-97f3-c6686846650
+        - 016629d1-1d25-463f-97f3-c6686846650
+        seds:
+        - 016629d1-1d25-463f-97f3-c6686846650
+        - 016629d1-1d25-463f-97f3-c6686846650
+        searchCriteria:
+          key:
+            indices:
+            - entitlements
+            query:
+              query: status:active
+            textQuery:
+              terms:
+              - admin
+              - user
+              matchAny: true
+              fields:
+              - role
+              - name
+            searchAfter:
+            - "12345"
+            - "67890"
+            filters:
+              status:
+                type: TERMS
+                terms:
+                - active
+                - inactive
+            sort:
+            - name:asc
+            - createdAt:desc
+            queryType: TEXT
+            includeNested: true
       minProperties: 1
       properties:
         entitlements:
@@ -2688,13 +2781,13 @@ components:
           type: array
         searchCriteria:
           additionalProperties:
-            $ref: '#/components/schemas/searchcriteria'
+            $ref: '#/components/schemas/SearchCriteria'
           description: Search criteria for the batch request.
           nullable: true
           type: object
       title: Sed Batch Request
       type: object
-    sedbatchresponse:
+    SedBatchResponse:
       description: Sed Batch Response
       example:
         batchId: 016629d1-1d25-463f-97f3-0c6686846650
@@ -2706,8 +2799,10 @@ components:
           type: string
       title: Sed Batch Response
       type: object
-    sedapproval:
+    SedApproval:
       description: Sed Approval Request Body
+      example:
+        items: 016629d1-1d25-463f-97f3-c6686846650
       properties:
         items:
           description: List of SED id's
@@ -2718,7 +2813,7 @@ components:
           type: array
       title: Sed Approval
       type: object
-    sedapprovalstatus:
+    SedApprovalStatus:
       description: SED Approval Status
       example:
         id: 016629d1-1d25-463f-97f3-0c6686846650
@@ -2740,8 +2835,11 @@ components:
           type: string
       title: Sed Approval Status
       type: object
-    sedassignee:
+    SedAssignee:
       description: Sed Assignee
+      example:
+        type: SOURCE_OWNER
+        value: 016629d1-1d25-463f-97f3-c6686846650
       properties:
         type:
           description: |-
@@ -2768,11 +2866,18 @@ components:
       - type
       title: Sed Assignee
       type: object
-    sedassignment:
+    SedAssignment:
       description: Sed Assignment
+      example:
+        assignee:
+          type: SOURCE_OWNER
+          value: 016629d1-1d25-463f-97f3-c6686846650
+        items:
+        - 016629d1-1d25-463f-97f3-0c6686846650
+        - 016629d1-1d25-463f-97f3-0c6686846650
       properties:
         assignee:
-          $ref: '#/components/schemas/sedassignee'
+          $ref: '#/components/schemas/SedAssignee'
         items:
           description: List of SED id's
           items:
@@ -2782,7 +2887,7 @@ components:
           type: array
       title: Sed Assignment
       type: object
-    sedassignmentresponse:
+    SedAssignmentResponse:
       description: Sed Assignment Response
       example:
         batchId: 016629d1-1d25-463f-97f3-0c6686846650
@@ -2794,7 +2899,7 @@ components:
           type: string
       title: Sed Assignment Response
       type: object
-    sed:
+    Sed:
       description: Suggested Entitlement Description
       example:
         approved_type: admin
@@ -2875,8 +2980,12 @@ components:
           type: string
       title: Sed
       type: object
-    sedpatch:
+    SedPatch:
       description: Patch for Suggested Entitlement Description
+      example:
+        op: replace
+        path: status
+        value: approved
       properties:
         op:
           description: desired operation
@@ -2924,7 +3033,7 @@ components:
           example: e7eab60924f64aa284175b9fa3309599
           type: string
       type: object
-    autowritesettingpatch_value:
+    AutoWriteSettingPatch_value:
       description: The new value for the field
       example: true
       oneOf:
@@ -2937,9 +3046,12 @@ components:
           type: string
         title: array
         type: array
-    entitlementrecommendationassignee_oneOf:
+    EntitlementRecommendationAssignee_oneOf:
       description: Assign to a specific identity or governance group. The value field
         is required and must be the ID of the identity or governance group.
+      example:
+        type: IDENTITY
+        value: 2c91808a7f3b2e8a017f3c3e5f6d0099
       properties:
         type:
           description: The type of assignee.
@@ -2956,7 +3068,7 @@ components:
       - type
       - value
       type: object
-    entitlementrecommendationassignee_oneOf_1:
+    EntitlementRecommendationAssignee_oneOf_1:
       description: Assign to the source owner or entitlement owner role. No value
         field is required.
       properties:
@@ -2979,7 +3091,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description
@@ -3002,7 +3114,7 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    searchcriteria_filters_value_range_lower:
+    SearchCriteria_filters_value_range_lower:
       properties:
         value:
           description: The lower bound value.
@@ -3014,7 +3126,7 @@ components:
           example: true
           type: boolean
       type: object
-    searchcriteria_filters_value_range_upper:
+    SearchCriteria_filters_value_range_upper:
       properties:
         value:
           description: The upper bound value.
@@ -3026,14 +3138,14 @@ components:
           example: false
           type: boolean
       type: object
-    searchcriteria_filters_value_range:
+    SearchCriteria_filters_value_range:
       properties:
         lower:
-          $ref: '#/components/schemas/searchcriteria_filters_value_range_lower'
+          $ref: '#/components/schemas/SearchCriteria_filters_value_range_lower'
         upper:
-          $ref: '#/components/schemas/searchcriteria_filters_value_range_upper'
+          $ref: '#/components/schemas/SearchCriteria_filters_value_range_upper'
       type: object
-    searchcriteria_filters_value:
+    SearchCriteria_filters_value:
       properties:
         type:
           description: "The type of filter, e.g., \"TERMS\" or \"RANGE\"."
@@ -3048,16 +3160,26 @@ components:
             type: string
           type: array
         range:
-          $ref: '#/components/schemas/searchcriteria_filters_value_range'
+          $ref: '#/components/schemas/SearchCriteria_filters_value_range'
       type: object
-    searchcriteria_query:
+    SearchCriteria_query:
+      example:
+        query: status:active
       properties:
         query:
           description: A structured query for advanced search.
           example: status:active
           type: string
       type: object
-    searchcriteria_textQuery:
+    SearchCriteria_textQuery:
+      example:
+        terms:
+        - admin
+        - user
+        matchAny: true
+        fields:
+        - role
+        - name
       properties:
         terms:
           description: Terms to search for.

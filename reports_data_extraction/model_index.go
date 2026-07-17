@@ -17,7 +17,7 @@ import (
 // Index Enum representing the currently supported indices. Additional values may be added in the future without notice.
 type Index string
 
-// List of index
+// List of Index
 const (
 	INDEX_ACCESSPROFILES Index = "accessprofiles"
 	INDEX_ACCOUNTACTIVITIES Index = "accountactivities"
@@ -75,7 +75,7 @@ func (v Index) IsValid() bool {
 	return false
 }
 
-// Ptr returns reference to index value
+// Ptr returns reference to Index value
 func (v Index) Ptr() *Index {
 	return &v
 }

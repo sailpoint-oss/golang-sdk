@@ -18,14 +18,14 @@ import (
 
 // StartApplicationDiscoveryV1403Response - struct for StartApplicationDiscoveryV1403Response
 type StartApplicationDiscoveryV1403Response struct {
-	Errorresponsedto *Errorresponsedto
+	ErrorResponseDto *ErrorResponseDto
 	StartApplicationDiscoveryV1403ResponseOneOf *StartApplicationDiscoveryV1403ResponseOneOf
 }
 
-// ErrorresponsedtoAsStartApplicationDiscoveryV1403Response is a convenience function that returns Errorresponsedto wrapped in StartApplicationDiscoveryV1403Response
-func ErrorresponsedtoAsStartApplicationDiscoveryV1403Response(v *Errorresponsedto) StartApplicationDiscoveryV1403Response {
+// ErrorResponseDtoAsStartApplicationDiscoveryV1403Response is a convenience function that returns ErrorResponseDto wrapped in StartApplicationDiscoveryV1403Response
+func ErrorResponseDtoAsStartApplicationDiscoveryV1403Response(v *ErrorResponseDto) StartApplicationDiscoveryV1403Response {
 	return StartApplicationDiscoveryV1403Response{
-		Errorresponsedto: v,
+		ErrorResponseDto: v,
 	}
 }
 
@@ -41,21 +41,21 @@ func StartApplicationDiscoveryV1403ResponseOneOfAsStartApplicationDiscoveryV1403
 func (dst *StartApplicationDiscoveryV1403Response) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into Errorresponsedto
-	err = newStrictDecoder(data).Decode(&dst.Errorresponsedto)
+	// try to unmarshal data into ErrorResponseDto
+	err = newStrictDecoder(data).Decode(&dst.ErrorResponseDto)
 	if err == nil {
-		jsonErrorresponsedto, _ := json.Marshal(dst.Errorresponsedto)
-		if string(jsonErrorresponsedto) == "{}" { // empty struct
-			dst.Errorresponsedto = nil
+		jsonErrorResponseDto, _ := json.Marshal(dst.ErrorResponseDto)
+		if string(jsonErrorResponseDto) == "{}" { // empty struct
+			dst.ErrorResponseDto = nil
 		} else {
-			if err = validator.Validate(dst.Errorresponsedto); err != nil {
-				dst.Errorresponsedto = nil
+			if err = validator.Validate(dst.ErrorResponseDto); err != nil {
+				dst.ErrorResponseDto = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Errorresponsedto = nil
+		dst.ErrorResponseDto = nil
 	}
 
 	// try to unmarshal data into StartApplicationDiscoveryV1403ResponseOneOf
@@ -77,7 +77,7 @@ func (dst *StartApplicationDiscoveryV1403Response) UnmarshalJSON(data []byte) er
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.Errorresponsedto = nil
+		dst.ErrorResponseDto = nil
 		dst.StartApplicationDiscoveryV1403ResponseOneOf = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(StartApplicationDiscoveryV1403Response)")
@@ -90,8 +90,8 @@ func (dst *StartApplicationDiscoveryV1403Response) UnmarshalJSON(data []byte) er
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src StartApplicationDiscoveryV1403Response) MarshalJSON() ([]byte, error) {
-	if src.Errorresponsedto != nil {
-		return json.Marshal(&src.Errorresponsedto)
+	if src.ErrorResponseDto != nil {
+		return json.Marshal(&src.ErrorResponseDto)
 	}
 
 	if src.StartApplicationDiscoveryV1403ResponseOneOf != nil {
@@ -106,8 +106,8 @@ func (obj *StartApplicationDiscoveryV1403Response) GetActualInstance() (interfac
 	if obj == nil {
 		return nil
 	}
-	if obj.Errorresponsedto != nil {
-		return obj.Errorresponsedto
+	if obj.ErrorResponseDto != nil {
+		return obj.ErrorResponseDto
 	}
 
 	if obj.StartApplicationDiscoveryV1403ResponseOneOf != nil {
@@ -120,8 +120,8 @@ func (obj *StartApplicationDiscoveryV1403Response) GetActualInstance() (interfac
 
 // Get the actual instance value
 func (obj StartApplicationDiscoveryV1403Response) GetActualInstanceValue() (interface{}) {
-	if obj.Errorresponsedto != nil {
-		return *obj.Errorresponsedto
+	if obj.ErrorResponseDto != nil {
+		return *obj.ErrorResponseDto
 	}
 
 	if obj.StartApplicationDiscoveryV1403ResponseOneOf != nil {

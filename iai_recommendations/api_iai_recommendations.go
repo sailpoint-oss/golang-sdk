@@ -34,7 +34,7 @@ func (r ApiGetRecommendationsConfigV1Request) XSailPointExperimental(xSailPointE
 	return r
 }
 
-func (r ApiGetRecommendationsConfigV1Request) Execute() (*Recommendationconfigdto, *http.Response, error) {
+func (r ApiGetRecommendationsConfigV1Request) Execute() (*RecommendationConfigDto, *http.Response, error) {
 	return r.ApiService.GetRecommendationsConfigV1Execute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *IAIRecommendationsAPIService) GetRecommendationsConfigV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Recommendationconfigdto
-func (a *IAIRecommendationsAPIService) GetRecommendationsConfigV1Execute(r ApiGetRecommendationsConfigV1Request) (*Recommendationconfigdto, *http.Response, error) {
+//  @return RecommendationConfigDto
+func (a *IAIRecommendationsAPIService) GetRecommendationsConfigV1Execute(r ApiGetRecommendationsConfigV1Request) (*RecommendationConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Recommendationconfigdto
+		localVarReturnValue  *RecommendationConfigDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRecommendationsAPIService.GetRecommendationsConfigV1")
@@ -124,7 +124,7 @@ func (a *IAIRecommendationsAPIService) GetRecommendationsConfigV1Execute(r ApiGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -146,7 +146,7 @@ func (a *IAIRecommendationsAPIService) GetRecommendationsConfigV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -168,7 +168,7 @@ func (a *IAIRecommendationsAPIService) GetRecommendationsConfigV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -196,7 +196,7 @@ type ApiGetRecommendationsV1Request struct {
 	ctx context.Context
 	ApiService *IAIRecommendationsAPIService
 	xSailPointExperimental *string
-	recommendationrequestdto *Recommendationrequestdto
+	recommendationRequestDto *RecommendationRequestDto
 }
 
 // Use this header to enable this experimental API.
@@ -205,12 +205,12 @@ func (r ApiGetRecommendationsV1Request) XSailPointExperimental(xSailPointExperim
 	return r
 }
 
-func (r ApiGetRecommendationsV1Request) Recommendationrequestdto(recommendationrequestdto Recommendationrequestdto) ApiGetRecommendationsV1Request {
-	r.recommendationrequestdto = &recommendationrequestdto
+func (r ApiGetRecommendationsV1Request) RecommendationRequestDto(recommendationRequestDto RecommendationRequestDto) ApiGetRecommendationsV1Request {
+	r.recommendationRequestDto = &recommendationRequestDto
 	return r
 }
 
-func (r ApiGetRecommendationsV1Request) Execute() (*Recommendationresponsedto, *http.Response, error) {
+func (r ApiGetRecommendationsV1Request) Execute() (*RecommendationResponseDto, *http.Response, error) {
 	return r.ApiService.GetRecommendationsV1Execute(r)
 }
 
@@ -230,13 +230,13 @@ func (a *IAIRecommendationsAPIService) GetRecommendationsV1(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return Recommendationresponsedto
-func (a *IAIRecommendationsAPIService) GetRecommendationsV1Execute(r ApiGetRecommendationsV1Request) (*Recommendationresponsedto, *http.Response, error) {
+//  @return RecommendationResponseDto
+func (a *IAIRecommendationsAPIService) GetRecommendationsV1Execute(r ApiGetRecommendationsV1Request) (*RecommendationResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Recommendationresponsedto
+		localVarReturnValue  *RecommendationResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRecommendationsAPIService.GetRecommendationsV1")
@@ -264,8 +264,8 @@ func (a *IAIRecommendationsAPIService) GetRecommendationsV1Execute(r ApiGetRecom
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.recommendationrequestdto == nil {
-		return localVarReturnValue, nil, reportError("recommendationrequestdto is required and must be specified")
+	if r.recommendationRequestDto == nil {
+		return localVarReturnValue, nil, reportError("recommendationRequestDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -287,7 +287,7 @@ func (a *IAIRecommendationsAPIService) GetRecommendationsV1Execute(r ApiGetRecom
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.recommendationrequestdto
+	localVarPostBody = r.recommendationRequestDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -311,7 +311,7 @@ func (a *IAIRecommendationsAPIService) GetRecommendationsV1Execute(r ApiGetRecom
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -333,7 +333,7 @@ func (a *IAIRecommendationsAPIService) GetRecommendationsV1Execute(r ApiGetRecom
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -355,7 +355,7 @@ func (a *IAIRecommendationsAPIService) GetRecommendationsV1Execute(r ApiGetRecom
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -383,7 +383,7 @@ type ApiUpdateRecommendationsConfigV1Request struct {
 	ctx context.Context
 	ApiService *IAIRecommendationsAPIService
 	xSailPointExperimental *string
-	recommendationconfigdto *Recommendationconfigdto
+	recommendationConfigDto *RecommendationConfigDto
 }
 
 // Use this header to enable this experimental API.
@@ -392,12 +392,12 @@ func (r ApiUpdateRecommendationsConfigV1Request) XSailPointExperimental(xSailPoi
 	return r
 }
 
-func (r ApiUpdateRecommendationsConfigV1Request) Recommendationconfigdto(recommendationconfigdto Recommendationconfigdto) ApiUpdateRecommendationsConfigV1Request {
-	r.recommendationconfigdto = &recommendationconfigdto
+func (r ApiUpdateRecommendationsConfigV1Request) RecommendationConfigDto(recommendationConfigDto RecommendationConfigDto) ApiUpdateRecommendationsConfigV1Request {
+	r.recommendationConfigDto = &recommendationConfigDto
 	return r
 }
 
-func (r ApiUpdateRecommendationsConfigV1Request) Execute() (*Recommendationconfigdto, *http.Response, error) {
+func (r ApiUpdateRecommendationsConfigV1Request) Execute() (*RecommendationConfigDto, *http.Response, error) {
 	return r.ApiService.UpdateRecommendationsConfigV1Execute(r)
 }
 
@@ -417,13 +417,13 @@ func (a *IAIRecommendationsAPIService) UpdateRecommendationsConfigV1(ctx context
 }
 
 // Execute executes the request
-//  @return Recommendationconfigdto
-func (a *IAIRecommendationsAPIService) UpdateRecommendationsConfigV1Execute(r ApiUpdateRecommendationsConfigV1Request) (*Recommendationconfigdto, *http.Response, error) {
+//  @return RecommendationConfigDto
+func (a *IAIRecommendationsAPIService) UpdateRecommendationsConfigV1Execute(r ApiUpdateRecommendationsConfigV1Request) (*RecommendationConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Recommendationconfigdto
+		localVarReturnValue  *RecommendationConfigDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRecommendationsAPIService.UpdateRecommendationsConfigV1")
@@ -451,8 +451,8 @@ func (a *IAIRecommendationsAPIService) UpdateRecommendationsConfigV1Execute(r Ap
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.recommendationconfigdto == nil {
-		return localVarReturnValue, nil, reportError("recommendationconfigdto is required and must be specified")
+	if r.recommendationConfigDto == nil {
+		return localVarReturnValue, nil, reportError("recommendationConfigDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -474,7 +474,7 @@ func (a *IAIRecommendationsAPIService) UpdateRecommendationsConfigV1Execute(r Ap
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.recommendationconfigdto
+	localVarPostBody = r.recommendationConfigDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -498,7 +498,7 @@ func (a *IAIRecommendationsAPIService) UpdateRecommendationsConfigV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -520,7 +520,7 @@ func (a *IAIRecommendationsAPIService) UpdateRecommendationsConfigV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -542,7 +542,7 @@ func (a *IAIRecommendationsAPIService) UpdateRecommendationsConfigV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

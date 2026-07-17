@@ -42,11 +42,11 @@ Other parameters are passed through a pointer to a apiStartActivateWorkflowV1Req
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jitactivationactivaterequest** | [**Jitactivationactivaterequest**](../models/jitactivationactivaterequest) |  | 
+ **jitActivationActivateRequest** | [**JitActivationActivateRequest**](../models/jit-activation-activate-request) |  | 
 
 ### Return type
 
-[**Jitactivationactivateresponse**](../models/jitactivationactivateresponse)
+[**JitActivationActivateResponse**](../models/jit-activation-activate-response)
 
 ### HTTP request headers
 
@@ -68,10 +68,13 @@ import (
 )
 
 func main() {
-    jitactivationactivaterequestJson := []byte(``) // Jitactivationactivaterequest | 
+    jitactivationactivaterequestJson := []byte(`{
+          "activationPeriodMins" : 120,
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }`) // JitActivationActivateRequest | 
 
-    var jitactivationactivaterequest jit_activations.Jitactivationactivaterequest
-    if err := json.Unmarshal(jitactivationactivaterequestJson, &jitactivationactivaterequest); err != nil {
+    var jitActivationActivateRequest jit_activations.JitActivationActivateRequest
+    if err := json.Unmarshal(jitactivationactivaterequestJson, &jitActivationActivateRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -79,13 +82,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).Jitactivationactivaterequest(jitactivationactivaterequest).Execute()
-	  //resp, r, err := apiClient.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).Jitactivationactivaterequest(jitactivationactivaterequest).Execute()
+    resp, r, err := apiClient.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).JitActivationActivateRequest(jitActivationActivateRequest).Execute()
+	  //resp, r, err := apiClient.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).JitActivationActivateRequest(jitActivationActivateRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartActivateWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartActivateWorkflowV1`: Jitactivationactivateresponse
+    // response from `StartActivateWorkflowV1`: JitActivationActivateResponse
     fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.StartActivateWorkflowV1`: %v\n", resp)
 }
 ```
@@ -115,11 +118,11 @@ Other parameters are passed through a pointer to a apiStartDeactivateWorkflowV1R
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jitactivationdeactivaterequest** | [**Jitactivationdeactivaterequest**](../models/jitactivationdeactivaterequest) |  | 
+ **jitActivationDeactivateRequest** | [**JitActivationDeactivateRequest**](../models/jit-activation-deactivate-request) |  | 
 
 ### Return type
 
-[**Jitactivationdeactivateresponse**](../models/jitactivationdeactivateresponse)
+[**JitActivationDeactivateResponse**](../models/jit-activation-deactivate-response)
 
 ### HTTP request headers
 
@@ -141,10 +144,12 @@ import (
 )
 
 func main() {
-    jitactivationdeactivaterequestJson := []byte(``) // Jitactivationdeactivaterequest | 
+    jitactivationdeactivaterequestJson := []byte(`{
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }`) // JitActivationDeactivateRequest | 
 
-    var jitactivationdeactivaterequest jit_activations.Jitactivationdeactivaterequest
-    if err := json.Unmarshal(jitactivationdeactivaterequestJson, &jitactivationdeactivaterequest); err != nil {
+    var jitActivationDeactivateRequest jit_activations.JitActivationDeactivateRequest
+    if err := json.Unmarshal(jitactivationdeactivaterequestJson, &jitActivationDeactivateRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -152,13 +157,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).Jitactivationdeactivaterequest(jitactivationdeactivaterequest).Execute()
-	  //resp, r, err := apiClient.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).Jitactivationdeactivaterequest(jitactivationdeactivaterequest).Execute()
+    resp, r, err := apiClient.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).JitActivationDeactivateRequest(jitActivationDeactivateRequest).Execute()
+	  //resp, r, err := apiClient.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).JitActivationDeactivateRequest(jitActivationDeactivateRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartDeactivateWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartDeactivateWorkflowV1`: Jitactivationdeactivateresponse
+    // response from `StartDeactivateWorkflowV1`: JitActivationDeactivateResponse
     fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.StartDeactivateWorkflowV1`: %v\n", resp)
 }
 ```
@@ -189,11 +194,11 @@ Other parameters are passed through a pointer to a apiStartExtendWorkflowV1Reque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jitactivationextendrequest** | [**Jitactivationextendrequest**](../models/jitactivationextendrequest) |  | 
+ **jitActivationExtendRequest** | [**JitActivationExtendRequest**](../models/jit-activation-extend-request) |  | 
 
 ### Return type
 
-[**Jitactivationextendresponse**](../models/jitactivationextendresponse)
+[**JitActivationExtendResponse**](../models/jit-activation-extend-response)
 
 ### HTTP request headers
 
@@ -215,10 +220,13 @@ import (
 )
 
 func main() {
-    jitactivationextendrequestJson := []byte(``) // Jitactivationextendrequest | 
+    jitactivationextendrequestJson := []byte(`{
+          "activationPeriodExtensionMins" : 120,
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }`) // JitActivationExtendRequest | 
 
-    var jitactivationextendrequest jit_activations.Jitactivationextendrequest
-    if err := json.Unmarshal(jitactivationextendrequestJson, &jitactivationextendrequest); err != nil {
+    var jitActivationExtendRequest jit_activations.JitActivationExtendRequest
+    if err := json.Unmarshal(jitactivationextendrequestJson, &jitActivationExtendRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -226,13 +234,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).Jitactivationextendrequest(jitactivationextendrequest).Execute()
-	  //resp, r, err := apiClient.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).Jitactivationextendrequest(jitactivationextendrequest).Execute()
+    resp, r, err := apiClient.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).JitActivationExtendRequest(jitActivationExtendRequest).Execute()
+	  //resp, r, err := apiClient.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).JitActivationExtendRequest(jitActivationExtendRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartExtendWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartExtendWorkflowV1`: Jitactivationextendresponse
+    // response from `StartExtendWorkflowV1`: JitActivationExtendResponse
     fmt.Fprintf(os.Stdout, "Response from `JITActivationsAPI.StartExtendWorkflowV1`: %v\n", resp)
 }
 ```

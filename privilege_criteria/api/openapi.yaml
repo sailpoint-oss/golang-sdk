@@ -69,14 +69,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/privilegecriteriadto'
+                  $ref: '#/components/schemas/PrivilegeCriteriaDTO'
                 type: array
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -100,7 +100,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -125,7 +125,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -143,7 +143,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createprivilegecriteriarequest'
+              $ref: '#/components/schemas/CreatePrivilegeCriteriaRequest'
         description: Create custom privilege criteria request body.
         required: true
       responses:
@@ -151,13 +151,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/privilegecriteriadto'
+                $ref: '#/components/schemas/PrivilegeCriteriaDTO'
           description: Custom privilege criteria created
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -181,7 +181,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -206,7 +206,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -239,7 +239,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -263,7 +263,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -288,7 +288,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -318,13 +318,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/privilegecriteriadto'
+                $ref: '#/components/schemas/PrivilegeCriteriaDTO'
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -348,7 +348,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -373,7 +373,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -403,7 +403,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/privilegecriteriadto'
+              $ref: '#/components/schemas/PrivilegeCriteriaDTO'
         description: The new version of the custom privilege criteria. This overwrites
           the existing privilege criteria.
         required: true
@@ -412,13 +412,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/privilegecriteriadto'
+                $ref: '#/components/schemas/PrivilegeCriteriaDTO'
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -442,7 +442,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -467,7 +467,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -484,7 +484,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -508,7 +508,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "429":
@@ -533,10 +533,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    privilegecriteriadto:
+    PrivilegeCriteriaDTO:
       example:
         sourceId: c42c45d8d7c04d2da64d215cd8c32f21
         privilegeLevel: HIGH
@@ -604,7 +604,7 @@ components:
           type: string
         groups:
           items:
-            $ref: '#/components/schemas/privilegecriteriadto_groups_inner'
+            $ref: '#/components/schemas/PrivilegeCriteriaDTO_groups_inner'
           type: array
         privilegeLevel:
           description: The privilege level assigned by this criteria.
@@ -615,7 +615,7 @@ components:
           example: HIGH
           type: string
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -627,7 +627,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -640,7 +640,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -648,7 +648,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -682,17 +682,51 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    createprivilegecriteriarequest:
+    CreatePrivilegeCriteriaRequest:
+      example:
+        sourceId: c42c45d8d7c04d2da64d215cd8c32f21
+        privilegeLevel: HIGH
+        groups:
+        - criteriaItems:
+          - ignoreCase: true
+            values:
+            - admin
+            - superuser
+            targetType: group
+            operator: displayName
+          - ignoreCase: true
+            values:
+            - admin
+            - superuser
+            targetType: group
+            operator: displayName
+          operator: AND
+        - criteriaItems:
+          - ignoreCase: true
+            values:
+            - admin
+            - superuser
+            targetType: group
+            operator: displayName
+          - ignoreCase: true
+            values:
+            - admin
+            - superuser
+            targetType: group
+            operator: displayName
+          operator: AND
+        type: CUSTOM
+        operator: AND
       properties:
         sourceId:
           description: The Id of the source that the criteria is applied to.
@@ -715,7 +749,7 @@ components:
           type: string
         groups:
           items:
-            $ref: '#/components/schemas/createprivilegecriteriarequest_groups_inner'
+            $ref: '#/components/schemas/CreatePrivilegeCriteriaRequest_groups_inner'
           type: array
         privilegeLevel:
           description: The privilege level assigned by this criteria.
@@ -742,7 +776,7 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    privilegecriteriadto_groups_inner_criteriaItems_inner:
+    PrivilegeCriteriaDTO_groups_inner_criteriaItems_inner:
       example:
         ignoreCase: true
         values:
@@ -795,7 +829,7 @@ components:
           example: true
           type: boolean
       type: object
-    privilegecriteriadto_groups_inner:
+    PrivilegeCriteriaDTO_groups_inner:
       example:
         criteriaItems:
         - ignoreCase: true
@@ -824,10 +858,17 @@ components:
           type: string
         criteriaItems:
           items:
-            $ref: '#/components/schemas/privilegecriteriadto_groups_inner_criteriaItems_inner'
+            $ref: '#/components/schemas/PrivilegeCriteriaDTO_groups_inner_criteriaItems_inner'
           type: array
       type: object
-    createprivilegecriteriarequest_groups_inner_criteriaItems_inner:
+    CreatePrivilegeCriteriaRequest_groups_inner_criteriaItems_inner:
+      example:
+        ignoreCase: true
+        values:
+        - admin
+        - superuser
+        targetType: group
+        operator: displayName
       properties:
         targetType:
           description: The target type of the criteria item.
@@ -860,7 +901,22 @@ components:
           example: true
           type: boolean
       type: object
-    createprivilegecriteriarequest_groups_inner:
+    CreatePrivilegeCriteriaRequest_groups_inner:
+      example:
+        criteriaItems:
+        - ignoreCase: true
+          values:
+          - admin
+          - superuser
+          targetType: group
+          operator: displayName
+        - ignoreCase: true
+          values:
+          - admin
+          - superuser
+          targetType: group
+          operator: displayName
+        operator: AND
       properties:
         operator:
           description: The logical operator to apply between criteria items in the
@@ -872,6 +928,6 @@ components:
           type: string
         criteriaItems:
           items:
-            $ref: '#/components/schemas/createprivilegecriteriarequest_groups_inner_criteriaItems_inner'
+            $ref: '#/components/schemas/CreatePrivilegeCriteriaRequest_groups_inner_criteriaItems_inner'
           type: array
       type: object

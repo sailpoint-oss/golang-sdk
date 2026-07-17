@@ -79,11 +79,11 @@ Other parameters are passed through a pointer to a apiCreateAccessProfileV1Reque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accessprofile** | [**Accessprofile**](../models/accessprofile) |  | 
+ **accessProfile** | [**AccessProfile**](../models/access-profile) |  | 
 
 ### Return type
 
-[**Accessprofile**](../models/accessprofile)
+[**AccessProfile**](../models/access-profile)
 
 ### HTTP request headers
 
@@ -105,10 +105,125 @@ import (
 )
 
 func main() {
-    accessprofileJson := []byte(``) // Accessprofile | 
+    accessprofileJson := []byte(`{
+          "owner" : {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "entitlements" : [ {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          }, {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          } ],
+          "created" : "2021-03-01T22:32:58.104Z",
+          "description" : "Collection of entitlements to read/write the employee database",
+          "source" : {
+            "name" : "ODS-AD-SOURCE",
+            "id" : "2c91809773dee3610173fdb0b6061ef4",
+            "type" : "SOURCE"
+          },
+          "enabled" : true,
+          "additionalOwners" : [ {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          } ],
+          "revocationRequestConfig" : {
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ]
+          },
+          "segments" : [ "f7b1b8a3-5fed-4fd4-ad29-82014e137e19", "29cb6c06-1da8-43ea-8be4-b3125f248f2a" ],
+          "accessRequestConfig" : {
+            "commentsRequired" : true,
+            "reauthorizationRequired" : true,
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "denialCommentsRequired" : true,
+            "requireEndDate" : true,
+            "maxPermittedAccessDuration" : {
+              "value" : 6,
+              "timeUnit" : "MONTHS"
+            }
+          },
+          "name" : "Employee-database-read-write",
+          "provisioningCriteria" : {
+            "children" : [ {
+              "children" : [ {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              }, {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              } ],
+              "attribute" : "email",
+              "operation" : "EQUALS",
+              "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+            }, {
+              "children" : [ {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              }, {
+                "children" : "children",
+                "attribute" : "email",
+                "operation" : "EQUALS",
+                "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+              } ],
+              "attribute" : "email",
+              "operation" : "EQUALS",
+              "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+            } ],
+            "attribute" : "email",
+            "operation" : "EQUALS",
+            "value" : "carlee.cert1c9f9b6fd@mailinator.com"
+          },
+          "modified" : "2021-03-02T20:22:28.104Z",
+          "accessModelMetadata" : {
+            "attributes" : [ {
+              "key" : "iscPrivacy",
+              "name" : "Privacy",
+              "multiselect" : false,
+              "status" : "active",
+              "type" : "governance",
+              "objectTypes" : [ "all" ],
+              "description" : "Specifies the level of privacy associated with an access item.",
+              "values" : [ {
+                "value" : "public",
+                "name" : "Public",
+                "status" : "active"
+              } ]
+            } ]
+          },
+          "id" : "2c91808a7190d06e01719938fcd20792",
+          "requestable" : true
+        }`) // AccessProfile | 
 
-    var accessprofile access_profiles.Accessprofile
-    if err := json.Unmarshal(accessprofileJson, &accessprofile); err != nil {
+    var accessProfile access_profiles.AccessProfile
+    if err := json.Unmarshal(accessprofileJson, &accessProfile); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -116,13 +231,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfilesAPI.CreateAccessProfileV1(context.Background()).Accessprofile(accessprofile).Execute()
-	  //resp, r, err := apiClient.AccessProfilesAPI.CreateAccessProfileV1(context.Background()).Accessprofile(accessprofile).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.CreateAccessProfileV1(context.Background()).AccessProfile(accessProfile).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.CreateAccessProfileV1(context.Background()).AccessProfile(accessProfile).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.CreateAccessProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAccessProfileV1`: Accessprofile
+    // response from `CreateAccessProfileV1`: AccessProfile
     fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.CreateAccessProfileV1`: %v\n", resp)
 }
 ```
@@ -219,11 +334,11 @@ Other parameters are passed through a pointer to a apiDeleteAccessProfilesInBulk
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accessprofilebulkdeleterequest** | [**Accessprofilebulkdeleterequest**](../models/accessprofilebulkdeleterequest) |  | 
+ **accessProfileBulkDeleteRequest** | [**AccessProfileBulkDeleteRequest**](../models/access-profile-bulk-delete-request) |  | 
 
 ### Return type
 
-[**Accessprofilebulkdeleteresponse**](../models/accessprofilebulkdeleteresponse)
+[**AccessProfileBulkDeleteResponse**](../models/access-profile-bulk-delete-response)
 
 ### HTTP request headers
 
@@ -245,10 +360,13 @@ import (
 )
 
 func main() {
-    accessprofilebulkdeleterequestJson := []byte(`{"bestEffortOnly":true,"accessProfileIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}`) // Accessprofilebulkdeleterequest | 
+    accessprofilebulkdeleterequestJson := []byte(`{
+          "accessProfileIds" : [ "2c9180847812e0b1017817051919ecca", "2c9180887812e0b201781e129f151816" ],
+          "bestEffortOnly" : true
+        }`) // AccessProfileBulkDeleteRequest | 
 
-    var accessprofilebulkdeleterequest access_profiles.Accessprofilebulkdeleterequest
-    if err := json.Unmarshal(accessprofilebulkdeleterequestJson, &accessprofilebulkdeleterequest); err != nil {
+    var accessProfileBulkDeleteRequest access_profiles.AccessProfileBulkDeleteRequest
+    if err := json.Unmarshal(accessprofilebulkdeleterequestJson, &accessProfileBulkDeleteRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -256,13 +374,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfilesAPI.DeleteAccessProfilesInBulkV1(context.Background()).Accessprofilebulkdeleterequest(accessprofilebulkdeleterequest).Execute()
-	  //resp, r, err := apiClient.AccessProfilesAPI.DeleteAccessProfilesInBulkV1(context.Background()).Accessprofilebulkdeleterequest(accessprofilebulkdeleterequest).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.DeleteAccessProfilesInBulkV1(context.Background()).AccessProfileBulkDeleteRequest(accessProfileBulkDeleteRequest).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.DeleteAccessProfilesInBulkV1(context.Background()).AccessProfileBulkDeleteRequest(accessProfileBulkDeleteRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.DeleteAccessProfilesInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAccessProfilesInBulkV1`: Accessprofilebulkdeleteresponse
+    // response from `DeleteAccessProfilesInBulkV1`: AccessProfileBulkDeleteResponse
     fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.DeleteAccessProfilesInBulkV1`: %v\n", resp)
 }
 ```
@@ -372,7 +490,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accessprofile**](../models/accessprofile)
+[**AccessProfile**](../models/access-profile)
 
 ### HTTP request headers
 
@@ -406,7 +524,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.GetAccessProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccessProfileV1`: Accessprofile
+    // response from `GetAccessProfileV1`: AccessProfile
     fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.GetAccessProfileV1`: %v\n", resp)
 }
 ```
@@ -442,7 +560,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessprofile**](../models/accessprofile)
+[**[]AccessProfile**](../models/access-profile)
 
 ### HTTP request headers
 
@@ -483,7 +601,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.ListAccessProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAccessProfilesV1`: []Accessprofile
+    // response from `ListAccessProfilesV1`: []AccessProfile
     fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.ListAccessProfilesV1`: %v\n", resp)
 }
 ```
@@ -543,11 +661,11 @@ Other parameters are passed through a pointer to a apiPatchAccessProfileV1Reques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
-[**Accessprofile**](../models/accessprofile)
+[**AccessProfile**](../models/access-profile)
 
 ### HTTP request headers
 
@@ -570,10 +688,10 @@ import (
 
 func main() {
     id := `2c91808a7813090a017814121919ecca` // string | ID of the Access Profile to patch # string | ID of the Access Profile to patch
-    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/entitlements","value":[{"id":"2c9180857725c14301772a93bb77242d","type":"ENTITLEMENT","name":"AD User Group"}]}]`) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/entitlements","value":[{"id":"2c9180857725c14301772a93bb77242d","type":"ENTITLEMENT","name":"AD User Group"}]}]`) // []JsonPatchOperation | 
 
-    var jsonpatchoperation []access_profiles.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []access_profiles.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -581,13 +699,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfilesAPI.PatchAccessProfileV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.AccessProfilesAPI.PatchAccessProfileV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.PatchAccessProfileV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.PatchAccessProfileV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.PatchAccessProfileV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchAccessProfileV1`: Accessprofile
+    // response from `PatchAccessProfileV1`: AccessProfile
     fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.PatchAccessProfileV1`: %v\n", resp)
 }
 ```
@@ -629,11 +747,11 @@ Other parameters are passed through a pointer to a apiUpdateAccessProfilesInBulk
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **accessprofilebulkupdaterequestInner** | [**[]AccessprofilebulkupdaterequestInner**](../models/accessprofilebulkupdaterequest-inner) |  | 
+ **accessProfileBulkUpdateRequestInner** | [**[]AccessProfileBulkUpdateRequestInner**](../models/access-profile-bulk-update-request-inner) |  | 
 
 ### Return type
 
-[**[]Accessprofileupdateitem**](../models/accessprofileupdateitem)
+[**[]AccessProfileUpdateItem**](../models/access-profile-update-item)
 
 ### HTTP request headers
 
@@ -656,10 +774,10 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accessprofilebulkupdaterequestinnerJson := []byte(`[{"id":"464ae7bf-791e-49fd-b746-06a2e4a89635","requestable":false}]`) // []AccessprofilebulkupdaterequestInner | 
+    accessprofilebulkupdaterequestinnerJson := []byte(`[{"id":"464ae7bf-791e-49fd-b746-06a2e4a89635","requestable":false}]`) // []AccessProfileBulkUpdateRequestInner | 
 
-    var accessprofilebulkupdaterequestInner []access_profiles.AccessprofilebulkupdaterequestInner
-    if err := json.Unmarshal(accessprofilebulkupdaterequestinnerJson, &accessprofilebulkupdaterequestInner); err != nil {
+    var accessProfileBulkUpdateRequestInner []access_profiles.AccessProfileBulkUpdateRequestInner
+    if err := json.Unmarshal(accessprofilebulkupdaterequestinnerJson, &accessProfileBulkUpdateRequestInner); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -667,13 +785,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessprofilebulkupdaterequestInner(accessprofilebulkupdaterequestInner).Execute()
-	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessprofilebulkupdaterequestInner(accessprofilebulkupdaterequestInner).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessProfileBulkUpdateRequestInner(accessProfileBulkUpdateRequestInner).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessProfileBulkUpdateRequestInner(accessProfileBulkUpdateRequestInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAccessProfilesInBulkV1`: []Accessprofileupdateitem
+    // response from `UpdateAccessProfilesInBulkV1`: []AccessProfileUpdateItem
     fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesInBulkV1`: %v\n", resp)
 }
 ```

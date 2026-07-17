@@ -34,8 +34,8 @@ type DataSegment struct {
 	Scopes []Scope `json:"scopes,omitempty"`
 	// List of Identities that are assigned to the segment
 	MemberSelection []Ref `json:"memberSelection,omitempty"`
-	MemberFilter *Visibilitycriteria `json:"memberFilter,omitempty"`
-	Membership *Membershiptype `json:"membership,omitempty"`
+	MemberFilter *VisibilityCriteria `json:"memberFilter,omitempty"`
+	Membership *MembershipType `json:"membership,omitempty"`
 	// This boolean indicates whether the segment is currently active. Inactive segments have no effect.
 	Enabled *bool `json:"enabled,omitempty"`
 	// This boolean indicates whether the segment is being applied to the accounts. If unpublished its being actively modified to until published
@@ -295,9 +295,9 @@ func (o *DataSegment) SetMemberSelection(v []Ref) {
 }
 
 // GetMemberFilter returns the MemberFilter field value if set, zero value otherwise.
-func (o *DataSegment) GetMemberFilter() Visibilitycriteria {
+func (o *DataSegment) GetMemberFilter() VisibilityCriteria {
 	if o == nil || IsNil(o.MemberFilter) {
-		var ret Visibilitycriteria
+		var ret VisibilityCriteria
 		return ret
 	}
 	return *o.MemberFilter
@@ -305,7 +305,7 @@ func (o *DataSegment) GetMemberFilter() Visibilitycriteria {
 
 // GetMemberFilterOk returns a tuple with the MemberFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataSegment) GetMemberFilterOk() (*Visibilitycriteria, bool) {
+func (o *DataSegment) GetMemberFilterOk() (*VisibilityCriteria, bool) {
 	if o == nil || IsNil(o.MemberFilter) {
 		return nil, false
 	}
@@ -321,15 +321,15 @@ func (o *DataSegment) HasMemberFilter() bool {
 	return false
 }
 
-// SetMemberFilter gets a reference to the given Visibilitycriteria and assigns it to the MemberFilter field.
-func (o *DataSegment) SetMemberFilter(v Visibilitycriteria) {
+// SetMemberFilter gets a reference to the given VisibilityCriteria and assigns it to the MemberFilter field.
+func (o *DataSegment) SetMemberFilter(v VisibilityCriteria) {
 	o.MemberFilter = &v
 }
 
 // GetMembership returns the Membership field value if set, zero value otherwise.
-func (o *DataSegment) GetMembership() Membershiptype {
+func (o *DataSegment) GetMembership() MembershipType {
 	if o == nil || IsNil(o.Membership) {
-		var ret Membershiptype
+		var ret MembershipType
 		return ret
 	}
 	return *o.Membership
@@ -337,7 +337,7 @@ func (o *DataSegment) GetMembership() Membershiptype {
 
 // GetMembershipOk returns a tuple with the Membership field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataSegment) GetMembershipOk() (*Membershiptype, bool) {
+func (o *DataSegment) GetMembershipOk() (*MembershipType, bool) {
 	if o == nil || IsNil(o.Membership) {
 		return nil, false
 	}
@@ -353,8 +353,8 @@ func (o *DataSegment) HasMembership() bool {
 	return false
 }
 
-// SetMembership gets a reference to the given Membershiptype and assigns it to the Membership field.
-func (o *DataSegment) SetMembership(v Membershiptype) {
+// SetMembership gets a reference to the given MembershipType and assigns it to the Membership field.
+func (o *DataSegment) SetMembership(v MembershipType) {
 	o.Membership = &v
 }
 

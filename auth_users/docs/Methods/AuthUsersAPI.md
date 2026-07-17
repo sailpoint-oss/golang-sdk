@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Authuser**](../models/authuser)
+[**AuthUser**](../models/auth-user)
 
 ### HTTP request headers
 
@@ -83,7 +83,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AuthUsersAPI.GetAuthUserV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAuthUserV1`: Authuser
+    // response from `GetAuthUserV1`: AuthUser
     fmt.Fprintf(os.Stdout, "Response from `AuthUsersAPI.GetAuthUserV1`: %v\n", resp)
 }
 ```
@@ -116,11 +116,11 @@ Other parameters are passed through a pointer to a apiPatchAuthUserV1Request str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
 
 ### Return type
 
-[**Authuser**](../models/authuser)
+[**AuthUser**](../models/auth-user)
 
 ### HTTP request headers
 
@@ -143,10 +143,10 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Identity ID # string | Identity ID
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/capabilities","value":["ORG_ADMIN"]}]`) // []Jsonpatchoperation | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/capabilities","value":["ORG_ADMIN"]}]`) // []JsonPatchOperation | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var jsonpatchoperation []auth_users.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []auth_users.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -154,13 +154,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthUsersAPI.PatchAuthUserV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.AuthUsersAPI.PatchAuthUserV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.AuthUsersAPI.PatchAuthUserV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.AuthUsersAPI.PatchAuthUserV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AuthUsersAPI.PatchAuthUserV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchAuthUserV1`: Authuser
+    // response from `PatchAuthUserV1`: AuthUser
     fmt.Fprintf(os.Stdout, "Response from `AuthUsersAPI.PatchAuthUserV1`: %v\n", resp)
 }
 ```

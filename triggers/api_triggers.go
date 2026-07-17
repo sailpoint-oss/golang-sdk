@@ -27,11 +27,11 @@ type ApiCompleteTriggerInvocationV1Request struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
 	id string
-	completeinvocation *Completeinvocation
+	completeInvocation *CompleteInvocation
 }
 
-func (r ApiCompleteTriggerInvocationV1Request) Completeinvocation(completeinvocation Completeinvocation) ApiCompleteTriggerInvocationV1Request {
-	r.completeinvocation = &completeinvocation
+func (r ApiCompleteTriggerInvocationV1Request) CompleteInvocation(completeInvocation CompleteInvocation) ApiCompleteTriggerInvocationV1Request {
+	r.completeInvocation = &completeInvocation
 	return r
 }
 
@@ -75,8 +75,8 @@ func (a *TriggersAPIService) CompleteTriggerInvocationV1Execute(r ApiCompleteTri
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.completeinvocation == nil {
-		return nil, reportError("completeinvocation is required and must be specified")
+	if r.completeInvocation == nil {
+		return nil, reportError("completeInvocation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -97,7 +97,7 @@ func (a *TriggersAPIService) CompleteTriggerInvocationV1Execute(r ApiCompleteTri
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.completeinvocation
+	localVarPostBody = r.completeInvocation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -121,7 +121,7 @@ func (a *TriggersAPIService) CompleteTriggerInvocationV1Execute(r ApiCompleteTri
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -143,7 +143,7 @@ func (a *TriggersAPIService) CompleteTriggerInvocationV1Execute(r ApiCompleteTri
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -165,7 +165,7 @@ func (a *TriggersAPIService) CompleteTriggerInvocationV1Execute(r ApiCompleteTri
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -183,11 +183,11 @@ func (a *TriggersAPIService) CompleteTriggerInvocationV1Execute(r ApiCompleteTri
 type ApiCreateSubscriptionV1Request struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
-	subscriptionpostrequest *Subscriptionpostrequest
+	subscriptionPostRequest *SubscriptionPostRequest
 }
 
-func (r ApiCreateSubscriptionV1Request) Subscriptionpostrequest(subscriptionpostrequest Subscriptionpostrequest) ApiCreateSubscriptionV1Request {
-	r.subscriptionpostrequest = &subscriptionpostrequest
+func (r ApiCreateSubscriptionV1Request) SubscriptionPostRequest(subscriptionPostRequest SubscriptionPostRequest) ApiCreateSubscriptionV1Request {
+	r.subscriptionPostRequest = &subscriptionPostRequest
 	return r
 }
 
@@ -232,8 +232,8 @@ func (a *TriggersAPIService) CreateSubscriptionV1Execute(r ApiCreateSubscription
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.subscriptionpostrequest == nil {
-		return localVarReturnValue, nil, reportError("subscriptionpostrequest is required and must be specified")
+	if r.subscriptionPostRequest == nil {
+		return localVarReturnValue, nil, reportError("subscriptionPostRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -254,7 +254,7 @@ func (a *TriggersAPIService) CreateSubscriptionV1Execute(r ApiCreateSubscription
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.subscriptionpostrequest
+	localVarPostBody = r.subscriptionPostRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -278,7 +278,7 @@ func (a *TriggersAPIService) CreateSubscriptionV1Execute(r ApiCreateSubscription
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -300,7 +300,7 @@ func (a *TriggersAPIService) CreateSubscriptionV1Execute(r ApiCreateSubscription
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -322,7 +322,7 @@ func (a *TriggersAPIService) CreateSubscriptionV1Execute(r ApiCreateSubscription
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -433,7 +433,7 @@ func (a *TriggersAPIService) DeleteSubscriptionV1Execute(r ApiDeleteSubscription
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -455,7 +455,7 @@ func (a *TriggersAPIService) DeleteSubscriptionV1Execute(r ApiDeleteSubscription
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -466,7 +466,7 @@ func (a *TriggersAPIService) DeleteSubscriptionV1Execute(r ApiDeleteSubscription
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -488,7 +488,7 @@ func (a *TriggersAPIService) DeleteSubscriptionV1Execute(r ApiDeleteSubscription
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -647,7 +647,7 @@ func (a *TriggersAPIService) ListSubscriptionsV1Execute(r ApiListSubscriptionsV1
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -669,7 +669,7 @@ func (a *TriggersAPIService) ListSubscriptionsV1Execute(r ApiListSubscriptionsV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -691,7 +691,7 @@ func (a *TriggersAPIService) ListSubscriptionsV1Execute(r ApiListSubscriptionsV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -755,7 +755,7 @@ func (r ApiListTriggerInvocationStatusV1Request) Sorters(sorters string) ApiList
 	return r
 }
 
-func (r ApiListTriggerInvocationStatusV1Request) Execute() ([]Invocationstatus, *http.Response, error) {
+func (r ApiListTriggerInvocationStatusV1Request) Execute() ([]InvocationStatus, *http.Response, error) {
 	return r.ApiService.ListTriggerInvocationStatusV1Execute(r)
 }
 
@@ -777,13 +777,13 @@ func (a *TriggersAPIService) ListTriggerInvocationStatusV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return []Invocationstatus
-func (a *TriggersAPIService) ListTriggerInvocationStatusV1Execute(r ApiListTriggerInvocationStatusV1Request) ([]Invocationstatus, *http.Response, error) {
+//  @return []InvocationStatus
+func (a *TriggersAPIService) ListTriggerInvocationStatusV1Execute(r ApiListTriggerInvocationStatusV1Request) ([]InvocationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Invocationstatus
+		localVarReturnValue  []InvocationStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.ListTriggerInvocationStatusV1")
@@ -861,7 +861,7 @@ func (a *TriggersAPIService) ListTriggerInvocationStatusV1Execute(r ApiListTrigg
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -883,7 +883,7 @@ func (a *TriggersAPIService) ListTriggerInvocationStatusV1Execute(r ApiListTrigg
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -905,7 +905,7 @@ func (a *TriggersAPIService) ListTriggerInvocationStatusV1Execute(r ApiListTrigg
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1073,7 +1073,7 @@ func (a *TriggersAPIService) ListTriggersV1Execute(r ApiListTriggersV1Request) (
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1095,7 +1095,7 @@ func (a *TriggersAPIService) ListTriggersV1Execute(r ApiListTriggersV1Request) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1117,7 +1117,7 @@ func (a *TriggersAPIService) ListTriggersV1Execute(r ApiListTriggersV1Request) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1145,11 +1145,11 @@ type ApiPatchSubscriptionV1Request struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
 	id string
-	subscriptionpatchrequestInner *[]SubscriptionpatchrequestInner
+	subscriptionPatchRequestInner *[]SubscriptionPatchRequestInner
 }
 
-func (r ApiPatchSubscriptionV1Request) SubscriptionpatchrequestInner(subscriptionpatchrequestInner []SubscriptionpatchrequestInner) ApiPatchSubscriptionV1Request {
-	r.subscriptionpatchrequestInner = &subscriptionpatchrequestInner
+func (r ApiPatchSubscriptionV1Request) SubscriptionPatchRequestInner(subscriptionPatchRequestInner []SubscriptionPatchRequestInner) ApiPatchSubscriptionV1Request {
+	r.subscriptionPatchRequestInner = &subscriptionPatchRequestInner
 	return r
 }
 
@@ -1197,8 +1197,8 @@ func (a *TriggersAPIService) PatchSubscriptionV1Execute(r ApiPatchSubscriptionV1
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.subscriptionpatchrequestInner == nil {
-		return localVarReturnValue, nil, reportError("subscriptionpatchrequestInner is required and must be specified")
+	if r.subscriptionPatchRequestInner == nil {
+		return localVarReturnValue, nil, reportError("subscriptionPatchRequestInner is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1219,7 +1219,7 @@ func (a *TriggersAPIService) PatchSubscriptionV1Execute(r ApiPatchSubscriptionV1
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.subscriptionpatchrequestInner
+	localVarPostBody = r.subscriptionPatchRequestInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1243,7 +1243,7 @@ func (a *TriggersAPIService) PatchSubscriptionV1Execute(r ApiPatchSubscriptionV1
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1265,7 +1265,7 @@ func (a *TriggersAPIService) PatchSubscriptionV1Execute(r ApiPatchSubscriptionV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1276,7 +1276,7 @@ func (a *TriggersAPIService) PatchSubscriptionV1Execute(r ApiPatchSubscriptionV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1298,7 +1298,7 @@ func (a *TriggersAPIService) PatchSubscriptionV1Execute(r ApiPatchSubscriptionV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1325,11 +1325,11 @@ func (a *TriggersAPIService) PatchSubscriptionV1Execute(r ApiPatchSubscriptionV1
 type ApiStartTestTriggerInvocationV1Request struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
-	testinvocation *Testinvocation
+	testInvocation *TestInvocation
 }
 
-func (r ApiStartTestTriggerInvocationV1Request) Testinvocation(testinvocation Testinvocation) ApiStartTestTriggerInvocationV1Request {
-	r.testinvocation = &testinvocation
+func (r ApiStartTestTriggerInvocationV1Request) TestInvocation(testInvocation TestInvocation) ApiStartTestTriggerInvocationV1Request {
+	r.testInvocation = &testInvocation
 	return r
 }
 
@@ -1372,8 +1372,8 @@ func (a *TriggersAPIService) StartTestTriggerInvocationV1Execute(r ApiStartTestT
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.testinvocation == nil {
-		return localVarReturnValue, nil, reportError("testinvocation is required and must be specified")
+	if r.testInvocation == nil {
+		return localVarReturnValue, nil, reportError("testInvocation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1394,7 +1394,7 @@ func (a *TriggersAPIService) StartTestTriggerInvocationV1Execute(r ApiStartTestT
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.testinvocation
+	localVarPostBody = r.testInvocation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1418,7 +1418,7 @@ func (a *TriggersAPIService) StartTestTriggerInvocationV1Execute(r ApiStartTestT
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1440,7 +1440,7 @@ func (a *TriggersAPIService) StartTestTriggerInvocationV1Execute(r ApiStartTestT
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1462,7 +1462,7 @@ func (a *TriggersAPIService) StartTestTriggerInvocationV1Execute(r ApiStartTestT
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1489,15 +1489,15 @@ func (a *TriggersAPIService) StartTestTriggerInvocationV1Execute(r ApiStartTestT
 type ApiTestSubscriptionFilterV1Request struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
-	validatefilterinputdto *Validatefilterinputdto
+	validateFilterInputDto *ValidateFilterInputDto
 }
 
-func (r ApiTestSubscriptionFilterV1Request) Validatefilterinputdto(validatefilterinputdto Validatefilterinputdto) ApiTestSubscriptionFilterV1Request {
-	r.validatefilterinputdto = &validatefilterinputdto
+func (r ApiTestSubscriptionFilterV1Request) ValidateFilterInputDto(validateFilterInputDto ValidateFilterInputDto) ApiTestSubscriptionFilterV1Request {
+	r.validateFilterInputDto = &validateFilterInputDto
 	return r
 }
 
-func (r ApiTestSubscriptionFilterV1Request) Execute() (*Validatefilteroutputdto, *http.Response, error) {
+func (r ApiTestSubscriptionFilterV1Request) Execute() (*ValidateFilterOutputDto, *http.Response, error) {
 	return r.ApiService.TestSubscriptionFilterV1Execute(r)
 }
 
@@ -1518,13 +1518,13 @@ func (a *TriggersAPIService) TestSubscriptionFilterV1(ctx context.Context) ApiTe
 }
 
 // Execute executes the request
-//  @return Validatefilteroutputdto
-func (a *TriggersAPIService) TestSubscriptionFilterV1Execute(r ApiTestSubscriptionFilterV1Request) (*Validatefilteroutputdto, *http.Response, error) {
+//  @return ValidateFilterOutputDto
+func (a *TriggersAPIService) TestSubscriptionFilterV1Execute(r ApiTestSubscriptionFilterV1Request) (*ValidateFilterOutputDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Validatefilteroutputdto
+		localVarReturnValue  *ValidateFilterOutputDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.TestSubscriptionFilterV1")
@@ -1537,8 +1537,8 @@ func (a *TriggersAPIService) TestSubscriptionFilterV1Execute(r ApiTestSubscripti
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.validatefilterinputdto == nil {
-		return localVarReturnValue, nil, reportError("validatefilterinputdto is required and must be specified")
+	if r.validateFilterInputDto == nil {
+		return localVarReturnValue, nil, reportError("validateFilterInputDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1559,7 +1559,7 @@ func (a *TriggersAPIService) TestSubscriptionFilterV1Execute(r ApiTestSubscripti
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.validatefilterinputdto
+	localVarPostBody = r.validateFilterInputDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1583,7 +1583,7 @@ func (a *TriggersAPIService) TestSubscriptionFilterV1Execute(r ApiTestSubscripti
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1605,7 +1605,7 @@ func (a *TriggersAPIService) TestSubscriptionFilterV1Execute(r ApiTestSubscripti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1627,7 +1627,7 @@ func (a *TriggersAPIService) TestSubscriptionFilterV1Execute(r ApiTestSubscripti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1655,11 +1655,11 @@ type ApiUpdateSubscriptionV1Request struct {
 	ctx context.Context
 	ApiService *TriggersAPIService
 	id string
-	subscriptionputrequest *Subscriptionputrequest
+	subscriptionPutRequest *SubscriptionPutRequest
 }
 
-func (r ApiUpdateSubscriptionV1Request) Subscriptionputrequest(subscriptionputrequest Subscriptionputrequest) ApiUpdateSubscriptionV1Request {
-	r.subscriptionputrequest = &subscriptionputrequest
+func (r ApiUpdateSubscriptionV1Request) SubscriptionPutRequest(subscriptionPutRequest SubscriptionPutRequest) ApiUpdateSubscriptionV1Request {
+	r.subscriptionPutRequest = &subscriptionPutRequest
 	return r
 }
 
@@ -1714,8 +1714,8 @@ func (a *TriggersAPIService) UpdateSubscriptionV1Execute(r ApiUpdateSubscription
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.subscriptionputrequest == nil {
-		return localVarReturnValue, nil, reportError("subscriptionputrequest is required and must be specified")
+	if r.subscriptionPutRequest == nil {
+		return localVarReturnValue, nil, reportError("subscriptionPutRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1736,7 +1736,7 @@ func (a *TriggersAPIService) UpdateSubscriptionV1Execute(r ApiUpdateSubscription
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.subscriptionputrequest
+	localVarPostBody = r.subscriptionPutRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1760,7 +1760,7 @@ func (a *TriggersAPIService) UpdateSubscriptionV1Execute(r ApiUpdateSubscription
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1782,7 +1782,7 @@ func (a *TriggersAPIService) UpdateSubscriptionV1Execute(r ApiUpdateSubscription
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1793,7 +1793,7 @@ func (a *TriggersAPIService) UpdateSubscriptionV1Execute(r ApiUpdateSubscription
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1815,7 +1815,7 @@ func (a *TriggersAPIService) UpdateSubscriptionV1Execute(r ApiUpdateSubscription
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

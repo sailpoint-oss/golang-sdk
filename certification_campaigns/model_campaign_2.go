@@ -48,7 +48,7 @@ type Campaign2 struct {
 	// The number of completed certifications in this campaign.
 	CompletedCertifications NullableInt32 `json:"completedCertifications,omitempty"`
 	// A list of errors and warnings that have accumulated.
-	Alerts []Campaignalert `json:"alerts,omitempty"`
+	Alerts []CampaignAlert `json:"alerts,omitempty"`
 	// Modified time of the campaign
 	Modified NullableTime `json:"modified,omitempty"`
 	Filter NullableCampaign2AllOfFilter `json:"filter,omitempty"`
@@ -558,9 +558,9 @@ func (o *Campaign2) UnsetCompletedCertifications() {
 }
 
 // GetAlerts returns the Alerts field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Campaign2) GetAlerts() []Campaignalert {
+func (o *Campaign2) GetAlerts() []CampaignAlert {
 	if o == nil {
-		var ret []Campaignalert
+		var ret []CampaignAlert
 		return ret
 	}
 	return o.Alerts
@@ -569,7 +569,7 @@ func (o *Campaign2) GetAlerts() []Campaignalert {
 // GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Campaign2) GetAlertsOk() ([]Campaignalert, bool) {
+func (o *Campaign2) GetAlertsOk() ([]CampaignAlert, bool) {
 	if o == nil || IsNil(o.Alerts) {
 		return nil, false
 	}
@@ -585,8 +585,8 @@ func (o *Campaign2) HasAlerts() bool {
 	return false
 }
 
-// SetAlerts gets a reference to the given []Campaignalert and assigns it to the Alerts field.
-func (o *Campaign2) SetAlerts(v []Campaignalert) {
+// SetAlerts gets a reference to the given []CampaignAlert and assigns it to the Alerts field.
+func (o *Campaign2) SetAlerts(v []CampaignAlert) {
 	o.Alerts = v
 }
 

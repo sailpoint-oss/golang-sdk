@@ -84,12 +84,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accountusage](docs/Accountusage.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [AccountUsage](docs/AccountUsage.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetUsagesByAccountIdV1401Response](docs/GetUsagesByAccountIdV1401Response.md)
  - [GetUsagesByAccountIdV1429Response](docs/GetUsagesByAccountIdV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

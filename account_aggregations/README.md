@@ -84,12 +84,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accountaggregationstatus](docs/Accountaggregationstatus.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [AccountAggregationStatus](docs/AccountAggregationStatus.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetAccountAggregationStatusV1400Response](docs/GetAccountAggregationStatusV1400Response.md)
  - [GetAccountAggregationStatusV1429Response](docs/GetAccountAggregationStatusV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

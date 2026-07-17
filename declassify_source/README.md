@@ -84,9 +84,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [SendDeclassifyMachineAccountFromSourceV1401Response](docs/SendDeclassifyMachineAccountFromSourceV1401Response.md)
  - [SendDeclassifyMachineAccountFromSourceV1429Response](docs/SendDeclassifyMachineAccountFromSourceV1429Response.md)
 

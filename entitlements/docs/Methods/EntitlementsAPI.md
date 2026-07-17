@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Entitlementrequestconfig**](../models/entitlementrequestconfig)
+[**EntitlementRequestConfig**](../models/entitlement-request-config)
 
 ### HTTP request headers
 
@@ -232,7 +232,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.GetEntitlementRequestConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEntitlementRequestConfigV1`: Entitlementrequestconfig
+    // response from `GetEntitlementRequestConfigV1`: EntitlementRequestConfig
     fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.GetEntitlementRequestConfigV1`: %v\n", resp)
 }
 ```
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Entitlementv2**](../models/entitlementv2)
+[**EntitlementV2**](../models/entitlement-v2)
 
 ### HTTP request headers
 
@@ -298,7 +298,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.GetEntitlementV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEntitlementV1`: Entitlementv2
+    // response from `GetEntitlementV1`: EntitlementV2
     fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.GetEntitlementV1`: %v\n", resp)
 }
 ```
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Loadentitlementtask**](../models/loadentitlementtask)
+[**LoadEntitlementTask**](../models/load-entitlement-task)
 
 ### HTTP request headers
 
@@ -373,7 +373,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ImportEntitlementsBySourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ImportEntitlementsBySourceV1`: Loadentitlementtask
+    // response from `ImportEntitlementsBySourceV1`: LoadEntitlementTask
     fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ImportEntitlementsBySourceV1`: %v\n", resp)
 }
 ```
@@ -411,7 +411,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Entitlementv2**](../models/entitlementv2)
+[**[]EntitlementV2**](../models/entitlement-v2)
 
 ### HTTP request headers
 
@@ -451,7 +451,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementChildrenV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListEntitlementChildrenV1`: []Entitlementv2
+    // response from `ListEntitlementChildrenV1`: []EntitlementV2
     fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ListEntitlementChildrenV1`: %v\n", resp)
 }
 ```
@@ -489,7 +489,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Entitlementv2**](../models/entitlementv2)
+[**[]EntitlementV2**](../models/entitlement-v2)
 
 ### HTTP request headers
 
@@ -529,7 +529,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementParentsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListEntitlementParentsV1`: []Entitlementv2
+    // response from `ListEntitlementParentsV1`: []EntitlementV2
     fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ListEntitlementParentsV1`: %v\n", resp)
 }
 ```
@@ -566,7 +566,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Entitlementv2**](../models/entitlementv2)
+[**[]EntitlementV2**](../models/entitlement-v2)
 
 ### HTTP request headers
 
@@ -605,7 +605,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementsByAccountV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListEntitlementsByAccountV1`: []Entitlementv2
+    // response from `ListEntitlementsByAccountV1`: []EntitlementV2
     fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ListEntitlementsByAccountV1`: %v\n", resp)
 }
 ```
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Entitlementv2**](../models/entitlementv2)
+[**[]EntitlementV2**](../models/entitlement-v2)
 
 ### HTTP request headers
 
@@ -683,7 +683,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ListEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListEntitlementsV1`: []Entitlementv2
+    // response from `ListEntitlementsV1`: []EntitlementV2
     fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ListEntitlementsV1`: %v\n", resp)
 }
 ```
@@ -716,11 +716,11 @@ Other parameters are passed through a pointer to a apiPatchEntitlementV1Request 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
-[**Entitlementv2**](../models/entitlementv2)
+[**EntitlementV2**](../models/entitlement-v2)
 
 ### HTTP request headers
 
@@ -743,19 +743,19 @@ import (
 
 func main() {
     id := `2c91808a7813090a017814121e121518` // string | ID of the entitlement to patch # string | ID of the entitlement to patch
-    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/segments/-","value":"f7b1b8a3-5fed-4fd4-ad29-82014e137e19"}]`) // []Jsonpatchoperation |  (optional)
+    jsonpatchoperationJson := []byte(`[{"op":"add","path":"/segments/-","value":"f7b1b8a3-5fed-4fd4-ad29-82014e137e19"}]`) // []JsonPatchOperation |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.EntitlementsAPI.PatchEntitlementV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.EntitlementsAPI.PatchEntitlementV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.PatchEntitlementV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.PatchEntitlementV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchEntitlementV1`: Entitlementv2
+    // response from `PatchEntitlementV1`: EntitlementV2
     fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.PatchEntitlementV1`: %v\n", resp)
 }
 ```
@@ -784,11 +784,11 @@ Other parameters are passed through a pointer to a apiPutEntitlementRequestConfi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **entitlementrequestconfig** | [**Entitlementrequestconfig**](../models/entitlementrequestconfig) |  | 
+ **entitlementRequestConfig** | [**EntitlementRequestConfig**](../models/entitlement-request-config) |  | 
 
 ### Return type
 
-[**Entitlementrequestconfig**](../models/entitlementrequestconfig)
+[**EntitlementRequestConfig**](../models/entitlement-request-config)
 
 ### HTTP request headers
 
@@ -811,10 +811,37 @@ import (
 
 func main() {
     id := `2c91808a7813090a017814121e121518` // string | Entitlement ID # string | Entitlement ID
-    entitlementrequestconfigJson := []byte(``) // Entitlementrequestconfig | 
+    entitlementrequestconfigJson := []byte(`{
+          "accessRequestConfig" : {
+            "denialCommentRequired" : false,
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "reauthorizationRequired" : false,
+            "requestCommentRequired" : true,
+            "requireEndDate" : true,
+            "maxPermittedAccessDuration" : {
+              "value" : 5,
+              "timeUnit" : "DAYS"
+            }
+          },
+          "revocationRequestConfig" : {
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ]
+          }
+        }`) // EntitlementRequestConfig | 
 
-    var entitlementrequestconfig entitlements.Entitlementrequestconfig
-    if err := json.Unmarshal(entitlementrequestconfigJson, &entitlementrequestconfig); err != nil {
+    var entitlementRequestConfig entitlements.EntitlementRequestConfig
+    if err := json.Unmarshal(entitlementrequestconfigJson, &entitlementRequestConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -822,13 +849,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementsAPI.PutEntitlementRequestConfigV1(context.Background(), id).Entitlementrequestconfig(entitlementrequestconfig).Execute()
-	  //resp, r, err := apiClient.EntitlementsAPI.PutEntitlementRequestConfigV1(context.Background(), id).Entitlementrequestconfig(entitlementrequestconfig).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.PutEntitlementRequestConfigV1(context.Background(), id).EntitlementRequestConfig(entitlementRequestConfig).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.PutEntitlementRequestConfigV1(context.Background(), id).EntitlementRequestConfig(entitlementRequestConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.PutEntitlementRequestConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutEntitlementRequestConfigV1`: Entitlementrequestconfig
+    // response from `PutEntitlementRequestConfigV1`: EntitlementRequestConfig
     fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.PutEntitlementRequestConfigV1`: %v\n", resp)
 }
 ```
@@ -861,7 +888,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Entitlementsourceresetbasereferencedto**](../models/entitlementsourceresetbasereferencedto)
+[**EntitlementSourceResetBaseReferenceDto**](../models/entitlement-source-reset-base-reference-dto)
 
 ### HTTP request headers
 
@@ -895,7 +922,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ResetSourceEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ResetSourceEntitlementsV1`: Entitlementsourceresetbasereferencedto
+    // response from `ResetSourceEntitlementsV1`: EntitlementSourceResetBaseReferenceDto
     fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ResetSourceEntitlementsV1`: %v\n", resp)
 }
 ```
@@ -931,7 +958,7 @@ Other parameters are passed through a pointer to a apiUpdateEntitlementsInBulkV1
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entitlementbulkupdaterequest** | [**Entitlementbulkupdaterequest**](../models/entitlementbulkupdaterequest) |  | 
+ **entitlementBulkUpdateRequest** | [**EntitlementBulkUpdateRequest**](../models/entitlement-bulk-update-request) |  | 
 
 ### Return type
 
@@ -957,10 +984,21 @@ import (
 )
 
 func main() {
-    entitlementbulkupdaterequestJson := []byte(``) // Entitlementbulkupdaterequest | 
+    entitlementbulkupdaterequestJson := []byte(`{
+          "entitlementIds" : [ "2c91808a7624751a01762f19d665220d", "2c91808a7624751a01762f19d67c220e", "2c91808a7624751a01762f19d692220f" ],
+          "jsonPatch" : [ {
+            "op" : "replace",
+            "path" : "/requestable",
+            "value" : false
+          }, {
+            "op" : "replace",
+            "path" : "/privilegeOverride/level",
+            "value" : "HIGH"
+          } ]
+        }`) // EntitlementBulkUpdateRequest | 
 
-    var entitlementbulkupdaterequest entitlements.Entitlementbulkupdaterequest
-    if err := json.Unmarshal(entitlementbulkupdaterequestJson, &entitlementbulkupdaterequest); err != nil {
+    var entitlementBulkUpdateRequest entitlements.EntitlementBulkUpdateRequest
+    if err := json.Unmarshal(entitlementbulkupdaterequestJson, &entitlementBulkUpdateRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -968,8 +1006,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.EntitlementsAPI.UpdateEntitlementsInBulkV1(context.Background()).Entitlementbulkupdaterequest(entitlementbulkupdaterequest).Execute()
-	  //r, err := apiClient.EntitlementsAPI.UpdateEntitlementsInBulkV1(context.Background()).Entitlementbulkupdaterequest(entitlementbulkupdaterequest).Execute()
+    r, err := apiClient.EntitlementsAPI.UpdateEntitlementsInBulkV1(context.Background()).EntitlementBulkUpdateRequest(entitlementBulkUpdateRequest).Execute()
+	  //r, err := apiClient.EntitlementsAPI.UpdateEntitlementsInBulkV1(context.Background()).EntitlementBulkUpdateRequest(entitlementBulkUpdateRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.UpdateEntitlementsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

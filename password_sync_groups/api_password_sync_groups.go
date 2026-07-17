@@ -26,15 +26,15 @@ type PasswordSyncGroupsAPIService service
 type ApiCreatePasswordSyncGroupV1Request struct {
 	ctx context.Context
 	ApiService *PasswordSyncGroupsAPIService
-	passwordsyncgroup *Passwordsyncgroup
+	passwordSyncGroup *PasswordSyncGroup
 }
 
-func (r ApiCreatePasswordSyncGroupV1Request) Passwordsyncgroup(passwordsyncgroup Passwordsyncgroup) ApiCreatePasswordSyncGroupV1Request {
-	r.passwordsyncgroup = &passwordsyncgroup
+func (r ApiCreatePasswordSyncGroupV1Request) PasswordSyncGroup(passwordSyncGroup PasswordSyncGroup) ApiCreatePasswordSyncGroupV1Request {
+	r.passwordSyncGroup = &passwordSyncGroup
 	return r
 }
 
-func (r ApiCreatePasswordSyncGroupV1Request) Execute() (*Passwordsyncgroup, *http.Response, error) {
+func (r ApiCreatePasswordSyncGroupV1Request) Execute() (*PasswordSyncGroup, *http.Response, error) {
 	return r.ApiService.CreatePasswordSyncGroupV1Execute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *PasswordSyncGroupsAPIService) CreatePasswordSyncGroupV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return Passwordsyncgroup
-func (a *PasswordSyncGroupsAPIService) CreatePasswordSyncGroupV1Execute(r ApiCreatePasswordSyncGroupV1Request) (*Passwordsyncgroup, *http.Response, error) {
+//  @return PasswordSyncGroup
+func (a *PasswordSyncGroupsAPIService) CreatePasswordSyncGroupV1Execute(r ApiCreatePasswordSyncGroupV1Request) (*PasswordSyncGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordsyncgroup
+		localVarReturnValue  *PasswordSyncGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsAPIService.CreatePasswordSyncGroupV1")
@@ -73,8 +73,8 @@ func (a *PasswordSyncGroupsAPIService) CreatePasswordSyncGroupV1Execute(r ApiCre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.passwordsyncgroup == nil {
-		return localVarReturnValue, nil, reportError("passwordsyncgroup is required and must be specified")
+	if r.passwordSyncGroup == nil {
+		return localVarReturnValue, nil, reportError("passwordSyncGroup is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -95,7 +95,7 @@ func (a *PasswordSyncGroupsAPIService) CreatePasswordSyncGroupV1Execute(r ApiCre
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.passwordsyncgroup
+	localVarPostBody = r.passwordSyncGroup
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -119,7 +119,7 @@ func (a *PasswordSyncGroupsAPIService) CreatePasswordSyncGroupV1Execute(r ApiCre
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -141,7 +141,7 @@ func (a *PasswordSyncGroupsAPIService) CreatePasswordSyncGroupV1Execute(r ApiCre
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -163,7 +163,7 @@ func (a *PasswordSyncGroupsAPIService) CreatePasswordSyncGroupV1Execute(r ApiCre
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -274,7 +274,7 @@ func (a *PasswordSyncGroupsAPIService) DeletePasswordSyncGroupV1Execute(r ApiDel
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -296,7 +296,7 @@ func (a *PasswordSyncGroupsAPIService) DeletePasswordSyncGroupV1Execute(r ApiDel
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -318,7 +318,7 @@ func (a *PasswordSyncGroupsAPIService) DeletePasswordSyncGroupV1Execute(r ApiDel
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -339,7 +339,7 @@ type ApiGetPasswordSyncGroupV1Request struct {
 	id string
 }
 
-func (r ApiGetPasswordSyncGroupV1Request) Execute() (*Passwordsyncgroup, *http.Response, error) {
+func (r ApiGetPasswordSyncGroupV1Request) Execute() (*PasswordSyncGroup, *http.Response, error) {
 	return r.ApiService.GetPasswordSyncGroupV1Execute(r)
 }
 
@@ -361,13 +361,13 @@ func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Passwordsyncgroup
-func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupV1Execute(r ApiGetPasswordSyncGroupV1Request) (*Passwordsyncgroup, *http.Response, error) {
+//  @return PasswordSyncGroup
+func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupV1Execute(r ApiGetPasswordSyncGroupV1Request) (*PasswordSyncGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordsyncgroup
+		localVarReturnValue  *PasswordSyncGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsAPIService.GetPasswordSyncGroupV1")
@@ -422,7 +422,7 @@ func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupV1Execute(r ApiGetPas
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -444,7 +444,7 @@ func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupV1Execute(r ApiGetPas
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -455,7 +455,7 @@ func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupV1Execute(r ApiGetPas
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -477,7 +477,7 @@ func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupV1Execute(r ApiGetPas
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -527,7 +527,7 @@ func (r ApiGetPasswordSyncGroupsV1Request) Count(count bool) ApiGetPasswordSyncG
 	return r
 }
 
-func (r ApiGetPasswordSyncGroupsV1Request) Execute() ([]Passwordsyncgroup, *http.Response, error) {
+func (r ApiGetPasswordSyncGroupsV1Request) Execute() ([]PasswordSyncGroup, *http.Response, error) {
 	return r.ApiService.GetPasswordSyncGroupsV1Execute(r)
 }
 
@@ -547,13 +547,13 @@ func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupsV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return []Passwordsyncgroup
-func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupsV1Execute(r ApiGetPasswordSyncGroupsV1Request) ([]Passwordsyncgroup, *http.Response, error) {
+//  @return []PasswordSyncGroup
+func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupsV1Execute(r ApiGetPasswordSyncGroupsV1Request) ([]PasswordSyncGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Passwordsyncgroup
+		localVarReturnValue  []PasswordSyncGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsAPIService.GetPasswordSyncGroupsV1")
@@ -625,7 +625,7 @@ func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupsV1Execute(r ApiGetPa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -647,7 +647,7 @@ func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupsV1Execute(r ApiGetPa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -669,7 +669,7 @@ func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupsV1Execute(r ApiGetPa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -697,15 +697,15 @@ type ApiUpdatePasswordSyncGroupV1Request struct {
 	ctx context.Context
 	ApiService *PasswordSyncGroupsAPIService
 	id string
-	passwordsyncgroup *Passwordsyncgroup
+	passwordSyncGroup *PasswordSyncGroup
 }
 
-func (r ApiUpdatePasswordSyncGroupV1Request) Passwordsyncgroup(passwordsyncgroup Passwordsyncgroup) ApiUpdatePasswordSyncGroupV1Request {
-	r.passwordsyncgroup = &passwordsyncgroup
+func (r ApiUpdatePasswordSyncGroupV1Request) PasswordSyncGroup(passwordSyncGroup PasswordSyncGroup) ApiUpdatePasswordSyncGroupV1Request {
+	r.passwordSyncGroup = &passwordSyncGroup
 	return r
 }
 
-func (r ApiUpdatePasswordSyncGroupV1Request) Execute() (*Passwordsyncgroup, *http.Response, error) {
+func (r ApiUpdatePasswordSyncGroupV1Request) Execute() (*PasswordSyncGroup, *http.Response, error) {
 	return r.ApiService.UpdatePasswordSyncGroupV1Execute(r)
 }
 
@@ -727,13 +727,13 @@ func (a *PasswordSyncGroupsAPIService) UpdatePasswordSyncGroupV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return Passwordsyncgroup
-func (a *PasswordSyncGroupsAPIService) UpdatePasswordSyncGroupV1Execute(r ApiUpdatePasswordSyncGroupV1Request) (*Passwordsyncgroup, *http.Response, error) {
+//  @return PasswordSyncGroup
+func (a *PasswordSyncGroupsAPIService) UpdatePasswordSyncGroupV1Execute(r ApiUpdatePasswordSyncGroupV1Request) (*PasswordSyncGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordsyncgroup
+		localVarReturnValue  *PasswordSyncGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsAPIService.UpdatePasswordSyncGroupV1")
@@ -747,8 +747,8 @@ func (a *PasswordSyncGroupsAPIService) UpdatePasswordSyncGroupV1Execute(r ApiUpd
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.passwordsyncgroup == nil {
-		return localVarReturnValue, nil, reportError("passwordsyncgroup is required and must be specified")
+	if r.passwordSyncGroup == nil {
+		return localVarReturnValue, nil, reportError("passwordSyncGroup is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -769,7 +769,7 @@ func (a *PasswordSyncGroupsAPIService) UpdatePasswordSyncGroupV1Execute(r ApiUpd
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.passwordsyncgroup
+	localVarPostBody = r.passwordSyncGroup
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -793,7 +793,7 @@ func (a *PasswordSyncGroupsAPIService) UpdatePasswordSyncGroupV1Execute(r ApiUpd
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -815,7 +815,7 @@ func (a *PasswordSyncGroupsAPIService) UpdatePasswordSyncGroupV1Execute(r ApiUpd
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -826,7 +826,7 @@ func (a *PasswordSyncGroupsAPIService) UpdatePasswordSyncGroupV1Execute(r ApiUpd
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -848,7 +848,7 @@ func (a *PasswordSyncGroupsAPIService) UpdatePasswordSyncGroupV1Execute(r ApiUpd
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

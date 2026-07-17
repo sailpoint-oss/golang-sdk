@@ -19,8 +19,8 @@ var _ MappedNullable = &Filter{}
 
 // Filter struct for Filter
 type Filter struct {
-	Type *Filtertype `json:"type,omitempty"`
-	Range *ModelRange `json:"range,omitempty"`
+	Type *FilterType `json:"type,omitempty"`
+	Range *Range `json:"range,omitempty"`
 	// The terms to be filtered.
 	Terms []string `json:"terms,omitempty"`
 	// Indicates if the filter excludes results.
@@ -52,9 +52,9 @@ func NewFilterWithDefaults() *Filter {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *Filter) GetType() Filtertype {
+func (o *Filter) GetType() FilterType {
 	if o == nil || IsNil(o.Type) {
-		var ret Filtertype
+		var ret FilterType
 		return ret
 	}
 	return *o.Type
@@ -62,7 +62,7 @@ func (o *Filter) GetType() Filtertype {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Filter) GetTypeOk() (*Filtertype, bool) {
+func (o *Filter) GetTypeOk() (*FilterType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -78,15 +78,15 @@ func (o *Filter) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given Filtertype and assigns it to the Type field.
-func (o *Filter) SetType(v Filtertype) {
+// SetType gets a reference to the given FilterType and assigns it to the Type field.
+func (o *Filter) SetType(v FilterType) {
 	o.Type = &v
 }
 
 // GetRange returns the Range field value if set, zero value otherwise.
-func (o *Filter) GetRange() ModelRange {
+func (o *Filter) GetRange() Range {
 	if o == nil || IsNil(o.Range) {
-		var ret ModelRange
+		var ret Range
 		return ret
 	}
 	return *o.Range
@@ -94,7 +94,7 @@ func (o *Filter) GetRange() ModelRange {
 
 // GetRangeOk returns a tuple with the Range field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Filter) GetRangeOk() (*ModelRange, bool) {
+func (o *Filter) GetRangeOk() (*Range, bool) {
 	if o == nil || IsNil(o.Range) {
 		return nil, false
 	}
@@ -110,8 +110,8 @@ func (o *Filter) HasRange() bool {
 	return false
 }
 
-// SetRange gets a reference to the given ModelRange and assigns it to the Range field.
-func (o *Filter) SetRange(v ModelRange) {
+// SetRange gets a reference to the given Range and assigns it to the Range field.
+func (o *Filter) SetRange(v Range) {
 	o.Range = &v
 }
 

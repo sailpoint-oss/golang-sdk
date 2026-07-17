@@ -41,7 +41,7 @@ func (r ApiCreateSourceSubtypeV1Request) CreateSourceSubtypeV1Request(createSour
 	return r
 }
 
-func (r ApiCreateSourceSubtypeV1Request) Execute() (*Sourcesubtypewithsource, *http.Response, error) {
+func (r ApiCreateSourceSubtypeV1Request) Execute() (*SourceSubtypeWithSource, *http.Response, error) {
 	return r.ApiService.CreateSourceSubtypeV1Execute(r)
 }
 
@@ -61,13 +61,13 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return Sourcesubtypewithsource
-func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeV1Execute(r ApiCreateSourceSubtypeV1Request) (*Sourcesubtypewithsource, *http.Response, error) {
+//  @return SourceSubtypeWithSource
+func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeV1Execute(r ApiCreateSourceSubtypeV1Request) (*SourceSubtypeWithSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourcesubtypewithsource
+		localVarReturnValue  *SourceSubtypeWithSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.CreateSourceSubtypeV1")
@@ -142,7 +142,7 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeV1Execute(r ApiCre
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeV1Execute(r ApiCre
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -186,7 +186,7 @@ func (a *MachineAccountSubtypesAPIService) CreateSourceSubtypeV1Execute(r ApiCre
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -316,7 +316,7 @@ func (a *MachineAccountSubtypesAPIService) DeleteMachineAccountSubtypeV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -338,7 +338,7 @@ func (a *MachineAccountSubtypesAPIService) DeleteMachineAccountSubtypeV1Execute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -360,7 +360,7 @@ func (a *MachineAccountSubtypesAPIService) DeleteMachineAccountSubtypeV1Execute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -388,7 +388,7 @@ func (r ApiGetMachineAccountSubtypeApprovalConfigV1Request) XSailPointExperiment
 	return r
 }
 
-func (r ApiGetMachineAccountSubtypeApprovalConfigV1Request) Execute() (*Machineaccountsubtypeconfigdto, *http.Response, error) {
+func (r ApiGetMachineAccountSubtypeApprovalConfigV1Request) Execute() (*MachineAccountSubtypeConfigDto, *http.Response, error) {
 	return r.ApiService.GetMachineAccountSubtypeApprovalConfigV1Execute(r)
 }
 
@@ -410,13 +410,13 @@ func (a *MachineAccountSubtypesAPIService) GetMachineAccountSubtypeApprovalConfi
 }
 
 // Execute executes the request
-//  @return Machineaccountsubtypeconfigdto
-func (a *MachineAccountSubtypesAPIService) GetMachineAccountSubtypeApprovalConfigV1Execute(r ApiGetMachineAccountSubtypeApprovalConfigV1Request) (*Machineaccountsubtypeconfigdto, *http.Response, error) {
+//  @return MachineAccountSubtypeConfigDto
+func (a *MachineAccountSubtypesAPIService) GetMachineAccountSubtypeApprovalConfigV1Execute(r ApiGetMachineAccountSubtypeApprovalConfigV1Request) (*MachineAccountSubtypeConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Machineaccountsubtypeconfigdto
+		localVarReturnValue  *MachineAccountSubtypeConfigDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.GetMachineAccountSubtypeApprovalConfigV1")
@@ -481,7 +481,7 @@ func (a *MachineAccountSubtypesAPIService) GetMachineAccountSubtypeApprovalConfi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -503,7 +503,7 @@ func (a *MachineAccountSubtypesAPIService) GetMachineAccountSubtypeApprovalConfi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -514,7 +514,7 @@ func (a *MachineAccountSubtypesAPIService) GetMachineAccountSubtypeApprovalConfi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -536,7 +536,7 @@ func (a *MachineAccountSubtypesAPIService) GetMachineAccountSubtypeApprovalConfi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -573,7 +573,7 @@ func (r ApiGetSourceSubtypeByIdV1Request) XSailPointExperimental(xSailPointExper
 	return r
 }
 
-func (r ApiGetSourceSubtypeByIdV1Request) Execute() (*Sourcesubtypewithsource, *http.Response, error) {
+func (r ApiGetSourceSubtypeByIdV1Request) Execute() (*SourceSubtypeWithSource, *http.Response, error) {
 	return r.ApiService.GetSourceSubtypeByIdV1Execute(r)
 }
 
@@ -595,13 +595,13 @@ func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeByIdV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Sourcesubtypewithsource
-func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeByIdV1Execute(r ApiGetSourceSubtypeByIdV1Request) (*Sourcesubtypewithsource, *http.Response, error) {
+//  @return SourceSubtypeWithSource
+func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeByIdV1Execute(r ApiGetSourceSubtypeByIdV1Request) (*SourceSubtypeWithSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourcesubtypewithsource
+		localVarReturnValue  *SourceSubtypeWithSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.GetSourceSubtypeByIdV1")
@@ -666,7 +666,7 @@ func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeByIdV1Execute(r ApiGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -688,7 +688,7 @@ func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeByIdV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -699,7 +699,7 @@ func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeByIdV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -721,7 +721,7 @@ func (a *MachineAccountSubtypesAPIService) GetSourceSubtypeByIdV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -792,7 +792,7 @@ func (r ApiListSourceSubtypesV1Request) Offset(offset int32) ApiListSourceSubtyp
 	return r
 }
 
-func (r ApiListSourceSubtypesV1Request) Execute() ([]Sourcesubtypewithsource, *http.Response, error) {
+func (r ApiListSourceSubtypesV1Request) Execute() ([]SourceSubtypeWithSource, *http.Response, error) {
 	return r.ApiService.ListSourceSubtypesV1Execute(r)
 }
 
@@ -812,13 +812,13 @@ func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []Sourcesubtypewithsource
-func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV1Execute(r ApiListSourceSubtypesV1Request) ([]Sourcesubtypewithsource, *http.Response, error) {
+//  @return []SourceSubtypeWithSource
+func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV1Execute(r ApiListSourceSubtypesV1Request) ([]SourceSubtypeWithSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sourcesubtypewithsource
+		localVarReturnValue  []SourceSubtypeWithSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.ListSourceSubtypesV1")
@@ -906,7 +906,7 @@ func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV1Execute(r ApiList
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -928,7 +928,7 @@ func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -950,7 +950,7 @@ func (a *MachineAccountSubtypesAPIService) ListSourceSubtypesV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -992,7 +992,7 @@ func (r ApiLoadBulkSourceSubtypesV1Request) RequestBody(requestBody []string) Ap
 	return r
 }
 
-func (r ApiLoadBulkSourceSubtypesV1Request) Execute() ([]Sourcesubtypewithsource, *http.Response, error) {
+func (r ApiLoadBulkSourceSubtypesV1Request) Execute() ([]SourceSubtypeWithSource, *http.Response, error) {
 	return r.ApiService.LoadBulkSourceSubtypesV1Execute(r)
 }
 
@@ -1012,13 +1012,13 @@ func (a *MachineAccountSubtypesAPIService) LoadBulkSourceSubtypesV1(ctx context.
 }
 
 // Execute executes the request
-//  @return []Sourcesubtypewithsource
-func (a *MachineAccountSubtypesAPIService) LoadBulkSourceSubtypesV1Execute(r ApiLoadBulkSourceSubtypesV1Request) ([]Sourcesubtypewithsource, *http.Response, error) {
+//  @return []SourceSubtypeWithSource
+func (a *MachineAccountSubtypesAPIService) LoadBulkSourceSubtypesV1Execute(r ApiLoadBulkSourceSubtypesV1Request) ([]SourceSubtypeWithSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sourcesubtypewithsource
+		localVarReturnValue  []SourceSubtypeWithSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.LoadBulkSourceSubtypesV1")
@@ -1099,7 +1099,7 @@ func (a *MachineAccountSubtypesAPIService) LoadBulkSourceSubtypesV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1121,7 +1121,7 @@ func (a *MachineAccountSubtypesAPIService) LoadBulkSourceSubtypesV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1132,7 +1132,7 @@ func (a *MachineAccountSubtypesAPIService) LoadBulkSourceSubtypesV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1154,7 +1154,7 @@ func (a *MachineAccountSubtypesAPIService) LoadBulkSourceSubtypesV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1198,7 +1198,7 @@ func (r ApiPatchMachineAccountSubtypeV1Request) RequestBody(requestBody []map[st
 	return r
 }
 
-func (r ApiPatchMachineAccountSubtypeV1Request) Execute() (*Sourcesubtypewithsource, *http.Response, error) {
+func (r ApiPatchMachineAccountSubtypeV1Request) Execute() (*SourceSubtypeWithSource, *http.Response, error) {
 	return r.ApiService.PatchMachineAccountSubtypeV1Execute(r)
 }
 
@@ -1221,13 +1221,13 @@ func (a *MachineAccountSubtypesAPIService) PatchMachineAccountSubtypeV1(ctx cont
 }
 
 // Execute executes the request
-//  @return Sourcesubtypewithsource
-func (a *MachineAccountSubtypesAPIService) PatchMachineAccountSubtypeV1Execute(r ApiPatchMachineAccountSubtypeV1Request) (*Sourcesubtypewithsource, *http.Response, error) {
+//  @return SourceSubtypeWithSource
+func (a *MachineAccountSubtypesAPIService) PatchMachineAccountSubtypeV1Execute(r ApiPatchMachineAccountSubtypeV1Request) (*SourceSubtypeWithSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourcesubtypewithsource
+		localVarReturnValue  *SourceSubtypeWithSource
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.PatchMachineAccountSubtypeV1")
@@ -1303,7 +1303,7 @@ func (a *MachineAccountSubtypesAPIService) PatchMachineAccountSubtypeV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1325,7 +1325,7 @@ func (a *MachineAccountSubtypesAPIService) PatchMachineAccountSubtypeV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1347,7 +1347,7 @@ func (a *MachineAccountSubtypesAPIService) PatchMachineAccountSubtypeV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1376,7 +1376,7 @@ type ApiUpdateMachineAccountSubtypeApprovalConfigV1Request struct {
 	ApiService *MachineAccountSubtypesAPIService
 	xSailPointExperimental *string
 	subtypeId string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // Use this header to enable this experimental API.
@@ -1386,12 +1386,12 @@ func (r ApiUpdateMachineAccountSubtypeApprovalConfigV1Request) XSailPointExperim
 }
 
 // The JSONPatch payload used to update the object.
-func (r ApiUpdateMachineAccountSubtypeApprovalConfigV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateMachineAccountSubtypeApprovalConfigV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateMachineAccountSubtypeApprovalConfigV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateMachineAccountSubtypeApprovalConfigV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiUpdateMachineAccountSubtypeApprovalConfigV1Request) Execute() (*Machineaccountsubtypeconfigdto, *http.Response, error) {
+func (r ApiUpdateMachineAccountSubtypeApprovalConfigV1Request) Execute() (*MachineAccountSubtypeConfigDto, *http.Response, error) {
 	return r.ApiService.UpdateMachineAccountSubtypeApprovalConfigV1Execute(r)
 }
 
@@ -1413,13 +1413,13 @@ func (a *MachineAccountSubtypesAPIService) UpdateMachineAccountSubtypeApprovalCo
 }
 
 // Execute executes the request
-//  @return Machineaccountsubtypeconfigdto
-func (a *MachineAccountSubtypesAPIService) UpdateMachineAccountSubtypeApprovalConfigV1Execute(r ApiUpdateMachineAccountSubtypeApprovalConfigV1Request) (*Machineaccountsubtypeconfigdto, *http.Response, error) {
+//  @return MachineAccountSubtypeConfigDto
+func (a *MachineAccountSubtypesAPIService) UpdateMachineAccountSubtypeApprovalConfigV1Execute(r ApiUpdateMachineAccountSubtypeApprovalConfigV1Request) (*MachineAccountSubtypeConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Machineaccountsubtypeconfigdto
+		localVarReturnValue  *MachineAccountSubtypeConfigDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountSubtypesAPIService.UpdateMachineAccountSubtypeApprovalConfigV1")
@@ -1448,8 +1448,8 @@ func (a *MachineAccountSubtypesAPIService) UpdateMachineAccountSubtypeApprovalCo
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1471,7 +1471,7 @@ func (a *MachineAccountSubtypesAPIService) UpdateMachineAccountSubtypeApprovalCo
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1495,7 +1495,7 @@ func (a *MachineAccountSubtypesAPIService) UpdateMachineAccountSubtypeApprovalCo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1517,7 +1517,7 @@ func (a *MachineAccountSubtypesAPIService) UpdateMachineAccountSubtypeApprovalCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1528,7 +1528,7 @@ func (a *MachineAccountSubtypesAPIService) UpdateMachineAccountSubtypeApprovalCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1550,7 +1550,7 @@ func (a *MachineAccountSubtypesAPIService) UpdateMachineAccountSubtypeApprovalCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

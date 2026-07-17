@@ -60,11 +60,11 @@ Other parameters are passed through a pointer to a apiCreateSIMIntegrationV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **simintegrationdetails** | [**Simintegrationdetails**](../models/simintegrationdetails) | DTO containing the details of the SIM integration | 
+ **simIntegrationDetails** | [**SimIntegrationDetails**](../models/sim-integration-details) | DTO containing the details of the SIM integration | 
 
 ### Return type
 
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### HTTP request headers
 
@@ -87,10 +87,27 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    simintegrationdetailsJson := []byte(``) // Simintegrationdetails | DTO containing the details of the SIM integration
+    simintegrationdetailsJson := []byte(`{
+          "cluster" : "xyzzy999",
+          "statusMap" : "{\"closed_cancelled\":\"Failed\",\"closed_complete\":\"Committed\",\"closed_incomplete\":\"Failed\",\"closed_rejected\":\"Failed\",\"in_process\":\"Queued\",\"requested\":\"Queued\"}",
+          "request" : "{\"description\":\"SailPoint Access Request,\",\"req_description\":\"The Service Request created by SailPoint ServiceNow Service Integration Module (SIM).,\",\"req_short_description\":\"SailPoint New Access Request Created from IdentityNow,\",\"short_description\":\"SailPoint Access Request $!plan.arguments.identityRequestId\"}",
+          "sources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
+          "created" : "2015-05-28T14:07:17Z",
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "description" : "Integration description",
+          "attributes" : "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\":\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\":\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"lastname\":\"white\"}",
+          "id" : "id12345",
+          "type" : "ServiceNow Service Desk",
+          "beforeProvisioningRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "IDENTITY"
+          }
+        }`) // SimIntegrationDetails | DTO containing the details of the SIM integration
 
-    var simintegrationdetails sim_integrations.Simintegrationdetails
-    if err := json.Unmarshal(simintegrationdetailsJson, &simintegrationdetails); err != nil {
+    var simIntegrationDetails sim_integrations.SimIntegrationDetails
+    if err := json.Unmarshal(simintegrationdetailsJson, &simIntegrationDetails); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -98,13 +115,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SIMIntegrationsAPI.CreateSIMIntegrationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
-	  //resp, r, err := apiClient.SIMIntegrationsAPI.CreateSIMIntegrationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
+    resp, r, err := apiClient.SIMIntegrationsAPI.CreateSIMIntegrationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
+	  //resp, r, err := apiClient.SIMIntegrationsAPI.CreateSIMIntegrationV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.CreateSIMIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateSIMIntegrationV1`: Servicedeskintegrationdto
+    // response from `CreateSIMIntegrationV1`: ServiceDeskIntegrationDto
     fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.CreateSIMIntegrationV1`: %v\n", resp)
 }
 ```
@@ -226,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### HTTP request headers
 
@@ -261,7 +278,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSIMIntegrationV1`: Servicedeskintegrationdto
+    // response from `GetSIMIntegrationV1`: ServiceDeskIntegrationDto
     fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.GetSIMIntegrationV1`: %v\n", resp)
 }
 ```
@@ -300,7 +317,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**[]ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### HTTP request headers
 
@@ -334,7 +351,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegrationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSIMIntegrationsV1`: []Servicedeskintegrationdto
+    // response from `GetSIMIntegrationsV1`: []ServiceDeskIntegrationDto
     fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.GetSIMIntegrationsV1`: %v\n", resp)
 }
 ```
@@ -375,11 +392,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **jsonpatch** | [**Jsonpatch**](../models/jsonpatch) | The JsonPatch object that describes the changes of SIM beforeProvisioningRule. | 
+ **jsonPatch** | [**JsonPatch**](../models/json-patch) | The JsonPatch object that describes the changes of SIM beforeProvisioningRule. | 
 
 ### Return type
 
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### HTTP request headers
 
@@ -403,10 +420,20 @@ import (
 func main() {
     id := `12345` // string | SIM integration id # string | SIM integration id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchJson := []byte(``) // Jsonpatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
+    jsonpatchJson := []byte(`{
+          "operations" : [ {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          }, {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          } ]
+        }`) // JsonPatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
 
-    var jsonpatch sim_integrations.Jsonpatch
-    if err := json.Unmarshal(jsonpatchJson, &jsonpatch); err != nil {
+    var jsonPatch sim_integrations.JsonPatch
+    if err := json.Unmarshal(jsonpatchJson, &jsonPatch); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -414,13 +441,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
-	  //resp, r, err := apiClient.SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+    resp, r, err := apiClient.SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
+	  //resp, r, err := apiClient.SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchBeforeProvisioningRuleV1`: Servicedeskintegrationdto
+    // response from `PatchBeforeProvisioningRuleV1`: ServiceDeskIntegrationDto
     fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PatchBeforeProvisioningRuleV1`: %v\n", resp)
 }
 ```
@@ -461,11 +488,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **jsonpatch** | [**Jsonpatch**](../models/jsonpatch) | The JsonPatch object that describes the changes of SIM | 
+ **jsonPatch** | [**JsonPatch**](../models/json-patch) | The JsonPatch object that describes the changes of SIM | 
 
 ### Return type
 
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### HTTP request headers
 
@@ -489,10 +516,20 @@ import (
 func main() {
     id := `12345` // string | SIM integration id # string | SIM integration id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchJson := []byte(``) // Jsonpatch | The JsonPatch object that describes the changes of SIM
+    jsonpatchJson := []byte(`{
+          "operations" : [ {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          }, {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          } ]
+        }`) // JsonPatch | The JsonPatch object that describes the changes of SIM
 
-    var jsonpatch sim_integrations.Jsonpatch
-    if err := json.Unmarshal(jsonpatchJson, &jsonpatch); err != nil {
+    var jsonPatch sim_integrations.JsonPatch
+    if err := json.Unmarshal(jsonpatchJson, &jsonPatch); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -500,13 +537,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SIMIntegrationsAPI.PatchSIMAttributesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
-	  //resp, r, err := apiClient.SIMIntegrationsAPI.PatchSIMAttributesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+    resp, r, err := apiClient.SIMIntegrationsAPI.PatchSIMAttributesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
+	  //resp, r, err := apiClient.SIMIntegrationsAPI.PatchSIMAttributesV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchSIMAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchSIMAttributesV1`: Servicedeskintegrationdto
+    // response from `PatchSIMAttributesV1`: ServiceDeskIntegrationDto
     fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PatchSIMAttributesV1`: %v\n", resp)
 }
 ```
@@ -547,11 +584,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **simintegrationdetails** | [**Simintegrationdetails**](../models/simintegrationdetails) | The full DTO of the integration containing the updated model | 
+ **simIntegrationDetails** | [**SimIntegrationDetails**](../models/sim-integration-details) | The full DTO of the integration containing the updated model | 
 
 ### Return type
 
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### HTTP request headers
 
@@ -575,10 +612,27 @@ import (
 func main() {
     id := `12345` // string | The id of the integration. # string | The id of the integration.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    simintegrationdetailsJson := []byte(``) // Simintegrationdetails | The full DTO of the integration containing the updated model
+    simintegrationdetailsJson := []byte(`{
+          "cluster" : "xyzzy999",
+          "statusMap" : "{\"closed_cancelled\":\"Failed\",\"closed_complete\":\"Committed\",\"closed_incomplete\":\"Failed\",\"closed_rejected\":\"Failed\",\"in_process\":\"Queued\",\"requested\":\"Queued\"}",
+          "request" : "{\"description\":\"SailPoint Access Request,\",\"req_description\":\"The Service Request created by SailPoint ServiceNow Service Integration Module (SIM).,\",\"req_short_description\":\"SailPoint New Access Request Created from IdentityNow,\",\"short_description\":\"SailPoint Access Request $!plan.arguments.identityRequestId\"}",
+          "sources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
+          "created" : "2015-05-28T14:07:17Z",
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "description" : "Integration description",
+          "attributes" : "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\":\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\":\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"lastname\":\"white\"}",
+          "id" : "id12345",
+          "type" : "ServiceNow Service Desk",
+          "beforeProvisioningRule" : {
+            "name" : "Example Rule",
+            "id" : "2c918085708c274401708c2a8a760001",
+            "type" : "IDENTITY"
+          }
+        }`) // SimIntegrationDetails | The full DTO of the integration containing the updated model
 
-    var simintegrationdetails sim_integrations.Simintegrationdetails
-    if err := json.Unmarshal(simintegrationdetailsJson, &simintegrationdetails); err != nil {
+    var simIntegrationDetails sim_integrations.SimIntegrationDetails
+    if err := json.Unmarshal(simintegrationdetailsJson, &simIntegrationDetails); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -586,13 +640,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SIMIntegrationsAPI.PutSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
-	  //resp, r, err := apiClient.SIMIntegrationsAPI.PutSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Simintegrationdetails(simintegrationdetails).Execute()
+    resp, r, err := apiClient.SIMIntegrationsAPI.PutSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
+	  //resp, r, err := apiClient.SIMIntegrationsAPI.PutSIMIntegrationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PutSIMIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutSIMIntegrationV1`: Servicedeskintegrationdto
+    // response from `PutSIMIntegrationV1`: ServiceDeskIntegrationDto
     fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PutSIMIntegrationV1`: %v\n", resp)
 }
 ```

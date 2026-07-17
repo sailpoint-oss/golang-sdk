@@ -85,11 +85,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetPasswordDictionaryV1401Response](docs/GetPasswordDictionaryV1401Response.md)
  - [GetPasswordDictionaryV1429Response](docs/GetPasswordDictionaryV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [PutPasswordDictionaryV1Request](docs/PutPasswordDictionaryV1Request.md)
 
 

@@ -89,17 +89,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [RolePropagationConfigInput](docs/RolePropagationConfigInput.md)
- - [RolePropagationConfigResponse](docs/RolePropagationConfigResponse.md)
- - [RolePropagationOngoingResponse](docs/RolePropagationOngoingResponse.md)
- - [RolePropagationOngoingResponseRolePropagationDetails](docs/RolePropagationOngoingResponseRolePropagationDetails.md)
- - [RolePropagationResponse](docs/RolePropagationResponse.md)
- - [RolePropagationStatusResponse](docs/RolePropagationStatusResponse.md)
- - [RolePropagationStatusResponseLaunchedBy](docs/RolePropagationStatusResponseLaunchedBy.md)
- - [RolePropagationStatusResponseTerminatedBy](docs/RolePropagationStatusResponseTerminatedBy.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [Rolepropagationconfiginput](docs/Rolepropagationconfiginput.md)
+ - [Rolepropagationconfigresponse](docs/Rolepropagationconfigresponse.md)
+ - [Rolepropagationongoingresponse](docs/Rolepropagationongoingresponse.md)
+ - [RolepropagationongoingresponseRolePropagationDetails](docs/RolepropagationongoingresponseRolePropagationDetails.md)
+ - [Rolepropagationresponse](docs/Rolepropagationresponse.md)
+ - [Rolepropagationstatusresponse](docs/Rolepropagationstatusresponse.md)
+ - [RolepropagationstatusresponseLaunchedBy](docs/RolepropagationstatusresponseLaunchedBy.md)
+ - [RolepropagationstatusresponseTerminatedBy](docs/RolepropagationstatusresponseTerminatedBy.md)
  - [StartRolePropagationV1401Response](docs/StartRolePropagationV1401Response.md)
  - [StartRolePropagationV1429Response](docs/StartRolePropagationV1429Response.md)
 

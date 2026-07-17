@@ -152,14 +152,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/machineidentityresponse'
+                  $ref: '#/components/schemas/MachineIdentityResponse'
                 type: array
           description: List of machine identities.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -183,7 +183,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -201,7 +201,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -226,7 +226,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -261,20 +261,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/machineidentityrequest'
+              $ref: '#/components/schemas/MachineIdentityRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/machineidentityresponse'
+                $ref: '#/components/schemas/MachineIdentityResponse'
           description: Machine Identity created.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -298,7 +298,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -316,7 +316,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -341,7 +341,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -388,7 +388,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -412,7 +412,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -430,7 +430,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -455,7 +455,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -498,13 +498,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/machineidentityresponse'
+                $ref: '#/components/schemas/MachineIdentityResponse'
           description: A machine identity object
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -528,7 +528,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -546,7 +546,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -571,7 +571,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -640,13 +640,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/machineidentityresponse'
+                $ref: '#/components/schemas/MachineIdentityResponse'
           description: Updated Machine Identity object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -670,7 +670,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -688,7 +688,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -713,7 +713,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -840,14 +840,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/machineidentityv2'
+                  $ref: '#/components/schemas/Machineidentityv2'
                 type: array
           description: List of machine identities.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -871,7 +871,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -889,7 +889,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -914,7 +914,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -942,20 +942,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/machineidentityv2'
+              $ref: '#/components/schemas/Machineidentityv2'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/machineidentityv2'
+                $ref: '#/components/schemas/Machineidentityv2'
           description: Machine identity created (same schema family as v2 GET/PATCH).
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -979,7 +979,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -997,7 +997,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1022,7 +1022,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1059,7 +1059,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1083,7 +1083,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1101,7 +1101,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1126,7 +1126,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1159,13 +1159,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/machineidentityv2'
+                $ref: '#/components/schemas/Machineidentityv2'
           description: A machine identity object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1189,7 +1189,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1207,7 +1207,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1232,7 +1232,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1287,7 +1287,7 @@ paths:
                   path: /attributes/securityRisk
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: "A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902)\
           \ standard."
@@ -1297,13 +1297,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/machineidentityv2'
+                $ref: '#/components/schemas/Machineidentityv2'
           description: Updated machine identity object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1327,7 +1327,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1345,7 +1345,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1370,7 +1370,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1472,14 +1472,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/correlationconfig'
+                  $ref: '#/components/schemas/CorrelationConfig'
                 type: array
           description: List of correlation configs.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1503,7 +1503,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1528,7 +1528,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1586,7 +1586,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1610,7 +1610,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1628,7 +1628,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1653,7 +1653,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1707,13 +1707,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/correlationconfig'
+                $ref: '#/components/schemas/CorrelationConfig'
           description: The requested correlation config.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1737,7 +1737,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1755,7 +1755,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1780,7 +1780,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1844,7 +1844,7 @@ paths:
                     syncPrimaryToMachineAccounts: true
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: The JSONPatch payload used to update the correlation config.
         required: true
@@ -1853,13 +1853,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/correlationconfig'
+                $ref: '#/components/schemas/CorrelationConfig'
           description: The updated correlation config.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1883,7 +1883,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1901,7 +1901,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1926,7 +1926,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1969,20 +1969,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/machineidentityaggregationrequest'
+              $ref: '#/components/schemas/MachineIdentityAggregationRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/machineidentityaggregationresponse'
+                $ref: '#/components/schemas/MachineIdentityAggregationResponse'
           description: Machine Identity Aggregation was started successfully.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2006,7 +2006,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2024,7 +2024,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2049,7 +2049,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2165,14 +2165,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/machineidentityuserentitlementresponse'
+                  $ref: '#/components/schemas/MachineIdentityUserEntitlementResponse'
                 type: array
           description: List of machine identity user entitlements.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2196,7 +2196,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2214,7 +2214,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2239,7 +2239,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2310,7 +2310,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -2334,7 +2334,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -2352,7 +2352,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -2377,10 +2377,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    basecommondto:
+    BaseCommonDto:
       properties:
         id:
           description: System-generated unique ID of the Object
@@ -2408,7 +2408,7 @@ components:
       - name
       title: Base Common Dto
       type: object
-    dtotype:
+    DtoType:
       description: An enumeration of the types of DTOs supported within the IdentityNow
         infrastructure.
       enum:
@@ -2443,14 +2443,14 @@ components:
       - WORKGROUP
       example: IDENTITY
       type: string
-    basereferencedto:
+    BaseReferenceDto:
       example:
         name: William Wilson
         id: 2c91808568c529c60168cca6f90c1313
         type: IDENTITY
       properties:
         type:
-          $ref: '#/components/schemas/dtotype'
+          $ref: '#/components/schemas/DtoType'
         id:
           description: ID of the object to which this reference applies
           example: 2c91808568c529c60168cca6f90c1313
@@ -2462,9 +2462,9 @@ components:
           type: string
       title: Base Reference Dto
       type: object
-    machineidentity:
+    MachineIdentity:
       allOf:
-      - $ref: '#/components/schemas/basecommondto'
+      - $ref: '#/components/schemas/BaseCommonDto'
       - properties:
           nativeIdentity:
             description: The native identity associated to the machine identity directly
@@ -2497,9 +2497,9 @@ components:
         - subtype
         title: MachineIdentityDto
         type: object
-    machineidentityresponse:
+    MachineIdentityResponse:
       allOf:
-      - $ref: '#/components/schemas/machineidentity'
+      - $ref: '#/components/schemas/MachineIdentity'
       - properties:
           manuallyEdited:
             default: false
@@ -2558,7 +2558,7 @@ components:
         id: id12345
         manuallyEdited: true
         manuallyCreated: true
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -2570,7 +2570,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -2583,7 +2583,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -2591,7 +2591,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -2625,19 +2625,19 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    machineidentityrequest:
+    MachineIdentityRequest:
       allOf:
-      - $ref: '#/components/schemas/machineidentity'
+      - $ref: '#/components/schemas/MachineIdentity'
       - properties:
           userEntitlements:
             description: The user entitlements associated to the machine identity
@@ -2646,7 +2646,32 @@ components:
             type: array
         title: Machine Identity Request
         type: object
-    machineidentityownersv2:
+      example:
+        sourceId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        subtype: Application
+        created: 2015-05-28T14:07:17Z
+        userEntitlements:
+        - sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        - sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+          entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        description: ""
+        attributes: "{\"Region\":\"EU\"}"
+        owners:
+          primaryIdentity: "{}"
+          secondaryIdentities:
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+        id: id12345
+        uuid: f5dd23fe-3414-42b7-bb1c-869400ad7a10
+        nativeIdentity: abc:123:dddd
+    MachineIdentityOwnersV2:
       description: Owner configuration for a machine identity. A single primary (human
         IDENTITY) owner plus additional owners that are either up to ten human (IDENTITY)
         references or exactly one GOVERNANCE_GROUP reference - not both.
@@ -2661,7 +2686,7 @@ components:
           type: IDENTITY
       properties:
         primary:
-          $ref: '#/components/schemas/machineidentityownersv2_primary'
+          $ref: '#/components/schemas/MachineIdentityOwnersV2_primary'
         secondary:
           description: Additional owners. Entries are either up to ten human (IDENTITY)
             references or exactly one GOVERNANCE_GROUP reference - not both. Governance-group
@@ -2671,12 +2696,12 @@ components:
             name: Jane Doe
             type: IDENTITY
           items:
-            $ref: '#/components/schemas/basereferencedto'
+            $ref: '#/components/schemas/BaseReferenceDto'
           maxItems: 10
           type: array
       title: Machine Identity Owners V2
       type: object
-    resourcev2:
+    ResourceV2:
       description: The source resource a machine identity is derived from.
       example:
         features:
@@ -2708,7 +2733,7 @@ components:
           type: array
       title: Resource V2
       type: object
-    userentitlementv2:
+    UserEntitlementV2:
       description: A user entitlement associated to a machine identity.
       example:
         sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
@@ -2732,10 +2757,10 @@ components:
           example: Entitlement Name
           type: string
         source:
-          $ref: '#/components/schemas/userentitlementv2_source'
+          $ref: '#/components/schemas/UserEntitlementV2_source'
       title: User Entitlement V2
       type: object
-    sanctionedstatus:
+    SanctionedStatus:
       description: Sanctioned status for a Business Application or derived machine
         identity effective status.
       enum:
@@ -2745,7 +2770,7 @@ components:
       example: SANCTIONED
       title: Sanctioned Status
       type: string
-    businessapplicationref:
+    BusinessApplicationRef:
       description: Reference to a Business Application associated with a machine identity.
       example:
         name: Cursor
@@ -2768,7 +2793,7 @@ components:
           nullable: true
           type: string
         sanctionedStatus:
-          $ref: '#/components/schemas/sanctionedstatus'
+          $ref: '#/components/schemas/SanctionedStatus'
         correlationType:
           description: Whether the Business Application reference was manually assigned
             or automatically correlated.
@@ -2779,9 +2804,9 @@ components:
           type: string
       title: Business Application Ref
       type: object
-    machineidentityv2:
+    Machineidentityv2:
       allOf:
-      - $ref: '#/components/schemas/basecommondto'
+      - $ref: '#/components/schemas/BaseCommonDto'
       - properties:
           description:
             description: Description of the machine identity.
@@ -2811,7 +2836,7 @@ components:
             example: true
             type: boolean
           owners:
-            $ref: '#/components/schemas/machineidentityownersv2'
+            $ref: '#/components/schemas/MachineIdentityOwnersV2'
           subtype:
             description: The subtype value associated to the machine identity.
             example: AI_AGENT
@@ -2851,23 +2876,23 @@ components:
             nullable: true
             type: string
           resource:
-            $ref: '#/components/schemas/resourcev2'
+            $ref: '#/components/schemas/ResourceV2'
           source:
             $ref: '#/components/schemas/Machine_Identity_V2_source'
           userEntitlements:
             description: The user entitlements associated to the machine identity.
             items:
-              $ref: '#/components/schemas/userentitlementv2'
+              $ref: '#/components/schemas/UserEntitlementV2'
             type: array
           businessApplicationRefs:
             description: Optional Business Application references associated with
               this machine identity.
             items:
-              $ref: '#/components/schemas/businessapplicationref'
+              $ref: '#/components/schemas/BusinessApplicationRef'
             nullable: true
             type: array
           effectiveSanctionedStatus:
-            $ref: '#/components/schemas/sanctionedstatus'
+            $ref: '#/components/schemas/SanctionedStatus'
           risk:
             $ref: '#/components/schemas/Machine_Identity_V2_risk'
         title: Machine Identity V2
@@ -2943,8 +2968,12 @@ components:
         manuallyCreated: true
         existsOnSource: "TRUE"
         status: ACTIVE
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -2963,13 +2992,13 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    correlationruleaction:
+    CorrelationRuleAction:
       description: The action applied when a correlation rule matches.
       example:
         payload:
@@ -2994,7 +3023,7 @@ components:
       - type
       title: Correlation Rule Action
       type: object
-    correlationcondition:
+    CorrelationCondition:
       description: A single condition expression within a correlation rule.
       example:
         transform: toUpper
@@ -3040,7 +3069,7 @@ components:
       - rightAttributeName
       title: Correlation Condition
       type: object
-    correlationrule:
+    CorrelationRule:
       description: A single correlation rule within an ownership correlation config.
       example:
         ruleAction:
@@ -3093,11 +3122,11 @@ components:
           example: IDENTITY
           type: string
         ruleAction:
-          $ref: '#/components/schemas/correlationruleaction'
+          $ref: '#/components/schemas/CorrelationRuleAction'
         conditionExpressions:
           description: The conditions that must match for this rule to apply.
           items:
-            $ref: '#/components/schemas/correlationcondition'
+            $ref: '#/components/schemas/CorrelationCondition'
           type: array
       required:
       - conditionExpressions
@@ -3107,7 +3136,7 @@ components:
       - ruleType
       title: Correlation Rule
       type: object
-    correlationconfig:
+    CorrelationConfig:
       description: An ownership correlation config scoped to a source resource. Configs
         are of type OWNER_PRIMARY or OWNER_SECONDARY and drive how machine identity
         owners are correlated.
@@ -3194,7 +3223,7 @@ components:
         rules:
           description: The ordered set of correlation rules for this config.
           items:
-            $ref: '#/components/schemas/correlationrule'
+            $ref: '#/components/schemas/CorrelationRule'
           type: array
         created:
           description: Creation date of the config.
@@ -3217,7 +3246,12 @@ components:
       - type
       title: Correlation Config
       type: object
-    machineidentityaggregationrequest:
+    MachineIdentityAggregationRequest:
+      example:
+        datasetIds:
+        - source:datasetId12345
+        - source:datasetId12345
+        disableOptimization: false
       properties:
         datasetIds:
           description: List of dataset Ids to aggregate machine identities
@@ -3237,7 +3271,7 @@ components:
       - datasetIds
       title: Machine Identity Aggregation Request
       type: object
-    taskdefinitionsummary:
+    TaskDefinitionSummary:
       description: "Definition of a type of task, used to invoke tasks"
       example:
         parentName: Cloud Account Aggregation
@@ -3291,7 +3325,7 @@ components:
       - uniqueName
       title: Task Definition Summary
       type: object
-    localizedmessage:
+    LocalizedMessage:
       description: Localized error message to indicate a failed invocation or error
         if any.
       example:
@@ -3312,7 +3346,7 @@ components:
       - message
       title: Localized Message
       type: object
-    taskstatusmessage:
+    TaskStatusMessage:
       description: TaskStatus Message
       example:
         type: INFO
@@ -3332,7 +3366,7 @@ components:
           example: INFO
           type: string
         localizedText:
-          $ref: '#/components/schemas/localizedmessage'
+          $ref: '#/components/schemas/LocalizedMessage'
         key:
           description: Key of the message
           example: akey
@@ -3342,7 +3376,7 @@ components:
           example:
           - name: value
           items:
-            $ref: '#/components/schemas/taskstatusmessage_parameters_inner'
+            $ref: '#/components/schemas/TaskStatusMessage_parameters_inner'
           nullable: true
           type: array
       required:
@@ -3352,7 +3386,7 @@ components:
       - type
       title: Task Status Message
       type: object
-    taskreturndetails:
+    TaskReturnDetails:
       description: Task return details
       example:
         name: label
@@ -3371,7 +3405,7 @@ components:
       - name
       title: Task Return Details
       type: object
-    machineidentityaggregationresponse:
+    MachineIdentityAggregationResponse:
       example:
         taskDefinitionSummary:
           parentName: Cloud Account Aggregation
@@ -3454,7 +3488,7 @@ components:
           example: System
           type: string
         target:
-          $ref: '#/components/schemas/machineidentityaggregationresponse_target'
+          $ref: '#/components/schemas/MachineIdentityAggregationResponse_target'
         created:
           description: Creation date of the aggregation
           example: 2020-07-11T21:23:15Z
@@ -3478,7 +3512,7 @@ components:
           nullable: true
           type: string
         taskDefinitionSummary:
-          $ref: '#/components/schemas/taskdefinitionsummary'
+          $ref: '#/components/schemas/TaskDefinitionSummary'
         completionStatus:
           description: Completion status of the aggregation
           enum:
@@ -3494,12 +3528,12 @@ components:
         messages:
           description: Messages associated with the aggregation
           items:
-            $ref: '#/components/schemas/taskstatusmessage'
+            $ref: '#/components/schemas/TaskStatusMessage'
           type: array
         returns:
           description: Return values associated with the aggregation
           items:
-            $ref: '#/components/schemas/taskreturndetails'
+            $ref: '#/components/schemas/TaskReturnDetails'
           type: array
         attributes:
           additionalProperties: true
@@ -3519,7 +3553,7 @@ components:
           type: integer
       title: Machine Identity Aggregation Response
       type: object
-    machineidentityuserentitlementresponse:
+    MachineIdentityUserEntitlementResponse:
       example:
         created: 2015-05-28T14:07:17Z
         machineIdentityId: 8886e5e3-63d0-462f-a195-d98da885b8dc
@@ -3542,9 +3576,9 @@ components:
           example: 8886e5e3-63d0-462f-a195-d98da885b8dc
           type: string
         source:
-          $ref: '#/components/schemas/machineidentityuserentitlementresponse_source'
+          $ref: '#/components/schemas/MachineIdentityUserEntitlementResponse_source'
         entitlement:
-          $ref: '#/components/schemas/machineidentityuserentitlementresponse_entitlement'
+          $ref: '#/components/schemas/MachineIdentityUserEntitlementResponse_entitlement'
         created:
           description: Creation date of the Object
           example: 2015-05-28T14:07:17Z
@@ -3594,7 +3628,7 @@ components:
         secondaryIdentities:
           description: Defines the identities which are selected as secondary owners
           items:
-            $ref: '#/components/schemas/basereferencedto'
+            $ref: '#/components/schemas/BaseReferenceDto'
           type: array
       required:
       - primaryIdentity
@@ -3630,6 +3664,9 @@ components:
           type: object
       type: object
     Machine_Identity_Request_userEntitlements:
+      example:
+        sourceId: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
+        entitlementId: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
       properties:
         entitlementId:
           description: The ID of the entitlement
@@ -3643,9 +3680,9 @@ components:
       - entitlementId
       - sourceId
       type: object
-    machineidentityownersv2_primary:
+    MachineIdentityOwnersV2_primary:
       allOf:
-      - $ref: '#/components/schemas/basereferencedto'
+      - $ref: '#/components/schemas/BaseReferenceDto'
       - example:
           id: 2c9180858082150f0180893dbaf44201
           name: John Doe
@@ -3655,9 +3692,9 @@ components:
         name: William Wilson
         id: 2c91808568c529c60168cca6f90c1313
         type: IDENTITY
-    userentitlementv2_source:
+    UserEntitlementV2_source:
       allOf:
-      - $ref: '#/components/schemas/basereferencedto'
+      - $ref: '#/components/schemas/BaseReferenceDto'
       - example:
           id: 5898b7c1-620c-49c6-cccc-cbf81eb4bddd
           name: Test Source
@@ -3669,7 +3706,7 @@ components:
         type: IDENTITY
     Machine_Identity_V2_source:
       allOf:
-      - $ref: '#/components/schemas/basereferencedto'
+      - $ref: '#/components/schemas/BaseReferenceDto'
       - example:
           id: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
           name: Active Directory
@@ -3712,7 +3749,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description
@@ -3735,13 +3772,13 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    taskstatusmessage_parameters_inner:
+    TaskStatusMessage_parameters_inner:
       anyOf:
       - type: object
       - type: string
-    machineidentityaggregationresponse_target:
+    MachineIdentityAggregationResponse_target:
       allOf:
-      - $ref: '#/components/schemas/basereferencedto'
+      - $ref: '#/components/schemas/BaseReferenceDto'
       - example:
           id: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
           name: Source name
@@ -3752,9 +3789,9 @@ components:
         name: William Wilson
         id: 2c91808568c529c60168cca6f90c1313
         type: IDENTITY
-    machineidentityuserentitlementresponse_source:
+    MachineIdentityUserEntitlementResponse_source:
       allOf:
-      - $ref: '#/components/schemas/basereferencedto'
+      - $ref: '#/components/schemas/BaseReferenceDto'
       - example:
           id: 6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa
           name: Active Directory
@@ -3766,9 +3803,9 @@ components:
         id: 2c91808568c529c60168cca6f90c1313
         type: IDENTITY
       type: object
-    machineidentityuserentitlementresponse_entitlement:
+    MachineIdentityUserEntitlementResponse_entitlement:
       allOf:
-      - $ref: '#/components/schemas/basereferencedto'
+      - $ref: '#/components/schemas/BaseReferenceDto'
       - example:
           id: 4b0c7106-a6c7-4380-86f3-024993664fc3
           name: Entitlement DISPLAY NAME

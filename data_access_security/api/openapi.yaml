@@ -116,14 +116,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/taskinfo'
+                  $ref: '#/components/schemas/TaskInfo'
                 type: array
           description: OK. Returns a list of Data Access Security tasks.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -147,7 +147,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -165,7 +165,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -190,7 +190,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -228,7 +228,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -252,7 +252,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -270,7 +270,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -295,7 +295,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -327,13 +327,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/taskinfo'
+                $ref: '#/components/schemas/TaskInfo'
           description: A Task object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -357,7 +357,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -375,7 +375,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -400,7 +400,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -438,7 +438,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -462,7 +462,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -480,7 +480,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -505,7 +505,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -541,7 +541,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -565,7 +565,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -583,7 +583,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -608,7 +608,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -704,14 +704,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/scheduleinfo'
+                  $ref: '#/components/schemas/ScheduleInfo'
                 type: array
           description: List of Schedule objects.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -735,7 +735,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -753,7 +753,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -778,7 +778,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -799,7 +799,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createschedulerequest'
+              $ref: '#/components/schemas/CreateScheduleRequest'
         required: true
       responses:
         "200":
@@ -813,7 +813,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -837,7 +837,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -855,7 +855,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -880,7 +880,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -916,7 +916,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -940,7 +940,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -958,7 +958,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -983,7 +983,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1015,13 +1015,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/scheduleinfo'
+                $ref: '#/components/schemas/ScheduleInfo'
           description: A schedule object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1045,7 +1045,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1063,7 +1063,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1088,7 +1088,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1120,7 +1120,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateschedulerequest'
+              $ref: '#/components/schemas/UpdateScheduleRequest'
         required: true
       responses:
         "204":
@@ -1129,7 +1129,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1153,7 +1153,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1171,7 +1171,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1196,7 +1196,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1293,14 +1293,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/applicationitem'
+                  $ref: '#/components/schemas/ApplicationItem'
                 type: array
           description: A list of applications matching the filter criteria.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1324,7 +1324,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1342,7 +1342,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1367,7 +1367,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1390,7 +1390,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/basecreateapplicationrequest'
+              $ref: '#/components/schemas/BaseCreateApplicationRequest'
         description: Request body containing the details required to create a new
           application.
         required: true
@@ -1401,7 +1401,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1425,7 +1425,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1443,7 +1443,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1468,7 +1468,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1504,7 +1504,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1528,7 +1528,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1546,7 +1546,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1571,7 +1571,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1604,13 +1604,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/applicationitem'
+                $ref: '#/components/schemas/ApplicationItem'
           description: The application details were retrieved successfully.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1634,7 +1634,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1652,7 +1652,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1677,7 +1677,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1711,7 +1711,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/basecreateapplicationrequest'
+              $ref: '#/components/schemas/BaseCreateApplicationRequest'
         description: Request body containing the updated details for the application.
         required: true
       responses:
@@ -1721,7 +1721,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1745,7 +1745,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1763,7 +1763,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1788,7 +1788,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1879,7 +1879,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/identitycollectorlistitem'
+                  $ref: '#/components/schemas/Identitycollectorlistitem'
                 type: array
           description: A list of identity collectors matching the filter criteria.
           headers:
@@ -1895,7 +1895,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1919,7 +1919,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1937,7 +1937,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1962,7 +1962,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1986,7 +1986,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createidentitycollectorrequest'
+              $ref: '#/components/schemas/Createidentitycollectorrequest'
         description: Request body containing the details required to create a new
           identity collector.
         required: true
@@ -2001,7 +2001,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2025,7 +2025,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2043,7 +2043,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2068,7 +2068,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2104,7 +2104,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2128,7 +2128,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2146,7 +2146,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2171,7 +2171,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2204,7 +2204,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateidentitycollectorrequest'
+              $ref: '#/components/schemas/Updateidentitycollectorrequest'
         description: Request body containing the updated details for the identity
           collector.
         required: true
@@ -2215,7 +2215,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2239,7 +2239,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2257,7 +2257,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "409":
@@ -2289,7 +2289,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2348,14 +2348,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/dataownermodel'
+                  $ref: '#/components/schemas/DataOwnerModel'
                 type: array
           description: OK. Returns a list of DataOwnerModel objects.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2379,7 +2379,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2397,7 +2397,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2422,7 +2422,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2496,7 +2496,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2520,7 +2520,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2538,7 +2538,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2563,7 +2563,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2624,7 +2624,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/resourcemodel'
+                  $ref: '#/components/schemas/ResourceModel'
                 type: array
           description: A list of resources owned by the specified identity was retrieved
             successfully.
@@ -2632,7 +2632,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2656,7 +2656,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2674,7 +2674,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2699,7 +2699,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2720,7 +2720,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assignresourceownerrequest'
+              $ref: '#/components/schemas/AssignResourceOwnerRequest'
         description: "The request body must contain the application ID, resource path,\
           \ and identity ID to be assigned as the resource owner."
         required: true
@@ -2736,7 +2736,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2760,7 +2760,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2778,7 +2778,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2803,7 +2803,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2859,7 +2859,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2883,7 +2883,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2901,7 +2901,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2926,7 +2926,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2945,7 +2945,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/reelectrequest'
+              $ref: '#/components/schemas/ReelectRequest'
         description: The request body must contain details for re-electing a resource
           owner. Date/time fields should use epoch format in seconds.
         required: true
@@ -2966,7 +2966,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2990,7 +2990,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -3008,7 +3008,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -3033,7 +3033,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3100,7 +3100,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -3124,7 +3124,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -3142,7 +3142,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "409":
@@ -3174,10 +3174,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    taskinfo:
+    TaskInfo:
       example:
         scheduleTaskId: 2001
         progress: 75
@@ -3249,7 +3249,7 @@ components:
           type: integer
       title: TaskInfo
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -3261,7 +3261,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -3274,7 +3274,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -3282,7 +3282,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -3316,17 +3316,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    scheduleinfo:
+    ScheduleInfo:
       example:
         lastRun: 1762237200
         active: true
@@ -3445,7 +3445,21 @@ components:
           type: integer
       title: ScheduleInfo
       type: object
-    createschedulerequest:
+    CreateScheduleRequest:
+      example:
+        scheduleTaskName: Daily Data Sync
+        scheduleType: Daily
+        active: true
+        interval: 1440
+        startTime: 1762237200
+        endTime: 1762240800
+        taskTypeName: DataSync
+        daysOfWeek:
+        - Monday
+        - Wednesday
+        - Friday
+        applicationId: 2001
+        runAfterScheduleTaskId: 1000
       properties:
         taskTypeName:
           description: The type or category of the scheduled task.
@@ -3513,7 +3527,21 @@ components:
           nullable: true
           type: integer
       type: object
-    updateschedulerequest:
+    UpdateScheduleRequest:
+      example:
+        scheduleTaskName: Daily Data Sync
+        scheduleType: Daily
+        active: true
+        interval: 1440
+        startTime: 1762237200
+        endTime: 1762240800
+        taskTypeName: DataSync
+        daysOfWeek:
+        - Monday
+        - Wednesday
+        - Friday
+        applicationId: 2001
+        runAfterScheduleTaskId: 1000
       properties:
         taskTypeName:
           description: The type or category of the scheduled task.
@@ -3582,7 +3610,7 @@ components:
           nullable: true
           type: integer
       type: object
-    tag:
+    Tag:
       properties:
         id:
           description: The unique identifier for the tag.
@@ -3595,7 +3623,7 @@ components:
           nullable: true
           type: string
       type: object
-    applicationitem:
+    ApplicationItem:
       example:
         pcClusterId: E1304AA9-D8FA-4574-A5CD-B59A6D8CB918
         name: HR File Server
@@ -3636,7 +3664,7 @@ components:
           - id: 101
             name: Confidential
           items:
-            $ref: '#/components/schemas/tag'
+            $ref: '#/components/schemas/Tag'
           nullable: true
           type: array
         testConnectionStatus:
@@ -3667,7 +3695,7 @@ components:
           nullable: true
           type: string
       type: object
-    applicationtype:
+    ApplicationType:
       description: |
         Specifies the type of application. Possible values:
           1  - Sharepoint
@@ -3704,7 +3732,7 @@ components:
       example: 9
       format: int32
       type: integer
-    int64stringkeyvaluepair:
+    Int64StringKeyValuePair:
       properties:
         key:
           description: The key for the tag or pair.
@@ -3717,7 +3745,7 @@ components:
           nullable: true
           type: string
       type: object
-    basesettings:
+    BaseSettings:
       properties:
         isEnabled:
           default: false
@@ -3731,7 +3759,7 @@ components:
           nullable: true
           type: string
       type: object
-    crawlresourcessizesoptions:
+    CrawlResourcesSizesOptions:
       description: "Specifies when resource sizes should be calculated during a crawl\
         \ operation. - 0: Unspecified - No specific option set. - 1: Never - Resource\
         \ sizes are never calculated. - 2: Always - Resource sizes are always calculated.\
@@ -3744,12 +3772,12 @@ components:
       example: 2
       format: int32
       type: integer
-    applicationcrawlersettings:
+    ApplicationCrawlerSettings:
       allOf:
-      - $ref: '#/components/schemas/basesettings'
+      - $ref: '#/components/schemas/BaseSettings'
       - properties:
           calculateResourceSize:
-            $ref: '#/components/schemas/crawlresourcessizesoptions'
+            $ref: '#/components/schemas/CrawlResourcesSizesOptions'
           crawlSnapshotsFolder:
             default: false
             description: Indicates whether to crawl the snapshots folder.
@@ -3801,9 +3829,26 @@ components:
             nullable: true
             type: array
         type: object
-    permissioncollectorsettings:
+      example:
+        calculateResourceSize: 2
+        excludedResources:
+        - resourceA
+        - resourceB
+        crawlPublicFolders: true
+        excludedPathsByRegex: ^/archive/.*
+        isEnabled: true
+        crawlSnapshotsFolder: true
+        crawlMailboxes: false
+        crawlTopLevelShares:
+        - share1
+        - share2
+        clusterId: cluster-001
+        includeResources:
+        - resourceX
+        - resourceY
+    PermissionCollectorSettings:
       allOf:
-      - $ref: '#/components/schemas/basesettings'
+      - $ref: '#/components/schemas/BaseSettings'
       - properties:
           analyzeUniquePermissions:
             default: false
@@ -3830,18 +3875,28 @@ components:
             nullable: true
             type: string
         type: object
-    dataclassificationsettings:
+      example:
+        analyzeUniquePermissions: true
+        calculateRiskiestPermissions: false
+        isEnabled: true
+        calculateEffectivePermissions: true
+        clusterId: cluster-001
+        effectivePermissionsSource: S3
+    DataClassificationSettings:
       allOf:
-      - $ref: '#/components/schemas/basesettings'
+      - $ref: '#/components/schemas/BaseSettings'
       - description: |
           Extend with additional data classification configuration properties as needed.
         example:
           isEnabled: true
           clusterId: cluster-001
         type: object
-    activityconfigurationsettings:
+      example:
+        isEnabled: true
+        clusterId: cluster-001
+    ActivityConfigurationSettings:
       allOf:
-      - $ref: '#/components/schemas/basesettings'
+      - $ref: '#/components/schemas/BaseSettings'
       - description: Inherits base settings for activity configuration.
         properties:
           retentionTimePeriod:
@@ -3891,10 +3946,82 @@ components:
             nullable: true
             type: array
         type: object
-    basecreateapplicationrequest:
+      example:
+        excludeFolders:
+        - /tmp
+        - /archive
+        excludeFileExtensions:
+        - .log
+        - .bak
+        excludeActions:
+        - delete
+        - move
+        isEnabled: true
+        retentionTimePeriod: 30
+        retentionTimeType: days
+        clusterId: cluster-001
+        excludeUsers:
+        - user1
+        - user2
+    BaseCreateApplicationRequest:
+      example:
+        adIdentityCollectorId: 987654321
+        applicationType: 9
+        nisIdentityCollectorId: 192837465
+        executeNow: false
+        name: HR File Server
+        description: Stores HR documents and employee records.
+        dataClassificationSettings:
+          isEnabled: true
+          clusterId: cluster-001
+        activityConfigurationSettings:
+          excludeFolders:
+          - /tmp
+          - /archive
+          excludeFileExtensions:
+          - .log
+          - .bak
+          excludeActions:
+          - delete
+          - move
+          isEnabled: true
+          retentionTimePeriod: 30
+          retentionTimeType: days
+          clusterId: cluster-001
+          excludeUsers:
+          - user1
+          - user2
+        applicationCrawlerSettings:
+          calculateResourceSize: 2
+          excludedResources:
+          - resourceA
+          - resourceB
+          crawlPublicFolders: true
+          excludedPathsByRegex: ^/archive/.*
+          isEnabled: true
+          crawlSnapshotsFolder: true
+          crawlMailboxes: false
+          crawlTopLevelShares:
+          - share1
+          - share2
+          clusterId: cluster-001
+          includeResources:
+          - resourceX
+          - resourceY
+        identityCollectorId: 123456789
+        permissionCollectorSettings:
+          analyzeUniquePermissions: true
+          calculateRiskiestPermissions: false
+          isEnabled: true
+          calculateEffectivePermissions: true
+          clusterId: cluster-001
+          effectivePermissionsSource: S3
+        tags:
+        - key: 1
+          value: Confidential
       properties:
         applicationType:
-          $ref: '#/components/schemas/applicationtype'
+          $ref: '#/components/schemas/ApplicationType'
         name:
           description: The display name of the application.
           example: HR File Server
@@ -3910,7 +4037,7 @@ components:
           - key: 1
             value: Confidential
           items:
-            $ref: '#/components/schemas/int64stringkeyvaluepair'
+            $ref: '#/components/schemas/Int64StringKeyValuePair'
           nullable: true
           type: array
         identityCollectorId:
@@ -3933,13 +4060,13 @@ components:
           nullable: true
           type: integer
         applicationCrawlerSettings:
-          $ref: '#/components/schemas/applicationcrawlersettings'
+          $ref: '#/components/schemas/ApplicationCrawlerSettings'
         permissionCollectorSettings:
-          $ref: '#/components/schemas/permissioncollectorsettings'
+          $ref: '#/components/schemas/PermissionCollectorSettings'
         dataClassificationSettings:
-          $ref: '#/components/schemas/dataclassificationsettings'
+          $ref: '#/components/schemas/DataClassificationSettings'
         activityConfigurationSettings:
-          $ref: '#/components/schemas/activityconfigurationsettings'
+          $ref: '#/components/schemas/ActivityConfigurationSettings'
         executeNow:
           default: false
           description: "If true, the application setup will be executed immediately\
@@ -3950,7 +4077,7 @@ components:
       - applicationType
       - name
       type: object
-    identitycollectorlistitem:
+    Identitycollectorlistitem:
       example:
         sourceId: 2c9180835d2e5168015d32f890ca1581
         name: Active Directory Identity Collector
@@ -3979,7 +4106,10 @@ components:
           example: 2c9180835d2e5168015d32f890ca1581
           type: string
       type: object
-    createidentitycollectorrequest:
+    Createidentitycollectorrequest:
+      example:
+        sourceId: 2c9180835d2e5168015d32f890ca1581
+        name: Active Directory Identity Collector
       properties:
         name:
           description: The display name for the new identity collector. Must be unique
@@ -3996,7 +4126,11 @@ components:
       - name
       - sourceId
       type: object
-    updateidentitycollectorrequest:
+    Updateidentitycollectorrequest:
+      example:
+        sourceId: 2c9180835d2e5168015d32f890ca1581
+        name: Active Directory Identity Collector
+        type: Active Directory
       properties:
         name:
           description: The display name of the identity collector. Must be unique
@@ -4020,7 +4154,7 @@ components:
       - sourceId
       - type
       type: object
-    dataownermodel:
+    DataOwnerModel:
       example:
         fullPath: /departments/finance/shared
         resourceId: 1001
@@ -4043,7 +4177,7 @@ components:
           nullable: true
           type: string
       type: object
-    businessservicetype:
+    BusinessServiceType:
       description: |
         Specifies the type of business service or resource. Possible values include:
           0    - Folder
@@ -4190,7 +4324,7 @@ components:
       example: 6
       format: int32
       type: integer
-    resourcemodel:
+    ResourceModel:
       example:
         fullPath: /departments/finance/shared
         name: Finance Shared Folder
@@ -4223,7 +4357,7 @@ components:
           format: int64
           type: integer
         type:
-          $ref: '#/components/schemas/businessservicetype'
+          $ref: '#/components/schemas/BusinessServiceType'
         owners:
           description: A list of UUIDs representing the owners of the resource.
           example:
@@ -4235,7 +4369,11 @@ components:
           nullable: true
           type: array
       type: object
-    assignresourceownerrequest:
+    AssignResourceOwnerRequest:
+      example:
+        fullPath: /shared/hr/documents/employee-records.pdf
+        identityId: d290f1ee-6c54-4b01-90e6-d701748f0851
+        appId: 12345
       properties:
         appId:
           description: The unique identifier of the application containing the resource.
@@ -4255,7 +4393,13 @@ components:
           format: uuid
           type: string
       type: object
-    reelectrequest:
+    ReelectRequest:
+      example:
+        ownerId: c1a2b3d4-e5f6-7890-abcd-1234567890ab
+        campaignName: Annual Resource Owner Election
+        reviewers:
+        - d4e5f6a7-b8c9-0123-4567-89abcdef0123
+        - e7f8g9h0-i1j2-3456-7890-klmnopqrstuv
       properties:
         ownerId:
           description: The UUID of the identity proposed to be re-elected as the resource

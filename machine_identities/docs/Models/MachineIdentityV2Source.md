@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'MachineIdentityV2Source', 'V1MachineI
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **Dtotype** |  | [optional] 
+**Type** | Pointer to **DtoType** |  | [optional] 
 **Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
 **Name** | Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
 
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *MachineIdentityV2Source) GetType() Dtotype`
+`func (o *MachineIdentityV2Source) GetType() DtoType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *MachineIdentityV2Source) GetTypeOk() (*Dtotype, bool)`
+`func (o *MachineIdentityV2Source) GetTypeOk() (*DtoType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *MachineIdentityV2Source) SetType(v Dtotype)`
+`func (o *MachineIdentityV2Source) SetType(v DtoType)`
 
 SetType sets Type field to given value.
 

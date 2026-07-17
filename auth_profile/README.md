@@ -87,15 +87,15 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](docs/ArrayInner.md)
- - [Authprofile](docs/Authprofile.md)
- - [Authprofilesummary](docs/Authprofilesummary.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [AuthProfile](docs/AuthProfile.md)
+ - [AuthProfileSummary](docs/AuthProfileSummary.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetProfileConfigListV1401Response](docs/GetProfileConfigListV1401Response.md)
  - [GetProfileConfigListV1429Response](docs/GetProfileConfigListV1429Response.md)
- - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [JsonPatchOperation](docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

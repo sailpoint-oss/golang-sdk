@@ -35,7 +35,7 @@ func (r ApiGetIdentityIntelligenceV1Request) Filters(filters string) ApiGetIdent
 	return r
 }
 
-func (r ApiGetIdentityIntelligenceV1Request) Execute() (*Intelidentityaggregate, *http.Response, error) {
+func (r ApiGetIdentityIntelligenceV1Request) Execute() (*IntelIdentityAggregate, *http.Response, error) {
 	return r.ApiService.GetIdentityIntelligenceV1Execute(r)
 }
 
@@ -63,13 +63,13 @@ func (a *IntelligenceAPIService) GetIdentityIntelligenceV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return Intelidentityaggregate
-func (a *IntelligenceAPIService) GetIdentityIntelligenceV1Execute(r ApiGetIdentityIntelligenceV1Request) (*Intelidentityaggregate, *http.Response, error) {
+//  @return IntelIdentityAggregate
+func (a *IntelligenceAPIService) GetIdentityIntelligenceV1Execute(r ApiGetIdentityIntelligenceV1Request) (*IntelIdentityAggregate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Intelidentityaggregate
+		localVarReturnValue  *IntelIdentityAggregate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntelligenceAPIService.GetIdentityIntelligenceV1")
@@ -127,7 +127,7 @@ func (a *IntelligenceAPIService) GetIdentityIntelligenceV1Execute(r ApiGetIdenti
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -149,7 +149,7 @@ func (a *IntelligenceAPIService) GetIdentityIntelligenceV1Execute(r ApiGetIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -160,7 +160,7 @@ func (a *IntelligenceAPIService) GetIdentityIntelligenceV1Execute(r ApiGetIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -171,7 +171,7 @@ func (a *IntelligenceAPIService) GetIdentityIntelligenceV1Execute(r ApiGetIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -193,7 +193,7 @@ func (a *IntelligenceAPIService) GetIdentityIntelligenceV1Execute(r ApiGetIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -237,7 +237,7 @@ func (r ApiGetIntelIdentityAccessItemHistoryV1Request) Offset(offset int32) ApiG
 	return r
 }
 
-func (r ApiGetIntelIdentityAccessItemHistoryV1Request) Execute() ([]Intelaccessitemhistoryevent, *http.Response, error) {
+func (r ApiGetIntelIdentityAccessItemHistoryV1Request) Execute() ([]IntelAccessItemHistoryEvent, *http.Response, error) {
 	return r.ApiService.GetIntelIdentityAccessItemHistoryV1Execute(r)
 }
 
@@ -263,13 +263,13 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccessItemHistoryV1(ctx context
 }
 
 // Execute executes the request
-//  @return []Intelaccessitemhistoryevent
-func (a *IntelligenceAPIService) GetIntelIdentityAccessItemHistoryV1Execute(r ApiGetIntelIdentityAccessItemHistoryV1Request) ([]Intelaccessitemhistoryevent, *http.Response, error) {
+//  @return []IntelAccessItemHistoryEvent
+func (a *IntelligenceAPIService) GetIntelIdentityAccessItemHistoryV1Execute(r ApiGetIntelIdentityAccessItemHistoryV1Request) ([]IntelAccessItemHistoryEvent, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Intelaccessitemhistoryevent
+		localVarReturnValue  []IntelAccessItemHistoryEvent
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntelligenceAPIService.GetIntelIdentityAccessItemHistoryV1")
@@ -342,7 +342,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccessItemHistoryV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -364,7 +364,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccessItemHistoryV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -386,7 +386,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccessItemHistoryV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -430,7 +430,7 @@ func (r ApiGetIntelIdentityAccountsV1Request) Offset(offset int32) ApiGetIntelId
 	return r
 }
 
-func (r ApiGetIntelIdentityAccountsV1Request) Execute() ([]Intelaccessaccountwire, *http.Response, error) {
+func (r ApiGetIntelIdentityAccountsV1Request) Execute() ([]IntelAccessAccountWire, *http.Response, error) {
 	return r.ApiService.GetIntelIdentityAccountsV1Execute(r)
 }
 
@@ -455,13 +455,13 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return []Intelaccessaccountwire
-func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntelIdentityAccountsV1Request) ([]Intelaccessaccountwire, *http.Response, error) {
+//  @return []IntelAccessAccountWire
+func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntelIdentityAccountsV1Request) ([]IntelAccessAccountWire, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Intelaccessaccountwire
+		localVarReturnValue  []IntelAccessAccountWire
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntelligenceAPIService.GetIntelIdentityAccountsV1")
@@ -534,7 +534,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntel
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -556,7 +556,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntel
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -578,7 +578,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntel
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -622,7 +622,7 @@ func (r ApiGetIntelIdentityCertificationHistoryV1Request) Offset(offset int32) A
 	return r
 }
 
-func (r ApiGetIntelIdentityCertificationHistoryV1Request) Execute() ([]Intelcertificationhistoryevent, *http.Response, error) {
+func (r ApiGetIntelIdentityCertificationHistoryV1Request) Execute() ([]IntelCertificationHistoryEvent, *http.Response, error) {
 	return r.ApiService.GetIntelIdentityCertificationHistoryV1Execute(r)
 }
 
@@ -648,13 +648,13 @@ func (a *IntelligenceAPIService) GetIntelIdentityCertificationHistoryV1(ctx cont
 }
 
 // Execute executes the request
-//  @return []Intelcertificationhistoryevent
-func (a *IntelligenceAPIService) GetIntelIdentityCertificationHistoryV1Execute(r ApiGetIntelIdentityCertificationHistoryV1Request) ([]Intelcertificationhistoryevent, *http.Response, error) {
+//  @return []IntelCertificationHistoryEvent
+func (a *IntelligenceAPIService) GetIntelIdentityCertificationHistoryV1Execute(r ApiGetIntelIdentityCertificationHistoryV1Request) ([]IntelCertificationHistoryEvent, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Intelcertificationhistoryevent
+		localVarReturnValue  []IntelCertificationHistoryEvent
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntelligenceAPIService.GetIntelIdentityCertificationHistoryV1")
@@ -727,7 +727,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityCertificationHistoryV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -749,7 +749,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityCertificationHistoryV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -771,7 +771,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityCertificationHistoryV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -815,7 +815,7 @@ func (r ApiGetIntelIdentityRareAccessV1Request) Offset(offset int32) ApiGetIntel
 	return r
 }
 
-func (r ApiGetIntelIdentityRareAccessV1Request) Execute() ([]Inteloutlieraccessitem, *http.Response, error) {
+func (r ApiGetIntelIdentityRareAccessV1Request) Execute() ([]IntelOutlierAccessItem, *http.Response, error) {
 	return r.ApiService.GetIntelIdentityRareAccessV1Execute(r)
 }
 
@@ -842,13 +842,13 @@ func (a *IntelligenceAPIService) GetIntelIdentityRareAccessV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Inteloutlieraccessitem
-func (a *IntelligenceAPIService) GetIntelIdentityRareAccessV1Execute(r ApiGetIntelIdentityRareAccessV1Request) ([]Inteloutlieraccessitem, *http.Response, error) {
+//  @return []IntelOutlierAccessItem
+func (a *IntelligenceAPIService) GetIntelIdentityRareAccessV1Execute(r ApiGetIntelIdentityRareAccessV1Request) ([]IntelOutlierAccessItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Inteloutlieraccessitem
+		localVarReturnValue  []IntelOutlierAccessItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntelligenceAPIService.GetIntelIdentityRareAccessV1")
@@ -921,7 +921,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityRareAccessV1Execute(r ApiGetInt
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -943,7 +943,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityRareAccessV1Execute(r ApiGetInt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -965,7 +965,7 @@ func (a *IntelligenceAPIService) GetIntelIdentityRareAccessV1Execute(r ApiGetInt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

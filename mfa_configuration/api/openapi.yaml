@@ -48,13 +48,13 @@ paths:
                 accessKey: d******Y
                 identityAttribute: email
               schema:
-                $ref: '#/components/schemas/mfaoktaconfig'
+                $ref: '#/components/schemas/MfaOktaConfig'
           description: The configuration of an Okta MFA method.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -78,7 +78,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -103,7 +103,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -128,7 +128,7 @@ paths:
               accessKey: dk778Y3QlA5UqocYpdU3rEkzrK2D497y
               identityAttribute: email
             schema:
-              $ref: '#/components/schemas/mfaoktaconfig'
+              $ref: '#/components/schemas/MfaOktaConfig'
         required: true
       responses:
         "200":
@@ -141,13 +141,13 @@ paths:
                 accessKey: d******Y
                 identityAttribute: email
               schema:
-                $ref: '#/components/schemas/mfaoktaconfig'
+                $ref: '#/components/schemas/MfaOktaConfig'
           description: MFA configuration of an Okta MFA method.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -171,7 +171,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -196,7 +196,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -225,13 +225,13 @@ paths:
                   skey: 6******B
                   ikey: Q123WE45R6TY7890ZXCV
               schema:
-                $ref: '#/components/schemas/mfaduoconfig'
+                $ref: '#/components/schemas/MfaDuoConfig'
           description: The configuration of an Duo MFA method.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -255,7 +255,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -280,7 +280,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -308,7 +308,7 @@ paths:
                 skey: 12q3WERlcUHWJmiMqyCXI3uOF7EaDJTbdeOp6E2B
                 ikey: Q123WE45R6TY7890ZXCV
             schema:
-              $ref: '#/components/schemas/mfaduoconfig'
+              $ref: '#/components/schemas/MfaDuoConfig'
         required: true
       responses:
         "200":
@@ -324,13 +324,13 @@ paths:
                   skey: 1******B
                   ikey: Q123WE45R6TY7890ZXCV
               schema:
-                $ref: '#/components/schemas/mfaduoconfig'
+                $ref: '#/components/schemas/MfaDuoConfig'
           description: MFA configuration of an Duo MFA method.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -354,7 +354,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -379,7 +379,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -424,14 +424,14 @@ paths:
                 numAnswers: 3
               schema:
                 items:
-                  $ref: '#/components/schemas/kbaquestion'
+                  $ref: '#/components/schemas/KbaQuestion'
                 type: array
           description: The configuration for KBA MFA method.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -455,7 +455,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -480,7 +480,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -507,7 +507,7 @@ paths:
               answer: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
             schema:
               items:
-                $ref: '#/components/schemas/kbaanswerrequestitem'
+                $ref: '#/components/schemas/KbaAnswerRequestItem'
               type: array
         required: true
       responses:
@@ -529,14 +529,14 @@ paths:
                 hasAnswer: true
               schema:
                 items:
-                  $ref: '#/components/schemas/kbaanswerresponseitem'
+                  $ref: '#/components/schemas/KbaAnswerResponseItem'
                 type: array
           description: The new KBA configuration for the user.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -560,7 +560,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -585,7 +585,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -624,13 +624,13 @@ paths:
                 state: SUCCESS
                 error: null
               schema:
-                $ref: '#/components/schemas/mfaconfigtestresponse'
+                $ref: '#/components/schemas/MfaConfigTestResponse'
           description: The result of configuration test for the MFA provider.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -654,7 +654,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -679,7 +679,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -697,7 +697,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -721,7 +721,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "429":
@@ -746,10 +746,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    mfaoktaconfig:
+    MfaOktaConfig:
       example:
         accessKey: qw123Y3QlA5UqocYpdU3rEkzrK2D497y
         host: example.com
@@ -785,7 +785,7 @@ components:
           type: string
       title: Mfa Okta Config
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -797,7 +797,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -810,7 +810,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -818,7 +818,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -852,17 +852,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    mfaduoconfig:
+    MfaDuoConfig:
       example:
         accessKey: qw123Y3QlA5UqocYpdU3rEkzrK2D497y
         host: example.com
@@ -910,7 +910,7 @@ components:
           type: object
       title: Mfa Duo Config
       type: object
-    kbaquestion:
+    KbaQuestion:
       description: KBA Configuration
       example:
         hasAnswer: true
@@ -949,7 +949,10 @@ components:
       - text
       title: Kba Question
       type: object
-    kbaanswerrequestitem:
+    KbaAnswerRequestItem:
+      example:
+        answer: Your answer
+        id: c54fee53-2d63-4fc5-9259-3e93b9994135
       properties:
         id:
           description: Question Id
@@ -966,7 +969,7 @@ components:
       - id
       title: Kba Answer Request Item
       type: object
-    kbaanswerresponseitem:
+    KbaAnswerResponseItem:
       example:
         hasAnswer: true
         question: "[{\"text\":\"Nouvelle question MFA -1 ?\",\"locale\":\"fr\"},{\"\
@@ -996,7 +999,7 @@ components:
       - question
       title: Kba Answer Response Item
       type: object
-    mfaconfigtestresponse:
+    MfaConfigTestResponse:
       description: Response model for configuration test of a given MFA method
       example:
         state: SUCCESS

@@ -126,7 +126,7 @@ func (a *DimensionsAPIService) CreateDimensionV1Execute(r ApiCreateDimensionV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -148,7 +148,7 @@ func (a *DimensionsAPIService) CreateDimensionV1Execute(r ApiCreateDimensionV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -170,7 +170,7 @@ func (a *DimensionsAPIService) CreateDimensionV1Execute(r ApiCreateDimensionV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -198,15 +198,15 @@ type ApiDeleteBulkDimensionsV1Request struct {
 	ctx context.Context
 	ApiService *DimensionsAPIService
 	roleId string
-	dimensionbulkdeleterequest *Dimensionbulkdeleterequest
+	dimensionBulkDeleteRequest *DimensionBulkDeleteRequest
 }
 
-func (r ApiDeleteBulkDimensionsV1Request) Dimensionbulkdeleterequest(dimensionbulkdeleterequest Dimensionbulkdeleterequest) ApiDeleteBulkDimensionsV1Request {
-	r.dimensionbulkdeleterequest = &dimensionbulkdeleterequest
+func (r ApiDeleteBulkDimensionsV1Request) DimensionBulkDeleteRequest(dimensionBulkDeleteRequest DimensionBulkDeleteRequest) ApiDeleteBulkDimensionsV1Request {
+	r.dimensionBulkDeleteRequest = &dimensionBulkDeleteRequest
 	return r
 }
 
-func (r ApiDeleteBulkDimensionsV1Request) Execute() (*Taskresultdto, *http.Response, error) {
+func (r ApiDeleteBulkDimensionsV1Request) Execute() (*TaskResultDto, *http.Response, error) {
 	return r.ApiService.DeleteBulkDimensionsV1Execute(r)
 }
 
@@ -231,13 +231,13 @@ func (a *DimensionsAPIService) DeleteBulkDimensionsV1(ctx context.Context, roleI
 }
 
 // Execute executes the request
-//  @return Taskresultdto
-func (a *DimensionsAPIService) DeleteBulkDimensionsV1Execute(r ApiDeleteBulkDimensionsV1Request) (*Taskresultdto, *http.Response, error) {
+//  @return TaskResultDto
+func (a *DimensionsAPIService) DeleteBulkDimensionsV1Execute(r ApiDeleteBulkDimensionsV1Request) (*TaskResultDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Taskresultdto
+		localVarReturnValue  *TaskResultDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DimensionsAPIService.DeleteBulkDimensionsV1")
@@ -251,8 +251,8 @@ func (a *DimensionsAPIService) DeleteBulkDimensionsV1Execute(r ApiDeleteBulkDime
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.dimensionbulkdeleterequest == nil {
-		return localVarReturnValue, nil, reportError("dimensionbulkdeleterequest is required and must be specified")
+	if r.dimensionBulkDeleteRequest == nil {
+		return localVarReturnValue, nil, reportError("dimensionBulkDeleteRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -273,7 +273,7 @@ func (a *DimensionsAPIService) DeleteBulkDimensionsV1Execute(r ApiDeleteBulkDime
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.dimensionbulkdeleterequest
+	localVarPostBody = r.dimensionBulkDeleteRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -297,7 +297,7 @@ func (a *DimensionsAPIService) DeleteBulkDimensionsV1Execute(r ApiDeleteBulkDime
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -319,7 +319,7 @@ func (a *DimensionsAPIService) DeleteBulkDimensionsV1Execute(r ApiDeleteBulkDime
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -341,7 +341,7 @@ func (a *DimensionsAPIService) DeleteBulkDimensionsV1Execute(r ApiDeleteBulkDime
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -457,7 +457,7 @@ func (a *DimensionsAPIService) DeleteDimensionV1Execute(r ApiDeleteDimensionV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -479,7 +479,7 @@ func (a *DimensionsAPIService) DeleteDimensionV1Execute(r ApiDeleteDimensionV1Re
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -501,7 +501,7 @@ func (a *DimensionsAPIService) DeleteDimensionV1Execute(r ApiDeleteDimensionV1Re
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -670,7 +670,7 @@ func (a *DimensionsAPIService) GetDimensionEntitlementsV1Execute(r ApiGetDimensi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -692,7 +692,7 @@ func (a *DimensionsAPIService) GetDimensionEntitlementsV1Execute(r ApiGetDimensi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -714,7 +714,7 @@ func (a *DimensionsAPIService) GetDimensionEntitlementsV1Execute(r ApiGetDimensi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -833,7 +833,7 @@ func (a *DimensionsAPIService) GetDimensionV1Execute(r ApiGetDimensionV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -855,7 +855,7 @@ func (a *DimensionsAPIService) GetDimensionV1Execute(r ApiGetDimensionV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -877,7 +877,7 @@ func (a *DimensionsAPIService) GetDimensionV1Execute(r ApiGetDimensionV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -943,7 +943,7 @@ func (r ApiListDimensionAccessProfilesV1Request) Sorters(sorters string) ApiList
 	return r
 }
 
-func (r ApiListDimensionAccessProfilesV1Request) Execute() ([]Accessprofile, *http.Response, error) {
+func (r ApiListDimensionAccessProfilesV1Request) Execute() ([]AccessProfile, *http.Response, error) {
 	return r.ApiService.ListDimensionAccessProfilesV1Execute(r)
 }
 
@@ -969,13 +969,13 @@ func (a *DimensionsAPIService) ListDimensionAccessProfilesV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return []Accessprofile
-func (a *DimensionsAPIService) ListDimensionAccessProfilesV1Execute(r ApiListDimensionAccessProfilesV1Request) ([]Accessprofile, *http.Response, error) {
+//  @return []AccessProfile
+func (a *DimensionsAPIService) ListDimensionAccessProfilesV1Execute(r ApiListDimensionAccessProfilesV1Request) ([]AccessProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessprofile
+		localVarReturnValue  []AccessProfile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DimensionsAPIService.ListDimensionAccessProfilesV1")
@@ -1055,7 +1055,7 @@ func (a *DimensionsAPIService) ListDimensionAccessProfilesV1Execute(r ApiListDim
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1077,7 +1077,7 @@ func (a *DimensionsAPIService) ListDimensionAccessProfilesV1Execute(r ApiListDim
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1088,7 +1088,7 @@ func (a *DimensionsAPIService) ListDimensionAccessProfilesV1Execute(r ApiListDim
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1110,7 +1110,7 @@ func (a *DimensionsAPIService) ListDimensionAccessProfilesV1Execute(r ApiListDim
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1294,7 +1294,7 @@ func (a *DimensionsAPIService) ListDimensionsV1Execute(r ApiListDimensionsV1Requ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1316,7 +1316,7 @@ func (a *DimensionsAPIService) ListDimensionsV1Execute(r ApiListDimensionsV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1338,7 +1338,7 @@ func (a *DimensionsAPIService) ListDimensionsV1Execute(r ApiListDimensionsV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1367,11 +1367,11 @@ type ApiPatchDimensionV1Request struct {
 	ApiService *DimensionsAPIService
 	roleId string
 	dimensionId string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
-func (r ApiPatchDimensionV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchDimensionV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchDimensionV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchDimensionV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -1424,8 +1424,8 @@ func (a *DimensionsAPIService) PatchDimensionV1Execute(r ApiPatchDimensionV1Requ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1446,7 +1446,7 @@ func (a *DimensionsAPIService) PatchDimensionV1Execute(r ApiPatchDimensionV1Requ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1470,7 +1470,7 @@ func (a *DimensionsAPIService) PatchDimensionV1Execute(r ApiPatchDimensionV1Requ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1492,7 +1492,7 @@ func (a *DimensionsAPIService) PatchDimensionV1Execute(r ApiPatchDimensionV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1514,7 +1514,7 @@ func (a *DimensionsAPIService) PatchDimensionV1Execute(r ApiPatchDimensionV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

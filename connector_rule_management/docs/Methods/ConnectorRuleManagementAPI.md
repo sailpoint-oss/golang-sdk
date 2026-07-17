@@ -47,11 +47,11 @@ Other parameters are passed through a pointer to a apiCreateConnectorRuleV1Reque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connectorrulecreaterequest** | [**Connectorrulecreaterequest**](../models/connectorrulecreaterequest) | Connector rule to create. | 
+ **connectorRuleCreateRequest** | [**ConnectorRuleCreateRequest**](../models/connector-rule-create-request) | Connector rule to create. | 
 
 ### Return type
 
-[**Connectorruleresponse**](../models/connectorruleresponse)
+[**ConnectorRuleResponse**](../models/connector-rule-response)
 
 ### HTTP request headers
 
@@ -73,10 +73,35 @@ import (
 )
 
 func main() {
-    connectorrulecreaterequestJson := []byte(``) // Connectorrulecreaterequest | Connector rule to create.
+    connectorrulecreaterequestJson := []byte(`{
+          "sourceCode" : {
+            "version" : "1.0",
+            "script" : "return \"Mr. \" + firstName;"
+          },
+          "signature" : {
+            "output" : {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            },
+            "input" : [ {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            }, {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            } ]
+          },
+          "name" : "WebServiceBeforeOperationRule",
+          "description" : "This rule does that",
+          "attributes" : { },
+          "type" : "BuildMap"
+        }`) // ConnectorRuleCreateRequest | Connector rule to create.
 
-    var connectorrulecreaterequest connector_rule_management.Connectorrulecreaterequest
-    if err := json.Unmarshal(connectorrulecreaterequestJson, &connectorrulecreaterequest); err != nil {
+    var connectorRuleCreateRequest connector_rule_management.ConnectorRuleCreateRequest
+    if err := json.Unmarshal(connectorrulecreaterequestJson, &connectorRuleCreateRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -84,13 +109,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagementAPI.CreateConnectorRuleV1(context.Background()).Connectorrulecreaterequest(connectorrulecreaterequest).Execute()
-	  //resp, r, err := apiClient.ConnectorRuleManagementAPI.CreateConnectorRuleV1(context.Background()).Connectorrulecreaterequest(connectorrulecreaterequest).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.CreateConnectorRuleV1(context.Background()).ConnectorRuleCreateRequest(connectorRuleCreateRequest).Execute()
+	  //resp, r, err := apiClient.ConnectorRuleManagementAPI.CreateConnectorRuleV1(context.Background()).ConnectorRuleCreateRequest(connectorRuleCreateRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.CreateConnectorRuleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateConnectorRuleV1`: Connectorruleresponse
+    // response from `CreateConnectorRuleV1`: ConnectorRuleResponse
     fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.CreateConnectorRuleV1`: %v\n", resp)
 }
 ```
@@ -185,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Connectorruleresponse**](../models/connectorruleresponse)
+[**[]ConnectorRuleResponse**](../models/connector-rule-response)
 
 ### HTTP request headers
 
@@ -221,7 +246,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.GetConnectorRuleListV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetConnectorRuleListV1`: []Connectorruleresponse
+    // response from `GetConnectorRuleListV1`: []ConnectorRuleResponse
     fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.GetConnectorRuleListV1`: %v\n", resp)
 }
 ```
@@ -253,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Connectorruleresponse**](../models/connectorruleresponse)
+[**ConnectorRuleResponse**](../models/connector-rule-response)
 
 ### HTTP request headers
 
@@ -287,7 +312,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.GetConnectorRuleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetConnectorRuleV1`: Connectorruleresponse
+    // response from `GetConnectorRuleV1`: ConnectorRuleResponse
     fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.GetConnectorRuleV1`: %v\n", resp)
 }
 ```
@@ -316,11 +341,11 @@ Other parameters are passed through a pointer to a apiPutConnectorRuleV1Request 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **connectorruleupdaterequest** | [**Connectorruleupdaterequest**](../models/connectorruleupdaterequest) | Connector rule with updated data. | 
+ **connectorRuleUpdateRequest** | [**ConnectorRuleUpdateRequest**](../models/connector-rule-update-request) | Connector rule with updated data. | 
 
 ### Return type
 
-[**Connectorruleresponse**](../models/connectorruleresponse)
+[**ConnectorRuleResponse**](../models/connector-rule-response)
 
 ### HTTP request headers
 
@@ -343,19 +368,45 @@ import (
 
 func main() {
     id := `8c190e6787aa4ed9a90bd9d5344523fb` // string | ID of the connector rule to update. # string | ID of the connector rule to update.
-    connectorruleupdaterequestJson := []byte(``) // Connectorruleupdaterequest | Connector rule with updated data. (optional)
+    connectorruleupdaterequestJson := []byte(`{
+          "sourceCode" : {
+            "version" : "1.0",
+            "script" : "return \"Mr. \" + firstName;"
+          },
+          "signature" : {
+            "output" : {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            },
+            "input" : [ {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            }, {
+              "name" : "firstName",
+              "description" : "the first name of the identity",
+              "type" : "String"
+            } ]
+          },
+          "name" : "WebServiceBeforeOperationRule",
+          "description" : "This rule does that",
+          "attributes" : { },
+          "id" : "8113d48c0b914f17b4c6072d4dcb9dfe",
+          "type" : "BuildMap"
+        }`) // ConnectorRuleUpdateRequest | Connector rule with updated data. (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.ConnectorRuleManagementAPI.PutConnectorRuleV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ConnectorRuleManagementAPI.PutConnectorRuleV1(context.Background(), id).Connectorruleupdaterequest(connectorruleupdaterequest).Execute()
+	  //resp, r, err := apiClient.ConnectorRuleManagementAPI.PutConnectorRuleV1(context.Background(), id).ConnectorRuleUpdateRequest(connectorRuleUpdateRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.PutConnectorRuleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutConnectorRuleV1`: Connectorruleresponse
+    // response from `PutConnectorRuleV1`: ConnectorRuleResponse
     fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.PutConnectorRuleV1`: %v\n", resp)
 }
 ```
@@ -379,11 +430,11 @@ Other parameters are passed through a pointer to a apiTestConnectorRuleV1Request
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sourcecode** | [**Sourcecode**](../models/sourcecode) | Code to validate. | 
+ **sourceCode** | [**SourceCode**](../models/source-code) | Code to validate. | 
 
 ### Return type
 
-[**Connectorrulevalidationresponse**](../models/connectorrulevalidationresponse)
+[**ConnectorRuleValidationResponse**](../models/connector-rule-validation-response)
 
 ### HTTP request headers
 
@@ -405,10 +456,13 @@ import (
 )
 
 func main() {
-    sourcecodeJson := []byte(``) // Sourcecode | Code to validate.
+    sourcecodeJson := []byte(`{
+          "version" : "1.0",
+          "script" : "return \"Mr. \" + firstName;"
+        }`) // SourceCode | Code to validate.
 
-    var sourcecode connector_rule_management.Sourcecode
-    if err := json.Unmarshal(sourcecodeJson, &sourcecode); err != nil {
+    var sourceCode connector_rule_management.SourceCode
+    if err := json.Unmarshal(sourcecodeJson, &sourceCode); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -416,13 +470,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagementAPI.TestConnectorRuleV1(context.Background()).Sourcecode(sourcecode).Execute()
-	  //resp, r, err := apiClient.ConnectorRuleManagementAPI.TestConnectorRuleV1(context.Background()).Sourcecode(sourcecode).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.TestConnectorRuleV1(context.Background()).SourceCode(sourceCode).Execute()
+	  //resp, r, err := apiClient.ConnectorRuleManagementAPI.TestConnectorRuleV1(context.Background()).SourceCode(sourceCode).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.TestConnectorRuleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `TestConnectorRuleV1`: Connectorrulevalidationresponse
+    // response from `TestConnectorRuleV1`: ConnectorRuleValidationResponse
     fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.TestConnectorRuleV1`: %v\n", resp)
 }
 ```

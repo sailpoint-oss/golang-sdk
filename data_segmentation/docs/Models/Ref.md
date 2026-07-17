@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Ref', 'V1Ref']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **Dtotype** |  | [optional] 
+**Type** | Pointer to **DtoType** |  | [optional] 
 **Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
 
 ## Methods
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *Ref) GetType() Dtotype`
+`func (o *Ref) GetType() DtoType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Ref) GetTypeOk() (*Dtotype, bool)`
+`func (o *Ref) GetTypeOk() (*DtoType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Ref) SetType(v Dtotype)`
+`func (o *Ref) SetType(v DtoType)`
 
 SetType sets Type field to given value.
 

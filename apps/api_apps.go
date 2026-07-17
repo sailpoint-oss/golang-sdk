@@ -27,7 +27,7 @@ type ApiCreateSourceAppV1Request struct {
 	ctx context.Context
 	ApiService *AppsAPIService
 	xSailPointExperimental *string
-	sourceappcreatedto *Sourceappcreatedto
+	sourceAppCreateDto *SourceAppCreateDto
 }
 
 // Use this header to enable this experimental API.
@@ -36,12 +36,12 @@ func (r ApiCreateSourceAppV1Request) XSailPointExperimental(xSailPointExperiment
 	return r
 }
 
-func (r ApiCreateSourceAppV1Request) Sourceappcreatedto(sourceappcreatedto Sourceappcreatedto) ApiCreateSourceAppV1Request {
-	r.sourceappcreatedto = &sourceappcreatedto
+func (r ApiCreateSourceAppV1Request) SourceAppCreateDto(sourceAppCreateDto SourceAppCreateDto) ApiCreateSourceAppV1Request {
+	r.sourceAppCreateDto = &sourceAppCreateDto
 	return r
 }
 
-func (r ApiCreateSourceAppV1Request) Execute() (*Sourceapp, *http.Response, error) {
+func (r ApiCreateSourceAppV1Request) Execute() (*SourceApp, *http.Response, error) {
 	return r.ApiService.CreateSourceAppV1Execute(r)
 }
 
@@ -61,13 +61,13 @@ func (a *AppsAPIService) CreateSourceAppV1(ctx context.Context) ApiCreateSourceA
 }
 
 // Execute executes the request
-//  @return Sourceapp
-func (a *AppsAPIService) CreateSourceAppV1Execute(r ApiCreateSourceAppV1Request) (*Sourceapp, *http.Response, error) {
+//  @return SourceApp
+func (a *AppsAPIService) CreateSourceAppV1Execute(r ApiCreateSourceAppV1Request) (*SourceApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourceapp
+		localVarReturnValue  *SourceApp
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.CreateSourceAppV1")
@@ -95,8 +95,8 @@ func (a *AppsAPIService) CreateSourceAppV1Execute(r ApiCreateSourceAppV1Request)
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.sourceappcreatedto == nil {
-		return localVarReturnValue, nil, reportError("sourceappcreatedto is required and must be specified")
+	if r.sourceAppCreateDto == nil {
+		return localVarReturnValue, nil, reportError("sourceAppCreateDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -118,7 +118,7 @@ func (a *AppsAPIService) CreateSourceAppV1Execute(r ApiCreateSourceAppV1Request)
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.sourceappcreatedto
+	localVarPostBody = r.sourceAppCreateDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -142,7 +142,7 @@ func (a *AppsAPIService) CreateSourceAppV1Execute(r ApiCreateSourceAppV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *AppsAPIService) CreateSourceAppV1Execute(r ApiCreateSourceAppV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -186,7 +186,7 @@ func (a *AppsAPIService) CreateSourceAppV1Execute(r ApiCreateSourceAppV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -237,7 +237,7 @@ func (r ApiDeleteAccessProfilesFromSourceAppByBulkV1Request) Limit(limit int32) 
 	return r
 }
 
-func (r ApiDeleteAccessProfilesFromSourceAppByBulkV1Request) Execute() ([]Accessprofiledetails, *http.Response, error) {
+func (r ApiDeleteAccessProfilesFromSourceAppByBulkV1Request) Execute() ([]AccessProfileDetails, *http.Response, error) {
 	return r.ApiService.DeleteAccessProfilesFromSourceAppByBulkV1Execute(r)
 }
 
@@ -259,13 +259,13 @@ func (a *AppsAPIService) DeleteAccessProfilesFromSourceAppByBulkV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return []Accessprofiledetails
-func (a *AppsAPIService) DeleteAccessProfilesFromSourceAppByBulkV1Execute(r ApiDeleteAccessProfilesFromSourceAppByBulkV1Request) ([]Accessprofiledetails, *http.Response, error) {
+//  @return []AccessProfileDetails
+func (a *AppsAPIService) DeleteAccessProfilesFromSourceAppByBulkV1Execute(r ApiDeleteAccessProfilesFromSourceAppByBulkV1Request) ([]AccessProfileDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessprofiledetails
+		localVarReturnValue  []AccessProfileDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.DeleteAccessProfilesFromSourceAppByBulkV1")
@@ -347,7 +347,7 @@ func (a *AppsAPIService) DeleteAccessProfilesFromSourceAppByBulkV1Execute(r ApiD
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -369,7 +369,7 @@ func (a *AppsAPIService) DeleteAccessProfilesFromSourceAppByBulkV1Execute(r ApiD
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -391,7 +391,7 @@ func (a *AppsAPIService) DeleteAccessProfilesFromSourceAppByBulkV1Execute(r ApiD
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -428,7 +428,7 @@ func (r ApiDeleteSourceAppV1Request) XSailPointExperimental(xSailPointExperiment
 	return r
 }
 
-func (r ApiDeleteSourceAppV1Request) Execute() (*Sourceapp, *http.Response, error) {
+func (r ApiDeleteSourceAppV1Request) Execute() (*SourceApp, *http.Response, error) {
 	return r.ApiService.DeleteSourceAppV1Execute(r)
 }
 
@@ -450,13 +450,13 @@ func (a *AppsAPIService) DeleteSourceAppV1(ctx context.Context, id string) ApiDe
 }
 
 // Execute executes the request
-//  @return Sourceapp
-func (a *AppsAPIService) DeleteSourceAppV1Execute(r ApiDeleteSourceAppV1Request) (*Sourceapp, *http.Response, error) {
+//  @return SourceApp
+func (a *AppsAPIService) DeleteSourceAppV1Execute(r ApiDeleteSourceAppV1Request) (*SourceApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourceapp
+		localVarReturnValue  *SourceApp
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.DeleteSourceAppV1")
@@ -521,7 +521,7 @@ func (a *AppsAPIService) DeleteSourceAppV1Execute(r ApiDeleteSourceAppV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -543,7 +543,7 @@ func (a *AppsAPIService) DeleteSourceAppV1Execute(r ApiDeleteSourceAppV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -565,7 +565,7 @@ func (a *AppsAPIService) DeleteSourceAppV1Execute(r ApiDeleteSourceAppV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -602,7 +602,7 @@ func (r ApiGetSourceAppV1Request) XSailPointExperimental(xSailPointExperimental 
 	return r
 }
 
-func (r ApiGetSourceAppV1Request) Execute() (*Sourceapp, *http.Response, error) {
+func (r ApiGetSourceAppV1Request) Execute() (*SourceApp, *http.Response, error) {
 	return r.ApiService.GetSourceAppV1Execute(r)
 }
 
@@ -624,13 +624,13 @@ func (a *AppsAPIService) GetSourceAppV1(ctx context.Context, id string) ApiGetSo
 }
 
 // Execute executes the request
-//  @return Sourceapp
-func (a *AppsAPIService) GetSourceAppV1Execute(r ApiGetSourceAppV1Request) (*Sourceapp, *http.Response, error) {
+//  @return SourceApp
+func (a *AppsAPIService) GetSourceAppV1Execute(r ApiGetSourceAppV1Request) (*SourceApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourceapp
+		localVarReturnValue  *SourceApp
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.GetSourceAppV1")
@@ -695,7 +695,7 @@ func (a *AppsAPIService) GetSourceAppV1Execute(r ApiGetSourceAppV1Request) (*Sou
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -717,7 +717,7 @@ func (a *AppsAPIService) GetSourceAppV1Execute(r ApiGetSourceAppV1Request) (*Sou
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -728,7 +728,7 @@ func (a *AppsAPIService) GetSourceAppV1Execute(r ApiGetSourceAppV1Request) (*Sou
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -750,7 +750,7 @@ func (a *AppsAPIService) GetSourceAppV1Execute(r ApiGetSourceAppV1Request) (*Sou
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -808,7 +808,7 @@ func (r ApiListAccessProfilesForSourceAppV1Request) Filters(filters string) ApiL
 	return r
 }
 
-func (r ApiListAccessProfilesForSourceAppV1Request) Execute() ([]Accessprofiledetails, *http.Response, error) {
+func (r ApiListAccessProfilesForSourceAppV1Request) Execute() ([]AccessProfileDetails, *http.Response, error) {
 	return r.ApiService.ListAccessProfilesForSourceAppV1Execute(r)
 }
 
@@ -830,13 +830,13 @@ func (a *AppsAPIService) ListAccessProfilesForSourceAppV1(ctx context.Context, i
 }
 
 // Execute executes the request
-//  @return []Accessprofiledetails
-func (a *AppsAPIService) ListAccessProfilesForSourceAppV1Execute(r ApiListAccessProfilesForSourceAppV1Request) ([]Accessprofiledetails, *http.Response, error) {
+//  @return []AccessProfileDetails
+func (a *AppsAPIService) ListAccessProfilesForSourceAppV1Execute(r ApiListAccessProfilesForSourceAppV1Request) ([]AccessProfileDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessprofiledetails
+		localVarReturnValue  []AccessProfileDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.ListAccessProfilesForSourceAppV1")
@@ -916,7 +916,7 @@ func (a *AppsAPIService) ListAccessProfilesForSourceAppV1Execute(r ApiListAccess
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -938,7 +938,7 @@ func (a *AppsAPIService) ListAccessProfilesForSourceAppV1Execute(r ApiListAccess
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -960,7 +960,7 @@ func (a *AppsAPIService) ListAccessProfilesForSourceAppV1Execute(r ApiListAccess
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1031,7 +1031,7 @@ func (r ApiListAllSourceAppV1Request) Filters(filters string) ApiListAllSourceAp
 	return r
 }
 
-func (r ApiListAllSourceAppV1Request) Execute() ([]Sourceapp, *http.Response, error) {
+func (r ApiListAllSourceAppV1Request) Execute() ([]SourceApp, *http.Response, error) {
 	return r.ApiService.ListAllSourceAppV1Execute(r)
 }
 
@@ -1051,13 +1051,13 @@ func (a *AppsAPIService) ListAllSourceAppV1(ctx context.Context) ApiListAllSourc
 }
 
 // Execute executes the request
-//  @return []Sourceapp
-func (a *AppsAPIService) ListAllSourceAppV1Execute(r ApiListAllSourceAppV1Request) ([]Sourceapp, *http.Response, error) {
+//  @return []SourceApp
+func (a *AppsAPIService) ListAllSourceAppV1Execute(r ApiListAllSourceAppV1Request) ([]SourceApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sourceapp
+		localVarReturnValue  []SourceApp
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.ListAllSourceAppV1")
@@ -1145,7 +1145,7 @@ func (a *AppsAPIService) ListAllSourceAppV1Execute(r ApiListAllSourceAppV1Reques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1167,7 +1167,7 @@ func (a *AppsAPIService) ListAllSourceAppV1Execute(r ApiListAllSourceAppV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1189,7 +1189,7 @@ func (a *AppsAPIService) ListAllSourceAppV1Execute(r ApiListAllSourceAppV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1253,7 +1253,7 @@ func (r ApiListAllUserAppsV1Request) Offset(offset int32) ApiListAllUserAppsV1Re
 	return r
 }
 
-func (r ApiListAllUserAppsV1Request) Execute() ([]Userapp, *http.Response, error) {
+func (r ApiListAllUserAppsV1Request) Execute() ([]UserApp, *http.Response, error) {
 	return r.ApiService.ListAllUserAppsV1Execute(r)
 }
 
@@ -1274,13 +1274,13 @@ func (a *AppsAPIService) ListAllUserAppsV1(ctx context.Context) ApiListAllUserAp
 }
 
 // Execute executes the request
-//  @return []Userapp
-func (a *AppsAPIService) ListAllUserAppsV1Execute(r ApiListAllUserAppsV1Request) ([]Userapp, *http.Response, error) {
+//  @return []UserApp
+func (a *AppsAPIService) ListAllUserAppsV1Execute(r ApiListAllUserAppsV1Request) ([]UserApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Userapp
+		localVarReturnValue  []UserApp
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.ListAllUserAppsV1")
@@ -1372,7 +1372,7 @@ func (a *AppsAPIService) ListAllUserAppsV1Execute(r ApiListAllUserAppsV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1394,7 +1394,7 @@ func (a *AppsAPIService) ListAllUserAppsV1Execute(r ApiListAllUserAppsV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1416,7 +1416,7 @@ func (a *AppsAPIService) ListAllUserAppsV1Execute(r ApiListAllUserAppsV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1487,7 +1487,7 @@ func (r ApiListAssignedSourceAppV1Request) Filters(filters string) ApiListAssign
 	return r
 }
 
-func (r ApiListAssignedSourceAppV1Request) Execute() ([]Sourceapp, *http.Response, error) {
+func (r ApiListAssignedSourceAppV1Request) Execute() ([]SourceApp, *http.Response, error) {
 	return r.ApiService.ListAssignedSourceAppV1Execute(r)
 }
 
@@ -1507,13 +1507,13 @@ func (a *AppsAPIService) ListAssignedSourceAppV1(ctx context.Context) ApiListAss
 }
 
 // Execute executes the request
-//  @return []Sourceapp
-func (a *AppsAPIService) ListAssignedSourceAppV1Execute(r ApiListAssignedSourceAppV1Request) ([]Sourceapp, *http.Response, error) {
+//  @return []SourceApp
+func (a *AppsAPIService) ListAssignedSourceAppV1Execute(r ApiListAssignedSourceAppV1Request) ([]SourceApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sourceapp
+		localVarReturnValue  []SourceApp
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.ListAssignedSourceAppV1")
@@ -1601,7 +1601,7 @@ func (a *AppsAPIService) ListAssignedSourceAppV1Execute(r ApiListAssignedSourceA
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1623,7 +1623,7 @@ func (a *AppsAPIService) ListAssignedSourceAppV1Execute(r ApiListAssignedSourceA
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1645,7 +1645,7 @@ func (a *AppsAPIService) ListAssignedSourceAppV1Execute(r ApiListAssignedSourceA
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1696,7 +1696,7 @@ func (r ApiListAvailableAccountsForUserAppV1Request) Count(count bool) ApiListAv
 	return r
 }
 
-func (r ApiListAvailableAccountsForUserAppV1Request) Execute() ([]Appaccountdetails, *http.Response, error) {
+func (r ApiListAvailableAccountsForUserAppV1Request) Execute() ([]AppAccountDetails, *http.Response, error) {
 	return r.ApiService.ListAvailableAccountsForUserAppV1Execute(r)
 }
 
@@ -1718,13 +1718,13 @@ func (a *AppsAPIService) ListAvailableAccountsForUserAppV1(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return []Appaccountdetails
-func (a *AppsAPIService) ListAvailableAccountsForUserAppV1Execute(r ApiListAvailableAccountsForUserAppV1Request) ([]Appaccountdetails, *http.Response, error) {
+//  @return []AppAccountDetails
+func (a *AppsAPIService) ListAvailableAccountsForUserAppV1Execute(r ApiListAvailableAccountsForUserAppV1Request) ([]AppAccountDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Appaccountdetails
+		localVarReturnValue  []AppAccountDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.ListAvailableAccountsForUserAppV1")
@@ -1801,7 +1801,7 @@ func (a *AppsAPIService) ListAvailableAccountsForUserAppV1Execute(r ApiListAvail
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1823,7 +1823,7 @@ func (a *AppsAPIService) ListAvailableAccountsForUserAppV1Execute(r ApiListAvail
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1845,7 +1845,7 @@ func (a *AppsAPIService) ListAvailableAccountsForUserAppV1Execute(r ApiListAvail
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1916,7 +1916,7 @@ func (r ApiListAvailableSourceAppsV1Request) Filters(filters string) ApiListAvai
 	return r
 }
 
-func (r ApiListAvailableSourceAppsV1Request) Execute() ([]Sourceapp, *http.Response, error) {
+func (r ApiListAvailableSourceAppsV1Request) Execute() ([]SourceApp, *http.Response, error) {
 	return r.ApiService.ListAvailableSourceAppsV1Execute(r)
 }
 
@@ -1936,13 +1936,13 @@ func (a *AppsAPIService) ListAvailableSourceAppsV1(ctx context.Context) ApiListA
 }
 
 // Execute executes the request
-//  @return []Sourceapp
-func (a *AppsAPIService) ListAvailableSourceAppsV1Execute(r ApiListAvailableSourceAppsV1Request) ([]Sourceapp, *http.Response, error) {
+//  @return []SourceApp
+func (a *AppsAPIService) ListAvailableSourceAppsV1Execute(r ApiListAvailableSourceAppsV1Request) ([]SourceApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sourceapp
+		localVarReturnValue  []SourceApp
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.ListAvailableSourceAppsV1")
@@ -2030,7 +2030,7 @@ func (a *AppsAPIService) ListAvailableSourceAppsV1Execute(r ApiListAvailableSour
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2052,7 +2052,7 @@ func (a *AppsAPIService) ListAvailableSourceAppsV1Execute(r ApiListAvailableSour
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2074,7 +2074,7 @@ func (a *AppsAPIService) ListAvailableSourceAppsV1Execute(r ApiListAvailableSour
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2138,7 +2138,7 @@ func (r ApiListOwnedUserAppsV1Request) Filters(filters string) ApiListOwnedUserA
 	return r
 }
 
-func (r ApiListOwnedUserAppsV1Request) Execute() ([]Userapp, *http.Response, error) {
+func (r ApiListOwnedUserAppsV1Request) Execute() ([]UserApp, *http.Response, error) {
 	return r.ApiService.ListOwnedUserAppsV1Execute(r)
 }
 
@@ -2158,13 +2158,13 @@ func (a *AppsAPIService) ListOwnedUserAppsV1(ctx context.Context) ApiListOwnedUs
 }
 
 // Execute executes the request
-//  @return []Userapp
-func (a *AppsAPIService) ListOwnedUserAppsV1Execute(r ApiListOwnedUserAppsV1Request) ([]Userapp, *http.Response, error) {
+//  @return []UserApp
+func (a *AppsAPIService) ListOwnedUserAppsV1Execute(r ApiListOwnedUserAppsV1Request) ([]UserApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Userapp
+		localVarReturnValue  []UserApp
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.ListOwnedUserAppsV1")
@@ -2249,7 +2249,7 @@ func (a *AppsAPIService) ListOwnedUserAppsV1Execute(r ApiListOwnedUserAppsV1Requ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2271,7 +2271,7 @@ func (a *AppsAPIService) ListOwnedUserAppsV1Execute(r ApiListOwnedUserAppsV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2293,7 +2293,7 @@ func (a *AppsAPIService) ListOwnedUserAppsV1Execute(r ApiListOwnedUserAppsV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2322,7 +2322,7 @@ type ApiPatchSourceAppV1Request struct {
 	ApiService *AppsAPIService
 	id string
 	xSailPointExperimental *string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // Use this header to enable this experimental API.
@@ -2331,12 +2331,12 @@ func (r ApiPatchSourceAppV1Request) XSailPointExperimental(xSailPointExperimenta
 	return r
 }
 
-func (r ApiPatchSourceAppV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchSourceAppV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchSourceAppV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchSourceAppV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchSourceAppV1Request) Execute() (*Sourceapppatchdto, *http.Response, error) {
+func (r ApiPatchSourceAppV1Request) Execute() (*SourceAppPatchDto, *http.Response, error) {
 	return r.ApiService.PatchSourceAppV1Execute(r)
 }
 
@@ -2360,13 +2360,13 @@ func (a *AppsAPIService) PatchSourceAppV1(ctx context.Context, id string) ApiPat
 }
 
 // Execute executes the request
-//  @return Sourceapppatchdto
-func (a *AppsAPIService) PatchSourceAppV1Execute(r ApiPatchSourceAppV1Request) (*Sourceapppatchdto, *http.Response, error) {
+//  @return SourceAppPatchDto
+func (a *AppsAPIService) PatchSourceAppV1Execute(r ApiPatchSourceAppV1Request) (*SourceAppPatchDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourceapppatchdto
+		localVarReturnValue  *SourceAppPatchDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.PatchSourceAppV1")
@@ -2409,7 +2409,7 @@ func (a *AppsAPIService) PatchSourceAppV1Execute(r ApiPatchSourceAppV1Request) (
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2433,7 +2433,7 @@ func (a *AppsAPIService) PatchSourceAppV1Execute(r ApiPatchSourceAppV1Request) (
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2455,7 +2455,7 @@ func (a *AppsAPIService) PatchSourceAppV1Execute(r ApiPatchSourceAppV1Request) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2466,7 +2466,7 @@ func (a *AppsAPIService) PatchSourceAppV1Execute(r ApiPatchSourceAppV1Request) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2488,7 +2488,7 @@ func (a *AppsAPIService) PatchSourceAppV1Execute(r ApiPatchSourceAppV1Request) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2517,7 +2517,7 @@ type ApiPatchUserAppV1Request struct {
 	ApiService *AppsAPIService
 	id string
 	xSailPointExperimental *string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // Use this header to enable this experimental API.
@@ -2526,12 +2526,12 @@ func (r ApiPatchUserAppV1Request) XSailPointExperimental(xSailPointExperimental 
 	return r
 }
 
-func (r ApiPatchUserAppV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchUserAppV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchUserAppV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchUserAppV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchUserAppV1Request) Execute() (*Userapp, *http.Response, error) {
+func (r ApiPatchUserAppV1Request) Execute() (*UserApp, *http.Response, error) {
 	return r.ApiService.PatchUserAppV1Execute(r)
 }
 
@@ -2554,13 +2554,13 @@ func (a *AppsAPIService) PatchUserAppV1(ctx context.Context, id string) ApiPatch
 }
 
 // Execute executes the request
-//  @return Userapp
-func (a *AppsAPIService) PatchUserAppV1Execute(r ApiPatchUserAppV1Request) (*Userapp, *http.Response, error) {
+//  @return UserApp
+func (a *AppsAPIService) PatchUserAppV1Execute(r ApiPatchUserAppV1Request) (*UserApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Userapp
+		localVarReturnValue  *UserApp
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.PatchUserAppV1")
@@ -2603,7 +2603,7 @@ func (a *AppsAPIService) PatchUserAppV1Execute(r ApiPatchUserAppV1Request) (*Use
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2627,7 +2627,7 @@ func (a *AppsAPIService) PatchUserAppV1Execute(r ApiPatchUserAppV1Request) (*Use
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2649,7 +2649,7 @@ func (a *AppsAPIService) PatchUserAppV1Execute(r ApiPatchUserAppV1Request) (*Use
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2660,7 +2660,7 @@ func (a *AppsAPIService) PatchUserAppV1Execute(r ApiPatchUserAppV1Request) (*Use
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2682,7 +2682,7 @@ func (a *AppsAPIService) PatchUserAppV1Execute(r ApiPatchUserAppV1Request) (*Use
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2710,7 +2710,7 @@ type ApiUpdateSourceAppsInBulkV1Request struct {
 	ctx context.Context
 	ApiService *AppsAPIService
 	xSailPointExperimental *string
-	sourceappbulkupdaterequest *Sourceappbulkupdaterequest
+	sourceAppBulkUpdateRequest *SourceAppBulkUpdateRequest
 }
 
 // Use this header to enable this experimental API.
@@ -2719,8 +2719,8 @@ func (r ApiUpdateSourceAppsInBulkV1Request) XSailPointExperimental(xSailPointExp
 	return r
 }
 
-func (r ApiUpdateSourceAppsInBulkV1Request) Sourceappbulkupdaterequest(sourceappbulkupdaterequest Sourceappbulkupdaterequest) ApiUpdateSourceAppsInBulkV1Request {
-	r.sourceappbulkupdaterequest = &sourceappbulkupdaterequest
+func (r ApiUpdateSourceAppsInBulkV1Request) SourceAppBulkUpdateRequest(sourceAppBulkUpdateRequest SourceAppBulkUpdateRequest) ApiUpdateSourceAppsInBulkV1Request {
+	r.sourceAppBulkUpdateRequest = &sourceAppBulkUpdateRequest
 	return r
 }
 
@@ -2792,7 +2792,7 @@ func (a *AppsAPIService) UpdateSourceAppsInBulkV1Execute(r ApiUpdateSourceAppsIn
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.sourceappbulkupdaterequest
+	localVarPostBody = r.sourceAppBulkUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -2816,7 +2816,7 @@ func (a *AppsAPIService) UpdateSourceAppsInBulkV1Execute(r ApiUpdateSourceAppsIn
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2838,7 +2838,7 @@ func (a *AppsAPIService) UpdateSourceAppsInBulkV1Execute(r ApiUpdateSourceAppsIn
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2849,7 +2849,7 @@ func (a *AppsAPIService) UpdateSourceAppsInBulkV1Execute(r ApiUpdateSourceAppsIn
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2871,7 +2871,7 @@ func (a *AppsAPIService) UpdateSourceAppsInBulkV1Execute(r ApiUpdateSourceAppsIn
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

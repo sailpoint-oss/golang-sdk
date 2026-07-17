@@ -25,16 +25,16 @@ type GlobalTenantSecuritySettingsAPIService service
 type ApiCreateAuthOrgNetworkConfigV1Request struct {
 	ctx context.Context
 	ApiService *GlobalTenantSecuritySettingsAPIService
-	networkconfiguration *Networkconfiguration
+	networkConfiguration *NetworkConfiguration
 }
 
 // Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
-func (r ApiCreateAuthOrgNetworkConfigV1Request) Networkconfiguration(networkconfiguration Networkconfiguration) ApiCreateAuthOrgNetworkConfigV1Request {
-	r.networkconfiguration = &networkconfiguration
+func (r ApiCreateAuthOrgNetworkConfigV1Request) NetworkConfiguration(networkConfiguration NetworkConfiguration) ApiCreateAuthOrgNetworkConfigV1Request {
+	r.networkConfiguration = &networkConfiguration
 	return r
 }
 
-func (r ApiCreateAuthOrgNetworkConfigV1Request) Execute() (*Networkconfiguration, *http.Response, error) {
+func (r ApiCreateAuthOrgNetworkConfigV1Request) Execute() (*NetworkConfiguration, *http.Response, error) {
 	return r.ApiService.CreateAuthOrgNetworkConfigV1Execute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *GlobalTenantSecuritySettingsAPIService) CreateAuthOrgNetworkConfigV1(ct
 }
 
 // Execute executes the request
-//  @return Networkconfiguration
-func (a *GlobalTenantSecuritySettingsAPIService) CreateAuthOrgNetworkConfigV1Execute(r ApiCreateAuthOrgNetworkConfigV1Request) (*Networkconfiguration, *http.Response, error) {
+//  @return NetworkConfiguration
+func (a *GlobalTenantSecuritySettingsAPIService) CreateAuthOrgNetworkConfigV1Execute(r ApiCreateAuthOrgNetworkConfigV1Request) (*NetworkConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Networkconfiguration
+		localVarReturnValue  *NetworkConfiguration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.CreateAuthOrgNetworkConfigV1")
@@ -73,8 +73,8 @@ func (a *GlobalTenantSecuritySettingsAPIService) CreateAuthOrgNetworkConfigV1Exe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.networkconfiguration == nil {
-		return localVarReturnValue, nil, reportError("networkconfiguration is required and must be specified")
+	if r.networkConfiguration == nil {
+		return localVarReturnValue, nil, reportError("networkConfiguration is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -95,7 +95,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) CreateAuthOrgNetworkConfigV1Exe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.networkconfiguration
+	localVarPostBody = r.networkConfiguration
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -119,7 +119,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) CreateAuthOrgNetworkConfigV1Exe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -141,7 +141,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) CreateAuthOrgNetworkConfigV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -152,7 +152,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) CreateAuthOrgNetworkConfigV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -174,7 +174,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) CreateAuthOrgNetworkConfigV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -203,7 +203,7 @@ type ApiGetAuthOrgLockoutConfigV1Request struct {
 	ApiService *GlobalTenantSecuritySettingsAPIService
 }
 
-func (r ApiGetAuthOrgLockoutConfigV1Request) Execute() (*Lockoutconfiguration, *http.Response, error) {
+func (r ApiGetAuthOrgLockoutConfigV1Request) Execute() (*LockoutConfiguration, *http.Response, error) {
 	return r.ApiService.GetAuthOrgLockoutConfigV1Execute(r)
 }
 
@@ -223,13 +223,13 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgLockoutConfigV1(ctx c
 }
 
 // Execute executes the request
-//  @return Lockoutconfiguration
-func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgLockoutConfigV1Execute(r ApiGetAuthOrgLockoutConfigV1Request) (*Lockoutconfiguration, *http.Response, error) {
+//  @return LockoutConfiguration
+func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgLockoutConfigV1Execute(r ApiGetAuthOrgLockoutConfigV1Request) (*LockoutConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Lockoutconfiguration
+		localVarReturnValue  *LockoutConfiguration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.GetAuthOrgLockoutConfigV1")
@@ -283,7 +283,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgLockoutConfigV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -305,7 +305,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgLockoutConfigV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -316,7 +316,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgLockoutConfigV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -338,7 +338,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgLockoutConfigV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -367,7 +367,7 @@ type ApiGetAuthOrgNetworkConfigV1Request struct {
 	ApiService *GlobalTenantSecuritySettingsAPIService
 }
 
-func (r ApiGetAuthOrgNetworkConfigV1Request) Execute() (*Networkconfiguration, *http.Response, error) {
+func (r ApiGetAuthOrgNetworkConfigV1Request) Execute() (*NetworkConfiguration, *http.Response, error) {
 	return r.ApiService.GetAuthOrgNetworkConfigV1Execute(r)
 }
 
@@ -387,13 +387,13 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgNetworkConfigV1(ctx c
 }
 
 // Execute executes the request
-//  @return Networkconfiguration
-func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgNetworkConfigV1Execute(r ApiGetAuthOrgNetworkConfigV1Request) (*Networkconfiguration, *http.Response, error) {
+//  @return NetworkConfiguration
+func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgNetworkConfigV1Execute(r ApiGetAuthOrgNetworkConfigV1Request) (*NetworkConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Networkconfiguration
+		localVarReturnValue  *NetworkConfiguration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.GetAuthOrgNetworkConfigV1")
@@ -447,7 +447,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgNetworkConfigV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -469,7 +469,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgNetworkConfigV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -480,7 +480,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgNetworkConfigV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -502,7 +502,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgNetworkConfigV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -531,7 +531,7 @@ type ApiGetAuthOrgServiceProviderConfigV1Request struct {
 	ApiService *GlobalTenantSecuritySettingsAPIService
 }
 
-func (r ApiGetAuthOrgServiceProviderConfigV1Request) Execute() (*Serviceproviderconfiguration, *http.Response, error) {
+func (r ApiGetAuthOrgServiceProviderConfigV1Request) Execute() (*ServiceProviderConfiguration, *http.Response, error) {
 	return r.ApiService.GetAuthOrgServiceProviderConfigV1Execute(r)
 }
 
@@ -551,13 +551,13 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgServiceProviderConfig
 }
 
 // Execute executes the request
-//  @return Serviceproviderconfiguration
-func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgServiceProviderConfigV1Execute(r ApiGetAuthOrgServiceProviderConfigV1Request) (*Serviceproviderconfiguration, *http.Response, error) {
+//  @return ServiceProviderConfiguration
+func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgServiceProviderConfigV1Execute(r ApiGetAuthOrgServiceProviderConfigV1Request) (*ServiceProviderConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Serviceproviderconfiguration
+		localVarReturnValue  *ServiceProviderConfiguration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.GetAuthOrgServiceProviderConfigV1")
@@ -611,7 +611,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgServiceProviderConfig
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -633,7 +633,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgServiceProviderConfig
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -644,7 +644,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgServiceProviderConfig
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -666,7 +666,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgServiceProviderConfig
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -695,7 +695,7 @@ type ApiGetAuthOrgSessionConfigV1Request struct {
 	ApiService *GlobalTenantSecuritySettingsAPIService
 }
 
-func (r ApiGetAuthOrgSessionConfigV1Request) Execute() (*Sessionconfiguration, *http.Response, error) {
+func (r ApiGetAuthOrgSessionConfigV1Request) Execute() (*SessionConfiguration, *http.Response, error) {
 	return r.ApiService.GetAuthOrgSessionConfigV1Execute(r)
 }
 
@@ -715,13 +715,13 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgSessionConfigV1(ctx c
 }
 
 // Execute executes the request
-//  @return Sessionconfiguration
-func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgSessionConfigV1Execute(r ApiGetAuthOrgSessionConfigV1Request) (*Sessionconfiguration, *http.Response, error) {
+//  @return SessionConfiguration
+func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgSessionConfigV1Execute(r ApiGetAuthOrgSessionConfigV1Request) (*SessionConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sessionconfiguration
+		localVarReturnValue  *SessionConfiguration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.GetAuthOrgSessionConfigV1")
@@ -775,7 +775,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgSessionConfigV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -797,7 +797,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgSessionConfigV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -808,7 +808,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgSessionConfigV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -830,7 +830,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgSessionConfigV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -857,16 +857,16 @@ func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgSessionConfigV1Execut
 type ApiPatchAuthOrgLockoutConfigV1Request struct {
 	ctx context.Context
 	ApiService *GlobalTenantSecuritySettingsAPIService
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   &#x60;1. maximumAttempts &gt;&#x3D; 1 &amp;&amp; maximumAttempts &lt;&#x3D; 15   2. lockoutDuration &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60   3. lockoutWindow &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60&#x60;
-func (r ApiPatchAuthOrgLockoutConfigV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchAuthOrgLockoutConfigV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchAuthOrgLockoutConfigV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchAuthOrgLockoutConfigV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchAuthOrgLockoutConfigV1Request) Execute() (*Lockoutconfiguration, *http.Response, error) {
+func (r ApiPatchAuthOrgLockoutConfigV1Request) Execute() (*LockoutConfiguration, *http.Response, error) {
 	return r.ApiService.PatchAuthOrgLockoutConfigV1Execute(r)
 }
 
@@ -887,13 +887,13 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgLockoutConfigV1(ctx
 }
 
 // Execute executes the request
-//  @return Lockoutconfiguration
-func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgLockoutConfigV1Execute(r ApiPatchAuthOrgLockoutConfigV1Request) (*Lockoutconfiguration, *http.Response, error) {
+//  @return LockoutConfiguration
+func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgLockoutConfigV1Execute(r ApiPatchAuthOrgLockoutConfigV1Request) (*LockoutConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Lockoutconfiguration
+		localVarReturnValue  *LockoutConfiguration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.PatchAuthOrgLockoutConfigV1")
@@ -906,8 +906,8 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgLockoutConfigV1Exec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -928,7 +928,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgLockoutConfigV1Exec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -952,7 +952,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgLockoutConfigV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -974,7 +974,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgLockoutConfigV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -985,7 +985,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgLockoutConfigV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1007,7 +1007,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgLockoutConfigV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1034,16 +1034,16 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgLockoutConfigV1Exec
 type ApiPatchAuthOrgNetworkConfigV1Request struct {
 	ctx context.Context
 	ApiService *GlobalTenantSecuritySettingsAPIService
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
-func (r ApiPatchAuthOrgNetworkConfigV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchAuthOrgNetworkConfigV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchAuthOrgNetworkConfigV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchAuthOrgNetworkConfigV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchAuthOrgNetworkConfigV1Request) Execute() (*Networkconfiguration, *http.Response, error) {
+func (r ApiPatchAuthOrgNetworkConfigV1Request) Execute() (*NetworkConfiguration, *http.Response, error) {
 	return r.ApiService.PatchAuthOrgNetworkConfigV1Execute(r)
 }
 
@@ -1064,13 +1064,13 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfigV1(ctx
 }
 
 // Execute executes the request
-//  @return Networkconfiguration
-func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfigV1Execute(r ApiPatchAuthOrgNetworkConfigV1Request) (*Networkconfiguration, *http.Response, error) {
+//  @return NetworkConfiguration
+func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfigV1Execute(r ApiPatchAuthOrgNetworkConfigV1Request) (*NetworkConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Networkconfiguration
+		localVarReturnValue  *NetworkConfiguration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.PatchAuthOrgNetworkConfigV1")
@@ -1083,8 +1083,8 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfigV1Exec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1105,7 +1105,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfigV1Exec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1129,7 +1129,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfigV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1151,7 +1151,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfigV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1162,7 +1162,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfigV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1184,7 +1184,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfigV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1211,16 +1211,16 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfigV1Exec
 type ApiPatchAuthOrgServiceProviderConfigV1Request struct {
 	ctx context.Context
 	ApiService *GlobalTenantSecuritySettingsAPIService
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Note: /federationProtocolDetails/0 is IdpDetails /federationProtocolDetails/1 is SpDetails Ensures that the patched ServiceProviderConfig conforms to certain logical guidelines, which are:   1. Do not add or remove any elements in the federation protocol details in the service provider configuration.   2. Do not modify, add, or delete the service provider details element in the federation protocol details.   3. If this is the first time the patched ServiceProviderConfig enables Remote IDP sign-in, it must also include IDPDetails.   4. If the patch enables Remote IDP sign in, the entityID in the IDPDetails cannot be null. IDPDetails must include an entityID.   5. Any JIT configuration update must be valid.  Just in time configuration update must be valid when enabled. This includes:   - A Source ID   - Source attribute mappings   - Source attribute maps have all the required key values (firstName, lastName, email)
-func (r ApiPatchAuthOrgServiceProviderConfigV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchAuthOrgServiceProviderConfigV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchAuthOrgServiceProviderConfigV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchAuthOrgServiceProviderConfigV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchAuthOrgServiceProviderConfigV1Request) Execute() (*Serviceproviderconfiguration, *http.Response, error) {
+func (r ApiPatchAuthOrgServiceProviderConfigV1Request) Execute() (*ServiceProviderConfiguration, *http.Response, error) {
 	return r.ApiService.PatchAuthOrgServiceProviderConfigV1Execute(r)
 }
 
@@ -1240,13 +1240,13 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgServiceProviderConf
 }
 
 // Execute executes the request
-//  @return Serviceproviderconfiguration
-func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgServiceProviderConfigV1Execute(r ApiPatchAuthOrgServiceProviderConfigV1Request) (*Serviceproviderconfiguration, *http.Response, error) {
+//  @return ServiceProviderConfiguration
+func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgServiceProviderConfigV1Execute(r ApiPatchAuthOrgServiceProviderConfigV1Request) (*ServiceProviderConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Serviceproviderconfiguration
+		localVarReturnValue  *ServiceProviderConfiguration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.PatchAuthOrgServiceProviderConfigV1")
@@ -1259,8 +1259,8 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgServiceProviderConf
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1281,7 +1281,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgServiceProviderConf
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1305,7 +1305,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgServiceProviderConf
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1327,7 +1327,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgServiceProviderConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1338,7 +1338,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgServiceProviderConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1360,7 +1360,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgServiceProviderConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1387,16 +1387,16 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgServiceProviderConf
 type ApiPatchAuthOrgSessionConfigV1Request struct {
 	ctx context.Context
 	ApiService *GlobalTenantSecuritySettingsAPIService
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   &#x60;1. maxSessionTime &gt;&#x3D; 1 &amp;&amp; maxSessionTime &lt;&#x3D; 10080 (1 week)   2. maxIdleTime &gt;&#x3D; 1 &amp;&amp; maxIdleTime &lt;&#x3D; 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.&#x60; 
-func (r ApiPatchAuthOrgSessionConfigV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchAuthOrgSessionConfigV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchAuthOrgSessionConfigV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchAuthOrgSessionConfigV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchAuthOrgSessionConfigV1Request) Execute() (*Sessionconfiguration, *http.Response, error) {
+func (r ApiPatchAuthOrgSessionConfigV1Request) Execute() (*SessionConfiguration, *http.Response, error) {
 	return r.ApiService.PatchAuthOrgSessionConfigV1Execute(r)
 }
 
@@ -1416,13 +1416,13 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgSessionConfigV1(ctx
 }
 
 // Execute executes the request
-//  @return Sessionconfiguration
-func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgSessionConfigV1Execute(r ApiPatchAuthOrgSessionConfigV1Request) (*Sessionconfiguration, *http.Response, error) {
+//  @return SessionConfiguration
+func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgSessionConfigV1Execute(r ApiPatchAuthOrgSessionConfigV1Request) (*SessionConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sessionconfiguration
+		localVarReturnValue  *SessionConfiguration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.PatchAuthOrgSessionConfigV1")
@@ -1435,8 +1435,8 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgSessionConfigV1Exec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1457,7 +1457,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgSessionConfigV1Exec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1481,7 +1481,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgSessionConfigV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1503,7 +1503,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgSessionConfigV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1514,7 +1514,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgSessionConfigV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1536,7 +1536,7 @@ func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgSessionConfigV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

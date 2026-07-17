@@ -42,11 +42,11 @@ Other parameters are passed through a pointer to a apiCreateOauthClientV1Request
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createoauthclientrequest** | [**Createoauthclientrequest**](../models/createoauthclientrequest) |  | 
+ **createOAuthClientRequest** | [**CreateOAuthClientRequest**](../models/create-o-auth-client-request) |  | 
 
 ### Return type
 
-[**Createoauthclientresponse**](../models/createoauthclientresponse)
+[**CreateOAuthClientResponse**](../models/create-o-auth-client-response)
 
 ### HTTP request headers
 
@@ -68,10 +68,26 @@ import (
 )
 
 func main() {
-    createoauthclientrequestJson := []byte(``) // Createoauthclientrequest | 
+    createoauthclientrequestJson := []byte(`{
+          "internal" : false,
+          "businessName" : "Acme-Solar",
+          "description" : "An API client used for the authorization_code, refresh_token, and client_credentials flows",
+          "refreshTokenValiditySeconds" : 86400,
+          "type" : "CONFIDENTIAL",
+          "redirectUris" : [ "http://localhost:12345" ],
+          "enabled" : true,
+          "accessType" : "OFFLINE",
+          "grantTypes" : [ "AUTHORIZATION_CODE", "CLIENT_CREDENTIALS", "REFRESH_TOKEN" ],
+          "strongAuthSupported" : false,
+          "homepageUrl" : "http://localhost:12345",
+          "accessTokenValiditySeconds" : 750,
+          "scope" : [ "demo:api-client-scope:first", "demo:api-client-scope:second" ],
+          "name" : "Demo API Client",
+          "claimsSupported" : false
+        }`) // CreateOAuthClientRequest | 
 
-    var createoauthclientrequest oauth_clients.Createoauthclientrequest
-    if err := json.Unmarshal(createoauthclientrequestJson, &createoauthclientrequest); err != nil {
+    var createOAuthClientRequest oauth_clients.CreateOAuthClientRequest
+    if err := json.Unmarshal(createoauthclientrequestJson, &createOAuthClientRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -79,13 +95,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsAPI.CreateOauthClientV1(context.Background()).Createoauthclientrequest(createoauthclientrequest).Execute()
-	  //resp, r, err := apiClient.OAuthClientsAPI.CreateOauthClientV1(context.Background()).Createoauthclientrequest(createoauthclientrequest).Execute()
+    resp, r, err := apiClient.OAuthClientsAPI.CreateOauthClientV1(context.Background()).CreateOAuthClientRequest(createOAuthClientRequest).Execute()
+	  //resp, r, err := apiClient.OAuthClientsAPI.CreateOauthClientV1(context.Background()).CreateOAuthClientRequest(createOAuthClientRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.CreateOauthClientV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateOauthClientV1`: Createoauthclientresponse
+    // response from `CreateOauthClientV1`: CreateOAuthClientResponse
     fmt.Fprintf(os.Stdout, "Response from `OAuthClientsAPI.CreateOauthClientV1`: %v\n", resp)
 }
 ```
@@ -182,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Getoauthclientresponse**](../models/getoauthclientresponse)
+[**GetOAuthClientResponse**](../models/get-o-auth-client-response)
 
 ### HTTP request headers
 
@@ -216,7 +232,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.GetOauthClientV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOauthClientV1`: Getoauthclientresponse
+    // response from `GetOauthClientV1`: GetOAuthClientResponse
     fmt.Fprintf(os.Stdout, "Response from `OAuthClientsAPI.GetOauthClientV1`: %v\n", resp)
 }
 ```
@@ -244,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Getoauthclientresponse**](../models/getoauthclientresponse)
+[**[]GetOAuthClientResponse**](../models/get-o-auth-client-response)
 
 ### HTTP request headers
 
@@ -278,7 +294,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.ListOauthClientsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListOauthClientsV1`: []Getoauthclientresponse
+    // response from `ListOauthClientsV1`: []GetOAuthClientResponse
     fmt.Fprintf(os.Stdout, "Response from `OAuthClientsAPI.ListOauthClientsV1`: %v\n", resp)
 }
 ```
@@ -307,11 +323,11 @@ Other parameters are passed through a pointer to a apiPatchOauthClientV1Request 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported  | 
 
 ### Return type
 
-[**Getoauthclientresponse**](../models/getoauthclientresponse)
+[**GetOAuthClientResponse**](../models/get-o-auth-client-response)
 
 ### HTTP request headers
 
@@ -334,10 +350,10 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The OAuth client id # string | The OAuth client id
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/strongAuthSupported","value":true},{"op":"replace","path":"/businessName","value":"acme-solar"}]`) // []Jsonpatchoperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/strongAuthSupported","value":true},{"op":"replace","path":"/businessName","value":"acme-solar"}]`) // []JsonPatchOperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
 
-    var jsonpatchoperation []oauth_clients.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []oauth_clients.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -345,13 +361,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsAPI.PatchOauthClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.OAuthClientsAPI.PatchOauthClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.OAuthClientsAPI.PatchOauthClientV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.OAuthClientsAPI.PatchOauthClientV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.PatchOauthClientV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchOauthClientV1`: Getoauthclientresponse
+    // response from `PatchOauthClientV1`: GetOAuthClientResponse
     fmt.Fprintf(os.Stdout, "Response from `OAuthClientsAPI.PatchOauthClientV1`: %v\n", resp)
 }
 ```

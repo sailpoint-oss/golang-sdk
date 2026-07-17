@@ -166,7 +166,7 @@ func (a *ApplicationDiscoveryAPIService) GetDiscoveredApplicationsV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -188,7 +188,7 @@ func (a *ApplicationDiscoveryAPIService) GetDiscoveredApplicationsV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -210,7 +210,7 @@ func (a *ApplicationDiscoveryAPIService) GetDiscoveredApplicationsV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -239,7 +239,7 @@ type ApiGetManualDiscoverApplicationsCsvTemplateV1Request struct {
 	ApiService *ApplicationDiscoveryAPIService
 }
 
-func (r ApiGetManualDiscoverApplicationsCsvTemplateV1Request) Execute() (*Manualdiscoverapplicationstemplate, *http.Response, error) {
+func (r ApiGetManualDiscoverApplicationsCsvTemplateV1Request) Execute() (*ManualDiscoverApplicationsTemplate, *http.Response, error) {
 	return r.ApiService.GetManualDiscoverApplicationsCsvTemplateV1Execute(r)
 }
 
@@ -262,13 +262,13 @@ func (a *ApplicationDiscoveryAPIService) GetManualDiscoverApplicationsCsvTemplat
 }
 
 // Execute executes the request
-//  @return Manualdiscoverapplicationstemplate
-func (a *ApplicationDiscoveryAPIService) GetManualDiscoverApplicationsCsvTemplateV1Execute(r ApiGetManualDiscoverApplicationsCsvTemplateV1Request) (*Manualdiscoverapplicationstemplate, *http.Response, error) {
+//  @return ManualDiscoverApplicationsTemplate
+func (a *ApplicationDiscoveryAPIService) GetManualDiscoverApplicationsCsvTemplateV1Execute(r ApiGetManualDiscoverApplicationsCsvTemplateV1Request) (*ManualDiscoverApplicationsTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Manualdiscoverapplicationstemplate
+		localVarReturnValue  *ManualDiscoverApplicationsTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDiscoveryAPIService.GetManualDiscoverApplicationsCsvTemplateV1")
@@ -322,7 +322,7 @@ func (a *ApplicationDiscoveryAPIService) GetManualDiscoverApplicationsCsvTemplat
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -344,7 +344,7 @@ func (a *ApplicationDiscoveryAPIService) GetManualDiscoverApplicationsCsvTemplat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -366,7 +366,7 @@ func (a *ApplicationDiscoveryAPIService) GetManualDiscoverApplicationsCsvTemplat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -499,7 +499,7 @@ func (a *ApplicationDiscoveryAPIService) SendManualDiscoverApplicationsCsvTempla
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -521,7 +521,7 @@ func (a *ApplicationDiscoveryAPIService) SendManualDiscoverApplicationsCsvTempla
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -543,7 +543,7 @@ func (a *ApplicationDiscoveryAPIService) SendManualDiscoverApplicationsCsvTempla
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -563,7 +563,7 @@ type ApiStartApplicationDiscoveryV1Request struct {
 	ApiService *ApplicationDiscoveryAPIService
 	xSailPointExperimental *string
 	sourceId string
-	applicationdiscoveryrequest *Applicationdiscoveryrequest
+	applicationDiscoveryRequest *ApplicationDiscoveryRequest
 }
 
 // Use this header to enable this experimental API.
@@ -572,12 +572,12 @@ func (r ApiStartApplicationDiscoveryV1Request) XSailPointExperimental(xSailPoint
 	return r
 }
 
-func (r ApiStartApplicationDiscoveryV1Request) Applicationdiscoveryrequest(applicationdiscoveryrequest Applicationdiscoveryrequest) ApiStartApplicationDiscoveryV1Request {
-	r.applicationdiscoveryrequest = &applicationdiscoveryrequest
+func (r ApiStartApplicationDiscoveryV1Request) ApplicationDiscoveryRequest(applicationDiscoveryRequest ApplicationDiscoveryRequest) ApiStartApplicationDiscoveryV1Request {
+	r.applicationDiscoveryRequest = &applicationDiscoveryRequest
 	return r
 }
 
-func (r ApiStartApplicationDiscoveryV1Request) Execute() (*Applicationdiscoveryresponse, *http.Response, error) {
+func (r ApiStartApplicationDiscoveryV1Request) Execute() (*ApplicationDiscoveryResponse, *http.Response, error) {
 	return r.ApiService.StartApplicationDiscoveryV1Execute(r)
 }
 
@@ -599,13 +599,13 @@ func (a *ApplicationDiscoveryAPIService) StartApplicationDiscoveryV1(ctx context
 }
 
 // Execute executes the request
-//  @return Applicationdiscoveryresponse
-func (a *ApplicationDiscoveryAPIService) StartApplicationDiscoveryV1Execute(r ApiStartApplicationDiscoveryV1Request) (*Applicationdiscoveryresponse, *http.Response, error) {
+//  @return ApplicationDiscoveryResponse
+func (a *ApplicationDiscoveryAPIService) StartApplicationDiscoveryV1Execute(r ApiStartApplicationDiscoveryV1Request) (*ApplicationDiscoveryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Applicationdiscoveryresponse
+		localVarReturnValue  *ApplicationDiscoveryResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDiscoveryAPIService.StartApplicationDiscoveryV1")
@@ -634,8 +634,8 @@ func (a *ApplicationDiscoveryAPIService) StartApplicationDiscoveryV1Execute(r Ap
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.applicationdiscoveryrequest == nil {
-		return localVarReturnValue, nil, reportError("applicationdiscoveryrequest is required and must be specified")
+	if r.applicationDiscoveryRequest == nil {
+		return localVarReturnValue, nil, reportError("applicationDiscoveryRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -657,7 +657,7 @@ func (a *ApplicationDiscoveryAPIService) StartApplicationDiscoveryV1Execute(r Ap
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.applicationdiscoveryrequest
+	localVarPostBody = r.applicationDiscoveryRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -681,7 +681,7 @@ func (a *ApplicationDiscoveryAPIService) StartApplicationDiscoveryV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -714,7 +714,7 @@ func (a *ApplicationDiscoveryAPIService) StartApplicationDiscoveryV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -736,7 +736,7 @@ func (a *ApplicationDiscoveryAPIService) StartApplicationDiscoveryV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

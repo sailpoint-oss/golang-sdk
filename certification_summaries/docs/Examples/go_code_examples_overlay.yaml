@@ -35,7 +35,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentityAccessSummariesV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIdentityAccessSummariesV1`: []Accesssummary
+          // response from `GetIdentityAccessSummariesV1`: []AccessSummary
           fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentityAccessSummariesV1`: %v\n", resp)
         }
 - path: /certifications/v1/{id}/decision-summary
@@ -70,7 +70,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentityDecisionSummaryV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIdentityDecisionSummaryV1`: Identitycertdecisionsummary
+          // response from `GetIdentityDecisionSummaryV1`: IdentityCertDecisionSummary
           fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentityDecisionSummaryV1`: %v\n", resp)
         }
 - path: /certifications/v1/{id}/identity-summaries
@@ -109,7 +109,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentitySummariesV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIdentitySummariesV1`: []Certificationidentitysummary
+          // response from `GetIdentitySummariesV1`: []CertificationIdentitySummary
           fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentitySummariesV1`: %v\n", resp)
         }
 - path: /certifications/v1/{id}/identity-summaries/{identitySummaryId}
@@ -144,6 +144,6 @@
             fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentitySummaryV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIdentitySummaryV1`: Certificationidentitysummary
+          // response from `GetIdentitySummaryV1`: CertificationIdentitySummary
           fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentitySummaryV1`: %v\n", resp)
         }

@@ -31,10 +31,10 @@ type Dimension struct {
 	Modified *SailPointTime `json:"modified,omitempty"`
 	// A human-readable description of the Dimension
 	Description NullableString `json:"description,omitempty"`
-	Owner NullableOwnerreference `json:"owner"`
-	AccessProfiles []Accessprofileref `json:"accessProfiles,omitempty"`
-	Entitlements []Entitlementref `json:"entitlements,omitempty"`
-	Membership NullableDimensionmembershipselector `json:"membership,omitempty"`
+	Owner NullableOwnerReference `json:"owner"`
+	AccessProfiles []AccessProfileRef `json:"accessProfiles,omitempty"`
+	Entitlements []EntitlementRef `json:"entitlements,omitempty"`
+	Membership NullableDimensionMembershipSelector `json:"membership,omitempty"`
 	// The ID of the parent role. This field can be left null when creating a dimension, but if provided, it must match the role ID specified in the path variable of the API call.
 	ParentId NullableString `json:"parentId,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -46,7 +46,7 @@ type _Dimension Dimension
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDimension(name string, owner NullableOwnerreference) *Dimension {
+func NewDimension(name string, owner NullableOwnerReference) *Dimension {
 	this := Dimension{}
 	this.Name = name
 	this.Owner = owner
@@ -224,10 +224,10 @@ func (o *Dimension) UnsetDescription() {
 }
 
 // GetOwner returns the Owner field value
-// If the value is explicit nil, the zero value for Ownerreference will be returned
-func (o *Dimension) GetOwner() Ownerreference {
+// If the value is explicit nil, the zero value for OwnerReference will be returned
+func (o *Dimension) GetOwner() OwnerReference {
 	if o == nil || o.Owner.Get() == nil {
-		var ret Ownerreference
+		var ret OwnerReference
 		return ret
 	}
 
@@ -237,7 +237,7 @@ func (o *Dimension) GetOwner() Ownerreference {
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Dimension) GetOwnerOk() (*Ownerreference, bool) {
+func (o *Dimension) GetOwnerOk() (*OwnerReference, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -245,14 +245,14 @@ func (o *Dimension) GetOwnerOk() (*Ownerreference, bool) {
 }
 
 // SetOwner sets field value
-func (o *Dimension) SetOwner(v Ownerreference) {
+func (o *Dimension) SetOwner(v OwnerReference) {
 	o.Owner.Set(&v)
 }
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Dimension) GetAccessProfiles() []Accessprofileref {
+func (o *Dimension) GetAccessProfiles() []AccessProfileRef {
 	if o == nil {
-		var ret []Accessprofileref
+		var ret []AccessProfileRef
 		return ret
 	}
 	return o.AccessProfiles
@@ -261,7 +261,7 @@ func (o *Dimension) GetAccessProfiles() []Accessprofileref {
 // GetAccessProfilesOk returns a tuple with the AccessProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Dimension) GetAccessProfilesOk() ([]Accessprofileref, bool) {
+func (o *Dimension) GetAccessProfilesOk() ([]AccessProfileRef, bool) {
 	if o == nil || IsNil(o.AccessProfiles) {
 		return nil, false
 	}
@@ -277,15 +277,15 @@ func (o *Dimension) HasAccessProfiles() bool {
 	return false
 }
 
-// SetAccessProfiles gets a reference to the given []Accessprofileref and assigns it to the AccessProfiles field.
-func (o *Dimension) SetAccessProfiles(v []Accessprofileref) {
+// SetAccessProfiles gets a reference to the given []AccessProfileRef and assigns it to the AccessProfiles field.
+func (o *Dimension) SetAccessProfiles(v []AccessProfileRef) {
 	o.AccessProfiles = v
 }
 
 // GetEntitlements returns the Entitlements field value if set, zero value otherwise.
-func (o *Dimension) GetEntitlements() []Entitlementref {
+func (o *Dimension) GetEntitlements() []EntitlementRef {
 	if o == nil || IsNil(o.Entitlements) {
-		var ret []Entitlementref
+		var ret []EntitlementRef
 		return ret
 	}
 	return o.Entitlements
@@ -293,7 +293,7 @@ func (o *Dimension) GetEntitlements() []Entitlementref {
 
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Dimension) GetEntitlementsOk() ([]Entitlementref, bool) {
+func (o *Dimension) GetEntitlementsOk() ([]EntitlementRef, bool) {
 	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
 	}
@@ -309,15 +309,15 @@ func (o *Dimension) HasEntitlements() bool {
 	return false
 }
 
-// SetEntitlements gets a reference to the given []Entitlementref and assigns it to the Entitlements field.
-func (o *Dimension) SetEntitlements(v []Entitlementref) {
+// SetEntitlements gets a reference to the given []EntitlementRef and assigns it to the Entitlements field.
+func (o *Dimension) SetEntitlements(v []EntitlementRef) {
 	o.Entitlements = v
 }
 
 // GetMembership returns the Membership field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Dimension) GetMembership() Dimensionmembershipselector {
+func (o *Dimension) GetMembership() DimensionMembershipSelector {
 	if o == nil || IsNil(o.Membership.Get()) {
-		var ret Dimensionmembershipselector
+		var ret DimensionMembershipSelector
 		return ret
 	}
 	return *o.Membership.Get()
@@ -326,7 +326,7 @@ func (o *Dimension) GetMembership() Dimensionmembershipselector {
 // GetMembershipOk returns a tuple with the Membership field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Dimension) GetMembershipOk() (*Dimensionmembershipselector, bool) {
+func (o *Dimension) GetMembershipOk() (*DimensionMembershipSelector, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -342,8 +342,8 @@ func (o *Dimension) HasMembership() bool {
 	return false
 }
 
-// SetMembership gets a reference to the given NullableDimensionmembershipselector and assigns it to the Membership field.
-func (o *Dimension) SetMembership(v Dimensionmembershipselector) {
+// SetMembership gets a reference to the given NullableDimensionMembershipSelector and assigns it to the Membership field.
+func (o *Dimension) SetMembership(v DimensionMembershipSelector) {
 	o.Membership.Set(&v)
 }
 // SetMembershipNil sets the value for Membership to be an explicit nil

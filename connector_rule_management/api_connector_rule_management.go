@@ -26,16 +26,16 @@ type ConnectorRuleManagementAPIService service
 type ApiCreateConnectorRuleV1Request struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
-	connectorrulecreaterequest *Connectorrulecreaterequest
+	connectorRuleCreateRequest *ConnectorRuleCreateRequest
 }
 
 // Connector rule to create.
-func (r ApiCreateConnectorRuleV1Request) Connectorrulecreaterequest(connectorrulecreaterequest Connectorrulecreaterequest) ApiCreateConnectorRuleV1Request {
-	r.connectorrulecreaterequest = &connectorrulecreaterequest
+func (r ApiCreateConnectorRuleV1Request) ConnectorRuleCreateRequest(connectorRuleCreateRequest ConnectorRuleCreateRequest) ApiCreateConnectorRuleV1Request {
+	r.connectorRuleCreateRequest = &connectorRuleCreateRequest
 	return r
 }
 
-func (r ApiCreateConnectorRuleV1Request) Execute() (*Connectorruleresponse, *http.Response, error) {
+func (r ApiCreateConnectorRuleV1Request) Execute() (*ConnectorRuleResponse, *http.Response, error) {
 	return r.ApiService.CreateConnectorRuleV1Execute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *ConnectorRuleManagementAPIService) CreateConnectorRuleV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Connectorruleresponse
-func (a *ConnectorRuleManagementAPIService) CreateConnectorRuleV1Execute(r ApiCreateConnectorRuleV1Request) (*Connectorruleresponse, *http.Response, error) {
+//  @return ConnectorRuleResponse
+func (a *ConnectorRuleManagementAPIService) CreateConnectorRuleV1Execute(r ApiCreateConnectorRuleV1Request) (*ConnectorRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Connectorruleresponse
+		localVarReturnValue  *ConnectorRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.CreateConnectorRuleV1")
@@ -74,8 +74,8 @@ func (a *ConnectorRuleManagementAPIService) CreateConnectorRuleV1Execute(r ApiCr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.connectorrulecreaterequest == nil {
-		return localVarReturnValue, nil, reportError("connectorrulecreaterequest is required and must be specified")
+	if r.connectorRuleCreateRequest == nil {
+		return localVarReturnValue, nil, reportError("connectorRuleCreateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -96,7 +96,7 @@ func (a *ConnectorRuleManagementAPIService) CreateConnectorRuleV1Execute(r ApiCr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.connectorrulecreaterequest
+	localVarPostBody = r.connectorRuleCreateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -120,7 +120,7 @@ func (a *ConnectorRuleManagementAPIService) CreateConnectorRuleV1Execute(r ApiCr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,7 +142,7 @@ func (a *ConnectorRuleManagementAPIService) CreateConnectorRuleV1Execute(r ApiCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *ConnectorRuleManagementAPIService) CreateConnectorRuleV1Execute(r ApiCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -275,7 +275,7 @@ func (a *ConnectorRuleManagementAPIService) DeleteConnectorRuleV1Execute(r ApiDe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -297,7 +297,7 @@ func (a *ConnectorRuleManagementAPIService) DeleteConnectorRuleV1Execute(r ApiDe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -308,7 +308,7 @@ func (a *ConnectorRuleManagementAPIService) DeleteConnectorRuleV1Execute(r ApiDe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -330,7 +330,7 @@ func (a *ConnectorRuleManagementAPIService) DeleteConnectorRuleV1Execute(r ApiDe
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -371,7 +371,7 @@ func (r ApiGetConnectorRuleListV1Request) Count(count bool) ApiGetConnectorRuleL
 	return r
 }
 
-func (r ApiGetConnectorRuleListV1Request) Execute() ([]Connectorruleresponse, *http.Response, error) {
+func (r ApiGetConnectorRuleListV1Request) Execute() ([]ConnectorRuleResponse, *http.Response, error) {
 	return r.ApiService.GetConnectorRuleListV1Execute(r)
 }
 
@@ -391,13 +391,13 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleListV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return []Connectorruleresponse
-func (a *ConnectorRuleManagementAPIService) GetConnectorRuleListV1Execute(r ApiGetConnectorRuleListV1Request) ([]Connectorruleresponse, *http.Response, error) {
+//  @return []ConnectorRuleResponse
+func (a *ConnectorRuleManagementAPIService) GetConnectorRuleListV1Execute(r ApiGetConnectorRuleListV1Request) ([]ConnectorRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Connectorruleresponse
+		localVarReturnValue  []ConnectorRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.GetConnectorRuleListV1")
@@ -469,7 +469,7 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleListV1Execute(r ApiG
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -491,7 +491,7 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleListV1Execute(r ApiG
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -513,7 +513,7 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleListV1Execute(r ApiG
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -543,7 +543,7 @@ type ApiGetConnectorRuleV1Request struct {
 	id string
 }
 
-func (r ApiGetConnectorRuleV1Request) Execute() (*Connectorruleresponse, *http.Response, error) {
+func (r ApiGetConnectorRuleV1Request) Execute() (*ConnectorRuleResponse, *http.Response, error) {
 	return r.ApiService.GetConnectorRuleV1Execute(r)
 }
 
@@ -565,13 +565,13 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return Connectorruleresponse
-func (a *ConnectorRuleManagementAPIService) GetConnectorRuleV1Execute(r ApiGetConnectorRuleV1Request) (*Connectorruleresponse, *http.Response, error) {
+//  @return ConnectorRuleResponse
+func (a *ConnectorRuleManagementAPIService) GetConnectorRuleV1Execute(r ApiGetConnectorRuleV1Request) (*ConnectorRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Connectorruleresponse
+		localVarReturnValue  *ConnectorRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.GetConnectorRuleV1")
@@ -626,7 +626,7 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleV1Execute(r ApiGetCo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -648,7 +648,7 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleV1Execute(r ApiGetCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -659,7 +659,7 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleV1Execute(r ApiGetCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -681,7 +681,7 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleV1Execute(r ApiGetCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -709,16 +709,16 @@ type ApiPutConnectorRuleV1Request struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
 	id string
-	connectorruleupdaterequest *Connectorruleupdaterequest
+	connectorRuleUpdateRequest *ConnectorRuleUpdateRequest
 }
 
 // Connector rule with updated data.
-func (r ApiPutConnectorRuleV1Request) Connectorruleupdaterequest(connectorruleupdaterequest Connectorruleupdaterequest) ApiPutConnectorRuleV1Request {
-	r.connectorruleupdaterequest = &connectorruleupdaterequest
+func (r ApiPutConnectorRuleV1Request) ConnectorRuleUpdateRequest(connectorRuleUpdateRequest ConnectorRuleUpdateRequest) ApiPutConnectorRuleV1Request {
+	r.connectorRuleUpdateRequest = &connectorRuleUpdateRequest
 	return r
 }
 
-func (r ApiPutConnectorRuleV1Request) Execute() (*Connectorruleresponse, *http.Response, error) {
+func (r ApiPutConnectorRuleV1Request) Execute() (*ConnectorRuleResponse, *http.Response, error) {
 	return r.ApiService.PutConnectorRuleV1Execute(r)
 }
 
@@ -740,13 +740,13 @@ func (a *ConnectorRuleManagementAPIService) PutConnectorRuleV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return Connectorruleresponse
-func (a *ConnectorRuleManagementAPIService) PutConnectorRuleV1Execute(r ApiPutConnectorRuleV1Request) (*Connectorruleresponse, *http.Response, error) {
+//  @return ConnectorRuleResponse
+func (a *ConnectorRuleManagementAPIService) PutConnectorRuleV1Execute(r ApiPutConnectorRuleV1Request) (*ConnectorRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Connectorruleresponse
+		localVarReturnValue  *ConnectorRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.PutConnectorRuleV1")
@@ -779,7 +779,7 @@ func (a *ConnectorRuleManagementAPIService) PutConnectorRuleV1Execute(r ApiPutCo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.connectorruleupdaterequest
+	localVarPostBody = r.connectorRuleUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -803,7 +803,7 @@ func (a *ConnectorRuleManagementAPIService) PutConnectorRuleV1Execute(r ApiPutCo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -825,7 +825,7 @@ func (a *ConnectorRuleManagementAPIService) PutConnectorRuleV1Execute(r ApiPutCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -836,7 +836,7 @@ func (a *ConnectorRuleManagementAPIService) PutConnectorRuleV1Execute(r ApiPutCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -858,7 +858,7 @@ func (a *ConnectorRuleManagementAPIService) PutConnectorRuleV1Execute(r ApiPutCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -885,16 +885,16 @@ func (a *ConnectorRuleManagementAPIService) PutConnectorRuleV1Execute(r ApiPutCo
 type ApiTestConnectorRuleV1Request struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
-	sourcecode *Sourcecode
+	sourceCode *SourceCode
 }
 
 // Code to validate.
-func (r ApiTestConnectorRuleV1Request) Sourcecode(sourcecode Sourcecode) ApiTestConnectorRuleV1Request {
-	r.sourcecode = &sourcecode
+func (r ApiTestConnectorRuleV1Request) SourceCode(sourceCode SourceCode) ApiTestConnectorRuleV1Request {
+	r.sourceCode = &sourceCode
 	return r
 }
 
-func (r ApiTestConnectorRuleV1Request) Execute() (*Connectorrulevalidationresponse, *http.Response, error) {
+func (r ApiTestConnectorRuleV1Request) Execute() (*ConnectorRuleValidationResponse, *http.Response, error) {
 	return r.ApiService.TestConnectorRuleV1Execute(r)
 }
 
@@ -914,13 +914,13 @@ func (a *ConnectorRuleManagementAPIService) TestConnectorRuleV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return Connectorrulevalidationresponse
-func (a *ConnectorRuleManagementAPIService) TestConnectorRuleV1Execute(r ApiTestConnectorRuleV1Request) (*Connectorrulevalidationresponse, *http.Response, error) {
+//  @return ConnectorRuleValidationResponse
+func (a *ConnectorRuleManagementAPIService) TestConnectorRuleV1Execute(r ApiTestConnectorRuleV1Request) (*ConnectorRuleValidationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Connectorrulevalidationresponse
+		localVarReturnValue  *ConnectorRuleValidationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.TestConnectorRuleV1")
@@ -933,8 +933,8 @@ func (a *ConnectorRuleManagementAPIService) TestConnectorRuleV1Execute(r ApiTest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sourcecode == nil {
-		return localVarReturnValue, nil, reportError("sourcecode is required and must be specified")
+	if r.sourceCode == nil {
+		return localVarReturnValue, nil, reportError("sourceCode is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -955,7 +955,7 @@ func (a *ConnectorRuleManagementAPIService) TestConnectorRuleV1Execute(r ApiTest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sourcecode
+	localVarPostBody = r.sourceCode
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -979,7 +979,7 @@ func (a *ConnectorRuleManagementAPIService) TestConnectorRuleV1Execute(r ApiTest
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1001,7 +1001,7 @@ func (a *ConnectorRuleManagementAPIService) TestConnectorRuleV1Execute(r ApiTest
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1023,7 +1023,7 @@ func (a *ConnectorRuleManagementAPIService) TestConnectorRuleV1Execute(r ApiTest
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

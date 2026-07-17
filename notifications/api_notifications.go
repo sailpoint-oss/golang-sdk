@@ -26,15 +26,15 @@ type NotificationsAPIService service
 type ApiCreateDomainDkimV1Request struct {
 	ctx context.Context
 	ApiService *NotificationsAPIService
-	domainaddress *Domainaddress
+	domainAddress *DomainAddress
 }
 
-func (r ApiCreateDomainDkimV1Request) Domainaddress(domainaddress Domainaddress) ApiCreateDomainDkimV1Request {
-	r.domainaddress = &domainaddress
+func (r ApiCreateDomainDkimV1Request) DomainAddress(domainAddress DomainAddress) ApiCreateDomainDkimV1Request {
+	r.domainAddress = &domainAddress
 	return r
 }
 
-func (r ApiCreateDomainDkimV1Request) Execute() (*Domainstatusdto, *http.Response, error) {
+func (r ApiCreateDomainDkimV1Request) Execute() (*DomainStatusDto, *http.Response, error) {
 	return r.ApiService.CreateDomainDkimV1Execute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *NotificationsAPIService) CreateDomainDkimV1(ctx context.Context) ApiCre
 }
 
 // Execute executes the request
-//  @return Domainstatusdto
-func (a *NotificationsAPIService) CreateDomainDkimV1Execute(r ApiCreateDomainDkimV1Request) (*Domainstatusdto, *http.Response, error) {
+//  @return DomainStatusDto
+func (a *NotificationsAPIService) CreateDomainDkimV1Execute(r ApiCreateDomainDkimV1Request) (*DomainStatusDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Domainstatusdto
+		localVarReturnValue  *DomainStatusDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.CreateDomainDkimV1")
@@ -73,8 +73,8 @@ func (a *NotificationsAPIService) CreateDomainDkimV1Execute(r ApiCreateDomainDki
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.domainaddress == nil {
-		return localVarReturnValue, nil, reportError("domainaddress is required and must be specified")
+	if r.domainAddress == nil {
+		return localVarReturnValue, nil, reportError("domainAddress is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -95,7 +95,7 @@ func (a *NotificationsAPIService) CreateDomainDkimV1Execute(r ApiCreateDomainDki
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.domainaddress
+	localVarPostBody = r.domainAddress
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -119,7 +119,7 @@ func (a *NotificationsAPIService) CreateDomainDkimV1Execute(r ApiCreateDomainDki
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -141,7 +141,7 @@ func (a *NotificationsAPIService) CreateDomainDkimV1Execute(r ApiCreateDomainDki
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -174,7 +174,7 @@ func (a *NotificationsAPIService) CreateDomainDkimV1Execute(r ApiCreateDomainDki
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -201,15 +201,15 @@ func (a *NotificationsAPIService) CreateDomainDkimV1Execute(r ApiCreateDomainDki
 type ApiCreateNotificationTemplateV1Request struct {
 	ctx context.Context
 	ApiService *NotificationsAPIService
-	templatedto *Templatedto
+	templateDto *TemplateDto
 }
 
-func (r ApiCreateNotificationTemplateV1Request) Templatedto(templatedto Templatedto) ApiCreateNotificationTemplateV1Request {
-	r.templatedto = &templatedto
+func (r ApiCreateNotificationTemplateV1Request) TemplateDto(templateDto TemplateDto) ApiCreateNotificationTemplateV1Request {
+	r.templateDto = &templateDto
 	return r
 }
 
-func (r ApiCreateNotificationTemplateV1Request) Execute() (*Templatedto, *http.Response, error) {
+func (r ApiCreateNotificationTemplateV1Request) Execute() (*TemplateDto, *http.Response, error) {
 	return r.ApiService.CreateNotificationTemplateV1Execute(r)
 }
 
@@ -232,13 +232,13 @@ func (a *NotificationsAPIService) CreateNotificationTemplateV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return Templatedto
-func (a *NotificationsAPIService) CreateNotificationTemplateV1Execute(r ApiCreateNotificationTemplateV1Request) (*Templatedto, *http.Response, error) {
+//  @return TemplateDto
+func (a *NotificationsAPIService) CreateNotificationTemplateV1Execute(r ApiCreateNotificationTemplateV1Request) (*TemplateDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Templatedto
+		localVarReturnValue  *TemplateDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.CreateNotificationTemplateV1")
@@ -251,8 +251,8 @@ func (a *NotificationsAPIService) CreateNotificationTemplateV1Execute(r ApiCreat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.templatedto == nil {
-		return localVarReturnValue, nil, reportError("templatedto is required and must be specified")
+	if r.templateDto == nil {
+		return localVarReturnValue, nil, reportError("templateDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -273,7 +273,7 @@ func (a *NotificationsAPIService) CreateNotificationTemplateV1Execute(r ApiCreat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.templatedto
+	localVarPostBody = r.templateDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -297,7 +297,7 @@ func (a *NotificationsAPIService) CreateNotificationTemplateV1Execute(r ApiCreat
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -319,7 +319,7 @@ func (a *NotificationsAPIService) CreateNotificationTemplateV1Execute(r ApiCreat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -341,7 +341,7 @@ func (a *NotificationsAPIService) CreateNotificationTemplateV1Execute(r ApiCreat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -368,15 +368,15 @@ func (a *NotificationsAPIService) CreateNotificationTemplateV1Execute(r ApiCreat
 type ApiCreateVerifiedFromAddressV1Request struct {
 	ctx context.Context
 	ApiService *NotificationsAPIService
-	emailstatusdto *Emailstatusdto
+	emailStatusDto *EmailStatusDto
 }
 
-func (r ApiCreateVerifiedFromAddressV1Request) Emailstatusdto(emailstatusdto Emailstatusdto) ApiCreateVerifiedFromAddressV1Request {
-	r.emailstatusdto = &emailstatusdto
+func (r ApiCreateVerifiedFromAddressV1Request) EmailStatusDto(emailStatusDto EmailStatusDto) ApiCreateVerifiedFromAddressV1Request {
+	r.emailStatusDto = &emailStatusDto
 	return r
 }
 
-func (r ApiCreateVerifiedFromAddressV1Request) Execute() (*Emailstatusdto, *http.Response, error) {
+func (r ApiCreateVerifiedFromAddressV1Request) Execute() (*EmailStatusDto, *http.Response, error) {
 	return r.ApiService.CreateVerifiedFromAddressV1Execute(r)
 }
 
@@ -396,13 +396,13 @@ func (a *NotificationsAPIService) CreateVerifiedFromAddressV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Emailstatusdto
-func (a *NotificationsAPIService) CreateVerifiedFromAddressV1Execute(r ApiCreateVerifiedFromAddressV1Request) (*Emailstatusdto, *http.Response, error) {
+//  @return EmailStatusDto
+func (a *NotificationsAPIService) CreateVerifiedFromAddressV1Execute(r ApiCreateVerifiedFromAddressV1Request) (*EmailStatusDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Emailstatusdto
+		localVarReturnValue  *EmailStatusDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.CreateVerifiedFromAddressV1")
@@ -415,8 +415,8 @@ func (a *NotificationsAPIService) CreateVerifiedFromAddressV1Execute(r ApiCreate
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.emailstatusdto == nil {
-		return localVarReturnValue, nil, reportError("emailstatusdto is required and must be specified")
+	if r.emailStatusDto == nil {
+		return localVarReturnValue, nil, reportError("emailStatusDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -437,7 +437,7 @@ func (a *NotificationsAPIService) CreateVerifiedFromAddressV1Execute(r ApiCreate
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.emailstatusdto
+	localVarPostBody = r.emailStatusDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -461,7 +461,7 @@ func (a *NotificationsAPIService) CreateVerifiedFromAddressV1Execute(r ApiCreate
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -483,7 +483,7 @@ func (a *NotificationsAPIService) CreateVerifiedFromAddressV1Execute(r ApiCreate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -505,7 +505,7 @@ func (a *NotificationsAPIService) CreateVerifiedFromAddressV1Execute(r ApiCreate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -532,11 +532,11 @@ func (a *NotificationsAPIService) CreateVerifiedFromAddressV1Execute(r ApiCreate
 type ApiDeleteNotificationTemplatesInBulkV1Request struct {
 	ctx context.Context
 	ApiService *NotificationsAPIService
-	templatebulkdeletedto *[]Templatebulkdeletedto
+	templateBulkDeleteDto *[]TemplateBulkDeleteDto
 }
 
-func (r ApiDeleteNotificationTemplatesInBulkV1Request) Templatebulkdeletedto(templatebulkdeletedto []Templatebulkdeletedto) ApiDeleteNotificationTemplatesInBulkV1Request {
-	r.templatebulkdeletedto = &templatebulkdeletedto
+func (r ApiDeleteNotificationTemplatesInBulkV1Request) TemplateBulkDeleteDto(templateBulkDeleteDto []TemplateBulkDeleteDto) ApiDeleteNotificationTemplatesInBulkV1Request {
+	r.templateBulkDeleteDto = &templateBulkDeleteDto
 	return r
 }
 
@@ -577,8 +577,8 @@ func (a *NotificationsAPIService) DeleteNotificationTemplatesInBulkV1Execute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.templatebulkdeletedto == nil {
-		return nil, reportError("templatebulkdeletedto is required and must be specified")
+	if r.templateBulkDeleteDto == nil {
+		return nil, reportError("templateBulkDeleteDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -599,7 +599,7 @@ func (a *NotificationsAPIService) DeleteNotificationTemplatesInBulkV1Execute(r A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.templatebulkdeletedto
+	localVarPostBody = r.templateBulkDeleteDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -623,7 +623,7 @@ func (a *NotificationsAPIService) DeleteNotificationTemplatesInBulkV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -645,7 +645,7 @@ func (a *NotificationsAPIService) DeleteNotificationTemplatesInBulkV1Execute(r A
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -667,7 +667,7 @@ func (a *NotificationsAPIService) DeleteNotificationTemplatesInBulkV1Execute(r A
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -769,7 +769,7 @@ func (a *NotificationsAPIService) DeleteVerifiedFromAddressV1Execute(r ApiDelete
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -791,7 +791,7 @@ func (a *NotificationsAPIService) DeleteVerifiedFromAddressV1Execute(r ApiDelete
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -802,7 +802,7 @@ func (a *NotificationsAPIService) DeleteVerifiedFromAddressV1Execute(r ApiDelete
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -824,7 +824,7 @@ func (a *NotificationsAPIService) DeleteVerifiedFromAddressV1Execute(r ApiDelete
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -858,7 +858,7 @@ func (r ApiGetDkimAttributesV1Request) Offset(offset int32) ApiGetDkimAttributes
 	return r
 }
 
-func (r ApiGetDkimAttributesV1Request) Execute() ([]Dkimattributes, *http.Response, error) {
+func (r ApiGetDkimAttributesV1Request) Execute() ([]DkimAttributes, *http.Response, error) {
 	return r.ApiService.GetDkimAttributesV1Execute(r)
 }
 
@@ -878,13 +878,13 @@ func (a *NotificationsAPIService) GetDkimAttributesV1(ctx context.Context) ApiGe
 }
 
 // Execute executes the request
-//  @return []Dkimattributes
-func (a *NotificationsAPIService) GetDkimAttributesV1Execute(r ApiGetDkimAttributesV1Request) ([]Dkimattributes, *http.Response, error) {
+//  @return []DkimAttributes
+func (a *NotificationsAPIService) GetDkimAttributesV1Execute(r ApiGetDkimAttributesV1Request) ([]DkimAttributes, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Dkimattributes
+		localVarReturnValue  []DkimAttributes
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetDkimAttributesV1")
@@ -950,7 +950,7 @@ func (a *NotificationsAPIService) GetDkimAttributesV1Execute(r ApiGetDkimAttribu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -972,7 +972,7 @@ func (a *NotificationsAPIService) GetDkimAttributesV1Execute(r ApiGetDkimAttribu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -994,7 +994,7 @@ func (a *NotificationsAPIService) GetDkimAttributesV1Execute(r ApiGetDkimAttribu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1024,7 +1024,7 @@ type ApiGetMailFromAttributesV1Request struct {
 	identity string
 }
 
-func (r ApiGetMailFromAttributesV1Request) Execute() (*Mailfromattributes, *http.Response, error) {
+func (r ApiGetMailFromAttributesV1Request) Execute() (*MailFromAttributes, *http.Response, error) {
 	return r.ApiService.GetMailFromAttributesV1Execute(r)
 }
 
@@ -1046,13 +1046,13 @@ func (a *NotificationsAPIService) GetMailFromAttributesV1(ctx context.Context, i
 }
 
 // Execute executes the request
-//  @return Mailfromattributes
-func (a *NotificationsAPIService) GetMailFromAttributesV1Execute(r ApiGetMailFromAttributesV1Request) (*Mailfromattributes, *http.Response, error) {
+//  @return MailFromAttributes
+func (a *NotificationsAPIService) GetMailFromAttributesV1Execute(r ApiGetMailFromAttributesV1Request) (*MailFromAttributes, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Mailfromattributes
+		localVarReturnValue  *MailFromAttributes
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetMailFromAttributesV1")
@@ -1107,7 +1107,7 @@ func (a *NotificationsAPIService) GetMailFromAttributesV1Execute(r ApiGetMailFro
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1129,7 +1129,7 @@ func (a *NotificationsAPIService) GetMailFromAttributesV1Execute(r ApiGetMailFro
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1151,7 +1151,7 @@ func (a *NotificationsAPIService) GetMailFromAttributesV1Execute(r ApiGetMailFro
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1181,7 +1181,7 @@ type ApiGetNotificationPreferencesV1Request struct {
 	key string
 }
 
-func (r ApiGetNotificationPreferencesV1Request) Execute() (*Preferencesdto, *http.Response, error) {
+func (r ApiGetNotificationPreferencesV1Request) Execute() (*PreferencesDto, *http.Response, error) {
 	return r.ApiService.GetNotificationPreferencesV1Execute(r)
 }
 
@@ -1203,13 +1203,13 @@ func (a *NotificationsAPIService) GetNotificationPreferencesV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return Preferencesdto
-func (a *NotificationsAPIService) GetNotificationPreferencesV1Execute(r ApiGetNotificationPreferencesV1Request) (*Preferencesdto, *http.Response, error) {
+//  @return PreferencesDto
+func (a *NotificationsAPIService) GetNotificationPreferencesV1Execute(r ApiGetNotificationPreferencesV1Request) (*PreferencesDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Preferencesdto
+		localVarReturnValue  *PreferencesDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetNotificationPreferencesV1")
@@ -1264,7 +1264,7 @@ func (a *NotificationsAPIService) GetNotificationPreferencesV1Execute(r ApiGetNo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1286,7 +1286,7 @@ func (a *NotificationsAPIService) GetNotificationPreferencesV1Execute(r ApiGetNo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1297,7 +1297,7 @@ func (a *NotificationsAPIService) GetNotificationPreferencesV1Execute(r ApiGetNo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1319,7 +1319,7 @@ func (a *NotificationsAPIService) GetNotificationPreferencesV1Execute(r ApiGetNo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1349,7 +1349,7 @@ type ApiGetNotificationTemplateV1Request struct {
 	id string
 }
 
-func (r ApiGetNotificationTemplateV1Request) Execute() (*Templatedto, *http.Response, error) {
+func (r ApiGetNotificationTemplateV1Request) Execute() (*TemplateDto, *http.Response, error) {
 	return r.ApiService.GetNotificationTemplateV1Execute(r)
 }
 
@@ -1371,13 +1371,13 @@ func (a *NotificationsAPIService) GetNotificationTemplateV1(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Templatedto
-func (a *NotificationsAPIService) GetNotificationTemplateV1Execute(r ApiGetNotificationTemplateV1Request) (*Templatedto, *http.Response, error) {
+//  @return TemplateDto
+func (a *NotificationsAPIService) GetNotificationTemplateV1Execute(r ApiGetNotificationTemplateV1Request) (*TemplateDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Templatedto
+		localVarReturnValue  *TemplateDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetNotificationTemplateV1")
@@ -1432,7 +1432,7 @@ func (a *NotificationsAPIService) GetNotificationTemplateV1Execute(r ApiGetNotif
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1454,7 +1454,7 @@ func (a *NotificationsAPIService) GetNotificationTemplateV1Execute(r ApiGetNotif
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1476,7 +1476,7 @@ func (a *NotificationsAPIService) GetNotificationTemplateV1Execute(r ApiGetNotif
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1514,7 +1514,7 @@ func (r ApiGetNotificationTemplateVariablesV1Request) Sorters(sorters string) Ap
 	return r
 }
 
-func (r ApiGetNotificationTemplateVariablesV1Request) Execute() (*Templatevariablesdto, *http.Response, error) {
+func (r ApiGetNotificationTemplateVariablesV1Request) Execute() (*TemplateVariablesDto, *http.Response, error) {
 	return r.ApiService.GetNotificationTemplateVariablesV1Execute(r)
 }
 
@@ -1541,13 +1541,13 @@ func (a *NotificationsAPIService) GetNotificationTemplateVariablesV1(ctx context
 }
 
 // Execute executes the request
-//  @return Templatevariablesdto
-func (a *NotificationsAPIService) GetNotificationTemplateVariablesV1Execute(r ApiGetNotificationTemplateVariablesV1Request) (*Templatevariablesdto, *http.Response, error) {
+//  @return TemplateVariablesDto
+func (a *NotificationsAPIService) GetNotificationTemplateVariablesV1Execute(r ApiGetNotificationTemplateVariablesV1Request) (*TemplateVariablesDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Templatevariablesdto
+		localVarReturnValue  *TemplateVariablesDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetNotificationTemplateVariablesV1")
@@ -1606,7 +1606,7 @@ func (a *NotificationsAPIService) GetNotificationTemplateVariablesV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1628,7 +1628,7 @@ func (a *NotificationsAPIService) GetNotificationTemplateVariablesV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1639,7 +1639,7 @@ func (a *NotificationsAPIService) GetNotificationTemplateVariablesV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1661,7 +1661,7 @@ func (a *NotificationsAPIService) GetNotificationTemplateVariablesV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1690,7 +1690,7 @@ type ApiGetNotificationsTemplateContextV1Request struct {
 	ApiService *NotificationsAPIService
 }
 
-func (r ApiGetNotificationsTemplateContextV1Request) Execute() (*Notificationtemplatecontext, *http.Response, error) {
+func (r ApiGetNotificationsTemplateContextV1Request) Execute() (*NotificationTemplateContext, *http.Response, error) {
 	return r.ApiService.GetNotificationsTemplateContextV1Execute(r)
 }
 
@@ -1711,13 +1711,13 @@ func (a *NotificationsAPIService) GetNotificationsTemplateContextV1(ctx context.
 }
 
 // Execute executes the request
-//  @return Notificationtemplatecontext
-func (a *NotificationsAPIService) GetNotificationsTemplateContextV1Execute(r ApiGetNotificationsTemplateContextV1Request) (*Notificationtemplatecontext, *http.Response, error) {
+//  @return NotificationTemplateContext
+func (a *NotificationsAPIService) GetNotificationsTemplateContextV1Execute(r ApiGetNotificationsTemplateContextV1Request) (*NotificationTemplateContext, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Notificationtemplatecontext
+		localVarReturnValue  *NotificationTemplateContext
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetNotificationsTemplateContextV1")
@@ -1771,7 +1771,7 @@ func (a *NotificationsAPIService) GetNotificationsTemplateContextV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1793,7 +1793,7 @@ func (a *NotificationsAPIService) GetNotificationsTemplateContextV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1815,7 +1815,7 @@ func (a *NotificationsAPIService) GetNotificationsTemplateContextV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1879,7 +1879,7 @@ func (r ApiListFromAddressesV1Request) Sorters(sorters string) ApiListFromAddres
 	return r
 }
 
-func (r ApiListFromAddressesV1Request) Execute() ([]Emailstatusdto, *http.Response, error) {
+func (r ApiListFromAddressesV1Request) Execute() ([]EmailStatusDto, *http.Response, error) {
 	return r.ApiService.ListFromAddressesV1Execute(r)
 }
 
@@ -1899,13 +1899,13 @@ func (a *NotificationsAPIService) ListFromAddressesV1(ctx context.Context) ApiLi
 }
 
 // Execute executes the request
-//  @return []Emailstatusdto
-func (a *NotificationsAPIService) ListFromAddressesV1Execute(r ApiListFromAddressesV1Request) ([]Emailstatusdto, *http.Response, error) {
+//  @return []EmailStatusDto
+func (a *NotificationsAPIService) ListFromAddressesV1Execute(r ApiListFromAddressesV1Request) ([]EmailStatusDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Emailstatusdto
+		localVarReturnValue  []EmailStatusDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.ListFromAddressesV1")
@@ -1983,7 +1983,7 @@ func (a *NotificationsAPIService) ListFromAddressesV1Execute(r ApiListFromAddres
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2005,7 +2005,7 @@ func (a *NotificationsAPIService) ListFromAddressesV1Execute(r ApiListFromAddres
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2027,7 +2027,7 @@ func (a *NotificationsAPIService) ListFromAddressesV1Execute(r ApiListFromAddres
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2077,7 +2077,7 @@ func (r ApiListNotificationTemplateDefaultsV1Request) Filters(filters string) Ap
 	return r
 }
 
-func (r ApiListNotificationTemplateDefaultsV1Request) Execute() ([]Templatedtodefault, *http.Response, error) {
+func (r ApiListNotificationTemplateDefaultsV1Request) Execute() ([]TemplateDtoDefault, *http.Response, error) {
 	return r.ApiService.ListNotificationTemplateDefaultsV1Execute(r)
 }
 
@@ -2097,13 +2097,13 @@ func (a *NotificationsAPIService) ListNotificationTemplateDefaultsV1(ctx context
 }
 
 // Execute executes the request
-//  @return []Templatedtodefault
-func (a *NotificationsAPIService) ListNotificationTemplateDefaultsV1Execute(r ApiListNotificationTemplateDefaultsV1Request) ([]Templatedtodefault, *http.Response, error) {
+//  @return []TemplateDtoDefault
+func (a *NotificationsAPIService) ListNotificationTemplateDefaultsV1Execute(r ApiListNotificationTemplateDefaultsV1Request) ([]TemplateDtoDefault, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Templatedtodefault
+		localVarReturnValue  []TemplateDtoDefault
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.ListNotificationTemplateDefaultsV1")
@@ -2172,7 +2172,7 @@ func (a *NotificationsAPIService) ListNotificationTemplateDefaultsV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2194,7 +2194,7 @@ func (a *NotificationsAPIService) ListNotificationTemplateDefaultsV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2216,7 +2216,7 @@ func (a *NotificationsAPIService) ListNotificationTemplateDefaultsV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2273,7 +2273,7 @@ func (r ApiListNotificationTemplatesV1Request) Sorters(sorters string) ApiListNo
 	return r
 }
 
-func (r ApiListNotificationTemplatesV1Request) Execute() ([]Templatedto, *http.Response, error) {
+func (r ApiListNotificationTemplatesV1Request) Execute() ([]TemplateDto, *http.Response, error) {
 	return r.ApiService.ListNotificationTemplatesV1Execute(r)
 }
 
@@ -2293,13 +2293,13 @@ func (a *NotificationsAPIService) ListNotificationTemplatesV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Templatedto
-func (a *NotificationsAPIService) ListNotificationTemplatesV1Execute(r ApiListNotificationTemplatesV1Request) ([]Templatedto, *http.Response, error) {
+//  @return []TemplateDto
+func (a *NotificationsAPIService) ListNotificationTemplatesV1Execute(r ApiListNotificationTemplatesV1Request) ([]TemplateDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Templatedto
+		localVarReturnValue  []TemplateDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.ListNotificationTemplatesV1")
@@ -2371,7 +2371,7 @@ func (a *NotificationsAPIService) ListNotificationTemplatesV1Execute(r ApiListNo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2393,7 +2393,7 @@ func (a *NotificationsAPIService) ListNotificationTemplatesV1Execute(r ApiListNo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2415,7 +2415,7 @@ func (a *NotificationsAPIService) ListNotificationTemplatesV1Execute(r ApiListNo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2442,15 +2442,15 @@ func (a *NotificationsAPIService) ListNotificationTemplatesV1Execute(r ApiListNo
 type ApiPutMailFromAttributesV1Request struct {
 	ctx context.Context
 	ApiService *NotificationsAPIService
-	mailfromattributesdto *Mailfromattributesdto
+	mailFromAttributesDto *MailFromAttributesDto
 }
 
-func (r ApiPutMailFromAttributesV1Request) Mailfromattributesdto(mailfromattributesdto Mailfromattributesdto) ApiPutMailFromAttributesV1Request {
-	r.mailfromattributesdto = &mailfromattributesdto
+func (r ApiPutMailFromAttributesV1Request) MailFromAttributesDto(mailFromAttributesDto MailFromAttributesDto) ApiPutMailFromAttributesV1Request {
+	r.mailFromAttributesDto = &mailFromAttributesDto
 	return r
 }
 
-func (r ApiPutMailFromAttributesV1Request) Execute() (*Mailfromattributes, *http.Response, error) {
+func (r ApiPutMailFromAttributesV1Request) Execute() (*MailFromAttributes, *http.Response, error) {
 	return r.ApiService.PutMailFromAttributesV1Execute(r)
 }
 
@@ -2470,13 +2470,13 @@ func (a *NotificationsAPIService) PutMailFromAttributesV1(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return Mailfromattributes
-func (a *NotificationsAPIService) PutMailFromAttributesV1Execute(r ApiPutMailFromAttributesV1Request) (*Mailfromattributes, *http.Response, error) {
+//  @return MailFromAttributes
+func (a *NotificationsAPIService) PutMailFromAttributesV1Execute(r ApiPutMailFromAttributesV1Request) (*MailFromAttributes, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Mailfromattributes
+		localVarReturnValue  *MailFromAttributes
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.PutMailFromAttributesV1")
@@ -2489,8 +2489,8 @@ func (a *NotificationsAPIService) PutMailFromAttributesV1Execute(r ApiPutMailFro
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.mailfromattributesdto == nil {
-		return localVarReturnValue, nil, reportError("mailfromattributesdto is required and must be specified")
+	if r.mailFromAttributesDto == nil {
+		return localVarReturnValue, nil, reportError("mailFromAttributesDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2511,7 +2511,7 @@ func (a *NotificationsAPIService) PutMailFromAttributesV1Execute(r ApiPutMailFro
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.mailfromattributesdto
+	localVarPostBody = r.mailFromAttributesDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2535,7 +2535,7 @@ func (a *NotificationsAPIService) PutMailFromAttributesV1Execute(r ApiPutMailFro
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2557,7 +2557,7 @@ func (a *NotificationsAPIService) PutMailFromAttributesV1Execute(r ApiPutMailFro
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2579,7 +2579,7 @@ func (a *NotificationsAPIService) PutMailFromAttributesV1Execute(r ApiPutMailFro
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2606,11 +2606,11 @@ func (a *NotificationsAPIService) PutMailFromAttributesV1Execute(r ApiPutMailFro
 type ApiSendTestNotificationV1Request struct {
 	ctx context.Context
 	ApiService *NotificationsAPIService
-	sendtestnotificationrequestdto *Sendtestnotificationrequestdto
+	sendTestNotificationRequestDto *SendTestNotificationRequestDto
 }
 
-func (r ApiSendTestNotificationV1Request) Sendtestnotificationrequestdto(sendtestnotificationrequestdto Sendtestnotificationrequestdto) ApiSendTestNotificationV1Request {
-	r.sendtestnotificationrequestdto = &sendtestnotificationrequestdto
+func (r ApiSendTestNotificationV1Request) SendTestNotificationRequestDto(sendTestNotificationRequestDto SendTestNotificationRequestDto) ApiSendTestNotificationV1Request {
+	r.sendTestNotificationRequestDto = &sendTestNotificationRequestDto
 	return r
 }
 
@@ -2651,8 +2651,8 @@ func (a *NotificationsAPIService) SendTestNotificationV1Execute(r ApiSendTestNot
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sendtestnotificationrequestdto == nil {
-		return nil, reportError("sendtestnotificationrequestdto is required and must be specified")
+	if r.sendTestNotificationRequestDto == nil {
+		return nil, reportError("sendTestNotificationRequestDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2673,7 +2673,7 @@ func (a *NotificationsAPIService) SendTestNotificationV1Execute(r ApiSendTestNot
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sendtestnotificationrequestdto
+	localVarPostBody = r.sendTestNotificationRequestDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -2697,7 +2697,7 @@ func (a *NotificationsAPIService) SendTestNotificationV1Execute(r ApiSendTestNot
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2719,7 +2719,7 @@ func (a *NotificationsAPIService) SendTestNotificationV1Execute(r ApiSendTestNot
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2730,7 +2730,7 @@ func (a *NotificationsAPIService) SendTestNotificationV1Execute(r ApiSendTestNot
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2752,7 +2752,7 @@ func (a *NotificationsAPIService) SendTestNotificationV1Execute(r ApiSendTestNot
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -94,13 +94,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identitycertdecisionsummary'
+                $ref: '#/components/schemas/IdentityCertDecisionSummary'
           description: Summary of the decisions made
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -124,7 +124,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -142,7 +142,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -167,7 +167,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -286,14 +286,14 @@ paths:
                 completed: true
               schema:
                 items:
-                  $ref: '#/components/schemas/certificationidentitysummary'
+                  $ref: '#/components/schemas/CertificationIdentitySummary'
                 type: array
           description: List of identity summaries
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -317,7 +317,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -335,7 +335,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -360,7 +360,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -519,14 +519,14 @@ paths:
                       value: Medium
               schema:
                 items:
-                  $ref: '#/components/schemas/accesssummary'
+                  $ref: '#/components/schemas/AccessSummary'
                 type: array
           description: List of access summaries
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -550,7 +550,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -568,7 +568,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -593,7 +593,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -637,13 +637,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/certificationidentitysummary'
+                $ref: '#/components/schemas/CertificationIdentitySummary'
           description: An identity summary
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -667,7 +667,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -685,7 +685,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -710,7 +710,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -776,7 +776,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -800,7 +800,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -818,7 +818,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -843,10 +843,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    identitycertdecisionsummary:
+    IdentityCertDecisionSummary:
       example:
         entitlementDecisionsMade: 3
         rolesApproved: 2
@@ -959,7 +959,7 @@ components:
           type: integer
       title: Identity Cert Decision Summary
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -971,7 +971,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -984,7 +984,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -992,7 +992,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1026,17 +1026,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    certificationidentitysummary:
+    CertificationIdentitySummary:
       example:
         identityId: 2c9180857182306001719937377a33de
         name: Alison Ferguso
@@ -1062,7 +1062,7 @@ components:
           type: boolean
       title: Certification Identity Summary
       type: object
-    dtotype:
+    DtoType:
       description: An enumeration of the types of DTOs supported within the IdentityNow
         infrastructure.
       enum:
@@ -1097,7 +1097,7 @@ components:
       - WORKGROUP
       example: IDENTITY
       type: string
-    identityreferencewithnameandemail:
+    IdentityReferenceWithNameAndEmail:
       example:
         name: Alison Ferguso
         id: 5168015d32f890ca15812c9180835d2e
@@ -1124,7 +1124,7 @@ components:
           type: string
       title: Identity Reference With Name And Email
       type: object
-    dataaccess:
+    DataAccess:
       description: DAS data for the entitlement
       example:
         policies:
@@ -1143,19 +1143,19 @@ components:
           description: List of classification policies that apply to resources the
             entitlement \ groups has access to
           items:
-            $ref: '#/components/schemas/dataaccess_policies_inner'
+            $ref: '#/components/schemas/DataAccess_policies_inner'
           type: array
         categories:
           description: List of classification categories that apply to resources the
             entitlement \ groups has access to
           items:
-            $ref: '#/components/schemas/dataaccess_categories_inner'
+            $ref: '#/components/schemas/DataAccess_categories_inner'
           type: array
         impactScore:
-          $ref: '#/components/schemas/dataaccess_impactScore'
+          $ref: '#/components/schemas/DataAccess_impactScore'
       title: Data Access
       type: object
-    activityinsights:
+    ActivityInsights:
       description: Insights into account activity
       example:
         accountID: c4ddd5421d8549f0abd309162cafd3b1
@@ -1182,7 +1182,7 @@ components:
           type: string
       title: Activity Insights
       type: object
-    reviewableentitlement:
+    ReviewableEntitlement:
       example:
         owner:
           name: Alison Ferguso
@@ -1255,7 +1255,7 @@ components:
           example: false
           type: boolean
         owner:
-          $ref: '#/components/schemas/identityreferencewithnameandemail'
+          $ref: '#/components/schemas/IdentityReferenceWithNameAndEmail'
         attributeName:
           description: The name of the attribute on the source
           example: memberOf
@@ -1308,11 +1308,11 @@ components:
           example: true
           type: boolean
         dataAccess:
-          $ref: '#/components/schemas/dataaccess'
+          $ref: '#/components/schemas/DataAccess'
         account:
-          $ref: '#/components/schemas/reviewableentitlement_account'
+          $ref: '#/components/schemas/ReviewableEntitlement_account'
       type: object
-    reviewableaccessprofile:
+    ReviewableAccessProfile:
       example:
         privileged: false
         owner:
@@ -1456,11 +1456,11 @@ components:
           nullable: true
           type: string
         owner:
-          $ref: '#/components/schemas/identityreferencewithnameandemail'
+          $ref: '#/components/schemas/IdentityReferenceWithNameAndEmail'
         entitlements:
           description: A list of entitlements associated with this Access Profile
           items:
-            $ref: '#/components/schemas/reviewableentitlement'
+            $ref: '#/components/schemas/ReviewableEntitlement'
           type: array
         created:
           description: Date the Access Profile was created.
@@ -1473,7 +1473,7 @@ components:
           format: date-time
           type: string
       type: object
-    reviewablerole:
+    ReviewableRole:
       example:
         privileged: false
         owner:
@@ -1837,7 +1837,7 @@ components:
           example: false
           type: boolean
         owner:
-          $ref: '#/components/schemas/identityreferencewithnameandemail'
+          $ref: '#/components/schemas/IdentityReferenceWithNameAndEmail'
         revocable:
           description: Indicates whether the Role can be revoked or requested
           example: false
@@ -1850,15 +1850,15 @@ components:
         accessProfiles:
           description: The list of Access Profiles associated with this Role
           items:
-            $ref: '#/components/schemas/reviewableaccessprofile'
+            $ref: '#/components/schemas/ReviewableAccessProfile'
           type: array
         entitlements:
           description: The list of entitlements associated with this Role
           items:
-            $ref: '#/components/schemas/reviewableentitlement'
+            $ref: '#/components/schemas/ReviewableEntitlement'
           type: array
       type: object
-    accesssummary:
+    AccessSummary:
       description: An object holding the access that is being reviewed
       example:
         access:
@@ -2376,13 +2376,13 @@ components:
           cloudGoverned: false
       properties:
         access:
-          $ref: '#/components/schemas/accesssummary_access'
+          $ref: '#/components/schemas/AccessSummary_access'
         entitlement:
-          $ref: '#/components/schemas/reviewableentitlement'
+          $ref: '#/components/schemas/ReviewableEntitlement'
         accessProfile:
-          $ref: '#/components/schemas/reviewableaccessprofile'
+          $ref: '#/components/schemas/ReviewableAccessProfile'
         role:
-          $ref: '#/components/schemas/reviewablerole'
+          $ref: '#/components/schemas/ReviewableRole'
       title: Access Summary
       type: object
     getIdentityDecisionSummaryV1_401_response:
@@ -2401,7 +2401,7 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    dataaccess_policies_inner:
+    DataAccess_policies_inner:
       example:
         value: GDPR-20
       properties:
@@ -2410,7 +2410,7 @@ components:
           example: GDPR-20
           type: string
       type: object
-    dataaccess_categories_inner:
+    DataAccess_categories_inner:
       example:
         matchCount: 10
         value: email-7
@@ -2424,7 +2424,7 @@ components:
           example: 10
           type: integer
       type: object
-    dataaccess_impactScore:
+    DataAccess_impactScore:
       example:
         value: Medium
       properties:
@@ -2433,7 +2433,7 @@ components:
           example: Medium
           type: string
       type: object
-    reviewableentitlement_account_owner:
+    ReviewableEntitlement_account_owner:
       description: Information about the machine account owner
       example:
         displayName: Alison Ferguson
@@ -2459,7 +2459,7 @@ components:
           nullable: true
           type: string
       type: object
-    reviewableentitlement_account:
+    ReviewableEntitlement_account:
       description: Information about the status of the entitlement
       example:
         owner:
@@ -2497,7 +2497,7 @@ components:
           example: false
           type: boolean
         type:
-          $ref: '#/components/schemas/dtotype'
+          $ref: '#/components/schemas/DtoType'
         id:
           description: The id associated with the account
           example: 2c9180857182305e0171993737eb29e6
@@ -2521,7 +2521,7 @@ components:
           nullable: true
           type: string
         activityInsights:
-          $ref: '#/components/schemas/activityinsights'
+          $ref: '#/components/schemas/ActivityInsights'
         description:
           description: Information about the account
           example: Account for Read/write to the company database
@@ -2533,16 +2533,16 @@ components:
           nullable: true
           type: string
         owner:
-          $ref: '#/components/schemas/reviewableentitlement_account_owner'
+          $ref: '#/components/schemas/ReviewableEntitlement_account_owner'
       type: object
-    accesssummary_access:
+    AccessSummary_access:
       example:
         name: Entitlement for Company Database
         id: 2c9180867160846801719932c5153fb7
         type: IDENTITY
       properties:
         type:
-          $ref: '#/components/schemas/dtotype'
+          $ref: '#/components/schemas/DtoType'
         id:
           description: The ID of the item being certified
           example: 2c9180867160846801719932c5153fb7

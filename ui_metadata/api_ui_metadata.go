@@ -34,7 +34,7 @@ func (r ApiGetTenantUiMetadataV1Request) XSailPointExperimental(xSailPointExperi
 	return r
 }
 
-func (r ApiGetTenantUiMetadataV1Request) Execute() (*Tenantuimetadataitemresponse, *http.Response, error) {
+func (r ApiGetTenantUiMetadataV1Request) Execute() (*TenantUiMetadataItemResponse, *http.Response, error) {
 	return r.ApiService.GetTenantUiMetadataV1Execute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *UIMetadataAPIService) GetTenantUiMetadataV1(ctx context.Context) ApiGet
 }
 
 // Execute executes the request
-//  @return Tenantuimetadataitemresponse
-func (a *UIMetadataAPIService) GetTenantUiMetadataV1Execute(r ApiGetTenantUiMetadataV1Request) (*Tenantuimetadataitemresponse, *http.Response, error) {
+//  @return TenantUiMetadataItemResponse
+func (a *UIMetadataAPIService) GetTenantUiMetadataV1Execute(r ApiGetTenantUiMetadataV1Request) (*TenantUiMetadataItemResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Tenantuimetadataitemresponse
+		localVarReturnValue  *TenantUiMetadataItemResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UIMetadataAPIService.GetTenantUiMetadataV1")
@@ -124,7 +124,7 @@ func (a *UIMetadataAPIService) GetTenantUiMetadataV1Execute(r ApiGetTenantUiMeta
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -146,7 +146,7 @@ func (a *UIMetadataAPIService) GetTenantUiMetadataV1Execute(r ApiGetTenantUiMeta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -157,7 +157,7 @@ func (a *UIMetadataAPIService) GetTenantUiMetadataV1Execute(r ApiGetTenantUiMeta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -179,7 +179,7 @@ func (a *UIMetadataAPIService) GetTenantUiMetadataV1Execute(r ApiGetTenantUiMeta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -207,7 +207,7 @@ type ApiSetTenantUiMetadataV1Request struct {
 	ctx context.Context
 	ApiService *UIMetadataAPIService
 	xSailPointExperimental *string
-	tenantuimetadataitemupdaterequest *Tenantuimetadataitemupdaterequest
+	tenantUiMetadataItemUpdateRequest *TenantUiMetadataItemUpdateRequest
 }
 
 // Use this header to enable this experimental API.
@@ -216,12 +216,12 @@ func (r ApiSetTenantUiMetadataV1Request) XSailPointExperimental(xSailPointExperi
 	return r
 }
 
-func (r ApiSetTenantUiMetadataV1Request) Tenantuimetadataitemupdaterequest(tenantuimetadataitemupdaterequest Tenantuimetadataitemupdaterequest) ApiSetTenantUiMetadataV1Request {
-	r.tenantuimetadataitemupdaterequest = &tenantuimetadataitemupdaterequest
+func (r ApiSetTenantUiMetadataV1Request) TenantUiMetadataItemUpdateRequest(tenantUiMetadataItemUpdateRequest TenantUiMetadataItemUpdateRequest) ApiSetTenantUiMetadataV1Request {
+	r.tenantUiMetadataItemUpdateRequest = &tenantUiMetadataItemUpdateRequest
 	return r
 }
 
-func (r ApiSetTenantUiMetadataV1Request) Execute() (*Tenantuimetadataitemresponse, *http.Response, error) {
+func (r ApiSetTenantUiMetadataV1Request) Execute() (*TenantUiMetadataItemResponse, *http.Response, error) {
 	return r.ApiService.SetTenantUiMetadataV1Execute(r)
 }
 
@@ -241,13 +241,13 @@ func (a *UIMetadataAPIService) SetTenantUiMetadataV1(ctx context.Context) ApiSet
 }
 
 // Execute executes the request
-//  @return Tenantuimetadataitemresponse
-func (a *UIMetadataAPIService) SetTenantUiMetadataV1Execute(r ApiSetTenantUiMetadataV1Request) (*Tenantuimetadataitemresponse, *http.Response, error) {
+//  @return TenantUiMetadataItemResponse
+func (a *UIMetadataAPIService) SetTenantUiMetadataV1Execute(r ApiSetTenantUiMetadataV1Request) (*TenantUiMetadataItemResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Tenantuimetadataitemresponse
+		localVarReturnValue  *TenantUiMetadataItemResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UIMetadataAPIService.SetTenantUiMetadataV1")
@@ -275,8 +275,8 @@ func (a *UIMetadataAPIService) SetTenantUiMetadataV1Execute(r ApiSetTenantUiMeta
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.tenantuimetadataitemupdaterequest == nil {
-		return localVarReturnValue, nil, reportError("tenantuimetadataitemupdaterequest is required and must be specified")
+	if r.tenantUiMetadataItemUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("tenantUiMetadataItemUpdateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -298,7 +298,7 @@ func (a *UIMetadataAPIService) SetTenantUiMetadataV1Execute(r ApiSetTenantUiMeta
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.tenantuimetadataitemupdaterequest
+	localVarPostBody = r.tenantUiMetadataItemUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -322,7 +322,7 @@ func (a *UIMetadataAPIService) SetTenantUiMetadataV1Execute(r ApiSetTenantUiMeta
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -344,7 +344,7 @@ func (a *UIMetadataAPIService) SetTenantUiMetadataV1Execute(r ApiSetTenantUiMeta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -355,7 +355,7 @@ func (a *UIMetadataAPIService) SetTenantUiMetadataV1Execute(r ApiSetTenantUiMeta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -377,7 +377,7 @@ func (a *UIMetadataAPIService) SetTenantUiMetadataV1Execute(r ApiSetTenantUiMeta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

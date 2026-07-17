@@ -57,7 +57,7 @@ func (r ApiGetPeerGroupOutliersV1Request) Count(count bool) ApiGetPeerGroupOutli
 	return r
 }
 
-func (r ApiGetPeerGroupOutliersV1Request) Execute() ([]Peergroupmember, *http.Response, error) {
+func (r ApiGetPeerGroupOutliersV1Request) Execute() ([]PeerGroupMember, *http.Response, error) {
 	return r.ApiService.GetPeerGroupOutliersV1Execute(r)
 }
 
@@ -81,14 +81,14 @@ func (a *IAIPeerGroupStrategiesAPIService) GetPeerGroupOutliersV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []Peergroupmember
+//  @return []PeerGroupMember
 // Deprecated
-func (a *IAIPeerGroupStrategiesAPIService) GetPeerGroupOutliersV1Execute(r ApiGetPeerGroupOutliersV1Request) ([]Peergroupmember, *http.Response, error) {
+func (a *IAIPeerGroupStrategiesAPIService) GetPeerGroupOutliersV1Execute(r ApiGetPeerGroupOutliersV1Request) ([]PeerGroupMember, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Peergroupmember
+		localVarReturnValue  []PeerGroupMember
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIPeerGroupStrategiesAPIService.GetPeerGroupOutliersV1")
@@ -171,7 +171,7 @@ func (a *IAIPeerGroupStrategiesAPIService) GetPeerGroupOutliersV1Execute(r ApiGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -193,7 +193,7 @@ func (a *IAIPeerGroupStrategiesAPIService) GetPeerGroupOutliersV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -215,7 +215,7 @@ func (a *IAIPeerGroupStrategiesAPIService) GetPeerGroupOutliersV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

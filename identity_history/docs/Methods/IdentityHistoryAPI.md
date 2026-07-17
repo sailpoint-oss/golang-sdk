@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessitemdiff**](../models/accessitemdiff)
+[**[]AccessItemDiff**](../models/access-item-diff)
 
 ### HTTP request headers
 
@@ -115,7 +115,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.CompareIdentitySnapshotsAccessTypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CompareIdentitySnapshotsAccessTypeV1`: []Accessitemdiff
+    // response from `CompareIdentitySnapshotsAccessTypeV1`: []AccessItemDiff
     fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.CompareIdentitySnapshotsAccessTypeV1`: %v\n", resp)
 }
 ```
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Identitycompareresponse**](../models/identitycompareresponse)
+[**[]IdentityCompareResponse**](../models/identity-compare-response)
 
 ### HTTP request headers
 
@@ -206,7 +206,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.CompareIdentitySnapshotsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CompareIdentitySnapshotsV1`: []Identitycompareresponse
+    // response from `CompareIdentitySnapshotsV1`: []IdentityCompareResponse
     fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.CompareIdentitySnapshotsV1`: %v\n", resp)
 }
 ```
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Identityhistoryresponse**](../models/identityhistoryresponse)
+[**IdentityHistoryResponse**](../models/identity-history-response)
 
 ### HTTP request headers
 
@@ -376,7 +376,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetHistoricalIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetHistoricalIdentityV1`: Identityhistoryresponse
+    // response from `GetHistoricalIdentityV1`: IdentityHistoryResponse
     fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.GetHistoricalIdentityV1`: %v\n", resp)
 }
 ```
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Metricresponse**](../models/metricresponse)
+[**[]MetricResponse**](../models/metric-response)
 
 ### HTTP request headers
 
@@ -467,7 +467,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetIdentitySnapshotSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentitySnapshotSummaryV1`: []Metricresponse
+    // response from `GetIdentitySnapshotSummaryV1`: []MetricResponse
     fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.GetIdentitySnapshotSummaryV1`: %v\n", resp)
 }
 ```
@@ -513,7 +513,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Identityhistoryresponse**](../models/identityhistoryresponse)
+[**IdentityHistoryResponse**](../models/identity-history-response)
 
 ### HTTP request headers
 
@@ -549,7 +549,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetIdentitySnapshotV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentitySnapshotV1`: Identityhistoryresponse
+    // response from `GetIdentitySnapshotV1`: IdentityHistoryResponse
     fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.GetIdentitySnapshotV1`: %v\n", resp)
 }
 ```
@@ -672,7 +672,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Identitylistitem**](../models/identitylistitem)
+[**[]IdentityListItem**](../models/identity-list-item)
 
 ### HTTP request headers
 
@@ -711,7 +711,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListHistoricalIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListHistoricalIdentitiesV1`: []Identitylistitem
+    // response from `ListHistoricalIdentitiesV1`: []IdentityListItem
     fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.ListHistoricalIdentitiesV1`: %v\n", resp)
 }
 ```
@@ -932,7 +932,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Identitysnapshotsummaryresponse**](../models/identitysnapshotsummaryresponse)
+[**[]IdentitySnapshotSummaryResponse**](../models/identity-snapshot-summary-response)
 
 ### HTTP request headers
 
@@ -972,7 +972,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentitySnapshotsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListIdentitySnapshotsV1`: []Identitysnapshotsummaryresponse
+    // response from `ListIdentitySnapshotsV1`: []IdentitySnapshotSummaryResponse
     fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.ListIdentitySnapshotsV1`: %v\n", resp)
 }
 ```

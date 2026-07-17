@@ -111,7 +111,7 @@ func (a *ReportsDataExtractionAPIService) CancelReportV1Execute(r ApiCancelRepor
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -133,7 +133,7 @@ func (a *ReportsDataExtractionAPIService) CancelReportV1Execute(r ApiCancelRepor
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -155,7 +155,7 @@ func (a *ReportsDataExtractionAPIService) CancelReportV1Execute(r ApiCancelRepor
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -183,7 +183,7 @@ func (r ApiGetReportResultV1Request) Completed(completed bool) ApiGetReportResul
 	return r
 }
 
-func (r ApiGetReportResultV1Request) Execute() (*Reportresults, *http.Response, error) {
+func (r ApiGetReportResultV1Request) Execute() (*ReportResults, *http.Response, error) {
 	return r.ApiService.GetReportResultV1Execute(r)
 }
 
@@ -205,13 +205,13 @@ func (a *ReportsDataExtractionAPIService) GetReportResultV1(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Reportresults
-func (a *ReportsDataExtractionAPIService) GetReportResultV1Execute(r ApiGetReportResultV1Request) (*Reportresults, *http.Response, error) {
+//  @return ReportResults
+func (a *ReportsDataExtractionAPIService) GetReportResultV1Execute(r ApiGetReportResultV1Request) (*ReportResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Reportresults
+		localVarReturnValue  *ReportResults
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsDataExtractionAPIService.GetReportResultV1")
@@ -272,7 +272,7 @@ func (a *ReportsDataExtractionAPIService) GetReportResultV1Execute(r ApiGetRepor
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -294,7 +294,7 @@ func (a *ReportsDataExtractionAPIService) GetReportResultV1Execute(r ApiGetRepor
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -316,7 +316,7 @@ func (a *ReportsDataExtractionAPIService) GetReportResultV1Execute(r ApiGetRepor
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -463,7 +463,7 @@ func (a *ReportsDataExtractionAPIService) GetReportV1Execute(r ApiGetReportV1Req
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -485,7 +485,7 @@ func (a *ReportsDataExtractionAPIService) GetReportV1Execute(r ApiGetReportV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -496,7 +496,7 @@ func (a *ReportsDataExtractionAPIService) GetReportV1Execute(r ApiGetReportV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -518,7 +518,7 @@ func (a *ReportsDataExtractionAPIService) GetReportV1Execute(r ApiGetReportV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -545,15 +545,15 @@ func (a *ReportsDataExtractionAPIService) GetReportV1Execute(r ApiGetReportV1Req
 type ApiStartReportV1Request struct {
 	ctx context.Context
 	ApiService *ReportsDataExtractionAPIService
-	reportdetails *Reportdetails
+	reportDetails *ReportDetails
 }
 
-func (r ApiStartReportV1Request) Reportdetails(reportdetails Reportdetails) ApiStartReportV1Request {
-	r.reportdetails = &reportdetails
+func (r ApiStartReportV1Request) ReportDetails(reportDetails ReportDetails) ApiStartReportV1Request {
+	r.reportDetails = &reportDetails
 	return r
 }
 
-func (r ApiStartReportV1Request) Execute() (*Taskresultdetails, *http.Response, error) {
+func (r ApiStartReportV1Request) Execute() (*TaskResultDetails, *http.Response, error) {
 	return r.ApiService.StartReportV1Execute(r)
 }
 
@@ -573,13 +573,13 @@ func (a *ReportsDataExtractionAPIService) StartReportV1(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return Taskresultdetails
-func (a *ReportsDataExtractionAPIService) StartReportV1Execute(r ApiStartReportV1Request) (*Taskresultdetails, *http.Response, error) {
+//  @return TaskResultDetails
+func (a *ReportsDataExtractionAPIService) StartReportV1Execute(r ApiStartReportV1Request) (*TaskResultDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Taskresultdetails
+		localVarReturnValue  *TaskResultDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsDataExtractionAPIService.StartReportV1")
@@ -592,8 +592,8 @@ func (a *ReportsDataExtractionAPIService) StartReportV1Execute(r ApiStartReportV
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.reportdetails == nil {
-		return localVarReturnValue, nil, reportError("reportdetails is required and must be specified")
+	if r.reportDetails == nil {
+		return localVarReturnValue, nil, reportError("reportDetails is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -614,7 +614,7 @@ func (a *ReportsDataExtractionAPIService) StartReportV1Execute(r ApiStartReportV
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.reportdetails
+	localVarPostBody = r.reportDetails
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -638,7 +638,7 @@ func (a *ReportsDataExtractionAPIService) StartReportV1Execute(r ApiStartReportV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -660,7 +660,7 @@ func (a *ReportsDataExtractionAPIService) StartReportV1Execute(r ApiStartReportV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -682,7 +682,7 @@ func (a *ReportsDataExtractionAPIService) StartReportV1Execute(r ApiStartReportV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

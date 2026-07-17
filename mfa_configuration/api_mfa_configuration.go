@@ -28,7 +28,7 @@ type ApiGetMFADuoConfigV1Request struct {
 	ApiService *MFAConfigurationAPIService
 }
 
-func (r ApiGetMFADuoConfigV1Request) Execute() (*Mfaduoconfig, *http.Response, error) {
+func (r ApiGetMFADuoConfigV1Request) Execute() (*MfaDuoConfig, *http.Response, error) {
 	return r.ApiService.GetMFADuoConfigV1Execute(r)
 }
 
@@ -48,13 +48,13 @@ func (a *MFAConfigurationAPIService) GetMFADuoConfigV1(ctx context.Context) ApiG
 }
 
 // Execute executes the request
-//  @return Mfaduoconfig
-func (a *MFAConfigurationAPIService) GetMFADuoConfigV1Execute(r ApiGetMFADuoConfigV1Request) (*Mfaduoconfig, *http.Response, error) {
+//  @return MfaDuoConfig
+func (a *MFAConfigurationAPIService) GetMFADuoConfigV1Execute(r ApiGetMFADuoConfigV1Request) (*MfaDuoConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Mfaduoconfig
+		localVarReturnValue  *MfaDuoConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.GetMFADuoConfigV1")
@@ -108,7 +108,7 @@ func (a *MFAConfigurationAPIService) GetMFADuoConfigV1Execute(r ApiGetMFADuoConf
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -130,7 +130,7 @@ func (a *MFAConfigurationAPIService) GetMFADuoConfigV1Execute(r ApiGetMFADuoConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -152,7 +152,7 @@ func (a *MFAConfigurationAPIService) GetMFADuoConfigV1Execute(r ApiGetMFADuoConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -188,7 +188,7 @@ func (r ApiGetMFAKbaConfigV1Request) AllLanguages(allLanguages bool) ApiGetMFAKb
 	return r
 }
 
-func (r ApiGetMFAKbaConfigV1Request) Execute() ([]Kbaquestion, *http.Response, error) {
+func (r ApiGetMFAKbaConfigV1Request) Execute() ([]KbaQuestion, *http.Response, error) {
 	return r.ApiService.GetMFAKbaConfigV1Execute(r)
 }
 
@@ -208,13 +208,13 @@ func (a *MFAConfigurationAPIService) GetMFAKbaConfigV1(ctx context.Context) ApiG
 }
 
 // Execute executes the request
-//  @return []Kbaquestion
-func (a *MFAConfigurationAPIService) GetMFAKbaConfigV1Execute(r ApiGetMFAKbaConfigV1Request) ([]Kbaquestion, *http.Response, error) {
+//  @return []KbaQuestion
+func (a *MFAConfigurationAPIService) GetMFAKbaConfigV1Execute(r ApiGetMFAKbaConfigV1Request) ([]KbaQuestion, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Kbaquestion
+		localVarReturnValue  []KbaQuestion
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.GetMFAKbaConfigV1")
@@ -271,7 +271,7 @@ func (a *MFAConfigurationAPIService) GetMFAKbaConfigV1Execute(r ApiGetMFAKbaConf
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -293,7 +293,7 @@ func (a *MFAConfigurationAPIService) GetMFAKbaConfigV1Execute(r ApiGetMFAKbaConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -315,7 +315,7 @@ func (a *MFAConfigurationAPIService) GetMFAKbaConfigV1Execute(r ApiGetMFAKbaConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -344,7 +344,7 @@ type ApiGetMFAOktaConfigV1Request struct {
 	ApiService *MFAConfigurationAPIService
 }
 
-func (r ApiGetMFAOktaConfigV1Request) Execute() (*Mfaoktaconfig, *http.Response, error) {
+func (r ApiGetMFAOktaConfigV1Request) Execute() (*MfaOktaConfig, *http.Response, error) {
 	return r.ApiService.GetMFAOktaConfigV1Execute(r)
 }
 
@@ -364,13 +364,13 @@ func (a *MFAConfigurationAPIService) GetMFAOktaConfigV1(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return Mfaoktaconfig
-func (a *MFAConfigurationAPIService) GetMFAOktaConfigV1Execute(r ApiGetMFAOktaConfigV1Request) (*Mfaoktaconfig, *http.Response, error) {
+//  @return MfaOktaConfig
+func (a *MFAConfigurationAPIService) GetMFAOktaConfigV1Execute(r ApiGetMFAOktaConfigV1Request) (*MfaOktaConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Mfaoktaconfig
+		localVarReturnValue  *MfaOktaConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.GetMFAOktaConfigV1")
@@ -424,7 +424,7 @@ func (a *MFAConfigurationAPIService) GetMFAOktaConfigV1Execute(r ApiGetMFAOktaCo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -446,7 +446,7 @@ func (a *MFAConfigurationAPIService) GetMFAOktaConfigV1Execute(r ApiGetMFAOktaCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -468,7 +468,7 @@ func (a *MFAConfigurationAPIService) GetMFAOktaConfigV1Execute(r ApiGetMFAOktaCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -495,15 +495,15 @@ func (a *MFAConfigurationAPIService) GetMFAOktaConfigV1Execute(r ApiGetMFAOktaCo
 type ApiSetMFADuoConfigV1Request struct {
 	ctx context.Context
 	ApiService *MFAConfigurationAPIService
-	mfaduoconfig *Mfaduoconfig
+	mfaDuoConfig *MfaDuoConfig
 }
 
-func (r ApiSetMFADuoConfigV1Request) Mfaduoconfig(mfaduoconfig Mfaduoconfig) ApiSetMFADuoConfigV1Request {
-	r.mfaduoconfig = &mfaduoconfig
+func (r ApiSetMFADuoConfigV1Request) MfaDuoConfig(mfaDuoConfig MfaDuoConfig) ApiSetMFADuoConfigV1Request {
+	r.mfaDuoConfig = &mfaDuoConfig
 	return r
 }
 
-func (r ApiSetMFADuoConfigV1Request) Execute() (*Mfaduoconfig, *http.Response, error) {
+func (r ApiSetMFADuoConfigV1Request) Execute() (*MfaDuoConfig, *http.Response, error) {
 	return r.ApiService.SetMFADuoConfigV1Execute(r)
 }
 
@@ -523,13 +523,13 @@ func (a *MFAConfigurationAPIService) SetMFADuoConfigV1(ctx context.Context) ApiS
 }
 
 // Execute executes the request
-//  @return Mfaduoconfig
-func (a *MFAConfigurationAPIService) SetMFADuoConfigV1Execute(r ApiSetMFADuoConfigV1Request) (*Mfaduoconfig, *http.Response, error) {
+//  @return MfaDuoConfig
+func (a *MFAConfigurationAPIService) SetMFADuoConfigV1Execute(r ApiSetMFADuoConfigV1Request) (*MfaDuoConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Mfaduoconfig
+		localVarReturnValue  *MfaDuoConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.SetMFADuoConfigV1")
@@ -542,8 +542,8 @@ func (a *MFAConfigurationAPIService) SetMFADuoConfigV1Execute(r ApiSetMFADuoConf
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.mfaduoconfig == nil {
-		return localVarReturnValue, nil, reportError("mfaduoconfig is required and must be specified")
+	if r.mfaDuoConfig == nil {
+		return localVarReturnValue, nil, reportError("mfaDuoConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -564,7 +564,7 @@ func (a *MFAConfigurationAPIService) SetMFADuoConfigV1Execute(r ApiSetMFADuoConf
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.mfaduoconfig
+	localVarPostBody = r.mfaDuoConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -588,7 +588,7 @@ func (a *MFAConfigurationAPIService) SetMFADuoConfigV1Execute(r ApiSetMFADuoConf
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -610,7 +610,7 @@ func (a *MFAConfigurationAPIService) SetMFADuoConfigV1Execute(r ApiSetMFADuoConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -632,7 +632,7 @@ func (a *MFAConfigurationAPIService) SetMFADuoConfigV1Execute(r ApiSetMFADuoConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -659,15 +659,15 @@ func (a *MFAConfigurationAPIService) SetMFADuoConfigV1Execute(r ApiSetMFADuoConf
 type ApiSetMFAKBAConfigV1Request struct {
 	ctx context.Context
 	ApiService *MFAConfigurationAPIService
-	kbaanswerrequestitem *[]Kbaanswerrequestitem
+	kbaAnswerRequestItem *[]KbaAnswerRequestItem
 }
 
-func (r ApiSetMFAKBAConfigV1Request) Kbaanswerrequestitem(kbaanswerrequestitem []Kbaanswerrequestitem) ApiSetMFAKBAConfigV1Request {
-	r.kbaanswerrequestitem = &kbaanswerrequestitem
+func (r ApiSetMFAKBAConfigV1Request) KbaAnswerRequestItem(kbaAnswerRequestItem []KbaAnswerRequestItem) ApiSetMFAKBAConfigV1Request {
+	r.kbaAnswerRequestItem = &kbaAnswerRequestItem
 	return r
 }
 
-func (r ApiSetMFAKBAConfigV1Request) Execute() ([]Kbaanswerresponseitem, *http.Response, error) {
+func (r ApiSetMFAKBAConfigV1Request) Execute() ([]KbaAnswerResponseItem, *http.Response, error) {
 	return r.ApiService.SetMFAKBAConfigV1Execute(r)
 }
 
@@ -687,13 +687,13 @@ func (a *MFAConfigurationAPIService) SetMFAKBAConfigV1(ctx context.Context) ApiS
 }
 
 // Execute executes the request
-//  @return []Kbaanswerresponseitem
-func (a *MFAConfigurationAPIService) SetMFAKBAConfigV1Execute(r ApiSetMFAKBAConfigV1Request) ([]Kbaanswerresponseitem, *http.Response, error) {
+//  @return []KbaAnswerResponseItem
+func (a *MFAConfigurationAPIService) SetMFAKBAConfigV1Execute(r ApiSetMFAKBAConfigV1Request) ([]KbaAnswerResponseItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Kbaanswerresponseitem
+		localVarReturnValue  []KbaAnswerResponseItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.SetMFAKBAConfigV1")
@@ -706,8 +706,8 @@ func (a *MFAConfigurationAPIService) SetMFAKBAConfigV1Execute(r ApiSetMFAKBAConf
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.kbaanswerrequestitem == nil {
-		return localVarReturnValue, nil, reportError("kbaanswerrequestitem is required and must be specified")
+	if r.kbaAnswerRequestItem == nil {
+		return localVarReturnValue, nil, reportError("kbaAnswerRequestItem is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -728,7 +728,7 @@ func (a *MFAConfigurationAPIService) SetMFAKBAConfigV1Execute(r ApiSetMFAKBAConf
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.kbaanswerrequestitem
+	localVarPostBody = r.kbaAnswerRequestItem
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -752,7 +752,7 @@ func (a *MFAConfigurationAPIService) SetMFAKBAConfigV1Execute(r ApiSetMFAKBAConf
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -774,7 +774,7 @@ func (a *MFAConfigurationAPIService) SetMFAKBAConfigV1Execute(r ApiSetMFAKBAConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -796,7 +796,7 @@ func (a *MFAConfigurationAPIService) SetMFAKBAConfigV1Execute(r ApiSetMFAKBAConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -823,15 +823,15 @@ func (a *MFAConfigurationAPIService) SetMFAKBAConfigV1Execute(r ApiSetMFAKBAConf
 type ApiSetMFAOktaConfigV1Request struct {
 	ctx context.Context
 	ApiService *MFAConfigurationAPIService
-	mfaoktaconfig *Mfaoktaconfig
+	mfaOktaConfig *MfaOktaConfig
 }
 
-func (r ApiSetMFAOktaConfigV1Request) Mfaoktaconfig(mfaoktaconfig Mfaoktaconfig) ApiSetMFAOktaConfigV1Request {
-	r.mfaoktaconfig = &mfaoktaconfig
+func (r ApiSetMFAOktaConfigV1Request) MfaOktaConfig(mfaOktaConfig MfaOktaConfig) ApiSetMFAOktaConfigV1Request {
+	r.mfaOktaConfig = &mfaOktaConfig
 	return r
 }
 
-func (r ApiSetMFAOktaConfigV1Request) Execute() (*Mfaoktaconfig, *http.Response, error) {
+func (r ApiSetMFAOktaConfigV1Request) Execute() (*MfaOktaConfig, *http.Response, error) {
 	return r.ApiService.SetMFAOktaConfigV1Execute(r)
 }
 
@@ -851,13 +851,13 @@ func (a *MFAConfigurationAPIService) SetMFAOktaConfigV1(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return Mfaoktaconfig
-func (a *MFAConfigurationAPIService) SetMFAOktaConfigV1Execute(r ApiSetMFAOktaConfigV1Request) (*Mfaoktaconfig, *http.Response, error) {
+//  @return MfaOktaConfig
+func (a *MFAConfigurationAPIService) SetMFAOktaConfigV1Execute(r ApiSetMFAOktaConfigV1Request) (*MfaOktaConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Mfaoktaconfig
+		localVarReturnValue  *MfaOktaConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.SetMFAOktaConfigV1")
@@ -870,8 +870,8 @@ func (a *MFAConfigurationAPIService) SetMFAOktaConfigV1Execute(r ApiSetMFAOktaCo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.mfaoktaconfig == nil {
-		return localVarReturnValue, nil, reportError("mfaoktaconfig is required and must be specified")
+	if r.mfaOktaConfig == nil {
+		return localVarReturnValue, nil, reportError("mfaOktaConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -892,7 +892,7 @@ func (a *MFAConfigurationAPIService) SetMFAOktaConfigV1Execute(r ApiSetMFAOktaCo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.mfaoktaconfig
+	localVarPostBody = r.mfaOktaConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -916,7 +916,7 @@ func (a *MFAConfigurationAPIService) SetMFAOktaConfigV1Execute(r ApiSetMFAOktaCo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -938,7 +938,7 @@ func (a *MFAConfigurationAPIService) SetMFAOktaConfigV1Execute(r ApiSetMFAOktaCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -960,7 +960,7 @@ func (a *MFAConfigurationAPIService) SetMFAOktaConfigV1Execute(r ApiSetMFAOktaCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -990,7 +990,7 @@ type ApiTestMFAConfigV1Request struct {
 	method string
 }
 
-func (r ApiTestMFAConfigV1Request) Execute() (*Mfaconfigtestresponse, *http.Response, error) {
+func (r ApiTestMFAConfigV1Request) Execute() (*MfaConfigTestResponse, *http.Response, error) {
 	return r.ApiService.TestMFAConfigV1Execute(r)
 }
 
@@ -1012,13 +1012,13 @@ func (a *MFAConfigurationAPIService) TestMFAConfigV1(ctx context.Context, method
 }
 
 // Execute executes the request
-//  @return Mfaconfigtestresponse
-func (a *MFAConfigurationAPIService) TestMFAConfigV1Execute(r ApiTestMFAConfigV1Request) (*Mfaconfigtestresponse, *http.Response, error) {
+//  @return MfaConfigTestResponse
+func (a *MFAConfigurationAPIService) TestMFAConfigV1Execute(r ApiTestMFAConfigV1Request) (*MfaConfigTestResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Mfaconfigtestresponse
+		localVarReturnValue  *MfaConfigTestResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.TestMFAConfigV1")
@@ -1073,7 +1073,7 @@ func (a *MFAConfigurationAPIService) TestMFAConfigV1Execute(r ApiTestMFAConfigV1
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1095,7 +1095,7 @@ func (a *MFAConfigurationAPIService) TestMFAConfigV1Execute(r ApiTestMFAConfigV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1117,7 +1117,7 @@ func (a *MFAConfigurationAPIService) TestMFAConfigV1Execute(r ApiTestMFAConfigV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

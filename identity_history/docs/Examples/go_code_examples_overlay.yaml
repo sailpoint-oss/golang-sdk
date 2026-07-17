@@ -37,7 +37,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.CompareIdentitySnapshotsAccessTypeV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `CompareIdentitySnapshotsAccessTypeV1`: []Accessitemdiff
+          // response from `CompareIdentitySnapshotsAccessTypeV1`: []AccessItemDiff
           fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.CompareIdentitySnapshotsAccessTypeV1`: %v\n", resp)
         }
 - path: /historical-identities/v1/{id}/compare
@@ -78,7 +78,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.CompareIdentitySnapshotsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `CompareIdentitySnapshotsV1`: []Identitycompareresponse
+          // response from `CompareIdentitySnapshotsV1`: []IdentityCompareResponse
           fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.CompareIdentitySnapshotsV1`: %v\n", resp)
         }
 - path: /historical-identities/v1/{id}/events
@@ -154,7 +154,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetHistoricalIdentityV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetHistoricalIdentityV1`: Identityhistoryresponse
+          // response from `GetHistoricalIdentityV1`: IdentityHistoryResponse
           fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.GetHistoricalIdentityV1`: %v\n", resp)
         }
 - path: /historical-identities/v1/{id}/snapshot-summary
@@ -195,7 +195,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetIdentitySnapshotSummaryV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIdentitySnapshotSummaryV1`: []Metricresponse
+          // response from `GetIdentitySnapshotSummaryV1`: []MetricResponse
           fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.GetIdentitySnapshotSummaryV1`: %v\n", resp)
         }
 - path: /historical-identities/v1/{id}/snapshots/{date}
@@ -231,7 +231,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetIdentitySnapshotV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetIdentitySnapshotV1`: Identityhistoryresponse
+          // response from `GetIdentitySnapshotV1`: IdentityHistoryResponse
           fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.GetIdentitySnapshotV1`: %v\n", resp)
         }
 - path: /historical-identities/v1/{id}/start-date
@@ -305,7 +305,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListHistoricalIdentitiesV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `ListHistoricalIdentitiesV1`: []Identitylistitem
+          // response from `ListHistoricalIdentitiesV1`: []IdentityListItem
           fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.ListHistoricalIdentitiesV1`: %v\n", resp)
         }
 - path: /historical-identities/v1/{id}/access-items
@@ -421,6 +421,6 @@
             fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentitySnapshotsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `ListIdentitySnapshotsV1`: []Identitysnapshotsummaryresponse
+          // response from `ListIdentitySnapshotsV1`: []IdentitySnapshotSummaryResponse
           fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.ListIdentitySnapshotsV1`: %v\n", resp)
         }

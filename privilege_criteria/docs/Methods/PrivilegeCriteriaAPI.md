@@ -40,11 +40,11 @@ Other parameters are passed through a pointer to a apiCreateCustomPrivilegeCrite
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createprivilegecriteriarequest** | [**Createprivilegecriteriarequest**](../models/createprivilegecriteriarequest) | Create custom privilege criteria request body. | 
+ **createPrivilegeCriteriaRequest** | [**CreatePrivilegeCriteriaRequest**](../models/create-privilege-criteria-request) | Create custom privilege criteria request body. | 
 
 ### Return type
 
-[**Privilegecriteriadto**](../models/privilegecriteriadto)
+[**PrivilegeCriteriaDTO**](../models/privilege-criteria-dto)
 
 ### HTTP request headers
 
@@ -66,10 +66,42 @@ import (
 )
 
 func main() {
-    createprivilegecriteriarequestJson := []byte(``) // Createprivilegecriteriarequest | Create custom privilege criteria request body.
+    createprivilegecriteriarequestJson := []byte(`{
+          "sourceId" : "c42c45d8d7c04d2da64d215cd8c32f21",
+          "privilegeLevel" : "HIGH",
+          "groups" : [ {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "displayName"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "displayName"
+            } ],
+            "operator" : "AND"
+          }, {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "displayName"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "displayName"
+            } ],
+            "operator" : "AND"
+          } ],
+          "type" : "CUSTOM",
+          "operator" : "AND"
+        }`) // CreatePrivilegeCriteriaRequest | Create custom privilege criteria request body.
 
-    var createprivilegecriteriarequest privilege_criteria.Createprivilegecriteriarequest
-    if err := json.Unmarshal(createprivilegecriteriarequestJson, &createprivilegecriteriarequest); err != nil {
+    var createPrivilegeCriteriaRequest privilege_criteria.CreatePrivilegeCriteriaRequest
+    if err := json.Unmarshal(createprivilegecriteriarequestJson, &createPrivilegeCriteriaRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -77,13 +109,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PrivilegeCriteriaAPI.CreateCustomPrivilegeCriteriaV1(context.Background()).Createprivilegecriteriarequest(createprivilegecriteriarequest).Execute()
-	  //resp, r, err := apiClient.PrivilegeCriteriaAPI.CreateCustomPrivilegeCriteriaV1(context.Background()).Createprivilegecriteriarequest(createprivilegecriteriarequest).Execute()
+    resp, r, err := apiClient.PrivilegeCriteriaAPI.CreateCustomPrivilegeCriteriaV1(context.Background()).CreatePrivilegeCriteriaRequest(createPrivilegeCriteriaRequest).Execute()
+	  //resp, r, err := apiClient.PrivilegeCriteriaAPI.CreateCustomPrivilegeCriteriaV1(context.Background()).CreatePrivilegeCriteriaRequest(createPrivilegeCriteriaRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaAPI.CreateCustomPrivilegeCriteriaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateCustomPrivilegeCriteriaV1`: Privilegecriteriadto
+    // response from `CreateCustomPrivilegeCriteriaV1`: PrivilegeCriteriaDTO
     fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaAPI.CreateCustomPrivilegeCriteriaV1`: %v\n", resp)
 }
 ```
@@ -180,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Privilegecriteriadto**](../models/privilegecriteriadto)
+[**PrivilegeCriteriaDTO**](../models/privilege-criteria-dto)
 
 ### HTTP request headers
 
@@ -214,7 +246,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaAPI.GetPrivilegeCriteriaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPrivilegeCriteriaV1`: Privilegecriteriadto
+    // response from `GetPrivilegeCriteriaV1`: PrivilegeCriteriaDTO
     fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaAPI.GetPrivilegeCriteriaV1`: %v\n", resp)
 }
 ```
@@ -242,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Privilegecriteriadto**](../models/privilegecriteriadto)
+[**[]PrivilegeCriteriaDTO**](../models/privilege-criteria-dto)
 
 ### HTTP request headers
 
@@ -276,7 +308,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaAPI.ListPrivilegeCriteriaV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListPrivilegeCriteriaV1`: []Privilegecriteriadto
+    // response from `ListPrivilegeCriteriaV1`: []PrivilegeCriteriaDTO
     fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaAPI.ListPrivilegeCriteriaV1`: %v\n", resp)
 }
 ```
@@ -305,11 +337,11 @@ Other parameters are passed through a pointer to a apiPutCustomPrivilegeCriteria
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **privilegecriteriadto** | [**Privilegecriteriadto**](../models/privilegecriteriadto) | The new version of the custom privilege criteria. This overwrites the existing privilege criteria. | 
+ **privilegeCriteriaDTO** | [**PrivilegeCriteriaDTO**](../models/privilege-criteria-dto) | The new version of the custom privilege criteria. This overwrites the existing privilege criteria. | 
 
 ### Return type
 
-[**Privilegecriteriadto**](../models/privilegecriteriadto)
+[**PrivilegeCriteriaDTO**](../models/privilege-criteria-dto)
 
 ### HTTP request headers
 
@@ -332,10 +364,47 @@ import (
 
 func main() {
     criteriaId := `6d123044-5834-4e8d-a49f-9c70089b0de1` // string | The Id of the privilege criteria record to return. # string | The Id of the privilege criteria record to return.
-    privilegecriteriadtoJson := []byte(``) // Privilegecriteriadto | The new version of the custom privilege criteria. This overwrites the existing privilege criteria.
+    privilegecriteriadtoJson := []byte(`{
+          "sourceId" : "c42c45d8d7c04d2da64d215cd8c32f21",
+          "privilegeLevel" : "HIGH",
+          "groups" : [ {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "displayName",
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "displayName",
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          }, {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "displayName",
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "displayName",
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          } ],
+          "id" : "2c9180867817ac4d017817c491119a20",
+          "type" : "CUSTOM",
+          "operator" : "AND"
+        }`) // PrivilegeCriteriaDTO | The new version of the custom privilege criteria. This overwrites the existing privilege criteria.
 
-    var privilegecriteriadto privilege_criteria.Privilegecriteriadto
-    if err := json.Unmarshal(privilegecriteriadtoJson, &privilegecriteriadto); err != nil {
+    var privilegeCriteriaDTO privilege_criteria.PrivilegeCriteriaDTO
+    if err := json.Unmarshal(privilegecriteriadtoJson, &privilegeCriteriaDTO); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -343,13 +412,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PrivilegeCriteriaAPI.PutCustomPrivilegeCriteriaValueV1(context.Background(), criteriaId).Privilegecriteriadto(privilegecriteriadto).Execute()
-	  //resp, r, err := apiClient.PrivilegeCriteriaAPI.PutCustomPrivilegeCriteriaValueV1(context.Background(), criteriaId).Privilegecriteriadto(privilegecriteriadto).Execute()
+    resp, r, err := apiClient.PrivilegeCriteriaAPI.PutCustomPrivilegeCriteriaValueV1(context.Background(), criteriaId).PrivilegeCriteriaDTO(privilegeCriteriaDTO).Execute()
+	  //resp, r, err := apiClient.PrivilegeCriteriaAPI.PutCustomPrivilegeCriteriaValueV1(context.Background(), criteriaId).PrivilegeCriteriaDTO(privilegeCriteriaDTO).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaAPI.PutCustomPrivilegeCriteriaValueV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutCustomPrivilegeCriteriaValueV1`: Privilegecriteriadto
+    // response from `PutCustomPrivilegeCriteriaValueV1`: PrivilegeCriteriaDTO
     fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaAPI.PutCustomPrivilegeCriteriaValueV1`: %v\n", resp)
 }
 ```

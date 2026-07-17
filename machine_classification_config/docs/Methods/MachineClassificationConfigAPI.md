@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Machineclassificationconfig**](../models/machineclassificationconfig)
+[**MachineClassificationConfig**](../models/machine-classification-config)
 
 ### HTTP request headers
 
@@ -145,7 +145,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.GetMachineClassificationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMachineClassificationConfigV1`: Machineclassificationconfig
+    // response from `GetMachineClassificationConfigV1`: MachineClassificationConfig
     fmt.Fprintf(os.Stdout, "Response from `MachineClassificationConfigAPI.GetMachineClassificationConfigV1`: %v\n", resp)
 }
 ```
@@ -174,11 +174,11 @@ Other parameters are passed through a pointer to a apiSetMachineClassificationCo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **machineclassificationconfig** | [**Machineclassificationconfig**](../models/machineclassificationconfig) |  | 
+ **machineClassificationConfig** | [**MachineClassificationConfig**](../models/machine-classification-config) |  | 
 
 ### Return type
 
-[**Machineclassificationconfig**](../models/machineclassificationconfig)
+[**MachineClassificationConfig**](../models/machine-classification-config)
 
 ### HTTP request headers
 
@@ -201,10 +201,65 @@ import (
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
-    machineclassificationconfigJson := []byte(``) // Machineclassificationconfig | 
+    machineclassificationconfigJson := []byte(`{
+          "criteria" : {
+            "children" : [ {
+              "children" : [ {
+                "children" : [ "{}", "{}" ],
+                "caseSensitive" : false,
+                "dataType" : "dataType",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              }, {
+                "children" : [ "{}", "{}" ],
+                "caseSensitive" : false,
+                "dataType" : "dataType",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              } ],
+              "caseSensitive" : false,
+              "dataType" : "dataType",
+              "attribute" : "employeeType",
+              "operation" : "EQUALS",
+              "value" : "SERVICE"
+            }, {
+              "children" : [ {
+                "children" : [ "{}", "{}" ],
+                "caseSensitive" : false,
+                "dataType" : "dataType",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              }, {
+                "children" : [ "{}", "{}" ],
+                "caseSensitive" : false,
+                "dataType" : "dataType",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              } ],
+              "caseSensitive" : false,
+              "dataType" : "dataType",
+              "attribute" : "employeeType",
+              "operation" : "EQUALS",
+              "value" : "SERVICE"
+            } ],
+            "caseSensitive" : false,
+            "dataType" : "dataType",
+            "attribute" : "distinguishedName",
+            "operation" : "EQUALS",
+            "value" : "OU=Service Accounts"
+          },
+          "created" : "2017-07-11T18:45:37.098Z",
+          "modified" : "2018-06-25T20:22:28.104Z",
+          "classificationMethod" : "SOURCE",
+          "enabled" : true
+        }`) // MachineClassificationConfig | 
 
-    var machineclassificationconfig machine_classification_config.Machineclassificationconfig
-    if err := json.Unmarshal(machineclassificationconfigJson, &machineclassificationconfig); err != nil {
+    var machineClassificationConfig machine_classification_config.MachineClassificationConfig
+    if err := json.Unmarshal(machineclassificationconfigJson, &machineClassificationConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -212,13 +267,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).Machineclassificationconfig(machineclassificationconfig).Execute()
-	  //resp, r, err := apiClient.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).Machineclassificationconfig(machineclassificationconfig).Execute()
+    resp, r, err := apiClient.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).MachineClassificationConfig(machineClassificationConfig).Execute()
+	  //resp, r, err := apiClient.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).MachineClassificationConfig(machineClassificationConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.SetMachineClassificationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetMachineClassificationConfigV1`: Machineclassificationconfig
+    // response from `SetMachineClassificationConfigV1`: MachineClassificationConfig
     fmt.Fprintf(os.Stdout, "Response from `MachineClassificationConfigAPI.SetMachineClassificationConfigV1`: %v\n", resp)
 }
 ```

@@ -44,11 +44,11 @@ Other parameters are passed through a pointer to a apiCreateManagedClientV1Reque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **managedclientrequest** | [**Managedclientrequest**](../models/managedclientrequest) |  | 
+ **managedClientRequest** | [**ManagedClientRequest**](../models/managed-client-request) |  | 
 
 ### Return type
 
-[**Managedclient**](../models/managedclient)
+[**ManagedClient**](../models/managed-client)
 
 ### HTTP request headers
 
@@ -70,10 +70,15 @@ import (
 )
 
 func main() {
-    managedclientrequestJson := []byte(``) // Managedclientrequest | 
+    managedclientrequestJson := []byte(`{
+          "name" : "aName",
+          "description" : "A short description of the ManagedClient",
+          "clusterId" : "aClusterId",
+          "type" : "VA"
+        }`) // ManagedClientRequest | 
 
-    var managedclientrequest managed_clients.Managedclientrequest
-    if err := json.Unmarshal(managedclientrequestJson, &managedclientrequest); err != nil {
+    var managedClientRequest managed_clients.ManagedClientRequest
+    if err := json.Unmarshal(managedclientrequestJson, &managedClientRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -81,13 +86,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClientsAPI.CreateManagedClientV1(context.Background()).Managedclientrequest(managedclientrequest).Execute()
-	  //resp, r, err := apiClient.ManagedClientsAPI.CreateManagedClientV1(context.Background()).Managedclientrequest(managedclientrequest).Execute()
+    resp, r, err := apiClient.ManagedClientsAPI.CreateManagedClientV1(context.Background()).ManagedClientRequest(managedClientRequest).Execute()
+	  //resp, r, err := apiClient.ManagedClientsAPI.CreateManagedClientV1(context.Background()).ManagedClientRequest(managedClientRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.CreateManagedClientV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateManagedClientV1`: Managedclient
+    // response from `CreateManagedClientV1`: ManagedClient
     fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.CreateManagedClientV1`: %v\n", resp)
 }
 ```
@@ -184,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Managedclienthealthindicators**](../models/managedclienthealthindicators)
+[**ManagedClientHealthIndicators**](../models/managed-client-health-indicators)
 
 ### HTTP request headers
 
@@ -218,7 +223,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientHealthIndicatorsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetManagedClientHealthIndicatorsV1`: Managedclienthealthindicators
+    // response from `GetManagedClientHealthIndicatorsV1`: ManagedClientHealthIndicators
     fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.GetManagedClientHealthIndicatorsV1`: %v\n", resp)
 }
 ```
@@ -247,11 +252,11 @@ Other parameters are passed through a pointer to a apiGetManagedClientStatusV1Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **type_** | [**Managedclienttype**](../models/managedclienttype) | Managed client type to get status for. | 
+ **type_** | [**ManagedClientType**](../models/managed-client-type) | Managed client type to get status for. | 
 
 ### Return type
 
-[**Managedclientstatus**](../models/managedclientstatus)
+[**ManagedClientStatus**](../models/managed-client-status)
 
 ### HTTP request headers
 
@@ -274,7 +279,7 @@ import (
 
 func main() {
     id := `aClientId` // string | Managed client ID to get status for. # string | Managed client ID to get status for.
-    type_ :=  // Managedclienttype | Managed client type to get status for. # Managedclienttype | Managed client type to get status for.
+    type_ :=  // ManagedClientType | Managed client type to get status for. # ManagedClientType | Managed client type to get status for.
 
     
 
@@ -286,7 +291,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetManagedClientStatusV1`: Managedclientstatus
+    // response from `GetManagedClientStatusV1`: ManagedClientStatus
     fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.GetManagedClientStatusV1`: %v\n", resp)
 }
 ```
@@ -318,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Managedclient**](../models/managedclient)
+[**ManagedClient**](../models/managed-client)
 
 ### HTTP request headers
 
@@ -352,7 +357,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetManagedClientV1`: Managedclient
+    // response from `GetManagedClientV1`: ManagedClient
     fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.GetManagedClientV1`: %v\n", resp)
 }
 ```
@@ -383,7 +388,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Managedclient**](../models/managedclient)
+[**[]ManagedClient**](../models/managed-client)
 
 ### HTTP request headers
 
@@ -420,7 +425,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetManagedClientsV1`: []Managedclient
+    // response from `GetManagedClientsV1`: []ManagedClient
     fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.GetManagedClientsV1`: %v\n", resp)
 }
 ```
@@ -449,11 +454,11 @@ Other parameters are passed through a pointer to a apiUpdateManagedClientV1Reque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | JSONPatch payload used to update the object. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | JSONPatch payload used to update the object. | 
 
 ### Return type
 
-[**Managedclient**](../models/managedclient)
+[**ManagedClient**](../models/managed-client)
 
 ### HTTP request headers
 
@@ -476,10 +481,10 @@ import (
 
 func main() {
     id := `4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7` // string | Managed client ID. # string | Managed client ID.
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | JSONPatch payload used to update the object.
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | JSONPatch payload used to update the object.
 
-    var jsonpatchoperation []managed_clients.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []managed_clients.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -487,13 +492,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClientsAPI.UpdateManagedClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.ManagedClientsAPI.UpdateManagedClientV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.ManagedClientsAPI.UpdateManagedClientV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.ManagedClientsAPI.UpdateManagedClientV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.UpdateManagedClientV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateManagedClientV1`: Managedclient
+    // response from `UpdateManagedClientV1`: ManagedClient
     fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.UpdateManagedClientV1`: %v\n", resp)
 }
 ```

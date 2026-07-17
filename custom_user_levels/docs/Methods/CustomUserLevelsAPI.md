@@ -61,11 +61,11 @@ Other parameters are passed through a pointer to a apiCreateCustomUserLevelV1Req
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **userlevelrequest** | [**Userlevelrequest**](../models/userlevelrequest) | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  | 
+ **userLevelRequest** | [**UserLevelRequest**](../models/user-level-request) | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  | 
 
 ### Return type
 
-[**Userlevelsummarydto**](../models/userlevelsummarydto)
+[**UserLevelSummaryDTO**](../models/user-level-summary-dto)
 
 ### HTTP request headers
 
@@ -88,10 +88,36 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    userlevelrequestJson := []byte(`{"name":"Identity And Access Management","description":"This is a description of the custom user level.","owner":{"id":"29b9da8273b441239238bc041c386817","name":"John Doe"},"rightSets":["idn:ui-identity-manage-example","idn:ui-identity-manage-child-one-example"]}`) // Userlevelrequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+    userlevelrequestJson := []byte(`{
+          "owner" : {
+            "manager" : {
+              "name" : "Thomas Edison",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            },
+            "name" : "Alison Ferguso",
+            "alias" : "alison.ferguso",
+            "attributes" : [ {
+              "name" : "Country",
+              "value" : "US",
+              "key" : "country"
+            }, {
+              "name" : "Country",
+              "value" : "US",
+              "key" : "country"
+            } ],
+            "id" : "2c9180857182305e0171993735622948",
+            "identityState" : "ACTIVE",
+            "email" : "alison.ferguso@acme-solar.com",
+            "status" : "Active"
+          },
+          "rightSets" : [ "idn:ui-right-set-list-read-example", "idn:ui-right-set-write-example" ],
+          "name" : "Custom User Level Name",
+          "description" : "This is a description of the custom user level."
+        }`) // UserLevelRequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
 
-    var userlevelrequest custom_user_levels.Userlevelrequest
-    if err := json.Unmarshal(userlevelrequestJson, &userlevelrequest); err != nil {
+    var userLevelRequest custom_user_levels.UserLevelRequest
+    if err := json.Unmarshal(userlevelrequestJson, &userLevelRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -99,13 +125,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomUserLevelsAPI.CreateCustomUserLevelV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Userlevelrequest(userlevelrequest).Execute()
-	  //resp, r, err := apiClient.CustomUserLevelsAPI.CreateCustomUserLevelV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Userlevelrequest(userlevelrequest).Execute()
+    resp, r, err := apiClient.CustomUserLevelsAPI.CreateCustomUserLevelV1(context.Background()).XSailPointExperimental(xSailPointExperimental).UserLevelRequest(userLevelRequest).Execute()
+	  //resp, r, err := apiClient.CustomUserLevelsAPI.CreateCustomUserLevelV1(context.Background()).XSailPointExperimental(xSailPointExperimental).UserLevelRequest(userLevelRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.CreateCustomUserLevelV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateCustomUserLevelV1`: Userlevelsummarydto
+    // response from `CreateCustomUserLevelV1`: UserLevelSummaryDTO
     fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.CreateCustomUserLevelV1`: %v\n", resp)
 }
 ```
@@ -227,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Userlevelsummarydto**](../models/userlevelsummarydto)
+[**UserLevelSummaryDTO**](../models/user-level-summary-dto)
 
 ### HTTP request headers
 
@@ -262,7 +288,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.GetUserLevelV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetUserLevelV1`: Userlevelsummarydto
+    // response from `GetUserLevelV1`: UserLevelSummaryDTO
     fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.GetUserLevelV1`: %v\n", resp)
 }
 ```
@@ -305,7 +331,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Hierarchicalrightset**](../models/hierarchicalrightset)
+[**[]HierarchicalRightSet**](../models/hierarchical-right-set)
 
 ### HTTP request headers
 
@@ -343,7 +369,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ListAllAuthorizationRightSetsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAllAuthorizationRightSetsV1`: []Hierarchicalrightset
+    // response from `ListAllAuthorizationRightSetsV1`: []HierarchicalRightSet
     fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ListAllAuthorizationRightSetsV1`: %v\n", resp)
 }
 ```
@@ -391,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Authuserslimresponse**](../models/authuserslimresponse)
+[**[]AuthUserSlimResponse**](../models/auth-user-slim-response)
 
 ### HTTP request headers
 
@@ -430,7 +456,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ListUserLevelIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListUserLevelIdentitiesV1`: []Authuserslimresponse
+    // response from `ListUserLevelIdentitiesV1`: []AuthUserSlimResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ListUserLevelIdentitiesV1`: %v\n", resp)
 }
 ```
@@ -474,7 +500,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Userlevelsummarydto**](../models/userlevelsummarydto)
+[**[]UserLevelSummaryDTO**](../models/user-level-summary-dto)
 
 ### HTTP request headers
 
@@ -513,7 +539,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ListUserLevelsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListUserLevelsV1`: []Userlevelsummarydto
+    // response from `ListUserLevelsV1`: []UserLevelSummaryDTO
     fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ListUserLevelsV1`: %v\n", resp)
 }
 ```
@@ -557,7 +583,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Userlevelpublishsummary**](../models/userlevelpublishsummary)
+[**UserLevelPublishSummary**](../models/user-level-publish-summary)
 
 ### HTTP request headers
 
@@ -592,7 +618,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.PublishCustomUserLevelV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PublishCustomUserLevelV1`: Userlevelpublishsummary
+    // response from `PublishCustomUserLevelV1`: UserLevelPublishSummary
     fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.PublishCustomUserLevelV1`: %v\n", resp)
 }
 ```
@@ -632,7 +658,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Authuserlevelsidentitycount**](../models/authuserlevelsidentitycount)
+[**[]AuthUserLevelsIdentityCount**](../models/auth-user-levels-identity-count)
 
 ### HTTP request headers
 
@@ -672,7 +698,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.ShowUserLevelCountsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ShowUserLevelCountsV1`: []Authuserlevelsidentitycount
+    // response from `ShowUserLevelCountsV1`: []AuthUserLevelsIdentityCount
     fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.ShowUserLevelCountsV1`: %v\n", resp)
 }
 ```
@@ -713,11 +739,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
- **jsonpatch** | [**Jsonpatch**](../models/jsonpatch) | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  | 
+ **jsonPatch** | [**JsonPatch**](../models/json-patch) | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  | 
 
 ### Return type
 
-[**Userlevelsummarydto**](../models/userlevelsummarydto)
+[**UserLevelSummaryDTO**](../models/user-level-summary-dto)
 
 ### HTTP request headers
 
@@ -741,10 +767,20 @@ import (
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     id := `6e110911-5984-491b-be74-2707980a46a7` // string | The unique identifier of the user level. # string | The unique identifier of the user level.
-    jsonpatchJson := []byte(`[{"op":"replace","path":"/rightSets","value":["idn:ui-identity-manage-example"]}]`) // Jsonpatch | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+    jsonpatchJson := []byte(`{
+          "operations" : [ {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          }, {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          } ]
+        }`) // JsonPatch | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
 
-    var jsonpatch custom_user_levels.Jsonpatch
-    if err := json.Unmarshal(jsonpatchJson, &jsonpatch); err != nil {
+    var jsonPatch custom_user_levels.JsonPatch
+    if err := json.Unmarshal(jsonpatchJson, &jsonPatch); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -752,13 +788,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomUserLevelsAPI.UpdateUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
-	  //resp, r, err := apiClient.CustomUserLevelsAPI.UpdateUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatch(jsonpatch).Execute()
+    resp, r, err := apiClient.CustomUserLevelsAPI.UpdateUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
+	  //resp, r, err := apiClient.CustomUserLevelsAPI.UpdateUserLevelV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomUserLevelsAPI.UpdateUserLevelV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateUserLevelV1`: Userlevelsummarydto
+    // response from `UpdateUserLevelV1`: UserLevelSummaryDTO
     fmt.Fprintf(os.Stdout, "Response from `CustomUserLevelsAPI.UpdateUserLevelV1`: %v\n", resp)
 }
 ```

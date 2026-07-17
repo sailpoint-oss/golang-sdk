@@ -88,17 +88,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Createprivilegecriteriarequest](docs/Createprivilegecriteriarequest.md)
- - [CreateprivilegecriteriarequestGroupsInner](docs/CreateprivilegecriteriarequestGroupsInner.md)
- - [CreateprivilegecriteriarequestGroupsInnerCriteriaItemsInner](docs/CreateprivilegecriteriarequestGroupsInnerCriteriaItemsInner.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [CreatePrivilegeCriteriaRequest](docs/CreatePrivilegeCriteriaRequest.md)
+ - [CreatePrivilegeCriteriaRequestGroupsInner](docs/CreatePrivilegeCriteriaRequestGroupsInner.md)
+ - [CreatePrivilegeCriteriaRequestGroupsInnerCriteriaItemsInner](docs/CreatePrivilegeCriteriaRequestGroupsInnerCriteriaItemsInner.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [ListPrivilegeCriteriaV1401Response](docs/ListPrivilegeCriteriaV1401Response.md)
  - [ListPrivilegeCriteriaV1429Response](docs/ListPrivilegeCriteriaV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Privilegecriteriadto](docs/Privilegecriteriadto.md)
- - [PrivilegecriteriadtoGroupsInner](docs/PrivilegecriteriadtoGroupsInner.md)
- - [PrivilegecriteriadtoGroupsInnerCriteriaItemsInner](docs/PrivilegecriteriadtoGroupsInnerCriteriaItemsInner.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [PrivilegeCriteriaDTO](docs/PrivilegeCriteriaDTO.md)
+ - [PrivilegeCriteriaDTOGroupsInner](docs/PrivilegeCriteriaDTOGroupsInner.md)
+ - [PrivilegeCriteriaDTOGroupsInnerCriteriaItemsInner](docs/PrivilegeCriteriaDTOGroupsInnerCriteriaItemsInner.md)
 
 
 ## Documentation For Authorization

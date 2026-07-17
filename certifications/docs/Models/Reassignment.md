@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Reassignment', 'V1Reassignment']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**From** | Pointer to [**Certificationreference**](certificationreference) |  | [optional] 
+**From** | Pointer to [**CertificationReference**](certification-reference) |  | [optional] 
 **Comment** | Pointer to **string** | The comment entered when the Certification was reassigned | [optional] 
 
 ## Methods
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetFrom
 
-`func (o *Reassignment) GetFrom() Certificationreference`
+`func (o *Reassignment) GetFrom() CertificationReference`
 
 GetFrom returns the From field if non-nil, zero value otherwise.
 
 ### GetFromOk
 
-`func (o *Reassignment) GetFromOk() (*Certificationreference, bool)`
+`func (o *Reassignment) GetFromOk() (*CertificationReference, bool)`
 
 GetFromOk returns a tuple with the From field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFrom
 
-`func (o *Reassignment) SetFrom(v Certificationreference)`
+`func (o *Reassignment) SetFrom(v CertificationReference)`
 
 SetFrom sets From field to given value.
 

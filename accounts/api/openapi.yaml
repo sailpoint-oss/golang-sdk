@@ -191,14 +191,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/account'
+                  $ref: '#/components/schemas/Account'
                 type: array
           description: List of account objects.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -222,7 +222,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -247,7 +247,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -284,20 +284,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/accountattributescreate'
+              $ref: '#/components/schemas/AccountAttributesCreate'
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountsasyncresult'
+                $ref: '#/components/schemas/AccountsAsyncResult'
           description: Async task details.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -321,7 +321,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -346,7 +346,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -389,13 +389,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountsasyncresult'
+                $ref: '#/components/schemas/AccountsAsyncResult'
           description: Async task details.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -419,7 +419,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -437,7 +437,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -462,7 +462,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -497,13 +497,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/account'
+                $ref: '#/components/schemas/Account'
           description: Account object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -527,7 +527,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -545,7 +545,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -570,7 +570,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -663,7 +663,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -687,7 +687,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -705,7 +705,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -730,7 +730,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -765,20 +765,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/accountattributes'
+              $ref: '#/components/schemas/AccountAttributes'
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountsasyncresult'
+                $ref: '#/components/schemas/AccountsAsyncResult'
           description: Async task details.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -802,7 +802,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -820,7 +820,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -845,7 +845,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -925,14 +925,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/entitlement'
+                  $ref: '#/components/schemas/Entitlement'
                 type: array
           description: An array of account entitlements
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -956,7 +956,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -974,7 +974,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -999,7 +999,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1038,13 +1038,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountsasyncresult'
+                $ref: '#/components/schemas/AccountsAsyncResult'
           description: Async task details
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1068,7 +1068,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1086,7 +1086,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1111,7 +1111,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1147,20 +1147,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/accounttogglerequest'
+              $ref: '#/components/schemas/AccountToggleRequest'
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountsasyncresult'
+                $ref: '#/components/schemas/AccountsAsyncResult'
           description: Async task details
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1184,7 +1184,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1202,7 +1202,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1227,7 +1227,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1263,20 +1263,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/accounttogglerequest'
+              $ref: '#/components/schemas/AccountToggleRequest'
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountsasyncresult'
+                $ref: '#/components/schemas/AccountsAsyncResult'
           description: Async task details
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1300,7 +1300,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1318,7 +1318,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1343,7 +1343,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1380,20 +1380,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/accountunlockrequest'
+              $ref: '#/components/schemas/AccountUnlockRequest'
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountsasyncresult'
+                $ref: '#/components/schemas/AccountsAsyncResult'
           description: Async task details
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1417,7 +1417,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1435,7 +1435,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1460,7 +1460,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1506,13 +1506,13 @@ paths:
                 id: 464ae7bf791e49fdb74606a2e4a89635
                 name: null
               schema:
-                $ref: '#/components/schemas/taskresultdto'
+                $ref: '#/components/schemas/TaskResultDto'
           description: Accepted. Returns task result details of removal request.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1536,7 +1536,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1561,7 +1561,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1604,7 +1604,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1628,7 +1628,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1646,7 +1646,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1671,7 +1671,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1715,7 +1715,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1739,7 +1739,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1757,7 +1757,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1782,7 +1782,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1808,7 +1808,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/identitiesaccountsbulkrequest'
+              $ref: '#/components/schemas/IdentitiesAccountsBulkRequest'
         required: true
       responses:
         "207":
@@ -1824,14 +1824,14 @@ paths:
                   statusCode: 202
                   message: null
                 items:
-                  $ref: '#/components/schemas/bulkidentitiesaccountsresponse'
+                  $ref: '#/components/schemas/BulkIdentitiesAccountsResponse'
                 type: array
           description: Bulk response details.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1855,7 +1855,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1880,7 +1880,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1906,7 +1906,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/identitiesaccountsbulkrequest'
+              $ref: '#/components/schemas/IdentitiesAccountsBulkRequest'
         required: true
       responses:
         "207":
@@ -1922,14 +1922,14 @@ paths:
                   statusCode: 202
                   message: null
                 items:
-                  $ref: '#/components/schemas/bulkidentitiesaccountsresponse'
+                  $ref: '#/components/schemas/BulkIdentitiesAccountsResponse'
                 type: array
           description: Bulk response details.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1953,7 +1953,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1978,7 +1978,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2053,7 +2053,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -2077,7 +2077,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -2095,7 +2095,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -2120,10 +2120,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    basecommondto:
+    BaseCommonDto:
       properties:
         id:
           description: System-generated unique ID of the Object
@@ -2151,7 +2151,7 @@ components:
       - name
       title: Base Common Dto
       type: object
-    recommendation:
+    Recommendation:
       properties:
         type:
           description: Recommended type of account.
@@ -2175,7 +2175,7 @@ components:
       - type
       title: Recommendation
       type: object
-    dtotype:
+    DtoType:
       description: An enumeration of the types of DTOs supported within the IdentityNow
         infrastructure.
       enum:
@@ -2210,10 +2210,10 @@ components:
       - WORKGROUP
       example: IDENTITY
       type: string
-    basereferencedto:
+    BaseReferenceDto:
       properties:
         type:
-          $ref: '#/components/schemas/dtotype'
+          $ref: '#/components/schemas/DtoType'
         id:
           description: ID of the object to which this reference applies
           example: 2c91808568c529c60168cca6f90c1313
@@ -2225,9 +2225,9 @@ components:
           type: string
       title: Base Reference Dto
       type: object
-    account:
+    Account:
       allOf:
-      - $ref: '#/components/schemas/basecommondto'
+      - $ref: '#/components/schemas/BaseCommonDto'
       - properties:
           sourceId:
             description: The unique ID of the source this account belongs to
@@ -2266,7 +2266,7 @@ components:
             example: true
             type: boolean
           recommendation:
-            $ref: '#/components/schemas/account_allOf_recommendation'
+            $ref: '#/components/schemas/Account_allOf_recommendation'
           attributes:
             additionalProperties: true
             description: The account attributes that are aggregated
@@ -2322,9 +2322,9 @@ components:
             example: true
             type: boolean
           identity:
-            $ref: '#/components/schemas/account_allOf_identity'
+            $ref: '#/components/schemas/Account_allOf_identity'
           sourceOwner:
-            $ref: '#/components/schemas/account_allOf_sourceOwner'
+            $ref: '#/components/schemas/Account_allOf_sourceOwner'
           features:
             description: A string list containing the owning source's features
             example: ENABLE
@@ -2340,7 +2340,7 @@ components:
             nullable: true
             type: string
           ownerIdentity:
-            $ref: '#/components/schemas/account_allOf_ownerIdentity'
+            $ref: '#/components/schemas/Account_allOf_ownerIdentity'
         required:
         - attributes
         - authoritative
@@ -2397,7 +2397,7 @@ components:
           displayName: SailPoint Support
         sourceName: Employees
         systemAccount: false
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -2409,7 +2409,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -2422,7 +2422,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -2430,7 +2430,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -2464,25 +2464,33 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    accountattributescreate:
+    AccountAttributesCreate:
+      example:
+        attributes:
+          sourceId: 34bfcbe116c9407464af37acbaf7a4dc
+          city: Austin
+          displayName: John Doe
+          userName: jdoe
+          sAMAccountName: jDoe
+          mail: john.doe@sailpoint.com
       properties:
         attributes:
-          $ref: '#/components/schemas/accountattributescreate_attributes'
+          $ref: '#/components/schemas/AccountAttributesCreate_attributes'
       required:
       - attributes
       title: Account Attributes Create
       type: object
-    accountsasyncresult:
+    AccountsAsyncResult:
       description: Accounts async response containing details on started async process
       example:
         id: 2c91808474683da6017468693c260195
@@ -2495,7 +2503,14 @@ components:
       - id
       title: Accounts Async Result
       type: object
-    accountattributes:
+    AccountAttributes:
+      example:
+        attributes:
+          city: Austin
+          displayName: John Doe
+          userName: jdoe
+          sAMAccountName: jDoe
+          mail: john.doe@sailpoint.com
       properties:
         attributes:
           additionalProperties: true
@@ -2511,7 +2526,7 @@ components:
       - attributes
       title: Account Attributes
       type: object
-    additionalownerref:
+    AdditionalOwnerRef:
       description: Reference to an additional owner (identity or governance group).
       example:
         name: support
@@ -2538,7 +2553,7 @@ components:
           nullable: true
           type: string
       type: object
-    accessmodelmetadata:
+    AccessModelMetadata:
       description: Metadata that describes an access item
       example:
         multiselect: true
@@ -2593,11 +2608,11 @@ components:
         values:
           description: The value to assign to the metadata item
           items:
-            $ref: '#/components/schemas/accessmodelmetadata_values_inner'
+            $ref: '#/components/schemas/AccessModelMetadata_values_inner'
           type: array
       title: Access Model Metadata
       type: object
-    permissiondto:
+    PermissionDTO:
       description: "Simplified DTO for the Permission objects stored in SailPoint's\
         \ database. The data is aggregated from customer systems and is free-form,\
         \ so its appearance can vary largely between different clients/customers."
@@ -2621,7 +2636,7 @@ components:
           type: string
       title: Permission DTO
       type: object
-    entitlement:
+    Entitlement:
       example:
         owner:
           name: john.doe
@@ -2740,12 +2755,12 @@ components:
           example: true
           type: boolean
         owner:
-          $ref: '#/components/schemas/entitlement_owner'
+          $ref: '#/components/schemas/Entitlement_owner'
         additionalOwners:
           description: List of additional owner references beyond the primary owner.
             Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
           items:
-            $ref: '#/components/schemas/additionalownerref'
+            $ref: '#/components/schemas/AdditionalOwnerRef'
           nullable: true
           type: array
         manuallyUpdatedFields:
@@ -2759,7 +2774,7 @@ components:
           nullable: true
           type: object
         accessModelMetadata:
-          $ref: '#/components/schemas/entitlement_accessModelMetadata'
+          $ref: '#/components/schemas/Entitlement_accessModelMetadata'
         created:
           description: Time when the entitlement was created
           example: 2020-10-08T18:33:52.029Z
@@ -2771,7 +2786,7 @@ components:
           format: date-time
           type: string
         source:
-          $ref: '#/components/schemas/entitlement_source'
+          $ref: '#/components/schemas/Entitlement_source'
         attributes:
           additionalProperties: true
           description: A map of free-form key-value pairs from the source system
@@ -2790,12 +2805,15 @@ components:
           type: array
         directPermissions:
           items:
-            $ref: '#/components/schemas/permissiondto'
+            $ref: '#/components/schemas/PermissionDTO'
           type: array
       title: Entitlement
       type: object
-    accounttogglerequest:
+    AccountToggleRequest:
       description: Request used for account enable/disable
+      example:
+        forceProvisioning: false
+        externalVerificationId: 3f9180835d2e5168015d32f890ca1581
       properties:
         externalVerificationId:
           description: "If set, an external process validates that the user wants\
@@ -2811,8 +2829,12 @@ components:
           type: boolean
       title: Account Toggle Request
       type: object
-    accountunlockrequest:
+    AccountUnlockRequest:
       description: Request used for account unlock
+      example:
+        forceProvisioning: false
+        externalVerificationId: 3f9180835d2e5168015d32f890ca1581
+        unlockIDNAccount: false
       properties:
         externalVerificationId:
           description: "If set, an external process validates that the user wants\
@@ -2831,7 +2853,7 @@ components:
           type: boolean
       title: Account Unlock Request
       type: object
-    taskresultdto:
+    TaskResultDto:
       description: Task result.
       example:
         name: name
@@ -2855,7 +2877,11 @@ components:
           example: null
       title: Task Result Dto
       type: object
-    identitiesaccountsbulkrequest:
+    IdentitiesAccountsBulkRequest:
+      example:
+        identityIds:
+        - 2c91808384203c2d018437e631158308
+        - 2c9180858082150f0180893dbaf553fe
       properties:
         identityIds:
           description: The ids of the identities for which enable/disable accounts.
@@ -2867,7 +2893,7 @@ components:
           type: array
       title: Identities Accounts Bulk Request
       type: object
-    bulkidentitiesaccountsresponse:
+    BulkIdentitiesAccountsResponse:
       description: Bulk response object.
       properties:
         id:
@@ -2902,9 +2928,9 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    account_allOf_recommendation:
+    Account_allOf_recommendation:
       allOf:
-      - $ref: '#/components/schemas/recommendation'
+      - $ref: '#/components/schemas/Recommendation'
       - description: Indicates that the account is currently classified to be one
           type but is recommended to be a different one
         example:
@@ -2914,7 +2940,7 @@ components:
       example:
         method: DISCOVERY
         type: MACHINE
-    account_allOf_identity:
+    Account_allOf_identity:
       description: The identity this account is correlated to
       example:
         name: John Doe
@@ -2936,7 +2962,7 @@ components:
           example: John Doe
           type: string
       type: object
-    account_allOf_sourceOwner:
+    Account_allOf_sourceOwner:
       description: The owner of the source this account belongs to.
       example:
         name: Adam Kennedy
@@ -2959,9 +2985,9 @@ components:
           example: Adam Kennedy
           type: string
       type: object
-    account_allOf_ownerIdentity:
+    Account_allOf_ownerIdentity:
       allOf:
-      - $ref: '#/components/schemas/basereferencedto'
+      - $ref: '#/components/schemas/BaseReferenceDto'
       - description: "The identity who owns this account, used only for machine accounts"
         example:
           id: 2c918084660f45d6016617daa9210584
@@ -2972,7 +2998,7 @@ components:
         name: William Wilson
         id: 2c91808568c529c60168cca6f90c1313
         type: IDENTITY
-    accountattributescreate_attributes:
+    AccountAttributesCreate_attributes:
       additionalProperties:
         type: string
       description: The schema attribute values for the account
@@ -2991,7 +3017,7 @@ components:
       required:
       - sourceId
       type: object
-    accessmodelmetadata_values_inner:
+    AccessModelMetadata_values_inner:
       description: An individual value to assign to the metadata item
       example:
         name: Development
@@ -3011,7 +3037,7 @@ components:
           example: active
           type: string
       type: object
-    entitlement_owner:
+    Entitlement_owner:
       description: The identity that owns the entitlement
       example:
         name: john.doe
@@ -3034,7 +3060,7 @@ components:
           example: john.doe
           type: string
       type: object
-    entitlement_accessModelMetadata:
+    Entitlement_accessModelMetadata:
       description: Additional data to classify the entitlement
       example:
         attributes:
@@ -3071,10 +3097,10 @@ components:
       properties:
         attributes:
           items:
-            $ref: '#/components/schemas/accessmodelmetadata'
+            $ref: '#/components/schemas/AccessModelMetadata'
           type: array
       type: object
-    entitlement_source:
+    Entitlement_source:
       example:
         name: Corporate Active Directory
         id: 2c9180827ca885d7017ca8ce28a000eb

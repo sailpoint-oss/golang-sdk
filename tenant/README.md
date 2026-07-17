@@ -84,12 +84,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetTenantV1401Response](docs/GetTenantV1401Response.md)
  - [GetTenantV1429Response](docs/GetTenantV1429Response.md)
  - [License](docs/License.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [Product](docs/Product.md)
  - [Tenant](docs/Tenant.md)
 

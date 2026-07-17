@@ -27,15 +27,15 @@ type ApiCreateMachineAccountMappingsV1Request struct {
 	ctx context.Context
 	ApiService *MachineAccountMappingsAPIService
 	sourceId string
-	attributemappings *Attributemappings
+	attributeMappings *AttributeMappings
 }
 
-func (r ApiCreateMachineAccountMappingsV1Request) Attributemappings(attributemappings Attributemappings) ApiCreateMachineAccountMappingsV1Request {
-	r.attributemappings = &attributemappings
+func (r ApiCreateMachineAccountMappingsV1Request) AttributeMappings(attributeMappings AttributeMappings) ApiCreateMachineAccountMappingsV1Request {
+	r.attributeMappings = &attributeMappings
 	return r
 }
 
-func (r ApiCreateMachineAccountMappingsV1Request) Execute() ([]Attributemappings, *http.Response, error) {
+func (r ApiCreateMachineAccountMappingsV1Request) Execute() ([]AttributeMappings, *http.Response, error) {
 	return r.ApiService.CreateMachineAccountMappingsV1Execute(r)
 }
 
@@ -58,13 +58,13 @@ func (a *MachineAccountMappingsAPIService) CreateMachineAccountMappingsV1(ctx co
 }
 
 // Execute executes the request
-//  @return []Attributemappings
-func (a *MachineAccountMappingsAPIService) CreateMachineAccountMappingsV1Execute(r ApiCreateMachineAccountMappingsV1Request) ([]Attributemappings, *http.Response, error) {
+//  @return []AttributeMappings
+func (a *MachineAccountMappingsAPIService) CreateMachineAccountMappingsV1Execute(r ApiCreateMachineAccountMappingsV1Request) ([]AttributeMappings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Attributemappings
+		localVarReturnValue  []AttributeMappings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountMappingsAPIService.CreateMachineAccountMappingsV1")
@@ -78,8 +78,8 @@ func (a *MachineAccountMappingsAPIService) CreateMachineAccountMappingsV1Execute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.attributemappings == nil {
-		return localVarReturnValue, nil, reportError("attributemappings is required and must be specified")
+	if r.attributeMappings == nil {
+		return localVarReturnValue, nil, reportError("attributeMappings is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -100,7 +100,7 @@ func (a *MachineAccountMappingsAPIService) CreateMachineAccountMappingsV1Execute
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.attributemappings
+	localVarPostBody = r.attributeMappings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -124,7 +124,7 @@ func (a *MachineAccountMappingsAPIService) CreateMachineAccountMappingsV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -146,7 +146,7 @@ func (a *MachineAccountMappingsAPIService) CreateMachineAccountMappingsV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -168,7 +168,7 @@ func (a *MachineAccountMappingsAPIService) CreateMachineAccountMappingsV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -280,7 +280,7 @@ func (a *MachineAccountMappingsAPIService) DeleteMachineAccountMappingsV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -302,7 +302,7 @@ func (a *MachineAccountMappingsAPIService) DeleteMachineAccountMappingsV1Execute
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -313,7 +313,7 @@ func (a *MachineAccountMappingsAPIService) DeleteMachineAccountMappingsV1Execute
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -335,7 +335,7 @@ func (a *MachineAccountMappingsAPIService) DeleteMachineAccountMappingsV1Execute
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -370,7 +370,7 @@ func (r ApiListMachineAccountMappingsV1Request) Offset(offset int32) ApiListMach
 	return r
 }
 
-func (r ApiListMachineAccountMappingsV1Request) Execute() ([]Attributemappings, *http.Response, error) {
+func (r ApiListMachineAccountMappingsV1Request) Execute() ([]AttributeMappings, *http.Response, error) {
 	return r.ApiService.ListMachineAccountMappingsV1Execute(r)
 }
 
@@ -392,13 +392,13 @@ func (a *MachineAccountMappingsAPIService) ListMachineAccountMappingsV1(ctx cont
 }
 
 // Execute executes the request
-//  @return []Attributemappings
-func (a *MachineAccountMappingsAPIService) ListMachineAccountMappingsV1Execute(r ApiListMachineAccountMappingsV1Request) ([]Attributemappings, *http.Response, error) {
+//  @return []AttributeMappings
+func (a *MachineAccountMappingsAPIService) ListMachineAccountMappingsV1Execute(r ApiListMachineAccountMappingsV1Request) ([]AttributeMappings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Attributemappings
+		localVarReturnValue  []AttributeMappings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountMappingsAPIService.ListMachineAccountMappingsV1")
@@ -465,7 +465,7 @@ func (a *MachineAccountMappingsAPIService) ListMachineAccountMappingsV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -487,7 +487,7 @@ func (a *MachineAccountMappingsAPIService) ListMachineAccountMappingsV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -498,7 +498,7 @@ func (a *MachineAccountMappingsAPIService) ListMachineAccountMappingsV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -520,7 +520,7 @@ func (a *MachineAccountMappingsAPIService) ListMachineAccountMappingsV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -548,15 +548,15 @@ type ApiSetMachineAccountMappingsV1Request struct {
 	ctx context.Context
 	ApiService *MachineAccountMappingsAPIService
 	sourceId string
-	attributemappings *Attributemappings
+	attributeMappings *AttributeMappings
 }
 
-func (r ApiSetMachineAccountMappingsV1Request) Attributemappings(attributemappings Attributemappings) ApiSetMachineAccountMappingsV1Request {
-	r.attributemappings = &attributemappings
+func (r ApiSetMachineAccountMappingsV1Request) AttributeMappings(attributeMappings AttributeMappings) ApiSetMachineAccountMappingsV1Request {
+	r.attributeMappings = &attributeMappings
 	return r
 }
 
-func (r ApiSetMachineAccountMappingsV1Request) Execute() ([]Attributemappings, *http.Response, error) {
+func (r ApiSetMachineAccountMappingsV1Request) Execute() ([]AttributeMappings, *http.Response, error) {
 	return r.ApiService.SetMachineAccountMappingsV1Execute(r)
 }
 
@@ -578,13 +578,13 @@ func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1(ctx conte
 }
 
 // Execute executes the request
-//  @return []Attributemappings
-func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1Execute(r ApiSetMachineAccountMappingsV1Request) ([]Attributemappings, *http.Response, error) {
+//  @return []AttributeMappings
+func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1Execute(r ApiSetMachineAccountMappingsV1Request) ([]AttributeMappings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Attributemappings
+		localVarReturnValue  []AttributeMappings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountMappingsAPIService.SetMachineAccountMappingsV1")
@@ -598,8 +598,8 @@ func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1Execute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.attributemappings == nil {
-		return localVarReturnValue, nil, reportError("attributemappings is required and must be specified")
+	if r.attributeMappings == nil {
+		return localVarReturnValue, nil, reportError("attributeMappings is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -620,7 +620,7 @@ func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1Execute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.attributemappings
+	localVarPostBody = r.attributeMappings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -644,7 +644,7 @@ func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -666,7 +666,7 @@ func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -677,7 +677,7 @@ func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -699,7 +699,7 @@ func (a *MachineAccountMappingsAPIService) SetMachineAccountMappingsV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

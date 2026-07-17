@@ -19,7 +19,7 @@ var _ MappedNullable = &ExportFormDefinitionsByTenantV1200ResponseInner{}
 
 // ExportFormDefinitionsByTenantV1200ResponseInner struct for ExportFormDefinitionsByTenantV1200ResponseInner
 type ExportFormDefinitionsByTenantV1200ResponseInner struct {
-	Object *Formdefinitionresponse `json:"object,omitempty"`
+	Object *FormDefinitionResponse `json:"object,omitempty"`
 	Self *ExportFormDefinitionsByTenantV1200ResponseInnerSelf `json:"self,omitempty"`
 	Version *int32 `json:"version,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,9 +45,9 @@ func NewExportFormDefinitionsByTenantV1200ResponseInnerWithDefaults() *ExportFor
 }
 
 // GetObject returns the Object field value if set, zero value otherwise.
-func (o *ExportFormDefinitionsByTenantV1200ResponseInner) GetObject() Formdefinitionresponse {
+func (o *ExportFormDefinitionsByTenantV1200ResponseInner) GetObject() FormDefinitionResponse {
 	if o == nil || IsNil(o.Object) {
-		var ret Formdefinitionresponse
+		var ret FormDefinitionResponse
 		return ret
 	}
 	return *o.Object
@@ -55,7 +55,7 @@ func (o *ExportFormDefinitionsByTenantV1200ResponseInner) GetObject() Formdefini
 
 // GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExportFormDefinitionsByTenantV1200ResponseInner) GetObjectOk() (*Formdefinitionresponse, bool) {
+func (o *ExportFormDefinitionsByTenantV1200ResponseInner) GetObjectOk() (*FormDefinitionResponse, bool) {
 	if o == nil || IsNil(o.Object) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *ExportFormDefinitionsByTenantV1200ResponseInner) HasObject() bool {
 	return false
 }
 
-// SetObject gets a reference to the given Formdefinitionresponse and assigns it to the Object field.
-func (o *ExportFormDefinitionsByTenantV1200ResponseInner) SetObject(v Formdefinitionresponse) {
+// SetObject gets a reference to the given FormDefinitionResponse and assigns it to the Object field.
+func (o *ExportFormDefinitionsByTenantV1200ResponseInner) SetObject(v FormDefinitionResponse) {
 	o.Object = &v
 }
 

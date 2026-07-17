@@ -131,14 +131,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/identityprofile'
+                  $ref: '#/components/schemas/IdentityProfile'
                 type: array
           description: List of identity profiles.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -162,7 +162,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -187,7 +187,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -208,20 +208,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/identityprofile'
+              $ref: '#/components/schemas/IdentityProfile'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identityprofile'
+                $ref: '#/components/schemas/IdentityProfile'
           description: Created identity profile.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -245,7 +245,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -270,7 +270,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -297,7 +297,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/identityprofilebulkdelete'
+              $ref: '#/components/schemas/IdentityProfileBulkDelete'
         description: Identity Profile bulk delete request body.
         required: true
       responses:
@@ -305,14 +305,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/taskresultsimplified'
+                $ref: '#/components/schemas/TaskResultSimplified'
           description: Accepted - Returns a TaskResult object referencing the bulk
             delete job created.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -336,7 +336,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -361,7 +361,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -462,14 +462,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/identityprofileexportedobject'
+                  $ref: '#/components/schemas/IdentityProfileExportedObject'
                 type: array
           description: List of export objects with identity profiles.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -493,7 +493,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -518,7 +518,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -538,7 +538,7 @@ paths:
           application/json:
             schema:
               items:
-                $ref: '#/components/schemas/identityprofileexportedobject'
+                $ref: '#/components/schemas/IdentityProfileExportedObject'
               type: array
         description: Previously exported Identity Profiles.
         required: true
@@ -547,13 +547,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/objectimportresult'
+                $ref: '#/components/schemas/ObjectImportResult'
           description: The result of importing Identity Profiles.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -577,7 +577,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -602,7 +602,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -634,14 +634,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/taskresultsimplified'
+                $ref: '#/components/schemas/TaskResultSimplified'
           description: Accepted - Returns a TaskResult object referencing the bulk
             delete job created.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -665,7 +665,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -683,7 +683,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -708,7 +708,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -742,13 +742,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identityprofile'
+                $ref: '#/components/schemas/IdentityProfile'
           description: Identity profile object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -772,7 +772,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -790,7 +790,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -815,7 +815,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -866,7 +866,7 @@ paths:
                         sourceId: 2c91808878b7d63b0178c66ffcdc4ce4
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: "List of identity profile update operations according to the\
           \ [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
@@ -876,13 +876,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identityprofile'
+                $ref: '#/components/schemas/IdentityProfile'
           description: Updated identity profile.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -906,7 +906,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -924,7 +924,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -949,7 +949,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -984,13 +984,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identityattributeconfig'
+                $ref: '#/components/schemas/IdentityAttributeConfig'
           description: An Identity Attribute Config object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1014,7 +1014,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1032,7 +1032,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1057,7 +1057,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1116,7 +1116,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1140,7 +1140,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1158,7 +1158,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1183,7 +1183,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1207,7 +1207,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/identitypreviewrequest'
+              $ref: '#/components/schemas/IdentityPreviewRequest'
         description: Identity Preview request body.
         required: true
       responses:
@@ -1215,14 +1215,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identitypreviewresponse'
+                $ref: '#/components/schemas/IdentityPreviewResponse'
           description: Object representing the preview object with all of the identity
             attributes using the current mappings.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1246,7 +1246,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1271,7 +1271,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1346,7 +1346,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1370,7 +1370,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -1388,7 +1388,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -1413,10 +1413,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    basecommondto:
+    BaseCommonDto:
       properties:
         id:
           description: System-generated unique ID of the Object
@@ -1444,7 +1444,7 @@ components:
       - name
       title: Base Common Dto
       type: object
-    transformdefinition:
+    TransformDefinition:
       example:
         attributes:
           attributeName: e-mail
@@ -1466,7 +1466,7 @@ components:
           type: object
       title: Transform Definition
       type: object
-    identityattributetransform:
+    IdentityAttributeTransform:
       description: Transform definition for an identity attribute.
       example:
         transformDefinition:
@@ -1482,10 +1482,10 @@ components:
           example: email
           type: string
         transformDefinition:
-          $ref: '#/components/schemas/transformdefinition'
+          $ref: '#/components/schemas/TransformDefinition'
       title: Identity Attribute Transform
       type: object
-    identityattributeconfig:
+    IdentityAttributeConfig:
       description: Defines all the identity attribute mapping configurations. This
         defines how to generate or collect data for each identity attributes in identity
         refresh process.
@@ -1515,11 +1515,11 @@ components:
           type: boolean
         attributeTransforms:
           items:
-            $ref: '#/components/schemas/identityattributetransform'
+            $ref: '#/components/schemas/IdentityAttributeTransform'
           type: array
       title: Identity Attribute Config
       type: object
-    identityexceptionreportreference:
+    IdentityExceptionReportReference:
       example:
         reportName: My annual report
         taskResultId: 2b838de9-db9b-abcf-e646-d4f274ad4238
@@ -1536,9 +1536,9 @@ components:
           type: string
       title: Identity Exception Report Reference
       type: object
-    identityprofile:
+    IdentityProfile:
       allOf:
-      - $ref: '#/components/schemas/basecommondto'
+      - $ref: '#/components/schemas/BaseCommonDto'
       - properties:
           description:
             description: Identity profile's description.
@@ -1546,14 +1546,14 @@ components:
             nullable: true
             type: string
           owner:
-            $ref: '#/components/schemas/identityprofile_allOf_owner'
+            $ref: '#/components/schemas/IdentityProfile_allOf_owner'
           priority:
             description: Identity profile's priority.
             example: 10
             format: int64
             type: integer
           authoritativeSource:
-            $ref: '#/components/schemas/identityprofile_allOf_authoritativeSource'
+            $ref: '#/components/schemas/IdentityProfile_allOf_authoritativeSource'
           identityRefreshRequired:
             default: false
             description: Set this value to 'True' if an identity refresh is necessary.
@@ -1567,9 +1567,9 @@ components:
             format: int32
             type: integer
           identityAttributeConfig:
-            $ref: '#/components/schemas/identityattributeconfig'
+            $ref: '#/components/schemas/IdentityAttributeConfig'
           identityExceptionReportReference:
-            $ref: '#/components/schemas/identityexceptionreportreference'
+            $ref: '#/components/schemas/IdentityExceptionReportReference'
           hasTimeBasedAttr:
             default: false
             description: Indicates the value of `requiresPeriodicRefresh` attribute
@@ -1617,7 +1617,7 @@ components:
         name: aName
         modified: 2015-05-28T14:07:17Z
         id: id12345
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1629,7 +1629,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1642,7 +1642,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1650,7 +1650,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1684,17 +1684,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    identityprofilebulkdelete:
+    IdentityProfileBulkDelete:
       description: List of Identity Profile IDs to delete.
       example:
       - 2c9180867b2a34e0017b3078d60b0699
@@ -1702,7 +1702,7 @@ components:
       items:
         type: string
       type: array
-    taskresultsimplified:
+    TaskResultSimplified:
       example:
         name: Background Object Terminator c8f030f2-b1a6-4e33-99e8-6935bc18735d
         description: "Generic task for terminating data in the overlay, used by the\
@@ -1750,7 +1750,7 @@ components:
           type: string
       title: Task Result Simplified
       type: object
-    identityprofileexportedobject:
+    IdentityProfileExportedObject:
       description: Identity profile exported object.
       example:
         self:
@@ -1803,12 +1803,12 @@ components:
           format: int32
           type: integer
         self:
-          $ref: '#/components/schemas/identityprofileexportedobject_self'
+          $ref: '#/components/schemas/IdentityProfileExportedObject_self'
         object:
-          $ref: '#/components/schemas/identityprofile'
+          $ref: '#/components/schemas/IdentityProfile'
       title: Identity Profile Exported Object
       type: object
-    spconfigmessage:
+    SpConfigMessage:
       description: Message model for Config Import/Export.
       example:
         details:
@@ -1838,7 +1838,7 @@ components:
       - text
       title: Config Import/Export Message
       type: object
-    importobject:
+    ImportObject:
       description: Object created or updated by import.
       example:
         name: HR Active Directory
@@ -1867,7 +1867,7 @@ components:
           type: string
       title: Import Object
       type: object
-    objectimportresult:
+    ObjectImportResult:
       description: Response model for import of a single object.
       example:
         warnings:
@@ -1915,22 +1915,22 @@ components:
           description: Informational messages returned from the target service on
             import.
           items:
-            $ref: '#/components/schemas/spconfigmessage'
+            $ref: '#/components/schemas/SpConfigMessage'
           type: array
         warnings:
           description: Warning messages returned from the target service on import.
           items:
-            $ref: '#/components/schemas/spconfigmessage'
+            $ref: '#/components/schemas/SpConfigMessage'
           type: array
         errors:
           description: Error messages returned from the target service on import.
           items:
-            $ref: '#/components/schemas/spconfigmessage'
+            $ref: '#/components/schemas/SpConfigMessage'
           type: array
         importedObjects:
           description: References to objects that were created or updated by the import.
           items:
-            $ref: '#/components/schemas/importobject'
+            $ref: '#/components/schemas/ImportObject'
           type: array
       required:
       - errors
@@ -1939,8 +1939,12 @@ components:
       - warnings
       title: Import Object Response Body
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -1959,32 +1963,51 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    identitypreviewrequest:
+    IdentityPreviewRequest:
+      example:
+        identityId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        identityAttributeConfig:
+          attributeTransforms:
+          - transformDefinition:
+              attributes:
+                attributeName: e-mail
+                sourceName: MySource
+                sourceId: 2c9180877a826e68017a8c0b03da1a53
+              type: accountAttribute
+            identityAttributeName: email
+          - transformDefinition:
+              attributes:
+                attributeName: e-mail
+                sourceName: MySource
+                sourceId: 2c9180877a826e68017a8c0b03da1a53
+              type: accountAttribute
+            identityAttributeName: email
+          enabled: true
       properties:
         identityId:
           description: The Identity id
           format: uuid
           type: string
         identityAttributeConfig:
-          $ref: '#/components/schemas/identityattributeconfig'
+          $ref: '#/components/schemas/IdentityAttributeConfig'
       title: Identity Preview Request
       type: object
-    errormessagedtolist:
+    ErrorMessageDtoList:
       description: List of error messages
       example:
         locale: en-US
         localeOrigin: DEFAULT
         text: Error Message
       items:
-        $ref: '#/components/schemas/errormessagedto'
+        $ref: '#/components/schemas/ErrorMessageDto'
       type: array
-    identityattributepreview:
+    IdentityAttributePreview:
       example:
         errorMessages:
           locale: en-US
@@ -2013,11 +2036,11 @@ components:
             localeOrigin: DEFAULT
             text: Error Message
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Identity Attribute Preview
       type: object
-    identitypreviewresponse:
+    IdentityPreviewResponse:
       example:
         identity:
           name: Michael Michaels
@@ -2040,10 +2063,10 @@ components:
           previousValue: oldEmail@mail.com
       properties:
         identity:
-          $ref: '#/components/schemas/identitypreviewresponse_identity'
+          $ref: '#/components/schemas/IdentityPreviewResponse_identity'
         previewAttributes:
           items:
-            $ref: '#/components/schemas/identityattributepreview'
+            $ref: '#/components/schemas/IdentityAttributePreview'
           type: array
       title: Identity Preview Response
       type: object
@@ -2063,7 +2086,7 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    identityprofile_allOf_owner:
+    IdentityProfile_allOf_owner:
       description: Identity profile's owner.
       example:
         name: William Wilson
@@ -2086,7 +2109,7 @@ components:
           example: William Wilson
           type: string
       type: object
-    identityprofile_allOf_authoritativeSource:
+    IdentityProfile_allOf_authoritativeSource:
       example:
         name: HR Active Directory
         id: 2c9180835d191a86015d28455b4b232a
@@ -2107,7 +2130,7 @@ components:
           example: HR Active Directory
           type: string
       type: object
-    identityprofileexportedobject_self:
+    IdentityProfileExportedObject_self:
       description: Self block for exported object.
       example:
         name: HR Active Directory
@@ -2161,7 +2184,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description
@@ -2184,7 +2207,7 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    identitypreviewresponse_identity:
+    IdentityPreviewResponse_identity:
       description: Identity's basic details.
       example:
         name: Michael Michaels

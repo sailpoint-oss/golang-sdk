@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accountusage**](../models/accountusage)
+[**[]AccountUsage**](../models/account-usage)
 
 ### HTTP request headers
 
@@ -88,7 +88,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountUsagesAPI.GetUsagesByAccountIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetUsagesByAccountIdV1`: []Accountusage
+    // response from `GetUsagesByAccountIdV1`: []AccountUsage
     fmt.Fprintf(os.Stdout, "Response from `AccountUsagesAPI.GetUsagesByAccountIdV1`: %v\n", resp)
 }
 ```

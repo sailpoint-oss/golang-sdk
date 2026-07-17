@@ -134,7 +134,7 @@ func (a *ApiUsageAPIService) GetTotalCountV1Execute(r ApiGetTotalCountV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -156,7 +156,7 @@ func (a *ApiUsageAPIService) GetTotalCountV1Execute(r ApiGetTotalCountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -178,7 +178,7 @@ func (a *ApiUsageAPIService) GetTotalCountV1Execute(r ApiGetTotalCountV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -235,7 +235,7 @@ func (r ApiListApiSummaryV1Request) Offset(offset int32) ApiListApiSummaryV1Requ
 	return r
 }
 
-func (r ApiListApiSummaryV1Request) Execute() ([]Summaryresponse, *http.Response, error) {
+func (r ApiListApiSummaryV1Request) Execute() ([]SummaryResponse, *http.Response, error) {
 	return r.ApiService.ListApiSummaryV1Execute(r)
 }
 
@@ -255,13 +255,13 @@ func (a *ApiUsageAPIService) ListApiSummaryV1(ctx context.Context) ApiListApiSum
 }
 
 // Execute executes the request
-//  @return []Summaryresponse
-func (a *ApiUsageAPIService) ListApiSummaryV1Execute(r ApiListApiSummaryV1Request) ([]Summaryresponse, *http.Response, error) {
+//  @return []SummaryResponse
+func (a *ApiUsageAPIService) ListApiSummaryV1Execute(r ApiListApiSummaryV1Request) ([]SummaryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Summaryresponse
+		localVarReturnValue  []SummaryResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiUsageAPIService.ListApiSummaryV1")
@@ -337,7 +337,7 @@ func (a *ApiUsageAPIService) ListApiSummaryV1Execute(r ApiListApiSummaryV1Reques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -359,7 +359,7 @@ func (a *ApiUsageAPIService) ListApiSummaryV1Execute(r ApiListApiSummaryV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -381,7 +381,7 @@ func (a *ApiUsageAPIService) ListApiSummaryV1Execute(r ApiListApiSummaryV1Reques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

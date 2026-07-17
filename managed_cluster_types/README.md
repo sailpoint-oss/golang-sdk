@@ -89,15 +89,15 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](docs/ArrayInner.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetManagedClusterTypesV1401Response](docs/GetManagedClusterTypesV1401Response.md)
  - [GetManagedClusterTypesV1429Response](docs/GetManagedClusterTypesV1429Response.md)
- - [Jsonpatch](docs/Jsonpatch.md)
- - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Managedclustertype](docs/Managedclustertype.md)
+ - [JsonPatch](docs/JsonPatch.md)
+ - [JsonPatchOperation](docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [ManagedClusterType](docs/ManagedClusterType.md)
 
 
 ## Documentation For Authorization

@@ -18,45 +18,45 @@ import (
 
 // ListIdentitySnapshotAccessItemsV1200ResponseInner - struct for ListIdentitySnapshotAccessItemsV1200ResponseInner
 type ListIdentitySnapshotAccessItemsV1200ResponseInner struct {
-	Accessitemaccessprofileresponse *Accessitemaccessprofileresponse
-	Accessitemaccountresponse *Accessitemaccountresponse
-	Accessitemappresponse *Accessitemappresponse
-	Accessitementitlementresponse *Accessitementitlementresponse
-	Accessitemroleresponse *Accessitemroleresponse
+	AccessItemAccessProfileResponse *AccessItemAccessProfileResponse
+	AccessItemAccountResponse *AccessItemAccountResponse
+	AccessItemAppResponse *AccessItemAppResponse
+	AccessItemEntitlementResponse *AccessItemEntitlementResponse
+	AccessItemRoleResponse *AccessItemRoleResponse
 }
 
-// AccessitemaccessprofileresponseAsListIdentitySnapshotAccessItemsV1200ResponseInner is a convenience function that returns Accessitemaccessprofileresponse wrapped in ListIdentitySnapshotAccessItemsV1200ResponseInner
-func AccessitemaccessprofileresponseAsListIdentitySnapshotAccessItemsV1200ResponseInner(v *Accessitemaccessprofileresponse) ListIdentitySnapshotAccessItemsV1200ResponseInner {
+// AccessItemAccessProfileResponseAsListIdentitySnapshotAccessItemsV1200ResponseInner is a convenience function that returns AccessItemAccessProfileResponse wrapped in ListIdentitySnapshotAccessItemsV1200ResponseInner
+func AccessItemAccessProfileResponseAsListIdentitySnapshotAccessItemsV1200ResponseInner(v *AccessItemAccessProfileResponse) ListIdentitySnapshotAccessItemsV1200ResponseInner {
 	return ListIdentitySnapshotAccessItemsV1200ResponseInner{
-		Accessitemaccessprofileresponse: v,
+		AccessItemAccessProfileResponse: v,
 	}
 }
 
-// AccessitemaccountresponseAsListIdentitySnapshotAccessItemsV1200ResponseInner is a convenience function that returns Accessitemaccountresponse wrapped in ListIdentitySnapshotAccessItemsV1200ResponseInner
-func AccessitemaccountresponseAsListIdentitySnapshotAccessItemsV1200ResponseInner(v *Accessitemaccountresponse) ListIdentitySnapshotAccessItemsV1200ResponseInner {
+// AccessItemAccountResponseAsListIdentitySnapshotAccessItemsV1200ResponseInner is a convenience function that returns AccessItemAccountResponse wrapped in ListIdentitySnapshotAccessItemsV1200ResponseInner
+func AccessItemAccountResponseAsListIdentitySnapshotAccessItemsV1200ResponseInner(v *AccessItemAccountResponse) ListIdentitySnapshotAccessItemsV1200ResponseInner {
 	return ListIdentitySnapshotAccessItemsV1200ResponseInner{
-		Accessitemaccountresponse: v,
+		AccessItemAccountResponse: v,
 	}
 }
 
-// AccessitemappresponseAsListIdentitySnapshotAccessItemsV1200ResponseInner is a convenience function that returns Accessitemappresponse wrapped in ListIdentitySnapshotAccessItemsV1200ResponseInner
-func AccessitemappresponseAsListIdentitySnapshotAccessItemsV1200ResponseInner(v *Accessitemappresponse) ListIdentitySnapshotAccessItemsV1200ResponseInner {
+// AccessItemAppResponseAsListIdentitySnapshotAccessItemsV1200ResponseInner is a convenience function that returns AccessItemAppResponse wrapped in ListIdentitySnapshotAccessItemsV1200ResponseInner
+func AccessItemAppResponseAsListIdentitySnapshotAccessItemsV1200ResponseInner(v *AccessItemAppResponse) ListIdentitySnapshotAccessItemsV1200ResponseInner {
 	return ListIdentitySnapshotAccessItemsV1200ResponseInner{
-		Accessitemappresponse: v,
+		AccessItemAppResponse: v,
 	}
 }
 
-// AccessitementitlementresponseAsListIdentitySnapshotAccessItemsV1200ResponseInner is a convenience function that returns Accessitementitlementresponse wrapped in ListIdentitySnapshotAccessItemsV1200ResponseInner
-func AccessitementitlementresponseAsListIdentitySnapshotAccessItemsV1200ResponseInner(v *Accessitementitlementresponse) ListIdentitySnapshotAccessItemsV1200ResponseInner {
+// AccessItemEntitlementResponseAsListIdentitySnapshotAccessItemsV1200ResponseInner is a convenience function that returns AccessItemEntitlementResponse wrapped in ListIdentitySnapshotAccessItemsV1200ResponseInner
+func AccessItemEntitlementResponseAsListIdentitySnapshotAccessItemsV1200ResponseInner(v *AccessItemEntitlementResponse) ListIdentitySnapshotAccessItemsV1200ResponseInner {
 	return ListIdentitySnapshotAccessItemsV1200ResponseInner{
-		Accessitementitlementresponse: v,
+		AccessItemEntitlementResponse: v,
 	}
 }
 
-// AccessitemroleresponseAsListIdentitySnapshotAccessItemsV1200ResponseInner is a convenience function that returns Accessitemroleresponse wrapped in ListIdentitySnapshotAccessItemsV1200ResponseInner
-func AccessitemroleresponseAsListIdentitySnapshotAccessItemsV1200ResponseInner(v *Accessitemroleresponse) ListIdentitySnapshotAccessItemsV1200ResponseInner {
+// AccessItemRoleResponseAsListIdentitySnapshotAccessItemsV1200ResponseInner is a convenience function that returns AccessItemRoleResponse wrapped in ListIdentitySnapshotAccessItemsV1200ResponseInner
+func AccessItemRoleResponseAsListIdentitySnapshotAccessItemsV1200ResponseInner(v *AccessItemRoleResponse) ListIdentitySnapshotAccessItemsV1200ResponseInner {
 	return ListIdentitySnapshotAccessItemsV1200ResponseInner{
-		Accessitemroleresponse: v,
+		AccessItemRoleResponse: v,
 	}
 }
 
@@ -65,98 +65,98 @@ func AccessitemroleresponseAsListIdentitySnapshotAccessItemsV1200ResponseInner(v
 func (dst *ListIdentitySnapshotAccessItemsV1200ResponseInner) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into Accessitemaccessprofileresponse
-	err = newStrictDecoder(data).Decode(&dst.Accessitemaccessprofileresponse)
+	// try to unmarshal data into AccessItemAccessProfileResponse
+	err = newStrictDecoder(data).Decode(&dst.AccessItemAccessProfileResponse)
 	if err == nil {
-		jsonAccessitemaccessprofileresponse, _ := json.Marshal(dst.Accessitemaccessprofileresponse)
-		if string(jsonAccessitemaccessprofileresponse) == "{}" { // empty struct
-			dst.Accessitemaccessprofileresponse = nil
+		jsonAccessItemAccessProfileResponse, _ := json.Marshal(dst.AccessItemAccessProfileResponse)
+		if string(jsonAccessItemAccessProfileResponse) == "{}" { // empty struct
+			dst.AccessItemAccessProfileResponse = nil
 		} else {
-			if err = validator.Validate(dst.Accessitemaccessprofileresponse); err != nil {
-				dst.Accessitemaccessprofileresponse = nil
+			if err = validator.Validate(dst.AccessItemAccessProfileResponse); err != nil {
+				dst.AccessItemAccessProfileResponse = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accessitemaccessprofileresponse = nil
+		dst.AccessItemAccessProfileResponse = nil
 	}
 
-	// try to unmarshal data into Accessitemaccountresponse
-	err = newStrictDecoder(data).Decode(&dst.Accessitemaccountresponse)
+	// try to unmarshal data into AccessItemAccountResponse
+	err = newStrictDecoder(data).Decode(&dst.AccessItemAccountResponse)
 	if err == nil {
-		jsonAccessitemaccountresponse, _ := json.Marshal(dst.Accessitemaccountresponse)
-		if string(jsonAccessitemaccountresponse) == "{}" { // empty struct
-			dst.Accessitemaccountresponse = nil
+		jsonAccessItemAccountResponse, _ := json.Marshal(dst.AccessItemAccountResponse)
+		if string(jsonAccessItemAccountResponse) == "{}" { // empty struct
+			dst.AccessItemAccountResponse = nil
 		} else {
-			if err = validator.Validate(dst.Accessitemaccountresponse); err != nil {
-				dst.Accessitemaccountresponse = nil
+			if err = validator.Validate(dst.AccessItemAccountResponse); err != nil {
+				dst.AccessItemAccountResponse = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accessitemaccountresponse = nil
+		dst.AccessItemAccountResponse = nil
 	}
 
-	// try to unmarshal data into Accessitemappresponse
-	err = newStrictDecoder(data).Decode(&dst.Accessitemappresponse)
+	// try to unmarshal data into AccessItemAppResponse
+	err = newStrictDecoder(data).Decode(&dst.AccessItemAppResponse)
 	if err == nil {
-		jsonAccessitemappresponse, _ := json.Marshal(dst.Accessitemappresponse)
-		if string(jsonAccessitemappresponse) == "{}" { // empty struct
-			dst.Accessitemappresponse = nil
+		jsonAccessItemAppResponse, _ := json.Marshal(dst.AccessItemAppResponse)
+		if string(jsonAccessItemAppResponse) == "{}" { // empty struct
+			dst.AccessItemAppResponse = nil
 		} else {
-			if err = validator.Validate(dst.Accessitemappresponse); err != nil {
-				dst.Accessitemappresponse = nil
+			if err = validator.Validate(dst.AccessItemAppResponse); err != nil {
+				dst.AccessItemAppResponse = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accessitemappresponse = nil
+		dst.AccessItemAppResponse = nil
 	}
 
-	// try to unmarshal data into Accessitementitlementresponse
-	err = newStrictDecoder(data).Decode(&dst.Accessitementitlementresponse)
+	// try to unmarshal data into AccessItemEntitlementResponse
+	err = newStrictDecoder(data).Decode(&dst.AccessItemEntitlementResponse)
 	if err == nil {
-		jsonAccessitementitlementresponse, _ := json.Marshal(dst.Accessitementitlementresponse)
-		if string(jsonAccessitementitlementresponse) == "{}" { // empty struct
-			dst.Accessitementitlementresponse = nil
+		jsonAccessItemEntitlementResponse, _ := json.Marshal(dst.AccessItemEntitlementResponse)
+		if string(jsonAccessItemEntitlementResponse) == "{}" { // empty struct
+			dst.AccessItemEntitlementResponse = nil
 		} else {
-			if err = validator.Validate(dst.Accessitementitlementresponse); err != nil {
-				dst.Accessitementitlementresponse = nil
+			if err = validator.Validate(dst.AccessItemEntitlementResponse); err != nil {
+				dst.AccessItemEntitlementResponse = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accessitementitlementresponse = nil
+		dst.AccessItemEntitlementResponse = nil
 	}
 
-	// try to unmarshal data into Accessitemroleresponse
-	err = newStrictDecoder(data).Decode(&dst.Accessitemroleresponse)
+	// try to unmarshal data into AccessItemRoleResponse
+	err = newStrictDecoder(data).Decode(&dst.AccessItemRoleResponse)
 	if err == nil {
-		jsonAccessitemroleresponse, _ := json.Marshal(dst.Accessitemroleresponse)
-		if string(jsonAccessitemroleresponse) == "{}" { // empty struct
-			dst.Accessitemroleresponse = nil
+		jsonAccessItemRoleResponse, _ := json.Marshal(dst.AccessItemRoleResponse)
+		if string(jsonAccessItemRoleResponse) == "{}" { // empty struct
+			dst.AccessItemRoleResponse = nil
 		} else {
-			if err = validator.Validate(dst.Accessitemroleresponse); err != nil {
-				dst.Accessitemroleresponse = nil
+			if err = validator.Validate(dst.AccessItemRoleResponse); err != nil {
+				dst.AccessItemRoleResponse = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accessitemroleresponse = nil
+		dst.AccessItemRoleResponse = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.Accessitemaccessprofileresponse = nil
-		dst.Accessitemaccountresponse = nil
-		dst.Accessitemappresponse = nil
-		dst.Accessitementitlementresponse = nil
-		dst.Accessitemroleresponse = nil
+		dst.AccessItemAccessProfileResponse = nil
+		dst.AccessItemAccountResponse = nil
+		dst.AccessItemAppResponse = nil
+		dst.AccessItemEntitlementResponse = nil
+		dst.AccessItemRoleResponse = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(ListIdentitySnapshotAccessItemsV1200ResponseInner)")
 	} else if match == 1 {
@@ -168,24 +168,24 @@ func (dst *ListIdentitySnapshotAccessItemsV1200ResponseInner) UnmarshalJSON(data
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ListIdentitySnapshotAccessItemsV1200ResponseInner) MarshalJSON() ([]byte, error) {
-	if src.Accessitemaccessprofileresponse != nil {
-		return json.Marshal(&src.Accessitemaccessprofileresponse)
+	if src.AccessItemAccessProfileResponse != nil {
+		return json.Marshal(&src.AccessItemAccessProfileResponse)
 	}
 
-	if src.Accessitemaccountresponse != nil {
-		return json.Marshal(&src.Accessitemaccountresponse)
+	if src.AccessItemAccountResponse != nil {
+		return json.Marshal(&src.AccessItemAccountResponse)
 	}
 
-	if src.Accessitemappresponse != nil {
-		return json.Marshal(&src.Accessitemappresponse)
+	if src.AccessItemAppResponse != nil {
+		return json.Marshal(&src.AccessItemAppResponse)
 	}
 
-	if src.Accessitementitlementresponse != nil {
-		return json.Marshal(&src.Accessitementitlementresponse)
+	if src.AccessItemEntitlementResponse != nil {
+		return json.Marshal(&src.AccessItemEntitlementResponse)
 	}
 
-	if src.Accessitemroleresponse != nil {
-		return json.Marshal(&src.Accessitemroleresponse)
+	if src.AccessItemRoleResponse != nil {
+		return json.Marshal(&src.AccessItemRoleResponse)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -196,24 +196,24 @@ func (obj *ListIdentitySnapshotAccessItemsV1200ResponseInner) GetActualInstance(
 	if obj == nil {
 		return nil
 	}
-	if obj.Accessitemaccessprofileresponse != nil {
-		return obj.Accessitemaccessprofileresponse
+	if obj.AccessItemAccessProfileResponse != nil {
+		return obj.AccessItemAccessProfileResponse
 	}
 
-	if obj.Accessitemaccountresponse != nil {
-		return obj.Accessitemaccountresponse
+	if obj.AccessItemAccountResponse != nil {
+		return obj.AccessItemAccountResponse
 	}
 
-	if obj.Accessitemappresponse != nil {
-		return obj.Accessitemappresponse
+	if obj.AccessItemAppResponse != nil {
+		return obj.AccessItemAppResponse
 	}
 
-	if obj.Accessitementitlementresponse != nil {
-		return obj.Accessitementitlementresponse
+	if obj.AccessItemEntitlementResponse != nil {
+		return obj.AccessItemEntitlementResponse
 	}
 
-	if obj.Accessitemroleresponse != nil {
-		return obj.Accessitemroleresponse
+	if obj.AccessItemRoleResponse != nil {
+		return obj.AccessItemRoleResponse
 	}
 
 	// all schemas are nil
@@ -222,24 +222,24 @@ func (obj *ListIdentitySnapshotAccessItemsV1200ResponseInner) GetActualInstance(
 
 // Get the actual instance value
 func (obj ListIdentitySnapshotAccessItemsV1200ResponseInner) GetActualInstanceValue() (interface{}) {
-	if obj.Accessitemaccessprofileresponse != nil {
-		return *obj.Accessitemaccessprofileresponse
+	if obj.AccessItemAccessProfileResponse != nil {
+		return *obj.AccessItemAccessProfileResponse
 	}
 
-	if obj.Accessitemaccountresponse != nil {
-		return *obj.Accessitemaccountresponse
+	if obj.AccessItemAccountResponse != nil {
+		return *obj.AccessItemAccountResponse
 	}
 
-	if obj.Accessitemappresponse != nil {
-		return *obj.Accessitemappresponse
+	if obj.AccessItemAppResponse != nil {
+		return *obj.AccessItemAppResponse
 	}
 
-	if obj.Accessitementitlementresponse != nil {
-		return *obj.Accessitementitlementresponse
+	if obj.AccessItemEntitlementResponse != nil {
+		return *obj.AccessItemEntitlementResponse
 	}
 
-	if obj.Accessitemroleresponse != nil {
-		return *obj.Accessitemroleresponse
+	if obj.AccessItemRoleResponse != nil {
+		return *obj.AccessItemRoleResponse
 	}
 
 	// all schemas are nil

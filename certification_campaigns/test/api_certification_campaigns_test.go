@@ -262,7 +262,7 @@ func Test_certification_campaigns_CertificationCampaignsAPIService(t *testing.T)
 		t.Skip("skip test")  // remove to run test
 
 		var id string
-		var type_ Reporttype
+		var type_ ReportType
 
 		resp, httpRes, err := apiClient.CertificationCampaignsAPI.StartCampaignReportV1(context.Background(), id, type_).Execute()
 

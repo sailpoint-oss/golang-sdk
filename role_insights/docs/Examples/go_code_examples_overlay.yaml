@@ -29,7 +29,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.CreateRoleInsightRequestsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `CreateRoleInsightRequestsV1`: Roleinsightsresponse
+          // response from `CreateRoleInsightRequestsV1`: RoleInsightsResponse
           fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.CreateRoleInsightRequestsV1`: %v\n", resp)
         }
 - path: /role-insights/v1/{insightId}/entitlement-changes/download
@@ -108,7 +108,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetEntitlementChangesIdentitiesV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetEntitlementChangesIdentitiesV1`: []Roleinsightsidentities
+          // response from `GetEntitlementChangesIdentitiesV1`: []RoleInsightsIdentities
           fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetEntitlementChangesIdentitiesV1`: %v\n", resp)
         }
 - path: /role-insights/v1/{insightId}
@@ -143,7 +143,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetRoleInsightV1`: Roleinsight
+          // response from `GetRoleInsightV1`: RoleInsight
           fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightV1`: %v\n", resp)
         }
 - path: /role-insights/v1/{insightId}/current-entitlements
@@ -179,7 +179,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsCurrentEntitlementsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetRoleInsightsCurrentEntitlementsV1`: []Roleinsightsentitlement
+          // response from `GetRoleInsightsCurrentEntitlementsV1`: []RoleInsightsEntitlement
           fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsCurrentEntitlementsV1`: %v\n", resp)
         }
 - path: /role-insights/v1/{insightId}/entitlement-changes
@@ -216,7 +216,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsEntitlementsChangesV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetRoleInsightsEntitlementsChangesV1`: []Roleinsightsentitlementchanges
+          // response from `GetRoleInsightsEntitlementsChangesV1`: []RoleInsightsEntitlementChanges
           fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsEntitlementsChangesV1`: %v\n", resp)
         }
 - path: /role-insights/v1/requests/{id}
@@ -251,7 +251,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsRequestsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetRoleInsightsRequestsV1`: Roleinsightsresponse
+          // response from `GetRoleInsightsRequestsV1`: RoleInsightsResponse
           fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsRequestsV1`: %v\n", resp)
         }
 - path: /role-insights/v1/summary
@@ -285,7 +285,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsSummaryV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetRoleInsightsSummaryV1`: Roleinsightssummary
+          // response from `GetRoleInsightsSummaryV1`: RoleInsightsSummary
           fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsSummaryV1`: %v\n", resp)
         }
 - path: /role-insights/v1
@@ -324,6 +324,6 @@
             fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetRoleInsightsV1`: []Roleinsight
+          // response from `GetRoleInsightsV1`: []RoleInsight
           fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsV1`: %v\n", resp)
         }

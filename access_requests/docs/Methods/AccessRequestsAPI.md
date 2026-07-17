@@ -47,7 +47,7 @@ Other parameters are passed through a pointer to a apiApproveBulkAccessRequestV1
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkapproveaccessrequest** | [**Bulkapproveaccessrequest**](../models/bulkapproveaccessrequest) |  | 
+ **bulkApproveAccessRequest** | [**BulkApproveAccessRequest**](../models/bulk-approve-access-request) |  | 
 
 ### Return type
 
@@ -73,10 +73,13 @@ import (
 )
 
 func main() {
-    bulkapproveaccessrequestJson := []byte(`{"accessRequestIds":["2c91808568c529c60168cca6f90c1313","2c91808568c529c60168cca6f90c1314"],"comment":"I approve these request items"}`) // Bulkapproveaccessrequest | 
+    bulkapproveaccessrequestJson := []byte(`{
+          "comment" : "I approve these request items",
+          "approvalIds" : [ "2c9180835d2e5168015d32f890ca1581", "2c9180835d2e5168015d32f890ca1582" ]
+        }`) // BulkApproveAccessRequest | 
 
-    var bulkapproveaccessrequest access_requests.Bulkapproveaccessrequest
-    if err := json.Unmarshal(bulkapproveaccessrequestJson, &bulkapproveaccessrequest); err != nil {
+    var bulkApproveAccessRequest access_requests.BulkApproveAccessRequest
+    if err := json.Unmarshal(bulkapproveaccessrequestJson, &bulkApproveAccessRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -84,8 +87,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.ApproveBulkAccessRequestV1(context.Background()).Bulkapproveaccessrequest(bulkapproveaccessrequest).Execute()
-	  //resp, r, err := apiClient.AccessRequestsAPI.ApproveBulkAccessRequestV1(context.Background()).Bulkapproveaccessrequest(bulkapproveaccessrequest).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.ApproveBulkAccessRequestV1(context.Background()).BulkApproveAccessRequest(bulkApproveAccessRequest).Execute()
+	  //resp, r, err := apiClient.AccessRequestsAPI.ApproveBulkAccessRequestV1(context.Background()).BulkApproveAccessRequest(bulkApproveAccessRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ApproveBulkAccessRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -115,7 +118,7 @@ Other parameters are passed through a pointer to a apiCancelAccessRequestInBulkV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkcancelaccessrequest** | [**Bulkcancelaccessrequest**](../models/bulkcancelaccessrequest) |  | 
+ **bulkCancelAccessRequest** | [**BulkCancelAccessRequest**](../models/bulk-cancel-access-request) |  | 
 
 ### Return type
 
@@ -141,10 +144,13 @@ import (
 )
 
 func main() {
-    bulkcancelaccessrequestJson := []byte(`{"accessRequestIds":["2c91808568c529c60168cca6f90c1313","2c91808568c529c60168cca6f90c1314"],"comment":"I requested this role by mistake."}`) // Bulkcancelaccessrequest | 
+    bulkcancelaccessrequestJson := []byte(`{
+          "accessRequestIds" : [ "2c9180835d2e5168015d32f890ca1581", "2c9180835d2e5168015d32f890ca1582" ],
+          "comment" : "I requested this role by mistake."
+        }`) // BulkCancelAccessRequest | 
 
-    var bulkcancelaccessrequest access_requests.Bulkcancelaccessrequest
-    if err := json.Unmarshal(bulkcancelaccessrequestJson, &bulkcancelaccessrequest); err != nil {
+    var bulkCancelAccessRequest access_requests.BulkCancelAccessRequest
+    if err := json.Unmarshal(bulkcancelaccessrequestJson, &bulkCancelAccessRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -152,8 +158,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestInBulkV1(context.Background()).Bulkcancelaccessrequest(bulkcancelaccessrequest).Execute()
-	  //resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestInBulkV1(context.Background()).Bulkcancelaccessrequest(bulkcancelaccessrequest).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestInBulkV1(context.Background()).BulkCancelAccessRequest(bulkCancelAccessRequest).Execute()
+	  //resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestInBulkV1(context.Background()).BulkCancelAccessRequest(bulkCancelAccessRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequestInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -183,7 +189,7 @@ Other parameters are passed through a pointer to a apiCancelAccessRequestV1Reque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancelaccessrequest** | [**Cancelaccessrequest**](../models/cancelaccessrequest) |  | 
+ **cancelAccessRequest** | [**CancelAccessRequest**](../models/cancel-access-request) |  | 
 
 ### Return type
 
@@ -209,10 +215,13 @@ import (
 )
 
 func main() {
-    cancelaccessrequestJson := []byte(`{"accountActivityId":"2c91808568c529c60168cca6f90c1313","comment":"I requested this role by mistake."}`) // Cancelaccessrequest | 
+    cancelaccessrequestJson := []byte(`{
+          "accountActivityId" : "2c9180835d2e5168015d32f890ca1581",
+          "comment" : "I requested this role by mistake."
+        }`) // CancelAccessRequest | 
 
-    var cancelaccessrequest access_requests.Cancelaccessrequest
-    if err := json.Unmarshal(cancelaccessrequestJson, &cancelaccessrequest); err != nil {
+    var cancelAccessRequest access_requests.CancelAccessRequest
+    if err := json.Unmarshal(cancelaccessrequestJson, &cancelAccessRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -220,8 +229,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestV1(context.Background()).Cancelaccessrequest(cancelaccessrequest).Execute()
-	  //resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestV1(context.Background()).Cancelaccessrequest(cancelaccessrequest).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestV1(context.Background()).CancelAccessRequest(cancelAccessRequest).Execute()
+	  //resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestV1(context.Background()).CancelAccessRequest(cancelAccessRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -261,7 +270,7 @@ Other parameters are passed through a pointer to a apiCloseAccessRequestV1Reques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **closeaccessrequest** | [**Closeaccessrequest**](../models/closeaccessrequest) |  | 
+ **closeAccessRequest** | [**CloseAccessRequest**](../models/close-access-request) |  | 
 
 ### Return type
 
@@ -287,10 +296,15 @@ import (
 )
 
 func main() {
-    closeaccessrequestJson := []byte(`{"accessRequestIds":["2c90ad2a70ace7d50170acf22ca90010"],"executionStatus":"Terminated","completionStatus":"Failure","message":"The IdentityNow Administrator manually closed this request."}`) // Closeaccessrequest | 
+    closeaccessrequestJson := []byte(`{
+          "executionStatus" : "Terminated",
+          "accessRequestIds" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+          "completionStatus" : "Failure",
+          "message" : "The IdentityNow Administrator manually closed this request."
+        }`) // CloseAccessRequest | 
 
-    var closeaccessrequest access_requests.Closeaccessrequest
-    if err := json.Unmarshal(closeaccessrequestJson, &closeaccessrequest); err != nil {
+    var closeAccessRequest access_requests.CloseAccessRequest
+    if err := json.Unmarshal(closeaccessrequestJson, &closeAccessRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -298,8 +312,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.CloseAccessRequestV1(context.Background()).Closeaccessrequest(closeaccessrequest).Execute()
-	  //resp, r, err := apiClient.AccessRequestsAPI.CloseAccessRequestV1(context.Background()).Closeaccessrequest(closeaccessrequest).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.CloseAccessRequestV1(context.Background()).CloseAccessRequest(closeAccessRequest).Execute()
+	  //resp, r, err := apiClient.AccessRequestsAPI.CloseAccessRequestV1(context.Background()).CloseAccessRequest(closeAccessRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CloseAccessRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -378,11 +392,11 @@ Other parameters are passed through a pointer to a apiCreateAccessRequestV1Reque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accessrequest** | [**Accessrequest**](../models/accessrequest) |  | 
+ **accessRequest** | [**AccessRequest**](../models/access-request) |  | 
 
 ### Return type
 
-[**Accessrequestresponse**](../models/accessrequestresponse)
+[**AccessRequestResponse**](../models/access-request-response)
 
 ### HTTP request headers
 
@@ -404,10 +418,165 @@ import (
 )
 
 func main() {
-    accessrequestJson := []byte(``) // Accessrequest | 
+    accessrequestJson := []byte(`{
+          "requestedFor" : "2c918084660f45d6016617daa9210584",
+          "clientMetadata" : {
+            "requestedAppId" : "2c91808f7892918f0178b78da4a305a1",
+            "requestedAppName" : "test-app"
+          },
+          "requestType" : "GRANT_ACCESS",
+          "requestedItems" : [ {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          }, {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          } ],
+          "requestedForWithRequestedItems" : [ {
+            "identityId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+            "requestedItems" : [ {
+              "clientMetadata" : {
+                "requestedAppName" : "test-app",
+                "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+              },
+              "removeDate" : "2020-07-11T21:23:15Z",
+              "accountSelection" : [ {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              }, {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              } ],
+              "comment" : "Requesting access profile for John Doe",
+              "id" : "2c9180835d2e5168015d32f890ca1581",
+              "type" : "ACCESS_PROFILE",
+              "startDate" : "2020-06-12T21:22:23Z"
+            }, {
+              "clientMetadata" : {
+                "requestedAppName" : "test-app",
+                "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+              },
+              "removeDate" : "2020-07-11T21:23:15Z",
+              "accountSelection" : [ {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              }, {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              } ],
+              "comment" : "Requesting access profile for John Doe",
+              "id" : "2c9180835d2e5168015d32f890ca1581",
+              "type" : "ACCESS_PROFILE",
+              "startDate" : "2020-06-12T21:22:23Z"
+            } ]
+          }, {
+            "identityId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+            "requestedItems" : [ {
+              "clientMetadata" : {
+                "requestedAppName" : "test-app",
+                "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+              },
+              "removeDate" : "2020-07-11T21:23:15Z",
+              "accountSelection" : [ {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              }, {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              } ],
+              "comment" : "Requesting access profile for John Doe",
+              "id" : "2c9180835d2e5168015d32f890ca1581",
+              "type" : "ACCESS_PROFILE",
+              "startDate" : "2020-06-12T21:22:23Z"
+            }, {
+              "clientMetadata" : {
+                "requestedAppName" : "test-app",
+                "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+              },
+              "removeDate" : "2020-07-11T21:23:15Z",
+              "accountSelection" : [ {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              }, {
+                "sourceId" : "cb89bc2f1ee6445fbea12224c526ba3a",
+                "accounts" : [ {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                }, {
+                  "accountUuid" : "{fab7119e-004f-4822-9c33-b8d570d6c6a6}",
+                  "nativeIdentity" : "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+                } ]
+              } ],
+              "comment" : "Requesting access profile for John Doe",
+              "id" : "2c9180835d2e5168015d32f890ca1581",
+              "type" : "ACCESS_PROFILE",
+              "startDate" : "2020-06-12T21:22:23Z"
+            } ]
+          } ]
+        }`) // AccessRequest | 
 
-    var accessrequest access_requests.Accessrequest
-    if err := json.Unmarshal(accessrequestJson, &accessrequest); err != nil {
+    var accessRequest access_requests.AccessRequest
+    if err := json.Unmarshal(accessrequestJson, &accessRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -415,13 +584,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.CreateAccessRequestV1(context.Background()).Accessrequest(accessrequest).Execute()
-	  //resp, r, err := apiClient.AccessRequestsAPI.CreateAccessRequestV1(context.Background()).Accessrequest(accessrequest).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.CreateAccessRequestV1(context.Background()).AccessRequest(accessRequest).Execute()
+	  //resp, r, err := apiClient.AccessRequestsAPI.CreateAccessRequestV1(context.Background()).AccessRequest(accessRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CreateAccessRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAccessRequestV1`: Accessrequestresponse
+    // response from `CreateAccessRequestV1`: AccessRequestResponse
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CreateAccessRequestV1`: %v\n", resp)
 }
 ```
@@ -448,7 +617,7 @@ Other parameters are passed through a pointer to a apiGetAccessRequestConfigV1Re
 
 ### Return type
 
-[**Accessrequestconfig**](../models/accessrequestconfig)
+[**AccessRequestConfig**](../models/access-request-config)
 
 ### HTTP request headers
 
@@ -481,7 +650,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccessRequestConfigV1`: Accessrequestconfig
+    // response from `GetAccessRequestConfigV1`: AccessRequestConfig
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetAccessRequestConfigV1`: %v\n", resp)
 }
 ```
@@ -505,7 +674,7 @@ Other parameters are passed through a pointer to a apiGetAccessRequestConfigV2Re
 
 ### Return type
 
-[**Accessrequestconfigv2**](../models/accessrequestconfigv2)
+[**AccessRequestConfig2**](../models/access-request-config2)
 
 ### HTTP request headers
 
@@ -538,7 +707,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfigV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccessRequestConfigV2`: Accessrequestconfigv2
+    // response from `GetAccessRequestConfigV2`: AccessRequestConfig2
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetAccessRequestConfigV2`: %v\n", resp)
 }
 ```
@@ -572,7 +741,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Identityentitlementdetails**](../models/identityentitlementdetails)
+[**IdentityEntitlementDetails**](../models/identity-entitlement-details)
 
 ### HTTP request headers
 
@@ -607,7 +776,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetEntitlementDetailsForIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEntitlementDetailsForIdentityV1`: Identityentitlementdetails
+    // response from `GetEntitlementDetailsForIdentityV1`: IdentityEntitlementDetails
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetEntitlementDetailsForIdentityV1`: %v\n", resp)
 }
 ```
@@ -646,7 +815,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Requesteditemstatus**](../models/requesteditemstatus)
+[**[]RequestedItemStatus**](../models/requested-item-status)
 
 ### HTTP request headers
 
@@ -689,7 +858,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ListAccessRequestStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAccessRequestStatusV1`: []Requesteditemstatus
+    // response from `ListAccessRequestStatusV1`: []RequestedItemStatus
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.ListAccessRequestStatusV1`: %v\n", resp)
 }
 ```
@@ -739,7 +908,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessrequestadminitemstatus**](../models/accessrequestadminitemstatus)
+[**[]AccessRequestAdminItemStatus**](../models/access-request-admin-item-status)
 
 ### HTTP request headers
 
@@ -783,7 +952,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ListAdministratorsAccessRequestStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAdministratorsAccessRequestStatusV1`: []Accessrequestadminitemstatus
+    // response from `ListAdministratorsAccessRequestStatusV1`: []AccessRequestAdminItemStatus
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.ListAdministratorsAccessRequestStatusV1`: %v\n", resp)
 }
 ```
@@ -822,11 +991,11 @@ Other parameters are passed through a pointer to a apiLoadAccountSelectionsV1Req
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **accountsselectionrequest** | [**Accountsselectionrequest**](../models/accountsselectionrequest) |  | 
+ **accountsSelectionRequest** | [**AccountsSelectionRequest**](../models/accounts-selection-request) |  | 
 
 ### Return type
 
-[**Accountsselectionresponse**](../models/accountsselectionresponse)
+[**AccountsSelectionResponse**](../models/accounts-selection-response)
 
 ### HTTP request headers
 
@@ -849,10 +1018,78 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accountsselectionrequestJson := []byte(``) // Accountsselectionrequest | 
+    accountsselectionrequestJson := []byte(`{
+          "requestedFor" : "2c918084660f45d6016617daa9210584",
+          "clientMetadata" : {
+            "requestedAppId" : "2c91808f7892918f0178b78da4a305a1",
+            "requestedAppName" : "test-app"
+          },
+          "requestType" : "GRANT_ACCESS",
+          "requestedItems" : [ {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          }, {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          }, {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          }, {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          }, {
+            "clientMetadata" : {
+              "requestedAppName" : "test-app",
+              "requestedAppId" : "2c91808f7892918f0178b78da4a305a1"
+            },
+            "removeDate" : "2020-07-11T21:23:15Z",
+            "comment" : "Requesting access profile for John Doe",
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE",
+            "assignmentId" : "ee48a191c00d49bf9264eb0a4fc3a9fc",
+            "startDate" : "2020-06-12T21:22:23Z",
+            "nativeIdentity" : "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          } ]
+        }`) // AccountsSelectionRequest | 
 
-    var accountsselectionrequest access_requests.Accountsselectionrequest
-    if err := json.Unmarshal(accountsselectionrequestJson, &accountsselectionrequest); err != nil {
+    var accountsSelectionRequest access_requests.AccountsSelectionRequest
+    if err := json.Unmarshal(accountsselectionrequestJson, &accountsSelectionRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -860,13 +1097,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.LoadAccountSelectionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accountsselectionrequest(accountsselectionrequest).Execute()
-	  //resp, r, err := apiClient.AccessRequestsAPI.LoadAccountSelectionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accountsselectionrequest(accountsselectionrequest).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.LoadAccountSelectionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccountsSelectionRequest(accountsSelectionRequest).Execute()
+	  //resp, r, err := apiClient.AccessRequestsAPI.LoadAccountSelectionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccountsSelectionRequest(accountsSelectionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.LoadAccountSelectionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `LoadAccountSelectionsV1`: Accountsselectionresponse
+    // response from `LoadAccountSelectionsV1`: AccountsSelectionResponse
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.LoadAccountSelectionsV1`: %v\n", resp)
 }
 ```
@@ -893,11 +1130,11 @@ Other parameters are passed through a pointer to a apiSetAccessRequestConfigV1Re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accessrequestconfig** | [**Accessrequestconfig**](../models/accessrequestconfig) |  | 
+ **accessRequestConfig** | [**AccessRequestConfig**](../models/access-request-config) |  | 
 
 ### Return type
 
-[**Accessrequestconfig**](../models/accessrequestconfig)
+[**AccessRequestConfig**](../models/access-request-config)
 
 ### HTTP request headers
 
@@ -919,10 +1156,57 @@ import (
 )
 
 func main() {
-    accessrequestconfigJson := []byte(``) // Accessrequestconfig | 
+    accessrequestconfigJson := []byte(`{
+          "requestOnBehalfOfConfig" : {
+            "allowRequestOnBehalfOfEmployeeByManager" : true,
+            "allowRequestOnBehalfOfAnyoneByAnyone" : true
+          },
+          "approvalReminderAndEscalationConfig" : {
+            "fallbackApproverRef" : {
+              "name" : "Alison Ferguso",
+              "id" : "5168015d32f890ca15812c9180835d2e",
+              "type" : "IDENTITY",
+              "email" : "alison.ferguso@identitysoon.com"
+            },
+            "maxReminders" : 1,
+            "daysUntilEscalation" : 0,
+            "daysBetweenReminders" : 0
+          },
+          "autoApprovalEnabled" : true,
+          "entitlementRequestConfig" : {
+            "accessRequestConfig" : {
+              "denialCommentRequired" : false,
+              "approvalSchemes" : [ {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              }, {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              } ],
+              "reauthorizationRequired" : false,
+              "requestCommentRequired" : true,
+              "requireEndDate" : true,
+              "maxPermittedAccessDuration" : {
+                "value" : 5,
+                "timeUnit" : "DAYS"
+              }
+            },
+            "revocationRequestConfig" : {
+              "approvalSchemes" : [ {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              }, {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              } ]
+            }
+          },
+          "reauthorizationEnabled" : true,
+          "approvalsMustBeExternal" : true
+        }`) // AccessRequestConfig | 
 
-    var accessrequestconfig access_requests.Accessrequestconfig
-    if err := json.Unmarshal(accessrequestconfigJson, &accessrequestconfig); err != nil {
+    var accessRequestConfig access_requests.AccessRequestConfig
+    if err := json.Unmarshal(accessrequestconfigJson, &accessRequestConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -930,13 +1214,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV1(context.Background()).Accessrequestconfig(accessrequestconfig).Execute()
-	  //resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV1(context.Background()).Accessrequestconfig(accessrequestconfig).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV1(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
+	  //resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV1(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetAccessRequestConfigV1`: Accessrequestconfig
+    // response from `SetAccessRequestConfigV1`: AccessRequestConfig
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.SetAccessRequestConfigV1`: %v\n", resp)
 }
 ```
@@ -960,11 +1244,11 @@ Other parameters are passed through a pointer to a apiSetAccessRequestConfigV2Re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accessrequestconfigv2** | [**Accessrequestconfigv2**](../models/accessrequestconfigv2) |  | 
+ **accessRequestConfig2** | [**AccessRequestConfig2**](../models/access-request-config2) |  | 
 
 ### Return type
 
-[**Accessrequestconfigv2**](../models/accessrequestconfigv2)
+[**AccessRequestConfig2**](../models/access-request-config2)
 
 ### HTTP request headers
 
@@ -986,10 +1270,10 @@ import (
 )
 
 func main() {
-    accessrequestconfigv2Json := []byte(``) // Accessrequestconfigv2 | 
+    accessrequestconfig2Json := []byte(``) // AccessRequestConfig2 | 
 
-    var accessrequestconfigv2 access_requests.Accessrequestconfigv2
-    if err := json.Unmarshal(accessrequestconfigv2Json, &accessrequestconfigv2); err != nil {
+    var accessRequestConfig2 access_requests.AccessRequestConfig2
+    if err := json.Unmarshal(accessrequestconfig2Json, &accessRequestConfig2); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -997,13 +1281,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).Accessrequestconfigv2(accessrequestconfigv2).Execute()
-	  //resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).Accessrequestconfigv2(accessrequestconfigv2).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).AccessRequestConfig2(accessRequestConfig2).Execute()
+	  //resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfigV2(context.Background()).AccessRequestConfig2(accessRequestConfig2).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfigV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetAccessRequestConfigV2`: Accessrequestconfigv2
+    // response from `SetAccessRequestConfigV2`: AccessRequestConfig2
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.SetAccessRequestConfigV2`: %v\n", resp)
 }
 ```

@@ -45,13 +45,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/networkconfiguration'
+                $ref: '#/components/schemas/NetworkConfiguration'
           description: Network configuration for the tenant's auth org.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -75,7 +75,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -93,7 +93,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -118,7 +118,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -149,7 +149,7 @@ paths:
               - ES
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: |-
           A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -164,13 +164,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/networkconfiguration'
+                $ref: '#/components/schemas/NetworkConfiguration'
           description: Updated Auth Org network configuration.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -194,7 +194,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -212,7 +212,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -237,7 +237,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -256,7 +256,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/networkconfiguration'
+              $ref: '#/components/schemas/NetworkConfiguration'
         description: |-
           Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:
             1. Each string element in the range array must be a valid ip address or
@@ -269,13 +269,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/networkconfiguration'
+                $ref: '#/components/schemas/NetworkConfiguration'
           description: Network configuration for the tenant.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -299,7 +299,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -317,7 +317,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -342,7 +342,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -362,13 +362,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/lockoutconfiguration'
+                $ref: '#/components/schemas/LockoutConfiguration'
           description: Lockout configuration for the tenant's auth org.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -392,7 +392,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -410,7 +410,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -435,7 +435,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -462,7 +462,7 @@ paths:
               value: 35
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: |-
           A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -476,13 +476,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/lockoutconfiguration'
+                $ref: '#/components/schemas/LockoutConfiguration'
           description: Updated Auth Org lockout configuration.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -506,7 +506,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -524,7 +524,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -549,7 +549,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -573,13 +573,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/serviceproviderconfiguration'
+                $ref: '#/components/schemas/ServiceProviderConfiguration'
           description: Service provider configuration for the tenant.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -603,7 +603,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -621,7 +621,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -646,7 +646,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -680,7 +680,7 @@ paths:
                   employeeNumber: okta.employeeNumber
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: |-
           A list of auth org service provider configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -707,7 +707,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/serviceproviderconfiguration'
+                $ref: '#/components/schemas/ServiceProviderConfiguration'
           description: Auth Org Service Provider configuration updated.
         "400":
           content:
@@ -732,7 +732,7 @@ paths:
                       localeOrigin: REQUEST
                       text: JIT source id is invalid.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -756,7 +756,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -774,7 +774,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -799,7 +799,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -819,13 +819,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sessionconfiguration'
+                $ref: '#/components/schemas/SessionConfiguration'
           description: Session configuration for the tenant's auth org.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -849,7 +849,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -867,7 +867,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -892,7 +892,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -919,7 +919,7 @@ paths:
               value: 480
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: |
           A list of auth org session configuration update operations according to
@@ -936,13 +936,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sessionconfiguration'
+                $ref: '#/components/schemas/SessionConfiguration'
           description: Updated Auth Org session configuration.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -966,7 +966,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -984,7 +984,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1009,7 +1009,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1029,7 +1029,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1053,7 +1053,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -1071,7 +1071,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -1096,10 +1096,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    networkconfiguration:
+    NetworkConfiguration:
       example:
         range:
         - 1.3.7.2
@@ -1137,7 +1137,7 @@ components:
           type: boolean
       title: Network Configuration
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1149,7 +1149,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1162,7 +1162,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1170,7 +1170,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1204,18 +1204,22 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -1234,13 +1238,13 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    lockoutconfiguration:
+    LockoutConfiguration:
       example:
         maximumAttempts: 5
         lockoutDuration: 15
@@ -1264,7 +1268,7 @@ components:
           type: integer
       title: Lockout Configuration
       type: object
-    federationprotocoldetails:
+    FederationProtocolDetails:
       properties:
         role:
           description: Federation protocol role
@@ -1280,7 +1284,7 @@ components:
           type: string
       title: Federation Protocol Details
       type: object
-    jitconfiguration:
+    JITConfiguration:
       properties:
         enabled:
           default: false
@@ -1305,9 +1309,9 @@ components:
           type: object
       title: JIT Configuration
       type: object
-    idpdetails:
+    IdpDetails:
       allOf:
-      - $ref: '#/components/schemas/federationprotocoldetails'
+      - $ref: '#/components/schemas/FederationProtocolDetails'
       - description: Specification of Identity Provider Details section of Service
           Provider Config
         properties:
@@ -1336,7 +1340,7 @@ components:
             example: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
             type: string
           jitConfiguration:
-            $ref: '#/components/schemas/jitconfiguration'
+            $ref: '#/components/schemas/JITConfiguration'
           cert:
             description: The Base64-encoded certificate used by the IDP. Used with
               IDP configurations.
@@ -1367,9 +1371,9 @@ components:
         required:
         - mappingAttribute
         type: object
-    spdetails:
+    SpDetails:
       allOf:
-      - $ref: '#/components/schemas/federationprotocoldetails'
+      - $ref: '#/components/schemas/FederationProtocolDetails'
       - description: Specification of a Service Provider Details
         properties:
           alias:
@@ -1390,7 +1394,7 @@ components:
         required:
         - callbackUrl
         type: object
-    serviceproviderconfiguration:
+    ServiceProviderConfiguration:
       description: Represents the IdentityNow as Service Provider Configuration allowing
         customers to log into IDN via an Identity Provider
       example:
@@ -1477,11 +1481,11 @@ components:
             callbackUrl: https://acme.test-login.sailpoint.com/saml/SSO/alias/acme-sp
             legacyAcsUrl: https://megapod-useast1-sso.identitysoon.com/sso/Consumer/metaAlias/acme/sp
           items:
-            $ref: '#/components/schemas/serviceproviderconfiguration_federationProtocolDetails_inner'
+            $ref: '#/components/schemas/ServiceProviderConfiguration_federationProtocolDetails_inner'
           type: array
       title: Service Provider Configuration
       type: object
-    sessionconfiguration:
+    SessionConfiguration:
       example:
         maxSessionTime: 45
         maxIdleTime: 15
@@ -1529,7 +1533,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description
@@ -1552,7 +1556,7 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    serviceproviderconfiguration_federationProtocolDetails_inner:
+    ServiceProviderConfiguration_federationProtocolDetails_inner:
       anyOf:
-      - $ref: '#/components/schemas/idpdetails'
-      - $ref: '#/components/schemas/spdetails'
+      - $ref: '#/components/schemas/IdpDetails'
+      - $ref: '#/components/schemas/SpDetails'

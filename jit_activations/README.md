@@ -86,16 +86,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Activationworkflowstatus](docs/Activationworkflowstatus.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Jitactivationactivaterequest](docs/Jitactivationactivaterequest.md)
- - [Jitactivationactivateresponse](docs/Jitactivationactivateresponse.md)
- - [Jitactivationdeactivaterequest](docs/Jitactivationdeactivaterequest.md)
- - [Jitactivationdeactivateresponse](docs/Jitactivationdeactivateresponse.md)
- - [Jitactivationextendrequest](docs/Jitactivationextendrequest.md)
- - [Jitactivationextendresponse](docs/Jitactivationextendresponse.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [ActivationWorkflowStatus](docs/ActivationWorkflowStatus.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [JitActivationActivateRequest](docs/JitActivationActivateRequest.md)
+ - [JitActivationActivateResponse](docs/JitActivationActivateResponse.md)
+ - [JitActivationDeactivateRequest](docs/JitActivationDeactivateRequest.md)
+ - [JitActivationDeactivateResponse](docs/JitActivationDeactivateResponse.md)
+ - [JitActivationExtendRequest](docs/JitActivationExtendRequest.md)
+ - [JitActivationExtendResponse](docs/JitActivationExtendResponse.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [StartActivateWorkflowV1401Response](docs/StartActivateWorkflowV1401Response.md)
  - [StartActivateWorkflowV1429Response](docs/StartActivateWorkflowV1429Response.md)
 

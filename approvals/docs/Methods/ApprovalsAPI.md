@@ -52,7 +52,7 @@ Other parameters are passed through a pointer to a apiApproveApprovalInBulkV1Req
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkapproverequestdto** | [**Bulkapproverequestdto**](../models/bulkapproverequestdto) |  | 
+ **bulkApproveRequestDTO** | [**BulkApproveRequestDTO**](../models/bulk-approve-request-dto) |  | 
 
 ### Return type
 
@@ -78,10 +78,17 @@ import (
 )
 
 func main() {
-    bulkapproverequestdtoJson := []byte(``) // Bulkapproverequestdto | 
+    bulkapproverequestdtoJson := []byte(`{
+          "comment" : "Bulk approved by admin for monthly review",
+          "approvalIds" : [ "38453251-6be2-5f8f-df93-5ce19e295837", "38453251-6be2-5f8f-df93-5ce19e295838" ],
+          "additionalAttributes" : {
+            "source" : "automation",
+            "urgency" : "high"
+          }
+        }`) // BulkApproveRequestDTO | 
 
-    var bulkapproverequestdto approvals.Bulkapproverequestdto
-    if err := json.Unmarshal(bulkapproverequestdtoJson, &bulkapproverequestdto); err != nil {
+    var bulkApproveRequestDTO approvals.BulkApproveRequestDTO
+    if err := json.Unmarshal(bulkapproverequestdtoJson, &bulkApproveRequestDTO); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -89,8 +96,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApprovalsAPI.ApproveApprovalInBulkV1(context.Background()).Bulkapproverequestdto(bulkapproverequestdto).Execute()
-	  //resp, r, err := apiClient.ApprovalsAPI.ApproveApprovalInBulkV1(context.Background()).Bulkapproverequestdto(bulkapproverequestdto).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.ApproveApprovalInBulkV1(context.Background()).BulkApproveRequestDTO(bulkApproveRequestDTO).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.ApproveApprovalInBulkV1(context.Background()).BulkApproveRequestDTO(bulkApproveRequestDTO).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.ApproveApprovalInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -125,7 +132,7 @@ Other parameters are passed through a pointer to a apiApproveApprovalV1Request s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **approvalapproverequest** | [**Approvalapproverequest**](../models/approvalapproverequest) |  | 
+ **approvalApproveRequest** | [**ApprovalApproveRequest**](../models/approval-approve-request) |  | 
 
 ### Return type
 
@@ -152,14 +159,21 @@ import (
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to approve. # string | Approval ID that correlates to an existing approval request that a user wants to approve.
-    approvalapproverequestJson := []byte(``) // Approvalapproverequest |  (optional)
+    approvalapproverequestJson := []byte(`{
+          "comment" : "comment",
+          "additionalAttributes" : {
+            "additionalProp1" : "string",
+            "additionalProp2" : "string",
+            "additionalProp3" : "string"
+          }
+        }`) // ApprovalApproveRequest |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.ApprovalsAPI.ApproveApprovalV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ApprovalsAPI.ApproveApprovalV1(context.Background(), id).Approvalapproverequest(approvalapproverequest).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.ApproveApprovalV1(context.Background(), id).ApprovalApproveRequest(approvalApproveRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.ApproveApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,7 +209,7 @@ Other parameters are passed through a pointer to a apiCancelApprovalByIdV1Reques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **approvalcancelrequest** | [**Approvalcancelrequest**](../models/approvalcancelrequest) |  | 
+ **approvalCancelRequest** | [**ApprovalCancelRequest**](../models/approval-cancel-request) |  | 
 
 ### Return type
 
@@ -222,14 +236,16 @@ import (
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | ID of the approval request to cancel. # string | ID of the approval request to cancel.
-    approvalcancelrequestJson := []byte(``) // Approvalcancelrequest |  (optional)
+    approvalcancelrequestJson := []byte(`{
+          "comment" : "Cancelled by administrator"
+        }`) // ApprovalCancelRequest |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     r, err := apiClient.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).Approvalcancelrequest(approvalcancelrequest).Execute()
+	  //r, err := apiClient.ApprovalsAPI.CancelApprovalByIdV1(context.Background(), id).ApprovalCancelRequest(approvalCancelRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.CancelApprovalByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -259,7 +275,7 @@ Other parameters are passed through a pointer to a apiCancelApprovalV1Request st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkcancelrequestdto** | [**Bulkcancelrequestdto**](../models/bulkcancelrequestdto) |  | 
+ **bulkCancelRequestDTO** | [**BulkCancelRequestDTO**](../models/bulk-cancel-request-dto) |  | 
 
 ### Return type
 
@@ -285,10 +301,13 @@ import (
 )
 
 func main() {
-    bulkcancelrequestdtoJson := []byte(``) // Bulkcancelrequestdto | 
+    bulkcancelrequestdtoJson := []byte(`{
+          "comment" : "Bulk cancellation by admin",
+          "approvalIds" : [ "38453251-6be2-5f8f-df93-5ce19e295837", "38453251-6be2-5f8f-df93-5ce19e295838" ]
+        }`) // BulkCancelRequestDTO | 
 
-    var bulkcancelrequestdto approvals.Bulkcancelrequestdto
-    if err := json.Unmarshal(bulkcancelrequestdtoJson, &bulkcancelrequestdto); err != nil {
+    var bulkCancelRequestDTO approvals.BulkCancelRequestDTO
+    if err := json.Unmarshal(bulkcancelrequestdtoJson, &bulkCancelRequestDTO); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -296,8 +315,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApprovalsAPI.CancelApprovalV1(context.Background()).Bulkcancelrequestdto(bulkcancelrequestdto).Execute()
-	  //resp, r, err := apiClient.ApprovalsAPI.CancelApprovalV1(context.Background()).Bulkcancelrequestdto(bulkcancelrequestdto).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.CancelApprovalV1(context.Background()).BulkCancelRequestDTO(bulkCancelRequestDTO).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.CancelApprovalV1(context.Background()).BulkCancelRequestDTO(bulkCancelRequestDTO).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.CancelApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -470,7 +489,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Approvalconfig**](../models/approvalconfig)
+[**ApprovalConfig**](../models/approval-config)
 
 ### HTTP request headers
 
@@ -504,7 +523,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.GetApprovalsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetApprovalsConfigV1`: Approvalconfig
+    // response from `GetApprovalsConfigV1`: ApprovalConfig
     fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.GetApprovalsConfigV1`: %v\n", resp)
 }
 ```
@@ -623,7 +642,7 @@ Other parameters are passed through a pointer to a apiMoveApprovalV1Request stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkreassignrequestdto** | [**Bulkreassignrequestdto**](../models/bulkreassignrequestdto) |  | 
+ **bulkReassignRequestDTO** | [**BulkReassignRequestDTO**](../models/bulk-reassign-request-dto) |  | 
 
 ### Return type
 
@@ -649,10 +668,15 @@ import (
 )
 
 func main() {
-    bulkreassignrequestdtoJson := []byte(``) // Bulkreassignrequestdto | 
+    bulkreassignrequestdtoJson := []byte(`{
+          "reassignTo" : "32454251-6ce2-5d8f-df93-5ce19e295238",
+          "comment" : "Bulk reassignment by admin",
+          "reassignFrom" : "12353251-6be2-5f8f-df93-5ce19b6e5837",
+          "approvalIds" : [ "38453251-6be2-5f8f-df93-5ce19e295837", "38453251-6be2-5f8f-df93-5ce19e295838" ]
+        }`) // BulkReassignRequestDTO | 
 
-    var bulkreassignrequestdto approvals.Bulkreassignrequestdto
-    if err := json.Unmarshal(bulkreassignrequestdtoJson, &bulkreassignrequestdto); err != nil {
+    var bulkReassignRequestDTO approvals.BulkReassignRequestDTO
+    if err := json.Unmarshal(bulkreassignrequestdtoJson, &bulkReassignRequestDTO); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -660,8 +684,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApprovalsAPI.MoveApprovalV1(context.Background()).Bulkreassignrequestdto(bulkreassignrequestdto).Execute()
-	  //resp, r, err := apiClient.ApprovalsAPI.MoveApprovalV1(context.Background()).Bulkreassignrequestdto(bulkreassignrequestdto).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.MoveApprovalV1(context.Background()).BulkReassignRequestDTO(bulkReassignRequestDTO).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.MoveApprovalV1(context.Background()).BulkReassignRequestDTO(bulkReassignRequestDTO).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.MoveApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -698,11 +722,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **approvalconfig** | [**Approvalconfig**](../models/approvalconfig) |  | 
+ **approvalConfig** | [**ApprovalConfig**](../models/approval-config) |  | 
 
 ### Return type
 
-[**Approvalconfig**](../models/approvalconfig)
+[**ApprovalConfig**](../models/approval-config)
 
 ### HTTP request headers
 
@@ -726,10 +750,57 @@ import (
 func main() {
     id := `ACCESS_REQUEST_APPROVAL` // string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
     scope := `APPROVAL_TYPE` // string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # string | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
-    approvalconfigJson := []byte(``) // Approvalconfig | 
+    approvalconfigJson := []byte(`{
+          "timeoutConfig" : {
+            "daysUntilTimeout" : 2,
+            "enabled" : true,
+            "timeoutResult" : "EXPIRED"
+          },
+          "requiresComment" : "ALL",
+          "cronTimezone" : {
+            "offset" : "",
+            "location" : "America/New_York"
+          },
+          "fallbackApprover" : {
+            "identityID" : "fdfda352157d4cc79bb749953131b457",
+            "type" : "MANAGER_OF"
+          },
+          "reminderConfig" : {
+            "reminderCronSchedule" : "1 1 1 1 1",
+            "daysUntilFirstReminder" : 0,
+            "maxReminders" : 5,
+            "enabled" : false
+          },
+          "circumventApprovalProcess" : false,
+          "escalationConfig" : {
+            "escalationCronSchedule" : "*/5 * * * *",
+            "escalationChain" : [ {
+              "tier" : 1,
+              "identityType" : "IDENTITY",
+              "identityId" : "fdfda352157d4cc79bb749953131b457"
+            }, {
+              "tier" : 1,
+              "identityType" : "IDENTITY",
+              "identityId" : "fdfda352157d4cc79bb749953131b457"
+            } ],
+            "daysUntilFirstEscalation" : 2,
+            "enabled" : true
+          },
+          "serialChain" : [ {
+            "tier" : 1,
+            "identityType" : "IDENTITY",
+            "identityId" : "2c9180858090ea8801809a0465e829da"
+          }, {
+            "tier" : 1,
+            "identityType" : "IDENTITY",
+            "identityId" : "2c9180858090ea8801809a0465e829da"
+          } ],
+          "machineIdentityManagerAssignment" : "MACHINE_IDENTITY_OWNER",
+          "autoApprove" : "OFF"
+        }`) // ApprovalConfig | 
 
-    var approvalconfig approvals.Approvalconfig
-    if err := json.Unmarshal(approvalconfigJson, &approvalconfig); err != nil {
+    var approvalConfig approvals.ApprovalConfig
+    if err := json.Unmarshal(approvalconfigJson, &approvalConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -737,13 +808,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApprovalsAPI.PutApprovalsConfigV1(context.Background(), id, scope).Approvalconfig(approvalconfig).Execute()
-	  //resp, r, err := apiClient.ApprovalsAPI.PutApprovalsConfigV1(context.Background(), id, scope).Approvalconfig(approvalconfig).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.PutApprovalsConfigV1(context.Background(), id, scope).ApprovalConfig(approvalConfig).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.PutApprovalsConfigV1(context.Background(), id, scope).ApprovalConfig(approvalConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.PutApprovalsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutApprovalsConfigV1`: Approvalconfig
+    // response from `PutApprovalsConfigV1`: ApprovalConfig
     fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.PutApprovalsConfigV1`: %v\n", resp)
 }
 ```
@@ -767,7 +838,7 @@ Other parameters are passed through a pointer to a apiRejectApprovalInBulkV1Requ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkrejectrequestdto** | [**Bulkrejectrequestdto**](../models/bulkrejectrequestdto) |  | 
+ **bulkRejectRequestDTO** | [**BulkRejectRequestDTO**](../models/bulk-reject-request-dto) |  | 
 
 ### Return type
 
@@ -793,10 +864,13 @@ import (
 )
 
 func main() {
-    bulkrejectrequestdtoJson := []byte(``) // Bulkrejectrequestdto | 
+    bulkrejectrequestdtoJson := []byte(`{
+          "comment" : "Bulk reject by admin",
+          "approvalIds" : [ "38453251-6be2-5f8f-df93-5ce19e295837", "38453251-6be2-5f8f-df93-5ce19e295838" ]
+        }`) // BulkRejectRequestDTO | 
 
-    var bulkrejectrequestdto approvals.Bulkrejectrequestdto
-    if err := json.Unmarshal(bulkrejectrequestdtoJson, &bulkrejectrequestdto); err != nil {
+    var bulkRejectRequestDTO approvals.BulkRejectRequestDTO
+    if err := json.Unmarshal(bulkrejectrequestdtoJson, &bulkRejectRequestDTO); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -804,8 +878,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApprovalsAPI.RejectApprovalInBulkV1(context.Background()).Bulkrejectrequestdto(bulkrejectrequestdto).Execute()
-	  //resp, r, err := apiClient.ApprovalsAPI.RejectApprovalInBulkV1(context.Background()).Bulkrejectrequestdto(bulkrejectrequestdto).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.RejectApprovalInBulkV1(context.Background()).BulkRejectRequestDTO(bulkRejectRequestDTO).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.RejectApprovalInBulkV1(context.Background()).BulkRejectRequestDTO(bulkRejectRequestDTO).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.RejectApprovalInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -840,7 +914,7 @@ Other parameters are passed through a pointer to a apiRejectApprovalV1Request st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **approvalrejectrequest** | [**Approvalrejectrequest**](../models/approvalrejectrequest) |  | 
+ **approvalRejectRequest** | [**ApprovalRejectRequest**](../models/approval-reject-request) |  | 
 
 ### Return type
 
@@ -867,14 +941,16 @@ import (
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to reject. # string | Approval ID that correlates to an existing approval request that a user wants to reject.
-    approvalrejectrequestJson := []byte(``) // Approvalrejectrequest |  (optional)
+    approvalrejectrequestJson := []byte(`{
+          "comment" : "string"
+        }`) // ApprovalRejectRequest |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     r, err := apiClient.ApprovalsAPI.RejectApprovalV1(context.Background(), id).Execute()
-	  //r, err := apiClient.ApprovalsAPI.RejectApprovalV1(context.Background(), id).Approvalrejectrequest(approvalrejectrequest).Execute()
+	  //r, err := apiClient.ApprovalsAPI.RejectApprovalV1(context.Background(), id).ApprovalRejectRequest(approvalRejectRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.RejectApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -907,7 +983,7 @@ Other parameters are passed through a pointer to a apiUpdateApprovalsAttributesV
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **approvalattributesrequest** | [**Approvalattributesrequest**](../models/approvalattributesrequest) |  | 
+ **approvalAttributesRequest** | [**ApprovalAttributesRequest**](../models/approval-attributes-request) |  | 
 
 ### Return type
 
@@ -934,10 +1010,18 @@ import (
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to change the attributes of. # string | Approval ID that correlates to an existing approval request that a user wants to change the attributes of.
-    approvalattributesrequestJson := []byte(``) // Approvalattributesrequest | 
+    approvalattributesrequestJson := []byte(`{
+          "removeAttributeKeys" : [ "string" ],
+          "comment" : "comment",
+          "additionalAttributes" : {
+            "additionalProp1" : "string",
+            "additionalProp2" : "string",
+            "additionalProp3" : "string"
+          }
+        }`) // ApprovalAttributesRequest | 
 
-    var approvalattributesrequest approvals.Approvalattributesrequest
-    if err := json.Unmarshal(approvalattributesrequestJson, &approvalattributesrequest); err != nil {
+    var approvalAttributesRequest approvals.ApprovalAttributesRequest
+    if err := json.Unmarshal(approvalattributesrequestJson, &approvalAttributesRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -945,8 +1029,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsAttributesV1(context.Background(), id).Approvalattributesrequest(approvalattributesrequest).Execute()
-	  //resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsAttributesV1(context.Background(), id).Approvalattributesrequest(approvalattributesrequest).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsAttributesV1(context.Background(), id).ApprovalAttributesRequest(approvalAttributesRequest).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsAttributesV1(context.Background(), id).ApprovalAttributesRequest(approvalAttributesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.UpdateApprovalsAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -980,7 +1064,7 @@ Other parameters are passed through a pointer to a apiUpdateApprovalsCommentsV1R
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **approvalcommentsrequest** | [**Approvalcommentsrequest**](../models/approvalcommentsrequest) |  | 
+ **approvalCommentsRequest** | [**ApprovalCommentsRequest**](../models/approval-comments-request) |  | 
 
 ### Return type
 
@@ -1007,10 +1091,12 @@ import (
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to add a comment to. # string | Approval ID that correlates to an existing approval request that a user wants to add a comment to.
-    approvalcommentsrequestJson := []byte(``) // Approvalcommentsrequest | 
+    approvalcommentsrequestJson := []byte(`{
+          "comment" : "Approval comment."
+        }`) // ApprovalCommentsRequest | 
 
-    var approvalcommentsrequest approvals.Approvalcommentsrequest
-    if err := json.Unmarshal(approvalcommentsrequestJson, &approvalcommentsrequest); err != nil {
+    var approvalCommentsRequest approvals.ApprovalCommentsRequest
+    if err := json.Unmarshal(approvalcommentsrequestJson, &approvalCommentsRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1018,8 +1104,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsCommentsV1(context.Background(), id).Approvalcommentsrequest(approvalcommentsrequest).Execute()
-	  //resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsCommentsV1(context.Background(), id).Approvalcommentsrequest(approvalcommentsrequest).Execute()
+    resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsCommentsV1(context.Background(), id).ApprovalCommentsRequest(approvalCommentsRequest).Execute()
+	  //resp, r, err := apiClient.ApprovalsAPI.UpdateApprovalsCommentsV1(context.Background(), id).ApprovalCommentsRequest(approvalCommentsRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.UpdateApprovalsCommentsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1053,7 +1139,7 @@ Other parameters are passed through a pointer to a apiUpdateApprovalsReassignV1R
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **approvalreassignrequest** | [**Approvalreassignrequest**](../models/approvalreassignrequest) |  | 
+ **approvalReassignRequest** | [**ApprovalReassignRequest**](../models/approval-reassign-request) |  | 
 
 ### Return type
 
@@ -1080,10 +1166,14 @@ import (
 
 func main() {
     id := `38453251-6be2-5f8f-df93-5ce19e295837` // string | Approval ID that correlates to an existing approval request that a user wants to reassign. # string | Approval ID that correlates to an existing approval request that a user wants to reassign.
-    approvalreassignrequestJson := []byte(``) // Approvalreassignrequest | 
+    approvalreassignrequestJson := []byte(`{
+          "reassignTo" : "152354832eb6f8f539fd738592e19ec5",
+          "comment" : "comment",
+          "reassignFrom" : "384532516be25f8fdf935ce19e295837"
+        }`) // ApprovalReassignRequest | 
 
-    var approvalreassignrequest approvals.Approvalreassignrequest
-    if err := json.Unmarshal(approvalreassignrequestJson, &approvalreassignrequest); err != nil {
+    var approvalReassignRequest approvals.ApprovalReassignRequest
+    if err := json.Unmarshal(approvalreassignrequestJson, &approvalReassignRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1091,8 +1181,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ApprovalsAPI.UpdateApprovalsReassignV1(context.Background(), id).Approvalreassignrequest(approvalreassignrequest).Execute()
-	  //r, err := apiClient.ApprovalsAPI.UpdateApprovalsReassignV1(context.Background(), id).Approvalreassignrequest(approvalreassignrequest).Execute()
+    r, err := apiClient.ApprovalsAPI.UpdateApprovalsReassignV1(context.Background(), id).ApprovalReassignRequest(approvalReassignRequest).Execute()
+	  //r, err := apiClient.ApprovalsAPI.UpdateApprovalsReassignV1(context.Background(), id).ApprovalReassignRequest(approvalReassignRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.UpdateApprovalsReassignV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

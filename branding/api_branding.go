@@ -85,7 +85,7 @@ func (r ApiCreateBrandingItemV1Request) FileStandard(fileStandard *os.File) ApiC
 	return r
 }
 
-func (r ApiCreateBrandingItemV1Request) Execute() (*Brandingitem, *http.Response, error) {
+func (r ApiCreateBrandingItemV1Request) Execute() (*BrandingItem, *http.Response, error) {
 	return r.ApiService.CreateBrandingItemV1Execute(r)
 }
 
@@ -105,13 +105,13 @@ func (a *BrandingAPIService) CreateBrandingItemV1(ctx context.Context) ApiCreate
 }
 
 // Execute executes the request
-//  @return Brandingitem
-func (a *BrandingAPIService) CreateBrandingItemV1Execute(r ApiCreateBrandingItemV1Request) (*Brandingitem, *http.Response, error) {
+//  @return BrandingItem
+func (a *BrandingAPIService) CreateBrandingItemV1Execute(r ApiCreateBrandingItemV1Request) (*BrandingItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Brandingitem
+		localVarReturnValue  *BrandingItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingAPIService.CreateBrandingItemV1")
@@ -203,7 +203,7 @@ func (a *BrandingAPIService) CreateBrandingItemV1Execute(r ApiCreateBrandingItem
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -225,7 +225,7 @@ func (a *BrandingAPIService) CreateBrandingItemV1Execute(r ApiCreateBrandingItem
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -247,7 +247,7 @@ func (a *BrandingAPIService) CreateBrandingItemV1Execute(r ApiCreateBrandingItem
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -358,7 +358,7 @@ func (a *BrandingAPIService) DeleteBrandingV1Execute(r ApiDeleteBrandingV1Reques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -380,7 +380,7 @@ func (a *BrandingAPIService) DeleteBrandingV1Execute(r ApiDeleteBrandingV1Reques
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -391,7 +391,7 @@ func (a *BrandingAPIService) DeleteBrandingV1Execute(r ApiDeleteBrandingV1Reques
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -413,7 +413,7 @@ func (a *BrandingAPIService) DeleteBrandingV1Execute(r ApiDeleteBrandingV1Reques
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -433,7 +433,7 @@ type ApiGetBrandingListV1Request struct {
 	ApiService *BrandingAPIService
 }
 
-func (r ApiGetBrandingListV1Request) Execute() ([]Brandingitem, *http.Response, error) {
+func (r ApiGetBrandingListV1Request) Execute() ([]BrandingItem, *http.Response, error) {
 	return r.ApiService.GetBrandingListV1Execute(r)
 }
 
@@ -453,13 +453,13 @@ func (a *BrandingAPIService) GetBrandingListV1(ctx context.Context) ApiGetBrandi
 }
 
 // Execute executes the request
-//  @return []Brandingitem
-func (a *BrandingAPIService) GetBrandingListV1Execute(r ApiGetBrandingListV1Request) ([]Brandingitem, *http.Response, error) {
+//  @return []BrandingItem
+func (a *BrandingAPIService) GetBrandingListV1Execute(r ApiGetBrandingListV1Request) ([]BrandingItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Brandingitem
+		localVarReturnValue  []BrandingItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingAPIService.GetBrandingListV1")
@@ -513,7 +513,7 @@ func (a *BrandingAPIService) GetBrandingListV1Execute(r ApiGetBrandingListV1Requ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -535,7 +535,7 @@ func (a *BrandingAPIService) GetBrandingListV1Execute(r ApiGetBrandingListV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -557,7 +557,7 @@ func (a *BrandingAPIService) GetBrandingListV1Execute(r ApiGetBrandingListV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -587,7 +587,7 @@ type ApiGetBrandingV1Request struct {
 	name string
 }
 
-func (r ApiGetBrandingV1Request) Execute() (*Brandingitem, *http.Response, error) {
+func (r ApiGetBrandingV1Request) Execute() (*BrandingItem, *http.Response, error) {
 	return r.ApiService.GetBrandingV1Execute(r)
 }
 
@@ -609,13 +609,13 @@ func (a *BrandingAPIService) GetBrandingV1(ctx context.Context, name string) Api
 }
 
 // Execute executes the request
-//  @return Brandingitem
-func (a *BrandingAPIService) GetBrandingV1Execute(r ApiGetBrandingV1Request) (*Brandingitem, *http.Response, error) {
+//  @return BrandingItem
+func (a *BrandingAPIService) GetBrandingV1Execute(r ApiGetBrandingV1Request) (*BrandingItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Brandingitem
+		localVarReturnValue  *BrandingItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingAPIService.GetBrandingV1")
@@ -670,7 +670,7 @@ func (a *BrandingAPIService) GetBrandingV1Execute(r ApiGetBrandingV1Request) (*B
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -692,7 +692,7 @@ func (a *BrandingAPIService) GetBrandingV1Execute(r ApiGetBrandingV1Request) (*B
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -703,7 +703,7 @@ func (a *BrandingAPIService) GetBrandingV1Execute(r ApiGetBrandingV1Request) (*B
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -725,7 +725,7 @@ func (a *BrandingAPIService) GetBrandingV1Execute(r ApiGetBrandingV1Request) (*B
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -811,7 +811,7 @@ func (r ApiSetBrandingItemV1Request) FileStandard(fileStandard *os.File) ApiSetB
 	return r
 }
 
-func (r ApiSetBrandingItemV1Request) Execute() (*Brandingitem, *http.Response, error) {
+func (r ApiSetBrandingItemV1Request) Execute() (*BrandingItem, *http.Response, error) {
 	return r.ApiService.SetBrandingItemV1Execute(r)
 }
 
@@ -833,13 +833,13 @@ func (a *BrandingAPIService) SetBrandingItemV1(ctx context.Context, name string)
 }
 
 // Execute executes the request
-//  @return Brandingitem
-func (a *BrandingAPIService) SetBrandingItemV1Execute(r ApiSetBrandingItemV1Request) (*Brandingitem, *http.Response, error) {
+//  @return BrandingItem
+func (a *BrandingAPIService) SetBrandingItemV1Execute(r ApiSetBrandingItemV1Request) (*BrandingItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Brandingitem
+		localVarReturnValue  *BrandingItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingAPIService.SetBrandingItemV1")
@@ -932,7 +932,7 @@ func (a *BrandingAPIService) SetBrandingItemV1Execute(r ApiSetBrandingItemV1Requ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -954,7 +954,7 @@ func (a *BrandingAPIService) SetBrandingItemV1Execute(r ApiSetBrandingItemV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -965,7 +965,7 @@ func (a *BrandingAPIService) SetBrandingItemV1Execute(r ApiSetBrandingItemV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -987,7 +987,7 @@ func (a *BrandingAPIService) SetBrandingItemV1Execute(r ApiSetBrandingItemV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

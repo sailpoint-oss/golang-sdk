@@ -29,7 +29,7 @@ type ApiGetJitActivationConfigV1Request struct {
 	configType string
 }
 
-func (r ApiGetJitActivationConfigV1Request) Execute() (*Jitactivationconfigresponse, *http.Response, error) {
+func (r ApiGetJitActivationConfigV1Request) Execute() (*JITActivationConfigResponse, *http.Response, error) {
 	return r.ApiService.GetJitActivationConfigV1Execute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *JITAccessAPIService) GetJitActivationConfigV1(ctx context.Context, conf
 }
 
 // Execute executes the request
-//  @return Jitactivationconfigresponse
-func (a *JITAccessAPIService) GetJitActivationConfigV1Execute(r ApiGetJitActivationConfigV1Request) (*Jitactivationconfigresponse, *http.Response, error) {
+//  @return JITActivationConfigResponse
+func (a *JITAccessAPIService) GetJitActivationConfigV1Execute(r ApiGetJitActivationConfigV1Request) (*JITActivationConfigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Jitactivationconfigresponse
+		localVarReturnValue  *JITActivationConfigResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JITAccessAPIService.GetJitActivationConfigV1")
@@ -117,7 +117,7 @@ func (a *JITAccessAPIService) GetJitActivationConfigV1Execute(r ApiGetJitActivat
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -139,7 +139,7 @@ func (a *JITAccessAPIService) GetJitActivationConfigV1Execute(r ApiGetJitActivat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -150,7 +150,7 @@ func (a *JITAccessAPIService) GetJitActivationConfigV1Execute(r ApiGetJitActivat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -172,7 +172,7 @@ func (a *JITAccessAPIService) GetJitActivationConfigV1Execute(r ApiGetJitActivat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -200,15 +200,15 @@ type ApiPatchJitActivationConfigV1Request struct {
 	ctx context.Context
 	ApiService *JITAccessAPIService
 	configType string
-	jitaccessoperationrequest *[]Jitaccessoperationrequest
+	jitAccessOperationRequest *[]JitAccessOperationRequest
 }
 
-func (r ApiPatchJitActivationConfigV1Request) Jitaccessoperationrequest(jitaccessoperationrequest []Jitaccessoperationrequest) ApiPatchJitActivationConfigV1Request {
-	r.jitaccessoperationrequest = &jitaccessoperationrequest
+func (r ApiPatchJitActivationConfigV1Request) JitAccessOperationRequest(jitAccessOperationRequest []JitAccessOperationRequest) ApiPatchJitActivationConfigV1Request {
+	r.jitAccessOperationRequest = &jitAccessOperationRequest
 	return r
 }
 
-func (r ApiPatchJitActivationConfigV1Request) Execute() (*Jitactivationconfigresponse, *http.Response, error) {
+func (r ApiPatchJitActivationConfigV1Request) Execute() (*JITActivationConfigResponse, *http.Response, error) {
 	return r.ApiService.PatchJitActivationConfigV1Execute(r)
 }
 
@@ -235,13 +235,13 @@ func (a *JITAccessAPIService) PatchJitActivationConfigV1(ctx context.Context, co
 }
 
 // Execute executes the request
-//  @return Jitactivationconfigresponse
-func (a *JITAccessAPIService) PatchJitActivationConfigV1Execute(r ApiPatchJitActivationConfigV1Request) (*Jitactivationconfigresponse, *http.Response, error) {
+//  @return JITActivationConfigResponse
+func (a *JITAccessAPIService) PatchJitActivationConfigV1Execute(r ApiPatchJitActivationConfigV1Request) (*JITActivationConfigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Jitactivationconfigresponse
+		localVarReturnValue  *JITActivationConfigResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JITAccessAPIService.PatchJitActivationConfigV1")
@@ -255,11 +255,11 @@ func (a *JITAccessAPIService) PatchJitActivationConfigV1Execute(r ApiPatchJitAct
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jitaccessoperationrequest == nil {
-		return localVarReturnValue, nil, reportError("jitaccessoperationrequest is required and must be specified")
+	if r.jitAccessOperationRequest == nil {
+		return localVarReturnValue, nil, reportError("jitAccessOperationRequest is required and must be specified")
 	}
-	if len(*r.jitaccessoperationrequest) < 1 {
-		return localVarReturnValue, nil, reportError("jitaccessoperationrequest must have at least 1 elements")
+	if len(*r.jitAccessOperationRequest) < 1 {
+		return localVarReturnValue, nil, reportError("jitAccessOperationRequest must have at least 1 elements")
 	}
 
 	// to determine the Content-Type header
@@ -280,7 +280,7 @@ func (a *JITAccessAPIService) PatchJitActivationConfigV1Execute(r ApiPatchJitAct
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jitaccessoperationrequest
+	localVarPostBody = r.jitAccessOperationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -304,7 +304,7 @@ func (a *JITAccessAPIService) PatchJitActivationConfigV1Execute(r ApiPatchJitAct
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -326,7 +326,7 @@ func (a *JITAccessAPIService) PatchJitActivationConfigV1Execute(r ApiPatchJitAct
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -337,7 +337,7 @@ func (a *JITAccessAPIService) PatchJitActivationConfigV1Execute(r ApiPatchJitAct
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -359,7 +359,7 @@ func (a *JITAccessAPIService) PatchJitActivationConfigV1Execute(r ApiPatchJitAct
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

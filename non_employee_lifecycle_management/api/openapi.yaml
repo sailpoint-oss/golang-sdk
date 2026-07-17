@@ -153,14 +153,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/nonemployeerecord'
+                  $ref: '#/components/schemas/NonEmployeeRecord'
                 type: array
           description: Non-Employee record objects
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -184,7 +184,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -209,7 +209,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -229,7 +229,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/nonemployeerequestbody'
+              $ref: '#/components/schemas/NonEmployeeRequestBody'
         description: Non-Employee record creation request body.
         required: true
       responses:
@@ -237,13 +237,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeerecord'
+                $ref: '#/components/schemas/NonEmployeeRecord'
           description: Created non-employee record.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -267,7 +267,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -292,7 +292,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -328,7 +328,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -352,7 +352,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -377,7 +377,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -409,13 +409,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeerecord'
+                $ref: '#/components/schemas/NonEmployeeRecord'
           description: Non-Employee record object
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -439,7 +439,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -464,7 +464,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -503,7 +503,7 @@ paths:
               value: 2019-08-23T18:40:35.772Z
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: "A list of non-employee update operations according to the [JSON\
           \ Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted\
@@ -515,13 +515,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeerecord'
+                $ref: '#/components/schemas/NonEmployeeRecord'
           description: A patched non-employee record.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -545,7 +545,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -563,7 +563,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -588,7 +588,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -620,7 +620,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/nonemployeerequestbody'
+              $ref: '#/components/schemas/NonEmployeeRequestBody'
         description: Non-employee record creation request body. Attributes are restricted
           by user type. Owner of source can update end date. Organization admins can
           update all available fields.
@@ -630,13 +630,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeerecord'
+                $ref: '#/components/schemas/NonEmployeeRecord'
           description: An updated non-employee record.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -660,7 +660,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -678,7 +678,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -703,7 +703,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -732,7 +732,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -756,7 +756,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -781,7 +781,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -887,14 +887,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/nonemployeerequest'
+                  $ref: '#/components/schemas/NonEmployeeRequest'
                 type: array
           description: List of non-employee request objects.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -918,7 +918,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -943,7 +943,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -963,7 +963,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/nonemployeerequestbody'
+              $ref: '#/components/schemas/NonEmployeeRequestBody'
         description: Non-Employee creation request body
         required: true
       responses:
@@ -971,7 +971,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeerequest'
+                $ref: '#/components/schemas/NonEmployeeRequest'
           description: Non-Employee request creation object
         "400":
           content:
@@ -997,7 +997,7 @@ paths:
                       text: Unable to create Non-Employee because the accountName
                         "existed" is already being used.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1021,7 +1021,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1046,7 +1046,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1082,7 +1082,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1106,7 +1106,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1124,7 +1124,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1149,7 +1149,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1184,13 +1184,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeerequest'
+                $ref: '#/components/schemas/NonEmployeeRequest'
           description: Non-Employee request object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1214,7 +1214,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1232,7 +1232,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1257,7 +1257,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1296,13 +1296,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeerequestsummary'
+                $ref: '#/components/schemas/NonEmployeeRequestSummary'
           description: Non-Employee request summary object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1326,7 +1326,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1351,7 +1351,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1457,14 +1457,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/nonemployeesourcewithnecount'
+                  $ref: '#/components/schemas/NonEmployeeSourceWithNECount'
                 type: array
           description: List of non-employee sources objects.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1488,7 +1488,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1513,7 +1513,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1533,7 +1533,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/nonemployeesourcerequestbody'
+              $ref: '#/components/schemas/NonEmployeeSourceRequestBody'
         description: Non-Employee source creation request body.
         required: true
       responses:
@@ -1541,13 +1541,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeesourcewithcloudexternalid'
+                $ref: '#/components/schemas/NonEmployeeSourceWithCloudExternalId'
           description: Created non-employee source.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1571,7 +1571,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1596,7 +1596,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1633,7 +1633,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1657,7 +1657,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1682,7 +1682,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1716,13 +1716,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeesource'
+                $ref: '#/components/schemas/NonEmployeeSource'
           description: Non-Employee source object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1746,7 +1746,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1771,7 +1771,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1813,7 +1813,7 @@ paths:
               - 48b1f463c9e8427db5a5071bd81914b8
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: "A list of non-employee source update operations according to\
           \ the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
@@ -1823,13 +1823,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeesource'
+                $ref: '#/components/schemas/NonEmployeeSource'
           description: A patched non-employee source object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1853,7 +1853,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1878,7 +1878,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1918,7 +1918,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1942,7 +1942,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1960,7 +1960,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1985,7 +1985,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2022,14 +2022,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeebulkuploadjob'
+                $ref: '#/components/schemas/NonEmployeeBulkUploadJob'
           description: The CSV was accepted to be bulk inserted now or at a later
             time.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: |
             Client Error - Returned if the request body is invalid.
             The response body will contain the list of specific errors with one on each line.
@@ -2055,7 +2055,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2073,7 +2073,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2098,7 +2098,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2131,13 +2131,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeebulkuploadstatus'
+                $ref: '#/components/schemas/NonEmployeeBulkUploadStatus'
           description: "Status of the newest bulk-upload job, if any."
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2161,7 +2161,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2186,7 +2186,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2224,7 +2224,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2248,7 +2248,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2266,7 +2266,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2291,7 +2291,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2399,14 +2399,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/nonemployeeapprovalitem'
+                  $ref: '#/components/schemas/NonEmployeeApprovalItem'
                 type: array
           description: List of approval items.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2430,7 +2430,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2455,7 +2455,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2500,13 +2500,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeeapprovalitemdetail'
+                $ref: '#/components/schemas/NonEmployeeApprovalItemDetail'
           description: Non-Employee approval item object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2530,7 +2530,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2555,7 +2555,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2584,20 +2584,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/nonemployeeapprovaldecision'
+              $ref: '#/components/schemas/NonEmployeeApprovalDecision'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeeapprovalitem'
+                $ref: '#/components/schemas/NonEmployeeApprovalItem'
           description: Non-Employee approval item object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2621,7 +2621,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2646,7 +2646,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2675,20 +2675,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/nonemployeerejectapprovaldecision'
+              $ref: '#/components/schemas/NonEmployeeRejectApprovalDecision'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeeapprovalitem'
+                $ref: '#/components/schemas/NonEmployeeApprovalItem'
           description: Non-Employee approval item object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2712,7 +2712,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2737,7 +2737,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2772,13 +2772,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeeapprovalsummary'
+                $ref: '#/components/schemas/NonEmployeeApprovalSummary'
           description: summary of non-employee approval requests
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2802,7 +2802,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2827,7 +2827,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2862,7 +2862,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2886,7 +2886,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2911,7 +2911,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2944,7 +2944,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/nonemployeeschemaattribute'
+                  $ref: '#/components/schemas/NonEmployeeSchemaAttribute'
                 maxItems: 18
                 type: array
           description: A list of Schema Attributes
@@ -2952,7 +2952,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2976,7 +2976,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2994,7 +2994,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -3019,7 +3019,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3050,20 +3050,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/nonemployeeschemaattributebody'
+              $ref: '#/components/schemas/NonEmployeeSchemaAttributeBody'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeeschemaattribute'
+                $ref: '#/components/schemas/NonEmployeeSchemaAttribute'
           description: Schema Attribute created.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -3087,7 +3087,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -3112,7 +3112,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3158,7 +3158,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -3182,7 +3182,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -3207,7 +3207,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3249,13 +3249,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeeschemaattribute'
+                $ref: '#/components/schemas/NonEmployeeSchemaAttribute'
           description: The Schema Attribute
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -3279,7 +3279,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -3304,7 +3304,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3351,7 +3351,7 @@ paths:
                 new attribute label: null
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: "A list of schema attribute update operations according to the\
           \ [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following\
@@ -3363,13 +3363,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nonemployeeschemaattribute'
+                $ref: '#/components/schemas/NonEmployeeSchemaAttribute'
           description: The Schema Attribute was successfully patched.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -3393,7 +3393,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -3411,7 +3411,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -3436,7 +3436,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3504,7 +3504,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -3528,7 +3528,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -3546,7 +3546,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -3571,10 +3571,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    nonemployeerecord:
+    NonEmployeeRecord:
       example:
         sourceId: 2c91808568c529c60168cca6f90c1313
         lastName: Smith
@@ -3654,7 +3654,7 @@ components:
           format: date-time
           type: string
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -3666,7 +3666,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -3679,7 +3679,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -3687,7 +3687,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -3721,17 +3721,29 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    nonemployeerequestbody:
+    NonEmployeeRequestBody:
+      example:
+        sourceId: 2c91808568c529c60168cca6f90c1313
+        firstName: William
+        lastName: Smith
+        manager: jane.doe
+        data:
+          description: Auditing
+        accountName: william.smith
+        phone: "5125555555"
+        endDate: 2021-03-25T00:00:00-05:00
+        email: william.smith@example.com
+        startDate: 2020-03-24T00:00:00-05:00
       properties:
         accountName:
           description: Requested identity account name.
@@ -3791,8 +3803,12 @@ components:
       - sourceId
       - startDate
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -3811,13 +3827,13 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    nonemployeesourcelite:
+    NonEmployeeSourceLite:
       example:
         sourceId: 2c91808568c529c60168cca6f90c1313
         name: Retail
@@ -3842,7 +3858,7 @@ components:
           example: Source description
           type: string
       type: object
-    nonemployeeidentitydtotype:
+    NonEmployeeIdentityDtoType:
       description: Identifies if the identity is a normal identity or a governance
         group
       enum:
@@ -3850,19 +3866,19 @@ components:
       - IDENTITY
       example: IDENTITY
       type: string
-    nonemployeeidentityreferencewithid:
+    NonEmployeeIdentityReferenceWithId:
       example:
         id: 5168015d32f890ca15812c9180835d2e
         type: IDENTITY
       properties:
         type:
-          $ref: '#/components/schemas/nonemployeeidentitydtotype'
+          $ref: '#/components/schemas/NonEmployeeIdentityDtoType'
         id:
           description: Identity id
           example: 5168015d32f890ca15812c9180835d2e
           type: string
       type: object
-    approvalstatus:
+    ApprovalStatus:
       description: Enum representing the non-employee request approval status
       enum:
       - APPROVED
@@ -3872,7 +3888,7 @@ components:
       - CANCELLED
       example: APPROVED
       type: string
-    nonemployeeapprovalitembase:
+    NonEmployeeApprovalItemBase:
       example:
         approver:
           id: 5168015d32f890ca15812c9180835d2e
@@ -3891,13 +3907,13 @@ components:
           format: UUID
           type: string
         approver:
-          $ref: '#/components/schemas/nonemployeeidentityreferencewithid'
+          $ref: '#/components/schemas/NonEmployeeIdentityReferenceWithId'
         accountName:
           description: Requested identity account name
           example: test.account
           type: string
         approvalStatus:
-          $ref: '#/components/schemas/approvalstatus'
+          $ref: '#/components/schemas/ApprovalStatus'
         approvalOrder:
           description: Approval order
           example: 1
@@ -3918,9 +3934,9 @@ components:
           format: date-time
           type: string
       type: object
-    nonemployeerequest:
+    NonEmployeeRequest:
       allOf:
-      - $ref: '#/components/schemas/nonemployeesourcelite'
+      - $ref: '#/components/schemas/NonEmployeeSourceLite'
       - properties:
           accountName:
             description: Requested identity account name.
@@ -3948,7 +3964,7 @@ components:
             example: jane.doe
             type: string
           nonEmployeeSource:
-            $ref: '#/components/schemas/nonemployeesourcelite'
+            $ref: '#/components/schemas/NonEmployeeSourceLite'
           data:
             additionalProperties:
               type: string
@@ -3960,10 +3976,10 @@ components:
           approvalItems:
             description: List of approval item for the request
             items:
-              $ref: '#/components/schemas/nonemployeeapprovalitembase'
+              $ref: '#/components/schemas/NonEmployeeApprovalItemBase'
             type: array
           approvalStatus:
-            $ref: '#/components/schemas/approvalstatus'
+            $ref: '#/components/schemas/ApprovalStatus'
           comment:
             description: Comment of requester
             example: approved
@@ -4040,7 +4056,7 @@ components:
         id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
         email: william.smith@example.com
         startDate: 2020-03-24T00:00:00-05:00
-    nonemployeerequestsummary:
+    NonEmployeeRequestSummary:
       example:
         approved: 2
         rejected: 2
@@ -4072,19 +4088,19 @@ components:
           format: int32
           type: integer
       type: object
-    nonemployeesource:
+    NonEmployeeSource:
       allOf:
-      - $ref: '#/components/schemas/nonemployeesourcelite'
+      - $ref: '#/components/schemas/NonEmployeeSourceLite'
       - properties:
           approvers:
             description: List of approvers
             items:
-              $ref: '#/components/schemas/nonemployeeidentityreferencewithid'
+              $ref: '#/components/schemas/NonEmployeeIdentityReferenceWithId'
             type: array
           accountManagers:
             description: List of account managers
             items:
-              $ref: '#/components/schemas/nonemployeeidentityreferencewithid'
+              $ref: '#/components/schemas/NonEmployeeIdentityReferenceWithId'
             type: array
           modified:
             description: When the request was last modified.
@@ -4114,9 +4130,9 @@ components:
           type: IDENTITY
         modified: 2019-08-23T18:52:59.162Z
         id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
-    nonemployeesourcewithnecount:
+    NonEmployeeSourceWithNECount:
       allOf:
-      - $ref: '#/components/schemas/nonemployeesource'
+      - $ref: '#/components/schemas/NonEmployeeSource'
       - properties:
           nonEmployeeCount:
             description: "Number of non-employee records associated with this source.\
@@ -4145,7 +4161,9 @@ components:
         modified: 2019-08-23T18:52:59.162Z
         id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
         nonEmployeeCount: 120
-    nonemployeeidnuserrequest:
+    NonEmployeeIdnUserRequest:
+      example:
+        id: 2c91808570313110017040b06f344ec9
       properties:
         id:
           description: Identity id.
@@ -4155,7 +4173,23 @@ components:
       required:
       - id
       type: object
-    nonemployeesourcerequestbody:
+    NonEmployeeSourceRequestBody:
+      example:
+        owner:
+          id: 2c91808570313110017040b06f344ec9
+        managementWorkgroup: "123299"
+        accountManagers:
+        - id: 2c91808570313110017040b06f344ec9
+        - id: 2c91808570313110017040b06f344ec9
+        - id: 2c91808570313110017040b06f344ec9
+        - id: 2c91808570313110017040b06f344ec9
+        - id: 2c91808570313110017040b06f344ec9
+        name: Retail
+        description: Source description
+        approvers:
+        - id: 2c91808570313110017040b06f344ec9
+        - id: 2c91808570313110017040b06f344ec9
+        - id: 2c91808570313110017040b06f344ec9
       properties:
         name:
           description: Name of non-employee source.
@@ -4166,7 +4200,7 @@ components:
           example: Source description
           type: string
         owner:
-          $ref: '#/components/schemas/nonemployeeidnuserrequest'
+          $ref: '#/components/schemas/NonEmployeeIdnUserRequest'
         managementWorkgroup:
           description: The ID for the management workgroup that contains source sub-admins
           example: "123299"
@@ -4174,13 +4208,13 @@ components:
         approvers:
           description: List of approvers.
           items:
-            $ref: '#/components/schemas/nonemployeeidnuserrequest'
+            $ref: '#/components/schemas/NonEmployeeIdnUserRequest'
           maxItems: 3
           type: array
         accountManagers:
           description: List of account managers.
           items:
-            $ref: '#/components/schemas/nonemployeeidnuserrequest'
+            $ref: '#/components/schemas/NonEmployeeIdnUserRequest'
           maxItems: 10
           type: array
       required:
@@ -4188,9 +4222,9 @@ components:
       - name
       - owner
       type: object
-    nonemployeesourcewithcloudexternalid:
+    NonEmployeeSourceWithCloudExternalId:
       allOf:
-      - $ref: '#/components/schemas/nonemployeesource'
+      - $ref: '#/components/schemas/NonEmployeeSource'
       - properties:
           cloudExternalId:
             description: Legacy ID used for sources from the V1 API. This attribute
@@ -4217,7 +4251,7 @@ components:
         modified: 2019-08-23T18:52:59.162Z
         cloudExternalId: "99999"
         id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
-    nonemployeebulkuploadjob:
+    NonEmployeeBulkUploadJob:
       example:
         sourceId: 2c91808568c529c60168cca6f90c1313
         created: 2019-08-23T18:52:59.162Z
@@ -4258,7 +4292,7 @@ components:
           example: PENDING
           type: string
       type: object
-    nonemployeebulkuploadstatus:
+    NonEmployeeBulkUploadStatus:
       example:
         status: PENDING
       properties:
@@ -4278,7 +4312,7 @@ components:
           example: PENDING
           type: string
       type: object
-    nonemployeerequestlite:
+    NonEmployeeRequestLite:
       example:
         requester:
           id: 5168015d32f890ca15812c9180835d2e
@@ -4291,14 +4325,14 @@ components:
           format: UUID
           type: string
         requester:
-          $ref: '#/components/schemas/nonemployeeidentityreferencewithid'
+          $ref: '#/components/schemas/NonEmployeeIdentityReferenceWithId'
       type: object
-    nonemployeeapprovalitem:
+    NonEmployeeApprovalItem:
       allOf:
-      - $ref: '#/components/schemas/nonemployeeapprovalitembase'
+      - $ref: '#/components/schemas/NonEmployeeApprovalItemBase'
       - properties:
           nonEmployeeRequest:
-            $ref: '#/components/schemas/nonemployeerequestlite'
+            $ref: '#/components/schemas/NonEmployeeRequestLite'
         type: object
       example:
         approver:
@@ -4316,7 +4350,7 @@ components:
             id: 5168015d32f890ca15812c9180835d2e
             type: IDENTITY
           id: ac110005-7156-1150-8171-5b292e3e0084
-    nonemployeeschemaattributetype:
+    NonEmployeeSchemaAttributeType:
       description: Enum representing the type of data a schema attribute accepts.
       enum:
       - TEXT
@@ -4324,7 +4358,7 @@ components:
       - IDENTITY
       example: TEXT
       type: string
-    nonemployeeschemaattribute:
+    NonEmployeeSchemaAttribute:
       example:
         system: true
         helpText: The unique identifier for the account
@@ -4359,7 +4393,7 @@ components:
           format: date-time
           type: string
         type:
-          $ref: '#/components/schemas/nonemployeeschemaattributetype'
+          $ref: '#/components/schemas/NonEmployeeSchemaAttributeType'
         label:
           description: Label displayed on the UI for this schema attribute.
           example: Account Name
@@ -4387,15 +4421,15 @@ components:
       - technicalName
       - type
       type: object
-    nonemployeesourcelitewithschemaattributes:
+    NonEmployeeSourceLiteWithSchemaAttributes:
       allOf:
-      - $ref: '#/components/schemas/nonemployeesourcelite'
+      - $ref: '#/components/schemas/NonEmployeeSourceLite'
       - properties:
           schemaAttributes:
             description: List of schema attributes associated with this non-employee
               source.
             items:
-              $ref: '#/components/schemas/nonemployeeschemaattribute'
+              $ref: '#/components/schemas/NonEmployeeSchemaAttribute'
             type: array
         type: object
       example:
@@ -4424,9 +4458,9 @@ components:
           type: TEXT
           technicalName: account.name
           required: true
-    nonemployeerequestwithoutapprovalitem:
+    NonEmployeeRequestWithoutApprovalItem:
       allOf:
-      - $ref: '#/components/schemas/nonemployeerequestlite'
+      - $ref: '#/components/schemas/NonEmployeeRequestLite'
       - properties:
           accountName:
             description: Requested identity account name.
@@ -4454,7 +4488,7 @@ components:
             example: jane.doe
             type: string
           nonEmployeeSource:
-            $ref: '#/components/schemas/nonemployeesourcelitewithschemaattributes'
+            $ref: '#/components/schemas/NonEmployeeSourceLiteWithSchemaAttributes'
           data:
             additionalProperties:
               type: string
@@ -4464,7 +4498,7 @@ components:
               description: Auditing
             type: object
           approvalStatus:
-            $ref: '#/components/schemas/approvalstatus'
+            $ref: '#/components/schemas/ApprovalStatus'
           comment:
             description: Comment of requester
             example: approved
@@ -4541,12 +4575,12 @@ components:
         id: ac110005-7156-1150-8171-5b292e3e0084
         email: william.smith@example.com
         startDate: 2020-03-24
-    nonemployeeapprovalitemdetail:
+    NonEmployeeApprovalItemDetail:
       allOf:
-      - $ref: '#/components/schemas/nonemployeeapprovalitembase'
+      - $ref: '#/components/schemas/NonEmployeeApprovalItemBase'
       - properties:
           nonEmployeeRequest:
-            $ref: '#/components/schemas/nonemployeerequestwithoutapprovalitem'
+            $ref: '#/components/schemas/NonEmployeeRequestWithoutApprovalItem'
         type: object
       example:
         approver:
@@ -4605,7 +4639,9 @@ components:
           id: ac110005-7156-1150-8171-5b292e3e0084
           email: william.smith@example.com
           startDate: 2020-03-24
-    nonemployeeapprovaldecision:
+    NonEmployeeApprovalDecision:
+      example:
+        comment: Approved by manager
       properties:
         comment:
           description: Comment on the approval item.
@@ -4613,7 +4649,9 @@ components:
           maxLength: 4000
           type: string
       type: object
-    nonemployeerejectapprovaldecision:
+    NonEmployeeRejectApprovalDecision:
+      example:
+        comment: approved
       properties:
         comment:
           description: Comment on the approval item.
@@ -4623,7 +4661,7 @@ components:
       required:
       - comment
       type: object
-    nonemployeeapprovalsummary:
+    NonEmployeeApprovalSummary:
       example:
         approved: 2
         rejected: 2
@@ -4645,7 +4683,14 @@ components:
           format: int32
           type: integer
       type: object
-    nonemployeeschemaattributebody:
+    NonEmployeeSchemaAttributeBody:
+      example:
+        helpText: The unique identifier for the account
+        label: Account Name
+        placeholder: Enter a unique user name for this account.
+        type: TEXT
+        technicalName: account.name
+        required: true
       properties:
         type:
           description: Type of the attribute. Only type 'TEXT' is supported for custom
@@ -4725,7 +4770,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description

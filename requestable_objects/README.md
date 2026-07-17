@@ -84,15 +84,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Identityreferencewithnameandemail](docs/Identityreferencewithnameandemail.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [IdentityReferenceWithNameAndEmail](docs/IdentityReferenceWithNameAndEmail.md)
  - [ListRequestableObjectsV1401Response](docs/ListRequestableObjectsV1401Response.md)
  - [ListRequestableObjectsV1429Response](docs/ListRequestableObjectsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Requestableobject](docs/Requestableobject.md)
- - [Requestableobjectrequeststatus](docs/Requestableobjectrequeststatus.md)
- - [Requestableobjecttype](docs/Requestableobjecttype.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [RequestableObject](docs/RequestableObject.md)
+ - [RequestableObjectRequestStatus](docs/RequestableObjectRequestStatus.md)
+ - [RequestableObjectType](docs/RequestableObjectType.md)
 
 
 ## Documentation For Authorization

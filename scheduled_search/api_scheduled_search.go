@@ -35,7 +35,7 @@ func (r ApiCreateScheduledSearchV1Request) CreateScheduledSearchV1Request(create
 	return r
 }
 
-func (r ApiCreateScheduledSearchV1Request) Execute() (*Scheduledsearch, *http.Response, error) {
+func (r ApiCreateScheduledSearchV1Request) Execute() (*ScheduledSearch, *http.Response, error) {
 	return r.ApiService.CreateScheduledSearchV1Execute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *ScheduledSearchAPIService) CreateScheduledSearchV1(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return Scheduledsearch
-func (a *ScheduledSearchAPIService) CreateScheduledSearchV1Execute(r ApiCreateScheduledSearchV1Request) (*Scheduledsearch, *http.Response, error) {
+//  @return ScheduledSearch
+func (a *ScheduledSearchAPIService) CreateScheduledSearchV1Execute(r ApiCreateScheduledSearchV1Request) (*ScheduledSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Scheduledsearch
+		localVarReturnValue  *ScheduledSearch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchAPIService.CreateScheduledSearchV1")
@@ -121,7 +121,7 @@ func (a *ScheduledSearchAPIService) CreateScheduledSearchV1Execute(r ApiCreateSc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -143,7 +143,7 @@ func (a *ScheduledSearchAPIService) CreateScheduledSearchV1Execute(r ApiCreateSc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -154,7 +154,7 @@ func (a *ScheduledSearchAPIService) CreateScheduledSearchV1Execute(r ApiCreateSc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -176,7 +176,7 @@ func (a *ScheduledSearchAPIService) CreateScheduledSearchV1Execute(r ApiCreateSc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -288,7 +288,7 @@ func (a *ScheduledSearchAPIService) DeleteScheduledSearchV1Execute(r ApiDeleteSc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -310,7 +310,7 @@ func (a *ScheduledSearchAPIService) DeleteScheduledSearchV1Execute(r ApiDeleteSc
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -321,7 +321,7 @@ func (a *ScheduledSearchAPIService) DeleteScheduledSearchV1Execute(r ApiDeleteSc
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -343,7 +343,7 @@ func (a *ScheduledSearchAPIService) DeleteScheduledSearchV1Execute(r ApiDeleteSc
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -364,7 +364,7 @@ type ApiGetScheduledSearchV1Request struct {
 	id string
 }
 
-func (r ApiGetScheduledSearchV1Request) Execute() (*Scheduledsearch, *http.Response, error) {
+func (r ApiGetScheduledSearchV1Request) Execute() (*ScheduledSearch, *http.Response, error) {
 	return r.ApiService.GetScheduledSearchV1Execute(r)
 }
 
@@ -386,13 +386,13 @@ func (a *ScheduledSearchAPIService) GetScheduledSearchV1(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return Scheduledsearch
-func (a *ScheduledSearchAPIService) GetScheduledSearchV1Execute(r ApiGetScheduledSearchV1Request) (*Scheduledsearch, *http.Response, error) {
+//  @return ScheduledSearch
+func (a *ScheduledSearchAPIService) GetScheduledSearchV1Execute(r ApiGetScheduledSearchV1Request) (*ScheduledSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Scheduledsearch
+		localVarReturnValue  *ScheduledSearch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchAPIService.GetScheduledSearchV1")
@@ -447,7 +447,7 @@ func (a *ScheduledSearchAPIService) GetScheduledSearchV1Execute(r ApiGetSchedule
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -469,7 +469,7 @@ func (a *ScheduledSearchAPIService) GetScheduledSearchV1Execute(r ApiGetSchedule
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -480,7 +480,7 @@ func (a *ScheduledSearchAPIService) GetScheduledSearchV1Execute(r ApiGetSchedule
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -502,7 +502,7 @@ func (a *ScheduledSearchAPIService) GetScheduledSearchV1Execute(r ApiGetSchedule
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -559,7 +559,7 @@ func (r ApiListScheduledSearchV1Request) Filters(filters string) ApiListSchedule
 	return r
 }
 
-func (r ApiListScheduledSearchV1Request) Execute() ([]Scheduledsearch, *http.Response, error) {
+func (r ApiListScheduledSearchV1Request) Execute() ([]ScheduledSearch, *http.Response, error) {
 	return r.ApiService.ListScheduledSearchV1Execute(r)
 }
 
@@ -580,13 +580,13 @@ func (a *ScheduledSearchAPIService) ListScheduledSearchV1(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return []Scheduledsearch
-func (a *ScheduledSearchAPIService) ListScheduledSearchV1Execute(r ApiListScheduledSearchV1Request) ([]Scheduledsearch, *http.Response, error) {
+//  @return []ScheduledSearch
+func (a *ScheduledSearchAPIService) ListScheduledSearchV1Execute(r ApiListScheduledSearchV1Request) ([]ScheduledSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Scheduledsearch
+		localVarReturnValue  []ScheduledSearch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchAPIService.ListScheduledSearchV1")
@@ -661,7 +661,7 @@ func (a *ScheduledSearchAPIService) ListScheduledSearchV1Execute(r ApiListSchedu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -683,7 +683,7 @@ func (a *ScheduledSearchAPIService) ListScheduledSearchV1Execute(r ApiListSchedu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -694,7 +694,7 @@ func (a *ScheduledSearchAPIService) ListScheduledSearchV1Execute(r ApiListSchedu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -716,7 +716,7 @@ func (a *ScheduledSearchAPIService) ListScheduledSearchV1Execute(r ApiListSchedu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -744,12 +744,12 @@ type ApiUnsubscribeScheduledSearchV1Request struct {
 	ctx context.Context
 	ApiService *ScheduledSearchAPIService
 	id string
-	typedreference *Typedreference
+	typedReference *TypedReference
 }
 
 // The recipient to be removed from the scheduled search. 
-func (r ApiUnsubscribeScheduledSearchV1Request) Typedreference(typedreference Typedreference) ApiUnsubscribeScheduledSearchV1Request {
-	r.typedreference = &typedreference
+func (r ApiUnsubscribeScheduledSearchV1Request) TypedReference(typedReference TypedReference) ApiUnsubscribeScheduledSearchV1Request {
+	r.typedReference = &typedReference
 	return r
 }
 
@@ -794,8 +794,8 @@ func (a *ScheduledSearchAPIService) UnsubscribeScheduledSearchV1Execute(r ApiUns
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.typedreference == nil {
-		return nil, reportError("typedreference is required and must be specified")
+	if r.typedReference == nil {
+		return nil, reportError("typedReference is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -816,7 +816,7 @@ func (a *ScheduledSearchAPIService) UnsubscribeScheduledSearchV1Execute(r ApiUns
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.typedreference
+	localVarPostBody = r.typedReference
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -840,7 +840,7 @@ func (a *ScheduledSearchAPIService) UnsubscribeScheduledSearchV1Execute(r ApiUns
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -851,7 +851,7 @@ func (a *ScheduledSearchAPIService) UnsubscribeScheduledSearchV1Execute(r ApiUns
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -862,7 +862,7 @@ func (a *ScheduledSearchAPIService) UnsubscribeScheduledSearchV1Execute(r ApiUns
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -881,16 +881,16 @@ type ApiUpdateScheduledSearchV1Request struct {
 	ctx context.Context
 	ApiService *ScheduledSearchAPIService
 	id string
-	scheduledsearch *Scheduledsearch
+	scheduledSearch *ScheduledSearch
 }
 
 // The scheduled search to persist.
-func (r ApiUpdateScheduledSearchV1Request) Scheduledsearch(scheduledsearch Scheduledsearch) ApiUpdateScheduledSearchV1Request {
-	r.scheduledsearch = &scheduledsearch
+func (r ApiUpdateScheduledSearchV1Request) ScheduledSearch(scheduledSearch ScheduledSearch) ApiUpdateScheduledSearchV1Request {
+	r.scheduledSearch = &scheduledSearch
 	return r
 }
 
-func (r ApiUpdateScheduledSearchV1Request) Execute() (*Scheduledsearch, *http.Response, error) {
+func (r ApiUpdateScheduledSearchV1Request) Execute() (*ScheduledSearch, *http.Response, error) {
 	return r.ApiService.UpdateScheduledSearchV1Execute(r)
 }
 
@@ -913,13 +913,13 @@ func (a *ScheduledSearchAPIService) UpdateScheduledSearchV1(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Scheduledsearch
-func (a *ScheduledSearchAPIService) UpdateScheduledSearchV1Execute(r ApiUpdateScheduledSearchV1Request) (*Scheduledsearch, *http.Response, error) {
+//  @return ScheduledSearch
+func (a *ScheduledSearchAPIService) UpdateScheduledSearchV1Execute(r ApiUpdateScheduledSearchV1Request) (*ScheduledSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Scheduledsearch
+		localVarReturnValue  *ScheduledSearch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchAPIService.UpdateScheduledSearchV1")
@@ -933,8 +933,8 @@ func (a *ScheduledSearchAPIService) UpdateScheduledSearchV1Execute(r ApiUpdateSc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.scheduledsearch == nil {
-		return localVarReturnValue, nil, reportError("scheduledsearch is required and must be specified")
+	if r.scheduledSearch == nil {
+		return localVarReturnValue, nil, reportError("scheduledSearch is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -955,7 +955,7 @@ func (a *ScheduledSearchAPIService) UpdateScheduledSearchV1Execute(r ApiUpdateSc
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.scheduledsearch
+	localVarPostBody = r.scheduledSearch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -979,7 +979,7 @@ func (a *ScheduledSearchAPIService) UpdateScheduledSearchV1Execute(r ApiUpdateSc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1001,7 +1001,7 @@ func (a *ScheduledSearchAPIService) UpdateScheduledSearchV1Execute(r ApiUpdateSc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1012,7 +1012,7 @@ func (a *ScheduledSearchAPIService) UpdateScheduledSearchV1Execute(r ApiUpdateSc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1034,7 +1034,7 @@ func (a *ScheduledSearchAPIService) UpdateScheduledSearchV1Execute(r ApiUpdateSc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

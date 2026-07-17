@@ -23,7 +23,7 @@ type MachineIdentityDtoOwners struct {
 	// Defines the identity which is selected as the primary owner
 	PrimaryIdentity map[string]interface{} `json:"primaryIdentity"`
 	// Defines the identities which are selected as secondary owners
-	SecondaryIdentities []Basereferencedto `json:"secondaryIdentities"`
+	SecondaryIdentities []BaseReferenceDto `json:"secondaryIdentities"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,7 +33,7 @@ type _MachineIdentityDtoOwners MachineIdentityDtoOwners
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMachineIdentityDtoOwners(primaryIdentity map[string]interface{}, secondaryIdentities []Basereferencedto) *MachineIdentityDtoOwners {
+func NewMachineIdentityDtoOwners(primaryIdentity map[string]interface{}, secondaryIdentities []BaseReferenceDto) *MachineIdentityDtoOwners {
 	this := MachineIdentityDtoOwners{}
 	this.PrimaryIdentity = primaryIdentity
 	this.SecondaryIdentities = secondaryIdentities
@@ -73,9 +73,9 @@ func (o *MachineIdentityDtoOwners) SetPrimaryIdentity(v map[string]interface{}) 
 }
 
 // GetSecondaryIdentities returns the SecondaryIdentities field value
-func (o *MachineIdentityDtoOwners) GetSecondaryIdentities() []Basereferencedto {
+func (o *MachineIdentityDtoOwners) GetSecondaryIdentities() []BaseReferenceDto {
 	if o == nil {
-		var ret []Basereferencedto
+		var ret []BaseReferenceDto
 		return ret
 	}
 
@@ -84,7 +84,7 @@ func (o *MachineIdentityDtoOwners) GetSecondaryIdentities() []Basereferencedto {
 
 // GetSecondaryIdentitiesOk returns a tuple with the SecondaryIdentities field value
 // and a boolean to check if the value has been set.
-func (o *MachineIdentityDtoOwners) GetSecondaryIdentitiesOk() ([]Basereferencedto, bool) {
+func (o *MachineIdentityDtoOwners) GetSecondaryIdentitiesOk() ([]BaseReferenceDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *MachineIdentityDtoOwners) GetSecondaryIdentitiesOk() ([]Basereferencedt
 }
 
 // SetSecondaryIdentities sets field value
-func (o *MachineIdentityDtoOwners) SetSecondaryIdentities(v []Basereferencedto) {
+func (o *MachineIdentityDtoOwners) SetSecondaryIdentities(v []BaseReferenceDto) {
 	o.SecondaryIdentities = v
 }
 

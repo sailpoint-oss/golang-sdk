@@ -19,9 +19,9 @@ var _ MappedNullable = &Scope{}
 
 // Scope This defines what access the segment is giving
 type Scope struct {
-	Scope *Scopetype `json:"scope,omitempty"`
-	Visibility *Scopevisibilitytype `json:"visibility,omitempty"`
-	ScopeFilter *Visibilitycriteria `json:"scopeFilter,omitempty"`
+	Scope *ScopeType `json:"scope,omitempty"`
+	Visibility *ScopeVisibilityType `json:"visibility,omitempty"`
+	ScopeFilter *VisibilityCriteria `json:"scopeFilter,omitempty"`
 	// List of Identities that are assigned to the segment
 	ScopeSelection []Ref `json:"scopeSelection,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -47,9 +47,9 @@ func NewScopeWithDefaults() *Scope {
 }
 
 // GetScope returns the Scope field value if set, zero value otherwise.
-func (o *Scope) GetScope() Scopetype {
+func (o *Scope) GetScope() ScopeType {
 	if o == nil || IsNil(o.Scope) {
-		var ret Scopetype
+		var ret ScopeType
 		return ret
 	}
 	return *o.Scope
@@ -57,7 +57,7 @@ func (o *Scope) GetScope() Scopetype {
 
 // GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Scope) GetScopeOk() (*Scopetype, bool) {
+func (o *Scope) GetScopeOk() (*ScopeType, bool) {
 	if o == nil || IsNil(o.Scope) {
 		return nil, false
 	}
@@ -73,15 +73,15 @@ func (o *Scope) HasScope() bool {
 	return false
 }
 
-// SetScope gets a reference to the given Scopetype and assigns it to the Scope field.
-func (o *Scope) SetScope(v Scopetype) {
+// SetScope gets a reference to the given ScopeType and assigns it to the Scope field.
+func (o *Scope) SetScope(v ScopeType) {
 	o.Scope = &v
 }
 
 // GetVisibility returns the Visibility field value if set, zero value otherwise.
-func (o *Scope) GetVisibility() Scopevisibilitytype {
+func (o *Scope) GetVisibility() ScopeVisibilityType {
 	if o == nil || IsNil(o.Visibility) {
-		var ret Scopevisibilitytype
+		var ret ScopeVisibilityType
 		return ret
 	}
 	return *o.Visibility
@@ -89,7 +89,7 @@ func (o *Scope) GetVisibility() Scopevisibilitytype {
 
 // GetVisibilityOk returns a tuple with the Visibility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Scope) GetVisibilityOk() (*Scopevisibilitytype, bool) {
+func (o *Scope) GetVisibilityOk() (*ScopeVisibilityType, bool) {
 	if o == nil || IsNil(o.Visibility) {
 		return nil, false
 	}
@@ -105,15 +105,15 @@ func (o *Scope) HasVisibility() bool {
 	return false
 }
 
-// SetVisibility gets a reference to the given Scopevisibilitytype and assigns it to the Visibility field.
-func (o *Scope) SetVisibility(v Scopevisibilitytype) {
+// SetVisibility gets a reference to the given ScopeVisibilityType and assigns it to the Visibility field.
+func (o *Scope) SetVisibility(v ScopeVisibilityType) {
 	o.Visibility = &v
 }
 
 // GetScopeFilter returns the ScopeFilter field value if set, zero value otherwise.
-func (o *Scope) GetScopeFilter() Visibilitycriteria {
+func (o *Scope) GetScopeFilter() VisibilityCriteria {
 	if o == nil || IsNil(o.ScopeFilter) {
-		var ret Visibilitycriteria
+		var ret VisibilityCriteria
 		return ret
 	}
 	return *o.ScopeFilter
@@ -121,7 +121,7 @@ func (o *Scope) GetScopeFilter() Visibilitycriteria {
 
 // GetScopeFilterOk returns a tuple with the ScopeFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Scope) GetScopeFilterOk() (*Visibilitycriteria, bool) {
+func (o *Scope) GetScopeFilterOk() (*VisibilityCriteria, bool) {
 	if o == nil || IsNil(o.ScopeFilter) {
 		return nil, false
 	}
@@ -137,8 +137,8 @@ func (o *Scope) HasScopeFilter() bool {
 	return false
 }
 
-// SetScopeFilter gets a reference to the given Visibilitycriteria and assigns it to the ScopeFilter field.
-func (o *Scope) SetScopeFilter(v Visibilitycriteria) {
+// SetScopeFilter gets a reference to the given VisibilityCriteria and assigns it to the ScopeFilter field.
+func (o *Scope) SetScopeFilter(v VisibilityCriteria) {
 	o.ScopeFilter = &v
 }
 

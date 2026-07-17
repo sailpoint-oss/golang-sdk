@@ -27,7 +27,7 @@ type ApiCreateSearchAttributeConfigV1Request struct {
 	ctx context.Context
 	ApiService *SearchAttributeConfigurationAPIService
 	xSailPointExperimental *string
-	searchattributeconfig *Searchattributeconfig
+	searchAttributeConfig *SearchAttributeConfig
 }
 
 // Use this header to enable this experimental API.
@@ -36,8 +36,8 @@ func (r ApiCreateSearchAttributeConfigV1Request) XSailPointExperimental(xSailPoi
 	return r
 }
 
-func (r ApiCreateSearchAttributeConfigV1Request) Searchattributeconfig(searchattributeconfig Searchattributeconfig) ApiCreateSearchAttributeConfigV1Request {
-	r.searchattributeconfig = &searchattributeconfig
+func (r ApiCreateSearchAttributeConfigV1Request) SearchAttributeConfig(searchAttributeConfig SearchAttributeConfig) ApiCreateSearchAttributeConfigV1Request {
+	r.searchAttributeConfig = &searchAttributeConfig
 	return r
 }
 
@@ -96,8 +96,8 @@ func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfigV1Ex
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.searchattributeconfig == nil {
-		return localVarReturnValue, nil, reportError("searchattributeconfig is required and must be specified")
+	if r.searchAttributeConfig == nil {
+		return localVarReturnValue, nil, reportError("searchAttributeConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -119,7 +119,7 @@ func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfigV1Ex
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.searchattributeconfig
+	localVarPostBody = r.searchAttributeConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -143,7 +143,7 @@ func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfigV1Ex
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -165,7 +165,7 @@ func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfigV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -176,7 +176,7 @@ func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfigV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -198,7 +198,7 @@ func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfigV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -337,7 +337,7 @@ func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfigV1Ex
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -348,7 +348,7 @@ func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfigV1Ex
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -370,7 +370,7 @@ func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfigV1Ex
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -411,7 +411,7 @@ func (r ApiGetSearchAttributeConfigV1Request) Offset(offset int32) ApiGetSearchA
 	return r
 }
 
-func (r ApiGetSearchAttributeConfigV1Request) Execute() ([]Searchattributeconfig, *http.Response, error) {
+func (r ApiGetSearchAttributeConfigV1Request) Execute() ([]SearchAttributeConfig, *http.Response, error) {
 	return r.ApiService.GetSearchAttributeConfigV1Execute(r)
 }
 
@@ -431,13 +431,13 @@ func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigV1(ctx 
 }
 
 // Execute executes the request
-//  @return []Searchattributeconfig
-func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigV1Execute(r ApiGetSearchAttributeConfigV1Request) ([]Searchattributeconfig, *http.Response, error) {
+//  @return []SearchAttributeConfig
+func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigV1Execute(r ApiGetSearchAttributeConfigV1Request) ([]SearchAttributeConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Searchattributeconfig
+		localVarReturnValue  []SearchAttributeConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationAPIService.GetSearchAttributeConfigV1")
@@ -513,7 +513,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -535,7 +535,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -557,7 +557,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -594,7 +594,7 @@ func (r ApiGetSingleSearchAttributeConfigV1Request) XSailPointExperimental(xSail
 	return r
 }
 
-func (r ApiGetSingleSearchAttributeConfigV1Request) Execute() (*Searchattributeconfig, *http.Response, error) {
+func (r ApiGetSingleSearchAttributeConfigV1Request) Execute() (*SearchAttributeConfig, *http.Response, error) {
 	return r.ApiService.GetSingleSearchAttributeConfigV1Execute(r)
 }
 
@@ -616,13 +616,13 @@ func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigV
 }
 
 // Execute executes the request
-//  @return Searchattributeconfig
-func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigV1Execute(r ApiGetSingleSearchAttributeConfigV1Request) (*Searchattributeconfig, *http.Response, error) {
+//  @return SearchAttributeConfig
+func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigV1Execute(r ApiGetSingleSearchAttributeConfigV1Request) (*SearchAttributeConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Searchattributeconfig
+		localVarReturnValue  *SearchAttributeConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationAPIService.GetSingleSearchAttributeConfigV1")
@@ -698,7 +698,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -709,7 +709,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -731,7 +731,7 @@ func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -760,7 +760,7 @@ type ApiPatchSearchAttributeConfigV1Request struct {
 	ApiService *SearchAttributeConfigurationAPIService
 	name string
 	xSailPointExperimental *string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // Use this header to enable this experimental API.
@@ -769,12 +769,12 @@ func (r ApiPatchSearchAttributeConfigV1Request) XSailPointExperimental(xSailPoin
 	return r
 }
 
-func (r ApiPatchSearchAttributeConfigV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchSearchAttributeConfigV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchSearchAttributeConfigV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchSearchAttributeConfigV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchSearchAttributeConfigV1Request) Execute() (*Searchattributeconfig, *http.Response, error) {
+func (r ApiPatchSearchAttributeConfigV1Request) Execute() (*SearchAttributeConfig, *http.Response, error) {
 	return r.ApiService.PatchSearchAttributeConfigV1Execute(r)
 }
 
@@ -798,13 +798,13 @@ func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigV1(ct
 }
 
 // Execute executes the request
-//  @return Searchattributeconfig
-func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigV1Execute(r ApiPatchSearchAttributeConfigV1Request) (*Searchattributeconfig, *http.Response, error) {
+//  @return SearchAttributeConfig
+func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigV1Execute(r ApiPatchSearchAttributeConfigV1Request) (*SearchAttributeConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Searchattributeconfig
+		localVarReturnValue  *SearchAttributeConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationAPIService.PatchSearchAttributeConfigV1")
@@ -833,8 +833,8 @@ func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigV1Exe
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -856,7 +856,7 @@ func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigV1Exe
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -880,7 +880,7 @@ func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigV1Exe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -902,7 +902,7 @@ func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -913,7 +913,7 @@ func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -935,7 +935,7 @@ func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

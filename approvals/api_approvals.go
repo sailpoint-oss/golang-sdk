@@ -26,11 +26,11 @@ type ApprovalsAPIService service
 type ApiApproveApprovalInBulkV1Request struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
-	bulkapproverequestdto *Bulkapproverequestdto
+	bulkApproveRequestDTO *BulkApproveRequestDTO
 }
 
-func (r ApiApproveApprovalInBulkV1Request) Bulkapproverequestdto(bulkapproverequestdto Bulkapproverequestdto) ApiApproveApprovalInBulkV1Request {
-	r.bulkapproverequestdto = &bulkapproverequestdto
+func (r ApiApproveApprovalInBulkV1Request) BulkApproveRequestDTO(bulkApproveRequestDTO BulkApproveRequestDTO) ApiApproveApprovalInBulkV1Request {
+	r.bulkApproveRequestDTO = &bulkApproveRequestDTO
 	return r
 }
 
@@ -73,8 +73,8 @@ func (a *ApprovalsAPIService) ApproveApprovalInBulkV1Execute(r ApiApproveApprova
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkapproverequestdto == nil {
-		return localVarReturnValue, nil, reportError("bulkapproverequestdto is required and must be specified")
+	if r.bulkApproveRequestDTO == nil {
+		return localVarReturnValue, nil, reportError("bulkApproveRequestDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -95,7 +95,7 @@ func (a *ApprovalsAPIService) ApproveApprovalInBulkV1Execute(r ApiApproveApprova
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkapproverequestdto
+	localVarPostBody = r.bulkApproveRequestDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -119,7 +119,7 @@ func (a *ApprovalsAPIService) ApproveApprovalInBulkV1Execute(r ApiApproveApprova
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -141,7 +141,7 @@ func (a *ApprovalsAPIService) ApproveApprovalInBulkV1Execute(r ApiApproveApprova
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -152,7 +152,7 @@ func (a *ApprovalsAPIService) ApproveApprovalInBulkV1Execute(r ApiApproveApprova
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -174,7 +174,7 @@ func (a *ApprovalsAPIService) ApproveApprovalInBulkV1Execute(r ApiApproveApprova
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -202,11 +202,11 @@ type ApiApproveApprovalV1Request struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
 	id string
-	approvalapproverequest *Approvalapproverequest
+	approvalApproveRequest *ApprovalApproveRequest
 }
 
-func (r ApiApproveApprovalV1Request) Approvalapproverequest(approvalapproverequest Approvalapproverequest) ApiApproveApprovalV1Request {
-	r.approvalapproverequest = &approvalapproverequest
+func (r ApiApproveApprovalV1Request) ApprovalApproveRequest(approvalApproveRequest ApprovalApproveRequest) ApiApproveApprovalV1Request {
+	r.approvalApproveRequest = &approvalApproveRequest
 	return r
 }
 
@@ -272,7 +272,7 @@ func (a *ApprovalsAPIService) ApproveApprovalV1Execute(r ApiApproveApprovalV1Req
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.approvalapproverequest
+	localVarPostBody = r.approvalApproveRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -296,7 +296,7 @@ func (a *ApprovalsAPIService) ApproveApprovalV1Execute(r ApiApproveApprovalV1Req
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -318,7 +318,7 @@ func (a *ApprovalsAPIService) ApproveApprovalV1Execute(r ApiApproveApprovalV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -329,7 +329,7 @@ func (a *ApprovalsAPIService) ApproveApprovalV1Execute(r ApiApproveApprovalV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -351,7 +351,7 @@ func (a *ApprovalsAPIService) ApproveApprovalV1Execute(r ApiApproveApprovalV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -379,11 +379,11 @@ type ApiCancelApprovalByIdV1Request struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
 	id string
-	approvalcancelrequest *Approvalcancelrequest
+	approvalCancelRequest *ApprovalCancelRequest
 }
 
-func (r ApiCancelApprovalByIdV1Request) Approvalcancelrequest(approvalcancelrequest Approvalcancelrequest) ApiCancelApprovalByIdV1Request {
-	r.approvalcancelrequest = &approvalcancelrequest
+func (r ApiCancelApprovalByIdV1Request) ApprovalCancelRequest(approvalCancelRequest ApprovalCancelRequest) ApiCancelApprovalByIdV1Request {
+	r.approvalCancelRequest = &approvalCancelRequest
 	return r
 }
 
@@ -448,7 +448,7 @@ func (a *ApprovalsAPIService) CancelApprovalByIdV1Execute(r ApiCancelApprovalByI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.approvalcancelrequest
+	localVarPostBody = r.approvalCancelRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -472,7 +472,7 @@ func (a *ApprovalsAPIService) CancelApprovalByIdV1Execute(r ApiCancelApprovalByI
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -494,7 +494,7 @@ func (a *ApprovalsAPIService) CancelApprovalByIdV1Execute(r ApiCancelApprovalByI
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -505,7 +505,7 @@ func (a *ApprovalsAPIService) CancelApprovalByIdV1Execute(r ApiCancelApprovalByI
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -527,7 +527,7 @@ func (a *ApprovalsAPIService) CancelApprovalByIdV1Execute(r ApiCancelApprovalByI
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -545,11 +545,11 @@ func (a *ApprovalsAPIService) CancelApprovalByIdV1Execute(r ApiCancelApprovalByI
 type ApiCancelApprovalV1Request struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
-	bulkcancelrequestdto *Bulkcancelrequestdto
+	bulkCancelRequestDTO *BulkCancelRequestDTO
 }
 
-func (r ApiCancelApprovalV1Request) Bulkcancelrequestdto(bulkcancelrequestdto Bulkcancelrequestdto) ApiCancelApprovalV1Request {
-	r.bulkcancelrequestdto = &bulkcancelrequestdto
+func (r ApiCancelApprovalV1Request) BulkCancelRequestDTO(bulkCancelRequestDTO BulkCancelRequestDTO) ApiCancelApprovalV1Request {
+	r.bulkCancelRequestDTO = &bulkCancelRequestDTO
 	return r
 }
 
@@ -594,8 +594,8 @@ func (a *ApprovalsAPIService) CancelApprovalV1Execute(r ApiCancelApprovalV1Reque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkcancelrequestdto == nil {
-		return localVarReturnValue, nil, reportError("bulkcancelrequestdto is required and must be specified")
+	if r.bulkCancelRequestDTO == nil {
+		return localVarReturnValue, nil, reportError("bulkCancelRequestDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -616,7 +616,7 @@ func (a *ApprovalsAPIService) CancelApprovalV1Execute(r ApiCancelApprovalV1Reque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkcancelrequestdto
+	localVarPostBody = r.bulkCancelRequestDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -640,7 +640,7 @@ func (a *ApprovalsAPIService) CancelApprovalV1Execute(r ApiCancelApprovalV1Reque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -662,7 +662,7 @@ func (a *ApprovalsAPIService) CancelApprovalV1Execute(r ApiCancelApprovalV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -673,7 +673,7 @@ func (a *ApprovalsAPIService) CancelApprovalV1Execute(r ApiCancelApprovalV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -695,7 +695,7 @@ func (a *ApprovalsAPIService) CancelApprovalV1Execute(r ApiCancelApprovalV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -811,7 +811,7 @@ func (a *ApprovalsAPIService) DeleteApprovalConfigRequestV1Execute(r ApiDeleteAp
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -833,7 +833,7 @@ func (a *ApprovalsAPIService) DeleteApprovalConfigRequestV1Execute(r ApiDeleteAp
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -844,7 +844,7 @@ func (a *ApprovalsAPIService) DeleteApprovalConfigRequestV1Execute(r ApiDeleteAp
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -866,7 +866,7 @@ func (a *ApprovalsAPIService) DeleteApprovalConfigRequestV1Execute(r ApiDeleteAp
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -971,7 +971,7 @@ func (a *ApprovalsAPIService) GetApprovalV1Execute(r ApiGetApprovalV1Request) (*
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -993,7 +993,7 @@ func (a *ApprovalsAPIService) GetApprovalV1Execute(r ApiGetApprovalV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1015,7 +1015,7 @@ func (a *ApprovalsAPIService) GetApprovalV1Execute(r ApiGetApprovalV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1045,7 +1045,7 @@ type ApiGetApprovalsConfigV1Request struct {
 	id string
 }
 
-func (r ApiGetApprovalsConfigV1Request) Execute() (*Approvalconfig, *http.Response, error) {
+func (r ApiGetApprovalsConfigV1Request) Execute() (*ApprovalConfig, *http.Response, error) {
 	return r.ApiService.GetApprovalsConfigV1Execute(r)
 }
 
@@ -1067,13 +1067,13 @@ func (a *ApprovalsAPIService) GetApprovalsConfigV1(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return Approvalconfig
-func (a *ApprovalsAPIService) GetApprovalsConfigV1Execute(r ApiGetApprovalsConfigV1Request) (*Approvalconfig, *http.Response, error) {
+//  @return ApprovalConfig
+func (a *ApprovalsAPIService) GetApprovalsConfigV1Execute(r ApiGetApprovalsConfigV1Request) (*ApprovalConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Approvalconfig
+		localVarReturnValue  *ApprovalConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.GetApprovalsConfigV1")
@@ -1128,7 +1128,7 @@ func (a *ApprovalsAPIService) GetApprovalsConfigV1Execute(r ApiGetApprovalsConfi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1150,7 +1150,7 @@ func (a *ApprovalsAPIService) GetApprovalsConfigV1Execute(r ApiGetApprovalsConfi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1172,7 +1172,7 @@ func (a *ApprovalsAPIService) GetApprovalsConfigV1Execute(r ApiGetApprovalsConfi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1447,7 +1447,7 @@ func (a *ApprovalsAPIService) GetApprovalsV1Execute(r ApiGetApprovalsV1Request) 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1469,7 +1469,7 @@ func (a *ApprovalsAPIService) GetApprovalsV1Execute(r ApiGetApprovalsV1Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1491,7 +1491,7 @@ func (a *ApprovalsAPIService) GetApprovalsV1Execute(r ApiGetApprovalsV1Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1518,11 +1518,11 @@ func (a *ApprovalsAPIService) GetApprovalsV1Execute(r ApiGetApprovalsV1Request) 
 type ApiMoveApprovalV1Request struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
-	bulkreassignrequestdto *Bulkreassignrequestdto
+	bulkReassignRequestDTO *BulkReassignRequestDTO
 }
 
-func (r ApiMoveApprovalV1Request) Bulkreassignrequestdto(bulkreassignrequestdto Bulkreassignrequestdto) ApiMoveApprovalV1Request {
-	r.bulkreassignrequestdto = &bulkreassignrequestdto
+func (r ApiMoveApprovalV1Request) BulkReassignRequestDTO(bulkReassignRequestDTO BulkReassignRequestDTO) ApiMoveApprovalV1Request {
+	r.bulkReassignRequestDTO = &bulkReassignRequestDTO
 	return r
 }
 
@@ -1565,8 +1565,8 @@ func (a *ApprovalsAPIService) MoveApprovalV1Execute(r ApiMoveApprovalV1Request) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkreassignrequestdto == nil {
-		return localVarReturnValue, nil, reportError("bulkreassignrequestdto is required and must be specified")
+	if r.bulkReassignRequestDTO == nil {
+		return localVarReturnValue, nil, reportError("bulkReassignRequestDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1587,7 +1587,7 @@ func (a *ApprovalsAPIService) MoveApprovalV1Execute(r ApiMoveApprovalV1Request) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkreassignrequestdto
+	localVarPostBody = r.bulkReassignRequestDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1611,7 +1611,7 @@ func (a *ApprovalsAPIService) MoveApprovalV1Execute(r ApiMoveApprovalV1Request) 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1633,7 +1633,7 @@ func (a *ApprovalsAPIService) MoveApprovalV1Execute(r ApiMoveApprovalV1Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1644,7 +1644,7 @@ func (a *ApprovalsAPIService) MoveApprovalV1Execute(r ApiMoveApprovalV1Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1666,7 +1666,7 @@ func (a *ApprovalsAPIService) MoveApprovalV1Execute(r ApiMoveApprovalV1Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1695,15 +1695,15 @@ type ApiPutApprovalsConfigV1Request struct {
 	ApiService *ApprovalsAPIService
 	id string
 	scope string
-	approvalconfig *Approvalconfig
+	approvalConfig *ApprovalConfig
 }
 
-func (r ApiPutApprovalsConfigV1Request) Approvalconfig(approvalconfig Approvalconfig) ApiPutApprovalsConfigV1Request {
-	r.approvalconfig = &approvalconfig
+func (r ApiPutApprovalsConfigV1Request) ApprovalConfig(approvalConfig ApprovalConfig) ApiPutApprovalsConfigV1Request {
+	r.approvalConfig = &approvalConfig
 	return r
 }
 
-func (r ApiPutApprovalsConfigV1Request) Execute() (*Approvalconfig, *http.Response, error) {
+func (r ApiPutApprovalsConfigV1Request) Execute() (*ApprovalConfig, *http.Response, error) {
 	return r.ApiService.PutApprovalsConfigV1Execute(r)
 }
 
@@ -1728,13 +1728,13 @@ func (a *ApprovalsAPIService) PutApprovalsConfigV1(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return Approvalconfig
-func (a *ApprovalsAPIService) PutApprovalsConfigV1Execute(r ApiPutApprovalsConfigV1Request) (*Approvalconfig, *http.Response, error) {
+//  @return ApprovalConfig
+func (a *ApprovalsAPIService) PutApprovalsConfigV1Execute(r ApiPutApprovalsConfigV1Request) (*ApprovalConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Approvalconfig
+		localVarReturnValue  *ApprovalConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApprovalsAPIService.PutApprovalsConfigV1")
@@ -1749,8 +1749,8 @@ func (a *ApprovalsAPIService) PutApprovalsConfigV1Execute(r ApiPutApprovalsConfi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.approvalconfig == nil {
-		return localVarReturnValue, nil, reportError("approvalconfig is required and must be specified")
+	if r.approvalConfig == nil {
+		return localVarReturnValue, nil, reportError("approvalConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1771,7 +1771,7 @@ func (a *ApprovalsAPIService) PutApprovalsConfigV1Execute(r ApiPutApprovalsConfi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.approvalconfig
+	localVarPostBody = r.approvalConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1795,7 +1795,7 @@ func (a *ApprovalsAPIService) PutApprovalsConfigV1Execute(r ApiPutApprovalsConfi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1817,7 +1817,7 @@ func (a *ApprovalsAPIService) PutApprovalsConfigV1Execute(r ApiPutApprovalsConfi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1828,7 +1828,7 @@ func (a *ApprovalsAPIService) PutApprovalsConfigV1Execute(r ApiPutApprovalsConfi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1850,7 +1850,7 @@ func (a *ApprovalsAPIService) PutApprovalsConfigV1Execute(r ApiPutApprovalsConfi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1877,11 +1877,11 @@ func (a *ApprovalsAPIService) PutApprovalsConfigV1Execute(r ApiPutApprovalsConfi
 type ApiRejectApprovalInBulkV1Request struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
-	bulkrejectrequestdto *Bulkrejectrequestdto
+	bulkRejectRequestDTO *BulkRejectRequestDTO
 }
 
-func (r ApiRejectApprovalInBulkV1Request) Bulkrejectrequestdto(bulkrejectrequestdto Bulkrejectrequestdto) ApiRejectApprovalInBulkV1Request {
-	r.bulkrejectrequestdto = &bulkrejectrequestdto
+func (r ApiRejectApprovalInBulkV1Request) BulkRejectRequestDTO(bulkRejectRequestDTO BulkRejectRequestDTO) ApiRejectApprovalInBulkV1Request {
+	r.bulkRejectRequestDTO = &bulkRejectRequestDTO
 	return r
 }
 
@@ -1924,8 +1924,8 @@ func (a *ApprovalsAPIService) RejectApprovalInBulkV1Execute(r ApiRejectApprovalI
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkrejectrequestdto == nil {
-		return localVarReturnValue, nil, reportError("bulkrejectrequestdto is required and must be specified")
+	if r.bulkRejectRequestDTO == nil {
+		return localVarReturnValue, nil, reportError("bulkRejectRequestDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1946,7 +1946,7 @@ func (a *ApprovalsAPIService) RejectApprovalInBulkV1Execute(r ApiRejectApprovalI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkrejectrequestdto
+	localVarPostBody = r.bulkRejectRequestDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1970,7 +1970,7 @@ func (a *ApprovalsAPIService) RejectApprovalInBulkV1Execute(r ApiRejectApprovalI
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1992,7 +1992,7 @@ func (a *ApprovalsAPIService) RejectApprovalInBulkV1Execute(r ApiRejectApprovalI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2003,7 +2003,7 @@ func (a *ApprovalsAPIService) RejectApprovalInBulkV1Execute(r ApiRejectApprovalI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2025,7 +2025,7 @@ func (a *ApprovalsAPIService) RejectApprovalInBulkV1Execute(r ApiRejectApprovalI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2053,11 +2053,11 @@ type ApiRejectApprovalV1Request struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
 	id string
-	approvalrejectrequest *Approvalrejectrequest
+	approvalRejectRequest *ApprovalRejectRequest
 }
 
-func (r ApiRejectApprovalV1Request) Approvalrejectrequest(approvalrejectrequest Approvalrejectrequest) ApiRejectApprovalV1Request {
-	r.approvalrejectrequest = &approvalrejectrequest
+func (r ApiRejectApprovalV1Request) ApprovalRejectRequest(approvalRejectRequest ApprovalRejectRequest) ApiRejectApprovalV1Request {
+	r.approvalRejectRequest = &approvalRejectRequest
 	return r
 }
 
@@ -2121,7 +2121,7 @@ func (a *ApprovalsAPIService) RejectApprovalV1Execute(r ApiRejectApprovalV1Reque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.approvalrejectrequest
+	localVarPostBody = r.approvalRejectRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -2145,7 +2145,7 @@ func (a *ApprovalsAPIService) RejectApprovalV1Execute(r ApiRejectApprovalV1Reque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2167,7 +2167,7 @@ func (a *ApprovalsAPIService) RejectApprovalV1Execute(r ApiRejectApprovalV1Reque
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2178,7 +2178,7 @@ func (a *ApprovalsAPIService) RejectApprovalV1Execute(r ApiRejectApprovalV1Reque
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2200,7 +2200,7 @@ func (a *ApprovalsAPIService) RejectApprovalV1Execute(r ApiRejectApprovalV1Reque
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2219,11 +2219,11 @@ type ApiUpdateApprovalsAttributesV1Request struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
 	id string
-	approvalattributesrequest *Approvalattributesrequest
+	approvalAttributesRequest *ApprovalAttributesRequest
 }
 
-func (r ApiUpdateApprovalsAttributesV1Request) Approvalattributesrequest(approvalattributesrequest Approvalattributesrequest) ApiUpdateApprovalsAttributesV1Request {
-	r.approvalattributesrequest = &approvalattributesrequest
+func (r ApiUpdateApprovalsAttributesV1Request) ApprovalAttributesRequest(approvalAttributesRequest ApprovalAttributesRequest) ApiUpdateApprovalsAttributesV1Request {
+	r.approvalAttributesRequest = &approvalAttributesRequest
 	return r
 }
 
@@ -2269,8 +2269,8 @@ func (a *ApprovalsAPIService) UpdateApprovalsAttributesV1Execute(r ApiUpdateAppr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.approvalattributesrequest == nil {
-		return localVarReturnValue, nil, reportError("approvalattributesrequest is required and must be specified")
+	if r.approvalAttributesRequest == nil {
+		return localVarReturnValue, nil, reportError("approvalAttributesRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2291,7 +2291,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsAttributesV1Execute(r ApiUpdateAppr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.approvalattributesrequest
+	localVarPostBody = r.approvalAttributesRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2315,7 +2315,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsAttributesV1Execute(r ApiUpdateAppr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2337,7 +2337,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsAttributesV1Execute(r ApiUpdateAppr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2348,7 +2348,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsAttributesV1Execute(r ApiUpdateAppr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2370,7 +2370,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsAttributesV1Execute(r ApiUpdateAppr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2398,11 +2398,11 @@ type ApiUpdateApprovalsCommentsV1Request struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
 	id string
-	approvalcommentsrequest *Approvalcommentsrequest
+	approvalCommentsRequest *ApprovalCommentsRequest
 }
 
-func (r ApiUpdateApprovalsCommentsV1Request) Approvalcommentsrequest(approvalcommentsrequest Approvalcommentsrequest) ApiUpdateApprovalsCommentsV1Request {
-	r.approvalcommentsrequest = &approvalcommentsrequest
+func (r ApiUpdateApprovalsCommentsV1Request) ApprovalCommentsRequest(approvalCommentsRequest ApprovalCommentsRequest) ApiUpdateApprovalsCommentsV1Request {
+	r.approvalCommentsRequest = &approvalCommentsRequest
 	return r
 }
 
@@ -2448,8 +2448,8 @@ func (a *ApprovalsAPIService) UpdateApprovalsCommentsV1Execute(r ApiUpdateApprov
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.approvalcommentsrequest == nil {
-		return localVarReturnValue, nil, reportError("approvalcommentsrequest is required and must be specified")
+	if r.approvalCommentsRequest == nil {
+		return localVarReturnValue, nil, reportError("approvalCommentsRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2470,7 +2470,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsCommentsV1Execute(r ApiUpdateApprov
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.approvalcommentsrequest
+	localVarPostBody = r.approvalCommentsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2494,7 +2494,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsCommentsV1Execute(r ApiUpdateApprov
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2516,7 +2516,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsCommentsV1Execute(r ApiUpdateApprov
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2527,7 +2527,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsCommentsV1Execute(r ApiUpdateApprov
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2549,7 +2549,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsCommentsV1Execute(r ApiUpdateApprov
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2577,11 +2577,11 @@ type ApiUpdateApprovalsReassignV1Request struct {
 	ctx context.Context
 	ApiService *ApprovalsAPIService
 	id string
-	approvalreassignrequest *Approvalreassignrequest
+	approvalReassignRequest *ApprovalReassignRequest
 }
 
-func (r ApiUpdateApprovalsReassignV1Request) Approvalreassignrequest(approvalreassignrequest Approvalreassignrequest) ApiUpdateApprovalsReassignV1Request {
-	r.approvalreassignrequest = &approvalreassignrequest
+func (r ApiUpdateApprovalsReassignV1Request) ApprovalReassignRequest(approvalReassignRequest ApprovalReassignRequest) ApiUpdateApprovalsReassignV1Request {
+	r.approvalReassignRequest = &approvalReassignRequest
 	return r
 }
 
@@ -2625,8 +2625,8 @@ func (a *ApprovalsAPIService) UpdateApprovalsReassignV1Execute(r ApiUpdateApprov
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.approvalreassignrequest == nil {
-		return nil, reportError("approvalreassignrequest is required and must be specified")
+	if r.approvalReassignRequest == nil {
+		return nil, reportError("approvalReassignRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2647,7 +2647,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsReassignV1Execute(r ApiUpdateApprov
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.approvalreassignrequest
+	localVarPostBody = r.approvalReassignRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -2671,7 +2671,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsReassignV1Execute(r ApiUpdateApprov
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2693,7 +2693,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsReassignV1Execute(r ApiUpdateApprov
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2704,7 +2704,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsReassignV1Execute(r ApiUpdateApprov
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2726,7 +2726,7 @@ func (a *ApprovalsAPIService) UpdateApprovalsReassignV1Execute(r ApiUpdateApprov
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

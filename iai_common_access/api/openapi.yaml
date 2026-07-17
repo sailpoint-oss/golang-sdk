@@ -138,14 +138,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/commonaccessresponse'
+                  $ref: '#/components/schemas/CommonAccessResponse'
                 type: array
           description: Succeeded. Returns a list of common access for a customer.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -169,7 +169,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "500":
@@ -186,7 +186,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -218,20 +218,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/commonaccessitemrequest'
+              $ref: '#/components/schemas/CommonAccessItemRequest'
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/commonaccessitemresponse'
+                $ref: '#/components/schemas/CommonAccessItemResponse'
           description: Returns details of the common access classification request.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -255,7 +255,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -280,7 +280,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -312,7 +312,7 @@ paths:
           application/json:
             schema:
               items:
-                $ref: '#/components/schemas/commonaccessidstatus'
+                $ref: '#/components/schemas/CommonAccessIDStatus'
               type: array
         description: Confirm or deny in bulk the common access ids that are (or aren't)
           common access
@@ -329,7 +329,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -353,7 +353,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -378,7 +378,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -450,7 +450,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -474,7 +474,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "429":
@@ -499,16 +499,16 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    commonaccesstype:
+    CommonAccessType:
       description: The type of access item.
       enum:
       - ACCESS_PROFILE
       - ROLE
       type: string
-    commonaccessitemaccess:
+    CommonAccessItemAccess:
       example:
         ownerName: ownerName
         name: name
@@ -521,7 +521,7 @@ components:
           description: Common access ID
           type: string
         type:
-          $ref: '#/components/schemas/commonaccesstype'
+          $ref: '#/components/schemas/CommonAccessType'
         name:
           description: Common access name
           type: string
@@ -537,7 +537,7 @@ components:
           type: string
       title: Common Access Item Access
       type: object
-    commonaccessresponse:
+    CommonAccessResponse:
       example:
         lastUpdated: 2000-01-23T04:56:07.000+00:00
         access:
@@ -559,7 +559,7 @@ components:
           example: 555ab47a-0d32-4813-906f-adf3567de6a4
           type: string
         access:
-          $ref: '#/components/schemas/commonaccessitemaccess'
+          $ref: '#/components/schemas/CommonAccessItemAccess'
         status:
           description: CONFIRMED or DENIED
           type: string
@@ -584,7 +584,7 @@ components:
           type: boolean
       title: Common Access Response
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -596,7 +596,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -609,7 +609,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -617,7 +617,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -651,31 +651,40 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    commonaccessitemstate:
+    CommonAccessItemState:
       description: State of common access item.
       enum:
       - CONFIRMED
       - DENIED
       type: string
-    commonaccessitemrequest:
+    CommonAccessItemRequest:
+      example:
+        access:
+          ownerName: ownerName
+          name: name
+          description: description
+          id: id
+          type: ACCESS_PROFILE
+          ownerId: ownerId
+        status: CONFIRMED
       properties:
         access:
-          $ref: '#/components/schemas/commonaccessitemaccess'
+          $ref: '#/components/schemas/CommonAccessItemAccess'
         status:
-          $ref: '#/components/schemas/commonaccessitemstate'
+          $ref: '#/components/schemas/CommonAccessItemState'
       title: Common Access Item Request
       type: object
-    commonaccessitemresponse:
+    CommonAccessItemResponse:
       example:
         lastUpdated: lastUpdated
         access:
@@ -695,9 +704,9 @@ components:
           description: Common Access Item ID
           type: string
         access:
-          $ref: '#/components/schemas/commonaccessitemaccess'
+          $ref: '#/components/schemas/CommonAccessItemAccess'
         status:
-          $ref: '#/components/schemas/commonaccessitemstate'
+          $ref: '#/components/schemas/CommonAccessItemState'
         lastUpdated:
           type: string
         reviewedByUser:
@@ -708,7 +717,14 @@ components:
           type: string
       title: Common Access Item Response
       type: object
-    commonaccessidstatus:
+    CommonAccessIDStatus:
+      example:
+        confirmedIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deniedIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         confirmedIds:
           description: List of confirmed common access ids.

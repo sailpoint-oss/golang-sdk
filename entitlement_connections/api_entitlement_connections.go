@@ -70,7 +70,7 @@ func (r ApiListEntitlementConnectionsForCurrentIdentityV1Request) Sorters(sorter
 	return r
 }
 
-func (r ApiListEntitlementConnectionsForCurrentIdentityV1Request) Execute() ([]Entitlementconnectionsearchhit, *http.Response, error) {
+func (r ApiListEntitlementConnectionsForCurrentIdentityV1Request) Execute() ([]EntitlementConnectionSearchHit, *http.Response, error) {
 	return r.ApiService.ListEntitlementConnectionsForCurrentIdentityV1Execute(r)
 }
 
@@ -92,13 +92,13 @@ func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsForCurrentI
 }
 
 // Execute executes the request
-//  @return []Entitlementconnectionsearchhit
-func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsForCurrentIdentityV1Execute(r ApiListEntitlementConnectionsForCurrentIdentityV1Request) ([]Entitlementconnectionsearchhit, *http.Response, error) {
+//  @return []EntitlementConnectionSearchHit
+func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsForCurrentIdentityV1Execute(r ApiListEntitlementConnectionsForCurrentIdentityV1Request) ([]EntitlementConnectionSearchHit, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Entitlementconnectionsearchhit
+		localVarReturnValue  []EntitlementConnectionSearchHit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementConnectionsAPIService.ListEntitlementConnectionsForCurrentIdentityV1")
@@ -179,7 +179,7 @@ func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsForCurrentI
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -201,7 +201,7 @@ func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsForCurrentI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -212,7 +212,7 @@ func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsForCurrentI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -245,7 +245,7 @@ func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsForCurrentI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -316,7 +316,7 @@ func (r ApiListEntitlementConnectionsV1Request) Sorters(sorters string) ApiListE
 	return r
 }
 
-func (r ApiListEntitlementConnectionsV1Request) Execute() ([]Entitlementconnectionsearchhit, *http.Response, error) {
+func (r ApiListEntitlementConnectionsV1Request) Execute() ([]EntitlementConnectionSearchHit, *http.Response, error) {
 	return r.ApiService.ListEntitlementConnectionsV1Execute(r)
 }
 
@@ -340,13 +340,13 @@ func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsV1(ctx cont
 }
 
 // Execute executes the request
-//  @return []Entitlementconnectionsearchhit
-func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsV1Execute(r ApiListEntitlementConnectionsV1Request) ([]Entitlementconnectionsearchhit, *http.Response, error) {
+//  @return []EntitlementConnectionSearchHit
+func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsV1Execute(r ApiListEntitlementConnectionsV1Request) ([]EntitlementConnectionSearchHit, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Entitlementconnectionsearchhit
+		localVarReturnValue  []EntitlementConnectionSearchHit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementConnectionsAPIService.ListEntitlementConnectionsV1")
@@ -427,7 +427,7 @@ func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -449,7 +449,7 @@ func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -460,7 +460,7 @@ func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -493,7 +493,7 @@ func (a *EntitlementConnectionsAPIService) ListEntitlementConnectionsV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -521,15 +521,15 @@ type ApiPatchEntitlementConnectionByIdV1Request struct {
 	ctx context.Context
 	ApiService *EntitlementConnectionsAPIService
 	connectionId string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
-func (r ApiPatchEntitlementConnectionByIdV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchEntitlementConnectionByIdV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchEntitlementConnectionByIdV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchEntitlementConnectionByIdV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchEntitlementConnectionByIdV1Request) Execute() (*Entitlementconnection, *http.Response, error) {
+func (r ApiPatchEntitlementConnectionByIdV1Request) Execute() (*EntitlementConnection, *http.Response, error) {
 	return r.ApiService.PatchEntitlementConnectionByIdV1Execute(r)
 }
 
@@ -552,13 +552,13 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByIdV1(ctx 
 }
 
 // Execute executes the request
-//  @return Entitlementconnection
-func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByIdV1Execute(r ApiPatchEntitlementConnectionByIdV1Request) (*Entitlementconnection, *http.Response, error) {
+//  @return EntitlementConnection
+func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByIdV1Execute(r ApiPatchEntitlementConnectionByIdV1Request) (*EntitlementConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Entitlementconnection
+		localVarReturnValue  *EntitlementConnection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementConnectionsAPIService.PatchEntitlementConnectionByIdV1")
@@ -572,8 +572,8 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByIdV1Execu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -594,7 +594,7 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByIdV1Execu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -618,7 +618,7 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByIdV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -640,7 +640,7 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByIdV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -651,7 +651,7 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByIdV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -684,7 +684,7 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByIdV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -714,7 +714,7 @@ type ApiPatchEntitlementConnectionByQueryV1Request struct {
 	entitlementId *string
 	identityId *string
 	accountId *string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // Entitlement ID (UUID with or without hyphens).
@@ -735,12 +735,12 @@ func (r ApiPatchEntitlementConnectionByQueryV1Request) AccountId(accountId strin
 	return r
 }
 
-func (r ApiPatchEntitlementConnectionByQueryV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchEntitlementConnectionByQueryV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchEntitlementConnectionByQueryV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchEntitlementConnectionByQueryV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchEntitlementConnectionByQueryV1Request) Execute() (*Entitlementconnection, *http.Response, error) {
+func (r ApiPatchEntitlementConnectionByQueryV1Request) Execute() (*EntitlementConnection, *http.Response, error) {
 	return r.ApiService.PatchEntitlementConnectionByQueryV1Execute(r)
 }
 
@@ -762,13 +762,13 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByQueryV1(c
 }
 
 // Execute executes the request
-//  @return Entitlementconnection
-func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByQueryV1Execute(r ApiPatchEntitlementConnectionByQueryV1Request) (*Entitlementconnection, *http.Response, error) {
+//  @return EntitlementConnection
+func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByQueryV1Execute(r ApiPatchEntitlementConnectionByQueryV1Request) (*EntitlementConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Entitlementconnection
+		localVarReturnValue  *EntitlementConnection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementConnectionsAPIService.PatchEntitlementConnectionByQueryV1")
@@ -790,8 +790,8 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByQueryV1Ex
 	if r.accountId == nil {
 		return localVarReturnValue, nil, reportError("accountId is required and must be specified")
 	}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
@@ -815,7 +815,7 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByQueryV1Ex
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -839,7 +839,7 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByQueryV1Ex
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -861,7 +861,7 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByQueryV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -872,7 +872,7 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByQueryV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -905,7 +905,7 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByQueryV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -932,15 +932,15 @@ func (a *EntitlementConnectionsAPIService) PatchEntitlementConnectionByQueryV1Ex
 type ApiUpdateEntitlementConnectionsBulkV1Request struct {
 	ctx context.Context
 	ApiService *EntitlementConnectionsAPIService
-	entitlementconnectionbulkupdateitem *[]Entitlementconnectionbulkupdateitem
+	entitlementConnectionBulkUpdateItem *[]EntitlementConnectionBulkUpdateItem
 }
 
-func (r ApiUpdateEntitlementConnectionsBulkV1Request) Entitlementconnectionbulkupdateitem(entitlementconnectionbulkupdateitem []Entitlementconnectionbulkupdateitem) ApiUpdateEntitlementConnectionsBulkV1Request {
-	r.entitlementconnectionbulkupdateitem = &entitlementconnectionbulkupdateitem
+func (r ApiUpdateEntitlementConnectionsBulkV1Request) EntitlementConnectionBulkUpdateItem(entitlementConnectionBulkUpdateItem []EntitlementConnectionBulkUpdateItem) ApiUpdateEntitlementConnectionsBulkV1Request {
+	r.entitlementConnectionBulkUpdateItem = &entitlementConnectionBulkUpdateItem
 	return r
 }
 
-func (r ApiUpdateEntitlementConnectionsBulkV1Request) Execute() ([]Entitlementconnectionbulkupdateresultitem, *http.Response, error) {
+func (r ApiUpdateEntitlementConnectionsBulkV1Request) Execute() ([]EntitlementConnectionBulkUpdateResultItem, *http.Response, error) {
 	return r.ApiService.UpdateEntitlementConnectionsBulkV1Execute(r)
 }
 
@@ -962,13 +962,13 @@ func (a *EntitlementConnectionsAPIService) UpdateEntitlementConnectionsBulkV1(ct
 }
 
 // Execute executes the request
-//  @return []Entitlementconnectionbulkupdateresultitem
-func (a *EntitlementConnectionsAPIService) UpdateEntitlementConnectionsBulkV1Execute(r ApiUpdateEntitlementConnectionsBulkV1Request) ([]Entitlementconnectionbulkupdateresultitem, *http.Response, error) {
+//  @return []EntitlementConnectionBulkUpdateResultItem
+func (a *EntitlementConnectionsAPIService) UpdateEntitlementConnectionsBulkV1Execute(r ApiUpdateEntitlementConnectionsBulkV1Request) ([]EntitlementConnectionBulkUpdateResultItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Entitlementconnectionbulkupdateresultitem
+		localVarReturnValue  []EntitlementConnectionBulkUpdateResultItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementConnectionsAPIService.UpdateEntitlementConnectionsBulkV1")
@@ -981,8 +981,8 @@ func (a *EntitlementConnectionsAPIService) UpdateEntitlementConnectionsBulkV1Exe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.entitlementconnectionbulkupdateitem == nil {
-		return localVarReturnValue, nil, reportError("entitlementconnectionbulkupdateitem is required and must be specified")
+	if r.entitlementConnectionBulkUpdateItem == nil {
+		return localVarReturnValue, nil, reportError("entitlementConnectionBulkUpdateItem is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1003,7 +1003,7 @@ func (a *EntitlementConnectionsAPIService) UpdateEntitlementConnectionsBulkV1Exe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.entitlementconnectionbulkupdateitem
+	localVarPostBody = r.entitlementConnectionBulkUpdateItem
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1027,7 +1027,7 @@ func (a *EntitlementConnectionsAPIService) UpdateEntitlementConnectionsBulkV1Exe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1049,7 +1049,7 @@ func (a *EntitlementConnectionsAPIService) UpdateEntitlementConnectionsBulkV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1071,7 +1071,7 @@ func (a *EntitlementConnectionsAPIService) UpdateEntitlementConnectionsBulkV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

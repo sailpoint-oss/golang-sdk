@@ -89,14 +89,14 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](docs/ArrayInner.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetSearchAttributeConfigV1401Response](docs/GetSearchAttributeConfigV1401Response.md)
  - [GetSearchAttributeConfigV1429Response](docs/GetSearchAttributeConfigV1429Response.md)
- - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Searchattributeconfig](docs/Searchattributeconfig.md)
+ - [JsonPatchOperation](docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [SearchAttributeConfig](docs/SearchAttributeConfig.md)
 
 
 ## Documentation For Authorization

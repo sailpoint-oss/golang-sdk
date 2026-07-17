@@ -92,22 +92,22 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [DataSegment](docs/DataSegment.md)
- - [Dtotype](docs/Dtotype.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [DtoType](docs/DtoType.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [Expression](docs/Expression.md)
  - [ExpressionChildrenInner](docs/ExpressionChildrenInner.md)
  - [GetDataSegmentIdentityMembershipV1401Response](docs/GetDataSegmentIdentityMembershipV1401Response.md)
  - [GetDataSegmentIdentityMembershipV1429Response](docs/GetDataSegmentIdentityMembershipV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Membershiptype](docs/Membershiptype.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [MembershipType](docs/MembershipType.md)
  - [Ref](docs/Ref.md)
  - [Scope](docs/Scope.md)
- - [Scopetype](docs/Scopetype.md)
- - [Scopevisibilitytype](docs/Scopevisibilitytype.md)
- - [Segmentmembership](docs/Segmentmembership.md)
+ - [ScopeType](docs/ScopeType.md)
+ - [ScopeVisibilityType](docs/ScopeVisibilityType.md)
+ - [SegmentMembership](docs/SegmentMembership.md)
  - [Value](docs/Value.md)
- - [Visibilitycriteria](docs/Visibilitycriteria.md)
+ - [VisibilityCriteria](docs/VisibilityCriteria.md)
 
 
 ## Documentation For Authorization

@@ -126,7 +126,7 @@ Other parameters are passed through a pointer to a apiCreateApplicationV1Request
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **basecreateapplicationrequest** | [**Basecreateapplicationrequest**](../models/basecreateapplicationrequest) | Request body containing the details required to create a new application. | 
+ **baseCreateApplicationRequest** | [**BaseCreateApplicationRequest**](../models/base-create-application-request) | Request body containing the details required to create a new application. | 
 
 ### Return type
 
@@ -152,10 +152,56 @@ import (
 )
 
 func main() {
-    basecreateapplicationrequestJson := []byte(``) // Basecreateapplicationrequest | Request body containing the details required to create a new application.
+    basecreateapplicationrequestJson := []byte(`{
+          "adIdentityCollectorId" : 987654321,
+          "applicationType" : 9,
+          "nisIdentityCollectorId" : 192837465,
+          "executeNow" : false,
+          "name" : "HR File Server",
+          "description" : "Stores HR documents and employee records.",
+          "dataClassificationSettings" : {
+            "isEnabled" : true,
+            "clusterId" : "cluster-001"
+          },
+          "activityConfigurationSettings" : {
+            "excludeFolders" : [ "/tmp", "/archive" ],
+            "excludeFileExtensions" : [ ".log", ".bak" ],
+            "excludeActions" : [ "delete", "move" ],
+            "isEnabled" : true,
+            "retentionTimePeriod" : 30,
+            "retentionTimeType" : "days",
+            "clusterId" : "cluster-001",
+            "excludeUsers" : [ "user1", "user2" ]
+          },
+          "applicationCrawlerSettings" : {
+            "calculateResourceSize" : 2,
+            "excludedResources" : [ "resourceA", "resourceB" ],
+            "crawlPublicFolders" : true,
+            "excludedPathsByRegex" : "^/archive/.*",
+            "isEnabled" : true,
+            "crawlSnapshotsFolder" : true,
+            "crawlMailboxes" : false,
+            "crawlTopLevelShares" : [ "share1", "share2" ],
+            "clusterId" : "cluster-001",
+            "includeResources" : [ "resourceX", "resourceY" ]
+          },
+          "identityCollectorId" : 123456789,
+          "permissionCollectorSettings" : {
+            "analyzeUniquePermissions" : true,
+            "calculateRiskiestPermissions" : false,
+            "isEnabled" : true,
+            "calculateEffectivePermissions" : true,
+            "clusterId" : "cluster-001",
+            "effectivePermissionsSource" : "S3"
+          },
+          "tags" : [ {
+            "key" : 1,
+            "value" : "Confidential"
+          } ]
+        }`) // BaseCreateApplicationRequest | Request body containing the details required to create a new application.
 
-    var basecreateapplicationrequest data_access_security.Basecreateapplicationrequest
-    if err := json.Unmarshal(basecreateapplicationrequestJson, &basecreateapplicationrequest); err != nil {
+    var baseCreateApplicationRequest data_access_security.BaseCreateApplicationRequest
+    if err := json.Unmarshal(basecreateapplicationrequestJson, &baseCreateApplicationRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -163,8 +209,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurityAPI.CreateApplicationV1(context.Background()).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
-	  //r, err := apiClient.DataAccessSecurityAPI.CreateApplicationV1(context.Background()).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.CreateApplicationV1(context.Background()).BaseCreateApplicationRequest(baseCreateApplicationRequest).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.CreateApplicationV1(context.Background()).BaseCreateApplicationRequest(baseCreateApplicationRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.CreateApplicationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -218,7 +264,10 @@ import (
 )
 
 func main() {
-    createidentitycollectorrequestJson := []byte(``) // Createidentitycollectorrequest | Request body containing the details required to create a new identity collector.
+    createidentitycollectorrequestJson := []byte(`{
+          "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+          "name" : "Active Directory Identity Collector"
+        }`) // Createidentitycollectorrequest | Request body containing the details required to create a new identity collector.
 
     var createidentitycollectorrequest data_access_security.Createidentitycollectorrequest
     if err := json.Unmarshal(createidentitycollectorrequestJson, &createidentitycollectorrequest); err != nil {
@@ -259,7 +308,7 @@ Other parameters are passed through a pointer to a apiCreateScheduleV1Request st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createschedulerequest** | [**Createschedulerequest**](../models/createschedulerequest) |  | 
+ **createScheduleRequest** | [**CreateScheduleRequest**](../models/create-schedule-request) |  | 
 
 ### Return type
 
@@ -285,10 +334,21 @@ import (
 )
 
 func main() {
-    createschedulerequestJson := []byte(``) // Createschedulerequest | 
+    createschedulerequestJson := []byte(`{
+          "scheduleTaskName" : "Daily Data Sync",
+          "scheduleType" : "Daily",
+          "active" : true,
+          "interval" : 1440,
+          "startTime" : 1762237200,
+          "endTime" : 1762240800,
+          "taskTypeName" : "DataSync",
+          "daysOfWeek" : [ "Monday", "Wednesday", "Friday" ],
+          "applicationId" : 2001,
+          "runAfterScheduleTaskId" : 1000
+        }`) // CreateScheduleRequest | 
 
-    var createschedulerequest data_access_security.Createschedulerequest
-    if err := json.Unmarshal(createschedulerequestJson, &createschedulerequest); err != nil {
+    var createScheduleRequest data_access_security.CreateScheduleRequest
+    if err := json.Unmarshal(createschedulerequestJson, &createScheduleRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -296,8 +356,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurityAPI.CreateScheduleV1(context.Background()).Createschedulerequest(createschedulerequest).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurityAPI.CreateScheduleV1(context.Background()).Createschedulerequest(createschedulerequest).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.CreateScheduleV1(context.Background()).CreateScheduleRequest(createScheduleRequest).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.CreateScheduleV1(context.Background()).CreateScheduleRequest(createScheduleRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.CreateScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -326,7 +386,7 @@ Other parameters are passed through a pointer to a apiDasV1OwnersAssignPostReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assignresourceownerrequest** | [**Assignresourceownerrequest**](../models/assignresourceownerrequest) | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner. | 
+ **assignResourceOwnerRequest** | [**AssignResourceOwnerRequest**](../models/assign-resource-owner-request) | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner. | 
 
 ### Return type
 
@@ -352,10 +412,14 @@ import (
 )
 
 func main() {
-    assignresourceownerrequestJson := []byte(``) // Assignresourceownerrequest | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.
+    assignresourceownerrequestJson := []byte(`{
+          "fullPath" : "/shared/hr/documents/employee-records.pdf",
+          "identityId" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+          "appId" : 12345
+        }`) // AssignResourceOwnerRequest | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.
 
-    var assignresourceownerrequest data_access_security.Assignresourceownerrequest
-    if err := json.Unmarshal(assignresourceownerrequestJson, &assignresourceownerrequest); err != nil {
+    var assignResourceOwnerRequest data_access_security.AssignResourceOwnerRequest
+    if err := json.Unmarshal(assignresourceownerrequestJson, &assignResourceOwnerRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -363,8 +427,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersAssignPost(context.Background()).Assignresourceownerrequest(assignresourceownerrequest).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersAssignPost(context.Background()).Assignresourceownerrequest(assignresourceownerrequest).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersAssignPost(context.Background()).AssignResourceOwnerRequest(assignResourceOwnerRequest).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersAssignPost(context.Background()).AssignResourceOwnerRequest(assignResourceOwnerRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DasV1OwnersAssignPost``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -403,7 +467,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Resourcemodel**](../models/resourcemodel)
+[**[]ResourceModel**](../models/resource-model)
 
 ### HTTP request headers
 
@@ -439,7 +503,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DasV1OwnersOwnerIdentityIdResourcesGet``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DasV1OwnersOwnerIdentityIdResourcesGet`: []Resourcemodel
+    // response from `DasV1OwnersOwnerIdentityIdResourcesGet`: []ResourceModel
     fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.DasV1OwnersOwnerIdentityIdResourcesGet`: %v\n", resp)
 }
 ```
@@ -463,7 +527,7 @@ Other parameters are passed through a pointer to a apiDasV1OwnersReelectPostRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reelectrequest** | [**Reelectrequest**](../models/reelectrequest) | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds. | 
+ **reelectRequest** | [**ReelectRequest**](../models/reelect-request) | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds. | 
 
 ### Return type
 
@@ -489,10 +553,14 @@ import (
 )
 
 func main() {
-    reelectrequestJson := []byte(``) // Reelectrequest | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
+    reelectrequestJson := []byte(`{
+          "ownerId" : "c1a2b3d4-e5f6-7890-abcd-1234567890ab",
+          "campaignName" : "Annual Resource Owner Election",
+          "reviewers" : [ "d4e5f6a7-b8c9-0123-4567-89abcdef0123", "e7f8g9h0-i1j2-3456-7890-klmnopqrstuv" ]
+        }`) // ReelectRequest | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
 
-    var reelectrequest data_access_security.Reelectrequest
-    if err := json.Unmarshal(reelectrequestJson, &reelectrequest); err != nil {
+    var reelectRequest data_access_security.ReelectRequest
+    if err := json.Unmarshal(reelectrequestJson, &reelectRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -500,8 +568,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersReelectPost(context.Background()).Reelectrequest(reelectrequest).Execute()
-	  //resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersReelectPost(context.Background()).Reelectrequest(reelectrequest).Execute()
+    resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersReelectPost(context.Background()).ReelectRequest(reelectRequest).Execute()
+	  //resp, r, err := apiClient.DataAccessSecurityAPI.DasV1OwnersReelectPost(context.Background()).ReelectRequest(reelectRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.DasV1OwnersReelectPost``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -938,7 +1006,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Applicationitem**](../models/applicationitem)
+[**ApplicationItem**](../models/application-item)
 
 ### HTTP request headers
 
@@ -972,7 +1040,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetApplicationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetApplicationV1`: Applicationitem
+    // response from `GetApplicationV1`: ApplicationItem
     fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.GetApplicationV1`: %v\n", resp)
 }
 ```
@@ -1003,7 +1071,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Applicationitem**](../models/applicationitem)
+[**[]ApplicationItem**](../models/application-item)
 
 ### HTTP request headers
 
@@ -1040,7 +1108,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetApplicationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetApplicationsV1`: []Applicationitem
+    // response from `GetApplicationsV1`: []ApplicationItem
     fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.GetApplicationsV1`: %v\n", resp)
 }
 ```
@@ -1074,7 +1142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Dataownermodel**](../models/dataownermodel)
+[**[]DataOwnerModel**](../models/data-owner-model)
 
 ### HTTP request headers
 
@@ -1110,7 +1178,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetOwnersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOwnersV1`: []Dataownermodel
+    // response from `GetOwnersV1`: []DataOwnerModel
     fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.GetOwnersV1`: %v\n", resp)
 }
 ```
@@ -1142,7 +1210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Scheduleinfo**](../models/scheduleinfo)
+[**ScheduleInfo**](../models/schedule-info)
 
 ### HTTP request headers
 
@@ -1176,7 +1244,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetScheduleV1`: Scheduleinfo
+    // response from `GetScheduleV1`: ScheduleInfo
     fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.GetScheduleV1`: %v\n", resp)
 }
 ```
@@ -1207,7 +1275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Scheduleinfo**](../models/scheduleinfo)
+[**[]ScheduleInfo**](../models/schedule-info)
 
 ### HTTP request headers
 
@@ -1244,7 +1312,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetSchedulesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSchedulesV1`: []Scheduleinfo
+    // response from `GetSchedulesV1`: []ScheduleInfo
     fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.GetSchedulesV1`: %v\n", resp)
 }
 ```
@@ -1276,7 +1344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Taskinfo**](../models/taskinfo)
+[**TaskInfo**](../models/task-info)
 
 ### HTTP request headers
 
@@ -1310,7 +1378,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetTaskV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTaskV1`: Taskinfo
+    // response from `GetTaskV1`: TaskInfo
     fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.GetTaskV1`: %v\n", resp)
 }
 ```
@@ -1341,7 +1409,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Taskinfo**](../models/taskinfo)
+[**[]TaskInfo**](../models/task-info)
 
 ### HTTP request headers
 
@@ -1378,7 +1446,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.GetTasksV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTasksV1`: []Taskinfo
+    // response from `GetTasksV1`: []TaskInfo
     fmt.Fprintf(os.Stdout, "Response from `DataAccessSecurityAPI.GetTasksV1`: %v\n", resp)
 }
 ```
@@ -1477,7 +1545,7 @@ Other parameters are passed through a pointer to a apiPutApplicationV1Request st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **basecreateapplicationrequest** | [**Basecreateapplicationrequest**](../models/basecreateapplicationrequest) | Request body containing the updated details for the application. | 
+ **baseCreateApplicationRequest** | [**BaseCreateApplicationRequest**](../models/base-create-application-request) | Request body containing the updated details for the application. | 
 
 ### Return type
 
@@ -1504,10 +1572,56 @@ import (
 
 func main() {
     id := 12345 // int64 | The unique identifier of the application to update. # int64 | The unique identifier of the application to update.
-    basecreateapplicationrequestJson := []byte(``) // Basecreateapplicationrequest | Request body containing the updated details for the application.
+    basecreateapplicationrequestJson := []byte(`{
+          "adIdentityCollectorId" : 987654321,
+          "applicationType" : 9,
+          "nisIdentityCollectorId" : 192837465,
+          "executeNow" : false,
+          "name" : "HR File Server",
+          "description" : "Stores HR documents and employee records.",
+          "dataClassificationSettings" : {
+            "isEnabled" : true,
+            "clusterId" : "cluster-001"
+          },
+          "activityConfigurationSettings" : {
+            "excludeFolders" : [ "/tmp", "/archive" ],
+            "excludeFileExtensions" : [ ".log", ".bak" ],
+            "excludeActions" : [ "delete", "move" ],
+            "isEnabled" : true,
+            "retentionTimePeriod" : 30,
+            "retentionTimeType" : "days",
+            "clusterId" : "cluster-001",
+            "excludeUsers" : [ "user1", "user2" ]
+          },
+          "applicationCrawlerSettings" : {
+            "calculateResourceSize" : 2,
+            "excludedResources" : [ "resourceA", "resourceB" ],
+            "crawlPublicFolders" : true,
+            "excludedPathsByRegex" : "^/archive/.*",
+            "isEnabled" : true,
+            "crawlSnapshotsFolder" : true,
+            "crawlMailboxes" : false,
+            "crawlTopLevelShares" : [ "share1", "share2" ],
+            "clusterId" : "cluster-001",
+            "includeResources" : [ "resourceX", "resourceY" ]
+          },
+          "identityCollectorId" : 123456789,
+          "permissionCollectorSettings" : {
+            "analyzeUniquePermissions" : true,
+            "calculateRiskiestPermissions" : false,
+            "isEnabled" : true,
+            "calculateEffectivePermissions" : true,
+            "clusterId" : "cluster-001",
+            "effectivePermissionsSource" : "S3"
+          },
+          "tags" : [ {
+            "key" : 1,
+            "value" : "Confidential"
+          } ]
+        }`) // BaseCreateApplicationRequest | Request body containing the updated details for the application.
 
-    var basecreateapplicationrequest data_access_security.Basecreateapplicationrequest
-    if err := json.Unmarshal(basecreateapplicationrequestJson, &basecreateapplicationrequest); err != nil {
+    var baseCreateApplicationRequest data_access_security.BaseCreateApplicationRequest
+    if err := json.Unmarshal(basecreateapplicationrequestJson, &baseCreateApplicationRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1515,8 +1629,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurityAPI.PutApplicationV1(context.Background(), id).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
-	  //r, err := apiClient.DataAccessSecurityAPI.PutApplicationV1(context.Background(), id).Basecreateapplicationrequest(basecreateapplicationrequest).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.PutApplicationV1(context.Background(), id).BaseCreateApplicationRequest(baseCreateApplicationRequest).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.PutApplicationV1(context.Background(), id).BaseCreateApplicationRequest(baseCreateApplicationRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.PutApplicationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1576,7 +1690,11 @@ import (
 
 func main() {
     id := 12345 // int64 | The unique identifier of the identity collector to update. # int64 | The unique identifier of the identity collector to update.
-    updateidentitycollectorrequestJson := []byte(``) // Updateidentitycollectorrequest | Request body containing the updated details for the identity collector.
+    updateidentitycollectorrequestJson := []byte(`{
+          "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+          "name" : "Active Directory Identity Collector",
+          "type" : "Active Directory"
+        }`) // Updateidentitycollectorrequest | Request body containing the updated details for the identity collector.
 
     var updateidentitycollectorrequest data_access_security.Updateidentitycollectorrequest
     if err := json.Unmarshal(updateidentitycollectorrequestJson, &updateidentitycollectorrequest); err != nil {
@@ -1621,7 +1739,7 @@ Other parameters are passed through a pointer to a apiPutScheduleV1Request struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateschedulerequest** | [**Updateschedulerequest**](../models/updateschedulerequest) |  | 
+ **updateScheduleRequest** | [**UpdateScheduleRequest**](../models/update-schedule-request) |  | 
 
 ### Return type
 
@@ -1648,10 +1766,21 @@ import (
 
 func main() {
     id := 1001 // int64 | The unique identifier of the schedule to update. # int64 | The unique identifier of the schedule to update.
-    updateschedulerequestJson := []byte(``) // Updateschedulerequest | 
+    updateschedulerequestJson := []byte(`{
+          "scheduleTaskName" : "Daily Data Sync",
+          "scheduleType" : "Daily",
+          "active" : true,
+          "interval" : 1440,
+          "startTime" : 1762237200,
+          "endTime" : 1762240800,
+          "taskTypeName" : "DataSync",
+          "daysOfWeek" : [ "Monday", "Wednesday", "Friday" ],
+          "applicationId" : 2001,
+          "runAfterScheduleTaskId" : 1000
+        }`) // UpdateScheduleRequest | 
 
-    var updateschedulerequest data_access_security.Updateschedulerequest
-    if err := json.Unmarshal(updateschedulerequestJson, &updateschedulerequest); err != nil {
+    var updateScheduleRequest data_access_security.UpdateScheduleRequest
+    if err := json.Unmarshal(updateschedulerequestJson, &updateScheduleRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1659,8 +1788,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DataAccessSecurityAPI.PutScheduleV1(context.Background(), id).Updateschedulerequest(updateschedulerequest).Execute()
-	  //r, err := apiClient.DataAccessSecurityAPI.PutScheduleV1(context.Background(), id).Updateschedulerequest(updateschedulerequest).Execute()
+    r, err := apiClient.DataAccessSecurityAPI.PutScheduleV1(context.Background(), id).UpdateScheduleRequest(updateScheduleRequest).Execute()
+	  //r, err := apiClient.DataAccessSecurityAPI.PutScheduleV1(context.Background(), id).UpdateScheduleRequest(updateScheduleRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataAccessSecurityAPI.PutScheduleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

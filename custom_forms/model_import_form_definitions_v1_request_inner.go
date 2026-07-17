@@ -19,7 +19,7 @@ var _ MappedNullable = &ImportFormDefinitionsV1RequestInner{}
 
 // ImportFormDefinitionsV1RequestInner struct for ImportFormDefinitionsV1RequestInner
 type ImportFormDefinitionsV1RequestInner struct {
-	Object *Formdefinitionresponse `json:"object,omitempty"`
+	Object *FormDefinitionResponse `json:"object,omitempty"`
 	Self *string `json:"self,omitempty"`
 	Version *int32 `json:"version,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,9 +45,9 @@ func NewImportFormDefinitionsV1RequestInnerWithDefaults() *ImportFormDefinitions
 }
 
 // GetObject returns the Object field value if set, zero value otherwise.
-func (o *ImportFormDefinitionsV1RequestInner) GetObject() Formdefinitionresponse {
+func (o *ImportFormDefinitionsV1RequestInner) GetObject() FormDefinitionResponse {
 	if o == nil || IsNil(o.Object) {
-		var ret Formdefinitionresponse
+		var ret FormDefinitionResponse
 		return ret
 	}
 	return *o.Object
@@ -55,7 +55,7 @@ func (o *ImportFormDefinitionsV1RequestInner) GetObject() Formdefinitionresponse
 
 // GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ImportFormDefinitionsV1RequestInner) GetObjectOk() (*Formdefinitionresponse, bool) {
+func (o *ImportFormDefinitionsV1RequestInner) GetObjectOk() (*FormDefinitionResponse, bool) {
 	if o == nil || IsNil(o.Object) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *ImportFormDefinitionsV1RequestInner) HasObject() bool {
 	return false
 }
 
-// SetObject gets a reference to the given Formdefinitionresponse and assigns it to the Object field.
-func (o *ImportFormDefinitionsV1RequestInner) SetObject(v Formdefinitionresponse) {
+// SetObject gets a reference to the given FormDefinitionResponse and assigns it to the Object field.
+func (o *ImportFormDefinitionsV1RequestInner) SetObject(v FormDefinitionResponse) {
 	o.Object = &v
 }
 

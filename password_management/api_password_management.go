@@ -27,7 +27,7 @@ type ApiCreateDigitTokenV1Request struct {
 	ctx context.Context
 	ApiService *PasswordManagementAPIService
 	xSailPointExperimental *string
-	passworddigittokenreset *Passworddigittokenreset
+	passwordDigitTokenReset *PasswordDigitTokenReset
 }
 
 // Use this header to enable this experimental API.
@@ -36,12 +36,12 @@ func (r ApiCreateDigitTokenV1Request) XSailPointExperimental(xSailPointExperimen
 	return r
 }
 
-func (r ApiCreateDigitTokenV1Request) Passworddigittokenreset(passworddigittokenreset Passworddigittokenreset) ApiCreateDigitTokenV1Request {
-	r.passworddigittokenreset = &passworddigittokenreset
+func (r ApiCreateDigitTokenV1Request) PasswordDigitTokenReset(passwordDigitTokenReset PasswordDigitTokenReset) ApiCreateDigitTokenV1Request {
+	r.passwordDigitTokenReset = &passwordDigitTokenReset
 	return r
 }
 
-func (r ApiCreateDigitTokenV1Request) Execute() (*Passworddigittoken, *http.Response, error) {
+func (r ApiCreateDigitTokenV1Request) Execute() (*PasswordDigitToken, *http.Response, error) {
 	return r.ApiService.CreateDigitTokenV1Execute(r)
 }
 
@@ -61,13 +61,13 @@ func (a *PasswordManagementAPIService) CreateDigitTokenV1(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return Passworddigittoken
-func (a *PasswordManagementAPIService) CreateDigitTokenV1Execute(r ApiCreateDigitTokenV1Request) (*Passworddigittoken, *http.Response, error) {
+//  @return PasswordDigitToken
+func (a *PasswordManagementAPIService) CreateDigitTokenV1Execute(r ApiCreateDigitTokenV1Request) (*PasswordDigitToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passworddigittoken
+		localVarReturnValue  *PasswordDigitToken
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.CreateDigitTokenV1")
@@ -95,8 +95,8 @@ func (a *PasswordManagementAPIService) CreateDigitTokenV1Execute(r ApiCreateDigi
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.passworddigittokenreset == nil {
-		return localVarReturnValue, nil, reportError("passworddigittokenreset is required and must be specified")
+	if r.passwordDigitTokenReset == nil {
+		return localVarReturnValue, nil, reportError("passwordDigitTokenReset is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -118,7 +118,7 @@ func (a *PasswordManagementAPIService) CreateDigitTokenV1Execute(r ApiCreateDigi
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.passworddigittokenreset
+	localVarPostBody = r.passwordDigitTokenReset
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -142,7 +142,7 @@ func (a *PasswordManagementAPIService) CreateDigitTokenV1Execute(r ApiCreateDigi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *PasswordManagementAPIService) CreateDigitTokenV1Execute(r ApiCreateDigi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -186,7 +186,7 @@ func (a *PasswordManagementAPIService) CreateDigitTokenV1Execute(r ApiCreateDigi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -216,7 +216,7 @@ type ApiGetPasswordChangeStatusV1Request struct {
 	id string
 }
 
-func (r ApiGetPasswordChangeStatusV1Request) Execute() (*Passwordstatus, *http.Response, error) {
+func (r ApiGetPasswordChangeStatusV1Request) Execute() (*PasswordStatus, *http.Response, error) {
 	return r.ApiService.GetPasswordChangeStatusV1Execute(r)
 }
 
@@ -238,13 +238,13 @@ func (a *PasswordManagementAPIService) GetPasswordChangeStatusV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return Passwordstatus
-func (a *PasswordManagementAPIService) GetPasswordChangeStatusV1Execute(r ApiGetPasswordChangeStatusV1Request) (*Passwordstatus, *http.Response, error) {
+//  @return PasswordStatus
+func (a *PasswordManagementAPIService) GetPasswordChangeStatusV1Execute(r ApiGetPasswordChangeStatusV1Request) (*PasswordStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordstatus
+		localVarReturnValue  *PasswordStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.GetPasswordChangeStatusV1")
@@ -299,7 +299,7 @@ func (a *PasswordManagementAPIService) GetPasswordChangeStatusV1Execute(r ApiGet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -321,7 +321,7 @@ func (a *PasswordManagementAPIService) GetPasswordChangeStatusV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -332,7 +332,7 @@ func (a *PasswordManagementAPIService) GetPasswordChangeStatusV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -354,7 +354,7 @@ func (a *PasswordManagementAPIService) GetPasswordChangeStatusV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -381,15 +381,15 @@ func (a *PasswordManagementAPIService) GetPasswordChangeStatusV1Execute(r ApiGet
 type ApiQueryPasswordInfoV1Request struct {
 	ctx context.Context
 	ApiService *PasswordManagementAPIService
-	passwordinfoquerydto *Passwordinfoquerydto
+	passwordInfoQueryDTO *PasswordInfoQueryDTO
 }
 
-func (r ApiQueryPasswordInfoV1Request) Passwordinfoquerydto(passwordinfoquerydto Passwordinfoquerydto) ApiQueryPasswordInfoV1Request {
-	r.passwordinfoquerydto = &passwordinfoquerydto
+func (r ApiQueryPasswordInfoV1Request) PasswordInfoQueryDTO(passwordInfoQueryDTO PasswordInfoQueryDTO) ApiQueryPasswordInfoV1Request {
+	r.passwordInfoQueryDTO = &passwordInfoQueryDTO
 	return r
 }
 
-func (r ApiQueryPasswordInfoV1Request) Execute() (*Passwordinfo, *http.Response, error) {
+func (r ApiQueryPasswordInfoV1Request) Execute() (*PasswordInfo, *http.Response, error) {
 	return r.ApiService.QueryPasswordInfoV1Execute(r)
 }
 
@@ -410,13 +410,13 @@ func (a *PasswordManagementAPIService) QueryPasswordInfoV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return Passwordinfo
-func (a *PasswordManagementAPIService) QueryPasswordInfoV1Execute(r ApiQueryPasswordInfoV1Request) (*Passwordinfo, *http.Response, error) {
+//  @return PasswordInfo
+func (a *PasswordManagementAPIService) QueryPasswordInfoV1Execute(r ApiQueryPasswordInfoV1Request) (*PasswordInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordinfo
+		localVarReturnValue  *PasswordInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.QueryPasswordInfoV1")
@@ -429,8 +429,8 @@ func (a *PasswordManagementAPIService) QueryPasswordInfoV1Execute(r ApiQueryPass
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.passwordinfoquerydto == nil {
-		return localVarReturnValue, nil, reportError("passwordinfoquerydto is required and must be specified")
+	if r.passwordInfoQueryDTO == nil {
+		return localVarReturnValue, nil, reportError("passwordInfoQueryDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -451,7 +451,7 @@ func (a *PasswordManagementAPIService) QueryPasswordInfoV1Execute(r ApiQueryPass
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.passwordinfoquerydto
+	localVarPostBody = r.passwordInfoQueryDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -475,7 +475,7 @@ func (a *PasswordManagementAPIService) QueryPasswordInfoV1Execute(r ApiQueryPass
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -497,7 +497,7 @@ func (a *PasswordManagementAPIService) QueryPasswordInfoV1Execute(r ApiQueryPass
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -519,7 +519,7 @@ func (a *PasswordManagementAPIService) QueryPasswordInfoV1Execute(r ApiQueryPass
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -546,15 +546,15 @@ func (a *PasswordManagementAPIService) QueryPasswordInfoV1Execute(r ApiQueryPass
 type ApiSetPasswordV1Request struct {
 	ctx context.Context
 	ApiService *PasswordManagementAPIService
-	passwordchangerequest *Passwordchangerequest
+	passwordChangeRequest *PasswordChangeRequest
 }
 
-func (r ApiSetPasswordV1Request) Passwordchangerequest(passwordchangerequest Passwordchangerequest) ApiSetPasswordV1Request {
-	r.passwordchangerequest = &passwordchangerequest
+func (r ApiSetPasswordV1Request) PasswordChangeRequest(passwordChangeRequest PasswordChangeRequest) ApiSetPasswordV1Request {
+	r.passwordChangeRequest = &passwordChangeRequest
 	return r
 }
 
-func (r ApiSetPasswordV1Request) Execute() (*Passwordchangeresponse, *http.Response, error) {
+func (r ApiSetPasswordV1Request) Execute() (*PasswordChangeResponse, *http.Response, error) {
 	return r.ApiService.SetPasswordV1Execute(r)
 }
 
@@ -593,13 +593,13 @@ func (a *PasswordManagementAPIService) SetPasswordV1(ctx context.Context) ApiSet
 }
 
 // Execute executes the request
-//  @return Passwordchangeresponse
-func (a *PasswordManagementAPIService) SetPasswordV1Execute(r ApiSetPasswordV1Request) (*Passwordchangeresponse, *http.Response, error) {
+//  @return PasswordChangeResponse
+func (a *PasswordManagementAPIService) SetPasswordV1Execute(r ApiSetPasswordV1Request) (*PasswordChangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordchangeresponse
+		localVarReturnValue  *PasswordChangeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.SetPasswordV1")
@@ -612,8 +612,8 @@ func (a *PasswordManagementAPIService) SetPasswordV1Execute(r ApiSetPasswordV1Re
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.passwordchangerequest == nil {
-		return localVarReturnValue, nil, reportError("passwordchangerequest is required and must be specified")
+	if r.passwordChangeRequest == nil {
+		return localVarReturnValue, nil, reportError("passwordChangeRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -634,7 +634,7 @@ func (a *PasswordManagementAPIService) SetPasswordV1Execute(r ApiSetPasswordV1Re
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.passwordchangerequest
+	localVarPostBody = r.passwordChangeRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -658,7 +658,7 @@ func (a *PasswordManagementAPIService) SetPasswordV1Execute(r ApiSetPasswordV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -680,7 +680,7 @@ func (a *PasswordManagementAPIService) SetPasswordV1Execute(r ApiSetPasswordV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -702,7 +702,7 @@ func (a *PasswordManagementAPIService) SetPasswordV1Execute(r ApiSetPasswordV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

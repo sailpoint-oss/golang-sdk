@@ -25,7 +25,7 @@ type Query struct {
 	Fields *string `json:"fields,omitempty"`
 	// The time zone to be applied to any range query related to dates.
 	TimeZone *string `json:"timeZone,omitempty"`
-	InnerHit *Innerhit `json:"innerHit,omitempty"`
+	InnerHit *InnerHit `json:"innerHit,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -145,9 +145,9 @@ func (o *Query) SetTimeZone(v string) {
 }
 
 // GetInnerHit returns the InnerHit field value if set, zero value otherwise.
-func (o *Query) GetInnerHit() Innerhit {
+func (o *Query) GetInnerHit() InnerHit {
 	if o == nil || IsNil(o.InnerHit) {
-		var ret Innerhit
+		var ret InnerHit
 		return ret
 	}
 	return *o.InnerHit
@@ -155,7 +155,7 @@ func (o *Query) GetInnerHit() Innerhit {
 
 // GetInnerHitOk returns a tuple with the InnerHit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Query) GetInnerHitOk() (*Innerhit, bool) {
+func (o *Query) GetInnerHitOk() (*InnerHit, bool) {
 	if o == nil || IsNil(o.InnerHit) {
 		return nil, false
 	}
@@ -171,8 +171,8 @@ func (o *Query) HasInnerHit() bool {
 	return false
 }
 
-// SetInnerHit gets a reference to the given Innerhit and assigns it to the InnerHit field.
-func (o *Query) SetInnerHit(v Innerhit) {
+// SetInnerHit gets a reference to the given InnerHit and assigns it to the InnerHit field.
+func (o *Query) SetInnerHit(v InnerHit) {
 	o.InnerHit = &v
 }
 

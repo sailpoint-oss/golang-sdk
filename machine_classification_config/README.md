@@ -86,16 +86,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetMachineClassificationConfigV1401Response](docs/GetMachineClassificationConfigV1401Response.md)
  - [GetMachineClassificationConfigV1429Response](docs/GetMachineClassificationConfigV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Machineclassificationconfig](docs/Machineclassificationconfig.md)
- - [Machineclassificationcriterialevel1](docs/Machineclassificationcriterialevel1.md)
- - [Machineclassificationcriterialevel2](docs/Machineclassificationcriterialevel2.md)
- - [Machineclassificationcriterialevel3](docs/Machineclassificationcriterialevel3.md)
- - [Machineclassificationcriteriaoperation](docs/Machineclassificationcriteriaoperation.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [MachineClassificationConfig](docs/MachineClassificationConfig.md)
+ - [MachineClassificationCriteriaLevel1](docs/MachineClassificationCriteriaLevel1.md)
+ - [MachineClassificationCriteriaLevel2](docs/MachineClassificationCriteriaLevel2.md)
+ - [MachineClassificationCriteriaLevel3](docs/MachineClassificationCriteriaLevel3.md)
+ - [MachineClassificationCriteriaOperation](docs/MachineClassificationCriteriaOperation.md)
 
 
 ## Documentation For Authorization

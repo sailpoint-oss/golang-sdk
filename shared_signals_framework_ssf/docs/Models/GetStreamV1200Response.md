@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **StreamId** | Pointer to **string** | Unique stream identifier. | [optional] 
 **Iss** | Pointer to **string** | Issuer (transmitter) URL. | [optional] 
 **Aud** | Pointer to **string** | Audience for the stream. | [optional] 
-**Delivery** | Pointer to [**Deliveryresponse**](deliveryresponse) |  | [optional] 
+**Delivery** | Pointer to [**DeliveryResponse**](delivery-response) |  | [optional] 
 **EventsSupported** | Pointer to **[]string** | Event types supported by the transmitter. Use CAEP event-type URIs in the form: `https://schemas.openid.net/secevent/caep/event-type/{event-type}` (e.g. session-revoked).  | [optional] 
 **EventsRequested** | Pointer to **[]string** | Event types requested by the receiver. Use CAEP event-type URIs in the form: `https://schemas.openid.net/secevent/caep/event-type/{event-type}` (e.g. session revoke).  | [optional] 
 **EventsDelivered** | Pointer to **[]string** | Event types currently being delivered (intersection of supported and requested). | [optional] 
@@ -122,20 +122,20 @@ HasAud returns a boolean if a field has been set.
 
 ### GetDelivery
 
-`func (o *GetStreamV1200Response) GetDelivery() Deliveryresponse`
+`func (o *GetStreamV1200Response) GetDelivery() DeliveryResponse`
 
 GetDelivery returns the Delivery field if non-nil, zero value otherwise.
 
 ### GetDeliveryOk
 
-`func (o *GetStreamV1200Response) GetDeliveryOk() (*Deliveryresponse, bool)`
+`func (o *GetStreamV1200Response) GetDeliveryOk() (*DeliveryResponse, bool)`
 
 GetDeliveryOk returns a tuple with the Delivery field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDelivery
 
-`func (o *GetStreamV1200Response) SetDelivery(v Deliveryresponse)`
+`func (o *GetStreamV1200Response) SetDelivery(v DeliveryResponse)`
 
 SetDelivery sets Delivery field to given value.
 

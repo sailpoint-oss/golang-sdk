@@ -46,7 +46,7 @@ Other parameters are passed through a pointer to a apiGetPublicIdentityConfigV1R
 
 ### Return type
 
-[**Publicidentityconfig**](../models/publicidentityconfig)
+[**PublicIdentityConfig**](../models/public-identity-config)
 
 ### HTTP request headers
 
@@ -79,7 +79,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.GetPublicIdentityConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPublicIdentityConfigV1`: Publicidentityconfig
+    // response from `GetPublicIdentityConfigV1`: PublicIdentityConfig
     fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigAPI.GetPublicIdentityConfigV1`: %v\n", resp)
 }
 ```
@@ -103,11 +103,11 @@ Other parameters are passed through a pointer to a apiUpdatePublicIdentityConfig
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **publicidentityconfig** | [**Publicidentityconfig**](../models/publicidentityconfig) |  | 
+ **publicIdentityConfig** | [**PublicIdentityConfig**](../models/public-identity-config) |  | 
 
 ### Return type
 
-[**Publicidentityconfig**](../models/publicidentityconfig)
+[**PublicIdentityConfig**](../models/public-identity-config)
 
 ### HTTP request headers
 
@@ -129,10 +129,24 @@ import (
 )
 
 func main() {
-    publicidentityconfigJson := []byte(``) // Publicidentityconfig | 
+    publicidentityconfigJson := []byte(`{
+          "modified" : "2018-06-25T20:22:28.104Z",
+          "attributes" : [ {
+            "name" : "Country",
+            "key" : "country"
+          }, {
+            "name" : "Country",
+            "key" : "country"
+          } ],
+          "modifiedBy" : {
+            "name" : "Thomas Edison",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          }
+        }`) // PublicIdentityConfig | 
 
-    var publicidentityconfig public_identities_config.Publicidentityconfig
-    if err := json.Unmarshal(publicidentityconfigJson, &publicidentityconfig); err != nil {
+    var publicIdentityConfig public_identities_config.PublicIdentityConfig
+    if err := json.Unmarshal(publicidentityconfigJson, &publicIdentityConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -140,13 +154,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1(context.Background()).Publicidentityconfig(publicidentityconfig).Execute()
-	  //resp, r, err := apiClient.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1(context.Background()).Publicidentityconfig(publicidentityconfig).Execute()
+    resp, r, err := apiClient.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1(context.Background()).PublicIdentityConfig(publicIdentityConfig).Execute()
+	  //resp, r, err := apiClient.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1(context.Background()).PublicIdentityConfig(publicIdentityConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatePublicIdentityConfigV1`: Publicidentityconfig
+    // response from `UpdatePublicIdentityConfigV1`: PublicIdentityConfig
     fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfigV1`: %v\n", resp)
 }
 ```

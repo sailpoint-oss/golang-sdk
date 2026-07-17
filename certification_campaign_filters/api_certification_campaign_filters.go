@@ -26,15 +26,15 @@ type CertificationCampaignFiltersAPIService service
 type ApiCreateCampaignFilterV1Request struct {
 	ctx context.Context
 	ApiService *CertificationCampaignFiltersAPIService
-	campaignfilterdetails *Campaignfilterdetails
+	campaignFilterDetails *CampaignFilterDetails
 }
 
-func (r ApiCreateCampaignFilterV1Request) Campaignfilterdetails(campaignfilterdetails Campaignfilterdetails) ApiCreateCampaignFilterV1Request {
-	r.campaignfilterdetails = &campaignfilterdetails
+func (r ApiCreateCampaignFilterV1Request) CampaignFilterDetails(campaignFilterDetails CampaignFilterDetails) ApiCreateCampaignFilterV1Request {
+	r.campaignFilterDetails = &campaignFilterDetails
 	return r
 }
 
-func (r ApiCreateCampaignFilterV1Request) Execute() (*Campaignfilterdetails, *http.Response, error) {
+func (r ApiCreateCampaignFilterV1Request) Execute() (*CampaignFilterDetails, *http.Response, error) {
 	return r.ApiService.CreateCampaignFilterV1Execute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *CertificationCampaignFiltersAPIService) CreateCampaignFilterV1(ctx cont
 }
 
 // Execute executes the request
-//  @return Campaignfilterdetails
-func (a *CertificationCampaignFiltersAPIService) CreateCampaignFilterV1Execute(r ApiCreateCampaignFilterV1Request) (*Campaignfilterdetails, *http.Response, error) {
+//  @return CampaignFilterDetails
+func (a *CertificationCampaignFiltersAPIService) CreateCampaignFilterV1Execute(r ApiCreateCampaignFilterV1Request) (*CampaignFilterDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Campaignfilterdetails
+		localVarReturnValue  *CampaignFilterDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersAPIService.CreateCampaignFilterV1")
@@ -73,8 +73,8 @@ func (a *CertificationCampaignFiltersAPIService) CreateCampaignFilterV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.campaignfilterdetails == nil {
-		return localVarReturnValue, nil, reportError("campaignfilterdetails is required and must be specified")
+	if r.campaignFilterDetails == nil {
+		return localVarReturnValue, nil, reportError("campaignFilterDetails is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -95,7 +95,7 @@ func (a *CertificationCampaignFiltersAPIService) CreateCampaignFilterV1Execute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.campaignfilterdetails
+	localVarPostBody = r.campaignFilterDetails
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -119,7 +119,7 @@ func (a *CertificationCampaignFiltersAPIService) CreateCampaignFilterV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -141,7 +141,7 @@ func (a *CertificationCampaignFiltersAPIService) CreateCampaignFilterV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -163,7 +163,7 @@ func (a *CertificationCampaignFiltersAPIService) CreateCampaignFilterV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -282,7 +282,7 @@ func (a *CertificationCampaignFiltersAPIService) DeleteCampaignFiltersV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -304,7 +304,7 @@ func (a *CertificationCampaignFiltersAPIService) DeleteCampaignFiltersV1Execute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -315,7 +315,7 @@ func (a *CertificationCampaignFiltersAPIService) DeleteCampaignFiltersV1Execute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -337,7 +337,7 @@ func (a *CertificationCampaignFiltersAPIService) DeleteCampaignFiltersV1Execute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -358,7 +358,7 @@ type ApiGetCampaignFilterByIdV1Request struct {
 	id string
 }
 
-func (r ApiGetCampaignFilterByIdV1Request) Execute() (*Campaignfilterdetails, *http.Response, error) {
+func (r ApiGetCampaignFilterByIdV1Request) Execute() (*CampaignFilterDetails, *http.Response, error) {
 	return r.ApiService.GetCampaignFilterByIdV1Execute(r)
 }
 
@@ -380,13 +380,13 @@ func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdV1(ctx con
 }
 
 // Execute executes the request
-//  @return Campaignfilterdetails
-func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdV1Execute(r ApiGetCampaignFilterByIdV1Request) (*Campaignfilterdetails, *http.Response, error) {
+//  @return CampaignFilterDetails
+func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdV1Execute(r ApiGetCampaignFilterByIdV1Request) (*CampaignFilterDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Campaignfilterdetails
+		localVarReturnValue  *CampaignFilterDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersAPIService.GetCampaignFilterByIdV1")
@@ -441,7 +441,7 @@ func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -463,7 +463,7 @@ func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -474,7 +474,7 @@ func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -496,7 +496,7 @@ func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -644,7 +644,7 @@ func (a *CertificationCampaignFiltersAPIService) ListCampaignFiltersV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -666,7 +666,7 @@ func (a *CertificationCampaignFiltersAPIService) ListCampaignFiltersV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -688,7 +688,7 @@ func (a *CertificationCampaignFiltersAPIService) ListCampaignFiltersV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -716,16 +716,16 @@ type ApiUpdateCampaignFilterV1Request struct {
 	ctx context.Context
 	ApiService *CertificationCampaignFiltersAPIService
 	id string
-	campaignfilterdetails *Campaignfilterdetails
+	campaignFilterDetails *CampaignFilterDetails
 }
 
 // A campaign filter details with updated field values.
-func (r ApiUpdateCampaignFilterV1Request) Campaignfilterdetails(campaignfilterdetails Campaignfilterdetails) ApiUpdateCampaignFilterV1Request {
-	r.campaignfilterdetails = &campaignfilterdetails
+func (r ApiUpdateCampaignFilterV1Request) CampaignFilterDetails(campaignFilterDetails CampaignFilterDetails) ApiUpdateCampaignFilterV1Request {
+	r.campaignFilterDetails = &campaignFilterDetails
 	return r
 }
 
-func (r ApiUpdateCampaignFilterV1Request) Execute() (*Campaignfilterdetails, *http.Response, error) {
+func (r ApiUpdateCampaignFilterV1Request) Execute() (*CampaignFilterDetails, *http.Response, error) {
 	return r.ApiService.UpdateCampaignFilterV1Execute(r)
 }
 
@@ -747,13 +747,13 @@ func (a *CertificationCampaignFiltersAPIService) UpdateCampaignFilterV1(ctx cont
 }
 
 // Execute executes the request
-//  @return Campaignfilterdetails
-func (a *CertificationCampaignFiltersAPIService) UpdateCampaignFilterV1Execute(r ApiUpdateCampaignFilterV1Request) (*Campaignfilterdetails, *http.Response, error) {
+//  @return CampaignFilterDetails
+func (a *CertificationCampaignFiltersAPIService) UpdateCampaignFilterV1Execute(r ApiUpdateCampaignFilterV1Request) (*CampaignFilterDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Campaignfilterdetails
+		localVarReturnValue  *CampaignFilterDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersAPIService.UpdateCampaignFilterV1")
@@ -767,8 +767,8 @@ func (a *CertificationCampaignFiltersAPIService) UpdateCampaignFilterV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.campaignfilterdetails == nil {
-		return localVarReturnValue, nil, reportError("campaignfilterdetails is required and must be specified")
+	if r.campaignFilterDetails == nil {
+		return localVarReturnValue, nil, reportError("campaignFilterDetails is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -789,7 +789,7 @@ func (a *CertificationCampaignFiltersAPIService) UpdateCampaignFilterV1Execute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.campaignfilterdetails
+	localVarPostBody = r.campaignFilterDetails
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -813,7 +813,7 @@ func (a *CertificationCampaignFiltersAPIService) UpdateCampaignFilterV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -835,7 +835,7 @@ func (a *CertificationCampaignFiltersAPIService) UpdateCampaignFilterV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -857,7 +857,7 @@ func (a *CertificationCampaignFiltersAPIService) UpdateCampaignFilterV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

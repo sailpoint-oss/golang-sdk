@@ -126,7 +126,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/roleminingsessiondto'
+                  $ref: '#/components/schemas/RoleMiningSessionDto'
                 type: array
           description: Succeeded. Returns all role mining sessions that match the
             query parameters.
@@ -134,7 +134,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -158,7 +158,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -183,7 +183,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -215,7 +215,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/roleminingsessiondto'
+              $ref: '#/components/schemas/RoleMiningSessionDto'
         description: Role mining session parameters
         required: true
       responses:
@@ -223,13 +223,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleminingsessionresponse'
+                $ref: '#/components/schemas/RoleMiningSessionResponse'
           description: Submitted a role mining session request
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -253,7 +253,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -278,7 +278,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -319,19 +319,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleminingsessionresponse'
+                $ref: '#/components/schemas/RoleMiningSessionResponse'
           description: Returns a role mining session
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "403":
           content:
@@ -348,7 +348,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -366,7 +366,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -391,7 +391,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -451,7 +451,7 @@ paths:
               value: RM Session - 07/10/22
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: Replace pruneThreshold and/or minNumIdentitiesInPotentialRole
           in role mining session. Update saved status or saved name for a role mining
@@ -469,7 +469,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -493,7 +493,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -511,7 +511,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -536,7 +536,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -577,13 +577,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleminingsessionstatus'
+                $ref: '#/components/schemas/RoleMiningSessionStatus'
           description: Succeeded. Returns session status
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -607,7 +607,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "500":
@@ -624,7 +624,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -759,7 +759,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/roleminingpotentialrolesummary'
+                  $ref: '#/components/schemas/RoleMiningPotentialRoleSummary'
                 type: array
           description: Succeeded. Returns a list of potential role summaries for a
             role mining session.
@@ -767,7 +767,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -791,7 +791,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -816,7 +816,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -870,14 +870,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleminingpotentialrole'
+                $ref: '#/components/schemas/RoleMiningPotentialRole'
           description: Succeeded. Returns a list of potential roles for a role mining
             session.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -901,7 +901,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -926,7 +926,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1010,7 +1010,7 @@ paths:
               value: Potential Role Accounting
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperationrolemining'
+                $ref: '#/components/schemas/JsonPatchOperationRoleMining'
               type: array
         required: true
       responses:
@@ -1025,7 +1025,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1049,7 +1049,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1067,7 +1067,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1092,7 +1092,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1207,7 +1207,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/roleminingpotentialroleapplication'
+                  $ref: '#/components/schemas/RoleMiningPotentialRoleApplication'
                 type: array
           description: Succeeded. Returns a list of potential roles for a role mining
             session.
@@ -1215,7 +1215,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1239,7 +1239,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1264,7 +1264,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1379,7 +1379,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/roleminingpotentialroleentitlements'
+                  $ref: '#/components/schemas/RoleMiningPotentialRoleEntitlements'
                 type: array
           description: Succeeded. Returns the entitlements of a potential role for
             a role mining session. session.
@@ -1387,7 +1387,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1411,7 +1411,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1436,7 +1436,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1577,14 +1577,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/roleminingentitlement'
+                  $ref: '#/components/schemas/RoleMiningEntitlement'
                 type: array
           description: Succeeded. Returns a list of entitlements for a potential role.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1608,7 +1608,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1633,7 +1633,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1705,7 +1705,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1729,7 +1729,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "500":
@@ -1746,7 +1746,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1800,7 +1800,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/roleminingpotentialroleeditentitlements'
+              $ref: '#/components/schemas/RoleMiningPotentialRoleEditEntitlements'
         description: Role mining session parameters
         required: true
       responses:
@@ -1808,14 +1808,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleminingpotentialrole'
+                $ref: '#/components/schemas/RoleMiningPotentialRole'
           description: Adds or removes entitlements from a potential role's entitlement
             exclusion list.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1839,7 +1839,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "500":
@@ -1856,7 +1856,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1978,14 +1978,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/roleminingidentity'
+                  $ref: '#/components/schemas/RoleMiningIdentity'
                 type: array
           description: Succeeded. Returns a list of identities for a potential role.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2009,7 +2009,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "500":
@@ -2026,7 +2026,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2089,7 +2089,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2113,7 +2113,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "500":
@@ -2130,7 +2130,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2184,20 +2184,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/roleminingpotentialroleexportrequest'
+              $ref: '#/components/schemas/RoleMiningPotentialRoleExportRequest'
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleminingpotentialroleexportresponse'
+                $ref: '#/components/schemas/RoleMiningPotentialRoleExportResponse'
           description: Job Submitted. Returns a reportId that can be used to download
             the zip once complete
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2221,7 +2221,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "500":
@@ -2238,7 +2238,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2304,13 +2304,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleminingpotentialroleexportresponse'
+                $ref: '#/components/schemas/RoleMiningPotentialRoleExportResponse'
           description: Success. Returns the current status of this export
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2334,7 +2334,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "500":
@@ -2351,7 +2351,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2426,7 +2426,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2450,7 +2450,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "500":
@@ -2467,7 +2467,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2541,21 +2541,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/roleminingpotentialroleprovisionrequest'
+              $ref: '#/components/schemas/RoleMiningPotentialRoleProvisionRequest'
         description: Required information to create a new role
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleminingpotentialrolesummary'
+                $ref: '#/components/schemas/RoleMiningPotentialRoleSummary'
           description: Accepted. Returns a potential role summary including the status
             of the provison request
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2579,7 +2579,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2597,7 +2597,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "500":
@@ -2614,7 +2614,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2739,7 +2739,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/roleminingentitlement'
+                  $ref: '#/components/schemas/RoleMiningEntitlement'
                 type: array
           description: Succeeded. Returns a list of excluded entitlements for a potential
             roles.
@@ -2747,7 +2747,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2771,7 +2771,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "500":
@@ -2788,7 +2788,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2919,7 +2919,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/roleminingpotentialrolesummary'
+                  $ref: '#/components/schemas/RoleMiningPotentialRoleSummary'
                 type: array
           description: Succeeded. Returns all potential role summaries that match
             the query parameters.
@@ -2927,7 +2927,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2951,7 +2951,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2976,7 +2976,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3019,14 +3019,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleminingpotentialrole'
+                $ref: '#/components/schemas/RoleMiningPotentialRole'
           description: Succeeded. Returns a list of potential roles for a role mining
             session.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -3050,7 +3050,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -3075,7 +3075,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3159,7 +3159,7 @@ paths:
               value: Potential Role Accounting
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperationrolemining'
+                $ref: '#/components/schemas/JsonPatchOperationRoleMining'
               type: array
         required: true
       responses:
@@ -3174,7 +3174,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -3198,7 +3198,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -3216,7 +3216,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -3241,7 +3241,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3333,7 +3333,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/roleminingsessiondraftroledto'
+                  $ref: '#/components/schemas/RoleMiningSessionDraftRoleDto'
                 type: array
           description: Succeeded. Returns a list of draft roles for a role mining
             session.
@@ -3341,7 +3341,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -3365,7 +3365,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -3390,7 +3390,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3501,7 +3501,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/roleminingpotentialrolesourceusage'
+                  $ref: '#/components/schemas/RoleMiningPotentialRoleSourceUsage'
                 type: array
           description: Succeeded. Returns a list of source usage for the identities
             in a potential role.
@@ -3509,7 +3509,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -3533,7 +3533,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -3558,7 +3558,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3632,7 +3632,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -3656,7 +3656,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -3674,7 +3674,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -3699,10 +3699,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    roleminingsessionscope:
+    RoleMiningSessionScope:
       example:
         identityIds:
         - 2c918090761a5aac0176215c46a62d58
@@ -3755,14 +3755,14 @@ components:
           type: array
       title: Role Mining Session Scope
       type: object
-    roleminingroletype:
+    RoleMiningRoleType:
       description: Role type
       enum:
       - SPECIALIZED
       - COMMON
       example: SPECIALIZED
       type: string
-    roleminingsessiondto:
+    RoleMiningSessionDto:
       example:
         emailRecipientId: 2c918090761a5aac0176215c46a62d58
         prescribedPruneThreshold: 10
@@ -3793,7 +3793,7 @@ components:
         type: SPECIALIZED
       properties:
         scope:
-          $ref: '#/components/schemas/roleminingsessionscope'
+          $ref: '#/components/schemas/RoleMiningSessionScope'
         pruneThreshold:
           description: The prune threshold to be used or null to calculate prescribedPruneThreshold
           example: 50
@@ -3823,7 +3823,7 @@ components:
           format: int32
           type: integer
         type:
-          $ref: '#/components/schemas/roleminingroletype'
+          $ref: '#/components/schemas/RoleMiningRoleType'
         emailRecipientId:
           description: The id of the user who will receive an email about the role
             mining session
@@ -3848,7 +3848,7 @@ components:
           type: string
       title: Role Mining Session Dto
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -3860,7 +3860,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -3873,7 +3873,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -3881,7 +3881,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -3915,17 +3915,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    roleminingsessionstate:
+    RoleMiningSessionState:
       description: Role mining session status
       enum:
       - CREATED
@@ -3936,15 +3936,15 @@ components:
       - POTENTIAL_ROLES_CREATED
       example: CREATED
       type: string
-    roleminingsessionstatus:
+    RoleMiningSessionStatus:
       example:
         state: CREATED
       properties:
         state:
-          $ref: '#/components/schemas/roleminingsessionstate'
+          $ref: '#/components/schemas/RoleMiningSessionState'
       title: Role Mining Session Status
       type: object
-    entitycreatedbydto:
+    EntityCreatedByDTO:
       example:
         displayName: Ashley.Pierce
         id: 2c918090761a5aac0176215c46a62d58
@@ -3958,12 +3958,12 @@ components:
           example: Ashley.Pierce
           type: string
       type: object
-    nullableentitycreatedbydto:
+    NullableEntityCreatedByDTO:
       description: Workaround to support null
       example: Dummy
       nullable: true
       type: string
-    roleminingsessionresponse:
+    RoleMiningSessionResponse:
       example:
         scope:
           identityIds: []
@@ -3989,7 +3989,7 @@ components:
         modifiedDate: 2021-09-08T16:11:05.348Z
       properties:
         scope:
-          $ref: '#/components/schemas/roleminingsessionscope'
+          $ref: '#/components/schemas/RoleMiningSessionScope'
         minNumIdentitiesInPotentialRole:
           description: Minimum number of identities in a potential role
           example: 20
@@ -4019,14 +4019,14 @@ components:
           example: 4
           type: integer
         status:
-          $ref: '#/components/schemas/roleminingsessionstatus'
+          $ref: '#/components/schemas/RoleMiningSessionStatus'
         emailRecipientId:
           description: The id of the user who will receive an email about the role
             mining session
           nullable: true
           type: string
         createdBy:
-          $ref: '#/components/schemas/roleminingsessionresponse_createdBy'
+          $ref: '#/components/schemas/RoleMiningSessionResponse_createdBy'
         identityCount:
           description: The number of identities
           example: 39
@@ -4058,11 +4058,15 @@ components:
           format: date-time
           type: string
         type:
-          $ref: '#/components/schemas/roleminingroletype'
+          $ref: '#/components/schemas/RoleMiningRoleType'
       title: Role Mining Session Response
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -4081,13 +4085,13 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    roleminingpotentialroleref:
+    RoleMiningPotentialRoleRef:
       example:
         name: Potential Role - e0cc5d
         id: e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
@@ -4102,7 +4106,7 @@ components:
           type: string
       title: Role Mining Potential Role Ref
       type: object
-    roleminingpotentialroleprovisionstate:
+    RoleMiningPotentialRoleProvisionState:
       description: Provision state
       enum:
       - POTENTIAL
@@ -4112,14 +4116,14 @@ components:
       - null
       example: POTENTIAL
       type: string
-    roleminingsessionscopingmethod:
+    RoleMiningSessionScopingMethod:
       description: The scoping method used in the current role mining session.
       enum:
       - MANUAL
       - AUTO_RM
       example: MANUAL
       type: string
-    roleminingsessionparametersdto:
+    RoleMiningSessionParametersDto:
       example:
         pruneThreshold: 5
         saved: true
@@ -4174,16 +4178,16 @@ components:
           example: true
           type: boolean
         scope:
-          $ref: '#/components/schemas/roleminingsessionscope'
+          $ref: '#/components/schemas/RoleMiningSessionScope'
         type:
-          $ref: '#/components/schemas/roleminingroletype'
+          $ref: '#/components/schemas/RoleMiningRoleType'
         state:
-          $ref: '#/components/schemas/roleminingsessionstate'
+          $ref: '#/components/schemas/RoleMiningSessionState'
         scopingMethod:
-          $ref: '#/components/schemas/roleminingsessionscopingmethod'
+          $ref: '#/components/schemas/RoleMiningSessionScopingMethod'
       title: Role Mining Session Parameters Dto
       type: object
-    roleminingpotentialrolesummary:
+    RoleMiningPotentialRoleSummary:
       example:
         entitlementCount: 15
         density: 90
@@ -4241,7 +4245,7 @@ components:
           example: Potential Role - e0cc5d
           type: string
         potentialRoleRef:
-          $ref: '#/components/schemas/roleminingpotentialroleref'
+          $ref: '#/components/schemas/RoleMiningPotentialRoleRef'
         identityCount:
           description: The number of identities in a potential role.
           example: 25
@@ -4258,7 +4262,7 @@ components:
           example: OBTAINED
           type: string
         provisionState:
-          $ref: '#/components/schemas/roleminingpotentialroleprovisionstate'
+          $ref: '#/components/schemas/RoleMiningPotentialRoleProvisionState'
         roleId:
           description: ID of the provisioned role in IIQ or IDN.  Null if this potential
             role has not been provisioned.
@@ -4285,9 +4289,9 @@ components:
           format: int32
           type: integer
         type:
-          $ref: '#/components/schemas/roleminingroletype'
+          $ref: '#/components/schemas/RoleMiningRoleType'
         createdBy:
-          $ref: '#/components/schemas/roleminingpotentialrolesummary_createdBy'
+          $ref: '#/components/schemas/RoleMiningPotentialRoleSummary_createdBy'
         createdDate:
           description: The date-time when this potential role was created.
           format: date-time
@@ -4302,10 +4306,10 @@ components:
           nullable: true
           type: string
         session:
-          $ref: '#/components/schemas/roleminingsessionparametersdto'
+          $ref: '#/components/schemas/RoleMiningSessionParametersDto'
       title: Role Mining Potential Role Summary
       type: object
-    roleminingidentitydistribution:
+    RoleMiningIdentityDistribution:
       example:
         attributeName: department
         distribution:
@@ -4320,11 +4324,11 @@ components:
           type: string
         distribution:
           items:
-            $ref: '#/components/schemas/roleminingidentitydistribution_distribution_inner'
+            $ref: '#/components/schemas/RoleMiningIdentityDistribution_distribution_inner'
           type: array
       title: Role Mining Identity Distribution
       type: object
-    roleminingpotentialrole:
+    RoleMiningPotentialRole:
       example:
         entitlementCount: 25
         identityIds:
@@ -4394,7 +4398,7 @@ components:
         identityGroupStatus: OBTAINED
       properties:
         createdBy:
-          $ref: '#/components/schemas/roleminingsessionresponse_createdBy'
+          $ref: '#/components/schemas/RoleMiningSessionResponse_createdBy'
         density:
           description: The density of a potential role.
           example: 75
@@ -4432,7 +4436,7 @@ components:
         identityDistribution:
           description: Identity attribute distribution.
           items:
-            $ref: '#/components/schemas/roleminingidentitydistribution'
+            $ref: '#/components/schemas/RoleMiningIdentityDistribution'
           nullable: true
           type: array
         identityIds:
@@ -4454,10 +4458,10 @@ components:
           example: Saved Potential Role - 07/10
           type: string
         potentialRoleRef:
-          $ref: '#/components/schemas/roleminingpotentialrole_potentialRoleRef'
+          $ref: '#/components/schemas/RoleMiningPotentialRole_potentialRoleRef'
         provisionState:
           allOf:
-          - $ref: '#/components/schemas/roleminingpotentialroleprovisionstate'
+          - $ref: '#/components/schemas/RoleMiningPotentialRoleProvisionState'
           - description: The provisioning state of a potential role.
             nullable: true
         quality:
@@ -4476,9 +4480,9 @@ components:
           example: true
           type: boolean
         session:
-          $ref: '#/components/schemas/roleminingsessionparametersdto'
+          $ref: '#/components/schemas/RoleMiningSessionParametersDto'
         type:
-          $ref: '#/components/schemas/roleminingroletype'
+          $ref: '#/components/schemas/RoleMiningRoleType'
         id:
           description: Id of the potential role
           example: e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
@@ -4495,9 +4499,13 @@ components:
           type: string
       title: Role Mining Potential Role
       type: object
-    jsonpatchoperationrolemining:
+    JsonPatchOperationRoleMining:
       description: "A JSONPatch Operation for Role Mining endpoints, supporting only\
         \ remove and replace operations as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -4512,13 +4520,13 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperationrolemining_value'
+          $ref: '#/components/schemas/JsonPatchOperationRoleMining_value'
       required:
       - op
       - path
       title: Json Patch Operation (Role Mining)
       type: object
-    roleminingpotentialroleapplication:
+    RoleMiningPotentialRoleApplication:
       example:
         name: "{\"name\":\"Slack\"}"
         id: "{\"id\":\"2c9180877212632a017228d5a796292b\"}"
@@ -4533,7 +4541,7 @@ components:
           type: string
       title: Role Mining Potential Role Application
       type: object
-    roleminingpotentialroleentitlements:
+    RoleMiningPotentialRoleEntitlements:
       example:
         name: "{\"name\":\"LauncherTest2\"}"
         id: "{\"id\":\"2c9180877212632a017228d5a796292c\"}"
@@ -4548,7 +4556,7 @@ components:
           type: string
       title: Role Mining Potential Role Entitlements
       type: object
-    roleminingentitlementref:
+    RoleMiningEntitlementRef:
       example:
         name: App.entitlement.1
         description: Entitlement 1
@@ -4574,7 +4582,7 @@ components:
           type: string
       title: Role Mining Entitlement Ref
       type: object
-    roleminingentitlement:
+    RoleMiningEntitlement:
       example:
         sourceId: 2c9180877620c1460176267f336a106f
         popularity: 65.2
@@ -4591,7 +4599,7 @@ components:
         popularityInOrg: 35.8
       properties:
         entitlementRef:
-          $ref: '#/components/schemas/roleminingentitlementref'
+          $ref: '#/components/schemas/RoleMiningEntitlementRef'
         name:
           description: Name of the entitlement
           example: Add/modify/delete users
@@ -4634,7 +4642,7 @@ components:
           type: number
       title: Role Mining Entitlement
       type: object
-    roleminingpotentialroleeditentitlements:
+    RoleMiningPotentialRoleEditEntitlements:
       example:
         ids:
         - entId1
@@ -4652,7 +4660,7 @@ components:
           type: boolean
       title: Role Mining Potential Role Edit Entitlements
       type: object
-    roleminingidentity:
+    RoleMiningIdentity:
       example:
         name: Allene Abernathy-Welch
         attributes:
@@ -4682,7 +4690,7 @@ components:
           type: object
       title: Role Mining Identity
       type: object
-    roleminingpotentialroleexportrequest:
+    RoleMiningPotentialRoleExportRequest:
       example:
         minEntitlementPopularity: 0
         includeCommonAccess: true
@@ -4699,16 +4707,16 @@ components:
           type: boolean
       title: Role Mining Potential Role Export Request
       type: object
-    roleminingpotentialroleexportstate:
+    RoleMiningPotentialRoleExportState:
       enum:
       - QUEUED
       - IN_PROGRESS
       - SUCCESS
       - ERROR
       type: string
-    roleminingpotentialroleexportresponse:
+    RoleMiningPotentialRoleExportResponse:
       allOf:
-      - $ref: '#/components/schemas/roleminingpotentialroleexportrequest'
+      - $ref: '#/components/schemas/RoleMiningPotentialRoleExportRequest'
       - properties:
           exportId:
             description: ID used to reference this export
@@ -4716,14 +4724,20 @@ components:
             format: uuid
             type: string
           status:
-            $ref: '#/components/schemas/roleminingpotentialroleexportstate'
+            $ref: '#/components/schemas/RoleMiningPotentialRoleExportState'
         type: object
       example:
         exportId: 0c6cdb76-1227-4aaf-af21-192dbdfbfa04
         status: QUEUED
         minEntitlementPopularity: 0
         includeCommonAccess: true
-    roleminingpotentialroleprovisionrequest:
+    RoleMiningPotentialRoleProvisionRequest:
+      example:
+        includeIdentities: true
+        roleName: Finance - Accounting
+        ownerId: 2b568c65bc3c4c57a43bd97e3a8e41
+        roleDescription: General access for accounting department
+        directlyAssignedEntitlements: false
       properties:
         roleName:
           description: Name of the new role being created
@@ -4751,7 +4765,7 @@ components:
           type: boolean
       title: Role Mining Potential Role Provision Request
       type: object
-    roleminingsessiondraftroledto:
+    RoleMiningSessionDraftRoleDto:
       example:
         entitlementIds:
         - 2c91808a7624751a01762f19d665220d
@@ -4808,7 +4822,7 @@ components:
           format: date-time
           type: string
         type:
-          $ref: '#/components/schemas/roleminingroletype'
+          $ref: '#/components/schemas/RoleMiningRoleType'
         id:
           description: Id of the potential draft role
           example: e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
@@ -4823,7 +4837,7 @@ components:
           type: string
       title: Role Mining Session Draft Role Dto
       type: object
-    roleminingpotentialrolesourceusage:
+    RoleMiningPotentialRoleSourceUsage:
       example:
         displayName: Kirk Koepp
         id: 2c918089762475180176267f894b54dc
@@ -4866,11 +4880,11 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    roleminingsessionresponse_createdBy:
+    RoleMiningSessionResponse_createdBy:
       description: The session created by details
       oneOf:
-      - $ref: '#/components/schemas/entitycreatedbydto'
-      - $ref: '#/components/schemas/nullableentitycreatedbydto'
+      - $ref: '#/components/schemas/EntityCreatedByDTO'
+      - $ref: '#/components/schemas/NullableEntityCreatedByDTO'
     array_inner:
       anyOf:
       - type: string
@@ -4880,7 +4894,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description
@@ -4903,12 +4917,12 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    roleminingpotentialrolesummary_createdBy:
+    RoleMiningPotentialRoleSummary_createdBy:
       description: The potential role created by details
       oneOf:
-      - $ref: '#/components/schemas/entitycreatedbydto'
-      - $ref: '#/components/schemas/nullableentitycreatedbydto'
-    roleminingidentitydistribution_distribution_inner:
+      - $ref: '#/components/schemas/EntityCreatedByDTO'
+      - $ref: '#/components/schemas/NullableEntityCreatedByDTO'
+    RoleMiningIdentityDistribution_distribution_inner:
       example:
         attributeValue: NM Tier 3
         count: 6
@@ -4924,7 +4938,7 @@ components:
           format: int32
           type: integer
       type: object
-    roleminingpotentialrole_potentialRoleRef:
+    RoleMiningPotentialRole_potentialRoleRef:
       description: The potential role reference
       example:
         name: Saved Potential Role - 07/10
@@ -4945,7 +4959,7 @@ components:
       - type: string
       - type: integer
       - type: object
-    jsonpatchoperationrolemining_value:
+    JsonPatchOperationRoleMining_value:
       description: "The value to be used for the operation, required for \"replace\"\
         \ operations"
       example: New description

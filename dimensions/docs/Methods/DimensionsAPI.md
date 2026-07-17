@@ -78,7 +78,93 @@ import (
 
 func main() {
     roleId := `6603fba3004f43c687610a29195252ce` // string | Parent Role Id of the dimension. # string | Parent Role Id of the dimension.
-    dimensionJson := []byte(``) // Dimension | 
+    dimensionJson := []byte(`{
+          "owner" : {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "entitlements" : [ {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          }, {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          } ],
+          "accessProfiles" : [ {
+            "name" : "Access Profile 2567",
+            "id" : "ff808081751e6e129f1518161919ecca",
+            "type" : "ACCESS_PROFILE"
+          }, {
+            "name" : "Access Profile 2567",
+            "id" : "ff808081751e6e129f1518161919ecca",
+            "type" : "ACCESS_PROFILE"
+          } ],
+          "created" : "2021-03-01T22:32:58.104Z",
+          "name" : "Dimension 2567",
+          "modified" : "2021-03-02T20:22:28.104Z",
+          "description" : "Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod fusce morbi placerat adipiscing maecenas nisi tristique et metus et lacus sed morbi nunc nisl maximus magna arcu varius sollicitudin elementum enim maecenas nisi id ipsum tempus fusce diam ipsum tortor.",
+          "id" : "2c918086749d78830174a1a40e121518",
+          "membership" : {
+            "criteria" : {
+              "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+              "children" : [ {
+                "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                "children" : [ {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "property" : "attribute.email",
+                    "type" : "IDENTITY"
+                  }
+                }, {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "property" : "attribute.email",
+                    "type" : "IDENTITY"
+                  }
+                } ],
+                "operation" : "EQUALS",
+                "key" : {
+                  "property" : "attribute.email",
+                  "type" : "IDENTITY"
+                }
+              }, {
+                "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                "children" : [ {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "property" : "attribute.email",
+                    "type" : "IDENTITY"
+                  }
+                }, {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "property" : "attribute.email",
+                    "type" : "IDENTITY"
+                  }
+                } ],
+                "operation" : "EQUALS",
+                "key" : {
+                  "property" : "attribute.email",
+                  "type" : "IDENTITY"
+                }
+              } ],
+              "operation" : "EQUALS",
+              "key" : {
+                "property" : "attribute.email",
+                "type" : "IDENTITY"
+              }
+            },
+            "type" : "STANDARD"
+          },
+          "parentId" : "2c918086749d78830174a1a40e121518"
+        }`) // Dimension | 
 
     var dimension dimensions.Dimension
     if err := json.Unmarshal(dimensionJson, &dimension); err != nil {
@@ -127,11 +213,11 @@ Other parameters are passed through a pointer to a apiDeleteBulkDimensionsV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **dimensionbulkdeleterequest** | [**Dimensionbulkdeleterequest**](../models/dimensionbulkdeleterequest) |  | 
+ **dimensionBulkDeleteRequest** | [**DimensionBulkDeleteRequest**](../models/dimension-bulk-delete-request) |  | 
 
 ### Return type
 
-[**Taskresultdto**](../models/taskresultdto)
+[**TaskResultDto**](../models/task-result-dto)
 
 ### HTTP request headers
 
@@ -154,10 +240,12 @@ import (
 
 func main() {
     roleId := `6603fba3004f43c687610a29195252ce` // string | Parent Role Id of the dimensions. # string | Parent Role Id of the dimensions.
-    dimensionbulkdeleterequestJson := []byte(`{"dimensionIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}`) // Dimensionbulkdeleterequest | 
+    dimensionbulkdeleterequestJson := []byte(`{
+          "dimensionIds" : [ "2c9180847812e0b1017817051919ecca", "2c9180887812e0b201781e129f151816" ]
+        }`) // DimensionBulkDeleteRequest | 
 
-    var dimensionbulkdeleterequest dimensions.Dimensionbulkdeleterequest
-    if err := json.Unmarshal(dimensionbulkdeleterequestJson, &dimensionbulkdeleterequest); err != nil {
+    var dimensionBulkDeleteRequest dimensions.DimensionBulkDeleteRequest
+    if err := json.Unmarshal(dimensionbulkdeleterequestJson, &dimensionBulkDeleteRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -165,13 +253,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DimensionsAPI.DeleteBulkDimensionsV1(context.Background(), roleId).Dimensionbulkdeleterequest(dimensionbulkdeleterequest).Execute()
-	  //resp, r, err := apiClient.DimensionsAPI.DeleteBulkDimensionsV1(context.Background(), roleId).Dimensionbulkdeleterequest(dimensionbulkdeleterequest).Execute()
+    resp, r, err := apiClient.DimensionsAPI.DeleteBulkDimensionsV1(context.Background(), roleId).DimensionBulkDeleteRequest(dimensionBulkDeleteRequest).Execute()
+	  //resp, r, err := apiClient.DimensionsAPI.DeleteBulkDimensionsV1(context.Background(), roleId).DimensionBulkDeleteRequest(dimensionBulkDeleteRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.DeleteBulkDimensionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteBulkDimensionsV1`: Taskresultdto
+    // response from `DeleteBulkDimensionsV1`: TaskResultDto
     fmt.Fprintf(os.Stdout, "Response from `DimensionsAPI.DeleteBulkDimensionsV1`: %v\n", resp)
 }
 ```
@@ -433,7 +521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessprofile**](../models/accessprofile)
+[**[]AccessProfile**](../models/access-profile)
 
 ### HTTP request headers
 
@@ -473,7 +561,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.ListDimensionAccessProfilesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListDimensionAccessProfilesV1`: []Accessprofile
+    // response from `ListDimensionAccessProfilesV1`: []AccessProfile
     fmt.Fprintf(os.Stdout, "Response from `DimensionsAPI.ListDimensionAccessProfilesV1`: %v\n", resp)
 }
 ```
@@ -588,7 +676,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
@@ -616,10 +704,10 @@ import (
 func main() {
     roleId := `6603fba3004f43c687610a29195252ce` // string | Parent Role Id of the dimension. # string | Parent Role Id of the dimension.
     dimensionId := `2c9180835d191a86015d28455b4a2329` // string | Id of the Dimension # string | Id of the Dimension
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Test Description"},{"op":"replace","path":"/name","value":"new name"}]`) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Test Description"},{"op":"replace","path":"/name","value":"new name"}]`) // []JsonPatchOperation | 
 
-    var jsonpatchoperation []dimensions.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []dimensions.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -627,8 +715,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DimensionsAPI.PatchDimensionV1(context.Background(), roleId, dimensionId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.DimensionsAPI.PatchDimensionV1(context.Background(), roleId, dimensionId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.DimensionsAPI.PatchDimensionV1(context.Background(), roleId, dimensionId).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.DimensionsAPI.PatchDimensionV1(context.Background(), roleId, dimensionId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DimensionsAPI.PatchDimensionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

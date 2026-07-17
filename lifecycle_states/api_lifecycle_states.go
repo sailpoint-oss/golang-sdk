@@ -27,16 +27,16 @@ type ApiCreateLifecycleStateV1Request struct {
 	ctx context.Context
 	ApiService *LifecycleStatesAPIService
 	identityProfileId string
-	lifecyclestate *Lifecyclestate
+	lifecycleState *LifecycleState
 }
 
 // Lifecycle state to be created.
-func (r ApiCreateLifecycleStateV1Request) Lifecyclestate(lifecyclestate Lifecyclestate) ApiCreateLifecycleStateV1Request {
-	r.lifecyclestate = &lifecyclestate
+func (r ApiCreateLifecycleStateV1Request) LifecycleState(lifecycleState LifecycleState) ApiCreateLifecycleStateV1Request {
+	r.lifecycleState = &lifecycleState
 	return r
 }
 
-func (r ApiCreateLifecycleStateV1Request) Execute() (*Lifecyclestate, *http.Response, error) {
+func (r ApiCreateLifecycleStateV1Request) Execute() (*LifecycleState, *http.Response, error) {
 	return r.ApiService.CreateLifecycleStateV1Execute(r)
 }
 
@@ -58,13 +58,13 @@ func (a *LifecycleStatesAPIService) CreateLifecycleStateV1(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return Lifecyclestate
-func (a *LifecycleStatesAPIService) CreateLifecycleStateV1Execute(r ApiCreateLifecycleStateV1Request) (*Lifecyclestate, *http.Response, error) {
+//  @return LifecycleState
+func (a *LifecycleStatesAPIService) CreateLifecycleStateV1Execute(r ApiCreateLifecycleStateV1Request) (*LifecycleState, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Lifecyclestate
+		localVarReturnValue  *LifecycleState
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.CreateLifecycleStateV1")
@@ -78,8 +78,8 @@ func (a *LifecycleStatesAPIService) CreateLifecycleStateV1Execute(r ApiCreateLif
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.lifecyclestate == nil {
-		return localVarReturnValue, nil, reportError("lifecyclestate is required and must be specified")
+	if r.lifecycleState == nil {
+		return localVarReturnValue, nil, reportError("lifecycleState is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -100,7 +100,7 @@ func (a *LifecycleStatesAPIService) CreateLifecycleStateV1Execute(r ApiCreateLif
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.lifecyclestate
+	localVarPostBody = r.lifecycleState
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -124,7 +124,7 @@ func (a *LifecycleStatesAPIService) CreateLifecycleStateV1Execute(r ApiCreateLif
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -146,7 +146,7 @@ func (a *LifecycleStatesAPIService) CreateLifecycleStateV1Execute(r ApiCreateLif
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -168,7 +168,7 @@ func (a *LifecycleStatesAPIService) CreateLifecycleStateV1Execute(r ApiCreateLif
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -199,7 +199,7 @@ type ApiDeleteLifecycleStateV1Request struct {
 	lifecycleStateId string
 }
 
-func (r ApiDeleteLifecycleStateV1Request) Execute() (*Lifecyclestatedeleted, *http.Response, error) {
+func (r ApiDeleteLifecycleStateV1Request) Execute() (*LifecyclestateDeleted, *http.Response, error) {
 	return r.ApiService.DeleteLifecycleStateV1Execute(r)
 }
 
@@ -223,13 +223,13 @@ func (a *LifecycleStatesAPIService) DeleteLifecycleStateV1(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return Lifecyclestatedeleted
-func (a *LifecycleStatesAPIService) DeleteLifecycleStateV1Execute(r ApiDeleteLifecycleStateV1Request) (*Lifecyclestatedeleted, *http.Response, error) {
+//  @return LifecyclestateDeleted
+func (a *LifecycleStatesAPIService) DeleteLifecycleStateV1Execute(r ApiDeleteLifecycleStateV1Request) (*LifecyclestateDeleted, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Lifecyclestatedeleted
+		localVarReturnValue  *LifecyclestateDeleted
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.DeleteLifecycleStateV1")
@@ -285,7 +285,7 @@ func (a *LifecycleStatesAPIService) DeleteLifecycleStateV1Execute(r ApiDeleteLif
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -307,7 +307,7 @@ func (a *LifecycleStatesAPIService) DeleteLifecycleStateV1Execute(r ApiDeleteLif
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -318,7 +318,7 @@ func (a *LifecycleStatesAPIService) DeleteLifecycleStateV1Execute(r ApiDeleteLif
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -340,7 +340,7 @@ func (a *LifecycleStatesAPIService) DeleteLifecycleStateV1Execute(r ApiDeleteLif
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -371,7 +371,7 @@ type ApiGetLifecycleStateV1Request struct {
 	lifecycleStateId string
 }
 
-func (r ApiGetLifecycleStateV1Request) Execute() (*Lifecyclestate, *http.Response, error) {
+func (r ApiGetLifecycleStateV1Request) Execute() (*LifecycleState, *http.Response, error) {
 	return r.ApiService.GetLifecycleStateV1Execute(r)
 }
 
@@ -395,13 +395,13 @@ func (a *LifecycleStatesAPIService) GetLifecycleStateV1(ctx context.Context, ide
 }
 
 // Execute executes the request
-//  @return Lifecyclestate
-func (a *LifecycleStatesAPIService) GetLifecycleStateV1Execute(r ApiGetLifecycleStateV1Request) (*Lifecyclestate, *http.Response, error) {
+//  @return LifecycleState
+func (a *LifecycleStatesAPIService) GetLifecycleStateV1Execute(r ApiGetLifecycleStateV1Request) (*LifecycleState, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Lifecyclestate
+		localVarReturnValue  *LifecycleState
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.GetLifecycleStateV1")
@@ -457,7 +457,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStateV1Execute(r ApiGetLifecycle
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -479,7 +479,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStateV1Execute(r ApiGetLifecycle
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -490,7 +490,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStateV1Execute(r ApiGetLifecycle
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -512,7 +512,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStateV1Execute(r ApiGetLifecycle
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -570,7 +570,7 @@ func (r ApiGetLifecycleStatesV1Request) Sorters(sorters string) ApiGetLifecycleS
 	return r
 }
 
-func (r ApiGetLifecycleStatesV1Request) Execute() ([]Lifecyclestate, *http.Response, error) {
+func (r ApiGetLifecycleStatesV1Request) Execute() ([]LifecycleState, *http.Response, error) {
 	return r.ApiService.GetLifecycleStatesV1Execute(r)
 }
 
@@ -592,13 +592,13 @@ func (a *LifecycleStatesAPIService) GetLifecycleStatesV1(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return []Lifecyclestate
-func (a *LifecycleStatesAPIService) GetLifecycleStatesV1Execute(r ApiGetLifecycleStatesV1Request) ([]Lifecyclestate, *http.Response, error) {
+//  @return []LifecycleState
+func (a *LifecycleStatesAPIService) GetLifecycleStatesV1Execute(r ApiGetLifecycleStatesV1Request) ([]LifecycleState, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Lifecyclestate
+		localVarReturnValue  []LifecycleState
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.GetLifecycleStatesV1")
@@ -674,7 +674,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStatesV1Execute(r ApiGetLifecycl
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -696,7 +696,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStatesV1Execute(r ApiGetLifecycl
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -718,7 +718,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStatesV1Execute(r ApiGetLifecycl
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -842,7 +842,7 @@ func (a *LifecycleStatesAPIService) SetLifecycleStateV1Execute(r ApiSetLifecycle
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -864,7 +864,7 @@ func (a *LifecycleStatesAPIService) SetLifecycleStateV1Execute(r ApiSetLifecycle
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -875,7 +875,7 @@ func (a *LifecycleStatesAPIService) SetLifecycleStateV1Execute(r ApiSetLifecycle
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -897,7 +897,7 @@ func (a *LifecycleStatesAPIService) SetLifecycleStateV1Execute(r ApiSetLifecycle
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -926,16 +926,16 @@ type ApiUpdateLifecycleStatesV1Request struct {
 	ApiService *LifecycleStatesAPIService
 	identityProfileId string
 	lifecycleStateId string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority 
-func (r ApiUpdateLifecycleStatesV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateLifecycleStatesV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateLifecycleStatesV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateLifecycleStatesV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiUpdateLifecycleStatesV1Request) Execute() (*Lifecyclestate, *http.Response, error) {
+func (r ApiUpdateLifecycleStatesV1Request) Execute() (*LifecycleState, *http.Response, error) {
 	return r.ApiService.UpdateLifecycleStatesV1Execute(r)
 }
 
@@ -959,13 +959,13 @@ func (a *LifecycleStatesAPIService) UpdateLifecycleStatesV1(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Lifecyclestate
-func (a *LifecycleStatesAPIService) UpdateLifecycleStatesV1Execute(r ApiUpdateLifecycleStatesV1Request) (*Lifecyclestate, *http.Response, error) {
+//  @return LifecycleState
+func (a *LifecycleStatesAPIService) UpdateLifecycleStatesV1Execute(r ApiUpdateLifecycleStatesV1Request) (*LifecycleState, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Lifecyclestate
+		localVarReturnValue  *LifecycleState
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.UpdateLifecycleStatesV1")
@@ -980,8 +980,8 @@ func (a *LifecycleStatesAPIService) UpdateLifecycleStatesV1Execute(r ApiUpdateLi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1002,7 +1002,7 @@ func (a *LifecycleStatesAPIService) UpdateLifecycleStatesV1Execute(r ApiUpdateLi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1026,7 +1026,7 @@ func (a *LifecycleStatesAPIService) UpdateLifecycleStatesV1Execute(r ApiUpdateLi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1048,7 +1048,7 @@ func (a *LifecycleStatesAPIService) UpdateLifecycleStatesV1Execute(r ApiUpdateLi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1059,7 +1059,7 @@ func (a *LifecycleStatesAPIService) UpdateLifecycleStatesV1Execute(r ApiUpdateLi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1081,7 +1081,7 @@ func (a *LifecycleStatesAPIService) UpdateLifecycleStatesV1Execute(r ApiUpdateLi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

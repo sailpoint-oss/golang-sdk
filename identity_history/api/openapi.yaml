@@ -114,14 +114,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/identitylistitem'
+                  $ref: '#/components/schemas/IdentityListItem'
                 type: array
           description: List of identities for the customer.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -145,7 +145,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -170,7 +170,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -214,13 +214,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identityhistoryresponse'
+                $ref: '#/components/schemas/IdentityHistoryResponse'
           description: The identity object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -244,7 +244,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -269,7 +269,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -429,7 +429,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -453,7 +453,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -471,7 +471,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -496,7 +496,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -610,14 +610,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/identitysnapshotsummaryresponse'
+                  $ref: '#/components/schemas/IdentitySnapshotSummaryResponse'
                 type: array
           description: A list of identity summary for each snapshot.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -641,7 +641,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -659,7 +659,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "500":
@@ -676,7 +676,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -795,14 +795,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/metricresponse'
+                  $ref: '#/components/schemas/MetricResponse'
                 type: array
           description: A summary list of identity changes in date histogram format.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -826,7 +826,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -844,7 +844,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "500":
@@ -861,7 +861,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -914,13 +914,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identityhistoryresponse'
+                $ref: '#/components/schemas/IdentityHistoryResponse'
           description: The identity object.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -944,7 +944,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -962,7 +962,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "500":
@@ -979,7 +979,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1097,7 +1097,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1121,7 +1121,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1139,7 +1139,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "500":
@@ -1156,7 +1156,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1412,7 +1412,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1436,7 +1436,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1454,7 +1454,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1479,7 +1479,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1530,7 +1530,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1554,7 +1554,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1572,7 +1572,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "500":
@@ -1589,7 +1589,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1708,7 +1708,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/identitycompareresponse'
+                  $ref: '#/components/schemas/IdentityCompareResponse'
                 type: array
           description: A IdentityCompare object with difference details for each access
             item type
@@ -1716,7 +1716,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1740,7 +1740,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1758,7 +1758,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "500":
@@ -1775,7 +1775,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1909,14 +1909,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/accessitemdiff'
+                  $ref: '#/components/schemas/AccessItemDiff'
                 type: array
           description: A list of events for the identity
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1940,7 +1940,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1958,7 +1958,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "500":
@@ -1975,7 +1975,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2043,7 +2043,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -2067,7 +2067,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -2085,7 +2085,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -2110,10 +2110,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    identitylistitem:
+    IdentityListItem:
       example:
         firstName: Adam
         lastName: Zampa
@@ -2152,7 +2152,7 @@ components:
           type: string
       title: Identity List Item
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -2164,7 +2164,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -2177,7 +2177,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -2185,7 +2185,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -2219,17 +2219,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    identityhistoryresponse:
+    IdentityHistoryResponse:
       example:
         accessItemCount:
           app: 0
@@ -2288,7 +2288,7 @@ components:
           type: object
       title: Identity History Response
       type: object
-    accessitementitlementresponse:
+    AccessItemEntitlementResponse:
       example:
         accessType: entitlement
         sourceId: 2793o32dwd
@@ -2364,7 +2364,7 @@ components:
       - value
       title: Access Item Entitlement Response
       type: object
-    accessitemaccessprofileresponse:
+    AccessItemAccessProfileResponse:
       example:
         accessType: accessProfile
         sourceId: 2793o32dwd
@@ -2421,7 +2421,7 @@ components:
           - cloudAppId: 2c91808a77ff216301782327a50f09bf
             cloudAppName: Another App
           items:
-            $ref: '#/components/schemas/accessitemaccessprofileresponse_appRefs_inner'
+            $ref: '#/components/schemas/AccessItemAccessProfileResponse_appRefs_inner'
           type: array
         startDate:
           description: "the date the access profile will be assigned to the specified\
@@ -2452,7 +2452,7 @@ components:
       - standalone
       title: Access Item Access Profile Response
       type: object
-    accessitemaccountresponse:
+    AccessItemAccountResponse:
       properties:
         id:
           description: the access item id
@@ -2487,7 +2487,7 @@ components:
       - nativeIdentity
       title: Access Item Account Response
       type: object
-    accessitemroleresponse:
+    AccessItemRoleResponse:
       properties:
         id:
           description: the access item id
@@ -2528,7 +2528,7 @@ components:
       - revocable
       title: Access Item Role Response
       type: object
-    accessitemappresponse:
+    AccessItemAppResponse:
       properties:
         id:
           description: the access item id
@@ -2556,7 +2556,7 @@ components:
       - appRoleId
       title: Access Item App Response
       type: object
-    identitysnapshotsummaryresponse:
+    IdentitySnapshotSummaryResponse:
       example:
         snapshot: 2007-03-01T13:00:00.000Z
       properties:
@@ -2566,7 +2566,7 @@ components:
           type: string
       title: Identity Snapshot Summary Response
       type: object
-    metricresponse:
+    MetricResponse:
       example:
         name: 2021-04-01T00:00:00.000Z
         value: 2
@@ -2579,7 +2579,7 @@ components:
           type: number
       title: Metric Response
       type: object
-    certifierresponse:
+    CertifierResponse:
       example:
         displayName: John Snow
         id: 8a80828f643d484f01643e14202e206f
@@ -2594,7 +2594,7 @@ components:
           type: string
       title: Certifier Response
       type: object
-    identitycertified:
+    IdentityCertified:
       example:
         dateTime: 2019-03-08T22:37:33.901Z
         certifiers:
@@ -2629,7 +2629,7 @@ components:
           - id: 8a80828f643d484f01643e14202e206f
             displayName: John Snow
           items:
-            $ref: '#/components/schemas/certifierresponse'
+            $ref: '#/components/schemas/CertifierResponse'
           type: array
         reviewers:
           description: The list of identities who review this certification
@@ -2637,10 +2637,10 @@ components:
           - id: 8a80828f643d484f01643e14202e206f
             displayName: John Snow
           items:
-            $ref: '#/components/schemas/certifierresponse'
+            $ref: '#/components/schemas/CertifierResponse'
           type: array
         signer:
-          $ref: '#/components/schemas/certifierresponse'
+          $ref: '#/components/schemas/CertifierResponse'
         eventType:
           description: the event type
           example: IdentityCertified
@@ -2654,7 +2654,7 @@ components:
       - certificationName
       title: Identity Certified
       type: object
-    correlatedgovernanceevent:
+    CorrelatedGovernanceEvent:
       nullable: true
       properties:
         name:
@@ -2684,7 +2684,7 @@ components:
           - id: 8a80828f643d484f01643e14202e206f
             displayName: John Snow
           items:
-            $ref: '#/components/schemas/certifierresponse'
+            $ref: '#/components/schemas/CertifierResponse'
           type: array
         reviewers:
           description: "The owners of the governance event (the certifiers or approvers),\
@@ -2693,13 +2693,13 @@ components:
           - id: 8a80828f643d484f01643e14202e206f
             displayName: John Snow
           items:
-            $ref: '#/components/schemas/certifierresponse'
+            $ref: '#/components/schemas/CertifierResponse'
           type: array
         decisionMaker:
-          $ref: '#/components/schemas/certifierresponse'
+          $ref: '#/components/schemas/CertifierResponse'
       title: Correlated Governance Event
       type: object
-    accessitemassociated:
+    AccessItemAssociated:
       properties:
         eventType:
           description: the event type
@@ -2714,9 +2714,9 @@ components:
           example: 8c190e6787aa4ed9a90bd9d5344523fb
           type: string
         accessItem:
-          $ref: '#/components/schemas/accessitemassociated_accessItem'
+          $ref: '#/components/schemas/AccessItemAssociated_accessItem'
         governanceEvent:
-          $ref: '#/components/schemas/correlatedgovernanceevent'
+          $ref: '#/components/schemas/CorrelatedGovernanceEvent'
         accessItemType:
           description: the access item type
           enum:
@@ -2732,10 +2732,10 @@ components:
       - governanceEvent
       title: Access Item Associated
       type: object
-    accessitemremoved:
+    AccessItemRemoved:
       properties:
         accessItem:
-          $ref: '#/components/schemas/accessitemassociated_accessItem'
+          $ref: '#/components/schemas/AccessItemAssociated_accessItem'
         identityId:
           description: the identity id
           example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -2759,12 +2759,12 @@ components:
           example: account
           type: string
         governanceEvent:
-          $ref: '#/components/schemas/correlatedgovernanceevent'
+          $ref: '#/components/schemas/CorrelatedGovernanceEvent'
       required:
       - accessItem
       title: Access Item Removed
       type: object
-    attributechange:
+    AttributeChange:
       properties:
         name:
           description: the attribute name
@@ -2780,11 +2780,11 @@ components:
           type: string
       title: Attribute Change
       type: object
-    attributeschanged:
+    AttributesChanged:
       properties:
         attributeChanges:
           items:
-            $ref: '#/components/schemas/attributechange'
+            $ref: '#/components/schemas/AttributeChange'
           type: array
         eventType:
           description: the event type
@@ -2802,7 +2802,7 @@ components:
       - attributeChanges
       title: Attributes Changed
       type: object
-    approvalinforesponse:
+    ApprovalInfoResponse:
       properties:
         id:
           description: the id of approver
@@ -2818,7 +2818,7 @@ components:
           type: string
       title: Approval Info Response
       type: object
-    accessrequestitemresponse:
+    AccessRequestItemResponse:
       properties:
         operation:
           description: the access request item operation
@@ -2857,11 +2857,11 @@ components:
             id: 8a80828f643d484f01643e14202e2000
             status: Approved
           items:
-            $ref: '#/components/schemas/approvalinforesponse'
+            $ref: '#/components/schemas/ApprovalInfoResponse'
           type: array
       title: Access Request Item Response
       type: object
-    accessrequestresponse-2:
+    AccessRequestResponse_2:
       properties:
         requesterId:
           description: the requester Id
@@ -2885,14 +2885,14 @@ components:
               id: 8a80828f643d484f01643e14202e2000
               status: Approved
           items:
-            $ref: '#/components/schemas/accessrequestitemresponse'
+            $ref: '#/components/schemas/AccessRequestItemResponse'
           type: array
       title: Access Request Response
       type: object
-    accessrequested:
+    AccessRequested:
       properties:
         accessRequest:
-          $ref: '#/components/schemas/accessrequestresponse-2'
+          $ref: '#/components/schemas/AccessRequestResponse_2'
         identityId:
           description: the identity id
           example: 8a80828f643d484f01643e14202e206f
@@ -2909,7 +2909,7 @@ components:
       - accessRequest
       title: Access Requested
       type: object
-    accountstatuschanged:
+    AccountStatusChanged:
       properties:
         eventType:
           description: the event type
@@ -2924,15 +2924,15 @@ components:
           example: 2019-03-08T22:37:33.901Z
           type: string
         account:
-          $ref: '#/components/schemas/accountstatuschanged_account'
+          $ref: '#/components/schemas/AccountStatusChanged_account'
         statusChange:
-          $ref: '#/components/schemas/accountstatuschanged_statusChange'
+          $ref: '#/components/schemas/AccountStatusChanged_statusChange'
       required:
       - account
       - statusChange
       title: Account Status Changed
       type: object
-    identitycompareresponse:
+    IdentityCompareResponse:
       example:
         accessItemDiff:
           role:
@@ -2954,7 +2954,7 @@ components:
           type: object
       title: Identity Compare Response
       type: object
-    accessitemdiff:
+    AccessItemDiff:
       example:
         id: 2c91808c7726345b017726a0a2fb013b
         eventType: ADD
@@ -2995,27 +2995,27 @@ components:
       type: object
     listIdentityAccessItemsV1_200_response_inner:
       anyOf:
-      - $ref: '#/components/schemas/accessitementitlementresponse'
-      - $ref: '#/components/schemas/accessitemaccessprofileresponse'
-      - $ref: '#/components/schemas/accessitemaccountresponse'
-      - $ref: '#/components/schemas/accessitemroleresponse'
-      - $ref: '#/components/schemas/accessitemappresponse'
+      - $ref: '#/components/schemas/AccessItemEntitlementResponse'
+      - $ref: '#/components/schemas/AccessItemAccessProfileResponse'
+      - $ref: '#/components/schemas/AccessItemAccountResponse'
+      - $ref: '#/components/schemas/AccessItemRoleResponse'
+      - $ref: '#/components/schemas/AccessItemAppResponse'
     listIdentitySnapshotAccessItemsV1_200_response_inner:
       oneOf:
-      - $ref: '#/components/schemas/accessitemaccessprofileresponse'
-      - $ref: '#/components/schemas/accessitemaccountresponse'
-      - $ref: '#/components/schemas/accessitemappresponse'
-      - $ref: '#/components/schemas/accessitementitlementresponse'
-      - $ref: '#/components/schemas/accessitemroleresponse'
+      - $ref: '#/components/schemas/AccessItemAccessProfileResponse'
+      - $ref: '#/components/schemas/AccessItemAccountResponse'
+      - $ref: '#/components/schemas/AccessItemAppResponse'
+      - $ref: '#/components/schemas/AccessItemEntitlementResponse'
+      - $ref: '#/components/schemas/AccessItemRoleResponse'
     getHistoricalIdentityEventsV1_200_response_inner:
       anyOf:
-      - $ref: '#/components/schemas/identitycertified'
-      - $ref: '#/components/schemas/accessitemassociated'
-      - $ref: '#/components/schemas/accessitemremoved'
-      - $ref: '#/components/schemas/attributeschanged'
-      - $ref: '#/components/schemas/accessrequested'
-      - $ref: '#/components/schemas/accountstatuschanged'
-    accessitemaccessprofileresponse_appRefs_inner:
+      - $ref: '#/components/schemas/IdentityCertified'
+      - $ref: '#/components/schemas/AccessItemAssociated'
+      - $ref: '#/components/schemas/AccessItemRemoved'
+      - $ref: '#/components/schemas/AttributesChanged'
+      - $ref: '#/components/schemas/AccessRequested'
+      - $ref: '#/components/schemas/AccountStatusChanged'
+    AccessItemAccessProfileResponse_appRefs_inner:
       properties:
         cloudAppId:
           description: the cloud app id associated with the access profile
@@ -3026,13 +3026,13 @@ components:
           example: Sample App
           type: string
       type: object
-    accessitemassociated_accessItem:
+    AccessItemAssociated_accessItem:
       anyOf:
-      - $ref: '#/components/schemas/accessitementitlementresponse'
-      - $ref: '#/components/schemas/accessitemaccessprofileresponse'
-      - $ref: '#/components/schemas/accessitemaccountresponse'
-      - $ref: '#/components/schemas/accessitemroleresponse'
-      - $ref: '#/components/schemas/accessitemappresponse'
+      - $ref: '#/components/schemas/AccessItemEntitlementResponse'
+      - $ref: '#/components/schemas/AccessItemAccessProfileResponse'
+      - $ref: '#/components/schemas/AccessItemAccountResponse'
+      - $ref: '#/components/schemas/AccessItemRoleResponse'
+      - $ref: '#/components/schemas/AccessItemAppResponse'
       example:
         id: 8c190e6787aa4ed9a90bd9d5344523fb
         accessType: account
@@ -3041,7 +3041,7 @@ components:
         entitlementCount: 0
         displayName: Sample Name
       type: object
-    accountstatuschanged_account:
+    AccountStatusChanged_account:
       properties:
         id:
           description: the ID of the account in the database
@@ -3073,7 +3073,7 @@ components:
           example: account
           type: string
       type: object
-    accountstatuschanged_statusChange:
+    AccountStatusChanged_statusChange:
       properties:
         previousStatus:
           description: the previous status of the account

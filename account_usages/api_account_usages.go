@@ -57,7 +57,7 @@ func (r ApiGetUsagesByAccountIdV1Request) Sorters(sorters string) ApiGetUsagesBy
 	return r
 }
 
-func (r ApiGetUsagesByAccountIdV1Request) Execute() ([]Accountusage, *http.Response, error) {
+func (r ApiGetUsagesByAccountIdV1Request) Execute() ([]AccountUsage, *http.Response, error) {
 	return r.ApiService.GetUsagesByAccountIdV1Execute(r)
 }
 
@@ -79,13 +79,13 @@ func (a *AccountUsagesAPIService) GetUsagesByAccountIdV1(ctx context.Context, ac
 }
 
 // Execute executes the request
-//  @return []Accountusage
-func (a *AccountUsagesAPIService) GetUsagesByAccountIdV1Execute(r ApiGetUsagesByAccountIdV1Request) ([]Accountusage, *http.Response, error) {
+//  @return []AccountUsage
+func (a *AccountUsagesAPIService) GetUsagesByAccountIdV1Execute(r ApiGetUsagesByAccountIdV1Request) ([]AccountUsage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accountusage
+		localVarReturnValue  []AccountUsage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountUsagesAPIService.GetUsagesByAccountIdV1")
@@ -161,7 +161,7 @@ func (a *AccountUsagesAPIService) GetUsagesByAccountIdV1Execute(r ApiGetUsagesBy
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -183,7 +183,7 @@ func (a *AccountUsagesAPIService) GetUsagesByAccountIdV1Execute(r ApiGetUsagesBy
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -205,7 +205,7 @@ func (a *AccountUsagesAPIService) GetUsagesByAccountIdV1Execute(r ApiGetUsagesBy
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -46,6 +46,26 @@ This API is currently in an experimental state. The API is subject to change bas
 Create custom password instructions
 This API creates the custom password instructions for the specified page ID.
 
+The `pageId` determines which login and password-recovery screen your custom instructions appear on. The following table describes each supported page ID and where its text is displayed:
+
+| Page ID | Where the custom text appears |
+| --- | --- |
+| `flow-selection:select` | Flow-selection landing screen, under "Need help signing in?", above the navigation links. |
+| `reset-password:enter-username` | Reset-password "enter username" step, under the prompt, above the username field. |
+| `unlock-account:enter-username` | Unlock-account "enter username" step, under the prompt, above the username field. |
+| `forget-username:user-email` | Forgot-username screen, under "Enter the email address for", above the email field. |
+| `reset-password:enter-password` | Reset-password "new password" step, under the header, above the password fields. |
+| `change-password:enter-password` | Same "new password" screen, but the authenticated app/sync-group change variant. |
+| `reset-password:finish` | Reset-password success screen, under the success icon/heading, above the return button. |
+| `change-password:finish` | Success screen for the authenticated app/sync-group change, under the heading. |
+| `mfa:select` | MFA method-selection step, under the prompt, above the list of MFA options. |
+| `mfa:enter-code` | MFA code-entry step, under the option label, above the code field. |
+| `mfa:enter-kba` | KBA step, under "Please answer these security questions", above the questions form. |
+| `unlock-account:finish` | Unlock-account success screen, under the success icon/heading, above the return button. |
+
+In every case the text shows as an info-icon + paragraph block that only appears if custom text is configured for that page ID, positioned between the screen's built-in heading and its form controls.
+
+
 [API Spec](https://developer.sailpoint.com/docs/api/create-custom-password-instructions-v-1)
 
 ### Path Parameters
@@ -60,11 +80,11 @@ Other parameters are passed through a pointer to a apiCreateCustomPasswordInstru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **custompasswordinstruction** | [**Custompasswordinstruction**](../models/custompasswordinstruction) |  | 
+ **customPasswordInstruction** | [**CustomPasswordInstruction**](../models/custom-password-instruction) |  | 
 
 ### Return type
 
-[**Custompasswordinstruction**](../models/custompasswordinstruction)
+[**CustomPasswordInstruction**](../models/custom-password-instruction)
 
 ### HTTP request headers
 
@@ -87,10 +107,14 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    custompasswordinstructionJson := []byte(`{"pageId":"reset-password:enter-password","pageContent":"See company password policies for details by clicking <a href=\"url\">here</a>"}`) // Custompasswordinstruction | 
+    custompasswordinstructionJson := []byte(`{
+          "pageContent" : "Please enter a new password. Your password must be at least 8 characters long and contain at least one number and one letter.",
+          "pageId" : "change-password:enter-password",
+          "locale" : "en"
+        }`) // CustomPasswordInstruction | 
 
-    var custompasswordinstruction custom_password_instructions.Custompasswordinstruction
-    if err := json.Unmarshal(custompasswordinstructionJson, &custompasswordinstruction); err != nil {
+    var customPasswordInstruction custom_password_instructions.CustomPasswordInstruction
+    if err := json.Unmarshal(custompasswordinstructionJson, &customPasswordInstruction); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -98,13 +122,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Custompasswordinstruction(custompasswordinstruction).Execute()
-	  //resp, r, err := apiClient.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Custompasswordinstruction(custompasswordinstruction).Execute()
+    resp, r, err := apiClient.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CustomPasswordInstruction(customPasswordInstruction).Execute()
+	  //resp, r, err := apiClient.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).CustomPasswordInstruction(customPasswordInstruction).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.CreateCustomPasswordInstructionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateCustomPasswordInstructionsV1`: Custompasswordinstruction
+    // response from `CreateCustomPasswordInstructionsV1`: CustomPasswordInstruction
     fmt.Fprintf(os.Stdout, "Response from `CustomPasswordInstructionsAPI.CreateCustomPasswordInstructionsV1`: %v\n", resp)
 }
 ```
@@ -229,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Custompasswordinstruction**](../models/custompasswordinstruction)
+[**CustomPasswordInstruction**](../models/custom-password-instruction)
 
 ### HTTP request headers
 
@@ -265,7 +289,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.GetCustomPasswordInstructionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCustomPasswordInstructionsV1`: Custompasswordinstruction
+    // response from `GetCustomPasswordInstructionsV1`: CustomPasswordInstruction
     fmt.Fprintf(os.Stdout, "Response from `CustomPasswordInstructionsAPI.GetCustomPasswordInstructionsV1`: %v\n", resp)
 }
 ```

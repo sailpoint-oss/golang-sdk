@@ -92,15 +92,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Basecommondto](docs/Basecommondto.md)
+ - [BaseCommonDto](docs/BaseCommonDto.md)
  - [CreateMachineAccountSubtypeV1Request](docs/CreateMachineAccountSubtypeV1Request.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [ListMachineAccountsV1401Response](docs/ListMachineAccountsV1401Response.md)
  - [ListMachineAccountsV1429Response](docs/ListMachineAccountsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Machineaccount](docs/Machineaccount.md)
- - [Sourcesubtype](docs/Sourcesubtype.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [MachineAccount](docs/MachineAccount.md)
+ - [SourceSubtype](docs/SourceSubtype.md)
 
 
 ## Documentation For Authorization

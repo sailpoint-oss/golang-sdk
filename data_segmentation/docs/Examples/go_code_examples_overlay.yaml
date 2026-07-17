@@ -16,7 +16,43 @@
         )
 
         func main() {
-           datasegmentJson := []byte(``) // DataSegment | 
+           datasegmentJson := []byte(`{
+          "memberFilter" : {
+            "expression" : {
+              "children" : [ ],
+              "attribute" : "location",
+              "value" : {
+                "type" : "STRING",
+                "value" : "Austin"
+              },
+              "operator" : "EQUALS"
+            }
+          },
+          "memberSelection" : [ {
+            "type" : "IDENTITY",
+            "id" : "29cb6c061da843ea8be4b3125f248f2a"
+          }, {
+            "type" : "IDENTITY",
+            "id" : "f7b1b8a35fed4fd4ad2982014e137e19"
+          } ],
+          "created" : "2020-01-01T00:00:00Z",
+          "name" : "segment-xyz",
+          "modified" : "2020-01-01T00:00:00Z",
+          "description" : "This segment represents xyz",
+          "id" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "scopes" : [ {
+            "scope" : "ENTITLEMENT",
+            "visibility" : "SELECTION",
+            "scopeFilter" : null,
+            "scopeSelection" : [ {
+              "type" : "ENTITLEMENT",
+              "id" : "34d73f611449463ea4fdcf02cda0c397"
+            } ]
+          } ],
+          "membership" : "ALL",
+          "published" : true,
+          "enabled" : true
+        }`) // DataSegment | 
 
           
           var dataSegment data_segmentation.DataSegment
@@ -104,7 +140,7 @@
             fmt.Fprintf(os.Stderr, "Error when calling `DataSegmentationAPI.GetDataSegmentIdentityMembershipV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
           }
-          // response from `GetDataSegmentIdentityMembershipV1`: []Segmentmembership
+          // response from `GetDataSegmentIdentityMembershipV1`: []SegmentMembership
           fmt.Fprintf(os.Stdout, "Response from `DataSegmentationAPI.GetDataSegmentIdentityMembershipV1`: %v\n", resp)
         }
 - path: /data-segments/v1/{segmentId}

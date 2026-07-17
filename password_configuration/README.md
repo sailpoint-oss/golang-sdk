@@ -86,12 +86,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetPasswordOrgConfigV1401Response](docs/GetPasswordOrgConfigV1401Response.md)
  - [GetPasswordOrgConfigV1429Response](docs/GetPasswordOrgConfigV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Passwordorgconfig](docs/Passwordorgconfig.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [PasswordOrgConfig](docs/PasswordOrgConfig.md)
 
 
 ## Documentation For Authorization

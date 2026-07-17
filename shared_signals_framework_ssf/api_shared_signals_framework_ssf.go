@@ -25,15 +25,15 @@ type SharedSignalsFrameworkSSFAPIService service
 type ApiCreateStreamV1Request struct {
 	ctx context.Context
 	ApiService *SharedSignalsFrameworkSSFAPIService
-	createstreamrequest *Createstreamrequest
+	createStreamRequest *CreateStreamRequest
 }
 
-func (r ApiCreateStreamV1Request) Createstreamrequest(createstreamrequest Createstreamrequest) ApiCreateStreamV1Request {
-	r.createstreamrequest = &createstreamrequest
+func (r ApiCreateStreamV1Request) CreateStreamRequest(createStreamRequest CreateStreamRequest) ApiCreateStreamV1Request {
+	r.createStreamRequest = &createStreamRequest
 	return r
 }
 
-func (r ApiCreateStreamV1Request) Execute() (*Streamconfigresponse, *http.Response, error) {
+func (r ApiCreateStreamV1Request) Execute() (*StreamConfigResponse, *http.Response, error) {
 	return r.ApiService.CreateStreamV1Execute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *SharedSignalsFrameworkSSFAPIService) CreateStreamV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Streamconfigresponse
-func (a *SharedSignalsFrameworkSSFAPIService) CreateStreamV1Execute(r ApiCreateStreamV1Request) (*Streamconfigresponse, *http.Response, error) {
+//  @return StreamConfigResponse
+func (a *SharedSignalsFrameworkSSFAPIService) CreateStreamV1Execute(r ApiCreateStreamV1Request) (*StreamConfigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Streamconfigresponse
+		localVarReturnValue  *StreamConfigResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedSignalsFrameworkSSFAPIService.CreateStreamV1")
@@ -76,8 +76,8 @@ func (a *SharedSignalsFrameworkSSFAPIService) CreateStreamV1Execute(r ApiCreateS
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createstreamrequest == nil {
-		return localVarReturnValue, nil, reportError("createstreamrequest is required and must be specified")
+	if r.createStreamRequest == nil {
+		return localVarReturnValue, nil, reportError("createStreamRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -98,7 +98,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) CreateStreamV1Execute(r ApiCreateS
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createstreamrequest
+	localVarPostBody = r.createStreamRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -122,7 +122,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) CreateStreamV1Execute(r ApiCreateS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -144,7 +144,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) CreateStreamV1Execute(r ApiCreateS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -166,7 +166,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) CreateStreamV1Execute(r ApiCreateS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -288,7 +288,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) DeleteStreamV1Execute(r ApiDeleteS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -310,7 +310,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) DeleteStreamV1Execute(r ApiDeleteS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -321,7 +321,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) DeleteStreamV1Execute(r ApiDeleteS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -343,7 +343,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) DeleteStreamV1Execute(r ApiDeleteS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -363,7 +363,7 @@ type ApiGetJWKSDataV1Request struct {
 	ApiService *SharedSignalsFrameworkSSFAPIService
 }
 
-func (r ApiGetJWKSDataV1Request) Execute() (*Jwks, *http.Response, error) {
+func (r ApiGetJWKSDataV1Request) Execute() (*JWKS, *http.Response, error) {
 	return r.ApiService.GetJWKSDataV1Execute(r)
 }
 
@@ -383,13 +383,13 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetJWKSDataV1(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return Jwks
-func (a *SharedSignalsFrameworkSSFAPIService) GetJWKSDataV1Execute(r ApiGetJWKSDataV1Request) (*Jwks, *http.Response, error) {
+//  @return JWKS
+func (a *SharedSignalsFrameworkSSFAPIService) GetJWKSDataV1Execute(r ApiGetJWKSDataV1Request) (*JWKS, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Jwks
+		localVarReturnValue  *JWKS
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedSignalsFrameworkSSFAPIService.GetJWKSDataV1")
@@ -443,7 +443,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetJWKSDataV1Execute(r ApiGetJWKSD
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -465,7 +465,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetJWKSDataV1Execute(r ApiGetJWKSD
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -487,7 +487,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetJWKSDataV1Execute(r ApiGetJWKSD
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -516,7 +516,7 @@ type ApiGetSSFConfigurationV1Request struct {
 	ApiService *SharedSignalsFrameworkSSFAPIService
 }
 
-func (r ApiGetSSFConfigurationV1Request) Execute() (*Transmittermetadata, *http.Response, error) {
+func (r ApiGetSSFConfigurationV1Request) Execute() (*TransmitterMetadata, *http.Response, error) {
 	return r.ApiService.GetSSFConfigurationV1Execute(r)
 }
 
@@ -536,13 +536,13 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetSSFConfigurationV1(ctx context.
 }
 
 // Execute executes the request
-//  @return Transmittermetadata
-func (a *SharedSignalsFrameworkSSFAPIService) GetSSFConfigurationV1Execute(r ApiGetSSFConfigurationV1Request) (*Transmittermetadata, *http.Response, error) {
+//  @return TransmitterMetadata
+func (a *SharedSignalsFrameworkSSFAPIService) GetSSFConfigurationV1Execute(r ApiGetSSFConfigurationV1Request) (*TransmitterMetadata, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Transmittermetadata
+		localVarReturnValue  *TransmitterMetadata
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedSignalsFrameworkSSFAPIService.GetSSFConfigurationV1")
@@ -596,7 +596,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetSSFConfigurationV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -618,7 +618,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetSSFConfigurationV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -640,7 +640,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetSSFConfigurationV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -676,7 +676,7 @@ func (r ApiGetStreamStatusV1Request) StreamId(streamId string) ApiGetStreamStatu
 	return r
 }
 
-func (r ApiGetStreamStatusV1Request) Execute() (*Streamstatusresponse, *http.Response, error) {
+func (r ApiGetStreamStatusV1Request) Execute() (*StreamStatusResponse, *http.Response, error) {
 	return r.ApiService.GetStreamStatusV1Execute(r)
 }
 
@@ -696,13 +696,13 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetStreamStatusV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return Streamstatusresponse
-func (a *SharedSignalsFrameworkSSFAPIService) GetStreamStatusV1Execute(r ApiGetStreamStatusV1Request) (*Streamstatusresponse, *http.Response, error) {
+//  @return StreamStatusResponse
+func (a *SharedSignalsFrameworkSSFAPIService) GetStreamStatusV1Execute(r ApiGetStreamStatusV1Request) (*StreamStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Streamstatusresponse
+		localVarReturnValue  *StreamStatusResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedSignalsFrameworkSSFAPIService.GetStreamStatusV1")
@@ -760,7 +760,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetStreamStatusV1Execute(r ApiGetS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -782,7 +782,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetStreamStatusV1Execute(r ApiGetS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -793,7 +793,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetStreamStatusV1Execute(r ApiGetS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -815,7 +815,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetStreamStatusV1Execute(r ApiGetS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -940,7 +940,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetStreamV1Execute(r ApiGetStreamV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -962,7 +962,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetStreamV1Execute(r ApiGetStreamV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -973,7 +973,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetStreamV1Execute(r ApiGetStreamV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -995,7 +995,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetStreamV1Execute(r ApiGetStreamV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1022,11 +1022,11 @@ func (a *SharedSignalsFrameworkSSFAPIService) GetStreamV1Execute(r ApiGetStreamV
 type ApiSendStreamVerificationV1Request struct {
 	ctx context.Context
 	ApiService *SharedSignalsFrameworkSSFAPIService
-	verificationrequest *Verificationrequest
+	verificationRequest *VerificationRequest
 }
 
-func (r ApiSendStreamVerificationV1Request) Verificationrequest(verificationrequest Verificationrequest) ApiSendStreamVerificationV1Request {
-	r.verificationrequest = &verificationrequest
+func (r ApiSendStreamVerificationV1Request) VerificationRequest(verificationRequest VerificationRequest) ApiSendStreamVerificationV1Request {
+	r.verificationRequest = &verificationRequest
 	return r
 }
 
@@ -1067,8 +1067,8 @@ func (a *SharedSignalsFrameworkSSFAPIService) SendStreamVerificationV1Execute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.verificationrequest == nil {
-		return nil, reportError("verificationrequest is required and must be specified")
+	if r.verificationRequest == nil {
+		return nil, reportError("verificationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1089,7 +1089,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) SendStreamVerificationV1Execute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.verificationrequest
+	localVarPostBody = r.verificationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1113,7 +1113,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) SendStreamVerificationV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1135,7 +1135,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) SendStreamVerificationV1Execute(r 
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1157,7 +1157,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) SendStreamVerificationV1Execute(r 
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1175,15 +1175,15 @@ func (a *SharedSignalsFrameworkSSFAPIService) SendStreamVerificationV1Execute(r 
 type ApiSetStreamConfigurationV1Request struct {
 	ctx context.Context
 	ApiService *SharedSignalsFrameworkSSFAPIService
-	replacestreamconfigurationrequest *Replacestreamconfigurationrequest
+	replaceStreamConfigurationRequest *ReplaceStreamConfigurationRequest
 }
 
-func (r ApiSetStreamConfigurationV1Request) Replacestreamconfigurationrequest(replacestreamconfigurationrequest Replacestreamconfigurationrequest) ApiSetStreamConfigurationV1Request {
-	r.replacestreamconfigurationrequest = &replacestreamconfigurationrequest
+func (r ApiSetStreamConfigurationV1Request) ReplaceStreamConfigurationRequest(replaceStreamConfigurationRequest ReplaceStreamConfigurationRequest) ApiSetStreamConfigurationV1Request {
+	r.replaceStreamConfigurationRequest = &replaceStreamConfigurationRequest
 	return r
 }
 
-func (r ApiSetStreamConfigurationV1Request) Execute() (*Updatestreamconfigresponse, *http.Response, error) {
+func (r ApiSetStreamConfigurationV1Request) Execute() (*UpdateStreamConfigResponse, *http.Response, error) {
 	return r.ApiService.SetStreamConfigurationV1Execute(r)
 }
 
@@ -1206,13 +1206,13 @@ func (a *SharedSignalsFrameworkSSFAPIService) SetStreamConfigurationV1(ctx conte
 }
 
 // Execute executes the request
-//  @return Updatestreamconfigresponse
-func (a *SharedSignalsFrameworkSSFAPIService) SetStreamConfigurationV1Execute(r ApiSetStreamConfigurationV1Request) (*Updatestreamconfigresponse, *http.Response, error) {
+//  @return UpdateStreamConfigResponse
+func (a *SharedSignalsFrameworkSSFAPIService) SetStreamConfigurationV1Execute(r ApiSetStreamConfigurationV1Request) (*UpdateStreamConfigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Updatestreamconfigresponse
+		localVarReturnValue  *UpdateStreamConfigResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedSignalsFrameworkSSFAPIService.SetStreamConfigurationV1")
@@ -1225,8 +1225,8 @@ func (a *SharedSignalsFrameworkSSFAPIService) SetStreamConfigurationV1Execute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.replacestreamconfigurationrequest == nil {
-		return localVarReturnValue, nil, reportError("replacestreamconfigurationrequest is required and must be specified")
+	if r.replaceStreamConfigurationRequest == nil {
+		return localVarReturnValue, nil, reportError("replaceStreamConfigurationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1247,7 +1247,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) SetStreamConfigurationV1Execute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.replacestreamconfigurationrequest
+	localVarPostBody = r.replaceStreamConfigurationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1271,7 +1271,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) SetStreamConfigurationV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1293,7 +1293,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) SetStreamConfigurationV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1304,7 +1304,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) SetStreamConfigurationV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1326,7 +1326,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) SetStreamConfigurationV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1353,15 +1353,15 @@ func (a *SharedSignalsFrameworkSSFAPIService) SetStreamConfigurationV1Execute(r 
 type ApiUpdateStreamConfigurationV1Request struct {
 	ctx context.Context
 	ApiService *SharedSignalsFrameworkSSFAPIService
-	updatestreamconfigurationrequest *Updatestreamconfigurationrequest
+	updateStreamConfigurationRequest *UpdateStreamConfigurationRequest
 }
 
-func (r ApiUpdateStreamConfigurationV1Request) Updatestreamconfigurationrequest(updatestreamconfigurationrequest Updatestreamconfigurationrequest) ApiUpdateStreamConfigurationV1Request {
-	r.updatestreamconfigurationrequest = &updatestreamconfigurationrequest
+func (r ApiUpdateStreamConfigurationV1Request) UpdateStreamConfigurationRequest(updateStreamConfigurationRequest UpdateStreamConfigurationRequest) ApiUpdateStreamConfigurationV1Request {
+	r.updateStreamConfigurationRequest = &updateStreamConfigurationRequest
 	return r
 }
 
-func (r ApiUpdateStreamConfigurationV1Request) Execute() (*Updatestreamconfigresponse, *http.Response, error) {
+func (r ApiUpdateStreamConfigurationV1Request) Execute() (*UpdateStreamConfigResponse, *http.Response, error) {
 	return r.ApiService.UpdateStreamConfigurationV1Execute(r)
 }
 
@@ -1384,13 +1384,13 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamConfigurationV1(ctx co
 }
 
 // Execute executes the request
-//  @return Updatestreamconfigresponse
-func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamConfigurationV1Execute(r ApiUpdateStreamConfigurationV1Request) (*Updatestreamconfigresponse, *http.Response, error) {
+//  @return UpdateStreamConfigResponse
+func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamConfigurationV1Execute(r ApiUpdateStreamConfigurationV1Request) (*UpdateStreamConfigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Updatestreamconfigresponse
+		localVarReturnValue  *UpdateStreamConfigResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedSignalsFrameworkSSFAPIService.UpdateStreamConfigurationV1")
@@ -1403,8 +1403,8 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamConfigurationV1Execute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updatestreamconfigurationrequest == nil {
-		return localVarReturnValue, nil, reportError("updatestreamconfigurationrequest is required and must be specified")
+	if r.updateStreamConfigurationRequest == nil {
+		return localVarReturnValue, nil, reportError("updateStreamConfigurationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1425,7 +1425,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamConfigurationV1Execute
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updatestreamconfigurationrequest
+	localVarPostBody = r.updateStreamConfigurationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1449,7 +1449,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamConfigurationV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1471,7 +1471,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamConfigurationV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1482,7 +1482,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamConfigurationV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1504,7 +1504,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamConfigurationV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1531,15 +1531,15 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamConfigurationV1Execute
 type ApiUpdateStreamStatusV1Request struct {
 	ctx context.Context
 	ApiService *SharedSignalsFrameworkSSFAPIService
-	updatestreamstatusrequest *Updatestreamstatusrequest
+	updateStreamStatusRequest *UpdateStreamStatusRequest
 }
 
-func (r ApiUpdateStreamStatusV1Request) Updatestreamstatusrequest(updatestreamstatusrequest Updatestreamstatusrequest) ApiUpdateStreamStatusV1Request {
-	r.updatestreamstatusrequest = &updatestreamstatusrequest
+func (r ApiUpdateStreamStatusV1Request) UpdateStreamStatusRequest(updateStreamStatusRequest UpdateStreamStatusRequest) ApiUpdateStreamStatusV1Request {
+	r.updateStreamStatusRequest = &updateStreamStatusRequest
 	return r
 }
 
-func (r ApiUpdateStreamStatusV1Request) Execute() (*Streamstatusresponse, *http.Response, error) {
+func (r ApiUpdateStreamStatusV1Request) Execute() (*StreamStatusResponse, *http.Response, error) {
 	return r.ApiService.UpdateStreamStatusV1Execute(r)
 }
 
@@ -1559,13 +1559,13 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamStatusV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return Streamstatusresponse
-func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamStatusV1Execute(r ApiUpdateStreamStatusV1Request) (*Streamstatusresponse, *http.Response, error) {
+//  @return StreamStatusResponse
+func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamStatusV1Execute(r ApiUpdateStreamStatusV1Request) (*StreamStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Streamstatusresponse
+		localVarReturnValue  *StreamStatusResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedSignalsFrameworkSSFAPIService.UpdateStreamStatusV1")
@@ -1578,8 +1578,8 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamStatusV1Execute(r ApiU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updatestreamstatusrequest == nil {
-		return localVarReturnValue, nil, reportError("updatestreamstatusrequest is required and must be specified")
+	if r.updateStreamStatusRequest == nil {
+		return localVarReturnValue, nil, reportError("updateStreamStatusRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1600,7 +1600,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamStatusV1Execute(r ApiU
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updatestreamstatusrequest
+	localVarPostBody = r.updateStreamStatusRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1624,7 +1624,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamStatusV1Execute(r ApiU
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1646,7 +1646,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamStatusV1Execute(r ApiU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1657,7 +1657,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamStatusV1Execute(r ApiU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1679,7 +1679,7 @@ func (a *SharedSignalsFrameworkSSFAPIService) UpdateStreamStatusV1Execute(r ApiU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

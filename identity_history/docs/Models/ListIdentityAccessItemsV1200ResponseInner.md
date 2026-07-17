@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **Privileged** | **NullableBool** | indicates whether the entitlement is privileged | 
 **CloudGoverned** | **NullableBool** | indicates whether the entitlement is cloud governed | 
 **EntitlementCount** | **int32** | the number of entitlements the account will create | 
-**AppRefs** | [**[]AccessitemaccessprofileresponseAppRefsInner**](accessitemaccessprofileresponse-app-refs-inner) | the list of app ids associated with the access profile | 
+**AppRefs** | [**[]AccessItemAccessProfileResponseAppRefsInner**](access-item-access-profile-response-app-refs-inner) | the list of app ids associated with the access profile | 
 **StartDate** | Pointer to **NullableString** | the date the access profile will be assigned to the specified identity, in case requested with a future start date | [optional] 
 **RemoveDate** | Pointer to **string** | the date the role is no longer assigned to the specified identity | [optional] 
 **Revocable** | **bool** | indicates whether the role is revocable | 
@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 
 ### NewListIdentityAccessItemsV1200ResponseInner
 
-`func NewListIdentityAccessItemsV1200ResponseInner(attribute string, value string, type_ string, standalone NullableBool, privileged NullableBool, cloudGoverned NullableBool, entitlementCount int32, appRefs []AccessitemaccessprofileresponseAppRefsInner, revocable bool, nativeIdentity string, appRoleId NullableString, ) *ListIdentityAccessItemsV1200ResponseInner`
+`func NewListIdentityAccessItemsV1200ResponseInner(attribute string, value string, type_ string, standalone NullableBool, privileged NullableBool, cloudGoverned NullableBool, entitlementCount int32, appRefs []AccessItemAccessProfileResponseAppRefsInner, revocable bool, nativeIdentity string, appRoleId NullableString, ) *ListIdentityAccessItemsV1200ResponseInner`
 
 NewListIdentityAccessItemsV1200ResponseInner instantiates a new ListIdentityAccessItemsV1200ResponseInner object
 This constructor will assign default values to properties that have it defined,
@@ -386,20 +386,20 @@ SetEntitlementCount sets EntitlementCount field to given value.
 
 ### GetAppRefs
 
-`func (o *ListIdentityAccessItemsV1200ResponseInner) GetAppRefs() []AccessitemaccessprofileresponseAppRefsInner`
+`func (o *ListIdentityAccessItemsV1200ResponseInner) GetAppRefs() []AccessItemAccessProfileResponseAppRefsInner`
 
 GetAppRefs returns the AppRefs field if non-nil, zero value otherwise.
 
 ### GetAppRefsOk
 
-`func (o *ListIdentityAccessItemsV1200ResponseInner) GetAppRefsOk() (*[]AccessitemaccessprofileresponseAppRefsInner, bool)`
+`func (o *ListIdentityAccessItemsV1200ResponseInner) GetAppRefsOk() (*[]AccessItemAccessProfileResponseAppRefsInner, bool)`
 
 GetAppRefsOk returns a tuple with the AppRefs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAppRefs
 
-`func (o *ListIdentityAccessItemsV1200ResponseInner) SetAppRefs(v []AccessitemaccessprofileresponseAppRefsInner)`
+`func (o *ListIdentityAccessItemsV1200ResponseInner) SetAppRefs(v []AccessItemAccessProfileResponseAppRefsInner)`
 
 SetAppRefs sets AppRefs field to given value.
 

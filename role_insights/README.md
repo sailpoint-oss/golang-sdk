@@ -94,17 +94,17 @@ Class | Method | HTTP request | Description
 
  - [CreateRoleInsightRequestsV1401Response](docs/CreateRoleInsightRequestsV1401Response.md)
  - [CreateRoleInsightRequestsV1429Response](docs/CreateRoleInsightRequestsV1429Response.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Roleinsight](docs/Roleinsight.md)
- - [Roleinsightsentitlement](docs/Roleinsightsentitlement.md)
- - [Roleinsightsentitlementchanges](docs/Roleinsightsentitlementchanges.md)
- - [Roleinsightsidentities](docs/Roleinsightsidentities.md)
- - [Roleinsightsinsight](docs/Roleinsightsinsight.md)
- - [Roleinsightsresponse](docs/Roleinsightsresponse.md)
- - [Roleinsightsrole](docs/Roleinsightsrole.md)
- - [Roleinsightssummary](docs/Roleinsightssummary.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [RoleInsight](docs/RoleInsight.md)
+ - [RoleInsightsEntitlement](docs/RoleInsightsEntitlement.md)
+ - [RoleInsightsEntitlementChanges](docs/RoleInsightsEntitlementChanges.md)
+ - [RoleInsightsIdentities](docs/RoleInsightsIdentities.md)
+ - [RoleInsightsInsight](docs/RoleInsightsInsight.md)
+ - [RoleInsightsResponse](docs/RoleInsightsResponse.md)
+ - [RoleInsightsRole](docs/RoleInsightsRole.md)
+ - [RoleInsightsSummary](docs/RoleInsightsSummary.md)
 
 
 ## Documentation For Authorization

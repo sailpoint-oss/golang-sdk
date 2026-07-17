@@ -35,7 +35,7 @@ func (r ApiCreateTransformV1Request) Transform(transform Transform) ApiCreateTra
 	return r
 }
 
-func (r ApiCreateTransformV1Request) Execute() (*Transformread, *http.Response, error) {
+func (r ApiCreateTransformV1Request) Execute() (*TransformRead, *http.Response, error) {
 	return r.ApiService.CreateTransformV1Execute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *TransformsAPIService) CreateTransformV1(ctx context.Context) ApiCreateT
 }
 
 // Execute executes the request
-//  @return Transformread
-func (a *TransformsAPIService) CreateTransformV1Execute(r ApiCreateTransformV1Request) (*Transformread, *http.Response, error) {
+//  @return TransformRead
+func (a *TransformsAPIService) CreateTransformV1Execute(r ApiCreateTransformV1Request) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Transformread
+		localVarReturnValue  *TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsAPIService.CreateTransformV1")
@@ -120,7 +120,7 @@ func (a *TransformsAPIService) CreateTransformV1Execute(r ApiCreateTransformV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,7 +142,7 @@ func (a *TransformsAPIService) CreateTransformV1Execute(r ApiCreateTransformV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -153,7 +153,7 @@ func (a *TransformsAPIService) CreateTransformV1Execute(r ApiCreateTransformV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -175,7 +175,7 @@ func (a *TransformsAPIService) CreateTransformV1Execute(r ApiCreateTransformV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -286,7 +286,7 @@ func (a *TransformsAPIService) DeleteTransformV1Execute(r ApiDeleteTransformV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -308,7 +308,7 @@ func (a *TransformsAPIService) DeleteTransformV1Execute(r ApiDeleteTransformV1Re
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -319,7 +319,7 @@ func (a *TransformsAPIService) DeleteTransformV1Execute(r ApiDeleteTransformV1Re
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -341,7 +341,7 @@ func (a *TransformsAPIService) DeleteTransformV1Execute(r ApiDeleteTransformV1Re
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -362,7 +362,7 @@ type ApiGetTransformV1Request struct {
 	id string
 }
 
-func (r ApiGetTransformV1Request) Execute() (*Transformread, *http.Response, error) {
+func (r ApiGetTransformV1Request) Execute() (*TransformRead, *http.Response, error) {
 	return r.ApiService.GetTransformV1Execute(r)
 }
 
@@ -384,13 +384,13 @@ func (a *TransformsAPIService) GetTransformV1(ctx context.Context, id string) Ap
 }
 
 // Execute executes the request
-//  @return Transformread
-func (a *TransformsAPIService) GetTransformV1Execute(r ApiGetTransformV1Request) (*Transformread, *http.Response, error) {
+//  @return TransformRead
+func (a *TransformsAPIService) GetTransformV1Execute(r ApiGetTransformV1Request) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Transformread
+		localVarReturnValue  *TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsAPIService.GetTransformV1")
@@ -445,7 +445,7 @@ func (a *TransformsAPIService) GetTransformV1Execute(r ApiGetTransformV1Request)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -467,7 +467,7 @@ func (a *TransformsAPIService) GetTransformV1Execute(r ApiGetTransformV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -478,7 +478,7 @@ func (a *TransformsAPIService) GetTransformV1Execute(r ApiGetTransformV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -500,7 +500,7 @@ func (a *TransformsAPIService) GetTransformV1Execute(r ApiGetTransformV1Request)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -564,7 +564,7 @@ func (r ApiListTransformsV1Request) Filters(filters string) ApiListTransformsV1R
 	return r
 }
 
-func (r ApiListTransformsV1Request) Execute() ([]Transformread, *http.Response, error) {
+func (r ApiListTransformsV1Request) Execute() ([]TransformRead, *http.Response, error) {
 	return r.ApiService.ListTransformsV1Execute(r)
 }
 
@@ -584,13 +584,13 @@ func (a *TransformsAPIService) ListTransformsV1(ctx context.Context) ApiListTran
 }
 
 // Execute executes the request
-//  @return []Transformread
-func (a *TransformsAPIService) ListTransformsV1Execute(r ApiListTransformsV1Request) ([]Transformread, *http.Response, error) {
+//  @return []TransformRead
+func (a *TransformsAPIService) ListTransformsV1Execute(r ApiListTransformsV1Request) ([]TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Transformread
+		localVarReturnValue  []TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsAPIService.ListTransformsV1")
@@ -668,7 +668,7 @@ func (a *TransformsAPIService) ListTransformsV1Execute(r ApiListTransformsV1Requ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -690,7 +690,7 @@ func (a *TransformsAPIService) ListTransformsV1Execute(r ApiListTransformsV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -701,7 +701,7 @@ func (a *TransformsAPIService) ListTransformsV1Execute(r ApiListTransformsV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -723,7 +723,7 @@ func (a *TransformsAPIService) ListTransformsV1Execute(r ApiListTransformsV1Requ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -760,7 +760,7 @@ func (r ApiUpdateTransformV1Request) Transform(transform Transform) ApiUpdateTra
 	return r
 }
 
-func (r ApiUpdateTransformV1Request) Execute() (*Transformread, *http.Response, error) {
+func (r ApiUpdateTransformV1Request) Execute() (*TransformRead, *http.Response, error) {
 	return r.ApiService.UpdateTransformV1Execute(r)
 }
 
@@ -782,13 +782,13 @@ func (a *TransformsAPIService) UpdateTransformV1(ctx context.Context, id string)
 }
 
 // Execute executes the request
-//  @return Transformread
-func (a *TransformsAPIService) UpdateTransformV1Execute(r ApiUpdateTransformV1Request) (*Transformread, *http.Response, error) {
+//  @return TransformRead
+func (a *TransformsAPIService) UpdateTransformV1Execute(r ApiUpdateTransformV1Request) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Transformread
+		localVarReturnValue  *TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsAPIService.UpdateTransformV1")
@@ -845,7 +845,7 @@ func (a *TransformsAPIService) UpdateTransformV1Execute(r ApiUpdateTransformV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -867,7 +867,7 @@ func (a *TransformsAPIService) UpdateTransformV1Execute(r ApiUpdateTransformV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -878,7 +878,7 @@ func (a *TransformsAPIService) UpdateTransformV1Execute(r ApiUpdateTransformV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -900,7 +900,7 @@ func (a *TransformsAPIService) UpdateTransformV1Execute(r ApiUpdateTransformV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

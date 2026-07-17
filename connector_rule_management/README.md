@@ -90,18 +90,18 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Argument](docs/Argument.md)
- - [Connectorrulecreaterequest](docs/Connectorrulecreaterequest.md)
- - [ConnectorrulecreaterequestSignature](docs/ConnectorrulecreaterequestSignature.md)
- - [Connectorruleresponse](docs/Connectorruleresponse.md)
- - [Connectorruleupdaterequest](docs/Connectorruleupdaterequest.md)
- - [Connectorrulevalidationresponse](docs/Connectorrulevalidationresponse.md)
- - [ConnectorrulevalidationresponseDetailsInner](docs/ConnectorrulevalidationresponseDetailsInner.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ConnectorRuleCreateRequest](docs/ConnectorRuleCreateRequest.md)
+ - [ConnectorRuleCreateRequestSignature](docs/ConnectorRuleCreateRequestSignature.md)
+ - [ConnectorRuleResponse](docs/ConnectorRuleResponse.md)
+ - [ConnectorRuleUpdateRequest](docs/ConnectorRuleUpdateRequest.md)
+ - [ConnectorRuleValidationResponse](docs/ConnectorRuleValidationResponse.md)
+ - [ConnectorRuleValidationResponseDetailsInner](docs/ConnectorRuleValidationResponseDetailsInner.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetConnectorRuleListV1401Response](docs/GetConnectorRuleListV1401Response.md)
  - [GetConnectorRuleListV1429Response](docs/GetConnectorRuleListV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Sourcecode](docs/Sourcecode.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [SourceCode](docs/SourceCode.md)
 
 
 ## Documentation For Authorization

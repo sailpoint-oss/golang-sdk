@@ -7,11 +7,11 @@ api/openapi.yaml
 api_icons.go
 client.go
 configuration.go
-docs/Errormessagedto.md
-docs/Errorresponsedto.md
+docs/ErrorMessageDto.md
+docs/ErrorResponseDto.md
 docs/IconsAPI.md
 docs/IconsAPIdeveloperSite_code_examples.yaml
-docs/Localeorigin.md
+docs/LocaleOrigin.md
 docs/Methods/Index.md
 docs/SetIconV1200Response.md
 docs/SetIconV1401Response.md
@@ -20,9 +20,9 @@ docs/SetIconV1Request.md
 git_push.sh
 go.mod
 go.sum
-model_errormessagedto.go
-model_errorresponsedto.go
-model_localeorigin.go
+model_error_message_dto.go
+model_error_response_dto.go
+model_locale_origin.go
 model_set_icon_v1_200_response.go
 model_set_icon_v1_401_response.go
 model_set_icon_v1_429_response.go

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ExportFormDefinitionsByTenantV1200Res
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | Pointer to [**Formdefinitionresponse**](formdefinitionresponse) |  | [optional] 
+**Object** | Pointer to [**FormDefinitionResponse**](form-definition-response) |  | [optional] 
 **Self** | Pointer to [**ExportFormDefinitionsByTenantV1200ResponseInnerSelf**](export-form-definitions-by-tenant-v1200-response-inner-self) |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
 
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetObject
 
-`func (o *ExportFormDefinitionsByTenantV1200ResponseInner) GetObject() Formdefinitionresponse`
+`func (o *ExportFormDefinitionsByTenantV1200ResponseInner) GetObject() FormDefinitionResponse`
 
 GetObject returns the Object field if non-nil, zero value otherwise.
 
 ### GetObjectOk
 
-`func (o *ExportFormDefinitionsByTenantV1200ResponseInner) GetObjectOk() (*Formdefinitionresponse, bool)`
+`func (o *ExportFormDefinitionsByTenantV1200ResponseInner) GetObjectOk() (*FormDefinitionResponse, bool)`
 
 GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObject
 
-`func (o *ExportFormDefinitionsByTenantV1200ResponseInner) SetObject(v Formdefinitionresponse)`
+`func (o *ExportFormDefinitionsByTenantV1200ResponseInner) SetObject(v FormDefinitionResponse)`
 
 SetObject sets Object field to given value.
 

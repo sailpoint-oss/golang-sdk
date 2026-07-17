@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Operator friendly name | [optional] 
 **Type** | Pointer to **string** | Operator type | [optional] 
 **Description** | Pointer to **string** | Description of the operator | [optional] 
-**FormFields** | Pointer to [**[]Workflowlibraryformfields**](workflowlibraryformfields) | One or more inputs that the operator accepts | [optional] 
-**ExampleOutput** | Pointer to [**WorkflowlibraryactionExampleOutput**](workflowlibraryaction-example-output) |  | [optional] 
+**FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](workflow-library-form-fields) | One or more inputs that the operator accepts | [optional] 
+**ExampleOutput** | Pointer to [**WorkflowLibraryActionExampleOutput**](workflow-library-action-example-output) |  | [optional] 
 **Deprecated** | Pointer to **bool** |  | [optional] 
 **DeprecatedBy** | Pointer to **SailPointTime** |  | [optional] 
 **VersionNumber** | Pointer to **int32** | Version number | [optional] 
@@ -150,20 +150,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetFormFields
 
-`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) GetFormFields() []Workflowlibraryformfields`
+`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) GetFormFields() []WorkflowLibraryFormFields`
 
 GetFormFields returns the FormFields field if non-nil, zero value otherwise.
 
 ### GetFormFieldsOk
 
-`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) GetFormFieldsOk() (*[]Workflowlibraryformfields, bool)`
+`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) GetFormFieldsOk() (*[]WorkflowLibraryFormFields, bool)`
 
 GetFormFieldsOk returns a tuple with the FormFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFormFields
 
-`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) SetFormFields(v []Workflowlibraryformfields)`
+`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) SetFormFields(v []WorkflowLibraryFormFields)`
 
 SetFormFields sets FormFields field to given value.
 
@@ -185,20 +185,20 @@ HasFormFields returns a boolean if a field has been set.
 UnsetFormFields ensures that no value is present for FormFields, not even an explicit nil
 ### GetExampleOutput
 
-`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) GetExampleOutput() WorkflowlibraryactionExampleOutput`
+`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) GetExampleOutput() WorkflowLibraryActionExampleOutput`
 
 GetExampleOutput returns the ExampleOutput field if non-nil, zero value otherwise.
 
 ### GetExampleOutputOk
 
-`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) GetExampleOutputOk() (*WorkflowlibraryactionExampleOutput, bool)`
+`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) GetExampleOutputOk() (*WorkflowLibraryActionExampleOutput, bool)`
 
 GetExampleOutputOk returns a tuple with the ExampleOutput field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExampleOutput
 
-`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) SetExampleOutput(v WorkflowlibraryactionExampleOutput)`
+`func (o *ListCompleteWorkflowLibraryV1200ResponseInner) SetExampleOutput(v WorkflowLibraryActionExampleOutput)`
 
 SetExampleOutput sets ExampleOutput field to given value.
 

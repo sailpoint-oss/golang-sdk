@@ -59,11 +59,11 @@ Other parameters are passed through a pointer to a apiCreateParameterV1Request s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameterstoragenewparameter** | [**Parameterstoragenewparameter**](../models/parameterstoragenewparameter) | The parameter to add to the store. | 
+ **parameterStorageNewParameter** | [**ParameterStorageNewParameter**](../models/parameter-storage-new-parameter) | The parameter to add to the store. | 
 
 ### Return type
 
-[**Parameterstorageparameter**](../models/parameterstorageparameter)
+[**ParameterStorageParameter**](../models/parameter-storage-parameter)
 
 ### HTTP request headers
 
@@ -85,19 +85,26 @@ import (
 )
 
 func main() {
-    parameterstoragenewparameterJson := []byte(``) // Parameterstoragenewparameter | The parameter to add to the store. (optional)
+    parameterstoragenewparameterJson := []byte(`{
+          "privateFields" : "ZW5jcnlwdGVkIHBhc3N3b3JkIGhlcmUu",
+          "name" : "Credentials for server.",
+          "description" : "Credentials for server.",
+          "publicFields" : "{\"username\": \"username\"}",
+          "ownerId" : "c0b4568a4fe7458c434ee77d1fbt156b",
+          "type" : "1.1"
+        }`) // ParameterStorageNewParameter | The parameter to add to the store. (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.ParameterStorageAPI.CreateParameterV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.ParameterStorageAPI.CreateParameterV1(context.Background()).Parameterstoragenewparameter(parameterstoragenewparameter).Execute()
+	  //resp, r, err := apiClient.ParameterStorageAPI.CreateParameterV1(context.Background()).ParameterStorageNewParameter(parameterStorageNewParameter).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.CreateParameterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateParameterV1`: Parameterstorageparameter
+    // response from `CreateParameterV1`: ParameterStorageParameter
     fmt.Fprintf(os.Stdout, "Response from `ParameterStorageAPI.CreateParameterV1`: %v\n", resp)
 }
 ```
@@ -190,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Parameterstorageattestationdocument**](../models/parameterstorageattestationdocument)
+[**ParameterStorageAttestationDocument**](../models/parameter-storage-attestation-document)
 
 ### HTTP request headers
 
@@ -224,7 +231,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.GetAttestationDocumentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAttestationDocumentV1`: Parameterstorageattestationdocument
+    // response from `GetAttestationDocumentV1`: ParameterStorageAttestationDocument
     fmt.Fprintf(os.Stdout, "Response from `ParameterStorageAPI.GetAttestationDocumentV1`: %v\n", resp)
 }
 ```
@@ -259,7 +266,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Parameterstoragereference**](../models/parameterstoragereference)
+[**[]ParameterStorageReference**](../models/parameter-storage-reference)
 
 ### HTTP request headers
 
@@ -296,7 +303,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.GetParameterReferencesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetParameterReferencesV1`: []Parameterstoragereference
+    // response from `GetParameterReferencesV1`: []ParameterStorageReference
     fmt.Fprintf(os.Stdout, "Response from `ParameterStorageAPI.GetParameterReferencesV1`: %v\n", resp)
 }
 ```
@@ -400,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Parameterstorageparameter**](../models/parameterstorageparameter)
+[**ParameterStorageParameter**](../models/parameter-storage-parameter)
 
 ### HTTP request headers
 
@@ -434,7 +441,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.GetParameterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetParameterV1`: Parameterstorageparameter
+    // response from `GetParameterV1`: ParameterStorageParameter
     fmt.Fprintf(os.Stdout, "Response from `ParameterStorageAPI.GetParameterV1`: %v\n", resp)
 }
 ```
@@ -465,7 +472,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Parameterstorageparameter**](../models/parameterstorageparameter)
+[**[]ParameterStorageParameter**](../models/parameter-storage-parameter)
 
 ### HTTP request headers
 
@@ -502,7 +509,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.SearchParametersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchParametersV1`: []Parameterstorageparameter
+    // response from `SearchParametersV1`: []ParameterStorageParameter
     fmt.Fprintf(os.Stdout, "Response from `ParameterStorageAPI.SearchParametersV1`: %v\n", resp)
 }
 ```
@@ -531,11 +538,11 @@ Other parameters are passed through a pointer to a apiUpdateParameterV1Request s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **parameterstorageupdateparameter** | [**Parameterstorageupdateparameter**](../models/parameterstorageupdateparameter) | The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates. | 
+ **parameterStorageUpdateParameter** | [**ParameterStorageUpdateParameter**](../models/parameter-storage-update-parameter) | The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates. | 
 
 ### Return type
 
-[**Parameterstorageparameter**](../models/parameterstorageparameter)
+[**ParameterStorageParameter**](../models/parameter-storage-parameter)
 
 ### HTTP request headers
 
@@ -558,19 +565,31 @@ import (
 
 func main() {
     id := `58de858b-83d9-4563-9e15-7393594c684a` // string | The ID of the parameter to be updated. # string | The ID of the parameter to be updated.
-    parameterstorageupdateparameterJson := []byte(``) // Parameterstorageupdateparameter | The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates. (optional)
+    parameterstorageupdateparameterJson := []byte(`{
+          "privateFields" : "ZW5jcnlwdGVkIHBhc3N3b3JkIGhlcmUu",
+          "name" : "Credentials for server.",
+          "description" : "Credentials for server.",
+          "publicFields" : "{\"username\": \"username\"}",
+          "ownerId" : "c0b4568a4fe7458c434ee77d1fbt156b"
+        }{
+          "privateFields" : "ZW5jcnlwdGVkIHBhc3N3b3JkIGhlcmUu",
+          "name" : "Credentials for server.",
+          "description" : "Credentials for server.",
+          "publicFields" : "{\"username\": \"username\"}",
+          "ownerId" : "c0b4568a4fe7458c434ee77d1fbt156b"
+        }`) // ParameterStorageUpdateParameter | The updated parameter. Supports both full and RFC 6902 JSON Patch updates. For RFC 6902 JSON Patch updates, move and copy operations are not supported for privateField updates. (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.ParameterStorageAPI.UpdateParameterV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ParameterStorageAPI.UpdateParameterV1(context.Background(), id).Parameterstorageupdateparameter(parameterstorageupdateparameter).Execute()
+	  //resp, r, err := apiClient.ParameterStorageAPI.UpdateParameterV1(context.Background(), id).ParameterStorageUpdateParameter(parameterStorageUpdateParameter).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ParameterStorageAPI.UpdateParameterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateParameterV1`: Parameterstorageparameter
+    // response from `UpdateParameterV1`: ParameterStorageParameter
     fmt.Fprintf(os.Stdout, "Response from `ParameterStorageAPI.UpdateParameterV1`: %v\n", resp)
 }
 ```

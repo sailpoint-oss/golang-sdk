@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Authprofilesummary**](../models/authprofilesummary)
+[**[]AuthProfileSummary**](../models/auth-profile-summary)
 
 ### HTTP request headers
 
@@ -92,7 +92,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AuthProfileAPI.GetProfileConfigListV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetProfileConfigListV1`: []Authprofilesummary
+    // response from `GetProfileConfigListV1`: []AuthProfileSummary
     fmt.Fprintf(os.Stdout, "Response from `AuthProfileAPI.GetProfileConfigListV1`: %v\n", resp)
 }
 ```
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Authprofile**](../models/authprofile)
+[**AuthProfile**](../models/auth-profile)
 
 ### HTTP request headers
 
@@ -171,7 +171,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AuthProfileAPI.GetProfileConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetProfileConfigV1`: Authprofile
+    // response from `GetProfileConfigV1`: AuthProfile
     fmt.Fprintf(os.Stdout, "Response from `AuthProfileAPI.GetProfileConfigV1`: %v\n", resp)
 }
 ```
@@ -213,11 +213,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
-[**Authprofile**](../models/authprofile)
+[**AuthProfile**](../models/auth-profile)
 
 ### HTTP request headers
 
@@ -241,10 +241,10 @@ import (
 func main() {
     id := `2c91808a7813090a017814121919ecca` // string | ID of the Auth Profile to patch. # string | ID of the Auth Profile to patch.
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | 
 
-    var jsonpatchoperation []auth_profile.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []auth_profile.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -252,13 +252,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthProfileAPI.PatchProfileConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.AuthProfileAPI.PatchProfileConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.AuthProfileAPI.PatchProfileConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.AuthProfileAPI.PatchProfileConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AuthProfileAPI.PatchProfileConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchProfileConfigV1`: Authprofile
+    // response from `PatchProfileConfigV1`: AuthProfile
     fmt.Fprintf(os.Stdout, "Response from `AuthProfileAPI.PatchProfileConfigV1`: %v\n", resp)
 }
 ```

@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Publicidentity**](../models/publicidentity)
+[**[]PublicIdentity**](../models/public-identity)
 
 ### HTTP request headers
 
@@ -86,7 +86,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesAPI.GetPublicIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPublicIdentitiesV1`: []Publicidentity
+    // response from `GetPublicIdentitiesV1`: []PublicIdentity
     fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesAPI.GetPublicIdentitiesV1`: %v\n", resp)
 }
 ```

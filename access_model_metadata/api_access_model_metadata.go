@@ -26,16 +26,16 @@ type AccessModelMetadataAPIService service
 type ApiCreateAccessModelMetadataAttributeV1Request struct {
 	ctx context.Context
 	ApiService *AccessModelMetadataAPIService
-	attributedto *Attributedto
+	attributeDTO *AttributeDTO
 }
 
 // Attribute to create
-func (r ApiCreateAccessModelMetadataAttributeV1Request) Attributedto(attributedto Attributedto) ApiCreateAccessModelMetadataAttributeV1Request {
-	r.attributedto = &attributedto
+func (r ApiCreateAccessModelMetadataAttributeV1Request) AttributeDTO(attributeDTO AttributeDTO) ApiCreateAccessModelMetadataAttributeV1Request {
+	r.attributeDTO = &attributeDTO
 	return r
 }
 
-func (r ApiCreateAccessModelMetadataAttributeV1Request) Execute() (*Attributedto, *http.Response, error) {
+func (r ApiCreateAccessModelMetadataAttributeV1Request) Execute() (*AttributeDTO, *http.Response, error) {
 	return r.ApiService.CreateAccessModelMetadataAttributeV1Execute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeV1(ctx
 }
 
 // Execute executes the request
-//  @return Attributedto
-func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeV1Execute(r ApiCreateAccessModelMetadataAttributeV1Request) (*Attributedto, *http.Response, error) {
+//  @return AttributeDTO
+func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeV1Execute(r ApiCreateAccessModelMetadataAttributeV1Request) (*AttributeDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Attributedto
+		localVarReturnValue  *AttributeDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.CreateAccessModelMetadataAttributeV1")
@@ -75,8 +75,8 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeV1Exec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.attributedto == nil {
-		return localVarReturnValue, nil, reportError("attributedto is required and must be specified")
+	if r.attributeDTO == nil {
+		return localVarReturnValue, nil, reportError("attributeDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -97,7 +97,7 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeV1Exec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.attributedto
+	localVarPostBody = r.attributeDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -121,7 +121,7 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -143,7 +143,7 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -165,7 +165,7 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -193,16 +193,16 @@ type ApiCreateAccessModelMetadataAttributeValueV1Request struct {
 	ctx context.Context
 	ApiService *AccessModelMetadataAPIService
 	key string
-	attributevaluedto *Attributevaluedto
+	attributeValueDTO *AttributeValueDTO
 }
 
 // Attribute value to create
-func (r ApiCreateAccessModelMetadataAttributeValueV1Request) Attributevaluedto(attributevaluedto Attributevaluedto) ApiCreateAccessModelMetadataAttributeValueV1Request {
-	r.attributevaluedto = &attributevaluedto
+func (r ApiCreateAccessModelMetadataAttributeValueV1Request) AttributeValueDTO(attributeValueDTO AttributeValueDTO) ApiCreateAccessModelMetadataAttributeValueV1Request {
+	r.attributeValueDTO = &attributeValueDTO
 	return r
 }
 
-func (r ApiCreateAccessModelMetadataAttributeValueV1Request) Execute() (*Attributevaluedto, *http.Response, error) {
+func (r ApiCreateAccessModelMetadataAttributeValueV1Request) Execute() (*AttributeValueDTO, *http.Response, error) {
 	return r.ApiService.CreateAccessModelMetadataAttributeValueV1Execute(r)
 }
 
@@ -225,13 +225,13 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeValueV
 }
 
 // Execute executes the request
-//  @return Attributevaluedto
-func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeValueV1Execute(r ApiCreateAccessModelMetadataAttributeValueV1Request) (*Attributevaluedto, *http.Response, error) {
+//  @return AttributeValueDTO
+func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeValueV1Execute(r ApiCreateAccessModelMetadataAttributeValueV1Request) (*AttributeValueDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Attributevaluedto
+		localVarReturnValue  *AttributeValueDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.CreateAccessModelMetadataAttributeValueV1")
@@ -245,8 +245,8 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeValueV
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.attributevaluedto == nil {
-		return localVarReturnValue, nil, reportError("attributevaluedto is required and must be specified")
+	if r.attributeValueDTO == nil {
+		return localVarReturnValue, nil, reportError("attributeValueDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -267,7 +267,7 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeValueV
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.attributevaluedto
+	localVarPostBody = r.attributeValueDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -291,7 +291,7 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeValueV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -313,7 +313,7 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeValueV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -324,7 +324,7 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeValueV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -346,7 +346,7 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeValueV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -376,7 +376,7 @@ type ApiGetAccessModelMetadataAttributeV1Request struct {
 	key string
 }
 
-func (r ApiGetAccessModelMetadataAttributeV1Request) Execute() (*Attributedto, *http.Response, error) {
+func (r ApiGetAccessModelMetadataAttributeV1Request) Execute() (*AttributeDTO, *http.Response, error) {
 	return r.ApiService.GetAccessModelMetadataAttributeV1Execute(r)
 }
 
@@ -398,13 +398,13 @@ func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeV1(ctx co
 }
 
 // Execute executes the request
-//  @return Attributedto
-func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeV1Execute(r ApiGetAccessModelMetadataAttributeV1Request) (*Attributedto, *http.Response, error) {
+//  @return AttributeDTO
+func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeV1Execute(r ApiGetAccessModelMetadataAttributeV1Request) (*AttributeDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Attributedto
+		localVarReturnValue  *AttributeDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.GetAccessModelMetadataAttributeV1")
@@ -459,7 +459,7 @@ func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -481,7 +481,7 @@ func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -492,7 +492,7 @@ func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -514,7 +514,7 @@ func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -545,7 +545,7 @@ type ApiGetAccessModelMetadataAttributeValueV1Request struct {
 	value string
 }
 
-func (r ApiGetAccessModelMetadataAttributeValueV1Request) Execute() (*Attributevaluedto, *http.Response, error) {
+func (r ApiGetAccessModelMetadataAttributeValueV1Request) Execute() (*AttributeValueDTO, *http.Response, error) {
 	return r.ApiService.GetAccessModelMetadataAttributeValueV1Execute(r)
 }
 
@@ -569,13 +569,13 @@ func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeValueV1(c
 }
 
 // Execute executes the request
-//  @return Attributevaluedto
-func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeValueV1Execute(r ApiGetAccessModelMetadataAttributeValueV1Request) (*Attributevaluedto, *http.Response, error) {
+//  @return AttributeValueDTO
+func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeValueV1Execute(r ApiGetAccessModelMetadataAttributeValueV1Request) (*AttributeValueDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Attributevaluedto
+		localVarReturnValue  *AttributeValueDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.GetAccessModelMetadataAttributeValueV1")
@@ -631,7 +631,7 @@ func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeValueV1Ex
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -653,7 +653,7 @@ func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeValueV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -664,7 +664,7 @@ func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeValueV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -686,7 +686,7 @@ func (a *AccessModelMetadataAPIService) GetAccessModelMetadataAttributeValueV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -743,7 +743,7 @@ func (r ApiListAccessModelMetadataAttributeV1Request) Count(count bool) ApiListA
 	return r
 }
 
-func (r ApiListAccessModelMetadataAttributeV1Request) Execute() ([]Attributedto, *http.Response, error) {
+func (r ApiListAccessModelMetadataAttributeV1Request) Execute() ([]AttributeDTO, *http.Response, error) {
 	return r.ApiService.ListAccessModelMetadataAttributeV1Execute(r)
 }
 
@@ -763,13 +763,13 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeV1(ctx c
 }
 
 // Execute executes the request
-//  @return []Attributedto
-func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeV1Execute(r ApiListAccessModelMetadataAttributeV1Request) ([]Attributedto, *http.Response, error) {
+//  @return []AttributeDTO
+func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeV1Execute(r ApiListAccessModelMetadataAttributeV1Request) ([]AttributeDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Attributedto
+		localVarReturnValue  []AttributeDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.ListAccessModelMetadataAttributeV1")
@@ -841,7 +841,7 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -863,7 +863,7 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -874,7 +874,7 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -896,7 +896,7 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -940,7 +940,7 @@ func (r ApiListAccessModelMetadataAttributeValueV1Request) Count(count bool) Api
 	return r
 }
 
-func (r ApiListAccessModelMetadataAttributeValueV1Request) Execute() ([]Attributevaluedto, *http.Response, error) {
+func (r ApiListAccessModelMetadataAttributeValueV1Request) Execute() ([]AttributeValueDTO, *http.Response, error) {
 	return r.ApiService.ListAccessModelMetadataAttributeValueV1Execute(r)
 }
 
@@ -962,13 +962,13 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeValueV1(
 }
 
 // Execute executes the request
-//  @return []Attributevaluedto
-func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeValueV1Execute(r ApiListAccessModelMetadataAttributeValueV1Request) ([]Attributevaluedto, *http.Response, error) {
+//  @return []AttributeValueDTO
+func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeValueV1Execute(r ApiListAccessModelMetadataAttributeValueV1Request) ([]AttributeValueDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Attributevaluedto
+		localVarReturnValue  []AttributeValueDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.ListAccessModelMetadataAttributeValueV1")
@@ -1035,7 +1035,7 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeValueV1E
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1057,7 +1057,7 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeValueV1E
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1068,7 +1068,7 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeValueV1E
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1090,7 +1090,7 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeValueV1E
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1118,16 +1118,16 @@ type ApiUpdateAccessModelMetadataAttributeV1Request struct {
 	ctx context.Context
 	ApiService *AccessModelMetadataAPIService
 	key string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // JSON Patch array to apply
-func (r ApiUpdateAccessModelMetadataAttributeV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateAccessModelMetadataAttributeV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateAccessModelMetadataAttributeV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateAccessModelMetadataAttributeV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiUpdateAccessModelMetadataAttributeV1Request) Execute() (*Attributedto, *http.Response, error) {
+func (r ApiUpdateAccessModelMetadataAttributeV1Request) Execute() (*AttributeDTO, *http.Response, error) {
 	return r.ApiService.UpdateAccessModelMetadataAttributeV1Execute(r)
 }
 
@@ -1151,13 +1151,13 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeV1(ctx
 }
 
 // Execute executes the request
-//  @return Attributedto
-func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeV1Execute(r ApiUpdateAccessModelMetadataAttributeV1Request) (*Attributedto, *http.Response, error) {
+//  @return AttributeDTO
+func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeV1Execute(r ApiUpdateAccessModelMetadataAttributeV1Request) (*AttributeDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Attributedto
+		localVarReturnValue  *AttributeDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.UpdateAccessModelMetadataAttributeV1")
@@ -1171,8 +1171,8 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeV1Exec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1193,7 +1193,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeV1Exec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1217,7 +1217,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1239,7 +1239,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1250,7 +1250,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1272,7 +1272,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1301,16 +1301,16 @@ type ApiUpdateAccessModelMetadataAttributeValueV1Request struct {
 	ApiService *AccessModelMetadataAPIService
 	key string
 	value string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // JSON Patch array to apply
-func (r ApiUpdateAccessModelMetadataAttributeValueV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateAccessModelMetadataAttributeValueV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateAccessModelMetadataAttributeValueV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateAccessModelMetadataAttributeValueV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiUpdateAccessModelMetadataAttributeValueV1Request) Execute() (*Attributevaluedto, *http.Response, error) {
+func (r ApiUpdateAccessModelMetadataAttributeValueV1Request) Execute() (*AttributeValueDTO, *http.Response, error) {
 	return r.ApiService.UpdateAccessModelMetadataAttributeValueV1Execute(r)
 }
 
@@ -1336,13 +1336,13 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeValueV
 }
 
 // Execute executes the request
-//  @return Attributevaluedto
-func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeValueV1Execute(r ApiUpdateAccessModelMetadataAttributeValueV1Request) (*Attributevaluedto, *http.Response, error) {
+//  @return AttributeValueDTO
+func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeValueV1Execute(r ApiUpdateAccessModelMetadataAttributeValueV1Request) (*AttributeValueDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Attributevaluedto
+		localVarReturnValue  *AttributeValueDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.UpdateAccessModelMetadataAttributeValueV1")
@@ -1357,8 +1357,8 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeValueV
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1379,7 +1379,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeValueV
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1403,7 +1403,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeValueV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1425,7 +1425,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeValueV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1436,7 +1436,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeValueV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1458,7 +1458,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeValueV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1485,16 +1485,16 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataAttributeValueV
 type ApiUpdateAccessModelMetadataByFilterV1Request struct {
 	ctx context.Context
 	ApiService *AccessModelMetadataAPIService
-	entitlementattributebulkupdatefilterrequest *Entitlementattributebulkupdatefilterrequest
+	entitlementAttributeBulkUpdateFilterRequest *EntitlementAttributeBulkUpdateFilterRequest
 }
 
 // Attribute metadata bulk update request body.
-func (r ApiUpdateAccessModelMetadataByFilterV1Request) Entitlementattributebulkupdatefilterrequest(entitlementattributebulkupdatefilterrequest Entitlementattributebulkupdatefilterrequest) ApiUpdateAccessModelMetadataByFilterV1Request {
-	r.entitlementattributebulkupdatefilterrequest = &entitlementattributebulkupdatefilterrequest
+func (r ApiUpdateAccessModelMetadataByFilterV1Request) EntitlementAttributeBulkUpdateFilterRequest(entitlementAttributeBulkUpdateFilterRequest EntitlementAttributeBulkUpdateFilterRequest) ApiUpdateAccessModelMetadataByFilterV1Request {
+	r.entitlementAttributeBulkUpdateFilterRequest = &entitlementAttributeBulkUpdateFilterRequest
 	return r
 }
 
-func (r ApiUpdateAccessModelMetadataByFilterV1Request) Execute() (*Accessmodelmetadatabulkupdateresponse, *http.Response, error) {
+func (r ApiUpdateAccessModelMetadataByFilterV1Request) Execute() (*AccessModelMetadataBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateAccessModelMetadataByFilterV1Execute(r)
 }
 
@@ -1516,14 +1516,14 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilterV1(ctx 
 }
 
 // Execute executes the request
-//  @return Accessmodelmetadatabulkupdateresponse
+//  @return AccessModelMetadataBulkUpdateResponse
 // Deprecated
-func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilterV1Execute(r ApiUpdateAccessModelMetadataByFilterV1Request) (*Accessmodelmetadatabulkupdateresponse, *http.Response, error) {
+func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilterV1Execute(r ApiUpdateAccessModelMetadataByFilterV1Request) (*AccessModelMetadataBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessmodelmetadatabulkupdateresponse
+		localVarReturnValue  *AccessModelMetadataBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.UpdateAccessModelMetadataByFilterV1")
@@ -1536,8 +1536,8 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilterV1Execu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.entitlementattributebulkupdatefilterrequest == nil {
-		return localVarReturnValue, nil, reportError("entitlementattributebulkupdatefilterrequest is required and must be specified")
+	if r.entitlementAttributeBulkUpdateFilterRequest == nil {
+		return localVarReturnValue, nil, reportError("entitlementAttributeBulkUpdateFilterRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1558,7 +1558,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilterV1Execu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.entitlementattributebulkupdatefilterrequest
+	localVarPostBody = r.entitlementAttributeBulkUpdateFilterRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1582,7 +1582,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilterV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1604,7 +1604,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilterV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1626,7 +1626,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilterV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1653,16 +1653,16 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByFilterV1Execu
 type ApiUpdateAccessModelMetadataByIdsV1Request struct {
 	ctx context.Context
 	ApiService *AccessModelMetadataAPIService
-	entitlementattributebulkupdateidsrequest *Entitlementattributebulkupdateidsrequest
+	entitlementAttributeBulkUpdateIdsRequest *EntitlementAttributeBulkUpdateIdsRequest
 }
 
 // Attribute metadata bulk update request body.
-func (r ApiUpdateAccessModelMetadataByIdsV1Request) Entitlementattributebulkupdateidsrequest(entitlementattributebulkupdateidsrequest Entitlementattributebulkupdateidsrequest) ApiUpdateAccessModelMetadataByIdsV1Request {
-	r.entitlementattributebulkupdateidsrequest = &entitlementattributebulkupdateidsrequest
+func (r ApiUpdateAccessModelMetadataByIdsV1Request) EntitlementAttributeBulkUpdateIdsRequest(entitlementAttributeBulkUpdateIdsRequest EntitlementAttributeBulkUpdateIdsRequest) ApiUpdateAccessModelMetadataByIdsV1Request {
+	r.entitlementAttributeBulkUpdateIdsRequest = &entitlementAttributeBulkUpdateIdsRequest
 	return r
 }
 
-func (r ApiUpdateAccessModelMetadataByIdsV1Request) Execute() (*Accessmodelmetadatabulkupdateresponse, *http.Response, error) {
+func (r ApiUpdateAccessModelMetadataByIdsV1Request) Execute() (*AccessModelMetadataBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateAccessModelMetadataByIdsV1Execute(r)
 }
 
@@ -1684,14 +1684,14 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIdsV1(ctx con
 }
 
 // Execute executes the request
-//  @return Accessmodelmetadatabulkupdateresponse
+//  @return AccessModelMetadataBulkUpdateResponse
 // Deprecated
-func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIdsV1Execute(r ApiUpdateAccessModelMetadataByIdsV1Request) (*Accessmodelmetadatabulkupdateresponse, *http.Response, error) {
+func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIdsV1Execute(r ApiUpdateAccessModelMetadataByIdsV1Request) (*AccessModelMetadataBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessmodelmetadatabulkupdateresponse
+		localVarReturnValue  *AccessModelMetadataBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.UpdateAccessModelMetadataByIdsV1")
@@ -1704,8 +1704,8 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIdsV1Execute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.entitlementattributebulkupdateidsrequest == nil {
-		return localVarReturnValue, nil, reportError("entitlementattributebulkupdateidsrequest is required and must be specified")
+	if r.entitlementAttributeBulkUpdateIdsRequest == nil {
+		return localVarReturnValue, nil, reportError("entitlementAttributeBulkUpdateIdsRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1726,7 +1726,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIdsV1Execute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.entitlementattributebulkupdateidsrequest
+	localVarPostBody = r.entitlementAttributeBulkUpdateIdsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1750,7 +1750,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIdsV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1772,7 +1772,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIdsV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1794,7 +1794,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIdsV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1821,16 +1821,16 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByIdsV1Execute(
 type ApiUpdateAccessModelMetadataByQueryV1Request struct {
 	ctx context.Context
 	ApiService *AccessModelMetadataAPIService
-	entitlementattributebulkupdatequeryrequest *Entitlementattributebulkupdatequeryrequest
+	entitlementAttributeBulkUpdateQueryRequest *EntitlementAttributeBulkUpdateQueryRequest
 }
 
 // Attribute metadata bulk update request body.
-func (r ApiUpdateAccessModelMetadataByQueryV1Request) Entitlementattributebulkupdatequeryrequest(entitlementattributebulkupdatequeryrequest Entitlementattributebulkupdatequeryrequest) ApiUpdateAccessModelMetadataByQueryV1Request {
-	r.entitlementattributebulkupdatequeryrequest = &entitlementattributebulkupdatequeryrequest
+func (r ApiUpdateAccessModelMetadataByQueryV1Request) EntitlementAttributeBulkUpdateQueryRequest(entitlementAttributeBulkUpdateQueryRequest EntitlementAttributeBulkUpdateQueryRequest) ApiUpdateAccessModelMetadataByQueryV1Request {
+	r.entitlementAttributeBulkUpdateQueryRequest = &entitlementAttributeBulkUpdateQueryRequest
 	return r
 }
 
-func (r ApiUpdateAccessModelMetadataByQueryV1Request) Execute() (*Accessmodelmetadatabulkupdateresponse, *http.Response, error) {
+func (r ApiUpdateAccessModelMetadataByQueryV1Request) Execute() (*AccessModelMetadataBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateAccessModelMetadataByQueryV1Execute(r)
 }
 
@@ -1852,14 +1852,14 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByQueryV1(ctx c
 }
 
 // Execute executes the request
-//  @return Accessmodelmetadatabulkupdateresponse
+//  @return AccessModelMetadataBulkUpdateResponse
 // Deprecated
-func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByQueryV1Execute(r ApiUpdateAccessModelMetadataByQueryV1Request) (*Accessmodelmetadatabulkupdateresponse, *http.Response, error) {
+func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByQueryV1Execute(r ApiUpdateAccessModelMetadataByQueryV1Request) (*AccessModelMetadataBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessmodelmetadatabulkupdateresponse
+		localVarReturnValue  *AccessModelMetadataBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.UpdateAccessModelMetadataByQueryV1")
@@ -1872,8 +1872,8 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByQueryV1Execut
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.entitlementattributebulkupdatequeryrequest == nil {
-		return localVarReturnValue, nil, reportError("entitlementattributebulkupdatequeryrequest is required and must be specified")
+	if r.entitlementAttributeBulkUpdateQueryRequest == nil {
+		return localVarReturnValue, nil, reportError("entitlementAttributeBulkUpdateQueryRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1894,7 +1894,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByQueryV1Execut
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.entitlementattributebulkupdatequeryrequest
+	localVarPostBody = r.entitlementAttributeBulkUpdateQueryRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1918,7 +1918,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByQueryV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1940,7 +1940,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByQueryV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1962,7 +1962,7 @@ func (a *AccessModelMetadataAPIService) UpdateAccessModelMetadataByQueryV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

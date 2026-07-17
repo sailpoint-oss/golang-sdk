@@ -39,7 +39,7 @@ type Schema struct {
 	// Holds any extra configuration data that the schema may require.
 	Configuration map[string]interface{} `json:"configuration,omitempty"`
 	// The attribute definitions which form the schema.
-	Attributes []Attributedefinition `json:"attributes,omitempty"`
+	Attributes []AttributeDefinition `json:"attributes,omitempty"`
 	// The date the Schema was created.
 	Created *SailPointTime `json:"created,omitempty"`
 	// The date the Schema was last modified.
@@ -369,9 +369,9 @@ func (o *Schema) SetConfiguration(v map[string]interface{}) {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *Schema) GetAttributes() []Attributedefinition {
+func (o *Schema) GetAttributes() []AttributeDefinition {
 	if o == nil || IsNil(o.Attributes) {
-		var ret []Attributedefinition
+		var ret []AttributeDefinition
 		return ret
 	}
 	return o.Attributes
@@ -379,7 +379,7 @@ func (o *Schema) GetAttributes() []Attributedefinition {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Schema) GetAttributesOk() ([]Attributedefinition, bool) {
+func (o *Schema) GetAttributesOk() ([]AttributeDefinition, bool) {
 	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
@@ -395,8 +395,8 @@ func (o *Schema) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given []Attributedefinition and assigns it to the Attributes field.
-func (o *Schema) SetAttributes(v []Attributedefinition) {
+// SetAttributes gets a reference to the given []AttributeDefinition and assigns it to the Attributes field.
+func (o *Schema) SetAttributes(v []AttributeDefinition) {
 	o.Attributes = v
 }
 

@@ -18,79 +18,79 @@ import (
 
 // ListIdentityAccessItemsV1200ResponseInner struct for ListIdentityAccessItemsV1200ResponseInner
 type ListIdentityAccessItemsV1200ResponseInner struct {
-	Accessitemaccessprofileresponse *Accessitemaccessprofileresponse
-	Accessitemaccountresponse *Accessitemaccountresponse
-	Accessitemappresponse *Accessitemappresponse
-	Accessitementitlementresponse *Accessitementitlementresponse
-	Accessitemroleresponse *Accessitemroleresponse
+	AccessItemAccessProfileResponse *AccessItemAccessProfileResponse
+	AccessItemAccountResponse *AccessItemAccountResponse
+	AccessItemAppResponse *AccessItemAppResponse
+	AccessItemEntitlementResponse *AccessItemEntitlementResponse
+	AccessItemRoleResponse *AccessItemRoleResponse
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *ListIdentityAccessItemsV1200ResponseInner) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into Accessitemaccessprofileresponse
-	err = json.Unmarshal(data, &dst.Accessitemaccessprofileresponse);
+	// try to unmarshal JSON data into AccessItemAccessProfileResponse
+	err = json.Unmarshal(data, &dst.AccessItemAccessProfileResponse);
 	if err == nil {
-		jsonAccessitemaccessprofileresponse, _ := json.Marshal(dst.Accessitemaccessprofileresponse)
-		if string(jsonAccessitemaccessprofileresponse) == "{}" { // empty struct
-			dst.Accessitemaccessprofileresponse = nil
+		jsonAccessItemAccessProfileResponse, _ := json.Marshal(dst.AccessItemAccessProfileResponse)
+		if string(jsonAccessItemAccessProfileResponse) == "{}" { // empty struct
+			dst.AccessItemAccessProfileResponse = nil
 		} else {
-			return nil // data stored in dst.Accessitemaccessprofileresponse, return on the first match
+			return nil // data stored in dst.AccessItemAccessProfileResponse, return on the first match
 		}
 	} else {
-		dst.Accessitemaccessprofileresponse = nil
+		dst.AccessItemAccessProfileResponse = nil
 	}
 
-	// try to unmarshal JSON data into Accessitemaccountresponse
-	err = json.Unmarshal(data, &dst.Accessitemaccountresponse);
+	// try to unmarshal JSON data into AccessItemAccountResponse
+	err = json.Unmarshal(data, &dst.AccessItemAccountResponse);
 	if err == nil {
-		jsonAccessitemaccountresponse, _ := json.Marshal(dst.Accessitemaccountresponse)
-		if string(jsonAccessitemaccountresponse) == "{}" { // empty struct
-			dst.Accessitemaccountresponse = nil
+		jsonAccessItemAccountResponse, _ := json.Marshal(dst.AccessItemAccountResponse)
+		if string(jsonAccessItemAccountResponse) == "{}" { // empty struct
+			dst.AccessItemAccountResponse = nil
 		} else {
-			return nil // data stored in dst.Accessitemaccountresponse, return on the first match
+			return nil // data stored in dst.AccessItemAccountResponse, return on the first match
 		}
 	} else {
-		dst.Accessitemaccountresponse = nil
+		dst.AccessItemAccountResponse = nil
 	}
 
-	// try to unmarshal JSON data into Accessitemappresponse
-	err = json.Unmarshal(data, &dst.Accessitemappresponse);
+	// try to unmarshal JSON data into AccessItemAppResponse
+	err = json.Unmarshal(data, &dst.AccessItemAppResponse);
 	if err == nil {
-		jsonAccessitemappresponse, _ := json.Marshal(dst.Accessitemappresponse)
-		if string(jsonAccessitemappresponse) == "{}" { // empty struct
-			dst.Accessitemappresponse = nil
+		jsonAccessItemAppResponse, _ := json.Marshal(dst.AccessItemAppResponse)
+		if string(jsonAccessItemAppResponse) == "{}" { // empty struct
+			dst.AccessItemAppResponse = nil
 		} else {
-			return nil // data stored in dst.Accessitemappresponse, return on the first match
+			return nil // data stored in dst.AccessItemAppResponse, return on the first match
 		}
 	} else {
-		dst.Accessitemappresponse = nil
+		dst.AccessItemAppResponse = nil
 	}
 
-	// try to unmarshal JSON data into Accessitementitlementresponse
-	err = json.Unmarshal(data, &dst.Accessitementitlementresponse);
+	// try to unmarshal JSON data into AccessItemEntitlementResponse
+	err = json.Unmarshal(data, &dst.AccessItemEntitlementResponse);
 	if err == nil {
-		jsonAccessitementitlementresponse, _ := json.Marshal(dst.Accessitementitlementresponse)
-		if string(jsonAccessitementitlementresponse) == "{}" { // empty struct
-			dst.Accessitementitlementresponse = nil
+		jsonAccessItemEntitlementResponse, _ := json.Marshal(dst.AccessItemEntitlementResponse)
+		if string(jsonAccessItemEntitlementResponse) == "{}" { // empty struct
+			dst.AccessItemEntitlementResponse = nil
 		} else {
-			return nil // data stored in dst.Accessitementitlementresponse, return on the first match
+			return nil // data stored in dst.AccessItemEntitlementResponse, return on the first match
 		}
 	} else {
-		dst.Accessitementitlementresponse = nil
+		dst.AccessItemEntitlementResponse = nil
 	}
 
-	// try to unmarshal JSON data into Accessitemroleresponse
-	err = json.Unmarshal(data, &dst.Accessitemroleresponse);
+	// try to unmarshal JSON data into AccessItemRoleResponse
+	err = json.Unmarshal(data, &dst.AccessItemRoleResponse);
 	if err == nil {
-		jsonAccessitemroleresponse, _ := json.Marshal(dst.Accessitemroleresponse)
-		if string(jsonAccessitemroleresponse) == "{}" { // empty struct
-			dst.Accessitemroleresponse = nil
+		jsonAccessItemRoleResponse, _ := json.Marshal(dst.AccessItemRoleResponse)
+		if string(jsonAccessItemRoleResponse) == "{}" { // empty struct
+			dst.AccessItemRoleResponse = nil
 		} else {
-			return nil // data stored in dst.Accessitemroleresponse, return on the first match
+			return nil // data stored in dst.AccessItemRoleResponse, return on the first match
 		}
 	} else {
-		dst.Accessitemroleresponse = nil
+		dst.AccessItemRoleResponse = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(ListIdentityAccessItemsV1200ResponseInner)")
@@ -98,24 +98,24 @@ func (dst *ListIdentityAccessItemsV1200ResponseInner) UnmarshalJSON(data []byte)
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *ListIdentityAccessItemsV1200ResponseInner) MarshalJSON() ([]byte, error) {
-	if src.Accessitemaccessprofileresponse != nil {
-		return json.Marshal(&src.Accessitemaccessprofileresponse)
+	if src.AccessItemAccessProfileResponse != nil {
+		return json.Marshal(&src.AccessItemAccessProfileResponse)
 	}
 
-	if src.Accessitemaccountresponse != nil {
-		return json.Marshal(&src.Accessitemaccountresponse)
+	if src.AccessItemAccountResponse != nil {
+		return json.Marshal(&src.AccessItemAccountResponse)
 	}
 
-	if src.Accessitemappresponse != nil {
-		return json.Marshal(&src.Accessitemappresponse)
+	if src.AccessItemAppResponse != nil {
+		return json.Marshal(&src.AccessItemAppResponse)
 	}
 
-	if src.Accessitementitlementresponse != nil {
-		return json.Marshal(&src.Accessitementitlementresponse)
+	if src.AccessItemEntitlementResponse != nil {
+		return json.Marshal(&src.AccessItemEntitlementResponse)
 	}
 
-	if src.Accessitemroleresponse != nil {
-		return json.Marshal(&src.Accessitemroleresponse)
+	if src.AccessItemRoleResponse != nil {
+		return json.Marshal(&src.AccessItemRoleResponse)
 	}
 
 	return nil, nil // no data in anyOf schemas

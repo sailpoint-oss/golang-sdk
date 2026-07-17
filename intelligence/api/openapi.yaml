@@ -75,13 +75,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/intelidentityaggregate'
+                $ref: '#/components/schemas/IntelIdentityAggregate'
           description: Exactly one identity matched.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -105,7 +105,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -123,14 +123,14 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "409":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Multiple identities matched the filter.
         "429":
           content:
@@ -154,7 +154,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -235,14 +235,14 @@ paths:
                 modified: 2026-05-01T00:00:00Z
               schema:
                 items:
-                  $ref: '#/components/schemas/intelaccessaccountwire'
+                  $ref: '#/components/schemas/IntelAccessAccountWire'
                 type: array
           description: One page of accounts.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Invalid path or query parameters.
         "401":
           content:
@@ -266,7 +266,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -281,7 +281,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal or upstream server failure.
       security:
       - userAuth:
@@ -355,14 +355,14 @@ paths:
                 extremelyRare: false
               schema:
                 items:
-                  $ref: '#/components/schemas/inteloutlieraccessitem'
+                  $ref: '#/components/schemas/IntelOutlierAccessItem'
                 type: array
           description: One page of rare access items.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Invalid path or query parameters.
         "401":
           content:
@@ -386,7 +386,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -401,7 +401,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal or upstream server failure.
       security:
       - userAuth:
@@ -475,14 +475,14 @@ paths:
                   sourceName: Example Directory
               schema:
                 items:
-                  $ref: '#/components/schemas/intelaccessitemhistoryevent'
+                  $ref: '#/components/schemas/IntelAccessItemHistoryEvent'
                 type: array
           description: One page of access-item history events.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Invalid path or query parameters.
         "401":
           content:
@@ -506,7 +506,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -521,7 +521,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal or upstream server failure.
       security:
       - userAuth:
@@ -593,14 +593,14 @@ paths:
                 signedDate: 2019-03-08T22:37:33.901Z
               schema:
                 items:
-                  $ref: '#/components/schemas/intelcertificationhistoryevent'
+                  $ref: '#/components/schemas/IntelCertificationHistoryEvent'
                 type: array
           description: One page of certification history events.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Invalid path or query parameters.
         "401":
           content:
@@ -624,7 +624,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -639,7 +639,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal or upstream server failure.
       security:
       - userAuth:
@@ -672,7 +672,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -696,7 +696,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -714,7 +714,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -739,10 +739,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    intelaccesssourcewire:
+    IntelAccessSourceWire:
       properties:
         id:
           description: Source identifier referenced by the account wire object.
@@ -753,7 +753,7 @@ components:
           example: Active Directory
           type: string
       type: object
-    intelaccessaccountwire:
+    IntelAccessAccountWire:
       example:
         authoritative: true
         created: 2023-11-01T10:00:00Z
@@ -778,7 +778,7 @@ components:
           type: string
         source:
           allOf:
-          - $ref: '#/components/schemas/intelaccesssourcewire'
+          - $ref: '#/components/schemas/IntelAccessSourceWire'
           description: Source metadata for the account as returned by List Accounts
             wire format.
           type: object
@@ -839,13 +839,13 @@ components:
       - name
       - systemAccount
       type: object
-    intelaccountsslice:
+    IntelAccountsSlice:
       description: Accounts slice embedded in the aggregate identity response.
       properties:
         items:
           description: First page of accounts for the identity.
           items:
-            $ref: '#/components/schemas/intelaccessaccountwire'
+            $ref: '#/components/schemas/IntelAccessAccountWire'
           type: array
         next:
           description: Absolute URL to the next accounts page; present only when more
@@ -856,7 +856,7 @@ components:
       required:
       - items
       type: object
-    intelprivilegedaccessitemwire:
+    IntelPrivilegedAccessItemWire:
       properties:
         privileged:
           description: True when this item is classified as privileged access for
@@ -881,7 +881,7 @@ components:
           example: Example_Admin_Access
           type: string
         source:
-          $ref: '#/components/schemas/intelprivilegedaccessitemwire_source'
+          $ref: '#/components/schemas/IntelPrivilegedAccessItemWire_source'
         attribute:
           description: Source attribute name that carries the privileged value when
             applicable.
@@ -896,19 +896,19 @@ components:
       - privileged
       - type
       type: object
-    intelprivilegedaccessslice:
+    IntelPrivilegedAccessSlice:
       description: Full privileged access result embedded in the aggregate identity
         response.
       properties:
         items:
           description: Privileged access items for the identity.
           items:
-            $ref: '#/components/schemas/intelprivilegedaccessitemwire'
+            $ref: '#/components/schemas/IntelPrivilegedAccessItemWire'
           type: array
       required:
       - items
       type: object
-    inteloutlieraccessitem:
+    IntelOutlierAccessItem:
       description: One outlier access-item row.
       example:
         accessType: ENTITLEMENT
@@ -950,13 +950,13 @@ components:
       - id
       - sourceName
       type: object
-    intelrareaccessslice:
+    IntelRareAccessSlice:
       description: Rare access slice embedded in the aggregate identity response.
       properties:
         items:
           description: First page of rare access items for the identity.
           items:
-            $ref: '#/components/schemas/inteloutlieraccessitem'
+            $ref: '#/components/schemas/IntelOutlierAccessItem'
           type: array
         next:
           description: Absolute URL to the next rareAccess page; present only when
@@ -967,17 +967,17 @@ components:
       required:
       - items
       type: object
-    inteloutliersslice:
+    IntelOutliersSlice:
       description: Outlier slices embedded in the aggregate identity response.
       properties:
         rareAccess:
           allOf:
-          - $ref: '#/components/schemas/intelrareaccessslice'
+          - $ref: '#/components/schemas/IntelRareAccessSlice'
           description: First page of rare access items for the identity.
       required:
       - rareAccess
       type: object
-    intelaccessitemhistoryevent:
+    IntelAccessItemHistoryEvent:
       additionalProperties: true
       description: |
         Access-item history event. Supported eventTypes are AccessItemAssociated, AccessItemRemoved,
@@ -1002,13 +1002,13 @@ components:
       required:
       - eventType
       type: object
-    intelaccesshistoryaccessitemsslice:
+    IntelAccessHistoryAccessItemsSlice:
       description: Access-item history slice embedded in the aggregate identity response.
       properties:
         items:
           description: First page of access-item history events for the identity.
           items:
-            $ref: '#/components/schemas/intelaccessitemhistoryevent'
+            $ref: '#/components/schemas/IntelAccessItemHistoryEvent'
           type: array
         next:
           description: Absolute URL to the next access-items page; present only when
@@ -1019,7 +1019,7 @@ components:
       required:
       - items
       type: object
-    intelcertificationhistoryevent:
+    IntelCertificationHistoryEvent:
       additionalProperties: true
       description: Certification history event. Supported eventType is IdentityCertified.
       example:
@@ -1056,14 +1056,14 @@ components:
       required:
       - eventType
       type: object
-    intelaccesshistorycertificationsslice:
+    IntelAccessHistoryCertificationsSlice:
       description: Certification history slice embedded in the aggregate identity
         response.
       properties:
         items:
           description: First page of certification history events for the identity.
           items:
-            $ref: '#/components/schemas/intelcertificationhistoryevent'
+            $ref: '#/components/schemas/IntelCertificationHistoryEvent'
           type: array
         next:
           description: Absolute URL to the next certifications page; present only
@@ -1074,26 +1074,26 @@ components:
       required:
       - items
       type: object
-    intelaccesshistory:
+    IntelAccessHistory:
       description: |
         Access-history split into two independently paged categories. accessItems carries
         grant, remove, and account-status events. certifications carries identity-certified events.
       properties:
         accessItems:
           allOf:
-          - $ref: '#/components/schemas/intelaccesshistoryaccessitemsslice'
+          - $ref: '#/components/schemas/IntelAccessHistoryAccessItemsSlice'
           description: First page of access-item history events for the identity.
           type: object
         certifications:
           allOf:
-          - $ref: '#/components/schemas/intelaccesshistorycertificationsslice'
+          - $ref: '#/components/schemas/IntelAccessHistoryCertificationsSlice'
           description: First page of certification history events for the identity.
           type: object
       required:
       - accessItems
       - certifications
       type: object
-    intelidentityaggregate:
+    IntelIdentityAggregate:
       description: |
         Flat identity response with identity attributes hoisted to the top level.
         The accounts, privilegedAccess, and accessHistory slices are always present.
@@ -1197,23 +1197,23 @@ components:
           type: boolean
         accounts:
           allOf:
-          - $ref: '#/components/schemas/intelaccountsslice'
+          - $ref: '#/components/schemas/IntelAccountsSlice'
           description: First page of accounts for the identity.
           type: object
         privilegedAccess:
           allOf:
-          - $ref: '#/components/schemas/intelprivilegedaccessslice'
+          - $ref: '#/components/schemas/IntelPrivilegedAccessSlice'
           description: Full privileged access result for the identity.
           type: object
         outliers:
           allOf:
-          - $ref: '#/components/schemas/inteloutliersslice'
+          - $ref: '#/components/schemas/IntelOutliersSlice'
           description: Rare access slice; omitted when the tenant lacks the IDA-outliers
             license.
           type: object
         accessHistory:
           allOf:
-          - $ref: '#/components/schemas/intelaccesshistory'
+          - $ref: '#/components/schemas/IntelAccessHistory'
           description: Access-history split into access items and certifications sub-slices.
           type: object
       required:
@@ -1223,7 +1223,7 @@ components:
       - privilegedAccess
       - type
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1235,7 +1235,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1248,7 +1248,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1256,7 +1256,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1290,13 +1290,13 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
@@ -1316,7 +1316,7 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    intelprivilegedaccessitemwire_source:
+    IntelPrivilegedAccessItemWire_source:
       description: Source metadata associated with the privileged access item when
         present.
       properties:

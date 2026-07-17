@@ -111,7 +111,7 @@ func (a *ClassifySourceAPIService) DeleteClassifyMachineAccountFromSourceV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -133,7 +133,7 @@ func (a *ClassifySourceAPIService) DeleteClassifyMachineAccountFromSourceV1Execu
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -155,7 +155,7 @@ func (a *ClassifySourceAPIService) DeleteClassifyMachineAccountFromSourceV1Execu
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -176,7 +176,7 @@ type ApiGetClassifyMachineAccountFromSourceStatusV1Request struct {
 	sourceId string
 }
 
-func (r ApiGetClassifyMachineAccountFromSourceStatusV1Request) Execute() (*Sourceclassificationstatus, *http.Response, error) {
+func (r ApiGetClassifyMachineAccountFromSourceStatusV1Request) Execute() (*SourceClassificationStatus, *http.Response, error) {
 	return r.ApiService.GetClassifyMachineAccountFromSourceStatusV1Execute(r)
 }
 
@@ -199,13 +199,13 @@ func (a *ClassifySourceAPIService) GetClassifyMachineAccountFromSourceStatusV1(c
 }
 
 // Execute executes the request
-//  @return Sourceclassificationstatus
-func (a *ClassifySourceAPIService) GetClassifyMachineAccountFromSourceStatusV1Execute(r ApiGetClassifyMachineAccountFromSourceStatusV1Request) (*Sourceclassificationstatus, *http.Response, error) {
+//  @return SourceClassificationStatus
+func (a *ClassifySourceAPIService) GetClassifyMachineAccountFromSourceStatusV1Execute(r ApiGetClassifyMachineAccountFromSourceStatusV1Request) (*SourceClassificationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourceclassificationstatus
+		localVarReturnValue  *SourceClassificationStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClassifySourceAPIService.GetClassifyMachineAccountFromSourceStatusV1")
@@ -260,7 +260,7 @@ func (a *ClassifySourceAPIService) GetClassifyMachineAccountFromSourceStatusV1Ex
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -282,7 +282,7 @@ func (a *ClassifySourceAPIService) GetClassifyMachineAccountFromSourceStatusV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -293,7 +293,7 @@ func (a *ClassifySourceAPIService) GetClassifyMachineAccountFromSourceStatusV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -315,7 +315,7 @@ func (a *ClassifySourceAPIService) GetClassifyMachineAccountFromSourceStatusV1Ex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -429,7 +429,7 @@ func (a *ClassifySourceAPIService) SendClassifyMachineAccountFromSourceV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -451,7 +451,7 @@ func (a *ClassifySourceAPIService) SendClassifyMachineAccountFromSourceV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -473,7 +473,7 @@ func (a *ClassifySourceAPIService) SendClassifyMachineAccountFromSourceV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

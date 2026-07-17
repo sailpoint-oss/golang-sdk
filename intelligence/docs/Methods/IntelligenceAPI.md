@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Intelidentityaggregate**](../models/intelidentityaggregate)
+[**IntelIdentityAggregate**](../models/intel-identity-aggregate)
 
 ### HTTP request headers
 
@@ -89,7 +89,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIdentityIntelligenceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentityIntelligenceV1`: Intelidentityaggregate
+    // response from `GetIdentityIntelligenceV1`: IntelIdentityAggregate
     fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIdentityIntelligenceV1`: %v\n", resp)
 }
 ```
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Intelaccessitemhistoryevent**](../models/intelaccessitemhistoryevent)
+[**[]IntelAccessItemHistoryEvent**](../models/intel-access-item-history-event)
 
 ### HTTP request headers
 
@@ -163,7 +163,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIntelIdentityAccessItemHistoryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIntelIdentityAccessItemHistoryV1`: []Intelaccessitemhistoryevent
+    // response from `GetIntelIdentityAccessItemHistoryV1`: []IntelAccessItemHistoryEvent
     fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityAccessItemHistoryV1`: %v\n", resp)
 }
 ```
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Intelaccessaccountwire**](../models/intelaccessaccountwire)
+[**[]IntelAccessAccountWire**](../models/intel-access-account-wire)
 
 ### HTTP request headers
 
@@ -236,7 +236,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIntelIdentityAccountsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIntelIdentityAccountsV1`: []Intelaccessaccountwire
+    // response from `GetIntelIdentityAccountsV1`: []IntelAccessAccountWire
     fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityAccountsV1`: %v\n", resp)
 }
 ```
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Intelcertificationhistoryevent**](../models/intelcertificationhistoryevent)
+[**[]IntelCertificationHistoryEvent**](../models/intel-certification-history-event)
 
 ### HTTP request headers
 
@@ -310,7 +310,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIntelIdentityCertificationHistoryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIntelIdentityCertificationHistoryV1`: []Intelcertificationhistoryevent
+    // response from `GetIntelIdentityCertificationHistoryV1`: []IntelCertificationHistoryEvent
     fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityCertificationHistoryV1`: %v\n", resp)
 }
 ```
@@ -349,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Inteloutlieraccessitem**](../models/inteloutlieraccessitem)
+[**[]IntelOutlierAccessItem**](../models/intel-outlier-access-item)
 
 ### HTTP request headers
 
@@ -385,7 +385,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetIntelIdentityRareAccessV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIntelIdentityRareAccessV1`: []Inteloutlieraccessitem
+    // response from `GetIntelIdentityRareAccessV1`: []IntelOutlierAccessItem
     fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityRareAccessV1`: %v\n", resp)
 }
 ```

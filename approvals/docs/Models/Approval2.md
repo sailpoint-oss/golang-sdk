@@ -18,32 +18,32 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The Approval ID | [optional] 
 **TenantId** | Pointer to **string** | The Tenant ID of the Approval | [optional] 
 **Type** | Pointer to **string** | The type of the approval, such as ENTITLEMENT_DESCRIPTIONS, CUSTOM_ACCESS_REQUEST_APPROVAL, GENERIC_APPROVAL | [optional] 
-**Approvers** | Pointer to [**[]Approvalidentity**](approvalidentity) | Object representation of an approver of an approval | [optional] 
+**Approvers** | Pointer to [**[]ApprovalIdentity**](approval-identity) | Object representation of an approver of an approval | [optional] 
 **CreatedDate** | Pointer to **string** | Date the approval was created | [optional] 
 **DueDate** | Pointer to **string** | Date the approval is due | [optional] 
 **EscalationStep** | Pointer to **string** | Step in the escalation process. If set to 0, the approval is not escalated. If set to 1, the approval is escalated to the first approver in the escalation chain. | [optional] 
 **SerialStep** | Pointer to **int64** | The serial step of the approval in the approval chain. For example, serialStep 1 is the first approval to action in an approval request chain. Parallel approvals are set to 0. | [optional] 
 **IsEscalated** | Pointer to **bool** | Whether or not the approval has been escalated. Will reset to false when the approval is actioned on. | [optional] [default to false]
-**Name** | Pointer to [**[]Approvalname**](approvalname) | The name of the approval for a given locale | [optional] 
-**BatchRequest** | Pointer to **Approvalbatch** |  | [optional] 
-**ApprovalConfig** | Pointer to **Approvalconfig** |  | [optional] 
-**Description** | Pointer to [**[]Approvaldescription**](approvaldescription) | The description of the approval for a given locale | [optional] 
+**Name** | Pointer to [**[]ApprovalName**](approval-name) | The name of the approval for a given locale | [optional] 
+**BatchRequest** | Pointer to **ApprovalBatch** |  | [optional] 
+**ApprovalConfig** | Pointer to **ApprovalConfig** |  | [optional] 
+**Description** | Pointer to [**[]ApprovalDescription**](approval-description) | The description of the approval for a given locale | [optional] 
 **Medium** | Pointer to **string** | Signifies what medium to use when sending notifications (currently only email is utilized) | [optional] 
 **Priority** | Pointer to **string** | The priority of the approval | [optional] 
-**Requester** | Pointer to **Approvalidentity** |  | [optional] 
-**Requestee** | Pointer to **Approvalidentity** |  | [optional] 
-**Comments** | Pointer to [**[]Approvalcomment3**](approvalcomment3) | Object representation of a comment on the approval | [optional] 
-**ApprovedBy** | Pointer to [**[]Approvalidentityrecord**](approvalidentityrecord) | Array of approvers who have approved the approval | [optional] 
-**RejectedBy** | Pointer to [**[]Approvalidentityrecord**](approvalidentityrecord) | Array of approvers who have rejected the approval | [optional] 
-**AssignedTo** | Pointer to [**[]Approvalidentity**](approvalidentity) | Array of identities that the approval request is currently assigned to/waiting on. For parallel approvals, this is set to all approvers left to approve. | [optional] 
+**Requester** | Pointer to **ApprovalIdentity** |  | [optional] 
+**Requestee** | Pointer to **ApprovalIdentity** |  | [optional] 
+**Comments** | Pointer to [**[]ApprovalComment3**](approval-comment3) | Object representation of a comment on the approval | [optional] 
+**ApprovedBy** | Pointer to [**[]ApprovalIdentityRecord**](approval-identity-record) | Array of approvers who have approved the approval | [optional] 
+**RejectedBy** | Pointer to [**[]ApprovalIdentityRecord**](approval-identity-record) | Array of approvers who have rejected the approval | [optional] 
+**AssignedTo** | Pointer to [**[]ApprovalIdentity**](approval-identity) | Array of identities that the approval request is currently assigned to/waiting on. For parallel approvals, this is set to all approvers left to approve. | [optional] 
 **CompletedDate** | Pointer to **string** | Date the approval was completed | [optional] 
 **ApprovalCriteria** | Pointer to [**Approval2ApprovalCriteria**](approval2-approval-criteria) |  | [optional] 
 **AdditionalAttributes** | Pointer to **string** | Json string representing additional attributes known about the object to be approved. | [optional] 
-**ReferenceData** | Pointer to [**[]Approvalreference**](approvalreference) | Reference data related to the approval | [optional] 
-**ReassignmentHistory** | Pointer to [**[]Approvalreassignmenthistory**](approvalreassignmenthistory) | History of whom the approval request was assigned to | [optional] 
+**ReferenceData** | Pointer to [**[]ApprovalReference**](approval-reference) | Reference data related to the approval | [optional] 
+**ReassignmentHistory** | Pointer to [**[]ApprovalReassignmentHistory**](approval-reassignment-history) | History of whom the approval request was assigned to | [optional] 
 **StaticAttributes** | Pointer to **map[string]interface{}** | Field that can include any static additional info that may be needed by the service that the approval request originated from | [optional] 
 **ModifiedDate** | Pointer to **SailPointTime** | Date/time that the approval request was last updated | [optional] 
-**RequestedTarget** | Pointer to [**[]Approvalrequestedtarget**](approvalrequestedtarget) | RequestedTarget used to specify the actual object or target the approval request is for | [optional] 
+**RequestedTarget** | Pointer to [**[]ApprovalRequestedTarget**](approval-requested-target) | RequestedTarget used to specify the actual object or target the approval request is for | [optional] 
 
 ## Methods
 
@@ -141,20 +141,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetApprovers
 
-`func (o *Approval2) GetApprovers() []Approvalidentity`
+`func (o *Approval2) GetApprovers() []ApprovalIdentity`
 
 GetApprovers returns the Approvers field if non-nil, zero value otherwise.
 
 ### GetApproversOk
 
-`func (o *Approval2) GetApproversOk() (*[]Approvalidentity, bool)`
+`func (o *Approval2) GetApproversOk() (*[]ApprovalIdentity, bool)`
 
 GetApproversOk returns a tuple with the Approvers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovers
 
-`func (o *Approval2) SetApprovers(v []Approvalidentity)`
+`func (o *Approval2) SetApprovers(v []ApprovalIdentity)`
 
 SetApprovers sets Approvers field to given value.
 
@@ -291,20 +291,20 @@ HasIsEscalated returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *Approval2) GetName() []Approvalname`
+`func (o *Approval2) GetName() []ApprovalName`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Approval2) GetNameOk() (*[]Approvalname, bool)`
+`func (o *Approval2) GetNameOk() (*[]ApprovalName, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *Approval2) SetName(v []Approvalname)`
+`func (o *Approval2) SetName(v []ApprovalName)`
 
 SetName sets Name field to given value.
 
@@ -316,20 +316,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetBatchRequest
 
-`func (o *Approval2) GetBatchRequest() Approvalbatch`
+`func (o *Approval2) GetBatchRequest() ApprovalBatch`
 
 GetBatchRequest returns the BatchRequest field if non-nil, zero value otherwise.
 
 ### GetBatchRequestOk
 
-`func (o *Approval2) GetBatchRequestOk() (*Approvalbatch, bool)`
+`func (o *Approval2) GetBatchRequestOk() (*ApprovalBatch, bool)`
 
 GetBatchRequestOk returns a tuple with the BatchRequest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBatchRequest
 
-`func (o *Approval2) SetBatchRequest(v Approvalbatch)`
+`func (o *Approval2) SetBatchRequest(v ApprovalBatch)`
 
 SetBatchRequest sets BatchRequest field to given value.
 
@@ -341,20 +341,20 @@ HasBatchRequest returns a boolean if a field has been set.
 
 ### GetApprovalConfig
 
-`func (o *Approval2) GetApprovalConfig() Approvalconfig`
+`func (o *Approval2) GetApprovalConfig() ApprovalConfig`
 
 GetApprovalConfig returns the ApprovalConfig field if non-nil, zero value otherwise.
 
 ### GetApprovalConfigOk
 
-`func (o *Approval2) GetApprovalConfigOk() (*Approvalconfig, bool)`
+`func (o *Approval2) GetApprovalConfigOk() (*ApprovalConfig, bool)`
 
 GetApprovalConfigOk returns a tuple with the ApprovalConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovalConfig
 
-`func (o *Approval2) SetApprovalConfig(v Approvalconfig)`
+`func (o *Approval2) SetApprovalConfig(v ApprovalConfig)`
 
 SetApprovalConfig sets ApprovalConfig field to given value.
 
@@ -366,20 +366,20 @@ HasApprovalConfig returns a boolean if a field has been set.
 
 ### GetDescription
 
-`func (o *Approval2) GetDescription() []Approvaldescription`
+`func (o *Approval2) GetDescription() []ApprovalDescription`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *Approval2) GetDescriptionOk() (*[]Approvaldescription, bool)`
+`func (o *Approval2) GetDescriptionOk() (*[]ApprovalDescription, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *Approval2) SetDescription(v []Approvaldescription)`
+`func (o *Approval2) SetDescription(v []ApprovalDescription)`
 
 SetDescription sets Description field to given value.
 
@@ -441,20 +441,20 @@ HasPriority returns a boolean if a field has been set.
 
 ### GetRequester
 
-`func (o *Approval2) GetRequester() Approvalidentity`
+`func (o *Approval2) GetRequester() ApprovalIdentity`
 
 GetRequester returns the Requester field if non-nil, zero value otherwise.
 
 ### GetRequesterOk
 
-`func (o *Approval2) GetRequesterOk() (*Approvalidentity, bool)`
+`func (o *Approval2) GetRequesterOk() (*ApprovalIdentity, bool)`
 
 GetRequesterOk returns a tuple with the Requester field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequester
 
-`func (o *Approval2) SetRequester(v Approvalidentity)`
+`func (o *Approval2) SetRequester(v ApprovalIdentity)`
 
 SetRequester sets Requester field to given value.
 
@@ -466,20 +466,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestee
 
-`func (o *Approval2) GetRequestee() Approvalidentity`
+`func (o *Approval2) GetRequestee() ApprovalIdentity`
 
 GetRequestee returns the Requestee field if non-nil, zero value otherwise.
 
 ### GetRequesteeOk
 
-`func (o *Approval2) GetRequesteeOk() (*Approvalidentity, bool)`
+`func (o *Approval2) GetRequesteeOk() (*ApprovalIdentity, bool)`
 
 GetRequesteeOk returns a tuple with the Requestee field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestee
 
-`func (o *Approval2) SetRequestee(v Approvalidentity)`
+`func (o *Approval2) SetRequestee(v ApprovalIdentity)`
 
 SetRequestee sets Requestee field to given value.
 
@@ -491,20 +491,20 @@ HasRequestee returns a boolean if a field has been set.
 
 ### GetComments
 
-`func (o *Approval2) GetComments() []Approvalcomment3`
+`func (o *Approval2) GetComments() []ApprovalComment3`
 
 GetComments returns the Comments field if non-nil, zero value otherwise.
 
 ### GetCommentsOk
 
-`func (o *Approval2) GetCommentsOk() (*[]Approvalcomment3, bool)`
+`func (o *Approval2) GetCommentsOk() (*[]ApprovalComment3, bool)`
 
 GetCommentsOk returns a tuple with the Comments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetComments
 
-`func (o *Approval2) SetComments(v []Approvalcomment3)`
+`func (o *Approval2) SetComments(v []ApprovalComment3)`
 
 SetComments sets Comments field to given value.
 
@@ -516,20 +516,20 @@ HasComments returns a boolean if a field has been set.
 
 ### GetApprovedBy
 
-`func (o *Approval2) GetApprovedBy() []Approvalidentityrecord`
+`func (o *Approval2) GetApprovedBy() []ApprovalIdentityRecord`
 
 GetApprovedBy returns the ApprovedBy field if non-nil, zero value otherwise.
 
 ### GetApprovedByOk
 
-`func (o *Approval2) GetApprovedByOk() (*[]Approvalidentityrecord, bool)`
+`func (o *Approval2) GetApprovedByOk() (*[]ApprovalIdentityRecord, bool)`
 
 GetApprovedByOk returns a tuple with the ApprovedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovedBy
 
-`func (o *Approval2) SetApprovedBy(v []Approvalidentityrecord)`
+`func (o *Approval2) SetApprovedBy(v []ApprovalIdentityRecord)`
 
 SetApprovedBy sets ApprovedBy field to given value.
 
@@ -541,20 +541,20 @@ HasApprovedBy returns a boolean if a field has been set.
 
 ### GetRejectedBy
 
-`func (o *Approval2) GetRejectedBy() []Approvalidentityrecord`
+`func (o *Approval2) GetRejectedBy() []ApprovalIdentityRecord`
 
 GetRejectedBy returns the RejectedBy field if non-nil, zero value otherwise.
 
 ### GetRejectedByOk
 
-`func (o *Approval2) GetRejectedByOk() (*[]Approvalidentityrecord, bool)`
+`func (o *Approval2) GetRejectedByOk() (*[]ApprovalIdentityRecord, bool)`
 
 GetRejectedByOk returns a tuple with the RejectedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRejectedBy
 
-`func (o *Approval2) SetRejectedBy(v []Approvalidentityrecord)`
+`func (o *Approval2) SetRejectedBy(v []ApprovalIdentityRecord)`
 
 SetRejectedBy sets RejectedBy field to given value.
 
@@ -566,20 +566,20 @@ HasRejectedBy returns a boolean if a field has been set.
 
 ### GetAssignedTo
 
-`func (o *Approval2) GetAssignedTo() []Approvalidentity`
+`func (o *Approval2) GetAssignedTo() []ApprovalIdentity`
 
 GetAssignedTo returns the AssignedTo field if non-nil, zero value otherwise.
 
 ### GetAssignedToOk
 
-`func (o *Approval2) GetAssignedToOk() (*[]Approvalidentity, bool)`
+`func (o *Approval2) GetAssignedToOk() (*[]ApprovalIdentity, bool)`
 
 GetAssignedToOk returns a tuple with the AssignedTo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignedTo
 
-`func (o *Approval2) SetAssignedTo(v []Approvalidentity)`
+`func (o *Approval2) SetAssignedTo(v []ApprovalIdentity)`
 
 SetAssignedTo sets AssignedTo field to given value.
 
@@ -666,20 +666,20 @@ HasAdditionalAttributes returns a boolean if a field has been set.
 
 ### GetReferenceData
 
-`func (o *Approval2) GetReferenceData() []Approvalreference`
+`func (o *Approval2) GetReferenceData() []ApprovalReference`
 
 GetReferenceData returns the ReferenceData field if non-nil, zero value otherwise.
 
 ### GetReferenceDataOk
 
-`func (o *Approval2) GetReferenceDataOk() (*[]Approvalreference, bool)`
+`func (o *Approval2) GetReferenceDataOk() (*[]ApprovalReference, bool)`
 
 GetReferenceDataOk returns a tuple with the ReferenceData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReferenceData
 
-`func (o *Approval2) SetReferenceData(v []Approvalreference)`
+`func (o *Approval2) SetReferenceData(v []ApprovalReference)`
 
 SetReferenceData sets ReferenceData field to given value.
 
@@ -691,20 +691,20 @@ HasReferenceData returns a boolean if a field has been set.
 
 ### GetReassignmentHistory
 
-`func (o *Approval2) GetReassignmentHistory() []Approvalreassignmenthistory`
+`func (o *Approval2) GetReassignmentHistory() []ApprovalReassignmentHistory`
 
 GetReassignmentHistory returns the ReassignmentHistory field if non-nil, zero value otherwise.
 
 ### GetReassignmentHistoryOk
 
-`func (o *Approval2) GetReassignmentHistoryOk() (*[]Approvalreassignmenthistory, bool)`
+`func (o *Approval2) GetReassignmentHistoryOk() (*[]ApprovalReassignmentHistory, bool)`
 
 GetReassignmentHistoryOk returns a tuple with the ReassignmentHistory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReassignmentHistory
 
-`func (o *Approval2) SetReassignmentHistory(v []Approvalreassignmenthistory)`
+`func (o *Approval2) SetReassignmentHistory(v []ApprovalReassignmentHistory)`
 
 SetReassignmentHistory sets ReassignmentHistory field to given value.
 
@@ -766,20 +766,20 @@ HasModifiedDate returns a boolean if a field has been set.
 
 ### GetRequestedTarget
 
-`func (o *Approval2) GetRequestedTarget() []Approvalrequestedtarget`
+`func (o *Approval2) GetRequestedTarget() []ApprovalRequestedTarget`
 
 GetRequestedTarget returns the RequestedTarget field if non-nil, zero value otherwise.
 
 ### GetRequestedTargetOk
 
-`func (o *Approval2) GetRequestedTargetOk() (*[]Approvalrequestedtarget, bool)`
+`func (o *Approval2) GetRequestedTargetOk() (*[]ApprovalRequestedTarget, bool)`
 
 GetRequestedTargetOk returns a tuple with the RequestedTarget field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedTarget
 
-`func (o *Approval2) SetRequestedTarget(v []Approvalrequestedtarget)`
+`func (o *Approval2) SetRequestedTarget(v []ApprovalRequestedTarget)`
 
 SetRequestedTarget sets RequestedTarget field to given value.
 

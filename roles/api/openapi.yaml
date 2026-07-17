@@ -210,14 +210,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/role'
+                  $ref: '#/components/schemas/Role'
                 type: array
           description: List of Roles
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -241,7 +241,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -266,7 +266,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -301,20 +301,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/role'
+              $ref: '#/components/schemas/Role'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/role'
+                $ref: '#/components/schemas/Role'
           description: Role created
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -338,7 +338,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -363,7 +363,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -403,7 +403,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -427,7 +427,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -452,7 +452,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -487,13 +487,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/role'
+                $ref: '#/components/schemas/Role'
           description: List of all Roles
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -517,7 +517,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -542,7 +542,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -683,7 +683,7 @@ paths:
                     type: ENTITLEMENT
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         required: true
       responses:
@@ -691,13 +691,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/role'
+                $ref: '#/components/schemas/Role'
           description: Responds with the Role as updated.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -721,7 +721,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -746,7 +746,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -779,7 +779,7 @@ paths:
               - 2c91808876438bb2017668b91919ecca
               - 2c91808876438ba801766e129f151816
             schema:
-              $ref: '#/components/schemas/rolebulkdeleterequest'
+              $ref: '#/components/schemas/RoleBulkDeleteRequest'
         required: true
       responses:
         "202":
@@ -790,7 +790,7 @@ paths:
                 id: 464ae7bf791e49fdb74606a2e4a89635
                 name: null
               schema:
-                $ref: '#/components/schemas/taskresultdto'
+                $ref: '#/components/schemas/TaskResultDto'
           description: Returns an object with the id of the task performing the delete
             operation.
         "400":
@@ -827,7 +827,7 @@ paths:
                       text: "Referenced roleIds [\"2c91808876438bb2017668b91919ecca\"\
                         ] was not found."
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -851,7 +851,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -876,7 +876,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -987,14 +987,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/roleidentity'
+                  $ref: '#/components/schemas/RoleIdentity'
                 type: array
           description: List of Identities assigned the Role
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1018,7 +1018,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1043,7 +1043,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1176,14 +1176,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/entitlement'
+                  $ref: '#/components/schemas/Entitlement'
                 type: array
           description: List of Entitlements
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1207,7 +1207,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1232,7 +1232,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1294,7 +1294,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1318,7 +1318,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1343,7 +1343,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1399,13 +1399,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/role'
+                $ref: '#/components/schemas/Role'
           description: Responds with the Role as updated.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1429,7 +1429,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1454,7 +1454,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1480,20 +1480,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/rolemetadatabulkupdatebyidrequest'
+              $ref: '#/components/schemas/RoleMetadataBulkUpdateByIdRequest'
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rolebulkupdateresponse'
+                $ref: '#/components/schemas/RoleBulkUpdateResponse'
           description: Returned if bulk update request created
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1517,7 +1517,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1542,7 +1542,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1572,7 +1572,7 @@ paths:
                 values:
                 - topSecret
             schema:
-              $ref: '#/components/schemas/rolemetadatabulkupdatebyfilterrequest'
+              $ref: '#/components/schemas/RoleMetadataBulkUpdateByFilterRequest'
         required: true
       responses:
         "202":
@@ -1586,13 +1586,13 @@ paths:
                     status: CREATED
                     created: 2024-09-16T18:59:06.871594Z
               schema:
-                $ref: '#/components/schemas/rolebulkupdateresponse'
+                $ref: '#/components/schemas/RoleBulkUpdateResponse'
           description: Returned if bulk update request created
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1616,7 +1616,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1641,7 +1641,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1683,7 +1683,7 @@ paths:
                   values:
                   - secret
             schema:
-              $ref: '#/components/schemas/rolemetadatabulkupdatebyqueryrequest'
+              $ref: '#/components/schemas/RoleMetadataBulkUpdateByQueryRequest'
         required: true
       responses:
         "202":
@@ -1697,13 +1697,13 @@ paths:
                     status: CREATED
                     created: 2024-09-16T18:59:06.871594Z
               schema:
-                $ref: '#/components/schemas/rolebulkupdateresponse'
+                $ref: '#/components/schemas/RoleBulkUpdateResponse'
           description: Returned if bulk update request created
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1727,7 +1727,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1752,7 +1752,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1790,13 +1790,13 @@ paths:
                     status: CREATED
                     created: 2024-09-16T18:59:06.871594Z
               schema:
-                $ref: '#/components/schemas/rolebulkupdateresponse'
+                $ref: '#/components/schemas/RoleBulkUpdateResponse'
           description: return if bulk update status could be found.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1820,7 +1820,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1845,7 +1845,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1866,7 +1866,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/rolegetallbulkupdateresponse'
+                  $ref: '#/components/schemas/RoleGetAllBulkUpdateResponse'
                 type: array
           description: successfully get the status of all unfinished bulk updates
             request.
@@ -1874,7 +1874,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1898,7 +1898,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1923,7 +1923,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2047,21 +2047,21 @@ paths:
                 values:
                 - secret
             schema:
-              $ref: '#/components/schemas/rolelistfilterdto'
+              $ref: '#/components/schemas/RoleListFilterDTO'
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/role'
+                  $ref: '#/components/schemas/Role'
                 type: array
           description: Responds with A list of Roles
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2085,7 +2085,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2110,7 +2110,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2193,7 +2193,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -2217,7 +2217,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "429":
@@ -2242,10 +2242,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    ownerreference:
+    OwnerReference:
       description: Owner of the object.
       example:
         name: support
@@ -2271,7 +2271,7 @@ components:
           example: support
           type: string
       type: object
-    additionalownerref:
+    AdditionalOwnerRef:
       description: Reference to an additional owner (identity or governance group).
       example:
         name: support
@@ -2298,7 +2298,7 @@ components:
           nullable: true
           type: string
       type: object
-    accessprofileref:
+    AccessProfileRef:
       example:
         name: Access Profile 2567
         id: ff808081751e6e129f1518161919ecca
@@ -2322,7 +2322,7 @@ components:
           example: Access Profile 2567
           type: string
       type: object
-    entitlementref:
+    EntitlementRef:
       description: Entitlement including a specific set of access.
       example:
         name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
@@ -2345,7 +2345,7 @@ components:
           nullable: true
           type: string
       type: object
-    rolemembershipselectortype:
+    RoleMembershipSelectorType:
       description: |-
         This enum characterizes the type of a Role's membership selector. Only the following two are fully supported:
 
@@ -2357,7 +2357,7 @@ components:
       - IDENTITY_LIST
       example: IDENTITY_LIST
       type: string
-    rolecriteriaoperation:
+    RoleCriteriaOperation:
       description: An operation
       enum:
       - EQUALS
@@ -2374,7 +2374,7 @@ components:
       - OR
       example: EQUALS
       type: string
-    rolecriteriakeytype:
+    RoleCriteriaKeyType:
       description: "Indicates whether the associated criteria represents an expression\
         \ on identity attributes, account attributes, or entitlements, respectively."
       enum:
@@ -2383,7 +2383,7 @@ components:
       - ENTITLEMENT
       example: ACCOUNT
       type: string
-    rolecriteriakey:
+    RoleCriteriaKey:
       description: "Refers to a specific Identity attribute, Account attibute, or\
         \ Entitlement used in Role membership criteria"
       example:
@@ -2393,7 +2393,7 @@ components:
       nullable: true
       properties:
         type:
-          $ref: '#/components/schemas/rolecriteriakeytype'
+          $ref: '#/components/schemas/RoleCriteriaKeyType'
         property:
           description: The name of the attribute or entitlement to which the associated
             criteria applies.
@@ -2409,7 +2409,7 @@ components:
       - property
       - type
       type: object
-    rolecriterialevel3:
+    RoleCriteriaLevel3:
       description: Defines STANDARD type Role membership
       example:
         stringValue: carlee.cert1c9f9b6fd@mailinator.com
@@ -2420,9 +2420,9 @@ components:
           type: ACCOUNT
       properties:
         operation:
-          $ref: '#/components/schemas/rolecriteriaoperation'
+          $ref: '#/components/schemas/RoleCriteriaOperation'
         key:
-          $ref: '#/components/schemas/rolecriteriakey'
+          $ref: '#/components/schemas/RoleCriteriaKey'
         stringValue:
           description: "String value to test the Identity attribute, Account attribute,\
             \ or Entitlement specified in the key w/r/t the specified operation. If\
@@ -2433,7 +2433,7 @@ components:
           nullable: true
           type: string
       type: object
-    rolecriterialevel2:
+    RoleCriteriaLevel2:
       description: Defines STANDARD type Role membership
       example:
         stringValue: carlee.cert1c9f9b6fd@mailinator.com
@@ -2458,9 +2458,9 @@ components:
       nullable: true
       properties:
         operation:
-          $ref: '#/components/schemas/rolecriteriaoperation'
+          $ref: '#/components/schemas/RoleCriteriaOperation'
         key:
-          $ref: '#/components/schemas/rolecriteriakey'
+          $ref: '#/components/schemas/RoleCriteriaKey'
         stringValue:
           description: "String value to test the Identity attribute, Account attribute,\
             \ or Entitlement specified in the key w/r/t the specified operation. If\
@@ -2476,11 +2476,11 @@ components:
             \ criteria are supported, including leaf nodes. Additionally, AND nodes\
             \ can only be children or OR nodes and vice-versa."
           items:
-            $ref: '#/components/schemas/rolecriterialevel3'
+            $ref: '#/components/schemas/RoleCriteriaLevel3'
           nullable: true
           type: array
       type: object
-    rolecriterialevel1:
+    RoleCriteriaLevel1:
       description: Defines STANDARD type Role membership
       example:
         stringValue: carlee.cert1c9f9b6fd@mailinator.com
@@ -2531,9 +2531,9 @@ components:
       nullable: true
       properties:
         operation:
-          $ref: '#/components/schemas/rolecriteriaoperation'
+          $ref: '#/components/schemas/RoleCriteriaOperation'
         key:
-          $ref: '#/components/schemas/rolecriteriakey'
+          $ref: '#/components/schemas/RoleCriteriaKey'
         stringValue:
           description: "String value to test the Identity attribute, Account attribute,\
             \ or Entitlement specified in the key w/r/t the specified operation. If\
@@ -2549,11 +2549,11 @@ components:
             \ criteria are supported, including leaf nodes. Additionally, AND nodes\
             \ can only be children or OR nodes and vice-versa."
           items:
-            $ref: '#/components/schemas/rolecriterialevel2'
+            $ref: '#/components/schemas/RoleCriteriaLevel2'
           nullable: true
           type: array
       type: object
-    dtotype:
+    DtoType:
       description: An enumeration of the types of DTOs supported within the IdentityNow
         infrastructure.
       enum:
@@ -2588,7 +2588,7 @@ components:
       - WORKGROUP
       example: IDENTITY
       type: string
-    rolemembershipidentity:
+    RoleMembershipIdentity:
       description: A reference to an Identity in an IDENTITY_LIST role membership
         criteria.
       example:
@@ -2598,7 +2598,7 @@ components:
         type: IDENTITY
       properties:
         type:
-          $ref: '#/components/schemas/dtotype'
+          $ref: '#/components/schemas/DtoType'
         id:
           description: Identity id
           example: 2c9180a46faadee4016fb4e018c20639
@@ -2614,7 +2614,7 @@ components:
           nullable: true
           type: string
       type: object
-    rolemembershipselector:
+    RoleMembershipSelector:
       description: "When present, specifies that the Role is to be granted to Identities\
         \ which either satisfy specific criteria or which are members of a given list\
         \ of Identities."
@@ -2678,18 +2678,18 @@ components:
       nullable: true
       properties:
         type:
-          $ref: '#/components/schemas/rolemembershipselectortype'
+          $ref: '#/components/schemas/RoleMembershipSelectorType'
         criteria:
-          $ref: '#/components/schemas/rolecriterialevel1'
+          $ref: '#/components/schemas/RoleCriteriaLevel1'
         identities:
           description: "Defines role membership as being exclusive to the specified\
             \ Identities, when type is IDENTITY_LIST."
           items:
-            $ref: '#/components/schemas/rolemembershipidentity'
+            $ref: '#/components/schemas/RoleMembershipIdentity'
           nullable: true
           type: array
       type: object
-    accessduration:
+    AccessDuration:
       example:
         value: 6
         timeUnit: MONTHS
@@ -2712,7 +2712,7 @@ components:
           example: MONTHS
           type: string
       type: object
-    approvalschemeforrole:
+    ApprovalSchemeForRole:
       example:
         approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
         approverType: GOVERNANCE_GROUP
@@ -2751,7 +2751,7 @@ components:
           nullable: true
           type: string
       type: object
-    dimensionattribute:
+    DimensionAttribute:
       description: A dimension attribute
       example:
         displayName: City
@@ -2776,7 +2776,7 @@ components:
           nullable: false
           type: boolean
       type: object
-    dimensionschema:
+    DimensionSchema:
       description: Contains a list of dimension attributes. Required only for Dynamic
         Roles
       example:
@@ -2790,11 +2790,11 @@ components:
       properties:
         dimensionAttributes:
           items:
-            $ref: '#/components/schemas/dimensionattribute'
+            $ref: '#/components/schemas/DimensionAttribute'
           nullable: false
           type: array
       type: object
-    requestabilityforrole:
+    RequestabilityForRole:
       example:
         dimensionSchema:
           dimensionAttributes:
@@ -2845,14 +2845,14 @@ components:
           example: true
           type: boolean
         maxPermittedAccessDuration:
-          $ref: '#/components/schemas/accessduration'
+          $ref: '#/components/schemas/AccessDuration'
         approvalSchemes:
           description: List describing the steps in approving the request
           items:
-            $ref: '#/components/schemas/approvalschemeforrole'
+            $ref: '#/components/schemas/ApprovalSchemeForRole'
           type: array
         dimensionSchema:
-          $ref: '#/components/schemas/dimensionschema'
+          $ref: '#/components/schemas/DimensionSchema'
         formDefinitionId:
           description: "The ID of the form definition used for the access request.\
             \ If specified, the form is presented to the requester during the access\
@@ -2861,7 +2861,7 @@ components:
           nullable: true
           type: string
       type: object
-    revocabilityforrole:
+    RevocabilityForRole:
       example:
         commentsRequired: false
         approvalSchemes:
@@ -2888,10 +2888,10 @@ components:
         approvalSchemes:
           description: List describing the steps in approving the revocation request
           items:
-            $ref: '#/components/schemas/approvalschemeforrole'
+            $ref: '#/components/schemas/ApprovalSchemeForRole'
           type: array
       type: object
-    dimensionref:
+    DimensionRef:
       example:
         name: Role 2
         id: 2c91808568c529c60168cca6f90c1313
@@ -2913,7 +2913,7 @@ components:
           example: Role 2
           type: string
       type: object
-    attributevaluedto:
+    AttributeValueDTO:
       properties:
         value:
           description: Technical name of the Attribute value. This is unique and cannot
@@ -2929,7 +2929,7 @@ components:
           example: active
           type: string
       type: object
-    attributedto:
+    AttributeDTO:
       properties:
         key:
           description: Technical name of the Attribute. This is unique and cannot
@@ -2969,11 +2969,11 @@ components:
           type: string
         values:
           items:
-            $ref: '#/components/schemas/attributevaluedto'
+            $ref: '#/components/schemas/AttributeValueDTO'
           nullable: true
           type: array
       type: object
-    attributedtolist:
+    AttributeDTOList:
       example:
         attributes:
         - key: iscPrivacy
@@ -3005,11 +3005,11 @@ components:
               name: Public
               status: active
           items:
-            $ref: '#/components/schemas/attributedto'
+            $ref: '#/components/schemas/AttributeDTO'
           nullable: true
           type: array
       type: object
-    role:
+    Role:
       description: A Role
       example:
         owner:
@@ -3195,25 +3195,25 @@ components:
           nullable: true
           type: string
         owner:
-          $ref: '#/components/schemas/ownerreference'
+          $ref: '#/components/schemas/OwnerReference'
         additionalOwners:
           description: List of additional owner references beyond the primary owner.
             Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
           items:
-            $ref: '#/components/schemas/additionalownerref'
+            $ref: '#/components/schemas/AdditionalOwnerRef'
           nullable: true
           type: array
         accessProfiles:
           items:
-            $ref: '#/components/schemas/accessprofileref'
+            $ref: '#/components/schemas/AccessProfileRef'
           nullable: true
           type: array
         entitlements:
           items:
-            $ref: '#/components/schemas/entitlementref'
+            $ref: '#/components/schemas/EntitlementRef'
           type: array
         membership:
-          $ref: '#/components/schemas/rolemembershipselector'
+          $ref: '#/components/schemas/RoleMembershipSelector'
         legacyMembershipInfo:
           additionalProperties: true
           description: "This field is not directly modifiable and is generally expected\
@@ -3237,9 +3237,9 @@ components:
           example: true
           type: boolean
         accessRequestConfig:
-          $ref: '#/components/schemas/requestabilityforrole'
+          $ref: '#/components/schemas/RequestabilityForRole'
         revocationRequestConfig:
-          $ref: '#/components/schemas/revocabilityforrole'
+          $ref: '#/components/schemas/RevocabilityForRole'
         segments:
           description: "List of IDs of segments, if any, to which this Role is assigned."
           example:
@@ -3258,11 +3258,11 @@ components:
           description: List of references to dimensions to which this Role is assigned.
             This field is only relevant if the Role is dimensional.
           items:
-            $ref: '#/components/schemas/dimensionref'
+            $ref: '#/components/schemas/DimensionRef'
           nullable: true
           type: array
         accessModelMetadata:
-          $ref: '#/components/schemas/attributedtolist'
+          $ref: '#/components/schemas/AttributeDTOList'
         privilegeLevel:
           description: "The privilege level of the role, if applicable."
           example: High
@@ -3272,7 +3272,7 @@ components:
       - name
       - owner
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -3284,7 +3284,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -3297,7 +3297,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -3305,7 +3305,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -3339,18 +3339,22 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -3369,13 +3373,17 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    rolebulkdeleterequest:
+    RoleBulkDeleteRequest:
+      example:
+        roleIds:
+        - 2c9180847812e0b1017817051919ecca
+        - 2c9180887812e0b201781e129f151816
       properties:
         roleIds:
           description: List of IDs of Roles to be deleted.
@@ -3388,7 +3396,7 @@ components:
       required:
       - roleIds
       type: object
-    taskresultdto:
+    TaskResultDto:
       description: Task result.
       example:
         name: name
@@ -3412,7 +3420,7 @@ components:
           example: null
       title: Task Result Dto
       type: object
-    roleassignmentsourcetype:
+    RoleAssignmentSourceType:
       description: Type which indicates how a particular Identity obtained a particular
         Role
       enum:
@@ -3420,7 +3428,7 @@ components:
       - ROLE_MEMBERSHIP
       example: ACCESS_REQUEST
       type: string
-    roleidentity:
+    RoleIdentity:
       description: A subset of the fields of an Identity which is a member of a Role.
       example:
         aliasName: t.edison
@@ -3446,9 +3454,9 @@ components:
           example: t.edison@identitynow.com
           type: string
         roleAssignmentSource:
-          $ref: '#/components/schemas/roleassignmentsourcetype'
+          $ref: '#/components/schemas/RoleAssignmentSourceType'
       type: object
-    accessmodelmetadata:
+    AccessModelMetadata:
       description: Metadata that describes an access item
       example:
         multiselect: true
@@ -3503,11 +3511,11 @@ components:
         values:
           description: The value to assign to the metadata item
           items:
-            $ref: '#/components/schemas/accessmodelmetadata_values_inner'
+            $ref: '#/components/schemas/AccessModelMetadata_values_inner'
           type: array
       title: Access Model Metadata
       type: object
-    permissiondto:
+    PermissionDTO:
       description: "Simplified DTO for the Permission objects stored in SailPoint's\
         \ database. The data is aggregated from customer systems and is free-form,\
         \ so its appearance can vary largely between different clients/customers."
@@ -3531,7 +3539,7 @@ components:
           type: string
       title: Permission DTO
       type: object
-    entitlement:
+    Entitlement:
       example:
         owner:
           name: john.doe
@@ -3650,12 +3658,12 @@ components:
           example: true
           type: boolean
         owner:
-          $ref: '#/components/schemas/entitlement_owner'
+          $ref: '#/components/schemas/Entitlement_owner'
         additionalOwners:
           description: List of additional owner references beyond the primary owner.
             Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
           items:
-            $ref: '#/components/schemas/additionalownerref'
+            $ref: '#/components/schemas/AdditionalOwnerRef'
           nullable: true
           type: array
         manuallyUpdatedFields:
@@ -3669,7 +3677,7 @@ components:
           nullable: true
           type: object
         accessModelMetadata:
-          $ref: '#/components/schemas/entitlement_accessModelMetadata'
+          $ref: '#/components/schemas/Entitlement_accessModelMetadata'
         created:
           description: Time when the entitlement was created
           example: 2020-10-08T18:33:52.029Z
@@ -3681,7 +3689,7 @@ components:
           format: date-time
           type: string
         source:
-          $ref: '#/components/schemas/entitlement_source'
+          $ref: '#/components/schemas/Entitlement_source'
         attributes:
           additionalProperties: true
           description: A map of free-form key-value pairs from the source system
@@ -3700,15 +3708,24 @@ components:
           type: array
         directPermissions:
           items:
-            $ref: '#/components/schemas/permissiondto'
+            $ref: '#/components/schemas/PermissionDTO'
           type: array
       title: Entitlement
       type: object
-    rolemetadatabulkupdatebyidrequest:
+    RoleMetadataBulkUpdateByIdRequest:
       description: This API initialize a Bulk update by Id request of Role metadata.
         The maximum role count in a single update request is 3000. The maximum meta
         data values that one single role assigned can not exceed 25. Custom metadata
         need suit licensed.
+      example:
+        roles:
+        - b1db89554cfa431cb8b9921ea38d9367
+        values:
+        - attribute: iscFederalClassifications
+          values:
+          - topSecret
+        replaceScope: ALL
+        operation: REPLACE
       properties:
         roles:
           description: Roles' Id to be updated
@@ -3739,7 +3756,7 @@ components:
             values:
             - topSecret
           items:
-            $ref: '#/components/schemas/rolemetadatabulkupdatebyidrequest_values_inner'
+            $ref: '#/components/schemas/RoleMetadataBulkUpdateByIdRequest_values_inner'
           nullable: false
           type: array
       required:
@@ -3747,7 +3764,7 @@ components:
       - roles
       - values
       type: object
-    rolebulkupdateresponse:
+    RoleBulkUpdateResponse:
       example:
         created: 2020-10-08T18:33:52.029Z
         id: 2c9180867817ac4d017817c491119a20
@@ -3782,10 +3799,18 @@ components:
           format: date-time
           type: string
       type: object
-    rolemetadatabulkupdatebyfilterrequest:
+    RoleMetadataBulkUpdateByFilterRequest:
       description: This API initialize a a Bulk update by filter request of Role metadata.
         The maximum meta data values that one single role assigned can not exceed
         25. Custom metadata need suit licensed.
+      example:
+        values:
+        - attribute: iscFederalClassifications
+          values:
+          - topSecret
+        filters: ' requestable eq false'
+        replaceScope: ALL
+        operation: REPLACE
       properties:
         filters:
           description: |-
@@ -3826,7 +3851,7 @@ components:
             values:
             - topSecret
           items:
-            $ref: '#/components/schemas/rolemetadatabulkupdatebyfilterrequest_values_inner'
+            $ref: '#/components/schemas/RoleMetadataBulkUpdateByFilterRequest_values_inner'
           nullable: false
           type: array
       required:
@@ -3834,10 +3859,33 @@ components:
       - operation
       - values
       type: object
-    rolemetadatabulkupdatebyqueryrequest:
+    RoleMetadataBulkUpdateByQueryRequest:
       description: |-
         Bulk update by query request of Role metadata. The maximum meta data values that one single role assigned can not exceed 25. Custom metadata need suit licensed.
         For more information about the query could refer to  [V3 API Perform Search](https://developer.sailpoint.com/docs/api/v3/search-post)
+      example:
+        query:
+          query":
+            indices:
+            - roles
+            queryType: TEXT
+            textQuery:
+              terms:
+              - test123
+              fields:
+              - id
+              matchAny: false
+              contains: true
+            includeNested: false
+        values:
+        - attributeValue:
+          - topSecret
+          attributeKey: iscFederalClassifications
+        - attributeValue:
+          - topSecret
+          attributeKey: iscFederalClassifications
+        replaceScope: ALL
+        operation: REPLACE
       properties:
         query:
           description: query the identities to be updated
@@ -3873,7 +3921,7 @@ components:
         values:
           description: "The metadata to be updated, including attribute key and value."
           items:
-            $ref: '#/components/schemas/rolemetadatabulkupdatebyqueryrequest_values_inner'
+            $ref: '#/components/schemas/RoleMetadataBulkUpdateByQueryRequest_values_inner'
           nullable: false
           type: array
       required:
@@ -3881,7 +3929,7 @@ components:
       - query
       - values
       type: object
-    rolegetallbulkupdateresponse:
+    RoleGetAllBulkUpdateResponse:
       example:
         created: 2020-10-08T18:33:52.029Z
         id: 2c9180867817ac4d017817c491119a20
@@ -3915,8 +3963,14 @@ components:
           format: date-time
           type: string
       type: object
-    rolelistfilterdto:
+    RoleListFilterDTO:
       description: AMMFilterValues
+      example:
+        ammKeyValues:
+        - attribute: iscFederalClassifications
+          values:
+          - secret
+        filters: dimensional eq false
       properties:
         filters:
           description: |-
@@ -3943,7 +3997,7 @@ components:
             values:
             - secret
           items:
-            $ref: '#/components/schemas/rolelistfilterdto_ammKeyValues_inner'
+            $ref: '#/components/schemas/RoleListFilterDTO_ammKeyValues_inner'
           nullable: true
           type: array
       type: object
@@ -3972,7 +4026,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description
@@ -3995,7 +4049,7 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    accessmodelmetadata_values_inner:
+    AccessModelMetadata_values_inner:
       description: An individual value to assign to the metadata item
       example:
         name: Development
@@ -4015,7 +4069,7 @@ components:
           example: active
           type: string
       type: object
-    entitlement_owner:
+    Entitlement_owner:
       description: The identity that owns the entitlement
       example:
         name: john.doe
@@ -4038,7 +4092,7 @@ components:
           example: john.doe
           type: string
       type: object
-    entitlement_accessModelMetadata:
+    Entitlement_accessModelMetadata:
       description: Additional data to classify the entitlement
       example:
         attributes:
@@ -4075,10 +4129,10 @@ components:
       properties:
         attributes:
           items:
-            $ref: '#/components/schemas/accessmodelmetadata'
+            $ref: '#/components/schemas/AccessModelMetadata'
           type: array
       type: object
-    entitlement_source:
+    Entitlement_source:
       example:
         name: Corporate Active Directory
         id: 2c9180827ca885d7017ca8ce28a000eb
@@ -4097,7 +4151,7 @@ components:
           example: Corporate Active Directory
           type: string
       type: object
-    rolemetadatabulkupdatebyidrequest_values_inner:
+    RoleMetadataBulkUpdateByIdRequest_values_inner:
       properties:
         attribute:
           description: the key of metadata attribute
@@ -4116,7 +4170,7 @@ components:
       - attribute
       - values
       type: object
-    rolemetadatabulkupdatebyfilterrequest_values_inner:
+    RoleMetadataBulkUpdateByFilterRequest_values_inner:
       properties:
         attributeKey:
           description: the key of metadata attribute
@@ -4135,7 +4189,11 @@ components:
       - attribute
       - values
       type: object
-    rolemetadatabulkupdatebyqueryrequest_values_inner:
+    RoleMetadataBulkUpdateByQueryRequest_values_inner:
+      example:
+        attributeValue:
+        - topSecret
+        attributeKey: iscFederalClassifications
       properties:
         attributeKey:
           description: the key of metadata attribute
@@ -4153,7 +4211,7 @@ components:
       - attribute
       - values
       type: object
-    rolelistfilterdto_ammKeyValues_inner:
+    RoleListFilterDTO_ammKeyValues_inner:
       properties:
         attribute:
           description: attribute key of a metadata.

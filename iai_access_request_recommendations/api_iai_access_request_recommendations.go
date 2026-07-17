@@ -26,7 +26,7 @@ type ApiAddAccessRequestRecommendationsIgnoredItemV1Request struct {
 	ctx context.Context
 	ApiService *IAIAccessRequestRecommendationsAPIService
 	xSailPointExperimental *string
-	accessrequestrecommendationactionitemdto *Accessrequestrecommendationactionitemdto
+	accessRequestRecommendationActionItemDto *AccessRequestRecommendationActionItemDto
 }
 
 // Use this header to enable this experimental API.
@@ -36,12 +36,12 @@ func (r ApiAddAccessRequestRecommendationsIgnoredItemV1Request) XSailPointExperi
 }
 
 // The recommended access item to ignore for an identity.
-func (r ApiAddAccessRequestRecommendationsIgnoredItemV1Request) Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto Accessrequestrecommendationactionitemdto) ApiAddAccessRequestRecommendationsIgnoredItemV1Request {
-	r.accessrequestrecommendationactionitemdto = &accessrequestrecommendationactionitemdto
+func (r ApiAddAccessRequestRecommendationsIgnoredItemV1Request) AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto AccessRequestRecommendationActionItemDto) ApiAddAccessRequestRecommendationsIgnoredItemV1Request {
+	r.accessRequestRecommendationActionItemDto = &accessRequestRecommendationActionItemDto
 	return r
 }
 
-func (r ApiAddAccessRequestRecommendationsIgnoredItemV1Request) Execute() (*Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+func (r ApiAddAccessRequestRecommendationsIgnoredItemV1Request) Execute() (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	return r.ApiService.AddAccessRequestRecommendationsIgnoredItemV1Execute(r)
 }
 
@@ -61,13 +61,13 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 }
 
 // Execute executes the request
-//  @return Accessrequestrecommendationactionitemresponsedto
-func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsIgnoredItemV1Execute(r ApiAddAccessRequestRecommendationsIgnoredItemV1Request) (*Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+//  @return AccessRequestRecommendationActionItemResponseDto
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsIgnoredItemV1Execute(r ApiAddAccessRequestRecommendationsIgnoredItemV1Request) (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessrequestrecommendationactionitemresponsedto
+		localVarReturnValue  *AccessRequestRecommendationActionItemResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.AddAccessRequestRecommendationsIgnoredItemV1")
@@ -95,8 +95,8 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.accessrequestrecommendationactionitemdto == nil {
-		return localVarReturnValue, nil, reportError("accessrequestrecommendationactionitemdto is required and must be specified")
+	if r.accessRequestRecommendationActionItemDto == nil {
+		return localVarReturnValue, nil, reportError("accessRequestRecommendationActionItemDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -118,7 +118,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.accessrequestrecommendationactionitemdto
+	localVarPostBody = r.accessRequestRecommendationActionItemDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -142,7 +142,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -186,7 +186,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -214,7 +214,7 @@ type ApiAddAccessRequestRecommendationsRequestedItemV1Request struct {
 	ctx context.Context
 	ApiService *IAIAccessRequestRecommendationsAPIService
 	xSailPointExperimental *string
-	accessrequestrecommendationactionitemdto *Accessrequestrecommendationactionitemdto
+	accessRequestRecommendationActionItemDto *AccessRequestRecommendationActionItemDto
 }
 
 // Use this header to enable this experimental API.
@@ -224,12 +224,12 @@ func (r ApiAddAccessRequestRecommendationsRequestedItemV1Request) XSailPointExpe
 }
 
 // The recommended access item that was requested for an identity.
-func (r ApiAddAccessRequestRecommendationsRequestedItemV1Request) Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto Accessrequestrecommendationactionitemdto) ApiAddAccessRequestRecommendationsRequestedItemV1Request {
-	r.accessrequestrecommendationactionitemdto = &accessrequestrecommendationactionitemdto
+func (r ApiAddAccessRequestRecommendationsRequestedItemV1Request) AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto AccessRequestRecommendationActionItemDto) ApiAddAccessRequestRecommendationsRequestedItemV1Request {
+	r.accessRequestRecommendationActionItemDto = &accessRequestRecommendationActionItemDto
 	return r
 }
 
-func (r ApiAddAccessRequestRecommendationsRequestedItemV1Request) Execute() (*Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+func (r ApiAddAccessRequestRecommendationsRequestedItemV1Request) Execute() (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	return r.ApiService.AddAccessRequestRecommendationsRequestedItemV1Execute(r)
 }
 
@@ -249,13 +249,13 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 }
 
 // Execute executes the request
-//  @return Accessrequestrecommendationactionitemresponsedto
-func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsRequestedItemV1Execute(r ApiAddAccessRequestRecommendationsRequestedItemV1Request) (*Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+//  @return AccessRequestRecommendationActionItemResponseDto
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsRequestedItemV1Execute(r ApiAddAccessRequestRecommendationsRequestedItemV1Request) (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessrequestrecommendationactionitemresponsedto
+		localVarReturnValue  *AccessRequestRecommendationActionItemResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.AddAccessRequestRecommendationsRequestedItemV1")
@@ -283,8 +283,8 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.accessrequestrecommendationactionitemdto == nil {
-		return localVarReturnValue, nil, reportError("accessrequestrecommendationactionitemdto is required and must be specified")
+	if r.accessRequestRecommendationActionItemDto == nil {
+		return localVarReturnValue, nil, reportError("accessRequestRecommendationActionItemDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -306,7 +306,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.accessrequestrecommendationactionitemdto
+	localVarPostBody = r.accessRequestRecommendationActionItemDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -330,7 +330,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -352,7 +352,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -374,7 +374,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -402,7 +402,7 @@ type ApiAddAccessRequestRecommendationsViewedItemV1Request struct {
 	ctx context.Context
 	ApiService *IAIAccessRequestRecommendationsAPIService
 	xSailPointExperimental *string
-	accessrequestrecommendationactionitemdto *Accessrequestrecommendationactionitemdto
+	accessRequestRecommendationActionItemDto *AccessRequestRecommendationActionItemDto
 }
 
 // Use this header to enable this experimental API.
@@ -412,12 +412,12 @@ func (r ApiAddAccessRequestRecommendationsViewedItemV1Request) XSailPointExperim
 }
 
 // The recommended access that was viewed for an identity.
-func (r ApiAddAccessRequestRecommendationsViewedItemV1Request) Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto Accessrequestrecommendationactionitemdto) ApiAddAccessRequestRecommendationsViewedItemV1Request {
-	r.accessrequestrecommendationactionitemdto = &accessrequestrecommendationactionitemdto
+func (r ApiAddAccessRequestRecommendationsViewedItemV1Request) AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto AccessRequestRecommendationActionItemDto) ApiAddAccessRequestRecommendationsViewedItemV1Request {
+	r.accessRequestRecommendationActionItemDto = &accessRequestRecommendationActionItemDto
 	return r
 }
 
-func (r ApiAddAccessRequestRecommendationsViewedItemV1Request) Execute() (*Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+func (r ApiAddAccessRequestRecommendationsViewedItemV1Request) Execute() (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	return r.ApiService.AddAccessRequestRecommendationsViewedItemV1Execute(r)
 }
 
@@ -437,13 +437,13 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 }
 
 // Execute executes the request
-//  @return Accessrequestrecommendationactionitemresponsedto
-func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsViewedItemV1Execute(r ApiAddAccessRequestRecommendationsViewedItemV1Request) (*Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+//  @return AccessRequestRecommendationActionItemResponseDto
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsViewedItemV1Execute(r ApiAddAccessRequestRecommendationsViewedItemV1Request) (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessrequestrecommendationactionitemresponsedto
+		localVarReturnValue  *AccessRequestRecommendationActionItemResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.AddAccessRequestRecommendationsViewedItemV1")
@@ -471,8 +471,8 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.accessrequestrecommendationactionitemdto == nil {
-		return localVarReturnValue, nil, reportError("accessrequestrecommendationactionitemdto is required and must be specified")
+	if r.accessRequestRecommendationActionItemDto == nil {
+		return localVarReturnValue, nil, reportError("accessRequestRecommendationActionItemDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -494,7 +494,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.accessrequestrecommendationactionitemdto
+	localVarPostBody = r.accessRequestRecommendationActionItemDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -518,7 +518,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -540,7 +540,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -562,7 +562,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -590,7 +590,7 @@ type ApiAddAccessRequestRecommendationsViewedItemsV1Request struct {
 	ctx context.Context
 	ApiService *IAIAccessRequestRecommendationsAPIService
 	xSailPointExperimental *string
-	accessrequestrecommendationactionitemdto *[]Accessrequestrecommendationactionitemdto
+	accessRequestRecommendationActionItemDto *[]AccessRequestRecommendationActionItemDto
 }
 
 // Use this header to enable this experimental API.
@@ -600,12 +600,12 @@ func (r ApiAddAccessRequestRecommendationsViewedItemsV1Request) XSailPointExperi
 }
 
 // The recommended access items that were viewed for an identity.
-func (r ApiAddAccessRequestRecommendationsViewedItemsV1Request) Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto []Accessrequestrecommendationactionitemdto) ApiAddAccessRequestRecommendationsViewedItemsV1Request {
-	r.accessrequestrecommendationactionitemdto = &accessrequestrecommendationactionitemdto
+func (r ApiAddAccessRequestRecommendationsViewedItemsV1Request) AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto []AccessRequestRecommendationActionItemDto) ApiAddAccessRequestRecommendationsViewedItemsV1Request {
+	r.accessRequestRecommendationActionItemDto = &accessRequestRecommendationActionItemDto
 	return r
 }
 
-func (r ApiAddAccessRequestRecommendationsViewedItemsV1Request) Execute() ([]Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+func (r ApiAddAccessRequestRecommendationsViewedItemsV1Request) Execute() ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	return r.ApiService.AddAccessRequestRecommendationsViewedItemsV1Execute(r)
 }
 
@@ -625,13 +625,13 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 }
 
 // Execute executes the request
-//  @return []Accessrequestrecommendationactionitemresponsedto
-func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsViewedItemsV1Execute(r ApiAddAccessRequestRecommendationsViewedItemsV1Request) ([]Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+//  @return []AccessRequestRecommendationActionItemResponseDto
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsViewedItemsV1Execute(r ApiAddAccessRequestRecommendationsViewedItemsV1Request) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessrequestrecommendationactionitemresponsedto
+		localVarReturnValue  []AccessRequestRecommendationActionItemResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.AddAccessRequestRecommendationsViewedItemsV1")
@@ -659,8 +659,8 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.accessrequestrecommendationactionitemdto == nil {
-		return localVarReturnValue, nil, reportError("accessrequestrecommendationactionitemdto is required and must be specified")
+	if r.accessRequestRecommendationActionItemDto == nil {
+		return localVarReturnValue, nil, reportError("accessRequestRecommendationActionItemDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -682,7 +682,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.accessrequestrecommendationactionitemdto
+	localVarPostBody = r.accessRequestRecommendationActionItemDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -706,7 +706,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -728,7 +728,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -750,7 +750,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -786,7 +786,7 @@ func (r ApiGetAccessRequestRecommendationsConfigV1Request) XSailPointExperimenta
 	return r
 }
 
-func (r ApiGetAccessRequestRecommendationsConfigV1Request) Execute() (*Accessrequestrecommendationconfigdto, *http.Response, error) {
+func (r ApiGetAccessRequestRecommendationsConfigV1Request) Execute() (*AccessRequestRecommendationConfigDto, *http.Response, error) {
 	return r.ApiService.GetAccessRequestRecommendationsConfigV1Execute(r)
 }
 
@@ -806,13 +806,13 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 }
 
 // Execute executes the request
-//  @return Accessrequestrecommendationconfigdto
-func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsConfigV1Execute(r ApiGetAccessRequestRecommendationsConfigV1Request) (*Accessrequestrecommendationconfigdto, *http.Response, error) {
+//  @return AccessRequestRecommendationConfigDto
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsConfigV1Execute(r ApiGetAccessRequestRecommendationsConfigV1Request) (*AccessRequestRecommendationConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessrequestrecommendationconfigdto
+		localVarReturnValue  *AccessRequestRecommendationConfigDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.GetAccessRequestRecommendationsConfigV1")
@@ -876,7 +876,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -898,7 +898,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -920,7 +920,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -991,7 +991,7 @@ func (r ApiGetAccessRequestRecommendationsIgnoredItemsV1Request) Sorters(sorters
 	return r
 }
 
-func (r ApiGetAccessRequestRecommendationsIgnoredItemsV1Request) Execute() ([]Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+func (r ApiGetAccessRequestRecommendationsIgnoredItemsV1Request) Execute() ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	return r.ApiService.GetAccessRequestRecommendationsIgnoredItemsV1Execute(r)
 }
 
@@ -1011,13 +1011,13 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 }
 
 // Execute executes the request
-//  @return []Accessrequestrecommendationactionitemresponsedto
-func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsIgnoredItemsV1Execute(r ApiGetAccessRequestRecommendationsIgnoredItemsV1Request) ([]Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+//  @return []AccessRequestRecommendationActionItemResponseDto
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsIgnoredItemsV1Execute(r ApiGetAccessRequestRecommendationsIgnoredItemsV1Request) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessrequestrecommendationactionitemresponsedto
+		localVarReturnValue  []AccessRequestRecommendationActionItemResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.GetAccessRequestRecommendationsIgnoredItemsV1")
@@ -1105,7 +1105,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1127,7 +1127,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1149,7 +1149,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1220,7 +1220,7 @@ func (r ApiGetAccessRequestRecommendationsRequestedItemsV1Request) Sorters(sorte
 	return r
 }
 
-func (r ApiGetAccessRequestRecommendationsRequestedItemsV1Request) Execute() ([]Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+func (r ApiGetAccessRequestRecommendationsRequestedItemsV1Request) Execute() ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	return r.ApiService.GetAccessRequestRecommendationsRequestedItemsV1Execute(r)
 }
 
@@ -1240,13 +1240,13 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 }
 
 // Execute executes the request
-//  @return []Accessrequestrecommendationactionitemresponsedto
-func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsRequestedItemsV1Execute(r ApiGetAccessRequestRecommendationsRequestedItemsV1Request) ([]Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+//  @return []AccessRequestRecommendationActionItemResponseDto
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsRequestedItemsV1Execute(r ApiGetAccessRequestRecommendationsRequestedItemsV1Request) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessrequestrecommendationactionitemresponsedto
+		localVarReturnValue  []AccessRequestRecommendationActionItemResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.GetAccessRequestRecommendationsRequestedItemsV1")
@@ -1334,7 +1334,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1356,7 +1356,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1378,7 +1378,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1463,7 +1463,7 @@ func (r ApiGetAccessRequestRecommendationsV1Request) Sorters(sorters string) Api
 	return r
 }
 
-func (r ApiGetAccessRequestRecommendationsV1Request) Execute() ([]Accessrequestrecommendationitemdetail, *http.Response, error) {
+func (r ApiGetAccessRequestRecommendationsV1Request) Execute() ([]AccessRequestRecommendationItemDetail, *http.Response, error) {
 	return r.ApiService.GetAccessRequestRecommendationsV1Execute(r)
 }
 
@@ -1483,13 +1483,13 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 }
 
 // Execute executes the request
-//  @return []Accessrequestrecommendationitemdetail
-func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsV1Execute(r ApiGetAccessRequestRecommendationsV1Request) ([]Accessrequestrecommendationitemdetail, *http.Response, error) {
+//  @return []AccessRequestRecommendationItemDetail
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsV1Execute(r ApiGetAccessRequestRecommendationsV1Request) ([]AccessRequestRecommendationItemDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessrequestrecommendationitemdetail
+		localVarReturnValue  []AccessRequestRecommendationItemDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.GetAccessRequestRecommendationsV1")
@@ -1589,7 +1589,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1611,7 +1611,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1633,7 +1633,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1704,7 +1704,7 @@ func (r ApiGetAccessRequestRecommendationsViewedItemsV1Request) Sorters(sorters 
 	return r
 }
 
-func (r ApiGetAccessRequestRecommendationsViewedItemsV1Request) Execute() ([]Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+func (r ApiGetAccessRequestRecommendationsViewedItemsV1Request) Execute() ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	return r.ApiService.GetAccessRequestRecommendationsViewedItemsV1Execute(r)
 }
 
@@ -1724,13 +1724,13 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 }
 
 // Execute executes the request
-//  @return []Accessrequestrecommendationactionitemresponsedto
-func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsViewedItemsV1Execute(r ApiGetAccessRequestRecommendationsViewedItemsV1Request) ([]Accessrequestrecommendationactionitemresponsedto, *http.Response, error) {
+//  @return []AccessRequestRecommendationActionItemResponseDto
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsViewedItemsV1Execute(r ApiGetAccessRequestRecommendationsViewedItemsV1Request) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessrequestrecommendationactionitemresponsedto
+		localVarReturnValue  []AccessRequestRecommendationActionItemResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.GetAccessRequestRecommendationsViewedItemsV1")
@@ -1818,7 +1818,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1840,7 +1840,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1862,7 +1862,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1890,7 +1890,7 @@ type ApiSetAccessRequestRecommendationsConfigV1Request struct {
 	ctx context.Context
 	ApiService *IAIAccessRequestRecommendationsAPIService
 	xSailPointExperimental *string
-	accessrequestrecommendationconfigdto *Accessrequestrecommendationconfigdto
+	accessRequestRecommendationConfigDto *AccessRequestRecommendationConfigDto
 }
 
 // Use this header to enable this experimental API.
@@ -1900,12 +1900,12 @@ func (r ApiSetAccessRequestRecommendationsConfigV1Request) XSailPointExperimenta
 }
 
 // The desired configurations for Access Request Recommender for the tenant.
-func (r ApiSetAccessRequestRecommendationsConfigV1Request) Accessrequestrecommendationconfigdto(accessrequestrecommendationconfigdto Accessrequestrecommendationconfigdto) ApiSetAccessRequestRecommendationsConfigV1Request {
-	r.accessrequestrecommendationconfigdto = &accessrequestrecommendationconfigdto
+func (r ApiSetAccessRequestRecommendationsConfigV1Request) AccessRequestRecommendationConfigDto(accessRequestRecommendationConfigDto AccessRequestRecommendationConfigDto) ApiSetAccessRequestRecommendationsConfigV1Request {
+	r.accessRequestRecommendationConfigDto = &accessRequestRecommendationConfigDto
 	return r
 }
 
-func (r ApiSetAccessRequestRecommendationsConfigV1Request) Execute() (*Accessrequestrecommendationconfigdto, *http.Response, error) {
+func (r ApiSetAccessRequestRecommendationsConfigV1Request) Execute() (*AccessRequestRecommendationConfigDto, *http.Response, error) {
 	return r.ApiService.SetAccessRequestRecommendationsConfigV1Execute(r)
 }
 
@@ -1925,13 +1925,13 @@ func (a *IAIAccessRequestRecommendationsAPIService) SetAccessRequestRecommendati
 }
 
 // Execute executes the request
-//  @return Accessrequestrecommendationconfigdto
-func (a *IAIAccessRequestRecommendationsAPIService) SetAccessRequestRecommendationsConfigV1Execute(r ApiSetAccessRequestRecommendationsConfigV1Request) (*Accessrequestrecommendationconfigdto, *http.Response, error) {
+//  @return AccessRequestRecommendationConfigDto
+func (a *IAIAccessRequestRecommendationsAPIService) SetAccessRequestRecommendationsConfigV1Execute(r ApiSetAccessRequestRecommendationsConfigV1Request) (*AccessRequestRecommendationConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessrequestrecommendationconfigdto
+		localVarReturnValue  *AccessRequestRecommendationConfigDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.SetAccessRequestRecommendationsConfigV1")
@@ -1959,8 +1959,8 @@ func (a *IAIAccessRequestRecommendationsAPIService) SetAccessRequestRecommendati
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.accessrequestrecommendationconfigdto == nil {
-		return localVarReturnValue, nil, reportError("accessrequestrecommendationconfigdto is required and must be specified")
+	if r.accessRequestRecommendationConfigDto == nil {
+		return localVarReturnValue, nil, reportError("accessRequestRecommendationConfigDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1982,7 +1982,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) SetAccessRequestRecommendati
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.accessrequestrecommendationconfigdto
+	localVarPostBody = r.accessRequestRecommendationConfigDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2006,7 +2006,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) SetAccessRequestRecommendati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2028,7 +2028,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) SetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2050,7 +2050,7 @@ func (a *IAIAccessRequestRecommendationsAPIService) SetAccessRequestRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

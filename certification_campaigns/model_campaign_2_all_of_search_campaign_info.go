@@ -30,7 +30,7 @@ type Campaign2AllOfSearchCampaignInfo struct {
 	// A direct list of identities to include in this campaign. One of `identityIds` or `query` must be set.
 	IdentityIds []string `json:"identityIds,omitempty"`
 	// Further reduces the scope of the campaign by excluding identities (from `query` or `identityIds`) that do not have this access.
-	AccessConstraints []Accessconstraint `json:"accessConstraints,omitempty"`
+	AccessConstraints []AccessConstraint `json:"accessConstraints,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -228,9 +228,9 @@ func (o *Campaign2AllOfSearchCampaignInfo) SetIdentityIds(v []string) {
 }
 
 // GetAccessConstraints returns the AccessConstraints field value if set, zero value otherwise.
-func (o *Campaign2AllOfSearchCampaignInfo) GetAccessConstraints() []Accessconstraint {
+func (o *Campaign2AllOfSearchCampaignInfo) GetAccessConstraints() []AccessConstraint {
 	if o == nil || IsNil(o.AccessConstraints) {
-		var ret []Accessconstraint
+		var ret []AccessConstraint
 		return ret
 	}
 	return o.AccessConstraints
@@ -238,7 +238,7 @@ func (o *Campaign2AllOfSearchCampaignInfo) GetAccessConstraints() []Accessconstr
 
 // GetAccessConstraintsOk returns a tuple with the AccessConstraints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Campaign2AllOfSearchCampaignInfo) GetAccessConstraintsOk() ([]Accessconstraint, bool) {
+func (o *Campaign2AllOfSearchCampaignInfo) GetAccessConstraintsOk() ([]AccessConstraint, bool) {
 	if o == nil || IsNil(o.AccessConstraints) {
 		return nil, false
 	}
@@ -254,8 +254,8 @@ func (o *Campaign2AllOfSearchCampaignInfo) HasAccessConstraints() bool {
 	return false
 }
 
-// SetAccessConstraints gets a reference to the given []Accessconstraint and assigns it to the AccessConstraints field.
-func (o *Campaign2AllOfSearchCampaignInfo) SetAccessConstraints(v []Accessconstraint) {
+// SetAccessConstraints gets a reference to the given []AccessConstraint and assigns it to the AccessConstraints field.
+func (o *Campaign2AllOfSearchCampaignInfo) SetAccessConstraints(v []AccessConstraint) {
 	o.AccessConstraints = v
 }
 

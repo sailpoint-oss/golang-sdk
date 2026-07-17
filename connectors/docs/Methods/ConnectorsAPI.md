@@ -61,11 +61,11 @@ Other parameters are passed through a pointer to a apiCreateCustomConnectorV1Req
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **v3createconnectordto** | [**V3createconnectordto**](../models/v3createconnectordto) |  | 
+ **v3CreateConnectorDto** | [**V3CreateConnectorDto**](../models/v3-create-connector-dto) |  | 
 
 ### Return type
 
-[**V3connectordto**](../models/v3connectordto)
+[**V3ConnectorDto**](../models/v3-connector-dto)
 
 ### HTTP request headers
 
@@ -87,10 +87,16 @@ import (
 )
 
 func main() {
-    v3createconnectordtoJson := []byte(``) // V3createconnectordto | 
+    v3createconnectordtoJson := []byte(`{
+          "name" : "custom connector",
+          "directConnect" : true,
+          "className" : "sailpoint.connector.OpenConnectorAdapter",
+          "type" : "custom connector type",
+          "status" : "RELEASED"
+        }`) // V3CreateConnectorDto | 
 
-    var v3createconnectordto connectors.V3createconnectordto
-    if err := json.Unmarshal(v3createconnectordtoJson, &v3createconnectordto); err != nil {
+    var v3CreateConnectorDto connectors.V3CreateConnectorDto
+    if err := json.Unmarshal(v3createconnectordtoJson, &v3CreateConnectorDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -98,13 +104,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorsAPI.CreateCustomConnectorV1(context.Background()).V3createconnectordto(v3createconnectordto).Execute()
-	  //resp, r, err := apiClient.ConnectorsAPI.CreateCustomConnectorV1(context.Background()).V3createconnectordto(v3createconnectordto).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.CreateCustomConnectorV1(context.Background()).V3CreateConnectorDto(v3CreateConnectorDto).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.CreateCustomConnectorV1(context.Background()).V3CreateConnectorDto(v3CreateConnectorDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.CreateCustomConnectorV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateCustomConnectorV1`: V3connectordto
+    // response from `CreateCustomConnectorV1`: V3ConnectorDto
     fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.CreateCustomConnectorV1`: %v\n", resp)
 }
 ```
@@ -267,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]V3connectordto**](../models/v3connectordto)
+[**[]V3ConnectorDto**](../models/v3-connector-dto)
 
 ### HTTP request headers
 
@@ -305,7 +311,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorListV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetConnectorListV1`: []V3connectordto
+    // response from `GetConnectorListV1`: []V3ConnectorDto
     fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.GetConnectorListV1`: %v\n", resp)
 }
 ```
@@ -539,7 +545,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Connectordetail**](../models/connectordetail)
+[**ConnectorDetail**](../models/connector-detail)
 
 ### HTTP request headers
 
@@ -574,7 +580,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetConnectorV1`: Connectordetail
+    // response from `GetConnectorV1`: ConnectorDetail
     fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.GetConnectorV1`: %v\n", resp)
 }
 ```
@@ -607,7 +613,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Updatedetail**](../models/updatedetail)
+[**UpdateDetail**](../models/update-detail)
 
 ### HTTP request headers
 
@@ -642,7 +648,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorCorrelationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutConnectorCorrelationConfigV1`: Updatedetail
+    // response from `PutConnectorCorrelationConfigV1`: UpdateDetail
     fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutConnectorCorrelationConfigV1`: %v\n", resp)
 }
 ```
@@ -675,7 +681,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Updatedetail**](../models/updatedetail)
+[**UpdateDetail**](../models/update-detail)
 
 ### HTTP request headers
 
@@ -710,7 +716,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorSourceConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutConnectorSourceConfigV1`: Updatedetail
+    // response from `PutConnectorSourceConfigV1`: UpdateDetail
     fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutConnectorSourceConfigV1`: %v\n", resp)
 }
 ```
@@ -743,7 +749,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Updatedetail**](../models/updatedetail)
+[**UpdateDetail**](../models/update-detail)
 
 ### HTTP request headers
 
@@ -778,7 +784,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorSourceTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutConnectorSourceTemplateV1`: Updatedetail
+    // response from `PutConnectorSourceTemplateV1`: UpdateDetail
     fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutConnectorSourceTemplateV1`: %v\n", resp)
 }
 ```
@@ -812,7 +818,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Updatedetail**](../models/updatedetail)
+[**UpdateDetail**](../models/update-detail)
 
 ### HTTP request headers
 
@@ -847,7 +853,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorTranslationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutConnectorTranslationsV1`: Updatedetail
+    // response from `PutConnectorTranslationsV1`: UpdateDetail
     fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutConnectorTranslationsV1`: %v\n", resp)
 }
 ```
@@ -888,11 +894,11 @@ Other parameters are passed through a pointer to a apiUpdateConnectorV1Request s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of connector detail update operations  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of connector detail update operations  | 
 
 ### Return type
 
-[**Connectordetail**](../models/connectordetail)
+[**ConnectorDetail**](../models/connector-detail)
 
 ### HTTP request headers
 
@@ -915,10 +921,10 @@ import (
 
 func main() {
     scriptName := `aScriptName` // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. # string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | A list of connector detail update operations 
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | A list of connector detail update operations 
 
-    var jsonpatchoperation []connectors.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []connectors.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -926,13 +932,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorsAPI.UpdateConnectorV1(context.Background(), scriptName).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.ConnectorsAPI.UpdateConnectorV1(context.Background(), scriptName).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.UpdateConnectorV1(context.Background(), scriptName).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.ConnectorsAPI.UpdateConnectorV1(context.Background(), scriptName).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.UpdateConnectorV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateConnectorV1`: Connectordetail
+    // response from `UpdateConnectorV1`: ConnectorDetail
     fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.UpdateConnectorV1`: %v\n", resp)
 }
 ```

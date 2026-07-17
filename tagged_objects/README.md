@@ -91,16 +91,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Bulkaddtaggedobject](docs/Bulkaddtaggedobject.md)
- - [Bulkremovetaggedobject](docs/Bulkremovetaggedobject.md)
- - [Bulktaggedobjectresponse](docs/Bulktaggedobjectresponse.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [BulkAddTaggedObject](docs/BulkAddTaggedObject.md)
+ - [BulkRemoveTaggedObject](docs/BulkRemoveTaggedObject.md)
+ - [BulkTaggedObjectResponse](docs/BulkTaggedObjectResponse.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [ListTaggedObjectsV1401Response](docs/ListTaggedObjectsV1401Response.md)
  - [ListTaggedObjectsV1429Response](docs/ListTaggedObjectsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Taggedobject](docs/Taggedobject.md)
- - [Taggedobjectdto](docs/Taggedobjectdto.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [TaggedObject](docs/TaggedObject.md)
+ - [TaggedObjectDto](docs/TaggedObjectDto.md)
 
 
 ## Documentation For Authorization

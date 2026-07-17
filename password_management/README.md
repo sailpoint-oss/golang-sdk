@@ -87,17 +87,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Passwordchangerequest](docs/Passwordchangerequest.md)
- - [Passwordchangeresponse](docs/Passwordchangeresponse.md)
- - [Passworddigittoken](docs/Passworddigittoken.md)
- - [Passworddigittokenreset](docs/Passworddigittokenreset.md)
- - [Passwordinfo](docs/Passwordinfo.md)
- - [Passwordinfoaccount](docs/Passwordinfoaccount.md)
- - [Passwordinfoquerydto](docs/Passwordinfoquerydto.md)
- - [Passwordstatus](docs/Passwordstatus.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [PasswordChangeRequest](docs/PasswordChangeRequest.md)
+ - [PasswordChangeResponse](docs/PasswordChangeResponse.md)
+ - [PasswordDigitToken](docs/PasswordDigitToken.md)
+ - [PasswordDigitTokenReset](docs/PasswordDigitTokenReset.md)
+ - [PasswordInfo](docs/PasswordInfo.md)
+ - [PasswordInfoAccount](docs/PasswordInfoAccount.md)
+ - [PasswordInfoQueryDTO](docs/PasswordInfoQueryDTO.md)
+ - [PasswordStatus](docs/PasswordStatus.md)
  - [QueryPasswordInfoV1401Response](docs/QueryPasswordInfoV1401Response.md)
  - [QueryPasswordInfoV1429Response](docs/QueryPasswordInfoV1429Response.md)
 

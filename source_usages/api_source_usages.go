@@ -29,7 +29,7 @@ type ApiGetStatusBySourceIdV1Request struct {
 	sourceId string
 }
 
-func (r ApiGetStatusBySourceIdV1Request) Execute() (*Sourceusagestatus, *http.Response, error) {
+func (r ApiGetStatusBySourceIdV1Request) Execute() (*SourceUsageStatus, *http.Response, error) {
 	return r.ApiService.GetStatusBySourceIdV1Execute(r)
 }
 
@@ -51,13 +51,13 @@ func (a *SourceUsagesAPIService) GetStatusBySourceIdV1(ctx context.Context, sour
 }
 
 // Execute executes the request
-//  @return Sourceusagestatus
-func (a *SourceUsagesAPIService) GetStatusBySourceIdV1Execute(r ApiGetStatusBySourceIdV1Request) (*Sourceusagestatus, *http.Response, error) {
+//  @return SourceUsageStatus
+func (a *SourceUsagesAPIService) GetStatusBySourceIdV1Execute(r ApiGetStatusBySourceIdV1Request) (*SourceUsageStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourceusagestatus
+		localVarReturnValue  *SourceUsageStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourceUsagesAPIService.GetStatusBySourceIdV1")
@@ -112,7 +112,7 @@ func (a *SourceUsagesAPIService) GetStatusBySourceIdV1Execute(r ApiGetStatusBySo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -134,7 +134,7 @@ func (a *SourceUsagesAPIService) GetStatusBySourceIdV1Execute(r ApiGetStatusBySo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -156,7 +156,7 @@ func (a *SourceUsagesAPIService) GetStatusBySourceIdV1Execute(r ApiGetStatusBySo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -214,7 +214,7 @@ func (r ApiGetUsagesBySourceIdV1Request) Sorters(sorters string) ApiGetUsagesByS
 	return r
 }
 
-func (r ApiGetUsagesBySourceIdV1Request) Execute() ([]Sourceusage, *http.Response, error) {
+func (r ApiGetUsagesBySourceIdV1Request) Execute() ([]SourceUsage, *http.Response, error) {
 	return r.ApiService.GetUsagesBySourceIdV1Execute(r)
 }
 
@@ -236,13 +236,13 @@ func (a *SourceUsagesAPIService) GetUsagesBySourceIdV1(ctx context.Context, sour
 }
 
 // Execute executes the request
-//  @return []Sourceusage
-func (a *SourceUsagesAPIService) GetUsagesBySourceIdV1Execute(r ApiGetUsagesBySourceIdV1Request) ([]Sourceusage, *http.Response, error) {
+//  @return []SourceUsage
+func (a *SourceUsagesAPIService) GetUsagesBySourceIdV1Execute(r ApiGetUsagesBySourceIdV1Request) ([]SourceUsage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sourceusage
+		localVarReturnValue  []SourceUsage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourceUsagesAPIService.GetUsagesBySourceIdV1")
@@ -318,7 +318,7 @@ func (a *SourceUsagesAPIService) GetUsagesBySourceIdV1Execute(r ApiGetUsagesBySo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -340,7 +340,7 @@ func (a *SourceUsagesAPIService) GetUsagesBySourceIdV1Execute(r ApiGetUsagesBySo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -362,7 +362,7 @@ func (a *SourceUsagesAPIService) GetUsagesBySourceIdV1Execute(r ApiGetUsagesBySo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

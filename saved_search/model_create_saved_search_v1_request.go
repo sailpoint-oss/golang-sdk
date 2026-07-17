@@ -41,7 +41,7 @@ type CreateSavedSearchV1Request struct {
 	OrderBy map[string][]string `json:"orderBy,omitempty"`
 	// The fields to be used to sort the search results. 
 	Sort []string `json:"sort,omitempty"`
-	Filters NullableSavedsearchdetailFilters `json:"filters,omitempty"`
+	Filters NullableSavedSearchDetailFilters `json:"filters,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -404,9 +404,9 @@ func (o *CreateSavedSearchV1Request) SetSort(v []string) {
 }
 
 // GetFilters returns the Filters field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateSavedSearchV1Request) GetFilters() SavedsearchdetailFilters {
+func (o *CreateSavedSearchV1Request) GetFilters() SavedSearchDetailFilters {
 	if o == nil || IsNil(o.Filters.Get()) {
-		var ret SavedsearchdetailFilters
+		var ret SavedSearchDetailFilters
 		return ret
 	}
 	return *o.Filters.Get()
@@ -415,7 +415,7 @@ func (o *CreateSavedSearchV1Request) GetFilters() SavedsearchdetailFilters {
 // GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateSavedSearchV1Request) GetFiltersOk() (*SavedsearchdetailFilters, bool) {
+func (o *CreateSavedSearchV1Request) GetFiltersOk() (*SavedSearchDetailFilters, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -431,8 +431,8 @@ func (o *CreateSavedSearchV1Request) HasFilters() bool {
 	return false
 }
 
-// SetFilters gets a reference to the given NullableSavedsearchdetailFilters and assigns it to the Filters field.
-func (o *CreateSavedSearchV1Request) SetFilters(v SavedsearchdetailFilters) {
+// SetFilters gets a reference to the given NullableSavedSearchDetailFilters and assigns it to the Filters field.
+func (o *CreateSavedSearchV1Request) SetFilters(v SavedSearchDetailFilters) {
 	o.Filters.Set(&v)
 }
 // SetFiltersNil sets the value for Filters to be an explicit nil

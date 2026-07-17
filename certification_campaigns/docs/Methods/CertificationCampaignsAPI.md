@@ -136,7 +136,7 @@ Other parameters are passed through a pointer to a apiCompleteCampaignV1Request 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **campaigncompleteoptions** | [**Campaigncompleteoptions**](../models/campaigncompleteoptions) | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction&#x3D;REVOKE | 
+ **campaignCompleteOptions** | [**CampaignCompleteOptions**](../models/campaign-complete-options) | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction&#x3D;REVOKE | 
 
 ### Return type
 
@@ -163,14 +163,16 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Campaign ID. # string | Campaign ID.
-    campaigncompleteoptionsJson := []byte(``) // Campaigncompleteoptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
+    campaigncompleteoptionsJson := []byte(`{
+          "autoCompleteAction" : "REVOKE"
+        }`) // CampaignCompleteOptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.CertificationCampaignsAPI.CompleteCampaignV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignsAPI.CompleteCampaignV1(context.Background(), id).Campaigncompleteoptions(campaigncompleteoptions).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignsAPI.CompleteCampaignV1(context.Background(), id).CampaignCompleteOptions(campaignCompleteOptions).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CompleteCampaignV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -200,11 +202,11 @@ Other parameters are passed through a pointer to a apiCreateCampaignTemplateV1Re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaigntemplate** | [**Campaigntemplate**](../models/campaigntemplate) |  | 
+ **campaignTemplate** | [**CampaignTemplate**](../models/campaign-template) |  | 
 
 ### Return type
 
-[**Campaigntemplate**](../models/campaigntemplate)
+[**CampaignTemplate**](../models/campaign-template)
 
 ### HTTP request headers
 
@@ -227,10 +229,134 @@ import (
 )
 
 func main() {
-    campaigntemplateJson := []byte(``) // Campaigntemplate | 
+    campaigntemplateJson := []byte(`{
+          "ownerRef" : {
+            "name" : "Mister Manager",
+            "id" : "2c918086676d3e0601677611dbde220f",
+            "type" : "IDENTITY",
+            "email" : "mr.manager@example.com"
+          },
+          "deadlineDuration" : "P2W",
+          "created" : "2020-03-05T22:44:00.364Z",
+          "scheduled" : false,
+          "name" : "Manager Campaign Template",
+          "description" : "Template for the annual manager campaign.",
+          "modified" : "2020-03-05T22:52:09.969Z",
+          "campaign" : {
+            "totalCertifications" : 100,
+            "sourcesWithOrphanEntitlements" : [ {
+              "name" : "Source with orphan entitlements",
+              "id" : "2c90ad2a70ace7d50170acf22ca90010",
+              "type" : "SOURCE"
+            }, {
+              "name" : "Source with orphan entitlements",
+              "id" : "2c90ad2a70ace7d50170acf22ca90010",
+              "type" : "SOURCE"
+            } ],
+            "recommendationsEnabled" : true,
+            "sunsetCommentsRequired" : true,
+            "created" : "2020-03-03T22:15:13.611Z",
+            "machineAccountCampaignInfo" : {
+              "reviewerType" : "ACCOUNT_OWNER",
+              "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+            },
+            "description" : "Everyone needs to be reviewed by their manager",
+            "type" : "MANAGER",
+            "sourceOwnerCampaignInfo" : {
+              "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+            },
+            "emailNotificationEnabled" : false,
+            "alerts" : [ {
+              "level" : "ERROR",
+              "localizations" : [ {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              }, {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              } ]
+            }, {
+              "level" : "ERROR",
+              "localizations" : [ {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              }, {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              } ]
+            } ],
+            "filter" : {
+              "name" : "Test Filter",
+              "id" : "0fbe863c063c4c88a35fd7f17e8a3df5",
+              "type" : "CAMPAIGN_FILTER"
+            },
+            "searchCampaignInfo" : {
+              "identityIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ],
+              "query" : "Search Campaign query description",
+              "description" : "Search Campaign description",
+              "reviewer" : {
+                "name" : "William Wilson",
+                "id" : "2c91808568c529c60168cca6f90c1313",
+                "type" : "IDENTITY"
+              },
+              "type" : "ACCESS",
+              "accessConstraints" : [ {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              } ]
+            },
+            "autoRevokeAllowed" : false,
+            "name" : "Manager Campaign",
+            "mandatoryCommentRequirement" : "NO_DECISIONS",
+            "modified" : "2020-03-03T22:20:12.674Z",
+            "roleCompositionCampaignInfo" : {
+              "remediatorRef" : {
+                "name" : "Role Admin",
+                "id" : "2c90ad2a70ace7d50170acf22ca90010",
+                "type" : "IDENTITY"
+              },
+              "reviewerId" : "2c91808568c529c60168cca6f90c1313",
+              "roleIds" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "query" : "Search Query",
+              "description" : "Role Composition Description",
+              "reviewer" : {
+                "name" : "William Wilson",
+                "id" : "2c91808568c529c60168cca6f90c1313",
+                "type" : "IDENTITY"
+              }
+            },
+            "completedCertifications" : 10,
+            "id" : "2c9079b270a266a60170a2779fcb0007",
+            "deadline" : "2020-03-15T10:00:01.456Z",
+            "status" : "ACTIVE",
+            "correlatedStatus" : "CORRELATED"
+          },
+          "id" : "2c9079b270a266a60170a277bb960008"
+        }`) // CampaignTemplate | 
 
-    var campaigntemplate certification_campaigns.Campaigntemplate
-    if err := json.Unmarshal(campaigntemplateJson, &campaigntemplate); err != nil {
+    var campaignTemplate certification_campaigns.CampaignTemplate
+    if err := json.Unmarshal(campaigntemplateJson, &campaignTemplate); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -238,13 +364,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsAPI.CreateCampaignTemplateV1(context.Background()).Campaigntemplate(campaigntemplate).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignsAPI.CreateCampaignTemplateV1(context.Background()).Campaigntemplate(campaigntemplate).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.CreateCampaignTemplateV1(context.Background()).CampaignTemplate(campaignTemplate).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignsAPI.CreateCampaignTemplateV1(context.Background()).CampaignTemplate(campaignTemplate).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CreateCampaignTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateCampaignTemplateV1`: Campaigntemplate
+    // response from `CreateCampaignTemplateV1`: CampaignTemplate
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.CreateCampaignTemplateV1`: %v\n", resp)
 }
 ```
@@ -469,7 +595,7 @@ Other parameters are passed through a pointer to a apiDeleteCampaignsV1Request s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignsdeleterequest** | [**Campaignsdeleterequest**](../models/campaignsdeleterequest) | IDs of the campaigns to delete. | 
+ **campaignsDeleteRequest** | [**CampaignsDeleteRequest**](../models/campaigns-delete-request) | IDs of the campaigns to delete. | 
 
 ### Return type
 
@@ -495,10 +621,12 @@ import (
 )
 
 func main() {
-    campaignsdeleterequestJson := []byte(``) // Campaignsdeleterequest | IDs of the campaigns to delete.
+    campaignsdeleterequestJson := []byte(`{
+          "ids" : [ "2c9180887335cee10173490db1776c26", "2c9180836a712436016a7125a90c0021" ]
+        }`) // CampaignsDeleteRequest | IDs of the campaigns to delete.
 
-    var campaignsdeleterequest certification_campaigns.Campaignsdeleterequest
-    if err := json.Unmarshal(campaignsdeleterequestJson, &campaignsdeleterequest); err != nil {
+    var campaignsDeleteRequest certification_campaigns.CampaignsDeleteRequest
+    if err := json.Unmarshal(campaignsdeleterequestJson, &campaignsDeleteRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -506,8 +634,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignsV1(context.Background()).Campaignsdeleterequest(campaignsdeleterequest).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignsV1(context.Background()).Campaignsdeleterequest(campaignsdeleterequest).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignsV1(context.Background()).CampaignsDeleteRequest(campaignsDeleteRequest).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignsV1(context.Background()).CampaignsDeleteRequest(campaignsDeleteRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaignsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -610,7 +738,7 @@ Other parameters are passed through a pointer to a apiGetCampaignReportsConfigV1
 
 ### Return type
 
-[**Campaignreportsconfig**](../models/campaignreportsconfig)
+[**CampaignReportsConfig**](../models/campaign-reports-config)
 
 ### HTTP request headers
 
@@ -643,7 +771,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReportsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCampaignReportsConfigV1`: Campaignreportsconfig
+    // response from `GetCampaignReportsConfigV1`: CampaignReportsConfig
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignReportsConfigV1`: %v\n", resp)
 }
 ```
@@ -676,7 +804,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Campaignreport**](../models/campaignreport)
+[**[]CampaignReport**](../models/campaign-report)
 
 ### HTTP request headers
 
@@ -710,7 +838,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReportsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCampaignReportsV1`: []Campaignreport
+    // response from `GetCampaignReportsV1`: []CampaignReport
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignReportsV1`: %v\n", resp)
 }
 ```
@@ -810,7 +938,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Campaigntemplate**](../models/campaigntemplate)
+[**CampaignTemplate**](../models/campaign-template)
 
 ### HTTP request headers
 
@@ -844,7 +972,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCampaignTemplateV1`: Campaigntemplate
+    // response from `GetCampaignTemplateV1`: CampaignTemplate
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignTemplateV1`: %v\n", resp)
 }
 ```
@@ -879,7 +1007,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Campaigntemplate**](../models/campaigntemplate)
+[**[]CampaignTemplate**](../models/campaign-template)
 
 ### HTTP request headers
 
@@ -917,7 +1045,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplatesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCampaignTemplatesV1`: []Campaigntemplate
+    // response from `GetCampaignTemplatesV1`: []CampaignTemplate
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignTemplatesV1`: %v\n", resp)
 }
 ```
@@ -1016,11 +1144,11 @@ Other parameters are passed through a pointer to a apiMoveV1Request struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **adminreviewreassign** | [**Adminreviewreassign**](../models/adminreviewreassign) |  | 
+ **adminReviewReassign** | [**AdminReviewReassign**](../models/admin-review-reassign) |  | 
 
 ### Return type
 
-[**Certificationtask**](../models/certificationtask)
+[**CertificationTask**](../models/certification-task)
 
 ### HTTP request headers
 
@@ -1043,10 +1171,17 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The certification campaign ID # string | The certification campaign ID
-    adminreviewreassignJson := []byte(``) // Adminreviewreassign | 
+    adminreviewreassignJson := []byte(`{
+          "certificationIds" : [ "af3859464779471211bb8424a563abc1", "af3859464779471211bb8424a563abc2", "af3859464779471211bb8424a563abc3" ],
+          "reason" : "reassigned for some reason",
+          "reassignTo" : {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "IDENTITY"
+          }
+        }`) // AdminReviewReassign | 
 
-    var adminreviewreassign certification_campaigns.Adminreviewreassign
-    if err := json.Unmarshal(adminreviewreassignJson, &adminreviewreassign); err != nil {
+    var adminReviewReassign certification_campaigns.AdminReviewReassign
+    if err := json.Unmarshal(adminreviewreassignJson, &adminReviewReassign); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1054,13 +1189,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsAPI.MoveV1(context.Background(), id).Adminreviewreassign(adminreviewreassign).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignsAPI.MoveV1(context.Background(), id).Adminreviewreassign(adminreviewreassign).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.MoveV1(context.Background(), id).AdminReviewReassign(adminReviewReassign).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignsAPI.MoveV1(context.Background(), id).AdminReviewReassign(adminReviewReassign).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.MoveV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `MoveV1`: Certificationtask
+    // response from `MoveV1`: CertificationTask
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.MoveV1`: %v\n", resp)
 }
 ```
@@ -1090,11 +1225,11 @@ Other parameters are passed through a pointer to a apiPatchCampaignTemplateV1Req
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  | 
 
 ### Return type
 
-[**Campaigntemplate**](../models/campaigntemplate)
+[**CampaignTemplate**](../models/campaign-template)
 
 ### HTTP request headers
 
@@ -1117,10 +1252,10 @@ import (
 
 func main() {
     id := `2c9180835d191a86015d28455b4a2329` // string | ID of the campaign template being modified. # string | ID of the campaign template being modified.
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/campaign/filter/id","value":"ff80818155fe8c080155fe8d925b0316"}]`) // []Jsonpatchoperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/campaign/filter/id","value":"ff80818155fe8c080155fe8d925b0316"}]`) // []JsonPatchOperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
 
-    var jsonpatchoperation []certification_campaigns.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []certification_campaigns.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1128,13 +1263,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsAPI.PatchCampaignTemplateV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignsAPI.PatchCampaignTemplateV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.PatchCampaignTemplateV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignsAPI.PatchCampaignTemplateV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.PatchCampaignTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchCampaignTemplateV1`: Campaigntemplate
+    // response from `PatchCampaignTemplateV1`: CampaignTemplate
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.PatchCampaignTemplateV1`: %v\n", resp)
 }
 ```
@@ -1159,11 +1294,11 @@ Other parameters are passed through a pointer to a apiSetCampaignReportsConfigV1
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignreportsconfig** | [**Campaignreportsconfig**](../models/campaignreportsconfig) | Campaign report configuration. | 
+ **campaignReportsConfig** | [**CampaignReportsConfig**](../models/campaign-reports-config) | Campaign report configuration. | 
 
 ### Return type
 
-[**Campaignreportsconfig**](../models/campaignreportsconfig)
+[**CampaignReportsConfig**](../models/campaign-reports-config)
 
 ### HTTP request headers
 
@@ -1185,10 +1320,12 @@ import (
 )
 
 func main() {
-    campaignreportsconfigJson := []byte(``) // Campaignreportsconfig | Campaign report configuration.
+    campaignreportsconfigJson := []byte(`{
+          "identityAttributeColumns" : [ "firstname", "lastname" ]
+        }`) // CampaignReportsConfig | Campaign report configuration.
 
-    var campaignreportsconfig certification_campaigns.Campaignreportsconfig
-    if err := json.Unmarshal(campaignreportsconfigJson, &campaignreportsconfig); err != nil {
+    var campaignReportsConfig certification_campaigns.CampaignReportsConfig
+    if err := json.Unmarshal(campaignreportsconfigJson, &campaignReportsConfig); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1196,13 +1333,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsAPI.SetCampaignReportsConfigV1(context.Background()).Campaignreportsconfig(campaignreportsconfig).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignsAPI.SetCampaignReportsConfigV1(context.Background()).Campaignreportsconfig(campaignreportsconfig).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.SetCampaignReportsConfigV1(context.Background()).CampaignReportsConfig(campaignReportsConfig).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignsAPI.SetCampaignReportsConfigV1(context.Background()).CampaignReportsConfig(campaignReportsConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.SetCampaignReportsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetCampaignReportsConfigV1`: Campaignreportsconfig
+    // response from `SetCampaignReportsConfigV1`: CampaignReportsConfig
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.SetCampaignReportsConfigV1`: %v\n", resp)
 }
 ```
@@ -1358,7 +1495,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **id** | **string** | ID of the campaign the report is being run for. | 
-**type_** | [**Reporttype**](../models/) | Type of the report to run. | 
+**type_** | [**ReportType**](../models/) | Type of the report to run. | 
 
 ### Other Parameters
 
@@ -1395,7 +1532,7 @@ import (
 
 func main() {
     id := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign the report is being run for. # string | ID of the campaign the report is being run for.
-    type_ :=  // Reporttype | Type of the report to run. # Reporttype | Type of the report to run.
+    type_ :=  // ReportType | Type of the report to run. # ReportType | Type of the report to run.
 
     
 
@@ -1437,7 +1574,7 @@ Other parameters are passed through a pointer to a apiStartCampaignV1Request str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **activatecampaignoptions** | [**Activatecampaignoptions**](../models/activatecampaignoptions) | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller&#39;s timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. | 
+ **activateCampaignOptions** | [**ActivateCampaignOptions**](../models/activate-campaign-options) | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller&#39;s timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. | 
 
 ### Return type
 
@@ -1464,14 +1601,16 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Campaign ID. # string | Campaign ID.
-    activatecampaignoptionsJson := []byte(``) // Activatecampaignoptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
+    activatecampaignoptionsJson := []byte(`{
+          "timeZone" : "-05:00"
+        }`) // ActivateCampaignOptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaignV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaignV1(context.Background(), id).Activatecampaignoptions(activatecampaignoptions).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaignV1(context.Background(), id).ActivateCampaignOptions(activateCampaignOptions).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaignV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1519,7 +1658,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Campaignreference**](../models/campaignreference)
+[**CampaignReference**](../models/campaign-reference)
 
 ### HTTP request headers
 
@@ -1553,7 +1692,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartGenerateCampaignTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartGenerateCampaignTemplateV1`: Campaignreference
+    // response from `StartGenerateCampaignTemplateV1`: CampaignReference
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartGenerateCampaignTemplateV1`: %v\n", resp)
 }
 ```
@@ -1583,11 +1722,11 @@ Other parameters are passed through a pointer to a apiUpdateCampaignV1Request st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  | 
 
 ### Return type
 
-[**Slimcampaign**](../models/slimcampaign)
+[**SlimCampaign**](../models/slim-campaign)
 
 ### HTTP request headers
 
@@ -1610,10 +1749,10 @@ import (
 
 func main() {
     id := `2c91808571bcfcf80171c23e4b4221fc` // string | ID of the campaign template being modified. # string | ID of the campaign template being modified.
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"This field has been updated!"},{"op":"copy","from":"/name","path":"/description"}]`) // []Jsonpatchoperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"This field has been updated!"},{"op":"copy","from":"/name","path":"/description"}]`) // []JsonPatchOperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
 
-    var jsonpatchoperation []certification_campaigns.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []certification_campaigns.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1621,13 +1760,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsAPI.UpdateCampaignV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignsAPI.UpdateCampaignV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.UpdateCampaignV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignsAPI.UpdateCampaignV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.UpdateCampaignV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateCampaignV1`: Slimcampaign
+    // response from `UpdateCampaignV1`: SlimCampaign
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.UpdateCampaignV1`: %v\n", resp)
 }
 ```

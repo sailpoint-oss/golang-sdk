@@ -44,11 +44,11 @@ Other parameters are passed through a pointer to a apiCreateMachineAccountMappin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **attributemappings** | [**Attributemappings**](../models/attributemappings) |  | 
+ **attributeMappings** | [**AttributeMappings**](../models/attribute-mappings) |  | 
 
 ### Return type
 
-[**[]Attributemappings**](../models/attributemappings)
+[**[]AttributeMappings**](../models/attribute-mappings)
 
 ### HTTP request headers
 
@@ -71,10 +71,30 @@ import (
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
-    attributemappingsJson := []byte(``) // Attributemappings | 
+    attributemappingsJson := []byte(`{
+          "transformDefinition" : {
+            "attributes" : {
+              "input" : {
+                "attributes" : {
+                  "name" : "8d3e0094e99445de98eef6c75e25jc04",
+                  "attributeName" : "givenName",
+                  "sourceName" : "delimited-src"
+                },
+                "type" : "accountAttribute"
+              }
+            },
+            "id" : "ToUpper",
+            "type" : "reference"
+          },
+          "target" : {
+            "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+            "attributeName" : "businessApplication",
+            "type" : "IDENTITY"
+          }
+        }`) // AttributeMappings | 
 
-    var attributemappings machine_account_mappings.Attributemappings
-    if err := json.Unmarshal(attributemappingsJson, &attributemappings); err != nil {
+    var attributeMappings machine_account_mappings.AttributeMappings
+    if err := json.Unmarshal(attributemappingsJson, &attributeMappings); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -82,13 +102,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
-	  //resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
+    resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).AttributeMappings(attributeMappings).Execute()
+	  //resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).AttributeMappings(attributeMappings).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.CreateMachineAccountMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateMachineAccountMappingsV1`: []Attributemappings
+    // response from `CreateMachineAccountMappingsV1`: []AttributeMappings
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountMappingsAPI.CreateMachineAccountMappingsV1`: %v\n", resp)
 }
 ```
@@ -188,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Attributemappings**](../models/attributemappings)
+[**[]AttributeMappings**](../models/attribute-mappings)
 
 ### HTTP request headers
 
@@ -224,7 +244,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.ListMachineAccountMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListMachineAccountMappingsV1`: []Attributemappings
+    // response from `ListMachineAccountMappingsV1`: []AttributeMappings
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountMappingsAPI.ListMachineAccountMappingsV1`: %v\n", resp)
 }
 ```
@@ -253,11 +273,11 @@ Other parameters are passed through a pointer to a apiSetMachineAccountMappingsV
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **attributemappings** | [**Attributemappings**](../models/attributemappings) |  | 
+ **attributeMappings** | [**AttributeMappings**](../models/attribute-mappings) |  | 
 
 ### Return type
 
-[**[]Attributemappings**](../models/attributemappings)
+[**[]AttributeMappings**](../models/attribute-mappings)
 
 ### HTTP request headers
 
@@ -280,10 +300,30 @@ import (
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
-    attributemappingsJson := []byte(``) // Attributemappings | 
+    attributemappingsJson := []byte(`{
+          "transformDefinition" : {
+            "attributes" : {
+              "input" : {
+                "attributes" : {
+                  "name" : "8d3e0094e99445de98eef6c75e25jc04",
+                  "attributeName" : "givenName",
+                  "sourceName" : "delimited-src"
+                },
+                "type" : "accountAttribute"
+              }
+            },
+            "id" : "ToUpper",
+            "type" : "reference"
+          },
+          "target" : {
+            "sourceId" : "2c9180835d2e5168015d32f890ca1581",
+            "attributeName" : "businessApplication",
+            "type" : "IDENTITY"
+          }
+        }`) // AttributeMappings | 
 
-    var attributemappings machine_account_mappings.Attributemappings
-    if err := json.Unmarshal(attributemappingsJson, &attributemappings); err != nil {
+    var attributeMappings machine_account_mappings.AttributeMappings
+    if err := json.Unmarshal(attributemappingsJson, &attributeMappings); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -291,13 +331,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
-	  //resp, r, err := apiClient.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).Attributemappings(attributemappings).Execute()
+    resp, r, err := apiClient.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).AttributeMappings(attributeMappings).Execute()
+	  //resp, r, err := apiClient.MachineAccountMappingsAPI.SetMachineAccountMappingsV1(context.Background(), sourceId).AttributeMappings(attributeMappings).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.SetMachineAccountMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetMachineAccountMappingsV1`: []Attributemappings
+    // response from `SetMachineAccountMappingsV1`: []AttributeMappings
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountMappingsAPI.SetMachineAccountMappingsV1`: %v\n", resp)
 }
 ```

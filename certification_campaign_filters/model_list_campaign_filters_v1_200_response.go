@@ -20,7 +20,7 @@ var _ MappedNullable = &ListCampaignFiltersV1200Response{}
 // ListCampaignFiltersV1200Response struct for ListCampaignFiltersV1200Response
 type ListCampaignFiltersV1200Response struct {
 	// List of campaign filters.
-	Items []Campaignfilterdetails `json:"items,omitempty"`
+	Items []CampaignFilterDetails `json:"items,omitempty"`
 	// Number of filters returned.
 	Count *int32 `json:"count,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -46,9 +46,9 @@ func NewListCampaignFiltersV1200ResponseWithDefaults() *ListCampaignFiltersV1200
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
-func (o *ListCampaignFiltersV1200Response) GetItems() []Campaignfilterdetails {
+func (o *ListCampaignFiltersV1200Response) GetItems() []CampaignFilterDetails {
 	if o == nil || IsNil(o.Items) {
-		var ret []Campaignfilterdetails
+		var ret []CampaignFilterDetails
 		return ret
 	}
 	return o.Items
@@ -56,7 +56,7 @@ func (o *ListCampaignFiltersV1200Response) GetItems() []Campaignfilterdetails {
 
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListCampaignFiltersV1200Response) GetItemsOk() ([]Campaignfilterdetails, bool) {
+func (o *ListCampaignFiltersV1200Response) GetItemsOk() ([]CampaignFilterDetails, bool) {
 	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *ListCampaignFiltersV1200Response) HasItems() bool {
 	return false
 }
 
-// SetItems gets a reference to the given []Campaignfilterdetails and assigns it to the Items field.
-func (o *ListCampaignFiltersV1200Response) SetItems(v []Campaignfilterdetails) {
+// SetItems gets a reference to the given []CampaignFilterDetails and assigns it to the Items field.
+func (o *ListCampaignFiltersV1200Response) SetItems(v []CampaignFilterDetails) {
 	o.Items = v
 }
 

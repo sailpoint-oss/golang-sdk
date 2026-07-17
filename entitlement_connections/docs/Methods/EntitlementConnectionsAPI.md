@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Entitlementconnectionsearchhit**](../models/entitlementconnectionsearchhit)
+[**[]EntitlementConnectionSearchHit**](../models/entitlement-connection-search-hit)
 
 ### HTTP request headers
 
@@ -91,7 +91,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementConnectionsAPI.ListEntitlementConnectionsForCurrentIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListEntitlementConnectionsForCurrentIdentityV1`: []Entitlementconnectionsearchhit
+    // response from `ListEntitlementConnectionsForCurrentIdentityV1`: []EntitlementConnectionSearchHit
     fmt.Fprintf(os.Stdout, "Response from `EntitlementConnectionsAPI.ListEntitlementConnectionsForCurrentIdentityV1`: %v\n", resp)
 }
 ```
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Entitlementconnectionsearchhit**](../models/entitlementconnectionsearchhit)
+[**[]EntitlementConnectionSearchHit**](../models/entitlement-connection-search-hit)
 
 ### HTTP request headers
 
@@ -167,7 +167,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementConnectionsAPI.ListEntitlementConnectionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListEntitlementConnectionsV1`: []Entitlementconnectionsearchhit
+    // response from `ListEntitlementConnectionsV1`: []EntitlementConnectionSearchHit
     fmt.Fprintf(os.Stdout, "Response from `EntitlementConnectionsAPI.ListEntitlementConnectionsV1`: %v\n", resp)
 }
 ```
@@ -197,11 +197,11 @@ Other parameters are passed through a pointer to a apiPatchEntitlementConnection
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
-[**Entitlementconnection**](../models/entitlementconnection)
+[**EntitlementConnection**](../models/entitlement-connection)
 
 ### HTTP request headers
 
@@ -224,10 +224,10 @@ import (
 
 func main() {
     connectionId := `6c692d9972f8400ca4560a68f62c4c5f` // string | Connection ID (UUID with or without hyphens). # string | Connection ID (UUID with or without hyphens).
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | 
 
-    var jsonpatchoperation []entitlement_connections.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []entitlement_connections.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -235,13 +235,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByIdV1(context.Background(), connectionId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByIdV1(context.Background(), connectionId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByIdV1(context.Background(), connectionId).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByIdV1(context.Background(), connectionId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementConnectionsAPI.PatchEntitlementConnectionByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchEntitlementConnectionByIdV1`: Entitlementconnection
+    // response from `PatchEntitlementConnectionByIdV1`: EntitlementConnection
     fmt.Fprintf(os.Stdout, "Response from `EntitlementConnectionsAPI.PatchEntitlementConnectionByIdV1`: %v\n", resp)
 }
 ```
@@ -270,11 +270,11 @@ Name | Type | Description  | Notes
  **entitlementId** | **string** | Entitlement ID (UUID with or without hyphens). | 
  **identityId** | **string** | Identity ID (UUID with or without hyphens). | 
  **accountId** | **string** | Account ID (UUID with or without hyphens). | 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
-[**Entitlementconnection**](../models/entitlementconnection)
+[**EntitlementConnection**](../models/entitlement-connection)
 
 ### HTTP request headers
 
@@ -299,10 +299,10 @@ func main() {
     entitlementId := `dcfd09e551644ad5aa162ce977862031` // string | Entitlement ID (UUID with or without hyphens). # string | Entitlement ID (UUID with or without hyphens).
     identityId := `5470d8d4817a4207a8020bf533187da9` // string | Identity ID (UUID with or without hyphens). # string | Identity ID (UUID with or without hyphens).
     accountId := `323bfddfb3dd4197b8f10f7735307d27` // string | Account ID (UUID with or without hyphens). # string | Account ID (UUID with or without hyphens).
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | 
 
-    var jsonpatchoperation []entitlement_connections.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []entitlement_connections.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -310,13 +310,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1(context.Background()).EntitlementId(entitlementId).IdentityId(identityId).AccountId(accountId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1(context.Background()).EntitlementId(entitlementId).IdentityId(identityId).AccountId(accountId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1(context.Background()).EntitlementId(entitlementId).IdentityId(identityId).AccountId(accountId).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1(context.Background()).EntitlementId(entitlementId).IdentityId(identityId).AccountId(accountId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchEntitlementConnectionByQueryV1`: Entitlementconnection
+    // response from `PatchEntitlementConnectionByQueryV1`: EntitlementConnection
     fmt.Fprintf(os.Stdout, "Response from `EntitlementConnectionsAPI.PatchEntitlementConnectionByQueryV1`: %v\n", resp)
 }
 ```
@@ -342,11 +342,11 @@ Other parameters are passed through a pointer to a apiUpdateEntitlementConnectio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entitlementconnectionbulkupdateitem** | [**[]Entitlementconnectionbulkupdateitem**](../models/entitlementconnectionbulkupdateitem) |  | 
+ **entitlementConnectionBulkUpdateItem** | [**[]EntitlementConnectionBulkUpdateItem**](../models/entitlement-connection-bulk-update-item) |  | 
 
 ### Return type
 
-[**[]Entitlementconnectionbulkupdateresultitem**](../models/entitlementconnectionbulkupdateresultitem)
+[**[]EntitlementConnectionBulkUpdateResultItem**](../models/entitlement-connection-bulk-update-result-item)
 
 ### HTTP request headers
 
@@ -368,10 +368,10 @@ import (
 )
 
 func main() {
-    entitlementconnectionbulkupdateitemJson := []byte(`[{"connectionId":"d532fa5cb15748e2873c6a01e5923ec4","type":"JIT"},{"connectionId":"57bdbfcab8a34afb91c0a9fb4dba52b8","type":"STANDING"},{"connectionId":"0f571cefc8a2411790e0ee09f77e25a3","type":"STANDING"},{"connectionId":"025542c7e42144258c6f2325b6feeba8","type":"JIT"},{"connectionId":"6bccbc42381f49028dac9bfe68dbad2e","type":"JIT"}]`) // []Entitlementconnectionbulkupdateitem | 
+    entitlementconnectionbulkupdateitemJson := []byte(`[{"connectionId":"d532fa5cb15748e2873c6a01e5923ec4","type":"JIT"},{"connectionId":"57bdbfcab8a34afb91c0a9fb4dba52b8","type":"STANDING"},{"connectionId":"0f571cefc8a2411790e0ee09f77e25a3","type":"STANDING"},{"connectionId":"025542c7e42144258c6f2325b6feeba8","type":"JIT"},{"connectionId":"6bccbc42381f49028dac9bfe68dbad2e","type":"JIT"}]`) // []EntitlementConnectionBulkUpdateItem | 
 
-    var entitlementconnectionbulkupdateitem []entitlement_connections.Entitlementconnectionbulkupdateitem
-    if err := json.Unmarshal(entitlementconnectionbulkupdateitemJson, &entitlementconnectionbulkupdateitem); err != nil {
+    var entitlementConnectionBulkUpdateItem []entitlement_connections.EntitlementConnectionBulkUpdateItem
+    if err := json.Unmarshal(entitlementconnectionbulkupdateitemJson, &entitlementConnectionBulkUpdateItem); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -379,13 +379,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1(context.Background()).Entitlementconnectionbulkupdateitem(entitlementconnectionbulkupdateitem).Execute()
-	  //resp, r, err := apiClient.EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1(context.Background()).Entitlementconnectionbulkupdateitem(entitlementconnectionbulkupdateitem).Execute()
+    resp, r, err := apiClient.EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1(context.Background()).EntitlementConnectionBulkUpdateItem(entitlementConnectionBulkUpdateItem).Execute()
+	  //resp, r, err := apiClient.EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1(context.Background()).EntitlementConnectionBulkUpdateItem(entitlementConnectionBulkUpdateItem).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateEntitlementConnectionsBulkV1`: []Entitlementconnectionbulkupdateresultitem
+    // response from `UpdateEntitlementConnectionsBulkV1`: []EntitlementConnectionBulkUpdateResultItem
     fmt.Fprintf(os.Stdout, "Response from `EntitlementConnectionsAPI.UpdateEntitlementConnectionsBulkV1`: %v\n", resp)
 }
 ```

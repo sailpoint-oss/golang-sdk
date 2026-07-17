@@ -32,7 +32,7 @@ type ApiCreatePotentialRoleProvisionRequestV1Request struct {
 	xSailPointExperimental *string
 	minEntitlementPopularity *int32
 	includeCommonAccess *bool
-	roleminingpotentialroleprovisionrequest *Roleminingpotentialroleprovisionrequest
+	roleMiningPotentialRoleProvisionRequest *RoleMiningPotentialRoleProvisionRequest
 }
 
 // Use this header to enable this experimental API.
@@ -54,12 +54,12 @@ func (r ApiCreatePotentialRoleProvisionRequestV1Request) IncludeCommonAccess(inc
 }
 
 // Required information to create a new role
-func (r ApiCreatePotentialRoleProvisionRequestV1Request) Roleminingpotentialroleprovisionrequest(roleminingpotentialroleprovisionrequest Roleminingpotentialroleprovisionrequest) ApiCreatePotentialRoleProvisionRequestV1Request {
-	r.roleminingpotentialroleprovisionrequest = &roleminingpotentialroleprovisionrequest
+func (r ApiCreatePotentialRoleProvisionRequestV1Request) RoleMiningPotentialRoleProvisionRequest(roleMiningPotentialRoleProvisionRequest RoleMiningPotentialRoleProvisionRequest) ApiCreatePotentialRoleProvisionRequestV1Request {
+	r.roleMiningPotentialRoleProvisionRequest = &roleMiningPotentialRoleProvisionRequest
 	return r
 }
 
-func (r ApiCreatePotentialRoleProvisionRequestV1Request) Execute() (*Roleminingpotentialrolesummary, *http.Response, error) {
+func (r ApiCreatePotentialRoleProvisionRequestV1Request) Execute() (*RoleMiningPotentialRoleSummary, *http.Response, error) {
 	return r.ApiService.CreatePotentialRoleProvisionRequestV1Execute(r)
 }
 
@@ -83,13 +83,13 @@ func (a *IAIRoleMiningAPIService) CreatePotentialRoleProvisionRequestV1(ctx cont
 }
 
 // Execute executes the request
-//  @return Roleminingpotentialrolesummary
-func (a *IAIRoleMiningAPIService) CreatePotentialRoleProvisionRequestV1Execute(r ApiCreatePotentialRoleProvisionRequestV1Request) (*Roleminingpotentialrolesummary, *http.Response, error) {
+//  @return RoleMiningPotentialRoleSummary
+func (a *IAIRoleMiningAPIService) CreatePotentialRoleProvisionRequestV1Execute(r ApiCreatePotentialRoleProvisionRequestV1Request) (*RoleMiningPotentialRoleSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleminingpotentialrolesummary
+		localVarReturnValue  *RoleMiningPotentialRoleSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.CreatePotentialRoleProvisionRequestV1")
@@ -145,7 +145,7 @@ func (a *IAIRoleMiningAPIService) CreatePotentialRoleProvisionRequestV1Execute(r
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.roleminingpotentialroleprovisionrequest
+	localVarPostBody = r.roleMiningPotentialRoleProvisionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -169,7 +169,7 @@ func (a *IAIRoleMiningAPIService) CreatePotentialRoleProvisionRequestV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -191,7 +191,7 @@ func (a *IAIRoleMiningAPIService) CreatePotentialRoleProvisionRequestV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -202,7 +202,7 @@ func (a *IAIRoleMiningAPIService) CreatePotentialRoleProvisionRequestV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -213,7 +213,7 @@ func (a *IAIRoleMiningAPIService) CreatePotentialRoleProvisionRequestV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -241,7 +241,7 @@ type ApiCreateRoleMiningSessionsV1Request struct {
 	ctx context.Context
 	ApiService *IAIRoleMiningAPIService
 	xSailPointExperimental *string
-	roleminingsessiondto *Roleminingsessiondto
+	roleMiningSessionDto *RoleMiningSessionDto
 }
 
 // Use this header to enable this experimental API.
@@ -251,12 +251,12 @@ func (r ApiCreateRoleMiningSessionsV1Request) XSailPointExperimental(xSailPointE
 }
 
 // Role mining session parameters
-func (r ApiCreateRoleMiningSessionsV1Request) Roleminingsessiondto(roleminingsessiondto Roleminingsessiondto) ApiCreateRoleMiningSessionsV1Request {
-	r.roleminingsessiondto = &roleminingsessiondto
+func (r ApiCreateRoleMiningSessionsV1Request) RoleMiningSessionDto(roleMiningSessionDto RoleMiningSessionDto) ApiCreateRoleMiningSessionsV1Request {
+	r.roleMiningSessionDto = &roleMiningSessionDto
 	return r
 }
 
-func (r ApiCreateRoleMiningSessionsV1Request) Execute() (*Roleminingsessionresponse, *http.Response, error) {
+func (r ApiCreateRoleMiningSessionsV1Request) Execute() (*RoleMiningSessionResponse, *http.Response, error) {
 	return r.ApiService.CreateRoleMiningSessionsV1Execute(r)
 }
 
@@ -276,13 +276,13 @@ func (a *IAIRoleMiningAPIService) CreateRoleMiningSessionsV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Roleminingsessionresponse
-func (a *IAIRoleMiningAPIService) CreateRoleMiningSessionsV1Execute(r ApiCreateRoleMiningSessionsV1Request) (*Roleminingsessionresponse, *http.Response, error) {
+//  @return RoleMiningSessionResponse
+func (a *IAIRoleMiningAPIService) CreateRoleMiningSessionsV1Execute(r ApiCreateRoleMiningSessionsV1Request) (*RoleMiningSessionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleminingsessionresponse
+		localVarReturnValue  *RoleMiningSessionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.CreateRoleMiningSessionsV1")
@@ -310,8 +310,8 @@ func (a *IAIRoleMiningAPIService) CreateRoleMiningSessionsV1Execute(r ApiCreateR
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.roleminingsessiondto == nil {
-		return localVarReturnValue, nil, reportError("roleminingsessiondto is required and must be specified")
+	if r.roleMiningSessionDto == nil {
+		return localVarReturnValue, nil, reportError("roleMiningSessionDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -333,7 +333,7 @@ func (a *IAIRoleMiningAPIService) CreateRoleMiningSessionsV1Execute(r ApiCreateR
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.roleminingsessiondto
+	localVarPostBody = r.roleMiningSessionDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -357,7 +357,7 @@ func (a *IAIRoleMiningAPIService) CreateRoleMiningSessionsV1Execute(r ApiCreateR
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -379,7 +379,7 @@ func (a *IAIRoleMiningAPIService) CreateRoleMiningSessionsV1Execute(r ApiCreateR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -401,7 +401,7 @@ func (a *IAIRoleMiningAPIService) CreateRoleMiningSessionsV1Execute(r ApiCreateR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -539,7 +539,7 @@ func (a *IAIRoleMiningAPIService) DownloadRoleMiningPotentialRoleZipV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -561,7 +561,7 @@ func (a *IAIRoleMiningAPIService) DownloadRoleMiningPotentialRoleZipV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -572,7 +572,7 @@ func (a *IAIRoleMiningAPIService) DownloadRoleMiningPotentialRoleZipV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -602,7 +602,7 @@ type ApiExportRoleMiningPotentialRoleAsyncV1Request struct {
 	sessionId string
 	potentialRoleId string
 	xSailPointExperimental *string
-	roleminingpotentialroleexportrequest *Roleminingpotentialroleexportrequest
+	roleMiningPotentialRoleExportRequest *RoleMiningPotentialRoleExportRequest
 }
 
 // Use this header to enable this experimental API.
@@ -611,12 +611,12 @@ func (r ApiExportRoleMiningPotentialRoleAsyncV1Request) XSailPointExperimental(x
 	return r
 }
 
-func (r ApiExportRoleMiningPotentialRoleAsyncV1Request) Roleminingpotentialroleexportrequest(roleminingpotentialroleexportrequest Roleminingpotentialroleexportrequest) ApiExportRoleMiningPotentialRoleAsyncV1Request {
-	r.roleminingpotentialroleexportrequest = &roleminingpotentialroleexportrequest
+func (r ApiExportRoleMiningPotentialRoleAsyncV1Request) RoleMiningPotentialRoleExportRequest(roleMiningPotentialRoleExportRequest RoleMiningPotentialRoleExportRequest) ApiExportRoleMiningPotentialRoleAsyncV1Request {
+	r.roleMiningPotentialRoleExportRequest = &roleMiningPotentialRoleExportRequest
 	return r
 }
 
-func (r ApiExportRoleMiningPotentialRoleAsyncV1Request) Execute() (*Roleminingpotentialroleexportresponse, *http.Response, error) {
+func (r ApiExportRoleMiningPotentialRoleAsyncV1Request) Execute() (*RoleMiningPotentialRoleExportResponse, *http.Response, error) {
 	return r.ApiService.ExportRoleMiningPotentialRoleAsyncV1Execute(r)
 }
 
@@ -640,13 +640,13 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleAsyncV1(ctx conte
 }
 
 // Execute executes the request
-//  @return Roleminingpotentialroleexportresponse
-func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleAsyncV1Execute(r ApiExportRoleMiningPotentialRoleAsyncV1Request) (*Roleminingpotentialroleexportresponse, *http.Response, error) {
+//  @return RoleMiningPotentialRoleExportResponse
+func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleAsyncV1Execute(r ApiExportRoleMiningPotentialRoleAsyncV1Request) (*RoleMiningPotentialRoleExportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleminingpotentialroleexportresponse
+		localVarReturnValue  *RoleMiningPotentialRoleExportResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.ExportRoleMiningPotentialRoleAsyncV1")
@@ -690,7 +690,7 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleAsyncV1Execute(r 
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.roleminingpotentialroleexportrequest
+	localVarPostBody = r.roleMiningPotentialRoleExportRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -714,7 +714,7 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleAsyncV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -736,7 +736,7 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleAsyncV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -747,7 +747,7 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleAsyncV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -786,7 +786,7 @@ func (r ApiExportRoleMiningPotentialRoleStatusV1Request) XSailPointExperimental(
 	return r
 }
 
-func (r ApiExportRoleMiningPotentialRoleStatusV1Request) Execute() (*Roleminingpotentialroleexportresponse, *http.Response, error) {
+func (r ApiExportRoleMiningPotentialRoleStatusV1Request) Execute() (*RoleMiningPotentialRoleExportResponse, *http.Response, error) {
 	return r.ApiService.ExportRoleMiningPotentialRoleStatusV1Execute(r)
 }
 
@@ -812,13 +812,13 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleStatusV1(ctx cont
 }
 
 // Execute executes the request
-//  @return Roleminingpotentialroleexportresponse
-func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleStatusV1Execute(r ApiExportRoleMiningPotentialRoleStatusV1Request) (*Roleminingpotentialroleexportresponse, *http.Response, error) {
+//  @return RoleMiningPotentialRoleExportResponse
+func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleStatusV1Execute(r ApiExportRoleMiningPotentialRoleStatusV1Request) (*RoleMiningPotentialRoleExportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleminingpotentialroleexportresponse
+		localVarReturnValue  *RoleMiningPotentialRoleExportResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.ExportRoleMiningPotentialRoleStatusV1")
@@ -885,7 +885,7 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleStatusV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -907,7 +907,7 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleStatusV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -918,7 +918,7 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleStatusV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1052,7 +1052,7 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleV1Execute(r ApiEx
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1074,7 +1074,7 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleV1Execute(r ApiEx
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1085,7 +1085,7 @@ func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleV1Execute(r ApiEx
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1156,7 +1156,7 @@ func (r ApiGetAllPotentialRoleSummariesV1Request) Count(count bool) ApiGetAllPot
 	return r
 }
 
-func (r ApiGetAllPotentialRoleSummariesV1Request) Execute() ([]Roleminingpotentialrolesummary, *http.Response, error) {
+func (r ApiGetAllPotentialRoleSummariesV1Request) Execute() ([]RoleMiningPotentialRoleSummary, *http.Response, error) {
 	return r.ApiService.GetAllPotentialRoleSummariesV1Execute(r)
 }
 
@@ -1176,13 +1176,13 @@ func (a *IAIRoleMiningAPIService) GetAllPotentialRoleSummariesV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return []Roleminingpotentialrolesummary
-func (a *IAIRoleMiningAPIService) GetAllPotentialRoleSummariesV1Execute(r ApiGetAllPotentialRoleSummariesV1Request) ([]Roleminingpotentialrolesummary, *http.Response, error) {
+//  @return []RoleMiningPotentialRoleSummary
+func (a *IAIRoleMiningAPIService) GetAllPotentialRoleSummariesV1Execute(r ApiGetAllPotentialRoleSummariesV1Request) ([]RoleMiningPotentialRoleSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleminingpotentialrolesummary
+		localVarReturnValue  []RoleMiningPotentialRoleSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetAllPotentialRoleSummariesV1")
@@ -1270,7 +1270,7 @@ func (a *IAIRoleMiningAPIService) GetAllPotentialRoleSummariesV1Execute(r ApiGet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1292,7 +1292,7 @@ func (a *IAIRoleMiningAPIService) GetAllPotentialRoleSummariesV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1314,7 +1314,7 @@ func (a *IAIRoleMiningAPIService) GetAllPotentialRoleSummariesV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1458,7 +1458,7 @@ func (a *IAIRoleMiningAPIService) GetEntitlementDistributionPotentialRoleV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1480,7 +1480,7 @@ func (a *IAIRoleMiningAPIService) GetEntitlementDistributionPotentialRoleV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1491,7 +1491,7 @@ func (a *IAIRoleMiningAPIService) GetEntitlementDistributionPotentialRoleV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1571,7 +1571,7 @@ func (r ApiGetEntitlementsPotentialRoleV1Request) Count(count bool) ApiGetEntitl
 	return r
 }
 
-func (r ApiGetEntitlementsPotentialRoleV1Request) Execute() ([]Roleminingentitlement, *http.Response, error) {
+func (r ApiGetEntitlementsPotentialRoleV1Request) Execute() ([]RoleMiningEntitlement, *http.Response, error) {
 	return r.ApiService.GetEntitlementsPotentialRoleV1Execute(r)
 }
 
@@ -1595,13 +1595,13 @@ func (a *IAIRoleMiningAPIService) GetEntitlementsPotentialRoleV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return []Roleminingentitlement
-func (a *IAIRoleMiningAPIService) GetEntitlementsPotentialRoleV1Execute(r ApiGetEntitlementsPotentialRoleV1Request) ([]Roleminingentitlement, *http.Response, error) {
+//  @return []RoleMiningEntitlement
+func (a *IAIRoleMiningAPIService) GetEntitlementsPotentialRoleV1Execute(r ApiGetEntitlementsPotentialRoleV1Request) ([]RoleMiningEntitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleminingentitlement
+		localVarReturnValue  []RoleMiningEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetEntitlementsPotentialRoleV1")
@@ -1697,7 +1697,7 @@ func (a *IAIRoleMiningAPIService) GetEntitlementsPotentialRoleV1Execute(r ApiGet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1719,7 +1719,7 @@ func (a *IAIRoleMiningAPIService) GetEntitlementsPotentialRoleV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1741,7 +1741,7 @@ func (a *IAIRoleMiningAPIService) GetEntitlementsPotentialRoleV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1814,7 +1814,7 @@ func (r ApiGetExcludedEntitlementsPotentialRoleV1Request) Count(count bool) ApiG
 	return r
 }
 
-func (r ApiGetExcludedEntitlementsPotentialRoleV1Request) Execute() ([]Roleminingentitlement, *http.Response, error) {
+func (r ApiGetExcludedEntitlementsPotentialRoleV1Request) Execute() ([]RoleMiningEntitlement, *http.Response, error) {
 	return r.ApiService.GetExcludedEntitlementsPotentialRoleV1Execute(r)
 }
 
@@ -1838,13 +1838,13 @@ func (a *IAIRoleMiningAPIService) GetExcludedEntitlementsPotentialRoleV1(ctx con
 }
 
 // Execute executes the request
-//  @return []Roleminingentitlement
-func (a *IAIRoleMiningAPIService) GetExcludedEntitlementsPotentialRoleV1Execute(r ApiGetExcludedEntitlementsPotentialRoleV1Request) ([]Roleminingentitlement, *http.Response, error) {
+//  @return []RoleMiningEntitlement
+func (a *IAIRoleMiningAPIService) GetExcludedEntitlementsPotentialRoleV1Execute(r ApiGetExcludedEntitlementsPotentialRoleV1Request) ([]RoleMiningEntitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleminingentitlement
+		localVarReturnValue  []RoleMiningEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetExcludedEntitlementsPotentialRoleV1")
@@ -1934,7 +1934,7 @@ func (a *IAIRoleMiningAPIService) GetExcludedEntitlementsPotentialRoleV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1956,7 +1956,7 @@ func (a *IAIRoleMiningAPIService) GetExcludedEntitlementsPotentialRoleV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1967,7 +1967,7 @@ func (a *IAIRoleMiningAPIService) GetExcludedEntitlementsPotentialRoleV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2040,7 +2040,7 @@ func (r ApiGetIdentitiesPotentialRoleV1Request) Count(count bool) ApiGetIdentiti
 	return r
 }
 
-func (r ApiGetIdentitiesPotentialRoleV1Request) Execute() ([]Roleminingidentity, *http.Response, error) {
+func (r ApiGetIdentitiesPotentialRoleV1Request) Execute() ([]RoleMiningIdentity, *http.Response, error) {
 	return r.ApiService.GetIdentitiesPotentialRoleV1Execute(r)
 }
 
@@ -2064,13 +2064,13 @@ func (a *IAIRoleMiningAPIService) GetIdentitiesPotentialRoleV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return []Roleminingidentity
-func (a *IAIRoleMiningAPIService) GetIdentitiesPotentialRoleV1Execute(r ApiGetIdentitiesPotentialRoleV1Request) ([]Roleminingidentity, *http.Response, error) {
+//  @return []RoleMiningIdentity
+func (a *IAIRoleMiningAPIService) GetIdentitiesPotentialRoleV1Execute(r ApiGetIdentitiesPotentialRoleV1Request) ([]RoleMiningIdentity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleminingidentity
+		localVarReturnValue  []RoleMiningIdentity
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetIdentitiesPotentialRoleV1")
@@ -2160,7 +2160,7 @@ func (a *IAIRoleMiningAPIService) GetIdentitiesPotentialRoleV1Execute(r ApiGetId
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2182,7 +2182,7 @@ func (a *IAIRoleMiningAPIService) GetIdentitiesPotentialRoleV1Execute(r ApiGetId
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2193,7 +2193,7 @@ func (a *IAIRoleMiningAPIService) GetIdentitiesPotentialRoleV1Execute(r ApiGetId
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2259,7 +2259,7 @@ func (r ApiGetPotentialRoleApplicationsV1Request) Count(count bool) ApiGetPotent
 	return r
 }
 
-func (r ApiGetPotentialRoleApplicationsV1Request) Execute() ([]Roleminingpotentialroleapplication, *http.Response, error) {
+func (r ApiGetPotentialRoleApplicationsV1Request) Execute() ([]RoleMiningPotentialRoleApplication, *http.Response, error) {
 	return r.ApiService.GetPotentialRoleApplicationsV1Execute(r)
 }
 
@@ -2283,13 +2283,13 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleApplicationsV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return []Roleminingpotentialroleapplication
-func (a *IAIRoleMiningAPIService) GetPotentialRoleApplicationsV1Execute(r ApiGetPotentialRoleApplicationsV1Request) ([]Roleminingpotentialroleapplication, *http.Response, error) {
+//  @return []RoleMiningPotentialRoleApplication
+func (a *IAIRoleMiningAPIService) GetPotentialRoleApplicationsV1Execute(r ApiGetPotentialRoleApplicationsV1Request) ([]RoleMiningPotentialRoleApplication, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleminingpotentialroleapplication
+		localVarReturnValue  []RoleMiningPotentialRoleApplication
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetPotentialRoleApplicationsV1")
@@ -2376,7 +2376,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleApplicationsV1Execute(r ApiGet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2398,7 +2398,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleApplicationsV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2420,7 +2420,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleApplicationsV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2486,7 +2486,7 @@ func (r ApiGetPotentialRoleEntitlementsV1Request) Count(count bool) ApiGetPotent
 	return r
 }
 
-func (r ApiGetPotentialRoleEntitlementsV1Request) Execute() ([]Roleminingpotentialroleentitlements, *http.Response, error) {
+func (r ApiGetPotentialRoleEntitlementsV1Request) Execute() ([]RoleMiningPotentialRoleEntitlements, *http.Response, error) {
 	return r.ApiService.GetPotentialRoleEntitlementsV1Execute(r)
 }
 
@@ -2510,13 +2510,13 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleEntitlementsV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return []Roleminingpotentialroleentitlements
-func (a *IAIRoleMiningAPIService) GetPotentialRoleEntitlementsV1Execute(r ApiGetPotentialRoleEntitlementsV1Request) ([]Roleminingpotentialroleentitlements, *http.Response, error) {
+//  @return []RoleMiningPotentialRoleEntitlements
+func (a *IAIRoleMiningAPIService) GetPotentialRoleEntitlementsV1Execute(r ApiGetPotentialRoleEntitlementsV1Request) ([]RoleMiningPotentialRoleEntitlements, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleminingpotentialroleentitlements
+		localVarReturnValue  []RoleMiningPotentialRoleEntitlements
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetPotentialRoleEntitlementsV1")
@@ -2603,7 +2603,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleEntitlementsV1Execute(r ApiGet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2625,7 +2625,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleEntitlementsV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2647,7 +2647,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleEntitlementsV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2713,7 +2713,7 @@ func (r ApiGetPotentialRoleSourceIdentityUsageV1Request) Count(count bool) ApiGe
 	return r
 }
 
-func (r ApiGetPotentialRoleSourceIdentityUsageV1Request) Execute() ([]Roleminingpotentialrolesourceusage, *http.Response, error) {
+func (r ApiGetPotentialRoleSourceIdentityUsageV1Request) Execute() ([]RoleMiningPotentialRoleSourceUsage, *http.Response, error) {
 	return r.ApiService.GetPotentialRoleSourceIdentityUsageV1Execute(r)
 }
 
@@ -2737,13 +2737,13 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleSourceIdentityUsageV1(ctx cont
 }
 
 // Execute executes the request
-//  @return []Roleminingpotentialrolesourceusage
-func (a *IAIRoleMiningAPIService) GetPotentialRoleSourceIdentityUsageV1Execute(r ApiGetPotentialRoleSourceIdentityUsageV1Request) ([]Roleminingpotentialrolesourceusage, *http.Response, error) {
+//  @return []RoleMiningPotentialRoleSourceUsage
+func (a *IAIRoleMiningAPIService) GetPotentialRoleSourceIdentityUsageV1Execute(r ApiGetPotentialRoleSourceIdentityUsageV1Request) ([]RoleMiningPotentialRoleSourceUsage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleminingpotentialrolesourceusage
+		localVarReturnValue  []RoleMiningPotentialRoleSourceUsage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetPotentialRoleSourceIdentityUsageV1")
@@ -2830,7 +2830,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleSourceIdentityUsageV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2852,7 +2852,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleSourceIdentityUsageV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2874,7 +2874,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleSourceIdentityUsageV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2946,7 +2946,7 @@ func (r ApiGetPotentialRoleSummariesV1Request) Count(count bool) ApiGetPotential
 	return r
 }
 
-func (r ApiGetPotentialRoleSummariesV1Request) Execute() ([]Roleminingpotentialrolesummary, *http.Response, error) {
+func (r ApiGetPotentialRoleSummariesV1Request) Execute() ([]RoleMiningPotentialRoleSummary, *http.Response, error) {
 	return r.ApiService.GetPotentialRoleSummariesV1Execute(r)
 }
 
@@ -2968,13 +2968,13 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleSummariesV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Roleminingpotentialrolesummary
-func (a *IAIRoleMiningAPIService) GetPotentialRoleSummariesV1Execute(r ApiGetPotentialRoleSummariesV1Request) ([]Roleminingpotentialrolesummary, *http.Response, error) {
+//  @return []RoleMiningPotentialRoleSummary
+func (a *IAIRoleMiningAPIService) GetPotentialRoleSummariesV1Execute(r ApiGetPotentialRoleSummariesV1Request) ([]RoleMiningPotentialRoleSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleminingpotentialrolesummary
+		localVarReturnValue  []RoleMiningPotentialRoleSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetPotentialRoleSummariesV1")
@@ -3063,7 +3063,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleSummariesV1Execute(r ApiGetPot
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3085,7 +3085,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleSummariesV1Execute(r ApiGetPot
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3107,7 +3107,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleSummariesV1Execute(r ApiGetPot
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3145,7 +3145,7 @@ func (r ApiGetPotentialRoleV1Request) XSailPointExperimental(xSailPointExperimen
 	return r
 }
 
-func (r ApiGetPotentialRoleV1Request) Execute() (*Roleminingpotentialrole, *http.Response, error) {
+func (r ApiGetPotentialRoleV1Request) Execute() (*RoleMiningPotentialRole, *http.Response, error) {
 	return r.ApiService.GetPotentialRoleV1Execute(r)
 }
 
@@ -3169,13 +3169,13 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleV1(ctx context.Context, sessio
 }
 
 // Execute executes the request
-//  @return Roleminingpotentialrole
-func (a *IAIRoleMiningAPIService) GetPotentialRoleV1Execute(r ApiGetPotentialRoleV1Request) (*Roleminingpotentialrole, *http.Response, error) {
+//  @return RoleMiningPotentialRole
+func (a *IAIRoleMiningAPIService) GetPotentialRoleV1Execute(r ApiGetPotentialRoleV1Request) (*RoleMiningPotentialRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleminingpotentialrole
+		localVarReturnValue  *RoleMiningPotentialRole
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetPotentialRoleV1")
@@ -3241,7 +3241,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleV1Execute(r ApiGetPotentialRol
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3263,7 +3263,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleV1Execute(r ApiGetPotentialRol
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3285,7 +3285,7 @@ func (a *IAIRoleMiningAPIService) GetPotentialRoleV1Execute(r ApiGetPotentialRol
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3322,7 +3322,7 @@ func (r ApiGetRoleMiningPotentialRoleV1Request) XSailPointExperimental(xSailPoin
 	return r
 }
 
-func (r ApiGetRoleMiningPotentialRoleV1Request) Execute() (*Roleminingpotentialrole, *http.Response, error) {
+func (r ApiGetRoleMiningPotentialRoleV1Request) Execute() (*RoleMiningPotentialRole, *http.Response, error) {
 	return r.ApiService.GetRoleMiningPotentialRoleV1Execute(r)
 }
 
@@ -3344,13 +3344,13 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningPotentialRoleV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return Roleminingpotentialrole
-func (a *IAIRoleMiningAPIService) GetRoleMiningPotentialRoleV1Execute(r ApiGetRoleMiningPotentialRoleV1Request) (*Roleminingpotentialrole, *http.Response, error) {
+//  @return RoleMiningPotentialRole
+func (a *IAIRoleMiningAPIService) GetRoleMiningPotentialRoleV1Execute(r ApiGetRoleMiningPotentialRoleV1Request) (*RoleMiningPotentialRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleminingpotentialrole
+		localVarReturnValue  *RoleMiningPotentialRole
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetRoleMiningPotentialRoleV1")
@@ -3415,7 +3415,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningPotentialRoleV1Execute(r ApiGetRo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3437,7 +3437,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningPotentialRoleV1Execute(r ApiGetRo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3459,7 +3459,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningPotentialRoleV1Execute(r ApiGetRo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3496,7 +3496,7 @@ func (r ApiGetRoleMiningSessionStatusV1Request) XSailPointExperimental(xSailPoin
 	return r
 }
 
-func (r ApiGetRoleMiningSessionStatusV1Request) Execute() (*Roleminingsessionstatus, *http.Response, error) {
+func (r ApiGetRoleMiningSessionStatusV1Request) Execute() (*RoleMiningSessionStatus, *http.Response, error) {
 	return r.ApiService.GetRoleMiningSessionStatusV1Execute(r)
 }
 
@@ -3518,13 +3518,13 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionStatusV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return Roleminingsessionstatus
-func (a *IAIRoleMiningAPIService) GetRoleMiningSessionStatusV1Execute(r ApiGetRoleMiningSessionStatusV1Request) (*Roleminingsessionstatus, *http.Response, error) {
+//  @return RoleMiningSessionStatus
+func (a *IAIRoleMiningAPIService) GetRoleMiningSessionStatusV1Execute(r ApiGetRoleMiningSessionStatusV1Request) (*RoleMiningSessionStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleminingsessionstatus
+		localVarReturnValue  *RoleMiningSessionStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetRoleMiningSessionStatusV1")
@@ -3589,7 +3589,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionStatusV1Execute(r ApiGetRo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3611,7 +3611,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionStatusV1Execute(r ApiGetRo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3622,7 +3622,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionStatusV1Execute(r ApiGetRo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3659,7 +3659,7 @@ func (r ApiGetRoleMiningSessionV1Request) XSailPointExperimental(xSailPointExper
 	return r
 }
 
-func (r ApiGetRoleMiningSessionV1Request) Execute() (*Roleminingsessionresponse, *http.Response, error) {
+func (r ApiGetRoleMiningSessionV1Request) Execute() (*RoleMiningSessionResponse, *http.Response, error) {
 	return r.ApiService.GetRoleMiningSessionV1Execute(r)
 }
 
@@ -3681,13 +3681,13 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionV1(ctx context.Context, se
 }
 
 // Execute executes the request
-//  @return Roleminingsessionresponse
-func (a *IAIRoleMiningAPIService) GetRoleMiningSessionV1Execute(r ApiGetRoleMiningSessionV1Request) (*Roleminingsessionresponse, *http.Response, error) {
+//  @return RoleMiningSessionResponse
+func (a *IAIRoleMiningAPIService) GetRoleMiningSessionV1Execute(r ApiGetRoleMiningSessionV1Request) (*RoleMiningSessionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleminingsessionresponse
+		localVarReturnValue  *RoleMiningSessionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetRoleMiningSessionV1")
@@ -3752,7 +3752,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionV1Execute(r ApiGetRoleMini
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3763,7 +3763,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionV1Execute(r ApiGetRoleMini
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3774,7 +3774,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionV1Execute(r ApiGetRoleMini
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3785,7 +3785,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionV1Execute(r ApiGetRoleMini
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3807,7 +3807,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionV1Execute(r ApiGetRoleMini
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3878,7 +3878,7 @@ func (r ApiGetRoleMiningSessionsV1Request) Count(count bool) ApiGetRoleMiningSes
 	return r
 }
 
-func (r ApiGetRoleMiningSessionsV1Request) Execute() ([]Roleminingsessiondto, *http.Response, error) {
+func (r ApiGetRoleMiningSessionsV1Request) Execute() ([]RoleMiningSessionDto, *http.Response, error) {
 	return r.ApiService.GetRoleMiningSessionsV1Execute(r)
 }
 
@@ -3898,13 +3898,13 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionsV1(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return []Roleminingsessiondto
-func (a *IAIRoleMiningAPIService) GetRoleMiningSessionsV1Execute(r ApiGetRoleMiningSessionsV1Request) ([]Roleminingsessiondto, *http.Response, error) {
+//  @return []RoleMiningSessionDto
+func (a *IAIRoleMiningAPIService) GetRoleMiningSessionsV1Execute(r ApiGetRoleMiningSessionsV1Request) ([]RoleMiningSessionDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleminingsessiondto
+		localVarReturnValue  []RoleMiningSessionDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetRoleMiningSessionsV1")
@@ -3992,7 +3992,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionsV1Execute(r ApiGetRoleMin
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4014,7 +4014,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionsV1Execute(r ApiGetRoleMin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4036,7 +4036,7 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessionsV1Execute(r ApiGetRoleMin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4100,7 +4100,7 @@ func (r ApiGetSavedPotentialRolesV1Request) Count(count bool) ApiGetSavedPotenti
 	return r
 }
 
-func (r ApiGetSavedPotentialRolesV1Request) Execute() ([]Roleminingsessiondraftroledto, *http.Response, error) {
+func (r ApiGetSavedPotentialRolesV1Request) Execute() ([]RoleMiningSessionDraftRoleDto, *http.Response, error) {
 	return r.ApiService.GetSavedPotentialRolesV1Execute(r)
 }
 
@@ -4120,13 +4120,13 @@ func (a *IAIRoleMiningAPIService) GetSavedPotentialRolesV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return []Roleminingsessiondraftroledto
-func (a *IAIRoleMiningAPIService) GetSavedPotentialRolesV1Execute(r ApiGetSavedPotentialRolesV1Request) ([]Roleminingsessiondraftroledto, *http.Response, error) {
+//  @return []RoleMiningSessionDraftRoleDto
+func (a *IAIRoleMiningAPIService) GetSavedPotentialRolesV1Execute(r ApiGetSavedPotentialRolesV1Request) ([]RoleMiningSessionDraftRoleDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleminingsessiondraftroledto
+		localVarReturnValue  []RoleMiningSessionDraftRoleDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetSavedPotentialRolesV1")
@@ -4211,7 +4211,7 @@ func (a *IAIRoleMiningAPIService) GetSavedPotentialRolesV1Execute(r ApiGetSavedP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4233,7 +4233,7 @@ func (a *IAIRoleMiningAPIService) GetSavedPotentialRolesV1Execute(r ApiGetSavedP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4255,7 +4255,7 @@ func (a *IAIRoleMiningAPIService) GetSavedPotentialRolesV1Execute(r ApiGetSavedP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4285,7 +4285,7 @@ type ApiPatchPotentialRoleSessionV1Request struct {
 	sessionId string
 	potentialRoleId string
 	xSailPointExperimental *string
-	jsonpatchoperationrolemining *[]Jsonpatchoperationrolemining
+	jsonPatchOperationRoleMining *[]JsonPatchOperationRoleMining
 }
 
 // Use this header to enable this experimental API.
@@ -4294,8 +4294,8 @@ func (r ApiPatchPotentialRoleSessionV1Request) XSailPointExperimental(xSailPoint
 	return r
 }
 
-func (r ApiPatchPotentialRoleSessionV1Request) Jsonpatchoperationrolemining(jsonpatchoperationrolemining []Jsonpatchoperationrolemining) ApiPatchPotentialRoleSessionV1Request {
-	r.jsonpatchoperationrolemining = &jsonpatchoperationrolemining
+func (r ApiPatchPotentialRoleSessionV1Request) JsonPatchOperationRoleMining(jsonPatchOperationRoleMining []JsonPatchOperationRoleMining) ApiPatchPotentialRoleSessionV1Request {
+	r.jsonPatchOperationRoleMining = &jsonPatchOperationRoleMining
 	return r
 }
 
@@ -4371,8 +4371,8 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionV1Execute(r ApiPatchP
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.jsonpatchoperationrolemining == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperationrolemining is required and must be specified")
+	if r.jsonPatchOperationRoleMining == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperationRoleMining is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4394,7 +4394,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionV1Execute(r ApiPatchP
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatchoperationrolemining
+	localVarPostBody = r.jsonPatchOperationRoleMining
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4418,7 +4418,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionV1Execute(r ApiPatchP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4440,7 +4440,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionV1Execute(r ApiPatchP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4451,7 +4451,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionV1Execute(r ApiPatchP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4473,7 +4473,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleSessionV1Execute(r ApiPatchP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4503,7 +4503,7 @@ type ApiPatchPotentialRoleV1Request struct {
 	sessionId string
 	potentialRoleId string
 	xSailPointExperimental *string
-	jsonpatchoperationrolemining *[]Jsonpatchoperationrolemining
+	jsonPatchOperationRoleMining *[]JsonPatchOperationRoleMining
 }
 
 // Use this header to enable this experimental API.
@@ -4512,8 +4512,8 @@ func (r ApiPatchPotentialRoleV1Request) XSailPointExperimental(xSailPointExperim
 	return r
 }
 
-func (r ApiPatchPotentialRoleV1Request) Jsonpatchoperationrolemining(jsonpatchoperationrolemining []Jsonpatchoperationrolemining) ApiPatchPotentialRoleV1Request {
-	r.jsonpatchoperationrolemining = &jsonpatchoperationrolemining
+func (r ApiPatchPotentialRoleV1Request) JsonPatchOperationRoleMining(jsonPatchOperationRoleMining []JsonPatchOperationRoleMining) ApiPatchPotentialRoleV1Request {
+	r.jsonPatchOperationRoleMining = &jsonPatchOperationRoleMining
 	return r
 }
 
@@ -4589,8 +4589,8 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleV1Execute(r ApiPatchPotentia
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.jsonpatchoperationrolemining == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperationrolemining is required and must be specified")
+	if r.jsonPatchOperationRoleMining == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperationRoleMining is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4612,7 +4612,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleV1Execute(r ApiPatchPotentia
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatchoperationrolemining
+	localVarPostBody = r.jsonPatchOperationRoleMining
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4636,7 +4636,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleV1Execute(r ApiPatchPotentia
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4658,7 +4658,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleV1Execute(r ApiPatchPotentia
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4669,7 +4669,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleV1Execute(r ApiPatchPotentia
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4691,7 +4691,7 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleV1Execute(r ApiPatchPotentia
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4720,7 +4720,7 @@ type ApiPatchRoleMiningSessionV1Request struct {
 	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	xSailPointExperimental *string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // Use this header to enable this experimental API.
@@ -4730,8 +4730,8 @@ func (r ApiPatchRoleMiningSessionV1Request) XSailPointExperimental(xSailPointExp
 }
 
 // Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
-func (r ApiPatchRoleMiningSessionV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchRoleMiningSessionV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchRoleMiningSessionV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchRoleMiningSessionV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -4792,8 +4792,8 @@ func (a *IAIRoleMiningAPIService) PatchRoleMiningSessionV1Execute(r ApiPatchRole
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4815,7 +4815,7 @@ func (a *IAIRoleMiningAPIService) PatchRoleMiningSessionV1Execute(r ApiPatchRole
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4839,7 +4839,7 @@ func (a *IAIRoleMiningAPIService) PatchRoleMiningSessionV1Execute(r ApiPatchRole
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4861,7 +4861,7 @@ func (a *IAIRoleMiningAPIService) PatchRoleMiningSessionV1Execute(r ApiPatchRole
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4872,7 +4872,7 @@ func (a *IAIRoleMiningAPIService) PatchRoleMiningSessionV1Execute(r ApiPatchRole
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4894,7 +4894,7 @@ func (a *IAIRoleMiningAPIService) PatchRoleMiningSessionV1Execute(r ApiPatchRole
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4924,7 +4924,7 @@ type ApiUpdateEntitlementsPotentialRoleV1Request struct {
 	sessionId string
 	potentialRoleId string
 	xSailPointExperimental *string
-	roleminingpotentialroleeditentitlements *Roleminingpotentialroleeditentitlements
+	roleMiningPotentialRoleEditEntitlements *RoleMiningPotentialRoleEditEntitlements
 }
 
 // Use this header to enable this experimental API.
@@ -4934,12 +4934,12 @@ func (r ApiUpdateEntitlementsPotentialRoleV1Request) XSailPointExperimental(xSai
 }
 
 // Role mining session parameters
-func (r ApiUpdateEntitlementsPotentialRoleV1Request) Roleminingpotentialroleeditentitlements(roleminingpotentialroleeditentitlements Roleminingpotentialroleeditentitlements) ApiUpdateEntitlementsPotentialRoleV1Request {
-	r.roleminingpotentialroleeditentitlements = &roleminingpotentialroleeditentitlements
+func (r ApiUpdateEntitlementsPotentialRoleV1Request) RoleMiningPotentialRoleEditEntitlements(roleMiningPotentialRoleEditEntitlements RoleMiningPotentialRoleEditEntitlements) ApiUpdateEntitlementsPotentialRoleV1Request {
+	r.roleMiningPotentialRoleEditEntitlements = &roleMiningPotentialRoleEditEntitlements
 	return r
 }
 
-func (r ApiUpdateEntitlementsPotentialRoleV1Request) Execute() (*Roleminingpotentialrole, *http.Response, error) {
+func (r ApiUpdateEntitlementsPotentialRoleV1Request) Execute() (*RoleMiningPotentialRole, *http.Response, error) {
 	return r.ApiService.UpdateEntitlementsPotentialRoleV1Execute(r)
 }
 
@@ -4963,13 +4963,13 @@ func (a *IAIRoleMiningAPIService) UpdateEntitlementsPotentialRoleV1(ctx context.
 }
 
 // Execute executes the request
-//  @return Roleminingpotentialrole
-func (a *IAIRoleMiningAPIService) UpdateEntitlementsPotentialRoleV1Execute(r ApiUpdateEntitlementsPotentialRoleV1Request) (*Roleminingpotentialrole, *http.Response, error) {
+//  @return RoleMiningPotentialRole
+func (a *IAIRoleMiningAPIService) UpdateEntitlementsPotentialRoleV1Execute(r ApiUpdateEntitlementsPotentialRoleV1Request) (*RoleMiningPotentialRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleminingpotentialrole
+		localVarReturnValue  *RoleMiningPotentialRole
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.UpdateEntitlementsPotentialRoleV1")
@@ -4999,8 +4999,8 @@ func (a *IAIRoleMiningAPIService) UpdateEntitlementsPotentialRoleV1Execute(r Api
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.roleminingpotentialroleeditentitlements == nil {
-		return localVarReturnValue, nil, reportError("roleminingpotentialroleeditentitlements is required and must be specified")
+	if r.roleMiningPotentialRoleEditEntitlements == nil {
+		return localVarReturnValue, nil, reportError("roleMiningPotentialRoleEditEntitlements is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -5022,7 +5022,7 @@ func (a *IAIRoleMiningAPIService) UpdateEntitlementsPotentialRoleV1Execute(r Api
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.roleminingpotentialroleeditentitlements
+	localVarPostBody = r.roleMiningPotentialRoleEditEntitlements
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -5046,7 +5046,7 @@ func (a *IAIRoleMiningAPIService) UpdateEntitlementsPotentialRoleV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5068,7 +5068,7 @@ func (a *IAIRoleMiningAPIService) UpdateEntitlementsPotentialRoleV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5079,7 +5079,7 @@ func (a *IAIRoleMiningAPIService) UpdateEntitlementsPotentialRoleV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

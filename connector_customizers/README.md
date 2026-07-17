@@ -89,17 +89,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Connectorcustomizercreaterequest](docs/Connectorcustomizercreaterequest.md)
- - [Connectorcustomizercreateresponse](docs/Connectorcustomizercreateresponse.md)
- - [Connectorcustomizersresponse](docs/Connectorcustomizersresponse.md)
- - [Connectorcustomizerupdaterequest](docs/Connectorcustomizerupdaterequest.md)
- - [Connectorcustomizerupdateresponse](docs/Connectorcustomizerupdateresponse.md)
- - [Connectorcustomizerversioncreateresponse](docs/Connectorcustomizerversioncreateresponse.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ConnectorCustomizerCreateRequest](docs/ConnectorCustomizerCreateRequest.md)
+ - [ConnectorCustomizerCreateResponse](docs/ConnectorCustomizerCreateResponse.md)
+ - [ConnectorCustomizerUpdateRequest](docs/ConnectorCustomizerUpdateRequest.md)
+ - [ConnectorCustomizerUpdateResponse](docs/ConnectorCustomizerUpdateResponse.md)
+ - [ConnectorCustomizerVersionCreateResponse](docs/ConnectorCustomizerVersionCreateResponse.md)
+ - [ConnectorCustomizersResponse](docs/ConnectorCustomizersResponse.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [ListConnectorCustomizersV1401Response](docs/ListConnectorCustomizersV1401Response.md)
  - [ListConnectorCustomizersV1429Response](docs/ListConnectorCustomizersV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

@@ -62,11 +62,11 @@ Other parameters are passed through a pointer to a apiCreateSourceAppV1Request s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **sourceappcreatedto** | [**Sourceappcreatedto**](../models/sourceappcreatedto) |  | 
+ **sourceAppCreateDto** | [**SourceAppCreateDto**](../models/source-app-create-dto) |  | 
 
 ### Return type
 
-[**Sourceapp**](../models/sourceapp)
+[**SourceApp**](../models/source-app)
 
 ### HTTP request headers
 
@@ -89,10 +89,19 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    sourceappcreatedtoJson := []byte(`{"name":"new app name","description":"app description","matchAllAccounts":true,"accountSource":{"id":"edcb0951812949d085b60cd8bf35bc78"}}`) // Sourceappcreatedto | 
+    sourceappcreatedtoJson := []byte(`{
+          "name" : "my app",
+          "description" : "the source app for engineers",
+          "accountSource" : {
+            "name" : "ODS-AD-Source",
+            "id" : "2c9180827ca885d7017ca8ce28a000eb",
+            "type" : "SOURCE"
+          },
+          "matchAllAccounts" : true
+        }`) // SourceAppCreateDto | 
 
-    var sourceappcreatedto apps.Sourceappcreatedto
-    if err := json.Unmarshal(sourceappcreatedtoJson, &sourceappcreatedto); err != nil {
+    var sourceAppCreateDto apps.SourceAppCreateDto
+    if err := json.Unmarshal(sourceappcreatedtoJson, &sourceAppCreateDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -100,13 +109,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppsAPI.CreateSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sourceappcreatedto(sourceappcreatedto).Execute()
-	  //resp, r, err := apiClient.AppsAPI.CreateSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sourceappcreatedto(sourceappcreatedto).Execute()
+    resp, r, err := apiClient.AppsAPI.CreateSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SourceAppCreateDto(sourceAppCreateDto).Execute()
+	  //resp, r, err := apiClient.AppsAPI.CreateSourceAppV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SourceAppCreateDto(sourceAppCreateDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.CreateSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateSourceAppV1`: Sourceapp
+    // response from `CreateSourceAppV1`: SourceApp
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.CreateSourceAppV1`: %v\n", resp)
 }
 ```
@@ -152,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessprofiledetails**](../models/accessprofiledetails)
+[**[]AccessProfileDetails**](../models/access-profile-details)
 
 ### HTTP request headers
 
@@ -194,7 +203,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.DeleteAccessProfilesFromSourceAppByBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAccessProfilesFromSourceAppByBulkV1`: []Accessprofiledetails
+    // response from `DeleteAccessProfilesFromSourceAppByBulkV1`: []AccessProfileDetails
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.DeleteAccessProfilesFromSourceAppByBulkV1`: %v\n", resp)
 }
 ```
@@ -238,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourceapp**](../models/sourceapp)
+[**SourceApp**](../models/source-app)
 
 ### HTTP request headers
 
@@ -273,7 +282,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.DeleteSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteSourceAppV1`: Sourceapp
+    // response from `DeleteSourceAppV1`: SourceApp
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.DeleteSourceAppV1`: %v\n", resp)
 }
 ```
@@ -317,7 +326,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourceapp**](../models/sourceapp)
+[**SourceApp**](../models/source-app)
 
 ### HTTP request headers
 
@@ -352,7 +361,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.GetSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSourceAppV1`: Sourceapp
+    // response from `GetSourceAppV1`: SourceApp
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.GetSourceAppV1`: %v\n", resp)
 }
 ```
@@ -399,7 +408,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessprofiledetails**](../models/accessprofiledetails)
+[**[]AccessProfileDetails**](../models/access-profile-details)
 
 ### HTTP request headers
 
@@ -437,7 +446,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAccessProfilesForSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAccessProfilesForSourceAppV1`: []Accessprofiledetails
+    // response from `ListAccessProfilesForSourceAppV1`: []AccessProfileDetails
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.ListAccessProfilesForSourceAppV1`: %v\n", resp)
 }
 ```
@@ -481,7 +490,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sourceapp**](../models/sourceapp)
+[**[]SourceApp**](../models/source-app)
 
 ### HTTP request headers
 
@@ -520,7 +529,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAllSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAllSourceAppV1`: []Sourceapp
+    // response from `ListAllSourceAppV1`: []SourceApp
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.ListAllSourceAppV1`: %v\n", resp)
 }
 ```
@@ -564,7 +573,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Userapp**](../models/userapp)
+[**[]UserApp**](../models/user-app)
 
 ### HTTP request headers
 
@@ -602,7 +611,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAllUserAppsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAllUserAppsV1`: []Userapp
+    // response from `ListAllUserAppsV1`: []UserApp
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.ListAllUserAppsV1`: %v\n", resp)
 }
 ```
@@ -646,7 +655,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sourceapp**](../models/sourceapp)
+[**[]SourceApp**](../models/source-app)
 
 ### HTTP request headers
 
@@ -685,7 +694,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAssignedSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAssignedSourceAppV1`: []Sourceapp
+    // response from `ListAssignedSourceAppV1`: []SourceApp
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.ListAssignedSourceAppV1`: %v\n", resp)
 }
 ```
@@ -731,7 +740,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Appaccountdetails**](../models/appaccountdetails)
+[**[]AppAccountDetails**](../models/app-account-details)
 
 ### HTTP request headers
 
@@ -768,7 +777,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAvailableAccountsForUserAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAvailableAccountsForUserAppV1`: []Appaccountdetails
+    // response from `ListAvailableAccountsForUserAppV1`: []AppAccountDetails
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.ListAvailableAccountsForUserAppV1`: %v\n", resp)
 }
 ```
@@ -812,7 +821,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sourceapp**](../models/sourceapp)
+[**[]SourceApp**](../models/source-app)
 
 ### HTTP request headers
 
@@ -851,7 +860,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListAvailableSourceAppsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAvailableSourceAppsV1`: []Sourceapp
+    // response from `ListAvailableSourceAppsV1`: []SourceApp
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.ListAvailableSourceAppsV1`: %v\n", resp)
 }
 ```
@@ -894,7 +903,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Userapp**](../models/userapp)
+[**[]UserApp**](../models/user-app)
 
 ### HTTP request headers
 
@@ -932,7 +941,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ListOwnedUserAppsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListOwnedUserAppsV1`: []Userapp
+    // response from `ListOwnedUserAppsV1`: []UserApp
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.ListOwnedUserAppsV1`: %v\n", resp)
 }
 ```
@@ -975,11 +984,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
-[**Sourceapppatchdto**](../models/sourceapppatchdto)
+[**SourceAppPatchDto**](../models/source-app-patch-dto)
 
 ### HTTP request headers
 
@@ -1003,19 +1012,19 @@ import (
 func main() {
     id := `2c91808a7813090a017814121e121518` // string | ID of the source app to patch # string | ID of the source app to patch
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/enabled","value":true},{"op":"replace","path":"/matchAllAccounts","value":true}]`) // []Jsonpatchoperation |  (optional)
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/enabled","value":true},{"op":"replace","path":"/matchAllAccounts","value":true}]`) // []JsonPatchOperation |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.AppsAPI.PatchSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.AppsAPI.PatchSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.AppsAPI.PatchSourceAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.PatchSourceAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchSourceAppV1`: Sourceapppatchdto
+    // response from `PatchSourceAppV1`: SourceAppPatchDto
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.PatchSourceAppV1`: %v\n", resp)
 }
 ```
@@ -1057,11 +1066,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
-[**Userapp**](../models/userapp)
+[**UserApp**](../models/user-app)
 
 ### HTTP request headers
 
@@ -1085,19 +1094,19 @@ import (
 func main() {
     id := `2c91808a7813090a017814121e121518` // string | ID of the user app to patch # string | ID of the user app to patch
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation |  (optional)
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.AppsAPI.PatchUserAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.AppsAPI.PatchUserAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.AppsAPI.PatchUserAppV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.PatchUserAppV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchUserAppV1`: Userapp
+    // response from `PatchUserAppV1`: UserApp
     fmt.Fprintf(os.Stdout, "Response from `AppsAPI.PatchUserAppV1`: %v\n", resp)
 }
 ```
@@ -1135,7 +1144,7 @@ Other parameters are passed through a pointer to a apiUpdateSourceAppsInBulkV1Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **sourceappbulkupdaterequest** | [**Sourceappbulkupdaterequest**](../models/sourceappbulkupdaterequest) |  | 
+ **sourceAppBulkUpdateRequest** | [**SourceAppBulkUpdateRequest**](../models/source-app-bulk-update-request) |  | 
 
 ### Return type
 
@@ -1162,14 +1171,25 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    sourceappbulkupdaterequestJson := []byte(``) // Sourceappbulkupdaterequest |  (optional)
+    sourceappbulkupdaterequestJson := []byte(`{
+          "appIds" : [ "2c91808a7624751a01762f19d665220d", "2c91808a7624751a01762f19d67c220e", "2c91808a7624751a01762f19d692220f" ],
+          "jsonPatch" : [ {
+            "op" : "replace",
+            "path" : "/enabled",
+            "value" : false
+          }, {
+            "op" : "replace",
+            "path" : "/matchAllAccounts",
+            "value" : false
+          } ]
+        }`) // SourceAppBulkUpdateRequest |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     r, err := apiClient.AppsAPI.UpdateSourceAppsInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.AppsAPI.UpdateSourceAppsInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Sourceappbulkupdaterequest(sourceappbulkupdaterequest).Execute()
+	  //r, err := apiClient.AppsAPI.UpdateSourceAppsInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SourceAppBulkUpdateRequest(sourceAppBulkUpdateRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.UpdateSourceAppsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

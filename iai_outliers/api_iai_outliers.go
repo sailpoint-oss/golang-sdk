@@ -139,7 +139,7 @@ func (a *IAIOutliersAPIService) ExportOutliersZipV1Execute(r ApiExportOutliersZi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -161,7 +161,7 @@ func (a *IAIOutliersAPIService) ExportOutliersZipV1Execute(r ApiExportOutliersZi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -183,7 +183,7 @@ func (a *IAIOutliersAPIService) ExportOutliersZipV1Execute(r ApiExportOutliersZi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -254,7 +254,7 @@ func (r ApiGetIdentityOutlierSnapshotsV1Request) Sorters(sorters string) ApiGetI
 	return r
 }
 
-func (r ApiGetIdentityOutlierSnapshotsV1Request) Execute() ([]Outliersummary, *http.Response, error) {
+func (r ApiGetIdentityOutlierSnapshotsV1Request) Execute() ([]OutlierSummary, *http.Response, error) {
 	return r.ApiService.GetIdentityOutlierSnapshotsV1Execute(r)
 }
 
@@ -274,13 +274,13 @@ func (a *IAIOutliersAPIService) GetIdentityOutlierSnapshotsV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Outliersummary
-func (a *IAIOutliersAPIService) GetIdentityOutlierSnapshotsV1Execute(r ApiGetIdentityOutlierSnapshotsV1Request) ([]Outliersummary, *http.Response, error) {
+//  @return []OutlierSummary
+func (a *IAIOutliersAPIService) GetIdentityOutlierSnapshotsV1Execute(r ApiGetIdentityOutlierSnapshotsV1Request) ([]OutlierSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Outliersummary
+		localVarReturnValue  []OutlierSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.GetIdentityOutlierSnapshotsV1")
@@ -365,7 +365,7 @@ func (a *IAIOutliersAPIService) GetIdentityOutlierSnapshotsV1Execute(r ApiGetIde
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -387,7 +387,7 @@ func (a *IAIOutliersAPIService) GetIdentityOutlierSnapshotsV1Execute(r ApiGetIde
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -409,7 +409,7 @@ func (a *IAIOutliersAPIService) GetIdentityOutlierSnapshotsV1Execute(r ApiGetIde
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -604,7 +604,7 @@ func (a *IAIOutliersAPIService) GetIdentityOutliersV1Execute(r ApiGetIdentityOut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -626,7 +626,7 @@ func (a *IAIOutliersAPIService) GetIdentityOutliersV1Execute(r ApiGetIdentityOut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -648,7 +648,7 @@ func (a *IAIOutliersAPIService) GetIdentityOutliersV1Execute(r ApiGetIdentityOut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -691,7 +691,7 @@ func (r ApiGetLatestIdentityOutlierSnapshotsV1Request) Type_(type_ string) ApiGe
 	return r
 }
 
-func (r ApiGetLatestIdentityOutlierSnapshotsV1Request) Execute() ([]Latestoutliersummary, *http.Response, error) {
+func (r ApiGetLatestIdentityOutlierSnapshotsV1Request) Execute() ([]LatestOutlierSummary, *http.Response, error) {
 	return r.ApiService.GetLatestIdentityOutlierSnapshotsV1Execute(r)
 }
 
@@ -711,13 +711,13 @@ func (a *IAIOutliersAPIService) GetLatestIdentityOutlierSnapshotsV1(ctx context.
 }
 
 // Execute executes the request
-//  @return []Latestoutliersummary
-func (a *IAIOutliersAPIService) GetLatestIdentityOutlierSnapshotsV1Execute(r ApiGetLatestIdentityOutlierSnapshotsV1Request) ([]Latestoutliersummary, *http.Response, error) {
+//  @return []LatestOutlierSummary
+func (a *IAIOutliersAPIService) GetLatestIdentityOutlierSnapshotsV1Execute(r ApiGetLatestIdentityOutlierSnapshotsV1Request) ([]LatestOutlierSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Latestoutliersummary
+		localVarReturnValue  []LatestOutlierSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.GetLatestIdentityOutlierSnapshotsV1")
@@ -784,7 +784,7 @@ func (a *IAIOutliersAPIService) GetLatestIdentityOutlierSnapshotsV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -806,7 +806,7 @@ func (a *IAIOutliersAPIService) GetLatestIdentityOutlierSnapshotsV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -828,7 +828,7 @@ func (a *IAIOutliersAPIService) GetLatestIdentityOutlierSnapshotsV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -865,7 +865,7 @@ func (r ApiGetOutlierContributingFeatureSummaryV1Request) XSailPointExperimental
 	return r
 }
 
-func (r ApiGetOutlierContributingFeatureSummaryV1Request) Execute() (*Outlierfeaturesummary, *http.Response, error) {
+func (r ApiGetOutlierContributingFeatureSummaryV1Request) Execute() (*OutlierFeatureSummary, *http.Response, error) {
 	return r.ApiService.GetOutlierContributingFeatureSummaryV1Execute(r)
 }
 
@@ -890,13 +890,13 @@ func (a *IAIOutliersAPIService) GetOutlierContributingFeatureSummaryV1(ctx conte
 }
 
 // Execute executes the request
-//  @return Outlierfeaturesummary
-func (a *IAIOutliersAPIService) GetOutlierContributingFeatureSummaryV1Execute(r ApiGetOutlierContributingFeatureSummaryV1Request) (*Outlierfeaturesummary, *http.Response, error) {
+//  @return OutlierFeatureSummary
+func (a *IAIOutliersAPIService) GetOutlierContributingFeatureSummaryV1Execute(r ApiGetOutlierContributingFeatureSummaryV1Request) (*OutlierFeatureSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Outlierfeaturesummary
+		localVarReturnValue  *OutlierFeatureSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.GetOutlierContributingFeatureSummaryV1")
@@ -961,7 +961,7 @@ func (a *IAIOutliersAPIService) GetOutlierContributingFeatureSummaryV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -983,7 +983,7 @@ func (a *IAIOutliersAPIService) GetOutlierContributingFeatureSummaryV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -994,7 +994,7 @@ func (a *IAIOutliersAPIService) GetOutlierContributingFeatureSummaryV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1016,7 +1016,7 @@ func (a *IAIOutliersAPIService) GetOutlierContributingFeatureSummaryV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1088,7 +1088,7 @@ func (r ApiGetPeerGroupOutliersContributingFeaturesV1Request) Sorters(sorters st
 	return r
 }
 
-func (r ApiGetPeerGroupOutliersContributingFeaturesV1Request) Execute() ([]Outliercontributingfeature, *http.Response, error) {
+func (r ApiGetPeerGroupOutliersContributingFeaturesV1Request) Execute() ([]OutlierContributingFeature, *http.Response, error) {
 	return r.ApiService.GetPeerGroupOutliersContributingFeaturesV1Execute(r)
 }
 
@@ -1113,13 +1113,13 @@ func (a *IAIOutliersAPIService) GetPeerGroupOutliersContributingFeaturesV1(ctx c
 }
 
 // Execute executes the request
-//  @return []Outliercontributingfeature
-func (a *IAIOutliersAPIService) GetPeerGroupOutliersContributingFeaturesV1Execute(r ApiGetPeerGroupOutliersContributingFeaturesV1Request) ([]Outliercontributingfeature, *http.Response, error) {
+//  @return []OutlierContributingFeature
+func (a *IAIOutliersAPIService) GetPeerGroupOutliersContributingFeaturesV1Execute(r ApiGetPeerGroupOutliersContributingFeaturesV1Request) ([]OutlierContributingFeature, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Outliercontributingfeature
+		localVarReturnValue  []OutlierContributingFeature
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.GetPeerGroupOutliersContributingFeaturesV1")
@@ -1208,7 +1208,7 @@ func (a *IAIOutliersAPIService) GetPeerGroupOutliersContributingFeaturesV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1230,7 +1230,7 @@ func (a *IAIOutliersAPIService) GetPeerGroupOutliersContributingFeaturesV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1241,7 +1241,7 @@ func (a *IAIOutliersAPIService) GetPeerGroupOutliersContributingFeaturesV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1263,7 +1263,7 @@ func (a *IAIOutliersAPIService) GetPeerGroupOutliersContributingFeaturesV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1404,7 +1404,7 @@ func (a *IAIOutliersAPIService) IgnoreIdentityOutliersV1Execute(r ApiIgnoreIdent
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1426,7 +1426,7 @@ func (a *IAIOutliersAPIService) IgnoreIdentityOutliersV1Execute(r ApiIgnoreIdent
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1448,7 +1448,7 @@ func (a *IAIOutliersAPIService) IgnoreIdentityOutliersV1Execute(r ApiIgnoreIdent
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1512,7 +1512,7 @@ func (r ApiListOutliersContributingFeatureAccessItemsV1Request) Sorters(sorters 
 	return r
 }
 
-func (r ApiListOutliersContributingFeatureAccessItemsV1Request) Execute() ([]Outlierscontributingfeatureaccessitems, *http.Response, error) {
+func (r ApiListOutliersContributingFeatureAccessItemsV1Request) Execute() ([]OutliersContributingFeatureAccessItems, *http.Response, error) {
 	return r.ApiService.ListOutliersContributingFeatureAccessItemsV1Execute(r)
 }
 
@@ -1539,13 +1539,13 @@ func (a *IAIOutliersAPIService) ListOutliersContributingFeatureAccessItemsV1(ctx
 }
 
 // Execute executes the request
-//  @return []Outlierscontributingfeatureaccessitems
-func (a *IAIOutliersAPIService) ListOutliersContributingFeatureAccessItemsV1Execute(r ApiListOutliersContributingFeatureAccessItemsV1Request) ([]Outlierscontributingfeatureaccessitems, *http.Response, error) {
+//  @return []OutliersContributingFeatureAccessItems
+func (a *IAIOutliersAPIService) ListOutliersContributingFeatureAccessItemsV1Execute(r ApiListOutliersContributingFeatureAccessItemsV1Request) ([]OutliersContributingFeatureAccessItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Outlierscontributingfeatureaccessitems
+		localVarReturnValue  []OutliersContributingFeatureAccessItems
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.ListOutliersContributingFeatureAccessItemsV1")
@@ -1635,7 +1635,7 @@ func (a *IAIOutliersAPIService) ListOutliersContributingFeatureAccessItemsV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1657,7 +1657,7 @@ func (a *IAIOutliersAPIService) ListOutliersContributingFeatureAccessItemsV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1668,7 +1668,7 @@ func (a *IAIOutliersAPIService) ListOutliersContributingFeatureAccessItemsV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1690,7 +1690,7 @@ func (a *IAIOutliersAPIService) ListOutliersContributingFeatureAccessItemsV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1831,7 +1831,7 @@ func (a *IAIOutliersAPIService) UnIgnoreIdentityOutliersV1Execute(r ApiUnIgnoreI
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1853,7 +1853,7 @@ func (a *IAIOutliersAPIService) UnIgnoreIdentityOutliersV1Execute(r ApiUnIgnoreI
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1875,7 +1875,7 @@ func (a *IAIOutliersAPIService) UnIgnoreIdentityOutliersV1Execute(r ApiUnIgnoreI
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

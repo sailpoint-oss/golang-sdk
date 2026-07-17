@@ -1,0 +1,25 @@
+---
+id: v1-role-mining-potential-role-export-state
+title: RoleMiningPotentialRoleExportState
+pagination_label: RoleMiningPotentialRoleExportState
+sidebar_label: RoleMiningPotentialRoleExportState
+sidebar_class_name: gosdk
+keywords: ['go', 'Golang', 'sdk', 'RoleMiningPotentialRoleExportState', 'V1RoleMiningPotentialRoleExportState'] 
+slug: /tools/sdk/go/iairolemining/models/role-mining-potential-role-export-state
+tags: ['SDK', 'Software Development Kit', 'RoleMiningPotentialRoleExportState', 'V1RoleMiningPotentialRoleExportState']
+---
+
+# RoleMiningPotentialRoleExportState
+
+## Enum
+
+
+* `QUEUED` (value: `"QUEUED"`)
+
+* `IN_PROGRESS` (value: `"IN_PROGRESS"`)
+
+* `SUCCESS` (value: `"SUCCESS"`)
+
+* `ERROR` (value: `"ERROR"`)
+
+

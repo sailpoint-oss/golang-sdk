@@ -19,7 +19,7 @@ import (
 // GetActiveCampaignsV1200ResponseInner struct for GetActiveCampaignsV1200ResponseInner
 type GetActiveCampaignsV1200ResponseInner struct {
 	Campaign2 *Campaign2
-	Slimcampaign *Slimcampaign
+	SlimCampaign *SlimCampaign
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
@@ -38,17 +38,17 @@ func (dst *GetActiveCampaignsV1200ResponseInner) UnmarshalJSON(data []byte) erro
 		dst.Campaign2 = nil
 	}
 
-	// try to unmarshal JSON data into Slimcampaign
-	err = json.Unmarshal(data, &dst.Slimcampaign);
+	// try to unmarshal JSON data into SlimCampaign
+	err = json.Unmarshal(data, &dst.SlimCampaign);
 	if err == nil {
-		jsonSlimcampaign, _ := json.Marshal(dst.Slimcampaign)
-		if string(jsonSlimcampaign) == "{}" { // empty struct
-			dst.Slimcampaign = nil
+		jsonSlimCampaign, _ := json.Marshal(dst.SlimCampaign)
+		if string(jsonSlimCampaign) == "{}" { // empty struct
+			dst.SlimCampaign = nil
 		} else {
-			return nil // data stored in dst.Slimcampaign, return on the first match
+			return nil // data stored in dst.SlimCampaign, return on the first match
 		}
 	} else {
-		dst.Slimcampaign = nil
+		dst.SlimCampaign = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(GetActiveCampaignsV1200ResponseInner)")
@@ -60,8 +60,8 @@ func (src *GetActiveCampaignsV1200ResponseInner) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.Campaign2)
 	}
 
-	if src.Slimcampaign != nil {
-		return json.Marshal(&src.Slimcampaign)
+	if src.SlimCampaign != nil {
+		return json.Marshal(&src.SlimCampaign)
 	}
 
 	return nil, nil // no data in anyOf schemas

@@ -29,7 +29,7 @@ type ApiGetAuthUserV1Request struct {
 	id string
 }
 
-func (r ApiGetAuthUserV1Request) Execute() (*Authuser, *http.Response, error) {
+func (r ApiGetAuthUserV1Request) Execute() (*AuthUser, *http.Response, error) {
 	return r.ApiService.GetAuthUserV1Execute(r)
 }
 
@@ -51,13 +51,13 @@ func (a *AuthUsersAPIService) GetAuthUserV1(ctx context.Context, id string) ApiG
 }
 
 // Execute executes the request
-//  @return Authuser
-func (a *AuthUsersAPIService) GetAuthUserV1Execute(r ApiGetAuthUserV1Request) (*Authuser, *http.Response, error) {
+//  @return AuthUser
+func (a *AuthUsersAPIService) GetAuthUserV1Execute(r ApiGetAuthUserV1Request) (*AuthUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Authuser
+		localVarReturnValue  *AuthUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthUsersAPIService.GetAuthUserV1")
@@ -112,7 +112,7 @@ func (a *AuthUsersAPIService) GetAuthUserV1Execute(r ApiGetAuthUserV1Request) (*
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -134,7 +134,7 @@ func (a *AuthUsersAPIService) GetAuthUserV1Execute(r ApiGetAuthUserV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -145,7 +145,7 @@ func (a *AuthUsersAPIService) GetAuthUserV1Execute(r ApiGetAuthUserV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -167,7 +167,7 @@ func (a *AuthUsersAPIService) GetAuthUserV1Execute(r ApiGetAuthUserV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -195,16 +195,16 @@ type ApiPatchAuthUserV1Request struct {
 	ctx context.Context
 	ApiService *AuthUsersAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-func (r ApiPatchAuthUserV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchAuthUserV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchAuthUserV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchAuthUserV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchAuthUserV1Request) Execute() (*Authuser, *http.Response, error) {
+func (r ApiPatchAuthUserV1Request) Execute() (*AuthUser, *http.Response, error) {
 	return r.ApiService.PatchAuthUserV1Execute(r)
 }
 
@@ -230,13 +230,13 @@ func (a *AuthUsersAPIService) PatchAuthUserV1(ctx context.Context, id string) Ap
 }
 
 // Execute executes the request
-//  @return Authuser
-func (a *AuthUsersAPIService) PatchAuthUserV1Execute(r ApiPatchAuthUserV1Request) (*Authuser, *http.Response, error) {
+//  @return AuthUser
+func (a *AuthUsersAPIService) PatchAuthUserV1Execute(r ApiPatchAuthUserV1Request) (*AuthUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Authuser
+		localVarReturnValue  *AuthUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthUsersAPIService.PatchAuthUserV1")
@@ -250,8 +250,8 @@ func (a *AuthUsersAPIService) PatchAuthUserV1Execute(r ApiPatchAuthUserV1Request
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -272,7 +272,7 @@ func (a *AuthUsersAPIService) PatchAuthUserV1Execute(r ApiPatchAuthUserV1Request
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -296,7 +296,7 @@ func (a *AuthUsersAPIService) PatchAuthUserV1Execute(r ApiPatchAuthUserV1Request
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -318,7 +318,7 @@ func (a *AuthUsersAPIService) PatchAuthUserV1Execute(r ApiPatchAuthUserV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -329,7 +329,7 @@ func (a *AuthUsersAPIService) PatchAuthUserV1Execute(r ApiPatchAuthUserV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -351,7 +351,7 @@ func (a *AuthUsersAPIService) PatchAuthUserV1Execute(r ApiPatchAuthUserV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

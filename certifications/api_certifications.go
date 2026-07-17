@@ -29,7 +29,7 @@ type ApiGetCertificationTaskV1Request struct {
 	id string
 }
 
-func (r ApiGetCertificationTaskV1Request) Execute() (*Certificationtask, *http.Response, error) {
+func (r ApiGetCertificationTaskV1Request) Execute() (*CertificationTask, *http.Response, error) {
 	return r.ApiService.GetCertificationTaskV1Execute(r)
 }
 
@@ -51,13 +51,13 @@ func (a *CertificationsAPIService) GetCertificationTaskV1(ctx context.Context, i
 }
 
 // Execute executes the request
-//  @return Certificationtask
-func (a *CertificationsAPIService) GetCertificationTaskV1Execute(r ApiGetCertificationTaskV1Request) (*Certificationtask, *http.Response, error) {
+//  @return CertificationTask
+func (a *CertificationsAPIService) GetCertificationTaskV1Execute(r ApiGetCertificationTaskV1Request) (*CertificationTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Certificationtask
+		localVarReturnValue  *CertificationTask
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.GetCertificationTaskV1")
@@ -112,7 +112,7 @@ func (a *CertificationsAPIService) GetCertificationTaskV1Execute(r ApiGetCertifi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -134,7 +134,7 @@ func (a *CertificationsAPIService) GetCertificationTaskV1Execute(r ApiGetCertifi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -145,7 +145,7 @@ func (a *CertificationsAPIService) GetCertificationTaskV1Execute(r ApiGetCertifi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -167,7 +167,7 @@ func (a *CertificationsAPIService) GetCertificationTaskV1Execute(r ApiGetCertifi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -226,7 +226,7 @@ func (r ApiGetIdentityCertificationItemPermissionsV1Request) Count(count bool) A
 	return r
 }
 
-func (r ApiGetIdentityCertificationItemPermissionsV1Request) Execute() ([]Permissiondto, *http.Response, error) {
+func (r ApiGetIdentityCertificationItemPermissionsV1Request) Execute() ([]PermissionDTO, *http.Response, error) {
 	return r.ApiService.GetIdentityCertificationItemPermissionsV1Execute(r)
 }
 
@@ -250,13 +250,13 @@ func (a *CertificationsAPIService) GetIdentityCertificationItemPermissionsV1(ctx
 }
 
 // Execute executes the request
-//  @return []Permissiondto
-func (a *CertificationsAPIService) GetIdentityCertificationItemPermissionsV1Execute(r ApiGetIdentityCertificationItemPermissionsV1Request) ([]Permissiondto, *http.Response, error) {
+//  @return []PermissionDTO
+func (a *CertificationsAPIService) GetIdentityCertificationItemPermissionsV1Execute(r ApiGetIdentityCertificationItemPermissionsV1Request) ([]PermissionDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Permissiondto
+		localVarReturnValue  []PermissionDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.GetIdentityCertificationItemPermissionsV1")
@@ -333,7 +333,7 @@ func (a *CertificationsAPIService) GetIdentityCertificationItemPermissionsV1Exec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -355,7 +355,7 @@ func (a *CertificationsAPIService) GetIdentityCertificationItemPermissionsV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -366,7 +366,7 @@ func (a *CertificationsAPIService) GetIdentityCertificationItemPermissionsV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -388,7 +388,7 @@ func (a *CertificationsAPIService) GetIdentityCertificationItemPermissionsV1Exec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -418,7 +418,7 @@ type ApiGetIdentityCertificationV1Request struct {
 	id string
 }
 
-func (r ApiGetIdentityCertificationV1Request) Execute() (*Identitycertificationdto, *http.Response, error) {
+func (r ApiGetIdentityCertificationV1Request) Execute() (*IdentityCertificationDto, *http.Response, error) {
 	return r.ApiService.GetIdentityCertificationV1Execute(r)
 }
 
@@ -440,13 +440,13 @@ func (a *CertificationsAPIService) GetIdentityCertificationV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Identitycertificationdto
-func (a *CertificationsAPIService) GetIdentityCertificationV1Execute(r ApiGetIdentityCertificationV1Request) (*Identitycertificationdto, *http.Response, error) {
+//  @return IdentityCertificationDto
+func (a *CertificationsAPIService) GetIdentityCertificationV1Execute(r ApiGetIdentityCertificationV1Request) (*IdentityCertificationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Identitycertificationdto
+		localVarReturnValue  *IdentityCertificationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.GetIdentityCertificationV1")
@@ -501,7 +501,7 @@ func (a *CertificationsAPIService) GetIdentityCertificationV1Execute(r ApiGetIde
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -523,7 +523,7 @@ func (a *CertificationsAPIService) GetIdentityCertificationV1Execute(r ApiGetIde
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -534,7 +534,7 @@ func (a *CertificationsAPIService) GetIdentityCertificationV1Execute(r ApiGetIde
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -556,7 +556,7 @@ func (a *CertificationsAPIService) GetIdentityCertificationV1Execute(r ApiGetIde
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -620,7 +620,7 @@ func (r ApiGetPendingCertificationTasksV1Request) Filters(filters string) ApiGet
 	return r
 }
 
-func (r ApiGetPendingCertificationTasksV1Request) Execute() ([]Certificationtask, *http.Response, error) {
+func (r ApiGetPendingCertificationTasksV1Request) Execute() ([]CertificationTask, *http.Response, error) {
 	return r.ApiService.GetPendingCertificationTasksV1Execute(r)
 }
 
@@ -640,13 +640,13 @@ func (a *CertificationsAPIService) GetPendingCertificationTasksV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []Certificationtask
-func (a *CertificationsAPIService) GetPendingCertificationTasksV1Execute(r ApiGetPendingCertificationTasksV1Request) ([]Certificationtask, *http.Response, error) {
+//  @return []CertificationTask
+func (a *CertificationsAPIService) GetPendingCertificationTasksV1Execute(r ApiGetPendingCertificationTasksV1Request) ([]CertificationTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Certificationtask
+		localVarReturnValue  []CertificationTask
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.GetPendingCertificationTasksV1")
@@ -724,7 +724,7 @@ func (a *CertificationsAPIService) GetPendingCertificationTasksV1Execute(r ApiGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -746,7 +746,7 @@ func (a *CertificationsAPIService) GetPendingCertificationTasksV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -757,7 +757,7 @@ func (a *CertificationsAPIService) GetPendingCertificationTasksV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -779,7 +779,7 @@ func (a *CertificationsAPIService) GetPendingCertificationTasksV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -844,7 +844,7 @@ func (r ApiListCertificationReviewersV1Request) Sorters(sorters string) ApiListC
 	return r
 }
 
-func (r ApiListCertificationReviewersV1Request) Execute() ([]Identityreferencewithnameandemail, *http.Response, error) {
+func (r ApiListCertificationReviewersV1Request) Execute() ([]IdentityReferenceWithNameAndEmail, *http.Response, error) {
 	return r.ApiService.ListCertificationReviewersV1Execute(r)
 }
 
@@ -866,13 +866,13 @@ func (a *CertificationsAPIService) ListCertificationReviewersV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []Identityreferencewithnameandemail
-func (a *CertificationsAPIService) ListCertificationReviewersV1Execute(r ApiListCertificationReviewersV1Request) ([]Identityreferencewithnameandemail, *http.Response, error) {
+//  @return []IdentityReferenceWithNameAndEmail
+func (a *CertificationsAPIService) ListCertificationReviewersV1Execute(r ApiListCertificationReviewersV1Request) ([]IdentityReferenceWithNameAndEmail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Identityreferencewithnameandemail
+		localVarReturnValue  []IdentityReferenceWithNameAndEmail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.ListCertificationReviewersV1")
@@ -951,7 +951,7 @@ func (a *CertificationsAPIService) ListCertificationReviewersV1Execute(r ApiList
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -973,7 +973,7 @@ func (a *CertificationsAPIService) ListCertificationReviewersV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -984,7 +984,7 @@ func (a *CertificationsAPIService) ListCertificationReviewersV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1006,7 +1006,7 @@ func (a *CertificationsAPIService) ListCertificationReviewersV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1092,7 +1092,7 @@ func (r ApiListIdentityAccessReviewItemsV1Request) Roles(roles string) ApiListId
 	return r
 }
 
-func (r ApiListIdentityAccessReviewItemsV1Request) Execute() ([]Accessreviewitem, *http.Response, error) {
+func (r ApiListIdentityAccessReviewItemsV1Request) Execute() ([]AccessReviewItem, *http.Response, error) {
 	return r.ApiService.ListIdentityAccessReviewItemsV1Execute(r)
 }
 
@@ -1114,13 +1114,13 @@ func (a *CertificationsAPIService) ListIdentityAccessReviewItemsV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return []Accessreviewitem
-func (a *CertificationsAPIService) ListIdentityAccessReviewItemsV1Execute(r ApiListIdentityAccessReviewItemsV1Request) ([]Accessreviewitem, *http.Response, error) {
+//  @return []AccessReviewItem
+func (a *CertificationsAPIService) ListIdentityAccessReviewItemsV1Execute(r ApiListIdentityAccessReviewItemsV1Request) ([]AccessReviewItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessreviewitem
+		localVarReturnValue  []AccessReviewItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.ListIdentityAccessReviewItemsV1")
@@ -1208,7 +1208,7 @@ func (a *CertificationsAPIService) ListIdentityAccessReviewItemsV1Execute(r ApiL
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1230,7 +1230,7 @@ func (a *CertificationsAPIService) ListIdentityAccessReviewItemsV1Execute(r ApiL
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1241,7 +1241,7 @@ func (a *CertificationsAPIService) ListIdentityAccessReviewItemsV1Execute(r ApiL
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1263,7 +1263,7 @@ func (a *CertificationsAPIService) ListIdentityAccessReviewItemsV1Execute(r ApiL
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1334,7 +1334,7 @@ func (r ApiListIdentityCertificationsV1Request) Sorters(sorters string) ApiListI
 	return r
 }
 
-func (r ApiListIdentityCertificationsV1Request) Execute() ([]Identitycertificationdto, *http.Response, error) {
+func (r ApiListIdentityCertificationsV1Request) Execute() ([]IdentityCertificationDto, *http.Response, error) {
 	return r.ApiService.ListIdentityCertificationsV1Execute(r)
 }
 
@@ -1354,13 +1354,13 @@ func (a *CertificationsAPIService) ListIdentityCertificationsV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []Identitycertificationdto
-func (a *CertificationsAPIService) ListIdentityCertificationsV1Execute(r ApiListIdentityCertificationsV1Request) ([]Identitycertificationdto, *http.Response, error) {
+//  @return []IdentityCertificationDto
+func (a *CertificationsAPIService) ListIdentityCertificationsV1Execute(r ApiListIdentityCertificationsV1Request) ([]IdentityCertificationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Identitycertificationdto
+		localVarReturnValue  []IdentityCertificationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.ListIdentityCertificationsV1")
@@ -1441,7 +1441,7 @@ func (a *CertificationsAPIService) ListIdentityCertificationsV1Execute(r ApiList
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1463,7 +1463,7 @@ func (a *CertificationsAPIService) ListIdentityCertificationsV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1485,7 +1485,7 @@ func (a *CertificationsAPIService) ListIdentityCertificationsV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1513,16 +1513,16 @@ type ApiMakeIdentityDecisionV1Request struct {
 	ctx context.Context
 	ApiService *CertificationsAPIService
 	id string
-	reviewdecision *[]Reviewdecision
+	reviewDecision *[]ReviewDecision
 }
 
 // A non-empty array of decisions to be made.
-func (r ApiMakeIdentityDecisionV1Request) Reviewdecision(reviewdecision []Reviewdecision) ApiMakeIdentityDecisionV1Request {
-	r.reviewdecision = &reviewdecision
+func (r ApiMakeIdentityDecisionV1Request) ReviewDecision(reviewDecision []ReviewDecision) ApiMakeIdentityDecisionV1Request {
+	r.reviewDecision = &reviewDecision
 	return r
 }
 
-func (r ApiMakeIdentityDecisionV1Request) Execute() (*Identitycertificationdto, *http.Response, error) {
+func (r ApiMakeIdentityDecisionV1Request) Execute() (*IdentityCertificationDto, *http.Response, error) {
 	return r.ApiService.MakeIdentityDecisionV1Execute(r)
 }
 
@@ -1544,13 +1544,13 @@ func (a *CertificationsAPIService) MakeIdentityDecisionV1(ctx context.Context, i
 }
 
 // Execute executes the request
-//  @return Identitycertificationdto
-func (a *CertificationsAPIService) MakeIdentityDecisionV1Execute(r ApiMakeIdentityDecisionV1Request) (*Identitycertificationdto, *http.Response, error) {
+//  @return IdentityCertificationDto
+func (a *CertificationsAPIService) MakeIdentityDecisionV1Execute(r ApiMakeIdentityDecisionV1Request) (*IdentityCertificationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Identitycertificationdto
+		localVarReturnValue  *IdentityCertificationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.MakeIdentityDecisionV1")
@@ -1564,14 +1564,14 @@ func (a *CertificationsAPIService) MakeIdentityDecisionV1Execute(r ApiMakeIdenti
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.reviewdecision == nil {
-		return localVarReturnValue, nil, reportError("reviewdecision is required and must be specified")
+	if r.reviewDecision == nil {
+		return localVarReturnValue, nil, reportError("reviewDecision is required and must be specified")
 	}
-	if len(*r.reviewdecision) < 1 {
-		return localVarReturnValue, nil, reportError("reviewdecision must have at least 1 elements")
+	if len(*r.reviewDecision) < 1 {
+		return localVarReturnValue, nil, reportError("reviewDecision must have at least 1 elements")
 	}
-	if len(*r.reviewdecision) > 250 {
-		return localVarReturnValue, nil, reportError("reviewdecision must have less than 250 elements")
+	if len(*r.reviewDecision) > 250 {
+		return localVarReturnValue, nil, reportError("reviewDecision must have less than 250 elements")
 	}
 
 	// to determine the Content-Type header
@@ -1592,7 +1592,7 @@ func (a *CertificationsAPIService) MakeIdentityDecisionV1Execute(r ApiMakeIdenti
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.reviewdecision
+	localVarPostBody = r.reviewDecision
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1616,7 +1616,7 @@ func (a *CertificationsAPIService) MakeIdentityDecisionV1Execute(r ApiMakeIdenti
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1638,7 +1638,7 @@ func (a *CertificationsAPIService) MakeIdentityDecisionV1Execute(r ApiMakeIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1649,7 +1649,7 @@ func (a *CertificationsAPIService) MakeIdentityDecisionV1Execute(r ApiMakeIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1671,7 +1671,7 @@ func (a *CertificationsAPIService) MakeIdentityDecisionV1Execute(r ApiMakeIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1699,15 +1699,15 @@ type ApiReassignIdentityCertificationsV1Request struct {
 	ctx context.Context
 	ApiService *CertificationsAPIService
 	id string
-	reviewreassign *Reviewreassign
+	reviewReassign *ReviewReassign
 }
 
-func (r ApiReassignIdentityCertificationsV1Request) Reviewreassign(reviewreassign Reviewreassign) ApiReassignIdentityCertificationsV1Request {
-	r.reviewreassign = &reviewreassign
+func (r ApiReassignIdentityCertificationsV1Request) ReviewReassign(reviewReassign ReviewReassign) ApiReassignIdentityCertificationsV1Request {
+	r.reviewReassign = &reviewReassign
 	return r
 }
 
-func (r ApiReassignIdentityCertificationsV1Request) Execute() (*Identitycertificationdto, *http.Response, error) {
+func (r ApiReassignIdentityCertificationsV1Request) Execute() (*IdentityCertificationDto, *http.Response, error) {
 	return r.ApiService.ReassignIdentityCertificationsV1Execute(r)
 }
 
@@ -1729,13 +1729,13 @@ func (a *CertificationsAPIService) ReassignIdentityCertificationsV1(ctx context.
 }
 
 // Execute executes the request
-//  @return Identitycertificationdto
-func (a *CertificationsAPIService) ReassignIdentityCertificationsV1Execute(r ApiReassignIdentityCertificationsV1Request) (*Identitycertificationdto, *http.Response, error) {
+//  @return IdentityCertificationDto
+func (a *CertificationsAPIService) ReassignIdentityCertificationsV1Execute(r ApiReassignIdentityCertificationsV1Request) (*IdentityCertificationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Identitycertificationdto
+		localVarReturnValue  *IdentityCertificationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.ReassignIdentityCertificationsV1")
@@ -1749,8 +1749,8 @@ func (a *CertificationsAPIService) ReassignIdentityCertificationsV1Execute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.reviewreassign == nil {
-		return localVarReturnValue, nil, reportError("reviewreassign is required and must be specified")
+	if r.reviewReassign == nil {
+		return localVarReturnValue, nil, reportError("reviewReassign is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1771,7 +1771,7 @@ func (a *CertificationsAPIService) ReassignIdentityCertificationsV1Execute(r Api
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.reviewreassign
+	localVarPostBody = r.reviewReassign
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1795,7 +1795,7 @@ func (a *CertificationsAPIService) ReassignIdentityCertificationsV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1817,7 +1817,7 @@ func (a *CertificationsAPIService) ReassignIdentityCertificationsV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1828,7 +1828,7 @@ func (a *CertificationsAPIService) ReassignIdentityCertificationsV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1850,7 +1850,7 @@ func (a *CertificationsAPIService) ReassignIdentityCertificationsV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1880,7 +1880,7 @@ type ApiSignOffIdentityCertificationV1Request struct {
 	id string
 }
 
-func (r ApiSignOffIdentityCertificationV1Request) Execute() (*Identitycertificationdto, *http.Response, error) {
+func (r ApiSignOffIdentityCertificationV1Request) Execute() (*IdentityCertificationDto, *http.Response, error) {
 	return r.ApiService.SignOffIdentityCertificationV1Execute(r)
 }
 
@@ -1902,13 +1902,13 @@ func (a *CertificationsAPIService) SignOffIdentityCertificationV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Identitycertificationdto
-func (a *CertificationsAPIService) SignOffIdentityCertificationV1Execute(r ApiSignOffIdentityCertificationV1Request) (*Identitycertificationdto, *http.Response, error) {
+//  @return IdentityCertificationDto
+func (a *CertificationsAPIService) SignOffIdentityCertificationV1Execute(r ApiSignOffIdentityCertificationV1Request) (*IdentityCertificationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Identitycertificationdto
+		localVarReturnValue  *IdentityCertificationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.SignOffIdentityCertificationV1")
@@ -1963,7 +1963,7 @@ func (a *CertificationsAPIService) SignOffIdentityCertificationV1Execute(r ApiSi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1985,7 +1985,7 @@ func (a *CertificationsAPIService) SignOffIdentityCertificationV1Execute(r ApiSi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1996,7 +1996,7 @@ func (a *CertificationsAPIService) SignOffIdentityCertificationV1Execute(r ApiSi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2018,7 +2018,7 @@ func (a *CertificationsAPIService) SignOffIdentityCertificationV1Execute(r ApiSi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2046,15 +2046,15 @@ type ApiSubmitReassignCertsAsyncV1Request struct {
 	ctx context.Context
 	ApiService *CertificationsAPIService
 	id string
-	reviewreassign *Reviewreassign
+	reviewReassign *ReviewReassign
 }
 
-func (r ApiSubmitReassignCertsAsyncV1Request) Reviewreassign(reviewreassign Reviewreassign) ApiSubmitReassignCertsAsyncV1Request {
-	r.reviewreassign = &reviewreassign
+func (r ApiSubmitReassignCertsAsyncV1Request) ReviewReassign(reviewReassign ReviewReassign) ApiSubmitReassignCertsAsyncV1Request {
+	r.reviewReassign = &reviewReassign
 	return r
 }
 
-func (r ApiSubmitReassignCertsAsyncV1Request) Execute() (*Certificationtask, *http.Response, error) {
+func (r ApiSubmitReassignCertsAsyncV1Request) Execute() (*CertificationTask, *http.Response, error) {
 	return r.ApiService.SubmitReassignCertsAsyncV1Execute(r)
 }
 
@@ -2081,13 +2081,13 @@ func (a *CertificationsAPIService) SubmitReassignCertsAsyncV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Certificationtask
-func (a *CertificationsAPIService) SubmitReassignCertsAsyncV1Execute(r ApiSubmitReassignCertsAsyncV1Request) (*Certificationtask, *http.Response, error) {
+//  @return CertificationTask
+func (a *CertificationsAPIService) SubmitReassignCertsAsyncV1Execute(r ApiSubmitReassignCertsAsyncV1Request) (*CertificationTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Certificationtask
+		localVarReturnValue  *CertificationTask
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.SubmitReassignCertsAsyncV1")
@@ -2101,8 +2101,8 @@ func (a *CertificationsAPIService) SubmitReassignCertsAsyncV1Execute(r ApiSubmit
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.reviewreassign == nil {
-		return localVarReturnValue, nil, reportError("reviewreassign is required and must be specified")
+	if r.reviewReassign == nil {
+		return localVarReturnValue, nil, reportError("reviewReassign is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2123,7 +2123,7 @@ func (a *CertificationsAPIService) SubmitReassignCertsAsyncV1Execute(r ApiSubmit
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.reviewreassign
+	localVarPostBody = r.reviewReassign
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2147,7 +2147,7 @@ func (a *CertificationsAPIService) SubmitReassignCertsAsyncV1Execute(r ApiSubmit
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2169,7 +2169,7 @@ func (a *CertificationsAPIService) SubmitReassignCertsAsyncV1Execute(r ApiSubmit
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2180,7 +2180,7 @@ func (a *CertificationsAPIService) SubmitReassignCertsAsyncV1Execute(r ApiSubmit
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2202,7 +2202,7 @@ func (a *CertificationsAPIService) SubmitReassignCertsAsyncV1Execute(r ApiSubmit
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

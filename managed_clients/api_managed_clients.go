@@ -26,15 +26,15 @@ type ManagedClientsAPIService service
 type ApiCreateManagedClientV1Request struct {
 	ctx context.Context
 	ApiService *ManagedClientsAPIService
-	managedclientrequest *Managedclientrequest
+	managedClientRequest *ManagedClientRequest
 }
 
-func (r ApiCreateManagedClientV1Request) Managedclientrequest(managedclientrequest Managedclientrequest) ApiCreateManagedClientV1Request {
-	r.managedclientrequest = &managedclientrequest
+func (r ApiCreateManagedClientV1Request) ManagedClientRequest(managedClientRequest ManagedClientRequest) ApiCreateManagedClientV1Request {
+	r.managedClientRequest = &managedClientRequest
 	return r
 }
 
-func (r ApiCreateManagedClientV1Request) Execute() (*Managedclient, *http.Response, error) {
+func (r ApiCreateManagedClientV1Request) Execute() (*ManagedClient, *http.Response, error) {
 	return r.ApiService.CreateManagedClientV1Execute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *ManagedClientsAPIService) CreateManagedClientV1(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return Managedclient
-func (a *ManagedClientsAPIService) CreateManagedClientV1Execute(r ApiCreateManagedClientV1Request) (*Managedclient, *http.Response, error) {
+//  @return ManagedClient
+func (a *ManagedClientsAPIService) CreateManagedClientV1Execute(r ApiCreateManagedClientV1Request) (*ManagedClient, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Managedclient
+		localVarReturnValue  *ManagedClient
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClientsAPIService.CreateManagedClientV1")
@@ -74,8 +74,8 @@ func (a *ManagedClientsAPIService) CreateManagedClientV1Execute(r ApiCreateManag
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.managedclientrequest == nil {
-		return localVarReturnValue, nil, reportError("managedclientrequest is required and must be specified")
+	if r.managedClientRequest == nil {
+		return localVarReturnValue, nil, reportError("managedClientRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -96,7 +96,7 @@ func (a *ManagedClientsAPIService) CreateManagedClientV1Execute(r ApiCreateManag
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.managedclientrequest
+	localVarPostBody = r.managedClientRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -120,7 +120,7 @@ func (a *ManagedClientsAPIService) CreateManagedClientV1Execute(r ApiCreateManag
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,7 +142,7 @@ func (a *ManagedClientsAPIService) CreateManagedClientV1Execute(r ApiCreateManag
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *ManagedClientsAPIService) CreateManagedClientV1Execute(r ApiCreateManag
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -275,7 +275,7 @@ func (a *ManagedClientsAPIService) DeleteManagedClientV1Execute(r ApiDeleteManag
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -297,7 +297,7 @@ func (a *ManagedClientsAPIService) DeleteManagedClientV1Execute(r ApiDeleteManag
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -319,7 +319,7 @@ func (a *ManagedClientsAPIService) DeleteManagedClientV1Execute(r ApiDeleteManag
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -340,7 +340,7 @@ type ApiGetManagedClientHealthIndicatorsV1Request struct {
 	id string
 }
 
-func (r ApiGetManagedClientHealthIndicatorsV1Request) Execute() (*Managedclienthealthindicators, *http.Response, error) {
+func (r ApiGetManagedClientHealthIndicatorsV1Request) Execute() (*ManagedClientHealthIndicators, *http.Response, error) {
 	return r.ApiService.GetManagedClientHealthIndicatorsV1Execute(r)
 }
 
@@ -362,13 +362,13 @@ func (a *ManagedClientsAPIService) GetManagedClientHealthIndicatorsV1(ctx contex
 }
 
 // Execute executes the request
-//  @return Managedclienthealthindicators
-func (a *ManagedClientsAPIService) GetManagedClientHealthIndicatorsV1Execute(r ApiGetManagedClientHealthIndicatorsV1Request) (*Managedclienthealthindicators, *http.Response, error) {
+//  @return ManagedClientHealthIndicators
+func (a *ManagedClientsAPIService) GetManagedClientHealthIndicatorsV1Execute(r ApiGetManagedClientHealthIndicatorsV1Request) (*ManagedClientHealthIndicators, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Managedclienthealthindicators
+		localVarReturnValue  *ManagedClientHealthIndicators
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClientsAPIService.GetManagedClientHealthIndicatorsV1")
@@ -423,7 +423,7 @@ func (a *ManagedClientsAPIService) GetManagedClientHealthIndicatorsV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -445,7 +445,7 @@ func (a *ManagedClientsAPIService) GetManagedClientHealthIndicatorsV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -456,7 +456,7 @@ func (a *ManagedClientsAPIService) GetManagedClientHealthIndicatorsV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -478,7 +478,7 @@ func (a *ManagedClientsAPIService) GetManagedClientHealthIndicatorsV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -506,16 +506,16 @@ type ApiGetManagedClientStatusV1Request struct {
 	ctx context.Context
 	ApiService *ManagedClientsAPIService
 	id string
-	type_ *Managedclienttype
+	type_ *ManagedClientType
 }
 
 // Managed client type to get status for.
-func (r ApiGetManagedClientStatusV1Request) Type_(type_ Managedclienttype) ApiGetManagedClientStatusV1Request {
+func (r ApiGetManagedClientStatusV1Request) Type_(type_ ManagedClientType) ApiGetManagedClientStatusV1Request {
 	r.type_ = &type_
 	return r
 }
 
-func (r ApiGetManagedClientStatusV1Request) Execute() (*Managedclientstatus, *http.Response, error) {
+func (r ApiGetManagedClientStatusV1Request) Execute() (*ManagedClientStatus, *http.Response, error) {
 	return r.ApiService.GetManagedClientStatusV1Execute(r)
 }
 
@@ -537,13 +537,13 @@ func (a *ManagedClientsAPIService) GetManagedClientStatusV1(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Managedclientstatus
-func (a *ManagedClientsAPIService) GetManagedClientStatusV1Execute(r ApiGetManagedClientStatusV1Request) (*Managedclientstatus, *http.Response, error) {
+//  @return ManagedClientStatus
+func (a *ManagedClientsAPIService) GetManagedClientStatusV1Execute(r ApiGetManagedClientStatusV1Request) (*ManagedClientStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Managedclientstatus
+		localVarReturnValue  *ManagedClientStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClientsAPIService.GetManagedClientStatusV1")
@@ -602,7 +602,7 @@ func (a *ManagedClientsAPIService) GetManagedClientStatusV1Execute(r ApiGetManag
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -624,7 +624,7 @@ func (a *ManagedClientsAPIService) GetManagedClientStatusV1Execute(r ApiGetManag
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -635,7 +635,7 @@ func (a *ManagedClientsAPIService) GetManagedClientStatusV1Execute(r ApiGetManag
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -657,7 +657,7 @@ func (a *ManagedClientsAPIService) GetManagedClientStatusV1Execute(r ApiGetManag
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -687,7 +687,7 @@ type ApiGetManagedClientV1Request struct {
 	id string
 }
 
-func (r ApiGetManagedClientV1Request) Execute() (*Managedclient, *http.Response, error) {
+func (r ApiGetManagedClientV1Request) Execute() (*ManagedClient, *http.Response, error) {
 	return r.ApiService.GetManagedClientV1Execute(r)
 }
 
@@ -709,13 +709,13 @@ func (a *ManagedClientsAPIService) GetManagedClientV1(ctx context.Context, id st
 }
 
 // Execute executes the request
-//  @return Managedclient
-func (a *ManagedClientsAPIService) GetManagedClientV1Execute(r ApiGetManagedClientV1Request) (*Managedclient, *http.Response, error) {
+//  @return ManagedClient
+func (a *ManagedClientsAPIService) GetManagedClientV1Execute(r ApiGetManagedClientV1Request) (*ManagedClient, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Managedclient
+		localVarReturnValue  *ManagedClient
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClientsAPIService.GetManagedClientV1")
@@ -770,7 +770,7 @@ func (a *ManagedClientsAPIService) GetManagedClientV1Execute(r ApiGetManagedClie
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -792,7 +792,7 @@ func (a *ManagedClientsAPIService) GetManagedClientV1Execute(r ApiGetManagedClie
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -803,7 +803,7 @@ func (a *ManagedClientsAPIService) GetManagedClientV1Execute(r ApiGetManagedClie
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -825,7 +825,7 @@ func (a *ManagedClientsAPIService) GetManagedClientV1Execute(r ApiGetManagedClie
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -882,7 +882,7 @@ func (r ApiGetManagedClientsV1Request) Filters(filters string) ApiGetManagedClie
 	return r
 }
 
-func (r ApiGetManagedClientsV1Request) Execute() ([]Managedclient, *http.Response, error) {
+func (r ApiGetManagedClientsV1Request) Execute() ([]ManagedClient, *http.Response, error) {
 	return r.ApiService.GetManagedClientsV1Execute(r)
 }
 
@@ -902,13 +902,13 @@ func (a *ManagedClientsAPIService) GetManagedClientsV1(ctx context.Context) ApiG
 }
 
 // Execute executes the request
-//  @return []Managedclient
-func (a *ManagedClientsAPIService) GetManagedClientsV1Execute(r ApiGetManagedClientsV1Request) ([]Managedclient, *http.Response, error) {
+//  @return []ManagedClient
+func (a *ManagedClientsAPIService) GetManagedClientsV1Execute(r ApiGetManagedClientsV1Request) ([]ManagedClient, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Managedclient
+		localVarReturnValue  []ManagedClient
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClientsAPIService.GetManagedClientsV1")
@@ -983,7 +983,7 @@ func (a *ManagedClientsAPIService) GetManagedClientsV1Execute(r ApiGetManagedCli
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1005,7 +1005,7 @@ func (a *ManagedClientsAPIService) GetManagedClientsV1Execute(r ApiGetManagedCli
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1027,7 +1027,7 @@ func (a *ManagedClientsAPIService) GetManagedClientsV1Execute(r ApiGetManagedCli
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1055,16 +1055,16 @@ type ApiUpdateManagedClientV1Request struct {
 	ctx context.Context
 	ApiService *ManagedClientsAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // JSONPatch payload used to update the object.
-func (r ApiUpdateManagedClientV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateManagedClientV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateManagedClientV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateManagedClientV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiUpdateManagedClientV1Request) Execute() (*Managedclient, *http.Response, error) {
+func (r ApiUpdateManagedClientV1Request) Execute() (*ManagedClient, *http.Response, error) {
 	return r.ApiService.UpdateManagedClientV1Execute(r)
 }
 
@@ -1086,13 +1086,13 @@ func (a *ManagedClientsAPIService) UpdateManagedClientV1(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return Managedclient
-func (a *ManagedClientsAPIService) UpdateManagedClientV1Execute(r ApiUpdateManagedClientV1Request) (*Managedclient, *http.Response, error) {
+//  @return ManagedClient
+func (a *ManagedClientsAPIService) UpdateManagedClientV1Execute(r ApiUpdateManagedClientV1Request) (*ManagedClient, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Managedclient
+		localVarReturnValue  *ManagedClient
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClientsAPIService.UpdateManagedClientV1")
@@ -1106,8 +1106,8 @@ func (a *ManagedClientsAPIService) UpdateManagedClientV1Execute(r ApiUpdateManag
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1128,7 +1128,7 @@ func (a *ManagedClientsAPIService) UpdateManagedClientV1Execute(r ApiUpdateManag
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1152,7 +1152,7 @@ func (a *ManagedClientsAPIService) UpdateManagedClientV1Execute(r ApiUpdateManag
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1174,7 +1174,7 @@ func (a *ManagedClientsAPIService) UpdateManagedClientV1Execute(r ApiUpdateManag
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1185,7 +1185,7 @@ func (a *ManagedClientsAPIService) UpdateManagedClientV1Execute(r ApiUpdateManag
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1207,7 +1207,7 @@ func (a *ManagedClientsAPIService) UpdateManagedClientV1Execute(r ApiUpdateManag
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

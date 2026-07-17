@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Scheduledsearch**](../models/scheduledsearch)
+[**ScheduledSearch**](../models/scheduled-search)
 
 ### HTTP request headers
 
@@ -110,7 +110,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.CreateScheduledSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateScheduledSearchV1`: Scheduledsearch
+    // response from `CreateScheduledSearchV1`: ScheduledSearch
     fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchAPI.CreateScheduledSearchV1`: %v\n", resp)
 }
 ```
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Scheduledsearch**](../models/scheduledsearch)
+[**ScheduledSearch**](../models/scheduled-search)
 
 ### HTTP request headers
 
@@ -242,7 +242,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.GetScheduledSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetScheduledSearchV1`: Scheduledsearch
+    // response from `GetScheduledSearchV1`: ScheduledSearch
     fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchAPI.GetScheduledSearchV1`: %v\n", resp)
 }
 ```
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Scheduledsearch**](../models/scheduledsearch)
+[**[]ScheduledSearch**](../models/scheduled-search)
 
 ### HTTP request headers
 
@@ -311,7 +311,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.ListScheduledSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListScheduledSearchV1`: []Scheduledsearch
+    // response from `ListScheduledSearchV1`: []ScheduledSearch
     fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchAPI.ListScheduledSearchV1`: %v\n", resp)
 }
 ```
@@ -341,7 +341,7 @@ Other parameters are passed through a pointer to a apiUnsubscribeScheduledSearch
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **typedreference** | [**Typedreference**](../models/typedreference) | The recipient to be removed from the scheduled search.  | 
+ **typedReference** | [**TypedReference**](../models/typed-reference) | The recipient to be removed from the scheduled search.  | 
 
 ### Return type
 
@@ -368,10 +368,13 @@ import (
 
 func main() {
     id := `2c91808568c529c60168cca6f90c1313` // string | ID of the requested document. # string | ID of the requested document.
-    typedreferenceJson := []byte(``) // Typedreference | The recipient to be removed from the scheduled search. 
+    typedreferenceJson := []byte(`{
+          "id" : "2c91808568c529c60168cca6f90c1313",
+          "type" : "IDENTITY"
+        }`) // TypedReference | The recipient to be removed from the scheduled search. 
 
-    var typedreference scheduled_search.Typedreference
-    if err := json.Unmarshal(typedreferenceJson, &typedreference); err != nil {
+    var typedReference scheduled_search.TypedReference
+    if err := json.Unmarshal(typedreferenceJson, &typedReference); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -379,8 +382,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.ScheduledSearchAPI.UnsubscribeScheduledSearchV1(context.Background(), id).Typedreference(typedreference).Execute()
-	  //r, err := apiClient.ScheduledSearchAPI.UnsubscribeScheduledSearchV1(context.Background(), id).Typedreference(typedreference).Execute()
+    r, err := apiClient.ScheduledSearchAPI.UnsubscribeScheduledSearchV1(context.Background(), id).TypedReference(typedReference).Execute()
+	  //r, err := apiClient.ScheduledSearchAPI.UnsubscribeScheduledSearchV1(context.Background(), id).TypedReference(typedReference).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.UnsubscribeScheduledSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -414,11 +417,11 @@ Other parameters are passed through a pointer to a apiUpdateScheduledSearchV1Req
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **scheduledsearch** | [**Scheduledsearch**](../models/scheduledsearch) | The scheduled search to persist. | 
+ **scheduledSearch** | [**ScheduledSearch**](../models/scheduled-search) | The scheduled search to persist. | 
 
 ### Return type
 
-[**Scheduledsearch**](../models/scheduledsearch)
+[**ScheduledSearch**](../models/scheduled-search)
 
 ### HTTP request headers
 
@@ -441,10 +444,52 @@ import (
 
 func main() {
     id := `2c91808568c529c60168cca6f90c1313` // string | ID of the requested document. # string | ID of the requested document.
-    scheduledsearchJson := []byte(``) // Scheduledsearch | The scheduled search to persist.
+    scheduledsearchJson := []byte(`{
+          "owner" : {
+            "id" : "2c9180867624cbd7017642d8c8c81f67",
+            "type" : "IDENTITY"
+          },
+          "displayQueryDetails" : false,
+          "created" : "",
+          "description" : "Daily disabled accounts",
+          "ownerId" : "2c9180867624cbd7017642d8c8c81f67",
+          "enabled" : false,
+          "schedule" : {
+            "hours" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "months" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "timeZoneId" : "America/Chicago",
+            "days" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "expiration" : "2018-06-25T20:22:28.104Z",
+            "type" : "WEEKLY"
+          },
+          "recipients" : [ {
+            "id" : "2c9180867624cbd7017642d8c8c81f67",
+            "type" : "IDENTITY"
+          }, {
+            "id" : "2c9180867624cbd7017642d8c8c81f67",
+            "type" : "IDENTITY"
+          } ],
+          "savedSearchId" : "554f1511-f0a1-4744-ab14-599514d3e57c",
+          "name" : "Daily disabled accounts",
+          "modified" : "",
+          "id" : "0de46054-fe90-434a-b84e-c6b3359d0c64",
+          "emailEmptyResults" : false
+        }`) // ScheduledSearch | The scheduled search to persist.
 
-    var scheduledsearch scheduled_search.Scheduledsearch
-    if err := json.Unmarshal(scheduledsearchJson, &scheduledsearch); err != nil {
+    var scheduledSearch scheduled_search.ScheduledSearch
+    if err := json.Unmarshal(scheduledsearchJson, &scheduledSearch); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -452,13 +497,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearchAPI.UpdateScheduledSearchV1(context.Background(), id).Scheduledsearch(scheduledsearch).Execute()
-	  //resp, r, err := apiClient.ScheduledSearchAPI.UpdateScheduledSearchV1(context.Background(), id).Scheduledsearch(scheduledsearch).Execute()
+    resp, r, err := apiClient.ScheduledSearchAPI.UpdateScheduledSearchV1(context.Background(), id).ScheduledSearch(scheduledSearch).Execute()
+	  //resp, r, err := apiClient.ScheduledSearchAPI.UpdateScheduledSearchV1(context.Background(), id).ScheduledSearch(scheduledSearch).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.UpdateScheduledSearchV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateScheduledSearchV1`: Scheduledsearch
+    // response from `UpdateScheduledSearchV1`: ScheduledSearch
     fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchAPI.UpdateScheduledSearchV1`: %v\n", resp)
 }
 ```

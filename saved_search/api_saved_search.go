@@ -35,7 +35,7 @@ func (r ApiCreateSavedSearchV1Request) CreateSavedSearchV1Request(createSavedSea
 	return r
 }
 
-func (r ApiCreateSavedSearchV1Request) Execute() (*Savedsearch, *http.Response, error) {
+func (r ApiCreateSavedSearchV1Request) Execute() (*SavedSearch, *http.Response, error) {
 	return r.ApiService.CreateSavedSearchV1Execute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *SavedSearchAPIService) CreateSavedSearchV1(ctx context.Context) ApiCrea
 }
 
 // Execute executes the request
-//  @return Savedsearch
-func (a *SavedSearchAPIService) CreateSavedSearchV1Execute(r ApiCreateSavedSearchV1Request) (*Savedsearch, *http.Response, error) {
+//  @return SavedSearch
+func (a *SavedSearchAPIService) CreateSavedSearchV1Execute(r ApiCreateSavedSearchV1Request) (*SavedSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Savedsearch
+		localVarReturnValue  *SavedSearch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchAPIService.CreateSavedSearchV1")
@@ -121,7 +121,7 @@ func (a *SavedSearchAPIService) CreateSavedSearchV1Execute(r ApiCreateSavedSearc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -143,7 +143,7 @@ func (a *SavedSearchAPIService) CreateSavedSearchV1Execute(r ApiCreateSavedSearc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -165,7 +165,7 @@ func (a *SavedSearchAPIService) CreateSavedSearchV1Execute(r ApiCreateSavedSearc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -277,7 +277,7 @@ func (a *SavedSearchAPIService) DeleteSavedSearchV1Execute(r ApiDeleteSavedSearc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -299,7 +299,7 @@ func (a *SavedSearchAPIService) DeleteSavedSearchV1Execute(r ApiDeleteSavedSearc
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -310,7 +310,7 @@ func (a *SavedSearchAPIService) DeleteSavedSearchV1Execute(r ApiDeleteSavedSearc
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -332,7 +332,7 @@ func (a *SavedSearchAPIService) DeleteSavedSearchV1Execute(r ApiDeleteSavedSearc
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -351,12 +351,12 @@ type ApiExecuteSavedSearchV1Request struct {
 	ctx context.Context
 	ApiService *SavedSearchAPIService
 	id string
-	searcharguments *Searcharguments
+	searchArguments *SearchArguments
 }
 
 // When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. 
-func (r ApiExecuteSavedSearchV1Request) Searcharguments(searcharguments Searcharguments) ApiExecuteSavedSearchV1Request {
-	r.searcharguments = &searcharguments
+func (r ApiExecuteSavedSearchV1Request) SearchArguments(searchArguments SearchArguments) ApiExecuteSavedSearchV1Request {
+	r.searchArguments = &searchArguments
 	return r
 }
 
@@ -401,8 +401,8 @@ func (a *SavedSearchAPIService) ExecuteSavedSearchV1Execute(r ApiExecuteSavedSea
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.searcharguments == nil {
-		return nil, reportError("searcharguments is required and must be specified")
+	if r.searchArguments == nil {
+		return nil, reportError("searchArguments is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -423,7 +423,7 @@ func (a *SavedSearchAPIService) ExecuteSavedSearchV1Execute(r ApiExecuteSavedSea
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.searcharguments
+	localVarPostBody = r.searchArguments
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -447,7 +447,7 @@ func (a *SavedSearchAPIService) ExecuteSavedSearchV1Execute(r ApiExecuteSavedSea
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -469,7 +469,7 @@ func (a *SavedSearchAPIService) ExecuteSavedSearchV1Execute(r ApiExecuteSavedSea
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -480,7 +480,7 @@ func (a *SavedSearchAPIService) ExecuteSavedSearchV1Execute(r ApiExecuteSavedSea
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -502,7 +502,7 @@ func (a *SavedSearchAPIService) ExecuteSavedSearchV1Execute(r ApiExecuteSavedSea
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -523,7 +523,7 @@ type ApiGetSavedSearchV1Request struct {
 	id string
 }
 
-func (r ApiGetSavedSearchV1Request) Execute() (*Savedsearch, *http.Response, error) {
+func (r ApiGetSavedSearchV1Request) Execute() (*SavedSearch, *http.Response, error) {
 	return r.ApiService.GetSavedSearchV1Execute(r)
 }
 
@@ -546,13 +546,13 @@ func (a *SavedSearchAPIService) GetSavedSearchV1(ctx context.Context, id string)
 }
 
 // Execute executes the request
-//  @return Savedsearch
-func (a *SavedSearchAPIService) GetSavedSearchV1Execute(r ApiGetSavedSearchV1Request) (*Savedsearch, *http.Response, error) {
+//  @return SavedSearch
+func (a *SavedSearchAPIService) GetSavedSearchV1Execute(r ApiGetSavedSearchV1Request) (*SavedSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Savedsearch
+		localVarReturnValue  *SavedSearch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchAPIService.GetSavedSearchV1")
@@ -607,7 +607,7 @@ func (a *SavedSearchAPIService) GetSavedSearchV1Execute(r ApiGetSavedSearchV1Req
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -629,7 +629,7 @@ func (a *SavedSearchAPIService) GetSavedSearchV1Execute(r ApiGetSavedSearchV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -640,7 +640,7 @@ func (a *SavedSearchAPIService) GetSavedSearchV1Execute(r ApiGetSavedSearchV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -662,7 +662,7 @@ func (a *SavedSearchAPIService) GetSavedSearchV1Execute(r ApiGetSavedSearchV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -719,7 +719,7 @@ func (r ApiListSavedSearchesV1Request) Filters(filters string) ApiListSavedSearc
 	return r
 }
 
-func (r ApiListSavedSearchesV1Request) Execute() ([]Savedsearch, *http.Response, error) {
+func (r ApiListSavedSearchesV1Request) Execute() ([]SavedSearch, *http.Response, error) {
 	return r.ApiService.ListSavedSearchesV1Execute(r)
 }
 
@@ -740,13 +740,13 @@ func (a *SavedSearchAPIService) ListSavedSearchesV1(ctx context.Context) ApiList
 }
 
 // Execute executes the request
-//  @return []Savedsearch
-func (a *SavedSearchAPIService) ListSavedSearchesV1Execute(r ApiListSavedSearchesV1Request) ([]Savedsearch, *http.Response, error) {
+//  @return []SavedSearch
+func (a *SavedSearchAPIService) ListSavedSearchesV1Execute(r ApiListSavedSearchesV1Request) ([]SavedSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Savedsearch
+		localVarReturnValue  []SavedSearch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchAPIService.ListSavedSearchesV1")
@@ -821,7 +821,7 @@ func (a *SavedSearchAPIService) ListSavedSearchesV1Execute(r ApiListSavedSearche
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -843,7 +843,7 @@ func (a *SavedSearchAPIService) ListSavedSearchesV1Execute(r ApiListSavedSearche
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -865,7 +865,7 @@ func (a *SavedSearchAPIService) ListSavedSearchesV1Execute(r ApiListSavedSearche
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -893,16 +893,16 @@ type ApiPutSavedSearchV1Request struct {
 	ctx context.Context
 	ApiService *SavedSearchAPIService
 	id string
-	savedsearch *Savedsearch
+	savedSearch *SavedSearch
 }
 
 // The saved search to persist.
-func (r ApiPutSavedSearchV1Request) Savedsearch(savedsearch Savedsearch) ApiPutSavedSearchV1Request {
-	r.savedsearch = &savedsearch
+func (r ApiPutSavedSearchV1Request) SavedSearch(savedSearch SavedSearch) ApiPutSavedSearchV1Request {
+	r.savedSearch = &savedSearch
 	return r
 }
 
-func (r ApiPutSavedSearchV1Request) Execute() (*Savedsearch, *http.Response, error) {
+func (r ApiPutSavedSearchV1Request) Execute() (*SavedSearch, *http.Response, error) {
 	return r.ApiService.PutSavedSearchV1Execute(r)
 }
 
@@ -927,13 +927,13 @@ func (a *SavedSearchAPIService) PutSavedSearchV1(ctx context.Context, id string)
 }
 
 // Execute executes the request
-//  @return Savedsearch
-func (a *SavedSearchAPIService) PutSavedSearchV1Execute(r ApiPutSavedSearchV1Request) (*Savedsearch, *http.Response, error) {
+//  @return SavedSearch
+func (a *SavedSearchAPIService) PutSavedSearchV1Execute(r ApiPutSavedSearchV1Request) (*SavedSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Savedsearch
+		localVarReturnValue  *SavedSearch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchAPIService.PutSavedSearchV1")
@@ -947,8 +947,8 @@ func (a *SavedSearchAPIService) PutSavedSearchV1Execute(r ApiPutSavedSearchV1Req
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.savedsearch == nil {
-		return localVarReturnValue, nil, reportError("savedsearch is required and must be specified")
+	if r.savedSearch == nil {
+		return localVarReturnValue, nil, reportError("savedSearch is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -969,7 +969,7 @@ func (a *SavedSearchAPIService) PutSavedSearchV1Execute(r ApiPutSavedSearchV1Req
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.savedsearch
+	localVarPostBody = r.savedSearch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -993,7 +993,7 @@ func (a *SavedSearchAPIService) PutSavedSearchV1Execute(r ApiPutSavedSearchV1Req
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1015,7 +1015,7 @@ func (a *SavedSearchAPIService) PutSavedSearchV1Execute(r ApiPutSavedSearchV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1037,7 +1037,7 @@ func (a *SavedSearchAPIService) PutSavedSearchV1Execute(r ApiPutSavedSearchV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

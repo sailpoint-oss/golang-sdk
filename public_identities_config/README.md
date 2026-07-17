@@ -85,15 +85,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Dtotype](docs/Dtotype.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [DtoType](docs/DtoType.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetPublicIdentityConfigV1401Response](docs/GetPublicIdentityConfigV1401Response.md)
  - [GetPublicIdentityConfigV1429Response](docs/GetPublicIdentityConfigV1429Response.md)
- - [Identityreference](docs/Identityreference.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Publicidentityattributeconfig](docs/Publicidentityattributeconfig.md)
- - [Publicidentityconfig](docs/Publicidentityconfig.md)
+ - [IdentityReference](docs/IdentityReference.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [PublicIdentityAttributeConfig](docs/PublicIdentityAttributeConfig.md)
+ - [PublicIdentityConfig](docs/PublicIdentityConfig.md)
 
 
 ## Documentation For Authorization

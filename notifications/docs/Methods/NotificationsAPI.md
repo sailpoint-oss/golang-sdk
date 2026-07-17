@@ -50,11 +50,11 @@ Other parameters are passed through a pointer to a apiCreateDomainDkimV1Request 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **domainaddress** | [**Domainaddress**](../models/domainaddress) |  | 
+ **domainAddress** | [**DomainAddress**](../models/domain-address) |  | 
 
 ### Return type
 
-[**Domainstatusdto**](../models/domainstatusdto)
+[**DomainStatusDto**](../models/domain-status-dto)
 
 ### HTTP request headers
 
@@ -76,10 +76,12 @@ import (
 )
 
 func main() {
-    domainaddressJson := []byte(``) // Domainaddress | 
+    domainaddressJson := []byte(`{
+          "domain" : "sailpoint.com"
+        }`) // DomainAddress | 
 
-    var domainaddress notifications.Domainaddress
-    if err := json.Unmarshal(domainaddressJson, &domainaddress); err != nil {
+    var domainAddress notifications.DomainAddress
+    if err := json.Unmarshal(domainaddressJson, &domainAddress); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -87,13 +89,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsAPI.CreateDomainDkimV1(context.Background()).Domainaddress(domainaddress).Execute()
-	  //resp, r, err := apiClient.NotificationsAPI.CreateDomainDkimV1(context.Background()).Domainaddress(domainaddress).Execute()
+    resp, r, err := apiClient.NotificationsAPI.CreateDomainDkimV1(context.Background()).DomainAddress(domainAddress).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.CreateDomainDkimV1(context.Background()).DomainAddress(domainAddress).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateDomainDkimV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateDomainDkimV1`: Domainstatusdto
+    // response from `CreateDomainDkimV1`: DomainStatusDto
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.CreateDomainDkimV1`: %v\n", resp)
 }
 ```
@@ -120,11 +122,11 @@ Other parameters are passed through a pointer to a apiCreateNotificationTemplate
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **templatedto** | [**Templatedto**](../models/templatedto) |  | 
+ **templateDto** | [**TemplateDto**](../models/template-dto) |  | 
 
 ### Return type
 
-[**Templatedto**](../models/templatedto)
+[**TemplateDto**](../models/template-dto)
 
 ### HTTP request headers
 
@@ -146,10 +148,73 @@ import (
 )
 
 func main() {
-    templatedtoJson := []byte(``) // Templatedto | 
+    templatedtoJson := []byte(`{
+          "slackTemplate" : {
+            "isSubscription" : false,
+            "attachments" : "[]",
+            "blocks" : "blocks",
+            "requestId" : "requestId",
+            "autoApprovalData" : {
+              "itemId" : "itemId",
+              "itemType" : "itemType",
+              "autoApprovalMessageJSON" : "autoApprovalMessageJSON",
+              "isAutoApproved" : "isAutoApproved",
+              "autoApprovalTitle" : "autoApprovalTitle"
+            },
+            "customFields" : {
+              "requestType" : "requestType",
+              "campaignId" : "campaignId",
+              "campaignStatus" : "campaignStatus",
+              "containsDeny" : "containsDeny"
+            },
+            "requestedById" : "requestedById",
+            "approvalId" : "approvalId",
+            "text" : "You have a new approval request",
+            "notificationType" : "notificationType",
+            "key" : "key"
+          },
+          "footer" : "footer",
+          "teamsTemplate" : {
+            "isSubscription" : false,
+            "requestId" : "requestId",
+            "autoApprovalData" : {
+              "itemId" : "itemId",
+              "itemType" : "itemType",
+              "autoApprovalMessageJSON" : "autoApprovalMessageJSON",
+              "isAutoApproved" : "isAutoApproved",
+              "autoApprovalTitle" : "autoApprovalTitle"
+            },
+            "customFields" : {
+              "requestType" : "requestType",
+              "campaignId" : "campaignId",
+              "campaignStatus" : "campaignStatus",
+              "containsDeny" : "containsDeny"
+            },
+            "requestedById" : "requestedById",
+            "approvalId" : "approvalId",
+            "text" : "You have a new approval request",
+            "notificationType" : "notificationType",
+            "title" : "title",
+            "key" : "key",
+            "messageJSON" : "messageJSON"
+          },
+          "subject" : "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}.",
+          "created" : "2020-01-01T00:00:00Z",
+          "description" : "Daily digest - sent if number of outstanding tasks for task owner > 0",
+          "medium" : "EMAIL",
+          "locale" : "en",
+          "body" : "Please go to the task manager",
+          "name" : "Task Manager Subscription",
+          "replyTo" : "$__global.emailFromAddress",
+          "header" : "header",
+          "modified" : "2020-01-01T00:00:00Z",
+          "from" : "$__global.emailFromAddress",
+          "id" : "c17bea3a-574d-453c-9e04-4365fbf5af0b",
+          "key" : "cloud_manual_work_item_summary"
+        }`) // TemplateDto | 
 
-    var templatedto notifications.Templatedto
-    if err := json.Unmarshal(templatedtoJson, &templatedto); err != nil {
+    var templateDto notifications.TemplateDto
+    if err := json.Unmarshal(templatedtoJson, &templateDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -157,13 +222,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsAPI.CreateNotificationTemplateV1(context.Background()).Templatedto(templatedto).Execute()
-	  //resp, r, err := apiClient.NotificationsAPI.CreateNotificationTemplateV1(context.Background()).Templatedto(templatedto).Execute()
+    resp, r, err := apiClient.NotificationsAPI.CreateNotificationTemplateV1(context.Background()).TemplateDto(templateDto).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.CreateNotificationTemplateV1(context.Background()).TemplateDto(templateDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateNotificationTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateNotificationTemplateV1`: Templatedto
+    // response from `CreateNotificationTemplateV1`: TemplateDto
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.CreateNotificationTemplateV1`: %v\n", resp)
 }
 ```
@@ -187,11 +252,11 @@ Other parameters are passed through a pointer to a apiCreateVerifiedFromAddressV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailstatusdto** | [**Emailstatusdto**](../models/emailstatusdto) |  | 
+ **emailStatusDto** | [**EmailStatusDto**](../models/email-status-dto) |  | 
 
 ### Return type
 
-[**Emailstatusdto**](../models/emailstatusdto)
+[**EmailStatusDto**](../models/email-status-dto)
 
 ### HTTP request headers
 
@@ -213,10 +278,16 @@ import (
 )
 
 func main() {
-    emailstatusdtoJson := []byte(`{"email":"sender@example.com"}`) // Emailstatusdto | 
+    emailstatusdtoJson := []byte(`{
+          "isVerifiedByDomain" : false,
+          "verificationStatus" : "SUCCESS",
+          "id" : "id",
+          "region" : "us-east-1",
+          "email" : "sender@example.com"
+        }`) // EmailStatusDto | 
 
-    var emailstatusdto notifications.Emailstatusdto
-    if err := json.Unmarshal(emailstatusdtoJson, &emailstatusdto); err != nil {
+    var emailStatusDto notifications.EmailStatusDto
+    if err := json.Unmarshal(emailstatusdtoJson, &emailStatusDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -224,13 +295,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsAPI.CreateVerifiedFromAddressV1(context.Background()).Emailstatusdto(emailstatusdto).Execute()
-	  //resp, r, err := apiClient.NotificationsAPI.CreateVerifiedFromAddressV1(context.Background()).Emailstatusdto(emailstatusdto).Execute()
+    resp, r, err := apiClient.NotificationsAPI.CreateVerifiedFromAddressV1(context.Background()).EmailStatusDto(emailStatusDto).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.CreateVerifiedFromAddressV1(context.Background()).EmailStatusDto(emailStatusDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateVerifiedFromAddressV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateVerifiedFromAddressV1`: Emailstatusdto
+    // response from `CreateVerifiedFromAddressV1`: EmailStatusDto
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.CreateVerifiedFromAddressV1`: %v\n", resp)
 }
 ```
@@ -254,7 +325,7 @@ Other parameters are passed through a pointer to a apiDeleteNotificationTemplate
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **templatebulkdeletedto** | [**[]Templatebulkdeletedto**](../models/templatebulkdeletedto) |  | 
+ **templateBulkDeleteDto** | [**[]TemplateBulkDeleteDto**](../models/template-bulk-delete-dto) |  | 
 
 ### Return type
 
@@ -280,10 +351,10 @@ import (
 )
 
 func main() {
-    templatebulkdeletedtoJson := []byte(``) // []Templatebulkdeletedto | 
+    templatebulkdeletedtoJson := []byte(``) // []TemplateBulkDeleteDto | 
 
-    var templatebulkdeletedto []notifications.Templatebulkdeletedto
-    if err := json.Unmarshal(templatebulkdeletedtoJson, &templatebulkdeletedto); err != nil {
+    var templateBulkDeleteDto []notifications.TemplateBulkDeleteDto
+    if err := json.Unmarshal(templatebulkdeletedtoJson, &templateBulkDeleteDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -291,8 +362,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NotificationsAPI.DeleteNotificationTemplatesInBulkV1(context.Background()).Templatebulkdeletedto(templatebulkdeletedto).Execute()
-	  //r, err := apiClient.NotificationsAPI.DeleteNotificationTemplatesInBulkV1(context.Background()).Templatebulkdeletedto(templatebulkdeletedto).Execute()
+    r, err := apiClient.NotificationsAPI.DeleteNotificationTemplatesInBulkV1(context.Background()).TemplateBulkDeleteDto(templateBulkDeleteDto).Execute()
+	  //r, err := apiClient.NotificationsAPI.DeleteNotificationTemplatesInBulkV1(context.Background()).TemplateBulkDeleteDto(templateBulkDeleteDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.DeleteNotificationTemplatesInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -390,7 +461,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Dkimattributes**](../models/dkimattributes)
+[**[]DkimAttributes**](../models/dkim-attributes)
 
 ### HTTP request headers
 
@@ -425,7 +496,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetDkimAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDkimAttributesV1`: []Dkimattributes
+    // response from `GetDkimAttributesV1`: []DkimAttributes
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetDkimAttributesV1`: %v\n", resp)
 }
 ```
@@ -457,7 +528,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Mailfromattributes**](../models/mailfromattributes)
+[**MailFromAttributes**](../models/mail-from-attributes)
 
 ### HTTP request headers
 
@@ -491,7 +562,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetMailFromAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMailFromAttributesV1`: Mailfromattributes
+    // response from `GetMailFromAttributesV1`: MailFromAttributes
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetMailFromAttributesV1`: %v\n", resp)
 }
 ```
@@ -523,7 +594,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Preferencesdto**](../models/preferencesdto)
+[**PreferencesDto**](../models/preferences-dto)
 
 ### HTTP request headers
 
@@ -557,7 +628,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationPreferencesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNotificationPreferencesV1`: Preferencesdto
+    // response from `GetNotificationPreferencesV1`: PreferencesDto
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationPreferencesV1`: %v\n", resp)
 }
 ```
@@ -589,7 +660,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Templatedto**](../models/templatedto)
+[**TemplateDto**](../models/template-dto)
 
 ### HTTP request headers
 
@@ -623,7 +694,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNotificationTemplateV1`: Templatedto
+    // response from `GetNotificationTemplateV1`: TemplateDto
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationTemplateV1`: %v\n", resp)
 }
 ```
@@ -661,7 +732,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Templatevariablesdto**](../models/templatevariablesdto)
+[**TemplateVariablesDto**](../models/template-variables-dto)
 
 ### HTTP request headers
 
@@ -697,7 +768,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationTemplateVariablesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNotificationTemplateVariablesV1`: Templatevariablesdto
+    // response from `GetNotificationTemplateVariablesV1`: TemplateVariablesDto
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationTemplateVariablesV1`: %v\n", resp)
 }
 ```
@@ -722,7 +793,7 @@ Other parameters are passed through a pointer to a apiGetNotificationsTemplateCo
 
 ### Return type
 
-[**Notificationtemplatecontext**](../models/notificationtemplatecontext)
+[**NotificationTemplateContext**](../models/notification-template-context)
 
 ### HTTP request headers
 
@@ -755,7 +826,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationsTemplateContextV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNotificationsTemplateContextV1`: Notificationtemplatecontext
+    // response from `GetNotificationsTemplateContextV1`: NotificationTemplateContext
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationsTemplateContextV1`: %v\n", resp)
 }
 ```
@@ -787,7 +858,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Emailstatusdto**](../models/emailstatusdto)
+[**[]EmailStatusDto**](../models/email-status-dto)
 
 ### HTTP request headers
 
@@ -825,7 +896,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListFromAddressesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListFromAddressesV1`: []Emailstatusdto
+    // response from `ListFromAddressesV1`: []EmailStatusDto
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListFromAddressesV1`: %v\n", resp)
 }
 ```
@@ -855,7 +926,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Templatedtodefault**](../models/templatedtodefault)
+[**[]TemplateDtoDefault**](../models/template-dto-default)
 
 ### HTTP request headers
 
@@ -891,7 +962,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationTemplateDefaultsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListNotificationTemplateDefaultsV1`: []Templatedtodefault
+    // response from `ListNotificationTemplateDefaultsV1`: []TemplateDtoDefault
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListNotificationTemplateDefaultsV1`: %v\n", resp)
 }
 ```
@@ -922,7 +993,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Templatedto**](../models/templatedto)
+[**[]TemplateDto**](../models/template-dto)
 
 ### HTTP request headers
 
@@ -959,7 +1030,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationTemplatesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListNotificationTemplatesV1`: []Templatedto
+    // response from `ListNotificationTemplatesV1`: []TemplateDto
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListNotificationTemplatesV1`: %v\n", resp)
 }
 ```
@@ -983,11 +1054,11 @@ Other parameters are passed through a pointer to a apiPutMailFromAttributesV1Req
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mailfromattributesdto** | [**Mailfromattributesdto**](../models/mailfromattributesdto) |  | 
+ **mailFromAttributesDto** | [**MailFromAttributesDto**](../models/mail-from-attributes-dto) |  | 
 
 ### Return type
 
-[**Mailfromattributes**](../models/mailfromattributes)
+[**MailFromAttributes**](../models/mail-from-attributes)
 
 ### HTTP request headers
 
@@ -1009,10 +1080,13 @@ import (
 )
 
 func main() {
-    mailfromattributesdtoJson := []byte(`{"identity":"BobSmith@sailpoint.com","mailFromDomain":"example.sailpoint.com"}`) // Mailfromattributesdto | 
+    mailfromattributesdtoJson := []byte(`{
+          "identity" : "BobSmith@sailpoint.com",
+          "mailFromDomain" : "example.sailpoint.com"
+        }`) // MailFromAttributesDto | 
 
-    var mailfromattributesdto notifications.Mailfromattributesdto
-    if err := json.Unmarshal(mailfromattributesdtoJson, &mailfromattributesdto); err != nil {
+    var mailFromAttributesDto notifications.MailFromAttributesDto
+    if err := json.Unmarshal(mailfromattributesdtoJson, &mailFromAttributesDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1020,13 +1094,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsAPI.PutMailFromAttributesV1(context.Background()).Mailfromattributesdto(mailfromattributesdto).Execute()
-	  //resp, r, err := apiClient.NotificationsAPI.PutMailFromAttributesV1(context.Background()).Mailfromattributesdto(mailfromattributesdto).Execute()
+    resp, r, err := apiClient.NotificationsAPI.PutMailFromAttributesV1(context.Background()).MailFromAttributesDto(mailFromAttributesDto).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.PutMailFromAttributesV1(context.Background()).MailFromAttributesDto(mailFromAttributesDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.PutMailFromAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutMailFromAttributesV1`: Mailfromattributes
+    // response from `PutMailFromAttributesV1`: MailFromAttributes
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.PutMailFromAttributesV1`: %v\n", resp)
 }
 ```
@@ -1050,7 +1124,7 @@ Other parameters are passed through a pointer to a apiSendTestNotificationV1Requ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sendtestnotificationrequestdto** | [**Sendtestnotificationrequestdto**](../models/sendtestnotificationrequestdto) |  | 
+ **sendTestNotificationRequestDto** | [**SendTestNotificationRequestDto**](../models/send-test-notification-request-dto) |  | 
 
 ### Return type
 
@@ -1076,10 +1150,21 @@ import (
 )
 
 func main() {
-    sendtestnotificationrequestdtoJson := []byte(`{"key":"cloud_manual_work_item_summary","medium":"EMAIL","context":{"numberOfPendingTasks":"4","ownerId":"201327fda1c44704ac01181e963d463c"}}`) // Sendtestnotificationrequestdto | 
+    sendtestnotificationrequestdtoJson := []byte(`{
+          "carbonCopy" : [ "cc@example.com" ],
+          "context" : {
+            "numberOfPendingTasks" : "4",
+            "taskTasks" : "tasks"
+          },
+          "blindCarbonCopy" : [ "bcc@example.com" ],
+          "medium" : "EMAIL",
+          "locale" : "en",
+          "recipientEmailList" : [ "test@example.com" ],
+          "key" : "cloud_manual_work_item_summary"
+        }`) // SendTestNotificationRequestDto | 
 
-    var sendtestnotificationrequestdto notifications.Sendtestnotificationrequestdto
-    if err := json.Unmarshal(sendtestnotificationrequestdtoJson, &sendtestnotificationrequestdto); err != nil {
+    var sendTestNotificationRequestDto notifications.SendTestNotificationRequestDto
+    if err := json.Unmarshal(sendtestnotificationrequestdtoJson, &sendTestNotificationRequestDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1087,8 +1172,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.NotificationsAPI.SendTestNotificationV1(context.Background()).Sendtestnotificationrequestdto(sendtestnotificationrequestdto).Execute()
-	  //r, err := apiClient.NotificationsAPI.SendTestNotificationV1(context.Background()).Sendtestnotificationrequestdto(sendtestnotificationrequestdto).Execute()
+    r, err := apiClient.NotificationsAPI.SendTestNotificationV1(context.Background()).SendTestNotificationRequestDto(sendTestNotificationRequestDto).Execute()
+	  //r, err := apiClient.NotificationsAPI.SendTestNotificationV1(context.Background()).SendTestNotificationRequestDto(sendTestNotificationRequestDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.SendTestNotificationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

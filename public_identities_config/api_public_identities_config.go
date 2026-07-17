@@ -27,7 +27,7 @@ type ApiGetPublicIdentityConfigV1Request struct {
 	ApiService *PublicIdentitiesConfigAPIService
 }
 
-func (r ApiGetPublicIdentityConfigV1Request) Execute() (*Publicidentityconfig, *http.Response, error) {
+func (r ApiGetPublicIdentityConfigV1Request) Execute() (*PublicIdentityConfig, *http.Response, error) {
 	return r.ApiService.GetPublicIdentityConfigV1Execute(r)
 }
 
@@ -47,13 +47,13 @@ func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfigV1(ctx context
 }
 
 // Execute executes the request
-//  @return Publicidentityconfig
-func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfigV1Execute(r ApiGetPublicIdentityConfigV1Request) (*Publicidentityconfig, *http.Response, error) {
+//  @return PublicIdentityConfig
+func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfigV1Execute(r ApiGetPublicIdentityConfigV1Request) (*PublicIdentityConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Publicidentityconfig
+		localVarReturnValue  *PublicIdentityConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PublicIdentitiesConfigAPIService.GetPublicIdentityConfigV1")
@@ -107,7 +107,7 @@ func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfigV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -129,7 +129,7 @@ func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfigV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -151,7 +151,7 @@ func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfigV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -178,15 +178,15 @@ func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfigV1Execute(r Ap
 type ApiUpdatePublicIdentityConfigV1Request struct {
 	ctx context.Context
 	ApiService *PublicIdentitiesConfigAPIService
-	publicidentityconfig *Publicidentityconfig
+	publicIdentityConfig *PublicIdentityConfig
 }
 
-func (r ApiUpdatePublicIdentityConfigV1Request) Publicidentityconfig(publicidentityconfig Publicidentityconfig) ApiUpdatePublicIdentityConfigV1Request {
-	r.publicidentityconfig = &publicidentityconfig
+func (r ApiUpdatePublicIdentityConfigV1Request) PublicIdentityConfig(publicIdentityConfig PublicIdentityConfig) ApiUpdatePublicIdentityConfigV1Request {
+	r.publicIdentityConfig = &publicIdentityConfig
 	return r
 }
 
-func (r ApiUpdatePublicIdentityConfigV1Request) Execute() (*Publicidentityconfig, *http.Response, error) {
+func (r ApiUpdatePublicIdentityConfigV1Request) Execute() (*PublicIdentityConfig, *http.Response, error) {
 	return r.ApiService.UpdatePublicIdentityConfigV1Execute(r)
 }
 
@@ -206,13 +206,13 @@ func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfigV1(ctx cont
 }
 
 // Execute executes the request
-//  @return Publicidentityconfig
-func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfigV1Execute(r ApiUpdatePublicIdentityConfigV1Request) (*Publicidentityconfig, *http.Response, error) {
+//  @return PublicIdentityConfig
+func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfigV1Execute(r ApiUpdatePublicIdentityConfigV1Request) (*PublicIdentityConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Publicidentityconfig
+		localVarReturnValue  *PublicIdentityConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PublicIdentitiesConfigAPIService.UpdatePublicIdentityConfigV1")
@@ -225,8 +225,8 @@ func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfigV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.publicidentityconfig == nil {
-		return localVarReturnValue, nil, reportError("publicidentityconfig is required and must be specified")
+	if r.publicIdentityConfig == nil {
+		return localVarReturnValue, nil, reportError("publicIdentityConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -247,7 +247,7 @@ func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfigV1Execute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.publicidentityconfig
+	localVarPostBody = r.publicIdentityConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -271,7 +271,7 @@ func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfigV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -293,7 +293,7 @@ func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfigV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -315,7 +315,7 @@ func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfigV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

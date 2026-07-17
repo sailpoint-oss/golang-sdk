@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourceusagestatus**](../models/sourceusagestatus)
+[**SourceUsageStatus**](../models/source-usage-status)
 
 ### HTTP request headers
 
@@ -81,7 +81,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourceUsagesAPI.GetStatusBySourceIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetStatusBySourceIdV1`: Sourceusagestatus
+    // response from `GetStatusBySourceIdV1`: SourceUsageStatus
     fmt.Fprintf(os.Stdout, "Response from `SourceUsagesAPI.GetStatusBySourceIdV1`: %v\n", resp)
 }
 ```
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sourceusage**](../models/sourceusage)
+[**[]SourceUsage**](../models/source-usage)
 
 ### HTTP request headers
 
@@ -155,7 +155,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourceUsagesAPI.GetUsagesBySourceIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetUsagesBySourceIdV1`: []Sourceusage
+    // response from `GetUsagesBySourceIdV1`: []SourceUsage
     fmt.Fprintf(os.Stdout, "Response from `SourceUsagesAPI.GetUsagesBySourceIdV1`: %v\n", resp)
 }
 ```

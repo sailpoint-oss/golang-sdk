@@ -19,7 +19,7 @@ var _ MappedNullable = &Reassignment{}
 
 // Reassignment struct for Reassignment
 type Reassignment struct {
-	From *Certificationreference `json:"from,omitempty"`
+	From *CertificationReference `json:"from,omitempty"`
 	// The comment entered when the Certification was reassigned
 	Comment *string `json:"comment,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,9 +45,9 @@ func NewReassignmentWithDefaults() *Reassignment {
 }
 
 // GetFrom returns the From field value if set, zero value otherwise.
-func (o *Reassignment) GetFrom() Certificationreference {
+func (o *Reassignment) GetFrom() CertificationReference {
 	if o == nil || IsNil(o.From) {
-		var ret Certificationreference
+		var ret CertificationReference
 		return ret
 	}
 	return *o.From
@@ -55,7 +55,7 @@ func (o *Reassignment) GetFrom() Certificationreference {
 
 // GetFromOk returns a tuple with the From field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Reassignment) GetFromOk() (*Certificationreference, bool) {
+func (o *Reassignment) GetFromOk() (*CertificationReference, bool) {
 	if o == nil || IsNil(o.From) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *Reassignment) HasFrom() bool {
 	return false
 }
 
-// SetFrom gets a reference to the given Certificationreference and assigns it to the From field.
-func (o *Reassignment) SetFrom(v Certificationreference) {
+// SetFrom gets a reference to the given CertificationReference and assigns it to the From field.
+func (o *Reassignment) SetFrom(v CertificationReference) {
 	o.From = &v
 }
 

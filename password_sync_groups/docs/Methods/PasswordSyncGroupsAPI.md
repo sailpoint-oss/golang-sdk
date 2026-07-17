@@ -71,11 +71,11 @@ Other parameters are passed through a pointer to a apiCreatePasswordSyncGroupV1R
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **passwordsyncgroup** | [**Passwordsyncgroup**](../models/passwordsyncgroup) |  | 
+ **passwordSyncGroup** | [**PasswordSyncGroup**](../models/password-sync-group) |  | 
 
 ### Return type
 
-[**Passwordsyncgroup**](../models/passwordsyncgroup)
+[**PasswordSyncGroup**](../models/password-sync-group)
 
 ### HTTP request headers
 
@@ -97,10 +97,17 @@ import (
 )
 
 func main() {
-    passwordsyncgroupJson := []byte(`{"name":"Password Sync Group 2","passwordPolicyId":"2c91808d744ba0ce01746f93b6204501","sourceIds":["2c918084660f45d6016617daa9210584","2c918084660f45d6016617daa9210500"]}`) // Passwordsyncgroup | 
+    passwordsyncgroupJson := []byte(`{
+          "created" : "2023-03-16T04:00:00Z",
+          "name" : "Password Sync Group 1",
+          "modified" : "2023-03-16T04:00:00Z",
+          "passwordPolicyId" : "2c91808d744ba0ce01746f93b6204501",
+          "id" : "6881f631-3bd5-4213-9c75-8e05cc3e35dd",
+          "sourceIds" : [ "2c918084660f45d6016617daa9210584", "2c918084660f45d6016617daa9210500" ]
+        }`) // PasswordSyncGroup | 
 
-    var passwordsyncgroup password_sync_groups.Passwordsyncgroup
-    if err := json.Unmarshal(passwordsyncgroupJson, &passwordsyncgroup); err != nil {
+    var passwordSyncGroup password_sync_groups.PasswordSyncGroup
+    if err := json.Unmarshal(passwordsyncgroupJson, &passwordSyncGroup); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -108,13 +115,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsAPI.CreatePasswordSyncGroupV1(context.Background()).Passwordsyncgroup(passwordsyncgroup).Execute()
-	  //resp, r, err := apiClient.PasswordSyncGroupsAPI.CreatePasswordSyncGroupV1(context.Background()).Passwordsyncgroup(passwordsyncgroup).Execute()
+    resp, r, err := apiClient.PasswordSyncGroupsAPI.CreatePasswordSyncGroupV1(context.Background()).PasswordSyncGroup(passwordSyncGroup).Execute()
+	  //resp, r, err := apiClient.PasswordSyncGroupsAPI.CreatePasswordSyncGroupV1(context.Background()).PasswordSyncGroup(passwordSyncGroup).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.CreatePasswordSyncGroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreatePasswordSyncGroupV1`: Passwordsyncgroup
+    // response from `CreatePasswordSyncGroupV1`: PasswordSyncGroup
     fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.CreatePasswordSyncGroupV1`: %v\n", resp)
 }
 ```
@@ -211,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Passwordsyncgroup**](../models/passwordsyncgroup)
+[**PasswordSyncGroup**](../models/password-sync-group)
 
 ### HTTP request headers
 
@@ -245,7 +252,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPasswordSyncGroupV1`: Passwordsyncgroup
+    // response from `GetPasswordSyncGroupV1`: PasswordSyncGroup
     fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.GetPasswordSyncGroupV1`: %v\n", resp)
 }
 ```
@@ -275,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Passwordsyncgroup**](../models/passwordsyncgroup)
+[**[]PasswordSyncGroup**](../models/password-sync-group)
 
 ### HTTP request headers
 
@@ -311,7 +318,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroupsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPasswordSyncGroupsV1`: []Passwordsyncgroup
+    // response from `GetPasswordSyncGroupsV1`: []PasswordSyncGroup
     fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.GetPasswordSyncGroupsV1`: %v\n", resp)
 }
 ```
@@ -340,11 +347,11 @@ Other parameters are passed through a pointer to a apiUpdatePasswordSyncGroupV1R
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **passwordsyncgroup** | [**Passwordsyncgroup**](../models/passwordsyncgroup) |  | 
+ **passwordSyncGroup** | [**PasswordSyncGroup**](../models/password-sync-group) |  | 
 
 ### Return type
 
-[**Passwordsyncgroup**](../models/passwordsyncgroup)
+[**PasswordSyncGroup**](../models/password-sync-group)
 
 ### HTTP request headers
 
@@ -367,10 +374,17 @@ import (
 
 func main() {
     id := `6881f631-3bd5-4213-9c75-8e05cc3e35dd` // string | The ID of password sync group to update. # string | The ID of password sync group to update.
-    passwordsyncgroupJson := []byte(`{"id":"6881f631-3bd5-4213-9c75-8e05cc3e35dd","name":"Password Sync Group 2","passwordPolicyId":"2c91808d744ba0ce01746f93b6204501","sourceIds":["2c918084660f45d6016617daa9210584","2c918084660f45d6016617daa9210500"]}`) // Passwordsyncgroup | 
+    passwordsyncgroupJson := []byte(`{
+          "created" : "2023-03-16T04:00:00Z",
+          "name" : "Password Sync Group 1",
+          "modified" : "2023-03-16T04:00:00Z",
+          "passwordPolicyId" : "2c91808d744ba0ce01746f93b6204501",
+          "id" : "6881f631-3bd5-4213-9c75-8e05cc3e35dd",
+          "sourceIds" : [ "2c918084660f45d6016617daa9210584", "2c918084660f45d6016617daa9210500" ]
+        }`) // PasswordSyncGroup | 
 
-    var passwordsyncgroup password_sync_groups.Passwordsyncgroup
-    if err := json.Unmarshal(passwordsyncgroupJson, &passwordsyncgroup); err != nil {
+    var passwordSyncGroup password_sync_groups.PasswordSyncGroup
+    if err := json.Unmarshal(passwordsyncgroupJson, &passwordSyncGroup); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -378,13 +392,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsAPI.UpdatePasswordSyncGroupV1(context.Background(), id).Passwordsyncgroup(passwordsyncgroup).Execute()
-	  //resp, r, err := apiClient.PasswordSyncGroupsAPI.UpdatePasswordSyncGroupV1(context.Background(), id).Passwordsyncgroup(passwordsyncgroup).Execute()
+    resp, r, err := apiClient.PasswordSyncGroupsAPI.UpdatePasswordSyncGroupV1(context.Background(), id).PasswordSyncGroup(passwordSyncGroup).Execute()
+	  //resp, r, err := apiClient.PasswordSyncGroupsAPI.UpdatePasswordSyncGroupV1(context.Background(), id).PasswordSyncGroup(passwordSyncGroup).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.UpdatePasswordSyncGroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatePasswordSyncGroupV1`: Passwordsyncgroup
+    // response from `UpdatePasswordSyncGroupV1`: PasswordSyncGroup
     fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.UpdatePasswordSyncGroupV1`: %v\n", resp)
 }
 ```

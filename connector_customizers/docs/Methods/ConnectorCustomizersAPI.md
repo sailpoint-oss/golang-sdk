@@ -43,11 +43,11 @@ Other parameters are passed through a pointer to a apiCreateConnectorCustomizerV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connectorcustomizercreaterequest** | [**Connectorcustomizercreaterequest**](../models/connectorcustomizercreaterequest) | Connector customizer to create. | 
+ **connectorCustomizerCreateRequest** | [**ConnectorCustomizerCreateRequest**](../models/connector-customizer-create-request) | Connector customizer to create. | 
 
 ### Return type
 
-[**Connectorcustomizercreateresponse**](../models/connectorcustomizercreateresponse)
+[**ConnectorCustomizerCreateResponse**](../models/connector-customizer-create-response)
 
 ### HTTP request headers
 
@@ -69,10 +69,12 @@ import (
 )
 
 func main() {
-    connectorcustomizercreaterequestJson := []byte(``) // Connectorcustomizercreaterequest | Connector customizer to create.
+    connectorcustomizercreaterequestJson := []byte(`{
+          "name" : "My Custom Connector"
+        }`) // ConnectorCustomizerCreateRequest | Connector customizer to create.
 
-    var connectorcustomizercreaterequest connector_customizers.Connectorcustomizercreaterequest
-    if err := json.Unmarshal(connectorcustomizercreaterequestJson, &connectorcustomizercreaterequest); err != nil {
+    var connectorCustomizerCreateRequest connector_customizers.ConnectorCustomizerCreateRequest
+    if err := json.Unmarshal(connectorcustomizercreaterequestJson, &connectorCustomizerCreateRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -80,13 +82,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorCustomizersAPI.CreateConnectorCustomizerV1(context.Background()).Connectorcustomizercreaterequest(connectorcustomizercreaterequest).Execute()
-	  //resp, r, err := apiClient.ConnectorCustomizersAPI.CreateConnectorCustomizerV1(context.Background()).Connectorcustomizercreaterequest(connectorcustomizercreaterequest).Execute()
+    resp, r, err := apiClient.ConnectorCustomizersAPI.CreateConnectorCustomizerV1(context.Background()).ConnectorCustomizerCreateRequest(connectorCustomizerCreateRequest).Execute()
+	  //resp, r, err := apiClient.ConnectorCustomizersAPI.CreateConnectorCustomizerV1(context.Background()).ConnectorCustomizerCreateRequest(connectorCustomizerCreateRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.CreateConnectorCustomizerV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateConnectorCustomizerV1`: Connectorcustomizercreateresponse
+    // response from `CreateConnectorCustomizerV1`: ConnectorCustomizerCreateResponse
     fmt.Fprintf(os.Stdout, "Response from `ConnectorCustomizersAPI.CreateConnectorCustomizerV1`: %v\n", resp)
 }
 ```
@@ -118,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Connectorcustomizerversioncreateresponse**](../models/connectorcustomizerversioncreateresponse)
+[**ConnectorCustomizerVersionCreateResponse**](../models/connector-customizer-version-create-response)
 
 ### HTTP request headers
 
@@ -152,7 +154,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.CreateConnectorCustomizerVersionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateConnectorCustomizerVersionV1`: Connectorcustomizerversioncreateresponse
+    // response from `CreateConnectorCustomizerVersionV1`: ConnectorCustomizerVersionCreateResponse
     fmt.Fprintf(os.Stdout, "Response from `ConnectorCustomizersAPI.CreateConnectorCustomizerVersionV1`: %v\n", resp)
 }
 ```
@@ -249,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Connectorcustomizersresponse**](../models/connectorcustomizersresponse)
+[**ConnectorCustomizersResponse**](../models/connector-customizers-response)
 
 ### HTTP request headers
 
@@ -283,7 +285,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.GetConnectorCustomizerV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetConnectorCustomizerV1`: Connectorcustomizersresponse
+    // response from `GetConnectorCustomizerV1`: ConnectorCustomizersResponse
     fmt.Fprintf(os.Stdout, "Response from `ConnectorCustomizersAPI.GetConnectorCustomizerV1`: %v\n", resp)
 }
 ```
@@ -312,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Connectorcustomizersresponse**](../models/connectorcustomizersresponse)
+[**[]ConnectorCustomizersResponse**](../models/connector-customizers-response)
 
 ### HTTP request headers
 
@@ -347,7 +349,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.ListConnectorCustomizersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListConnectorCustomizersV1`: []Connectorcustomizersresponse
+    // response from `ListConnectorCustomizersV1`: []ConnectorCustomizersResponse
     fmt.Fprintf(os.Stdout, "Response from `ConnectorCustomizersAPI.ListConnectorCustomizersV1`: %v\n", resp)
 }
 ```
@@ -376,11 +378,11 @@ Other parameters are passed through a pointer to a apiPutConnectorCustomizerV1Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **connectorcustomizerupdaterequest** | [**Connectorcustomizerupdaterequest**](../models/connectorcustomizerupdaterequest) | Connector rule with updated data. | 
+ **connectorCustomizerUpdateRequest** | [**ConnectorCustomizerUpdateRequest**](../models/connector-customizer-update-request) | Connector rule with updated data. | 
 
 ### Return type
 
-[**Connectorcustomizerupdateresponse**](../models/connectorcustomizerupdateresponse)
+[**ConnectorCustomizerUpdateResponse**](../models/connector-customizer-update-response)
 
 ### HTTP request headers
 
@@ -403,19 +405,21 @@ import (
 
 func main() {
     id := `b07dc46a-1498-4de8-bfbb-259a68e70c8a` // string | ID of the connector customizer to update. # string | ID of the connector customizer to update.
-    connectorcustomizerupdaterequestJson := []byte(``) // Connectorcustomizerupdaterequest | Connector rule with updated data. (optional)
+    connectorcustomizerupdaterequestJson := []byte(`{
+          "name" : "My Custom Connector"
+        }`) // ConnectorCustomizerUpdateRequest | Connector rule with updated data. (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.ConnectorCustomizersAPI.PutConnectorCustomizerV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.ConnectorCustomizersAPI.PutConnectorCustomizerV1(context.Background(), id).Connectorcustomizerupdaterequest(connectorcustomizerupdaterequest).Execute()
+	  //resp, r, err := apiClient.ConnectorCustomizersAPI.PutConnectorCustomizerV1(context.Background(), id).ConnectorCustomizerUpdateRequest(connectorCustomizerUpdateRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ConnectorCustomizersAPI.PutConnectorCustomizerV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutConnectorCustomizerV1`: Connectorcustomizerupdateresponse
+    // response from `PutConnectorCustomizerV1`: ConnectorCustomizerUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `ConnectorCustomizersAPI.PutConnectorCustomizerV1`: %v\n", resp)
 }
 ```

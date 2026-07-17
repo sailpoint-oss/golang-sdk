@@ -18,21 +18,21 @@ import (
 
 // GetDiscoveredApplicationsV1200ResponseInner - struct for GetDiscoveredApplicationsV1200ResponseInner
 type GetDiscoveredApplicationsV1200ResponseInner struct {
-	Fulldiscoveredapplications *Fulldiscoveredapplications
-	Slimdiscoveredapplications *Slimdiscoveredapplications
+	FullDiscoveredApplications *FullDiscoveredApplications
+	SlimDiscoveredApplications *SlimDiscoveredApplications
 }
 
-// FulldiscoveredapplicationsAsGetDiscoveredApplicationsV1200ResponseInner is a convenience function that returns Fulldiscoveredapplications wrapped in GetDiscoveredApplicationsV1200ResponseInner
-func FulldiscoveredapplicationsAsGetDiscoveredApplicationsV1200ResponseInner(v *Fulldiscoveredapplications) GetDiscoveredApplicationsV1200ResponseInner {
+// FullDiscoveredApplicationsAsGetDiscoveredApplicationsV1200ResponseInner is a convenience function that returns FullDiscoveredApplications wrapped in GetDiscoveredApplicationsV1200ResponseInner
+func FullDiscoveredApplicationsAsGetDiscoveredApplicationsV1200ResponseInner(v *FullDiscoveredApplications) GetDiscoveredApplicationsV1200ResponseInner {
 	return GetDiscoveredApplicationsV1200ResponseInner{
-		Fulldiscoveredapplications: v,
+		FullDiscoveredApplications: v,
 	}
 }
 
-// SlimdiscoveredapplicationsAsGetDiscoveredApplicationsV1200ResponseInner is a convenience function that returns Slimdiscoveredapplications wrapped in GetDiscoveredApplicationsV1200ResponseInner
-func SlimdiscoveredapplicationsAsGetDiscoveredApplicationsV1200ResponseInner(v *Slimdiscoveredapplications) GetDiscoveredApplicationsV1200ResponseInner {
+// SlimDiscoveredApplicationsAsGetDiscoveredApplicationsV1200ResponseInner is a convenience function that returns SlimDiscoveredApplications wrapped in GetDiscoveredApplicationsV1200ResponseInner
+func SlimDiscoveredApplicationsAsGetDiscoveredApplicationsV1200ResponseInner(v *SlimDiscoveredApplications) GetDiscoveredApplicationsV1200ResponseInner {
 	return GetDiscoveredApplicationsV1200ResponseInner{
-		Slimdiscoveredapplications: v,
+		SlimDiscoveredApplications: v,
 	}
 }
 
@@ -41,44 +41,44 @@ func SlimdiscoveredapplicationsAsGetDiscoveredApplicationsV1200ResponseInner(v *
 func (dst *GetDiscoveredApplicationsV1200ResponseInner) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into Fulldiscoveredapplications
-	err = newStrictDecoder(data).Decode(&dst.Fulldiscoveredapplications)
+	// try to unmarshal data into FullDiscoveredApplications
+	err = newStrictDecoder(data).Decode(&dst.FullDiscoveredApplications)
 	if err == nil {
-		jsonFulldiscoveredapplications, _ := json.Marshal(dst.Fulldiscoveredapplications)
-		if string(jsonFulldiscoveredapplications) == "{}" { // empty struct
-			dst.Fulldiscoveredapplications = nil
+		jsonFullDiscoveredApplications, _ := json.Marshal(dst.FullDiscoveredApplications)
+		if string(jsonFullDiscoveredApplications) == "{}" { // empty struct
+			dst.FullDiscoveredApplications = nil
 		} else {
-			if err = validator.Validate(dst.Fulldiscoveredapplications); err != nil {
-				dst.Fulldiscoveredapplications = nil
+			if err = validator.Validate(dst.FullDiscoveredApplications); err != nil {
+				dst.FullDiscoveredApplications = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Fulldiscoveredapplications = nil
+		dst.FullDiscoveredApplications = nil
 	}
 
-	// try to unmarshal data into Slimdiscoveredapplications
-	err = newStrictDecoder(data).Decode(&dst.Slimdiscoveredapplications)
+	// try to unmarshal data into SlimDiscoveredApplications
+	err = newStrictDecoder(data).Decode(&dst.SlimDiscoveredApplications)
 	if err == nil {
-		jsonSlimdiscoveredapplications, _ := json.Marshal(dst.Slimdiscoveredapplications)
-		if string(jsonSlimdiscoveredapplications) == "{}" { // empty struct
-			dst.Slimdiscoveredapplications = nil
+		jsonSlimDiscoveredApplications, _ := json.Marshal(dst.SlimDiscoveredApplications)
+		if string(jsonSlimDiscoveredApplications) == "{}" { // empty struct
+			dst.SlimDiscoveredApplications = nil
 		} else {
-			if err = validator.Validate(dst.Slimdiscoveredapplications); err != nil {
-				dst.Slimdiscoveredapplications = nil
+			if err = validator.Validate(dst.SlimDiscoveredApplications); err != nil {
+				dst.SlimDiscoveredApplications = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Slimdiscoveredapplications = nil
+		dst.SlimDiscoveredApplications = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.Fulldiscoveredapplications = nil
-		dst.Slimdiscoveredapplications = nil
+		dst.FullDiscoveredApplications = nil
+		dst.SlimDiscoveredApplications = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(GetDiscoveredApplicationsV1200ResponseInner)")
 	} else if match == 1 {
@@ -90,12 +90,12 @@ func (dst *GetDiscoveredApplicationsV1200ResponseInner) UnmarshalJSON(data []byt
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src GetDiscoveredApplicationsV1200ResponseInner) MarshalJSON() ([]byte, error) {
-	if src.Fulldiscoveredapplications != nil {
-		return json.Marshal(&src.Fulldiscoveredapplications)
+	if src.FullDiscoveredApplications != nil {
+		return json.Marshal(&src.FullDiscoveredApplications)
 	}
 
-	if src.Slimdiscoveredapplications != nil {
-		return json.Marshal(&src.Slimdiscoveredapplications)
+	if src.SlimDiscoveredApplications != nil {
+		return json.Marshal(&src.SlimDiscoveredApplications)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -106,12 +106,12 @@ func (obj *GetDiscoveredApplicationsV1200ResponseInner) GetActualInstance() (int
 	if obj == nil {
 		return nil
 	}
-	if obj.Fulldiscoveredapplications != nil {
-		return obj.Fulldiscoveredapplications
+	if obj.FullDiscoveredApplications != nil {
+		return obj.FullDiscoveredApplications
 	}
 
-	if obj.Slimdiscoveredapplications != nil {
-		return obj.Slimdiscoveredapplications
+	if obj.SlimDiscoveredApplications != nil {
+		return obj.SlimDiscoveredApplications
 	}
 
 	// all schemas are nil
@@ -120,12 +120,12 @@ func (obj *GetDiscoveredApplicationsV1200ResponseInner) GetActualInstance() (int
 
 // Get the actual instance value
 func (obj GetDiscoveredApplicationsV1200ResponseInner) GetActualInstanceValue() (interface{}) {
-	if obj.Fulldiscoveredapplications != nil {
-		return *obj.Fulldiscoveredapplications
+	if obj.FullDiscoveredApplications != nil {
+		return *obj.FullDiscoveredApplications
 	}
 
-	if obj.Slimdiscoveredapplications != nil {
-		return *obj.Slimdiscoveredapplications
+	if obj.SlimDiscoveredApplications != nil {
+		return *obj.SlimDiscoveredApplications
 	}
 
 	// all schemas are nil

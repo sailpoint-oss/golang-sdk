@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Tenantuimetadataitemresponse**](../models/tenantuimetadataitemresponse)
+[**TenantUiMetadataItemResponse**](../models/tenant-ui-metadata-item-response)
 
 ### HTTP request headers
 
@@ -86,7 +86,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UIMetadataAPI.GetTenantUiMetadataV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTenantUiMetadataV1`: Tenantuimetadataitemresponse
+    // response from `GetTenantUiMetadataV1`: TenantUiMetadataItemResponse
     fmt.Fprintf(os.Stdout, "Response from `UIMetadataAPI.GetTenantUiMetadataV1`: %v\n", resp)
 }
 ```
@@ -122,11 +122,11 @@ Other parameters are passed through a pointer to a apiSetTenantUiMetadataV1Reque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **tenantuimetadataitemupdaterequest** | [**Tenantuimetadataitemupdaterequest**](../models/tenantuimetadataitemupdaterequest) |  | 
+ **tenantUiMetadataItemUpdateRequest** | [**TenantUiMetadataItemUpdateRequest**](../models/tenant-ui-metadata-item-update-request) |  | 
 
 ### Return type
 
-[**Tenantuimetadataitemresponse**](../models/tenantuimetadataitemresponse)
+[**TenantUiMetadataItemResponse**](../models/tenant-ui-metadata-item-response)
 
 ### HTTP request headers
 
@@ -149,10 +149,14 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    tenantuimetadataitemupdaterequestJson := []byte(``) // Tenantuimetadataitemupdaterequest | 
+    tenantuimetadataitemupdaterequestJson := []byte(`{
+          "usernameEmptyText" : "Please provide your work email address...",
+          "usernameLabel" : "Email",
+          "iframeWhiteList" : "http://example.com http://example2.com"
+        }`) // TenantUiMetadataItemUpdateRequest | 
 
-    var tenantuimetadataitemupdaterequest ui_metadata.Tenantuimetadataitemupdaterequest
-    if err := json.Unmarshal(tenantuimetadataitemupdaterequestJson, &tenantuimetadataitemupdaterequest); err != nil {
+    var tenantUiMetadataItemUpdateRequest ui_metadata.TenantUiMetadataItemUpdateRequest
+    if err := json.Unmarshal(tenantuimetadataitemupdaterequestJson, &tenantUiMetadataItemUpdateRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -160,13 +164,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.UIMetadataAPI.SetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantuimetadataitemupdaterequest(tenantuimetadataitemupdaterequest).Execute()
-	  //resp, r, err := apiClient.UIMetadataAPI.SetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Tenantuimetadataitemupdaterequest(tenantuimetadataitemupdaterequest).Execute()
+    resp, r, err := apiClient.UIMetadataAPI.SetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).TenantUiMetadataItemUpdateRequest(tenantUiMetadataItemUpdateRequest).Execute()
+	  //resp, r, err := apiClient.UIMetadataAPI.SetTenantUiMetadataV1(context.Background()).XSailPointExperimental(xSailPointExperimental).TenantUiMetadataItemUpdateRequest(tenantUiMetadataItemUpdateRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `UIMetadataAPI.SetTenantUiMetadataV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetTenantUiMetadataV1`: Tenantuimetadataitemresponse
+    // response from `SetTenantUiMetadataV1`: TenantUiMetadataItemResponse
     fmt.Fprintf(os.Stdout, "Response from `UIMetadataAPI.SetTenantUiMetadataV1`: %v\n", resp)
 }
 ```

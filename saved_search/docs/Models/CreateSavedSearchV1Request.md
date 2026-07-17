@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **Fields** | Pointer to **[]string** | The fields to be searched against in a multi-field query.  | [optional] 
 **OrderBy** | Pointer to **map[string][]string** | Sort by index. This takes precedence over the `sort` property.  | [optional] 
 **Sort** | Pointer to **[]string** | The fields to be used to sort the search results.  | [optional] 
-**Filters** | Pointer to [**NullableSavedsearchdetailFilters**](savedsearchdetail-filters) |  | [optional] 
+**Filters** | Pointer to [**NullableSavedSearchDetailFilters**](saved-search-detail-filters) |  | [optional] 
 
 ## Methods
 
@@ -348,20 +348,20 @@ HasSort returns a boolean if a field has been set.
 UnsetSort ensures that no value is present for Sort, not even an explicit nil
 ### GetFilters
 
-`func (o *CreateSavedSearchV1Request) GetFilters() SavedsearchdetailFilters`
+`func (o *CreateSavedSearchV1Request) GetFilters() SavedSearchDetailFilters`
 
 GetFilters returns the Filters field if non-nil, zero value otherwise.
 
 ### GetFiltersOk
 
-`func (o *CreateSavedSearchV1Request) GetFiltersOk() (*SavedsearchdetailFilters, bool)`
+`func (o *CreateSavedSearchV1Request) GetFiltersOk() (*SavedSearchDetailFilters, bool)`
 
 GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilters
 
-`func (o *CreateSavedSearchV1Request) SetFilters(v SavedsearchdetailFilters)`
+`func (o *CreateSavedSearchV1Request) SetFilters(v SavedSearchDetailFilters)`
 
 SetFilters sets Filters field to given value.
 

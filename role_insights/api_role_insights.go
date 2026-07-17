@@ -35,7 +35,7 @@ func (r ApiCreateRoleInsightRequestsV1Request) XSailPointExperimental(xSailPoint
 	return r
 }
 
-func (r ApiCreateRoleInsightRequestsV1Request) Execute() (*Roleinsightsresponse, *http.Response, error) {
+func (r ApiCreateRoleInsightRequestsV1Request) Execute() (*RoleInsightsResponse, *http.Response, error) {
 	return r.ApiService.CreateRoleInsightRequestsV1Execute(r)
 }
 
@@ -57,14 +57,14 @@ func (a *RoleInsightsAPIService) CreateRoleInsightRequestsV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Roleinsightsresponse
+//  @return RoleInsightsResponse
 // Deprecated
-func (a *RoleInsightsAPIService) CreateRoleInsightRequestsV1Execute(r ApiCreateRoleInsightRequestsV1Request) (*Roleinsightsresponse, *http.Response, error) {
+func (a *RoleInsightsAPIService) CreateRoleInsightRequestsV1Execute(r ApiCreateRoleInsightRequestsV1Request) (*RoleInsightsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleinsightsresponse
+		localVarReturnValue  *RoleInsightsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.CreateRoleInsightRequestsV1")
@@ -128,7 +128,7 @@ func (a *RoleInsightsAPIService) CreateRoleInsightRequestsV1Execute(r ApiCreateR
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -150,7 +150,7 @@ func (a *RoleInsightsAPIService) CreateRoleInsightRequestsV1Execute(r ApiCreateR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -172,7 +172,7 @@ func (a *RoleInsightsAPIService) CreateRoleInsightRequestsV1Execute(r ApiCreateR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -322,7 +322,7 @@ func (a *RoleInsightsAPIService) DownloadRoleInsightsEntitlementsChangesV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -344,7 +344,7 @@ func (a *RoleInsightsAPIService) DownloadRoleInsightsEntitlementsChangesV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -355,7 +355,7 @@ func (a *RoleInsightsAPIService) DownloadRoleInsightsEntitlementsChangesV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -435,7 +435,7 @@ func (r ApiGetEntitlementChangesIdentitiesV1Request) Filters(filters string) Api
 	return r
 }
 
-func (r ApiGetEntitlementChangesIdentitiesV1Request) Execute() ([]Roleinsightsidentities, *http.Response, error) {
+func (r ApiGetEntitlementChangesIdentitiesV1Request) Execute() ([]RoleInsightsIdentities, *http.Response, error) {
 	return r.ApiService.GetEntitlementChangesIdentitiesV1Execute(r)
 }
 
@@ -459,13 +459,13 @@ func (a *RoleInsightsAPIService) GetEntitlementChangesIdentitiesV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return []Roleinsightsidentities
-func (a *RoleInsightsAPIService) GetEntitlementChangesIdentitiesV1Execute(r ApiGetEntitlementChangesIdentitiesV1Request) ([]Roleinsightsidentities, *http.Response, error) {
+//  @return []RoleInsightsIdentities
+func (a *RoleInsightsAPIService) GetEntitlementChangesIdentitiesV1Execute(r ApiGetEntitlementChangesIdentitiesV1Request) ([]RoleInsightsIdentities, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleinsightsidentities
+		localVarReturnValue  []RoleInsightsIdentities
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetEntitlementChangesIdentitiesV1")
@@ -561,7 +561,7 @@ func (a *RoleInsightsAPIService) GetEntitlementChangesIdentitiesV1Execute(r ApiG
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -583,7 +583,7 @@ func (a *RoleInsightsAPIService) GetEntitlementChangesIdentitiesV1Execute(r ApiG
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -594,7 +594,7 @@ func (a *RoleInsightsAPIService) GetEntitlementChangesIdentitiesV1Execute(r ApiG
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -631,7 +631,7 @@ func (r ApiGetRoleInsightV1Request) XSailPointExperimental(xSailPointExperimenta
 	return r
 }
 
-func (r ApiGetRoleInsightV1Request) Execute() (*Roleinsight, *http.Response, error) {
+func (r ApiGetRoleInsightV1Request) Execute() (*RoleInsight, *http.Response, error) {
 	return r.ApiService.GetRoleInsightV1Execute(r)
 }
 
@@ -653,13 +653,13 @@ func (a *RoleInsightsAPIService) GetRoleInsightV1(ctx context.Context, insightId
 }
 
 // Execute executes the request
-//  @return Roleinsight
-func (a *RoleInsightsAPIService) GetRoleInsightV1Execute(r ApiGetRoleInsightV1Request) (*Roleinsight, *http.Response, error) {
+//  @return RoleInsight
+func (a *RoleInsightsAPIService) GetRoleInsightV1Execute(r ApiGetRoleInsightV1Request) (*RoleInsight, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleinsight
+		localVarReturnValue  *RoleInsight
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsightV1")
@@ -724,7 +724,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightV1Execute(r ApiGetRoleInsightV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -746,7 +746,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightV1Execute(r ApiGetRoleInsightV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -757,7 +757,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightV1Execute(r ApiGetRoleInsightV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -801,7 +801,7 @@ func (r ApiGetRoleInsightsCurrentEntitlementsV1Request) Filters(filters string) 
 	return r
 }
 
-func (r ApiGetRoleInsightsCurrentEntitlementsV1Request) Execute() ([]Roleinsightsentitlement, *http.Response, error) {
+func (r ApiGetRoleInsightsCurrentEntitlementsV1Request) Execute() ([]RoleInsightsEntitlement, *http.Response, error) {
 	return r.ApiService.GetRoleInsightsCurrentEntitlementsV1Execute(r)
 }
 
@@ -823,13 +823,13 @@ func (a *RoleInsightsAPIService) GetRoleInsightsCurrentEntitlementsV1(ctx contex
 }
 
 // Execute executes the request
-//  @return []Roleinsightsentitlement
-func (a *RoleInsightsAPIService) GetRoleInsightsCurrentEntitlementsV1Execute(r ApiGetRoleInsightsCurrentEntitlementsV1Request) ([]Roleinsightsentitlement, *http.Response, error) {
+//  @return []RoleInsightsEntitlement
+func (a *RoleInsightsAPIService) GetRoleInsightsCurrentEntitlementsV1Execute(r ApiGetRoleInsightsCurrentEntitlementsV1Request) ([]RoleInsightsEntitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleinsightsentitlement
+		localVarReturnValue  []RoleInsightsEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsightsCurrentEntitlementsV1")
@@ -897,7 +897,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsCurrentEntitlementsV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -919,7 +919,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsCurrentEntitlementsV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -930,7 +930,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsCurrentEntitlementsV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -981,7 +981,7 @@ func (r ApiGetRoleInsightsEntitlementsChangesV1Request) Filters(filters string) 
 	return r
 }
 
-func (r ApiGetRoleInsightsEntitlementsChangesV1Request) Execute() ([]Roleinsightsentitlementchanges, *http.Response, error) {
+func (r ApiGetRoleInsightsEntitlementsChangesV1Request) Execute() ([]RoleInsightsEntitlementChanges, *http.Response, error) {
 	return r.ApiService.GetRoleInsightsEntitlementsChangesV1Execute(r)
 }
 
@@ -1003,13 +1003,13 @@ func (a *RoleInsightsAPIService) GetRoleInsightsEntitlementsChangesV1(ctx contex
 }
 
 // Execute executes the request
-//  @return []Roleinsightsentitlementchanges
-func (a *RoleInsightsAPIService) GetRoleInsightsEntitlementsChangesV1Execute(r ApiGetRoleInsightsEntitlementsChangesV1Request) ([]Roleinsightsentitlementchanges, *http.Response, error) {
+//  @return []RoleInsightsEntitlementChanges
+func (a *RoleInsightsAPIService) GetRoleInsightsEntitlementsChangesV1Execute(r ApiGetRoleInsightsEntitlementsChangesV1Request) ([]RoleInsightsEntitlementChanges, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleinsightsentitlementchanges
+		localVarReturnValue  []RoleInsightsEntitlementChanges
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsightsEntitlementsChangesV1")
@@ -1080,7 +1080,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsEntitlementsChangesV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1102,7 +1102,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsEntitlementsChangesV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1113,7 +1113,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsEntitlementsChangesV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1150,7 +1150,7 @@ func (r ApiGetRoleInsightsRequestsV1Request) XSailPointExperimental(xSailPointEx
 	return r
 }
 
-func (r ApiGetRoleInsightsRequestsV1Request) Execute() (*Roleinsightsresponse, *http.Response, error) {
+func (r ApiGetRoleInsightsRequestsV1Request) Execute() (*RoleInsightsResponse, *http.Response, error) {
 	return r.ApiService.GetRoleInsightsRequestsV1Execute(r)
 }
 
@@ -1174,14 +1174,14 @@ func (a *RoleInsightsAPIService) GetRoleInsightsRequestsV1(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return Roleinsightsresponse
+//  @return RoleInsightsResponse
 // Deprecated
-func (a *RoleInsightsAPIService) GetRoleInsightsRequestsV1Execute(r ApiGetRoleInsightsRequestsV1Request) (*Roleinsightsresponse, *http.Response, error) {
+func (a *RoleInsightsAPIService) GetRoleInsightsRequestsV1Execute(r ApiGetRoleInsightsRequestsV1Request) (*RoleInsightsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleinsightsresponse
+		localVarReturnValue  *RoleInsightsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsightsRequestsV1")
@@ -1246,7 +1246,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsRequestsV1Execute(r ApiGetRoleIn
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1268,7 +1268,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsRequestsV1Execute(r ApiGetRoleIn
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1290,7 +1290,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsRequestsV1Execute(r ApiGetRoleIn
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1326,7 +1326,7 @@ func (r ApiGetRoleInsightsSummaryV1Request) XSailPointExperimental(xSailPointExp
 	return r
 }
 
-func (r ApiGetRoleInsightsSummaryV1Request) Execute() (*Roleinsightssummary, *http.Response, error) {
+func (r ApiGetRoleInsightsSummaryV1Request) Execute() (*RoleInsightsSummary, *http.Response, error) {
 	return r.ApiService.GetRoleInsightsSummaryV1Execute(r)
 }
 
@@ -1346,13 +1346,13 @@ func (a *RoleInsightsAPIService) GetRoleInsightsSummaryV1(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return Roleinsightssummary
-func (a *RoleInsightsAPIService) GetRoleInsightsSummaryV1Execute(r ApiGetRoleInsightsSummaryV1Request) (*Roleinsightssummary, *http.Response, error) {
+//  @return RoleInsightsSummary
+func (a *RoleInsightsAPIService) GetRoleInsightsSummaryV1Execute(r ApiGetRoleInsightsSummaryV1Request) (*RoleInsightsSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Roleinsightssummary
+		localVarReturnValue  *RoleInsightsSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsightsSummaryV1")
@@ -1416,7 +1416,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsSummaryV1Execute(r ApiGetRoleIns
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1438,7 +1438,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsSummaryV1Execute(r ApiGetRoleIns
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1449,7 +1449,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsSummaryV1Execute(r ApiGetRoleIns
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1520,7 +1520,7 @@ func (r ApiGetRoleInsightsV1Request) Filters(filters string) ApiGetRoleInsightsV
 	return r
 }
 
-func (r ApiGetRoleInsightsV1Request) Execute() ([]Roleinsight, *http.Response, error) {
+func (r ApiGetRoleInsightsV1Request) Execute() ([]RoleInsight, *http.Response, error) {
 	return r.ApiService.GetRoleInsightsV1Execute(r)
 }
 
@@ -1540,13 +1540,13 @@ func (a *RoleInsightsAPIService) GetRoleInsightsV1(ctx context.Context) ApiGetRo
 }
 
 // Execute executes the request
-//  @return []Roleinsight
-func (a *RoleInsightsAPIService) GetRoleInsightsV1Execute(r ApiGetRoleInsightsV1Request) ([]Roleinsight, *http.Response, error) {
+//  @return []RoleInsight
+func (a *RoleInsightsAPIService) GetRoleInsightsV1Execute(r ApiGetRoleInsightsV1Request) ([]RoleInsight, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleinsight
+		localVarReturnValue  []RoleInsight
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsightsV1")
@@ -1634,7 +1634,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsV1Execute(r ApiGetRoleInsightsV1
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1656,7 +1656,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsV1Execute(r ApiGetRoleInsightsV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1667,7 +1667,7 @@ func (a *RoleInsightsAPIService) GetRoleInsightsV1Execute(r ApiGetRoleInsightsV1
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

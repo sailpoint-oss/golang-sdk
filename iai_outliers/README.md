@@ -92,21 +92,21 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetIdentityOutlierSnapshotsV1401Response](docs/GetIdentityOutlierSnapshotsV1401Response.md)
  - [GetIdentityOutlierSnapshotsV1429Response](docs/GetIdentityOutlierSnapshotsV1429Response.md)
- - [Latestoutliersummary](docs/Latestoutliersummary.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LatestOutlierSummary](docs/LatestOutlierSummary.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [Outlier](docs/Outlier.md)
- - [Outliercontributingfeature](docs/Outliercontributingfeature.md)
- - [Outlierfeaturesummary](docs/Outlierfeaturesummary.md)
- - [OutlierfeaturesummaryOutlierFeatureDisplayValuesInner](docs/OutlierfeaturesummaryOutlierFeatureDisplayValuesInner.md)
- - [Outlierfeaturetranslation](docs/Outlierfeaturetranslation.md)
- - [Outlierscontributingfeatureaccessitems](docs/Outlierscontributingfeatureaccessitems.md)
- - [Outliersummary](docs/Outliersummary.md)
- - [Outliervaluetype](docs/Outliervaluetype.md)
- - [Translationmessage](docs/Translationmessage.md)
+ - [OutlierContributingFeature](docs/OutlierContributingFeature.md)
+ - [OutlierFeatureSummary](docs/OutlierFeatureSummary.md)
+ - [OutlierFeatureSummaryOutlierFeatureDisplayValuesInner](docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md)
+ - [OutlierFeatureTranslation](docs/OutlierFeatureTranslation.md)
+ - [OutlierSummary](docs/OutlierSummary.md)
+ - [OutlierValueType](docs/OutlierValueType.md)
+ - [OutliersContributingFeatureAccessItems](docs/OutliersContributingFeatureAccessItems.md)
+ - [TranslationMessage](docs/TranslationMessage.md)
 
 
 ## Documentation For Authorization

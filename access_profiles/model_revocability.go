@@ -20,7 +20,7 @@ var _ MappedNullable = &Revocability{}
 // Revocability struct for Revocability
 type Revocability struct {
 	// List describing the steps involved in approving the revocation request.
-	ApprovalSchemes []Accessprofileapprovalscheme `json:"approvalSchemes,omitempty"`
+	ApprovalSchemes []AccessProfileApprovalScheme `json:"approvalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,9 +44,9 @@ func NewRevocabilityWithDefaults() *Revocability {
 }
 
 // GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Revocability) GetApprovalSchemes() []Accessprofileapprovalscheme {
+func (o *Revocability) GetApprovalSchemes() []AccessProfileApprovalScheme {
 	if o == nil {
-		var ret []Accessprofileapprovalscheme
+		var ret []AccessProfileApprovalScheme
 		return ret
 	}
 	return o.ApprovalSchemes
@@ -55,7 +55,7 @@ func (o *Revocability) GetApprovalSchemes() []Accessprofileapprovalscheme {
 // GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Revocability) GetApprovalSchemesOk() ([]Accessprofileapprovalscheme, bool) {
+func (o *Revocability) GetApprovalSchemesOk() ([]AccessProfileApprovalScheme, bool) {
 	if o == nil || IsNil(o.ApprovalSchemes) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *Revocability) HasApprovalSchemes() bool {
 	return false
 }
 
-// SetApprovalSchemes gets a reference to the given []Accessprofileapprovalscheme and assigns it to the ApprovalSchemes field.
-func (o *Revocability) SetApprovalSchemes(v []Accessprofileapprovalscheme) {
+// SetApprovalSchemes gets a reference to the given []AccessProfileApprovalScheme and assigns it to the ApprovalSchemes field.
+func (o *Revocability) SetApprovalSchemes(v []AccessProfileApprovalScheme) {
 	o.ApprovalSchemes = v
 }
 

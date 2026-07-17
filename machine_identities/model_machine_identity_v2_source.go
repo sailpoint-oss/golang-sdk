@@ -19,7 +19,7 @@ var _ MappedNullable = &MachineIdentityV2Source{}
 
 // MachineIdentityV2Source The source of the machine identity.
 type MachineIdentityV2Source struct {
-	Type *Dtotype `json:"type,omitempty"`
+	Type *DtoType `json:"type,omitempty"`
 	// ID of the object to which this reference applies
 	Id *string `json:"id,omitempty"`
 	// Human-readable display name of the object to which this reference applies
@@ -47,9 +47,9 @@ func NewMachineIdentityV2SourceWithDefaults() *MachineIdentityV2Source {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *MachineIdentityV2Source) GetType() Dtotype {
+func (o *MachineIdentityV2Source) GetType() DtoType {
 	if o == nil || IsNil(o.Type) {
-		var ret Dtotype
+		var ret DtoType
 		return ret
 	}
 	return *o.Type
@@ -57,7 +57,7 @@ func (o *MachineIdentityV2Source) GetType() Dtotype {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MachineIdentityV2Source) GetTypeOk() (*Dtotype, bool) {
+func (o *MachineIdentityV2Source) GetTypeOk() (*DtoType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -73,8 +73,8 @@ func (o *MachineIdentityV2Source) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given Dtotype and assigns it to the Type field.
-func (o *MachineIdentityV2Source) SetType(v Dtotype) {
+// SetType gets a reference to the given DtoType and assigns it to the Type field.
+func (o *MachineIdentityV2Source) SetType(v DtoType) {
 	o.Type = &v
 }
 

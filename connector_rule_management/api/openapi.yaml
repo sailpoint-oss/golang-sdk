@@ -98,14 +98,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/connectorruleresponse'
+                  $ref: '#/components/schemas/ConnectorRuleResponse'
                 type: array
           description: List of connector rules.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -129,7 +129,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -154,7 +154,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -173,7 +173,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/connectorrulecreaterequest'
+              $ref: '#/components/schemas/ConnectorRuleCreateRequest'
         description: Connector rule to create.
         required: true
       responses:
@@ -181,13 +181,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connectorruleresponse'
+                $ref: '#/components/schemas/ConnectorRuleResponse'
           description: Created connector rule.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -211,7 +211,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -236,7 +236,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -270,7 +270,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -294,7 +294,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -312,7 +312,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -337,7 +337,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -367,13 +367,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connectorruleresponse'
+                $ref: '#/components/schemas/ConnectorRuleResponse'
           description: Connector rule with the given ID.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -397,7 +397,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -415,7 +415,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -440,7 +440,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -471,20 +471,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/connectorruleupdaterequest'
+              $ref: '#/components/schemas/ConnectorRuleUpdateRequest'
         description: Connector rule with updated data.
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connectorruleresponse'
+                $ref: '#/components/schemas/ConnectorRuleResponse'
           description: Updated connector rule.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -508,7 +508,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -526,7 +526,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -551,7 +551,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -571,7 +571,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/sourcecode'
+              $ref: '#/components/schemas/SourceCode'
         description: Code to validate.
         required: true
       responses:
@@ -579,13 +579,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connectorrulevalidationresponse'
+                $ref: '#/components/schemas/ConnectorRuleValidationResponse'
           description: Status of the code's eligibility as a connector rule.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -609,7 +609,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -634,7 +634,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -703,7 +703,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -727,7 +727,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -745,7 +745,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -770,10 +770,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    argument:
+    Argument:
       example:
         name: firstName
         description: the first name of the identity
@@ -798,7 +798,7 @@ components:
       - name
       title: Argument
       type: object
-    sourcecode:
+    SourceCode:
       description: SourceCode
       example:
         version: "1.0"
@@ -817,8 +817,28 @@ components:
       - version
       title: Source Code
       type: object
-    connectorrulecreaterequest:
+    ConnectorRuleCreateRequest:
       description: ConnectorRuleCreateRequest
+      example:
+        sourceCode:
+          version: "1.0"
+          script: return "Mr. " + firstName;
+        signature:
+          output:
+            name: firstName
+            description: the first name of the identity
+            type: String
+          input:
+          - name: firstName
+            description: the first name of the identity
+            type: String
+          - name: firstName
+            description: the first name of the identity
+            type: String
+        name: WebServiceBeforeOperationRule
+        description: This rule does that
+        attributes: {}
+        type: BuildMap
       properties:
         name:
           description: the name of the rule
@@ -860,9 +880,9 @@ components:
           example: BuildMap
           type: string
         signature:
-          $ref: '#/components/schemas/connectorrulecreaterequest_signature'
+          $ref: '#/components/schemas/ConnectorRuleCreateRequest_signature'
         sourceCode:
-          $ref: '#/components/schemas/sourcecode'
+          $ref: '#/components/schemas/SourceCode'
         attributes:
           description: a map of string to objects
           example: {}
@@ -874,9 +894,9 @@ components:
       - type
       title: Connector Rule Create Request
       type: object
-    connectorruleresponse:
+    ConnectorRuleResponse:
       allOf:
-      - $ref: '#/components/schemas/connectorrulecreaterequest'
+      - $ref: '#/components/schemas/ConnectorRuleCreateRequest'
       - nullable: true
         properties:
           id:
@@ -920,7 +940,7 @@ components:
         attributes: {}
         id: 8113d48c0b914f17b4c6072d4dcb9dfe
         type: BuildMap
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -932,7 +952,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -945,7 +965,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -953,7 +973,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -987,17 +1007,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    connectorruleupdaterequest:
+    ConnectorRuleUpdateRequest:
       allOf:
       - properties:
           id:
@@ -1007,9 +1027,30 @@ components:
         required:
         - id
         type: object
-      - $ref: '#/components/schemas/connectorrulecreaterequest'
+      - $ref: '#/components/schemas/ConnectorRuleCreateRequest'
       description: ConnectorRuleUpdateRequest
-    connectorrulevalidationresponse:
+      example:
+        sourceCode:
+          version: "1.0"
+          script: return "Mr. " + firstName;
+        signature:
+          output:
+            name: firstName
+            description: the first name of the identity
+            type: String
+          input:
+          - name: firstName
+            description: the first name of the identity
+            type: String
+          - name: firstName
+            description: the first name of the identity
+            type: String
+        name: WebServiceBeforeOperationRule
+        description: This rule does that
+        attributes: {}
+        id: 8113d48c0b914f17b4c6072d4dcb9dfe
+        type: BuildMap
+    ConnectorRuleValidationResponse:
       description: ConnectorRuleValidationResponse
       example:
         details:
@@ -1029,7 +1070,7 @@ components:
           type: string
         details:
           items:
-            $ref: '#/components/schemas/connectorrulevalidationresponse_details_inner'
+            $ref: '#/components/schemas/ConnectorRuleValidationResponse_details_inner'
           type: array
       required:
       - details
@@ -1052,7 +1093,7 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    connectorrulecreaterequest_signature:
+    ConnectorRuleCreateRequest_signature:
       description: The rule's function signature. Describes the rule's input arguments
         and output (if any)
       example:
@@ -1070,14 +1111,14 @@ components:
       properties:
         input:
           items:
-            $ref: '#/components/schemas/argument'
+            $ref: '#/components/schemas/Argument'
           type: array
         output:
-          $ref: '#/components/schemas/argument'
+          $ref: '#/components/schemas/Argument'
       required:
       - input
       type: object
-    connectorrulevalidationresponse_details_inner:
+    ConnectorRuleValidationResponse_details_inner:
       description: CodeErrorDetail
       example:
         line: 2

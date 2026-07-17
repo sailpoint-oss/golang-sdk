@@ -56,11 +56,11 @@ Other parameters are passed through a pointer to a apiAddAccessRequestRecommenda
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **accessrequestrecommendationactionitemdto** | [**Accessrequestrecommendationactionitemdto**](../models/accessrequestrecommendationactionitemdto) | The recommended access item to ignore for an identity. | 
+ **accessRequestRecommendationActionItemDto** | [**AccessRequestRecommendationActionItemDto**](../models/access-request-recommendation-action-item-dto) | The recommended access item to ignore for an identity. | 
 
 ### Return type
 
-[**Accessrequestrecommendationactionitemresponsedto**](../models/accessrequestrecommendationactionitemresponsedto)
+[**AccessRequestRecommendationActionItemResponseDto**](../models/access-request-recommendation-action-item-response-dto)
 
 ### HTTP request headers
 
@@ -83,10 +83,16 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accessrequestrecommendationactionitemdtoJson := []byte(``) // Accessrequestrecommendationactionitemdto | The recommended access item to ignore for an identity.
+    accessrequestrecommendationactionitemdtoJson := []byte(`{
+          "access" : {
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE"
+          },
+          "identityId" : "2c91808570313110017040b06f344ec9"
+        }`) // AccessRequestRecommendationActionItemDto | The recommended access item to ignore for an identity.
 
-    var accessrequestrecommendationactionitemdto iai_access_request_recommendations.Accessrequestrecommendationactionitemdto
-    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessrequestrecommendationactionitemdto); err != nil {
+    var accessRequestRecommendationActionItemDto iai_access_request_recommendations.AccessRequestRecommendationActionItemDto
+    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessRequestRecommendationActionItemDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -94,13 +100,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
-	  //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
+	  //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddAccessRequestRecommendationsIgnoredItemV1`: Accessrequestrecommendationactionitemresponsedto
+    // response from `AddAccessRequestRecommendationsIgnoredItemV1`: AccessRequestRecommendationActionItemResponseDto
     fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItemV1`: %v\n", resp)
 }
 ```
@@ -136,11 +142,11 @@ Other parameters are passed through a pointer to a apiAddAccessRequestRecommenda
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **accessrequestrecommendationactionitemdto** | [**Accessrequestrecommendationactionitemdto**](../models/accessrequestrecommendationactionitemdto) | The recommended access item that was requested for an identity. | 
+ **accessRequestRecommendationActionItemDto** | [**AccessRequestRecommendationActionItemDto**](../models/access-request-recommendation-action-item-dto) | The recommended access item that was requested for an identity. | 
 
 ### Return type
 
-[**Accessrequestrecommendationactionitemresponsedto**](../models/accessrequestrecommendationactionitemresponsedto)
+[**AccessRequestRecommendationActionItemResponseDto**](../models/access-request-recommendation-action-item-response-dto)
 
 ### HTTP request headers
 
@@ -163,10 +169,16 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accessrequestrecommendationactionitemdtoJson := []byte(``) // Accessrequestrecommendationactionitemdto | The recommended access item that was requested for an identity.
+    accessrequestrecommendationactionitemdtoJson := []byte(`{
+          "access" : {
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE"
+          },
+          "identityId" : "2c91808570313110017040b06f344ec9"
+        }`) // AccessRequestRecommendationActionItemDto | The recommended access item that was requested for an identity.
 
-    var accessrequestrecommendationactionitemdto iai_access_request_recommendations.Accessrequestrecommendationactionitemdto
-    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessrequestrecommendationactionitemdto); err != nil {
+    var accessRequestRecommendationActionItemDto iai_access_request_recommendations.AccessRequestRecommendationActionItemDto
+    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessRequestRecommendationActionItemDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -174,13 +186,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
-	  //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
+	  //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddAccessRequestRecommendationsRequestedItemV1`: Accessrequestrecommendationactionitemresponsedto
+    // response from `AddAccessRequestRecommendationsRequestedItemV1`: AccessRequestRecommendationActionItemResponseDto
     fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItemV1`: %v\n", resp)
 }
 ```
@@ -216,11 +228,11 @@ Other parameters are passed through a pointer to a apiAddAccessRequestRecommenda
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **accessrequestrecommendationactionitemdto** | [**Accessrequestrecommendationactionitemdto**](../models/accessrequestrecommendationactionitemdto) | The recommended access that was viewed for an identity. | 
+ **accessRequestRecommendationActionItemDto** | [**AccessRequestRecommendationActionItemDto**](../models/access-request-recommendation-action-item-dto) | The recommended access that was viewed for an identity. | 
 
 ### Return type
 
-[**Accessrequestrecommendationactionitemresponsedto**](../models/accessrequestrecommendationactionitemresponsedto)
+[**AccessRequestRecommendationActionItemResponseDto**](../models/access-request-recommendation-action-item-response-dto)
 
 ### HTTP request headers
 
@@ -243,10 +255,16 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accessrequestrecommendationactionitemdtoJson := []byte(``) // Accessrequestrecommendationactionitemdto | The recommended access that was viewed for an identity.
+    accessrequestrecommendationactionitemdtoJson := []byte(`{
+          "access" : {
+            "id" : "2c9180835d2e5168015d32f890ca1581",
+            "type" : "ACCESS_PROFILE"
+          },
+          "identityId" : "2c91808570313110017040b06f344ec9"
+        }`) // AccessRequestRecommendationActionItemDto | The recommended access that was viewed for an identity.
 
-    var accessrequestrecommendationactionitemdto iai_access_request_recommendations.Accessrequestrecommendationactionitemdto
-    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessrequestrecommendationactionitemdto); err != nil {
+    var accessRequestRecommendationActionItemDto iai_access_request_recommendations.AccessRequestRecommendationActionItemDto
+    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessRequestRecommendationActionItemDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -254,13 +272,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
-	  //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
+	  //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddAccessRequestRecommendationsViewedItemV1`: Accessrequestrecommendationactionitemresponsedto
+    // response from `AddAccessRequestRecommendationsViewedItemV1`: AccessRequestRecommendationActionItemResponseDto
     fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemV1`: %v\n", resp)
 }
 ```
@@ -296,11 +314,11 @@ Other parameters are passed through a pointer to a apiAddAccessRequestRecommenda
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **accessrequestrecommendationactionitemdto** | [**[]Accessrequestrecommendationactionitemdto**](../models/accessrequestrecommendationactionitemdto) | The recommended access items that were viewed for an identity. | 
+ **accessRequestRecommendationActionItemDto** | [**[]AccessRequestRecommendationActionItemDto**](../models/access-request-recommendation-action-item-dto) | The recommended access items that were viewed for an identity. | 
 
 ### Return type
 
-[**[]Accessrequestrecommendationactionitemresponsedto**](../models/accessrequestrecommendationactionitemresponsedto)
+[**[]AccessRequestRecommendationActionItemResponseDto**](../models/access-request-recommendation-action-item-response-dto)
 
 ### HTTP request headers
 
@@ -323,10 +341,10 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accessrequestrecommendationactionitemdtoJson := []byte(``) // []Accessrequestrecommendationactionitemdto | The recommended access items that were viewed for an identity.
+    accessrequestrecommendationactionitemdtoJson := []byte(``) // []AccessRequestRecommendationActionItemDto | The recommended access items that were viewed for an identity.
 
-    var accessrequestrecommendationactionitemdto []iai_access_request_recommendations.Accessrequestrecommendationactionitemdto
-    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessrequestrecommendationactionitemdto); err != nil {
+    var accessRequestRecommendationActionItemDto []iai_access_request_recommendations.AccessRequestRecommendationActionItemDto
+    if err := json.Unmarshal(accessrequestrecommendationactionitemdtoJson, &accessRequestRecommendationActionItemDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -334,13 +352,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
-	  //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationactionitemdto(accessrequestrecommendationactionitemdto).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
+	  //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddAccessRequestRecommendationsViewedItemsV1`: []Accessrequestrecommendationactionitemresponsedto
+    // response from `AddAccessRequestRecommendationsViewedItemsV1`: []AccessRequestRecommendationActionItemResponseDto
     fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItemsV1`: %v\n", resp)
 }
 ```
@@ -379,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accessrequestrecommendationconfigdto**](../models/accessrequestrecommendationconfigdto)
+[**AccessRequestRecommendationConfigDto**](../models/access-request-recommendation-config-dto)
 
 ### HTTP request headers
 
@@ -413,7 +431,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccessRequestRecommendationsConfigV1`: Accessrequestrecommendationconfigdto
+    // response from `GetAccessRequestRecommendationsConfigV1`: AccessRequestRecommendationConfigDto
     fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsConfigV1`: %v\n", resp)
 }
 ```
@@ -457,7 +475,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessrequestrecommendationactionitemresponsedto**](../models/accessrequestrecommendationactionitemresponsedto)
+[**[]AccessRequestRecommendationActionItemResponseDto**](../models/access-request-recommendation-action-item-response-dto)
 
 ### HTTP request headers
 
@@ -496,7 +514,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccessRequestRecommendationsIgnoredItemsV1`: []Accessrequestrecommendationactionitemresponsedto
+    // response from `GetAccessRequestRecommendationsIgnoredItemsV1`: []AccessRequestRecommendationActionItemResponseDto
     fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItemsV1`: %v\n", resp)
 }
 ```
@@ -540,7 +558,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessrequestrecommendationactionitemresponsedto**](../models/accessrequestrecommendationactionitemresponsedto)
+[**[]AccessRequestRecommendationActionItemResponseDto**](../models/access-request-recommendation-action-item-response-dto)
 
 ### HTTP request headers
 
@@ -579,7 +597,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccessRequestRecommendationsRequestedItemsV1`: []Accessrequestrecommendationactionitemresponsedto
+    // response from `GetAccessRequestRecommendationsRequestedItemsV1`: []AccessRequestRecommendationActionItemResponseDto
     fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItemsV1`: %v\n", resp)
 }
 ```
@@ -625,7 +643,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessrequestrecommendationitemdetail**](../models/accessrequestrecommendationitemdetail)
+[**[]AccessRequestRecommendationItemDetail**](../models/access-request-recommendation-item-detail)
 
 ### HTTP request headers
 
@@ -666,7 +684,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccessRequestRecommendationsV1`: []Accessrequestrecommendationitemdetail
+    // response from `GetAccessRequestRecommendationsV1`: []AccessRequestRecommendationItemDetail
     fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsV1`: %v\n", resp)
 }
 ```
@@ -710,7 +728,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessrequestrecommendationactionitemresponsedto**](../models/accessrequestrecommendationactionitemresponsedto)
+[**[]AccessRequestRecommendationActionItemResponseDto**](../models/access-request-recommendation-action-item-response-dto)
 
 ### HTTP request headers
 
@@ -749,7 +767,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItemsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccessRequestRecommendationsViewedItemsV1`: []Accessrequestrecommendationactionitemresponsedto
+    // response from `GetAccessRequestRecommendationsViewedItemsV1`: []AccessRequestRecommendationActionItemResponseDto
     fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItemsV1`: %v\n", resp)
 }
 ```
@@ -785,11 +803,11 @@ Other parameters are passed through a pointer to a apiSetAccessRequestRecommenda
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **accessrequestrecommendationconfigdto** | [**Accessrequestrecommendationconfigdto**](../models/accessrequestrecommendationconfigdto) | The desired configurations for Access Request Recommender for the tenant. | 
+ **accessRequestRecommendationConfigDto** | [**AccessRequestRecommendationConfigDto**](../models/access-request-recommendation-config-dto) | The desired configurations for Access Request Recommender for the tenant. | 
 
 ### Return type
 
-[**Accessrequestrecommendationconfigdto**](../models/accessrequestrecommendationconfigdto)
+[**AccessRequestRecommendationConfigDto**](../models/access-request-recommendation-config-dto)
 
 ### HTTP request headers
 
@@ -812,10 +830,17 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    accessrequestrecommendationconfigdtoJson := []byte(``) // Accessrequestrecommendationconfigdto | The desired configurations for Access Request Recommender for the tenant.
+    accessrequestrecommendationconfigdtoJson := []byte(`{
+          "scoreThreshold" : 0.5,
+          "startDateAttribute" : "startDate",
+          "restrictionAttribute" : "location",
+          "moverAttribute" : "isMover",
+          "joinerAttribute" : "isJoiner",
+          "useRestrictionAttribute" : true
+        }`) // AccessRequestRecommendationConfigDto | The desired configurations for Access Request Recommender for the tenant.
 
-    var accessrequestrecommendationconfigdto iai_access_request_recommendations.Accessrequestrecommendationconfigdto
-    if err := json.Unmarshal(accessrequestrecommendationconfigdtoJson, &accessrequestrecommendationconfigdto); err != nil {
+    var accessRequestRecommendationConfigDto iai_access_request_recommendations.AccessRequestRecommendationConfigDto
+    if err := json.Unmarshal(accessrequestrecommendationconfigdtoJson, &accessRequestRecommendationConfigDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -823,13 +848,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationconfigdto(accessrequestrecommendationconfigdto).Execute()
-	  //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Accessrequestrecommendationconfigdto(accessrequestrecommendationconfigdto).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationConfigDto(accessRequestRecommendationConfigDto).Execute()
+	  //resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessRequestRecommendationConfigDto(accessRequestRecommendationConfigDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetAccessRequestRecommendationsConfigV1`: Accessrequestrecommendationconfigdto
+    // response from `SetAccessRequestRecommendationsConfigV1`: AccessRequestRecommendationConfigDto
     fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.SetAccessRequestRecommendationsConfigV1`: %v\n", resp)
 }
 ```

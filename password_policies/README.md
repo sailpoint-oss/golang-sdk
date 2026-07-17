@@ -88,12 +88,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetPasswordPolicyByIdV1401Response](docs/GetPasswordPolicyByIdV1401Response.md)
  - [GetPasswordPolicyByIdV1429Response](docs/GetPasswordPolicyByIdV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Passwordpolicyv3dto](docs/Passwordpolicyv3dto.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [PasswordPolicyV3Dto](docs/PasswordPolicyV3Dto.md)
 
 
 ## Documentation For Authorization

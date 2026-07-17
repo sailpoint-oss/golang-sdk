@@ -127,7 +127,7 @@ paths:
                       - "NGROK Test: fire and forget"
                       - Manager Certification
             schema:
-              $ref: '#/components/schemas/exportpayload'
+              $ref: '#/components/schemas/ExportPayload'
         description: Export options control what will be included in the export.
         required: true
       responses:
@@ -135,13 +135,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/spconfigexportjob'
+                $ref: '#/components/schemas/SpConfigExportJob'
           description: Export job accepted and queued for processing.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: |
             Client Error - Returned if the request body is invalid.
         "401":
@@ -166,7 +166,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -184,7 +184,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -209,7 +209,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -254,13 +254,13 @@ paths:
                 modified: 2021-05-13T15:04:27.363Z
                 completed: 2021-05-13T15:04:27.358Z
               schema:
-                $ref: '#/components/schemas/spconfigexportjobstatus'
+                $ref: '#/components/schemas/SpConfigExportJobStatus'
           description: Export job status successfully returned.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -284,7 +284,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -302,7 +302,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -327,7 +327,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -362,13 +362,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/spconfigexportresults'
+                $ref: '#/components/schemas/SpConfigExportResults'
           description: Exported JSON objects.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -392,7 +392,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -410,7 +410,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -435,7 +435,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -533,13 +533,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/spconfigjob'
+                $ref: '#/components/schemas/SpConfigJob'
           description: Import job accepted and queued for processing.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: |
             Client Error - Returned if the request body is invalid.
         "401":
@@ -564,7 +564,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -582,7 +582,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -607,7 +607,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -652,13 +652,13 @@ paths:
                 modified: 2021-05-13T16:42:40.71Z
                 completed: 2021-05-13T16:42:40.705Z
               schema:
-                $ref: '#/components/schemas/spconfigimportjobstatus'
+                $ref: '#/components/schemas/SpConfigImportJobStatus'
           description: Import job status successfully returned.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -682,7 +682,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -700,7 +700,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -725,7 +725,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -759,14 +759,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/spconfigimportresults'
+                $ref: '#/components/schemas/SpConfigImportResults'
           description: "Import results JSON object, containing detailed results of\
             \ the import operation."
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -790,7 +790,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -808,7 +808,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -833,7 +833,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -855,14 +855,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/spconfigobject'
+                  $ref: '#/components/schemas/SpConfigObject'
                 type: array
           description: Object configurations returned successfully.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -886,7 +886,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -904,7 +904,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -929,7 +929,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -947,7 +947,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -971,7 +971,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -989,7 +989,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -1014,10 +1014,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    objectexportimportoptions:
+    ObjectExportImportOptions:
       properties:
         includedIds:
           description: Object ids to be included in an import or export.
@@ -1033,7 +1033,7 @@ components:
           type: array
       title: Object Export Import Options
       type: object
-    exportoptions:
+    ExportOptions:
       example:
         includeTypes:
         - TRIGGER_SUBSCRIPTION
@@ -1115,7 +1115,7 @@ components:
           type: array
         objectOptions:
           additionalProperties:
-            $ref: '#/components/schemas/objectexportimportoptions'
+            $ref: '#/components/schemas/ObjectExportImportOptions'
           description: Additional options targeting specific objects related to each
             item in the includeTypes field
           example:
@@ -1127,9 +1127,11 @@ components:
           type: object
       title: Export Options
       type: object
-    exportpayload:
+    ExportPayload:
       allOf:
-      - $ref: '#/components/schemas/exportoptions'
+      - $ref: '#/components/schemas/ExportOptions'
+      example:
+        description: Export Job 1 Test
       properties:
         description:
           description: Optional user defined description/name for export job.
@@ -1137,7 +1139,7 @@ components:
           type: string
       title: Export Payload
       type: object
-    spconfigjob:
+    SpConfigJob:
       example:
         jobId: 3469b87d-48ca-439a-868f-2160001da8c1
         created: 2021-05-11T22:23:16Z
@@ -1190,9 +1192,9 @@ components:
       - type
       title: Sp Config Job
       type: object
-    spconfigexportjob:
+    SpConfigExportJob:
       allOf:
-      - $ref: '#/components/schemas/spconfigjob'
+      - $ref: '#/components/schemas/SpConfigJob'
       - nullable: true
         properties:
           description:
@@ -1208,7 +1210,7 @@ components:
         expiration: 2021-05-11T22:23:16Z
         type: IMPORT
         status: COMPLETE
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1220,7 +1222,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1233,7 +1235,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1241,7 +1243,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1275,19 +1277,19 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    spconfigexportjobstatus:
+    SpConfigExportJobStatus:
       allOf:
-      - $ref: '#/components/schemas/spconfigexportjob'
+      - $ref: '#/components/schemas/SpConfigExportJob'
       - nullable: true
         properties:
           completed:
@@ -1305,7 +1307,7 @@ components:
         completed: 2021-05-11T22:23:16Z
         type: IMPORT
         status: COMPLETE
-    selfimportexportdto:
+    SelfImportExportDto:
       description: Self block for imported/exported object.
       example:
         name: HR Active Directory
@@ -1354,7 +1356,7 @@ components:
           type: string
       title: Self Import Export Dto
       type: object
-    configobject:
+    ConfigObject:
       description: Config export and import format for individual object configurations.
       example:
         self:
@@ -1370,14 +1372,14 @@ components:
           example: 1
           type: integer
         self:
-          $ref: '#/components/schemas/selfimportexportdto'
+          $ref: '#/components/schemas/SelfImportExportDto'
         object:
           additionalProperties: true
           description: Object details. Format dependant on the object type.
           type: object
       title: Config Object for Export and Import
       type: object
-    spconfigexportresults:
+    SpConfigExportResults:
       description: Response model for config export download response.
       example:
         objects:
@@ -1431,14 +1433,14 @@ components:
           example: Export Job 1 Test
           type: string
         options:
-          $ref: '#/components/schemas/exportoptions'
+          $ref: '#/components/schemas/ExportOptions'
         objects:
           items:
-            $ref: '#/components/schemas/configobject'
+            $ref: '#/components/schemas/ConfigObject'
           type: array
       title: Config Export Response Body
       type: object
-    importoptions:
+    ImportOptions:
       properties:
         excludeTypes:
           description: Object type names to be excluded from an sp-config export command.
@@ -1471,7 +1473,7 @@ components:
           type: array
         objectOptions:
           additionalProperties:
-            $ref: '#/components/schemas/objectexportimportoptions'
+            $ref: '#/components/schemas/ObjectExportImportOptions'
           description: Additional options targeting specific objects related to each
             item in the includeTypes field
           example:
@@ -1505,9 +1507,9 @@ components:
           type: boolean
       title: Import Options
       type: object
-    spconfigimportjobstatus:
+    SpConfigImportJobStatus:
       allOf:
-      - $ref: '#/components/schemas/spconfigjob'
+      - $ref: '#/components/schemas/SpConfigJob'
       - nullable: true
         properties:
           message:
@@ -1533,7 +1535,7 @@ components:
         type: IMPORT
         message: Download import results for details.
         status: COMPLETE
-    spconfigmessage-2:
+    SpConfigMessage_2:
       description: Message model for Config Import/Export.
       properties:
         key:
@@ -1558,7 +1560,7 @@ components:
       - text
       title: Config Import/Export Message
       type: object
-    importobject:
+    ImportObject:
       description: Object created or updated by import.
       properties:
         type:
@@ -1583,29 +1585,29 @@ components:
           type: string
       title: Import Object
       type: object
-    objectimportresult-2:
+    ObjectImportResult_2:
       description: Response model for import of a single object.
       properties:
         infos:
           description: Informational messages returned from the target service on
             import.
           items:
-            $ref: '#/components/schemas/spconfigmessage-2'
+            $ref: '#/components/schemas/SpConfigMessage_2'
           type: array
         warnings:
           description: Warning messages returned from the target service on import.
           items:
-            $ref: '#/components/schemas/spconfigmessage-2'
+            $ref: '#/components/schemas/SpConfigMessage_2'
           type: array
         errors:
           description: Error messages returned from the target service on import.
           items:
-            $ref: '#/components/schemas/spconfigmessage-2'
+            $ref: '#/components/schemas/SpConfigMessage_2'
           type: array
         importedObjects:
           description: References to objects that were created or updated by the import.
           items:
-            $ref: '#/components/schemas/importobject'
+            $ref: '#/components/schemas/ImportObject'
           type: array
       required:
       - errors
@@ -1614,7 +1616,7 @@ components:
       - warnings
       title: Import Object Response Body
       type: object
-    spconfigimportresults:
+    SpConfigImportResults:
       description: Response Body for Config Import command.
       example:
         results:
@@ -1636,7 +1638,7 @@ components:
       properties:
         results:
           additionalProperties:
-            $ref: '#/components/schemas/objectimportresult-2'
+            $ref: '#/components/schemas/ObjectImportResult_2'
           description: The results of an object configuration import job.
           example:
             results:
@@ -1664,7 +1666,7 @@ components:
       - results
       title: Config Import Response Body
       type: object
-    spconfigrule:
+    SpConfigRule:
       description: Format of Config Hub object rules.
       example:
         path: $.enabled
@@ -1679,7 +1681,7 @@ components:
           example: $.enabled
           type: string
         value:
-          $ref: '#/components/schemas/spconfigrule_value'
+          $ref: '#/components/schemas/SpConfigRule_value'
         modes:
           description: Draft modes the rule will apply to.
           example:
@@ -1694,7 +1696,7 @@ components:
           type: array
       title: Config Object Rule
       type: object
-    spconfigrules:
+    SpConfigRules:
       description: Rules to be applied to the config object during the draft process.
       example:
         defaultRules:
@@ -1723,11 +1725,11 @@ components:
       properties:
         takeFromTargetRules:
           items:
-            $ref: '#/components/schemas/spconfigrule'
+            $ref: '#/components/schemas/SpConfigRule'
           type: array
         defaultRules:
           items:
-            $ref: '#/components/schemas/spconfigrule'
+            $ref: '#/components/schemas/SpConfigRule'
           type: array
         editable:
           default: false
@@ -1736,7 +1738,7 @@ components:
           type: boolean
       title: Config Object Rules
       type: object
-    spconfigobject:
+    SpConfigObject:
       description: Response model for object configuration.
       example:
         exportable: true
@@ -1814,7 +1816,7 @@ components:
           example: true
           type: boolean
         rules:
-          $ref: '#/components/schemas/spconfigrules'
+          $ref: '#/components/schemas/SpConfigRules'
       title: Object Configuration Model
       type: object
     exportSpConfigV1_401_response:
@@ -1840,11 +1842,11 @@ components:
           format: binary
           type: string
         options:
-          $ref: '#/components/schemas/importoptions'
+          $ref: '#/components/schemas/ImportOptions'
       required:
       - data
       type: object
-    spconfigrule_value:
+    SpConfigRule_value:
       anyOf:
       - type: object
       - items:

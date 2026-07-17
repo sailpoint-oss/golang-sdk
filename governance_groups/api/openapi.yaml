@@ -124,14 +124,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/workgroupdto'
+                  $ref: '#/components/schemas/WorkgroupDto'
                 type: array
           description: List of Governance Groups
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -155,7 +155,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -180,7 +180,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -202,20 +202,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/workgroupdto'
+              $ref: '#/components/schemas/WorkgroupDto'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workgroupdto'
+                $ref: '#/components/schemas/WorkgroupDto'
           description: Governance Group object created.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -239,7 +239,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -264,7 +264,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -300,7 +300,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -324,7 +324,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -349,7 +349,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -381,13 +381,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workgroupdto'
+                $ref: '#/components/schemas/WorkgroupDto'
           description: A Governance Group
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -411,7 +411,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -436,7 +436,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -481,20 +481,20 @@ paths:
                   value: Governance Group new description.
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workgroupdto'
+                $ref: '#/components/schemas/WorkgroupDto'
           description: A Governance Group.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -518,7 +518,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -543,7 +543,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -584,20 +584,20 @@ paths:
               - 567a697e-885b-495a-afc5-d55e1c23a302
               - c7b0f7b2-1e78-4063-b294-a555333dacd2
             schema:
-              $ref: '#/components/schemas/workgroupbulkdeleterequest'
+              $ref: '#/components/schemas/WorkgroupBulkDeleteRequest'
         required: true
       responses:
         "207":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workgroupbulkdeleteresponse'
+                $ref: '#/components/schemas/WorkgroupBulkDeleteResponse'
           description: Governance Group bulk delete response.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -621,7 +621,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -646,7 +646,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -738,14 +738,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/workgroupconnectiondto'
+                  $ref: '#/components/schemas/WorkgroupConnectionDto'
                 type: array
           description: List all connections associated with a Governance Group.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -769,7 +769,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -794,7 +794,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -894,7 +894,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -918,7 +918,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -943,7 +943,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -982,7 +982,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/bulkworkgroupmembersrequest'
+              $ref: '#/components/schemas/BulkWorkgroupMembersRequest'
         description: List of identities to be added to a Governance Group members
           list.
         required: true
@@ -991,14 +991,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workgroupmemberbulkaddresponse'
+                $ref: '#/components/schemas/WorkgroupMemberBulkAddResponse'
           description: List of added and not added identities into  Governance Group
             members list.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1022,7 +1022,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1047,7 +1047,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1083,7 +1083,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/bulkworkgroupmembersrequest'
+              $ref: '#/components/schemas/BulkWorkgroupMembersRequest'
         description: List of identities to be removed from  a Governance Group members
           list.
         required: true
@@ -1092,14 +1092,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/workgroupmemberbulkdeleteresponse'
+                $ref: '#/components/schemas/WorkgroupMemberBulkDeleteResponse'
           description: List of deleted and not deleted identities from Governance
             Group members list.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1123,7 +1123,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1148,7 +1148,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1234,7 +1234,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1258,7 +1258,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "429":
@@ -1283,10 +1283,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    ownerdto:
+    OwnerDto:
       description: Owner's identity.
       properties:
         type:
@@ -1305,7 +1305,7 @@ components:
           type: string
       title: Owner Dto
       type: object
-    workgroupdto:
+    WorkgroupDto:
       example:
         owner:
           emailAddress: support@sailpoint.com
@@ -1322,7 +1322,7 @@ components:
         id: 2c91808568c529c60168cca6f90c1313
       properties:
         owner:
-          $ref: '#/components/schemas/workgroupdto_owner'
+          $ref: '#/components/schemas/WorkgroupDto_owner'
         id:
           description: Governance group ID.
           example: 2c91808568c529c60168cca6f90c1313
@@ -1357,7 +1357,7 @@ components:
           format: date-time
           type: string
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1369,7 +1369,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1382,7 +1382,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1390,7 +1390,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1424,18 +1424,22 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -1454,13 +1458,17 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    workgroupbulkdeleterequest:
+    WorkgroupBulkDeleteRequest:
+      example:
+        ids:
+        - 567a697e-885b-495a-afc5-d55e1c23a302
+        - c7b0f7b2-1e78-4063-b294-a555333dacd2
       properties:
         ids:
           description: List of IDs of Governance Groups to be deleted.
@@ -1471,7 +1479,7 @@ components:
             type: string
           type: array
       type: object
-    workgroupdeleteitem:
+    WorkgroupDeleteItem:
       properties:
         id:
           description: Id of the Governance Group.
@@ -1505,16 +1513,16 @@ components:
       - id
       - status
       type: object
-    workgroupbulkdeleteresponse:
+    WorkgroupBulkDeleteResponse:
       description: Bulk remove Governance Groups Response.
       example:
       - id: 464ae7bf791e49fdb74606a2e4a89635
         status: 204
         description: Governance Group deleted successfully.
       items:
-        $ref: '#/components/schemas/workgroupdeleteitem'
+        $ref: '#/components/schemas/WorkgroupDeleteItem'
       type: array
-    connectedobjecttype:
+    ConnectedObjectType:
       description: "An enumeration of the types of Objects associated with a Governance\
         \ Group. Supported object types are ACCESS_PROFILE, ROLE, SOD_POLICY and SOURCE."
       enum:
@@ -1524,11 +1532,11 @@ components:
       - SOURCE
       example: ACCESS_PROFILE
       type: string
-    connectedobject:
+    ConnectedObject:
       properties:
         type:
           allOf:
-          - $ref: '#/components/schemas/connectedobjecttype'
+          - $ref: '#/components/schemas/ConnectedObjectType'
           - description: Connection Object type
         id:
           description: ID of the object to which this reference applies
@@ -1544,7 +1552,7 @@ components:
           nullable: true
           type: string
       type: object
-    workgroupconnectiondto:
+    WorkgroupConnectionDto:
       example:
         connectionType: AccessRequestReviewer
         object:
@@ -1554,7 +1562,7 @@ components:
           type: ""
       properties:
         object:
-          $ref: '#/components/schemas/workgroupconnectiondto_object'
+          $ref: '#/components/schemas/WorkgroupConnectionDto_object'
         connectionType:
           description: Connection Type.
           enum:
@@ -1564,7 +1572,7 @@ components:
           example: AccessRequestReviewer
           type: string
       type: object
-    bulkworkgroupmembersrequest:
+    BulkWorkgroupMembersRequest:
       description: List of identities to be added or removed to a Governance Group
         members list.
       example:
@@ -1572,9 +1580,9 @@ components:
         id: 464ae7bf791e49fdb74606a2e4a89635
         name: Addie Smith
       items:
-        $ref: '#/components/schemas/bulkworkgroupmembersrequest_inner'
+        $ref: '#/components/schemas/BulkWorkgroupMembersRequest_inner'
       type: array
-    workgroupmemberadditem:
+    WorkgroupMemberAddItem:
       properties:
         id:
           description: Identifier of identity in bulk member add request.
@@ -1605,16 +1613,16 @@ components:
       - id
       - status
       type: object
-    workgroupmemberbulkaddresponse:
+    WorkgroupMemberBulkAddResponse:
       description: Bulk add Governance Group members Response.
       example:
       - id: 464ae7bf791e49fdb74606a2e4a89635
         status: 201
         description: Identity added to Governance Group members list.
       items:
-        $ref: '#/components/schemas/workgroupmemberadditem'
+        $ref: '#/components/schemas/WorkgroupMemberAddItem'
       type: array
-    workgroupmemberdeleteitem:
+    WorkgroupMemberDeleteItem:
       properties:
         id:
           description: Identifier of identity in bulk member add /remove request.
@@ -1643,14 +1651,14 @@ components:
       - id
       - status
       type: object
-    workgroupmemberbulkdeleteresponse:
+    WorkgroupMemberBulkDeleteResponse:
       description: Bulk add Governance Group members Response.
       example:
       - id: 464ae7bf791e49fdb74606a2e4a89635
         status: 204
         description: Identity deleted from Governance Group members list.
       items:
-        $ref: '#/components/schemas/workgroupmemberdeleteitem'
+        $ref: '#/components/schemas/WorkgroupMemberDeleteItem'
       type: array
     listWorkgroupsV1_401_response:
       example:
@@ -1695,9 +1703,9 @@ components:
           example: michael.michaels@sailpoint.com
           type: string
       type: object
-    workgroupdto_owner:
+    WorkgroupDto_owner:
       allOf:
-      - $ref: '#/components/schemas/ownerdto'
+      - $ref: '#/components/schemas/OwnerDto'
       - description: Governance group owner.
         properties:
           displayName:
@@ -1726,7 +1734,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description
@@ -1749,16 +1757,16 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    workgroupconnectiondto_object:
+    WorkgroupConnectionDto_object:
       allOf:
-      - $ref: '#/components/schemas/connectedobject'
+      - $ref: '#/components/schemas/ConnectedObject'
       - description: Connected object to Governance Group
       example:
         name: Employee-database-read-write
         description: Collection of entitlements to read/write the employee database.
         id: 2c91808568c529c60168cca6f90c1313
         type: ""
-    bulkworkgroupmembersrequest_inner:
+    BulkWorkgroupMembersRequest_inner:
       description: Identity's basic details.
       properties:
         type:

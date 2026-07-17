@@ -62,20 +62,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/passwordinfoquerydto'
+              $ref: '#/components/schemas/PasswordInfoQueryDTO'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/passwordinfo'
+                $ref: '#/components/schemas/PasswordInfo'
           description: Reference to the password info.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -99,7 +99,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -124,7 +124,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -165,20 +165,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/passwordchangerequest'
+              $ref: '#/components/schemas/PasswordChangeRequest'
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/passwordchangeresponse'
+                $ref: '#/components/schemas/PasswordChangeResponse'
           description: Reference to the password change.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -202,7 +202,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -227,7 +227,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -258,13 +258,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/passwordstatus'
+                $ref: '#/components/schemas/PasswordStatus'
           description: Status of the password change request
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -288,7 +288,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -306,7 +306,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -331,7 +331,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -368,7 +368,7 @@ paths:
               length: 8
               durationMinutes: 5
             schema:
-              $ref: '#/components/schemas/passworddigittokenreset'
+              $ref: '#/components/schemas/PasswordDigitTokenReset'
         required: true
       responses:
         "200":
@@ -378,13 +378,13 @@ paths:
                 digitToken: 9087713
                 requestId: e1267ecd-fcd9-4c73-9c55-12555efad136
               schema:
-                $ref: '#/components/schemas/passworddigittoken'
+                $ref: '#/components/schemas/PasswordDigitToken'
           description: The digit token for password management.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -408,7 +408,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -433,7 +433,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -450,7 +450,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -474,7 +474,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -492,7 +492,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -517,10 +517,13 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    passwordinfoquerydto:
+    PasswordInfoQueryDTO:
+      example:
+        sourceName: My-AD
+        userName: Abby.Smith
       properties:
         userName:
           description: The login name of the user
@@ -532,7 +535,7 @@ components:
           type: string
       title: Password Info Query DTO
       type: object
-    passwordinfoaccount:
+    PasswordInfoAccount:
       example:
         accountId: "CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com"
         accountName: Abby.Smith
@@ -551,7 +554,7 @@ components:
           type: string
       title: Password Info Account
       type: object
-    passwordinfo:
+    PasswordInfo:
       example:
         sourceId: 2c918083746f642c01746f990884012a
         identityId: 2c918085744fec4301746f9a5bce4605
@@ -587,7 +590,7 @@ components:
         accounts:
           description: Account info related to queried identity and source
           items:
-            $ref: '#/components/schemas/passwordinfoaccount'
+            $ref: '#/components/schemas/PasswordInfoAccount'
           type: array
         policies:
           description: Password constraints
@@ -601,7 +604,7 @@ components:
           type: array
       title: Password Info
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -613,7 +616,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -626,7 +629,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -634,7 +637,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -668,17 +671,23 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    passwordchangerequest:
+    PasswordChangeRequest:
+      example:
+        sourceId: 8a807d4c73c545510173c545d4b60246
+        accountId: "CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com"
+        identityId: 8a807d4c73c545510173c545f0a002ff
+        publicKeyId: YWQ2NjQ4MTItZjY0NC00MWExLWFjMjktOGNmMzU3Y2VlNjk2
+        encryptedPassword: XzN+YwKgr2C+InkMYFMBG3UtjMEw5ZIql/XFlXo8cJNeslmkplx6vn4kd4/43IF9STBk5RnzR6XmjpEO+FwHDoiBwYZAkAZK/Iswxk4OdybG6Y4MStJCOCiK8osKr35IMMSV/mbO4wAeltoCk7daTWzTGLiI6UaT5tf+F2EgdjJZ7YqM8W8r7aUWsm3p2Xt01Y46ZRx0QaM91QruiIx2rECFT2pUO0wr+7oQ77jypATyGWRtADsu3YcvCk/6U5MqCnXMzKBcRas7NnZdSL/d5H1GglVGz3VLPMaivG4/oL4chOMmFCRl/zVsGxZ9RhN8rxsRGFFKn+rhExTi+bax3A==
       properties:
         identityId:
           description: The identity ID that requested the password change
@@ -705,7 +714,7 @@ components:
           type: string
       title: Password Change Request
       type: object
-    passwordchangeresponse:
+    PasswordChangeResponse:
       example:
         requestId: 089899f13a8f4da7824996191587bab9
         state: IN_PROGRESS
@@ -725,7 +734,7 @@ components:
           type: string
       title: Password Change Response
       type: object
-    passwordstatus:
+    PasswordStatus:
       example:
         requestId: 089899f13a8f4da7824996191587bab9
         state: IN_PROGRESS
@@ -763,7 +772,11 @@ components:
           type: array
       title: Password Status
       type: object
-    passworddigittokenreset:
+    PasswordDigitTokenReset:
+      example:
+        durationMinutes: 5
+        length: 8
+        userId: Abby.Smith
       properties:
         userId:
           description: The uid of the user requested for digit token
@@ -783,7 +796,7 @@ components:
       - userId
       title: Password Digit Token Reset
       type: object
-    passworddigittoken:
+    PasswordDigitToken:
       example:
         digitToken: "9087713"
         requestId: e1267ecd-fcd9-4c73-9c55-12555efad136

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ListDeploysV1200Response', 'V1ListDep
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | Pointer to [**[]Deployresponse**](deployresponse) | list of deployments | [optional] 
+**Items** | Pointer to [**[]DeployResponse**](deploy-response) | list of deployments | [optional] 
 
 ## Methods
 
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetItems
 
-`func (o *ListDeploysV1200Response) GetItems() []Deployresponse`
+`func (o *ListDeploysV1200Response) GetItems() []DeployResponse`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *ListDeploysV1200Response) GetItemsOk() (*[]Deployresponse, bool)`
+`func (o *ListDeploysV1200Response) GetItemsOk() (*[]DeployResponse, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *ListDeploysV1200Response) SetItems(v []Deployresponse)`
+`func (o *ListDeploysV1200Response) SetItems(v []DeployResponse)`
 
 SetItems sets Items field to given value.
 

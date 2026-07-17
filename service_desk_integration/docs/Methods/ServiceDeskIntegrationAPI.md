@@ -68,11 +68,11 @@ Other parameters are passed through a pointer to a apiCreateServiceDeskIntegrati
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **servicedeskintegrationdto** | [**Servicedeskintegrationdto**](../models/servicedeskintegrationdto) | The specifics of a new integration to create | 
+ **serviceDeskIntegrationDto** | [**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto) | The specifics of a new integration to create | 
 
 ### Return type
 
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### HTTP request headers
 
@@ -94,10 +94,43 @@ import (
 )
 
 func main() {
-    servicedeskintegrationdtoJson := []byte(``) // Servicedeskintegrationdto | The specifics of a new integration to create
+    servicedeskintegrationdtoJson := []byte(`{
+          "ownerRef" : "",
+          "cluster" : "xyzzy999",
+          "created" : "2024-01-17T18:45:25.994Z",
+          "description" : "A very nice Service Desk integration",
+          "clusterRef" : "",
+          "type" : "ServiceNowSDIM",
+          "managedSources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
+          "provisioningConfig" : {
+            "managedResourceRefs" : [ {
+              "type" : "SOURCE",
+              "id" : "2c9180855d191c59015d291ceb051111",
+              "name" : "My Source 1"
+            }, {
+              "type" : "SOURCE",
+              "id" : "2c9180855d191c59015d291ceb052222",
+              "name" : "My Source 2"
+            } ],
+            "provisioningRequestExpiration" : 7,
+            "noProvisioningRequests" : true,
+            "universalManager" : true,
+            "planInitializerScript" : {
+              "source" : "<?xml version='1.0' encoding='UTF-8'?>\\r\\n<!DOCTYPE Rule PUBLIC \\\"sailpoint.dtd\\\" \\\"sailpoint.dtd\\\">\\r\\n<Rule name=\\\"Example Rule\\\" type=\\\"BeforeProvisioning\\\">\\r\\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\\r\\n  <Source><![CDATA[\\r\\nimport sailpoint.object.*;\\r\\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\\r\\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\\r\\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\\r\\nimport sailpoint.object.ProvisioningPlan;\\r\\nimport sailpoint.object.ProvisioningPlan.Operation;\\r\\n\\r\\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\\r\\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\\r\\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\\r\\n  }\\r\\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\\r\\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\\r\\n  }\\r\\n}\\r\\n\\r\\n  ]]></Source>\n"
+            }
+          },
+          "name" : "Service Desk Integration Name",
+          "modified" : "2024-02-18T18:45:25.994Z",
+          "attributes" : {
+            "property" : "value",
+            "key" : "value"
+          },
+          "id" : "62945a496ef440189b1f03e3623411c8",
+          "beforeProvisioningRule" : ""
+        }`) // ServiceDeskIntegrationDto | The specifics of a new integration to create
 
-    var servicedeskintegrationdto service_desk_integration.Servicedeskintegrationdto
-    if err := json.Unmarshal(servicedeskintegrationdtoJson, &servicedeskintegrationdto); err != nil {
+    var serviceDeskIntegrationDto service_desk_integration.ServiceDeskIntegrationDto
+    if err := json.Unmarshal(servicedeskintegrationdtoJson, &serviceDeskIntegrationDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -105,13 +138,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.CreateServiceDeskIntegrationV1(context.Background()).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.CreateServiceDeskIntegrationV1(context.Background()).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.CreateServiceDeskIntegrationV1(context.Background()).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.CreateServiceDeskIntegrationV1(context.Background()).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.CreateServiceDeskIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateServiceDeskIntegrationV1`: Servicedeskintegrationdto
+    // response from `CreateServiceDeskIntegrationV1`: ServiceDeskIntegrationDto
     fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.CreateServiceDeskIntegrationV1`: %v\n", resp)
 }
 ```
@@ -208,7 +241,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Servicedeskintegrationtemplatedto**](../models/servicedeskintegrationtemplatedto)
+[**ServiceDeskIntegrationTemplateDto**](../models/service-desk-integration-template-dto)
 
 ### HTTP request headers
 
@@ -242,7 +275,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetServiceDeskIntegrationTemplateV1`: Servicedeskintegrationtemplatedto
+    // response from `GetServiceDeskIntegrationTemplateV1`: ServiceDeskIntegrationTemplateDto
     fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplateV1`: %v\n", resp)
 }
 ```
@@ -266,7 +299,7 @@ Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationT
 
 ### Return type
 
-[**[]Servicedeskintegrationtemplatetype**](../models/servicedeskintegrationtemplatetype)
+[**[]ServiceDeskIntegrationTemplateType**](../models/service-desk-integration-template-type)
 
 ### HTTP request headers
 
@@ -299,7 +332,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetServiceDeskIntegrationTypesV1`: []Servicedeskintegrationtemplatetype
+    // response from `GetServiceDeskIntegrationTypesV1`: []ServiceDeskIntegrationTemplateType
     fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypesV1`: %v\n", resp)
 }
 ```
@@ -331,7 +364,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### HTTP request headers
 
@@ -365,7 +398,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetServiceDeskIntegrationV1`: Servicedeskintegrationdto
+    // response from `GetServiceDeskIntegrationV1`: ServiceDeskIntegrationDto
     fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationV1`: %v\n", resp)
 }
 ```
@@ -397,7 +430,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**[]ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### HTTP request headers
 
@@ -435,7 +468,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetServiceDeskIntegrationsV1`: []Servicedeskintegrationdto
+    // response from `GetServiceDeskIntegrationsV1`: []ServiceDeskIntegrationDto
     fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationsV1`: %v\n", resp)
 }
 ```
@@ -459,7 +492,7 @@ Other parameters are passed through a pointer to a apiGetStatusCheckDetailsV1Req
 
 ### Return type
 
-[**Queuedcheckconfigdetails**](../models/queuedcheckconfigdetails)
+[**QueuedCheckConfigDetails**](../models/queued-check-config-details)
 
 ### HTTP request headers
 
@@ -492,7 +525,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetStatusCheckDetailsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetStatusCheckDetailsV1`: Queuedcheckconfigdetails
+    // response from `GetStatusCheckDetailsV1`: QueuedCheckConfigDetails
     fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.GetStatusCheckDetailsV1`: %v\n", resp)
 }
 ```
@@ -521,11 +554,11 @@ Other parameters are passed through a pointer to a apiPatchServiceDeskIntegratio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  | 
 
 ### Return type
 
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### HTTP request headers
 
@@ -548,10 +581,10 @@ import (
 
 func main() {
     id := `anId` // string | ID of the Service Desk integration to update # string | ID of the Service Desk integration to update
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
 
-    var jsonpatchoperation []service_desk_integration.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []service_desk_integration.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -559,13 +592,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PatchServiceDeskIntegrationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.PatchServiceDeskIntegrationV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PatchServiceDeskIntegrationV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.PatchServiceDeskIntegrationV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.PatchServiceDeskIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchServiceDeskIntegrationV1`: Servicedeskintegrationdto
+    // response from `PatchServiceDeskIntegrationV1`: ServiceDeskIntegrationDto
     fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.PatchServiceDeskIntegrationV1`: %v\n", resp)
 }
 ```
@@ -594,11 +627,11 @@ Other parameters are passed through a pointer to a apiPutServiceDeskIntegrationV
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **servicedeskintegrationdto** | [**Servicedeskintegrationdto**](../models/servicedeskintegrationdto) | The specifics of the integration to update | 
+ **serviceDeskIntegrationDto** | [**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto) | The specifics of the integration to update | 
 
 ### Return type
 
-[**Servicedeskintegrationdto**](../models/servicedeskintegrationdto)
+[**ServiceDeskIntegrationDto**](../models/service-desk-integration-dto)
 
 ### HTTP request headers
 
@@ -621,10 +654,43 @@ import (
 
 func main() {
     id := `anId` // string | ID of the Service Desk integration to update # string | ID of the Service Desk integration to update
-    servicedeskintegrationdtoJson := []byte(``) // Servicedeskintegrationdto | The specifics of the integration to update
+    servicedeskintegrationdtoJson := []byte(`{
+          "ownerRef" : "",
+          "cluster" : "xyzzy999",
+          "created" : "2024-01-17T18:45:25.994Z",
+          "description" : "A very nice Service Desk integration",
+          "clusterRef" : "",
+          "type" : "ServiceNowSDIM",
+          "managedSources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
+          "provisioningConfig" : {
+            "managedResourceRefs" : [ {
+              "type" : "SOURCE",
+              "id" : "2c9180855d191c59015d291ceb051111",
+              "name" : "My Source 1"
+            }, {
+              "type" : "SOURCE",
+              "id" : "2c9180855d191c59015d291ceb052222",
+              "name" : "My Source 2"
+            } ],
+            "provisioningRequestExpiration" : 7,
+            "noProvisioningRequests" : true,
+            "universalManager" : true,
+            "planInitializerScript" : {
+              "source" : "<?xml version='1.0' encoding='UTF-8'?>\\r\\n<!DOCTYPE Rule PUBLIC \\\"sailpoint.dtd\\\" \\\"sailpoint.dtd\\\">\\r\\n<Rule name=\\\"Example Rule\\\" type=\\\"BeforeProvisioning\\\">\\r\\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\\r\\n  <Source><![CDATA[\\r\\nimport sailpoint.object.*;\\r\\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\\r\\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\\r\\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\\r\\nimport sailpoint.object.ProvisioningPlan;\\r\\nimport sailpoint.object.ProvisioningPlan.Operation;\\r\\n\\r\\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\\r\\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\\r\\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\\r\\n  }\\r\\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\\r\\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\\r\\n  }\\r\\n}\\r\\n\\r\\n  ]]></Source>\n"
+            }
+          },
+          "name" : "Service Desk Integration Name",
+          "modified" : "2024-02-18T18:45:25.994Z",
+          "attributes" : {
+            "property" : "value",
+            "key" : "value"
+          },
+          "id" : "62945a496ef440189b1f03e3623411c8",
+          "beforeProvisioningRule" : ""
+        }`) // ServiceDeskIntegrationDto | The specifics of the integration to update
 
-    var servicedeskintegrationdto service_desk_integration.Servicedeskintegrationdto
-    if err := json.Unmarshal(servicedeskintegrationdtoJson, &servicedeskintegrationdto); err != nil {
+    var serviceDeskIntegrationDto service_desk_integration.ServiceDeskIntegrationDto
+    if err := json.Unmarshal(servicedeskintegrationdtoJson, &serviceDeskIntegrationDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -632,13 +698,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PutServiceDeskIntegrationV1(context.Background(), id).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.PutServiceDeskIntegrationV1(context.Background(), id).Servicedeskintegrationdto(servicedeskintegrationdto).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PutServiceDeskIntegrationV1(context.Background(), id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.PutServiceDeskIntegrationV1(context.Background(), id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.PutServiceDeskIntegrationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutServiceDeskIntegrationV1`: Servicedeskintegrationdto
+    // response from `PutServiceDeskIntegrationV1`: ServiceDeskIntegrationDto
     fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.PutServiceDeskIntegrationV1`: %v\n", resp)
 }
 ```
@@ -662,11 +728,11 @@ Other parameters are passed through a pointer to a apiUpdateStatusCheckDetailsV1
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **queuedcheckconfigdetails** | [**Queuedcheckconfigdetails**](../models/queuedcheckconfigdetails) | The modified time check configuration | 
+ **queuedCheckConfigDetails** | [**QueuedCheckConfigDetails**](../models/queued-check-config-details) | The modified time check configuration | 
 
 ### Return type
 
-[**Queuedcheckconfigdetails**](../models/queuedcheckconfigdetails)
+[**QueuedCheckConfigDetails**](../models/queued-check-config-details)
 
 ### HTTP request headers
 
@@ -688,10 +754,13 @@ import (
 )
 
 func main() {
-    queuedcheckconfigdetailsJson := []byte(``) // Queuedcheckconfigdetails | The modified time check configuration
+    queuedcheckconfigdetailsJson := []byte(`{
+          "provisioningStatusCheckIntervalMinutes" : "30",
+          "provisioningMaxStatusCheckDays" : "2"
+        }`) // QueuedCheckConfigDetails | The modified time check configuration
 
-    var queuedcheckconfigdetails service_desk_integration.Queuedcheckconfigdetails
-    if err := json.Unmarshal(queuedcheckconfigdetailsJson, &queuedcheckconfigdetails); err != nil {
+    var queuedCheckConfigDetails service_desk_integration.QueuedCheckConfigDetails
+    if err := json.Unmarshal(queuedcheckconfigdetailsJson, &queuedCheckConfigDetails); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -699,13 +768,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.UpdateStatusCheckDetailsV1(context.Background()).Queuedcheckconfigdetails(queuedcheckconfigdetails).Execute()
-	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.UpdateStatusCheckDetailsV1(context.Background()).Queuedcheckconfigdetails(queuedcheckconfigdetails).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.UpdateStatusCheckDetailsV1(context.Background()).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
+	  //resp, r, err := apiClient.ServiceDeskIntegrationAPI.UpdateStatusCheckDetailsV1(context.Background()).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.UpdateStatusCheckDetailsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateStatusCheckDetailsV1`: Queuedcheckconfigdetails
+    // response from `UpdateStatusCheckDetailsV1`: QueuedCheckConfigDetails
     fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.UpdateStatusCheckDetailsV1`: %v\n", resp)
 }
 ```

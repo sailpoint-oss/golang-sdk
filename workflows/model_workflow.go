@@ -22,13 +22,13 @@ var _ MappedNullable = &Workflow{}
 type Workflow struct {
 	// The name of the workflow
 	Name *string `json:"name,omitempty"`
-	Owner *WorkflowbodyOwner `json:"owner,omitempty"`
+	Owner *WorkflowBodyOwner `json:"owner,omitempty"`
 	// Description of what the workflow accomplishes
 	Description *string `json:"description,omitempty"`
-	Definition *Workflowdefinition `json:"definition,omitempty"`
+	Definition *WorkflowDefinition `json:"definition,omitempty"`
 	// Enable or disable the workflow.  Workflows cannot be created in an enabled state.
 	Enabled *bool `json:"enabled,omitempty"`
-	Trigger *Workflowtrigger `json:"trigger,omitempty"`
+	Trigger *WorkflowTrigger `json:"trigger,omitempty"`
 	// Workflow ID. This is a UUID generated upon creation.
 	Id *string `json:"id,omitempty"`
 	// The number of times this workflow has been executed.
@@ -39,7 +39,7 @@ type Workflow struct {
 	Created *SailPointTime `json:"created,omitempty"`
 	// The date and time the workflow was modified.
 	Modified *SailPointTime `json:"modified,omitempty"`
-	ModifiedBy *Workflowmodifiedby `json:"modifiedBy,omitempty"`
+	ModifiedBy *WorkflowModifiedBy `json:"modifiedBy,omitempty"`
 	Creator *WorkflowAllOfCreator `json:"creator,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -100,9 +100,9 @@ func (o *Workflow) SetName(v string) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *Workflow) GetOwner() WorkflowbodyOwner {
+func (o *Workflow) GetOwner() WorkflowBodyOwner {
 	if o == nil || IsNil(o.Owner) {
-		var ret WorkflowbodyOwner
+		var ret WorkflowBodyOwner
 		return ret
 	}
 	return *o.Owner
@@ -110,7 +110,7 @@ func (o *Workflow) GetOwner() WorkflowbodyOwner {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Workflow) GetOwnerOk() (*WorkflowbodyOwner, bool) {
+func (o *Workflow) GetOwnerOk() (*WorkflowBodyOwner, bool) {
 	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
@@ -126,8 +126,8 @@ func (o *Workflow) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given WorkflowbodyOwner and assigns it to the Owner field.
-func (o *Workflow) SetOwner(v WorkflowbodyOwner) {
+// SetOwner gets a reference to the given WorkflowBodyOwner and assigns it to the Owner field.
+func (o *Workflow) SetOwner(v WorkflowBodyOwner) {
 	o.Owner = &v
 }
 
@@ -164,9 +164,9 @@ func (o *Workflow) SetDescription(v string) {
 }
 
 // GetDefinition returns the Definition field value if set, zero value otherwise.
-func (o *Workflow) GetDefinition() Workflowdefinition {
+func (o *Workflow) GetDefinition() WorkflowDefinition {
 	if o == nil || IsNil(o.Definition) {
-		var ret Workflowdefinition
+		var ret WorkflowDefinition
 		return ret
 	}
 	return *o.Definition
@@ -174,7 +174,7 @@ func (o *Workflow) GetDefinition() Workflowdefinition {
 
 // GetDefinitionOk returns a tuple with the Definition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Workflow) GetDefinitionOk() (*Workflowdefinition, bool) {
+func (o *Workflow) GetDefinitionOk() (*WorkflowDefinition, bool) {
 	if o == nil || IsNil(o.Definition) {
 		return nil, false
 	}
@@ -190,8 +190,8 @@ func (o *Workflow) HasDefinition() bool {
 	return false
 }
 
-// SetDefinition gets a reference to the given Workflowdefinition and assigns it to the Definition field.
-func (o *Workflow) SetDefinition(v Workflowdefinition) {
+// SetDefinition gets a reference to the given WorkflowDefinition and assigns it to the Definition field.
+func (o *Workflow) SetDefinition(v WorkflowDefinition) {
 	o.Definition = &v
 }
 
@@ -228,9 +228,9 @@ func (o *Workflow) SetEnabled(v bool) {
 }
 
 // GetTrigger returns the Trigger field value if set, zero value otherwise.
-func (o *Workflow) GetTrigger() Workflowtrigger {
+func (o *Workflow) GetTrigger() WorkflowTrigger {
 	if o == nil || IsNil(o.Trigger) {
-		var ret Workflowtrigger
+		var ret WorkflowTrigger
 		return ret
 	}
 	return *o.Trigger
@@ -238,7 +238,7 @@ func (o *Workflow) GetTrigger() Workflowtrigger {
 
 // GetTriggerOk returns a tuple with the Trigger field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Workflow) GetTriggerOk() (*Workflowtrigger, bool) {
+func (o *Workflow) GetTriggerOk() (*WorkflowTrigger, bool) {
 	if o == nil || IsNil(o.Trigger) {
 		return nil, false
 	}
@@ -254,8 +254,8 @@ func (o *Workflow) HasTrigger() bool {
 	return false
 }
 
-// SetTrigger gets a reference to the given Workflowtrigger and assigns it to the Trigger field.
-func (o *Workflow) SetTrigger(v Workflowtrigger) {
+// SetTrigger gets a reference to the given WorkflowTrigger and assigns it to the Trigger field.
+func (o *Workflow) SetTrigger(v WorkflowTrigger) {
 	o.Trigger = &v
 }
 
@@ -420,9 +420,9 @@ func (o *Workflow) SetModified(v SailPointTime) {
 }
 
 // GetModifiedBy returns the ModifiedBy field value if set, zero value otherwise.
-func (o *Workflow) GetModifiedBy() Workflowmodifiedby {
+func (o *Workflow) GetModifiedBy() WorkflowModifiedBy {
 	if o == nil || IsNil(o.ModifiedBy) {
-		var ret Workflowmodifiedby
+		var ret WorkflowModifiedBy
 		return ret
 	}
 	return *o.ModifiedBy
@@ -430,7 +430,7 @@ func (o *Workflow) GetModifiedBy() Workflowmodifiedby {
 
 // GetModifiedByOk returns a tuple with the ModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Workflow) GetModifiedByOk() (*Workflowmodifiedby, bool) {
+func (o *Workflow) GetModifiedByOk() (*WorkflowModifiedBy, bool) {
 	if o == nil || IsNil(o.ModifiedBy) {
 		return nil, false
 	}
@@ -446,8 +446,8 @@ func (o *Workflow) HasModifiedBy() bool {
 	return false
 }
 
-// SetModifiedBy gets a reference to the given Workflowmodifiedby and assigns it to the ModifiedBy field.
-func (o *Workflow) SetModifiedBy(v Workflowmodifiedby) {
+// SetModifiedBy gets a reference to the given WorkflowModifiedBy and assigns it to the ModifiedBy field.
+func (o *Workflow) SetModifiedBy(v WorkflowModifiedBy) {
 	o.ModifiedBy = &v
 }
 

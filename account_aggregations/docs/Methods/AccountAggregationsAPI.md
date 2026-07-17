@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accountaggregationstatus**](../models/accountaggregationstatus)
+[**AccountAggregationStatus**](../models/account-aggregation-status)
 
 ### HTTP request headers
 
@@ -96,7 +96,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccountAggregationsAPI.GetAccountAggregationStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccountAggregationStatusV1`: Accountaggregationstatus
+    // response from `GetAccountAggregationStatusV1`: AccountAggregationStatus
     fmt.Fprintf(os.Stdout, "Response from `AccountAggregationsAPI.GetAccountAggregationStatusV1`: %v\n", resp)
 }
 ```

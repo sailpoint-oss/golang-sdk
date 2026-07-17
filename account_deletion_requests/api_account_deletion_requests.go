@@ -27,15 +27,15 @@ type ApiDeleteAccountRequestV1Request struct {
 	ctx context.Context
 	ApiService *AccountDeletionRequestsAPIService
 	accountId string
-	accountdeleterequestinput *Accountdeleterequestinput
+	accountDeleteRequestInput *AccountDeleteRequestInput
 }
 
-func (r ApiDeleteAccountRequestV1Request) Accountdeleterequestinput(accountdeleterequestinput Accountdeleterequestinput) ApiDeleteAccountRequestV1Request {
-	r.accountdeleterequestinput = &accountdeleterequestinput
+func (r ApiDeleteAccountRequestV1Request) AccountDeleteRequestInput(accountDeleteRequestInput AccountDeleteRequestInput) ApiDeleteAccountRequestV1Request {
+	r.accountDeleteRequestInput = &accountDeleteRequestInput
 	return r
 }
 
-func (r ApiDeleteAccountRequestV1Request) Execute() (*Accountrequestasyncresult, *http.Response, error) {
+func (r ApiDeleteAccountRequestV1Request) Execute() (*AccountRequestAsyncResult, *http.Response, error) {
 	return r.ApiService.DeleteAccountRequestV1Execute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return Accountrequestasyncresult
-func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestV1Execute(r ApiDeleteAccountRequestV1Request) (*Accountrequestasyncresult, *http.Response, error) {
+//  @return AccountRequestAsyncResult
+func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestV1Execute(r ApiDeleteAccountRequestV1Request) (*AccountRequestAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountrequestasyncresult
+		localVarReturnValue  *AccountRequestAsyncResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountDeletionRequestsAPIService.DeleteAccountRequestV1")
@@ -99,7 +99,7 @@ func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestV1Execute(r ApiD
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accountdeleterequestinput
+	localVarPostBody = r.accountDeleteRequestInput
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -123,7 +123,7 @@ func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestV1Execute(r ApiD
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -145,7 +145,7 @@ func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestV1Execute(r ApiD
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -156,7 +156,7 @@ func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestV1Execute(r ApiD
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -178,7 +178,7 @@ func (a *AccountDeletionRequestsAPIService) DeleteAccountRequestV1Execute(r ApiD
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -235,7 +235,7 @@ func (r ApiGetAccountDeletionRequestsV1Request) Mine(mine bool) ApiGetAccountDel
 	return r
 }
 
-func (r ApiGetAccountDeletionRequestsV1Request) Execute() ([]Accountactionrequestdto, *http.Response, error) {
+func (r ApiGetAccountDeletionRequestsV1Request) Execute() ([]AccountActionRequestDto, *http.Response, error) {
 	return r.ApiService.GetAccountDeletionRequestsV1Execute(r)
 }
 
@@ -255,13 +255,13 @@ func (a *AccountDeletionRequestsAPIService) GetAccountDeletionRequestsV1(ctx con
 }
 
 // Execute executes the request
-//  @return []Accountactionrequestdto
-func (a *AccountDeletionRequestsAPIService) GetAccountDeletionRequestsV1Execute(r ApiGetAccountDeletionRequestsV1Request) ([]Accountactionrequestdto, *http.Response, error) {
+//  @return []AccountActionRequestDto
+func (a *AccountDeletionRequestsAPIService) GetAccountDeletionRequestsV1Execute(r ApiGetAccountDeletionRequestsV1Request) ([]AccountActionRequestDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accountactionrequestdto
+		localVarReturnValue  []AccountActionRequestDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountDeletionRequestsAPIService.GetAccountDeletionRequestsV1")
@@ -339,7 +339,7 @@ func (a *AccountDeletionRequestsAPIService) GetAccountDeletionRequestsV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -361,7 +361,7 @@ func (a *AccountDeletionRequestsAPIService) GetAccountDeletionRequestsV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -372,7 +372,7 @@ func (a *AccountDeletionRequestsAPIService) GetAccountDeletionRequestsV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -394,7 +394,7 @@ func (a *AccountDeletionRequestsAPIService) GetAccountDeletionRequestsV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

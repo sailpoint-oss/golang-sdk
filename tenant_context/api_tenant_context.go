@@ -109,7 +109,7 @@ func (a *TenantContextAPIService) GetTenantContextV1Execute(r ApiGetTenantContex
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -131,7 +131,7 @@ func (a *TenantContextAPIService) GetTenantContextV1Execute(r ApiGetTenantContex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -153,7 +153,7 @@ func (a *TenantContextAPIService) GetTenantContextV1Execute(r ApiGetTenantContex
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -180,11 +180,11 @@ func (a *TenantContextAPIService) GetTenantContextV1Execute(r ApiGetTenantContex
 type ApiPatchTenantContextV1Request struct {
 	ctx context.Context
 	ApiService *TenantContextAPIService
-	jsonpatchoperation *Jsonpatchoperation
+	jsonPatchOperation *JsonPatchOperation
 }
 
-func (r ApiPatchTenantContextV1Request) Jsonpatchoperation(jsonpatchoperation Jsonpatchoperation) ApiPatchTenantContextV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchTenantContextV1Request) JsonPatchOperation(jsonPatchOperation JsonPatchOperation) ApiPatchTenantContextV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -230,8 +230,8 @@ func (a *TenantContextAPIService) PatchTenantContextV1Execute(r ApiPatchTenantCo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -252,7 +252,7 @@ func (a *TenantContextAPIService) PatchTenantContextV1Execute(r ApiPatchTenantCo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -276,7 +276,7 @@ func (a *TenantContextAPIService) PatchTenantContextV1Execute(r ApiPatchTenantCo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -298,7 +298,7 @@ func (a *TenantContextAPIService) PatchTenantContextV1Execute(r ApiPatchTenantCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -309,7 +309,7 @@ func (a *TenantContextAPIService) PatchTenantContextV1Execute(r ApiPatchTenantCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -331,7 +331,7 @@ func (a *TenantContextAPIService) PatchTenantContextV1Execute(r ApiPatchTenantCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

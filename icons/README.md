@@ -85,9 +85,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [SetIconV1200Response](docs/SetIconV1200Response.md)
  - [SetIconV1401Response](docs/SetIconV1401Response.md)
  - [SetIconV1429Response](docs/SetIconV1429Response.md)

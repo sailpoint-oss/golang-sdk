@@ -163,7 +163,7 @@ Other parameters are passed through a pointer to a apiDeleteTagsToManyObjectV1Re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkremovetaggedobject** | [**Bulkremovetaggedobject**](../models/bulkremovetaggedobject) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
+ **bulkRemoveTaggedObject** | [**BulkRemoveTaggedObject**](../models/bulk-remove-tagged-object) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
 
 ### Return type
 
@@ -189,10 +189,21 @@ import (
 )
 
 func main() {
-    bulkremovetaggedobjectJson := []byte(``) // Bulkremovetaggedobject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulkremovetaggedobjectJson := []byte(`{
+          "objectRefs" : [ {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          } ],
+          "tags" : [ "BU_FINANCE", "PCI" ]
+        }`) // BulkRemoveTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
-    var bulkremovetaggedobject tagged_objects.Bulkremovetaggedobject
-    if err := json.Unmarshal(bulkremovetaggedobjectJson, &bulkremovetaggedobject); err != nil {
+    var bulkRemoveTaggedObject tagged_objects.BulkRemoveTaggedObject
+    if err := json.Unmarshal(bulkremovetaggedobjectJson, &bulkRemoveTaggedObject); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -200,8 +211,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObjectV1(context.Background()).Bulkremovetaggedobject(bulkremovetaggedobject).Execute()
-	  //r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObjectV1(context.Background()).Bulkremovetaggedobject(bulkremovetaggedobject).Execute()
+    r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObjectV1(context.Background()).BulkRemoveTaggedObject(bulkRemoveTaggedObject).Execute()
+	  //r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObjectV1(context.Background()).BulkRemoveTaggedObject(bulkRemoveTaggedObject).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.DeleteTagsToManyObjectV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -239,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Taggedobject**](../models/taggedobject)
+[**TaggedObject**](../models/tagged-object)
 
 ### HTTP request headers
 
@@ -274,7 +285,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.GetTaggedObjectV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTaggedObjectV1`: Taggedobject
+    // response from `GetTaggedObjectV1`: TaggedObject
     fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.GetTaggedObjectV1`: %v\n", resp)
 }
 ```
@@ -310,7 +321,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Taggedobject**](../models/taggedobject)
+[**[]TaggedObject**](../models/tagged-object)
 
 ### HTTP request headers
 
@@ -348,7 +359,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.ListTaggedObjectsByTypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListTaggedObjectsByTypeV1`: []Taggedobject
+    // response from `ListTaggedObjectsByTypeV1`: []TaggedObject
     fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.ListTaggedObjectsByTypeV1`: %v\n", resp)
 }
 ```
@@ -379,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Taggedobject**](../models/taggedobject)
+[**[]TaggedObject**](../models/tagged-object)
 
 ### HTTP request headers
 
@@ -416,7 +427,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.ListTaggedObjectsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListTaggedObjectsV1`: []Taggedobject
+    // response from `ListTaggedObjectsV1`: []TaggedObject
     fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.ListTaggedObjectsV1`: %v\n", resp)
 }
 ```
@@ -447,11 +458,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **taggedobject** | [**Taggedobject**](../models/taggedobject) |  | 
+ **taggedObject** | [**TaggedObject**](../models/tagged-object) |  | 
 
 ### Return type
 
-[**Taggedobject**](../models/taggedobject)
+[**TaggedObject**](../models/tagged-object)
 
 ### HTTP request headers
 
@@ -475,10 +486,17 @@ import (
 func main() {
     type_ := `ROLE` // string | The type of tagged object to update. # string | The type of tagged object to update.
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The ID of the object reference to update. # string | The ID of the object reference to update.
-    taggedobjectJson := []byte(``) // Taggedobject | 
+    taggedobjectJson := []byte(`{
+          "objectRef" : {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "tags" : [ "BU_FINANCE", "PCI" ]
+        }`) // TaggedObject | 
 
-    var taggedobject tagged_objects.Taggedobject
-    if err := json.Unmarshal(taggedobjectJson, &taggedobject); err != nil {
+    var taggedObject tagged_objects.TaggedObject
+    if err := json.Unmarshal(taggedobjectJson, &taggedObject); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -486,13 +504,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsAPI.PutTaggedObjectV1(context.Background(), type_, id).Taggedobject(taggedobject).Execute()
-	  //resp, r, err := apiClient.TaggedObjectsAPI.PutTaggedObjectV1(context.Background(), type_, id).Taggedobject(taggedobject).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.PutTaggedObjectV1(context.Background(), type_, id).TaggedObject(taggedObject).Execute()
+	  //resp, r, err := apiClient.TaggedObjectsAPI.PutTaggedObjectV1(context.Background(), type_, id).TaggedObject(taggedObject).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.PutTaggedObjectV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PutTaggedObjectV1`: Taggedobject
+    // response from `PutTaggedObjectV1`: TaggedObject
     fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.PutTaggedObjectV1`: %v\n", resp)
 }
 ```
@@ -516,7 +534,7 @@ Other parameters are passed through a pointer to a apiSetTagToObjectV1Request st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taggedobject** | [**Taggedobject**](../models/taggedobject) |  | 
+ **taggedObject** | [**TaggedObject**](../models/tagged-object) |  | 
 
 ### Return type
 
@@ -542,10 +560,17 @@ import (
 )
 
 func main() {
-    taggedobjectJson := []byte(``) // Taggedobject | 
+    taggedobjectJson := []byte(`{
+          "objectRef" : {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "tags" : [ "BU_FINANCE", "PCI" ]
+        }`) // TaggedObject | 
 
-    var taggedobject tagged_objects.Taggedobject
-    if err := json.Unmarshal(taggedobjectJson, &taggedobject); err != nil {
+    var taggedObject tagged_objects.TaggedObject
+    if err := json.Unmarshal(taggedobjectJson, &taggedObject); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -553,8 +578,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.TaggedObjectsAPI.SetTagToObjectV1(context.Background()).Taggedobject(taggedobject).Execute()
-	  //r, err := apiClient.TaggedObjectsAPI.SetTagToObjectV1(context.Background()).Taggedobject(taggedobject).Execute()
+    r, err := apiClient.TaggedObjectsAPI.SetTagToObjectV1(context.Background()).TaggedObject(taggedObject).Execute()
+	  //r, err := apiClient.TaggedObjectsAPI.SetTagToObjectV1(context.Background()).TaggedObject(taggedObject).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.SetTagToObjectV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -582,11 +607,11 @@ Other parameters are passed through a pointer to a apiSetTagsToManyObjectsV1Requ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkaddtaggedobject** | [**Bulkaddtaggedobject**](../models/bulkaddtaggedobject) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
+ **bulkAddTaggedObject** | [**BulkAddTaggedObject**](../models/bulk-add-tagged-object) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
 
 ### Return type
 
-[**[]Bulktaggedobjectresponse**](../models/bulktaggedobjectresponse)
+[**[]BulkTaggedObjectResponse**](../models/bulk-tagged-object-response)
 
 ### HTTP request headers
 
@@ -608,10 +633,22 @@ import (
 )
 
 func main() {
-    bulkaddtaggedobjectJson := []byte(``) // Bulkaddtaggedobject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulkaddtaggedobjectJson := []byte(`{
+          "objectRefs" : [ {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          } ],
+          "operation" : "MERGE",
+          "tags" : [ "BU_FINANCE", "PCI" ]
+        }`) // BulkAddTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
-    var bulkaddtaggedobject tagged_objects.Bulkaddtaggedobject
-    if err := json.Unmarshal(bulkaddtaggedobjectJson, &bulkaddtaggedobject); err != nil {
+    var bulkAddTaggedObject tagged_objects.BulkAddTaggedObject
+    if err := json.Unmarshal(bulkaddtaggedobjectJson, &bulkAddTaggedObject); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -619,13 +656,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjectsV1(context.Background()).Bulkaddtaggedobject(bulkaddtaggedobject).Execute()
-	  //resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjectsV1(context.Background()).Bulkaddtaggedobject(bulkaddtaggedobject).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjectsV1(context.Background()).BulkAddTaggedObject(bulkAddTaggedObject).Execute()
+	  //resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjectsV1(context.Background()).BulkAddTaggedObject(bulkAddTaggedObject).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.SetTagsToManyObjectsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetTagsToManyObjectsV1`: []Bulktaggedobjectresponse
+    // response from `SetTagsToManyObjectsV1`: []BulkTaggedObjectResponse
     fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.SetTagsToManyObjectsV1`: %v\n", resp)
 }
 ```

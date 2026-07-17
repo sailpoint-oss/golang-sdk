@@ -18,21 +18,21 @@ import (
 
 // TriggerExampleOutput - An example of the JSON payload that will be sent by the subscribed service to the trigger in response to an event.
 type TriggerExampleOutput struct {
-	Accessrequestdynamicapprover2 *Accessrequestdynamicapprover2
-	Accessrequestpreapproval2 *Accessrequestpreapproval2
+	AccessRequestDynamicApprover2 *AccessRequestDynamicApprover2
+	AccessRequestPreApproval2 *AccessRequestPreApproval2
 }
 
-// Accessrequestdynamicapprover2AsTriggerExampleOutput is a convenience function that returns Accessrequestdynamicapprover2 wrapped in TriggerExampleOutput
-func Accessrequestdynamicapprover2AsTriggerExampleOutput(v *Accessrequestdynamicapprover2) TriggerExampleOutput {
+// AccessRequestDynamicApprover2AsTriggerExampleOutput is a convenience function that returns AccessRequestDynamicApprover2 wrapped in TriggerExampleOutput
+func AccessRequestDynamicApprover2AsTriggerExampleOutput(v *AccessRequestDynamicApprover2) TriggerExampleOutput {
 	return TriggerExampleOutput{
-		Accessrequestdynamicapprover2: v,
+		AccessRequestDynamicApprover2: v,
 	}
 }
 
-// Accessrequestpreapproval2AsTriggerExampleOutput is a convenience function that returns Accessrequestpreapproval2 wrapped in TriggerExampleOutput
-func Accessrequestpreapproval2AsTriggerExampleOutput(v *Accessrequestpreapproval2) TriggerExampleOutput {
+// AccessRequestPreApproval2AsTriggerExampleOutput is a convenience function that returns AccessRequestPreApproval2 wrapped in TriggerExampleOutput
+func AccessRequestPreApproval2AsTriggerExampleOutput(v *AccessRequestPreApproval2) TriggerExampleOutput {
 	return TriggerExampleOutput{
-		Accessrequestpreapproval2: v,
+		AccessRequestPreApproval2: v,
 	}
 }
 
@@ -46,44 +46,44 @@ func (dst *TriggerExampleOutput) UnmarshalJSON(data []byte) error {
 	}
 
 	match := 0
-	// try to unmarshal data into Accessrequestdynamicapprover2
-	err = newStrictDecoder(data).Decode(&dst.Accessrequestdynamicapprover2)
+	// try to unmarshal data into AccessRequestDynamicApprover2
+	err = newStrictDecoder(data).Decode(&dst.AccessRequestDynamicApprover2)
 	if err == nil {
-		jsonAccessrequestdynamicapprover2, _ := json.Marshal(dst.Accessrequestdynamicapprover2)
-		if string(jsonAccessrequestdynamicapprover2) == "{}" { // empty struct
-			dst.Accessrequestdynamicapprover2 = nil
+		jsonAccessRequestDynamicApprover2, _ := json.Marshal(dst.AccessRequestDynamicApprover2)
+		if string(jsonAccessRequestDynamicApprover2) == "{}" { // empty struct
+			dst.AccessRequestDynamicApprover2 = nil
 		} else {
-			if err = validator.Validate(dst.Accessrequestdynamicapprover2); err != nil {
-				dst.Accessrequestdynamicapprover2 = nil
+			if err = validator.Validate(dst.AccessRequestDynamicApprover2); err != nil {
+				dst.AccessRequestDynamicApprover2 = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accessrequestdynamicapprover2 = nil
+		dst.AccessRequestDynamicApprover2 = nil
 	}
 
-	// try to unmarshal data into Accessrequestpreapproval2
-	err = newStrictDecoder(data).Decode(&dst.Accessrequestpreapproval2)
+	// try to unmarshal data into AccessRequestPreApproval2
+	err = newStrictDecoder(data).Decode(&dst.AccessRequestPreApproval2)
 	if err == nil {
-		jsonAccessrequestpreapproval2, _ := json.Marshal(dst.Accessrequestpreapproval2)
-		if string(jsonAccessrequestpreapproval2) == "{}" { // empty struct
-			dst.Accessrequestpreapproval2 = nil
+		jsonAccessRequestPreApproval2, _ := json.Marshal(dst.AccessRequestPreApproval2)
+		if string(jsonAccessRequestPreApproval2) == "{}" { // empty struct
+			dst.AccessRequestPreApproval2 = nil
 		} else {
-			if err = validator.Validate(dst.Accessrequestpreapproval2); err != nil {
-				dst.Accessrequestpreapproval2 = nil
+			if err = validator.Validate(dst.AccessRequestPreApproval2); err != nil {
+				dst.AccessRequestPreApproval2 = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accessrequestpreapproval2 = nil
+		dst.AccessRequestPreApproval2 = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.Accessrequestdynamicapprover2 = nil
-		dst.Accessrequestpreapproval2 = nil
+		dst.AccessRequestDynamicApprover2 = nil
+		dst.AccessRequestPreApproval2 = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(TriggerExampleOutput)")
 	} else if match == 1 {
@@ -95,12 +95,12 @@ func (dst *TriggerExampleOutput) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src TriggerExampleOutput) MarshalJSON() ([]byte, error) {
-	if src.Accessrequestdynamicapprover2 != nil {
-		return json.Marshal(&src.Accessrequestdynamicapprover2)
+	if src.AccessRequestDynamicApprover2 != nil {
+		return json.Marshal(&src.AccessRequestDynamicApprover2)
 	}
 
-	if src.Accessrequestpreapproval2 != nil {
-		return json.Marshal(&src.Accessrequestpreapproval2)
+	if src.AccessRequestPreApproval2 != nil {
+		return json.Marshal(&src.AccessRequestPreApproval2)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -111,12 +111,12 @@ func (obj *TriggerExampleOutput) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
-	if obj.Accessrequestdynamicapprover2 != nil {
-		return obj.Accessrequestdynamicapprover2
+	if obj.AccessRequestDynamicApprover2 != nil {
+		return obj.AccessRequestDynamicApprover2
 	}
 
-	if obj.Accessrequestpreapproval2 != nil {
-		return obj.Accessrequestpreapproval2
+	if obj.AccessRequestPreApproval2 != nil {
+		return obj.AccessRequestPreApproval2
 	}
 
 	// all schemas are nil
@@ -125,12 +125,12 @@ func (obj *TriggerExampleOutput) GetActualInstance() (interface{}) {
 
 // Get the actual instance value
 func (obj TriggerExampleOutput) GetActualInstanceValue() (interface{}) {
-	if obj.Accessrequestdynamicapprover2 != nil {
-		return *obj.Accessrequestdynamicapprover2
+	if obj.AccessRequestDynamicApprover2 != nil {
+		return *obj.AccessRequestDynamicApprover2
 	}
 
-	if obj.Accessrequestpreapproval2 != nil {
-		return *obj.Accessrequestpreapproval2
+	if obj.AccessRequestPreApproval2 != nil {
+		return *obj.AccessRequestPreApproval2
 	}
 
 	// all schemas are nil

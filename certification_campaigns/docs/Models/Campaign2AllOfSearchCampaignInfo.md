@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Reviewer** | Pointer to [**NullableCampaign2AllOfSearchCampaignInfoReviewer**](campaign2-all-of-search-campaign-info-reviewer) |  | [optional] 
 **Query** | Pointer to **NullableString** | The scope for the campaign. The campaign will cover identities returned by the query and identities that have access items returned by the query. One of `query` or `identityIds` must be set. | [optional] 
 **IdentityIds** | Pointer to **[]string** | A direct list of identities to include in this campaign. One of `identityIds` or `query` must be set. | [optional] 
-**AccessConstraints** | Pointer to [**[]Accessconstraint**](accessconstraint) | Further reduces the scope of the campaign by excluding identities (from `query` or `identityIds`) that do not have this access. | [optional] 
+**AccessConstraints** | Pointer to [**[]AccessConstraint**](access-constraint) | Further reduces the scope of the campaign by excluding identities (from `query` or `identityIds`) that do not have this access. | [optional] 
 
 ## Methods
 
@@ -193,20 +193,20 @@ HasIdentityIds returns a boolean if a field has been set.
 UnsetIdentityIds ensures that no value is present for IdentityIds, not even an explicit nil
 ### GetAccessConstraints
 
-`func (o *Campaign2AllOfSearchCampaignInfo) GetAccessConstraints() []Accessconstraint`
+`func (o *Campaign2AllOfSearchCampaignInfo) GetAccessConstraints() []AccessConstraint`
 
 GetAccessConstraints returns the AccessConstraints field if non-nil, zero value otherwise.
 
 ### GetAccessConstraintsOk
 
-`func (o *Campaign2AllOfSearchCampaignInfo) GetAccessConstraintsOk() (*[]Accessconstraint, bool)`
+`func (o *Campaign2AllOfSearchCampaignInfo) GetAccessConstraintsOk() (*[]AccessConstraint, bool)`
 
 GetAccessConstraintsOk returns a tuple with the AccessConstraints field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessConstraints
 
-`func (o *Campaign2AllOfSearchCampaignInfo) SetAccessConstraints(v []Accessconstraint)`
+`func (o *Campaign2AllOfSearchCampaignInfo) SetAccessConstraints(v []AccessConstraint)`
 
 SetAccessConstraints sets AccessConstraints field to given value.
 

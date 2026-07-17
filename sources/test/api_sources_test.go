@@ -122,7 +122,7 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
-		var usageType Usagetype
+		var usageType UsageType
 
 		httpRes, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
 
@@ -274,7 +274,7 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
-		var usageType Usagetype
+		var usageType UsageType
 
 		resp, httpRes, err := apiClient.SourcesAPI.GetProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
 
@@ -626,7 +626,7 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
-		var usageType Usagetype
+		var usageType UsageType
 
 		resp, httpRes, err := apiClient.SourcesAPI.PutProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
 
@@ -811,7 +811,7 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
-		var usageType Usagetype
+		var usageType UsageType
 
 		resp, httpRes, err := apiClient.SourcesAPI.UpdateProvisioningPolicyV1(context.Background(), sourceId, usageType).Execute()
 

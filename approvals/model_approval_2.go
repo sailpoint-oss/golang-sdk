@@ -27,7 +27,7 @@ type Approval2 struct {
 	// The type of the approval, such as ENTITLEMENT_DESCRIPTIONS, CUSTOM_ACCESS_REQUEST_APPROVAL, GENERIC_APPROVAL
 	Type *string `json:"type,omitempty"`
 	// Object representation of an approver of an approval
-	Approvers []Approvalidentity `json:"approvers,omitempty"`
+	Approvers []ApprovalIdentity `json:"approvers,omitempty"`
 	// Date the approval was created
 	CreatedDate *string `json:"createdDate,omitempty"`
 	// Date the approval is due
@@ -39,40 +39,40 @@ type Approval2 struct {
 	// Whether or not the approval has been escalated. Will reset to false when the approval is actioned on.
 	IsEscalated *bool `json:"isEscalated,omitempty"`
 	// The name of the approval for a given locale
-	Name []Approvalname `json:"name,omitempty"`
-	BatchRequest Approvalbatch `json:"batchRequest,omitempty"`
-	ApprovalConfig Approvalconfig `json:"approvalConfig,omitempty"`
+	Name []ApprovalName `json:"name,omitempty"`
+	BatchRequest ApprovalBatch `json:"batchRequest,omitempty"`
+	ApprovalConfig ApprovalConfig `json:"approvalConfig,omitempty"`
 	// The description of the approval for a given locale
-	Description []Approvaldescription `json:"description,omitempty"`
+	Description []ApprovalDescription `json:"description,omitempty"`
 	// Signifies what medium to use when sending notifications (currently only email is utilized)
 	Medium *string `json:"medium,omitempty"`
 	// The priority of the approval
 	Priority *string `json:"priority,omitempty"`
-	Requester Approvalidentity `json:"requester,omitempty"`
-	Requestee Approvalidentity `json:"requestee,omitempty"`
+	Requester ApprovalIdentity `json:"requester,omitempty"`
+	Requestee ApprovalIdentity `json:"requestee,omitempty"`
 	// Object representation of a comment on the approval
-	Comments []Approvalcomment3 `json:"comments,omitempty"`
+	Comments []ApprovalComment3 `json:"comments,omitempty"`
 	// Array of approvers who have approved the approval
-	ApprovedBy []Approvalidentityrecord `json:"approvedBy,omitempty"`
+	ApprovedBy []ApprovalIdentityRecord `json:"approvedBy,omitempty"`
 	// Array of approvers who have rejected the approval
-	RejectedBy []Approvalidentityrecord `json:"rejectedBy,omitempty"`
+	RejectedBy []ApprovalIdentityRecord `json:"rejectedBy,omitempty"`
 	// Array of identities that the approval request is currently assigned to/waiting on. For parallel approvals, this is set to all approvers left to approve.
-	AssignedTo []Approvalidentity `json:"assignedTo,omitempty"`
+	AssignedTo []ApprovalIdentity `json:"assignedTo,omitempty"`
 	// Date the approval was completed
 	CompletedDate *string `json:"completedDate,omitempty"`
 	ApprovalCriteria *Approval2ApprovalCriteria `json:"approvalCriteria,omitempty"`
 	// Json string representing additional attributes known about the object to be approved.
 	AdditionalAttributes *string `json:"additionalAttributes,omitempty"`
 	// Reference data related to the approval
-	ReferenceData []Approvalreference `json:"referenceData,omitempty"`
+	ReferenceData []ApprovalReference `json:"referenceData,omitempty"`
 	// History of whom the approval request was assigned to
-	ReassignmentHistory []Approvalreassignmenthistory `json:"reassignmentHistory,omitempty"`
+	ReassignmentHistory []ApprovalReassignmentHistory `json:"reassignmentHistory,omitempty"`
 	// Field that can include any static additional info that may be needed by the service that the approval request originated from
 	StaticAttributes map[string]interface{} `json:"staticAttributes,omitempty"`
 	// Date/time that the approval request was last updated
 	ModifiedDate *SailPointTime `json:"modifiedDate,omitempty"`
 	// RequestedTarget used to specify the actual object or target the approval request is for
-	RequestedTarget []Approvalrequestedtarget `json:"requestedTarget,omitempty"`
+	RequestedTarget []ApprovalRequestedTarget `json:"requestedTarget,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -196,9 +196,9 @@ func (o *Approval2) SetType(v string) {
 }
 
 // GetApprovers returns the Approvers field value if set, zero value otherwise.
-func (o *Approval2) GetApprovers() []Approvalidentity {
+func (o *Approval2) GetApprovers() []ApprovalIdentity {
 	if o == nil || IsNil(o.Approvers) {
-		var ret []Approvalidentity
+		var ret []ApprovalIdentity
 		return ret
 	}
 	return o.Approvers
@@ -206,7 +206,7 @@ func (o *Approval2) GetApprovers() []Approvalidentity {
 
 // GetApproversOk returns a tuple with the Approvers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetApproversOk() ([]Approvalidentity, bool) {
+func (o *Approval2) GetApproversOk() ([]ApprovalIdentity, bool) {
 	if o == nil || IsNil(o.Approvers) {
 		return nil, false
 	}
@@ -222,8 +222,8 @@ func (o *Approval2) HasApprovers() bool {
 	return false
 }
 
-// SetApprovers gets a reference to the given []Approvalidentity and assigns it to the Approvers field.
-func (o *Approval2) SetApprovers(v []Approvalidentity) {
+// SetApprovers gets a reference to the given []ApprovalIdentity and assigns it to the Approvers field.
+func (o *Approval2) SetApprovers(v []ApprovalIdentity) {
 	o.Approvers = v
 }
 
@@ -388,9 +388,9 @@ func (o *Approval2) SetIsEscalated(v bool) {
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *Approval2) GetName() []Approvalname {
+func (o *Approval2) GetName() []ApprovalName {
 	if o == nil || IsNil(o.Name) {
-		var ret []Approvalname
+		var ret []ApprovalName
 		return ret
 	}
 	return o.Name
@@ -398,7 +398,7 @@ func (o *Approval2) GetName() []Approvalname {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetNameOk() ([]Approvalname, bool) {
+func (o *Approval2) GetNameOk() ([]ApprovalName, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -414,15 +414,15 @@ func (o *Approval2) HasName() bool {
 	return false
 }
 
-// SetName gets a reference to the given []Approvalname and assigns it to the Name field.
-func (o *Approval2) SetName(v []Approvalname) {
+// SetName gets a reference to the given []ApprovalName and assigns it to the Name field.
+func (o *Approval2) SetName(v []ApprovalName) {
 	o.Name = v
 }
 
 // GetBatchRequest returns the BatchRequest field value if set, zero value otherwise.
-func (o *Approval2) GetBatchRequest() Approvalbatch {
+func (o *Approval2) GetBatchRequest() ApprovalBatch {
 	if o == nil || IsNil(o.BatchRequest) {
-		var ret Approvalbatch
+		var ret ApprovalBatch
 		return ret
 	}
 	return o.BatchRequest
@@ -430,9 +430,9 @@ func (o *Approval2) GetBatchRequest() Approvalbatch {
 
 // GetBatchRequestOk returns a tuple with the BatchRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetBatchRequestOk() (Approvalbatch, bool) {
+func (o *Approval2) GetBatchRequestOk() (ApprovalBatch, bool) {
 	if o == nil || IsNil(o.BatchRequest) {
-		return Approvalbatch{}, false
+		return ApprovalBatch{}, false
 	}
 	return o.BatchRequest, true
 }
@@ -446,15 +446,15 @@ func (o *Approval2) HasBatchRequest() bool {
 	return false
 }
 
-// SetBatchRequest gets a reference to the given Approvalbatch and assigns it to the BatchRequest field.
-func (o *Approval2) SetBatchRequest(v Approvalbatch) {
+// SetBatchRequest gets a reference to the given ApprovalBatch and assigns it to the BatchRequest field.
+func (o *Approval2) SetBatchRequest(v ApprovalBatch) {
 	o.BatchRequest = v
 }
 
 // GetApprovalConfig returns the ApprovalConfig field value if set, zero value otherwise.
-func (o *Approval2) GetApprovalConfig() Approvalconfig {
+func (o *Approval2) GetApprovalConfig() ApprovalConfig {
 	if o == nil || IsNil(o.ApprovalConfig) {
-		var ret Approvalconfig
+		var ret ApprovalConfig
 		return ret
 	}
 	return o.ApprovalConfig
@@ -462,9 +462,9 @@ func (o *Approval2) GetApprovalConfig() Approvalconfig {
 
 // GetApprovalConfigOk returns a tuple with the ApprovalConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetApprovalConfigOk() (Approvalconfig, bool) {
+func (o *Approval2) GetApprovalConfigOk() (ApprovalConfig, bool) {
 	if o == nil || IsNil(o.ApprovalConfig) {
-		return Approvalconfig{}, false
+		return ApprovalConfig{}, false
 	}
 	return o.ApprovalConfig, true
 }
@@ -478,15 +478,15 @@ func (o *Approval2) HasApprovalConfig() bool {
 	return false
 }
 
-// SetApprovalConfig gets a reference to the given Approvalconfig and assigns it to the ApprovalConfig field.
-func (o *Approval2) SetApprovalConfig(v Approvalconfig) {
+// SetApprovalConfig gets a reference to the given ApprovalConfig and assigns it to the ApprovalConfig field.
+func (o *Approval2) SetApprovalConfig(v ApprovalConfig) {
 	o.ApprovalConfig = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *Approval2) GetDescription() []Approvaldescription {
+func (o *Approval2) GetDescription() []ApprovalDescription {
 	if o == nil || IsNil(o.Description) {
-		var ret []Approvaldescription
+		var ret []ApprovalDescription
 		return ret
 	}
 	return o.Description
@@ -494,7 +494,7 @@ func (o *Approval2) GetDescription() []Approvaldescription {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetDescriptionOk() ([]Approvaldescription, bool) {
+func (o *Approval2) GetDescriptionOk() ([]ApprovalDescription, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -510,8 +510,8 @@ func (o *Approval2) HasDescription() bool {
 	return false
 }
 
-// SetDescription gets a reference to the given []Approvaldescription and assigns it to the Description field.
-func (o *Approval2) SetDescription(v []Approvaldescription) {
+// SetDescription gets a reference to the given []ApprovalDescription and assigns it to the Description field.
+func (o *Approval2) SetDescription(v []ApprovalDescription) {
 	o.Description = v
 }
 
@@ -580,9 +580,9 @@ func (o *Approval2) SetPriority(v string) {
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
-func (o *Approval2) GetRequester() Approvalidentity {
+func (o *Approval2) GetRequester() ApprovalIdentity {
 	if o == nil || IsNil(o.Requester) {
-		var ret Approvalidentity
+		var ret ApprovalIdentity
 		return ret
 	}
 	return o.Requester
@@ -590,9 +590,9 @@ func (o *Approval2) GetRequester() Approvalidentity {
 
 // GetRequesterOk returns a tuple with the Requester field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetRequesterOk() (Approvalidentity, bool) {
+func (o *Approval2) GetRequesterOk() (ApprovalIdentity, bool) {
 	if o == nil || IsNil(o.Requester) {
-		return Approvalidentity{}, false
+		return ApprovalIdentity{}, false
 	}
 	return o.Requester, true
 }
@@ -606,15 +606,15 @@ func (o *Approval2) HasRequester() bool {
 	return false
 }
 
-// SetRequester gets a reference to the given Approvalidentity and assigns it to the Requester field.
-func (o *Approval2) SetRequester(v Approvalidentity) {
+// SetRequester gets a reference to the given ApprovalIdentity and assigns it to the Requester field.
+func (o *Approval2) SetRequester(v ApprovalIdentity) {
 	o.Requester = v
 }
 
 // GetRequestee returns the Requestee field value if set, zero value otherwise.
-func (o *Approval2) GetRequestee() Approvalidentity {
+func (o *Approval2) GetRequestee() ApprovalIdentity {
 	if o == nil || IsNil(o.Requestee) {
-		var ret Approvalidentity
+		var ret ApprovalIdentity
 		return ret
 	}
 	return o.Requestee
@@ -622,9 +622,9 @@ func (o *Approval2) GetRequestee() Approvalidentity {
 
 // GetRequesteeOk returns a tuple with the Requestee field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetRequesteeOk() (Approvalidentity, bool) {
+func (o *Approval2) GetRequesteeOk() (ApprovalIdentity, bool) {
 	if o == nil || IsNil(o.Requestee) {
-		return Approvalidentity{}, false
+		return ApprovalIdentity{}, false
 	}
 	return o.Requestee, true
 }
@@ -638,15 +638,15 @@ func (o *Approval2) HasRequestee() bool {
 	return false
 }
 
-// SetRequestee gets a reference to the given Approvalidentity and assigns it to the Requestee field.
-func (o *Approval2) SetRequestee(v Approvalidentity) {
+// SetRequestee gets a reference to the given ApprovalIdentity and assigns it to the Requestee field.
+func (o *Approval2) SetRequestee(v ApprovalIdentity) {
 	o.Requestee = v
 }
 
 // GetComments returns the Comments field value if set, zero value otherwise.
-func (o *Approval2) GetComments() []Approvalcomment3 {
+func (o *Approval2) GetComments() []ApprovalComment3 {
 	if o == nil || IsNil(o.Comments) {
-		var ret []Approvalcomment3
+		var ret []ApprovalComment3
 		return ret
 	}
 	return o.Comments
@@ -654,7 +654,7 @@ func (o *Approval2) GetComments() []Approvalcomment3 {
 
 // GetCommentsOk returns a tuple with the Comments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetCommentsOk() ([]Approvalcomment3, bool) {
+func (o *Approval2) GetCommentsOk() ([]ApprovalComment3, bool) {
 	if o == nil || IsNil(o.Comments) {
 		return nil, false
 	}
@@ -670,15 +670,15 @@ func (o *Approval2) HasComments() bool {
 	return false
 }
 
-// SetComments gets a reference to the given []Approvalcomment3 and assigns it to the Comments field.
-func (o *Approval2) SetComments(v []Approvalcomment3) {
+// SetComments gets a reference to the given []ApprovalComment3 and assigns it to the Comments field.
+func (o *Approval2) SetComments(v []ApprovalComment3) {
 	o.Comments = v
 }
 
 // GetApprovedBy returns the ApprovedBy field value if set, zero value otherwise.
-func (o *Approval2) GetApprovedBy() []Approvalidentityrecord {
+func (o *Approval2) GetApprovedBy() []ApprovalIdentityRecord {
 	if o == nil || IsNil(o.ApprovedBy) {
-		var ret []Approvalidentityrecord
+		var ret []ApprovalIdentityRecord
 		return ret
 	}
 	return o.ApprovedBy
@@ -686,7 +686,7 @@ func (o *Approval2) GetApprovedBy() []Approvalidentityrecord {
 
 // GetApprovedByOk returns a tuple with the ApprovedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetApprovedByOk() ([]Approvalidentityrecord, bool) {
+func (o *Approval2) GetApprovedByOk() ([]ApprovalIdentityRecord, bool) {
 	if o == nil || IsNil(o.ApprovedBy) {
 		return nil, false
 	}
@@ -702,15 +702,15 @@ func (o *Approval2) HasApprovedBy() bool {
 	return false
 }
 
-// SetApprovedBy gets a reference to the given []Approvalidentityrecord and assigns it to the ApprovedBy field.
-func (o *Approval2) SetApprovedBy(v []Approvalidentityrecord) {
+// SetApprovedBy gets a reference to the given []ApprovalIdentityRecord and assigns it to the ApprovedBy field.
+func (o *Approval2) SetApprovedBy(v []ApprovalIdentityRecord) {
 	o.ApprovedBy = v
 }
 
 // GetRejectedBy returns the RejectedBy field value if set, zero value otherwise.
-func (o *Approval2) GetRejectedBy() []Approvalidentityrecord {
+func (o *Approval2) GetRejectedBy() []ApprovalIdentityRecord {
 	if o == nil || IsNil(o.RejectedBy) {
-		var ret []Approvalidentityrecord
+		var ret []ApprovalIdentityRecord
 		return ret
 	}
 	return o.RejectedBy
@@ -718,7 +718,7 @@ func (o *Approval2) GetRejectedBy() []Approvalidentityrecord {
 
 // GetRejectedByOk returns a tuple with the RejectedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetRejectedByOk() ([]Approvalidentityrecord, bool) {
+func (o *Approval2) GetRejectedByOk() ([]ApprovalIdentityRecord, bool) {
 	if o == nil || IsNil(o.RejectedBy) {
 		return nil, false
 	}
@@ -734,15 +734,15 @@ func (o *Approval2) HasRejectedBy() bool {
 	return false
 }
 
-// SetRejectedBy gets a reference to the given []Approvalidentityrecord and assigns it to the RejectedBy field.
-func (o *Approval2) SetRejectedBy(v []Approvalidentityrecord) {
+// SetRejectedBy gets a reference to the given []ApprovalIdentityRecord and assigns it to the RejectedBy field.
+func (o *Approval2) SetRejectedBy(v []ApprovalIdentityRecord) {
 	o.RejectedBy = v
 }
 
 // GetAssignedTo returns the AssignedTo field value if set, zero value otherwise.
-func (o *Approval2) GetAssignedTo() []Approvalidentity {
+func (o *Approval2) GetAssignedTo() []ApprovalIdentity {
 	if o == nil || IsNil(o.AssignedTo) {
-		var ret []Approvalidentity
+		var ret []ApprovalIdentity
 		return ret
 	}
 	return o.AssignedTo
@@ -750,7 +750,7 @@ func (o *Approval2) GetAssignedTo() []Approvalidentity {
 
 // GetAssignedToOk returns a tuple with the AssignedTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetAssignedToOk() ([]Approvalidentity, bool) {
+func (o *Approval2) GetAssignedToOk() ([]ApprovalIdentity, bool) {
 	if o == nil || IsNil(o.AssignedTo) {
 		return nil, false
 	}
@@ -766,8 +766,8 @@ func (o *Approval2) HasAssignedTo() bool {
 	return false
 }
 
-// SetAssignedTo gets a reference to the given []Approvalidentity and assigns it to the AssignedTo field.
-func (o *Approval2) SetAssignedTo(v []Approvalidentity) {
+// SetAssignedTo gets a reference to the given []ApprovalIdentity and assigns it to the AssignedTo field.
+func (o *Approval2) SetAssignedTo(v []ApprovalIdentity) {
 	o.AssignedTo = v
 }
 
@@ -868,9 +868,9 @@ func (o *Approval2) SetAdditionalAttributes(v string) {
 }
 
 // GetReferenceData returns the ReferenceData field value if set, zero value otherwise.
-func (o *Approval2) GetReferenceData() []Approvalreference {
+func (o *Approval2) GetReferenceData() []ApprovalReference {
 	if o == nil || IsNil(o.ReferenceData) {
-		var ret []Approvalreference
+		var ret []ApprovalReference
 		return ret
 	}
 	return o.ReferenceData
@@ -878,7 +878,7 @@ func (o *Approval2) GetReferenceData() []Approvalreference {
 
 // GetReferenceDataOk returns a tuple with the ReferenceData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetReferenceDataOk() ([]Approvalreference, bool) {
+func (o *Approval2) GetReferenceDataOk() ([]ApprovalReference, bool) {
 	if o == nil || IsNil(o.ReferenceData) {
 		return nil, false
 	}
@@ -894,15 +894,15 @@ func (o *Approval2) HasReferenceData() bool {
 	return false
 }
 
-// SetReferenceData gets a reference to the given []Approvalreference and assigns it to the ReferenceData field.
-func (o *Approval2) SetReferenceData(v []Approvalreference) {
+// SetReferenceData gets a reference to the given []ApprovalReference and assigns it to the ReferenceData field.
+func (o *Approval2) SetReferenceData(v []ApprovalReference) {
 	o.ReferenceData = v
 }
 
 // GetReassignmentHistory returns the ReassignmentHistory field value if set, zero value otherwise.
-func (o *Approval2) GetReassignmentHistory() []Approvalreassignmenthistory {
+func (o *Approval2) GetReassignmentHistory() []ApprovalReassignmentHistory {
 	if o == nil || IsNil(o.ReassignmentHistory) {
-		var ret []Approvalreassignmenthistory
+		var ret []ApprovalReassignmentHistory
 		return ret
 	}
 	return o.ReassignmentHistory
@@ -910,7 +910,7 @@ func (o *Approval2) GetReassignmentHistory() []Approvalreassignmenthistory {
 
 // GetReassignmentHistoryOk returns a tuple with the ReassignmentHistory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetReassignmentHistoryOk() ([]Approvalreassignmenthistory, bool) {
+func (o *Approval2) GetReassignmentHistoryOk() ([]ApprovalReassignmentHistory, bool) {
 	if o == nil || IsNil(o.ReassignmentHistory) {
 		return nil, false
 	}
@@ -926,8 +926,8 @@ func (o *Approval2) HasReassignmentHistory() bool {
 	return false
 }
 
-// SetReassignmentHistory gets a reference to the given []Approvalreassignmenthistory and assigns it to the ReassignmentHistory field.
-func (o *Approval2) SetReassignmentHistory(v []Approvalreassignmenthistory) {
+// SetReassignmentHistory gets a reference to the given []ApprovalReassignmentHistory and assigns it to the ReassignmentHistory field.
+func (o *Approval2) SetReassignmentHistory(v []ApprovalReassignmentHistory) {
 	o.ReassignmentHistory = v
 }
 
@@ -996,9 +996,9 @@ func (o *Approval2) SetModifiedDate(v SailPointTime) {
 }
 
 // GetRequestedTarget returns the RequestedTarget field value if set, zero value otherwise.
-func (o *Approval2) GetRequestedTarget() []Approvalrequestedtarget {
+func (o *Approval2) GetRequestedTarget() []ApprovalRequestedTarget {
 	if o == nil || IsNil(o.RequestedTarget) {
-		var ret []Approvalrequestedtarget
+		var ret []ApprovalRequestedTarget
 		return ret
 	}
 	return o.RequestedTarget
@@ -1006,7 +1006,7 @@ func (o *Approval2) GetRequestedTarget() []Approvalrequestedtarget {
 
 // GetRequestedTargetOk returns a tuple with the RequestedTarget field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval2) GetRequestedTargetOk() ([]Approvalrequestedtarget, bool) {
+func (o *Approval2) GetRequestedTargetOk() ([]ApprovalRequestedTarget, bool) {
 	if o == nil || IsNil(o.RequestedTarget) {
 		return nil, false
 	}
@@ -1022,8 +1022,8 @@ func (o *Approval2) HasRequestedTarget() bool {
 	return false
 }
 
-// SetRequestedTarget gets a reference to the given []Approvalrequestedtarget and assigns it to the RequestedTarget field.
-func (o *Approval2) SetRequestedTarget(v []Approvalrequestedtarget) {
+// SetRequestedTarget gets a reference to the given []ApprovalRequestedTarget and assigns it to the RequestedTarget field.
+func (o *Approval2) SetRequestedTarget(v []ApprovalRequestedTarget) {
 	o.RequestedTarget = v
 }
 

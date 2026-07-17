@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'EntitlementAccessModelMetadata', 'V1E
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attributes** | Pointer to [**[]Accessmodelmetadata**](accessmodelmetadata) |  | [optional] 
+**Attributes** | Pointer to [**[]AccessModelMetadata**](access-model-metadata) |  | [optional] 
 
 ## Methods
 
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAttributes
 
-`func (o *EntitlementAccessModelMetadata) GetAttributes() []Accessmodelmetadata`
+`func (o *EntitlementAccessModelMetadata) GetAttributes() []AccessModelMetadata`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *EntitlementAccessModelMetadata) GetAttributesOk() (*[]Accessmodelmetadata, bool)`
+`func (o *EntitlementAccessModelMetadata) GetAttributesOk() (*[]AccessModelMetadata, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *EntitlementAccessModelMetadata) SetAttributes(v []Accessmodelmetadata)`
+`func (o *EntitlementAccessModelMetadata) SetAttributes(v []AccessModelMetadata)`
 
 SetAttributes sets Attributes field to given value.
 

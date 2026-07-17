@@ -142,14 +142,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/servicedeskintegrationdto'
+                  $ref: '#/components/schemas/ServiceDeskIntegrationDto'
                 type: array
           description: List of ServiceDeskIntegrationDto
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -173,7 +173,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -191,7 +191,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -216,7 +216,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -235,7 +235,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/servicedeskintegrationdto'
+              $ref: '#/components/schemas/ServiceDeskIntegrationDto'
         description: The specifics of a new integration to create
         required: true
       responses:
@@ -243,13 +243,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/servicedeskintegrationdto'
+                $ref: '#/components/schemas/ServiceDeskIntegrationDto'
           description: Details of the created integration
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -273,7 +273,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -291,7 +291,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -316,7 +316,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -349,7 +349,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -373,7 +373,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -391,7 +391,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -416,7 +416,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -446,13 +446,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/servicedeskintegrationdto'
+                $ref: '#/components/schemas/ServiceDeskIntegrationDto'
           description: ServiceDeskIntegrationDto with the given ID
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -476,7 +476,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -494,7 +494,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -519,7 +519,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -558,7 +558,7 @@ paths:
                   type: IDENTITY
                   name: Angelo Medici
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: |
           A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -572,13 +572,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/servicedeskintegrationdto'
+                $ref: '#/components/schemas/ServiceDeskIntegrationDto'
           description: ServiceDeskIntegrationDto as updated
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -602,7 +602,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -620,7 +620,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -645,7 +645,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -674,7 +674,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/servicedeskintegrationdto'
+              $ref: '#/components/schemas/ServiceDeskIntegrationDto'
         description: The specifics of the integration to update
         required: true
       responses:
@@ -682,13 +682,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/servicedeskintegrationdto'
+                $ref: '#/components/schemas/ServiceDeskIntegrationDto'
           description: ServiceDeskIntegrationDto as updated
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -712,7 +712,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -730,7 +730,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -755,7 +755,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -777,7 +777,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/servicedeskintegrationtemplatetype'
+                  $ref: '#/components/schemas/ServiceDeskIntegrationTemplateType'
                 type: array
           description: Responds with an array of the currently supported Service Desk
             integration types.
@@ -785,7 +785,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -809,7 +809,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -827,7 +827,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -852,7 +852,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -886,14 +886,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/servicedeskintegrationtemplatedto'
+                $ref: '#/components/schemas/ServiceDeskIntegrationTemplateDto'
           description: Responds with the ServiceDeskIntegrationTemplateDto with the
             specified scriptName.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -917,7 +917,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -935,7 +935,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -960,7 +960,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -981,13 +981,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queuedcheckconfigdetails'
+                $ref: '#/components/schemas/QueuedCheckConfigDetails'
           description: QueuedCheckConfigDetails containing the configured values
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1011,7 +1011,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1029,7 +1029,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1054,7 +1054,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1073,7 +1073,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/queuedcheckconfigdetails'
+              $ref: '#/components/schemas/QueuedCheckConfigDetails'
         description: The modified time check configuration
         required: true
       responses:
@@ -1081,13 +1081,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queuedcheckconfigdetails'
+                $ref: '#/components/schemas/QueuedCheckConfigDetails'
           description: QueuedCheckConfigDetails as updated
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1111,7 +1111,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1129,7 +1129,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1154,7 +1154,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1219,7 +1219,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1243,7 +1243,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -1261,7 +1261,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -1286,10 +1286,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    ownerdto:
+    OwnerDto:
       description: Owner's identity.
       properties:
         type:
@@ -1308,7 +1308,7 @@ components:
           type: string
       title: Owner Dto
       type: object
-    sourceclusterdto:
+    SourceClusterDto:
       description: Source cluster.
       properties:
         type:
@@ -1327,7 +1327,7 @@ components:
           type: string
       title: Source Cluster Dto
       type: object
-    servicedesksource:
+    ServiceDeskSource:
       description: Source for Service Desk integration template.
       properties:
         type:
@@ -1347,7 +1347,7 @@ components:
           type: string
       title: Service Desk Source
       type: object
-    provisioningconfig:
+    ProvisioningConfig:
       description: Specification of a Service Desk integration provisioning configuration.
       example:
         managedResourceRefs:
@@ -1384,10 +1384,10 @@ components:
             name: My Source 2
           items:
             allOf:
-            - $ref: '#/components/schemas/servicedesksource'
+            - $ref: '#/components/schemas/ServiceDeskSource'
           type: array
         planInitializerScript:
-          $ref: '#/components/schemas/provisioningconfig_planInitializerScript'
+          $ref: '#/components/schemas/ProvisioningConfig_planInitializerScript'
         noProvisioningRequests:
           default: false
           description: Name of an attribute that when true disables the saving of
@@ -1403,7 +1403,7 @@ components:
           type: integer
       title: Provisioning Config
       type: object
-    beforeprovisioningruledto:
+    BeforeProvisioningRuleDto:
       description: Before Provisioning Rule.
       properties:
         type:
@@ -1422,7 +1422,7 @@ components:
           type: string
       title: Before Provisioning Rule Dto
       type: object
-    servicedeskintegrationdto:
+    ServiceDeskIntegrationDto:
       allOf:
       - description: Service Desk integration's specification.
         properties:
@@ -1459,10 +1459,10 @@ components:
             type: string
           ownerRef:
             allOf:
-            - $ref: '#/components/schemas/ownerdto'
+            - $ref: '#/components/schemas/OwnerDto'
           clusterRef:
             allOf:
-            - $ref: '#/components/schemas/sourceclusterdto'
+            - $ref: '#/components/schemas/SourceClusterDto'
           cluster:
             deprecated: true
             description: "Cluster ID for the Service Desk integration (replaced by\
@@ -1482,7 +1482,7 @@ components:
               type: string
             type: array
           provisioningConfig:
-            $ref: '#/components/schemas/provisioningconfig'
+            $ref: '#/components/schemas/ProvisioningConfig'
           attributes:
             additionalProperties: true
             description: Service Desk integration's attributes. Validation constraints
@@ -1493,7 +1493,7 @@ components:
             type: object
           beforeProvisioningRule:
             allOf:
-            - $ref: '#/components/schemas/beforeprovisioningruledto'
+            - $ref: '#/components/schemas/BeforeProvisioningRuleDto'
         required:
         - attributes
         - description
@@ -1531,7 +1531,7 @@ components:
           key: value
         id: 62945a496ef440189b1f03e3623411c8
         beforeProvisioningRule: ""
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1543,7 +1543,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1556,7 +1556,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1564,7 +1564,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1598,18 +1598,22 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -1628,13 +1632,13 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    servicedeskintegrationtemplatetype:
+    ServiceDeskIntegrationTemplateType:
       description: This represents a Service Desk Integration template type.
       example:
         name: aName
@@ -1658,7 +1662,7 @@ components:
       - type
       title: Service Desk Integration Template Type
       type: object
-    basecommondto:
+    BaseCommonDto:
       properties:
         id:
           description: System-generated unique ID of the Object
@@ -1686,9 +1690,9 @@ components:
       - name
       title: Base Common Dto
       type: object
-    servicedeskintegrationtemplatedto:
+    ServiceDeskIntegrationTemplateDto:
       allOf:
-      - $ref: '#/components/schemas/basecommondto'
+      - $ref: '#/components/schemas/BaseCommonDto'
       - description: "This is the model for a Service Desk integration template, used\
           \ to create and edit Service Desk Integrations."
         properties:
@@ -1707,7 +1711,7 @@ components:
               key: value
             type: object
           provisioningConfig:
-            $ref: '#/components/schemas/provisioningconfig'
+            $ref: '#/components/schemas/ProvisioningConfig'
         required:
         - attributes
         - provisioningConfig
@@ -1736,7 +1740,7 @@ components:
           key: value
         id: id12345
         type: Web Service SDIM
-    queuedcheckconfigdetails:
+    QueuedCheckConfigDetails:
       description: Configuration of maximum number of days and interval for checking
         Service Desk integration queue status.
       example:
@@ -1772,7 +1776,7 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    provisioningconfig_planInitializerScript:
+    ProvisioningConfig_planInitializerScript:
       description: This is a reference to a plan initializer script.
       example:
         source: |
@@ -1794,7 +1798,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description

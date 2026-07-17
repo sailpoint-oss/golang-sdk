@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Privilegecriteriaconfigdto**](../models/privilegecriteriaconfigdto)
+[**PrivilegeCriteriaConfigDTO**](../models/privilege-criteria-config-dto)
 
 ### HTTP request headers
 
@@ -106,7 +106,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaConfigurationAPI.GetPrivilegeCriteriaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPrivilegeCriteriaConfigV1`: Privilegecriteriaconfigdto
+    // response from `GetPrivilegeCriteriaConfigV1`: PrivilegeCriteriaConfigDTO
     fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaConfigurationAPI.GetPrivilegeCriteriaConfigV1`: %v\n", resp)
 }
 ```
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Privilegecriteriaconfigdto**](../models/privilegecriteriaconfigdto)
+[**[]PrivilegeCriteriaConfigDTO**](../models/privilege-criteria-config-dto)
 
 ### HTTP request headers
 
@@ -168,7 +168,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaConfigurationAPI.ListPrivilegeCriteriaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListPrivilegeCriteriaConfigV1`: []Privilegecriteriaconfigdto
+    // response from `ListPrivilegeCriteriaConfigV1`: []PrivilegeCriteriaConfigDTO
     fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaConfigurationAPI.ListPrivilegeCriteriaConfigV1`: %v\n", resp)
 }
 ```
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Privilegecriteriaconfigdto**](../models/privilegecriteriaconfigdto)
+[**PrivilegeCriteriaConfigDTO**](../models/privilege-criteria-config-dto)
 
 ### HTTP request headers
 
@@ -241,7 +241,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PrivilegeCriteriaConfigurationAPI.PatchPrivilegeCriteriaConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchPrivilegeCriteriaConfigV1`: Privilegecriteriaconfigdto
+    // response from `PatchPrivilegeCriteriaConfigV1`: PrivilegeCriteriaConfigDTO
     fmt.Fprintf(os.Stdout, "Response from `PrivilegeCriteriaConfigurationAPI.PatchPrivilegeCriteriaConfigV1`: %v\n", resp)
 }
 ```

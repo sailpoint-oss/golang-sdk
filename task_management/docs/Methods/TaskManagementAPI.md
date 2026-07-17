@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Taskstatus**](../models/taskstatus)
+[**[]TaskStatus**](../models/task-status)
 
 ### HTTP request headers
 
@@ -84,7 +84,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.GetTaskStatusListV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTaskStatusListV1`: []Taskstatus
+    // response from `GetTaskStatusListV1`: []TaskStatus
     fmt.Fprintf(os.Stdout, "Response from `TaskManagementAPI.GetTaskStatusListV1`: %v\n", resp)
 }
 ```
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Taskstatus**](../models/taskstatus)
+[**TaskStatus**](../models/task-status)
 
 ### HTTP request headers
 
@@ -150,7 +150,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.GetTaskStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTaskStatusV1`: Taskstatus
+    // response from `GetTaskStatusV1`: TaskStatus
     fmt.Fprintf(os.Stdout, "Response from `TaskManagementAPI.GetTaskStatusV1`: %v\n", resp)
 }
 ```
@@ -179,11 +179,11 @@ Other parameters are passed through a pointer to a apiUpdateTaskStatusV1Request 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | The JSONPatch payload used to update the object. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the object. | 
 
 ### Return type
 
-[**Taskstatus**](../models/taskstatus)
+[**TaskStatus**](../models/task-status)
 
 ### HTTP request headers
 
@@ -206,10 +206,10 @@ import (
 
 func main() {
     id := `00eebcf881994e419d72e757fd30dc0e` // string | Task ID. # string | Task ID.
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
-    var jsonpatchoperation []task_management.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []task_management.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -217,13 +217,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaskManagementAPI.UpdateTaskStatusV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.TaskManagementAPI.UpdateTaskStatusV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.TaskManagementAPI.UpdateTaskStatusV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.TaskManagementAPI.UpdateTaskStatusV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.UpdateTaskStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateTaskStatusV1`: Taskstatus
+    // response from `UpdateTaskStatusV1`: TaskStatus
     fmt.Fprintf(os.Stdout, "Response from `TaskManagementAPI.UpdateTaskStatusV1`: %v\n", resp)
 }
 ```

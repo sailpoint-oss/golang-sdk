@@ -19,7 +19,7 @@ var _ MappedNullable = &ExportFormDefinitionsByTenantV1200ResponseInnerSelf{}
 
 // ExportFormDefinitionsByTenantV1200ResponseInnerSelf struct for ExportFormDefinitionsByTenantV1200ResponseInnerSelf
 type ExportFormDefinitionsByTenantV1200ResponseInnerSelf struct {
-	Object *Formdefinitionselfimportexportdto `json:"object,omitempty"`
+	Object *FormDefinitionSelfImportExportDto `json:"object,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,9 +43,9 @@ func NewExportFormDefinitionsByTenantV1200ResponseInnerSelfWithDefaults() *Expor
 }
 
 // GetObject returns the Object field value if set, zero value otherwise.
-func (o *ExportFormDefinitionsByTenantV1200ResponseInnerSelf) GetObject() Formdefinitionselfimportexportdto {
+func (o *ExportFormDefinitionsByTenantV1200ResponseInnerSelf) GetObject() FormDefinitionSelfImportExportDto {
 	if o == nil || IsNil(o.Object) {
-		var ret Formdefinitionselfimportexportdto
+		var ret FormDefinitionSelfImportExportDto
 		return ret
 	}
 	return *o.Object
@@ -53,7 +53,7 @@ func (o *ExportFormDefinitionsByTenantV1200ResponseInnerSelf) GetObject() Formde
 
 // GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExportFormDefinitionsByTenantV1200ResponseInnerSelf) GetObjectOk() (*Formdefinitionselfimportexportdto, bool) {
+func (o *ExportFormDefinitionsByTenantV1200ResponseInnerSelf) GetObjectOk() (*FormDefinitionSelfImportExportDto, bool) {
 	if o == nil || IsNil(o.Object) {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *ExportFormDefinitionsByTenantV1200ResponseInnerSelf) HasObject() bool {
 	return false
 }
 
-// SetObject gets a reference to the given Formdefinitionselfimportexportdto and assigns it to the Object field.
-func (o *ExportFormDefinitionsByTenantV1200ResponseInnerSelf) SetObject(v Formdefinitionselfimportexportdto) {
+// SetObject gets a reference to the given FormDefinitionSelfImportExportDto and assigns it to the Object field.
+func (o *ExportFormDefinitionsByTenantV1200ResponseInnerSelf) SetObject(v FormDefinitionSelfImportExportDto) {
 	o.Object = &v
 }
 

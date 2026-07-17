@@ -151,14 +151,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/accessrequestrecommendationitemdetail'
+                  $ref: '#/components/schemas/AccessRequestRecommendationItemDetail'
                 type: array
           description: List of access request recommendations for the identityId
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -182,7 +182,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -207,7 +207,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -243,13 +243,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accessrequestrecommendationconfigdto'
+                $ref: '#/components/schemas/AccessRequestRecommendationConfigDto'
           description: Configurations for Access Request Recommender for the tenant.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -273,7 +273,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -298,7 +298,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -332,7 +332,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/accessrequestrecommendationconfigdto'
+              $ref: '#/components/schemas/AccessRequestRecommendationConfigDto'
         description: The desired configurations for Access Request Recommender for
           the tenant.
         required: true
@@ -341,14 +341,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accessrequestrecommendationconfigdto'
+                $ref: '#/components/schemas/AccessRequestRecommendationConfigDto'
           description: Successfully updated configurations for Access Request Recommender
             for the tenant.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -372,7 +372,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -397,7 +397,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -508,14 +508,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+                  $ref: '#/components/schemas/AccessRequestRecommendationActionItemResponseDto'
                 type: array
           description: Returns list of ignored access request recommendations.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -539,7 +539,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -564,7 +564,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -599,7 +599,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/accessrequestrecommendationactionitemdto'
+              $ref: '#/components/schemas/AccessRequestRecommendationActionItemDto'
         description: The recommended access item to ignore for an identity.
         required: true
       responses:
@@ -607,13 +607,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+                $ref: '#/components/schemas/AccessRequestRecommendationActionItemResponseDto'
           description: Recommendation successfully stored as ignored.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -637,7 +637,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -662,7 +662,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -773,14 +773,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+                  $ref: '#/components/schemas/AccessRequestRecommendationActionItemResponseDto'
                 type: array
           description: Returns the list of requested access request recommendations.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -804,7 +804,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -829,7 +829,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -865,7 +865,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/accessrequestrecommendationactionitemdto'
+              $ref: '#/components/schemas/AccessRequestRecommendationActionItemDto'
         description: The recommended access item that was requested for an identity.
         required: true
       responses:
@@ -873,13 +873,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+                $ref: '#/components/schemas/AccessRequestRecommendationActionItemResponseDto'
           description: Notification successfully acknowledged.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -903,7 +903,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -928,7 +928,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1039,14 +1039,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+                  $ref: '#/components/schemas/AccessRequestRecommendationActionItemResponseDto'
                 type: array
           description: Returns list of viewed access request recommendations.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1070,7 +1070,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1095,7 +1095,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1133,7 +1133,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/accessrequestrecommendationactionitemdto'
+              $ref: '#/components/schemas/AccessRequestRecommendationActionItemDto'
         description: The recommended access that was viewed for an identity.
         required: true
       responses:
@@ -1141,13 +1141,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+                $ref: '#/components/schemas/AccessRequestRecommendationActionItemResponseDto'
           description: Recommendation successfully stored as viewed.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1171,7 +1171,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1196,7 +1196,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1232,7 +1232,7 @@ paths:
           application/json:
             schema:
               items:
-                $ref: '#/components/schemas/accessrequestrecommendationactionitemdto'
+                $ref: '#/components/schemas/AccessRequestRecommendationActionItemDto'
               type: array
         description: The recommended access items that were viewed for an identity.
         required: true
@@ -1242,14 +1242,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/accessrequestrecommendationactionitemresponsedto'
+                  $ref: '#/components/schemas/AccessRequestRecommendationActionItemResponseDto'
                 type: array
           description: Recommendations successfully stored as viewed.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1273,7 +1273,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1298,7 +1298,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1365,7 +1365,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1389,7 +1389,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "429":
@@ -1414,17 +1414,17 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    accessrequestrecommendationitemtype:
+    AccessRequestRecommendationItemType:
       description: The type of access item.
       enum:
       - ACCESS_PROFILE
       - ROLE
       example: ACCESS_PROFILE
       type: string
-    accessrecommendationmessage:
+    AccessRecommendationMessage:
       example:
         interpretation: 95% of your peers have this access.
       properties:
@@ -1434,7 +1434,7 @@ components:
           type: string
       title: Access Recommendation Message
       type: object
-    translationmessage:
+    TranslationMessage:
       properties:
         key:
           description: The key of the translation message
@@ -1450,7 +1450,7 @@ components:
           type: array
       title: Translation Message
       type: object
-    accessrequestrecommendationitemdetail:
+    AccessRequestRecommendationItemDetail:
       example:
         ignored: true
         requested: true
@@ -1476,7 +1476,7 @@ components:
           format: UUID
           type: string
         access:
-          $ref: '#/components/schemas/accessrequestrecommendationitemdetail_access'
+          $ref: '#/components/schemas/AccessRequestRecommendationItemDetail_access'
         ignored:
           description: Whether or not the identity has already chosen to ignore this
             recommendation.
@@ -1493,7 +1493,7 @@ components:
           type: boolean
         messages:
           items:
-            $ref: '#/components/schemas/accessrecommendationmessage'
+            $ref: '#/components/schemas/AccessRecommendationMessage'
           type: array
         translationMessages:
           description: The list of translation messages
@@ -1503,11 +1503,11 @@ components:
             - "75"
             - department
           items:
-            $ref: '#/components/schemas/translationmessage'
+            $ref: '#/components/schemas/TranslationMessage'
           type: array
       title: Access Request Recommendation Item Detail
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1519,7 +1519,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1532,7 +1532,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1540,7 +1540,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1574,17 +1574,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    accessrequestrecommendationconfigdto:
+    AccessRequestRecommendationConfigDto:
       example:
         scoreThreshold: 0.5
         startDateAttribute: startDate
@@ -1628,7 +1628,7 @@ components:
       - scoreThreshold
       title: Access Request Recommendation Config Dto
       type: object
-    accessrequestrecommendationitem:
+    AccessRequestRecommendationItem:
       example:
         id: 2c9180835d2e5168015d32f890ca1581
         type: ACCESS_PROFILE
@@ -1639,10 +1639,10 @@ components:
           format: UUID
           type: string
         type:
-          $ref: '#/components/schemas/accessrequestrecommendationitemtype'
+          $ref: '#/components/schemas/AccessRequestRecommendationItemType'
       title: Access Request Recommendation Item
       type: object
-    accessrequestrecommendationactionitemresponsedto:
+    AccessRequestRecommendationActionItemResponseDto:
       example:
         access:
           id: 2c9180835d2e5168015d32f890ca1581
@@ -1656,14 +1656,19 @@ components:
           format: UUID
           type: string
         access:
-          $ref: '#/components/schemas/accessrequestrecommendationitem'
+          $ref: '#/components/schemas/AccessRequestRecommendationItem'
         timestamp:
           example: 2017-07-11T18:45:37.098Z
           format: date-time
           type: string
       title: Access Request Recommendation Action Item Response Dto
       type: object
-    accessrequestrecommendationactionitemdto:
+    AccessRequestRecommendationActionItemDto:
+      example:
+        access:
+          id: 2c9180835d2e5168015d32f890ca1581
+          type: ACCESS_PROFILE
+        identityId: 2c91808570313110017040b06f344ec9
       properties:
         identityId:
           description: The identity ID taking the action.
@@ -1671,7 +1676,7 @@ components:
           format: UUID
           type: string
         access:
-          $ref: '#/components/schemas/accessrequestrecommendationitem'
+          $ref: '#/components/schemas/AccessRequestRecommendationItem'
       required:
       - access
       - identityId
@@ -1693,7 +1698,7 @@ components:
           description: A message describing the error
           example: ' Rate Limit Exceeded '
       type: object
-    accessrequestrecommendationitemdetail_access:
+    AccessRequestRecommendationItemDetail_access:
       example:
         name: Employee-database-read-write
         description: This item grants an employee read and write access to the database
@@ -1706,7 +1711,7 @@ components:
           format: UUID
           type: string
         type:
-          $ref: '#/components/schemas/accessrequestrecommendationitemtype'
+          $ref: '#/components/schemas/AccessRequestRecommendationItemType'
         name:
           description: Name of the access item
           example: Employee-database-read-write

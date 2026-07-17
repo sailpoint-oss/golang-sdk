@@ -27,15 +27,15 @@ type SODPoliciesAPIService service
 type ApiCreateSodPolicyV1Request struct {
 	ctx context.Context
 	ApiService *SODPoliciesAPIService
-	sodpolicy *Sodpolicy
+	sodPolicy *SodPolicy
 }
 
-func (r ApiCreateSodPolicyV1Request) Sodpolicy(sodpolicy Sodpolicy) ApiCreateSodPolicyV1Request {
-	r.sodpolicy = &sodpolicy
+func (r ApiCreateSodPolicyV1Request) SodPolicy(sodPolicy SodPolicy) ApiCreateSodPolicyV1Request {
+	r.sodPolicy = &sodPolicy
 	return r
 }
 
-func (r ApiCreateSodPolicyV1Request) Execute() (*Sodpolicy, *http.Response, error) {
+func (r ApiCreateSodPolicyV1Request) Execute() (*SodPolicy, *http.Response, error) {
 	return r.ApiService.CreateSodPolicyV1Execute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *SODPoliciesAPIService) CreateSodPolicyV1(ctx context.Context) ApiCreate
 }
 
 // Execute executes the request
-//  @return Sodpolicy
-func (a *SODPoliciesAPIService) CreateSodPolicyV1Execute(r ApiCreateSodPolicyV1Request) (*Sodpolicy, *http.Response, error) {
+//  @return SodPolicy
+func (a *SODPoliciesAPIService) CreateSodPolicyV1Execute(r ApiCreateSodPolicyV1Request) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sodpolicy
+		localVarReturnValue  *SodPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.CreateSodPolicyV1")
@@ -75,8 +75,8 @@ func (a *SODPoliciesAPIService) CreateSodPolicyV1Execute(r ApiCreateSodPolicyV1R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sodpolicy == nil {
-		return localVarReturnValue, nil, reportError("sodpolicy is required and must be specified")
+	if r.sodPolicy == nil {
+		return localVarReturnValue, nil, reportError("sodPolicy is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -97,7 +97,7 @@ func (a *SODPoliciesAPIService) CreateSodPolicyV1Execute(r ApiCreateSodPolicyV1R
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sodpolicy
+	localVarPostBody = r.sodPolicy
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -121,7 +121,7 @@ func (a *SODPoliciesAPIService) CreateSodPolicyV1Execute(r ApiCreateSodPolicyV1R
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -143,7 +143,7 @@ func (a *SODPoliciesAPIService) CreateSodPolicyV1Execute(r ApiCreateSodPolicyV1R
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -165,7 +165,7 @@ func (a *SODPoliciesAPIService) CreateSodPolicyV1Execute(r ApiCreateSodPolicyV1R
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -276,7 +276,7 @@ func (a *SODPoliciesAPIService) DeleteSodPolicyScheduleV1Execute(r ApiDeleteSodP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -298,7 +298,7 @@ func (a *SODPoliciesAPIService) DeleteSodPolicyScheduleV1Execute(r ApiDeleteSodP
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -309,7 +309,7 @@ func (a *SODPoliciesAPIService) DeleteSodPolicyScheduleV1Execute(r ApiDeleteSodP
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -331,7 +331,7 @@ func (a *SODPoliciesAPIService) DeleteSodPolicyScheduleV1Execute(r ApiDeleteSodP
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -447,7 +447,7 @@ func (a *SODPoliciesAPIService) DeleteSodPolicyV1Execute(r ApiDeleteSodPolicyV1R
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -469,7 +469,7 @@ func (a *SODPoliciesAPIService) DeleteSodPolicyV1Execute(r ApiDeleteSodPolicyV1R
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -480,7 +480,7 @@ func (a *SODPoliciesAPIService) DeleteSodPolicyV1Execute(r ApiDeleteSodPolicyV1R
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -502,7 +502,7 @@ func (a *SODPoliciesAPIService) DeleteSodPolicyV1Execute(r ApiDeleteSodPolicyV1R
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -610,7 +610,7 @@ func (a *SODPoliciesAPIService) GetCustomViolationReportV1Execute(r ApiGetCustom
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -632,7 +632,7 @@ func (a *SODPoliciesAPIService) GetCustomViolationReportV1Execute(r ApiGetCustom
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -643,7 +643,7 @@ func (a *SODPoliciesAPIService) GetCustomViolationReportV1Execute(r ApiGetCustom
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -665,7 +665,7 @@ func (a *SODPoliciesAPIService) GetCustomViolationReportV1Execute(r ApiGetCustom
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -778,7 +778,7 @@ func (a *SODPoliciesAPIService) GetDefaultViolationReportV1Execute(r ApiGetDefau
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -800,7 +800,7 @@ func (a *SODPoliciesAPIService) GetDefaultViolationReportV1Execute(r ApiGetDefau
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -811,7 +811,7 @@ func (a *SODPoliciesAPIService) GetDefaultViolationReportV1Execute(r ApiGetDefau
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -833,7 +833,7 @@ func (a *SODPoliciesAPIService) GetDefaultViolationReportV1Execute(r ApiGetDefau
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -862,7 +862,7 @@ type ApiGetSodAllReportRunStatusV1Request struct {
 	ApiService *SODPoliciesAPIService
 }
 
-func (r ApiGetSodAllReportRunStatusV1Request) Execute() (*Reportresultreference, *http.Response, error) {
+func (r ApiGetSodAllReportRunStatusV1Request) Execute() (*ReportResultReference, *http.Response, error) {
 	return r.ApiService.GetSodAllReportRunStatusV1Execute(r)
 }
 
@@ -882,13 +882,13 @@ func (a *SODPoliciesAPIService) GetSodAllReportRunStatusV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return Reportresultreference
-func (a *SODPoliciesAPIService) GetSodAllReportRunStatusV1Execute(r ApiGetSodAllReportRunStatusV1Request) (*Reportresultreference, *http.Response, error) {
+//  @return ReportResultReference
+func (a *SODPoliciesAPIService) GetSodAllReportRunStatusV1Execute(r ApiGetSodAllReportRunStatusV1Request) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Reportresultreference
+		localVarReturnValue  *ReportResultReference
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.GetSodAllReportRunStatusV1")
@@ -942,7 +942,7 @@ func (a *SODPoliciesAPIService) GetSodAllReportRunStatusV1Execute(r ApiGetSodAll
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -964,7 +964,7 @@ func (a *SODPoliciesAPIService) GetSodAllReportRunStatusV1Execute(r ApiGetSodAll
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -986,7 +986,7 @@ func (a *SODPoliciesAPIService) GetSodAllReportRunStatusV1Execute(r ApiGetSodAll
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1016,7 +1016,7 @@ type ApiGetSodPolicyScheduleV1Request struct {
 	id string
 }
 
-func (r ApiGetSodPolicyScheduleV1Request) Execute() (*Sodpolicyschedule, *http.Response, error) {
+func (r ApiGetSodPolicyScheduleV1Request) Execute() (*SodPolicySchedule, *http.Response, error) {
 	return r.ApiService.GetSodPolicyScheduleV1Execute(r)
 }
 
@@ -1038,13 +1038,13 @@ func (a *SODPoliciesAPIService) GetSodPolicyScheduleV1(ctx context.Context, id s
 }
 
 // Execute executes the request
-//  @return Sodpolicyschedule
-func (a *SODPoliciesAPIService) GetSodPolicyScheduleV1Execute(r ApiGetSodPolicyScheduleV1Request) (*Sodpolicyschedule, *http.Response, error) {
+//  @return SodPolicySchedule
+func (a *SODPoliciesAPIService) GetSodPolicyScheduleV1Execute(r ApiGetSodPolicyScheduleV1Request) (*SodPolicySchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sodpolicyschedule
+		localVarReturnValue  *SodPolicySchedule
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.GetSodPolicyScheduleV1")
@@ -1099,7 +1099,7 @@ func (a *SODPoliciesAPIService) GetSodPolicyScheduleV1Execute(r ApiGetSodPolicyS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1121,7 +1121,7 @@ func (a *SODPoliciesAPIService) GetSodPolicyScheduleV1Execute(r ApiGetSodPolicyS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1143,7 +1143,7 @@ func (a *SODPoliciesAPIService) GetSodPolicyScheduleV1Execute(r ApiGetSodPolicyS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1173,7 +1173,7 @@ type ApiGetSodPolicyV1Request struct {
 	id string
 }
 
-func (r ApiGetSodPolicyV1Request) Execute() (*Sodpolicy, *http.Response, error) {
+func (r ApiGetSodPolicyV1Request) Execute() (*SodPolicy, *http.Response, error) {
 	return r.ApiService.GetSodPolicyV1Execute(r)
 }
 
@@ -1196,13 +1196,13 @@ func (a *SODPoliciesAPIService) GetSodPolicyV1(ctx context.Context, id string) A
 }
 
 // Execute executes the request
-//  @return Sodpolicy
-func (a *SODPoliciesAPIService) GetSodPolicyV1Execute(r ApiGetSodPolicyV1Request) (*Sodpolicy, *http.Response, error) {
+//  @return SodPolicy
+func (a *SODPoliciesAPIService) GetSodPolicyV1Execute(r ApiGetSodPolicyV1Request) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sodpolicy
+		localVarReturnValue  *SodPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.GetSodPolicyV1")
@@ -1257,7 +1257,7 @@ func (a *SODPoliciesAPIService) GetSodPolicyV1Execute(r ApiGetSodPolicyV1Request
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1279,7 +1279,7 @@ func (a *SODPoliciesAPIService) GetSodPolicyV1Execute(r ApiGetSodPolicyV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1290,7 +1290,7 @@ func (a *SODPoliciesAPIService) GetSodPolicyV1Execute(r ApiGetSodPolicyV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1312,7 +1312,7 @@ func (a *SODPoliciesAPIService) GetSodPolicyV1Execute(r ApiGetSodPolicyV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1342,7 +1342,7 @@ type ApiGetSodViolationReportRunStatusV1Request struct {
 	reportResultId string
 }
 
-func (r ApiGetSodViolationReportRunStatusV1Request) Execute() (*Reportresultreference, *http.Response, error) {
+func (r ApiGetSodViolationReportRunStatusV1Request) Execute() (*ReportResultReference, *http.Response, error) {
 	return r.ApiService.GetSodViolationReportRunStatusV1Execute(r)
 }
 
@@ -1364,13 +1364,13 @@ func (a *SODPoliciesAPIService) GetSodViolationReportRunStatusV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return Reportresultreference
-func (a *SODPoliciesAPIService) GetSodViolationReportRunStatusV1Execute(r ApiGetSodViolationReportRunStatusV1Request) (*Reportresultreference, *http.Response, error) {
+//  @return ReportResultReference
+func (a *SODPoliciesAPIService) GetSodViolationReportRunStatusV1Execute(r ApiGetSodViolationReportRunStatusV1Request) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Reportresultreference
+		localVarReturnValue  *ReportResultReference
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.GetSodViolationReportRunStatusV1")
@@ -1425,7 +1425,7 @@ func (a *SODPoliciesAPIService) GetSodViolationReportRunStatusV1Execute(r ApiGet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1447,7 +1447,7 @@ func (a *SODPoliciesAPIService) GetSodViolationReportRunStatusV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1458,7 +1458,7 @@ func (a *SODPoliciesAPIService) GetSodViolationReportRunStatusV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1480,7 +1480,7 @@ func (a *SODPoliciesAPIService) GetSodViolationReportRunStatusV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1510,7 +1510,7 @@ type ApiGetSodViolationReportStatusV1Request struct {
 	id string
 }
 
-func (r ApiGetSodViolationReportStatusV1Request) Execute() (*Reportresultreference, *http.Response, error) {
+func (r ApiGetSodViolationReportStatusV1Request) Execute() (*ReportResultReference, *http.Response, error) {
 	return r.ApiService.GetSodViolationReportStatusV1Execute(r)
 }
 
@@ -1532,13 +1532,13 @@ func (a *SODPoliciesAPIService) GetSodViolationReportStatusV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Reportresultreference
-func (a *SODPoliciesAPIService) GetSodViolationReportStatusV1Execute(r ApiGetSodViolationReportStatusV1Request) (*Reportresultreference, *http.Response, error) {
+//  @return ReportResultReference
+func (a *SODPoliciesAPIService) GetSodViolationReportStatusV1Execute(r ApiGetSodViolationReportStatusV1Request) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Reportresultreference
+		localVarReturnValue  *ReportResultReference
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.GetSodViolationReportStatusV1")
@@ -1593,7 +1593,7 @@ func (a *SODPoliciesAPIService) GetSodViolationReportStatusV1Execute(r ApiGetSod
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1615,7 +1615,7 @@ func (a *SODPoliciesAPIService) GetSodViolationReportStatusV1Execute(r ApiGetSod
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1626,7 +1626,7 @@ func (a *SODPoliciesAPIService) GetSodViolationReportStatusV1Execute(r ApiGetSod
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1648,7 +1648,7 @@ func (a *SODPoliciesAPIService) GetSodViolationReportStatusV1Execute(r ApiGetSod
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1712,7 +1712,7 @@ func (r ApiListSodPoliciesV1Request) Sorters(sorters string) ApiListSodPoliciesV
 	return r
 }
 
-func (r ApiListSodPoliciesV1Request) Execute() ([]Sodpolicy, *http.Response, error) {
+func (r ApiListSodPoliciesV1Request) Execute() ([]SodPolicy, *http.Response, error) {
 	return r.ApiService.ListSodPoliciesV1Execute(r)
 }
 
@@ -1733,13 +1733,13 @@ func (a *SODPoliciesAPIService) ListSodPoliciesV1(ctx context.Context) ApiListSo
 }
 
 // Execute executes the request
-//  @return []Sodpolicy
-func (a *SODPoliciesAPIService) ListSodPoliciesV1Execute(r ApiListSodPoliciesV1Request) ([]Sodpolicy, *http.Response, error) {
+//  @return []SodPolicy
+func (a *SODPoliciesAPIService) ListSodPoliciesV1Execute(r ApiListSodPoliciesV1Request) ([]SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sodpolicy
+		localVarReturnValue  []SodPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.ListSodPoliciesV1")
@@ -1817,7 +1817,7 @@ func (a *SODPoliciesAPIService) ListSodPoliciesV1Execute(r ApiListSodPoliciesV1R
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1839,7 +1839,7 @@ func (a *SODPoliciesAPIService) ListSodPoliciesV1Execute(r ApiListSodPoliciesV1R
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1861,7 +1861,7 @@ func (a *SODPoliciesAPIService) ListSodPoliciesV1Execute(r ApiListSodPoliciesV1R
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1889,16 +1889,16 @@ type ApiPatchSodPolicyV1Request struct {
 	ctx context.Context
 	ApiService *SODPoliciesAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
-func (r ApiPatchSodPolicyV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchSodPolicyV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchSodPolicyV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchSodPolicyV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchSodPolicyV1Request) Execute() (*Sodpolicy, *http.Response, error) {
+func (r ApiPatchSodPolicyV1Request) Execute() (*SodPolicy, *http.Response, error) {
 	return r.ApiService.PatchSodPolicyV1Execute(r)
 }
 
@@ -1922,13 +1922,13 @@ func (a *SODPoliciesAPIService) PatchSodPolicyV1(ctx context.Context, id string)
 }
 
 // Execute executes the request
-//  @return Sodpolicy
-func (a *SODPoliciesAPIService) PatchSodPolicyV1Execute(r ApiPatchSodPolicyV1Request) (*Sodpolicy, *http.Response, error) {
+//  @return SodPolicy
+func (a *SODPoliciesAPIService) PatchSodPolicyV1Execute(r ApiPatchSodPolicyV1Request) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sodpolicy
+		localVarReturnValue  *SodPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.PatchSodPolicyV1")
@@ -1942,8 +1942,8 @@ func (a *SODPoliciesAPIService) PatchSodPolicyV1Execute(r ApiPatchSodPolicyV1Req
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1964,7 +1964,7 @@ func (a *SODPoliciesAPIService) PatchSodPolicyV1Execute(r ApiPatchSodPolicyV1Req
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1988,7 +1988,7 @@ func (a *SODPoliciesAPIService) PatchSodPolicyV1Execute(r ApiPatchSodPolicyV1Req
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2010,7 +2010,7 @@ func (a *SODPoliciesAPIService) PatchSodPolicyV1Execute(r ApiPatchSodPolicyV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2021,7 +2021,7 @@ func (a *SODPoliciesAPIService) PatchSodPolicyV1Execute(r ApiPatchSodPolicyV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2043,7 +2043,7 @@ func (a *SODPoliciesAPIService) PatchSodPolicyV1Execute(r ApiPatchSodPolicyV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2071,15 +2071,15 @@ type ApiPutPolicyScheduleV1Request struct {
 	ctx context.Context
 	ApiService *SODPoliciesAPIService
 	id string
-	sodpolicyschedule *Sodpolicyschedule
+	sodPolicySchedule *SodPolicySchedule
 }
 
-func (r ApiPutPolicyScheduleV1Request) Sodpolicyschedule(sodpolicyschedule Sodpolicyschedule) ApiPutPolicyScheduleV1Request {
-	r.sodpolicyschedule = &sodpolicyschedule
+func (r ApiPutPolicyScheduleV1Request) SodPolicySchedule(sodPolicySchedule SodPolicySchedule) ApiPutPolicyScheduleV1Request {
+	r.sodPolicySchedule = &sodPolicySchedule
 	return r
 }
 
-func (r ApiPutPolicyScheduleV1Request) Execute() (*Sodpolicyschedule, *http.Response, error) {
+func (r ApiPutPolicyScheduleV1Request) Execute() (*SodPolicySchedule, *http.Response, error) {
 	return r.ApiService.PutPolicyScheduleV1Execute(r)
 }
 
@@ -2101,13 +2101,13 @@ func (a *SODPoliciesAPIService) PutPolicyScheduleV1(ctx context.Context, id stri
 }
 
 // Execute executes the request
-//  @return Sodpolicyschedule
-func (a *SODPoliciesAPIService) PutPolicyScheduleV1Execute(r ApiPutPolicyScheduleV1Request) (*Sodpolicyschedule, *http.Response, error) {
+//  @return SodPolicySchedule
+func (a *SODPoliciesAPIService) PutPolicyScheduleV1Execute(r ApiPutPolicyScheduleV1Request) (*SodPolicySchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sodpolicyschedule
+		localVarReturnValue  *SodPolicySchedule
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.PutPolicyScheduleV1")
@@ -2121,8 +2121,8 @@ func (a *SODPoliciesAPIService) PutPolicyScheduleV1Execute(r ApiPutPolicySchedul
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sodpolicyschedule == nil {
-		return localVarReturnValue, nil, reportError("sodpolicyschedule is required and must be specified")
+	if r.sodPolicySchedule == nil {
+		return localVarReturnValue, nil, reportError("sodPolicySchedule is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2143,7 +2143,7 @@ func (a *SODPoliciesAPIService) PutPolicyScheduleV1Execute(r ApiPutPolicySchedul
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sodpolicyschedule
+	localVarPostBody = r.sodPolicySchedule
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2167,7 +2167,7 @@ func (a *SODPoliciesAPIService) PutPolicyScheduleV1Execute(r ApiPutPolicySchedul
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2189,7 +2189,7 @@ func (a *SODPoliciesAPIService) PutPolicyScheduleV1Execute(r ApiPutPolicySchedul
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2211,7 +2211,7 @@ func (a *SODPoliciesAPIService) PutPolicyScheduleV1Execute(r ApiPutPolicySchedul
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2239,15 +2239,15 @@ type ApiPutSodPolicyV1Request struct {
 	ctx context.Context
 	ApiService *SODPoliciesAPIService
 	id string
-	sodpolicy *Sodpolicy
+	sodPolicy *SodPolicy
 }
 
-func (r ApiPutSodPolicyV1Request) Sodpolicy(sodpolicy Sodpolicy) ApiPutSodPolicyV1Request {
-	r.sodpolicy = &sodpolicy
+func (r ApiPutSodPolicyV1Request) SodPolicy(sodPolicy SodPolicy) ApiPutSodPolicyV1Request {
+	r.sodPolicy = &sodPolicy
 	return r
 }
 
-func (r ApiPutSodPolicyV1Request) Execute() (*Sodpolicy, *http.Response, error) {
+func (r ApiPutSodPolicyV1Request) Execute() (*SodPolicy, *http.Response, error) {
 	return r.ApiService.PutSodPolicyV1Execute(r)
 }
 
@@ -2270,13 +2270,13 @@ func (a *SODPoliciesAPIService) PutSodPolicyV1(ctx context.Context, id string) A
 }
 
 // Execute executes the request
-//  @return Sodpolicy
-func (a *SODPoliciesAPIService) PutSodPolicyV1Execute(r ApiPutSodPolicyV1Request) (*Sodpolicy, *http.Response, error) {
+//  @return SodPolicy
+func (a *SODPoliciesAPIService) PutSodPolicyV1Execute(r ApiPutSodPolicyV1Request) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sodpolicy
+		localVarReturnValue  *SodPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.PutSodPolicyV1")
@@ -2290,8 +2290,8 @@ func (a *SODPoliciesAPIService) PutSodPolicyV1Execute(r ApiPutSodPolicyV1Request
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sodpolicy == nil {
-		return localVarReturnValue, nil, reportError("sodpolicy is required and must be specified")
+	if r.sodPolicy == nil {
+		return localVarReturnValue, nil, reportError("sodPolicy is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2312,7 +2312,7 @@ func (a *SODPoliciesAPIService) PutSodPolicyV1Execute(r ApiPutSodPolicyV1Request
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sodpolicy
+	localVarPostBody = r.sodPolicy
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2336,7 +2336,7 @@ func (a *SODPoliciesAPIService) PutSodPolicyV1Execute(r ApiPutSodPolicyV1Request
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2358,7 +2358,7 @@ func (a *SODPoliciesAPIService) PutSodPolicyV1Execute(r ApiPutSodPolicyV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2369,7 +2369,7 @@ func (a *SODPoliciesAPIService) PutSodPolicyV1Execute(r ApiPutSodPolicyV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2391,7 +2391,7 @@ func (a *SODPoliciesAPIService) PutSodPolicyV1Execute(r ApiPutSodPolicyV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2421,7 +2421,7 @@ type ApiStartEvaluateSodPolicyV1Request struct {
 	id string
 }
 
-func (r ApiStartEvaluateSodPolicyV1Request) Execute() (*Reportresultreference, *http.Response, error) {
+func (r ApiStartEvaluateSodPolicyV1Request) Execute() (*ReportResultReference, *http.Response, error) {
 	return r.ApiService.StartEvaluateSodPolicyV1Execute(r)
 }
 
@@ -2443,13 +2443,13 @@ func (a *SODPoliciesAPIService) StartEvaluateSodPolicyV1(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return Reportresultreference
-func (a *SODPoliciesAPIService) StartEvaluateSodPolicyV1Execute(r ApiStartEvaluateSodPolicyV1Request) (*Reportresultreference, *http.Response, error) {
+//  @return ReportResultReference
+func (a *SODPoliciesAPIService) StartEvaluateSodPolicyV1Execute(r ApiStartEvaluateSodPolicyV1Request) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Reportresultreference
+		localVarReturnValue  *ReportResultReference
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.StartEvaluateSodPolicyV1")
@@ -2504,7 +2504,7 @@ func (a *SODPoliciesAPIService) StartEvaluateSodPolicyV1Execute(r ApiStartEvalua
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2526,7 +2526,7 @@ func (a *SODPoliciesAPIService) StartEvaluateSodPolicyV1Execute(r ApiStartEvalua
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2548,7 +2548,7 @@ func (a *SODPoliciesAPIService) StartEvaluateSodPolicyV1Execute(r ApiStartEvalua
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2575,15 +2575,15 @@ func (a *SODPoliciesAPIService) StartEvaluateSodPolicyV1Execute(r ApiStartEvalua
 type ApiStartSodAllPoliciesForOrgV1Request struct {
 	ctx context.Context
 	ApiService *SODPoliciesAPIService
-	multipolicyrequest *Multipolicyrequest
+	multiPolicyRequest *MultiPolicyRequest
 }
 
-func (r ApiStartSodAllPoliciesForOrgV1Request) Multipolicyrequest(multipolicyrequest Multipolicyrequest) ApiStartSodAllPoliciesForOrgV1Request {
-	r.multipolicyrequest = &multipolicyrequest
+func (r ApiStartSodAllPoliciesForOrgV1Request) MultiPolicyRequest(multiPolicyRequest MultiPolicyRequest) ApiStartSodAllPoliciesForOrgV1Request {
+	r.multiPolicyRequest = &multiPolicyRequest
 	return r
 }
 
-func (r ApiStartSodAllPoliciesForOrgV1Request) Execute() (*Reportresultreference, *http.Response, error) {
+func (r ApiStartSodAllPoliciesForOrgV1Request) Execute() (*ReportResultReference, *http.Response, error) {
 	return r.ApiService.StartSodAllPoliciesForOrgV1Execute(r)
 }
 
@@ -2603,13 +2603,13 @@ func (a *SODPoliciesAPIService) StartSodAllPoliciesForOrgV1(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return Reportresultreference
-func (a *SODPoliciesAPIService) StartSodAllPoliciesForOrgV1Execute(r ApiStartSodAllPoliciesForOrgV1Request) (*Reportresultreference, *http.Response, error) {
+//  @return ReportResultReference
+func (a *SODPoliciesAPIService) StartSodAllPoliciesForOrgV1Execute(r ApiStartSodAllPoliciesForOrgV1Request) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Reportresultreference
+		localVarReturnValue  *ReportResultReference
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.StartSodAllPoliciesForOrgV1")
@@ -2641,7 +2641,7 @@ func (a *SODPoliciesAPIService) StartSodAllPoliciesForOrgV1Execute(r ApiStartSod
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.multipolicyrequest
+	localVarPostBody = r.multiPolicyRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2665,7 +2665,7 @@ func (a *SODPoliciesAPIService) StartSodAllPoliciesForOrgV1Execute(r ApiStartSod
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2687,7 +2687,7 @@ func (a *SODPoliciesAPIService) StartSodAllPoliciesForOrgV1Execute(r ApiStartSod
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2709,7 +2709,7 @@ func (a *SODPoliciesAPIService) StartSodAllPoliciesForOrgV1Execute(r ApiStartSod
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2739,7 +2739,7 @@ type ApiStartSodPolicyV1Request struct {
 	id string
 }
 
-func (r ApiStartSodPolicyV1Request) Execute() (*Reportresultreference, *http.Response, error) {
+func (r ApiStartSodPolicyV1Request) Execute() (*ReportResultReference, *http.Response, error) {
 	return r.ApiService.StartSodPolicyV1Execute(r)
 }
 
@@ -2761,13 +2761,13 @@ func (a *SODPoliciesAPIService) StartSodPolicyV1(ctx context.Context, id string)
 }
 
 // Execute executes the request
-//  @return Reportresultreference
-func (a *SODPoliciesAPIService) StartSodPolicyV1Execute(r ApiStartSodPolicyV1Request) (*Reportresultreference, *http.Response, error) {
+//  @return ReportResultReference
+func (a *SODPoliciesAPIService) StartSodPolicyV1Execute(r ApiStartSodPolicyV1Request) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Reportresultreference
+		localVarReturnValue  *ReportResultReference
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPoliciesAPIService.StartSodPolicyV1")
@@ -2822,7 +2822,7 @@ func (a *SODPoliciesAPIService) StartSodPolicyV1Execute(r ApiStartSodPolicyV1Req
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2844,7 +2844,7 @@ func (a *SODPoliciesAPIService) StartSodPolicyV1Execute(r ApiStartSodPolicyV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2855,7 +2855,7 @@ func (a *SODPoliciesAPIService) StartSodPolicyV1Execute(r ApiStartSodPolicyV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2877,7 +2877,7 @@ func (a *SODPoliciesAPIService) StartSodPolicyV1Execute(r ApiStartSodPolicyV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

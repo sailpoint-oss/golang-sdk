@@ -7,9 +7,9 @@ api/openapi.yaml
 api_machine_account_classify.go
 client.go
 configuration.go
-docs/Errormessagedto.md
-docs/Errorresponsedto.md
-docs/Localeorigin.md
+docs/ErrorMessageDto.md
+docs/ErrorResponseDto.md
+docs/LocaleOrigin.md
 docs/MachineAccountClassifyAPI.md
 docs/MachineAccountClassifyAPIdeveloperSite_code_examples.yaml
 docs/Methods/Index.md
@@ -19,9 +19,9 @@ docs/SendClassifyMachineAccountV1429Response.md
 git_push.sh
 go.mod
 go.sum
-model_errormessagedto.go
-model_errorresponsedto.go
-model_localeorigin.go
+model_error_message_dto.go
+model_error_response_dto.go
+model_locale_origin.go
 model_send_classify_machine_account_v1_200_response.go
 model_send_classify_machine_account_v1_401_response.go
 model_send_classify_machine_account_v1_429_response.go

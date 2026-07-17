@@ -27,12 +27,12 @@ type ApiCompleteCampaignV1Request struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
 	id string
-	campaigncompleteoptions *Campaigncompleteoptions
+	campaignCompleteOptions *CampaignCompleteOptions
 }
 
 // Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction&#x3D;REVOKE
-func (r ApiCompleteCampaignV1Request) Campaigncompleteoptions(campaigncompleteoptions Campaigncompleteoptions) ApiCompleteCampaignV1Request {
-	r.campaigncompleteoptions = &campaigncompleteoptions
+func (r ApiCompleteCampaignV1Request) CampaignCompleteOptions(campaignCompleteOptions CampaignCompleteOptions) ApiCompleteCampaignV1Request {
+	r.campaignCompleteOptions = &campaignCompleteOptions
 	return r
 }
 
@@ -107,7 +107,7 @@ func (a *CertificationCampaignsAPIService) CompleteCampaignV1Execute(r ApiComple
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.campaigncompleteoptions
+	localVarPostBody = r.campaignCompleteOptions
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -131,7 +131,7 @@ func (a *CertificationCampaignsAPIService) CompleteCampaignV1Execute(r ApiComple
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -153,7 +153,7 @@ func (a *CertificationCampaignsAPIService) CompleteCampaignV1Execute(r ApiComple
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *CertificationCampaignsAPIService) CompleteCampaignV1Execute(r ApiComple
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -186,7 +186,7 @@ func (a *CertificationCampaignsAPIService) CompleteCampaignV1Execute(r ApiComple
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -213,15 +213,15 @@ func (a *CertificationCampaignsAPIService) CompleteCampaignV1Execute(r ApiComple
 type ApiCreateCampaignTemplateV1Request struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
-	campaigntemplate *Campaigntemplate
+	campaignTemplate *CampaignTemplate
 }
 
-func (r ApiCreateCampaignTemplateV1Request) Campaigntemplate(campaigntemplate Campaigntemplate) ApiCreateCampaignTemplateV1Request {
-	r.campaigntemplate = &campaigntemplate
+func (r ApiCreateCampaignTemplateV1Request) CampaignTemplate(campaignTemplate CampaignTemplate) ApiCreateCampaignTemplateV1Request {
+	r.campaignTemplate = &campaignTemplate
 	return r
 }
 
-func (r ApiCreateCampaignTemplateV1Request) Execute() (*Campaigntemplate, *http.Response, error) {
+func (r ApiCreateCampaignTemplateV1Request) Execute() (*CampaignTemplate, *http.Response, error) {
 	return r.ApiService.CreateCampaignTemplateV1Execute(r)
 }
 
@@ -242,13 +242,13 @@ func (a *CertificationCampaignsAPIService) CreateCampaignTemplateV1(ctx context.
 }
 
 // Execute executes the request
-//  @return Campaigntemplate
-func (a *CertificationCampaignsAPIService) CreateCampaignTemplateV1Execute(r ApiCreateCampaignTemplateV1Request) (*Campaigntemplate, *http.Response, error) {
+//  @return CampaignTemplate
+func (a *CertificationCampaignsAPIService) CreateCampaignTemplateV1Execute(r ApiCreateCampaignTemplateV1Request) (*CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Campaigntemplate
+		localVarReturnValue  *CampaignTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.CreateCampaignTemplateV1")
@@ -261,8 +261,8 @@ func (a *CertificationCampaignsAPIService) CreateCampaignTemplateV1Execute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.campaigntemplate == nil {
-		return localVarReturnValue, nil, reportError("campaigntemplate is required and must be specified")
+	if r.campaignTemplate == nil {
+		return localVarReturnValue, nil, reportError("campaignTemplate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -283,7 +283,7 @@ func (a *CertificationCampaignsAPIService) CreateCampaignTemplateV1Execute(r Api
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.campaigntemplate
+	localVarPostBody = r.campaignTemplate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -307,7 +307,7 @@ func (a *CertificationCampaignsAPIService) CreateCampaignTemplateV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -329,7 +329,7 @@ func (a *CertificationCampaignsAPIService) CreateCampaignTemplateV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -351,7 +351,7 @@ func (a *CertificationCampaignsAPIService) CreateCampaignTemplateV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -472,7 +472,7 @@ func (a *CertificationCampaignsAPIService) CreateCampaignV1Execute(r ApiCreateCa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -494,7 +494,7 @@ func (a *CertificationCampaignsAPIService) CreateCampaignV1Execute(r ApiCreateCa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -516,7 +516,7 @@ func (a *CertificationCampaignsAPIService) CreateCampaignV1Execute(r ApiCreateCa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -628,7 +628,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateScheduleV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -650,7 +650,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateScheduleV1Execu
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -661,7 +661,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateScheduleV1Execu
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -683,7 +683,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateScheduleV1Execu
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -786,7 +786,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -808,7 +808,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateV1Execute(r Api
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -819,7 +819,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateV1Execute(r Api
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -841,7 +841,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateV1Execute(r Api
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -859,12 +859,12 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateV1Execute(r Api
 type ApiDeleteCampaignsV1Request struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
-	campaignsdeleterequest *Campaignsdeleterequest
+	campaignsDeleteRequest *CampaignsDeleteRequest
 }
 
 // IDs of the campaigns to delete.
-func (r ApiDeleteCampaignsV1Request) Campaignsdeleterequest(campaignsdeleterequest Campaignsdeleterequest) ApiDeleteCampaignsV1Request {
-	r.campaignsdeleterequest = &campaignsdeleterequest
+func (r ApiDeleteCampaignsV1Request) CampaignsDeleteRequest(campaignsDeleteRequest CampaignsDeleteRequest) ApiDeleteCampaignsV1Request {
+	r.campaignsDeleteRequest = &campaignsDeleteRequest
 	return r
 }
 
@@ -908,8 +908,8 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignsV1Execute(r ApiDeleteC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.campaignsdeleterequest == nil {
-		return localVarReturnValue, nil, reportError("campaignsdeleterequest is required and must be specified")
+	if r.campaignsDeleteRequest == nil {
+		return localVarReturnValue, nil, reportError("campaignsDeleteRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -930,7 +930,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignsV1Execute(r ApiDeleteC
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.campaignsdeleterequest
+	localVarPostBody = r.campaignsDeleteRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -954,7 +954,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignsV1Execute(r ApiDeleteC
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -976,7 +976,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignsV1Execute(r ApiDeleteC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -987,7 +987,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignsV1Execute(r ApiDeleteC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1009,7 +1009,7 @@ func (a *CertificationCampaignsAPIService) DeleteCampaignsV1Execute(r ApiDeleteC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1188,7 +1188,7 @@ func (a *CertificationCampaignsAPIService) GetActiveCampaignsV1Execute(r ApiGetA
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1210,7 +1210,7 @@ func (a *CertificationCampaignsAPIService) GetActiveCampaignsV1Execute(r ApiGetA
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1232,7 +1232,7 @@ func (a *CertificationCampaignsAPIService) GetActiveCampaignsV1Execute(r ApiGetA
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1261,7 +1261,7 @@ type ApiGetCampaignReportsConfigV1Request struct {
 	ApiService *CertificationCampaignsAPIService
 }
 
-func (r ApiGetCampaignReportsConfigV1Request) Execute() (*Campaignreportsconfig, *http.Response, error) {
+func (r ApiGetCampaignReportsConfigV1Request) Execute() (*CampaignReportsConfig, *http.Response, error) {
 	return r.ApiService.GetCampaignReportsConfigV1Execute(r)
 }
 
@@ -1282,13 +1282,13 @@ func (a *CertificationCampaignsAPIService) GetCampaignReportsConfigV1(ctx contex
 }
 
 // Execute executes the request
-//  @return Campaignreportsconfig
-func (a *CertificationCampaignsAPIService) GetCampaignReportsConfigV1Execute(r ApiGetCampaignReportsConfigV1Request) (*Campaignreportsconfig, *http.Response, error) {
+//  @return CampaignReportsConfig
+func (a *CertificationCampaignsAPIService) GetCampaignReportsConfigV1Execute(r ApiGetCampaignReportsConfigV1Request) (*CampaignReportsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Campaignreportsconfig
+		localVarReturnValue  *CampaignReportsConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaignReportsConfigV1")
@@ -1342,7 +1342,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignReportsConfigV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1364,7 +1364,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignReportsConfigV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1386,7 +1386,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignReportsConfigV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1416,7 +1416,7 @@ type ApiGetCampaignReportsV1Request struct {
 	id string
 }
 
-func (r ApiGetCampaignReportsV1Request) Execute() ([]Campaignreport, *http.Response, error) {
+func (r ApiGetCampaignReportsV1Request) Execute() ([]CampaignReport, *http.Response, error) {
 	return r.ApiService.GetCampaignReportsV1Execute(r)
 }
 
@@ -1439,13 +1439,13 @@ func (a *CertificationCampaignsAPIService) GetCampaignReportsV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []Campaignreport
-func (a *CertificationCampaignsAPIService) GetCampaignReportsV1Execute(r ApiGetCampaignReportsV1Request) ([]Campaignreport, *http.Response, error) {
+//  @return []CampaignReport
+func (a *CertificationCampaignsAPIService) GetCampaignReportsV1Execute(r ApiGetCampaignReportsV1Request) ([]CampaignReport, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Campaignreport
+		localVarReturnValue  []CampaignReport
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaignReportsV1")
@@ -1500,7 +1500,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignReportsV1Execute(r ApiGetC
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1522,7 +1522,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignReportsV1Execute(r ApiGetC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1533,7 +1533,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignReportsV1Execute(r ApiGetC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1555,7 +1555,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignReportsV1Execute(r ApiGetC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1669,7 +1669,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplateScheduleV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1691,7 +1691,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplateScheduleV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1702,7 +1702,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplateScheduleV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1724,7 +1724,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplateScheduleV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1754,7 +1754,7 @@ type ApiGetCampaignTemplateV1Request struct {
 	id string
 }
 
-func (r ApiGetCampaignTemplateV1Request) Execute() (*Campaigntemplate, *http.Response, error) {
+func (r ApiGetCampaignTemplateV1Request) Execute() (*CampaignTemplate, *http.Response, error) {
 	return r.ApiService.GetCampaignTemplateV1Execute(r)
 }
 
@@ -1777,13 +1777,13 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplateV1(ctx context.Con
 }
 
 // Execute executes the request
-//  @return Campaigntemplate
-func (a *CertificationCampaignsAPIService) GetCampaignTemplateV1Execute(r ApiGetCampaignTemplateV1Request) (*Campaigntemplate, *http.Response, error) {
+//  @return CampaignTemplate
+func (a *CertificationCampaignsAPIService) GetCampaignTemplateV1Execute(r ApiGetCampaignTemplateV1Request) (*CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Campaigntemplate
+		localVarReturnValue  *CampaignTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaignTemplateV1")
@@ -1838,7 +1838,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplateV1Execute(r ApiGet
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1860,7 +1860,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplateV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1871,7 +1871,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplateV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1893,7 +1893,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplateV1Execute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1957,7 +1957,7 @@ func (r ApiGetCampaignTemplatesV1Request) Filters(filters string) ApiGetCampaign
 	return r
 }
 
-func (r ApiGetCampaignTemplatesV1Request) Execute() ([]Campaigntemplate, *http.Response, error) {
+func (r ApiGetCampaignTemplatesV1Request) Execute() ([]CampaignTemplate, *http.Response, error) {
 	return r.ApiService.GetCampaignTemplatesV1Execute(r)
 }
 
@@ -1980,13 +1980,13 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplatesV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []Campaigntemplate
-func (a *CertificationCampaignsAPIService) GetCampaignTemplatesV1Execute(r ApiGetCampaignTemplatesV1Request) ([]Campaigntemplate, *http.Response, error) {
+//  @return []CampaignTemplate
+func (a *CertificationCampaignsAPIService) GetCampaignTemplatesV1Execute(r ApiGetCampaignTemplatesV1Request) ([]CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Campaigntemplate
+		localVarReturnValue  []CampaignTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaignTemplatesV1")
@@ -2064,7 +2064,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplatesV1Execute(r ApiGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2086,7 +2086,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplatesV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2108,7 +2108,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplatesV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2232,7 +2232,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignV1Execute(r ApiGetCampaign
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2254,7 +2254,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignV1Execute(r ApiGetCampaign
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2265,7 +2265,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignV1Execute(r ApiGetCampaign
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2287,7 +2287,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignV1Execute(r ApiGetCampaign
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2315,15 +2315,15 @@ type ApiMoveV1Request struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
 	id string
-	adminreviewreassign *Adminreviewreassign
+	adminReviewReassign *AdminReviewReassign
 }
 
-func (r ApiMoveV1Request) Adminreviewreassign(adminreviewreassign Adminreviewreassign) ApiMoveV1Request {
-	r.adminreviewreassign = &adminreviewreassign
+func (r ApiMoveV1Request) AdminReviewReassign(adminReviewReassign AdminReviewReassign) ApiMoveV1Request {
+	r.adminReviewReassign = &adminReviewReassign
 	return r
 }
 
-func (r ApiMoveV1Request) Execute() (*Certificationtask, *http.Response, error) {
+func (r ApiMoveV1Request) Execute() (*CertificationTask, *http.Response, error) {
 	return r.ApiService.MoveV1Execute(r)
 }
 
@@ -2346,13 +2346,13 @@ func (a *CertificationCampaignsAPIService) MoveV1(ctx context.Context, id string
 }
 
 // Execute executes the request
-//  @return Certificationtask
-func (a *CertificationCampaignsAPIService) MoveV1Execute(r ApiMoveV1Request) (*Certificationtask, *http.Response, error) {
+//  @return CertificationTask
+func (a *CertificationCampaignsAPIService) MoveV1Execute(r ApiMoveV1Request) (*CertificationTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Certificationtask
+		localVarReturnValue  *CertificationTask
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.MoveV1")
@@ -2366,8 +2366,8 @@ func (a *CertificationCampaignsAPIService) MoveV1Execute(r ApiMoveV1Request) (*C
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adminreviewreassign == nil {
-		return localVarReturnValue, nil, reportError("adminreviewreassign is required and must be specified")
+	if r.adminReviewReassign == nil {
+		return localVarReturnValue, nil, reportError("adminReviewReassign is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2388,7 +2388,7 @@ func (a *CertificationCampaignsAPIService) MoveV1Execute(r ApiMoveV1Request) (*C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.adminreviewreassign
+	localVarPostBody = r.adminReviewReassign
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2412,7 +2412,7 @@ func (a *CertificationCampaignsAPIService) MoveV1Execute(r ApiMoveV1Request) (*C
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2434,7 +2434,7 @@ func (a *CertificationCampaignsAPIService) MoveV1Execute(r ApiMoveV1Request) (*C
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2445,7 +2445,7 @@ func (a *CertificationCampaignsAPIService) MoveV1Execute(r ApiMoveV1Request) (*C
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2467,7 +2467,7 @@ func (a *CertificationCampaignsAPIService) MoveV1Execute(r ApiMoveV1Request) (*C
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2495,16 +2495,16 @@ type ApiPatchCampaignTemplateV1Request struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
-func (r ApiPatchCampaignTemplateV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchCampaignTemplateV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchCampaignTemplateV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchCampaignTemplateV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchCampaignTemplateV1Request) Execute() (*Campaigntemplate, *http.Response, error) {
+func (r ApiPatchCampaignTemplateV1Request) Execute() (*CampaignTemplate, *http.Response, error) {
 	return r.ApiService.PatchCampaignTemplateV1Execute(r)
 }
 
@@ -2527,13 +2527,13 @@ func (a *CertificationCampaignsAPIService) PatchCampaignTemplateV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return Campaigntemplate
-func (a *CertificationCampaignsAPIService) PatchCampaignTemplateV1Execute(r ApiPatchCampaignTemplateV1Request) (*Campaigntemplate, *http.Response, error) {
+//  @return CampaignTemplate
+func (a *CertificationCampaignsAPIService) PatchCampaignTemplateV1Execute(r ApiPatchCampaignTemplateV1Request) (*CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Campaigntemplate
+		localVarReturnValue  *CampaignTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.PatchCampaignTemplateV1")
@@ -2547,8 +2547,8 @@ func (a *CertificationCampaignsAPIService) PatchCampaignTemplateV1Execute(r ApiP
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2569,7 +2569,7 @@ func (a *CertificationCampaignsAPIService) PatchCampaignTemplateV1Execute(r ApiP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2593,7 +2593,7 @@ func (a *CertificationCampaignsAPIService) PatchCampaignTemplateV1Execute(r ApiP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2615,7 +2615,7 @@ func (a *CertificationCampaignsAPIService) PatchCampaignTemplateV1Execute(r ApiP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2626,7 +2626,7 @@ func (a *CertificationCampaignsAPIService) PatchCampaignTemplateV1Execute(r ApiP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2648,7 +2648,7 @@ func (a *CertificationCampaignsAPIService) PatchCampaignTemplateV1Execute(r ApiP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2675,16 +2675,16 @@ func (a *CertificationCampaignsAPIService) PatchCampaignTemplateV1Execute(r ApiP
 type ApiSetCampaignReportsConfigV1Request struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
-	campaignreportsconfig *Campaignreportsconfig
+	campaignReportsConfig *CampaignReportsConfig
 }
 
 // Campaign report configuration.
-func (r ApiSetCampaignReportsConfigV1Request) Campaignreportsconfig(campaignreportsconfig Campaignreportsconfig) ApiSetCampaignReportsConfigV1Request {
-	r.campaignreportsconfig = &campaignreportsconfig
+func (r ApiSetCampaignReportsConfigV1Request) CampaignReportsConfig(campaignReportsConfig CampaignReportsConfig) ApiSetCampaignReportsConfigV1Request {
+	r.campaignReportsConfig = &campaignReportsConfig
 	return r
 }
 
-func (r ApiSetCampaignReportsConfigV1Request) Execute() (*Campaignreportsconfig, *http.Response, error) {
+func (r ApiSetCampaignReportsConfigV1Request) Execute() (*CampaignReportsConfig, *http.Response, error) {
 	return r.ApiService.SetCampaignReportsConfigV1Execute(r)
 }
 
@@ -2705,13 +2705,13 @@ func (a *CertificationCampaignsAPIService) SetCampaignReportsConfigV1(ctx contex
 }
 
 // Execute executes the request
-//  @return Campaignreportsconfig
-func (a *CertificationCampaignsAPIService) SetCampaignReportsConfigV1Execute(r ApiSetCampaignReportsConfigV1Request) (*Campaignreportsconfig, *http.Response, error) {
+//  @return CampaignReportsConfig
+func (a *CertificationCampaignsAPIService) SetCampaignReportsConfigV1Execute(r ApiSetCampaignReportsConfigV1Request) (*CampaignReportsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Campaignreportsconfig
+		localVarReturnValue  *CampaignReportsConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.SetCampaignReportsConfigV1")
@@ -2724,8 +2724,8 @@ func (a *CertificationCampaignsAPIService) SetCampaignReportsConfigV1Execute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.campaignreportsconfig == nil {
-		return localVarReturnValue, nil, reportError("campaignreportsconfig is required and must be specified")
+	if r.campaignReportsConfig == nil {
+		return localVarReturnValue, nil, reportError("campaignReportsConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2746,7 +2746,7 @@ func (a *CertificationCampaignsAPIService) SetCampaignReportsConfigV1Execute(r A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.campaignreportsconfig
+	localVarPostBody = r.campaignReportsConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2770,7 +2770,7 @@ func (a *CertificationCampaignsAPIService) SetCampaignReportsConfigV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2792,7 +2792,7 @@ func (a *CertificationCampaignsAPIService) SetCampaignReportsConfigV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2814,7 +2814,7 @@ func (a *CertificationCampaignsAPIService) SetCampaignReportsConfigV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2934,7 +2934,7 @@ func (a *CertificationCampaignsAPIService) SetCampaignTemplateScheduleV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2956,7 +2956,7 @@ func (a *CertificationCampaignsAPIService) SetCampaignTemplateScheduleV1Execute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2967,7 +2967,7 @@ func (a *CertificationCampaignsAPIService) SetCampaignTemplateScheduleV1Execute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2989,7 +2989,7 @@ func (a *CertificationCampaignsAPIService) SetCampaignTemplateScheduleV1Execute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3094,7 +3094,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignRemediationScanV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3116,7 +3116,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignRemediationScanV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3127,7 +3127,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignRemediationScanV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3149,7 +3149,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignRemediationScanV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3177,7 +3177,7 @@ type ApiStartCampaignReportV1Request struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
 	id string
-	type_ Reporttype
+	type_ ReportType
 }
 
 func (r ApiStartCampaignReportV1Request) Execute() (map[string]interface{}, *http.Response, error) {
@@ -3195,7 +3195,7 @@ Use this API to run a report for a certification campaign.
  @param type_ Type of the report to run.
  @return ApiStartCampaignReportV1Request
 */
-func (a *CertificationCampaignsAPIService) StartCampaignReportV1(ctx context.Context, id string, type_ Reporttype) ApiStartCampaignReportV1Request {
+func (a *CertificationCampaignsAPIService) StartCampaignReportV1(ctx context.Context, id string, type_ ReportType) ApiStartCampaignReportV1Request {
 	return ApiStartCampaignReportV1Request{
 		ApiService: a,
 		ctx: ctx,
@@ -3267,7 +3267,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignReportV1Execute(r ApiSta
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3289,7 +3289,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignReportV1Execute(r ApiSta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3300,7 +3300,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignReportV1Execute(r ApiSta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3322,7 +3322,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignReportV1Execute(r ApiSta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3350,12 +3350,12 @@ type ApiStartCampaignV1Request struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
 	id string
-	activatecampaignoptions *Activatecampaignoptions
+	activateCampaignOptions *ActivateCampaignOptions
 }
 
 // Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller&#39;s timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
-func (r ApiStartCampaignV1Request) Activatecampaignoptions(activatecampaignoptions Activatecampaignoptions) ApiStartCampaignV1Request {
-	r.activatecampaignoptions = &activatecampaignoptions
+func (r ApiStartCampaignV1Request) ActivateCampaignOptions(activateCampaignOptions ActivateCampaignOptions) ApiStartCampaignV1Request {
+	r.activateCampaignOptions = &activateCampaignOptions
 	return r
 }
 
@@ -3421,7 +3421,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignV1Execute(r ApiStartCamp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.activatecampaignoptions
+	localVarPostBody = r.activateCampaignOptions
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3445,7 +3445,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignV1Execute(r ApiStartCamp
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3467,7 +3467,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignV1Execute(r ApiStartCamp
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3478,7 +3478,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignV1Execute(r ApiStartCamp
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3500,7 +3500,7 @@ func (a *CertificationCampaignsAPIService) StartCampaignV1Execute(r ApiStartCamp
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3530,7 +3530,7 @@ type ApiStartGenerateCampaignTemplateV1Request struct {
 	id string
 }
 
-func (r ApiStartGenerateCampaignTemplateV1Request) Execute() (*Campaignreference, *http.Response, error) {
+func (r ApiStartGenerateCampaignTemplateV1Request) Execute() (*CampaignReference, *http.Response, error) {
 	return r.ApiService.StartGenerateCampaignTemplateV1Execute(r)
 }
 
@@ -3563,13 +3563,13 @@ func (a *CertificationCampaignsAPIService) StartGenerateCampaignTemplateV1(ctx c
 }
 
 // Execute executes the request
-//  @return Campaignreference
-func (a *CertificationCampaignsAPIService) StartGenerateCampaignTemplateV1Execute(r ApiStartGenerateCampaignTemplateV1Request) (*Campaignreference, *http.Response, error) {
+//  @return CampaignReference
+func (a *CertificationCampaignsAPIService) StartGenerateCampaignTemplateV1Execute(r ApiStartGenerateCampaignTemplateV1Request) (*CampaignReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Campaignreference
+		localVarReturnValue  *CampaignReference
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.StartGenerateCampaignTemplateV1")
@@ -3624,7 +3624,7 @@ func (a *CertificationCampaignsAPIService) StartGenerateCampaignTemplateV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3646,7 +3646,7 @@ func (a *CertificationCampaignsAPIService) StartGenerateCampaignTemplateV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3668,7 +3668,7 @@ func (a *CertificationCampaignsAPIService) StartGenerateCampaignTemplateV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3696,16 +3696,16 @@ type ApiUpdateCampaignV1Request struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
-func (r ApiUpdateCampaignV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateCampaignV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateCampaignV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateCampaignV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiUpdateCampaignV1Request) Execute() (*Slimcampaign, *http.Response, error) {
+func (r ApiUpdateCampaignV1Request) Execute() (*SlimCampaign, *http.Response, error) {
 	return r.ApiService.UpdateCampaignV1Execute(r)
 }
 
@@ -3728,13 +3728,13 @@ func (a *CertificationCampaignsAPIService) UpdateCampaignV1(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Slimcampaign
-func (a *CertificationCampaignsAPIService) UpdateCampaignV1Execute(r ApiUpdateCampaignV1Request) (*Slimcampaign, *http.Response, error) {
+//  @return SlimCampaign
+func (a *CertificationCampaignsAPIService) UpdateCampaignV1Execute(r ApiUpdateCampaignV1Request) (*SlimCampaign, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Slimcampaign
+		localVarReturnValue  *SlimCampaign
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.UpdateCampaignV1")
@@ -3748,8 +3748,8 @@ func (a *CertificationCampaignsAPIService) UpdateCampaignV1Execute(r ApiUpdateCa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -3770,7 +3770,7 @@ func (a *CertificationCampaignsAPIService) UpdateCampaignV1Execute(r ApiUpdateCa
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3794,7 +3794,7 @@ func (a *CertificationCampaignsAPIService) UpdateCampaignV1Execute(r ApiUpdateCa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3816,7 +3816,7 @@ func (a *CertificationCampaignsAPIService) UpdateCampaignV1Execute(r ApiUpdateCa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3827,7 +3827,7 @@ func (a *CertificationCampaignsAPIService) UpdateCampaignV1Execute(r ApiUpdateCa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3849,7 +3849,7 @@ func (a *CertificationCampaignsAPIService) UpdateCampaignV1Execute(r ApiUpdateCa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

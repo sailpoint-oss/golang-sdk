@@ -26,16 +26,16 @@ type ConnectorCustomizersAPIService service
 type ApiCreateConnectorCustomizerV1Request struct {
 	ctx context.Context
 	ApiService *ConnectorCustomizersAPIService
-	connectorcustomizercreaterequest *Connectorcustomizercreaterequest
+	connectorCustomizerCreateRequest *ConnectorCustomizerCreateRequest
 }
 
 // Connector customizer to create.
-func (r ApiCreateConnectorCustomizerV1Request) Connectorcustomizercreaterequest(connectorcustomizercreaterequest Connectorcustomizercreaterequest) ApiCreateConnectorCustomizerV1Request {
-	r.connectorcustomizercreaterequest = &connectorcustomizercreaterequest
+func (r ApiCreateConnectorCustomizerV1Request) ConnectorCustomizerCreateRequest(connectorCustomizerCreateRequest ConnectorCustomizerCreateRequest) ApiCreateConnectorCustomizerV1Request {
+	r.connectorCustomizerCreateRequest = &connectorCustomizerCreateRequest
 	return r
 }
 
-func (r ApiCreateConnectorCustomizerV1Request) Execute() (*Connectorcustomizercreateresponse, *http.Response, error) {
+func (r ApiCreateConnectorCustomizerV1Request) Execute() (*ConnectorCustomizerCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateConnectorCustomizerV1Execute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerV1(ctx context
 }
 
 // Execute executes the request
-//  @return Connectorcustomizercreateresponse
-func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerV1Execute(r ApiCreateConnectorCustomizerV1Request) (*Connectorcustomizercreateresponse, *http.Response, error) {
+//  @return ConnectorCustomizerCreateResponse
+func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerV1Execute(r ApiCreateConnectorCustomizerV1Request) (*ConnectorCustomizerCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Connectorcustomizercreateresponse
+		localVarReturnValue  *ConnectorCustomizerCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorCustomizersAPIService.CreateConnectorCustomizerV1")
@@ -74,8 +74,8 @@ func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerV1Execute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.connectorcustomizercreaterequest == nil {
-		return localVarReturnValue, nil, reportError("connectorcustomizercreaterequest is required and must be specified")
+	if r.connectorCustomizerCreateRequest == nil {
+		return localVarReturnValue, nil, reportError("connectorCustomizerCreateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -96,7 +96,7 @@ func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerV1Execute(r Ap
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.connectorcustomizercreaterequest
+	localVarPostBody = r.connectorCustomizerCreateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -120,7 +120,7 @@ func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,7 +142,7 @@ func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -194,7 +194,7 @@ type ApiCreateConnectorCustomizerVersionV1Request struct {
 	id string
 }
 
-func (r ApiCreateConnectorCustomizerVersionV1Request) Execute() (*Connectorcustomizerversioncreateresponse, *http.Response, error) {
+func (r ApiCreateConnectorCustomizerVersionV1Request) Execute() (*ConnectorCustomizerVersionCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateConnectorCustomizerVersionV1Execute(r)
 }
 
@@ -216,13 +216,13 @@ func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerVersionV1(ctx 
 }
 
 // Execute executes the request
-//  @return Connectorcustomizerversioncreateresponse
-func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerVersionV1Execute(r ApiCreateConnectorCustomizerVersionV1Request) (*Connectorcustomizerversioncreateresponse, *http.Response, error) {
+//  @return ConnectorCustomizerVersionCreateResponse
+func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerVersionV1Execute(r ApiCreateConnectorCustomizerVersionV1Request) (*ConnectorCustomizerVersionCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Connectorcustomizerversioncreateresponse
+		localVarReturnValue  *ConnectorCustomizerVersionCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorCustomizersAPIService.CreateConnectorCustomizerVersionV1")
@@ -277,7 +277,7 @@ func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerVersionV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -299,7 +299,7 @@ func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerVersionV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -310,7 +310,7 @@ func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerVersionV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -332,7 +332,7 @@ func (a *ConnectorCustomizersAPIService) CreateConnectorCustomizerVersionV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -443,7 +443,7 @@ func (a *ConnectorCustomizersAPIService) DeleteConnectorCustomizerV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -465,7 +465,7 @@ func (a *ConnectorCustomizersAPIService) DeleteConnectorCustomizerV1Execute(r Ap
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -476,7 +476,7 @@ func (a *ConnectorCustomizersAPIService) DeleteConnectorCustomizerV1Execute(r Ap
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -498,7 +498,7 @@ func (a *ConnectorCustomizersAPIService) DeleteConnectorCustomizerV1Execute(r Ap
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -519,7 +519,7 @@ type ApiGetConnectorCustomizerV1Request struct {
 	id string
 }
 
-func (r ApiGetConnectorCustomizerV1Request) Execute() (*Connectorcustomizersresponse, *http.Response, error) {
+func (r ApiGetConnectorCustomizerV1Request) Execute() (*ConnectorCustomizersResponse, *http.Response, error) {
 	return r.ApiService.GetConnectorCustomizerV1Execute(r)
 }
 
@@ -541,13 +541,13 @@ func (a *ConnectorCustomizersAPIService) GetConnectorCustomizerV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Connectorcustomizersresponse
-func (a *ConnectorCustomizersAPIService) GetConnectorCustomizerV1Execute(r ApiGetConnectorCustomizerV1Request) (*Connectorcustomizersresponse, *http.Response, error) {
+//  @return ConnectorCustomizersResponse
+func (a *ConnectorCustomizersAPIService) GetConnectorCustomizerV1Execute(r ApiGetConnectorCustomizerV1Request) (*ConnectorCustomizersResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Connectorcustomizersresponse
+		localVarReturnValue  *ConnectorCustomizersResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorCustomizersAPIService.GetConnectorCustomizerV1")
@@ -602,7 +602,7 @@ func (a *ConnectorCustomizersAPIService) GetConnectorCustomizerV1Execute(r ApiGe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -624,7 +624,7 @@ func (a *ConnectorCustomizersAPIService) GetConnectorCustomizerV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -635,7 +635,7 @@ func (a *ConnectorCustomizersAPIService) GetConnectorCustomizerV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -657,7 +657,7 @@ func (a *ConnectorCustomizersAPIService) GetConnectorCustomizerV1Execute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -700,7 +700,7 @@ func (r ApiListConnectorCustomizersV1Request) Limit(limit int32) ApiListConnecto
 	return r
 }
 
-func (r ApiListConnectorCustomizersV1Request) Execute() ([]Connectorcustomizersresponse, *http.Response, error) {
+func (r ApiListConnectorCustomizersV1Request) Execute() ([]ConnectorCustomizersResponse, *http.Response, error) {
 	return r.ApiService.ListConnectorCustomizersV1Execute(r)
 }
 
@@ -720,13 +720,13 @@ func (a *ConnectorCustomizersAPIService) ListConnectorCustomizersV1(ctx context.
 }
 
 // Execute executes the request
-//  @return []Connectorcustomizersresponse
-func (a *ConnectorCustomizersAPIService) ListConnectorCustomizersV1Execute(r ApiListConnectorCustomizersV1Request) ([]Connectorcustomizersresponse, *http.Response, error) {
+//  @return []ConnectorCustomizersResponse
+func (a *ConnectorCustomizersAPIService) ListConnectorCustomizersV1Execute(r ApiListConnectorCustomizersV1Request) ([]ConnectorCustomizersResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Connectorcustomizersresponse
+		localVarReturnValue  []ConnectorCustomizersResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorCustomizersAPIService.ListConnectorCustomizersV1")
@@ -792,7 +792,7 @@ func (a *ConnectorCustomizersAPIService) ListConnectorCustomizersV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -814,7 +814,7 @@ func (a *ConnectorCustomizersAPIService) ListConnectorCustomizersV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -836,7 +836,7 @@ func (a *ConnectorCustomizersAPIService) ListConnectorCustomizersV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -864,16 +864,16 @@ type ApiPutConnectorCustomizerV1Request struct {
 	ctx context.Context
 	ApiService *ConnectorCustomizersAPIService
 	id string
-	connectorcustomizerupdaterequest *Connectorcustomizerupdaterequest
+	connectorCustomizerUpdateRequest *ConnectorCustomizerUpdateRequest
 }
 
 // Connector rule with updated data.
-func (r ApiPutConnectorCustomizerV1Request) Connectorcustomizerupdaterequest(connectorcustomizerupdaterequest Connectorcustomizerupdaterequest) ApiPutConnectorCustomizerV1Request {
-	r.connectorcustomizerupdaterequest = &connectorcustomizerupdaterequest
+func (r ApiPutConnectorCustomizerV1Request) ConnectorCustomizerUpdateRequest(connectorCustomizerUpdateRequest ConnectorCustomizerUpdateRequest) ApiPutConnectorCustomizerV1Request {
+	r.connectorCustomizerUpdateRequest = &connectorCustomizerUpdateRequest
 	return r
 }
 
-func (r ApiPutConnectorCustomizerV1Request) Execute() (*Connectorcustomizerupdateresponse, *http.Response, error) {
+func (r ApiPutConnectorCustomizerV1Request) Execute() (*ConnectorCustomizerUpdateResponse, *http.Response, error) {
 	return r.ApiService.PutConnectorCustomizerV1Execute(r)
 }
 
@@ -895,13 +895,13 @@ func (a *ConnectorCustomizersAPIService) PutConnectorCustomizerV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Connectorcustomizerupdateresponse
-func (a *ConnectorCustomizersAPIService) PutConnectorCustomizerV1Execute(r ApiPutConnectorCustomizerV1Request) (*Connectorcustomizerupdateresponse, *http.Response, error) {
+//  @return ConnectorCustomizerUpdateResponse
+func (a *ConnectorCustomizersAPIService) PutConnectorCustomizerV1Execute(r ApiPutConnectorCustomizerV1Request) (*ConnectorCustomizerUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Connectorcustomizerupdateresponse
+		localVarReturnValue  *ConnectorCustomizerUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorCustomizersAPIService.PutConnectorCustomizerV1")
@@ -934,7 +934,7 @@ func (a *ConnectorCustomizersAPIService) PutConnectorCustomizerV1Execute(r ApiPu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.connectorcustomizerupdaterequest
+	localVarPostBody = r.connectorCustomizerUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -958,7 +958,7 @@ func (a *ConnectorCustomizersAPIService) PutConnectorCustomizerV1Execute(r ApiPu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -980,7 +980,7 @@ func (a *ConnectorCustomizersAPIService) PutConnectorCustomizerV1Execute(r ApiPu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -991,7 +991,7 @@ func (a *ConnectorCustomizersAPIService) PutConnectorCustomizerV1Execute(r ApiPu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1013,7 +1013,7 @@ func (a *ConnectorCustomizersAPIService) PutConnectorCustomizerV1Execute(r ApiPu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

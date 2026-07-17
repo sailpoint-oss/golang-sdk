@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Summaryresponse**](../models/summaryresponse)
+[**[]SummaryResponse**](../models/summary-response)
 
 ### HTTP request headers
 
@@ -168,7 +168,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApiUsageAPI.ListApiSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListApiSummaryV1`: []Summaryresponse
+    // response from `ListApiSummaryV1`: []SummaryResponse
     fmt.Fprintf(os.Stdout, "Response from `ApiUsageAPI.ListApiSummaryV1`: %v\n", resp)
 }
 ```

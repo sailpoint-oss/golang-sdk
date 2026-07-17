@@ -114,7 +114,7 @@ Other parameters are passed through a pointer to a apiGetManualDiscoverApplicati
 
 ### Return type
 
-[**Manualdiscoverapplicationstemplate**](../models/manualdiscoverapplicationstemplate)
+[**ManualDiscoverApplicationsTemplate**](../models/manual-discover-applications-template)
 
 ### HTTP request headers
 
@@ -147,7 +147,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetManualDiscoverApplicationsCsvTemplateV1`: Manualdiscoverapplicationstemplate
+    // response from `GetManualDiscoverApplicationsCsvTemplateV1`: ManualDiscoverApplicationsTemplate
     fmt.Fprintf(os.Stdout, "Response from `ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplateV1`: %v\n", resp)
 }
 ```
@@ -250,11 +250,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
- **applicationdiscoveryrequest** | [**Applicationdiscoveryrequest**](../models/applicationdiscoveryrequest) |  | 
+ **applicationDiscoveryRequest** | [**ApplicationDiscoveryRequest**](../models/application-discovery-request) |  | 
 
 ### Return type
 
-[**Applicationdiscoveryresponse**](../models/applicationdiscoveryresponse)
+[**ApplicationDiscoveryResponse**](../models/application-discovery-response)
 
 ### HTTP request headers
 
@@ -278,10 +278,12 @@ import (
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     sourceId := `sourceId_example` // string | The sourceId. # string | The sourceId.
-    applicationdiscoveryrequestJson := []byte(``) // Applicationdiscoveryrequest | 
+    applicationdiscoveryrequestJson := []byte(`{
+          "datasetIds" : [ "source:datasetId12345", "source:datasetId12345" ]
+        }`) // ApplicationDiscoveryRequest | 
 
-    var applicationdiscoveryrequest application_discovery.Applicationdiscoveryrequest
-    if err := json.Unmarshal(applicationdiscoveryrequestJson, &applicationdiscoveryrequest); err != nil {
+    var applicationDiscoveryRequest application_discovery.ApplicationDiscoveryRequest
+    if err := json.Unmarshal(applicationdiscoveryrequestJson, &applicationDiscoveryRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -289,13 +291,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDiscoveryAPI.StartApplicationDiscoveryV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Applicationdiscoveryrequest(applicationdiscoveryrequest).Execute()
-	  //resp, r, err := apiClient.ApplicationDiscoveryAPI.StartApplicationDiscoveryV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Applicationdiscoveryrequest(applicationdiscoveryrequest).Execute()
+    resp, r, err := apiClient.ApplicationDiscoveryAPI.StartApplicationDiscoveryV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).ApplicationDiscoveryRequest(applicationDiscoveryRequest).Execute()
+	  //resp, r, err := apiClient.ApplicationDiscoveryAPI.StartApplicationDiscoveryV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).ApplicationDiscoveryRequest(applicationDiscoveryRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.StartApplicationDiscoveryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartApplicationDiscoveryV1`: Applicationdiscoveryresponse
+    // response from `StartApplicationDiscoveryV1`: ApplicationDiscoveryResponse
     fmt.Fprintf(os.Stdout, "Response from `ApplicationDiscoveryAPI.StartApplicationDiscoveryV1`: %v\n", resp)
 }
 ```

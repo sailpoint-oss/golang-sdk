@@ -18,21 +18,21 @@ import (
 
 // GetStreamV1200Response - struct for GetStreamV1200Response
 type GetStreamV1200Response struct {
-	Streamconfigresponse *Streamconfigresponse
-	ArrayOfStreamconfigresponse *[]Streamconfigresponse
+	StreamConfigResponse *StreamConfigResponse
+	ArrayOfStreamConfigResponse *[]StreamConfigResponse
 }
 
-// StreamconfigresponseAsGetStreamV1200Response is a convenience function that returns Streamconfigresponse wrapped in GetStreamV1200Response
-func StreamconfigresponseAsGetStreamV1200Response(v *Streamconfigresponse) GetStreamV1200Response {
+// StreamConfigResponseAsGetStreamV1200Response is a convenience function that returns StreamConfigResponse wrapped in GetStreamV1200Response
+func StreamConfigResponseAsGetStreamV1200Response(v *StreamConfigResponse) GetStreamV1200Response {
 	return GetStreamV1200Response{
-		Streamconfigresponse: v,
+		StreamConfigResponse: v,
 	}
 }
 
-// []StreamconfigresponseAsGetStreamV1200Response is a convenience function that returns []Streamconfigresponse wrapped in GetStreamV1200Response
-func ArrayOfStreamconfigresponseAsGetStreamV1200Response(v *[]Streamconfigresponse) GetStreamV1200Response {
+// []StreamConfigResponseAsGetStreamV1200Response is a convenience function that returns []StreamConfigResponse wrapped in GetStreamV1200Response
+func ArrayOfStreamConfigResponseAsGetStreamV1200Response(v *[]StreamConfigResponse) GetStreamV1200Response {
 	return GetStreamV1200Response{
-		ArrayOfStreamconfigresponse: v,
+		ArrayOfStreamConfigResponse: v,
 	}
 }
 
@@ -41,44 +41,44 @@ func ArrayOfStreamconfigresponseAsGetStreamV1200Response(v *[]Streamconfigrespon
 func (dst *GetStreamV1200Response) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into Streamconfigresponse
-	err = newStrictDecoder(data).Decode(&dst.Streamconfigresponse)
+	// try to unmarshal data into StreamConfigResponse
+	err = newStrictDecoder(data).Decode(&dst.StreamConfigResponse)
 	if err == nil {
-		jsonStreamconfigresponse, _ := json.Marshal(dst.Streamconfigresponse)
-		if string(jsonStreamconfigresponse) == "{}" { // empty struct
-			dst.Streamconfigresponse = nil
+		jsonStreamConfigResponse, _ := json.Marshal(dst.StreamConfigResponse)
+		if string(jsonStreamConfigResponse) == "{}" { // empty struct
+			dst.StreamConfigResponse = nil
 		} else {
-			if err = validator.Validate(dst.Streamconfigresponse); err != nil {
-				dst.Streamconfigresponse = nil
+			if err = validator.Validate(dst.StreamConfigResponse); err != nil {
+				dst.StreamConfigResponse = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Streamconfigresponse = nil
+		dst.StreamConfigResponse = nil
 	}
 
-	// try to unmarshal data into ArrayOfStreamconfigresponse
-	err = newStrictDecoder(data).Decode(&dst.ArrayOfStreamconfigresponse)
+	// try to unmarshal data into ArrayOfStreamConfigResponse
+	err = newStrictDecoder(data).Decode(&dst.ArrayOfStreamConfigResponse)
 	if err == nil {
-		jsonArrayOfStreamconfigresponse, _ := json.Marshal(dst.ArrayOfStreamconfigresponse)
-		if string(jsonArrayOfStreamconfigresponse) == "{}" { // empty struct
-			dst.ArrayOfStreamconfigresponse = nil
+		jsonArrayOfStreamConfigResponse, _ := json.Marshal(dst.ArrayOfStreamConfigResponse)
+		if string(jsonArrayOfStreamConfigResponse) == "{}" { // empty struct
+			dst.ArrayOfStreamConfigResponse = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfStreamconfigresponse); err != nil {
-				dst.ArrayOfStreamconfigresponse = nil
+			if err = validator.Validate(dst.ArrayOfStreamConfigResponse); err != nil {
+				dst.ArrayOfStreamConfigResponse = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.ArrayOfStreamconfigresponse = nil
+		dst.ArrayOfStreamConfigResponse = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.Streamconfigresponse = nil
-		dst.ArrayOfStreamconfigresponse = nil
+		dst.StreamConfigResponse = nil
+		dst.ArrayOfStreamConfigResponse = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(GetStreamV1200Response)")
 	} else if match == 1 {
@@ -90,12 +90,12 @@ func (dst *GetStreamV1200Response) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src GetStreamV1200Response) MarshalJSON() ([]byte, error) {
-	if src.Streamconfigresponse != nil {
-		return json.Marshal(&src.Streamconfigresponse)
+	if src.StreamConfigResponse != nil {
+		return json.Marshal(&src.StreamConfigResponse)
 	}
 
-	if src.ArrayOfStreamconfigresponse != nil {
-		return json.Marshal(&src.ArrayOfStreamconfigresponse)
+	if src.ArrayOfStreamConfigResponse != nil {
+		return json.Marshal(&src.ArrayOfStreamConfigResponse)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -106,12 +106,12 @@ func (obj *GetStreamV1200Response) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
-	if obj.Streamconfigresponse != nil {
-		return obj.Streamconfigresponse
+	if obj.StreamConfigResponse != nil {
+		return obj.StreamConfigResponse
 	}
 
-	if obj.ArrayOfStreamconfigresponse != nil {
-		return obj.ArrayOfStreamconfigresponse
+	if obj.ArrayOfStreamConfigResponse != nil {
+		return obj.ArrayOfStreamConfigResponse
 	}
 
 	// all schemas are nil
@@ -120,12 +120,12 @@ func (obj *GetStreamV1200Response) GetActualInstance() (interface{}) {
 
 // Get the actual instance value
 func (obj GetStreamV1200Response) GetActualInstanceValue() (interface{}) {
-	if obj.Streamconfigresponse != nil {
-		return *obj.Streamconfigresponse
+	if obj.StreamConfigResponse != nil {
+		return *obj.StreamConfigResponse
 	}
 
-	if obj.ArrayOfStreamconfigresponse != nil {
-		return *obj.ArrayOfStreamconfigresponse
+	if obj.ArrayOfStreamConfigResponse != nil {
+		return *obj.ArrayOfStreamConfigResponse
 	}
 
 	// all schemas are nil

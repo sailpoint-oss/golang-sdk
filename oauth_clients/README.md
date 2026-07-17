@@ -88,20 +88,20 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accesstype](docs/Accesstype.md)
+ - [AccessType](docs/AccessType.md)
  - [ArrayInner](docs/ArrayInner.md)
- - [Clienttype](docs/Clienttype.md)
- - [Createoauthclientrequest](docs/Createoauthclientrequest.md)
- - [Createoauthclientresponse](docs/Createoauthclientresponse.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Getoauthclientresponse](docs/Getoauthclientresponse.md)
- - [Granttype](docs/Granttype.md)
- - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
+ - [ClientType](docs/ClientType.md)
+ - [CreateOAuthClientRequest](docs/CreateOAuthClientRequest.md)
+ - [CreateOAuthClientResponse](docs/CreateOAuthClientResponse.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [GetOAuthClientResponse](docs/GetOAuthClientResponse.md)
+ - [GrantType](docs/GrantType.md)
+ - [JsonPatchOperation](docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [ListOauthClientsV1401Response](docs/ListOauthClientsV1401Response.md)
  - [ListOauthClientsV1429Response](docs/ListOauthClientsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

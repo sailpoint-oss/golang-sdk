@@ -28,15 +28,15 @@ type ApiCreateProvisioningPolicyV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	provisioningpolicydto *Provisioningpolicydto
+	provisioningPolicyDto *ProvisioningPolicyDto
 }
 
-func (r ApiCreateProvisioningPolicyV1Request) Provisioningpolicydto(provisioningpolicydto Provisioningpolicydto) ApiCreateProvisioningPolicyV1Request {
-	r.provisioningpolicydto = &provisioningpolicydto
+func (r ApiCreateProvisioningPolicyV1Request) ProvisioningPolicyDto(provisioningPolicyDto ProvisioningPolicyDto) ApiCreateProvisioningPolicyV1Request {
+	r.provisioningPolicyDto = &provisioningPolicyDto
 	return r
 }
 
-func (r ApiCreateProvisioningPolicyV1Request) Execute() (*Provisioningpolicydto, *http.Response, error) {
+func (r ApiCreateProvisioningPolicyV1Request) Execute() (*ProvisioningPolicyDto, *http.Response, error) {
 	return r.ApiService.CreateProvisioningPolicyV1Execute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV1(ctx context.Context, sour
 }
 
 // Execute executes the request
-//  @return Provisioningpolicydto
-func (a *SourcesAPIService) CreateProvisioningPolicyV1Execute(r ApiCreateProvisioningPolicyV1Request) (*Provisioningpolicydto, *http.Response, error) {
+//  @return ProvisioningPolicyDto
+func (a *SourcesAPIService) CreateProvisioningPolicyV1Execute(r ApiCreateProvisioningPolicyV1Request) (*ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Provisioningpolicydto
+		localVarReturnValue  *ProvisioningPolicyDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.CreateProvisioningPolicyV1")
@@ -80,8 +80,8 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV1Execute(r ApiCreateProvisi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.provisioningpolicydto == nil {
-		return localVarReturnValue, nil, reportError("provisioningpolicydto is required and must be specified")
+	if r.provisioningPolicyDto == nil {
+		return localVarReturnValue, nil, reportError("provisioningPolicyDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -102,7 +102,7 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV1Execute(r ApiCreateProvisi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.provisioningpolicydto
+	localVarPostBody = r.provisioningPolicyDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -126,7 +126,7 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV1Execute(r ApiCreateProvisi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -148,7 +148,7 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV1Execute(r ApiCreateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -159,7 +159,7 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV1Execute(r ApiCreateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -181,7 +181,7 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV1Execute(r ApiCreateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -210,7 +210,7 @@ type ApiCreateProvisioningPolicyV2Request struct {
 	ApiService *SourcesAPIService
 	sourceId string
 	xSailPointExperimental *string
-	provisioningpolicydtov2 *Provisioningpolicydtov2
+	provisioningPolicyDtoV2 *ProvisioningPolicyDtoV2
 	useDefaultFields *bool
 }
 
@@ -220,8 +220,8 @@ func (r ApiCreateProvisioningPolicyV2Request) XSailPointExperimental(xSailPointE
 	return r
 }
 
-func (r ApiCreateProvisioningPolicyV2Request) Provisioningpolicydtov2(provisioningpolicydtov2 Provisioningpolicydtov2) ApiCreateProvisioningPolicyV2Request {
-	r.provisioningpolicydtov2 = &provisioningpolicydtov2
+func (r ApiCreateProvisioningPolicyV2Request) ProvisioningPolicyDtoV2(provisioningPolicyDtoV2 ProvisioningPolicyDtoV2) ApiCreateProvisioningPolicyV2Request {
+	r.provisioningPolicyDtoV2 = &provisioningPolicyDtoV2
 	return r
 }
 
@@ -231,7 +231,7 @@ func (r ApiCreateProvisioningPolicyV2Request) UseDefaultFields(useDefaultFields 
 	return r
 }
 
-func (r ApiCreateProvisioningPolicyV2Request) Execute() (*Provisioningpolicydtov2, *http.Response, error) {
+func (r ApiCreateProvisioningPolicyV2Request) Execute() (*ProvisioningPolicyDtoV2, *http.Response, error) {
 	return r.ApiService.CreateProvisioningPolicyV2Execute(r)
 }
 
@@ -257,13 +257,13 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV2(ctx context.Context, sour
 }
 
 // Execute executes the request
-//  @return Provisioningpolicydtov2
-func (a *SourcesAPIService) CreateProvisioningPolicyV2Execute(r ApiCreateProvisioningPolicyV2Request) (*Provisioningpolicydtov2, *http.Response, error) {
+//  @return ProvisioningPolicyDtoV2
+func (a *SourcesAPIService) CreateProvisioningPolicyV2Execute(r ApiCreateProvisioningPolicyV2Request) (*ProvisioningPolicyDtoV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Provisioningpolicydtov2
+		localVarReturnValue  *ProvisioningPolicyDtoV2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.CreateProvisioningPolicyV2")
@@ -292,8 +292,8 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV2Execute(r ApiCreateProvisi
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.provisioningpolicydtov2 == nil {
-		return localVarReturnValue, nil, reportError("provisioningpolicydtov2 is required and must be specified")
+	if r.provisioningPolicyDtoV2 == nil {
+		return localVarReturnValue, nil, reportError("provisioningPolicyDtoV2 is required and must be specified")
 	}
 
 	if r.useDefaultFields != nil {
@@ -321,7 +321,7 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV2Execute(r ApiCreateProvisi
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.provisioningpolicydtov2
+	localVarPostBody = r.provisioningPolicyDtoV2
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -345,7 +345,7 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV2Execute(r ApiCreateProvisi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -367,7 +367,7 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV2Execute(r ApiCreateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -378,7 +378,7 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV2Execute(r ApiCreateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -400,7 +400,7 @@ func (a *SourcesAPIService) CreateProvisioningPolicyV2Execute(r ApiCreateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -525,7 +525,7 @@ func (a *SourcesAPIService) CreateSourceScheduleV1Execute(r ApiCreateSourceSched
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -547,7 +547,7 @@ func (a *SourcesAPIService) CreateSourceScheduleV1Execute(r ApiCreateSourceSched
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -569,7 +569,7 @@ func (a *SourcesAPIService) CreateSourceScheduleV1Execute(r ApiCreateSourceSched
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -694,7 +694,7 @@ func (a *SourcesAPIService) CreateSourceSchemaV1Execute(r ApiCreateSourceSchemaV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -716,7 +716,7 @@ func (a *SourcesAPIService) CreateSourceSchemaV1Execute(r ApiCreateSourceSchemaV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -738,7 +738,7 @@ func (a *SourcesAPIService) CreateSourceSchemaV1Execute(r ApiCreateSourceSchemaV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -868,7 +868,7 @@ func (a *SourcesAPIService) CreateSourceV1Execute(r ApiCreateSourceV1Request) (*
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -890,7 +890,7 @@ func (a *SourcesAPIService) CreateSourceV1Execute(r ApiCreateSourceV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -912,7 +912,7 @@ func (a *SourcesAPIService) CreateSourceV1Execute(r ApiCreateSourceV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -942,7 +942,7 @@ type ApiDeleteAccountsAsyncV1Request struct {
 	id string
 }
 
-func (r ApiDeleteAccountsAsyncV1Request) Execute() (*Taskresultdto, *http.Response, error) {
+func (r ApiDeleteAccountsAsyncV1Request) Execute() (*TaskResultDto, *http.Response, error) {
 	return r.ApiService.DeleteAccountsAsyncV1Execute(r)
 }
 
@@ -970,13 +970,13 @@ func (a *SourcesAPIService) DeleteAccountsAsyncV1(ctx context.Context, id string
 }
 
 // Execute executes the request
-//  @return Taskresultdto
-func (a *SourcesAPIService) DeleteAccountsAsyncV1Execute(r ApiDeleteAccountsAsyncV1Request) (*Taskresultdto, *http.Response, error) {
+//  @return TaskResultDto
+func (a *SourcesAPIService) DeleteAccountsAsyncV1Execute(r ApiDeleteAccountsAsyncV1Request) (*TaskResultDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Taskresultdto
+		localVarReturnValue  *TaskResultDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.DeleteAccountsAsyncV1")
@@ -1031,7 +1031,7 @@ func (a *SourcesAPIService) DeleteAccountsAsyncV1Execute(r ApiDeleteAccountsAsyn
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1053,7 +1053,7 @@ func (a *SourcesAPIService) DeleteAccountsAsyncV1Execute(r ApiDeleteAccountsAsyn
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1075,7 +1075,7 @@ func (a *SourcesAPIService) DeleteAccountsAsyncV1Execute(r ApiDeleteAccountsAsyn
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1186,7 +1186,7 @@ func (a *SourcesAPIService) DeleteNativeChangeDetectionConfigV1Execute(r ApiDele
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1208,7 +1208,7 @@ func (a *SourcesAPIService) DeleteNativeChangeDetectionConfigV1Execute(r ApiDele
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1219,7 +1219,7 @@ func (a *SourcesAPIService) DeleteNativeChangeDetectionConfigV1Execute(r ApiDele
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1241,7 +1241,7 @@ func (a *SourcesAPIService) DeleteNativeChangeDetectionConfigV1Execute(r ApiDele
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1260,7 +1260,7 @@ type ApiDeleteProvisioningPolicyV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	usageType Usagetype
+	usageType UsageType
 }
 
 func (r ApiDeleteProvisioningPolicyV1Request) Execute() (*http.Response, error) {
@@ -1277,7 +1277,7 @@ Deletes the provisioning policy with the specified usage on an application.
  @param usageType The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
  @return ApiDeleteProvisioningPolicyV1Request
 */
-func (a *SourcesAPIService) DeleteProvisioningPolicyV1(ctx context.Context, sourceId string, usageType Usagetype) ApiDeleteProvisioningPolicyV1Request {
+func (a *SourcesAPIService) DeleteProvisioningPolicyV1(ctx context.Context, sourceId string, usageType UsageType) ApiDeleteProvisioningPolicyV1Request {
 	return ApiDeleteProvisioningPolicyV1Request{
 		ApiService: a,
 		ctx: ctx,
@@ -1347,7 +1347,7 @@ func (a *SourcesAPIService) DeleteProvisioningPolicyV1Execute(r ApiDeleteProvisi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1369,7 +1369,7 @@ func (a *SourcesAPIService) DeleteProvisioningPolicyV1Execute(r ApiDeleteProvisi
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1380,7 +1380,7 @@ func (a *SourcesAPIService) DeleteProvisioningPolicyV1Execute(r ApiDeleteProvisi
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1402,7 +1402,7 @@ func (a *SourcesAPIService) DeleteProvisioningPolicyV1Execute(r ApiDeleteProvisi
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1525,7 +1525,7 @@ func (a *SourcesAPIService) DeleteProvisioningPolicyV2Execute(r ApiDeleteProvisi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1547,7 +1547,7 @@ func (a *SourcesAPIService) DeleteProvisioningPolicyV2Execute(r ApiDeleteProvisi
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1558,7 +1558,7 @@ func (a *SourcesAPIService) DeleteProvisioningPolicyV2Execute(r ApiDeleteProvisi
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1580,7 +1580,7 @@ func (a *SourcesAPIService) DeleteProvisioningPolicyV2Execute(r ApiDeleteProvisi
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1684,7 +1684,7 @@ func (a *SourcesAPIService) DeleteSourceScheduleV1Execute(r ApiDeleteSourceSched
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1706,7 +1706,7 @@ func (a *SourcesAPIService) DeleteSourceScheduleV1Execute(r ApiDeleteSourceSched
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1717,7 +1717,7 @@ func (a *SourcesAPIService) DeleteSourceScheduleV1Execute(r ApiDeleteSourceSched
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1739,7 +1739,7 @@ func (a *SourcesAPIService) DeleteSourceScheduleV1Execute(r ApiDeleteSourceSched
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1843,7 +1843,7 @@ func (a *SourcesAPIService) DeleteSourceSchemaV1Execute(r ApiDeleteSourceSchemaV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1865,7 +1865,7 @@ func (a *SourcesAPIService) DeleteSourceSchemaV1Execute(r ApiDeleteSourceSchemaV
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1876,7 +1876,7 @@ func (a *SourcesAPIService) DeleteSourceSchemaV1Execute(r ApiDeleteSourceSchemaV
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1898,7 +1898,7 @@ func (a *SourcesAPIService) DeleteSourceSchemaV1Execute(r ApiDeleteSourceSchemaV
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2003,7 +2003,7 @@ func (a *SourcesAPIService) DeleteSourceV1Execute(r ApiDeleteSourceV1Request) (*
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2025,7 +2025,7 @@ func (a *SourcesAPIService) DeleteSourceV1Execute(r ApiDeleteSourceV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2036,7 +2036,7 @@ func (a *SourcesAPIService) DeleteSourceV1Execute(r ApiDeleteSourceV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2058,7 +2058,7 @@ func (a *SourcesAPIService) DeleteSourceV1Execute(r ApiDeleteSourceV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2088,7 +2088,7 @@ type ApiGetAccountDeleteApprovalConfigV1Request struct {
 	sourceId string
 }
 
-func (r ApiGetAccountDeleteApprovalConfigV1Request) Execute() (*Accountdeleteconfigdto, *http.Response, error) {
+func (r ApiGetAccountDeleteApprovalConfigV1Request) Execute() (*AccountDeleteConfigDto, *http.Response, error) {
 	return r.ApiService.GetAccountDeleteApprovalConfigV1Execute(r)
 }
 
@@ -2111,13 +2111,13 @@ func (a *SourcesAPIService) GetAccountDeleteApprovalConfigV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Accountdeleteconfigdto
-func (a *SourcesAPIService) GetAccountDeleteApprovalConfigV1Execute(r ApiGetAccountDeleteApprovalConfigV1Request) (*Accountdeleteconfigdto, *http.Response, error) {
+//  @return AccountDeleteConfigDto
+func (a *SourcesAPIService) GetAccountDeleteApprovalConfigV1Execute(r ApiGetAccountDeleteApprovalConfigV1Request) (*AccountDeleteConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountdeleteconfigdto
+		localVarReturnValue  *AccountDeleteConfigDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetAccountDeleteApprovalConfigV1")
@@ -2172,7 +2172,7 @@ func (a *SourcesAPIService) GetAccountDeleteApprovalConfigV1Execute(r ApiGetAcco
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2194,7 +2194,7 @@ func (a *SourcesAPIService) GetAccountDeleteApprovalConfigV1Execute(r ApiGetAcco
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2205,7 +2205,7 @@ func (a *SourcesAPIService) GetAccountDeleteApprovalConfigV1Execute(r ApiGetAcco
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2227,7 +2227,7 @@ func (a *SourcesAPIService) GetAccountDeleteApprovalConfigV1Execute(r ApiGetAcco
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2339,7 +2339,7 @@ func (a *SourcesAPIService) GetAccountsSchemaV1Execute(r ApiGetAccountsSchemaV1R
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2361,7 +2361,7 @@ func (a *SourcesAPIService) GetAccountsSchemaV1Execute(r ApiGetAccountsSchemaV1R
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2372,7 +2372,7 @@ func (a *SourcesAPIService) GetAccountsSchemaV1Execute(r ApiGetAccountsSchemaV1R
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2394,7 +2394,7 @@ func (a *SourcesAPIService) GetAccountsSchemaV1Execute(r ApiGetAccountsSchemaV1R
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2415,7 +2415,7 @@ type ApiGetCorrelationConfigV1Request struct {
 	id string
 }
 
-func (r ApiGetCorrelationConfigV1Request) Execute() (*Correlationconfig, *http.Response, error) {
+func (r ApiGetCorrelationConfigV1Request) Execute() (*CorrelationConfig, *http.Response, error) {
 	return r.ApiService.GetCorrelationConfigV1Execute(r)
 }
 
@@ -2437,13 +2437,13 @@ func (a *SourcesAPIService) GetCorrelationConfigV1(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return Correlationconfig
-func (a *SourcesAPIService) GetCorrelationConfigV1Execute(r ApiGetCorrelationConfigV1Request) (*Correlationconfig, *http.Response, error) {
+//  @return CorrelationConfig
+func (a *SourcesAPIService) GetCorrelationConfigV1Execute(r ApiGetCorrelationConfigV1Request) (*CorrelationConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Correlationconfig
+		localVarReturnValue  *CorrelationConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetCorrelationConfigV1")
@@ -2498,7 +2498,7 @@ func (a *SourcesAPIService) GetCorrelationConfigV1Execute(r ApiGetCorrelationCon
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2520,7 +2520,7 @@ func (a *SourcesAPIService) GetCorrelationConfigV1Execute(r ApiGetCorrelationCon
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2531,7 +2531,7 @@ func (a *SourcesAPIService) GetCorrelationConfigV1Execute(r ApiGetCorrelationCon
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2553,7 +2553,7 @@ func (a *SourcesAPIService) GetCorrelationConfigV1Execute(r ApiGetCorrelationCon
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2676,7 +2676,7 @@ func (a *SourcesAPIService) GetEntitlementsSchemaV1Execute(r ApiGetEntitlementsS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2698,7 +2698,7 @@ func (a *SourcesAPIService) GetEntitlementsSchemaV1Execute(r ApiGetEntitlementsS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2709,7 +2709,7 @@ func (a *SourcesAPIService) GetEntitlementsSchemaV1Execute(r ApiGetEntitlementsS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2731,7 +2731,7 @@ func (a *SourcesAPIService) GetEntitlementsSchemaV1Execute(r ApiGetEntitlementsS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2752,7 +2752,7 @@ type ApiGetMachineAccountDeletionApprovalConfigBySourceV1Request struct {
 	sourceId string
 }
 
-func (r ApiGetMachineAccountDeletionApprovalConfigBySourceV1Request) Execute() (*Accountdeleteconfigdto, *http.Response, error) {
+func (r ApiGetMachineAccountDeletionApprovalConfigBySourceV1Request) Execute() (*AccountDeleteConfigDto, *http.Response, error) {
 	return r.ApiService.GetMachineAccountDeletionApprovalConfigBySourceV1Execute(r)
 }
 
@@ -2774,13 +2774,13 @@ func (a *SourcesAPIService) GetMachineAccountDeletionApprovalConfigBySourceV1(ct
 }
 
 // Execute executes the request
-//  @return Accountdeleteconfigdto
-func (a *SourcesAPIService) GetMachineAccountDeletionApprovalConfigBySourceV1Execute(r ApiGetMachineAccountDeletionApprovalConfigBySourceV1Request) (*Accountdeleteconfigdto, *http.Response, error) {
+//  @return AccountDeleteConfigDto
+func (a *SourcesAPIService) GetMachineAccountDeletionApprovalConfigBySourceV1Execute(r ApiGetMachineAccountDeletionApprovalConfigBySourceV1Request) (*AccountDeleteConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountdeleteconfigdto
+		localVarReturnValue  *AccountDeleteConfigDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetMachineAccountDeletionApprovalConfigBySourceV1")
@@ -2835,7 +2835,7 @@ func (a *SourcesAPIService) GetMachineAccountDeletionApprovalConfigBySourceV1Exe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2857,7 +2857,7 @@ func (a *SourcesAPIService) GetMachineAccountDeletionApprovalConfigBySourceV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2868,7 +2868,7 @@ func (a *SourcesAPIService) GetMachineAccountDeletionApprovalConfigBySourceV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2890,7 +2890,7 @@ func (a *SourcesAPIService) GetMachineAccountDeletionApprovalConfigBySourceV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2920,7 +2920,7 @@ type ApiGetNativeChangeDetectionConfigV1Request struct {
 	sourceId string
 }
 
-func (r ApiGetNativeChangeDetectionConfigV1Request) Execute() (*Nativechangedetectionconfig, *http.Response, error) {
+func (r ApiGetNativeChangeDetectionConfigV1Request) Execute() (*NativeChangeDetectionConfig, *http.Response, error) {
 	return r.ApiService.GetNativeChangeDetectionConfigV1Execute(r)
 }
 
@@ -2942,13 +2942,13 @@ func (a *SourcesAPIService) GetNativeChangeDetectionConfigV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Nativechangedetectionconfig
-func (a *SourcesAPIService) GetNativeChangeDetectionConfigV1Execute(r ApiGetNativeChangeDetectionConfigV1Request) (*Nativechangedetectionconfig, *http.Response, error) {
+//  @return NativeChangeDetectionConfig
+func (a *SourcesAPIService) GetNativeChangeDetectionConfigV1Execute(r ApiGetNativeChangeDetectionConfigV1Request) (*NativeChangeDetectionConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nativechangedetectionconfig
+		localVarReturnValue  *NativeChangeDetectionConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetNativeChangeDetectionConfigV1")
@@ -3003,7 +3003,7 @@ func (a *SourcesAPIService) GetNativeChangeDetectionConfigV1Execute(r ApiGetNati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3025,7 +3025,7 @@ func (a *SourcesAPIService) GetNativeChangeDetectionConfigV1Execute(r ApiGetNati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3036,7 +3036,7 @@ func (a *SourcesAPIService) GetNativeChangeDetectionConfigV1Execute(r ApiGetNati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3058,7 +3058,7 @@ func (a *SourcesAPIService) GetNativeChangeDetectionConfigV1Execute(r ApiGetNati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3086,10 +3086,10 @@ type ApiGetProvisioningPolicyV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	usageType Usagetype
+	usageType UsageType
 }
 
-func (r ApiGetProvisioningPolicyV1Request) Execute() (*Provisioningpolicydto, *http.Response, error) {
+func (r ApiGetProvisioningPolicyV1Request) Execute() (*ProvisioningPolicyDto, *http.Response, error) {
 	return r.ApiService.GetProvisioningPolicyV1Execute(r)
 }
 
@@ -3103,7 +3103,7 @@ This end-point retrieves the ProvisioningPolicy with the specified usage on the 
  @param usageType The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
  @return ApiGetProvisioningPolicyV1Request
 */
-func (a *SourcesAPIService) GetProvisioningPolicyV1(ctx context.Context, sourceId string, usageType Usagetype) ApiGetProvisioningPolicyV1Request {
+func (a *SourcesAPIService) GetProvisioningPolicyV1(ctx context.Context, sourceId string, usageType UsageType) ApiGetProvisioningPolicyV1Request {
 	return ApiGetProvisioningPolicyV1Request{
 		ApiService: a,
 		ctx: ctx,
@@ -3113,13 +3113,13 @@ func (a *SourcesAPIService) GetProvisioningPolicyV1(ctx context.Context, sourceI
 }
 
 // Execute executes the request
-//  @return Provisioningpolicydto
-func (a *SourcesAPIService) GetProvisioningPolicyV1Execute(r ApiGetProvisioningPolicyV1Request) (*Provisioningpolicydto, *http.Response, error) {
+//  @return ProvisioningPolicyDto
+func (a *SourcesAPIService) GetProvisioningPolicyV1Execute(r ApiGetProvisioningPolicyV1Request) (*ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Provisioningpolicydto
+		localVarReturnValue  *ProvisioningPolicyDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetProvisioningPolicyV1")
@@ -3175,7 +3175,7 @@ func (a *SourcesAPIService) GetProvisioningPolicyV1Execute(r ApiGetProvisioningP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3197,7 +3197,7 @@ func (a *SourcesAPIService) GetProvisioningPolicyV1Execute(r ApiGetProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3208,7 +3208,7 @@ func (a *SourcesAPIService) GetProvisioningPolicyV1Execute(r ApiGetProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3230,7 +3230,7 @@ func (a *SourcesAPIService) GetProvisioningPolicyV1Execute(r ApiGetProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3268,7 +3268,7 @@ func (r ApiGetProvisioningPolicyV2Request) XSailPointExperimental(xSailPointExpe
 	return r
 }
 
-func (r ApiGetProvisioningPolicyV2Request) Execute() (*Provisioningpolicydtov2, *http.Response, error) {
+func (r ApiGetProvisioningPolicyV2Request) Execute() (*ProvisioningPolicyDtoV2, *http.Response, error) {
 	return r.ApiService.GetProvisioningPolicyV2Execute(r)
 }
 
@@ -3292,13 +3292,13 @@ func (a *SourcesAPIService) GetProvisioningPolicyV2(ctx context.Context, sourceI
 }
 
 // Execute executes the request
-//  @return Provisioningpolicydtov2
-func (a *SourcesAPIService) GetProvisioningPolicyV2Execute(r ApiGetProvisioningPolicyV2Request) (*Provisioningpolicydtov2, *http.Response, error) {
+//  @return ProvisioningPolicyDtoV2
+func (a *SourcesAPIService) GetProvisioningPolicyV2Execute(r ApiGetProvisioningPolicyV2Request) (*ProvisioningPolicyDtoV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Provisioningpolicydtov2
+		localVarReturnValue  *ProvisioningPolicyDtoV2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetProvisioningPolicyV2")
@@ -3364,7 +3364,7 @@ func (a *SourcesAPIService) GetProvisioningPolicyV2Execute(r ApiGetProvisioningP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3386,7 +3386,7 @@ func (a *SourcesAPIService) GetProvisioningPolicyV2Execute(r ApiGetProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3397,7 +3397,7 @@ func (a *SourcesAPIService) GetProvisioningPolicyV2Execute(r ApiGetProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3419,7 +3419,7 @@ func (a *SourcesAPIService) GetProvisioningPolicyV2Execute(r ApiGetProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3456,7 +3456,7 @@ func (r ApiGetSourceAttrSyncConfigV1Request) XSailPointExperimental(xSailPointEx
 	return r
 }
 
-func (r ApiGetSourceAttrSyncConfigV1Request) Execute() (*Attrsyncsourceconfig, *http.Response, error) {
+func (r ApiGetSourceAttrSyncConfigV1Request) Execute() (*AttrSyncSourceConfig, *http.Response, error) {
 	return r.ApiService.GetSourceAttrSyncConfigV1Execute(r)
 }
 
@@ -3478,13 +3478,13 @@ func (a *SourcesAPIService) GetSourceAttrSyncConfigV1(ctx context.Context, id st
 }
 
 // Execute executes the request
-//  @return Attrsyncsourceconfig
-func (a *SourcesAPIService) GetSourceAttrSyncConfigV1Execute(r ApiGetSourceAttrSyncConfigV1Request) (*Attrsyncsourceconfig, *http.Response, error) {
+//  @return AttrSyncSourceConfig
+func (a *SourcesAPIService) GetSourceAttrSyncConfigV1Execute(r ApiGetSourceAttrSyncConfigV1Request) (*AttrSyncSourceConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Attrsyncsourceconfig
+		localVarReturnValue  *AttrSyncSourceConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceAttrSyncConfigV1")
@@ -3549,7 +3549,7 @@ func (a *SourcesAPIService) GetSourceAttrSyncConfigV1Execute(r ApiGetSourceAttrS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3571,7 +3571,7 @@ func (a *SourcesAPIService) GetSourceAttrSyncConfigV1Execute(r ApiGetSourceAttrS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3582,7 +3582,7 @@ func (a *SourcesAPIService) GetSourceAttrSyncConfigV1Execute(r ApiGetSourceAttrS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3604,7 +3604,7 @@ func (a *SourcesAPIService) GetSourceAttrSyncConfigV1Execute(r ApiGetSourceAttrS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3641,7 +3641,7 @@ func (r ApiGetSourceConfigV1Request) Locale(locale string) ApiGetSourceConfigV1R
 	return r
 }
 
-func (r ApiGetSourceConfigV1Request) Execute() (*Connectordetail, *http.Response, error) {
+func (r ApiGetSourceConfigV1Request) Execute() (*ConnectorDetail, *http.Response, error) {
 	return r.ApiService.GetSourceConfigV1Execute(r)
 }
 
@@ -3663,13 +3663,13 @@ func (a *SourcesAPIService) GetSourceConfigV1(ctx context.Context, id string) Ap
 }
 
 // Execute executes the request
-//  @return Connectordetail
-func (a *SourcesAPIService) GetSourceConfigV1Execute(r ApiGetSourceConfigV1Request) (*Connectordetail, *http.Response, error) {
+//  @return ConnectorDetail
+func (a *SourcesAPIService) GetSourceConfigV1Execute(r ApiGetSourceConfigV1Request) (*ConnectorDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Connectordetail
+		localVarReturnValue  *ConnectorDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceConfigV1")
@@ -3727,7 +3727,7 @@ func (a *SourcesAPIService) GetSourceConfigV1Execute(r ApiGetSourceConfigV1Reque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3749,7 +3749,7 @@ func (a *SourcesAPIService) GetSourceConfigV1Execute(r ApiGetSourceConfigV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3760,7 +3760,7 @@ func (a *SourcesAPIService) GetSourceConfigV1Execute(r ApiGetSourceConfigV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3782,7 +3782,7 @@ func (a *SourcesAPIService) GetSourceConfigV1Execute(r ApiGetSourceConfigV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3812,7 +3812,7 @@ type ApiGetSourceConnectionsV1Request struct {
 	sourceId string
 }
 
-func (r ApiGetSourceConnectionsV1Request) Execute() (*Sourceconnectionsdto, *http.Response, error) {
+func (r ApiGetSourceConnectionsV1Request) Execute() (*SourceConnectionsDto, *http.Response, error) {
 	return r.ApiService.GetSourceConnectionsV1Execute(r)
 }
 
@@ -3834,13 +3834,13 @@ func (a *SourcesAPIService) GetSourceConnectionsV1(ctx context.Context, sourceId
 }
 
 // Execute executes the request
-//  @return Sourceconnectionsdto
-func (a *SourcesAPIService) GetSourceConnectionsV1Execute(r ApiGetSourceConnectionsV1Request) (*Sourceconnectionsdto, *http.Response, error) {
+//  @return SourceConnectionsDto
+func (a *SourcesAPIService) GetSourceConnectionsV1Execute(r ApiGetSourceConnectionsV1Request) (*SourceConnectionsDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourceconnectionsdto
+		localVarReturnValue  *SourceConnectionsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceConnectionsV1")
@@ -3895,7 +3895,7 @@ func (a *SourcesAPIService) GetSourceConnectionsV1Execute(r ApiGetSourceConnecti
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3917,7 +3917,7 @@ func (a *SourcesAPIService) GetSourceConnectionsV1Execute(r ApiGetSourceConnecti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3928,7 +3928,7 @@ func (a *SourcesAPIService) GetSourceConnectionsV1Execute(r ApiGetSourceConnecti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3950,7 +3950,7 @@ func (a *SourcesAPIService) GetSourceConnectionsV1Execute(r ApiGetSourceConnecti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3987,7 +3987,7 @@ func (r ApiGetSourceEntitlementRequestConfigV1Request) XSailPointExperimental(xS
 	return r
 }
 
-func (r ApiGetSourceEntitlementRequestConfigV1Request) Execute() (*Sourceentitlementrequestconfig, *http.Response, error) {
+func (r ApiGetSourceEntitlementRequestConfigV1Request) Execute() (*SourceEntitlementRequestConfig, *http.Response, error) {
 	return r.ApiService.GetSourceEntitlementRequestConfigV1Execute(r)
 }
 
@@ -4013,13 +4013,13 @@ func (a *SourcesAPIService) GetSourceEntitlementRequestConfigV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return Sourceentitlementrequestconfig
-func (a *SourcesAPIService) GetSourceEntitlementRequestConfigV1Execute(r ApiGetSourceEntitlementRequestConfigV1Request) (*Sourceentitlementrequestconfig, *http.Response, error) {
+//  @return SourceEntitlementRequestConfig
+func (a *SourcesAPIService) GetSourceEntitlementRequestConfigV1Execute(r ApiGetSourceEntitlementRequestConfigV1Request) (*SourceEntitlementRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourceentitlementrequestconfig
+		localVarReturnValue  *SourceEntitlementRequestConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceEntitlementRequestConfigV1")
@@ -4084,7 +4084,7 @@ func (a *SourcesAPIService) GetSourceEntitlementRequestConfigV1Execute(r ApiGetS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4106,7 +4106,7 @@ func (a *SourcesAPIService) GetSourceEntitlementRequestConfigV1Execute(r ApiGetS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4128,7 +4128,7 @@ func (a *SourcesAPIService) GetSourceEntitlementRequestConfigV1Execute(r ApiGetS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4158,7 +4158,7 @@ type ApiGetSourceHealthV1Request struct {
 	sourceId string
 }
 
-func (r ApiGetSourceHealthV1Request) Execute() (*Sourcehealthdto, *http.Response, error) {
+func (r ApiGetSourceHealthV1Request) Execute() (*SourceHealthDto, *http.Response, error) {
 	return r.ApiService.GetSourceHealthV1Execute(r)
 }
 
@@ -4180,13 +4180,13 @@ func (a *SourcesAPIService) GetSourceHealthV1(ctx context.Context, sourceId stri
 }
 
 // Execute executes the request
-//  @return Sourcehealthdto
-func (a *SourcesAPIService) GetSourceHealthV1Execute(r ApiGetSourceHealthV1Request) (*Sourcehealthdto, *http.Response, error) {
+//  @return SourceHealthDto
+func (a *SourcesAPIService) GetSourceHealthV1Execute(r ApiGetSourceHealthV1Request) (*SourceHealthDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourcehealthdto
+		localVarReturnValue  *SourceHealthDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceHealthV1")
@@ -4241,7 +4241,7 @@ func (a *SourcesAPIService) GetSourceHealthV1Execute(r ApiGetSourceHealthV1Reque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4263,7 +4263,7 @@ func (a *SourcesAPIService) GetSourceHealthV1Execute(r ApiGetSourceHealthV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4274,7 +4274,7 @@ func (a *SourcesAPIService) GetSourceHealthV1Execute(r ApiGetSourceHealthV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4296,7 +4296,7 @@ func (a *SourcesAPIService) GetSourceHealthV1Execute(r ApiGetSourceHealthV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4414,7 +4414,7 @@ func (a *SourcesAPIService) GetSourceScheduleV1Execute(r ApiGetSourceScheduleV1R
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4436,7 +4436,7 @@ func (a *SourcesAPIService) GetSourceScheduleV1Execute(r ApiGetSourceScheduleV1R
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4447,7 +4447,7 @@ func (a *SourcesAPIService) GetSourceScheduleV1Execute(r ApiGetSourceScheduleV1R
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4469,7 +4469,7 @@ func (a *SourcesAPIService) GetSourceScheduleV1Execute(r ApiGetSourceScheduleV1R
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4590,7 +4590,7 @@ func (a *SourcesAPIService) GetSourceSchedulesV1Execute(r ApiGetSourceSchedulesV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4612,7 +4612,7 @@ func (a *SourcesAPIService) GetSourceSchedulesV1Execute(r ApiGetSourceSchedulesV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4623,7 +4623,7 @@ func (a *SourcesAPIService) GetSourceSchedulesV1Execute(r ApiGetSourceSchedulesV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4645,7 +4645,7 @@ func (a *SourcesAPIService) GetSourceSchedulesV1Execute(r ApiGetSourceSchedulesV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4763,7 +4763,7 @@ func (a *SourcesAPIService) GetSourceSchemaV1Execute(r ApiGetSourceSchemaV1Reque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4785,7 +4785,7 @@ func (a *SourcesAPIService) GetSourceSchemaV1Execute(r ApiGetSourceSchemaV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4796,7 +4796,7 @@ func (a *SourcesAPIService) GetSourceSchemaV1Execute(r ApiGetSourceSchemaV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4818,7 +4818,7 @@ func (a *SourcesAPIService) GetSourceSchemaV1Execute(r ApiGetSourceSchemaV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4951,7 +4951,7 @@ func (a *SourcesAPIService) GetSourceSchemasV1Execute(r ApiGetSourceSchemasV1Req
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4973,7 +4973,7 @@ func (a *SourcesAPIService) GetSourceSchemasV1Execute(r ApiGetSourceSchemasV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4984,7 +4984,7 @@ func (a *SourcesAPIService) GetSourceSchemasV1Execute(r ApiGetSourceSchemasV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5006,7 +5006,7 @@ func (a *SourcesAPIService) GetSourceSchemasV1Execute(r ApiGetSourceSchemasV1Req
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5119,7 +5119,7 @@ func (a *SourcesAPIService) GetSourceV1Execute(r ApiGetSourceV1Request) (*Source
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5141,7 +5141,7 @@ func (a *SourcesAPIService) GetSourceV1Execute(r ApiGetSourceV1Request) (*Source
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5152,7 +5152,7 @@ func (a *SourcesAPIService) GetSourceV1Execute(r ApiGetSourceV1Request) (*Source
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5174,7 +5174,7 @@ func (a *SourcesAPIService) GetSourceV1Execute(r ApiGetSourceV1Request) (*Source
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5314,7 +5314,7 @@ func (a *SourcesAPIService) ImportAccountsSchemaV1Execute(r ApiImportAccountsSch
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5336,7 +5336,7 @@ func (a *SourcesAPIService) ImportAccountsSchemaV1Execute(r ApiImportAccountsSch
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5358,7 +5358,7 @@ func (a *SourcesAPIService) ImportAccountsSchemaV1Execute(r ApiImportAccountsSch
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5402,7 +5402,7 @@ func (r ApiImportAccountsV1Request) DisableOptimization(disableOptimization stri
 	return r
 }
 
-func (r ApiImportAccountsV1Request) Execute() (*Loadaccountstask, *http.Response, error) {
+func (r ApiImportAccountsV1Request) Execute() (*LoadAccountsTask, *http.Response, error) {
 	return r.ApiService.ImportAccountsV1Execute(r)
 }
 
@@ -5426,13 +5426,13 @@ func (a *SourcesAPIService) ImportAccountsV1(ctx context.Context, id string) Api
 }
 
 // Execute executes the request
-//  @return Loadaccountstask
-func (a *SourcesAPIService) ImportAccountsV1Execute(r ApiImportAccountsV1Request) (*Loadaccountstask, *http.Response, error) {
+//  @return LoadAccountsTask
+func (a *SourcesAPIService) ImportAccountsV1Execute(r ApiImportAccountsV1Request) (*LoadAccountsTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Loadaccountstask
+		localVarReturnValue  *LoadAccountsTask
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ImportAccountsV1")
@@ -5505,7 +5505,7 @@ func (a *SourcesAPIService) ImportAccountsV1Execute(r ApiImportAccountsV1Request
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5527,7 +5527,7 @@ func (a *SourcesAPIService) ImportAccountsV1Execute(r ApiImportAccountsV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5549,7 +5549,7 @@ func (a *SourcesAPIService) ImportAccountsV1Execute(r ApiImportAccountsV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5683,7 +5683,7 @@ func (a *SourcesAPIService) ImportConnectorFileV1Execute(r ApiImportConnectorFil
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5705,7 +5705,7 @@ func (a *SourcesAPIService) ImportConnectorFileV1Execute(r ApiImportConnectorFil
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5727,7 +5727,7 @@ func (a *SourcesAPIService) ImportConnectorFileV1Execute(r ApiImportConnectorFil
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5877,7 +5877,7 @@ func (a *SourcesAPIService) ImportEntitlementsSchemaV1Execute(r ApiImportEntitle
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5899,7 +5899,7 @@ func (a *SourcesAPIService) ImportEntitlementsSchemaV1Execute(r ApiImportEntitle
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5921,7 +5921,7 @@ func (a *SourcesAPIService) ImportEntitlementsSchemaV1Execute(r ApiImportEntitle
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5958,7 +5958,7 @@ func (r ApiImportEntitlementsV1Request) File(file *os.File) ApiImportEntitlement
 	return r
 }
 
-func (r ApiImportEntitlementsV1Request) Execute() (*Loadentitlementtask, *http.Response, error) {
+func (r ApiImportEntitlementsV1Request) Execute() (*LoadEntitlementTask, *http.Response, error) {
 	return r.ApiService.ImportEntitlementsV1Execute(r)
 }
 
@@ -5983,13 +5983,13 @@ func (a *SourcesAPIService) ImportEntitlementsV1(ctx context.Context, sourceId s
 }
 
 // Execute executes the request
-//  @return Loadentitlementtask
-func (a *SourcesAPIService) ImportEntitlementsV1Execute(r ApiImportEntitlementsV1Request) (*Loadentitlementtask, *http.Response, error) {
+//  @return LoadEntitlementTask
+func (a *SourcesAPIService) ImportEntitlementsV1Execute(r ApiImportEntitlementsV1Request) (*LoadEntitlementTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Loadentitlementtask
+		localVarReturnValue  *LoadEntitlementTask
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ImportEntitlementsV1")
@@ -6059,7 +6059,7 @@ func (a *SourcesAPIService) ImportEntitlementsV1Execute(r ApiImportEntitlementsV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6081,7 +6081,7 @@ func (a *SourcesAPIService) ImportEntitlementsV1Execute(r ApiImportEntitlementsV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6103,7 +6103,7 @@ func (a *SourcesAPIService) ImportEntitlementsV1Execute(r ApiImportEntitlementsV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6139,7 +6139,7 @@ func (r ApiImportUncorrelatedAccountsV1Request) File(file *os.File) ApiImportUnc
 	return r
 }
 
-func (r ApiImportUncorrelatedAccountsV1Request) Execute() (*Loaduncorrelatedaccountstask, *http.Response, error) {
+func (r ApiImportUncorrelatedAccountsV1Request) Execute() (*LoadUncorrelatedAccountsTask, *http.Response, error) {
 	return r.ApiService.ImportUncorrelatedAccountsV1Execute(r)
 }
 
@@ -6161,13 +6161,13 @@ func (a *SourcesAPIService) ImportUncorrelatedAccountsV1(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return Loaduncorrelatedaccountstask
-func (a *SourcesAPIService) ImportUncorrelatedAccountsV1Execute(r ApiImportUncorrelatedAccountsV1Request) (*Loaduncorrelatedaccountstask, *http.Response, error) {
+//  @return LoadUncorrelatedAccountsTask
+func (a *SourcesAPIService) ImportUncorrelatedAccountsV1Execute(r ApiImportUncorrelatedAccountsV1Request) (*LoadUncorrelatedAccountsTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Loaduncorrelatedaccountstask
+		localVarReturnValue  *LoadUncorrelatedAccountsTask
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ImportUncorrelatedAccountsV1")
@@ -6237,7 +6237,7 @@ func (a *SourcesAPIService) ImportUncorrelatedAccountsV1Execute(r ApiImportUncor
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6259,7 +6259,7 @@ func (a *SourcesAPIService) ImportUncorrelatedAccountsV1Execute(r ApiImportUncor
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6281,7 +6281,7 @@ func (a *SourcesAPIService) ImportUncorrelatedAccountsV1Execute(r ApiImportUncor
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6332,7 +6332,7 @@ func (r ApiListPasswordPolicyHoldersOnSourceV1Request) Count(count bool) ApiList
 	return r
 }
 
-func (r ApiListPasswordPolicyHoldersOnSourceV1Request) Execute() ([]PasswordpolicyholdersdtoInner, *http.Response, error) {
+func (r ApiListPasswordPolicyHoldersOnSourceV1Request) Execute() ([]PasswordPolicyHoldersDtoInner, *http.Response, error) {
 	return r.ApiService.ListPasswordPolicyHoldersOnSourceV1Execute(r)
 }
 
@@ -6356,13 +6356,13 @@ func (a *SourcesAPIService) ListPasswordPolicyHoldersOnSourceV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []PasswordpolicyholdersdtoInner
-func (a *SourcesAPIService) ListPasswordPolicyHoldersOnSourceV1Execute(r ApiListPasswordPolicyHoldersOnSourceV1Request) ([]PasswordpolicyholdersdtoInner, *http.Response, error) {
+//  @return []PasswordPolicyHoldersDtoInner
+func (a *SourcesAPIService) ListPasswordPolicyHoldersOnSourceV1Execute(r ApiListPasswordPolicyHoldersOnSourceV1Request) ([]PasswordPolicyHoldersDtoInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []PasswordpolicyholdersdtoInner
+		localVarReturnValue  []PasswordPolicyHoldersDtoInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ListPasswordPolicyHoldersOnSourceV1")
@@ -6435,7 +6435,7 @@ func (a *SourcesAPIService) ListPasswordPolicyHoldersOnSourceV1Execute(r ApiList
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6457,7 +6457,7 @@ func (a *SourcesAPIService) ListPasswordPolicyHoldersOnSourceV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6468,7 +6468,7 @@ func (a *SourcesAPIService) ListPasswordPolicyHoldersOnSourceV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6490,7 +6490,7 @@ func (a *SourcesAPIService) ListPasswordPolicyHoldersOnSourceV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6534,7 +6534,7 @@ func (r ApiListProvisioningPoliciesV1Request) Limit(limit int64) ApiListProvisio
 	return r
 }
 
-func (r ApiListProvisioningPoliciesV1Request) Execute() ([]Provisioningpolicydto, *http.Response, error) {
+func (r ApiListProvisioningPoliciesV1Request) Execute() ([]ProvisioningPolicyDto, *http.Response, error) {
 	return r.ApiService.ListProvisioningPoliciesV1Execute(r)
 }
 
@@ -6556,13 +6556,13 @@ func (a *SourcesAPIService) ListProvisioningPoliciesV1(ctx context.Context, sour
 }
 
 // Execute executes the request
-//  @return []Provisioningpolicydto
-func (a *SourcesAPIService) ListProvisioningPoliciesV1Execute(r ApiListProvisioningPoliciesV1Request) ([]Provisioningpolicydto, *http.Response, error) {
+//  @return []ProvisioningPolicyDto
+func (a *SourcesAPIService) ListProvisioningPoliciesV1Execute(r ApiListProvisioningPoliciesV1Request) ([]ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Provisioningpolicydto
+		localVarReturnValue  []ProvisioningPolicyDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ListProvisioningPoliciesV1")
@@ -6629,7 +6629,7 @@ func (a *SourcesAPIService) ListProvisioningPoliciesV1Execute(r ApiListProvision
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6651,7 +6651,7 @@ func (a *SourcesAPIService) ListProvisioningPoliciesV1Execute(r ApiListProvision
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6662,7 +6662,7 @@ func (a *SourcesAPIService) ListProvisioningPoliciesV1Execute(r ApiListProvision
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6684,7 +6684,7 @@ func (a *SourcesAPIService) ListProvisioningPoliciesV1Execute(r ApiListProvision
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6742,7 +6742,7 @@ func (r ApiListProvisioningPoliciesV2Request) Limit(limit int64) ApiListProvisio
 	return r
 }
 
-func (r ApiListProvisioningPoliciesV2Request) Execute() ([]Provisioningpolicydtov2, *http.Response, error) {
+func (r ApiListProvisioningPoliciesV2Request) Execute() ([]ProvisioningPolicyDtoV2, *http.Response, error) {
 	return r.ApiService.ListProvisioningPoliciesV2Execute(r)
 }
 
@@ -6764,13 +6764,13 @@ func (a *SourcesAPIService) ListProvisioningPoliciesV2(ctx context.Context, sour
 }
 
 // Execute executes the request
-//  @return []Provisioningpolicydtov2
-func (a *SourcesAPIService) ListProvisioningPoliciesV2Execute(r ApiListProvisioningPoliciesV2Request) ([]Provisioningpolicydtov2, *http.Response, error) {
+//  @return []ProvisioningPolicyDtoV2
+func (a *SourcesAPIService) ListProvisioningPoliciesV2Execute(r ApiListProvisioningPoliciesV2Request) ([]ProvisioningPolicyDtoV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Provisioningpolicydtov2
+		localVarReturnValue  []ProvisioningPolicyDtoV2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ListProvisioningPoliciesV2")
@@ -6850,7 +6850,7 @@ func (a *SourcesAPIService) ListProvisioningPoliciesV2Execute(r ApiListProvision
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6872,7 +6872,7 @@ func (a *SourcesAPIService) ListProvisioningPoliciesV2Execute(r ApiListProvision
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6883,7 +6883,7 @@ func (a *SourcesAPIService) ListProvisioningPoliciesV2Execute(r ApiListProvision
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -6905,7 +6905,7 @@ func (a *SourcesAPIService) ListProvisioningPoliciesV2Execute(r ApiListProvision
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7096,7 +7096,7 @@ func (a *SourcesAPIService) ListSourcesV1Execute(r ApiListSourcesV1Request) ([]S
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7118,7 +7118,7 @@ func (a *SourcesAPIService) ListSourcesV1Execute(r ApiListSourcesV1Request) ([]S
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7129,7 +7129,7 @@ func (a *SourcesAPIService) ListSourcesV1Execute(r ApiListSourcesV1Request) ([]S
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7151,7 +7151,7 @@ func (a *SourcesAPIService) ListSourcesV1Execute(r ApiListSourcesV1Request) ([]S
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7181,7 +7181,7 @@ type ApiPingClusterV1Request struct {
 	sourceId string
 }
 
-func (r ApiPingClusterV1Request) Execute() (*Statusresponse, *http.Response, error) {
+func (r ApiPingClusterV1Request) Execute() (*StatusResponse, *http.Response, error) {
 	return r.ApiService.PingClusterV1Execute(r)
 }
 
@@ -7203,13 +7203,13 @@ func (a *SourcesAPIService) PingClusterV1(ctx context.Context, sourceId string) 
 }
 
 // Execute executes the request
-//  @return Statusresponse
-func (a *SourcesAPIService) PingClusterV1Execute(r ApiPingClusterV1Request) (*Statusresponse, *http.Response, error) {
+//  @return StatusResponse
+func (a *SourcesAPIService) PingClusterV1Execute(r ApiPingClusterV1Request) (*StatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Statusresponse
+		localVarReturnValue  *StatusResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PingClusterV1")
@@ -7264,7 +7264,7 @@ func (a *SourcesAPIService) PingClusterV1Execute(r ApiPingClusterV1Request) (*St
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7286,7 +7286,7 @@ func (a *SourcesAPIService) PingClusterV1Execute(r ApiPingClusterV1Request) (*St
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7297,7 +7297,7 @@ func (a *SourcesAPIService) PingClusterV1Execute(r ApiPingClusterV1Request) (*St
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7319,7 +7319,7 @@ func (a *SourcesAPIService) PingClusterV1Execute(r ApiPingClusterV1Request) (*St
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7347,15 +7347,15 @@ type ApiPutCorrelationConfigV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	id string
-	correlationconfig *Correlationconfig
+	correlationConfig *CorrelationConfig
 }
 
-func (r ApiPutCorrelationConfigV1Request) Correlationconfig(correlationconfig Correlationconfig) ApiPutCorrelationConfigV1Request {
-	r.correlationconfig = &correlationconfig
+func (r ApiPutCorrelationConfigV1Request) CorrelationConfig(correlationConfig CorrelationConfig) ApiPutCorrelationConfigV1Request {
+	r.correlationConfig = &correlationConfig
 	return r
 }
 
-func (r ApiPutCorrelationConfigV1Request) Execute() (*Correlationconfig, *http.Response, error) {
+func (r ApiPutCorrelationConfigV1Request) Execute() (*CorrelationConfig, *http.Response, error) {
 	return r.ApiService.PutCorrelationConfigV1Execute(r)
 }
 
@@ -7377,13 +7377,13 @@ func (a *SourcesAPIService) PutCorrelationConfigV1(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return Correlationconfig
-func (a *SourcesAPIService) PutCorrelationConfigV1Execute(r ApiPutCorrelationConfigV1Request) (*Correlationconfig, *http.Response, error) {
+//  @return CorrelationConfig
+func (a *SourcesAPIService) PutCorrelationConfigV1Execute(r ApiPutCorrelationConfigV1Request) (*CorrelationConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Correlationconfig
+		localVarReturnValue  *CorrelationConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PutCorrelationConfigV1")
@@ -7397,8 +7397,8 @@ func (a *SourcesAPIService) PutCorrelationConfigV1Execute(r ApiPutCorrelationCon
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.correlationconfig == nil {
-		return localVarReturnValue, nil, reportError("correlationconfig is required and must be specified")
+	if r.correlationConfig == nil {
+		return localVarReturnValue, nil, reportError("correlationConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -7419,7 +7419,7 @@ func (a *SourcesAPIService) PutCorrelationConfigV1Execute(r ApiPutCorrelationCon
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.correlationconfig
+	localVarPostBody = r.correlationConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -7443,7 +7443,7 @@ func (a *SourcesAPIService) PutCorrelationConfigV1Execute(r ApiPutCorrelationCon
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7465,7 +7465,7 @@ func (a *SourcesAPIService) PutCorrelationConfigV1Execute(r ApiPutCorrelationCon
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7476,7 +7476,7 @@ func (a *SourcesAPIService) PutCorrelationConfigV1Execute(r ApiPutCorrelationCon
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7498,7 +7498,7 @@ func (a *SourcesAPIService) PutCorrelationConfigV1Execute(r ApiPutCorrelationCon
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7526,15 +7526,15 @@ type ApiPutNativeChangeDetectionConfigV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	nativechangedetectionconfig *Nativechangedetectionconfig
+	nativeChangeDetectionConfig *NativeChangeDetectionConfig
 }
 
-func (r ApiPutNativeChangeDetectionConfigV1Request) Nativechangedetectionconfig(nativechangedetectionconfig Nativechangedetectionconfig) ApiPutNativeChangeDetectionConfigV1Request {
-	r.nativechangedetectionconfig = &nativechangedetectionconfig
+func (r ApiPutNativeChangeDetectionConfigV1Request) NativeChangeDetectionConfig(nativeChangeDetectionConfig NativeChangeDetectionConfig) ApiPutNativeChangeDetectionConfigV1Request {
+	r.nativeChangeDetectionConfig = &nativeChangeDetectionConfig
 	return r
 }
 
-func (r ApiPutNativeChangeDetectionConfigV1Request) Execute() (*Nativechangedetectionconfig, *http.Response, error) {
+func (r ApiPutNativeChangeDetectionConfigV1Request) Execute() (*NativeChangeDetectionConfig, *http.Response, error) {
 	return r.ApiService.PutNativeChangeDetectionConfigV1Execute(r)
 }
 
@@ -7556,13 +7556,13 @@ func (a *SourcesAPIService) PutNativeChangeDetectionConfigV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Nativechangedetectionconfig
-func (a *SourcesAPIService) PutNativeChangeDetectionConfigV1Execute(r ApiPutNativeChangeDetectionConfigV1Request) (*Nativechangedetectionconfig, *http.Response, error) {
+//  @return NativeChangeDetectionConfig
+func (a *SourcesAPIService) PutNativeChangeDetectionConfigV1Execute(r ApiPutNativeChangeDetectionConfigV1Request) (*NativeChangeDetectionConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Nativechangedetectionconfig
+		localVarReturnValue  *NativeChangeDetectionConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PutNativeChangeDetectionConfigV1")
@@ -7576,8 +7576,8 @@ func (a *SourcesAPIService) PutNativeChangeDetectionConfigV1Execute(r ApiPutNati
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nativechangedetectionconfig == nil {
-		return localVarReturnValue, nil, reportError("nativechangedetectionconfig is required and must be specified")
+	if r.nativeChangeDetectionConfig == nil {
+		return localVarReturnValue, nil, reportError("nativeChangeDetectionConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -7598,7 +7598,7 @@ func (a *SourcesAPIService) PutNativeChangeDetectionConfigV1Execute(r ApiPutNati
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.nativechangedetectionconfig
+	localVarPostBody = r.nativeChangeDetectionConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -7622,7 +7622,7 @@ func (a *SourcesAPIService) PutNativeChangeDetectionConfigV1Execute(r ApiPutNati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7644,7 +7644,7 @@ func (a *SourcesAPIService) PutNativeChangeDetectionConfigV1Execute(r ApiPutNati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7655,7 +7655,7 @@ func (a *SourcesAPIService) PutNativeChangeDetectionConfigV1Execute(r ApiPutNati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7677,7 +7677,7 @@ func (a *SourcesAPIService) PutNativeChangeDetectionConfigV1Execute(r ApiPutNati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7705,16 +7705,16 @@ type ApiPutProvisioningPolicyV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	usageType Usagetype
-	provisioningpolicydto *Provisioningpolicydto
+	usageType UsageType
+	provisioningPolicyDto *ProvisioningPolicyDto
 }
 
-func (r ApiPutProvisioningPolicyV1Request) Provisioningpolicydto(provisioningpolicydto Provisioningpolicydto) ApiPutProvisioningPolicyV1Request {
-	r.provisioningpolicydto = &provisioningpolicydto
+func (r ApiPutProvisioningPolicyV1Request) ProvisioningPolicyDto(provisioningPolicyDto ProvisioningPolicyDto) ApiPutProvisioningPolicyV1Request {
+	r.provisioningPolicyDto = &provisioningPolicyDto
 	return r
 }
 
-func (r ApiPutProvisioningPolicyV1Request) Execute() (*Provisioningpolicydto, *http.Response, error) {
+func (r ApiPutProvisioningPolicyV1Request) Execute() (*ProvisioningPolicyDto, *http.Response, error) {
 	return r.ApiService.PutProvisioningPolicyV1Execute(r)
 }
 
@@ -7730,7 +7730,7 @@ Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/d
  @param usageType The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
  @return ApiPutProvisioningPolicyV1Request
 */
-func (a *SourcesAPIService) PutProvisioningPolicyV1(ctx context.Context, sourceId string, usageType Usagetype) ApiPutProvisioningPolicyV1Request {
+func (a *SourcesAPIService) PutProvisioningPolicyV1(ctx context.Context, sourceId string, usageType UsageType) ApiPutProvisioningPolicyV1Request {
 	return ApiPutProvisioningPolicyV1Request{
 		ApiService: a,
 		ctx: ctx,
@@ -7740,13 +7740,13 @@ func (a *SourcesAPIService) PutProvisioningPolicyV1(ctx context.Context, sourceI
 }
 
 // Execute executes the request
-//  @return Provisioningpolicydto
-func (a *SourcesAPIService) PutProvisioningPolicyV1Execute(r ApiPutProvisioningPolicyV1Request) (*Provisioningpolicydto, *http.Response, error) {
+//  @return ProvisioningPolicyDto
+func (a *SourcesAPIService) PutProvisioningPolicyV1Execute(r ApiPutProvisioningPolicyV1Request) (*ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Provisioningpolicydto
+		localVarReturnValue  *ProvisioningPolicyDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PutProvisioningPolicyV1")
@@ -7761,8 +7761,8 @@ func (a *SourcesAPIService) PutProvisioningPolicyV1Execute(r ApiPutProvisioningP
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.provisioningpolicydto == nil {
-		return localVarReturnValue, nil, reportError("provisioningpolicydto is required and must be specified")
+	if r.provisioningPolicyDto == nil {
+		return localVarReturnValue, nil, reportError("provisioningPolicyDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -7783,7 +7783,7 @@ func (a *SourcesAPIService) PutProvisioningPolicyV1Execute(r ApiPutProvisioningP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.provisioningpolicydto
+	localVarPostBody = r.provisioningPolicyDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -7807,7 +7807,7 @@ func (a *SourcesAPIService) PutProvisioningPolicyV1Execute(r ApiPutProvisioningP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7829,7 +7829,7 @@ func (a *SourcesAPIService) PutProvisioningPolicyV1Execute(r ApiPutProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7840,7 +7840,7 @@ func (a *SourcesAPIService) PutProvisioningPolicyV1Execute(r ApiPutProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7862,7 +7862,7 @@ func (a *SourcesAPIService) PutProvisioningPolicyV1Execute(r ApiPutProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -7892,7 +7892,7 @@ type ApiPutProvisioningPolicyV2Request struct {
 	sourceId string
 	id string
 	xSailPointExperimental *string
-	provisioningpolicydtov2 *Provisioningpolicydtov2
+	provisioningPolicyDtoV2 *ProvisioningPolicyDtoV2
 }
 
 // Use this header to enable this experimental API.
@@ -7901,12 +7901,12 @@ func (r ApiPutProvisioningPolicyV2Request) XSailPointExperimental(xSailPointExpe
 	return r
 }
 
-func (r ApiPutProvisioningPolicyV2Request) Provisioningpolicydtov2(provisioningpolicydtov2 Provisioningpolicydtov2) ApiPutProvisioningPolicyV2Request {
-	r.provisioningpolicydtov2 = &provisioningpolicydtov2
+func (r ApiPutProvisioningPolicyV2Request) ProvisioningPolicyDtoV2(provisioningPolicyDtoV2 ProvisioningPolicyDtoV2) ApiPutProvisioningPolicyV2Request {
+	r.provisioningPolicyDtoV2 = &provisioningPolicyDtoV2
 	return r
 }
 
-func (r ApiPutProvisioningPolicyV2Request) Execute() (*Provisioningpolicydtov2, *http.Response, error) {
+func (r ApiPutProvisioningPolicyV2Request) Execute() (*ProvisioningPolicyDtoV2, *http.Response, error) {
 	return r.ApiService.PutProvisioningPolicyV2Execute(r)
 }
 
@@ -7932,13 +7932,13 @@ func (a *SourcesAPIService) PutProvisioningPolicyV2(ctx context.Context, sourceI
 }
 
 // Execute executes the request
-//  @return Provisioningpolicydtov2
-func (a *SourcesAPIService) PutProvisioningPolicyV2Execute(r ApiPutProvisioningPolicyV2Request) (*Provisioningpolicydtov2, *http.Response, error) {
+//  @return ProvisioningPolicyDtoV2
+func (a *SourcesAPIService) PutProvisioningPolicyV2Execute(r ApiPutProvisioningPolicyV2Request) (*ProvisioningPolicyDtoV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Provisioningpolicydtov2
+		localVarReturnValue  *ProvisioningPolicyDtoV2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PutProvisioningPolicyV2")
@@ -7968,8 +7968,8 @@ func (a *SourcesAPIService) PutProvisioningPolicyV2Execute(r ApiPutProvisioningP
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.provisioningpolicydtov2 == nil {
-		return localVarReturnValue, nil, reportError("provisioningpolicydtov2 is required and must be specified")
+	if r.provisioningPolicyDtoV2 == nil {
+		return localVarReturnValue, nil, reportError("provisioningPolicyDtoV2 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -7991,7 +7991,7 @@ func (a *SourcesAPIService) PutProvisioningPolicyV2Execute(r ApiPutProvisioningP
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.provisioningpolicydtov2
+	localVarPostBody = r.provisioningPolicyDtoV2
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -8015,7 +8015,7 @@ func (a *SourcesAPIService) PutProvisioningPolicyV2Execute(r ApiPutProvisioningP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8037,7 +8037,7 @@ func (a *SourcesAPIService) PutProvisioningPolicyV2Execute(r ApiPutProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8048,7 +8048,7 @@ func (a *SourcesAPIService) PutProvisioningPolicyV2Execute(r ApiPutProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8070,7 +8070,7 @@ func (a *SourcesAPIService) PutProvisioningPolicyV2Execute(r ApiPutProvisioningP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8099,7 +8099,7 @@ type ApiPutSourceAttrSyncConfigV1Request struct {
 	ApiService *SourcesAPIService
 	id string
 	xSailPointExperimental *string
-	attrsyncsourceconfig *Attrsyncsourceconfig
+	attrSyncSourceConfig *AttrSyncSourceConfig
 }
 
 // Use this header to enable this experimental API.
@@ -8108,12 +8108,12 @@ func (r ApiPutSourceAttrSyncConfigV1Request) XSailPointExperimental(xSailPointEx
 	return r
 }
 
-func (r ApiPutSourceAttrSyncConfigV1Request) Attrsyncsourceconfig(attrsyncsourceconfig Attrsyncsourceconfig) ApiPutSourceAttrSyncConfigV1Request {
-	r.attrsyncsourceconfig = &attrsyncsourceconfig
+func (r ApiPutSourceAttrSyncConfigV1Request) AttrSyncSourceConfig(attrSyncSourceConfig AttrSyncSourceConfig) ApiPutSourceAttrSyncConfigV1Request {
+	r.attrSyncSourceConfig = &attrSyncSourceConfig
 	return r
 }
 
-func (r ApiPutSourceAttrSyncConfigV1Request) Execute() (*Attrsyncsourceconfig, *http.Response, error) {
+func (r ApiPutSourceAttrSyncConfigV1Request) Execute() (*AttrSyncSourceConfig, *http.Response, error) {
 	return r.ApiService.PutSourceAttrSyncConfigV1Execute(r)
 }
 
@@ -8136,13 +8136,13 @@ func (a *SourcesAPIService) PutSourceAttrSyncConfigV1(ctx context.Context, id st
 }
 
 // Execute executes the request
-//  @return Attrsyncsourceconfig
-func (a *SourcesAPIService) PutSourceAttrSyncConfigV1Execute(r ApiPutSourceAttrSyncConfigV1Request) (*Attrsyncsourceconfig, *http.Response, error) {
+//  @return AttrSyncSourceConfig
+func (a *SourcesAPIService) PutSourceAttrSyncConfigV1Execute(r ApiPutSourceAttrSyncConfigV1Request) (*AttrSyncSourceConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Attrsyncsourceconfig
+		localVarReturnValue  *AttrSyncSourceConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PutSourceAttrSyncConfigV1")
@@ -8171,8 +8171,8 @@ func (a *SourcesAPIService) PutSourceAttrSyncConfigV1Execute(r ApiPutSourceAttrS
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.attrsyncsourceconfig == nil {
-		return localVarReturnValue, nil, reportError("attrsyncsourceconfig is required and must be specified")
+	if r.attrSyncSourceConfig == nil {
+		return localVarReturnValue, nil, reportError("attrSyncSourceConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -8194,7 +8194,7 @@ func (a *SourcesAPIService) PutSourceAttrSyncConfigV1Execute(r ApiPutSourceAttrS
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.attrsyncsourceconfig
+	localVarPostBody = r.attrSyncSourceConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -8218,7 +8218,7 @@ func (a *SourcesAPIService) PutSourceAttrSyncConfigV1Execute(r ApiPutSourceAttrS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8240,7 +8240,7 @@ func (a *SourcesAPIService) PutSourceAttrSyncConfigV1Execute(r ApiPutSourceAttrS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8251,7 +8251,7 @@ func (a *SourcesAPIService) PutSourceAttrSyncConfigV1Execute(r ApiPutSourceAttrS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8273,7 +8273,7 @@ func (a *SourcesAPIService) PutSourceAttrSyncConfigV1Execute(r ApiPutSourceAttrS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8411,7 +8411,7 @@ func (a *SourcesAPIService) PutSourceSchemaV1Execute(r ApiPutSourceSchemaV1Reque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8433,7 +8433,7 @@ func (a *SourcesAPIService) PutSourceSchemaV1Execute(r ApiPutSourceSchemaV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8444,7 +8444,7 @@ func (a *SourcesAPIService) PutSourceSchemaV1Execute(r ApiPutSourceSchemaV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8466,7 +8466,7 @@ func (a *SourcesAPIService) PutSourceSchemaV1Execute(r ApiPutSourceSchemaV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8602,7 +8602,7 @@ func (a *SourcesAPIService) PutSourceV1Execute(r ApiPutSourceV1Request) (*Source
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8624,7 +8624,7 @@ func (a *SourcesAPIService) PutSourceV1Execute(r ApiPutSourceV1Request) (*Source
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8635,7 +8635,7 @@ func (a *SourcesAPIService) PutSourceV1Execute(r ApiPutSourceV1Request) (*Source
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8657,7 +8657,7 @@ func (a *SourcesAPIService) PutSourceV1Execute(r ApiPutSourceV1Request) (*Source
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8685,15 +8685,15 @@ type ApiSearchResourceObjectsV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	resourceobjectsrequest *Resourceobjectsrequest
+	resourceObjectsRequest *ResourceObjectsRequest
 }
 
-func (r ApiSearchResourceObjectsV1Request) Resourceobjectsrequest(resourceobjectsrequest Resourceobjectsrequest) ApiSearchResourceObjectsV1Request {
-	r.resourceobjectsrequest = &resourceobjectsrequest
+func (r ApiSearchResourceObjectsV1Request) ResourceObjectsRequest(resourceObjectsRequest ResourceObjectsRequest) ApiSearchResourceObjectsV1Request {
+	r.resourceObjectsRequest = &resourceObjectsRequest
 	return r
 }
 
-func (r ApiSearchResourceObjectsV1Request) Execute() (*Resourceobjectsresponse, *http.Response, error) {
+func (r ApiSearchResourceObjectsV1Request) Execute() (*ResourceObjectsResponse, *http.Response, error) {
 	return r.ApiService.SearchResourceObjectsV1Execute(r)
 }
 
@@ -8715,13 +8715,13 @@ func (a *SourcesAPIService) SearchResourceObjectsV1(ctx context.Context, sourceI
 }
 
 // Execute executes the request
-//  @return Resourceobjectsresponse
-func (a *SourcesAPIService) SearchResourceObjectsV1Execute(r ApiSearchResourceObjectsV1Request) (*Resourceobjectsresponse, *http.Response, error) {
+//  @return ResourceObjectsResponse
+func (a *SourcesAPIService) SearchResourceObjectsV1Execute(r ApiSearchResourceObjectsV1Request) (*ResourceObjectsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Resourceobjectsresponse
+		localVarReturnValue  *ResourceObjectsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SearchResourceObjectsV1")
@@ -8735,8 +8735,8 @@ func (a *SourcesAPIService) SearchResourceObjectsV1Execute(r ApiSearchResourceOb
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.resourceobjectsrequest == nil {
-		return localVarReturnValue, nil, reportError("resourceobjectsrequest is required and must be specified")
+	if r.resourceObjectsRequest == nil {
+		return localVarReturnValue, nil, reportError("resourceObjectsRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -8757,7 +8757,7 @@ func (a *SourcesAPIService) SearchResourceObjectsV1Execute(r ApiSearchResourceOb
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.resourceobjectsrequest
+	localVarPostBody = r.resourceObjectsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -8781,7 +8781,7 @@ func (a *SourcesAPIService) SearchResourceObjectsV1Execute(r ApiSearchResourceOb
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8803,7 +8803,7 @@ func (a *SourcesAPIService) SearchResourceObjectsV1Execute(r ApiSearchResourceOb
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8814,7 +8814,7 @@ func (a *SourcesAPIService) SearchResourceObjectsV1Execute(r ApiSearchResourceOb
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8836,7 +8836,7 @@ func (a *SourcesAPIService) SearchResourceObjectsV1Execute(r ApiSearchResourceOb
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8873,7 +8873,7 @@ func (r ApiSyncAttributesForSourceV1Request) XSailPointExperimental(xSailPointEx
 	return r
 }
 
-func (r ApiSyncAttributesForSourceV1Request) Execute() (*Sourcesyncjob, *http.Response, error) {
+func (r ApiSyncAttributesForSourceV1Request) Execute() (*SourceSyncJob, *http.Response, error) {
 	return r.ApiService.SyncAttributesForSourceV1Execute(r)
 }
 
@@ -8895,13 +8895,13 @@ func (a *SourcesAPIService) SyncAttributesForSourceV1(ctx context.Context, id st
 }
 
 // Execute executes the request
-//  @return Sourcesyncjob
-func (a *SourcesAPIService) SyncAttributesForSourceV1Execute(r ApiSyncAttributesForSourceV1Request) (*Sourcesyncjob, *http.Response, error) {
+//  @return SourceSyncJob
+func (a *SourcesAPIService) SyncAttributesForSourceV1Execute(r ApiSyncAttributesForSourceV1Request) (*SourceSyncJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourcesyncjob
+		localVarReturnValue  *SourceSyncJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SyncAttributesForSourceV1")
@@ -8966,7 +8966,7 @@ func (a *SourcesAPIService) SyncAttributesForSourceV1Execute(r ApiSyncAttributes
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8988,7 +8988,7 @@ func (a *SourcesAPIService) SyncAttributesForSourceV1Execute(r ApiSyncAttributes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -8999,7 +8999,7 @@ func (a *SourcesAPIService) SyncAttributesForSourceV1Execute(r ApiSyncAttributes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9021,7 +9021,7 @@ func (a *SourcesAPIService) SyncAttributesForSourceV1Execute(r ApiSyncAttributes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9051,7 +9051,7 @@ type ApiTestSourceConfigurationV1Request struct {
 	sourceId string
 }
 
-func (r ApiTestSourceConfigurationV1Request) Execute() (*Statusresponse, *http.Response, error) {
+func (r ApiTestSourceConfigurationV1Request) Execute() (*StatusResponse, *http.Response, error) {
 	return r.ApiService.TestSourceConfigurationV1Execute(r)
 }
 
@@ -9073,13 +9073,13 @@ func (a *SourcesAPIService) TestSourceConfigurationV1(ctx context.Context, sourc
 }
 
 // Execute executes the request
-//  @return Statusresponse
-func (a *SourcesAPIService) TestSourceConfigurationV1Execute(r ApiTestSourceConfigurationV1Request) (*Statusresponse, *http.Response, error) {
+//  @return StatusResponse
+func (a *SourcesAPIService) TestSourceConfigurationV1Execute(r ApiTestSourceConfigurationV1Request) (*StatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Statusresponse
+		localVarReturnValue  *StatusResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.TestSourceConfigurationV1")
@@ -9134,7 +9134,7 @@ func (a *SourcesAPIService) TestSourceConfigurationV1Execute(r ApiTestSourceConf
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9156,7 +9156,7 @@ func (a *SourcesAPIService) TestSourceConfigurationV1Execute(r ApiTestSourceConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9167,7 +9167,7 @@ func (a *SourcesAPIService) TestSourceConfigurationV1Execute(r ApiTestSourceConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9189,7 +9189,7 @@ func (a *SourcesAPIService) TestSourceConfigurationV1Execute(r ApiTestSourceConf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9219,7 +9219,7 @@ type ApiTestSourceConnectionV1Request struct {
 	sourceId string
 }
 
-func (r ApiTestSourceConnectionV1Request) Execute() (*Statusresponse, *http.Response, error) {
+func (r ApiTestSourceConnectionV1Request) Execute() (*StatusResponse, *http.Response, error) {
 	return r.ApiService.TestSourceConnectionV1Execute(r)
 }
 
@@ -9241,13 +9241,13 @@ func (a *SourcesAPIService) TestSourceConnectionV1(ctx context.Context, sourceId
 }
 
 // Execute executes the request
-//  @return Statusresponse
-func (a *SourcesAPIService) TestSourceConnectionV1Execute(r ApiTestSourceConnectionV1Request) (*Statusresponse, *http.Response, error) {
+//  @return StatusResponse
+func (a *SourcesAPIService) TestSourceConnectionV1Execute(r ApiTestSourceConnectionV1Request) (*StatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Statusresponse
+		localVarReturnValue  *StatusResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.TestSourceConnectionV1")
@@ -9302,7 +9302,7 @@ func (a *SourcesAPIService) TestSourceConnectionV1Execute(r ApiTestSourceConnect
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9324,7 +9324,7 @@ func (a *SourcesAPIService) TestSourceConnectionV1Execute(r ApiTestSourceConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9335,7 +9335,7 @@ func (a *SourcesAPIService) TestSourceConnectionV1Execute(r ApiTestSourceConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9357,7 +9357,7 @@ func (a *SourcesAPIService) TestSourceConnectionV1Execute(r ApiTestSourceConnect
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9385,16 +9385,16 @@ type ApiUpdateAccountDeletionApprovalConfigV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // The JSONPatch payload used to update the object.
-func (r ApiUpdateAccountDeletionApprovalConfigV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateAccountDeletionApprovalConfigV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateAccountDeletionApprovalConfigV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateAccountDeletionApprovalConfigV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiUpdateAccountDeletionApprovalConfigV1Request) Execute() (*Accountdeleteconfigdto, *http.Response, error) {
+func (r ApiUpdateAccountDeletionApprovalConfigV1Request) Execute() (*AccountDeleteConfigDto, *http.Response, error) {
 	return r.ApiService.UpdateAccountDeletionApprovalConfigV1Execute(r)
 }
 
@@ -9417,13 +9417,13 @@ func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Accountdeleteconfigdto
-func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigV1Execute(r ApiUpdateAccountDeletionApprovalConfigV1Request) (*Accountdeleteconfigdto, *http.Response, error) {
+//  @return AccountDeleteConfigDto
+func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigV1Execute(r ApiUpdateAccountDeletionApprovalConfigV1Request) (*AccountDeleteConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountdeleteconfigdto
+		localVarReturnValue  *AccountDeleteConfigDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdateAccountDeletionApprovalConfigV1")
@@ -9437,8 +9437,8 @@ func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigV1Execute(r ApiUp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -9459,7 +9459,7 @@ func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigV1Execute(r ApiUp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -9483,7 +9483,7 @@ func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigV1Execute(r ApiUp
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9505,7 +9505,7 @@ func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigV1Execute(r ApiUp
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9516,7 +9516,7 @@ func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigV1Execute(r ApiUp
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9538,7 +9538,7 @@ func (a *SourcesAPIService) UpdateAccountDeletionApprovalConfigV1Execute(r ApiUp
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9566,16 +9566,16 @@ type ApiUpdateMachineAccountDeletionApprovalConfigV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // The JSONPatch payload used to update the object.
-func (r ApiUpdateMachineAccountDeletionApprovalConfigV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateMachineAccountDeletionApprovalConfigV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateMachineAccountDeletionApprovalConfigV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateMachineAccountDeletionApprovalConfigV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiUpdateMachineAccountDeletionApprovalConfigV1Request) Execute() (*Accountdeleteconfigdto, *http.Response, error) {
+func (r ApiUpdateMachineAccountDeletionApprovalConfigV1Request) Execute() (*AccountDeleteConfigDto, *http.Response, error) {
 	return r.ApiService.UpdateMachineAccountDeletionApprovalConfigV1Execute(r)
 }
 
@@ -9601,13 +9601,13 @@ func (a *SourcesAPIService) UpdateMachineAccountDeletionApprovalConfigV1(ctx con
 }
 
 // Execute executes the request
-//  @return Accountdeleteconfigdto
-func (a *SourcesAPIService) UpdateMachineAccountDeletionApprovalConfigV1Execute(r ApiUpdateMachineAccountDeletionApprovalConfigV1Request) (*Accountdeleteconfigdto, *http.Response, error) {
+//  @return AccountDeleteConfigDto
+func (a *SourcesAPIService) UpdateMachineAccountDeletionApprovalConfigV1Execute(r ApiUpdateMachineAccountDeletionApprovalConfigV1Request) (*AccountDeleteConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountdeleteconfigdto
+		localVarReturnValue  *AccountDeleteConfigDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdateMachineAccountDeletionApprovalConfigV1")
@@ -9621,8 +9621,8 @@ func (a *SourcesAPIService) UpdateMachineAccountDeletionApprovalConfigV1Execute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -9643,7 +9643,7 @@ func (a *SourcesAPIService) UpdateMachineAccountDeletionApprovalConfigV1Execute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -9667,7 +9667,7 @@ func (a *SourcesAPIService) UpdateMachineAccountDeletionApprovalConfigV1Execute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9689,7 +9689,7 @@ func (a *SourcesAPIService) UpdateMachineAccountDeletionApprovalConfigV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9700,7 +9700,7 @@ func (a *SourcesAPIService) UpdateMachineAccountDeletionApprovalConfigV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9722,7 +9722,7 @@ func (a *SourcesAPIService) UpdateMachineAccountDeletionApprovalConfigV1Execute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9750,15 +9750,15 @@ type ApiUpdatePasswordPolicyHoldersV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	passwordpolicyholdersdtoInner *[]PasswordpolicyholdersdtoInner
+	passwordPolicyHoldersDtoInner *[]PasswordPolicyHoldersDtoInner
 }
 
-func (r ApiUpdatePasswordPolicyHoldersV1Request) PasswordpolicyholdersdtoInner(passwordpolicyholdersdtoInner []PasswordpolicyholdersdtoInner) ApiUpdatePasswordPolicyHoldersV1Request {
-	r.passwordpolicyholdersdtoInner = &passwordpolicyholdersdtoInner
+func (r ApiUpdatePasswordPolicyHoldersV1Request) PasswordPolicyHoldersDtoInner(passwordPolicyHoldersDtoInner []PasswordPolicyHoldersDtoInner) ApiUpdatePasswordPolicyHoldersV1Request {
+	r.passwordPolicyHoldersDtoInner = &passwordPolicyHoldersDtoInner
 	return r
 }
 
-func (r ApiUpdatePasswordPolicyHoldersV1Request) Execute() ([]PasswordpolicyholdersdtoInner, *http.Response, error) {
+func (r ApiUpdatePasswordPolicyHoldersV1Request) Execute() ([]PasswordPolicyHoldersDtoInner, *http.Response, error) {
 	return r.ApiService.UpdatePasswordPolicyHoldersV1Execute(r)
 }
 
@@ -9782,13 +9782,13 @@ func (a *SourcesAPIService) UpdatePasswordPolicyHoldersV1(ctx context.Context, s
 }
 
 // Execute executes the request
-//  @return []PasswordpolicyholdersdtoInner
-func (a *SourcesAPIService) UpdatePasswordPolicyHoldersV1Execute(r ApiUpdatePasswordPolicyHoldersV1Request) ([]PasswordpolicyholdersdtoInner, *http.Response, error) {
+//  @return []PasswordPolicyHoldersDtoInner
+func (a *SourcesAPIService) UpdatePasswordPolicyHoldersV1Execute(r ApiUpdatePasswordPolicyHoldersV1Request) ([]PasswordPolicyHoldersDtoInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []PasswordpolicyholdersdtoInner
+		localVarReturnValue  []PasswordPolicyHoldersDtoInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdatePasswordPolicyHoldersV1")
@@ -9802,8 +9802,8 @@ func (a *SourcesAPIService) UpdatePasswordPolicyHoldersV1Execute(r ApiUpdatePass
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.passwordpolicyholdersdtoInner == nil {
-		return localVarReturnValue, nil, reportError("passwordpolicyholdersdtoInner is required and must be specified")
+	if r.passwordPolicyHoldersDtoInner == nil {
+		return localVarReturnValue, nil, reportError("passwordPolicyHoldersDtoInner is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -9824,7 +9824,7 @@ func (a *SourcesAPIService) UpdatePasswordPolicyHoldersV1Execute(r ApiUpdatePass
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.passwordpolicyholdersdtoInner
+	localVarPostBody = r.passwordPolicyHoldersDtoInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -9848,7 +9848,7 @@ func (a *SourcesAPIService) UpdatePasswordPolicyHoldersV1Execute(r ApiUpdatePass
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9870,7 +9870,7 @@ func (a *SourcesAPIService) UpdatePasswordPolicyHoldersV1Execute(r ApiUpdatePass
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9881,7 +9881,7 @@ func (a *SourcesAPIService) UpdatePasswordPolicyHoldersV1Execute(r ApiUpdatePass
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9903,7 +9903,7 @@ func (a *SourcesAPIService) UpdatePasswordPolicyHoldersV1Execute(r ApiUpdatePass
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -9931,15 +9931,15 @@ type ApiUpdateProvisioningPoliciesInBulkV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	provisioningpolicydto *[]Provisioningpolicydto
+	provisioningPolicyDto *[]ProvisioningPolicyDto
 }
 
-func (r ApiUpdateProvisioningPoliciesInBulkV1Request) Provisioningpolicydto(provisioningpolicydto []Provisioningpolicydto) ApiUpdateProvisioningPoliciesInBulkV1Request {
-	r.provisioningpolicydto = &provisioningpolicydto
+func (r ApiUpdateProvisioningPoliciesInBulkV1Request) ProvisioningPolicyDto(provisioningPolicyDto []ProvisioningPolicyDto) ApiUpdateProvisioningPoliciesInBulkV1Request {
+	r.provisioningPolicyDto = &provisioningPolicyDto
 	return r
 }
 
-func (r ApiUpdateProvisioningPoliciesInBulkV1Request) Execute() ([]Provisioningpolicydto, *http.Response, error) {
+func (r ApiUpdateProvisioningPoliciesInBulkV1Request) Execute() ([]ProvisioningPolicyDto, *http.Response, error) {
 	return r.ApiService.UpdateProvisioningPoliciesInBulkV1Execute(r)
 }
 
@@ -9961,13 +9961,13 @@ func (a *SourcesAPIService) UpdateProvisioningPoliciesInBulkV1(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return []Provisioningpolicydto
-func (a *SourcesAPIService) UpdateProvisioningPoliciesInBulkV1Execute(r ApiUpdateProvisioningPoliciesInBulkV1Request) ([]Provisioningpolicydto, *http.Response, error) {
+//  @return []ProvisioningPolicyDto
+func (a *SourcesAPIService) UpdateProvisioningPoliciesInBulkV1Execute(r ApiUpdateProvisioningPoliciesInBulkV1Request) ([]ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Provisioningpolicydto
+		localVarReturnValue  []ProvisioningPolicyDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdateProvisioningPoliciesInBulkV1")
@@ -9981,8 +9981,8 @@ func (a *SourcesAPIService) UpdateProvisioningPoliciesInBulkV1Execute(r ApiUpdat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.provisioningpolicydto == nil {
-		return localVarReturnValue, nil, reportError("provisioningpolicydto is required and must be specified")
+	if r.provisioningPolicyDto == nil {
+		return localVarReturnValue, nil, reportError("provisioningPolicyDto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -10003,7 +10003,7 @@ func (a *SourcesAPIService) UpdateProvisioningPoliciesInBulkV1Execute(r ApiUpdat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.provisioningpolicydto
+	localVarPostBody = r.provisioningPolicyDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -10027,7 +10027,7 @@ func (a *SourcesAPIService) UpdateProvisioningPoliciesInBulkV1Execute(r ApiUpdat
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10049,7 +10049,7 @@ func (a *SourcesAPIService) UpdateProvisioningPoliciesInBulkV1Execute(r ApiUpdat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10060,7 +10060,7 @@ func (a *SourcesAPIService) UpdateProvisioningPoliciesInBulkV1Execute(r ApiUpdat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10082,7 +10082,7 @@ func (a *SourcesAPIService) UpdateProvisioningPoliciesInBulkV1Execute(r ApiUpdat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10110,17 +10110,17 @@ type ApiUpdateProvisioningPolicyV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	sourceId string
-	usageType Usagetype
-	jsonpatchoperation *[]Jsonpatchoperation
+	usageType UsageType
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // The JSONPatch payload used to update the schema.
-func (r ApiUpdateProvisioningPolicyV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateProvisioningPolicyV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateProvisioningPolicyV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateProvisioningPolicyV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiUpdateProvisioningPolicyV1Request) Execute() (*Provisioningpolicydto, *http.Response, error) {
+func (r ApiUpdateProvisioningPolicyV1Request) Execute() (*ProvisioningPolicyDto, *http.Response, error) {
 	return r.ApiService.UpdateProvisioningPolicyV1Execute(r)
 }
 
@@ -10136,7 +10136,7 @@ Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/d
  @param usageType The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
  @return ApiUpdateProvisioningPolicyV1Request
 */
-func (a *SourcesAPIService) UpdateProvisioningPolicyV1(ctx context.Context, sourceId string, usageType Usagetype) ApiUpdateProvisioningPolicyV1Request {
+func (a *SourcesAPIService) UpdateProvisioningPolicyV1(ctx context.Context, sourceId string, usageType UsageType) ApiUpdateProvisioningPolicyV1Request {
 	return ApiUpdateProvisioningPolicyV1Request{
 		ApiService: a,
 		ctx: ctx,
@@ -10146,13 +10146,13 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV1(ctx context.Context, sour
 }
 
 // Execute executes the request
-//  @return Provisioningpolicydto
-func (a *SourcesAPIService) UpdateProvisioningPolicyV1Execute(r ApiUpdateProvisioningPolicyV1Request) (*Provisioningpolicydto, *http.Response, error) {
+//  @return ProvisioningPolicyDto
+func (a *SourcesAPIService) UpdateProvisioningPolicyV1Execute(r ApiUpdateProvisioningPolicyV1Request) (*ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Provisioningpolicydto
+		localVarReturnValue  *ProvisioningPolicyDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdateProvisioningPolicyV1")
@@ -10167,8 +10167,8 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV1Execute(r ApiUpdateProvisi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -10189,7 +10189,7 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV1Execute(r ApiUpdateProvisi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -10213,7 +10213,7 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV1Execute(r ApiUpdateProvisi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10235,7 +10235,7 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV1Execute(r ApiUpdateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10246,7 +10246,7 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV1Execute(r ApiUpdateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10268,7 +10268,7 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV1Execute(r ApiUpdateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10298,7 +10298,7 @@ type ApiUpdateProvisioningPolicyV2Request struct {
 	sourceId string
 	id string
 	xSailPointExperimental *string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // Use this header to enable this experimental API.
@@ -10308,12 +10308,12 @@ func (r ApiUpdateProvisioningPolicyV2Request) XSailPointExperimental(xSailPointE
 }
 
 // The JSONPatch payload used to update the schema.
-func (r ApiUpdateProvisioningPolicyV2Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateProvisioningPolicyV2Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateProvisioningPolicyV2Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateProvisioningPolicyV2Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiUpdateProvisioningPolicyV2Request) Execute() (*Provisioningpolicydtov2, *http.Response, error) {
+func (r ApiUpdateProvisioningPolicyV2Request) Execute() (*ProvisioningPolicyDtoV2, *http.Response, error) {
 	return r.ApiService.UpdateProvisioningPolicyV2Execute(r)
 }
 
@@ -10339,13 +10339,13 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV2(ctx context.Context, sour
 }
 
 // Execute executes the request
-//  @return Provisioningpolicydtov2
-func (a *SourcesAPIService) UpdateProvisioningPolicyV2Execute(r ApiUpdateProvisioningPolicyV2Request) (*Provisioningpolicydtov2, *http.Response, error) {
+//  @return ProvisioningPolicyDtoV2
+func (a *SourcesAPIService) UpdateProvisioningPolicyV2Execute(r ApiUpdateProvisioningPolicyV2Request) (*ProvisioningPolicyDtoV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Provisioningpolicydtov2
+		localVarReturnValue  *ProvisioningPolicyDtoV2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdateProvisioningPolicyV2")
@@ -10375,8 +10375,8 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV2Execute(r ApiUpdateProvisi
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -10398,7 +10398,7 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV2Execute(r ApiUpdateProvisi
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -10422,7 +10422,7 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV2Execute(r ApiUpdateProvisi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10444,7 +10444,7 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV2Execute(r ApiUpdateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10455,7 +10455,7 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV2Execute(r ApiUpdateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10477,7 +10477,7 @@ func (a *SourcesAPIService) UpdateProvisioningPolicyV2Execute(r ApiUpdateProvisi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10506,7 +10506,7 @@ type ApiUpdateSourceEntitlementRequestConfigV1Request struct {
 	ApiService *SourcesAPIService
 	id string
 	xSailPointExperimental *string
-	sourceentitlementrequestconfig *Sourceentitlementrequestconfig
+	sourceEntitlementRequestConfig *SourceEntitlementRequestConfig
 }
 
 // Use this header to enable this experimental API.
@@ -10515,12 +10515,12 @@ func (r ApiUpdateSourceEntitlementRequestConfigV1Request) XSailPointExperimental
 	return r
 }
 
-func (r ApiUpdateSourceEntitlementRequestConfigV1Request) Sourceentitlementrequestconfig(sourceentitlementrequestconfig Sourceentitlementrequestconfig) ApiUpdateSourceEntitlementRequestConfigV1Request {
-	r.sourceentitlementrequestconfig = &sourceentitlementrequestconfig
+func (r ApiUpdateSourceEntitlementRequestConfigV1Request) SourceEntitlementRequestConfig(sourceEntitlementRequestConfig SourceEntitlementRequestConfig) ApiUpdateSourceEntitlementRequestConfigV1Request {
+	r.sourceEntitlementRequestConfig = &sourceEntitlementRequestConfig
 	return r
 }
 
-func (r ApiUpdateSourceEntitlementRequestConfigV1Request) Execute() (*Sourceentitlementrequestconfig, *http.Response, error) {
+func (r ApiUpdateSourceEntitlementRequestConfigV1Request) Execute() (*SourceEntitlementRequestConfig, *http.Response, error) {
 	return r.ApiService.UpdateSourceEntitlementRequestConfigV1Execute(r)
 }
 
@@ -10546,13 +10546,13 @@ func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return Sourceentitlementrequestconfig
-func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigV1Execute(r ApiUpdateSourceEntitlementRequestConfigV1Request) (*Sourceentitlementrequestconfig, *http.Response, error) {
+//  @return SourceEntitlementRequestConfig
+func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigV1Execute(r ApiUpdateSourceEntitlementRequestConfigV1Request) (*SourceEntitlementRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sourceentitlementrequestconfig
+		localVarReturnValue  *SourceEntitlementRequestConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdateSourceEntitlementRequestConfigV1")
@@ -10581,8 +10581,8 @@ func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigV1Execute(r ApiU
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.sourceentitlementrequestconfig == nil {
-		return localVarReturnValue, nil, reportError("sourceentitlementrequestconfig is required and must be specified")
+	if r.sourceEntitlementRequestConfig == nil {
+		return localVarReturnValue, nil, reportError("sourceEntitlementRequestConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -10604,7 +10604,7 @@ func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigV1Execute(r ApiU
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.sourceentitlementrequestconfig
+	localVarPostBody = r.sourceEntitlementRequestConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -10628,7 +10628,7 @@ func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigV1Execute(r ApiU
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10650,7 +10650,7 @@ func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigV1Execute(r ApiU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10672,7 +10672,7 @@ func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigV1Execute(r ApiU
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10701,12 +10701,12 @@ type ApiUpdateSourceScheduleV1Request struct {
 	ApiService *SourcesAPIService
 	sourceId string
 	scheduleType string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // The JSONPatch payload used to update the schedule.
-func (r ApiUpdateSourceScheduleV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateSourceScheduleV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateSourceScheduleV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateSourceScheduleV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -10760,8 +10760,8 @@ func (a *SourcesAPIService) UpdateSourceScheduleV1Execute(r ApiUpdateSourceSched
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -10782,7 +10782,7 @@ func (a *SourcesAPIService) UpdateSourceScheduleV1Execute(r ApiUpdateSourceSched
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -10806,7 +10806,7 @@ func (a *SourcesAPIService) UpdateSourceScheduleV1Execute(r ApiUpdateSourceSched
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10828,7 +10828,7 @@ func (a *SourcesAPIService) UpdateSourceScheduleV1Execute(r ApiUpdateSourceSched
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10839,7 +10839,7 @@ func (a *SourcesAPIService) UpdateSourceScheduleV1Execute(r ApiUpdateSourceSched
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10861,7 +10861,7 @@ func (a *SourcesAPIService) UpdateSourceScheduleV1Execute(r ApiUpdateSourceSched
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -10890,12 +10890,12 @@ type ApiUpdateSourceSchemaV1Request struct {
 	ApiService *SourcesAPIService
 	sourceId string
 	schemaId string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // The JSONPatch payload used to update the schema.
-func (r ApiUpdateSourceSchemaV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateSourceSchemaV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateSourceSchemaV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateSourceSchemaV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -10973,8 +10973,8 @@ func (a *SourcesAPIService) UpdateSourceSchemaV1Execute(r ApiUpdateSourceSchemaV
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -10995,7 +10995,7 @@ func (a *SourcesAPIService) UpdateSourceSchemaV1Execute(r ApiUpdateSourceSchemaV
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -11019,7 +11019,7 @@ func (a *SourcesAPIService) UpdateSourceSchemaV1Execute(r ApiUpdateSourceSchemaV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -11041,7 +11041,7 @@ func (a *SourcesAPIService) UpdateSourceSchemaV1Execute(r ApiUpdateSourceSchemaV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -11052,7 +11052,7 @@ func (a *SourcesAPIService) UpdateSourceSchemaV1Execute(r ApiUpdateSourceSchemaV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -11074,7 +11074,7 @@ func (a *SourcesAPIService) UpdateSourceSchemaV1Execute(r ApiUpdateSourceSchemaV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -11102,12 +11102,12 @@ type ApiUpdateSourceV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
-func (r ApiUpdateSourceV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiUpdateSourceV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiUpdateSourceV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateSourceV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -11168,8 +11168,8 @@ func (a *SourcesAPIService) UpdateSourceV1Execute(r ApiUpdateSourceV1Request) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -11190,7 +11190,7 @@ func (a *SourcesAPIService) UpdateSourceV1Execute(r ApiUpdateSourceV1Request) (*
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -11214,7 +11214,7 @@ func (a *SourcesAPIService) UpdateSourceV1Execute(r ApiUpdateSourceV1Request) (*
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -11236,7 +11236,7 @@ func (a *SourcesAPIService) UpdateSourceV1Execute(r ApiUpdateSourceV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -11247,7 +11247,7 @@ func (a *SourcesAPIService) UpdateSourceV1Execute(r ApiUpdateSourceV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -11269,7 +11269,7 @@ func (a *SourcesAPIService) UpdateSourceV1Execute(r ApiUpdateSourceV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

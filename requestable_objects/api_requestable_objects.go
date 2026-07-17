@@ -28,7 +28,7 @@ type ApiListRequestableObjectsV1Request struct {
 	identityId *string
 	types *[]string
 	term *string
-	statuses *[]Requestableobjectrequeststatus
+	statuses *[]RequestableObjectRequestStatus
 	limit *int32
 	offset *int32
 	count *bool
@@ -55,7 +55,7 @@ func (r ApiListRequestableObjectsV1Request) Term(term string) ApiListRequestable
 }
 
 // Filters the result to the specified status/statuses, where each status is one of &#x60;AVAILABLE&#x60;, &#x60;ASSIGNED&#x60;, or &#x60;PENDING&#x60;. Specifying this parameter without also specifying an &#x60;identity-id&#x60; parameter results in an error.  SailPoint may add additional statuses in the future without notice.
-func (r ApiListRequestableObjectsV1Request) Statuses(statuses []Requestableobjectrequeststatus) ApiListRequestableObjectsV1Request {
+func (r ApiListRequestableObjectsV1Request) Statuses(statuses []RequestableObjectRequestStatus) ApiListRequestableObjectsV1Request {
 	r.statuses = &statuses
 	return r
 }
@@ -90,7 +90,7 @@ func (r ApiListRequestableObjectsV1Request) Sorters(sorters string) ApiListReque
 	return r
 }
 
-func (r ApiListRequestableObjectsV1Request) Execute() ([]Requestableobject, *http.Response, error) {
+func (r ApiListRequestableObjectsV1Request) Execute() ([]RequestableObject, *http.Response, error) {
 	return r.ApiService.ListRequestableObjectsV1Execute(r)
 }
 
@@ -112,13 +112,13 @@ func (a *RequestableObjectsAPIService) ListRequestableObjectsV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []Requestableobject
-func (a *RequestableObjectsAPIService) ListRequestableObjectsV1Execute(r ApiListRequestableObjectsV1Request) ([]Requestableobject, *http.Response, error) {
+//  @return []RequestableObject
+func (a *RequestableObjectsAPIService) ListRequestableObjectsV1Execute(r ApiListRequestableObjectsV1Request) ([]RequestableObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Requestableobject
+		localVarReturnValue  []RequestableObject
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestableObjectsAPIService.ListRequestableObjectsV1")
@@ -208,7 +208,7 @@ func (a *RequestableObjectsAPIService) ListRequestableObjectsV1Execute(r ApiList
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -230,7 +230,7 @@ func (a *RequestableObjectsAPIService) ListRequestableObjectsV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -252,7 +252,7 @@ func (a *RequestableObjectsAPIService) ListRequestableObjectsV1Execute(r ApiList
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

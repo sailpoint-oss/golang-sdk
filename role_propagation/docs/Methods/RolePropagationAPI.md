@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RolePropagationOngoingResponse**](../models/role-propagation-ongoing-response)
+[**Rolepropagationongoingresponse**](../models/rolepropagationongoingresponse)
 
 ### HTTP request headers
 
@@ -165,7 +165,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetOngoingRolePropagationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOngoingRolePropagationV1`: RolePropagationOngoingResponse
+    // response from `GetOngoingRolePropagationV1`: Rolepropagationongoingresponse
     fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetOngoingRolePropagationV1`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RolePropagationConfigResponse**](../models/role-propagation-config-response)
+[**Rolepropagationconfigresponse**](../models/rolepropagationconfigresponse)
 
 ### HTTP request headers
 
@@ -238,7 +238,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetRolePropagationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRolePropagationConfigV1`: RolePropagationConfigResponse
+    // response from `GetRolePropagationConfigV1`: Rolepropagationconfigresponse
     fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetRolePropagationConfigV1`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RolePropagationStatusResponse**](../models/role-propagation-status-response)
+[**Rolepropagationstatusresponse**](../models/rolepropagationstatusresponse)
 
 ### HTTP request headers
 
@@ -323,7 +323,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.GetRolePropagationStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRolePropagationStatusV1`: RolePropagationStatusResponse
+    // response from `GetRolePropagationStatusV1`: Rolepropagationstatusresponse
     fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.GetRolePropagationStatusV1`: %v\n", resp)
 }
 ```
@@ -359,11 +359,11 @@ Other parameters are passed through a pointer to a apiSetRolePropagationConfigV1
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **rolePropagationConfigInput** | [**RolePropagationConfigInput**](../models/role-propagation-config-input) |  | 
+ **rolepropagationconfiginput** | [**Rolepropagationconfiginput**](../models/rolepropagationconfiginput) |  | 
 
 ### Return type
 
-[**RolePropagationConfigResponse**](../models/role-propagation-config-response)
+[**Rolepropagationconfigresponse**](../models/rolepropagationconfigresponse)
 
 ### HTTP request headers
 
@@ -386,10 +386,12 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    rolepropagationconfiginputJson := []byte(``) // RolePropagationConfigInput | 
+    rolepropagationconfiginputJson := []byte(`{
+          "enabled" : true
+        }`) // Rolepropagationconfiginput | 
 
-    var rolePropagationConfigInput role_propagation.RolePropagationConfigInput
-    if err := json.Unmarshal(rolepropagationconfiginputJson, &rolePropagationConfigInput); err != nil {
+    var rolepropagationconfiginput role_propagation.Rolepropagationconfiginput
+    if err := json.Unmarshal(rolepropagationconfiginputJson, &rolepropagationconfiginput); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -397,13 +399,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolePropagationAPI.SetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
-	  //resp, r, err := apiClient.RolePropagationAPI.SetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RolePropagationConfigInput(rolePropagationConfigInput).Execute()
+    resp, r, err := apiClient.RolePropagationAPI.SetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Rolepropagationconfiginput(rolepropagationconfiginput).Execute()
+	  //resp, r, err := apiClient.RolePropagationAPI.SetRolePropagationConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Rolepropagationconfiginput(rolepropagationconfiginput).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.SetRolePropagationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetRolePropagationConfigV1`: RolePropagationConfigResponse
+    // response from `SetRolePropagationConfigV1`: Rolepropagationconfigresponse
     fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.SetRolePropagationConfigV1`: %v\n", resp)
 }
 ```
@@ -444,7 +446,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RolePropagationResponse**](../models/role-propagation-response)
+[**Rolepropagationresponse**](../models/rolepropagationresponse)
 
 ### HTTP request headers
 
@@ -479,7 +481,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolePropagationAPI.StartRolePropagationV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartRolePropagationV1`: RolePropagationResponse
+    // response from `StartRolePropagationV1`: Rolepropagationresponse
     fmt.Fprintf(os.Stdout, "Response from `RolePropagationAPI.StartRolePropagationV1`: %v\n", resp)
 }
 ```

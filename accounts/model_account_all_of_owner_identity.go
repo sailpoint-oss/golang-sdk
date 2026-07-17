@@ -19,7 +19,7 @@ var _ MappedNullable = &AccountAllOfOwnerIdentity{}
 
 // AccountAllOfOwnerIdentity struct for AccountAllOfOwnerIdentity
 type AccountAllOfOwnerIdentity struct {
-	Type *Dtotype `json:"type,omitempty"`
+	Type *DtoType `json:"type,omitempty"`
 	// ID of the object to which this reference applies
 	Id *string `json:"id,omitempty"`
 	// Human-readable display name of the object to which this reference applies
@@ -47,9 +47,9 @@ func NewAccountAllOfOwnerIdentityWithDefaults() *AccountAllOfOwnerIdentity {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *AccountAllOfOwnerIdentity) GetType() Dtotype {
+func (o *AccountAllOfOwnerIdentity) GetType() DtoType {
 	if o == nil || IsNil(o.Type) {
-		var ret Dtotype
+		var ret DtoType
 		return ret
 	}
 	return *o.Type
@@ -57,7 +57,7 @@ func (o *AccountAllOfOwnerIdentity) GetType() Dtotype {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountAllOfOwnerIdentity) GetTypeOk() (*Dtotype, bool) {
+func (o *AccountAllOfOwnerIdentity) GetTypeOk() (*DtoType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -73,8 +73,8 @@ func (o *AccountAllOfOwnerIdentity) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given Dtotype and assigns it to the Type field.
-func (o *AccountAllOfOwnerIdentity) SetType(v Dtotype) {
+// SetType gets a reference to the given DtoType and assigns it to the Type field.
+func (o *AccountAllOfOwnerIdentity) SetType(v DtoType) {
 	o.Type = &v
 }
 

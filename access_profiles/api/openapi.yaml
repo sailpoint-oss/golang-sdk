@@ -190,14 +190,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/accessprofile'
+                  $ref: '#/components/schemas/AccessProfile'
                 type: array
           description: List of access profiles.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -221,7 +221,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -246,7 +246,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -272,20 +272,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/accessprofile'
+              $ref: '#/components/schemas/AccessProfile'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accessprofile'
+                $ref: '#/components/schemas/AccessProfile'
           description: Access profile created.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -309,7 +309,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -334,7 +334,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -392,7 +392,7 @@ paths:
                       text: The "testAccessProfile" access profile can't be deleted
                         because it's in use.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Returned when an access profile cannot be deleted as it's being
             used.
         "401":
@@ -417,7 +417,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -442,7 +442,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -474,13 +474,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accessprofile'
+                $ref: '#/components/schemas/AccessProfile'
           description: An AccessProfile
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -504,7 +504,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -529,7 +529,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -645,7 +645,7 @@ paths:
                     name: DevRel
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         required: true
       responses:
@@ -653,13 +653,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accessprofile'
+                $ref: '#/components/schemas/AccessProfile'
           description: Responds with the Access Profile as updated.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -683,7 +683,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -708,7 +708,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -746,7 +746,7 @@ paths:
               - 2c91808876438bb2017668b91919ecca
               - 2c91808876438ba801766e129f151816
             schema:
-              $ref: '#/components/schemas/accessprofilebulkdeleterequest'
+              $ref: '#/components/schemas/AccessProfileBulkDeleteRequest'
         required: true
       responses:
         "200":
@@ -760,7 +760,7 @@ paths:
                   - type: Role
                     id: 2c9180887643764201766e9f6e121518
               schema:
-                $ref: '#/components/schemas/accessprofilebulkdeleteresponse'
+                $ref: '#/components/schemas/AccessProfileBulkDeleteResponse'
           description: "Returned only if **bestEffortOnly** is **false**, and one\
             \ or more Access Profiles are in use."
         "202":
@@ -776,13 +776,13 @@ paths:
                   - type: Role
                     id: 2c9180887643764201766e9f6e121518
               schema:
-                $ref: '#/components/schemas/accessprofilebulkdeleteresponse'
+                $ref: '#/components/schemas/AccessProfileBulkDeleteResponse'
           description: Returned if at least one deletion will be performed.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -806,7 +806,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -831,7 +831,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -941,14 +941,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/entitlement'
+                  $ref: '#/components/schemas/Entitlement'
                 type: array
           description: List of entitlements.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -972,7 +972,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -997,7 +997,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1039,7 +1039,7 @@ paths:
             - id: 464ae7bf-791e-49fd-b746-06a2e4a89635
               requestable: false
             schema:
-              $ref: '#/components/schemas/accessprofilebulkupdaterequest'
+              $ref: '#/components/schemas/AccessProfileBulkUpdateRequest'
         required: true
       responses:
         "207":
@@ -1051,13 +1051,13 @@ paths:
                 requestable: false
                 description: Access Profile updated successfully.
               schema:
-                $ref: '#/components/schemas/accessprofilebulkupdateresponse'
+                $ref: '#/components/schemas/AccessProfileBulkUpdateResponse'
           description: List of updated and not updated Access Profiles.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1081,7 +1081,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "412":
@@ -1113,7 +1113,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1183,7 +1183,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1207,7 +1207,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "412":
@@ -1239,10 +1239,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    ownerreference:
+    OwnerReference:
       description: Owner of the object.
       example:
         name: support
@@ -1268,7 +1268,7 @@ components:
           example: support
           type: string
       type: object
-    accessprofilesourceref:
+    AccessProfileSourceRef:
       example:
         name: ODS-AD-SOURCE
         id: 2c91809773dee3610173fdb0b6061ef4
@@ -1289,7 +1289,7 @@ components:
           example: ODS-AD-SOURCE
           type: string
       type: object
-    entitlementref:
+    EntitlementRef:
       description: Entitlement including a specific set of access.
       example:
         name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
@@ -1312,7 +1312,7 @@ components:
           nullable: true
           type: string
       type: object
-    accessduration:
+    AccessDuration:
       example:
         value: 6
         timeUnit: MONTHS
@@ -1335,7 +1335,7 @@ components:
           example: MONTHS
           type: string
       type: object
-    accessprofileapprovalscheme:
+    AccessProfileApprovalScheme:
       example:
         approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
         approverType: GOVERNANCE_GROUP
@@ -1379,7 +1379,7 @@ components:
           nullable: true
           type: string
       type: object
-    requestability:
+    Requestability:
       example:
         commentsRequired: true
         reauthorizationRequired: true
@@ -1423,15 +1423,15 @@ components:
           nullable: true
           type: boolean
         maxPermittedAccessDuration:
-          $ref: '#/components/schemas/accessduration'
+          $ref: '#/components/schemas/AccessDuration'
         approvalSchemes:
           description: List describing the steps involved in approving the request.
           items:
-            $ref: '#/components/schemas/accessprofileapprovalscheme'
+            $ref: '#/components/schemas/AccessProfileApprovalScheme'
           nullable: true
           type: array
       type: object
-    revocability:
+    Revocability:
       example:
         approvalSchemes:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
@@ -1444,11 +1444,11 @@ components:
           description: List describing the steps involved in approving the revocation
             request.
           items:
-            $ref: '#/components/schemas/accessprofileapprovalscheme'
+            $ref: '#/components/schemas/AccessProfileApprovalScheme'
           nullable: true
           type: array
       type: object
-    attributevaluedto:
+    AttributeValueDTO:
       properties:
         value:
           description: Technical name of the Attribute value. This is unique and cannot
@@ -1464,7 +1464,7 @@ components:
           example: active
           type: string
       type: object
-    attributedto:
+    AttributeDTO:
       properties:
         key:
           description: Technical name of the Attribute. This is unique and cannot
@@ -1504,11 +1504,11 @@ components:
           type: string
         values:
           items:
-            $ref: '#/components/schemas/attributevaluedto'
+            $ref: '#/components/schemas/AttributeValueDTO'
           nullable: true
           type: array
       type: object
-    attributedtolist:
+    AttributeDTOList:
       example:
         attributes:
         - key: iscPrivacy
@@ -1540,11 +1540,11 @@ components:
               name: Public
               status: active
           items:
-            $ref: '#/components/schemas/attributedto'
+            $ref: '#/components/schemas/AttributeDTO'
           nullable: true
           type: array
       type: object
-    provisioningcriteriaoperation:
+    ProvisioningCriteriaOperation:
       description: Supported operations on `ProvisioningCriteria`.
       enum:
       - EQUALS
@@ -1555,7 +1555,7 @@ components:
       - OR
       example: EQUALS
       type: string
-    provisioningcriterialevel3:
+    ProvisioningCriteriaLevel3:
       description: Defines matching criteria for an account to be provisioned with
         a specific access profile.
       example:
@@ -1565,7 +1565,7 @@ components:
         value: carlee.cert1c9f9b6fd@mailinator.com
       properties:
         operation:
-          $ref: '#/components/schemas/provisioningcriteriaoperation'
+          $ref: '#/components/schemas/ProvisioningCriteriaOperation'
         attribute:
           description: "Name of the account attribute to be tested. If **operation**\
             \ is one of `EQUALS`, `NOT_EQUALS`, `CONTAINS`, or `HAS`, this field is\
@@ -1590,7 +1590,7 @@ components:
           type: string
           example: null
       type: object
-    provisioningcriterialevel2:
+    ProvisioningCriteriaLevel2:
       description: Defines matching criteria for an account to be provisioned with
         a specific access profile.
       example:
@@ -1608,7 +1608,7 @@ components:
         value: carlee.cert1c9f9b6fd@mailinator.com
       properties:
         operation:
-          $ref: '#/components/schemas/provisioningcriteriaoperation'
+          $ref: '#/components/schemas/ProvisioningCriteriaOperation'
         attribute:
           description: "Name of the account attribute to be tested. If **operation**\
             \ is one of `EQUALS`, `NOT_EQUALS`, `CONTAINS`, or `HAS`, this field is\
@@ -1630,12 +1630,12 @@ components:
             \ is `AND` or `OR`. Otherwise, it must be left null. A maximum of three\
             \ levels of criteria are supported, including leaf nodes."
           items:
-            $ref: '#/components/schemas/provisioningcriterialevel3'
+            $ref: '#/components/schemas/ProvisioningCriteriaLevel3'
           nullable: true
           type: array
           example: null
       type: object
-    provisioningcriterialevel1:
+    ProvisioningCriteriaLevel1:
       description: Defines matching criteria for an account to be provisioned with
         a specific access profile.
       example:
@@ -1670,7 +1670,7 @@ components:
       nullable: true
       properties:
         operation:
-          $ref: '#/components/schemas/provisioningcriteriaoperation'
+          $ref: '#/components/schemas/ProvisioningCriteriaOperation'
         attribute:
           description: "Name of the account attribute to be tested. If **operation**\
             \ is one of `EQUALS`, `NOT_EQUALS`, `CONTAINS`, or `HAS`, this field is\
@@ -1692,12 +1692,12 @@ components:
             \ is `AND` or `OR`. Otherwise, it must be left null. A maximum of three\
             \ levels of criteria are supported, including leaf nodes."
           items:
-            $ref: '#/components/schemas/provisioningcriterialevel2'
+            $ref: '#/components/schemas/ProvisioningCriteriaLevel2'
           nullable: true
           type: array
           example: null
       type: object
-    additionalownerref:
+    AdditionalOwnerRef:
       description: Reference to an additional owner (identity or governance group).
       example:
         name: support
@@ -1724,7 +1724,7 @@ components:
           nullable: true
           type: string
       type: object
-    accessprofile:
+    AccessProfile:
       description: Access profile.
       example:
         owner:
@@ -1856,15 +1856,15 @@ components:
           example: true
           type: boolean
         owner:
-          $ref: '#/components/schemas/ownerreference'
+          $ref: '#/components/schemas/OwnerReference'
         source:
-          $ref: '#/components/schemas/accessprofilesourceref'
+          $ref: '#/components/schemas/AccessProfileSourceRef'
         entitlements:
           description: "List of entitlements associated with the access profile. If\
             \ `enabled` is false, this can be empty. Otherwise, it must contain at\
             \ least one entitlement."
           items:
-            $ref: '#/components/schemas/entitlementref'
+            $ref: '#/components/schemas/EntitlementRef'
           nullable: true
           type: array
         requestable:
@@ -1877,9 +1877,9 @@ components:
           example: true
           type: boolean
         accessRequestConfig:
-          $ref: '#/components/schemas/requestability'
+          $ref: '#/components/schemas/Requestability'
         revocationRequestConfig:
-          $ref: '#/components/schemas/revocability'
+          $ref: '#/components/schemas/Revocability'
         segments:
           description: "List of segment IDs, if any, that the access profile is assigned\
             \ to."
@@ -1891,14 +1891,14 @@ components:
           nullable: true
           type: array
         accessModelMetadata:
-          $ref: '#/components/schemas/attributedtolist'
+          $ref: '#/components/schemas/AttributeDTOList'
         provisioningCriteria:
-          $ref: '#/components/schemas/provisioningcriterialevel1'
+          $ref: '#/components/schemas/ProvisioningCriteriaLevel1'
         additionalOwners:
           description: List of additional owner references beyond the primary owner.
             Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
           items:
-            $ref: '#/components/schemas/additionalownerref'
+            $ref: '#/components/schemas/AdditionalOwnerRef'
           nullable: true
           type: array
       required:
@@ -1906,7 +1906,7 @@ components:
       - owner
       - source
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1918,7 +1918,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1931,7 +1931,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1939,7 +1939,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1973,18 +1973,22 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -2003,13 +2007,18 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    accessprofilebulkdeleterequest:
+    AccessProfileBulkDeleteRequest:
+      example:
+        accessProfileIds:
+        - 2c9180847812e0b1017817051919ecca
+        - 2c9180887812e0b201781e129f151816
+        bestEffortOnly: true
       properties:
         accessProfileIds:
           description: List of IDs of Access Profiles to be deleted.
@@ -2027,7 +2036,7 @@ components:
           example: true
           type: boolean
       type: object
-    accessprofileusage:
+    AccessProfileUsage:
       example:
         accessProfileId: 2c91808876438bbb017668c21919ecca
         usedBy:
@@ -2046,10 +2055,10 @@ components:
           description: List of references to objects which are using the indicated
             Access Profile
           items:
-            $ref: '#/components/schemas/accessprofileusage_usedBy_inner'
+            $ref: '#/components/schemas/AccessProfileUsage_usedBy_inner'
           type: array
       type: object
-    accessprofilebulkdeleteresponse:
+    AccessProfileBulkDeleteResponse:
       example:
         pending:
         - 2c91808876438bbb017668c21919ecca
@@ -2089,10 +2098,10 @@ components:
         inUse:
           description: List of usages of Access Profiles targeted for deletion.
           items:
-            $ref: '#/components/schemas/accessprofileusage'
+            $ref: '#/components/schemas/AccessProfileUsage'
           type: array
       type: object
-    accessmodelmetadata:
+    AccessModelMetadata:
       description: Metadata that describes an access item
       example:
         multiselect: true
@@ -2147,11 +2156,11 @@ components:
         values:
           description: The value to assign to the metadata item
           items:
-            $ref: '#/components/schemas/accessmodelmetadata_values_inner'
+            $ref: '#/components/schemas/AccessModelMetadata_values_inner'
           type: array
       title: Access Model Metadata
       type: object
-    permissiondto:
+    PermissionDTO:
       description: "Simplified DTO for the Permission objects stored in SailPoint's\
         \ database. The data is aggregated from customer systems and is free-form,\
         \ so its appearance can vary largely between different clients/customers."
@@ -2175,7 +2184,7 @@ components:
           type: string
       title: Permission DTO
       type: object
-    entitlement:
+    Entitlement:
       example:
         owner:
           name: john.doe
@@ -2294,12 +2303,12 @@ components:
           example: true
           type: boolean
         owner:
-          $ref: '#/components/schemas/entitlement_owner'
+          $ref: '#/components/schemas/Entitlement_owner'
         additionalOwners:
           description: List of additional owner references beyond the primary owner.
             Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).
           items:
-            $ref: '#/components/schemas/additionalownerref'
+            $ref: '#/components/schemas/AdditionalOwnerRef'
           nullable: true
           type: array
         manuallyUpdatedFields:
@@ -2313,7 +2322,7 @@ components:
           nullable: true
           type: object
         accessModelMetadata:
-          $ref: '#/components/schemas/entitlement_accessModelMetadata'
+          $ref: '#/components/schemas/Entitlement_accessModelMetadata'
         created:
           description: Time when the entitlement was created
           example: 2020-10-08T18:33:52.029Z
@@ -2325,7 +2334,7 @@ components:
           format: date-time
           type: string
         source:
-          $ref: '#/components/schemas/entitlement_source'
+          $ref: '#/components/schemas/Entitlement_source'
         attributes:
           additionalProperties: true
           description: A map of free-form key-value pairs from the source system
@@ -2344,22 +2353,22 @@ components:
           type: array
         directPermissions:
           items:
-            $ref: '#/components/schemas/permissiondto'
+            $ref: '#/components/schemas/PermissionDTO'
           type: array
       title: Entitlement
       type: object
-    accessprofilebulkupdaterequest:
+    AccessProfileBulkUpdateRequest:
       description: List of Access profiles to be updated.
       example:
       - id: 464ae7bf-791e-49fd-b746-06a2e4a8
         requestable: false
       items:
-        $ref: '#/components/schemas/accessprofilebulkupdaterequest_inner'
+        $ref: '#/components/schemas/AccessProfileBulkUpdateRequest_inner'
       required:
       - id
       - requestable
       type: array
-    accessprofileupdateitem:
+    AccessProfileUpdateItem:
       properties:
         id:
           description: Identifier of Access Profile in bulk update request.
@@ -2393,7 +2402,7 @@ components:
       - requestable
       - status
       type: object
-    accessprofilebulkupdateresponse:
+    AccessProfileBulkUpdateResponse:
       description: Access Profile Bulk update response.
       example:
       - id: 464ae7bf-791e-49fd-b746-06a2e4a8
@@ -2401,7 +2410,7 @@ components:
         requestable: false
         description: Access Profile updated successfully.
       items:
-        $ref: '#/components/schemas/accessprofileupdateitem'
+        $ref: '#/components/schemas/AccessProfileUpdateItem'
       type: array
     listAccessProfilesV1_401_response:
       example:
@@ -2436,7 +2445,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description
@@ -2459,7 +2468,7 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    accessprofileusage_usedBy_inner:
+    AccessProfileUsage_usedBy_inner:
       description: Role using the access profile.
       example:
         name: Manager Role
@@ -2481,7 +2490,7 @@ components:
           example: Manager Role
           type: string
       type: object
-    accessmodelmetadata_values_inner:
+    AccessModelMetadata_values_inner:
       description: An individual value to assign to the metadata item
       example:
         name: Development
@@ -2501,7 +2510,7 @@ components:
           example: active
           type: string
       type: object
-    entitlement_owner:
+    Entitlement_owner:
       description: The identity that owns the entitlement
       example:
         name: john.doe
@@ -2524,7 +2533,7 @@ components:
           example: john.doe
           type: string
       type: object
-    entitlement_accessModelMetadata:
+    Entitlement_accessModelMetadata:
       description: Additional data to classify the entitlement
       example:
         attributes:
@@ -2561,10 +2570,10 @@ components:
       properties:
         attributes:
           items:
-            $ref: '#/components/schemas/accessmodelmetadata'
+            $ref: '#/components/schemas/AccessModelMetadata'
           type: array
       type: object
-    entitlement_source:
+    Entitlement_source:
       example:
         name: Corporate Active Directory
         id: 2c9180827ca885d7017ca8ce28a000eb
@@ -2583,7 +2592,7 @@ components:
           example: Corporate Active Directory
           type: string
       type: object
-    accessprofilebulkupdaterequest_inner:
+    AccessProfileBulkUpdateRequest_inner:
       description: Access Profile's basic details.
       properties:
         id:

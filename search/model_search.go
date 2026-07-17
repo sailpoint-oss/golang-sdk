@@ -21,21 +21,21 @@ var _ MappedNullable = &Search{}
 type Search struct {
 	// The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.
 	Indices []Index `json:"indices,omitempty"`
-	QueryType *Querytype `json:"queryType,omitempty"`
+	QueryType *QueryType `json:"queryType,omitempty"`
 	QueryVersion *string `json:"queryVersion,omitempty"`
 	Query *Query `json:"query,omitempty"`
 	// The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax.
 	QueryDsl map[string]interface{} `json:"queryDsl,omitempty"`
-	TextQuery *Textquery `json:"textQuery,omitempty"`
-	TypeAheadQuery *Typeaheadquery `json:"typeAheadQuery,omitempty"`
+	TextQuery *TextQuery `json:"textQuery,omitempty"`
+	TypeAheadQuery *TypeAheadQuery `json:"typeAheadQuery,omitempty"`
 	// Indicates whether nested objects from returned search results should be included.
 	IncludeNested *bool `json:"includeNested,omitempty"`
-	QueryResultFilter *Queryresultfilter `json:"queryResultFilter,omitempty"`
-	AggregationType *Aggregationtype `json:"aggregationType,omitempty"`
+	QueryResultFilter *QueryResultFilter `json:"queryResultFilter,omitempty"`
+	AggregationType *AggregationType `json:"aggregationType,omitempty"`
 	AggregationsVersion *string `json:"aggregationsVersion,omitempty"`
 	// The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax.
 	AggregationsDsl map[string]interface{} `json:"aggregationsDsl,omitempty"`
-	Aggregations *Searchaggregationspecification `json:"aggregations,omitempty"`
+	Aggregations *SearchAggregationSpecification `json:"aggregations,omitempty"`
 	// The fields to be used to sort the search results. Use + or - to specify the sort direction.
 	Sort []string `json:"sort,omitempty"`
 	// Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set. This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value. It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging. For example, when searching for identities, if you are sorting by displayName you will also want to include ID, for example [\"displayName\", \"id\"].  If the last identity ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last displayName is \"John Doe\", then using that displayName and ID will start a new search after this identity. The searchAfter value will look like [\"John Doe\",\"2c91808375d8e80a0175e1f88a575221\"]
@@ -53,11 +53,11 @@ type _Search Search
 // will change when the set of required properties is changed
 func NewSearch() *Search {
 	this := Search{}
-	var queryType Querytype = QUERYTYPE_SAILPOINT
+	var queryType QueryType = QUERYTYPE_SAILPOINT
 	this.QueryType = &queryType
 	var includeNested bool = true
 	this.IncludeNested = &includeNested
-	var aggregationType Aggregationtype = AGGREGATIONTYPE_DSL
+	var aggregationType AggregationType = AGGREGATIONTYPE_DSL
 	this.AggregationType = &aggregationType
 	return &this
 }
@@ -67,11 +67,11 @@ func NewSearch() *Search {
 // but it doesn't guarantee that properties required by API are set
 func NewSearchWithDefaults() *Search {
 	this := Search{}
-	var queryType Querytype = QUERYTYPE_SAILPOINT
+	var queryType QueryType = QUERYTYPE_SAILPOINT
 	this.QueryType = &queryType
 	var includeNested bool = true
 	this.IncludeNested = &includeNested
-	var aggregationType Aggregationtype = AGGREGATIONTYPE_DSL
+	var aggregationType AggregationType = AGGREGATIONTYPE_DSL
 	this.AggregationType = &aggregationType
 	return &this
 }
@@ -109,9 +109,9 @@ func (o *Search) SetIndices(v []Index) {
 }
 
 // GetQueryType returns the QueryType field value if set, zero value otherwise.
-func (o *Search) GetQueryType() Querytype {
+func (o *Search) GetQueryType() QueryType {
 	if o == nil || IsNil(o.QueryType) {
-		var ret Querytype
+		var ret QueryType
 		return ret
 	}
 	return *o.QueryType
@@ -119,7 +119,7 @@ func (o *Search) GetQueryType() Querytype {
 
 // GetQueryTypeOk returns a tuple with the QueryType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Search) GetQueryTypeOk() (*Querytype, bool) {
+func (o *Search) GetQueryTypeOk() (*QueryType, bool) {
 	if o == nil || IsNil(o.QueryType) {
 		return nil, false
 	}
@@ -135,8 +135,8 @@ func (o *Search) HasQueryType() bool {
 	return false
 }
 
-// SetQueryType gets a reference to the given Querytype and assigns it to the QueryType field.
-func (o *Search) SetQueryType(v Querytype) {
+// SetQueryType gets a reference to the given QueryType and assigns it to the QueryType field.
+func (o *Search) SetQueryType(v QueryType) {
 	o.QueryType = &v
 }
 
@@ -237,9 +237,9 @@ func (o *Search) SetQueryDsl(v map[string]interface{}) {
 }
 
 // GetTextQuery returns the TextQuery field value if set, zero value otherwise.
-func (o *Search) GetTextQuery() Textquery {
+func (o *Search) GetTextQuery() TextQuery {
 	if o == nil || IsNil(o.TextQuery) {
-		var ret Textquery
+		var ret TextQuery
 		return ret
 	}
 	return *o.TextQuery
@@ -247,7 +247,7 @@ func (o *Search) GetTextQuery() Textquery {
 
 // GetTextQueryOk returns a tuple with the TextQuery field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Search) GetTextQueryOk() (*Textquery, bool) {
+func (o *Search) GetTextQueryOk() (*TextQuery, bool) {
 	if o == nil || IsNil(o.TextQuery) {
 		return nil, false
 	}
@@ -263,15 +263,15 @@ func (o *Search) HasTextQuery() bool {
 	return false
 }
 
-// SetTextQuery gets a reference to the given Textquery and assigns it to the TextQuery field.
-func (o *Search) SetTextQuery(v Textquery) {
+// SetTextQuery gets a reference to the given TextQuery and assigns it to the TextQuery field.
+func (o *Search) SetTextQuery(v TextQuery) {
 	o.TextQuery = &v
 }
 
 // GetTypeAheadQuery returns the TypeAheadQuery field value if set, zero value otherwise.
-func (o *Search) GetTypeAheadQuery() Typeaheadquery {
+func (o *Search) GetTypeAheadQuery() TypeAheadQuery {
 	if o == nil || IsNil(o.TypeAheadQuery) {
-		var ret Typeaheadquery
+		var ret TypeAheadQuery
 		return ret
 	}
 	return *o.TypeAheadQuery
@@ -279,7 +279,7 @@ func (o *Search) GetTypeAheadQuery() Typeaheadquery {
 
 // GetTypeAheadQueryOk returns a tuple with the TypeAheadQuery field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Search) GetTypeAheadQueryOk() (*Typeaheadquery, bool) {
+func (o *Search) GetTypeAheadQueryOk() (*TypeAheadQuery, bool) {
 	if o == nil || IsNil(o.TypeAheadQuery) {
 		return nil, false
 	}
@@ -295,8 +295,8 @@ func (o *Search) HasTypeAheadQuery() bool {
 	return false
 }
 
-// SetTypeAheadQuery gets a reference to the given Typeaheadquery and assigns it to the TypeAheadQuery field.
-func (o *Search) SetTypeAheadQuery(v Typeaheadquery) {
+// SetTypeAheadQuery gets a reference to the given TypeAheadQuery and assigns it to the TypeAheadQuery field.
+func (o *Search) SetTypeAheadQuery(v TypeAheadQuery) {
 	o.TypeAheadQuery = &v
 }
 
@@ -333,9 +333,9 @@ func (o *Search) SetIncludeNested(v bool) {
 }
 
 // GetQueryResultFilter returns the QueryResultFilter field value if set, zero value otherwise.
-func (o *Search) GetQueryResultFilter() Queryresultfilter {
+func (o *Search) GetQueryResultFilter() QueryResultFilter {
 	if o == nil || IsNil(o.QueryResultFilter) {
-		var ret Queryresultfilter
+		var ret QueryResultFilter
 		return ret
 	}
 	return *o.QueryResultFilter
@@ -343,7 +343,7 @@ func (o *Search) GetQueryResultFilter() Queryresultfilter {
 
 // GetQueryResultFilterOk returns a tuple with the QueryResultFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Search) GetQueryResultFilterOk() (*Queryresultfilter, bool) {
+func (o *Search) GetQueryResultFilterOk() (*QueryResultFilter, bool) {
 	if o == nil || IsNil(o.QueryResultFilter) {
 		return nil, false
 	}
@@ -359,15 +359,15 @@ func (o *Search) HasQueryResultFilter() bool {
 	return false
 }
 
-// SetQueryResultFilter gets a reference to the given Queryresultfilter and assigns it to the QueryResultFilter field.
-func (o *Search) SetQueryResultFilter(v Queryresultfilter) {
+// SetQueryResultFilter gets a reference to the given QueryResultFilter and assigns it to the QueryResultFilter field.
+func (o *Search) SetQueryResultFilter(v QueryResultFilter) {
 	o.QueryResultFilter = &v
 }
 
 // GetAggregationType returns the AggregationType field value if set, zero value otherwise.
-func (o *Search) GetAggregationType() Aggregationtype {
+func (o *Search) GetAggregationType() AggregationType {
 	if o == nil || IsNil(o.AggregationType) {
-		var ret Aggregationtype
+		var ret AggregationType
 		return ret
 	}
 	return *o.AggregationType
@@ -375,7 +375,7 @@ func (o *Search) GetAggregationType() Aggregationtype {
 
 // GetAggregationTypeOk returns a tuple with the AggregationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Search) GetAggregationTypeOk() (*Aggregationtype, bool) {
+func (o *Search) GetAggregationTypeOk() (*AggregationType, bool) {
 	if o == nil || IsNil(o.AggregationType) {
 		return nil, false
 	}
@@ -391,8 +391,8 @@ func (o *Search) HasAggregationType() bool {
 	return false
 }
 
-// SetAggregationType gets a reference to the given Aggregationtype and assigns it to the AggregationType field.
-func (o *Search) SetAggregationType(v Aggregationtype) {
+// SetAggregationType gets a reference to the given AggregationType and assigns it to the AggregationType field.
+func (o *Search) SetAggregationType(v AggregationType) {
 	o.AggregationType = &v
 }
 
@@ -461,9 +461,9 @@ func (o *Search) SetAggregationsDsl(v map[string]interface{}) {
 }
 
 // GetAggregations returns the Aggregations field value if set, zero value otherwise.
-func (o *Search) GetAggregations() Searchaggregationspecification {
+func (o *Search) GetAggregations() SearchAggregationSpecification {
 	if o == nil || IsNil(o.Aggregations) {
-		var ret Searchaggregationspecification
+		var ret SearchAggregationSpecification
 		return ret
 	}
 	return *o.Aggregations
@@ -471,7 +471,7 @@ func (o *Search) GetAggregations() Searchaggregationspecification {
 
 // GetAggregationsOk returns a tuple with the Aggregations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Search) GetAggregationsOk() (*Searchaggregationspecification, bool) {
+func (o *Search) GetAggregationsOk() (*SearchAggregationSpecification, bool) {
 	if o == nil || IsNil(o.Aggregations) {
 		return nil, false
 	}
@@ -487,8 +487,8 @@ func (o *Search) HasAggregations() bool {
 	return false
 }
 
-// SetAggregations gets a reference to the given Searchaggregationspecification and assigns it to the Aggregations field.
-func (o *Search) SetAggregations(v Searchaggregationspecification) {
+// SetAggregations gets a reference to the given SearchAggregationSpecification and assigns it to the Aggregations field.
+func (o *Search) SetAggregations(v SearchAggregationSpecification) {
 	o.Aggregations = &v
 }
 

@@ -83,11 +83,11 @@ Other parameters are passed through a pointer to a apiCreateLifecycleStateV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **lifecyclestate** | [**Lifecyclestate**](../models/lifecyclestate) | Lifecycle state to be created. | 
+ **lifecycleState** | [**LifecycleState**](../models/lifecycle-state) | Lifecycle state to be created. | 
 
 ### Return type
 
-[**Lifecyclestate**](../models/lifecyclestate)
+[**LifecycleState**](../models/lifecycle-state)
 
 ### HTTP request headers
 
@@ -110,10 +110,42 @@ import (
 
 func main() {
     identityProfileId := `2b838de9-db9b-abcf-e646-d4f274ad4238` // string | Identity profile ID. # string | Identity profile ID.
-    lifecyclestateJson := []byte(``) // Lifecyclestate | Lifecycle state to be created.
+    lifecyclestateJson := []byte(`{
+          "accessActionConfiguration" : {
+            "removeAllAccessEnabled" : true
+          },
+          "accessProfileIds" : [ "2c918084660f45d6016617daa9210584", "2c918084660f45d6016617daa9210500" ],
+          "emailNotificationOption" : {
+            "notifyManagers" : true,
+            "notifySpecificUsers" : true,
+            "emailAddressList" : [ "test@test.com", "test2@test.com" ],
+            "notifyAllAdmins" : true
+          },
+          "created" : "2015-05-28T14:07:17Z",
+          "description" : "Lifecycle description",
+          "identityCount" : 42,
+          "priority" : 10,
+          "technicalName" : "Technical Name",
+          "identityState" : "INACTIVE_LONG_TERM",
+          "enabled" : true,
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "accountActions" : [ {
+            "allSources" : true,
+            "action" : "ENABLE",
+            "excludeSourceIds" : [ "3b551ccf5566478b9b77f37de25303aa" ],
+            "sourceIds" : [ "2c918084660f45d6016617daa9210584", "2c918084660f45d6016617daa9210500" ]
+          }, {
+            "allSources" : true,
+            "action" : "ENABLE",
+            "excludeSourceIds" : [ "3b551ccf5566478b9b77f37de25303aa" ],
+            "sourceIds" : [ "2c918084660f45d6016617daa9210584", "2c918084660f45d6016617daa9210500" ]
+          } ],
+          "id" : "id12345"
+        }`) // LifecycleState | Lifecycle state to be created.
 
-    var lifecyclestate lifecycle_states.Lifecyclestate
-    if err := json.Unmarshal(lifecyclestateJson, &lifecyclestate); err != nil {
+    var lifecycleState lifecycle_states.LifecycleState
+    if err := json.Unmarshal(lifecyclestateJson, &lifecycleState); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -121,13 +153,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesAPI.CreateLifecycleStateV1(context.Background(), identityProfileId).Lifecyclestate(lifecyclestate).Execute()
-	  //resp, r, err := apiClient.LifecycleStatesAPI.CreateLifecycleStateV1(context.Background(), identityProfileId).Lifecyclestate(lifecyclestate).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.CreateLifecycleStateV1(context.Background(), identityProfileId).LifecycleState(lifecycleState).Execute()
+	  //resp, r, err := apiClient.LifecycleStatesAPI.CreateLifecycleStateV1(context.Background(), identityProfileId).LifecycleState(lifecycleState).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.CreateLifecycleStateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateLifecycleStateV1`: Lifecyclestate
+    // response from `CreateLifecycleStateV1`: LifecycleState
     fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.CreateLifecycleStateV1`: %v\n", resp)
 }
 ```
@@ -161,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Lifecyclestatedeleted**](../models/lifecyclestatedeleted)
+[**LifecyclestateDeleted**](../models/lifecyclestate-deleted)
 
 ### HTTP request headers
 
@@ -196,7 +228,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.DeleteLifecycleStateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteLifecycleStateV1`: Lifecyclestatedeleted
+    // response from `DeleteLifecycleStateV1`: LifecyclestateDeleted
     fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.DeleteLifecycleStateV1`: %v\n", resp)
 }
 ```
@@ -230,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Lifecyclestate**](../models/lifecyclestate)
+[**LifecycleState**](../models/lifecycle-state)
 
 ### HTTP request headers
 
@@ -265,7 +297,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.GetLifecycleStateV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetLifecycleStateV1`: Lifecyclestate
+    // response from `GetLifecycleStateV1`: LifecycleState
     fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.GetLifecycleStateV1`: %v\n", resp)
 }
 ```
@@ -301,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Lifecyclestate**](../models/lifecyclestate)
+[**[]LifecycleState**](../models/lifecycle-state)
 
 ### HTTP request headers
 
@@ -339,7 +371,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.GetLifecycleStatesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetLifecycleStatesV1`: []Lifecyclestate
+    // response from `GetLifecycleStatesV1`: []LifecycleState
     fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.GetLifecycleStatesV1`: %v\n", resp)
 }
 ```
@@ -443,11 +475,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority  | 
 
 ### Return type
 
-[**Lifecyclestate**](../models/lifecyclestate)
+[**LifecycleState**](../models/lifecycle-state)
 
 ### HTTP request headers
 
@@ -471,10 +503,10 @@ import (
 func main() {
     identityProfileId := `2b838de9-db9b-abcf-e646-d4f274ad4238` // string | Identity profile ID. # string | Identity profile ID.
     lifecycleStateId := `ef38f94347e94562b5bb8424a56397d8` // string | Lifecycle state ID. # string | Lifecycle state ID.
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/accessProfileIds","value":["2c918087742bab150174407a80f3125e","2c918087742bab150174407a80f3124f"]},{"op":"replace","path":"/accountActions","value":[{"action":"ENABLE","sourceIds":["2c9180846a2f82fb016a481c1b1560c5","2c9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false},{"action":"DISABLE","sourceIds":null,"excludeSourceIds":["3b551ccf5566478b9b77f37de25303aa"],"allSources":true},{"action":"DELETE","sourceIds":["3c9180846a2f82fb016a481c1b1560c5","8n9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false}]},{"op":"replace","path":"/emailNotificationOption","value":{"notifyManagers":true,"notifyAllAdmins":false,"notifySpecificUsers":false,"emailAddressList":[]}},{"op":"replace","path":"/accessActionConfiguration","value":{"removeAllAccessEnabled":true}}]`) // []Jsonpatchoperation | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/accessProfileIds","value":["2c918087742bab150174407a80f3125e","2c918087742bab150174407a80f3124f"]},{"op":"replace","path":"/accountActions","value":[{"action":"ENABLE","sourceIds":["2c9180846a2f82fb016a481c1b1560c5","2c9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false},{"action":"DISABLE","sourceIds":null,"excludeSourceIds":["3b551ccf5566478b9b77f37de25303aa"],"allSources":true},{"action":"DELETE","sourceIds":["3c9180846a2f82fb016a481c1b1560c5","8n9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false}]},{"op":"replace","path":"/emailNotificationOption","value":{"notifyManagers":true,"notifyAllAdmins":false,"notifySpecificUsers":false,"emailAddressList":[]}},{"op":"replace","path":"/accessActionConfiguration","value":{"removeAllAccessEnabled":true}}]`) // []JsonPatchOperation | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority 
 
-    var jsonpatchoperation []lifecycle_states.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []lifecycle_states.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -482,13 +514,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesAPI.UpdateLifecycleStatesV1(context.Background(), identityProfileId, lifecycleStateId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.LifecycleStatesAPI.UpdateLifecycleStatesV1(context.Background(), identityProfileId, lifecycleStateId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.UpdateLifecycleStatesV1(context.Background(), identityProfileId, lifecycleStateId).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.LifecycleStatesAPI.UpdateLifecycleStatesV1(context.Background(), identityProfileId, lifecycleStateId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.UpdateLifecycleStatesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateLifecycleStatesV1`: Lifecyclestate
+    // response from `UpdateLifecycleStatesV1`: LifecycleState
     fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.UpdateLifecycleStatesV1`: %v\n", resp)
 }
 ```

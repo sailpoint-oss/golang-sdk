@@ -26,16 +26,16 @@ type PersonalAccessTokensAPIService service
 type ApiCreatePersonalAccessTokenV1Request struct {
 	ctx context.Context
 	ApiService *PersonalAccessTokensAPIService
-	createpersonalaccesstokenrequest *Createpersonalaccesstokenrequest
+	createPersonalAccessTokenRequest *CreatePersonalAccessTokenRequest
 }
 
 // Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between &#x60;expirationDate&#x60; and &#x60;userAwareTokenNeverExpires&#x60;.
-func (r ApiCreatePersonalAccessTokenV1Request) Createpersonalaccesstokenrequest(createpersonalaccesstokenrequest Createpersonalaccesstokenrequest) ApiCreatePersonalAccessTokenV1Request {
-	r.createpersonalaccesstokenrequest = &createpersonalaccesstokenrequest
+func (r ApiCreatePersonalAccessTokenV1Request) CreatePersonalAccessTokenRequest(createPersonalAccessTokenRequest CreatePersonalAccessTokenRequest) ApiCreatePersonalAccessTokenV1Request {
+	r.createPersonalAccessTokenRequest = &createPersonalAccessTokenRequest
 	return r
 }
 
-func (r ApiCreatePersonalAccessTokenV1Request) Execute() (*Createpersonalaccesstokenresponse, *http.Response, error) {
+func (r ApiCreatePersonalAccessTokenV1Request) Execute() (*CreatePersonalAccessTokenResponse, *http.Response, error) {
 	return r.ApiService.CreatePersonalAccessTokenV1Execute(r)
 }
 
@@ -63,13 +63,13 @@ func (a *PersonalAccessTokensAPIService) CreatePersonalAccessTokenV1(ctx context
 }
 
 // Execute executes the request
-//  @return Createpersonalaccesstokenresponse
-func (a *PersonalAccessTokensAPIService) CreatePersonalAccessTokenV1Execute(r ApiCreatePersonalAccessTokenV1Request) (*Createpersonalaccesstokenresponse, *http.Response, error) {
+//  @return CreatePersonalAccessTokenResponse
+func (a *PersonalAccessTokensAPIService) CreatePersonalAccessTokenV1Execute(r ApiCreatePersonalAccessTokenV1Request) (*CreatePersonalAccessTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Createpersonalaccesstokenresponse
+		localVarReturnValue  *CreatePersonalAccessTokenResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersonalAccessTokensAPIService.CreatePersonalAccessTokenV1")
@@ -82,8 +82,8 @@ func (a *PersonalAccessTokensAPIService) CreatePersonalAccessTokenV1Execute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createpersonalaccesstokenrequest == nil {
-		return localVarReturnValue, nil, reportError("createpersonalaccesstokenrequest is required and must be specified")
+	if r.createPersonalAccessTokenRequest == nil {
+		return localVarReturnValue, nil, reportError("createPersonalAccessTokenRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -104,7 +104,7 @@ func (a *PersonalAccessTokensAPIService) CreatePersonalAccessTokenV1Execute(r Ap
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createpersonalaccesstokenrequest
+	localVarPostBody = r.createPersonalAccessTokenRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -128,7 +128,7 @@ func (a *PersonalAccessTokensAPIService) CreatePersonalAccessTokenV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -150,7 +150,7 @@ func (a *PersonalAccessTokensAPIService) CreatePersonalAccessTokenV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -172,7 +172,7 @@ func (a *PersonalAccessTokensAPIService) CreatePersonalAccessTokenV1Execute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -283,7 +283,7 @@ func (a *PersonalAccessTokensAPIService) DeletePersonalAccessTokenV1Execute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -305,7 +305,7 @@ func (a *PersonalAccessTokensAPIService) DeletePersonalAccessTokenV1Execute(r Ap
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -316,7 +316,7 @@ func (a *PersonalAccessTokensAPIService) DeletePersonalAccessTokenV1Execute(r Ap
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -338,7 +338,7 @@ func (a *PersonalAccessTokensAPIService) DeletePersonalAccessTokenV1Execute(r Ap
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -372,7 +372,7 @@ func (r ApiListPersonalAccessTokensV1Request) Filters(filters string) ApiListPer
 	return r
 }
 
-func (r ApiListPersonalAccessTokensV1Request) Execute() ([]Getpersonalaccesstokenresponse, *http.Response, error) {
+func (r ApiListPersonalAccessTokensV1Request) Execute() ([]GetPersonalAccessTokenResponse, *http.Response, error) {
 	return r.ApiService.ListPersonalAccessTokensV1Execute(r)
 }
 
@@ -392,13 +392,13 @@ func (a *PersonalAccessTokensAPIService) ListPersonalAccessTokensV1(ctx context.
 }
 
 // Execute executes the request
-//  @return []Getpersonalaccesstokenresponse
-func (a *PersonalAccessTokensAPIService) ListPersonalAccessTokensV1Execute(r ApiListPersonalAccessTokensV1Request) ([]Getpersonalaccesstokenresponse, *http.Response, error) {
+//  @return []GetPersonalAccessTokenResponse
+func (a *PersonalAccessTokensAPIService) ListPersonalAccessTokensV1Execute(r ApiListPersonalAccessTokensV1Request) ([]GetPersonalAccessTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Getpersonalaccesstokenresponse
+		localVarReturnValue  []GetPersonalAccessTokenResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersonalAccessTokensAPIService.ListPersonalAccessTokensV1")
@@ -458,7 +458,7 @@ func (a *PersonalAccessTokensAPIService) ListPersonalAccessTokensV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -480,7 +480,7 @@ func (a *PersonalAccessTokensAPIService) ListPersonalAccessTokensV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -502,7 +502,7 @@ func (a *PersonalAccessTokensAPIService) ListPersonalAccessTokensV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -530,16 +530,16 @@ type ApiPatchPersonalAccessTokenV1Request struct {
 	ctx context.Context
 	ApiService *PersonalAccessTokensAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between &#x60;expirationDate&#x60; and &#x60;userAwareTokenNeverExpires&#x60;. 
-func (r ApiPatchPersonalAccessTokenV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchPersonalAccessTokenV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchPersonalAccessTokenV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchPersonalAccessTokenV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchPersonalAccessTokenV1Request) Execute() (*Getpersonalaccesstokenresponse, *http.Response, error) {
+func (r ApiPatchPersonalAccessTokenV1Request) Execute() (*GetPersonalAccessTokenResponse, *http.Response, error) {
 	return r.ApiService.PatchPersonalAccessTokenV1Execute(r)
 }
 
@@ -570,13 +570,13 @@ func (a *PersonalAccessTokensAPIService) PatchPersonalAccessTokenV1(ctx context.
 }
 
 // Execute executes the request
-//  @return Getpersonalaccesstokenresponse
-func (a *PersonalAccessTokensAPIService) PatchPersonalAccessTokenV1Execute(r ApiPatchPersonalAccessTokenV1Request) (*Getpersonalaccesstokenresponse, *http.Response, error) {
+//  @return GetPersonalAccessTokenResponse
+func (a *PersonalAccessTokensAPIService) PatchPersonalAccessTokenV1Execute(r ApiPatchPersonalAccessTokenV1Request) (*GetPersonalAccessTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Getpersonalaccesstokenresponse
+		localVarReturnValue  *GetPersonalAccessTokenResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersonalAccessTokensAPIService.PatchPersonalAccessTokenV1")
@@ -590,8 +590,8 @@ func (a *PersonalAccessTokensAPIService) PatchPersonalAccessTokenV1Execute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -612,7 +612,7 @@ func (a *PersonalAccessTokensAPIService) PatchPersonalAccessTokenV1Execute(r Api
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -636,7 +636,7 @@ func (a *PersonalAccessTokensAPIService) PatchPersonalAccessTokenV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -658,7 +658,7 @@ func (a *PersonalAccessTokensAPIService) PatchPersonalAccessTokenV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -669,7 +669,7 @@ func (a *PersonalAccessTokensAPIService) PatchPersonalAccessTokenV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -691,7 +691,7 @@ func (a *PersonalAccessTokensAPIService) PatchPersonalAccessTokenV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

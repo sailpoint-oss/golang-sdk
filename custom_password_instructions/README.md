@@ -86,10 +86,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Custompasswordinstruction](docs/Custompasswordinstruction.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [CustomPasswordInstruction](docs/CustomPasswordInstruction.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

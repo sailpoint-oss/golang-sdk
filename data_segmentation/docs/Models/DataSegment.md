@@ -22,8 +22,8 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | The segment's optional description. | [optional] 
 **Scopes** | Pointer to [**[]Scope**](scope) | List of Scopes that are assigned to the segment | [optional] 
 **MemberSelection** | Pointer to [**[]Ref**](ref) | List of Identities that are assigned to the segment | [optional] 
-**MemberFilter** | Pointer to [**Visibilitycriteria**](visibilitycriteria) |  | [optional] 
-**Membership** | Pointer to **Membershiptype** |  | [optional] 
+**MemberFilter** | Pointer to [**VisibilityCriteria**](visibility-criteria) |  | [optional] 
+**Membership** | Pointer to **MembershipType** |  | [optional] 
 **Enabled** | Pointer to **bool** | This boolean indicates whether the segment is currently active. Inactive segments have no effect. | [optional] [default to false]
 **Published** | Pointer to **bool** | This boolean indicates whether the segment is being applied to the accounts. If unpublished its being actively modified to until published | [optional] [default to false]
 
@@ -223,20 +223,20 @@ HasMemberSelection returns a boolean if a field has been set.
 
 ### GetMemberFilter
 
-`func (o *DataSegment) GetMemberFilter() Visibilitycriteria`
+`func (o *DataSegment) GetMemberFilter() VisibilityCriteria`
 
 GetMemberFilter returns the MemberFilter field if non-nil, zero value otherwise.
 
 ### GetMemberFilterOk
 
-`func (o *DataSegment) GetMemberFilterOk() (*Visibilitycriteria, bool)`
+`func (o *DataSegment) GetMemberFilterOk() (*VisibilityCriteria, bool)`
 
 GetMemberFilterOk returns a tuple with the MemberFilter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemberFilter
 
-`func (o *DataSegment) SetMemberFilter(v Visibilitycriteria)`
+`func (o *DataSegment) SetMemberFilter(v VisibilityCriteria)`
 
 SetMemberFilter sets MemberFilter field to given value.
 
@@ -248,20 +248,20 @@ HasMemberFilter returns a boolean if a field has been set.
 
 ### GetMembership
 
-`func (o *DataSegment) GetMembership() Membershiptype`
+`func (o *DataSegment) GetMembership() MembershipType`
 
 GetMembership returns the Membership field if non-nil, zero value otherwise.
 
 ### GetMembershipOk
 
-`func (o *DataSegment) GetMembershipOk() (*Membershiptype, bool)`
+`func (o *DataSegment) GetMembershipOk() (*MembershipType, bool)`
 
 GetMembershipOk returns a tuple with the Membership field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMembership
 
-`func (o *DataSegment) SetMembership(v Membershiptype)`
+`func (o *DataSegment) SetMembership(v MembershipType)`
 
 SetMembership sets Membership field to given value.
 

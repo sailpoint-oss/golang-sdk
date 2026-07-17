@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Identityownershipassociationdetails**](../models/identityownershipassociationdetails)
+[**IdentityOwnershipAssociationDetails**](../models/identity-ownership-association-details)
 
 ### HTTP request headers
 
@@ -183,7 +183,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetIdentityOwnershipDetailsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentityOwnershipDetailsV1`: Identityownershipassociationdetails
+    // response from `GetIdentityOwnershipDetailsV1`: IdentityOwnershipAssociationDetails
     fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.GetIdentityOwnershipDetailsV1`: %v\n", resp)
 }
 ```
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Roleassignmentdto**](../models/roleassignmentdto)
+[**RoleAssignmentDto**](../models/role-assignment-dto)
 
 ### HTTP request headers
 
@@ -318,7 +318,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetRoleAssignmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleAssignmentV1`: Roleassignmentdto
+    // response from `GetRoleAssignmentV1`: RoleAssignmentDto
     fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.GetRoleAssignmentV1`: %v\n", resp)
 }
 ```
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Identityentitlements**](../models/identityentitlements)
+[**[]IdentityEntitlements**](../models/identity-entitlements)
 
 ### HTTP request headers
 
@@ -460,7 +460,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.ListEntitlementsByIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListEntitlementsByIdentityV1`: []Identityentitlements
+    // response from `ListEntitlementsByIdentityV1`: []IdentityEntitlements
     fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.ListEntitlementsByIdentityV1`: %v\n", resp)
 }
 ```
@@ -639,7 +639,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
- **sendaccountverificationrequest** | [**Sendaccountverificationrequest**](../models/sendaccountverificationrequest) |  | 
+ **sendAccountVerificationRequest** | [**SendAccountVerificationRequest**](../models/send-account-verification-request) |  | 
 
 ### Return type
 
@@ -667,10 +667,13 @@ import (
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Identity ID # string | Identity ID
-    sendaccountverificationrequestJson := []byte(``) // Sendaccountverificationrequest | 
+    sendaccountverificationrequestJson := []byte(`{
+          "sourceName" : "Active Directory Source",
+          "via" : "EMAIL_WORK"
+        }`) // SendAccountVerificationRequest | 
 
-    var sendaccountverificationrequest identities.Sendaccountverificationrequest
-    if err := json.Unmarshal(sendaccountverificationrequestJson, &sendaccountverificationrequest); err != nil {
+    var sendAccountVerificationRequest identities.SendAccountVerificationRequest
+    if err := json.Unmarshal(sendaccountverificationrequestJson, &sendAccountVerificationRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -678,8 +681,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountTokenV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sendaccountverificationrequest(sendaccountverificationrequest).Execute()
-	  //r, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountTokenV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Sendaccountverificationrequest(sendaccountverificationrequest).Execute()
+    r, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountTokenV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SendAccountVerificationRequest(sendAccountVerificationRequest).Execute()
+	  //r, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountTokenV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SendAccountVerificationRequest(sendAccountVerificationRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.SendIdentityVerificationAccountTokenV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -724,11 +727,11 @@ Other parameters are passed through a pointer to a apiStartIdentitiesInviteV1Req
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **inviteidentitiesrequest** | [**Inviteidentitiesrequest**](../models/inviteidentitiesrequest) |  | 
+ **inviteIdentitiesRequest** | [**InviteIdentitiesRequest**](../models/invite-identities-request) |  | 
 
 ### Return type
 
-[**Taskstatus**](../models/taskstatus)
+[**TaskStatus**](../models/task-status)
 
 ### HTTP request headers
 
@@ -751,10 +754,13 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    inviteidentitiesrequestJson := []byte(``) // Inviteidentitiesrequest | 
+    inviteidentitiesrequestJson := []byte(`{
+          "ids" : [ "2b568c65bc3c4c57a43bd97e3a8e55", "2c9180867769897d01776ed5f125512f" ],
+          "uninvited" : false
+        }`) // InviteIdentitiesRequest | 
 
-    var inviteidentitiesrequest identities.Inviteidentitiesrequest
-    if err := json.Unmarshal(inviteidentitiesrequestJson, &inviteidentitiesrequest); err != nil {
+    var inviteIdentitiesRequest identities.InviteIdentitiesRequest
+    if err := json.Unmarshal(inviteidentitiesrequestJson, &inviteIdentitiesRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -762,13 +768,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesAPI.StartIdentitiesInviteV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Inviteidentitiesrequest(inviteidentitiesrequest).Execute()
-	  //resp, r, err := apiClient.IdentitiesAPI.StartIdentitiesInviteV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Inviteidentitiesrequest(inviteidentitiesrequest).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.StartIdentitiesInviteV1(context.Background()).XSailPointExperimental(xSailPointExperimental).InviteIdentitiesRequest(inviteIdentitiesRequest).Execute()
+	  //resp, r, err := apiClient.IdentitiesAPI.StartIdentitiesInviteV1(context.Background()).XSailPointExperimental(xSailPointExperimental).InviteIdentitiesRequest(inviteIdentitiesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.StartIdentitiesInviteV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartIdentitiesInviteV1`: Taskstatus
+    // response from `StartIdentitiesInviteV1`: TaskStatus
     fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.StartIdentitiesInviteV1`: %v\n", resp)
 }
 ```
@@ -811,11 +817,11 @@ Other parameters are passed through a pointer to a apiStartIdentityProcessingV1R
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **processidentitiesrequest** | [**Processidentitiesrequest**](../models/processidentitiesrequest) |  | 
+ **processIdentitiesRequest** | [**ProcessIdentitiesRequest**](../models/process-identities-request) |  | 
 
 ### Return type
 
-[**Taskresultresponse**](../models/taskresultresponse)
+[**TaskResultResponse**](../models/task-result-response)
 
 ### HTTP request headers
 
@@ -838,10 +844,12 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    processidentitiesrequestJson := []byte(``) // Processidentitiesrequest | 
+    processidentitiesrequestJson := []byte(`{
+          "identityIds" : [ "ef38f94347e94562b5bb8424a56397d8", "ef38f94347e94562b5bb8424a56397d8", "ef38f94347e94562b5bb8424a56397d8", "ef38f94347e94562b5bb8424a56397d8", "ef38f94347e94562b5bb8424a56397d8" ]
+        }`) // ProcessIdentitiesRequest | 
 
-    var processidentitiesrequest identities.Processidentitiesrequest
-    if err := json.Unmarshal(processidentitiesrequestJson, &processidentitiesrequest); err != nil {
+    var processIdentitiesRequest identities.ProcessIdentitiesRequest
+    if err := json.Unmarshal(processidentitiesrequestJson, &processIdentitiesRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -849,13 +857,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesAPI.StartIdentityProcessingV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Processidentitiesrequest(processidentitiesrequest).Execute()
-	  //resp, r, err := apiClient.IdentitiesAPI.StartIdentityProcessingV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Processidentitiesrequest(processidentitiesrequest).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.StartIdentityProcessingV1(context.Background()).XSailPointExperimental(xSailPointExperimental).ProcessIdentitiesRequest(processIdentitiesRequest).Execute()
+	  //resp, r, err := apiClient.IdentitiesAPI.StartIdentityProcessingV1(context.Background()).XSailPointExperimental(xSailPointExperimental).ProcessIdentitiesRequest(processIdentitiesRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.StartIdentityProcessingV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartIdentityProcessingV1`: Taskresultresponse
+    // response from `StartIdentityProcessingV1`: TaskResultResponse
     fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.StartIdentityProcessingV1`: %v\n", resp)
 }
 ```
@@ -899,7 +907,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Identitysyncjob**](../models/identitysyncjob)
+[**IdentitySyncJob**](../models/identity-sync-job)
 
 ### HTTP request headers
 
@@ -934,7 +942,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.SynchronizeAttributesForIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SynchronizeAttributesForIdentityV1`: Identitysyncjob
+    // response from `SynchronizeAttributesForIdentityV1`: IdentitySyncJob
     fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.SynchronizeAttributesForIdentityV1`: %v\n", resp)
 }
 ```

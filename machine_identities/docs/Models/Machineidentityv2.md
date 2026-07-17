@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **ConnectorAttributes** | Pointer to **map[string]interface{}** | A map of attributes sourced from the connector during aggregation. | [optional] 
 **ManuallyEdited** | Pointer to **bool** | Indicates if the machine identity has been manually edited. | [optional] [default to false]
 **ManuallyCreated** | Pointer to **bool** | Indicates if the machine identity has been manually created. | [optional] [default to false]
-**Owners** | Pointer to [**Machineidentityownersv2**](machineidentityownersv2) |  | [optional] 
+**Owners** | Pointer to [**MachineIdentityOwnersV2**](machine-identity-owners-v2) |  | [optional] 
 **Subtype** | Pointer to **string** | The subtype value associated to the machine identity. | [optional] 
 **SourceId** | Pointer to **string** | The source id associated to the machine identity. | [optional] 
 **Uuid** | Pointer to **string** | The UUID associated to the machine identity directly aggregated from a source. | [optional] 
@@ -33,11 +33,11 @@ Name | Type | Description | Notes
 **Environment** | Pointer to **string** | The environment the machine identity belongs to. | [optional] 
 **ExistsOnSource** | Pointer to **string** | Indicates whether the machine identity still exists on the source. | [optional] 
 **Status** | Pointer to **NullableString** | Operational status read from stored attributes.status; null when absent. | [optional] 
-**Resource** | Pointer to [**Resourcev2**](resourcev2) |  | [optional] 
+**Resource** | Pointer to [**ResourceV2**](resource-v2) |  | [optional] 
 **Source** | Pointer to [**MachineIdentityV2Source**](machine-identity-v2-source) |  | [optional] 
-**UserEntitlements** | Pointer to [**[]Userentitlementv2**](userentitlementv2) | The user entitlements associated to the machine identity. | [optional] 
-**BusinessApplicationRefs** | Pointer to [**[]Businessapplicationref**](businessapplicationref) | Optional Business Application references associated with this machine identity. | [optional] 
-**EffectiveSanctionedStatus** | Pointer to **Sanctionedstatus** |  | [optional] 
+**UserEntitlements** | Pointer to [**[]UserEntitlementV2**](user-entitlement-v2) | The user entitlements associated to the machine identity. | [optional] 
+**BusinessApplicationRefs** | Pointer to [**[]BusinessApplicationRef**](business-application-ref) | Optional Business Application references associated with this machine identity. | [optional] 
+**EffectiveSanctionedStatus** | Pointer to **SanctionedStatus** |  | [optional] 
 **Risk** | Pointer to [**MachineIdentityV2Risk**](machine-identity-v2-risk) |  | [optional] 
 
 ## Methods
@@ -291,20 +291,20 @@ HasManuallyCreated returns a boolean if a field has been set.
 
 ### GetOwners
 
-`func (o *Machineidentityv2) GetOwners() Machineidentityownersv2`
+`func (o *Machineidentityv2) GetOwners() MachineIdentityOwnersV2`
 
 GetOwners returns the Owners field if non-nil, zero value otherwise.
 
 ### GetOwnersOk
 
-`func (o *Machineidentityv2) GetOwnersOk() (*Machineidentityownersv2, bool)`
+`func (o *Machineidentityv2) GetOwnersOk() (*MachineIdentityOwnersV2, bool)`
 
 GetOwnersOk returns a tuple with the Owners field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwners
 
-`func (o *Machineidentityv2) SetOwners(v Machineidentityownersv2)`
+`func (o *Machineidentityv2) SetOwners(v MachineIdentityOwnersV2)`
 
 SetOwners sets Owners field to given value.
 
@@ -526,20 +526,20 @@ HasStatus returns a boolean if a field has been set.
 UnsetStatus ensures that no value is present for Status, not even an explicit nil
 ### GetResource
 
-`func (o *Machineidentityv2) GetResource() Resourcev2`
+`func (o *Machineidentityv2) GetResource() ResourceV2`
 
 GetResource returns the Resource field if non-nil, zero value otherwise.
 
 ### GetResourceOk
 
-`func (o *Machineidentityv2) GetResourceOk() (*Resourcev2, bool)`
+`func (o *Machineidentityv2) GetResourceOk() (*ResourceV2, bool)`
 
 GetResourceOk returns a tuple with the Resource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResource
 
-`func (o *Machineidentityv2) SetResource(v Resourcev2)`
+`func (o *Machineidentityv2) SetResource(v ResourceV2)`
 
 SetResource sets Resource field to given value.
 
@@ -576,20 +576,20 @@ HasSource returns a boolean if a field has been set.
 
 ### GetUserEntitlements
 
-`func (o *Machineidentityv2) GetUserEntitlements() []Userentitlementv2`
+`func (o *Machineidentityv2) GetUserEntitlements() []UserEntitlementV2`
 
 GetUserEntitlements returns the UserEntitlements field if non-nil, zero value otherwise.
 
 ### GetUserEntitlementsOk
 
-`func (o *Machineidentityv2) GetUserEntitlementsOk() (*[]Userentitlementv2, bool)`
+`func (o *Machineidentityv2) GetUserEntitlementsOk() (*[]UserEntitlementV2, bool)`
 
 GetUserEntitlementsOk returns a tuple with the UserEntitlements field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserEntitlements
 
-`func (o *Machineidentityv2) SetUserEntitlements(v []Userentitlementv2)`
+`func (o *Machineidentityv2) SetUserEntitlements(v []UserEntitlementV2)`
 
 SetUserEntitlements sets UserEntitlements field to given value.
 
@@ -601,20 +601,20 @@ HasUserEntitlements returns a boolean if a field has been set.
 
 ### GetBusinessApplicationRefs
 
-`func (o *Machineidentityv2) GetBusinessApplicationRefs() []Businessapplicationref`
+`func (o *Machineidentityv2) GetBusinessApplicationRefs() []BusinessApplicationRef`
 
 GetBusinessApplicationRefs returns the BusinessApplicationRefs field if non-nil, zero value otherwise.
 
 ### GetBusinessApplicationRefsOk
 
-`func (o *Machineidentityv2) GetBusinessApplicationRefsOk() (*[]Businessapplicationref, bool)`
+`func (o *Machineidentityv2) GetBusinessApplicationRefsOk() (*[]BusinessApplicationRef, bool)`
 
 GetBusinessApplicationRefsOk returns a tuple with the BusinessApplicationRefs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBusinessApplicationRefs
 
-`func (o *Machineidentityv2) SetBusinessApplicationRefs(v []Businessapplicationref)`
+`func (o *Machineidentityv2) SetBusinessApplicationRefs(v []BusinessApplicationRef)`
 
 SetBusinessApplicationRefs sets BusinessApplicationRefs field to given value.
 
@@ -636,20 +636,20 @@ HasBusinessApplicationRefs returns a boolean if a field has been set.
 UnsetBusinessApplicationRefs ensures that no value is present for BusinessApplicationRefs, not even an explicit nil
 ### GetEffectiveSanctionedStatus
 
-`func (o *Machineidentityv2) GetEffectiveSanctionedStatus() Sanctionedstatus`
+`func (o *Machineidentityv2) GetEffectiveSanctionedStatus() SanctionedStatus`
 
 GetEffectiveSanctionedStatus returns the EffectiveSanctionedStatus field if non-nil, zero value otherwise.
 
 ### GetEffectiveSanctionedStatusOk
 
-`func (o *Machineidentityv2) GetEffectiveSanctionedStatusOk() (*Sanctionedstatus, bool)`
+`func (o *Machineidentityv2) GetEffectiveSanctionedStatusOk() (*SanctionedStatus, bool)`
 
 GetEffectiveSanctionedStatusOk returns a tuple with the EffectiveSanctionedStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEffectiveSanctionedStatus
 
-`func (o *Machineidentityv2) SetEffectiveSanctionedStatus(v Sanctionedstatus)`
+`func (o *Machineidentityv2) SetEffectiveSanctionedStatus(v SanctionedStatus)`
 
 SetEffectiveSanctionedStatus sets EffectiveSanctionedStatus field to given value.
 

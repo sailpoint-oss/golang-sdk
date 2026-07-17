@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **CloudGoverned** | Pointer to **bool** | True if the entitlement is cloud governed | [optional] [default to false]
 **Requestable** | Pointer to **bool** | True if the entitlement is able to be directly requested | [optional] [default to false]
 **Owner** | Pointer to [**NullableEntitlementOwner**](entitlement-owner) |  | [optional] 
-**AdditionalOwners** | Pointer to [**[]Additionalownerref**](additionalownerref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
+**AdditionalOwners** | Pointer to [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 **ManuallyUpdatedFields** | Pointer to **map[string]interface{}** | A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated. | [optional] 
 **AccessModelMetadata** | Pointer to [**EntitlementAccessModelMetadata**](entitlement-access-model-metadata) |  | [optional] 
 **Created** | Pointer to **SailPointTime** | Time when the entitlement was created | [optional] 
@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **Source** | Pointer to [**EntitlementSource**](entitlement-source) |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | A map of free-form key-value pairs from the source system | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
-**DirectPermissions** | Pointer to [**[]Permissiondto**](permissiondto) |  | [optional] 
+**DirectPermissions** | Pointer to [**[]PermissionDTO**](permission-dto) |  | [optional] 
 
 ## Methods
 
@@ -326,20 +326,20 @@ HasOwner returns a boolean if a field has been set.
 UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 ### GetAdditionalOwners
 
-`func (o *Entitlement) GetAdditionalOwners() []Additionalownerref`
+`func (o *Entitlement) GetAdditionalOwners() []AdditionalOwnerRef`
 
 GetAdditionalOwners returns the AdditionalOwners field if non-nil, zero value otherwise.
 
 ### GetAdditionalOwnersOk
 
-`func (o *Entitlement) GetAdditionalOwnersOk() (*[]Additionalownerref, bool)`
+`func (o *Entitlement) GetAdditionalOwnersOk() (*[]AdditionalOwnerRef, bool)`
 
 GetAdditionalOwnersOk returns a tuple with the AdditionalOwners field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAdditionalOwners
 
-`func (o *Entitlement) SetAdditionalOwners(v []Additionalownerref)`
+`func (o *Entitlement) SetAdditionalOwners(v []AdditionalOwnerRef)`
 
 SetAdditionalOwners sets AdditionalOwners field to given value.
 
@@ -556,20 +556,20 @@ HasSegments returns a boolean if a field has been set.
 UnsetSegments ensures that no value is present for Segments, not even an explicit nil
 ### GetDirectPermissions
 
-`func (o *Entitlement) GetDirectPermissions() []Permissiondto`
+`func (o *Entitlement) GetDirectPermissions() []PermissionDTO`
 
 GetDirectPermissions returns the DirectPermissions field if non-nil, zero value otherwise.
 
 ### GetDirectPermissionsOk
 
-`func (o *Entitlement) GetDirectPermissionsOk() (*[]Permissiondto, bool)`
+`func (o *Entitlement) GetDirectPermissionsOk() (*[]PermissionDTO, bool)`
 
 GetDirectPermissionsOk returns a tuple with the DirectPermissions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDirectPermissions
 
-`func (o *Entitlement) SetDirectPermissions(v []Permissiondto)`
+`func (o *Entitlement) SetDirectPermissions(v []PermissionDTO)`
 
 SetDirectPermissions sets DirectPermissions field to given value.
 

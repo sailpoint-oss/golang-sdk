@@ -125,7 +125,7 @@ func (a *RolesAPIService) CreateRoleV1Execute(r ApiCreateRoleV1Request) (*Role, 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -147,7 +147,7 @@ func (a *RolesAPIService) CreateRoleV1Execute(r ApiCreateRoleV1Request) (*Role, 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -169,7 +169,7 @@ func (a *RolesAPIService) CreateRoleV1Execute(r ApiCreateRoleV1Request) (*Role, 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -196,15 +196,15 @@ func (a *RolesAPIService) CreateRoleV1Execute(r ApiCreateRoleV1Request) (*Role, 
 type ApiDeleteBulkRolesV1Request struct {
 	ctx context.Context
 	ApiService *RolesAPIService
-	rolebulkdeleterequest *Rolebulkdeleterequest
+	roleBulkDeleteRequest *RoleBulkDeleteRequest
 }
 
-func (r ApiDeleteBulkRolesV1Request) Rolebulkdeleterequest(rolebulkdeleterequest Rolebulkdeleterequest) ApiDeleteBulkRolesV1Request {
-	r.rolebulkdeleterequest = &rolebulkdeleterequest
+func (r ApiDeleteBulkRolesV1Request) RoleBulkDeleteRequest(roleBulkDeleteRequest RoleBulkDeleteRequest) ApiDeleteBulkRolesV1Request {
+	r.roleBulkDeleteRequest = &roleBulkDeleteRequest
 	return r
 }
 
-func (r ApiDeleteBulkRolesV1Request) Execute() (*Taskresultdto, *http.Response, error) {
+func (r ApiDeleteBulkRolesV1Request) Execute() (*TaskResultDto, *http.Response, error) {
 	return r.ApiService.DeleteBulkRolesV1Execute(r)
 }
 
@@ -227,13 +227,13 @@ func (a *RolesAPIService) DeleteBulkRolesV1(ctx context.Context) ApiDeleteBulkRo
 }
 
 // Execute executes the request
-//  @return Taskresultdto
-func (a *RolesAPIService) DeleteBulkRolesV1Execute(r ApiDeleteBulkRolesV1Request) (*Taskresultdto, *http.Response, error) {
+//  @return TaskResultDto
+func (a *RolesAPIService) DeleteBulkRolesV1Execute(r ApiDeleteBulkRolesV1Request) (*TaskResultDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Taskresultdto
+		localVarReturnValue  *TaskResultDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.DeleteBulkRolesV1")
@@ -246,8 +246,8 @@ func (a *RolesAPIService) DeleteBulkRolesV1Execute(r ApiDeleteBulkRolesV1Request
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.rolebulkdeleterequest == nil {
-		return localVarReturnValue, nil, reportError("rolebulkdeleterequest is required and must be specified")
+	if r.roleBulkDeleteRequest == nil {
+		return localVarReturnValue, nil, reportError("roleBulkDeleteRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -268,7 +268,7 @@ func (a *RolesAPIService) DeleteBulkRolesV1Execute(r ApiDeleteBulkRolesV1Request
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.rolebulkdeleterequest
+	localVarPostBody = r.roleBulkDeleteRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -292,7 +292,7 @@ func (a *RolesAPIService) DeleteBulkRolesV1Execute(r ApiDeleteBulkRolesV1Request
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -314,7 +314,7 @@ func (a *RolesAPIService) DeleteBulkRolesV1Execute(r ApiDeleteBulkRolesV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -336,7 +336,7 @@ func (a *RolesAPIService) DeleteBulkRolesV1Execute(r ApiDeleteBulkRolesV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -455,7 +455,7 @@ func (a *RolesAPIService) DeleteMetadataFromRoleByKeyAndValueV1Execute(r ApiDele
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -477,7 +477,7 @@ func (a *RolesAPIService) DeleteMetadataFromRoleByKeyAndValueV1Execute(r ApiDele
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -499,7 +499,7 @@ func (a *RolesAPIService) DeleteMetadataFromRoleByKeyAndValueV1Execute(r ApiDele
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -603,7 +603,7 @@ func (a *RolesAPIService) DeleteRoleV1Execute(r ApiDeleteRoleV1Request) (*http.R
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -625,7 +625,7 @@ func (a *RolesAPIService) DeleteRoleV1Execute(r ApiDeleteRoleV1Request) (*http.R
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -647,7 +647,7 @@ func (a *RolesAPIService) DeleteRoleV1Execute(r ApiDeleteRoleV1Request) (*http.R
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -668,7 +668,7 @@ type ApiGetBulkUpdateStatusByIdV1Request struct {
 	id string
 }
 
-func (r ApiGetBulkUpdateStatusByIdV1Request) Execute() (*Rolebulkupdateresponse, *http.Response, error) {
+func (r ApiGetBulkUpdateStatusByIdV1Request) Execute() (*RoleBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.GetBulkUpdateStatusByIdV1Execute(r)
 }
 
@@ -692,13 +692,13 @@ func (a *RolesAPIService) GetBulkUpdateStatusByIdV1(ctx context.Context, id stri
 }
 
 // Execute executes the request
-//  @return Rolebulkupdateresponse
-func (a *RolesAPIService) GetBulkUpdateStatusByIdV1Execute(r ApiGetBulkUpdateStatusByIdV1Request) (*Rolebulkupdateresponse, *http.Response, error) {
+//  @return RoleBulkUpdateResponse
+func (a *RolesAPIService) GetBulkUpdateStatusByIdV1Execute(r ApiGetBulkUpdateStatusByIdV1Request) (*RoleBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Rolebulkupdateresponse
+		localVarReturnValue  *RoleBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetBulkUpdateStatusByIdV1")
@@ -753,7 +753,7 @@ func (a *RolesAPIService) GetBulkUpdateStatusByIdV1Execute(r ApiGetBulkUpdateSta
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -775,7 +775,7 @@ func (a *RolesAPIService) GetBulkUpdateStatusByIdV1Execute(r ApiGetBulkUpdateSta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -797,7 +797,7 @@ func (a *RolesAPIService) GetBulkUpdateStatusByIdV1Execute(r ApiGetBulkUpdateSta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -826,7 +826,7 @@ type ApiGetBulkUpdateStatusV1Request struct {
 	ApiService *RolesAPIService
 }
 
-func (r ApiGetBulkUpdateStatusV1Request) Execute() ([]Rolegetallbulkupdateresponse, *http.Response, error) {
+func (r ApiGetBulkUpdateStatusV1Request) Execute() ([]RoleGetAllBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.GetBulkUpdateStatusV1Execute(r)
 }
 
@@ -846,13 +846,13 @@ func (a *RolesAPIService) GetBulkUpdateStatusV1(ctx context.Context) ApiGetBulkU
 }
 
 // Execute executes the request
-//  @return []Rolegetallbulkupdateresponse
-func (a *RolesAPIService) GetBulkUpdateStatusV1Execute(r ApiGetBulkUpdateStatusV1Request) ([]Rolegetallbulkupdateresponse, *http.Response, error) {
+//  @return []RoleGetAllBulkUpdateResponse
+func (a *RolesAPIService) GetBulkUpdateStatusV1Execute(r ApiGetBulkUpdateStatusV1Request) ([]RoleGetAllBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Rolegetallbulkupdateresponse
+		localVarReturnValue  []RoleGetAllBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetBulkUpdateStatusV1")
@@ -906,7 +906,7 @@ func (a *RolesAPIService) GetBulkUpdateStatusV1Execute(r ApiGetBulkUpdateStatusV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -928,7 +928,7 @@ func (a *RolesAPIService) GetBulkUpdateStatusV1Execute(r ApiGetBulkUpdateStatusV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -950,7 +950,7 @@ func (a *RolesAPIService) GetBulkUpdateStatusV1Execute(r ApiGetBulkUpdateStatusV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1015,7 +1015,7 @@ func (r ApiGetRoleAssignedIdentitiesV1Request) Sorters(sorters string) ApiGetRol
 	return r
 }
 
-func (r ApiGetRoleAssignedIdentitiesV1Request) Execute() ([]Roleidentity, *http.Response, error) {
+func (r ApiGetRoleAssignedIdentitiesV1Request) Execute() ([]RoleIdentity, *http.Response, error) {
 	return r.ApiService.GetRoleAssignedIdentitiesV1Execute(r)
 }
 
@@ -1035,13 +1035,13 @@ func (a *RolesAPIService) GetRoleAssignedIdentitiesV1(ctx context.Context, id st
 }
 
 // Execute executes the request
-//  @return []Roleidentity
-func (a *RolesAPIService) GetRoleAssignedIdentitiesV1Execute(r ApiGetRoleAssignedIdentitiesV1Request) ([]Roleidentity, *http.Response, error) {
+//  @return []RoleIdentity
+func (a *RolesAPIService) GetRoleAssignedIdentitiesV1Execute(r ApiGetRoleAssignedIdentitiesV1Request) ([]RoleIdentity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Roleidentity
+		localVarReturnValue  []RoleIdentity
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetRoleAssignedIdentitiesV1")
@@ -1120,7 +1120,7 @@ func (a *RolesAPIService) GetRoleAssignedIdentitiesV1Execute(r ApiGetRoleAssigne
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1142,7 +1142,7 @@ func (a *RolesAPIService) GetRoleAssignedIdentitiesV1Execute(r ApiGetRoleAssigne
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1164,7 +1164,7 @@ func (a *RolesAPIService) GetRoleAssignedIdentitiesV1Execute(r ApiGetRoleAssigne
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1353,7 +1353,7 @@ func (a *RolesAPIService) GetRoleEntitlementsV1Execute(r ApiGetRoleEntitlementsV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1375,7 +1375,7 @@ func (a *RolesAPIService) GetRoleEntitlementsV1Execute(r ApiGetRoleEntitlementsV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1397,7 +1397,7 @@ func (a *RolesAPIService) GetRoleEntitlementsV1Execute(r ApiGetRoleEntitlementsV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1511,7 +1511,7 @@ func (a *RolesAPIService) GetRoleV1Execute(r ApiGetRoleV1Request) (*Role, *http.
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1533,7 +1533,7 @@ func (a *RolesAPIService) GetRoleV1Execute(r ApiGetRoleV1Request) (*Role, *http.
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1555,7 +1555,7 @@ func (a *RolesAPIService) GetRoleV1Execute(r ApiGetRoleV1Request) (*Role, *http.
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1758,7 +1758,7 @@ func (a *RolesAPIService) ListRolesV1Execute(r ApiListRolesV1Request) ([]Role, *
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1780,7 +1780,7 @@ func (a *RolesAPIService) ListRolesV1Execute(r ApiListRolesV1Request) ([]Role, *
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1802,7 +1802,7 @@ func (a *RolesAPIService) ListRolesV1Execute(r ApiListRolesV1Request) ([]Role, *
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1830,11 +1830,11 @@ type ApiPatchRoleV1Request struct {
 	ctx context.Context
 	ApiService *RolesAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
-func (r ApiPatchRoleV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchRoleV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchRoleV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchRoleV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -1901,8 +1901,8 @@ func (a *RolesAPIService) PatchRoleV1Execute(r ApiPatchRoleV1Request) (*Role, *h
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1923,7 +1923,7 @@ func (a *RolesAPIService) PatchRoleV1Execute(r ApiPatchRoleV1Request) (*Role, *h
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1947,7 +1947,7 @@ func (a *RolesAPIService) PatchRoleV1Execute(r ApiPatchRoleV1Request) (*Role, *h
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1969,7 +1969,7 @@ func (a *RolesAPIService) PatchRoleV1Execute(r ApiPatchRoleV1Request) (*Role, *h
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1991,7 +1991,7 @@ func (a *RolesAPIService) PatchRoleV1Execute(r ApiPatchRoleV1Request) (*Role, *h
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2025,7 +2025,7 @@ type ApiSearchRolesByFilterV1Request struct {
 	sorters *string
 	forSegmentIds *string
 	includeUnsegmented *bool
-	rolelistfilterdto *Rolelistfilterdto
+	roleListFilterDTO *RoleListFilterDTO
 }
 
 // If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity&#39;s ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
@@ -2070,8 +2070,8 @@ func (r ApiSearchRolesByFilterV1Request) IncludeUnsegmented(includeUnsegmented b
 	return r
 }
 
-func (r ApiSearchRolesByFilterV1Request) Rolelistfilterdto(rolelistfilterdto Rolelistfilterdto) ApiSearchRolesByFilterV1Request {
-	r.rolelistfilterdto = &rolelistfilterdto
+func (r ApiSearchRolesByFilterV1Request) RoleListFilterDTO(roleListFilterDTO RoleListFilterDTO) ApiSearchRolesByFilterV1Request {
+	r.roleListFilterDTO = &roleListFilterDTO
 	return r
 }
 
@@ -2167,7 +2167,7 @@ func (a *RolesAPIService) SearchRolesByFilterV1Execute(r ApiSearchRolesByFilterV
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.rolelistfilterdto
+	localVarPostBody = r.roleListFilterDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2191,7 +2191,7 @@ func (a *RolesAPIService) SearchRolesByFilterV1Execute(r ApiSearchRolesByFilterV
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2213,7 +2213,7 @@ func (a *RolesAPIService) SearchRolesByFilterV1Execute(r ApiSearchRolesByFilterV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2235,7 +2235,7 @@ func (a *RolesAPIService) SearchRolesByFilterV1Execute(r ApiSearchRolesByFilterV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2356,7 +2356,7 @@ func (a *RolesAPIService) UpdateAttributeKeyAndValueToRoleV1Execute(r ApiUpdateA
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2378,7 +2378,7 @@ func (a *RolesAPIService) UpdateAttributeKeyAndValueToRoleV1Execute(r ApiUpdateA
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2400,7 +2400,7 @@ func (a *RolesAPIService) UpdateAttributeKeyAndValueToRoleV1Execute(r ApiUpdateA
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2427,15 +2427,15 @@ func (a *RolesAPIService) UpdateAttributeKeyAndValueToRoleV1Execute(r ApiUpdateA
 type ApiUpdateRolesMetadataByFilterV1Request struct {
 	ctx context.Context
 	ApiService *RolesAPIService
-	rolemetadatabulkupdatebyfilterrequest *Rolemetadatabulkupdatebyfilterrequest
+	roleMetadataBulkUpdateByFilterRequest *RoleMetadataBulkUpdateByFilterRequest
 }
 
-func (r ApiUpdateRolesMetadataByFilterV1Request) Rolemetadatabulkupdatebyfilterrequest(rolemetadatabulkupdatebyfilterrequest Rolemetadatabulkupdatebyfilterrequest) ApiUpdateRolesMetadataByFilterV1Request {
-	r.rolemetadatabulkupdatebyfilterrequest = &rolemetadatabulkupdatebyfilterrequest
+func (r ApiUpdateRolesMetadataByFilterV1Request) RoleMetadataBulkUpdateByFilterRequest(roleMetadataBulkUpdateByFilterRequest RoleMetadataBulkUpdateByFilterRequest) ApiUpdateRolesMetadataByFilterV1Request {
+	r.roleMetadataBulkUpdateByFilterRequest = &roleMetadataBulkUpdateByFilterRequest
 	return r
 }
 
-func (r ApiUpdateRolesMetadataByFilterV1Request) Execute() (*Rolebulkupdateresponse, *http.Response, error) {
+func (r ApiUpdateRolesMetadataByFilterV1Request) Execute() (*RoleBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateRolesMetadataByFilterV1Execute(r)
 }
 
@@ -2458,13 +2458,13 @@ func (a *RolesAPIService) UpdateRolesMetadataByFilterV1(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return Rolebulkupdateresponse
-func (a *RolesAPIService) UpdateRolesMetadataByFilterV1Execute(r ApiUpdateRolesMetadataByFilterV1Request) (*Rolebulkupdateresponse, *http.Response, error) {
+//  @return RoleBulkUpdateResponse
+func (a *RolesAPIService) UpdateRolesMetadataByFilterV1Execute(r ApiUpdateRolesMetadataByFilterV1Request) (*RoleBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Rolebulkupdateresponse
+		localVarReturnValue  *RoleBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.UpdateRolesMetadataByFilterV1")
@@ -2477,8 +2477,8 @@ func (a *RolesAPIService) UpdateRolesMetadataByFilterV1Execute(r ApiUpdateRolesM
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.rolemetadatabulkupdatebyfilterrequest == nil {
-		return localVarReturnValue, nil, reportError("rolemetadatabulkupdatebyfilterrequest is required and must be specified")
+	if r.roleMetadataBulkUpdateByFilterRequest == nil {
+		return localVarReturnValue, nil, reportError("roleMetadataBulkUpdateByFilterRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2499,7 +2499,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByFilterV1Execute(r ApiUpdateRolesM
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.rolemetadatabulkupdatebyfilterrequest
+	localVarPostBody = r.roleMetadataBulkUpdateByFilterRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2523,7 +2523,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByFilterV1Execute(r ApiUpdateRolesM
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2545,7 +2545,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByFilterV1Execute(r ApiUpdateRolesM
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2567,7 +2567,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByFilterV1Execute(r ApiUpdateRolesM
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2594,15 +2594,15 @@ func (a *RolesAPIService) UpdateRolesMetadataByFilterV1Execute(r ApiUpdateRolesM
 type ApiUpdateRolesMetadataByIdsV1Request struct {
 	ctx context.Context
 	ApiService *RolesAPIService
-	rolemetadatabulkupdatebyidrequest *Rolemetadatabulkupdatebyidrequest
+	roleMetadataBulkUpdateByIdRequest *RoleMetadataBulkUpdateByIdRequest
 }
 
-func (r ApiUpdateRolesMetadataByIdsV1Request) Rolemetadatabulkupdatebyidrequest(rolemetadatabulkupdatebyidrequest Rolemetadatabulkupdatebyidrequest) ApiUpdateRolesMetadataByIdsV1Request {
-	r.rolemetadatabulkupdatebyidrequest = &rolemetadatabulkupdatebyidrequest
+func (r ApiUpdateRolesMetadataByIdsV1Request) RoleMetadataBulkUpdateByIdRequest(roleMetadataBulkUpdateByIdRequest RoleMetadataBulkUpdateByIdRequest) ApiUpdateRolesMetadataByIdsV1Request {
+	r.roleMetadataBulkUpdateByIdRequest = &roleMetadataBulkUpdateByIdRequest
 	return r
 }
 
-func (r ApiUpdateRolesMetadataByIdsV1Request) Execute() (*Rolebulkupdateresponse, *http.Response, error) {
+func (r ApiUpdateRolesMetadataByIdsV1Request) Execute() (*RoleBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateRolesMetadataByIdsV1Execute(r)
 }
 
@@ -2625,13 +2625,13 @@ func (a *RolesAPIService) UpdateRolesMetadataByIdsV1(ctx context.Context) ApiUpd
 }
 
 // Execute executes the request
-//  @return Rolebulkupdateresponse
-func (a *RolesAPIService) UpdateRolesMetadataByIdsV1Execute(r ApiUpdateRolesMetadataByIdsV1Request) (*Rolebulkupdateresponse, *http.Response, error) {
+//  @return RoleBulkUpdateResponse
+func (a *RolesAPIService) UpdateRolesMetadataByIdsV1Execute(r ApiUpdateRolesMetadataByIdsV1Request) (*RoleBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Rolebulkupdateresponse
+		localVarReturnValue  *RoleBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.UpdateRolesMetadataByIdsV1")
@@ -2644,8 +2644,8 @@ func (a *RolesAPIService) UpdateRolesMetadataByIdsV1Execute(r ApiUpdateRolesMeta
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.rolemetadatabulkupdatebyidrequest == nil {
-		return localVarReturnValue, nil, reportError("rolemetadatabulkupdatebyidrequest is required and must be specified")
+	if r.roleMetadataBulkUpdateByIdRequest == nil {
+		return localVarReturnValue, nil, reportError("roleMetadataBulkUpdateByIdRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2666,7 +2666,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByIdsV1Execute(r ApiUpdateRolesMeta
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.rolemetadatabulkupdatebyidrequest
+	localVarPostBody = r.roleMetadataBulkUpdateByIdRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2690,7 +2690,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByIdsV1Execute(r ApiUpdateRolesMeta
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2712,7 +2712,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByIdsV1Execute(r ApiUpdateRolesMeta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2734,7 +2734,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByIdsV1Execute(r ApiUpdateRolesMeta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2761,15 +2761,15 @@ func (a *RolesAPIService) UpdateRolesMetadataByIdsV1Execute(r ApiUpdateRolesMeta
 type ApiUpdateRolesMetadataByQueryV1Request struct {
 	ctx context.Context
 	ApiService *RolesAPIService
-	rolemetadatabulkupdatebyqueryrequest *Rolemetadatabulkupdatebyqueryrequest
+	roleMetadataBulkUpdateByQueryRequest *RoleMetadataBulkUpdateByQueryRequest
 }
 
-func (r ApiUpdateRolesMetadataByQueryV1Request) Rolemetadatabulkupdatebyqueryrequest(rolemetadatabulkupdatebyqueryrequest Rolemetadatabulkupdatebyqueryrequest) ApiUpdateRolesMetadataByQueryV1Request {
-	r.rolemetadatabulkupdatebyqueryrequest = &rolemetadatabulkupdatebyqueryrequest
+func (r ApiUpdateRolesMetadataByQueryV1Request) RoleMetadataBulkUpdateByQueryRequest(roleMetadataBulkUpdateByQueryRequest RoleMetadataBulkUpdateByQueryRequest) ApiUpdateRolesMetadataByQueryV1Request {
+	r.roleMetadataBulkUpdateByQueryRequest = &roleMetadataBulkUpdateByQueryRequest
 	return r
 }
 
-func (r ApiUpdateRolesMetadataByQueryV1Request) Execute() (*Rolebulkupdateresponse, *http.Response, error) {
+func (r ApiUpdateRolesMetadataByQueryV1Request) Execute() (*RoleBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateRolesMetadataByQueryV1Execute(r)
 }
 
@@ -2792,13 +2792,13 @@ func (a *RolesAPIService) UpdateRolesMetadataByQueryV1(ctx context.Context) ApiU
 }
 
 // Execute executes the request
-//  @return Rolebulkupdateresponse
-func (a *RolesAPIService) UpdateRolesMetadataByQueryV1Execute(r ApiUpdateRolesMetadataByQueryV1Request) (*Rolebulkupdateresponse, *http.Response, error) {
+//  @return RoleBulkUpdateResponse
+func (a *RolesAPIService) UpdateRolesMetadataByQueryV1Execute(r ApiUpdateRolesMetadataByQueryV1Request) (*RoleBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Rolebulkupdateresponse
+		localVarReturnValue  *RoleBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.UpdateRolesMetadataByQueryV1")
@@ -2811,8 +2811,8 @@ func (a *RolesAPIService) UpdateRolesMetadataByQueryV1Execute(r ApiUpdateRolesMe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.rolemetadatabulkupdatebyqueryrequest == nil {
-		return localVarReturnValue, nil, reportError("rolemetadatabulkupdatebyqueryrequest is required and must be specified")
+	if r.roleMetadataBulkUpdateByQueryRequest == nil {
+		return localVarReturnValue, nil, reportError("roleMetadataBulkUpdateByQueryRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2833,7 +2833,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByQueryV1Execute(r ApiUpdateRolesMe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.rolemetadatabulkupdatebyqueryrequest
+	localVarPostBody = r.roleMetadataBulkUpdateByQueryRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2857,7 +2857,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByQueryV1Execute(r ApiUpdateRolesMe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2879,7 +2879,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByQueryV1Execute(r ApiUpdateRolesMe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2901,7 +2901,7 @@ func (a *RolesAPIService) UpdateRolesMetadataByQueryV1Execute(r ApiUpdateRolesMe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

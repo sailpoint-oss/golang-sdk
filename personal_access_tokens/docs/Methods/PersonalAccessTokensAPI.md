@@ -57,11 +57,11 @@ Other parameters are passed through a pointer to a apiCreatePersonalAccessTokenV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createpersonalaccesstokenrequest** | [**Createpersonalaccesstokenrequest**](../models/createpersonalaccesstokenrequest) | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between &#x60;expirationDate&#x60; and &#x60;userAwareTokenNeverExpires&#x60;. | 
+ **createPersonalAccessTokenRequest** | [**CreatePersonalAccessTokenRequest**](../models/create-personal-access-token-request) | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between &#x60;expirationDate&#x60; and &#x60;userAwareTokenNeverExpires&#x60;. | 
 
 ### Return type
 
-[**Createpersonalaccesstokenresponse**](../models/createpersonalaccesstokenresponse)
+[**CreatePersonalAccessTokenResponse**](../models/create-personal-access-token-response)
 
 ### HTTP request headers
 
@@ -83,10 +83,16 @@ import (
 )
 
 func main() {
-    createpersonalaccesstokenrequestJson := []byte(``) // Createpersonalaccesstokenrequest | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
+    createpersonalaccesstokenrequestJson := []byte(`{
+          "scope" : [ "demo:personal-access-token-scope:first", "demo:personal-access-token-scope:second" ],
+          "accessTokenValiditySeconds" : 36900,
+          "name" : "NodeJS Integration",
+          "userAwareTokenNeverExpires" : false,
+          "expirationDate" : "2026-12-31T23:59:59.999Z"
+        }`) // CreatePersonalAccessTokenRequest | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
 
-    var createpersonalaccesstokenrequest personal_access_tokens.Createpersonalaccesstokenrequest
-    if err := json.Unmarshal(createpersonalaccesstokenrequestJson, &createpersonalaccesstokenrequest); err != nil {
+    var createPersonalAccessTokenRequest personal_access_tokens.CreatePersonalAccessTokenRequest
+    if err := json.Unmarshal(createpersonalaccesstokenrequestJson, &createPersonalAccessTokenRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -94,13 +100,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokensAPI.CreatePersonalAccessTokenV1(context.Background()).Createpersonalaccesstokenrequest(createpersonalaccesstokenrequest).Execute()
-	  //resp, r, err := apiClient.PersonalAccessTokensAPI.CreatePersonalAccessTokenV1(context.Background()).Createpersonalaccesstokenrequest(createpersonalaccesstokenrequest).Execute()
+    resp, r, err := apiClient.PersonalAccessTokensAPI.CreatePersonalAccessTokenV1(context.Background()).CreatePersonalAccessTokenRequest(createPersonalAccessTokenRequest).Execute()
+	  //resp, r, err := apiClient.PersonalAccessTokensAPI.CreatePersonalAccessTokenV1(context.Background()).CreatePersonalAccessTokenRequest(createPersonalAccessTokenRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.CreatePersonalAccessTokenV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreatePersonalAccessTokenV1`: Createpersonalaccesstokenresponse
+    // response from `CreatePersonalAccessTokenV1`: CreatePersonalAccessTokenResponse
     fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensAPI.CreatePersonalAccessTokenV1`: %v\n", resp)
 }
 ```
@@ -194,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Getpersonalaccesstokenresponse**](../models/getpersonalaccesstokenresponse)
+[**[]GetPersonalAccessTokenResponse**](../models/get-personal-access-token-response)
 
 ### HTTP request headers
 
@@ -229,7 +235,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.ListPersonalAccessTokensV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListPersonalAccessTokensV1`: []Getpersonalaccesstokenresponse
+    // response from `ListPersonalAccessTokensV1`: []GetPersonalAccessTokenResponse
     fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensAPI.ListPersonalAccessTokensV1`: %v\n", resp)
 }
 ```
@@ -267,11 +273,11 @@ Other parameters are passed through a pointer to a apiPatchPersonalAccessTokenV1
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between &#x60;expirationDate&#x60; and &#x60;userAwareTokenNeverExpires&#x60;.  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between &#x60;expirationDate&#x60; and &#x60;userAwareTokenNeverExpires&#x60;.  | 
 
 ### Return type
 
-[**Getpersonalaccesstokenresponse**](../models/getpersonalaccesstokenresponse)
+[**GetPersonalAccessTokenResponse**](../models/get-personal-access-token-response)
 
 ### HTTP request headers
 
@@ -294,10 +300,10 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | The Personal Access Token id # string | The Personal Access Token id
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"New name"},{"op":"replace","path":"/scope","value":["sp:scopes:all"]},{"op":"replace","path":"/expirationDate","value":"2027-12-31T23:59:59.999Z"}]`) // []Jsonpatchoperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"New name"},{"op":"replace","path":"/scope","value":["sp:scopes:all"]},{"op":"replace","path":"/expirationDate","value":"2027-12-31T23:59:59.999Z"}]`) // []JsonPatchOperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. 
 
-    var jsonpatchoperation []personal_access_tokens.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []personal_access_tokens.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -305,13 +311,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokensAPI.PatchPersonalAccessTokenV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.PersonalAccessTokensAPI.PatchPersonalAccessTokenV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.PersonalAccessTokensAPI.PatchPersonalAccessTokenV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.PersonalAccessTokensAPI.PatchPersonalAccessTokenV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.PatchPersonalAccessTokenV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchPersonalAccessTokenV1`: Getpersonalaccesstokenresponse
+    // response from `PatchPersonalAccessTokenV1`: GetPersonalAccessTokenResponse
     fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensAPI.PatchPersonalAccessTokenV1`: %v\n", resp)
 }
 ```

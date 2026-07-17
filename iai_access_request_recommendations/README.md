@@ -93,20 +93,20 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accessrecommendationmessage](docs/Accessrecommendationmessage.md)
- - [Accessrequestrecommendationactionitemdto](docs/Accessrequestrecommendationactionitemdto.md)
- - [Accessrequestrecommendationactionitemresponsedto](docs/Accessrequestrecommendationactionitemresponsedto.md)
- - [Accessrequestrecommendationconfigdto](docs/Accessrequestrecommendationconfigdto.md)
- - [Accessrequestrecommendationitem](docs/Accessrequestrecommendationitem.md)
- - [Accessrequestrecommendationitemdetail](docs/Accessrequestrecommendationitemdetail.md)
- - [AccessrequestrecommendationitemdetailAccess](docs/AccessrequestrecommendationitemdetailAccess.md)
- - [Accessrequestrecommendationitemtype](docs/Accessrequestrecommendationitemtype.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [AccessRecommendationMessage](docs/AccessRecommendationMessage.md)
+ - [AccessRequestRecommendationActionItemDto](docs/AccessRequestRecommendationActionItemDto.md)
+ - [AccessRequestRecommendationActionItemResponseDto](docs/AccessRequestRecommendationActionItemResponseDto.md)
+ - [AccessRequestRecommendationConfigDto](docs/AccessRequestRecommendationConfigDto.md)
+ - [AccessRequestRecommendationItem](docs/AccessRequestRecommendationItem.md)
+ - [AccessRequestRecommendationItemDetail](docs/AccessRequestRecommendationItemDetail.md)
+ - [AccessRequestRecommendationItemDetailAccess](docs/AccessRequestRecommendationItemDetailAccess.md)
+ - [AccessRequestRecommendationItemType](docs/AccessRequestRecommendationItemType.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetAccessRequestRecommendationsV1401Response](docs/GetAccessRequestRecommendationsV1401Response.md)
  - [GetAccessRequestRecommendationsV1429Response](docs/GetAccessRequestRecommendationsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Translationmessage](docs/Translationmessage.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [TranslationMessage](docs/TranslationMessage.md)
 
 
 ## Documentation For Authorization

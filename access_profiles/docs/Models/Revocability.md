@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'Revocability', 'V1Revocability']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApprovalSchemes** | Pointer to [**[]Accessprofileapprovalscheme**](accessprofileapprovalscheme) | List describing the steps involved in approving the revocation request. | [optional] 
+**ApprovalSchemes** | Pointer to [**[]AccessProfileApprovalScheme**](access-profile-approval-scheme) | List describing the steps involved in approving the revocation request. | [optional] 
 
 ## Methods
 
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetApprovalSchemes
 
-`func (o *Revocability) GetApprovalSchemes() []Accessprofileapprovalscheme`
+`func (o *Revocability) GetApprovalSchemes() []AccessProfileApprovalScheme`
 
 GetApprovalSchemes returns the ApprovalSchemes field if non-nil, zero value otherwise.
 
 ### GetApprovalSchemesOk
 
-`func (o *Revocability) GetApprovalSchemesOk() (*[]Accessprofileapprovalscheme, bool)`
+`func (o *Revocability) GetApprovalSchemesOk() (*[]AccessProfileApprovalScheme, bool)`
 
 GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovalSchemes
 
-`func (o *Revocability) SetApprovalSchemes(v []Accessprofileapprovalscheme)`
+`func (o *Revocability) SetApprovalSchemes(v []AccessProfileApprovalScheme)`
 
 SetApprovalSchemes sets ApprovalSchemes field to given value.
 

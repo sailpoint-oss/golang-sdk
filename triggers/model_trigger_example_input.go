@@ -18,245 +18,245 @@ import (
 
 // TriggerExampleInput - An example of the JSON payload that will be sent by the trigger to the subscribed service.
 type TriggerExampleInput struct {
-	Accessrequestdynamicapprover *Accessrequestdynamicapprover
-	Accessrequestpostapproval *Accessrequestpostapproval
-	Accessrequestpreapproval *Accessrequestpreapproval
-	Accountaggregationcompleted *Accountaggregationcompleted
-	Accountattributeschanged *Accountattributeschanged
-	Accountcorrelated *Accountcorrelated
-	Accountcreated *Accountcreated
-	Accountdeleted *Accountdeleted
-	Accountscollectedforaggregation *Accountscollectedforaggregation
-	Accountuncorrelated *Accountuncorrelated
-	Accountupdated *Accountupdated
-	Campaignactivated *Campaignactivated
-	Campaignended *Campaignended
-	Campaigngenerated *Campaigngenerated
-	Certificationsignedoff *Certificationsignedoff
-	Identityattributeschanged *Identityattributeschanged
-	Identitycreated *Identitycreated
-	Identitydeleted *Identitydeleted
-	Machineidentitycreated *Machineidentitycreated
-	Machineidentitydeleted *Machineidentitydeleted
-	Machineidentityupdated *Machineidentityupdated
-	Provisioningcompleted *Provisioningcompleted
-	Savedsearchcomplete *Savedsearchcomplete
-	Sourceaccountcreated *Sourceaccountcreated
-	Sourceaccountdeleted *Sourceaccountdeleted
-	Sourceaccountupdated *Sourceaccountupdated
-	Sourcecreated *Sourcecreated
-	Sourcedeleted *Sourcedeleted
-	Sourceupdated *Sourceupdated
-	Vaclusterstatuschangeevent *Vaclusterstatuschangeevent
+	AccessRequestDynamicApprover *AccessRequestDynamicApprover
+	AccessRequestPostApproval *AccessRequestPostApproval
+	AccessRequestPreApproval *AccessRequestPreApproval
+	AccountAggregationCompleted *AccountAggregationCompleted
+	AccountAttributesChanged *AccountAttributesChanged
+	AccountCorrelated *AccountCorrelated
+	AccountCreated *AccountCreated
+	AccountDeleted *AccountDeleted
+	AccountUncorrelated *AccountUncorrelated
+	AccountUpdated *AccountUpdated
+	AccountsCollectedForAggregation *AccountsCollectedForAggregation
+	CampaignActivated *CampaignActivated
+	CampaignEnded *CampaignEnded
+	CampaignGenerated *CampaignGenerated
+	CertificationSignedOff *CertificationSignedOff
+	IdentityAttributesChanged *IdentityAttributesChanged
+	IdentityCreated *IdentityCreated
+	IdentityDeleted *IdentityDeleted
+	MachineIdentityCreated *MachineIdentityCreated
+	MachineIdentityDeleted *MachineIdentityDeleted
+	MachineIdentityUpdated *MachineIdentityUpdated
+	ProvisioningCompleted *ProvisioningCompleted
+	SavedSearchComplete *SavedSearchComplete
+	SourceAccountCreated *SourceAccountCreated
+	SourceAccountDeleted *SourceAccountDeleted
+	SourceAccountUpdated *SourceAccountUpdated
+	SourceCreated *SourceCreated
+	SourceDeleted *SourceDeleted
+	SourceUpdated *SourceUpdated
+	VAClusterStatusChangeEvent *VAClusterStatusChangeEvent
 }
 
-// AccessrequestdynamicapproverAsTriggerExampleInput is a convenience function that returns Accessrequestdynamicapprover wrapped in TriggerExampleInput
-func AccessrequestdynamicapproverAsTriggerExampleInput(v *Accessrequestdynamicapprover) TriggerExampleInput {
+// AccessRequestDynamicApproverAsTriggerExampleInput is a convenience function that returns AccessRequestDynamicApprover wrapped in TriggerExampleInput
+func AccessRequestDynamicApproverAsTriggerExampleInput(v *AccessRequestDynamicApprover) TriggerExampleInput {
 	return TriggerExampleInput{
-		Accessrequestdynamicapprover: v,
+		AccessRequestDynamicApprover: v,
 	}
 }
 
-// AccessrequestpostapprovalAsTriggerExampleInput is a convenience function that returns Accessrequestpostapproval wrapped in TriggerExampleInput
-func AccessrequestpostapprovalAsTriggerExampleInput(v *Accessrequestpostapproval) TriggerExampleInput {
+// AccessRequestPostApprovalAsTriggerExampleInput is a convenience function that returns AccessRequestPostApproval wrapped in TriggerExampleInput
+func AccessRequestPostApprovalAsTriggerExampleInput(v *AccessRequestPostApproval) TriggerExampleInput {
 	return TriggerExampleInput{
-		Accessrequestpostapproval: v,
+		AccessRequestPostApproval: v,
 	}
 }
 
-// AccessrequestpreapprovalAsTriggerExampleInput is a convenience function that returns Accessrequestpreapproval wrapped in TriggerExampleInput
-func AccessrequestpreapprovalAsTriggerExampleInput(v *Accessrequestpreapproval) TriggerExampleInput {
+// AccessRequestPreApprovalAsTriggerExampleInput is a convenience function that returns AccessRequestPreApproval wrapped in TriggerExampleInput
+func AccessRequestPreApprovalAsTriggerExampleInput(v *AccessRequestPreApproval) TriggerExampleInput {
 	return TriggerExampleInput{
-		Accessrequestpreapproval: v,
+		AccessRequestPreApproval: v,
 	}
 }
 
-// AccountaggregationcompletedAsTriggerExampleInput is a convenience function that returns Accountaggregationcompleted wrapped in TriggerExampleInput
-func AccountaggregationcompletedAsTriggerExampleInput(v *Accountaggregationcompleted) TriggerExampleInput {
+// AccountAggregationCompletedAsTriggerExampleInput is a convenience function that returns AccountAggregationCompleted wrapped in TriggerExampleInput
+func AccountAggregationCompletedAsTriggerExampleInput(v *AccountAggregationCompleted) TriggerExampleInput {
 	return TriggerExampleInput{
-		Accountaggregationcompleted: v,
+		AccountAggregationCompleted: v,
 	}
 }
 
-// AccountattributeschangedAsTriggerExampleInput is a convenience function that returns Accountattributeschanged wrapped in TriggerExampleInput
-func AccountattributeschangedAsTriggerExampleInput(v *Accountattributeschanged) TriggerExampleInput {
+// AccountAttributesChangedAsTriggerExampleInput is a convenience function that returns AccountAttributesChanged wrapped in TriggerExampleInput
+func AccountAttributesChangedAsTriggerExampleInput(v *AccountAttributesChanged) TriggerExampleInput {
 	return TriggerExampleInput{
-		Accountattributeschanged: v,
+		AccountAttributesChanged: v,
 	}
 }
 
-// AccountcorrelatedAsTriggerExampleInput is a convenience function that returns Accountcorrelated wrapped in TriggerExampleInput
-func AccountcorrelatedAsTriggerExampleInput(v *Accountcorrelated) TriggerExampleInput {
+// AccountCorrelatedAsTriggerExampleInput is a convenience function that returns AccountCorrelated wrapped in TriggerExampleInput
+func AccountCorrelatedAsTriggerExampleInput(v *AccountCorrelated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Accountcorrelated: v,
+		AccountCorrelated: v,
 	}
 }
 
-// AccountcreatedAsTriggerExampleInput is a convenience function that returns Accountcreated wrapped in TriggerExampleInput
-func AccountcreatedAsTriggerExampleInput(v *Accountcreated) TriggerExampleInput {
+// AccountCreatedAsTriggerExampleInput is a convenience function that returns AccountCreated wrapped in TriggerExampleInput
+func AccountCreatedAsTriggerExampleInput(v *AccountCreated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Accountcreated: v,
+		AccountCreated: v,
 	}
 }
 
-// AccountdeletedAsTriggerExampleInput is a convenience function that returns Accountdeleted wrapped in TriggerExampleInput
-func AccountdeletedAsTriggerExampleInput(v *Accountdeleted) TriggerExampleInput {
+// AccountDeletedAsTriggerExampleInput is a convenience function that returns AccountDeleted wrapped in TriggerExampleInput
+func AccountDeletedAsTriggerExampleInput(v *AccountDeleted) TriggerExampleInput {
 	return TriggerExampleInput{
-		Accountdeleted: v,
+		AccountDeleted: v,
 	}
 }
 
-// AccountscollectedforaggregationAsTriggerExampleInput is a convenience function that returns Accountscollectedforaggregation wrapped in TriggerExampleInput
-func AccountscollectedforaggregationAsTriggerExampleInput(v *Accountscollectedforaggregation) TriggerExampleInput {
+// AccountUncorrelatedAsTriggerExampleInput is a convenience function that returns AccountUncorrelated wrapped in TriggerExampleInput
+func AccountUncorrelatedAsTriggerExampleInput(v *AccountUncorrelated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Accountscollectedforaggregation: v,
+		AccountUncorrelated: v,
 	}
 }
 
-// AccountuncorrelatedAsTriggerExampleInput is a convenience function that returns Accountuncorrelated wrapped in TriggerExampleInput
-func AccountuncorrelatedAsTriggerExampleInput(v *Accountuncorrelated) TriggerExampleInput {
+// AccountUpdatedAsTriggerExampleInput is a convenience function that returns AccountUpdated wrapped in TriggerExampleInput
+func AccountUpdatedAsTriggerExampleInput(v *AccountUpdated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Accountuncorrelated: v,
+		AccountUpdated: v,
 	}
 }
 
-// AccountupdatedAsTriggerExampleInput is a convenience function that returns Accountupdated wrapped in TriggerExampleInput
-func AccountupdatedAsTriggerExampleInput(v *Accountupdated) TriggerExampleInput {
+// AccountsCollectedForAggregationAsTriggerExampleInput is a convenience function that returns AccountsCollectedForAggregation wrapped in TriggerExampleInput
+func AccountsCollectedForAggregationAsTriggerExampleInput(v *AccountsCollectedForAggregation) TriggerExampleInput {
 	return TriggerExampleInput{
-		Accountupdated: v,
+		AccountsCollectedForAggregation: v,
 	}
 }
 
-// CampaignactivatedAsTriggerExampleInput is a convenience function that returns Campaignactivated wrapped in TriggerExampleInput
-func CampaignactivatedAsTriggerExampleInput(v *Campaignactivated) TriggerExampleInput {
+// CampaignActivatedAsTriggerExampleInput is a convenience function that returns CampaignActivated wrapped in TriggerExampleInput
+func CampaignActivatedAsTriggerExampleInput(v *CampaignActivated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Campaignactivated: v,
+		CampaignActivated: v,
 	}
 }
 
-// CampaignendedAsTriggerExampleInput is a convenience function that returns Campaignended wrapped in TriggerExampleInput
-func CampaignendedAsTriggerExampleInput(v *Campaignended) TriggerExampleInput {
+// CampaignEndedAsTriggerExampleInput is a convenience function that returns CampaignEnded wrapped in TriggerExampleInput
+func CampaignEndedAsTriggerExampleInput(v *CampaignEnded) TriggerExampleInput {
 	return TriggerExampleInput{
-		Campaignended: v,
+		CampaignEnded: v,
 	}
 }
 
-// CampaigngeneratedAsTriggerExampleInput is a convenience function that returns Campaigngenerated wrapped in TriggerExampleInput
-func CampaigngeneratedAsTriggerExampleInput(v *Campaigngenerated) TriggerExampleInput {
+// CampaignGeneratedAsTriggerExampleInput is a convenience function that returns CampaignGenerated wrapped in TriggerExampleInput
+func CampaignGeneratedAsTriggerExampleInput(v *CampaignGenerated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Campaigngenerated: v,
+		CampaignGenerated: v,
 	}
 }
 
-// CertificationsignedoffAsTriggerExampleInput is a convenience function that returns Certificationsignedoff wrapped in TriggerExampleInput
-func CertificationsignedoffAsTriggerExampleInput(v *Certificationsignedoff) TriggerExampleInput {
+// CertificationSignedOffAsTriggerExampleInput is a convenience function that returns CertificationSignedOff wrapped in TriggerExampleInput
+func CertificationSignedOffAsTriggerExampleInput(v *CertificationSignedOff) TriggerExampleInput {
 	return TriggerExampleInput{
-		Certificationsignedoff: v,
+		CertificationSignedOff: v,
 	}
 }
 
-// IdentityattributeschangedAsTriggerExampleInput is a convenience function that returns Identityattributeschanged wrapped in TriggerExampleInput
-func IdentityattributeschangedAsTriggerExampleInput(v *Identityattributeschanged) TriggerExampleInput {
+// IdentityAttributesChangedAsTriggerExampleInput is a convenience function that returns IdentityAttributesChanged wrapped in TriggerExampleInput
+func IdentityAttributesChangedAsTriggerExampleInput(v *IdentityAttributesChanged) TriggerExampleInput {
 	return TriggerExampleInput{
-		Identityattributeschanged: v,
+		IdentityAttributesChanged: v,
 	}
 }
 
-// IdentitycreatedAsTriggerExampleInput is a convenience function that returns Identitycreated wrapped in TriggerExampleInput
-func IdentitycreatedAsTriggerExampleInput(v *Identitycreated) TriggerExampleInput {
+// IdentityCreatedAsTriggerExampleInput is a convenience function that returns IdentityCreated wrapped in TriggerExampleInput
+func IdentityCreatedAsTriggerExampleInput(v *IdentityCreated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Identitycreated: v,
+		IdentityCreated: v,
 	}
 }
 
-// IdentitydeletedAsTriggerExampleInput is a convenience function that returns Identitydeleted wrapped in TriggerExampleInput
-func IdentitydeletedAsTriggerExampleInput(v *Identitydeleted) TriggerExampleInput {
+// IdentityDeletedAsTriggerExampleInput is a convenience function that returns IdentityDeleted wrapped in TriggerExampleInput
+func IdentityDeletedAsTriggerExampleInput(v *IdentityDeleted) TriggerExampleInput {
 	return TriggerExampleInput{
-		Identitydeleted: v,
+		IdentityDeleted: v,
 	}
 }
 
-// MachineidentitycreatedAsTriggerExampleInput is a convenience function that returns Machineidentitycreated wrapped in TriggerExampleInput
-func MachineidentitycreatedAsTriggerExampleInput(v *Machineidentitycreated) TriggerExampleInput {
+// MachineIdentityCreatedAsTriggerExampleInput is a convenience function that returns MachineIdentityCreated wrapped in TriggerExampleInput
+func MachineIdentityCreatedAsTriggerExampleInput(v *MachineIdentityCreated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Machineidentitycreated: v,
+		MachineIdentityCreated: v,
 	}
 }
 
-// MachineidentitydeletedAsTriggerExampleInput is a convenience function that returns Machineidentitydeleted wrapped in TriggerExampleInput
-func MachineidentitydeletedAsTriggerExampleInput(v *Machineidentitydeleted) TriggerExampleInput {
+// MachineIdentityDeletedAsTriggerExampleInput is a convenience function that returns MachineIdentityDeleted wrapped in TriggerExampleInput
+func MachineIdentityDeletedAsTriggerExampleInput(v *MachineIdentityDeleted) TriggerExampleInput {
 	return TriggerExampleInput{
-		Machineidentitydeleted: v,
+		MachineIdentityDeleted: v,
 	}
 }
 
-// MachineidentityupdatedAsTriggerExampleInput is a convenience function that returns Machineidentityupdated wrapped in TriggerExampleInput
-func MachineidentityupdatedAsTriggerExampleInput(v *Machineidentityupdated) TriggerExampleInput {
+// MachineIdentityUpdatedAsTriggerExampleInput is a convenience function that returns MachineIdentityUpdated wrapped in TriggerExampleInput
+func MachineIdentityUpdatedAsTriggerExampleInput(v *MachineIdentityUpdated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Machineidentityupdated: v,
+		MachineIdentityUpdated: v,
 	}
 }
 
-// ProvisioningcompletedAsTriggerExampleInput is a convenience function that returns Provisioningcompleted wrapped in TriggerExampleInput
-func ProvisioningcompletedAsTriggerExampleInput(v *Provisioningcompleted) TriggerExampleInput {
+// ProvisioningCompletedAsTriggerExampleInput is a convenience function that returns ProvisioningCompleted wrapped in TriggerExampleInput
+func ProvisioningCompletedAsTriggerExampleInput(v *ProvisioningCompleted) TriggerExampleInput {
 	return TriggerExampleInput{
-		Provisioningcompleted: v,
+		ProvisioningCompleted: v,
 	}
 }
 
-// SavedsearchcompleteAsTriggerExampleInput is a convenience function that returns Savedsearchcomplete wrapped in TriggerExampleInput
-func SavedsearchcompleteAsTriggerExampleInput(v *Savedsearchcomplete) TriggerExampleInput {
+// SavedSearchCompleteAsTriggerExampleInput is a convenience function that returns SavedSearchComplete wrapped in TriggerExampleInput
+func SavedSearchCompleteAsTriggerExampleInput(v *SavedSearchComplete) TriggerExampleInput {
 	return TriggerExampleInput{
-		Savedsearchcomplete: v,
+		SavedSearchComplete: v,
 	}
 }
 
-// SourceaccountcreatedAsTriggerExampleInput is a convenience function that returns Sourceaccountcreated wrapped in TriggerExampleInput
-func SourceaccountcreatedAsTriggerExampleInput(v *Sourceaccountcreated) TriggerExampleInput {
+// SourceAccountCreatedAsTriggerExampleInput is a convenience function that returns SourceAccountCreated wrapped in TriggerExampleInput
+func SourceAccountCreatedAsTriggerExampleInput(v *SourceAccountCreated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Sourceaccountcreated: v,
+		SourceAccountCreated: v,
 	}
 }
 
-// SourceaccountdeletedAsTriggerExampleInput is a convenience function that returns Sourceaccountdeleted wrapped in TriggerExampleInput
-func SourceaccountdeletedAsTriggerExampleInput(v *Sourceaccountdeleted) TriggerExampleInput {
+// SourceAccountDeletedAsTriggerExampleInput is a convenience function that returns SourceAccountDeleted wrapped in TriggerExampleInput
+func SourceAccountDeletedAsTriggerExampleInput(v *SourceAccountDeleted) TriggerExampleInput {
 	return TriggerExampleInput{
-		Sourceaccountdeleted: v,
+		SourceAccountDeleted: v,
 	}
 }
 
-// SourceaccountupdatedAsTriggerExampleInput is a convenience function that returns Sourceaccountupdated wrapped in TriggerExampleInput
-func SourceaccountupdatedAsTriggerExampleInput(v *Sourceaccountupdated) TriggerExampleInput {
+// SourceAccountUpdatedAsTriggerExampleInput is a convenience function that returns SourceAccountUpdated wrapped in TriggerExampleInput
+func SourceAccountUpdatedAsTriggerExampleInput(v *SourceAccountUpdated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Sourceaccountupdated: v,
+		SourceAccountUpdated: v,
 	}
 }
 
-// SourcecreatedAsTriggerExampleInput is a convenience function that returns Sourcecreated wrapped in TriggerExampleInput
-func SourcecreatedAsTriggerExampleInput(v *Sourcecreated) TriggerExampleInput {
+// SourceCreatedAsTriggerExampleInput is a convenience function that returns SourceCreated wrapped in TriggerExampleInput
+func SourceCreatedAsTriggerExampleInput(v *SourceCreated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Sourcecreated: v,
+		SourceCreated: v,
 	}
 }
 
-// SourcedeletedAsTriggerExampleInput is a convenience function that returns Sourcedeleted wrapped in TriggerExampleInput
-func SourcedeletedAsTriggerExampleInput(v *Sourcedeleted) TriggerExampleInput {
+// SourceDeletedAsTriggerExampleInput is a convenience function that returns SourceDeleted wrapped in TriggerExampleInput
+func SourceDeletedAsTriggerExampleInput(v *SourceDeleted) TriggerExampleInput {
 	return TriggerExampleInput{
-		Sourcedeleted: v,
+		SourceDeleted: v,
 	}
 }
 
-// SourceupdatedAsTriggerExampleInput is a convenience function that returns Sourceupdated wrapped in TriggerExampleInput
-func SourceupdatedAsTriggerExampleInput(v *Sourceupdated) TriggerExampleInput {
+// SourceUpdatedAsTriggerExampleInput is a convenience function that returns SourceUpdated wrapped in TriggerExampleInput
+func SourceUpdatedAsTriggerExampleInput(v *SourceUpdated) TriggerExampleInput {
 	return TriggerExampleInput{
-		Sourceupdated: v,
+		SourceUpdated: v,
 	}
 }
 
-// VaclusterstatuschangeeventAsTriggerExampleInput is a convenience function that returns Vaclusterstatuschangeevent wrapped in TriggerExampleInput
-func VaclusterstatuschangeeventAsTriggerExampleInput(v *Vaclusterstatuschangeevent) TriggerExampleInput {
+// VAClusterStatusChangeEventAsTriggerExampleInput is a convenience function that returns VAClusterStatusChangeEvent wrapped in TriggerExampleInput
+func VAClusterStatusChangeEventAsTriggerExampleInput(v *VAClusterStatusChangeEvent) TriggerExampleInput {
 	return TriggerExampleInput{
-		Vaclusterstatuschangeevent: v,
+		VAClusterStatusChangeEvent: v,
 	}
 }
 
@@ -265,548 +265,548 @@ func VaclusterstatuschangeeventAsTriggerExampleInput(v *Vaclusterstatuschangeeve
 func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into Accessrequestdynamicapprover
-	err = newStrictDecoder(data).Decode(&dst.Accessrequestdynamicapprover)
+	// try to unmarshal data into AccessRequestDynamicApprover
+	err = newStrictDecoder(data).Decode(&dst.AccessRequestDynamicApprover)
 	if err == nil {
-		jsonAccessrequestdynamicapprover, _ := json.Marshal(dst.Accessrequestdynamicapprover)
-		if string(jsonAccessrequestdynamicapprover) == "{}" { // empty struct
-			dst.Accessrequestdynamicapprover = nil
+		jsonAccessRequestDynamicApprover, _ := json.Marshal(dst.AccessRequestDynamicApprover)
+		if string(jsonAccessRequestDynamicApprover) == "{}" { // empty struct
+			dst.AccessRequestDynamicApprover = nil
 		} else {
-			if err = validator.Validate(dst.Accessrequestdynamicapprover); err != nil {
-				dst.Accessrequestdynamicapprover = nil
+			if err = validator.Validate(dst.AccessRequestDynamicApprover); err != nil {
+				dst.AccessRequestDynamicApprover = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accessrequestdynamicapprover = nil
+		dst.AccessRequestDynamicApprover = nil
 	}
 
-	// try to unmarshal data into Accessrequestpostapproval
-	err = newStrictDecoder(data).Decode(&dst.Accessrequestpostapproval)
+	// try to unmarshal data into AccessRequestPostApproval
+	err = newStrictDecoder(data).Decode(&dst.AccessRequestPostApproval)
 	if err == nil {
-		jsonAccessrequestpostapproval, _ := json.Marshal(dst.Accessrequestpostapproval)
-		if string(jsonAccessrequestpostapproval) == "{}" { // empty struct
-			dst.Accessrequestpostapproval = nil
+		jsonAccessRequestPostApproval, _ := json.Marshal(dst.AccessRequestPostApproval)
+		if string(jsonAccessRequestPostApproval) == "{}" { // empty struct
+			dst.AccessRequestPostApproval = nil
 		} else {
-			if err = validator.Validate(dst.Accessrequestpostapproval); err != nil {
-				dst.Accessrequestpostapproval = nil
+			if err = validator.Validate(dst.AccessRequestPostApproval); err != nil {
+				dst.AccessRequestPostApproval = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accessrequestpostapproval = nil
+		dst.AccessRequestPostApproval = nil
 	}
 
-	// try to unmarshal data into Accessrequestpreapproval
-	err = newStrictDecoder(data).Decode(&dst.Accessrequestpreapproval)
+	// try to unmarshal data into AccessRequestPreApproval
+	err = newStrictDecoder(data).Decode(&dst.AccessRequestPreApproval)
 	if err == nil {
-		jsonAccessrequestpreapproval, _ := json.Marshal(dst.Accessrequestpreapproval)
-		if string(jsonAccessrequestpreapproval) == "{}" { // empty struct
-			dst.Accessrequestpreapproval = nil
+		jsonAccessRequestPreApproval, _ := json.Marshal(dst.AccessRequestPreApproval)
+		if string(jsonAccessRequestPreApproval) == "{}" { // empty struct
+			dst.AccessRequestPreApproval = nil
 		} else {
-			if err = validator.Validate(dst.Accessrequestpreapproval); err != nil {
-				dst.Accessrequestpreapproval = nil
+			if err = validator.Validate(dst.AccessRequestPreApproval); err != nil {
+				dst.AccessRequestPreApproval = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accessrequestpreapproval = nil
+		dst.AccessRequestPreApproval = nil
 	}
 
-	// try to unmarshal data into Accountaggregationcompleted
-	err = newStrictDecoder(data).Decode(&dst.Accountaggregationcompleted)
+	// try to unmarshal data into AccountAggregationCompleted
+	err = newStrictDecoder(data).Decode(&dst.AccountAggregationCompleted)
 	if err == nil {
-		jsonAccountaggregationcompleted, _ := json.Marshal(dst.Accountaggregationcompleted)
-		if string(jsonAccountaggregationcompleted) == "{}" { // empty struct
-			dst.Accountaggregationcompleted = nil
+		jsonAccountAggregationCompleted, _ := json.Marshal(dst.AccountAggregationCompleted)
+		if string(jsonAccountAggregationCompleted) == "{}" { // empty struct
+			dst.AccountAggregationCompleted = nil
 		} else {
-			if err = validator.Validate(dst.Accountaggregationcompleted); err != nil {
-				dst.Accountaggregationcompleted = nil
+			if err = validator.Validate(dst.AccountAggregationCompleted); err != nil {
+				dst.AccountAggregationCompleted = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accountaggregationcompleted = nil
+		dst.AccountAggregationCompleted = nil
 	}
 
-	// try to unmarshal data into Accountattributeschanged
-	err = newStrictDecoder(data).Decode(&dst.Accountattributeschanged)
+	// try to unmarshal data into AccountAttributesChanged
+	err = newStrictDecoder(data).Decode(&dst.AccountAttributesChanged)
 	if err == nil {
-		jsonAccountattributeschanged, _ := json.Marshal(dst.Accountattributeschanged)
-		if string(jsonAccountattributeschanged) == "{}" { // empty struct
-			dst.Accountattributeschanged = nil
+		jsonAccountAttributesChanged, _ := json.Marshal(dst.AccountAttributesChanged)
+		if string(jsonAccountAttributesChanged) == "{}" { // empty struct
+			dst.AccountAttributesChanged = nil
 		} else {
-			if err = validator.Validate(dst.Accountattributeschanged); err != nil {
-				dst.Accountattributeschanged = nil
+			if err = validator.Validate(dst.AccountAttributesChanged); err != nil {
+				dst.AccountAttributesChanged = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accountattributeschanged = nil
+		dst.AccountAttributesChanged = nil
 	}
 
-	// try to unmarshal data into Accountcorrelated
-	err = newStrictDecoder(data).Decode(&dst.Accountcorrelated)
+	// try to unmarshal data into AccountCorrelated
+	err = newStrictDecoder(data).Decode(&dst.AccountCorrelated)
 	if err == nil {
-		jsonAccountcorrelated, _ := json.Marshal(dst.Accountcorrelated)
-		if string(jsonAccountcorrelated) == "{}" { // empty struct
-			dst.Accountcorrelated = nil
+		jsonAccountCorrelated, _ := json.Marshal(dst.AccountCorrelated)
+		if string(jsonAccountCorrelated) == "{}" { // empty struct
+			dst.AccountCorrelated = nil
 		} else {
-			if err = validator.Validate(dst.Accountcorrelated); err != nil {
-				dst.Accountcorrelated = nil
+			if err = validator.Validate(dst.AccountCorrelated); err != nil {
+				dst.AccountCorrelated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accountcorrelated = nil
+		dst.AccountCorrelated = nil
 	}
 
-	// try to unmarshal data into Accountcreated
-	err = newStrictDecoder(data).Decode(&dst.Accountcreated)
+	// try to unmarshal data into AccountCreated
+	err = newStrictDecoder(data).Decode(&dst.AccountCreated)
 	if err == nil {
-		jsonAccountcreated, _ := json.Marshal(dst.Accountcreated)
-		if string(jsonAccountcreated) == "{}" { // empty struct
-			dst.Accountcreated = nil
+		jsonAccountCreated, _ := json.Marshal(dst.AccountCreated)
+		if string(jsonAccountCreated) == "{}" { // empty struct
+			dst.AccountCreated = nil
 		} else {
-			if err = validator.Validate(dst.Accountcreated); err != nil {
-				dst.Accountcreated = nil
+			if err = validator.Validate(dst.AccountCreated); err != nil {
+				dst.AccountCreated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accountcreated = nil
+		dst.AccountCreated = nil
 	}
 
-	// try to unmarshal data into Accountdeleted
-	err = newStrictDecoder(data).Decode(&dst.Accountdeleted)
+	// try to unmarshal data into AccountDeleted
+	err = newStrictDecoder(data).Decode(&dst.AccountDeleted)
 	if err == nil {
-		jsonAccountdeleted, _ := json.Marshal(dst.Accountdeleted)
-		if string(jsonAccountdeleted) == "{}" { // empty struct
-			dst.Accountdeleted = nil
+		jsonAccountDeleted, _ := json.Marshal(dst.AccountDeleted)
+		if string(jsonAccountDeleted) == "{}" { // empty struct
+			dst.AccountDeleted = nil
 		} else {
-			if err = validator.Validate(dst.Accountdeleted); err != nil {
-				dst.Accountdeleted = nil
+			if err = validator.Validate(dst.AccountDeleted); err != nil {
+				dst.AccountDeleted = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accountdeleted = nil
+		dst.AccountDeleted = nil
 	}
 
-	// try to unmarshal data into Accountscollectedforaggregation
-	err = newStrictDecoder(data).Decode(&dst.Accountscollectedforaggregation)
+	// try to unmarshal data into AccountUncorrelated
+	err = newStrictDecoder(data).Decode(&dst.AccountUncorrelated)
 	if err == nil {
-		jsonAccountscollectedforaggregation, _ := json.Marshal(dst.Accountscollectedforaggregation)
-		if string(jsonAccountscollectedforaggregation) == "{}" { // empty struct
-			dst.Accountscollectedforaggregation = nil
+		jsonAccountUncorrelated, _ := json.Marshal(dst.AccountUncorrelated)
+		if string(jsonAccountUncorrelated) == "{}" { // empty struct
+			dst.AccountUncorrelated = nil
 		} else {
-			if err = validator.Validate(dst.Accountscollectedforaggregation); err != nil {
-				dst.Accountscollectedforaggregation = nil
+			if err = validator.Validate(dst.AccountUncorrelated); err != nil {
+				dst.AccountUncorrelated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accountscollectedforaggregation = nil
+		dst.AccountUncorrelated = nil
 	}
 
-	// try to unmarshal data into Accountuncorrelated
-	err = newStrictDecoder(data).Decode(&dst.Accountuncorrelated)
+	// try to unmarshal data into AccountUpdated
+	err = newStrictDecoder(data).Decode(&dst.AccountUpdated)
 	if err == nil {
-		jsonAccountuncorrelated, _ := json.Marshal(dst.Accountuncorrelated)
-		if string(jsonAccountuncorrelated) == "{}" { // empty struct
-			dst.Accountuncorrelated = nil
+		jsonAccountUpdated, _ := json.Marshal(dst.AccountUpdated)
+		if string(jsonAccountUpdated) == "{}" { // empty struct
+			dst.AccountUpdated = nil
 		} else {
-			if err = validator.Validate(dst.Accountuncorrelated); err != nil {
-				dst.Accountuncorrelated = nil
+			if err = validator.Validate(dst.AccountUpdated); err != nil {
+				dst.AccountUpdated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accountuncorrelated = nil
+		dst.AccountUpdated = nil
 	}
 
-	// try to unmarshal data into Accountupdated
-	err = newStrictDecoder(data).Decode(&dst.Accountupdated)
+	// try to unmarshal data into AccountsCollectedForAggregation
+	err = newStrictDecoder(data).Decode(&dst.AccountsCollectedForAggregation)
 	if err == nil {
-		jsonAccountupdated, _ := json.Marshal(dst.Accountupdated)
-		if string(jsonAccountupdated) == "{}" { // empty struct
-			dst.Accountupdated = nil
+		jsonAccountsCollectedForAggregation, _ := json.Marshal(dst.AccountsCollectedForAggregation)
+		if string(jsonAccountsCollectedForAggregation) == "{}" { // empty struct
+			dst.AccountsCollectedForAggregation = nil
 		} else {
-			if err = validator.Validate(dst.Accountupdated); err != nil {
-				dst.Accountupdated = nil
+			if err = validator.Validate(dst.AccountsCollectedForAggregation); err != nil {
+				dst.AccountsCollectedForAggregation = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Accountupdated = nil
+		dst.AccountsCollectedForAggregation = nil
 	}
 
-	// try to unmarshal data into Campaignactivated
-	err = newStrictDecoder(data).Decode(&dst.Campaignactivated)
+	// try to unmarshal data into CampaignActivated
+	err = newStrictDecoder(data).Decode(&dst.CampaignActivated)
 	if err == nil {
-		jsonCampaignactivated, _ := json.Marshal(dst.Campaignactivated)
-		if string(jsonCampaignactivated) == "{}" { // empty struct
-			dst.Campaignactivated = nil
+		jsonCampaignActivated, _ := json.Marshal(dst.CampaignActivated)
+		if string(jsonCampaignActivated) == "{}" { // empty struct
+			dst.CampaignActivated = nil
 		} else {
-			if err = validator.Validate(dst.Campaignactivated); err != nil {
-				dst.Campaignactivated = nil
+			if err = validator.Validate(dst.CampaignActivated); err != nil {
+				dst.CampaignActivated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Campaignactivated = nil
+		dst.CampaignActivated = nil
 	}
 
-	// try to unmarshal data into Campaignended
-	err = newStrictDecoder(data).Decode(&dst.Campaignended)
+	// try to unmarshal data into CampaignEnded
+	err = newStrictDecoder(data).Decode(&dst.CampaignEnded)
 	if err == nil {
-		jsonCampaignended, _ := json.Marshal(dst.Campaignended)
-		if string(jsonCampaignended) == "{}" { // empty struct
-			dst.Campaignended = nil
+		jsonCampaignEnded, _ := json.Marshal(dst.CampaignEnded)
+		if string(jsonCampaignEnded) == "{}" { // empty struct
+			dst.CampaignEnded = nil
 		} else {
-			if err = validator.Validate(dst.Campaignended); err != nil {
-				dst.Campaignended = nil
+			if err = validator.Validate(dst.CampaignEnded); err != nil {
+				dst.CampaignEnded = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Campaignended = nil
+		dst.CampaignEnded = nil
 	}
 
-	// try to unmarshal data into Campaigngenerated
-	err = newStrictDecoder(data).Decode(&dst.Campaigngenerated)
+	// try to unmarshal data into CampaignGenerated
+	err = newStrictDecoder(data).Decode(&dst.CampaignGenerated)
 	if err == nil {
-		jsonCampaigngenerated, _ := json.Marshal(dst.Campaigngenerated)
-		if string(jsonCampaigngenerated) == "{}" { // empty struct
-			dst.Campaigngenerated = nil
+		jsonCampaignGenerated, _ := json.Marshal(dst.CampaignGenerated)
+		if string(jsonCampaignGenerated) == "{}" { // empty struct
+			dst.CampaignGenerated = nil
 		} else {
-			if err = validator.Validate(dst.Campaigngenerated); err != nil {
-				dst.Campaigngenerated = nil
+			if err = validator.Validate(dst.CampaignGenerated); err != nil {
+				dst.CampaignGenerated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Campaigngenerated = nil
+		dst.CampaignGenerated = nil
 	}
 
-	// try to unmarshal data into Certificationsignedoff
-	err = newStrictDecoder(data).Decode(&dst.Certificationsignedoff)
+	// try to unmarshal data into CertificationSignedOff
+	err = newStrictDecoder(data).Decode(&dst.CertificationSignedOff)
 	if err == nil {
-		jsonCertificationsignedoff, _ := json.Marshal(dst.Certificationsignedoff)
-		if string(jsonCertificationsignedoff) == "{}" { // empty struct
-			dst.Certificationsignedoff = nil
+		jsonCertificationSignedOff, _ := json.Marshal(dst.CertificationSignedOff)
+		if string(jsonCertificationSignedOff) == "{}" { // empty struct
+			dst.CertificationSignedOff = nil
 		} else {
-			if err = validator.Validate(dst.Certificationsignedoff); err != nil {
-				dst.Certificationsignedoff = nil
+			if err = validator.Validate(dst.CertificationSignedOff); err != nil {
+				dst.CertificationSignedOff = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Certificationsignedoff = nil
+		dst.CertificationSignedOff = nil
 	}
 
-	// try to unmarshal data into Identityattributeschanged
-	err = newStrictDecoder(data).Decode(&dst.Identityattributeschanged)
+	// try to unmarshal data into IdentityAttributesChanged
+	err = newStrictDecoder(data).Decode(&dst.IdentityAttributesChanged)
 	if err == nil {
-		jsonIdentityattributeschanged, _ := json.Marshal(dst.Identityattributeschanged)
-		if string(jsonIdentityattributeschanged) == "{}" { // empty struct
-			dst.Identityattributeschanged = nil
+		jsonIdentityAttributesChanged, _ := json.Marshal(dst.IdentityAttributesChanged)
+		if string(jsonIdentityAttributesChanged) == "{}" { // empty struct
+			dst.IdentityAttributesChanged = nil
 		} else {
-			if err = validator.Validate(dst.Identityattributeschanged); err != nil {
-				dst.Identityattributeschanged = nil
+			if err = validator.Validate(dst.IdentityAttributesChanged); err != nil {
+				dst.IdentityAttributesChanged = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Identityattributeschanged = nil
+		dst.IdentityAttributesChanged = nil
 	}
 
-	// try to unmarshal data into Identitycreated
-	err = newStrictDecoder(data).Decode(&dst.Identitycreated)
+	// try to unmarshal data into IdentityCreated
+	err = newStrictDecoder(data).Decode(&dst.IdentityCreated)
 	if err == nil {
-		jsonIdentitycreated, _ := json.Marshal(dst.Identitycreated)
-		if string(jsonIdentitycreated) == "{}" { // empty struct
-			dst.Identitycreated = nil
+		jsonIdentityCreated, _ := json.Marshal(dst.IdentityCreated)
+		if string(jsonIdentityCreated) == "{}" { // empty struct
+			dst.IdentityCreated = nil
 		} else {
-			if err = validator.Validate(dst.Identitycreated); err != nil {
-				dst.Identitycreated = nil
+			if err = validator.Validate(dst.IdentityCreated); err != nil {
+				dst.IdentityCreated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Identitycreated = nil
+		dst.IdentityCreated = nil
 	}
 
-	// try to unmarshal data into Identitydeleted
-	err = newStrictDecoder(data).Decode(&dst.Identitydeleted)
+	// try to unmarshal data into IdentityDeleted
+	err = newStrictDecoder(data).Decode(&dst.IdentityDeleted)
 	if err == nil {
-		jsonIdentitydeleted, _ := json.Marshal(dst.Identitydeleted)
-		if string(jsonIdentitydeleted) == "{}" { // empty struct
-			dst.Identitydeleted = nil
+		jsonIdentityDeleted, _ := json.Marshal(dst.IdentityDeleted)
+		if string(jsonIdentityDeleted) == "{}" { // empty struct
+			dst.IdentityDeleted = nil
 		} else {
-			if err = validator.Validate(dst.Identitydeleted); err != nil {
-				dst.Identitydeleted = nil
+			if err = validator.Validate(dst.IdentityDeleted); err != nil {
+				dst.IdentityDeleted = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Identitydeleted = nil
+		dst.IdentityDeleted = nil
 	}
 
-	// try to unmarshal data into Machineidentitycreated
-	err = newStrictDecoder(data).Decode(&dst.Machineidentitycreated)
+	// try to unmarshal data into MachineIdentityCreated
+	err = newStrictDecoder(data).Decode(&dst.MachineIdentityCreated)
 	if err == nil {
-		jsonMachineidentitycreated, _ := json.Marshal(dst.Machineidentitycreated)
-		if string(jsonMachineidentitycreated) == "{}" { // empty struct
-			dst.Machineidentitycreated = nil
+		jsonMachineIdentityCreated, _ := json.Marshal(dst.MachineIdentityCreated)
+		if string(jsonMachineIdentityCreated) == "{}" { // empty struct
+			dst.MachineIdentityCreated = nil
 		} else {
-			if err = validator.Validate(dst.Machineidentitycreated); err != nil {
-				dst.Machineidentitycreated = nil
+			if err = validator.Validate(dst.MachineIdentityCreated); err != nil {
+				dst.MachineIdentityCreated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Machineidentitycreated = nil
+		dst.MachineIdentityCreated = nil
 	}
 
-	// try to unmarshal data into Machineidentitydeleted
-	err = newStrictDecoder(data).Decode(&dst.Machineidentitydeleted)
+	// try to unmarshal data into MachineIdentityDeleted
+	err = newStrictDecoder(data).Decode(&dst.MachineIdentityDeleted)
 	if err == nil {
-		jsonMachineidentitydeleted, _ := json.Marshal(dst.Machineidentitydeleted)
-		if string(jsonMachineidentitydeleted) == "{}" { // empty struct
-			dst.Machineidentitydeleted = nil
+		jsonMachineIdentityDeleted, _ := json.Marshal(dst.MachineIdentityDeleted)
+		if string(jsonMachineIdentityDeleted) == "{}" { // empty struct
+			dst.MachineIdentityDeleted = nil
 		} else {
-			if err = validator.Validate(dst.Machineidentitydeleted); err != nil {
-				dst.Machineidentitydeleted = nil
+			if err = validator.Validate(dst.MachineIdentityDeleted); err != nil {
+				dst.MachineIdentityDeleted = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Machineidentitydeleted = nil
+		dst.MachineIdentityDeleted = nil
 	}
 
-	// try to unmarshal data into Machineidentityupdated
-	err = newStrictDecoder(data).Decode(&dst.Machineidentityupdated)
+	// try to unmarshal data into MachineIdentityUpdated
+	err = newStrictDecoder(data).Decode(&dst.MachineIdentityUpdated)
 	if err == nil {
-		jsonMachineidentityupdated, _ := json.Marshal(dst.Machineidentityupdated)
-		if string(jsonMachineidentityupdated) == "{}" { // empty struct
-			dst.Machineidentityupdated = nil
+		jsonMachineIdentityUpdated, _ := json.Marshal(dst.MachineIdentityUpdated)
+		if string(jsonMachineIdentityUpdated) == "{}" { // empty struct
+			dst.MachineIdentityUpdated = nil
 		} else {
-			if err = validator.Validate(dst.Machineidentityupdated); err != nil {
-				dst.Machineidentityupdated = nil
+			if err = validator.Validate(dst.MachineIdentityUpdated); err != nil {
+				dst.MachineIdentityUpdated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Machineidentityupdated = nil
+		dst.MachineIdentityUpdated = nil
 	}
 
-	// try to unmarshal data into Provisioningcompleted
-	err = newStrictDecoder(data).Decode(&dst.Provisioningcompleted)
+	// try to unmarshal data into ProvisioningCompleted
+	err = newStrictDecoder(data).Decode(&dst.ProvisioningCompleted)
 	if err == nil {
-		jsonProvisioningcompleted, _ := json.Marshal(dst.Provisioningcompleted)
-		if string(jsonProvisioningcompleted) == "{}" { // empty struct
-			dst.Provisioningcompleted = nil
+		jsonProvisioningCompleted, _ := json.Marshal(dst.ProvisioningCompleted)
+		if string(jsonProvisioningCompleted) == "{}" { // empty struct
+			dst.ProvisioningCompleted = nil
 		} else {
-			if err = validator.Validate(dst.Provisioningcompleted); err != nil {
-				dst.Provisioningcompleted = nil
+			if err = validator.Validate(dst.ProvisioningCompleted); err != nil {
+				dst.ProvisioningCompleted = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Provisioningcompleted = nil
+		dst.ProvisioningCompleted = nil
 	}
 
-	// try to unmarshal data into Savedsearchcomplete
-	err = newStrictDecoder(data).Decode(&dst.Savedsearchcomplete)
+	// try to unmarshal data into SavedSearchComplete
+	err = newStrictDecoder(data).Decode(&dst.SavedSearchComplete)
 	if err == nil {
-		jsonSavedsearchcomplete, _ := json.Marshal(dst.Savedsearchcomplete)
-		if string(jsonSavedsearchcomplete) == "{}" { // empty struct
-			dst.Savedsearchcomplete = nil
+		jsonSavedSearchComplete, _ := json.Marshal(dst.SavedSearchComplete)
+		if string(jsonSavedSearchComplete) == "{}" { // empty struct
+			dst.SavedSearchComplete = nil
 		} else {
-			if err = validator.Validate(dst.Savedsearchcomplete); err != nil {
-				dst.Savedsearchcomplete = nil
+			if err = validator.Validate(dst.SavedSearchComplete); err != nil {
+				dst.SavedSearchComplete = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Savedsearchcomplete = nil
+		dst.SavedSearchComplete = nil
 	}
 
-	// try to unmarshal data into Sourceaccountcreated
-	err = newStrictDecoder(data).Decode(&dst.Sourceaccountcreated)
+	// try to unmarshal data into SourceAccountCreated
+	err = newStrictDecoder(data).Decode(&dst.SourceAccountCreated)
 	if err == nil {
-		jsonSourceaccountcreated, _ := json.Marshal(dst.Sourceaccountcreated)
-		if string(jsonSourceaccountcreated) == "{}" { // empty struct
-			dst.Sourceaccountcreated = nil
+		jsonSourceAccountCreated, _ := json.Marshal(dst.SourceAccountCreated)
+		if string(jsonSourceAccountCreated) == "{}" { // empty struct
+			dst.SourceAccountCreated = nil
 		} else {
-			if err = validator.Validate(dst.Sourceaccountcreated); err != nil {
-				dst.Sourceaccountcreated = nil
+			if err = validator.Validate(dst.SourceAccountCreated); err != nil {
+				dst.SourceAccountCreated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Sourceaccountcreated = nil
+		dst.SourceAccountCreated = nil
 	}
 
-	// try to unmarshal data into Sourceaccountdeleted
-	err = newStrictDecoder(data).Decode(&dst.Sourceaccountdeleted)
+	// try to unmarshal data into SourceAccountDeleted
+	err = newStrictDecoder(data).Decode(&dst.SourceAccountDeleted)
 	if err == nil {
-		jsonSourceaccountdeleted, _ := json.Marshal(dst.Sourceaccountdeleted)
-		if string(jsonSourceaccountdeleted) == "{}" { // empty struct
-			dst.Sourceaccountdeleted = nil
+		jsonSourceAccountDeleted, _ := json.Marshal(dst.SourceAccountDeleted)
+		if string(jsonSourceAccountDeleted) == "{}" { // empty struct
+			dst.SourceAccountDeleted = nil
 		} else {
-			if err = validator.Validate(dst.Sourceaccountdeleted); err != nil {
-				dst.Sourceaccountdeleted = nil
+			if err = validator.Validate(dst.SourceAccountDeleted); err != nil {
+				dst.SourceAccountDeleted = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Sourceaccountdeleted = nil
+		dst.SourceAccountDeleted = nil
 	}
 
-	// try to unmarshal data into Sourceaccountupdated
-	err = newStrictDecoder(data).Decode(&dst.Sourceaccountupdated)
+	// try to unmarshal data into SourceAccountUpdated
+	err = newStrictDecoder(data).Decode(&dst.SourceAccountUpdated)
 	if err == nil {
-		jsonSourceaccountupdated, _ := json.Marshal(dst.Sourceaccountupdated)
-		if string(jsonSourceaccountupdated) == "{}" { // empty struct
-			dst.Sourceaccountupdated = nil
+		jsonSourceAccountUpdated, _ := json.Marshal(dst.SourceAccountUpdated)
+		if string(jsonSourceAccountUpdated) == "{}" { // empty struct
+			dst.SourceAccountUpdated = nil
 		} else {
-			if err = validator.Validate(dst.Sourceaccountupdated); err != nil {
-				dst.Sourceaccountupdated = nil
+			if err = validator.Validate(dst.SourceAccountUpdated); err != nil {
+				dst.SourceAccountUpdated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Sourceaccountupdated = nil
+		dst.SourceAccountUpdated = nil
 	}
 
-	// try to unmarshal data into Sourcecreated
-	err = newStrictDecoder(data).Decode(&dst.Sourcecreated)
+	// try to unmarshal data into SourceCreated
+	err = newStrictDecoder(data).Decode(&dst.SourceCreated)
 	if err == nil {
-		jsonSourcecreated, _ := json.Marshal(dst.Sourcecreated)
-		if string(jsonSourcecreated) == "{}" { // empty struct
-			dst.Sourcecreated = nil
+		jsonSourceCreated, _ := json.Marshal(dst.SourceCreated)
+		if string(jsonSourceCreated) == "{}" { // empty struct
+			dst.SourceCreated = nil
 		} else {
-			if err = validator.Validate(dst.Sourcecreated); err != nil {
-				dst.Sourcecreated = nil
+			if err = validator.Validate(dst.SourceCreated); err != nil {
+				dst.SourceCreated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Sourcecreated = nil
+		dst.SourceCreated = nil
 	}
 
-	// try to unmarshal data into Sourcedeleted
-	err = newStrictDecoder(data).Decode(&dst.Sourcedeleted)
+	// try to unmarshal data into SourceDeleted
+	err = newStrictDecoder(data).Decode(&dst.SourceDeleted)
 	if err == nil {
-		jsonSourcedeleted, _ := json.Marshal(dst.Sourcedeleted)
-		if string(jsonSourcedeleted) == "{}" { // empty struct
-			dst.Sourcedeleted = nil
+		jsonSourceDeleted, _ := json.Marshal(dst.SourceDeleted)
+		if string(jsonSourceDeleted) == "{}" { // empty struct
+			dst.SourceDeleted = nil
 		} else {
-			if err = validator.Validate(dst.Sourcedeleted); err != nil {
-				dst.Sourcedeleted = nil
+			if err = validator.Validate(dst.SourceDeleted); err != nil {
+				dst.SourceDeleted = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Sourcedeleted = nil
+		dst.SourceDeleted = nil
 	}
 
-	// try to unmarshal data into Sourceupdated
-	err = newStrictDecoder(data).Decode(&dst.Sourceupdated)
+	// try to unmarshal data into SourceUpdated
+	err = newStrictDecoder(data).Decode(&dst.SourceUpdated)
 	if err == nil {
-		jsonSourceupdated, _ := json.Marshal(dst.Sourceupdated)
-		if string(jsonSourceupdated) == "{}" { // empty struct
-			dst.Sourceupdated = nil
+		jsonSourceUpdated, _ := json.Marshal(dst.SourceUpdated)
+		if string(jsonSourceUpdated) == "{}" { // empty struct
+			dst.SourceUpdated = nil
 		} else {
-			if err = validator.Validate(dst.Sourceupdated); err != nil {
-				dst.Sourceupdated = nil
+			if err = validator.Validate(dst.SourceUpdated); err != nil {
+				dst.SourceUpdated = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Sourceupdated = nil
+		dst.SourceUpdated = nil
 	}
 
-	// try to unmarshal data into Vaclusterstatuschangeevent
-	err = newStrictDecoder(data).Decode(&dst.Vaclusterstatuschangeevent)
+	// try to unmarshal data into VAClusterStatusChangeEvent
+	err = newStrictDecoder(data).Decode(&dst.VAClusterStatusChangeEvent)
 	if err == nil {
-		jsonVaclusterstatuschangeevent, _ := json.Marshal(dst.Vaclusterstatuschangeevent)
-		if string(jsonVaclusterstatuschangeevent) == "{}" { // empty struct
-			dst.Vaclusterstatuschangeevent = nil
+		jsonVAClusterStatusChangeEvent, _ := json.Marshal(dst.VAClusterStatusChangeEvent)
+		if string(jsonVAClusterStatusChangeEvent) == "{}" { // empty struct
+			dst.VAClusterStatusChangeEvent = nil
 		} else {
-			if err = validator.Validate(dst.Vaclusterstatuschangeevent); err != nil {
-				dst.Vaclusterstatuschangeevent = nil
+			if err = validator.Validate(dst.VAClusterStatusChangeEvent); err != nil {
+				dst.VAClusterStatusChangeEvent = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.Vaclusterstatuschangeevent = nil
+		dst.VAClusterStatusChangeEvent = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.Accessrequestdynamicapprover = nil
-		dst.Accessrequestpostapproval = nil
-		dst.Accessrequestpreapproval = nil
-		dst.Accountaggregationcompleted = nil
-		dst.Accountattributeschanged = nil
-		dst.Accountcorrelated = nil
-		dst.Accountcreated = nil
-		dst.Accountdeleted = nil
-		dst.Accountscollectedforaggregation = nil
-		dst.Accountuncorrelated = nil
-		dst.Accountupdated = nil
-		dst.Campaignactivated = nil
-		dst.Campaignended = nil
-		dst.Campaigngenerated = nil
-		dst.Certificationsignedoff = nil
-		dst.Identityattributeschanged = nil
-		dst.Identitycreated = nil
-		dst.Identitydeleted = nil
-		dst.Machineidentitycreated = nil
-		dst.Machineidentitydeleted = nil
-		dst.Machineidentityupdated = nil
-		dst.Provisioningcompleted = nil
-		dst.Savedsearchcomplete = nil
-		dst.Sourceaccountcreated = nil
-		dst.Sourceaccountdeleted = nil
-		dst.Sourceaccountupdated = nil
-		dst.Sourcecreated = nil
-		dst.Sourcedeleted = nil
-		dst.Sourceupdated = nil
-		dst.Vaclusterstatuschangeevent = nil
+		dst.AccessRequestDynamicApprover = nil
+		dst.AccessRequestPostApproval = nil
+		dst.AccessRequestPreApproval = nil
+		dst.AccountAggregationCompleted = nil
+		dst.AccountAttributesChanged = nil
+		dst.AccountCorrelated = nil
+		dst.AccountCreated = nil
+		dst.AccountDeleted = nil
+		dst.AccountUncorrelated = nil
+		dst.AccountUpdated = nil
+		dst.AccountsCollectedForAggregation = nil
+		dst.CampaignActivated = nil
+		dst.CampaignEnded = nil
+		dst.CampaignGenerated = nil
+		dst.CertificationSignedOff = nil
+		dst.IdentityAttributesChanged = nil
+		dst.IdentityCreated = nil
+		dst.IdentityDeleted = nil
+		dst.MachineIdentityCreated = nil
+		dst.MachineIdentityDeleted = nil
+		dst.MachineIdentityUpdated = nil
+		dst.ProvisioningCompleted = nil
+		dst.SavedSearchComplete = nil
+		dst.SourceAccountCreated = nil
+		dst.SourceAccountDeleted = nil
+		dst.SourceAccountUpdated = nil
+		dst.SourceCreated = nil
+		dst.SourceDeleted = nil
+		dst.SourceUpdated = nil
+		dst.VAClusterStatusChangeEvent = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(TriggerExampleInput)")
 	} else if match == 1 {
@@ -818,124 +818,124 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src TriggerExampleInput) MarshalJSON() ([]byte, error) {
-	if src.Accessrequestdynamicapprover != nil {
-		return json.Marshal(&src.Accessrequestdynamicapprover)
+	if src.AccessRequestDynamicApprover != nil {
+		return json.Marshal(&src.AccessRequestDynamicApprover)
 	}
 
-	if src.Accessrequestpostapproval != nil {
-		return json.Marshal(&src.Accessrequestpostapproval)
+	if src.AccessRequestPostApproval != nil {
+		return json.Marshal(&src.AccessRequestPostApproval)
 	}
 
-	if src.Accessrequestpreapproval != nil {
-		return json.Marshal(&src.Accessrequestpreapproval)
+	if src.AccessRequestPreApproval != nil {
+		return json.Marshal(&src.AccessRequestPreApproval)
 	}
 
-	if src.Accountaggregationcompleted != nil {
-		return json.Marshal(&src.Accountaggregationcompleted)
+	if src.AccountAggregationCompleted != nil {
+		return json.Marshal(&src.AccountAggregationCompleted)
 	}
 
-	if src.Accountattributeschanged != nil {
-		return json.Marshal(&src.Accountattributeschanged)
+	if src.AccountAttributesChanged != nil {
+		return json.Marshal(&src.AccountAttributesChanged)
 	}
 
-	if src.Accountcorrelated != nil {
-		return json.Marshal(&src.Accountcorrelated)
+	if src.AccountCorrelated != nil {
+		return json.Marshal(&src.AccountCorrelated)
 	}
 
-	if src.Accountcreated != nil {
-		return json.Marshal(&src.Accountcreated)
+	if src.AccountCreated != nil {
+		return json.Marshal(&src.AccountCreated)
 	}
 
-	if src.Accountdeleted != nil {
-		return json.Marshal(&src.Accountdeleted)
+	if src.AccountDeleted != nil {
+		return json.Marshal(&src.AccountDeleted)
 	}
 
-	if src.Accountscollectedforaggregation != nil {
-		return json.Marshal(&src.Accountscollectedforaggregation)
+	if src.AccountUncorrelated != nil {
+		return json.Marshal(&src.AccountUncorrelated)
 	}
 
-	if src.Accountuncorrelated != nil {
-		return json.Marshal(&src.Accountuncorrelated)
+	if src.AccountUpdated != nil {
+		return json.Marshal(&src.AccountUpdated)
 	}
 
-	if src.Accountupdated != nil {
-		return json.Marshal(&src.Accountupdated)
+	if src.AccountsCollectedForAggregation != nil {
+		return json.Marshal(&src.AccountsCollectedForAggregation)
 	}
 
-	if src.Campaignactivated != nil {
-		return json.Marshal(&src.Campaignactivated)
+	if src.CampaignActivated != nil {
+		return json.Marshal(&src.CampaignActivated)
 	}
 
-	if src.Campaignended != nil {
-		return json.Marshal(&src.Campaignended)
+	if src.CampaignEnded != nil {
+		return json.Marshal(&src.CampaignEnded)
 	}
 
-	if src.Campaigngenerated != nil {
-		return json.Marshal(&src.Campaigngenerated)
+	if src.CampaignGenerated != nil {
+		return json.Marshal(&src.CampaignGenerated)
 	}
 
-	if src.Certificationsignedoff != nil {
-		return json.Marshal(&src.Certificationsignedoff)
+	if src.CertificationSignedOff != nil {
+		return json.Marshal(&src.CertificationSignedOff)
 	}
 
-	if src.Identityattributeschanged != nil {
-		return json.Marshal(&src.Identityattributeschanged)
+	if src.IdentityAttributesChanged != nil {
+		return json.Marshal(&src.IdentityAttributesChanged)
 	}
 
-	if src.Identitycreated != nil {
-		return json.Marshal(&src.Identitycreated)
+	if src.IdentityCreated != nil {
+		return json.Marshal(&src.IdentityCreated)
 	}
 
-	if src.Identitydeleted != nil {
-		return json.Marshal(&src.Identitydeleted)
+	if src.IdentityDeleted != nil {
+		return json.Marshal(&src.IdentityDeleted)
 	}
 
-	if src.Machineidentitycreated != nil {
-		return json.Marshal(&src.Machineidentitycreated)
+	if src.MachineIdentityCreated != nil {
+		return json.Marshal(&src.MachineIdentityCreated)
 	}
 
-	if src.Machineidentitydeleted != nil {
-		return json.Marshal(&src.Machineidentitydeleted)
+	if src.MachineIdentityDeleted != nil {
+		return json.Marshal(&src.MachineIdentityDeleted)
 	}
 
-	if src.Machineidentityupdated != nil {
-		return json.Marshal(&src.Machineidentityupdated)
+	if src.MachineIdentityUpdated != nil {
+		return json.Marshal(&src.MachineIdentityUpdated)
 	}
 
-	if src.Provisioningcompleted != nil {
-		return json.Marshal(&src.Provisioningcompleted)
+	if src.ProvisioningCompleted != nil {
+		return json.Marshal(&src.ProvisioningCompleted)
 	}
 
-	if src.Savedsearchcomplete != nil {
-		return json.Marshal(&src.Savedsearchcomplete)
+	if src.SavedSearchComplete != nil {
+		return json.Marshal(&src.SavedSearchComplete)
 	}
 
-	if src.Sourceaccountcreated != nil {
-		return json.Marshal(&src.Sourceaccountcreated)
+	if src.SourceAccountCreated != nil {
+		return json.Marshal(&src.SourceAccountCreated)
 	}
 
-	if src.Sourceaccountdeleted != nil {
-		return json.Marshal(&src.Sourceaccountdeleted)
+	if src.SourceAccountDeleted != nil {
+		return json.Marshal(&src.SourceAccountDeleted)
 	}
 
-	if src.Sourceaccountupdated != nil {
-		return json.Marshal(&src.Sourceaccountupdated)
+	if src.SourceAccountUpdated != nil {
+		return json.Marshal(&src.SourceAccountUpdated)
 	}
 
-	if src.Sourcecreated != nil {
-		return json.Marshal(&src.Sourcecreated)
+	if src.SourceCreated != nil {
+		return json.Marshal(&src.SourceCreated)
 	}
 
-	if src.Sourcedeleted != nil {
-		return json.Marshal(&src.Sourcedeleted)
+	if src.SourceDeleted != nil {
+		return json.Marshal(&src.SourceDeleted)
 	}
 
-	if src.Sourceupdated != nil {
-		return json.Marshal(&src.Sourceupdated)
+	if src.SourceUpdated != nil {
+		return json.Marshal(&src.SourceUpdated)
 	}
 
-	if src.Vaclusterstatuschangeevent != nil {
-		return json.Marshal(&src.Vaclusterstatuschangeevent)
+	if src.VAClusterStatusChangeEvent != nil {
+		return json.Marshal(&src.VAClusterStatusChangeEvent)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -946,124 +946,124 @@ func (obj *TriggerExampleInput) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
-	if obj.Accessrequestdynamicapprover != nil {
-		return obj.Accessrequestdynamicapprover
+	if obj.AccessRequestDynamicApprover != nil {
+		return obj.AccessRequestDynamicApprover
 	}
 
-	if obj.Accessrequestpostapproval != nil {
-		return obj.Accessrequestpostapproval
+	if obj.AccessRequestPostApproval != nil {
+		return obj.AccessRequestPostApproval
 	}
 
-	if obj.Accessrequestpreapproval != nil {
-		return obj.Accessrequestpreapproval
+	if obj.AccessRequestPreApproval != nil {
+		return obj.AccessRequestPreApproval
 	}
 
-	if obj.Accountaggregationcompleted != nil {
-		return obj.Accountaggregationcompleted
+	if obj.AccountAggregationCompleted != nil {
+		return obj.AccountAggregationCompleted
 	}
 
-	if obj.Accountattributeschanged != nil {
-		return obj.Accountattributeschanged
+	if obj.AccountAttributesChanged != nil {
+		return obj.AccountAttributesChanged
 	}
 
-	if obj.Accountcorrelated != nil {
-		return obj.Accountcorrelated
+	if obj.AccountCorrelated != nil {
+		return obj.AccountCorrelated
 	}
 
-	if obj.Accountcreated != nil {
-		return obj.Accountcreated
+	if obj.AccountCreated != nil {
+		return obj.AccountCreated
 	}
 
-	if obj.Accountdeleted != nil {
-		return obj.Accountdeleted
+	if obj.AccountDeleted != nil {
+		return obj.AccountDeleted
 	}
 
-	if obj.Accountscollectedforaggregation != nil {
-		return obj.Accountscollectedforaggregation
+	if obj.AccountUncorrelated != nil {
+		return obj.AccountUncorrelated
 	}
 
-	if obj.Accountuncorrelated != nil {
-		return obj.Accountuncorrelated
+	if obj.AccountUpdated != nil {
+		return obj.AccountUpdated
 	}
 
-	if obj.Accountupdated != nil {
-		return obj.Accountupdated
+	if obj.AccountsCollectedForAggregation != nil {
+		return obj.AccountsCollectedForAggregation
 	}
 
-	if obj.Campaignactivated != nil {
-		return obj.Campaignactivated
+	if obj.CampaignActivated != nil {
+		return obj.CampaignActivated
 	}
 
-	if obj.Campaignended != nil {
-		return obj.Campaignended
+	if obj.CampaignEnded != nil {
+		return obj.CampaignEnded
 	}
 
-	if obj.Campaigngenerated != nil {
-		return obj.Campaigngenerated
+	if obj.CampaignGenerated != nil {
+		return obj.CampaignGenerated
 	}
 
-	if obj.Certificationsignedoff != nil {
-		return obj.Certificationsignedoff
+	if obj.CertificationSignedOff != nil {
+		return obj.CertificationSignedOff
 	}
 
-	if obj.Identityattributeschanged != nil {
-		return obj.Identityattributeschanged
+	if obj.IdentityAttributesChanged != nil {
+		return obj.IdentityAttributesChanged
 	}
 
-	if obj.Identitycreated != nil {
-		return obj.Identitycreated
+	if obj.IdentityCreated != nil {
+		return obj.IdentityCreated
 	}
 
-	if obj.Identitydeleted != nil {
-		return obj.Identitydeleted
+	if obj.IdentityDeleted != nil {
+		return obj.IdentityDeleted
 	}
 
-	if obj.Machineidentitycreated != nil {
-		return obj.Machineidentitycreated
+	if obj.MachineIdentityCreated != nil {
+		return obj.MachineIdentityCreated
 	}
 
-	if obj.Machineidentitydeleted != nil {
-		return obj.Machineidentitydeleted
+	if obj.MachineIdentityDeleted != nil {
+		return obj.MachineIdentityDeleted
 	}
 
-	if obj.Machineidentityupdated != nil {
-		return obj.Machineidentityupdated
+	if obj.MachineIdentityUpdated != nil {
+		return obj.MachineIdentityUpdated
 	}
 
-	if obj.Provisioningcompleted != nil {
-		return obj.Provisioningcompleted
+	if obj.ProvisioningCompleted != nil {
+		return obj.ProvisioningCompleted
 	}
 
-	if obj.Savedsearchcomplete != nil {
-		return obj.Savedsearchcomplete
+	if obj.SavedSearchComplete != nil {
+		return obj.SavedSearchComplete
 	}
 
-	if obj.Sourceaccountcreated != nil {
-		return obj.Sourceaccountcreated
+	if obj.SourceAccountCreated != nil {
+		return obj.SourceAccountCreated
 	}
 
-	if obj.Sourceaccountdeleted != nil {
-		return obj.Sourceaccountdeleted
+	if obj.SourceAccountDeleted != nil {
+		return obj.SourceAccountDeleted
 	}
 
-	if obj.Sourceaccountupdated != nil {
-		return obj.Sourceaccountupdated
+	if obj.SourceAccountUpdated != nil {
+		return obj.SourceAccountUpdated
 	}
 
-	if obj.Sourcecreated != nil {
-		return obj.Sourcecreated
+	if obj.SourceCreated != nil {
+		return obj.SourceCreated
 	}
 
-	if obj.Sourcedeleted != nil {
-		return obj.Sourcedeleted
+	if obj.SourceDeleted != nil {
+		return obj.SourceDeleted
 	}
 
-	if obj.Sourceupdated != nil {
-		return obj.Sourceupdated
+	if obj.SourceUpdated != nil {
+		return obj.SourceUpdated
 	}
 
-	if obj.Vaclusterstatuschangeevent != nil {
-		return obj.Vaclusterstatuschangeevent
+	if obj.VAClusterStatusChangeEvent != nil {
+		return obj.VAClusterStatusChangeEvent
 	}
 
 	// all schemas are nil
@@ -1072,124 +1072,124 @@ func (obj *TriggerExampleInput) GetActualInstance() (interface{}) {
 
 // Get the actual instance value
 func (obj TriggerExampleInput) GetActualInstanceValue() (interface{}) {
-	if obj.Accessrequestdynamicapprover != nil {
-		return *obj.Accessrequestdynamicapprover
+	if obj.AccessRequestDynamicApprover != nil {
+		return *obj.AccessRequestDynamicApprover
 	}
 
-	if obj.Accessrequestpostapproval != nil {
-		return *obj.Accessrequestpostapproval
+	if obj.AccessRequestPostApproval != nil {
+		return *obj.AccessRequestPostApproval
 	}
 
-	if obj.Accessrequestpreapproval != nil {
-		return *obj.Accessrequestpreapproval
+	if obj.AccessRequestPreApproval != nil {
+		return *obj.AccessRequestPreApproval
 	}
 
-	if obj.Accountaggregationcompleted != nil {
-		return *obj.Accountaggregationcompleted
+	if obj.AccountAggregationCompleted != nil {
+		return *obj.AccountAggregationCompleted
 	}
 
-	if obj.Accountattributeschanged != nil {
-		return *obj.Accountattributeschanged
+	if obj.AccountAttributesChanged != nil {
+		return *obj.AccountAttributesChanged
 	}
 
-	if obj.Accountcorrelated != nil {
-		return *obj.Accountcorrelated
+	if obj.AccountCorrelated != nil {
+		return *obj.AccountCorrelated
 	}
 
-	if obj.Accountcreated != nil {
-		return *obj.Accountcreated
+	if obj.AccountCreated != nil {
+		return *obj.AccountCreated
 	}
 
-	if obj.Accountdeleted != nil {
-		return *obj.Accountdeleted
+	if obj.AccountDeleted != nil {
+		return *obj.AccountDeleted
 	}
 
-	if obj.Accountscollectedforaggregation != nil {
-		return *obj.Accountscollectedforaggregation
+	if obj.AccountUncorrelated != nil {
+		return *obj.AccountUncorrelated
 	}
 
-	if obj.Accountuncorrelated != nil {
-		return *obj.Accountuncorrelated
+	if obj.AccountUpdated != nil {
+		return *obj.AccountUpdated
 	}
 
-	if obj.Accountupdated != nil {
-		return *obj.Accountupdated
+	if obj.AccountsCollectedForAggregation != nil {
+		return *obj.AccountsCollectedForAggregation
 	}
 
-	if obj.Campaignactivated != nil {
-		return *obj.Campaignactivated
+	if obj.CampaignActivated != nil {
+		return *obj.CampaignActivated
 	}
 
-	if obj.Campaignended != nil {
-		return *obj.Campaignended
+	if obj.CampaignEnded != nil {
+		return *obj.CampaignEnded
 	}
 
-	if obj.Campaigngenerated != nil {
-		return *obj.Campaigngenerated
+	if obj.CampaignGenerated != nil {
+		return *obj.CampaignGenerated
 	}
 
-	if obj.Certificationsignedoff != nil {
-		return *obj.Certificationsignedoff
+	if obj.CertificationSignedOff != nil {
+		return *obj.CertificationSignedOff
 	}
 
-	if obj.Identityattributeschanged != nil {
-		return *obj.Identityattributeschanged
+	if obj.IdentityAttributesChanged != nil {
+		return *obj.IdentityAttributesChanged
 	}
 
-	if obj.Identitycreated != nil {
-		return *obj.Identitycreated
+	if obj.IdentityCreated != nil {
+		return *obj.IdentityCreated
 	}
 
-	if obj.Identitydeleted != nil {
-		return *obj.Identitydeleted
+	if obj.IdentityDeleted != nil {
+		return *obj.IdentityDeleted
 	}
 
-	if obj.Machineidentitycreated != nil {
-		return *obj.Machineidentitycreated
+	if obj.MachineIdentityCreated != nil {
+		return *obj.MachineIdentityCreated
 	}
 
-	if obj.Machineidentitydeleted != nil {
-		return *obj.Machineidentitydeleted
+	if obj.MachineIdentityDeleted != nil {
+		return *obj.MachineIdentityDeleted
 	}
 
-	if obj.Machineidentityupdated != nil {
-		return *obj.Machineidentityupdated
+	if obj.MachineIdentityUpdated != nil {
+		return *obj.MachineIdentityUpdated
 	}
 
-	if obj.Provisioningcompleted != nil {
-		return *obj.Provisioningcompleted
+	if obj.ProvisioningCompleted != nil {
+		return *obj.ProvisioningCompleted
 	}
 
-	if obj.Savedsearchcomplete != nil {
-		return *obj.Savedsearchcomplete
+	if obj.SavedSearchComplete != nil {
+		return *obj.SavedSearchComplete
 	}
 
-	if obj.Sourceaccountcreated != nil {
-		return *obj.Sourceaccountcreated
+	if obj.SourceAccountCreated != nil {
+		return *obj.SourceAccountCreated
 	}
 
-	if obj.Sourceaccountdeleted != nil {
-		return *obj.Sourceaccountdeleted
+	if obj.SourceAccountDeleted != nil {
+		return *obj.SourceAccountDeleted
 	}
 
-	if obj.Sourceaccountupdated != nil {
-		return *obj.Sourceaccountupdated
+	if obj.SourceAccountUpdated != nil {
+		return *obj.SourceAccountUpdated
 	}
 
-	if obj.Sourcecreated != nil {
-		return *obj.Sourcecreated
+	if obj.SourceCreated != nil {
+		return *obj.SourceCreated
 	}
 
-	if obj.Sourcedeleted != nil {
-		return *obj.Sourcedeleted
+	if obj.SourceDeleted != nil {
+		return *obj.SourceDeleted
 	}
 
-	if obj.Sourceupdated != nil {
-		return *obj.Sourceupdated
+	if obj.SourceUpdated != nil {
+		return *obj.SourceUpdated
 	}
 
-	if obj.Vaclusterstatuschangeevent != nil {
-		return *obj.Vaclusterstatuschangeevent
+	if obj.VAClusterStatusChangeEvent != nil {
+		return *obj.VAClusterStatusChangeEvent
 	}
 
 	// all schemas are nil

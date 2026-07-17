@@ -111,14 +111,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/managedcluster'
+                  $ref: '#/components/schemas/ManagedCluster'
                 type: array
           description: Response with a list of managed clusters.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -142,7 +142,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -167,7 +167,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -188,20 +188,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/managedclusterrequest'
+              $ref: '#/components/schemas/ManagedClusterRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/managedcluster'
+                $ref: '#/components/schemas/ManagedCluster'
           description: Created managed cluster.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -225,7 +225,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -250,7 +250,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -294,7 +294,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -318,7 +318,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -343,7 +343,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -373,13 +373,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/managedcluster'
+                $ref: '#/components/schemas/ManagedCluster'
           description: Response with managed cluster for the given ID.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -403,7 +403,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -421,7 +421,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -446,7 +446,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -477,7 +477,7 @@ paths:
           application/json-patch+json:
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: JSONPatch payload used to update the object.
         required: true
@@ -486,13 +486,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/managedcluster'
+                $ref: '#/components/schemas/ManagedCluster'
           description: Updated managed cluster.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -516,7 +516,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -534,7 +534,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -559,7 +559,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -591,7 +591,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/clientlogconfiguration'
+                $ref: '#/components/schemas/ClientLogConfiguration'
           description: Log configuration of managed cluster for given cluster ID.
         "204":
           description: No content - indicates the request was successful but there
@@ -600,7 +600,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -624,7 +624,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -642,7 +642,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -667,7 +667,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -714,14 +714,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/clientlogconfiguration'
+                $ref: '#/components/schemas/ClientLogConfiguration'
           description: Response with updated client log configuration for the given
             managed cluster.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -745,7 +745,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -763,7 +763,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -788,7 +788,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -822,13 +822,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/clustermanualupgrade'
+                $ref: '#/components/schemas/ClusterManualUpgrade'
           description: Manual upgrade of managed cluster for given cluster ID.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -852,7 +852,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -870,7 +870,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -895,7 +895,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -982,7 +982,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1006,7 +1006,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -1024,7 +1024,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -1049,10 +1049,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    managedclustertypes:
+    ManagedClusterTypes:
       description: |
         The Type of Cluster:
         * `idn` - IDN VA type
@@ -1078,7 +1078,7 @@ components:
       - standard
       example: idn
       type: string
-    managedclusterkeypair:
+    ManagedClusterKeyPair:
       description: Managed Cluster key pair for Cluster
       example:
         publicKeyThumbprint: 6CMlaJIV44-xJxcB3CJBjDUUn54
@@ -1102,7 +1102,7 @@ components:
           type: string
       title: Managed Cluster Key Pair
       type: object
-    managedclusterqueue:
+    ManagedClusterQueue:
       description: Managed Cluster key pair for Cluster
       example:
         name: megapod-useast1-denali-lwt-cluster-1533
@@ -1118,7 +1118,7 @@ components:
           type: string
       title: Managed Cluster Queue
       type: object
-    managedclusterattributes:
+    ManagedClusterAttributes:
       description: "Managed Cluster Attributes for Cluster Configuration. Supported\
         \ Cluster Types [sqsCluster, spConnectCluster]"
       example:
@@ -1128,7 +1128,7 @@ components:
           region: us-east-1
       properties:
         queue:
-          $ref: '#/components/schemas/managedclusterqueue'
+          $ref: '#/components/schemas/ManagedClusterQueue'
         keystore:
           description: ManagedCluster keystore for spConnectCluster type
           example: /u3+7QAAAAIAAAABAAAAAQAvL3Byb3h5LWNsdXN0ZXIvMmM5MTgwODc3Yjg3MW
@@ -1136,7 +1136,7 @@ components:
           type: string
       title: Managed Cluster Attributes
       type: object
-    managedclusterredis:
+    ManagedClusterRedis:
       description: Managed Cluster Redis Configuration
       example:
         redisHost: megapod-useast1-shared-redis.cloud.sailpoint.com
@@ -1153,7 +1153,7 @@ components:
           type: integer
       title: Managed Cluster Redis
       type: object
-    managedclienttype:
+    ManagedClientType:
       description: Managed Client type
       enum:
       - CCG
@@ -1164,7 +1164,7 @@ components:
       example: CCG
       nullable: true
       type: string
-    standardlevel:
+    StandardLevel:
       description: Standard Log4j log level
       enum:
       - "OFF"
@@ -1176,14 +1176,14 @@ components:
       - TRACE
       example: INFO
       type: string
-    loglevelspec:
+    LogLevelSpec:
       additionalProperties:
-        $ref: '#/components/schemas/standardlevel'
+        $ref: '#/components/schemas/StandardLevel'
       description: Mapping of identifiers to Standard Log Level values
       example: INFO
       title: Log Level Spec
       type: object
-    clientlogconfiguration:
+    ClientLogConfiguration:
       description: Client Runtime Logging Configuration
       example:
         durationMinutes: 120
@@ -1213,10 +1213,10 @@ components:
           format: date-time
           type: string
         rootLevel:
-          $ref: '#/components/schemas/standardlevel'
+          $ref: '#/components/schemas/StandardLevel'
         logLevels:
           additionalProperties:
-            $ref: '#/components/schemas/standardlevel'
+            $ref: '#/components/schemas/StandardLevel'
           description: Mapping of identifiers to Standard Log Level values
           example: INFO
           title: Log Level Spec
@@ -1225,7 +1225,7 @@ components:
       - rootLevel
       title: Client Log Configuration
       type: object
-    managedclusterencryptionconfig:
+    ManagedClusterEncryptionConfig:
       description: "Defines the encryption settings for a managed cluster, including\
         \ the format used for storing and processing encrypted data."
       example:
@@ -1241,7 +1241,7 @@ components:
           type: string
       title: Managed Cluster Encryption Configuration
       type: object
-    managedcluster:
+    ManagedCluster:
       description: Managed Cluster
       example:
         updatePreferences:
@@ -1319,7 +1319,7 @@ components:
           example: denali
           type: string
         type:
-          $ref: '#/components/schemas/managedclustertypes'
+          $ref: '#/components/schemas/ManagedClusterTypes'
         configuration:
           additionalProperties:
             nullable: true
@@ -1331,18 +1331,18 @@ components:
             gmtOffset: "-5"
           type: object
         keyPair:
-          $ref: '#/components/schemas/managedclusterkeypair'
+          $ref: '#/components/schemas/ManagedClusterKeyPair'
         attributes:
-          $ref: '#/components/schemas/managedclusterattributes'
+          $ref: '#/components/schemas/ManagedClusterAttributes'
         description:
           default: q
           description: ManagedCluster description
           example: A short description of the managed cluster.
           type: string
         redis:
-          $ref: '#/components/schemas/managedclusterredis'
+          $ref: '#/components/schemas/ManagedClusterRedis'
         clientType:
-          $ref: '#/components/schemas/managedclienttype'
+          $ref: '#/components/schemas/ManagedClientType'
         ccgVersion:
           description: CCG version used by the ManagedCluster
           example: v01
@@ -1354,7 +1354,7 @@ components:
           example: false
           type: boolean
         logConfiguration:
-          $ref: '#/components/schemas/clientlogconfiguration'
+          $ref: '#/components/schemas/ClientLogConfiguration'
         operational:
           default: false
           description: Whether or not the cluster is operational or not
@@ -1388,7 +1388,7 @@ components:
           nullable: true
           type: string
         encryptionConfiguration:
-          $ref: '#/components/schemas/managedclusterencryptionconfig'
+          $ref: '#/components/schemas/ManagedClusterEncryptionConfig'
         alertKey:
           description: Key describing any immediate cluster alerts
           example: LIMITED_RESOURCES
@@ -1432,7 +1432,7 @@ components:
           nullable: true
           type: string
         updatePreferences:
-          $ref: '#/components/schemas/managedcluster_updatePreferences'
+          $ref: '#/components/schemas/ManagedCluster_updatePreferences'
         currentInstalledReleaseVersion:
           description: The current installed release on the Managed cluster
           example: "123.1"
@@ -1466,7 +1466,7 @@ components:
       - id
       title: Managed Cluster
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1478,7 +1478,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1491,7 +1491,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1499,7 +1499,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1533,18 +1533,25 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    managedclusterrequest:
+    ManagedClusterRequest:
       description: Request to create Managed Cluster
+      example:
+        configuration:
+          clusterExternalId: externalId
+          ccgVersion: 77.0.0
+        name: Managed Cluster Name
+        description: A short description of the managed cluster.
+        type: idn
       properties:
         name:
           description: ManagedCluster name
@@ -1552,7 +1559,7 @@ components:
           nullable: false
           type: string
         type:
-          $ref: '#/components/schemas/managedclustertypes'
+          $ref: '#/components/schemas/ManagedClusterTypes'
         configuration:
           additionalProperties:
             type: string
@@ -1570,8 +1577,12 @@ components:
       - name
       title: Managed Cluster Request
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -1590,13 +1601,13 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    clientlogconfigurationdurationminutes:
+    ClientLogConfigurationDurationMinutes:
       description: Client Runtime Logging Configuration
       nullable: true
       properties:
@@ -1614,10 +1625,10 @@ components:
           minimum: 5
           type: integer
         rootLevel:
-          $ref: '#/components/schemas/standardlevel'
+          $ref: '#/components/schemas/StandardLevel'
         logLevels:
           additionalProperties:
-            $ref: '#/components/schemas/standardlevel'
+            $ref: '#/components/schemas/StandardLevel'
           description: Mapping of identifiers to Standard Log Level values
           example: INFO
           title: Log Level Spec
@@ -1626,7 +1637,7 @@ components:
       - rootLevel
       title: Set Duration Minutes
       type: object
-    clientlogconfigurationexpiration:
+    ClientLogConfigurationExpiration:
       description: Client Runtime Logging Configuration
       nullable: true
       properties:
@@ -1641,10 +1652,10 @@ components:
           format: date-time
           type: string
         rootLevel:
-          $ref: '#/components/schemas/standardlevel'
+          $ref: '#/components/schemas/StandardLevel'
         logLevels:
           additionalProperties:
-            $ref: '#/components/schemas/standardlevel'
+            $ref: '#/components/schemas/StandardLevel'
           description: Mapping of identifiers to Standard Log Level values
           example: INFO
           title: Log Level Spec
@@ -1653,7 +1664,7 @@ components:
       - rootLevel
       title: Set Expiration Date
       type: object
-    clustermanualupgrade:
+    ClusterManualUpgrade:
       description: Manual Upgrade Job Response
       example:
         jobs:
@@ -1756,7 +1767,7 @@ components:
         jobs:
           description: List of job objects for the upgrade request.
           items:
-            $ref: '#/components/schemas/clustermanualupgrade_jobs_inner'
+            $ref: '#/components/schemas/ClusterManualUpgrade_jobs_inner'
           type: array
       title: Cluster Manual Upgrade
       type: object
@@ -1778,9 +1789,9 @@ components:
       type: object
     putClientLogConfigurationV1_request:
       oneOf:
-      - $ref: '#/components/schemas/clientlogconfigurationdurationminutes'
-      - $ref: '#/components/schemas/clientlogconfigurationexpiration'
-    managedcluster_updatePreferences:
+      - $ref: '#/components/schemas/ClientLogConfigurationDurationMinutes'
+      - $ref: '#/components/schemas/ClientLogConfigurationExpiration'
+    ManagedCluster_updatePreferences:
       description: The preference for applying updates for the cluster
       example:
         updateState: DISABLED
@@ -1817,7 +1828,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description
@@ -1840,7 +1851,7 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    clustermanualupgrade_jobs_inner_managedProcessConfiguration_charon:
+    ClusterManualUpgrade_jobs_inner_managedProcessConfiguration_charon:
       description: Configuration details for the 'charon' process.
       example:
         path: sailpoint/charon
@@ -1870,7 +1881,7 @@ components:
       - restartNeeded
       - version
       type: object
-    clustermanualupgrade_jobs_inner_managedProcessConfiguration_ccg:
+    ClusterManualUpgrade_jobs_inner_managedProcessConfiguration_ccg:
       description: Configuration details for the 'ccg' process.
       example:
         path: sailpoint/ccg
@@ -1938,7 +1949,7 @@ components:
       - restartNeeded
       - version
       type: object
-    clustermanualupgrade_jobs_inner_managedProcessConfiguration_otel_agent:
+    ClusterManualUpgrade_jobs_inner_managedProcessConfiguration_otel_agent:
       description: Configuration details for the 'otel_agent' process.
       example:
         path: sailpoint/otel_agent
@@ -1968,7 +1979,7 @@ components:
       - restartNeeded
       - version
       type: object
-    clustermanualupgrade_jobs_inner_managedProcessConfiguration_relay:
+    ClusterManualUpgrade_jobs_inner_managedProcessConfiguration_relay:
       description: Configuration details for the 'relay' process.
       example:
         path: sailpoint/relay
@@ -1998,7 +2009,7 @@ components:
       - restartNeeded
       - version
       type: object
-    clustermanualupgrade_jobs_inner_managedProcessConfiguration_toolbox:
+    ClusterManualUpgrade_jobs_inner_managedProcessConfiguration_toolbox:
       description: Configuration details for the 'toolbox' process.
       example:
         path: sailpoint/toolbox
@@ -2028,7 +2039,7 @@ components:
       - restartNeeded
       - version
       type: object
-    clustermanualupgrade_jobs_inner_managedProcessConfiguration:
+    ClusterManualUpgrade_jobs_inner_managedProcessConfiguration:
       description: Configuration of the managed processes involved in the upgrade.
       example:
         charon:
@@ -2074,17 +2085,17 @@ components:
           version: "3004"
       properties:
         charon:
-          $ref: '#/components/schemas/clustermanualupgrade_jobs_inner_managedProcessConfiguration_charon'
+          $ref: '#/components/schemas/ClusterManualUpgrade_jobs_inner_managedProcessConfiguration_charon'
         ccg:
-          $ref: '#/components/schemas/clustermanualupgrade_jobs_inner_managedProcessConfiguration_ccg'
+          $ref: '#/components/schemas/ClusterManualUpgrade_jobs_inner_managedProcessConfiguration_ccg'
         otel_agent:
-          $ref: '#/components/schemas/clustermanualupgrade_jobs_inner_managedProcessConfiguration_otel_agent'
+          $ref: '#/components/schemas/ClusterManualUpgrade_jobs_inner_managedProcessConfiguration_otel_agent'
         relay:
-          $ref: '#/components/schemas/clustermanualupgrade_jobs_inner_managedProcessConfiguration_relay'
+          $ref: '#/components/schemas/ClusterManualUpgrade_jobs_inner_managedProcessConfiguration_relay'
         toolbox:
-          $ref: '#/components/schemas/clustermanualupgrade_jobs_inner_managedProcessConfiguration_toolbox'
+          $ref: '#/components/schemas/ClusterManualUpgrade_jobs_inner_managedProcessConfiguration_toolbox'
       type: object
-    clustermanualupgrade_jobs_inner:
+    ClusterManualUpgrade_jobs_inner:
       example:
         targetId: 9fe8f1cc-2fd2-4675-a8cf-af4b43488ca2
         cookbook: 4732440c-dacb-45b2-b2f8-ee2fa1327a07
@@ -2155,7 +2166,7 @@ components:
           example: 9fe8f1cc-2fd2-4675-a8cf-af4b43488ca2
           type: string
         managedProcessConfiguration:
-          $ref: '#/components/schemas/clustermanualupgrade_jobs_inner_managedProcessConfiguration'
+          $ref: '#/components/schemas/ClusterManualUpgrade_jobs_inner_managedProcessConfiguration'
       required:
       - cookbook
       - managedProcessConfiguration

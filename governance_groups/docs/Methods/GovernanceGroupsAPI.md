@@ -49,11 +49,11 @@ Other parameters are passed through a pointer to a apiCreateWorkgroupV1Request s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workgroupdto** | [**Workgroupdto**](../models/workgroupdto) |  | 
+ **workgroupDto** | [**WorkgroupDto**](../models/workgroup-dto) |  | 
 
 ### Return type
 
-[**Workgroupdto**](../models/workgroupdto)
+[**WorkgroupDto**](../models/workgroup-dto)
 
 ### HTTP request headers
 
@@ -75,10 +75,25 @@ import (
 )
 
 func main() {
-    workgroupdtoJson := []byte(``) // Workgroupdto | 
+    workgroupdtoJson := []byte(`{
+          "owner" : {
+            "emailAddress" : "support@sailpoint.com",
+            "displayName" : "Support",
+            "name" : "Support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "connectionCount" : 1641498673000,
+          "created" : "2022-01-06T19:51:13Z",
+          "memberCount" : 1641498673000,
+          "name" : "DB Access Governance Group",
+          "description" : "Description of the Governance Group",
+          "modified" : "2022-01-06T19:51:13Z",
+          "id" : "2c91808568c529c60168cca6f90c1313"
+        }`) // WorkgroupDto | 
 
-    var workgroupdto governance_groups.Workgroupdto
-    if err := json.Unmarshal(workgroupdtoJson, &workgroupdto); err != nil {
+    var workgroupDto governance_groups.WorkgroupDto
+    if err := json.Unmarshal(workgroupdtoJson, &workgroupDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -86,13 +101,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsAPI.CreateWorkgroupV1(context.Background()).Workgroupdto(workgroupdto).Execute()
-	  //resp, r, err := apiClient.GovernanceGroupsAPI.CreateWorkgroupV1(context.Background()).Workgroupdto(workgroupdto).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.CreateWorkgroupV1(context.Background()).WorkgroupDto(workgroupDto).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.CreateWorkgroupV1(context.Background()).WorkgroupDto(workgroupDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.CreateWorkgroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateWorkgroupV1`: Workgroupdto
+    // response from `CreateWorkgroupV1`: WorkgroupDto
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.CreateWorkgroupV1`: %v\n", resp)
 }
 ```
@@ -124,11 +139,11 @@ Other parameters are passed through a pointer to a apiDeleteWorkgroupMembersV1Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **bulkworkgroupmembersrequestInner** | [**[]BulkworkgroupmembersrequestInner**](../models/bulkworkgroupmembersrequest-inner) | List of identities to be removed from  a Governance Group members list. | 
+ **bulkWorkgroupMembersRequestInner** | [**[]BulkWorkgroupMembersRequestInner**](../models/bulk-workgroup-members-request-inner) | List of identities to be removed from  a Governance Group members list. | 
 
 ### Return type
 
-[**[]Workgroupmemberdeleteitem**](../models/workgroupmemberdeleteitem)
+[**[]WorkgroupMemberDeleteItem**](../models/workgroup-member-delete-item)
 
 ### HTTP request headers
 
@@ -151,10 +166,10 @@ import (
 
 func main() {
     workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-    bulkworkgroupmembersrequestinnerJson := []byte(``) // []BulkworkgroupmembersrequestInner | List of identities to be removed from  a Governance Group members list.
+    bulkworkgroupmembersrequestinnerJson := []byte(``) // []BulkWorkgroupMembersRequestInner | List of identities to be removed from  a Governance Group members list.
 
-    var bulkworkgroupmembersrequestInner []governance_groups.BulkworkgroupmembersrequestInner
-    if err := json.Unmarshal(bulkworkgroupmembersrequestinnerJson, &bulkworkgroupmembersrequestInner); err != nil {
+    var bulkWorkgroupMembersRequestInner []governance_groups.BulkWorkgroupMembersRequestInner
+    if err := json.Unmarshal(bulkworkgroupmembersrequestinnerJson, &bulkWorkgroupMembersRequestInner); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -162,13 +177,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
-	  //resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupMembersV1(context.Background(), workgroupId).BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupMembersV1(context.Background(), workgroupId).BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupMembersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteWorkgroupMembersV1`: []Workgroupmemberdeleteitem
+    // response from `DeleteWorkgroupMembersV1`: []WorkgroupMemberDeleteItem
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.DeleteWorkgroupMembersV1`: %v\n", resp)
 }
 ```
@@ -268,11 +283,11 @@ Other parameters are passed through a pointer to a apiDeleteWorkgroupsInBulkV1Re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workgroupbulkdeleterequest** | [**Workgroupbulkdeleterequest**](../models/workgroupbulkdeleterequest) |  | 
+ **workgroupBulkDeleteRequest** | [**WorkgroupBulkDeleteRequest**](../models/workgroup-bulk-delete-request) |  | 
 
 ### Return type
 
-[**[]Workgroupdeleteitem**](../models/workgroupdeleteitem)
+[**[]WorkgroupDeleteItem**](../models/workgroup-delete-item)
 
 ### HTTP request headers
 
@@ -294,10 +309,12 @@ import (
 )
 
 func main() {
-    workgroupbulkdeleterequestJson := []byte(`{"ids":["567a697e-885b-495a-afc5-d55e1c23a302","c7b0f7b2-1e78-4063-b294-a555333dacd2"]}`) // Workgroupbulkdeleterequest | 
+    workgroupbulkdeleterequestJson := []byte(`{
+          "ids" : [ "567a697e-885b-495a-afc5-d55e1c23a302", "c7b0f7b2-1e78-4063-b294-a555333dacd2" ]
+        }`) // WorkgroupBulkDeleteRequest | 
 
-    var workgroupbulkdeleterequest governance_groups.Workgroupbulkdeleterequest
-    if err := json.Unmarshal(workgroupbulkdeleterequestJson, &workgroupbulkdeleterequest); err != nil {
+    var workgroupBulkDeleteRequest governance_groups.WorkgroupBulkDeleteRequest
+    if err := json.Unmarshal(workgroupbulkdeleterequestJson, &workgroupBulkDeleteRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -305,13 +322,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1(context.Background()).Workgroupbulkdeleterequest(workgroupbulkdeleterequest).Execute()
-	  //resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1(context.Background()).Workgroupbulkdeleterequest(workgroupbulkdeleterequest).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1(context.Background()).WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1(context.Background()).WorkgroupBulkDeleteRequest(workgroupBulkDeleteRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteWorkgroupsInBulkV1`: []Workgroupdeleteitem
+    // response from `DeleteWorkgroupsInBulkV1`: []WorkgroupDeleteItem
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.DeleteWorkgroupsInBulkV1`: %v\n", resp)
 }
 ```
@@ -343,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workgroupdto**](../models/workgroupdto)
+[**WorkgroupDto**](../models/workgroup-dto)
 
 ### HTTP request headers
 
@@ -377,7 +394,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.GetWorkgroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWorkgroupV1`: Workgroupdto
+    // response from `GetWorkgroupV1`: WorkgroupDto
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.GetWorkgroupV1`: %v\n", resp)
 }
 ```
@@ -413,7 +430,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Workgroupconnectiondto**](../models/workgroupconnectiondto)
+[**[]WorkgroupConnectionDto**](../models/workgroup-connection-dto)
 
 ### HTTP request headers
 
@@ -451,7 +468,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListConnectionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListConnectionsV1`: []Workgroupconnectiondto
+    // response from `ListConnectionsV1`: []WorkgroupConnectionDto
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.ListConnectionsV1`: %v\n", resp)
 }
 ```
@@ -557,7 +574,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Workgroupdto**](../models/workgroupdto)
+[**[]WorkgroupDto**](../models/workgroup-dto)
 
 ### HTTP request headers
 
@@ -595,7 +612,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroupsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListWorkgroupsV1`: []Workgroupdto
+    // response from `ListWorkgroupsV1`: []WorkgroupDto
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.ListWorkgroupsV1`: %v\n", resp)
 }
 ```
@@ -627,11 +644,11 @@ Other parameters are passed through a pointer to a apiPatchWorkgroupV1Request st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
-[**Workgroupdto**](../models/workgroupdto)
+[**WorkgroupDto**](../models/workgroup-dto)
 
 ### HTTP request headers
 
@@ -654,19 +671,19 @@ import (
 
 func main() {
     id := `2c9180837ca6693d017ca8d097500149` // string | ID of the Governance Group # string | ID of the Governance Group
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Governance Group new description."}]`) // []Jsonpatchoperation |  (optional)
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/description","value":"Governance Group new description."}]`) // []JsonPatchOperation |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.GovernanceGroupsAPI.PatchWorkgroupV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.GovernanceGroupsAPI.PatchWorkgroupV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.PatchWorkgroupV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.PatchWorkgroupV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchWorkgroupV1`: Workgroupdto
+    // response from `PatchWorkgroupV1`: WorkgroupDto
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.PatchWorkgroupV1`: %v\n", resp)
 }
 ```
@@ -699,11 +716,11 @@ Other parameters are passed through a pointer to a apiUpdateWorkgroupMembersV1Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **bulkworkgroupmembersrequestInner** | [**[]BulkworkgroupmembersrequestInner**](../models/bulkworkgroupmembersrequest-inner) | List of identities to be added to a Governance Group members list. | 
+ **bulkWorkgroupMembersRequestInner** | [**[]BulkWorkgroupMembersRequestInner**](../models/bulk-workgroup-members-request-inner) | List of identities to be added to a Governance Group members list. | 
 
 ### Return type
 
-[**[]Workgroupmemberadditem**](../models/workgroupmemberadditem)
+[**[]WorkgroupMemberAddItem**](../models/workgroup-member-add-item)
 
 ### HTTP request headers
 
@@ -726,10 +743,10 @@ import (
 
 func main() {
     workgroupId := `2c91808a7813090a017814121919ecca` // string | ID of the Governance Group. # string | ID of the Governance Group.
-    bulkworkgroupmembersrequestinnerJson := []byte(``) // []BulkworkgroupmembersrequestInner | List of identities to be added to a Governance Group members list.
+    bulkworkgroupmembersrequestinnerJson := []byte(``) // []BulkWorkgroupMembersRequestInner | List of identities to be added to a Governance Group members list.
 
-    var bulkworkgroupmembersrequestInner []governance_groups.BulkworkgroupmembersrequestInner
-    if err := json.Unmarshal(bulkworkgroupmembersrequestinnerJson, &bulkworkgroupmembersrequestInner); err != nil {
+    var bulkWorkgroupMembersRequestInner []governance_groups.BulkWorkgroupMembersRequestInner
+    if err := json.Unmarshal(bulkworkgroupmembersrequestinnerJson, &bulkWorkgroupMembersRequestInner); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -737,13 +754,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsAPI.UpdateWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
-	  //resp, r, err := apiClient.GovernanceGroupsAPI.UpdateWorkgroupMembersV1(context.Background(), workgroupId).BulkworkgroupmembersrequestInner(bulkworkgroupmembersrequestInner).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.UpdateWorkgroupMembersV1(context.Background(), workgroupId).BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner).Execute()
+	  //resp, r, err := apiClient.GovernanceGroupsAPI.UpdateWorkgroupMembersV1(context.Background(), workgroupId).BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.UpdateWorkgroupMembersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateWorkgroupMembersV1`: []Workgroupmemberadditem
+    // response from `UpdateWorkgroupMembersV1`: []WorkgroupMemberAddItem
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.UpdateWorkgroupMembersV1`: %v\n", resp)
 }
 ```

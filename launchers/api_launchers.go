@@ -26,12 +26,12 @@ type LaunchersAPIService service
 type ApiCreateLauncherV1Request struct {
 	ctx context.Context
 	ApiService *LaunchersAPIService
-	launcherrequest *Launcherrequest
+	launcherRequest *LauncherRequest
 }
 
 // Payload to create a Launcher
-func (r ApiCreateLauncherV1Request) Launcherrequest(launcherrequest Launcherrequest) ApiCreateLauncherV1Request {
-	r.launcherrequest = &launcherrequest
+func (r ApiCreateLauncherV1Request) LauncherRequest(launcherRequest LauncherRequest) ApiCreateLauncherV1Request {
+	r.launcherRequest = &launcherRequest
 	return r
 }
 
@@ -74,8 +74,8 @@ func (a *LaunchersAPIService) CreateLauncherV1Execute(r ApiCreateLauncherV1Reque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.launcherrequest == nil {
-		return localVarReturnValue, nil, reportError("launcherrequest is required and must be specified")
+	if r.launcherRequest == nil {
+		return localVarReturnValue, nil, reportError("launcherRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -96,7 +96,7 @@ func (a *LaunchersAPIService) CreateLauncherV1Execute(r ApiCreateLauncherV1Reque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.launcherrequest
+	localVarPostBody = r.launcherRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -120,7 +120,7 @@ func (a *LaunchersAPIService) CreateLauncherV1Execute(r ApiCreateLauncherV1Reque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,7 +142,7 @@ func (a *LaunchersAPIService) CreateLauncherV1Execute(r ApiCreateLauncherV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -153,7 +153,7 @@ func (a *LaunchersAPIService) CreateLauncherV1Execute(r ApiCreateLauncherV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -175,7 +175,7 @@ func (a *LaunchersAPIService) CreateLauncherV1Execute(r ApiCreateLauncherV1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -286,7 +286,7 @@ func (a *LaunchersAPIService) DeleteLauncherV1Execute(r ApiDeleteLauncherV1Reque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -308,7 +308,7 @@ func (a *LaunchersAPIService) DeleteLauncherV1Execute(r ApiDeleteLauncherV1Reque
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -319,7 +319,7 @@ func (a *LaunchersAPIService) DeleteLauncherV1Execute(r ApiDeleteLauncherV1Reque
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -341,7 +341,7 @@ func (a *LaunchersAPIService) DeleteLauncherV1Execute(r ApiDeleteLauncherV1Reque
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -445,7 +445,7 @@ func (a *LaunchersAPIService) GetLauncherV1Execute(r ApiGetLauncherV1Request) (*
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -467,7 +467,7 @@ func (a *LaunchersAPIService) GetLauncherV1Execute(r ApiGetLauncherV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -478,7 +478,7 @@ func (a *LaunchersAPIService) GetLauncherV1Execute(r ApiGetLauncherV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -500,7 +500,7 @@ func (a *LaunchersAPIService) GetLauncherV1Execute(r ApiGetLauncherV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -642,7 +642,7 @@ func (a *LaunchersAPIService) GetLaunchersV1Execute(r ApiGetLaunchersV1Request) 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -664,7 +664,7 @@ func (a *LaunchersAPIService) GetLaunchersV1Execute(r ApiGetLaunchersV1Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -675,7 +675,7 @@ func (a *LaunchersAPIService) GetLaunchersV1Execute(r ApiGetLaunchersV1Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -697,7 +697,7 @@ func (a *LaunchersAPIService) GetLaunchersV1Execute(r ApiGetLaunchersV1Request) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -725,12 +725,12 @@ type ApiPutLauncherV1Request struct {
 	ctx context.Context
 	ApiService *LaunchersAPIService
 	launcherID string
-	launcherrequest *Launcherrequest
+	launcherRequest *LauncherRequest
 }
 
 // Payload to replace Launcher
-func (r ApiPutLauncherV1Request) Launcherrequest(launcherrequest Launcherrequest) ApiPutLauncherV1Request {
-	r.launcherrequest = &launcherrequest
+func (r ApiPutLauncherV1Request) LauncherRequest(launcherRequest LauncherRequest) ApiPutLauncherV1Request {
+	r.launcherRequest = &launcherRequest
 	return r
 }
 
@@ -776,8 +776,8 @@ func (a *LaunchersAPIService) PutLauncherV1Execute(r ApiPutLauncherV1Request) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.launcherrequest == nil {
-		return localVarReturnValue, nil, reportError("launcherrequest is required and must be specified")
+	if r.launcherRequest == nil {
+		return localVarReturnValue, nil, reportError("launcherRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -798,7 +798,7 @@ func (a *LaunchersAPIService) PutLauncherV1Execute(r ApiPutLauncherV1Request) (*
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.launcherrequest
+	localVarPostBody = r.launcherRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -822,7 +822,7 @@ func (a *LaunchersAPIService) PutLauncherV1Execute(r ApiPutLauncherV1Request) (*
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -844,7 +844,7 @@ func (a *LaunchersAPIService) PutLauncherV1Execute(r ApiPutLauncherV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -855,7 +855,7 @@ func (a *LaunchersAPIService) PutLauncherV1Execute(r ApiPutLauncherV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -877,7 +877,7 @@ func (a *LaunchersAPIService) PutLauncherV1Execute(r ApiPutLauncherV1Request) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -990,7 +990,7 @@ func (a *LaunchersAPIService) StartLauncherV1Execute(r ApiStartLauncherV1Request
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1012,7 +1012,7 @@ func (a *LaunchersAPIService) StartLauncherV1Execute(r ApiStartLauncherV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1023,7 +1023,7 @@ func (a *LaunchersAPIService) StartLauncherV1Execute(r ApiStartLauncherV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1045,7 +1045,7 @@ func (a *LaunchersAPIService) StartLauncherV1Execute(r ApiStartLauncherV1Request
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

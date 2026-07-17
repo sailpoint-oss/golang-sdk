@@ -87,20 +87,20 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ArrayInner](docs/ArrayInner.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetTaskStatusV1401Response](docs/GetTaskStatusV1401Response.md)
  - [GetTaskStatusV1429Response](docs/GetTaskStatusV1429Response.md)
- - [Jsonpatchoperation](docs/Jsonpatchoperation.md)
- - [JsonpatchoperationValue](docs/JsonpatchoperationValue.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Localizedmessage](docs/Localizedmessage.md)
+ - [JsonPatchOperation](docs/JsonPatchOperation.md)
+ - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [LocalizedMessage](docs/LocalizedMessage.md)
  - [Target](docs/Target.md)
- - [Taskdefinitionsummary](docs/Taskdefinitionsummary.md)
- - [Taskreturndetails](docs/Taskreturndetails.md)
- - [Taskstatus](docs/Taskstatus.md)
- - [Taskstatusmessage](docs/Taskstatusmessage.md)
- - [TaskstatusmessageParametersInner](docs/TaskstatusmessageParametersInner.md)
+ - [TaskDefinitionSummary](docs/TaskDefinitionSummary.md)
+ - [TaskReturnDetails](docs/TaskReturnDetails.md)
+ - [TaskStatus](docs/TaskStatus.md)
+ - [TaskStatusMessage](docs/TaskStatusMessage.md)
+ - [TaskStatusMessageParametersInner](docs/TaskStatusMessageParametersInner.md)
 
 
 ## Documentation For Authorization

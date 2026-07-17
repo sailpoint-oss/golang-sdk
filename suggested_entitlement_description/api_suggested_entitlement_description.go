@@ -26,16 +26,16 @@ type SuggestedEntitlementDescriptionAPIService service
 type ApiApproveBulkEntitlementRecommendationsV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	bulkapproveentitlementrecommendationrequest *Bulkapproveentitlementrecommendationrequest
+	bulkApproveEntitlementRecommendationRequest *BulkApproveEntitlementRecommendationRequest
 }
 
 // The list of recommendation items to approve.
-func (r ApiApproveBulkEntitlementRecommendationsV1Request) Bulkapproveentitlementrecommendationrequest(bulkapproveentitlementrecommendationrequest Bulkapproveentitlementrecommendationrequest) ApiApproveBulkEntitlementRecommendationsV1Request {
-	r.bulkapproveentitlementrecommendationrequest = &bulkapproveentitlementrecommendationrequest
+func (r ApiApproveBulkEntitlementRecommendationsV1Request) BulkApproveEntitlementRecommendationRequest(bulkApproveEntitlementRecommendationRequest BulkApproveEntitlementRecommendationRequest) ApiApproveBulkEntitlementRecommendationsV1Request {
+	r.bulkApproveEntitlementRecommendationRequest = &bulkApproveEntitlementRecommendationRequest
 	return r
 }
 
-func (r ApiApproveBulkEntitlementRecommendationsV1Request) Execute() ([]Bulkapproveentitlementrecommendationresult, *http.Response, error) {
+func (r ApiApproveBulkEntitlementRecommendationsV1Request) Execute() ([]BulkApproveEntitlementRecommendationResult, *http.Response, error) {
 	return r.ApiService.ApproveBulkEntitlementRecommendationsV1Execute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) ApproveBulkEntitlementRecomm
 }
 
 // Execute executes the request
-//  @return []Bulkapproveentitlementrecommendationresult
-func (a *SuggestedEntitlementDescriptionAPIService) ApproveBulkEntitlementRecommendationsV1Execute(r ApiApproveBulkEntitlementRecommendationsV1Request) ([]Bulkapproveentitlementrecommendationresult, *http.Response, error) {
+//  @return []BulkApproveEntitlementRecommendationResult
+func (a *SuggestedEntitlementDescriptionAPIService) ApproveBulkEntitlementRecommendationsV1Execute(r ApiApproveBulkEntitlementRecommendationsV1Request) ([]BulkApproveEntitlementRecommendationResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Bulkapproveentitlementrecommendationresult
+		localVarReturnValue  []BulkApproveEntitlementRecommendationResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.ApproveBulkEntitlementRecommendationsV1")
@@ -74,8 +74,8 @@ func (a *SuggestedEntitlementDescriptionAPIService) ApproveBulkEntitlementRecomm
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkapproveentitlementrecommendationrequest == nil {
-		return localVarReturnValue, nil, reportError("bulkapproveentitlementrecommendationrequest is required and must be specified")
+	if r.bulkApproveEntitlementRecommendationRequest == nil {
+		return localVarReturnValue, nil, reportError("bulkApproveEntitlementRecommendationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -96,7 +96,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ApproveBulkEntitlementRecomm
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkapproveentitlementrecommendationrequest
+	localVarPostBody = r.bulkApproveEntitlementRecommendationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -120,7 +120,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ApproveBulkEntitlementRecomm
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,7 +142,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ApproveBulkEntitlementRecomm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ApproveBulkEntitlementRecomm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -191,16 +191,16 @@ func (a *SuggestedEntitlementDescriptionAPIService) ApproveBulkEntitlementRecomm
 type ApiCreateAutoWriteSettingsV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	autowritesetting *Autowritesetting
+	autoWriteSetting *AutoWriteSetting
 }
 
 // Auto-write settings to create
-func (r ApiCreateAutoWriteSettingsV1Request) Autowritesetting(autowritesetting Autowritesetting) ApiCreateAutoWriteSettingsV1Request {
-	r.autowritesetting = &autowritesetting
+func (r ApiCreateAutoWriteSettingsV1Request) AutoWriteSetting(autoWriteSetting AutoWriteSetting) ApiCreateAutoWriteSettingsV1Request {
+	r.autoWriteSetting = &autoWriteSetting
 	return r
 }
 
-func (r ApiCreateAutoWriteSettingsV1Request) Execute() (*Autowritesettingresponse, *http.Response, error) {
+func (r ApiCreateAutoWriteSettingsV1Request) Execute() (*AutoWriteSettingResponse, *http.Response, error) {
 	return r.ApiService.CreateAutoWriteSettingsV1Execute(r)
 }
 
@@ -220,13 +220,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) CreateAutoWriteSettingsV1(ct
 }
 
 // Execute executes the request
-//  @return Autowritesettingresponse
-func (a *SuggestedEntitlementDescriptionAPIService) CreateAutoWriteSettingsV1Execute(r ApiCreateAutoWriteSettingsV1Request) (*Autowritesettingresponse, *http.Response, error) {
+//  @return AutoWriteSettingResponse
+func (a *SuggestedEntitlementDescriptionAPIService) CreateAutoWriteSettingsV1Execute(r ApiCreateAutoWriteSettingsV1Request) (*AutoWriteSettingResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Autowritesettingresponse
+		localVarReturnValue  *AutoWriteSettingResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.CreateAutoWriteSettingsV1")
@@ -239,8 +239,8 @@ func (a *SuggestedEntitlementDescriptionAPIService) CreateAutoWriteSettingsV1Exe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.autowritesetting == nil {
-		return localVarReturnValue, nil, reportError("autowritesetting is required and must be specified")
+	if r.autoWriteSetting == nil {
+		return localVarReturnValue, nil, reportError("autoWriteSetting is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -261,7 +261,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) CreateAutoWriteSettingsV1Exe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.autowritesetting
+	localVarPostBody = r.autoWriteSetting
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -285,7 +285,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) CreateAutoWriteSettingsV1Exe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -307,7 +307,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) CreateAutoWriteSettingsV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -340,7 +340,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) CreateAutoWriteSettingsV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -369,7 +369,7 @@ type ApiGetAutoWriteSettingsV1Request struct {
 	ApiService *SuggestedEntitlementDescriptionAPIService
 }
 
-func (r ApiGetAutoWriteSettingsV1Request) Execute() (*Autowritesettingresponse, *http.Response, error) {
+func (r ApiGetAutoWriteSettingsV1Request) Execute() (*AutoWriteSettingResponse, *http.Response, error) {
 	return r.ApiService.GetAutoWriteSettingsV1Execute(r)
 }
 
@@ -389,13 +389,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetAutoWriteSettingsV1(ctx c
 }
 
 // Execute executes the request
-//  @return Autowritesettingresponse
-func (a *SuggestedEntitlementDescriptionAPIService) GetAutoWriteSettingsV1Execute(r ApiGetAutoWriteSettingsV1Request) (*Autowritesettingresponse, *http.Response, error) {
+//  @return AutoWriteSettingResponse
+func (a *SuggestedEntitlementDescriptionAPIService) GetAutoWriteSettingsV1Execute(r ApiGetAutoWriteSettingsV1Request) (*AutoWriteSettingResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Autowritesettingresponse
+		localVarReturnValue  *AutoWriteSettingResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.GetAutoWriteSettingsV1")
@@ -449,7 +449,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetAutoWriteSettingsV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -471,7 +471,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetAutoWriteSettingsV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -482,7 +482,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetAutoWriteSettingsV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -504,7 +504,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetAutoWriteSettingsV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -534,7 +534,7 @@ type ApiGetSedBatchStatsV1Request struct {
 	batchId string
 }
 
-func (r ApiGetSedBatchStatsV1Request) Execute() (*Sedbatchstats, *http.Response, error) {
+func (r ApiGetSedBatchStatsV1Request) Execute() (*SedBatchStats, *http.Response, error) {
 	return r.ApiService.GetSedBatchStatsV1Execute(r)
 }
 
@@ -560,13 +560,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsV1(ctx conte
 }
 
 // Execute executes the request
-//  @return Sedbatchstats
-func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsV1Execute(r ApiGetSedBatchStatsV1Request) (*Sedbatchstats, *http.Response, error) {
+//  @return SedBatchStats
+func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsV1Execute(r ApiGetSedBatchStatsV1Request) (*SedBatchStats, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sedbatchstats
+		localVarReturnValue  *SedBatchStats
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.GetSedBatchStatsV1")
@@ -621,7 +621,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsV1Execute(r 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -643,7 +643,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -654,7 +654,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -676,7 +676,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsV1Execute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -740,7 +740,7 @@ func (r ApiGetSedBatchesV1Request) Status(status string) ApiGetSedBatchesV1Reque
 	return r
 }
 
-func (r ApiGetSedBatchesV1Request) Execute() ([]Sedbatchrecord, *http.Response, error) {
+func (r ApiGetSedBatchesV1Request) Execute() ([]SedBatchRecord, *http.Response, error) {
 	return r.ApiService.GetSedBatchesV1Execute(r)
 }
 
@@ -761,13 +761,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesV1(ctx context.
 }
 
 // Execute executes the request
-//  @return []Sedbatchrecord
-func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesV1Execute(r ApiGetSedBatchesV1Request) ([]Sedbatchrecord, *http.Response, error) {
+//  @return []SedBatchRecord
+func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesV1Execute(r ApiGetSedBatchesV1Request) ([]SedBatchRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sedbatchrecord
+		localVarReturnValue  []SedBatchRecord
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.GetSedBatchesV1")
@@ -848,7 +848,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesV1Execute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -870,7 +870,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -881,7 +881,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -903,7 +903,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -946,7 +946,7 @@ func (r ApiListPendingEntitlementRecommendationApprovalsV1Request) Limit(limit i
 	return r
 }
 
-func (r ApiListPendingEntitlementRecommendationApprovalsV1Request) Execute() ([]Entitlementrecommendationrecord, *http.Response, error) {
+func (r ApiListPendingEntitlementRecommendationApprovalsV1Request) Execute() ([]EntitlementRecommendationRecord, *http.Response, error) {
 	return r.ApiService.ListPendingEntitlementRecommendationApprovalsV1Execute(r)
 }
 
@@ -966,13 +966,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPendingEntitlementRecomm
 }
 
 // Execute executes the request
-//  @return []Entitlementrecommendationrecord
-func (a *SuggestedEntitlementDescriptionAPIService) ListPendingEntitlementRecommendationApprovalsV1Execute(r ApiListPendingEntitlementRecommendationApprovalsV1Request) ([]Entitlementrecommendationrecord, *http.Response, error) {
+//  @return []EntitlementRecommendationRecord
+func (a *SuggestedEntitlementDescriptionAPIService) ListPendingEntitlementRecommendationApprovalsV1Execute(r ApiListPendingEntitlementRecommendationApprovalsV1Request) ([]EntitlementRecommendationRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Entitlementrecommendationrecord
+		localVarReturnValue  []EntitlementRecommendationRecord
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.ListPendingEntitlementRecommendationApprovalsV1")
@@ -1038,7 +1038,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPendingEntitlementRecomm
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1060,7 +1060,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPendingEntitlementRecomm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1082,7 +1082,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPendingEntitlementRecomm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1125,7 +1125,7 @@ func (r ApiListPrivilegedEntitlementRecommendationsV1Request) Limit(limit int32)
 	return r
 }
 
-func (r ApiListPrivilegedEntitlementRecommendationsV1Request) Execute() ([]Privilegedrecommendationgroup, *http.Response, error) {
+func (r ApiListPrivilegedEntitlementRecommendationsV1Request) Execute() ([]PrivilegedRecommendationGroup, *http.Response, error) {
 	return r.ApiService.ListPrivilegedEntitlementRecommendationsV1Execute(r)
 }
 
@@ -1145,13 +1145,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPrivilegedEntitlementRec
 }
 
 // Execute executes the request
-//  @return []Privilegedrecommendationgroup
-func (a *SuggestedEntitlementDescriptionAPIService) ListPrivilegedEntitlementRecommendationsV1Execute(r ApiListPrivilegedEntitlementRecommendationsV1Request) ([]Privilegedrecommendationgroup, *http.Response, error) {
+//  @return []PrivilegedRecommendationGroup
+func (a *SuggestedEntitlementDescriptionAPIService) ListPrivilegedEntitlementRecommendationsV1Execute(r ApiListPrivilegedEntitlementRecommendationsV1Request) ([]PrivilegedRecommendationGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Privilegedrecommendationgroup
+		localVarReturnValue  []PrivilegedRecommendationGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.ListPrivilegedEntitlementRecommendationsV1")
@@ -1217,7 +1217,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPrivilegedEntitlementRec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1239,7 +1239,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPrivilegedEntitlementRec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1261,7 +1261,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPrivilegedEntitlementRec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1482,7 +1482,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListSedsV1Execute(r ApiListS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1504,7 +1504,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListSedsV1Execute(r ApiListS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1515,7 +1515,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListSedsV1Execute(r ApiListS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1537,7 +1537,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListSedsV1Execute(r ApiListS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1565,16 +1565,16 @@ type ApiPatchEntitlementRecommendationV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // The patch operations to apply to the entitlement recommendation record.
-func (r ApiPatchEntitlementRecommendationV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchEntitlementRecommendationV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchEntitlementRecommendationV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchEntitlementRecommendationV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchEntitlementRecommendationV1Request) Execute() (*Entitlementrecommendationrecord, *http.Response, error) {
+func (r ApiPatchEntitlementRecommendationV1Request) Execute() (*EntitlementRecommendationRecord, *http.Response, error) {
 	return r.ApiService.PatchEntitlementRecommendationV1Execute(r)
 }
 
@@ -1596,13 +1596,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchEntitlementRecommendati
 }
 
 // Execute executes the request
-//  @return Entitlementrecommendationrecord
-func (a *SuggestedEntitlementDescriptionAPIService) PatchEntitlementRecommendationV1Execute(r ApiPatchEntitlementRecommendationV1Request) (*Entitlementrecommendationrecord, *http.Response, error) {
+//  @return EntitlementRecommendationRecord
+func (a *SuggestedEntitlementDescriptionAPIService) PatchEntitlementRecommendationV1Execute(r ApiPatchEntitlementRecommendationV1Request) (*EntitlementRecommendationRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Entitlementrecommendationrecord
+		localVarReturnValue  *EntitlementRecommendationRecord
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.PatchEntitlementRecommendationV1")
@@ -1616,8 +1616,8 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchEntitlementRecommendati
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1638,7 +1638,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchEntitlementRecommendati
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1662,7 +1662,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchEntitlementRecommendati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1684,7 +1684,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchEntitlementRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1695,7 +1695,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchEntitlementRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1717,7 +1717,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchEntitlementRecommendati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1745,12 +1745,12 @@ type ApiPatchSedV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
 	id string
-	sedpatch *[]Sedpatch
+	sedPatch *[]SedPatch
 }
 
 // Sed Patch Request
-func (r ApiPatchSedV1Request) Sedpatch(sedpatch []Sedpatch) ApiPatchSedV1Request {
-	r.sedpatch = &sedpatch
+func (r ApiPatchSedV1Request) SedPatch(sedPatch []SedPatch) ApiPatchSedV1Request {
+	r.sedPatch = &sedPatch
 	return r
 }
 
@@ -1796,8 +1796,8 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedV1Execute(r ApiPatch
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sedpatch == nil {
-		return localVarReturnValue, nil, reportError("sedpatch is required and must be specified")
+	if r.sedPatch == nil {
+		return localVarReturnValue, nil, reportError("sedPatch is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1818,7 +1818,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedV1Execute(r ApiPatch
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sedpatch
+	localVarPostBody = r.sedPatch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1842,7 +1842,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedV1Execute(r ApiPatch
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1864,7 +1864,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedV1Execute(r ApiPatch
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1875,7 +1875,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedV1Execute(r ApiPatch
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1897,7 +1897,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedV1Execute(r ApiPatch
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1924,16 +1924,16 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedV1Execute(r ApiPatch
 type ApiSubmitEntitlementRecommendationsAssignmentV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	entitlementrecommendationassignrequest *Entitlementrecommendationassignrequest
+	entitlementRecommendationAssignRequest *EntitlementRecommendationAssignRequest
 }
 
 // The recommendation IDs and the target assignee.
-func (r ApiSubmitEntitlementRecommendationsAssignmentV1Request) Entitlementrecommendationassignrequest(entitlementrecommendationassignrequest Entitlementrecommendationassignrequest) ApiSubmitEntitlementRecommendationsAssignmentV1Request {
-	r.entitlementrecommendationassignrequest = &entitlementrecommendationassignrequest
+func (r ApiSubmitEntitlementRecommendationsAssignmentV1Request) EntitlementRecommendationAssignRequest(entitlementRecommendationAssignRequest EntitlementRecommendationAssignRequest) ApiSubmitEntitlementRecommendationsAssignmentV1Request {
+	r.entitlementRecommendationAssignRequest = &entitlementRecommendationAssignRequest
 	return r
 }
 
-func (r ApiSubmitEntitlementRecommendationsAssignmentV1Request) Execute() (*Entitlementrecommendationassignresult, *http.Response, error) {
+func (r ApiSubmitEntitlementRecommendationsAssignmentV1Request) Execute() (*EntitlementRecommendationAssignResult, *http.Response, error) {
 	return r.ApiService.SubmitEntitlementRecommendationsAssignmentV1Execute(r)
 }
 
@@ -1953,13 +1953,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitEntitlementRecommendat
 }
 
 // Execute executes the request
-//  @return Entitlementrecommendationassignresult
-func (a *SuggestedEntitlementDescriptionAPIService) SubmitEntitlementRecommendationsAssignmentV1Execute(r ApiSubmitEntitlementRecommendationsAssignmentV1Request) (*Entitlementrecommendationassignresult, *http.Response, error) {
+//  @return EntitlementRecommendationAssignResult
+func (a *SuggestedEntitlementDescriptionAPIService) SubmitEntitlementRecommendationsAssignmentV1Execute(r ApiSubmitEntitlementRecommendationsAssignmentV1Request) (*EntitlementRecommendationAssignResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Entitlementrecommendationassignresult
+		localVarReturnValue  *EntitlementRecommendationAssignResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.SubmitEntitlementRecommendationsAssignmentV1")
@@ -1972,8 +1972,8 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitEntitlementRecommendat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.entitlementrecommendationassignrequest == nil {
-		return localVarReturnValue, nil, reportError("entitlementrecommendationassignrequest is required and must be specified")
+	if r.entitlementRecommendationAssignRequest == nil {
+		return localVarReturnValue, nil, reportError("entitlementRecommendationAssignRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1994,7 +1994,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitEntitlementRecommendat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.entitlementrecommendationassignrequest
+	localVarPostBody = r.entitlementRecommendationAssignRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2018,7 +2018,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitEntitlementRecommendat
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2040,7 +2040,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitEntitlementRecommendat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2062,7 +2062,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitEntitlementRecommendat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2089,16 +2089,16 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitEntitlementRecommendat
 type ApiSubmitSedApprovalV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	sedapproval *[]Sedapproval
+	sedApproval *[]SedApproval
 }
 
 // Sed Approval
-func (r ApiSubmitSedApprovalV1Request) Sedapproval(sedapproval []Sedapproval) ApiSubmitSedApprovalV1Request {
-	r.sedapproval = &sedapproval
+func (r ApiSubmitSedApprovalV1Request) SedApproval(sedApproval []SedApproval) ApiSubmitSedApprovalV1Request {
+	r.sedApproval = &sedApproval
 	return r
 }
 
-func (r ApiSubmitSedApprovalV1Request) Execute() ([]Sedapprovalstatus, *http.Response, error) {
+func (r ApiSubmitSedApprovalV1Request) Execute() ([]SedApprovalStatus, *http.Response, error) {
 	return r.ApiService.SubmitSedApprovalV1Execute(r)
 }
 
@@ -2119,13 +2119,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalV1(ctx cont
 }
 
 // Execute executes the request
-//  @return []Sedapprovalstatus
-func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalV1Execute(r ApiSubmitSedApprovalV1Request) ([]Sedapprovalstatus, *http.Response, error) {
+//  @return []SedApprovalStatus
+func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalV1Execute(r ApiSubmitSedApprovalV1Request) ([]SedApprovalStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sedapprovalstatus
+		localVarReturnValue  []SedApprovalStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.SubmitSedApprovalV1")
@@ -2138,8 +2138,8 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sedapproval == nil {
-		return localVarReturnValue, nil, reportError("sedapproval is required and must be specified")
+	if r.sedApproval == nil {
+		return localVarReturnValue, nil, reportError("sedApproval is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2160,7 +2160,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalV1Execute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sedapproval
+	localVarPostBody = r.sedApproval
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2184,7 +2184,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalV1Execute(r
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2206,7 +2206,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2217,7 +2217,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2239,7 +2239,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalV1Execute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2266,16 +2266,16 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalV1Execute(r
 type ApiSubmitSedAssignmentV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	sedassignment *Sedassignment
+	sedAssignment *SedAssignment
 }
 
 // Sed Assignment Request
-func (r ApiSubmitSedAssignmentV1Request) Sedassignment(sedassignment Sedassignment) ApiSubmitSedAssignmentV1Request {
-	r.sedassignment = &sedassignment
+func (r ApiSubmitSedAssignmentV1Request) SedAssignment(sedAssignment SedAssignment) ApiSubmitSedAssignmentV1Request {
+	r.sedAssignment = &sedAssignment
 	return r
 }
 
-func (r ApiSubmitSedAssignmentV1Request) Execute() (*Sedassignmentresponse, *http.Response, error) {
+func (r ApiSubmitSedAssignmentV1Request) Execute() (*SedAssignmentResponse, *http.Response, error) {
 	return r.ApiService.SubmitSedAssignmentV1Execute(r)
 }
 
@@ -2296,13 +2296,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentV1(ctx co
 }
 
 // Execute executes the request
-//  @return Sedassignmentresponse
-func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentV1Execute(r ApiSubmitSedAssignmentV1Request) (*Sedassignmentresponse, *http.Response, error) {
+//  @return SedAssignmentResponse
+func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentV1Execute(r ApiSubmitSedAssignmentV1Request) (*SedAssignmentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sedassignmentresponse
+		localVarReturnValue  *SedAssignmentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.SubmitSedAssignmentV1")
@@ -2315,8 +2315,8 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentV1Execute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sedassignment == nil {
-		return localVarReturnValue, nil, reportError("sedassignment is required and must be specified")
+	if r.sedAssignment == nil {
+		return localVarReturnValue, nil, reportError("sedAssignment is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2337,7 +2337,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentV1Execute
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sedassignment
+	localVarPostBody = r.sedAssignment
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2361,7 +2361,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentV1Execute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2383,7 +2383,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2394,7 +2394,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2416,7 +2416,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentV1Execute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2443,16 +2443,16 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentV1Execute
 type ApiSubmitSedBatchRequestV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	sedbatchrequest *Sedbatchrequest
+	sedBatchRequest *SedBatchRequest
 }
 
 // Sed Batch Request
-func (r ApiSubmitSedBatchRequestV1Request) Sedbatchrequest(sedbatchrequest Sedbatchrequest) ApiSubmitSedBatchRequestV1Request {
-	r.sedbatchrequest = &sedbatchrequest
+func (r ApiSubmitSedBatchRequestV1Request) SedBatchRequest(sedBatchRequest SedBatchRequest) ApiSubmitSedBatchRequestV1Request {
+	r.sedBatchRequest = &sedBatchRequest
 	return r
 }
 
-func (r ApiSubmitSedBatchRequestV1Request) Execute() (*Sedbatchresponse, *http.Response, error) {
+func (r ApiSubmitSedBatchRequestV1Request) Execute() (*SedBatchResponse, *http.Response, error) {
 	return r.ApiService.SubmitSedBatchRequestV1Execute(r)
 }
 
@@ -2473,13 +2473,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestV1(ctx 
 }
 
 // Execute executes the request
-//  @return Sedbatchresponse
-func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestV1Execute(r ApiSubmitSedBatchRequestV1Request) (*Sedbatchresponse, *http.Response, error) {
+//  @return SedBatchResponse
+func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestV1Execute(r ApiSubmitSedBatchRequestV1Request) (*SedBatchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sedbatchresponse
+		localVarReturnValue  *SedBatchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.SubmitSedBatchRequestV1")
@@ -2511,7 +2511,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestV1Execu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sedbatchrequest
+	localVarPostBody = r.sedBatchRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2535,7 +2535,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestV1Execu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2557,7 +2557,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2568,7 +2568,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2590,7 +2590,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestV1Execu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2617,16 +2617,16 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestV1Execu
 type ApiUpdateAutoWriteSettingsV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
-	autowritesettingpatch *[]Autowritesettingpatch
+	autoWriteSettingPatch *[]AutoWriteSettingPatch
 }
 
 // Patch operations for auto-write settings
-func (r ApiUpdateAutoWriteSettingsV1Request) Autowritesettingpatch(autowritesettingpatch []Autowritesettingpatch) ApiUpdateAutoWriteSettingsV1Request {
-	r.autowritesettingpatch = &autowritesettingpatch
+func (r ApiUpdateAutoWriteSettingsV1Request) AutoWriteSettingPatch(autoWriteSettingPatch []AutoWriteSettingPatch) ApiUpdateAutoWriteSettingsV1Request {
+	r.autoWriteSettingPatch = &autoWriteSettingPatch
 	return r
 }
 
-func (r ApiUpdateAutoWriteSettingsV1Request) Execute() (*Autowritesettingresponse, *http.Response, error) {
+func (r ApiUpdateAutoWriteSettingsV1Request) Execute() (*AutoWriteSettingResponse, *http.Response, error) {
 	return r.ApiService.UpdateAutoWriteSettingsV1Execute(r)
 }
 
@@ -2646,13 +2646,13 @@ func (a *SuggestedEntitlementDescriptionAPIService) UpdateAutoWriteSettingsV1(ct
 }
 
 // Execute executes the request
-//  @return Autowritesettingresponse
-func (a *SuggestedEntitlementDescriptionAPIService) UpdateAutoWriteSettingsV1Execute(r ApiUpdateAutoWriteSettingsV1Request) (*Autowritesettingresponse, *http.Response, error) {
+//  @return AutoWriteSettingResponse
+func (a *SuggestedEntitlementDescriptionAPIService) UpdateAutoWriteSettingsV1Execute(r ApiUpdateAutoWriteSettingsV1Request) (*AutoWriteSettingResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Autowritesettingresponse
+		localVarReturnValue  *AutoWriteSettingResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SuggestedEntitlementDescriptionAPIService.UpdateAutoWriteSettingsV1")
@@ -2665,8 +2665,8 @@ func (a *SuggestedEntitlementDescriptionAPIService) UpdateAutoWriteSettingsV1Exe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.autowritesettingpatch == nil {
-		return localVarReturnValue, nil, reportError("autowritesettingpatch is required and must be specified")
+	if r.autoWriteSettingPatch == nil {
+		return localVarReturnValue, nil, reportError("autoWriteSettingPatch is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2687,7 +2687,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) UpdateAutoWriteSettingsV1Exe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.autowritesettingpatch
+	localVarPostBody = r.autoWriteSettingPatch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2711,7 +2711,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) UpdateAutoWriteSettingsV1Exe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2733,7 +2733,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) UpdateAutoWriteSettingsV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2744,7 +2744,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) UpdateAutoWriteSettingsV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2766,7 +2766,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) UpdateAutoWriteSettingsV1Exe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

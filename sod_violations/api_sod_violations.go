@@ -25,15 +25,15 @@ type SODViolationsAPIService service
 type ApiStartPredictSodViolationsV1Request struct {
 	ctx context.Context
 	ApiService *SODViolationsAPIService
-	identitywithnewaccess *Identitywithnewaccess
+	identityWithNewAccess *IdentityWithNewAccess
 }
 
-func (r ApiStartPredictSodViolationsV1Request) Identitywithnewaccess(identitywithnewaccess Identitywithnewaccess) ApiStartPredictSodViolationsV1Request {
-	r.identitywithnewaccess = &identitywithnewaccess
+func (r ApiStartPredictSodViolationsV1Request) IdentityWithNewAccess(identityWithNewAccess IdentityWithNewAccess) ApiStartPredictSodViolationsV1Request {
+	r.identityWithNewAccess = &identityWithNewAccess
 	return r
 }
 
-func (r ApiStartPredictSodViolationsV1Request) Execute() (*Violationprediction, *http.Response, error) {
+func (r ApiStartPredictSodViolationsV1Request) Execute() (*ViolationPrediction, *http.Response, error) {
 	return r.ApiService.StartPredictSodViolationsV1Execute(r)
 }
 
@@ -53,13 +53,13 @@ func (a *SODViolationsAPIService) StartPredictSodViolationsV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Violationprediction
-func (a *SODViolationsAPIService) StartPredictSodViolationsV1Execute(r ApiStartPredictSodViolationsV1Request) (*Violationprediction, *http.Response, error) {
+//  @return ViolationPrediction
+func (a *SODViolationsAPIService) StartPredictSodViolationsV1Execute(r ApiStartPredictSodViolationsV1Request) (*ViolationPrediction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Violationprediction
+		localVarReturnValue  *ViolationPrediction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODViolationsAPIService.StartPredictSodViolationsV1")
@@ -72,8 +72,8 @@ func (a *SODViolationsAPIService) StartPredictSodViolationsV1Execute(r ApiStartP
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.identitywithnewaccess == nil {
-		return localVarReturnValue, nil, reportError("identitywithnewaccess is required and must be specified")
+	if r.identityWithNewAccess == nil {
+		return localVarReturnValue, nil, reportError("identityWithNewAccess is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -94,7 +94,7 @@ func (a *SODViolationsAPIService) StartPredictSodViolationsV1Execute(r ApiStartP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.identitywithnewaccess
+	localVarPostBody = r.identityWithNewAccess
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -118,7 +118,7 @@ func (a *SODViolationsAPIService) StartPredictSodViolationsV1Execute(r ApiStartP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -140,7 +140,7 @@ func (a *SODViolationsAPIService) StartPredictSodViolationsV1Execute(r ApiStartP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -151,7 +151,7 @@ func (a *SODViolationsAPIService) StartPredictSodViolationsV1Execute(r ApiStartP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -173,7 +173,7 @@ func (a *SODViolationsAPIService) StartPredictSodViolationsV1Execute(r ApiStartP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -200,15 +200,15 @@ func (a *SODViolationsAPIService) StartPredictSodViolationsV1Execute(r ApiStartP
 type ApiStartViolationCheckV1Request struct {
 	ctx context.Context
 	ApiService *SODViolationsAPIService
-	identitywithnewaccess *Identitywithnewaccess
+	identityWithNewAccess *IdentityWithNewAccess
 }
 
-func (r ApiStartViolationCheckV1Request) Identitywithnewaccess(identitywithnewaccess Identitywithnewaccess) ApiStartViolationCheckV1Request {
-	r.identitywithnewaccess = &identitywithnewaccess
+func (r ApiStartViolationCheckV1Request) IdentityWithNewAccess(identityWithNewAccess IdentityWithNewAccess) ApiStartViolationCheckV1Request {
+	r.identityWithNewAccess = &identityWithNewAccess
 	return r
 }
 
-func (r ApiStartViolationCheckV1Request) Execute() (*Sodviolationcheck, *http.Response, error) {
+func (r ApiStartViolationCheckV1Request) Execute() (*SodViolationCheck, *http.Response, error) {
 	return r.ApiService.StartViolationCheckV1Execute(r)
 }
 
@@ -228,13 +228,13 @@ func (a *SODViolationsAPIService) StartViolationCheckV1(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return Sodviolationcheck
-func (a *SODViolationsAPIService) StartViolationCheckV1Execute(r ApiStartViolationCheckV1Request) (*Sodviolationcheck, *http.Response, error) {
+//  @return SodViolationCheck
+func (a *SODViolationsAPIService) StartViolationCheckV1Execute(r ApiStartViolationCheckV1Request) (*SodViolationCheck, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Sodviolationcheck
+		localVarReturnValue  *SodViolationCheck
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODViolationsAPIService.StartViolationCheckV1")
@@ -247,8 +247,8 @@ func (a *SODViolationsAPIService) StartViolationCheckV1Execute(r ApiStartViolati
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.identitywithnewaccess == nil {
-		return localVarReturnValue, nil, reportError("identitywithnewaccess is required and must be specified")
+	if r.identityWithNewAccess == nil {
+		return localVarReturnValue, nil, reportError("identityWithNewAccess is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -269,7 +269,7 @@ func (a *SODViolationsAPIService) StartViolationCheckV1Execute(r ApiStartViolati
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.identitywithnewaccess
+	localVarPostBody = r.identityWithNewAccess
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -293,7 +293,7 @@ func (a *SODViolationsAPIService) StartViolationCheckV1Execute(r ApiStartViolati
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -315,7 +315,7 @@ func (a *SODViolationsAPIService) StartViolationCheckV1Execute(r ApiStartViolati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -326,7 +326,7 @@ func (a *SODViolationsAPIService) StartViolationCheckV1Execute(r ApiStartViolati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -348,7 +348,7 @@ func (a *SODViolationsAPIService) StartViolationCheckV1Execute(r ApiStartViolati
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

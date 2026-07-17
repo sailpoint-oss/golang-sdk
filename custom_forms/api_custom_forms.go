@@ -27,16 +27,16 @@ type CustomFormsAPIService service
 type ApiCreateFormDefinitionDynamicSchemaV1Request struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	body *Formdefinitiondynamicschemarequest
+	body *FormDefinitionDynamicSchemaRequest
 }
 
 // Body is the request payload to create a form definition dynamic schema
-func (r ApiCreateFormDefinitionDynamicSchemaV1Request) Body(body Formdefinitiondynamicschemarequest) ApiCreateFormDefinitionDynamicSchemaV1Request {
+func (r ApiCreateFormDefinitionDynamicSchemaV1Request) Body(body FormDefinitionDynamicSchemaRequest) ApiCreateFormDefinitionDynamicSchemaV1Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCreateFormDefinitionDynamicSchemaV1Request) Execute() (*Formdefinitiondynamicschemaresponse, *http.Response, error) {
+func (r ApiCreateFormDefinitionDynamicSchemaV1Request) Execute() (*FormDefinitionDynamicSchemaResponse, *http.Response, error) {
 	return r.ApiService.CreateFormDefinitionDynamicSchemaV1Execute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *CustomFormsAPIService) CreateFormDefinitionDynamicSchemaV1(ctx context.
 }
 
 // Execute executes the request
-//  @return Formdefinitiondynamicschemaresponse
-func (a *CustomFormsAPIService) CreateFormDefinitionDynamicSchemaV1Execute(r ApiCreateFormDefinitionDynamicSchemaV1Request) (*Formdefinitiondynamicschemaresponse, *http.Response, error) {
+//  @return FormDefinitionDynamicSchemaResponse
+func (a *CustomFormsAPIService) CreateFormDefinitionDynamicSchemaV1Execute(r ApiCreateFormDefinitionDynamicSchemaV1Request) (*FormDefinitionDynamicSchemaResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Formdefinitiondynamicschemaresponse
+		localVarReturnValue  *FormDefinitionDynamicSchemaResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.CreateFormDefinitionDynamicSchemaV1")
@@ -160,7 +160,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionDynamicSchemaV1Execute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -208,7 +208,7 @@ func (r ApiCreateFormDefinitionFileRequestV1Request) File(file *os.File) ApiCrea
 	return r
 }
 
-func (r ApiCreateFormDefinitionFileRequestV1Request) Execute() (*Formdefinitionfileuploadresponse, *http.Response, error) {
+func (r ApiCreateFormDefinitionFileRequestV1Request) Execute() (*FormDefinitionFileUploadResponse, *http.Response, error) {
 	return r.ApiService.CreateFormDefinitionFileRequestV1Execute(r)
 }
 
@@ -230,13 +230,13 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestV1(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Formdefinitionfileuploadresponse
-func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestV1Execute(r ApiCreateFormDefinitionFileRequestV1Request) (*Formdefinitionfileuploadresponse, *http.Response, error) {
+//  @return FormDefinitionFileUploadResponse
+func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestV1Execute(r ApiCreateFormDefinitionFileRequestV1Request) (*FormDefinitionFileUploadResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Formdefinitionfileuploadresponse
+		localVarReturnValue  *FormDefinitionFileUploadResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.CreateFormDefinitionFileRequestV1")
@@ -375,7 +375,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestV1Execute(r ApiCr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -424,16 +424,16 @@ func (a *CustomFormsAPIService) CreateFormDefinitionFileRequestV1Execute(r ApiCr
 type ApiCreateFormDefinitionV1Request struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	body *Createformdefinitionrequest
+	body *CreateFormDefinitionRequest
 }
 
 // Body is the request payload to create form definition request
-func (r ApiCreateFormDefinitionV1Request) Body(body Createformdefinitionrequest) ApiCreateFormDefinitionV1Request {
+func (r ApiCreateFormDefinitionV1Request) Body(body CreateFormDefinitionRequest) ApiCreateFormDefinitionV1Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCreateFormDefinitionV1Request) Execute() (*Formdefinitionresponse, *http.Response, error) {
+func (r ApiCreateFormDefinitionV1Request) Execute() (*FormDefinitionResponse, *http.Response, error) {
 	return r.ApiService.CreateFormDefinitionV1Execute(r)
 }
 
@@ -451,13 +451,13 @@ func (a *CustomFormsAPIService) CreateFormDefinitionV1(ctx context.Context) ApiC
 }
 
 // Execute executes the request
-//  @return Formdefinitionresponse
-func (a *CustomFormsAPIService) CreateFormDefinitionV1Execute(r ApiCreateFormDefinitionV1Request) (*Formdefinitionresponse, *http.Response, error) {
+//  @return FormDefinitionResponse
+func (a *CustomFormsAPIService) CreateFormDefinitionV1Execute(r ApiCreateFormDefinitionV1Request) (*FormDefinitionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Formdefinitionresponse
+		localVarReturnValue  *FormDefinitionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.CreateFormDefinitionV1")
@@ -546,7 +546,7 @@ func (a *CustomFormsAPIService) CreateFormDefinitionV1Execute(r ApiCreateFormDef
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -584,16 +584,16 @@ func (a *CustomFormsAPIService) CreateFormDefinitionV1Execute(r ApiCreateFormDef
 type ApiCreateFormInstanceV1Request struct {
 	ctx context.Context
 	ApiService *CustomFormsAPIService
-	body *Createforminstancerequest
+	body *CreateFormInstanceRequest
 }
 
 // Body is the request payload to create a form instance
-func (r ApiCreateFormInstanceV1Request) Body(body Createforminstancerequest) ApiCreateFormInstanceV1Request {
+func (r ApiCreateFormInstanceV1Request) Body(body CreateFormInstanceRequest) ApiCreateFormInstanceV1Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCreateFormInstanceV1Request) Execute() (*Forminstanceresponse, *http.Response, error) {
+func (r ApiCreateFormInstanceV1Request) Execute() (*FormInstanceResponse, *http.Response, error) {
 	return r.ApiService.CreateFormInstanceV1Execute(r)
 }
 
@@ -611,13 +611,13 @@ func (a *CustomFormsAPIService) CreateFormInstanceV1(ctx context.Context) ApiCre
 }
 
 // Execute executes the request
-//  @return Forminstanceresponse
-func (a *CustomFormsAPIService) CreateFormInstanceV1Execute(r ApiCreateFormInstanceV1Request) (*Forminstanceresponse, *http.Response, error) {
+//  @return FormInstanceResponse
+func (a *CustomFormsAPIService) CreateFormInstanceV1Execute(r ApiCreateFormInstanceV1Request) (*FormInstanceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Forminstanceresponse
+		localVarReturnValue  *FormInstanceResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.CreateFormInstanceV1")
@@ -706,7 +706,7 @@ func (a *CustomFormsAPIService) CreateFormInstanceV1Execute(r ApiCreateFormInsta
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -874,7 +874,7 @@ func (a *CustomFormsAPIService) DeleteFormDefinitionV1Execute(r ApiDeleteFormDef
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1076,7 +1076,7 @@ func (a *CustomFormsAPIService) ExportFormDefinitionsByTenantV1Execute(r ApiExpo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1246,7 +1246,7 @@ func (a *CustomFormsAPIService) GetFileFromS3V1Execute(r ApiGetFileFromS3V1Reque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1298,7 +1298,7 @@ type ApiGetFormDefinitionByKeyV1Request struct {
 	formDefinitionID string
 }
 
-func (r ApiGetFormDefinitionByKeyV1Request) Execute() (*Formdefinitionresponse, *http.Response, error) {
+func (r ApiGetFormDefinitionByKeyV1Request) Execute() (*FormDefinitionResponse, *http.Response, error) {
 	return r.ApiService.GetFormDefinitionByKeyV1Execute(r)
 }
 
@@ -1320,13 +1320,13 @@ func (a *CustomFormsAPIService) GetFormDefinitionByKeyV1(ctx context.Context, fo
 }
 
 // Execute executes the request
-//  @return Formdefinitionresponse
-func (a *CustomFormsAPIService) GetFormDefinitionByKeyV1Execute(r ApiGetFormDefinitionByKeyV1Request) (*Formdefinitionresponse, *http.Response, error) {
+//  @return FormDefinitionResponse
+func (a *CustomFormsAPIService) GetFormDefinitionByKeyV1Execute(r ApiGetFormDefinitionByKeyV1Request) (*FormDefinitionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Formdefinitionresponse
+		localVarReturnValue  *FormDefinitionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.GetFormDefinitionByKeyV1")
@@ -1425,7 +1425,7 @@ func (a *CustomFormsAPIService) GetFormDefinitionByKeyV1Execute(r ApiGetFormDefi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1466,7 +1466,7 @@ type ApiGetFormInstanceByKeyV1Request struct {
 	formInstanceID string
 }
 
-func (r ApiGetFormInstanceByKeyV1Request) Execute() (*Forminstanceresponse, *http.Response, error) {
+func (r ApiGetFormInstanceByKeyV1Request) Execute() (*FormInstanceResponse, *http.Response, error) {
 	return r.ApiService.GetFormInstanceByKeyV1Execute(r)
 }
 
@@ -1490,13 +1490,13 @@ func (a *CustomFormsAPIService) GetFormInstanceByKeyV1(ctx context.Context, form
 }
 
 // Execute executes the request
-//  @return Forminstanceresponse
-func (a *CustomFormsAPIService) GetFormInstanceByKeyV1Execute(r ApiGetFormInstanceByKeyV1Request) (*Forminstanceresponse, *http.Response, error) {
+//  @return FormInstanceResponse
+func (a *CustomFormsAPIService) GetFormInstanceByKeyV1Execute(r ApiGetFormInstanceByKeyV1Request) (*FormInstanceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Forminstanceresponse
+		localVarReturnValue  *FormInstanceResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.GetFormInstanceByKeyV1")
@@ -1595,7 +1595,7 @@ func (a *CustomFormsAPIService) GetFormInstanceByKeyV1Execute(r ApiGetFormInstan
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1765,7 +1765,7 @@ func (a *CustomFormsAPIService) GetFormInstanceFileV1Execute(r ApiGetFormInstanc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1936,7 +1936,7 @@ func (a *CustomFormsAPIService) ImportFormDefinitionsV1Execute(r ApiImportFormDe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1984,7 +1984,7 @@ func (r ApiPatchFormDefinitionV1Request) Body(body []map[string]map[string]inter
 	return r
 }
 
-func (r ApiPatchFormDefinitionV1Request) Execute() (*Formdefinitionresponse, *http.Response, error) {
+func (r ApiPatchFormDefinitionV1Request) Execute() (*FormDefinitionResponse, *http.Response, error) {
 	return r.ApiService.PatchFormDefinitionV1Execute(r)
 }
 
@@ -2006,13 +2006,13 @@ func (a *CustomFormsAPIService) PatchFormDefinitionV1(ctx context.Context, formD
 }
 
 // Execute executes the request
-//  @return Formdefinitionresponse
-func (a *CustomFormsAPIService) PatchFormDefinitionV1Execute(r ApiPatchFormDefinitionV1Request) (*Formdefinitionresponse, *http.Response, error) {
+//  @return FormDefinitionResponse
+func (a *CustomFormsAPIService) PatchFormDefinitionV1Execute(r ApiPatchFormDefinitionV1Request) (*FormDefinitionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Formdefinitionresponse
+		localVarReturnValue  *FormDefinitionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.PatchFormDefinitionV1")
@@ -2113,7 +2113,7 @@ func (a *CustomFormsAPIService) PatchFormDefinitionV1Execute(r ApiPatchFormDefin
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2161,7 +2161,7 @@ func (r ApiPatchFormInstanceV1Request) Body(body []map[string]map[string]interfa
 	return r
 }
 
-func (r ApiPatchFormInstanceV1Request) Execute() (*Forminstanceresponse, *http.Response, error) {
+func (r ApiPatchFormInstanceV1Request) Execute() (*FormInstanceResponse, *http.Response, error) {
 	return r.ApiService.PatchFormInstanceV1Execute(r)
 }
 
@@ -2185,13 +2185,13 @@ func (a *CustomFormsAPIService) PatchFormInstanceV1(ctx context.Context, formIns
 }
 
 // Execute executes the request
-//  @return Forminstanceresponse
-func (a *CustomFormsAPIService) PatchFormInstanceV1Execute(r ApiPatchFormInstanceV1Request) (*Forminstanceresponse, *http.Response, error) {
+//  @return FormInstanceResponse
+func (a *CustomFormsAPIService) PatchFormInstanceV1Execute(r ApiPatchFormInstanceV1Request) (*FormInstanceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Forminstanceresponse
+		localVarReturnValue  *FormInstanceResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.PatchFormInstanceV1")
@@ -2303,7 +2303,7 @@ func (a *CustomFormsAPIService) PatchFormInstanceV1Execute(r ApiPatchFormInstanc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2371,7 +2371,7 @@ func (r ApiSearchFormDefinitionsByTenantV1Request) Sorters(sorters string) ApiSe
 	return r
 }
 
-func (r ApiSearchFormDefinitionsByTenantV1Request) Execute() (*Listformdefinitionsbytenantresponse, *http.Response, error) {
+func (r ApiSearchFormDefinitionsByTenantV1Request) Execute() (*ListFormDefinitionsByTenantResponse, *http.Response, error) {
 	return r.ApiService.SearchFormDefinitionsByTenantV1Execute(r)
 }
 
@@ -2391,13 +2391,13 @@ func (a *CustomFormsAPIService) SearchFormDefinitionsByTenantV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return Listformdefinitionsbytenantresponse
-func (a *CustomFormsAPIService) SearchFormDefinitionsByTenantV1Execute(r ApiSearchFormDefinitionsByTenantV1Request) (*Listformdefinitionsbytenantresponse, *http.Response, error) {
+//  @return ListFormDefinitionsByTenantResponse
+func (a *CustomFormsAPIService) SearchFormDefinitionsByTenantV1Execute(r ApiSearchFormDefinitionsByTenantV1Request) (*ListFormDefinitionsByTenantResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Listformdefinitionsbytenantresponse
+		localVarReturnValue  *ListFormDefinitionsByTenantResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.SearchFormDefinitionsByTenantV1")
@@ -2505,7 +2505,7 @@ func (a *CustomFormsAPIService) SearchFormDefinitionsByTenantV1Execute(r ApiSear
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2568,7 +2568,7 @@ func (r ApiSearchFormElementDataByElementIDV1Request) Query(query string) ApiSea
 	return r
 }
 
-func (r ApiSearchFormElementDataByElementIDV1Request) Execute() (*Listformelementdatabyelementidresponse, *http.Response, error) {
+func (r ApiSearchFormElementDataByElementIDV1Request) Execute() (*ListFormElementDataByElementIDResponse, *http.Response, error) {
 	return r.ApiService.SearchFormElementDataByElementIDV1Execute(r)
 }
 
@@ -2593,13 +2593,13 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDV1(ctx context.C
 }
 
 // Execute executes the request
-//  @return Listformelementdatabyelementidresponse
-func (a *CustomFormsAPIService) SearchFormElementDataByElementIDV1Execute(r ApiSearchFormElementDataByElementIDV1Request) (*Listformelementdatabyelementidresponse, *http.Response, error) {
+//  @return ListFormElementDataByElementIDResponse
+func (a *CustomFormsAPIService) SearchFormElementDataByElementIDV1Execute(r ApiSearchFormElementDataByElementIDV1Request) (*ListFormElementDataByElementIDResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Listformelementdatabyelementidresponse
+		localVarReturnValue  *ListFormElementDataByElementIDResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.SearchFormElementDataByElementIDV1")
@@ -2711,7 +2711,7 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDV1Execute(r ApiS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2772,7 +2772,7 @@ func (r ApiSearchFormInstancesByTenantV1Request) Filters(filters string) ApiSear
 	return r
 }
 
-func (r ApiSearchFormInstancesByTenantV1Request) Execute() ([]Listforminstancesbytenantresponse, *http.Response, error) {
+func (r ApiSearchFormInstancesByTenantV1Request) Execute() ([]ListFormInstancesByTenantResponse, *http.Response, error) {
 	return r.ApiService.SearchFormInstancesByTenantV1Execute(r)
 }
 
@@ -2792,13 +2792,13 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantV1(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Listforminstancesbytenantresponse
-func (a *CustomFormsAPIService) SearchFormInstancesByTenantV1Execute(r ApiSearchFormInstancesByTenantV1Request) ([]Listforminstancesbytenantresponse, *http.Response, error) {
+//  @return []ListFormInstancesByTenantResponse
+func (a *CustomFormsAPIService) SearchFormInstancesByTenantV1Execute(r ApiSearchFormInstancesByTenantV1Request) ([]ListFormInstancesByTenantResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Listforminstancesbytenantresponse
+		localVarReturnValue  []ListFormInstancesByTenantResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.SearchFormInstancesByTenantV1")
@@ -2900,7 +2900,7 @@ func (a *CustomFormsAPIService) SearchFormInstancesByTenantV1Execute(r ApiSearch
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2940,7 +2940,7 @@ type ApiSearchPreDefinedSelectOptionsV1Request struct {
 	ApiService *CustomFormsAPIService
 }
 
-func (r ApiSearchPreDefinedSelectOptionsV1Request) Execute() (*Listpredefinedselectoptionsresponse, *http.Response, error) {
+func (r ApiSearchPreDefinedSelectOptionsV1Request) Execute() (*ListPredefinedSelectOptionsResponse, *http.Response, error) {
 	return r.ApiService.SearchPreDefinedSelectOptionsV1Execute(r)
 }
 
@@ -2960,13 +2960,13 @@ func (a *CustomFormsAPIService) SearchPreDefinedSelectOptionsV1(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return Listpredefinedselectoptionsresponse
-func (a *CustomFormsAPIService) SearchPreDefinedSelectOptionsV1Execute(r ApiSearchPreDefinedSelectOptionsV1Request) (*Listpredefinedselectoptionsresponse, *http.Response, error) {
+//  @return ListPredefinedSelectOptionsResponse
+func (a *CustomFormsAPIService) SearchPreDefinedSelectOptionsV1Execute(r ApiSearchPreDefinedSelectOptionsV1Request) (*ListPredefinedSelectOptionsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Listpredefinedselectoptionsresponse
+		localVarReturnValue  *ListPredefinedSelectOptionsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.SearchPreDefinedSelectOptionsV1")
@@ -3053,7 +3053,7 @@ func (a *CustomFormsAPIService) SearchPreDefinedSelectOptionsV1Execute(r ApiSear
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3095,7 +3095,7 @@ type ApiShowPreviewDataSourceV1Request struct {
 	limit *int64
 	filters *string
 	query *string
-	formelementpreviewrequest *Formelementpreviewrequest
+	formElementPreviewRequest *FormElementPreviewRequest
 }
 
 // Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -3117,12 +3117,12 @@ func (r ApiShowPreviewDataSourceV1Request) Query(query string) ApiShowPreviewDat
 }
 
 // Body is the request payload to create a form definition dynamic schema
-func (r ApiShowPreviewDataSourceV1Request) Formelementpreviewrequest(formelementpreviewrequest Formelementpreviewrequest) ApiShowPreviewDataSourceV1Request {
-	r.formelementpreviewrequest = &formelementpreviewrequest
+func (r ApiShowPreviewDataSourceV1Request) FormElementPreviewRequest(formElementPreviewRequest FormElementPreviewRequest) ApiShowPreviewDataSourceV1Request {
+	r.formElementPreviewRequest = &formElementPreviewRequest
 	return r
 }
 
-func (r ApiShowPreviewDataSourceV1Request) Execute() (*Previewdatasourceresponse, *http.Response, error) {
+func (r ApiShowPreviewDataSourceV1Request) Execute() (*PreviewDataSourceResponse, *http.Response, error) {
 	return r.ApiService.ShowPreviewDataSourceV1Execute(r)
 }
 
@@ -3142,13 +3142,13 @@ func (a *CustomFormsAPIService) ShowPreviewDataSourceV1(ctx context.Context, for
 }
 
 // Execute executes the request
-//  @return Previewdatasourceresponse
-func (a *CustomFormsAPIService) ShowPreviewDataSourceV1Execute(r ApiShowPreviewDataSourceV1Request) (*Previewdatasourceresponse, *http.Response, error) {
+//  @return PreviewDataSourceResponse
+func (a *CustomFormsAPIService) ShowPreviewDataSourceV1Execute(r ApiShowPreviewDataSourceV1Request) (*PreviewDataSourceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Previewdatasourceresponse
+		localVarReturnValue  *PreviewDataSourceResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFormsAPIService.ShowPreviewDataSourceV1")
@@ -3193,7 +3193,7 @@ func (a *CustomFormsAPIService) ShowPreviewDataSourceV1Execute(r ApiShowPreviewD
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.formelementpreviewrequest
+	localVarPostBody = r.formElementPreviewRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3261,7 +3261,7 @@ func (a *CustomFormsAPIService) ShowPreviewDataSourceV1Execute(r ApiShowPreviewD
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ModelError
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'ImportSpConfigV1Request', 'V1ImportSp
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | ***os.File** | JSON file containing the objects to be imported. | 
-**Options** | Pointer to [**Importoptions**](importoptions) |  | [optional] 
+**Options** | Pointer to [**ImportOptions**](import-options) |  | [optional] 
 
 ## Methods
 
@@ -59,20 +59,20 @@ SetData sets Data field to given value.
 
 ### GetOptions
 
-`func (o *ImportSpConfigV1Request) GetOptions() Importoptions`
+`func (o *ImportSpConfigV1Request) GetOptions() ImportOptions`
 
 GetOptions returns the Options field if non-nil, zero value otherwise.
 
 ### GetOptionsOk
 
-`func (o *ImportSpConfigV1Request) GetOptionsOk() (*Importoptions, bool)`
+`func (o *ImportSpConfigV1Request) GetOptionsOk() (*ImportOptions, bool)`
 
 GetOptionsOk returns a tuple with the Options field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOptions
 
-`func (o *ImportSpConfigV1Request) SetOptions(v Importoptions)`
+`func (o *ImportSpConfigV1Request) SetOptions(v ImportOptions)`
 
 SetOptions sets Options field to given value.
 

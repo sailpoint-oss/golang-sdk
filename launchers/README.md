@@ -89,17 +89,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetLaunchersV1200Response](docs/GetLaunchersV1200Response.md)
  - [GetLaunchersV1401Response](docs/GetLaunchersV1401Response.md)
  - [GetLaunchersV1429Response](docs/GetLaunchersV1429Response.md)
  - [Launcher](docs/Launcher.md)
  - [LauncherOwner](docs/LauncherOwner.md)
  - [LauncherReference](docs/LauncherReference.md)
- - [Launcherrequest](docs/Launcherrequest.md)
- - [LauncherrequestReference](docs/LauncherrequestReference.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LauncherRequest](docs/LauncherRequest.md)
+ - [LauncherRequestReference](docs/LauncherRequestReference.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [StartLauncherV1200Response](docs/StartLauncherV1200Response.md)
 
 

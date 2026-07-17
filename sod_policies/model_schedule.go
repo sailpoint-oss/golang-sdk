@@ -21,7 +21,7 @@ var _ MappedNullable = &Schedule{}
 
 // Schedule The schedule information.
 type Schedule struct {
-	Type Scheduletype `json:"type"`
+	Type ScheduleType `json:"type"`
 	Months *ScheduleMonths `json:"months,omitempty"`
 	Days *ScheduleDays `json:"days,omitempty"`
 	Hours ScheduleHours `json:"hours"`
@@ -38,7 +38,7 @@ type _Schedule Schedule
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSchedule(type_ Scheduletype, hours ScheduleHours) *Schedule {
+func NewSchedule(type_ ScheduleType, hours ScheduleHours) *Schedule {
 	this := Schedule{}
 	this.Type = type_
 	this.Hours = hours
@@ -54,9 +54,9 @@ func NewScheduleWithDefaults() *Schedule {
 }
 
 // GetType returns the Type field value
-func (o *Schedule) GetType() Scheduletype {
+func (o *Schedule) GetType() ScheduleType {
 	if o == nil {
-		var ret Scheduletype
+		var ret ScheduleType
 		return ret
 	}
 
@@ -65,7 +65,7 @@ func (o *Schedule) GetType() Scheduletype {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Schedule) GetTypeOk() (*Scheduletype, bool) {
+func (o *Schedule) GetTypeOk() (*ScheduleType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -73,7 +73,7 @@ func (o *Schedule) GetTypeOk() (*Scheduletype, bool) {
 }
 
 // SetType sets field value
-func (o *Schedule) SetType(v Scheduletype) {
+func (o *Schedule) SetType(v ScheduleType) {
 	o.Type = v
 }
 

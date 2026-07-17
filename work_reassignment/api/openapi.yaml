@@ -65,14 +65,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/configtype'
+                  $ref: '#/components/schemas/ConfigType'
                 type: array
           description: List of Reassignment Configuration Types
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -96,7 +96,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -121,7 +121,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -152,14 +152,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/configurationresponse'
+                  $ref: '#/components/schemas/ConfigurationResponse'
                 type: array
           description: A list of Reassignment Configurations for an org
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -183,7 +183,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -201,7 +201,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -226,7 +226,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -254,20 +254,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/configurationitemrequest'
+              $ref: '#/components/schemas/ConfigurationItemRequest'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/configurationitemresponse'
+                $ref: '#/components/schemas/ConfigurationItemResponse'
           description: The newly created Reassignment Configuration object
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -291,7 +291,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -316,7 +316,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -355,13 +355,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/configurationresponse'
+                $ref: '#/components/schemas/ConfigurationResponse'
           description: Reassignment Configuration for an identity
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -385,7 +385,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -403,7 +403,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -428,7 +428,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -467,20 +467,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/configurationitemrequest'
+              $ref: '#/components/schemas/ConfigurationItemRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/configurationitemresponse'
+                $ref: '#/components/schemas/ConfigurationItemResponse'
           description: Reassignment Configuration updated
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -504,7 +504,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -529,7 +529,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -558,7 +558,7 @@ paths:
         name: configType
         required: true
         schema:
-          $ref: '#/components/schemas/configtypeenum'
+          $ref: '#/components/schemas/ConfigTypeEnum'
         style: simple
       - description: Use this header to enable this experimental API.
         example: true
@@ -577,7 +577,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -601,7 +601,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -626,7 +626,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -666,7 +666,7 @@ paths:
         name: configType
         required: true
         schema:
-          $ref: '#/components/schemas/configtypeenum'
+          $ref: '#/components/schemas/ConfigTypeEnum'
         style: simple
       - description: "Exclusion filters that disable parts of the reassignment evaluation.\
           \ Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will\
@@ -704,14 +704,14 @@ paths:
                   $ref: '#/components/examples/evaluateselfreview'
               schema:
                 items:
-                  $ref: '#/components/schemas/evaluateresponse'
+                  $ref: '#/components/schemas/EvaluateResponse'
                 type: array
           description: Evaluated Reassignment Configuration
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -735,7 +735,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -760,7 +760,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -790,13 +790,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenantconfigurationresponse'
+                $ref: '#/components/schemas/TenantConfigurationResponse'
           description: Tenant-wide Reassignment Configuration settings
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -820,7 +820,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -838,7 +838,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -863,7 +863,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -891,20 +891,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/tenantconfigurationrequest'
+              $ref: '#/components/schemas/TenantConfigurationRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tenantconfigurationresponse'
+                $ref: '#/components/schemas/TenantConfigurationResponse'
           description: Tenant-wide Reassignment Configuration settings
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -928,7 +928,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -953,7 +953,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1009,7 +1009,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -1033,7 +1033,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -1051,7 +1051,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -1076,10 +1076,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    configtypeenumcamel:
+    ConfigTypeEnumCamel:
       description: Enum list of valid work types that can be selected for a Reassignment
         Configuration
       enum:
@@ -1088,7 +1088,7 @@ components:
       - manualTasks
       example: accessRequests
       type: string
-    configtypeenum:
+    ConfigTypeEnum:
       description: Enum list of valid work types that can be selected for a Reassignment
         Configuration
       enum:
@@ -1098,7 +1098,7 @@ components:
       - GENERIC_APPROVALS
       example: ACCESS_REQUESTS
       type: string
-    configtype:
+    ConfigType:
       description: Type of Reassignment Configuration.
       example:
         internalName: accessRequests
@@ -1111,9 +1111,9 @@ components:
           example: 1
           type: integer
         internalName:
-          $ref: '#/components/schemas/configtypeenumcamel'
+          $ref: '#/components/schemas/ConfigTypeEnumCamel'
         internalNameCamel:
-          $ref: '#/components/schemas/configtypeenum'
+          $ref: '#/components/schemas/ConfigTypeEnum'
         displayName:
           description: Human readable display name of the type to be shown on UI
           example: Access Requests
@@ -1124,7 +1124,7 @@ components:
           example: Reassign Access Request Work Items for an identity
           type: string
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -1136,7 +1136,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -1149,7 +1149,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -1157,7 +1157,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -1191,17 +1191,17 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    identity-2:
+    Identity_2:
       description: The definition of an Identity according to the Reassignment Configuration
         service
       example:
@@ -1217,7 +1217,7 @@ components:
           example: William Wilson
           type: string
       type: object
-    auditdetails:
+    AuditDetails:
       description: Audit details for the reassignment configuration of an identity
       example:
         createdBy:
@@ -1235,16 +1235,16 @@ components:
           format: date-time
           type: string
         createdBy:
-          $ref: '#/components/schemas/identity-2'
+          $ref: '#/components/schemas/Identity_2'
         modified:
           description: Last modified date and time for the record
           example: 2022-07-21T11:13:12.345Z
           format: date-time
           type: string
         modifiedBy:
-          $ref: '#/components/schemas/identity-2'
+          $ref: '#/components/schemas/Identity_2'
       type: object
-    configurationdetailsresponse:
+    ConfigurationDetailsResponse:
       description: The request body of Reassignment Configuration Details for a specific
         identity and config type
       example:
@@ -1265,9 +1265,9 @@ components:
         startDate: 2022-07-21T11:13:12.345Z
       properties:
         configType:
-          $ref: '#/components/schemas/configtypeenum'
+          $ref: '#/components/schemas/ConfigTypeEnum'
         targetIdentity:
-          $ref: '#/components/schemas/identity-2'
+          $ref: '#/components/schemas/Identity_2'
         startDate:
           description: The date from which to start reassigning work items
           example: 2022-07-21T11:13:12.345Z
@@ -1280,9 +1280,9 @@ components:
           format: date-time
           type: string
         auditDetails:
-          $ref: '#/components/schemas/auditdetails'
+          $ref: '#/components/schemas/AuditDetails'
       type: object
-    configurationresponse:
+    ConfigurationResponse:
       description: The response body of a Reassignment Configuration for a single
         identity
       example:
@@ -1322,16 +1322,22 @@ components:
           startDate: 2022-07-21T11:13:12.345Z
       properties:
         identity:
-          $ref: '#/components/schemas/identity-2'
+          $ref: '#/components/schemas/Identity_2'
         configDetails:
           description: Details of how work should be reassigned for an Identity
           items:
-            $ref: '#/components/schemas/configurationdetailsresponse'
+            $ref: '#/components/schemas/ConfigurationDetailsResponse'
           type: array
       type: object
-    configurationitemrequest:
+    ConfigurationItemRequest:
       description: The request body for creation or update of a Reassignment Configuration
         for a single identity and work type
+      example:
+        endDate: 2022-07-30T17:00:00Z
+        reassignedFromId: 2c91808781a71ddb0181b9090b5c504e
+        configType: ACCESS_REQUESTS
+        reassignedToId: 2c91808781a71ddb0181b9090b53504a
+        startDate: 2022-07-21T11:13:12.345Z
       properties:
         reassignedFromId:
           description: The identity id to reassign an item from
@@ -1342,7 +1348,7 @@ components:
           example: 2c91808781a71ddb0181b9090b53504a
           type: string
         configType:
-          $ref: '#/components/schemas/configtypeenum'
+          $ref: '#/components/schemas/ConfigTypeEnum'
         startDate:
           description: The date from which to start reassigning work items
           example: 2022-07-21T11:13:12.345Z
@@ -1356,7 +1362,7 @@ components:
           nullable: true
           type: string
       type: object
-    configurationitemresponse:
+    ConfigurationItemResponse:
       description: The response body of a Reassignment Configuration for a single
         identity
       example:
@@ -1396,14 +1402,14 @@ components:
           startDate: 2022-07-21T11:13:12.345Z
       properties:
         identity:
-          $ref: '#/components/schemas/identity-2'
+          $ref: '#/components/schemas/Identity_2'
         configDetails:
           description: Details of how work should be reassigned for an Identity
           items:
-            $ref: '#/components/schemas/configurationdetailsresponse'
+            $ref: '#/components/schemas/ConfigurationDetailsResponse'
           type: array
       type: object
-    reassignmenttypeenum:
+    ReassignmentTypeEnum:
       description: Enum list containing types of Reassignment that can be found in
         the evaluate response.
       enum:
@@ -1413,7 +1419,7 @@ components:
       - SELF_REVIEW_DELEGATION
       example: AUTOMATIC_REASSIGNMENT
       type: string
-    lookupstep:
+    LookupStep:
       description: The definition of an Identity according to the Reassignment Configuration
         service
       example:
@@ -1430,9 +1436,9 @@ components:
           example: 51948a8f306a4e7a9a6f8f5d032fa59e
           type: string
         reassignmentType:
-          $ref: '#/components/schemas/reassignmenttypeenum'
+          $ref: '#/components/schemas/ReassignmentTypeEnum'
       type: object
-    evaluateresponse:
+    EvaluateResponse:
       description: The response body for Evaluate Reassignment Configuration
       example:
         lookupTrail:
@@ -1453,10 +1459,10 @@ components:
           description: List of Reassignments found by looking up the next `TargetIdentity`
             in a ReassignmentConfiguration
           items:
-            $ref: '#/components/schemas/lookupstep'
+            $ref: '#/components/schemas/LookupStep'
           type: array
       type: object
-    tenantconfigurationdetails:
+    TenantConfigurationDetails:
       description: Details of any tenant-wide Reassignment Configurations (eg. enabled/disabled)
       example:
         disabled: true
@@ -1470,7 +1476,7 @@ components:
           nullable: true
           type: boolean
       type: object
-    tenantconfigurationresponse:
+    TenantConfigurationResponse:
       description: Tenant-wide Reassignment Configuration settings
       example:
         configDetails:
@@ -1486,15 +1492,18 @@ components:
             id: 2c91808380aa05580180aaaaf1940410
       properties:
         auditDetails:
-          $ref: '#/components/schemas/auditdetails'
+          $ref: '#/components/schemas/AuditDetails'
         configDetails:
-          $ref: '#/components/schemas/tenantconfigurationdetails'
+          $ref: '#/components/schemas/TenantConfigurationDetails'
       type: object
-    tenantconfigurationrequest:
+    TenantConfigurationRequest:
       description: Tenant-wide Reassignment Configuration settings
+      example:
+        configDetails:
+          disabled: true
       properties:
         configDetails:
-          $ref: '#/components/schemas/tenantconfigurationdetails'
+          $ref: '#/components/schemas/TenantConfigurationDetails'
       type: object
     getReassignmentConfigTypesV1_401_response:
       example:

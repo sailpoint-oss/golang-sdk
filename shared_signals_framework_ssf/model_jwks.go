@@ -15,40 +15,40 @@ import (
 	"fmt"
 )
 
-// checks if the Jwks type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Jwks{}
+// checks if the JWKS type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JWKS{}
 
-// Jwks JSON Web Key Set containing the transmitter's public keys for verifying signed delivery requests.
-type Jwks struct {
+// JWKS JSON Web Key Set containing the transmitter's public keys for verifying signed delivery requests.
+type JWKS struct {
 	// Array of JSON Web Keys.
-	Keys []Jwk `json:"keys"`
+	Keys []JWK `json:"keys"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _Jwks Jwks
+type _JWKS JWKS
 
-// NewJwks instantiates a new Jwks object
+// NewJWKS instantiates a new JWKS object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJwks(keys []Jwk) *Jwks {
-	this := Jwks{}
+func NewJWKS(keys []JWK) *JWKS {
+	this := JWKS{}
 	this.Keys = keys
 	return &this
 }
 
-// NewJwksWithDefaults instantiates a new Jwks object
+// NewJWKSWithDefaults instantiates a new JWKS object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewJwksWithDefaults() *Jwks {
-	this := Jwks{}
+func NewJWKSWithDefaults() *JWKS {
+	this := JWKS{}
 	return &this
 }
 
 // GetKeys returns the Keys field value
-func (o *Jwks) GetKeys() []Jwk {
+func (o *JWKS) GetKeys() []JWK {
 	if o == nil {
-		var ret []Jwk
+		var ret []JWK
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *Jwks) GetKeys() []Jwk {
 
 // GetKeysOk returns a tuple with the Keys field value
 // and a boolean to check if the value has been set.
-func (o *Jwks) GetKeysOk() ([]Jwk, bool) {
+func (o *JWKS) GetKeysOk() ([]JWK, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,11 +65,11 @@ func (o *Jwks) GetKeysOk() ([]Jwk, bool) {
 }
 
 // SetKeys sets field value
-func (o *Jwks) SetKeys(v []Jwk) {
+func (o *JWKS) SetKeys(v []JWK) {
 	o.Keys = v
 }
 
-func (o Jwks) MarshalJSON() ([]byte, error) {
+func (o JWKS) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -77,7 +77,7 @@ func (o Jwks) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Jwks) ToMap() (map[string]interface{}, error) {
+func (o JWKS) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["keys"] = o.Keys
 
@@ -88,7 +88,7 @@ func (o Jwks) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Jwks) UnmarshalJSON(data []byte) (err error) {
+func (o *JWKS) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -110,15 +110,15 @@ func (o *Jwks) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varJwks := _Jwks{}
+	varJWKS := _JWKS{}
 
-	err = json.Unmarshal(data, &varJwks)
+	err = json.Unmarshal(data, &varJWKS)
 
 	if err != nil {
 		return err
 	}
 
-	*o = Jwks(varJwks)
+	*o = JWKS(varJWKS)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -130,38 +130,38 @@ func (o *Jwks) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableJwks struct {
-	value *Jwks
+type NullableJWKS struct {
+	value *JWKS
 	isSet bool
 }
 
-func (v NullableJwks) Get() *Jwks {
+func (v NullableJWKS) Get() *JWKS {
 	return v.value
 }
 
-func (v *NullableJwks) Set(val *Jwks) {
+func (v *NullableJWKS) Set(val *JWKS) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableJwks) IsSet() bool {
+func (v NullableJWKS) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableJwks) Unset() {
+func (v *NullableJWKS) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableJwks(val *Jwks) *NullableJwks {
-	return &NullableJwks{value: val, isSet: true}
+func NewNullableJWKS(val *JWKS) *NullableJWKS {
+	return &NullableJWKS{value: val, isSet: true}
 }
 
-func (v NullableJwks) MarshalJSON() ([]byte, error) {
+func (v NullableJWKS) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableJwks) UnmarshalJSON(src []byte) error {
+func (v *NullableJWKS) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

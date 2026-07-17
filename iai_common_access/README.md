@@ -86,18 +86,18 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Commonaccessidstatus](docs/Commonaccessidstatus.md)
- - [Commonaccessitemaccess](docs/Commonaccessitemaccess.md)
- - [Commonaccessitemrequest](docs/Commonaccessitemrequest.md)
- - [Commonaccessitemresponse](docs/Commonaccessitemresponse.md)
- - [Commonaccessitemstate](docs/Commonaccessitemstate.md)
- - [Commonaccessresponse](docs/Commonaccessresponse.md)
- - [Commonaccesstype](docs/Commonaccesstype.md)
+ - [CommonAccessIDStatus](docs/CommonAccessIDStatus.md)
+ - [CommonAccessItemAccess](docs/CommonAccessItemAccess.md)
+ - [CommonAccessItemRequest](docs/CommonAccessItemRequest.md)
+ - [CommonAccessItemResponse](docs/CommonAccessItemResponse.md)
+ - [CommonAccessItemState](docs/CommonAccessItemState.md)
+ - [CommonAccessResponse](docs/CommonAccessResponse.md)
+ - [CommonAccessType](docs/CommonAccessType.md)
  - [CreateCommonAccessV1429Response](docs/CreateCommonAccessV1429Response.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetCommonAccessV1401Response](docs/GetCommonAccessV1401Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
 
 
 ## Documentation For Authorization

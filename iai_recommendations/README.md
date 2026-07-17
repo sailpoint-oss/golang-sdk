@@ -86,21 +86,21 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Accessitemref](docs/Accessitemref.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
- - [Featurevaluedto](docs/Featurevaluedto.md)
+ - [AccessItemRef](docs/AccessItemRef.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [FeatureValueDto](docs/FeatureValueDto.md)
  - [GetRecommendationsV1401Response](docs/GetRecommendationsV1401Response.md)
  - [GetRecommendationsV1429Response](docs/GetRecommendationsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Recommendationconfigdto](docs/Recommendationconfigdto.md)
- - [Recommendationrequest](docs/Recommendationrequest.md)
- - [Recommendationrequestdto](docs/Recommendationrequestdto.md)
- - [Recommendationresponse](docs/Recommendationresponse.md)
- - [Recommendationresponsedto](docs/Recommendationresponsedto.md)
- - [Recommendercalculations](docs/Recommendercalculations.md)
- - [RecommendercalculationsIdentityAttributesValue](docs/RecommendercalculationsIdentityAttributesValue.md)
- - [Translationmessage](docs/Translationmessage.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [RecommendationConfigDto](docs/RecommendationConfigDto.md)
+ - [RecommendationRequest](docs/RecommendationRequest.md)
+ - [RecommendationRequestDto](docs/RecommendationRequestDto.md)
+ - [RecommendationResponse](docs/RecommendationResponse.md)
+ - [RecommendationResponseDto](docs/RecommendationResponseDto.md)
+ - [RecommenderCalculations](docs/RecommenderCalculations.md)
+ - [RecommenderCalculationsIdentityAttributesValue](docs/RecommenderCalculationsIdentityAttributesValue.md)
+ - [TranslationMessage](docs/TranslationMessage.md)
 
 
 ## Documentation For Authorization

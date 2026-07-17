@@ -16,11 +16,11 @@ tags: ['SDK', 'Software Development Kit', 'CreateWorkflowV1Request', 'V1CreateWo
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The name of the workflow | 
-**Owner** | Pointer to [**WorkflowbodyOwner**](workflowbody-owner) |  | [optional] 
+**Owner** | Pointer to [**WorkflowBodyOwner**](workflow-body-owner) |  | [optional] 
 **Description** | Pointer to **string** | Description of what the workflow accomplishes | [optional] 
-**Definition** | Pointer to [**Workflowdefinition**](workflowdefinition) |  | [optional] 
+**Definition** | Pointer to [**WorkflowDefinition**](workflow-definition) |  | [optional] 
 **Enabled** | Pointer to **bool** | Enable or disable the workflow.  Workflows cannot be created in an enabled state. | [optional] [default to false]
-**Trigger** | Pointer to [**Workflowtrigger**](workflowtrigger) |  | [optional] 
+**Trigger** | Pointer to [**WorkflowTrigger**](workflow-trigger) |  | [optional] 
 
 ## Methods
 
@@ -63,20 +63,20 @@ SetName sets Name field to given value.
 
 ### GetOwner
 
-`func (o *CreateWorkflowV1Request) GetOwner() WorkflowbodyOwner`
+`func (o *CreateWorkflowV1Request) GetOwner() WorkflowBodyOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *CreateWorkflowV1Request) GetOwnerOk() (*WorkflowbodyOwner, bool)`
+`func (o *CreateWorkflowV1Request) GetOwnerOk() (*WorkflowBodyOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *CreateWorkflowV1Request) SetOwner(v WorkflowbodyOwner)`
+`func (o *CreateWorkflowV1Request) SetOwner(v WorkflowBodyOwner)`
 
 SetOwner sets Owner field to given value.
 
@@ -113,20 +113,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetDefinition
 
-`func (o *CreateWorkflowV1Request) GetDefinition() Workflowdefinition`
+`func (o *CreateWorkflowV1Request) GetDefinition() WorkflowDefinition`
 
 GetDefinition returns the Definition field if non-nil, zero value otherwise.
 
 ### GetDefinitionOk
 
-`func (o *CreateWorkflowV1Request) GetDefinitionOk() (*Workflowdefinition, bool)`
+`func (o *CreateWorkflowV1Request) GetDefinitionOk() (*WorkflowDefinition, bool)`
 
 GetDefinitionOk returns a tuple with the Definition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefinition
 
-`func (o *CreateWorkflowV1Request) SetDefinition(v Workflowdefinition)`
+`func (o *CreateWorkflowV1Request) SetDefinition(v WorkflowDefinition)`
 
 SetDefinition sets Definition field to given value.
 
@@ -163,20 +163,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetTrigger
 
-`func (o *CreateWorkflowV1Request) GetTrigger() Workflowtrigger`
+`func (o *CreateWorkflowV1Request) GetTrigger() WorkflowTrigger`
 
 GetTrigger returns the Trigger field if non-nil, zero value otherwise.
 
 ### GetTriggerOk
 
-`func (o *CreateWorkflowV1Request) GetTriggerOk() (*Workflowtrigger, bool)`
+`func (o *CreateWorkflowV1Request) GetTriggerOk() (*WorkflowTrigger, bool)`
 
 GetTriggerOk returns a tuple with the Trigger field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrigger
 
-`func (o *CreateWorkflowV1Request) SetTrigger(v Workflowtrigger)`
+`func (o *CreateWorkflowV1Request) SetTrigger(v WorkflowTrigger)`
 
 SetTrigger sets Trigger field to given value.
 

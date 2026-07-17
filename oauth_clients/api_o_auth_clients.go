@@ -26,15 +26,15 @@ type OAuthClientsAPIService service
 type ApiCreateOauthClientV1Request struct {
 	ctx context.Context
 	ApiService *OAuthClientsAPIService
-	createoauthclientrequest *Createoauthclientrequest
+	createOAuthClientRequest *CreateOAuthClientRequest
 }
 
-func (r ApiCreateOauthClientV1Request) Createoauthclientrequest(createoauthclientrequest Createoauthclientrequest) ApiCreateOauthClientV1Request {
-	r.createoauthclientrequest = &createoauthclientrequest
+func (r ApiCreateOauthClientV1Request) CreateOAuthClientRequest(createOAuthClientRequest CreateOAuthClientRequest) ApiCreateOauthClientV1Request {
+	r.createOAuthClientRequest = &createOAuthClientRequest
 	return r
 }
 
-func (r ApiCreateOauthClientV1Request) Execute() (*Createoauthclientresponse, *http.Response, error) {
+func (r ApiCreateOauthClientV1Request) Execute() (*CreateOAuthClientResponse, *http.Response, error) {
 	return r.ApiService.CreateOauthClientV1Execute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *OAuthClientsAPIService) CreateOauthClientV1(ctx context.Context) ApiCre
 }
 
 // Execute executes the request
-//  @return Createoauthclientresponse
-func (a *OAuthClientsAPIService) CreateOauthClientV1Execute(r ApiCreateOauthClientV1Request) (*Createoauthclientresponse, *http.Response, error) {
+//  @return CreateOAuthClientResponse
+func (a *OAuthClientsAPIService) CreateOauthClientV1Execute(r ApiCreateOauthClientV1Request) (*CreateOAuthClientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Createoauthclientresponse
+		localVarReturnValue  *CreateOAuthClientResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsAPIService.CreateOauthClientV1")
@@ -73,8 +73,8 @@ func (a *OAuthClientsAPIService) CreateOauthClientV1Execute(r ApiCreateOauthClie
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createoauthclientrequest == nil {
-		return localVarReturnValue, nil, reportError("createoauthclientrequest is required and must be specified")
+	if r.createOAuthClientRequest == nil {
+		return localVarReturnValue, nil, reportError("createOAuthClientRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -95,7 +95,7 @@ func (a *OAuthClientsAPIService) CreateOauthClientV1Execute(r ApiCreateOauthClie
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createoauthclientrequest
+	localVarPostBody = r.createOAuthClientRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -119,7 +119,7 @@ func (a *OAuthClientsAPIService) CreateOauthClientV1Execute(r ApiCreateOauthClie
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -141,7 +141,7 @@ func (a *OAuthClientsAPIService) CreateOauthClientV1Execute(r ApiCreateOauthClie
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -163,7 +163,7 @@ func (a *OAuthClientsAPIService) CreateOauthClientV1Execute(r ApiCreateOauthClie
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -274,7 +274,7 @@ func (a *OAuthClientsAPIService) DeleteOauthClientV1Execute(r ApiDeleteOauthClie
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -296,7 +296,7 @@ func (a *OAuthClientsAPIService) DeleteOauthClientV1Execute(r ApiDeleteOauthClie
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -307,7 +307,7 @@ func (a *OAuthClientsAPIService) DeleteOauthClientV1Execute(r ApiDeleteOauthClie
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -329,7 +329,7 @@ func (a *OAuthClientsAPIService) DeleteOauthClientV1Execute(r ApiDeleteOauthClie
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -350,7 +350,7 @@ type ApiGetOauthClientV1Request struct {
 	id string
 }
 
-func (r ApiGetOauthClientV1Request) Execute() (*Getoauthclientresponse, *http.Response, error) {
+func (r ApiGetOauthClientV1Request) Execute() (*GetOAuthClientResponse, *http.Response, error) {
 	return r.ApiService.GetOauthClientV1Execute(r)
 }
 
@@ -372,13 +372,13 @@ func (a *OAuthClientsAPIService) GetOauthClientV1(ctx context.Context, id string
 }
 
 // Execute executes the request
-//  @return Getoauthclientresponse
-func (a *OAuthClientsAPIService) GetOauthClientV1Execute(r ApiGetOauthClientV1Request) (*Getoauthclientresponse, *http.Response, error) {
+//  @return GetOAuthClientResponse
+func (a *OAuthClientsAPIService) GetOauthClientV1Execute(r ApiGetOauthClientV1Request) (*GetOAuthClientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Getoauthclientresponse
+		localVarReturnValue  *GetOAuthClientResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsAPIService.GetOauthClientV1")
@@ -433,7 +433,7 @@ func (a *OAuthClientsAPIService) GetOauthClientV1Execute(r ApiGetOauthClientV1Re
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -455,7 +455,7 @@ func (a *OAuthClientsAPIService) GetOauthClientV1Execute(r ApiGetOauthClientV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -466,7 +466,7 @@ func (a *OAuthClientsAPIService) GetOauthClientV1Execute(r ApiGetOauthClientV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -488,7 +488,7 @@ func (a *OAuthClientsAPIService) GetOauthClientV1Execute(r ApiGetOauthClientV1Re
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -524,7 +524,7 @@ func (r ApiListOauthClientsV1Request) Filters(filters string) ApiListOauthClient
 	return r
 }
 
-func (r ApiListOauthClientsV1Request) Execute() ([]Getoauthclientresponse, *http.Response, error) {
+func (r ApiListOauthClientsV1Request) Execute() ([]GetOAuthClientResponse, *http.Response, error) {
 	return r.ApiService.ListOauthClientsV1Execute(r)
 }
 
@@ -544,13 +544,13 @@ func (a *OAuthClientsAPIService) ListOauthClientsV1(ctx context.Context) ApiList
 }
 
 // Execute executes the request
-//  @return []Getoauthclientresponse
-func (a *OAuthClientsAPIService) ListOauthClientsV1Execute(r ApiListOauthClientsV1Request) ([]Getoauthclientresponse, *http.Response, error) {
+//  @return []GetOAuthClientResponse
+func (a *OAuthClientsAPIService) ListOauthClientsV1Execute(r ApiListOauthClientsV1Request) ([]GetOAuthClientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Getoauthclientresponse
+		localVarReturnValue  []GetOAuthClientResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsAPIService.ListOauthClientsV1")
@@ -607,7 +607,7 @@ func (a *OAuthClientsAPIService) ListOauthClientsV1Execute(r ApiListOauthClients
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -629,7 +629,7 @@ func (a *OAuthClientsAPIService) ListOauthClientsV1Execute(r ApiListOauthClients
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -651,7 +651,7 @@ func (a *OAuthClientsAPIService) ListOauthClientsV1Execute(r ApiListOauthClients
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -679,16 +679,16 @@ type ApiPatchOauthClientV1Request struct {
 	ctx context.Context
 	ApiService *OAuthClientsAPIService
 	id string
-	jsonpatchoperation *[]Jsonpatchoperation
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
-func (r ApiPatchOauthClientV1Request) Jsonpatchoperation(jsonpatchoperation []Jsonpatchoperation) ApiPatchOauthClientV1Request {
-	r.jsonpatchoperation = &jsonpatchoperation
+func (r ApiPatchOauthClientV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchOauthClientV1Request {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
-func (r ApiPatchOauthClientV1Request) Execute() (*Getoauthclientresponse, *http.Response, error) {
+func (r ApiPatchOauthClientV1Request) Execute() (*GetOAuthClientResponse, *http.Response, error) {
 	return r.ApiService.PatchOauthClientV1Execute(r)
 }
 
@@ -710,13 +710,13 @@ func (a *OAuthClientsAPIService) PatchOauthClientV1(ctx context.Context, id stri
 }
 
 // Execute executes the request
-//  @return Getoauthclientresponse
-func (a *OAuthClientsAPIService) PatchOauthClientV1Execute(r ApiPatchOauthClientV1Request) (*Getoauthclientresponse, *http.Response, error) {
+//  @return GetOAuthClientResponse
+func (a *OAuthClientsAPIService) PatchOauthClientV1Execute(r ApiPatchOauthClientV1Request) (*GetOAuthClientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Getoauthclientresponse
+		localVarReturnValue  *GetOAuthClientResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsAPIService.PatchOauthClientV1")
@@ -730,8 +730,8 @@ func (a *OAuthClientsAPIService) PatchOauthClientV1Execute(r ApiPatchOauthClient
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonpatchoperation == nil {
-		return localVarReturnValue, nil, reportError("jsonpatchoperation is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -752,7 +752,7 @@ func (a *OAuthClientsAPIService) PatchOauthClientV1Execute(r ApiPatchOauthClient
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonpatchoperation
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -776,7 +776,7 @@ func (a *OAuthClientsAPIService) PatchOauthClientV1Execute(r ApiPatchOauthClient
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -798,7 +798,7 @@ func (a *OAuthClientsAPIService) PatchOauthClientV1Execute(r ApiPatchOauthClient
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -809,7 +809,7 @@ func (a *OAuthClientsAPIService) PatchOauthClientV1Execute(r ApiPatchOauthClient
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -831,7 +831,7 @@ func (a *OAuthClientsAPIService) PatchOauthClientV1Execute(r ApiPatchOauthClient
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

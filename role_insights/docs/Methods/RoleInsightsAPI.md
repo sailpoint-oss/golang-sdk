@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Roleinsightsresponse**](../models/roleinsightsresponse)
+[**RoleInsightsResponse**](../models/role-insights-response)
 
 ### HTTP request headers
 
@@ -95,7 +95,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.CreateRoleInsightRequestsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateRoleInsightRequestsV1`: Roleinsightsresponse
+    // response from `CreateRoleInsightRequestsV1`: RoleInsightsResponse
     fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.CreateRoleInsightRequestsV1`: %v\n", resp)
 }
 ```
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleinsightsidentities**](../models/roleinsightsidentities)
+[**[]RoleInsightsIdentities**](../models/role-insights-identities)
 
 ### HTTP request headers
 
@@ -272,7 +272,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetEntitlementChangesIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEntitlementChangesIdentitiesV1`: []Roleinsightsidentities
+    // response from `GetEntitlementChangesIdentitiesV1`: []RoleInsightsIdentities
     fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetEntitlementChangesIdentitiesV1`: %v\n", resp)
 }
 ```
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Roleinsight**](../models/roleinsight)
+[**RoleInsight**](../models/role-insight)
 
 ### HTTP request headers
 
@@ -351,7 +351,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleInsightV1`: Roleinsight
+    // response from `GetRoleInsightV1`: RoleInsight
     fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightV1`: %v\n", resp)
 }
 ```
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleinsightsentitlement**](../models/roleinsightsentitlement)
+[**[]RoleInsightsEntitlement**](../models/role-insights-entitlement)
 
 ### HTTP request headers
 
@@ -432,7 +432,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsCurrentEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleInsightsCurrentEntitlementsV1`: []Roleinsightsentitlement
+    // response from `GetRoleInsightsCurrentEntitlementsV1`: []RoleInsightsEntitlement
     fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsCurrentEntitlementsV1`: %v\n", resp)
 }
 ```
@@ -478,7 +478,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleinsightsentitlementchanges**](../models/roleinsightsentitlementchanges)
+[**[]RoleInsightsEntitlementChanges**](../models/role-insights-entitlement-changes)
 
 ### HTTP request headers
 
@@ -515,7 +515,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsEntitlementsChangesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleInsightsEntitlementsChangesV1`: []Roleinsightsentitlementchanges
+    // response from `GetRoleInsightsEntitlementsChangesV1`: []RoleInsightsEntitlementChanges
     fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsEntitlementsChangesV1`: %v\n", resp)
 }
 ```
@@ -562,7 +562,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Roleinsightsresponse**](../models/roleinsightsresponse)
+[**RoleInsightsResponse**](../models/role-insights-response)
 
 ### HTTP request headers
 
@@ -597,7 +597,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsRequestsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleInsightsRequestsV1`: Roleinsightsresponse
+    // response from `GetRoleInsightsRequestsV1`: RoleInsightsResponse
     fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsRequestsV1`: %v\n", resp)
 }
 ```
@@ -636,7 +636,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Roleinsightssummary**](../models/roleinsightssummary)
+[**RoleInsightsSummary**](../models/role-insights-summary)
 
 ### HTTP request headers
 
@@ -670,7 +670,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleInsightsSummaryV1`: Roleinsightssummary
+    // response from `GetRoleInsightsSummaryV1`: RoleInsightsSummary
     fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsSummaryV1`: %v\n", resp)
 }
 ```
@@ -714,7 +714,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleinsight**](../models/roleinsight)
+[**[]RoleInsight**](../models/role-insight)
 
 ### HTTP request headers
 
@@ -753,7 +753,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleInsightsV1`: []Roleinsight
+    // response from `GetRoleInsightsV1`: []RoleInsight
     fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsV1`: %v\n", resp)
 }
 ```

@@ -46,21 +46,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/jitactivationactivaterequest'
+              $ref: '#/components/schemas/JitActivationActivateRequest'
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/jitactivationactivateresponse'
+                $ref: '#/components/schemas/JitActivationActivateResponse'
           description: |
             Accepted. The activation workflow was accepted and is running.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -84,7 +84,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -109,7 +109,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -135,21 +135,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/jitactivationdeactivaterequest'
+              $ref: '#/components/schemas/JitActivationDeactivateRequest'
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/jitactivationdeactivateresponse'
+                $ref: '#/components/schemas/JitActivationDeactivateResponse'
           description: |
             Accepted. The deactivation signal was sent to the workflow.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -173,7 +173,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -191,7 +191,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -216,7 +216,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -243,21 +243,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/jitactivationextendrequest'
+              $ref: '#/components/schemas/JitActivationExtendRequest'
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/jitactivationextendresponse'
+                $ref: '#/components/schemas/JitActivationExtendResponse'
           description: |
             Accepted. The extend signal was sent to the workflow.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -281,7 +281,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -299,7 +299,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -324,7 +324,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -342,7 +342,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -366,7 +366,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -384,7 +384,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -409,10 +409,13 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    jitactivationactivaterequest:
+    JitActivationActivateRequest:
+      example:
+        activationPeriodMins: 120
+        connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
       properties:
         connectionId:
           description: Entitlement connection identifier for the activation.
@@ -430,7 +433,7 @@ components:
       - connectionId
       title: JIT Activation Activate Request
       type: object
-    activationworkflowstatus:
+    ActivationWorkflowStatus:
       description: JIT activation workflow status.
       enum:
       - CREATING
@@ -443,7 +446,7 @@ components:
       - REVOKED
       example: PROVISIONED
       type: string
-    jitactivationactivateresponse:
+    JitActivationActivateResponse:
       example:
         activationPeriodMins: 120
         connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
@@ -472,7 +475,7 @@ components:
           format: int32
           type: integer
         status:
-          $ref: '#/components/schemas/activationworkflowstatus'
+          $ref: '#/components/schemas/ActivationWorkflowStatus'
         startTime:
           description: Time when the activation workflow was started (ISO-8601).
           example: 2025-10-11T21:23:15Z
@@ -487,7 +490,7 @@ components:
       - status
       title: JIT Activation Activate Response
       type: object
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -499,7 +502,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -512,7 +515,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -520,7 +523,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -554,17 +557,19 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    jitactivationdeactivaterequest:
+    JitActivationDeactivateRequest:
+      example:
+        connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
       properties:
         connectionId:
           description: Entitlement connection identifier for the activation to deactivate.
@@ -575,7 +580,7 @@ components:
       - connectionId
       title: JIT Activation Deactivate Request
       type: object
-    jitactivationdeactivateresponse:
+    JitActivationDeactivateResponse:
       example:
         connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
         startTime: 2025-10-11T21:23:15Z
@@ -598,7 +603,7 @@ components:
           format: uuid
           type: string
         status:
-          $ref: '#/components/schemas/activationworkflowstatus'
+          $ref: '#/components/schemas/ActivationWorkflowStatus'
         startTime:
           description: Time associated with this deactivation request (ISO-8601).
           example: 2025-10-11T21:23:15Z
@@ -612,7 +617,10 @@ components:
       - status
       title: JIT Activation Deactivate Response
       type: object
-    jitactivationextendrequest:
+    JitActivationExtendRequest:
+      example:
+        activationPeriodExtensionMins: 120
+        connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
       properties:
         connectionId:
           description: Entitlement connection identifier for the activation to extend.
@@ -630,7 +638,7 @@ components:
       - connectionId
       title: JIT Activation Extend Request
       type: object
-    jitactivationextendresponse:
+    JitActivationExtendResponse:
       example:
         activationPeriodExtensionMins: 120
         connectionId: 757fb803-9024-5861-e510-83a56e4c5bd3
@@ -659,7 +667,7 @@ components:
           format: int32
           type: integer
         status:
-          $ref: '#/components/schemas/activationworkflowstatus'
+          $ref: '#/components/schemas/ActivationWorkflowStatus'
         startTime:
           description: Time associated with this extend request (ISO-8601).
           example: 2025-10-11T21:23:15Z

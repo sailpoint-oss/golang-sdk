@@ -80,11 +80,11 @@ Name | Type | Description  | Notes
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **minEntitlementPopularity** | **int32** | Minimum popularity required for an entitlement to be included in the provisioned role. | [default to 0]
  **includeCommonAccess** | **bool** | Boolean determining whether common access entitlements will be included in the provisioned role. | [default to true]
- **roleminingpotentialroleprovisionrequest** | [**Roleminingpotentialroleprovisionrequest**](../models/roleminingpotentialroleprovisionrequest) | Required information to create a new role | 
+ **roleMiningPotentialRoleProvisionRequest** | [**RoleMiningPotentialRoleProvisionRequest**](../models/role-mining-potential-role-provision-request) | Required information to create a new role | 
 
 ### Return type
 
-[**Roleminingpotentialrolesummary**](../models/roleminingpotentialrolesummary)
+[**RoleMiningPotentialRoleSummary**](../models/role-mining-potential-role-summary)
 
 ### HTTP request headers
 
@@ -111,19 +111,25 @@ func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     minEntitlementPopularity := 56 // int32 | Minimum popularity required for an entitlement to be included in the provisioned role. (optional) (default to 0) # int32 | Minimum popularity required for an entitlement to be included in the provisioned role. (optional) (default to 0)
     includeCommonAccess := true // bool | Boolean determining whether common access entitlements will be included in the provisioned role. (optional) (default to true) # bool | Boolean determining whether common access entitlements will be included in the provisioned role. (optional) (default to true)
-    roleminingpotentialroleprovisionrequestJson := []byte(``) // Roleminingpotentialroleprovisionrequest | Required information to create a new role (optional)
+    roleminingpotentialroleprovisionrequestJson := []byte(`{
+          "includeIdentities" : true,
+          "roleName" : "Finance - Accounting",
+          "ownerId" : "2b568c65bc3c4c57a43bd97e3a8e41",
+          "roleDescription" : "General access for accounting department",
+          "directlyAssignedEntitlements" : false
+        }`) // RoleMiningPotentialRoleProvisionRequest | Required information to create a new role (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.IAIRoleMiningAPI.CreatePotentialRoleProvisionRequestV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IAIRoleMiningAPI.CreatePotentialRoleProvisionRequestV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).MinEntitlementPopularity(minEntitlementPopularity).IncludeCommonAccess(includeCommonAccess).Roleminingpotentialroleprovisionrequest(roleminingpotentialroleprovisionrequest).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.CreatePotentialRoleProvisionRequestV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).MinEntitlementPopularity(minEntitlementPopularity).IncludeCommonAccess(includeCommonAccess).RoleMiningPotentialRoleProvisionRequest(roleMiningPotentialRoleProvisionRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.CreatePotentialRoleProvisionRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreatePotentialRoleProvisionRequestV1`: Roleminingpotentialrolesummary
+    // response from `CreatePotentialRoleProvisionRequestV1`: RoleMiningPotentialRoleSummary
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.CreatePotentialRoleProvisionRequestV1`: %v\n", resp)
 }
 ```
@@ -159,11 +165,11 @@ Other parameters are passed through a pointer to a apiCreateRoleMiningSessionsV1
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **roleminingsessiondto** | [**Roleminingsessiondto**](../models/roleminingsessiondto) | Role mining session parameters | 
+ **roleMiningSessionDto** | [**RoleMiningSessionDto**](../models/role-mining-session-dto) | Role mining session parameters | 
 
 ### Return type
 
-[**Roleminingsessionresponse**](../models/roleminingsessionresponse)
+[**RoleMiningSessionResponse**](../models/role-mining-session-response)
 
 ### HTTP request headers
 
@@ -186,10 +192,41 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    roleminingsessiondtoJson := []byte(``) // Roleminingsessiondto | Role mining session parameters
+    roleminingsessiondtoJson := []byte(`{
+          "emailRecipientId" : "2c918090761a5aac0176215c46a62d58",
+          "prescribedPruneThreshold" : 10,
+          "pruneThreshold" : 50,
+          "saved" : true,
+          "potentialRolesReadyCount" : 0,
+          "scope" : {
+            "identityIds" : [ "2c918090761a5aac0176215c46a62d58", "2c918090761a5aac01722015c46a62d42" ],
+            "attributeFilterCriteria" : {
+              "displayName" : {
+                "untranslated" : "Location: Miami"
+              },
+              "ariaLabel" : {
+                "untranslated" : "Location: Miami"
+              },
+              "data" : {
+                "displayName" : {
+                  "translateKey" : "IDN.IDENTITY_ATTRIBUTES.LOCATION"
+                },
+                "name" : "location",
+                "operator" : "EQUALS",
+                "values" : [ "Miami" ]
+              }
+            },
+            "criteria" : "source.name:DataScienceDataset"
+          },
+          "potentialRoleCount" : 0,
+          "name" : "Saved RM Session - 07/10",
+          "minNumIdentitiesInPotentialRole" : 20,
+          "identityCount" : 0,
+          "type" : "SPECIALIZED"
+        }`) // RoleMiningSessionDto | Role mining session parameters
 
-    var roleminingsessiondto iai_role_mining.Roleminingsessiondto
-    if err := json.Unmarshal(roleminingsessiondtoJson, &roleminingsessiondto); err != nil {
+    var roleMiningSessionDto iai_role_mining.RoleMiningSessionDto
+    if err := json.Unmarshal(roleminingsessiondtoJson, &roleMiningSessionDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -197,13 +234,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningAPI.CreateRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Roleminingsessiondto(roleminingsessiondto).Execute()
-	  //resp, r, err := apiClient.IAIRoleMiningAPI.CreateRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Roleminingsessiondto(roleminingsessiondto).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.CreateRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RoleMiningSessionDto(roleMiningSessionDto).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.CreateRoleMiningSessionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).RoleMiningSessionDto(roleMiningSessionDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.CreateRoleMiningSessionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateRoleMiningSessionsV1`: Roleminingsessionresponse
+    // response from `CreateRoleMiningSessionsV1`: RoleMiningSessionResponse
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.CreateRoleMiningSessionsV1`: %v\n", resp)
 }
 ```
@@ -331,11 +368,11 @@ Name | Type | Description  | Notes
 
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **roleminingpotentialroleexportrequest** | [**Roleminingpotentialroleexportrequest**](../models/roleminingpotentialroleexportrequest) |  | 
+ **roleMiningPotentialRoleExportRequest** | [**RoleMiningPotentialRoleExportRequest**](../models/role-mining-potential-role-export-request) |  | 
 
 ### Return type
 
-[**Roleminingpotentialroleexportresponse**](../models/roleminingpotentialroleexportresponse)
+[**RoleMiningPotentialRoleExportResponse**](../models/role-mining-potential-role-export-response)
 
 ### HTTP request headers
 
@@ -360,19 +397,22 @@ func main() {
     sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id # string | The role mining session id
     potentialRoleId := `278359a6-04b7-4669-9468-924cf580964a` // string | A potential role id in a role mining session # string | A potential role id in a role mining session
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    roleminingpotentialroleexportrequestJson := []byte(``) // Roleminingpotentialroleexportrequest |  (optional)
+    roleminingpotentialroleexportrequestJson := []byte(`{
+          "minEntitlementPopularity" : 0,
+          "includeCommonAccess" : true
+        }`) // RoleMiningPotentialRoleExportRequest |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsyncV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsyncV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Roleminingpotentialroleexportrequest(roleminingpotentialroleexportrequest).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsyncV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).RoleMiningPotentialRoleExportRequest(roleMiningPotentialRoleExportRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsyncV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ExportRoleMiningPotentialRoleAsyncV1`: Roleminingpotentialroleexportresponse
+    // response from `ExportRoleMiningPotentialRoleAsyncV1`: RoleMiningPotentialRoleExportResponse
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsyncV1`: %v\n", resp)
 }
 ```
@@ -420,7 +460,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Roleminingpotentialroleexportresponse**](../models/roleminingpotentialroleexportresponse)
+[**RoleMiningPotentialRoleExportResponse**](../models/role-mining-potential-role-export-response)
 
 ### HTTP request headers
 
@@ -457,7 +497,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.ExportRoleMiningPotentialRoleStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ExportRoleMiningPotentialRoleStatusV1`: Roleminingpotentialroleexportresponse
+    // response from `ExportRoleMiningPotentialRoleStatusV1`: RoleMiningPotentialRoleExportResponse
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.ExportRoleMiningPotentialRoleStatusV1`: %v\n", resp)
 }
 ```
@@ -583,7 +623,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleminingpotentialrolesummary**](../models/roleminingpotentialrolesummary)
+[**[]RoleMiningPotentialRoleSummary**](../models/role-mining-potential-role-summary)
 
 ### HTTP request headers
 
@@ -622,7 +662,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetAllPotentialRoleSummariesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAllPotentialRoleSummariesV1`: []Roleminingpotentialrolesummary
+    // response from `GetAllPotentialRoleSummariesV1`: []RoleMiningPotentialRoleSummary
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetAllPotentialRoleSummariesV1`: %v\n", resp)
 }
 ```
@@ -758,7 +798,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleminingentitlement**](../models/roleminingentitlement)
+[**[]RoleMiningEntitlement**](../models/role-mining-entitlement)
 
 ### HTTP request headers
 
@@ -800,7 +840,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetEntitlementsPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEntitlementsPotentialRoleV1`: []Roleminingentitlement
+    // response from `GetEntitlementsPotentialRoleV1`: []RoleMiningEntitlement
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetEntitlementsPotentialRoleV1`: %v\n", resp)
 }
 ```
@@ -851,7 +891,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleminingentitlement**](../models/roleminingentitlement)
+[**[]RoleMiningEntitlement**](../models/role-mining-entitlement)
 
 ### HTTP request headers
 
@@ -892,7 +932,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetExcludedEntitlementsPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetExcludedEntitlementsPotentialRoleV1`: []Roleminingentitlement
+    // response from `GetExcludedEntitlementsPotentialRoleV1`: []RoleMiningEntitlement
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetExcludedEntitlementsPotentialRoleV1`: %v\n", resp)
 }
 ```
@@ -943,7 +983,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleminingidentity**](../models/roleminingidentity)
+[**[]RoleMiningIdentity**](../models/role-mining-identity)
 
 ### HTTP request headers
 
@@ -984,7 +1024,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetIdentitiesPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIdentitiesPotentialRoleV1`: []Roleminingidentity
+    // response from `GetIdentitiesPotentialRoleV1`: []RoleMiningIdentity
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetIdentitiesPotentialRoleV1`: %v\n", resp)
 }
 ```
@@ -1034,7 +1074,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleminingpotentialroleapplication**](../models/roleminingpotentialroleapplication)
+[**[]RoleMiningPotentialRoleApplication**](../models/role-mining-potential-role-application)
 
 ### HTTP request headers
 
@@ -1074,7 +1114,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleApplicationsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPotentialRoleApplicationsV1`: []Roleminingpotentialroleapplication
+    // response from `GetPotentialRoleApplicationsV1`: []RoleMiningPotentialRoleApplication
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetPotentialRoleApplicationsV1`: %v\n", resp)
 }
 ```
@@ -1124,7 +1164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleminingpotentialroleentitlements**](../models/roleminingpotentialroleentitlements)
+[**[]RoleMiningPotentialRoleEntitlements**](../models/role-mining-potential-role-entitlements)
 
 ### HTTP request headers
 
@@ -1164,7 +1204,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleEntitlementsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPotentialRoleEntitlementsV1`: []Roleminingpotentialroleentitlements
+    // response from `GetPotentialRoleEntitlementsV1`: []RoleMiningPotentialRoleEntitlements
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetPotentialRoleEntitlementsV1`: %v\n", resp)
 }
 ```
@@ -1214,7 +1254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleminingpotentialrolesourceusage**](../models/roleminingpotentialrolesourceusage)
+[**[]RoleMiningPotentialRoleSourceUsage**](../models/role-mining-potential-role-source-usage)
 
 ### HTTP request headers
 
@@ -1254,7 +1294,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleSourceIdentityUsageV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPotentialRoleSourceIdentityUsageV1`: []Roleminingpotentialrolesourceusage
+    // response from `GetPotentialRoleSourceIdentityUsageV1`: []RoleMiningPotentialRoleSourceUsage
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetPotentialRoleSourceIdentityUsageV1`: %v\n", resp)
 }
 ```
@@ -1303,7 +1343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleminingpotentialrolesummary**](../models/roleminingpotentialrolesummary)
+[**[]RoleMiningPotentialRoleSummary**](../models/role-mining-potential-role-summary)
 
 ### HTTP request headers
 
@@ -1343,7 +1383,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleSummariesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPotentialRoleSummariesV1`: []Roleminingpotentialrolesummary
+    // response from `GetPotentialRoleSummariesV1`: []RoleMiningPotentialRoleSummary
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetPotentialRoleSummariesV1`: %v\n", resp)
 }
 ```
@@ -1389,7 +1429,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Roleminingpotentialrole**](../models/roleminingpotentialrole)
+[**RoleMiningPotentialRole**](../models/role-mining-potential-role)
 
 ### HTTP request headers
 
@@ -1425,7 +1465,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPotentialRoleV1`: Roleminingpotentialrole
+    // response from `GetPotentialRoleV1`: RoleMiningPotentialRole
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetPotentialRoleV1`: %v\n", resp)
 }
 ```
@@ -1469,7 +1509,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Roleminingpotentialrole**](../models/roleminingpotentialrole)
+[**RoleMiningPotentialRole**](../models/role-mining-potential-role)
 
 ### HTTP request headers
 
@@ -1504,7 +1544,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleMiningPotentialRoleV1`: Roleminingpotentialrole
+    // response from `GetRoleMiningPotentialRoleV1`: RoleMiningPotentialRole
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetRoleMiningPotentialRoleV1`: %v\n", resp)
 }
 ```
@@ -1548,7 +1588,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Roleminingsessionstatus**](../models/roleminingsessionstatus)
+[**RoleMiningSessionStatus**](../models/role-mining-session-status)
 
 ### HTTP request headers
 
@@ -1583,7 +1623,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningSessionStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleMiningSessionStatusV1`: Roleminingsessionstatus
+    // response from `GetRoleMiningSessionStatusV1`: RoleMiningSessionStatus
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetRoleMiningSessionStatusV1`: %v\n", resp)
 }
 ```
@@ -1627,7 +1667,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Roleminingsessionresponse**](../models/roleminingsessionresponse)
+[**RoleMiningSessionResponse**](../models/role-mining-session-response)
 
 ### HTTP request headers
 
@@ -1662,7 +1702,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningSessionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleMiningSessionV1`: Roleminingsessionresponse
+    // response from `GetRoleMiningSessionV1`: RoleMiningSessionResponse
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetRoleMiningSessionV1`: %v\n", resp)
 }
 ```
@@ -1706,7 +1746,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleminingsessiondto**](../models/roleminingsessiondto)
+[**[]RoleMiningSessionDto**](../models/role-mining-session-dto)
 
 ### HTTP request headers
 
@@ -1745,7 +1785,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningSessionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleMiningSessionsV1`: []Roleminingsessiondto
+    // response from `GetRoleMiningSessionsV1`: []RoleMiningSessionDto
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetRoleMiningSessionsV1`: %v\n", resp)
 }
 ```
@@ -1788,7 +1828,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleminingsessiondraftroledto**](../models/roleminingsessiondraftroledto)
+[**[]RoleMiningSessionDraftRoleDto**](../models/role-mining-session-draft-role-dto)
 
 ### HTTP request headers
 
@@ -1826,7 +1866,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetSavedPotentialRolesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSavedPotentialRolesV1`: []Roleminingsessiondraftroledto
+    // response from `GetSavedPotentialRolesV1`: []RoleMiningSessionDraftRoleDto
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetSavedPotentialRolesV1`: %v\n", resp)
 }
 ```
@@ -1881,7 +1921,7 @@ Name | Type | Description  | Notes
 
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **jsonpatchoperationrolemining** | [**[]Jsonpatchoperationrolemining**](../models/jsonpatchoperationrolemining) |  | 
+ **jsonPatchOperationRoleMining** | [**[]JsonPatchOperationRoleMining**](../models/json-patch-operation-role-mining) |  | 
 
 ### Return type
 
@@ -1910,10 +1950,10 @@ func main() {
     sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id # string | The role mining session id
     potentialRoleId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The potential role summary id # string | The potential role summary id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperationroleminingJson := []byte(`[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]`) // []Jsonpatchoperationrolemining | 
+    jsonpatchoperationroleminingJson := []byte(`[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]`) // []JsonPatchOperationRoleMining | 
 
-    var jsonpatchoperationrolemining []iai_role_mining.Jsonpatchoperationrolemining
-    if err := json.Unmarshal(jsonpatchoperationroleminingJson, &jsonpatchoperationrolemining); err != nil {
+    var jsonPatchOperationRoleMining []iai_role_mining.JsonPatchOperationRoleMining
+    if err := json.Unmarshal(jsonpatchoperationroleminingJson, &jsonPatchOperationRoleMining); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1921,8 +1961,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleSessionV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
-	  //resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleSessionV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleSessionV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperationRoleMining(jsonPatchOperationRoleMining).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleSessionV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperationRoleMining(jsonPatchOperationRoleMining).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchPotentialRoleSessionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1982,7 +2022,7 @@ Name | Type | Description  | Notes
 
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **jsonpatchoperationrolemining** | [**[]Jsonpatchoperationrolemining**](../models/jsonpatchoperationrolemining) |  | 
+ **jsonPatchOperationRoleMining** | [**[]JsonPatchOperationRoleMining**](../models/json-patch-operation-role-mining) |  | 
 
 ### Return type
 
@@ -2011,10 +2051,10 @@ func main() {
     sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id # string | The role mining session id
     potentialRoleId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The potential role summary id # string | The potential role summary id
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperationroleminingJson := []byte(`[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]`) // []Jsonpatchoperationrolemining | 
+    jsonpatchoperationroleminingJson := []byte(`[{"op":"remove","path":"/description"},{"op":"replace","path":"/description","value":"Acct I - Potential Role"},{"op":"remove","path":"/saved"},{"op":"replace","path":"/saved","value":"false"},{"op":"remove","path":"/name"},{"op":"replace","path":"/name","value":"Potential Role Accounting"}]`) // []JsonPatchOperationRoleMining | 
 
-    var jsonpatchoperationrolemining []iai_role_mining.Jsonpatchoperationrolemining
-    if err := json.Unmarshal(jsonpatchoperationroleminingJson, &jsonpatchoperationrolemining); err != nil {
+    var jsonPatchOperationRoleMining []iai_role_mining.JsonPatchOperationRoleMining
+    if err := json.Unmarshal(jsonpatchoperationroleminingJson, &jsonPatchOperationRoleMining); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2022,8 +2062,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
-	  //resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperationrolemining(jsonpatchoperationrolemining).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperationRoleMining(jsonPatchOperationRoleMining).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperationRoleMining(jsonPatchOperationRoleMining).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2069,7 +2109,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session. | 
 
 ### Return type
 
@@ -2097,10 +2137,10 @@ import (
 func main() {
     sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id to be patched # string | The role mining session id to be patched
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/pruneThreshold","value":"83"},{"op":"replace","path":"/minNumIdentitiesInPotentialRole","value":"10"},{"op":"replace","path":"/saved","value":"false"},{"op":"replace","path":"/name","value":"RM Session - 07/10/22"},{"op":"add","path":"/name","value":"RM Session - 07/10/22"}]`) // []Jsonpatchoperation | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/pruneThreshold","value":"83"},{"op":"replace","path":"/minNumIdentitiesInPotentialRole","value":"10"},{"op":"replace","path":"/saved","value":"false"},{"op":"replace","path":"/name","value":"RM Session - 07/10/22"},{"op":"add","path":"/name","value":"RM Session - 07/10/22"}]`) // []JsonPatchOperation | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
 
-    var jsonpatchoperation []iai_role_mining.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []iai_role_mining.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2108,8 +2148,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningAPI.PatchRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.IAIRoleMiningAPI.PatchRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.PatchRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.PatchRoleMiningSessionV1(context.Background(), sessionId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchRoleMiningSessionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2157,11 +2197,11 @@ Name | Type | Description  | Notes
 
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **roleminingpotentialroleeditentitlements** | [**Roleminingpotentialroleeditentitlements**](../models/roleminingpotentialroleeditentitlements) | Role mining session parameters | 
+ **roleMiningPotentialRoleEditEntitlements** | [**RoleMiningPotentialRoleEditEntitlements**](../models/role-mining-potential-role-edit-entitlements) | Role mining session parameters | 
 
 ### Return type
 
-[**Roleminingpotentialrole**](../models/roleminingpotentialrole)
+[**RoleMiningPotentialRole**](../models/role-mining-potential-role)
 
 ### HTTP request headers
 
@@ -2186,10 +2226,13 @@ func main() {
     sessionId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | The role mining session id # string | The role mining session id
     potentialRoleId := `8c190e67-87aa-4ed9-a90b-d9d5344523fb` // string | A potential role id in a role mining session # string | A potential role id in a role mining session
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    roleminingpotentialroleeditentitlementsJson := []byte(``) // Roleminingpotentialroleeditentitlements | Role mining session parameters
+    roleminingpotentialroleeditentitlementsJson := []byte(`{
+          "ids" : [ "entId1", "entId2" ],
+          "exclude" : true
+        }`) // RoleMiningPotentialRoleEditEntitlements | Role mining session parameters
 
-    var roleminingpotentialroleeditentitlements iai_role_mining.Roleminingpotentialroleeditentitlements
-    if err := json.Unmarshal(roleminingpotentialroleeditentitlementsJson, &roleminingpotentialroleeditentitlements); err != nil {
+    var roleMiningPotentialRoleEditEntitlements iai_role_mining.RoleMiningPotentialRoleEditEntitlements
+    if err := json.Unmarshal(roleminingpotentialroleeditentitlementsJson, &roleMiningPotentialRoleEditEntitlements); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2197,13 +2240,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningAPI.UpdateEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Roleminingpotentialroleeditentitlements(roleminingpotentialroleeditentitlements).Execute()
-	  //resp, r, err := apiClient.IAIRoleMiningAPI.UpdateEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).Roleminingpotentialroleeditentitlements(roleminingpotentialroleeditentitlements).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.UpdateEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).RoleMiningPotentialRoleEditEntitlements(roleMiningPotentialRoleEditEntitlements).Execute()
+	  //resp, r, err := apiClient.IAIRoleMiningAPI.UpdateEntitlementsPotentialRoleV1(context.Background(), sessionId, potentialRoleId).XSailPointExperimental(xSailPointExperimental).RoleMiningPotentialRoleEditEntitlements(roleMiningPotentialRoleEditEntitlements).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.UpdateEntitlementsPotentialRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateEntitlementsPotentialRoleV1`: Roleminingpotentialrole
+    // response from `UpdateEntitlementsPotentialRoleV1`: RoleMiningPotentialRole
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.UpdateEntitlementsPotentialRoleV1`: %v\n", resp)
 }
 ```

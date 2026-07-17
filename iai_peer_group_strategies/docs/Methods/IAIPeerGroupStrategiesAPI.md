@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Peergroupmember**](../models/peergroupmember)
+[**[]PeerGroupMember**](../models/peer-group-member)
 
 ### HTTP request headers
 
@@ -99,7 +99,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IAIPeerGroupStrategiesAPI.GetPeerGroupOutliersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPeerGroupOutliersV1`: []Peergroupmember
+    // response from `GetPeerGroupOutliersV1`: []PeerGroupMember
     fmt.Fprintf(os.Stdout, "Response from `IAIPeerGroupStrategiesAPI.GetPeerGroupOutliersV1`: %v\n", resp)
 }
 ```

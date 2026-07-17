@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourceclassificationstatus**](../models/sourceclassificationstatus)
+[**SourceClassificationStatus**](../models/source-classification-status)
 
 ### HTTP request headers
 
@@ -146,7 +146,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `ClassifySourceAPI.GetClassifyMachineAccountFromSourceStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetClassifyMachineAccountFromSourceStatusV1`: Sourceclassificationstatus
+    // response from `GetClassifyMachineAccountFromSourceStatusV1`: SourceClassificationStatus
     fmt.Fprintf(os.Stdout, "Response from `ClassifySourceAPI.GetClassifyMachineAccountFromSourceStatusV1`: %v\n", resp)
 }
 ```

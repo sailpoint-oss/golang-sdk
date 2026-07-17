@@ -27,7 +27,7 @@ type ApiCreatePasswordPolicyV1Request struct {
 	ctx context.Context
 	ApiService *PasswordPoliciesAPIService
 	xSailPointExperimental *string
-	passwordpolicyv3dto *Passwordpolicyv3dto
+	passwordPolicyV3Dto *PasswordPolicyV3Dto
 }
 
 // Use this header to enable this experimental API.
@@ -36,12 +36,12 @@ func (r ApiCreatePasswordPolicyV1Request) XSailPointExperimental(xSailPointExper
 	return r
 }
 
-func (r ApiCreatePasswordPolicyV1Request) Passwordpolicyv3dto(passwordpolicyv3dto Passwordpolicyv3dto) ApiCreatePasswordPolicyV1Request {
-	r.passwordpolicyv3dto = &passwordpolicyv3dto
+func (r ApiCreatePasswordPolicyV1Request) PasswordPolicyV3Dto(passwordPolicyV3Dto PasswordPolicyV3Dto) ApiCreatePasswordPolicyV1Request {
+	r.passwordPolicyV3Dto = &passwordPolicyV3Dto
 	return r
 }
 
-func (r ApiCreatePasswordPolicyV1Request) Execute() (*Passwordpolicyv3dto, *http.Response, error) {
+func (r ApiCreatePasswordPolicyV1Request) Execute() (*PasswordPolicyV3Dto, *http.Response, error) {
 	return r.ApiService.CreatePasswordPolicyV1Execute(r)
 }
 
@@ -61,13 +61,13 @@ func (a *PasswordPoliciesAPIService) CreatePasswordPolicyV1(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return Passwordpolicyv3dto
-func (a *PasswordPoliciesAPIService) CreatePasswordPolicyV1Execute(r ApiCreatePasswordPolicyV1Request) (*Passwordpolicyv3dto, *http.Response, error) {
+//  @return PasswordPolicyV3Dto
+func (a *PasswordPoliciesAPIService) CreatePasswordPolicyV1Execute(r ApiCreatePasswordPolicyV1Request) (*PasswordPolicyV3Dto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordpolicyv3dto
+		localVarReturnValue  *PasswordPolicyV3Dto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesAPIService.CreatePasswordPolicyV1")
@@ -95,8 +95,8 @@ func (a *PasswordPoliciesAPIService) CreatePasswordPolicyV1Execute(r ApiCreatePa
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.passwordpolicyv3dto == nil {
-		return localVarReturnValue, nil, reportError("passwordpolicyv3dto is required and must be specified")
+	if r.passwordPolicyV3Dto == nil {
+		return localVarReturnValue, nil, reportError("passwordPolicyV3Dto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -118,7 +118,7 @@ func (a *PasswordPoliciesAPIService) CreatePasswordPolicyV1Execute(r ApiCreatePa
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.passwordpolicyv3dto
+	localVarPostBody = r.passwordPolicyV3Dto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -142,7 +142,7 @@ func (a *PasswordPoliciesAPIService) CreatePasswordPolicyV1Execute(r ApiCreatePa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *PasswordPoliciesAPIService) CreatePasswordPolicyV1Execute(r ApiCreatePa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -175,7 +175,7 @@ func (a *PasswordPoliciesAPIService) CreatePasswordPolicyV1Execute(r ApiCreatePa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -197,7 +197,7 @@ func (a *PasswordPoliciesAPIService) CreatePasswordPolicyV1Execute(r ApiCreatePa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -325,7 +325,7 @@ func (a *PasswordPoliciesAPIService) DeletePasswordPolicyV1Execute(r ApiDeletePa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -347,7 +347,7 @@ func (a *PasswordPoliciesAPIService) DeletePasswordPolicyV1Execute(r ApiDeletePa
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -358,7 +358,7 @@ func (a *PasswordPoliciesAPIService) DeletePasswordPolicyV1Execute(r ApiDeletePa
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -380,7 +380,7 @@ func (a *PasswordPoliciesAPIService) DeletePasswordPolicyV1Execute(r ApiDeletePa
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -408,7 +408,7 @@ func (r ApiGetPasswordPolicyByIdV1Request) XSailPointExperimental(xSailPointExpe
 	return r
 }
 
-func (r ApiGetPasswordPolicyByIdV1Request) Execute() (*Passwordpolicyv3dto, *http.Response, error) {
+func (r ApiGetPasswordPolicyByIdV1Request) Execute() (*PasswordPolicyV3Dto, *http.Response, error) {
 	return r.ApiService.GetPasswordPolicyByIdV1Execute(r)
 }
 
@@ -430,13 +430,13 @@ func (a *PasswordPoliciesAPIService) GetPasswordPolicyByIdV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Passwordpolicyv3dto
-func (a *PasswordPoliciesAPIService) GetPasswordPolicyByIdV1Execute(r ApiGetPasswordPolicyByIdV1Request) (*Passwordpolicyv3dto, *http.Response, error) {
+//  @return PasswordPolicyV3Dto
+func (a *PasswordPoliciesAPIService) GetPasswordPolicyByIdV1Execute(r ApiGetPasswordPolicyByIdV1Request) (*PasswordPolicyV3Dto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordpolicyv3dto
+		localVarReturnValue  *PasswordPolicyV3Dto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesAPIService.GetPasswordPolicyByIdV1")
@@ -501,7 +501,7 @@ func (a *PasswordPoliciesAPIService) GetPasswordPolicyByIdV1Execute(r ApiGetPass
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -523,7 +523,7 @@ func (a *PasswordPoliciesAPIService) GetPasswordPolicyByIdV1Execute(r ApiGetPass
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -534,7 +534,7 @@ func (a *PasswordPoliciesAPIService) GetPasswordPolicyByIdV1Execute(r ApiGetPass
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -556,7 +556,7 @@ func (a *PasswordPoliciesAPIService) GetPasswordPolicyByIdV1Execute(r ApiGetPass
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -613,7 +613,7 @@ func (r ApiListPasswordPoliciesV1Request) Count(count bool) ApiListPasswordPolic
 	return r
 }
 
-func (r ApiListPasswordPoliciesV1Request) Execute() ([]Passwordpolicyv3dto, *http.Response, error) {
+func (r ApiListPasswordPoliciesV1Request) Execute() ([]PasswordPolicyV3Dto, *http.Response, error) {
 	return r.ApiService.ListPasswordPoliciesV1Execute(r)
 }
 
@@ -634,13 +634,13 @@ func (a *PasswordPoliciesAPIService) ListPasswordPoliciesV1(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return []Passwordpolicyv3dto
-func (a *PasswordPoliciesAPIService) ListPasswordPoliciesV1Execute(r ApiListPasswordPoliciesV1Request) ([]Passwordpolicyv3dto, *http.Response, error) {
+//  @return []PasswordPolicyV3Dto
+func (a *PasswordPoliciesAPIService) ListPasswordPoliciesV1Execute(r ApiListPasswordPoliciesV1Request) ([]PasswordPolicyV3Dto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Passwordpolicyv3dto
+		localVarReturnValue  []PasswordPolicyV3Dto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesAPIService.ListPasswordPoliciesV1")
@@ -722,7 +722,7 @@ func (a *PasswordPoliciesAPIService) ListPasswordPoliciesV1Execute(r ApiListPass
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -744,7 +744,7 @@ func (a *PasswordPoliciesAPIService) ListPasswordPoliciesV1Execute(r ApiListPass
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -766,7 +766,7 @@ func (a *PasswordPoliciesAPIService) ListPasswordPoliciesV1Execute(r ApiListPass
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -795,7 +795,7 @@ type ApiSetPasswordPolicyV1Request struct {
 	ApiService *PasswordPoliciesAPIService
 	id string
 	xSailPointExperimental *string
-	passwordpolicyv3dto *Passwordpolicyv3dto
+	passwordPolicyV3Dto *PasswordPolicyV3Dto
 }
 
 // Use this header to enable this experimental API.
@@ -804,12 +804,12 @@ func (r ApiSetPasswordPolicyV1Request) XSailPointExperimental(xSailPointExperime
 	return r
 }
 
-func (r ApiSetPasswordPolicyV1Request) Passwordpolicyv3dto(passwordpolicyv3dto Passwordpolicyv3dto) ApiSetPasswordPolicyV1Request {
-	r.passwordpolicyv3dto = &passwordpolicyv3dto
+func (r ApiSetPasswordPolicyV1Request) PasswordPolicyV3Dto(passwordPolicyV3Dto PasswordPolicyV3Dto) ApiSetPasswordPolicyV1Request {
+	r.passwordPolicyV3Dto = &passwordPolicyV3Dto
 	return r
 }
 
-func (r ApiSetPasswordPolicyV1Request) Execute() (*Passwordpolicyv3dto, *http.Response, error) {
+func (r ApiSetPasswordPolicyV1Request) Execute() (*PasswordPolicyV3Dto, *http.Response, error) {
 	return r.ApiService.SetPasswordPolicyV1Execute(r)
 }
 
@@ -831,13 +831,13 @@ func (a *PasswordPoliciesAPIService) SetPasswordPolicyV1(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return Passwordpolicyv3dto
-func (a *PasswordPoliciesAPIService) SetPasswordPolicyV1Execute(r ApiSetPasswordPolicyV1Request) (*Passwordpolicyv3dto, *http.Response, error) {
+//  @return PasswordPolicyV3Dto
+func (a *PasswordPoliciesAPIService) SetPasswordPolicyV1Execute(r ApiSetPasswordPolicyV1Request) (*PasswordPolicyV3Dto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Passwordpolicyv3dto
+		localVarReturnValue  *PasswordPolicyV3Dto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordPoliciesAPIService.SetPasswordPolicyV1")
@@ -866,8 +866,8 @@ func (a *PasswordPoliciesAPIService) SetPasswordPolicyV1Execute(r ApiSetPassword
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.passwordpolicyv3dto == nil {
-		return localVarReturnValue, nil, reportError("passwordpolicyv3dto is required and must be specified")
+	if r.passwordPolicyV3Dto == nil {
+		return localVarReturnValue, nil, reportError("passwordPolicyV3Dto is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -889,7 +889,7 @@ func (a *PasswordPoliciesAPIService) SetPasswordPolicyV1Execute(r ApiSetPassword
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.passwordpolicyv3dto
+	localVarPostBody = r.passwordPolicyV3Dto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -913,7 +913,7 @@ func (a *PasswordPoliciesAPIService) SetPasswordPolicyV1Execute(r ApiSetPassword
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -935,7 +935,7 @@ func (a *PasswordPoliciesAPIService) SetPasswordPolicyV1Execute(r ApiSetPassword
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -946,7 +946,7 @@ func (a *PasswordPoliciesAPIService) SetPasswordPolicyV1Execute(r ApiSetPassword
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -968,7 +968,7 @@ func (a *PasswordPoliciesAPIService) SetPasswordPolicyV1Execute(r ApiSetPassword
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

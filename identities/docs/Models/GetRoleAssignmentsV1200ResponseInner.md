@@ -16,16 +16,16 @@ tags: ['SDK', 'Software Development Kit', 'GetRoleAssignmentsV1200ResponseInner'
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Assignment Id | [optional] 
-**Role** | Pointer to [**Basereferencedto**](basereferencedto) |  | [optional] 
+**Role** | Pointer to [**BaseReferenceDto**](base-reference-dto) |  | [optional] 
 **AddedDate** | Pointer to **SailPointTime** | Date that the assignment was added | [optional] 
 **StartDate** | Pointer to **NullableTime** | Date when assignment will be active, if access was requested with a future start date. If null, assignment is active immediately | [optional] 
 **RemoveDate** | Pointer to **NullableTime** | Date that the assignment will be removed | [optional] 
 **Comments** | Pointer to **NullableString** | Comments added by the user when the assignment was made | [optional] 
 **AssignmentSource** | Pointer to **string** | Source describing how this assignment was made | [optional] 
-**Assigner** | Pointer to [**RoleassignmentdtoAssigner**](roleassignmentdto-assigner) |  | [optional] 
-**AssignedDimensions** | Pointer to [**[]Basereferencedto**](basereferencedto) | Dimensions assigned related to this role | [optional] 
-**AssignmentContext** | Pointer to [**RoleassignmentdtoAssignmentContext**](roleassignmentdto-assignment-context) |  | [optional] 
-**AccountTargets** | Pointer to [**[]Roletargetdto**](roletargetdto) |  | [optional] 
+**Assigner** | Pointer to [**RoleAssignmentDtoAssigner**](role-assignment-dto-assigner) |  | [optional] 
+**AssignedDimensions** | Pointer to [**[]BaseReferenceDto**](base-reference-dto) | Dimensions assigned related to this role | [optional] 
+**AssignmentContext** | Pointer to [**RoleAssignmentDtoAssignmentContext**](role-assignment-dto-assignment-context) |  | [optional] 
+**AccountTargets** | Pointer to [**[]RoleTargetDto**](role-target-dto) |  | [optional] 
 
 ## Methods
 
@@ -73,20 +73,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetRole
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetRole() Basereferencedto`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetRole() BaseReferenceDto`
 
 GetRole returns the Role field if non-nil, zero value otherwise.
 
 ### GetRoleOk
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetRoleOk() (*Basereferencedto, bool)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetRoleOk() (*BaseReferenceDto, bool)`
 
 GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRole
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) SetRole(v Basereferencedto)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) SetRole(v BaseReferenceDto)`
 
 SetRole sets Role field to given value.
 
@@ -253,20 +253,20 @@ HasAssignmentSource returns a boolean if a field has been set.
 
 ### GetAssigner
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssigner() RoleassignmentdtoAssigner`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssigner() RoleAssignmentDtoAssigner`
 
 GetAssigner returns the Assigner field if non-nil, zero value otherwise.
 
 ### GetAssignerOk
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssignerOk() (*RoleassignmentdtoAssigner, bool)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssignerOk() (*RoleAssignmentDtoAssigner, bool)`
 
 GetAssignerOk returns a tuple with the Assigner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssigner
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) SetAssigner(v RoleassignmentdtoAssigner)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) SetAssigner(v RoleAssignmentDtoAssigner)`
 
 SetAssigner sets Assigner field to given value.
 
@@ -278,20 +278,20 @@ HasAssigner returns a boolean if a field has been set.
 
 ### GetAssignedDimensions
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssignedDimensions() []Basereferencedto`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssignedDimensions() []BaseReferenceDto`
 
 GetAssignedDimensions returns the AssignedDimensions field if non-nil, zero value otherwise.
 
 ### GetAssignedDimensionsOk
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssignedDimensionsOk() (*[]Basereferencedto, bool)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssignedDimensionsOk() (*[]BaseReferenceDto, bool)`
 
 GetAssignedDimensionsOk returns a tuple with the AssignedDimensions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignedDimensions
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) SetAssignedDimensions(v []Basereferencedto)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) SetAssignedDimensions(v []BaseReferenceDto)`
 
 SetAssignedDimensions sets AssignedDimensions field to given value.
 
@@ -303,20 +303,20 @@ HasAssignedDimensions returns a boolean if a field has been set.
 
 ### GetAssignmentContext
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssignmentContext() RoleassignmentdtoAssignmentContext`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssignmentContext() RoleAssignmentDtoAssignmentContext`
 
 GetAssignmentContext returns the AssignmentContext field if non-nil, zero value otherwise.
 
 ### GetAssignmentContextOk
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssignmentContextOk() (*RoleassignmentdtoAssignmentContext, bool)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetAssignmentContextOk() (*RoleAssignmentDtoAssignmentContext, bool)`
 
 GetAssignmentContextOk returns a tuple with the AssignmentContext field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignmentContext
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) SetAssignmentContext(v RoleassignmentdtoAssignmentContext)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) SetAssignmentContext(v RoleAssignmentDtoAssignmentContext)`
 
 SetAssignmentContext sets AssignmentContext field to given value.
 
@@ -328,20 +328,20 @@ HasAssignmentContext returns a boolean if a field has been set.
 
 ### GetAccountTargets
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetAccountTargets() []Roletargetdto`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetAccountTargets() []RoleTargetDto`
 
 GetAccountTargets returns the AccountTargets field if non-nil, zero value otherwise.
 
 ### GetAccountTargetsOk
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) GetAccountTargetsOk() (*[]Roletargetdto, bool)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) GetAccountTargetsOk() (*[]RoleTargetDto, bool)`
 
 GetAccountTargetsOk returns a tuple with the AccountTargets field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountTargets
 
-`func (o *GetRoleAssignmentsV1200ResponseInner) SetAccountTargets(v []Roletargetdto)`
+`func (o *GetRoleAssignmentsV1200ResponseInner) SetAccountTargets(v []RoleTargetDto)`
 
 SetAccountTargets sets AccountTargets field to given value.
 

@@ -16,13 +16,13 @@ tags: ['SDK', 'Software Development Kit', 'MachineIdentityDtoOwners', 'V1Machine
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PrimaryIdentity** | **map[string]interface{}** | Defines the identity which is selected as the primary owner | 
-**SecondaryIdentities** | [**[]Basereferencedto**](basereferencedto) | Defines the identities which are selected as secondary owners | 
+**SecondaryIdentities** | [**[]BaseReferenceDto**](base-reference-dto) | Defines the identities which are selected as secondary owners | 
 
 ## Methods
 
 ### NewMachineIdentityDtoOwners
 
-`func NewMachineIdentityDtoOwners(primaryIdentity map[string]interface{}, secondaryIdentities []Basereferencedto, ) *MachineIdentityDtoOwners`
+`func NewMachineIdentityDtoOwners(primaryIdentity map[string]interface{}, secondaryIdentities []BaseReferenceDto, ) *MachineIdentityDtoOwners`
 
 NewMachineIdentityDtoOwners instantiates a new MachineIdentityDtoOwners object
 This constructor will assign default values to properties that have it defined,
@@ -59,20 +59,20 @@ SetPrimaryIdentity sets PrimaryIdentity field to given value.
 
 ### GetSecondaryIdentities
 
-`func (o *MachineIdentityDtoOwners) GetSecondaryIdentities() []Basereferencedto`
+`func (o *MachineIdentityDtoOwners) GetSecondaryIdentities() []BaseReferenceDto`
 
 GetSecondaryIdentities returns the SecondaryIdentities field if non-nil, zero value otherwise.
 
 ### GetSecondaryIdentitiesOk
 
-`func (o *MachineIdentityDtoOwners) GetSecondaryIdentitiesOk() (*[]Basereferencedto, bool)`
+`func (o *MachineIdentityDtoOwners) GetSecondaryIdentitiesOk() (*[]BaseReferenceDto, bool)`
 
 GetSecondaryIdentitiesOk returns a tuple with the SecondaryIdentities field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecondaryIdentities
 
-`func (o *MachineIdentityDtoOwners) SetSecondaryIdentities(v []Basereferencedto)`
+`func (o *MachineIdentityDtoOwners) SetSecondaryIdentities(v []BaseReferenceDto)`
 
 SetSecondaryIdentities sets SecondaryIdentities field to given value.
 

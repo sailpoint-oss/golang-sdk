@@ -16,11 +16,21 @@
         )
 
         func main() {
-           launcherrequestJson := []byte(``) // Launcherrequest | Payload to create a Launcher
+           launcherrequestJson := []byte(`{
+          "reference" : {
+            "id" : "2fd6ff94-2081-4d29-acbc-83a0a2f744a5",
+            "type" : "WORKFLOW"
+          },
+          "name" : "Group Create",
+          "description" : "Create a new Active Directory Group",
+          "disabled" : false,
+          "type" : "INTERACTIVE_PROCESS",
+          "config" : "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+        }`) // LauncherRequest | Payload to create a Launcher
 
           
-          var launcherrequest launchers.Launcherrequest
-          if err := json.Unmarshal(launcherrequestJson, &launcherrequest); err != nil {
+          var launcherRequest launchers.LauncherRequest
+          if err := json.Unmarshal(launcherrequestJson, &launcherRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -29,8 +39,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.LaunchersAPI.CreateLauncherV1(context.Background()).Launcherrequest(launcherrequest).Execute()
-          //resp, r, err := apiClient.LaunchersAPI.CreateLauncherV1(context.Background()).Launcherrequest(launcherrequest).Execute()
+          resp, r, err := apiClient.LaunchersAPI.CreateLauncherV1(context.Background()).LauncherRequest(launcherRequest).Execute()
+          //resp, r, err := apiClient.LaunchersAPI.CreateLauncherV1(context.Background()).LauncherRequest(launcherRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.CreateLauncherV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -159,11 +169,21 @@
 
         func main() {
           launcherID := `e3012408-8b61-4564-ad41-c5ec131c325b` // string | ID of the Launcher to be replaced # string | ID of the Launcher to be replaced
-           launcherrequestJson := []byte(``) // Launcherrequest | Payload to replace Launcher
+           launcherrequestJson := []byte(`{
+          "reference" : {
+            "id" : "2fd6ff94-2081-4d29-acbc-83a0a2f744a5",
+            "type" : "WORKFLOW"
+          },
+          "name" : "Group Create",
+          "description" : "Create a new Active Directory Group",
+          "disabled" : false,
+          "type" : "INTERACTIVE_PROCESS",
+          "config" : "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+        }`) // LauncherRequest | Payload to replace Launcher
 
           
-          var launcherrequest launchers.Launcherrequest
-          if err := json.Unmarshal(launcherrequestJson, &launcherrequest); err != nil {
+          var launcherRequest launchers.LauncherRequest
+          if err := json.Unmarshal(launcherrequestJson, &launcherRequest); err != nil {
             fmt.Println("Error:", err)
             return
           }
@@ -172,8 +192,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.LaunchersAPI.PutLauncherV1(context.Background(), launcherID).Launcherrequest(launcherrequest).Execute()
-          //resp, r, err := apiClient.LaunchersAPI.PutLauncherV1(context.Background(), launcherID).Launcherrequest(launcherrequest).Execute()
+          resp, r, err := apiClient.LaunchersAPI.PutLauncherV1(context.Background(), launcherID).LauncherRequest(launcherRequest).Execute()
+          //resp, r, err := apiClient.LaunchersAPI.PutLauncherV1(context.Background(), launcherID).LauncherRequest(launcherRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `LaunchersAPI.PutLauncherV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

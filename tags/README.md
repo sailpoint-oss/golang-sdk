@@ -87,11 +87,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [ListTagsV1401Response](docs/ListTagsV1401Response.md)
  - [ListTagsV1429Response](docs/ListTagsV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
  - [Tag2](docs/Tag2.md)
  - [Tag2TagCategoryRefsInner](docs/Tag2TagCategoryRefsInner.md)
 

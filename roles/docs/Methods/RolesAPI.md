@@ -119,7 +119,192 @@ import (
 )
 
 func main() {
-    roleJson := []byte(``) // Role | 
+    roleJson := []byte(`{
+          "owner" : {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "entitlements" : [ {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          }, {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          } ],
+          "dimensional" : false,
+          "privilegeLevel" : "High",
+          "created" : "2021-03-01T22:32:58.104Z",
+          "dimensionRefs" : [ {
+            "name" : "Role 2",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "DIMENSION"
+          }, {
+            "name" : "Role 2",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "DIMENSION"
+          } ],
+          "description" : "Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod fusce morbi placerat adipiscing maecenas nisi tristique et metus et lacus sed morbi nunc nisl maximus magna arcu varius sollicitudin elementum enim maecenas nisi id ipsum tempus fusce diam ipsum tortor.",
+          "membership" : {
+            "identities" : [ {
+              "aliasName" : "t.edison",
+              "name" : "Thomas Edison",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            }, {
+              "aliasName" : "t.edison",
+              "name" : "Thomas Edison",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            } ],
+            "criteria" : {
+              "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+              "children" : [ {
+                "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                "children" : [ {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                }, {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                } ],
+                "operation" : "EQUALS",
+                "key" : {
+                  "sourceId" : "2c9180867427f3a301745aec18211519",
+                  "property" : "attribute.email",
+                  "type" : "ACCOUNT"
+                }
+              }, {
+                "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                "children" : [ {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                }, {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                } ],
+                "operation" : "EQUALS",
+                "key" : {
+                  "sourceId" : "2c9180867427f3a301745aec18211519",
+                  "property" : "attribute.email",
+                  "type" : "ACCOUNT"
+                }
+              } ],
+              "operation" : "EQUALS",
+              "key" : {
+                "sourceId" : "2c9180867427f3a301745aec18211519",
+                "property" : "attribute.email",
+                "type" : "ACCOUNT"
+              }
+            },
+            "type" : "IDENTITY_LIST"
+          },
+          "additionalOwners" : [ {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          } ],
+          "enabled" : true,
+          "revocationRequestConfig" : {
+            "commentsRequired" : false,
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "denialCommentsRequired" : false
+          },
+          "segments" : [ "f7b1b8a3-5fed-4fd4-ad29-82014e137e19", "29cb6c06-1da8-43ea-8be4-b3125f248f2a" ],
+          "legacyMembershipInfo" : {
+            "type" : "IDENTITY_LIST"
+          },
+          "accessRequestConfig" : {
+            "dimensionSchema" : {
+              "dimensionAttributes" : [ {
+                "displayName" : "City",
+                "name" : "city",
+                "derived" : true
+              }, {
+                "displayName" : "City",
+                "name" : "city",
+                "derived" : true
+              } ]
+            },
+            "commentsRequired" : true,
+            "reauthorizationRequired" : true,
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "formDefinitionId" : "78258e80-e9e2-4e1a-a11f-ce0b7c62f25d",
+            "denialCommentsRequired" : true,
+            "requireEndDate" : true,
+            "maxPermittedAccessDuration" : {
+              "value" : 6,
+              "timeUnit" : "MONTHS"
+            }
+          },
+          "accessProfiles" : [ {
+            "name" : "Access Profile 2567",
+            "id" : "ff808081751e6e129f1518161919ecca",
+            "type" : "ACCESS_PROFILE"
+          }, {
+            "name" : "Access Profile 2567",
+            "id" : "ff808081751e6e129f1518161919ecca",
+            "type" : "ACCESS_PROFILE"
+          } ],
+          "name" : "Role 2567",
+          "modified" : "2021-03-02T20:22:28.104Z",
+          "accessModelMetadata" : {
+            "attributes" : [ {
+              "key" : "iscPrivacy",
+              "name" : "Privacy",
+              "multiselect" : false,
+              "status" : "active",
+              "type" : "governance",
+              "objectTypes" : [ "all" ],
+              "description" : "Specifies the level of privacy associated with an access item.",
+              "values" : [ {
+                "value" : "public",
+                "name" : "Public",
+                "status" : "active"
+              } ]
+            } ]
+          },
+          "id" : "2c918086749d78830174a1a40e121518",
+          "requestable" : true
+        }`) // Role | 
 
     var role roles.Role
     if err := json.Unmarshal(roleJson, &role); err != nil {
@@ -163,11 +348,11 @@ Other parameters are passed through a pointer to a apiDeleteBulkRolesV1Request s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rolebulkdeleterequest** | [**Rolebulkdeleterequest**](../models/rolebulkdeleterequest) |  | 
+ **roleBulkDeleteRequest** | [**RoleBulkDeleteRequest**](../models/role-bulk-delete-request) |  | 
 
 ### Return type
 
-[**Taskresultdto**](../models/taskresultdto)
+[**TaskResultDto**](../models/task-result-dto)
 
 ### HTTP request headers
 
@@ -189,10 +374,12 @@ import (
 )
 
 func main() {
-    rolebulkdeleterequestJson := []byte(`{"roleIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}`) // Rolebulkdeleterequest | 
+    rolebulkdeleterequestJson := []byte(`{
+          "roleIds" : [ "2c9180847812e0b1017817051919ecca", "2c9180887812e0b201781e129f151816" ]
+        }`) // RoleBulkDeleteRequest | 
 
-    var rolebulkdeleterequest roles.Rolebulkdeleterequest
-    if err := json.Unmarshal(rolebulkdeleterequestJson, &rolebulkdeleterequest); err != nil {
+    var roleBulkDeleteRequest roles.RoleBulkDeleteRequest
+    if err := json.Unmarshal(rolebulkdeleterequestJson, &roleBulkDeleteRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -200,13 +387,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesAPI.DeleteBulkRolesV1(context.Background()).Rolebulkdeleterequest(rolebulkdeleterequest).Execute()
-	  //resp, r, err := apiClient.RolesAPI.DeleteBulkRolesV1(context.Background()).Rolebulkdeleterequest(rolebulkdeleterequest).Execute()
+    resp, r, err := apiClient.RolesAPI.DeleteBulkRolesV1(context.Background()).RoleBulkDeleteRequest(roleBulkDeleteRequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.DeleteBulkRolesV1(context.Background()).RoleBulkDeleteRequest(roleBulkDeleteRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.DeleteBulkRolesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteBulkRolesV1`: Taskresultdto
+    // response from `DeleteBulkRolesV1`: TaskResultDto
     fmt.Fprintf(os.Stdout, "Response from `RolesAPI.DeleteBulkRolesV1`: %v\n", resp)
 }
 ```
@@ -378,7 +565,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Rolebulkupdateresponse**](../models/rolebulkupdateresponse)
+[**RoleBulkUpdateResponse**](../models/role-bulk-update-response)
 
 ### HTTP request headers
 
@@ -412,7 +599,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetBulkUpdateStatusByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetBulkUpdateStatusByIdV1`: Rolebulkupdateresponse
+    // response from `GetBulkUpdateStatusByIdV1`: RoleBulkUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `RolesAPI.GetBulkUpdateStatusByIdV1`: %v\n", resp)
 }
 ```
@@ -436,7 +623,7 @@ Other parameters are passed through a pointer to a apiGetBulkUpdateStatusV1Reque
 
 ### Return type
 
-[**[]Rolegetallbulkupdateresponse**](../models/rolegetallbulkupdateresponse)
+[**[]RoleGetAllBulkUpdateResponse**](../models/role-get-all-bulk-update-response)
 
 ### HTTP request headers
 
@@ -469,7 +656,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetBulkUpdateStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetBulkUpdateStatusV1`: []Rolegetallbulkupdateresponse
+    // response from `GetBulkUpdateStatusV1`: []RoleGetAllBulkUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `RolesAPI.GetBulkUpdateStatusV1`: %v\n", resp)
 }
 ```
@@ -506,7 +693,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Roleidentity**](../models/roleidentity)
+[**[]RoleIdentity**](../models/role-identity)
 
 ### HTTP request headers
 
@@ -545,7 +732,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRoleAssignedIdentitiesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleAssignedIdentitiesV1`: []Roleidentity
+    // response from `GetRoleAssignedIdentitiesV1`: []RoleIdentity
     fmt.Fprintf(os.Stdout, "Response from `RolesAPI.GetRoleAssignedIdentitiesV1`: %v\n", resp)
 }
 ```
@@ -829,7 +1016,7 @@ Other parameters are passed through a pointer to a apiPatchRoleV1Request struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
@@ -856,10 +1043,10 @@ import (
 
 func main() {
     id := `2c91808a7813090a017814121e121518` // string | ID of the Role to patch # string | ID of the Role to patch
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/requestable","value":true},{"op":"replace","path":"/enabled","value":true}]`) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/requestable","value":true},{"op":"replace","path":"/enabled","value":true}]`) // []JsonPatchOperation | 
 
-    var jsonpatchoperation []roles.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []roles.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -867,8 +1054,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesAPI.PatchRoleV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.RolesAPI.PatchRoleV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.RolesAPI.PatchRoleV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.RolesAPI.PatchRoleV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.PatchRoleV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -905,7 +1092,7 @@ Name | Type | Description  | Notes
  **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** | 
  **forSegmentIds** | **string** | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. | 
  **includeUnsegmented** | **bool** | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. | [default to true]
- **rolelistfilterdto** | [**Rolelistfilterdto**](../models/rolelistfilterdto) |  | 
+ **roleListFilterDTO** | [**RoleListFilterDTO**](../models/role-list-filter-dto) |  | 
 
 ### Return type
 
@@ -938,14 +1125,20 @@ func main() {
     sorters := `name,-modified` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
     forSegmentIds := `0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d` // string | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional) # string | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional)
     includeUnsegmented := false // bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to true) # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to true)
-    rolelistfilterdtoJson := []byte(`{"filters":"dimensional eq false","ammKeyValues":[{"attribute":"iscFederalClassifications","values":["secret"]}]}`) // Rolelistfilterdto |  (optional)
+    rolelistfilterdtoJson := []byte(`{
+          "ammKeyValues" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "secret" ]
+          } ],
+          "filters" : "dimensional eq false"
+        }`) // RoleListFilterDTO |  (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.RolesAPI.SearchRolesByFilterV1(context.Background()).Execute()
-	  //resp, r, err := apiClient.RolesAPI.SearchRolesByFilterV1(context.Background()).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Rolelistfilterdto(rolelistfilterdto).Execute()
+	  //resp, r, err := apiClient.RolesAPI.SearchRolesByFilterV1(context.Background()).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).RoleListFilterDTO(roleListFilterDTO).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.SearchRolesByFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1049,11 +1242,11 @@ Other parameters are passed through a pointer to a apiUpdateRolesMetadataByFilte
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rolemetadatabulkupdatebyfilterrequest** | [**Rolemetadatabulkupdatebyfilterrequest**](../models/rolemetadatabulkupdatebyfilterrequest) |  | 
+ **roleMetadataBulkUpdateByFilterRequest** | [**RoleMetadataBulkUpdateByFilterRequest**](../models/role-metadata-bulk-update-by-filter-request) |  | 
 
 ### Return type
 
-[**Rolebulkupdateresponse**](../models/rolebulkupdateresponse)
+[**RoleBulkUpdateResponse**](../models/role-bulk-update-response)
 
 ### HTTP request headers
 
@@ -1075,10 +1268,18 @@ import (
 )
 
 func main() {
-    rolemetadatabulkupdatebyfilterrequestJson := []byte(`{"operation":"ADD","replaceScope":"ALL","filters":"requestable eq false","values":[{"attribute":"iscFederalClassifications","values":["topSecret"]}]}`) // Rolemetadatabulkupdatebyfilterrequest | 
+    rolemetadatabulkupdatebyfilterrequestJson := []byte(`{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : " requestable eq false",
+          "replaceScope" : "ALL",
+          "operation" : "REPLACE"
+        }`) // RoleMetadataBulkUpdateByFilterRequest | 
 
-    var rolemetadatabulkupdatebyfilterrequest roles.Rolemetadatabulkupdatebyfilterrequest
-    if err := json.Unmarshal(rolemetadatabulkupdatebyfilterrequestJson, &rolemetadatabulkupdatebyfilterrequest); err != nil {
+    var roleMetadataBulkUpdateByFilterRequest roles.RoleMetadataBulkUpdateByFilterRequest
+    if err := json.Unmarshal(rolemetadatabulkupdatebyfilterrequestJson, &roleMetadataBulkUpdateByFilterRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1086,13 +1287,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByFilterV1(context.Background()).Rolemetadatabulkupdatebyfilterrequest(rolemetadatabulkupdatebyfilterrequest).Execute()
-	  //resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByFilterV1(context.Background()).Rolemetadatabulkupdatebyfilterrequest(rolemetadatabulkupdatebyfilterrequest).Execute()
+    resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByFilterV1(context.Background()).RoleMetadataBulkUpdateByFilterRequest(roleMetadataBulkUpdateByFilterRequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByFilterV1(context.Background()).RoleMetadataBulkUpdateByFilterRequest(roleMetadataBulkUpdateByFilterRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.UpdateRolesMetadataByFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateRolesMetadataByFilterV1`: Rolebulkupdateresponse
+    // response from `UpdateRolesMetadataByFilterV1`: RoleBulkUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `RolesAPI.UpdateRolesMetadataByFilterV1`: %v\n", resp)
 }
 ```
@@ -1119,11 +1320,11 @@ Other parameters are passed through a pointer to a apiUpdateRolesMetadataByIdsV1
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rolemetadatabulkupdatebyidrequest** | [**Rolemetadatabulkupdatebyidrequest**](../models/rolemetadatabulkupdatebyidrequest) |  | 
+ **roleMetadataBulkUpdateByIdRequest** | [**RoleMetadataBulkUpdateByIdRequest**](../models/role-metadata-bulk-update-by-id-request) |  | 
 
 ### Return type
 
-[**Rolebulkupdateresponse**](../models/rolebulkupdateresponse)
+[**RoleBulkUpdateResponse**](../models/role-bulk-update-response)
 
 ### HTTP request headers
 
@@ -1145,10 +1346,18 @@ import (
 )
 
 func main() {
-    rolemetadatabulkupdatebyidrequestJson := []byte(``) // Rolemetadatabulkupdatebyidrequest | 
+    rolemetadatabulkupdatebyidrequestJson := []byte(`{
+          "roles" : [ "b1db89554cfa431cb8b9921ea38d9367" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ALL",
+          "operation" : "REPLACE"
+        }`) // RoleMetadataBulkUpdateByIdRequest | 
 
-    var rolemetadatabulkupdatebyidrequest roles.Rolemetadatabulkupdatebyidrequest
-    if err := json.Unmarshal(rolemetadatabulkupdatebyidrequestJson, &rolemetadatabulkupdatebyidrequest); err != nil {
+    var roleMetadataBulkUpdateByIdRequest roles.RoleMetadataBulkUpdateByIdRequest
+    if err := json.Unmarshal(rolemetadatabulkupdatebyidrequestJson, &roleMetadataBulkUpdateByIdRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1156,13 +1365,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByIdsV1(context.Background()).Rolemetadatabulkupdatebyidrequest(rolemetadatabulkupdatebyidrequest).Execute()
-	  //resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByIdsV1(context.Background()).Rolemetadatabulkupdatebyidrequest(rolemetadatabulkupdatebyidrequest).Execute()
+    resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByIdsV1(context.Background()).RoleMetadataBulkUpdateByIdRequest(roleMetadataBulkUpdateByIdRequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByIdsV1(context.Background()).RoleMetadataBulkUpdateByIdRequest(roleMetadataBulkUpdateByIdRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.UpdateRolesMetadataByIdsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateRolesMetadataByIdsV1`: Rolebulkupdateresponse
+    // response from `UpdateRolesMetadataByIdsV1`: RoleBulkUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `RolesAPI.UpdateRolesMetadataByIdsV1`: %v\n", resp)
 }
 ```
@@ -1189,11 +1398,11 @@ Other parameters are passed through a pointer to a apiUpdateRolesMetadataByQuery
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rolemetadatabulkupdatebyqueryrequest** | [**Rolemetadatabulkupdatebyqueryrequest**](../models/rolemetadatabulkupdatebyqueryrequest) |  | 
+ **roleMetadataBulkUpdateByQueryRequest** | [**RoleMetadataBulkUpdateByQueryRequest**](../models/role-metadata-bulk-update-by-query-request) |  | 
 
 ### Return type
 
-[**Rolebulkupdateresponse**](../models/rolebulkupdateresponse)
+[**RoleBulkUpdateResponse**](../models/role-bulk-update-response)
 
 ### HTTP request headers
 
@@ -1215,10 +1424,33 @@ import (
 )
 
 func main() {
-    rolemetadatabulkupdatebyqueryrequestJson := []byte(`{"example of a success update":{"query":{"indices":["roles"],"queryType":"TEXT","textQuery":{"terms":["test123"],"fields":["id"],"matchAny":false,"contains":true},"includeNested":false},"operation":"REPLACE","replaceScope":"ALL","values":[{"attribute":"iscFederalClassifications","values":["secret"]}]}}`) // Rolemetadatabulkupdatebyqueryrequest | 
+    rolemetadatabulkupdatebyqueryrequestJson := []byte(`{
+          "query" : {
+            "query\"" : {
+              "indices" : [ "roles" ],
+              "queryType" : "TEXT",
+              "textQuery" : {
+                "terms" : [ "test123" ],
+                "fields" : [ "id" ],
+                "matchAny" : false,
+                "contains" : true
+              },
+              "includeNested" : false
+            }
+          },
+          "values" : [ {
+            "attributeValue" : [ "topSecret" ],
+            "attributeKey" : "iscFederalClassifications"
+          }, {
+            "attributeValue" : [ "topSecret" ],
+            "attributeKey" : "iscFederalClassifications"
+          } ],
+          "replaceScope" : "ALL",
+          "operation" : "REPLACE"
+        }`) // RoleMetadataBulkUpdateByQueryRequest | 
 
-    var rolemetadatabulkupdatebyqueryrequest roles.Rolemetadatabulkupdatebyqueryrequest
-    if err := json.Unmarshal(rolemetadatabulkupdatebyqueryrequestJson, &rolemetadatabulkupdatebyqueryrequest); err != nil {
+    var roleMetadataBulkUpdateByQueryRequest roles.RoleMetadataBulkUpdateByQueryRequest
+    if err := json.Unmarshal(rolemetadatabulkupdatebyqueryrequestJson, &roleMetadataBulkUpdateByQueryRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1226,13 +1458,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByQueryV1(context.Background()).Rolemetadatabulkupdatebyqueryrequest(rolemetadatabulkupdatebyqueryrequest).Execute()
-	  //resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByQueryV1(context.Background()).Rolemetadatabulkupdatebyqueryrequest(rolemetadatabulkupdatebyqueryrequest).Execute()
+    resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByQueryV1(context.Background()).RoleMetadataBulkUpdateByQueryRequest(roleMetadataBulkUpdateByQueryRequest).Execute()
+	  //resp, r, err := apiClient.RolesAPI.UpdateRolesMetadataByQueryV1(context.Background()).RoleMetadataBulkUpdateByQueryRequest(roleMetadataBulkUpdateByQueryRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.UpdateRolesMetadataByQueryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateRolesMetadataByQueryV1`: Rolebulkupdateresponse
+    // response from `UpdateRolesMetadataByQueryV1`: RoleBulkUpdateResponse
     fmt.Fprintf(os.Stdout, "Response from `RolesAPI.UpdateRolesMetadataByQueryV1`: %v\n", resp)
 }
 ```

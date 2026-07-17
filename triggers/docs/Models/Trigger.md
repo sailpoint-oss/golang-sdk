@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Unique identifier of the trigger. | 
 **Name** | **string** | Trigger Name. | 
-**Type** | **Triggertype** |  | 
+**Type** | **TriggerType** |  | 
 **Description** | Pointer to **string** | Trigger Description. | [optional] 
 **InputSchema** | **string** | The JSON schema of the payload that will be sent by the trigger to the subscribed service. | 
 **ExampleInput** | [**TriggerExampleInput**](trigger-example-input) |  | 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewTrigger
 
-`func NewTrigger(id string, name string, type_ Triggertype, inputSchema string, exampleInput TriggerExampleInput, ) *Trigger`
+`func NewTrigger(id string, name string, type_ TriggerType, inputSchema string, exampleInput TriggerExampleInput, ) *Trigger`
 
 NewTrigger instantiates a new Trigger object
 This constructor will assign default values to properties that have it defined,
@@ -85,20 +85,20 @@ SetName sets Name field to given value.
 
 ### GetType
 
-`func (o *Trigger) GetType() Triggertype`
+`func (o *Trigger) GetType() TriggerType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Trigger) GetTypeOk() (*Triggertype, bool)`
+`func (o *Trigger) GetTypeOk() (*TriggerType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Trigger) SetType(v Triggertype)`
+`func (o *Trigger) SetType(v TriggerType)`
 
 SetType sets Type field to given value.
 

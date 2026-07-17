@@ -63,7 +63,7 @@ Other parameters are passed through a pointer to a apiApproveAccessRequestV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **commentdto** | [**Commentdto**](../models/commentdto) | Reviewer&#39;s comment. | 
+ **commentDto** | [**CommentDto**](../models/comment-dto) | Reviewer&#39;s comment. | 
 
 ### Return type
 
@@ -90,14 +90,22 @@ import (
 
 func main() {
     approvalId := `2c91808b7294bea301729568c68c002e` // string | Approval ID. # string | Approval ID.
-    commentdtoJson := []byte(``) // Commentdto | Reviewer's comment. (optional)
+    commentdtoJson := []byte(`{
+          "created" : "2017-07-11T18:45:37.098Z",
+          "author" : {
+            "name" : "john.doe",
+            "id" : "2c9180847e25f377017e2ae8cae4650b",
+            "type" : "IDENTITY"
+          },
+          "comment" : "This is a comment."
+        }`) // CommentDto | Reviewer's comment. (optional)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.AccessRequestApprovalsAPI.ApproveAccessRequestV1(context.Background(), approvalId).Execute()
-	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.ApproveAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
+	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.ApproveAccessRequestV1(context.Background(), approvalId).CommentDto(commentDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ApproveAccessRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,7 +139,7 @@ Other parameters are passed through a pointer to a apiForwardAccessRequestV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **forwardapprovaldto** | [**Forwardapprovaldto**](../models/forwardapprovaldto) | Information about the forwarded approval. | 
+ **forwardApprovalDto** | [**ForwardApprovalDto**](../models/forward-approval-dto) | Information about the forwarded approval. | 
 
 ### Return type
 
@@ -158,10 +166,13 @@ import (
 
 func main() {
     approvalId := `2c91808b7294bea301729568c68c002e` // string | Approval ID. # string | Approval ID.
-    forwardapprovaldtoJson := []byte(``) // Forwardapprovaldto | Information about the forwarded approval.
+    forwardapprovaldtoJson := []byte(`{
+          "newOwnerId" : "2c91808568c529c60168cca6f90c1314",
+          "comment" : "2c91808568c529c60168cca6f90c1313"
+        }`) // ForwardApprovalDto | Information about the forwarded approval.
 
-    var forwardapprovaldto access_request_approvals.Forwardapprovaldto
-    if err := json.Unmarshal(forwardapprovaldtoJson, &forwardapprovaldto); err != nil {
+    var forwardApprovalDto access_request_approvals.ForwardApprovalDto
+    if err := json.Unmarshal(forwardapprovaldtoJson, &forwardApprovalDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -169,8 +180,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsAPI.ForwardAccessRequestV1(context.Background(), approvalId).Forwardapprovaldto(forwardapprovaldto).Execute()
-	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.ForwardAccessRequestV1(context.Background(), approvalId).Forwardapprovaldto(forwardapprovaldto).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.ForwardAccessRequestV1(context.Background(), approvalId).ForwardApprovalDto(forwardApprovalDto).Execute()
+	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.ForwardAccessRequestV1(context.Background(), approvalId).ForwardApprovalDto(forwardApprovalDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ForwardAccessRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Approvalsummary**](../models/approvalsummary)
+[**ApprovalSummary**](../models/approval-summary)
 
 ### HTTP request headers
 
@@ -239,7 +250,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.GetAccessRequestApprovalSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccessRequestApprovalSummaryV1`: Approvalsummary
+    // response from `GetAccessRequestApprovalSummaryV1`: ApprovalSummary
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.GetAccessRequestApprovalSummaryV1`: %v\n", resp)
 }
 ```
@@ -275,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Accessrequestapproverslistresponse**](../models/accessrequestapproverslistresponse)
+[**[]AccessRequestApproversListResponse**](../models/access-request-approvers-list-response)
 
 ### HTTP request headers
 
@@ -312,7 +323,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ListAccessRequestApproversV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAccessRequestApproversV1`: []Accessrequestapproverslistresponse
+    // response from `ListAccessRequestApproversV1`: []AccessRequestApproversListResponse
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ListAccessRequestApproversV1`: %v\n", resp)
 }
 ```
@@ -345,7 +356,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Completedapproval**](../models/completedapproval)
+[**[]CompletedApproval**](../models/completed-approval)
 
 ### HTTP request headers
 
@@ -384,7 +395,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ListCompletedApprovalsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListCompletedApprovalsV1`: []Completedapproval
+    // response from `ListCompletedApprovalsV1`: []CompletedApproval
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ListCompletedApprovalsV1`: %v\n", resp)
 }
 ```
@@ -417,7 +428,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Pendingapproval**](../models/pendingapproval)
+[**[]PendingApproval**](../models/pending-approval)
 
 ### HTTP request headers
 
@@ -456,7 +467,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ListPendingApprovalsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListPendingApprovalsV1`: []Pendingapproval
+    // response from `ListPendingApprovalsV1`: []PendingApproval
     fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ListPendingApprovalsV1`: %v\n", resp)
 }
 ```
@@ -485,7 +496,7 @@ Other parameters are passed through a pointer to a apiRejectAccessRequestV1Reque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **commentdto** | [**Commentdto**](../models/commentdto) | Reviewer&#39;s comment. | 
+ **commentDto** | [**CommentDto**](../models/comment-dto) | Reviewer&#39;s comment. | 
 
 ### Return type
 
@@ -512,10 +523,18 @@ import (
 
 func main() {
     approvalId := `2c91808b7294bea301729568c68c002e` // string | Approval ID. # string | Approval ID.
-    commentdtoJson := []byte(``) // Commentdto | Reviewer's comment.
+    commentdtoJson := []byte(`{
+          "created" : "2017-07-11T18:45:37.098Z",
+          "author" : {
+            "name" : "john.doe",
+            "id" : "2c9180847e25f377017e2ae8cae4650b",
+            "type" : "IDENTITY"
+          },
+          "comment" : "This is a comment."
+        }`) // CommentDto | Reviewer's comment.
 
-    var commentdto access_request_approvals.Commentdto
-    if err := json.Unmarshal(commentdtoJson, &commentdto); err != nil {
+    var commentDto access_request_approvals.CommentDto
+    if err := json.Unmarshal(commentdtoJson, &commentDto); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -523,8 +542,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsAPI.RejectAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
-	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.RejectAccessRequestV1(context.Background(), approvalId).Commentdto(commentdto).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.RejectAccessRequestV1(context.Background(), approvalId).CommentDto(commentDto).Execute()
+	  //resp, r, err := apiClient.AccessRequestApprovalsAPI.RejectAccessRequestV1(context.Background(), approvalId).CommentDto(commentDto).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.RejectAccessRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

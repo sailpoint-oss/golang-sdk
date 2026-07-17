@@ -25,15 +25,15 @@ type JITActivationsAPIService service
 type ApiStartActivateWorkflowV1Request struct {
 	ctx context.Context
 	ApiService *JITActivationsAPIService
-	jitactivationactivaterequest *Jitactivationactivaterequest
+	jitActivationActivateRequest *JitActivationActivateRequest
 }
 
-func (r ApiStartActivateWorkflowV1Request) Jitactivationactivaterequest(jitactivationactivaterequest Jitactivationactivaterequest) ApiStartActivateWorkflowV1Request {
-	r.jitactivationactivaterequest = &jitactivationactivaterequest
+func (r ApiStartActivateWorkflowV1Request) JitActivationActivateRequest(jitActivationActivateRequest JitActivationActivateRequest) ApiStartActivateWorkflowV1Request {
+	r.jitActivationActivateRequest = &jitActivationActivateRequest
 	return r
 }
 
-func (r ApiStartActivateWorkflowV1Request) Execute() (*Jitactivationactivateresponse, *http.Response, error) {
+func (r ApiStartActivateWorkflowV1Request) Execute() (*JitActivationActivateResponse, *http.Response, error) {
 	return r.ApiService.StartActivateWorkflowV1Execute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *JITActivationsAPIService) StartActivateWorkflowV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return Jitactivationactivateresponse
-func (a *JITActivationsAPIService) StartActivateWorkflowV1Execute(r ApiStartActivateWorkflowV1Request) (*Jitactivationactivateresponse, *http.Response, error) {
+//  @return JitActivationActivateResponse
+func (a *JITActivationsAPIService) StartActivateWorkflowV1Execute(r ApiStartActivateWorkflowV1Request) (*JitActivationActivateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Jitactivationactivateresponse
+		localVarReturnValue  *JitActivationActivateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JITActivationsAPIService.StartActivateWorkflowV1")
@@ -76,8 +76,8 @@ func (a *JITActivationsAPIService) StartActivateWorkflowV1Execute(r ApiStartActi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jitactivationactivaterequest == nil {
-		return localVarReturnValue, nil, reportError("jitactivationactivaterequest is required and must be specified")
+	if r.jitActivationActivateRequest == nil {
+		return localVarReturnValue, nil, reportError("jitActivationActivateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -98,7 +98,7 @@ func (a *JITActivationsAPIService) StartActivateWorkflowV1Execute(r ApiStartActi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jitactivationactivaterequest
+	localVarPostBody = r.jitActivationActivateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -122,7 +122,7 @@ func (a *JITActivationsAPIService) StartActivateWorkflowV1Execute(r ApiStartActi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -144,7 +144,7 @@ func (a *JITActivationsAPIService) StartActivateWorkflowV1Execute(r ApiStartActi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -166,7 +166,7 @@ func (a *JITActivationsAPIService) StartActivateWorkflowV1Execute(r ApiStartActi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -193,15 +193,15 @@ func (a *JITActivationsAPIService) StartActivateWorkflowV1Execute(r ApiStartActi
 type ApiStartDeactivateWorkflowV1Request struct {
 	ctx context.Context
 	ApiService *JITActivationsAPIService
-	jitactivationdeactivaterequest *Jitactivationdeactivaterequest
+	jitActivationDeactivateRequest *JitActivationDeactivateRequest
 }
 
-func (r ApiStartDeactivateWorkflowV1Request) Jitactivationdeactivaterequest(jitactivationdeactivaterequest Jitactivationdeactivaterequest) ApiStartDeactivateWorkflowV1Request {
-	r.jitactivationdeactivaterequest = &jitactivationdeactivaterequest
+func (r ApiStartDeactivateWorkflowV1Request) JitActivationDeactivateRequest(jitActivationDeactivateRequest JitActivationDeactivateRequest) ApiStartDeactivateWorkflowV1Request {
+	r.jitActivationDeactivateRequest = &jitActivationDeactivateRequest
 	return r
 }
 
-func (r ApiStartDeactivateWorkflowV1Request) Execute() (*Jitactivationdeactivateresponse, *http.Response, error) {
+func (r ApiStartDeactivateWorkflowV1Request) Execute() (*JitActivationDeactivateResponse, *http.Response, error) {
 	return r.ApiService.StartDeactivateWorkflowV1Execute(r)
 }
 
@@ -227,13 +227,13 @@ func (a *JITActivationsAPIService) StartDeactivateWorkflowV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Jitactivationdeactivateresponse
-func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDeactivateWorkflowV1Request) (*Jitactivationdeactivateresponse, *http.Response, error) {
+//  @return JitActivationDeactivateResponse
+func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDeactivateWorkflowV1Request) (*JitActivationDeactivateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Jitactivationdeactivateresponse
+		localVarReturnValue  *JitActivationDeactivateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JITActivationsAPIService.StartDeactivateWorkflowV1")
@@ -246,8 +246,8 @@ func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jitactivationdeactivaterequest == nil {
-		return localVarReturnValue, nil, reportError("jitactivationdeactivaterequest is required and must be specified")
+	if r.jitActivationDeactivateRequest == nil {
+		return localVarReturnValue, nil, reportError("jitActivationDeactivateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -268,7 +268,7 @@ func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jitactivationdeactivaterequest
+	localVarPostBody = r.jitActivationDeactivateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -292,7 +292,7 @@ func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -314,7 +314,7 @@ func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -325,7 +325,7 @@ func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -347,7 +347,7 @@ func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -374,15 +374,15 @@ func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDe
 type ApiStartExtendWorkflowV1Request struct {
 	ctx context.Context
 	ApiService *JITActivationsAPIService
-	jitactivationextendrequest *Jitactivationextendrequest
+	jitActivationExtendRequest *JitActivationExtendRequest
 }
 
-func (r ApiStartExtendWorkflowV1Request) Jitactivationextendrequest(jitactivationextendrequest Jitactivationextendrequest) ApiStartExtendWorkflowV1Request {
-	r.jitactivationextendrequest = &jitactivationextendrequest
+func (r ApiStartExtendWorkflowV1Request) JitActivationExtendRequest(jitActivationExtendRequest JitActivationExtendRequest) ApiStartExtendWorkflowV1Request {
+	r.jitActivationExtendRequest = &jitActivationExtendRequest
 	return r
 }
 
-func (r ApiStartExtendWorkflowV1Request) Execute() (*Jitactivationextendresponse, *http.Response, error) {
+func (r ApiStartExtendWorkflowV1Request) Execute() (*JitActivationExtendResponse, *http.Response, error) {
 	return r.ApiService.StartExtendWorkflowV1Execute(r)
 }
 
@@ -409,13 +409,13 @@ func (a *JITActivationsAPIService) StartExtendWorkflowV1(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return Jitactivationextendresponse
-func (a *JITActivationsAPIService) StartExtendWorkflowV1Execute(r ApiStartExtendWorkflowV1Request) (*Jitactivationextendresponse, *http.Response, error) {
+//  @return JitActivationExtendResponse
+func (a *JITActivationsAPIService) StartExtendWorkflowV1Execute(r ApiStartExtendWorkflowV1Request) (*JitActivationExtendResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Jitactivationextendresponse
+		localVarReturnValue  *JitActivationExtendResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JITActivationsAPIService.StartExtendWorkflowV1")
@@ -428,8 +428,8 @@ func (a *JITActivationsAPIService) StartExtendWorkflowV1Execute(r ApiStartExtend
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jitactivationextendrequest == nil {
-		return localVarReturnValue, nil, reportError("jitactivationextendrequest is required and must be specified")
+	if r.jitActivationExtendRequest == nil {
+		return localVarReturnValue, nil, reportError("jitActivationExtendRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -450,7 +450,7 @@ func (a *JITActivationsAPIService) StartExtendWorkflowV1Execute(r ApiStartExtend
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jitactivationextendrequest
+	localVarPostBody = r.jitActivationExtendRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -474,7 +474,7 @@ func (a *JITActivationsAPIService) StartExtendWorkflowV1Execute(r ApiStartExtend
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -496,7 +496,7 @@ func (a *JITActivationsAPIService) StartExtendWorkflowV1Execute(r ApiStartExtend
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -507,7 +507,7 @@ func (a *JITActivationsAPIService) StartExtendWorkflowV1Execute(r ApiStartExtend
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -529,7 +529,7 @@ func (a *JITActivationsAPIService) StartExtendWorkflowV1Execute(r ApiStartExtend
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

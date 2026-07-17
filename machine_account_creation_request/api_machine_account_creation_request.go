@@ -27,7 +27,7 @@ type ApiCreateMachineAccountRequestV1Request struct {
 	ctx context.Context
 	ApiService *MachineAccountCreationRequestAPIService
 	xSailPointExperimental *string
-	machineaccountcreaterequestinput *Machineaccountcreaterequestinput
+	machineAccountCreateRequestInput *MachineAccountCreateRequestInput
 }
 
 // Use this header to enable this experimental API.
@@ -36,12 +36,12 @@ func (r ApiCreateMachineAccountRequestV1Request) XSailPointExperimental(xSailPoi
 	return r
 }
 
-func (r ApiCreateMachineAccountRequestV1Request) Machineaccountcreaterequestinput(machineaccountcreaterequestinput Machineaccountcreaterequestinput) ApiCreateMachineAccountRequestV1Request {
-	r.machineaccountcreaterequestinput = &machineaccountcreaterequestinput
+func (r ApiCreateMachineAccountRequestV1Request) MachineAccountCreateRequestInput(machineAccountCreateRequestInput MachineAccountCreateRequestInput) ApiCreateMachineAccountRequestV1Request {
+	r.machineAccountCreateRequestInput = &machineAccountCreateRequestInput
 	return r
 }
 
-func (r ApiCreateMachineAccountRequestV1Request) Execute() (*Accountrequestasyncresult, *http.Response, error) {
+func (r ApiCreateMachineAccountRequestV1Request) Execute() (*AccountRequestAsyncResult, *http.Response, error) {
 	return r.ApiService.CreateMachineAccountRequestV1Execute(r)
 }
 
@@ -66,13 +66,13 @@ func (a *MachineAccountCreationRequestAPIService) CreateMachineAccountRequestV1(
 }
 
 // Execute executes the request
-//  @return Accountrequestasyncresult
-func (a *MachineAccountCreationRequestAPIService) CreateMachineAccountRequestV1Execute(r ApiCreateMachineAccountRequestV1Request) (*Accountrequestasyncresult, *http.Response, error) {
+//  @return AccountRequestAsyncResult
+func (a *MachineAccountCreationRequestAPIService) CreateMachineAccountRequestV1Execute(r ApiCreateMachineAccountRequestV1Request) (*AccountRequestAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountrequestasyncresult
+		localVarReturnValue  *AccountRequestAsyncResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountCreationRequestAPIService.CreateMachineAccountRequestV1")
@@ -100,8 +100,8 @@ func (a *MachineAccountCreationRequestAPIService) CreateMachineAccountRequestV1E
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.machineaccountcreaterequestinput == nil {
-		return localVarReturnValue, nil, reportError("machineaccountcreaterequestinput is required and must be specified")
+	if r.machineAccountCreateRequestInput == nil {
+		return localVarReturnValue, nil, reportError("machineAccountCreateRequestInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -123,7 +123,7 @@ func (a *MachineAccountCreationRequestAPIService) CreateMachineAccountRequestV1E
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.machineaccountcreaterequestinput
+	localVarPostBody = r.machineAccountCreateRequestInput
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -147,7 +147,7 @@ func (a *MachineAccountCreationRequestAPIService) CreateMachineAccountRequestV1E
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -169,7 +169,7 @@ func (a *MachineAccountCreationRequestAPIService) CreateMachineAccountRequestV1E
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -180,7 +180,7 @@ func (a *MachineAccountCreationRequestAPIService) CreateMachineAccountRequestV1E
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -202,7 +202,7 @@ func (a *MachineAccountCreationRequestAPIService) CreateMachineAccountRequestV1E
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -239,7 +239,7 @@ func (r ApiGetCreateMachineAccountRequestV1Request) XSailPointExperimental(xSail
 	return r
 }
 
-func (r ApiGetCreateMachineAccountRequestV1Request) Execute() (*Accountrequestdetailsdto, *http.Response, error) {
+func (r ApiGetCreateMachineAccountRequestV1Request) Execute() (*AccountRequestDetailsDto, *http.Response, error) {
 	return r.ApiService.GetCreateMachineAccountRequestV1Execute(r)
 }
 
@@ -261,13 +261,13 @@ func (a *MachineAccountCreationRequestAPIService) GetCreateMachineAccountRequest
 }
 
 // Execute executes the request
-//  @return Accountrequestdetailsdto
-func (a *MachineAccountCreationRequestAPIService) GetCreateMachineAccountRequestV1Execute(r ApiGetCreateMachineAccountRequestV1Request) (*Accountrequestdetailsdto, *http.Response, error) {
+//  @return AccountRequestDetailsDto
+func (a *MachineAccountCreationRequestAPIService) GetCreateMachineAccountRequestV1Execute(r ApiGetCreateMachineAccountRequestV1Request) (*AccountRequestDetailsDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountrequestdetailsdto
+		localVarReturnValue  *AccountRequestDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountCreationRequestAPIService.GetCreateMachineAccountRequestV1")
@@ -332,7 +332,7 @@ func (a *MachineAccountCreationRequestAPIService) GetCreateMachineAccountRequest
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -354,7 +354,7 @@ func (a *MachineAccountCreationRequestAPIService) GetCreateMachineAccountRequest
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -365,7 +365,7 @@ func (a *MachineAccountCreationRequestAPIService) GetCreateMachineAccountRequest
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -387,7 +387,7 @@ func (a *MachineAccountCreationRequestAPIService) GetCreateMachineAccountRequest
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -437,7 +437,7 @@ func (r ApiGetMachineAccountCreateAccessInfoV1Request) Limit(limit int64) ApiGet
 	return r
 }
 
-func (r ApiGetMachineAccountCreateAccessInfoV1Request) Execute() ([]Machineaccountcreateaccessdto, *http.Response, error) {
+func (r ApiGetMachineAccountCreateAccessInfoV1Request) Execute() ([]MachineAccountCreateAccessDto, *http.Response, error) {
 	return r.ApiService.GetMachineAccountCreateAccessInfoV1Execute(r)
 }
 
@@ -458,13 +458,13 @@ func (a *MachineAccountCreationRequestAPIService) GetMachineAccountCreateAccessI
 }
 
 // Execute executes the request
-//  @return []Machineaccountcreateaccessdto
-func (a *MachineAccountCreationRequestAPIService) GetMachineAccountCreateAccessInfoV1Execute(r ApiGetMachineAccountCreateAccessInfoV1Request) ([]Machineaccountcreateaccessdto, *http.Response, error) {
+//  @return []MachineAccountCreateAccessDto
+func (a *MachineAccountCreationRequestAPIService) GetMachineAccountCreateAccessInfoV1Execute(r ApiGetMachineAccountCreateAccessInfoV1Request) ([]MachineAccountCreateAccessDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Machineaccountcreateaccessdto
+		localVarReturnValue  []MachineAccountCreateAccessDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachineAccountCreationRequestAPIService.GetMachineAccountCreateAccessInfoV1")
@@ -540,7 +540,7 @@ func (a *MachineAccountCreationRequestAPIService) GetMachineAccountCreateAccessI
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -562,7 +562,7 @@ func (a *MachineAccountCreationRequestAPIService) GetMachineAccountCreateAccessI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -573,7 +573,7 @@ func (a *MachineAccountCreationRequestAPIService) GetMachineAccountCreateAccessI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -595,7 +595,7 @@ func (a *MachineAccountCreationRequestAPIService) GetMachineAccountCreateAccessI
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

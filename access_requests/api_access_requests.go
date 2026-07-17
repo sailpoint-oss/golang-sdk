@@ -26,11 +26,11 @@ type AccessRequestsAPIService service
 type ApiApproveBulkAccessRequestV1Request struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
-	bulkapproveaccessrequest *Bulkapproveaccessrequest
+	bulkApproveAccessRequest *BulkApproveAccessRequest
 }
 
-func (r ApiApproveBulkAccessRequestV1Request) Bulkapproveaccessrequest(bulkapproveaccessrequest Bulkapproveaccessrequest) ApiApproveBulkAccessRequestV1Request {
-	r.bulkapproveaccessrequest = &bulkapproveaccessrequest
+func (r ApiApproveBulkAccessRequestV1Request) BulkApproveAccessRequest(bulkApproveAccessRequest BulkApproveAccessRequest) ApiApproveBulkAccessRequestV1Request {
+	r.bulkApproveAccessRequest = &bulkApproveAccessRequest
 	return r
 }
 
@@ -73,8 +73,8 @@ func (a *AccessRequestsAPIService) ApproveBulkAccessRequestV1Execute(r ApiApprov
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkapproveaccessrequest == nil {
-		return localVarReturnValue, nil, reportError("bulkapproveaccessrequest is required and must be specified")
+	if r.bulkApproveAccessRequest == nil {
+		return localVarReturnValue, nil, reportError("bulkApproveAccessRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -95,7 +95,7 @@ func (a *AccessRequestsAPIService) ApproveBulkAccessRequestV1Execute(r ApiApprov
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkapproveaccessrequest
+	localVarPostBody = r.bulkApproveAccessRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -119,7 +119,7 @@ func (a *AccessRequestsAPIService) ApproveBulkAccessRequestV1Execute(r ApiApprov
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -141,7 +141,7 @@ func (a *AccessRequestsAPIService) ApproveBulkAccessRequestV1Execute(r ApiApprov
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -152,7 +152,7 @@ func (a *AccessRequestsAPIService) ApproveBulkAccessRequestV1Execute(r ApiApprov
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -174,7 +174,7 @@ func (a *AccessRequestsAPIService) ApproveBulkAccessRequestV1Execute(r ApiApprov
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -201,11 +201,11 @@ func (a *AccessRequestsAPIService) ApproveBulkAccessRequestV1Execute(r ApiApprov
 type ApiCancelAccessRequestInBulkV1Request struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
-	bulkcancelaccessrequest *Bulkcancelaccessrequest
+	bulkCancelAccessRequest *BulkCancelAccessRequest
 }
 
-func (r ApiCancelAccessRequestInBulkV1Request) Bulkcancelaccessrequest(bulkcancelaccessrequest Bulkcancelaccessrequest) ApiCancelAccessRequestInBulkV1Request {
-	r.bulkcancelaccessrequest = &bulkcancelaccessrequest
+func (r ApiCancelAccessRequestInBulkV1Request) BulkCancelAccessRequest(bulkCancelAccessRequest BulkCancelAccessRequest) ApiCancelAccessRequestInBulkV1Request {
+	r.bulkCancelAccessRequest = &bulkCancelAccessRequest
 	return r
 }
 
@@ -249,8 +249,8 @@ func (a *AccessRequestsAPIService) CancelAccessRequestInBulkV1Execute(r ApiCance
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkcancelaccessrequest == nil {
-		return localVarReturnValue, nil, reportError("bulkcancelaccessrequest is required and must be specified")
+	if r.bulkCancelAccessRequest == nil {
+		return localVarReturnValue, nil, reportError("bulkCancelAccessRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -271,7 +271,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestInBulkV1Execute(r ApiCance
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkcancelaccessrequest
+	localVarPostBody = r.bulkCancelAccessRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -295,7 +295,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestInBulkV1Execute(r ApiCance
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -317,7 +317,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestInBulkV1Execute(r ApiCance
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -328,7 +328,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestInBulkV1Execute(r ApiCance
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -350,7 +350,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestInBulkV1Execute(r ApiCance
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -377,11 +377,11 @@ func (a *AccessRequestsAPIService) CancelAccessRequestInBulkV1Execute(r ApiCance
 type ApiCancelAccessRequestV1Request struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
-	cancelaccessrequest *Cancelaccessrequest
+	cancelAccessRequest *CancelAccessRequest
 }
 
-func (r ApiCancelAccessRequestV1Request) Cancelaccessrequest(cancelaccessrequest Cancelaccessrequest) ApiCancelAccessRequestV1Request {
-	r.cancelaccessrequest = &cancelaccessrequest
+func (r ApiCancelAccessRequestV1Request) CancelAccessRequest(cancelAccessRequest CancelAccessRequest) ApiCancelAccessRequestV1Request {
+	r.cancelAccessRequest = &cancelAccessRequest
 	return r
 }
 
@@ -425,8 +425,8 @@ func (a *AccessRequestsAPIService) CancelAccessRequestV1Execute(r ApiCancelAcces
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cancelaccessrequest == nil {
-		return localVarReturnValue, nil, reportError("cancelaccessrequest is required and must be specified")
+	if r.cancelAccessRequest == nil {
+		return localVarReturnValue, nil, reportError("cancelAccessRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -447,7 +447,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestV1Execute(r ApiCancelAcces
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cancelaccessrequest
+	localVarPostBody = r.cancelAccessRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -471,7 +471,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestV1Execute(r ApiCancelAcces
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -493,7 +493,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestV1Execute(r ApiCancelAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -504,7 +504,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestV1Execute(r ApiCancelAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -526,7 +526,7 @@ func (a *AccessRequestsAPIService) CancelAccessRequestV1Execute(r ApiCancelAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -553,11 +553,11 @@ func (a *AccessRequestsAPIService) CancelAccessRequestV1Execute(r ApiCancelAcces
 type ApiCloseAccessRequestV1Request struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
-	closeaccessrequest *Closeaccessrequest
+	closeAccessRequest *CloseAccessRequest
 }
 
-func (r ApiCloseAccessRequestV1Request) Closeaccessrequest(closeaccessrequest Closeaccessrequest) ApiCloseAccessRequestV1Request {
-	r.closeaccessrequest = &closeaccessrequest
+func (r ApiCloseAccessRequestV1Request) CloseAccessRequest(closeAccessRequest CloseAccessRequest) ApiCloseAccessRequestV1Request {
+	r.closeAccessRequest = &closeAccessRequest
 	return r
 }
 
@@ -611,8 +611,8 @@ func (a *AccessRequestsAPIService) CloseAccessRequestV1Execute(r ApiCloseAccessR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.closeaccessrequest == nil {
-		return localVarReturnValue, nil, reportError("closeaccessrequest is required and must be specified")
+	if r.closeAccessRequest == nil {
+		return localVarReturnValue, nil, reportError("closeAccessRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -633,7 +633,7 @@ func (a *AccessRequestsAPIService) CloseAccessRequestV1Execute(r ApiCloseAccessR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.closeaccessrequest
+	localVarPostBody = r.closeAccessRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -657,7 +657,7 @@ func (a *AccessRequestsAPIService) CloseAccessRequestV1Execute(r ApiCloseAccessR
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -679,7 +679,7 @@ func (a *AccessRequestsAPIService) CloseAccessRequestV1Execute(r ApiCloseAccessR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -701,7 +701,7 @@ func (a *AccessRequestsAPIService) CloseAccessRequestV1Execute(r ApiCloseAccessR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -728,15 +728,15 @@ func (a *AccessRequestsAPIService) CloseAccessRequestV1Execute(r ApiCloseAccessR
 type ApiCreateAccessRequestV1Request struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
-	accessrequest *Accessrequest
+	accessRequest *AccessRequest
 }
 
-func (r ApiCreateAccessRequestV1Request) Accessrequest(accessrequest Accessrequest) ApiCreateAccessRequestV1Request {
-	r.accessrequest = &accessrequest
+func (r ApiCreateAccessRequestV1Request) AccessRequest(accessRequest AccessRequest) ApiCreateAccessRequestV1Request {
+	r.accessRequest = &accessRequest
 	return r
 }
 
-func (r ApiCreateAccessRequestV1Request) Execute() (*Accessrequestresponse, *http.Response, error) {
+func (r ApiCreateAccessRequestV1Request) Execute() (*AccessRequestResponse, *http.Response, error) {
 	return r.ApiService.CreateAccessRequestV1Execute(r)
 }
 
@@ -806,13 +806,13 @@ func (a *AccessRequestsAPIService) CreateAccessRequestV1(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return Accessrequestresponse
-func (a *AccessRequestsAPIService) CreateAccessRequestV1Execute(r ApiCreateAccessRequestV1Request) (*Accessrequestresponse, *http.Response, error) {
+//  @return AccessRequestResponse
+func (a *AccessRequestsAPIService) CreateAccessRequestV1Execute(r ApiCreateAccessRequestV1Request) (*AccessRequestResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessrequestresponse
+		localVarReturnValue  *AccessRequestResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.CreateAccessRequestV1")
@@ -825,8 +825,8 @@ func (a *AccessRequestsAPIService) CreateAccessRequestV1Execute(r ApiCreateAcces
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accessrequest == nil {
-		return localVarReturnValue, nil, reportError("accessrequest is required and must be specified")
+	if r.accessRequest == nil {
+		return localVarReturnValue, nil, reportError("accessRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -847,7 +847,7 @@ func (a *AccessRequestsAPIService) CreateAccessRequestV1Execute(r ApiCreateAcces
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accessrequest
+	localVarPostBody = r.accessRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -871,7 +871,7 @@ func (a *AccessRequestsAPIService) CreateAccessRequestV1Execute(r ApiCreateAcces
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -893,7 +893,7 @@ func (a *AccessRequestsAPIService) CreateAccessRequestV1Execute(r ApiCreateAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -915,7 +915,7 @@ func (a *AccessRequestsAPIService) CreateAccessRequestV1Execute(r ApiCreateAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -944,7 +944,7 @@ type ApiGetAccessRequestConfigV1Request struct {
 	ApiService *AccessRequestsAPIService
 }
 
-func (r ApiGetAccessRequestConfigV1Request) Execute() (*Accessrequestconfig, *http.Response, error) {
+func (r ApiGetAccessRequestConfigV1Request) Execute() (*AccessRequestConfig, *http.Response, error) {
 	return r.ApiService.GetAccessRequestConfigV1Execute(r)
 }
 
@@ -966,14 +966,14 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigV1(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return Accessrequestconfig
+//  @return AccessRequestConfig
 // Deprecated
-func (a *AccessRequestsAPIService) GetAccessRequestConfigV1Execute(r ApiGetAccessRequestConfigV1Request) (*Accessrequestconfig, *http.Response, error) {
+func (a *AccessRequestsAPIService) GetAccessRequestConfigV1Execute(r ApiGetAccessRequestConfigV1Request) (*AccessRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessrequestconfig
+		localVarReturnValue  *AccessRequestConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.GetAccessRequestConfigV1")
@@ -1027,7 +1027,7 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigV1Execute(r ApiGetAcces
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1049,7 +1049,7 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigV1Execute(r ApiGetAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1071,7 +1071,7 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigV1Execute(r ApiGetAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1100,7 +1100,7 @@ type ApiGetAccessRequestConfigV2Request struct {
 	ApiService *AccessRequestsAPIService
 }
 
-func (r ApiGetAccessRequestConfigV2Request) Execute() (*Accessrequestconfigv2, *http.Response, error) {
+func (r ApiGetAccessRequestConfigV2Request) Execute() (*AccessRequestConfig2, *http.Response, error) {
 	return r.ApiService.GetAccessRequestConfigV2Execute(r)
 }
 
@@ -1120,13 +1120,13 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigV2(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return Accessrequestconfigv2
-func (a *AccessRequestsAPIService) GetAccessRequestConfigV2Execute(r ApiGetAccessRequestConfigV2Request) (*Accessrequestconfigv2, *http.Response, error) {
+//  @return AccessRequestConfig2
+func (a *AccessRequestsAPIService) GetAccessRequestConfigV2Execute(r ApiGetAccessRequestConfigV2Request) (*AccessRequestConfig2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessrequestconfigv2
+		localVarReturnValue  *AccessRequestConfig2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.GetAccessRequestConfigV2")
@@ -1180,7 +1180,7 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigV2Execute(r ApiGetAcces
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1202,7 +1202,7 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigV2Execute(r ApiGetAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1224,7 +1224,7 @@ func (a *AccessRequestsAPIService) GetAccessRequestConfigV2Execute(r ApiGetAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1255,7 +1255,7 @@ type ApiGetEntitlementDetailsForIdentityV1Request struct {
 	entitlementId string
 }
 
-func (r ApiGetEntitlementDetailsForIdentityV1Request) Execute() (*Identityentitlementdetails, *http.Response, error) {
+func (r ApiGetEntitlementDetailsForIdentityV1Request) Execute() (*IdentityEntitlementDetails, *http.Response, error) {
 	return r.ApiService.GetEntitlementDetailsForIdentityV1Execute(r)
 }
 
@@ -1279,13 +1279,13 @@ func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentityV1(ctx contex
 }
 
 // Execute executes the request
-//  @return Identityentitlementdetails
-func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentityV1Execute(r ApiGetEntitlementDetailsForIdentityV1Request) (*Identityentitlementdetails, *http.Response, error) {
+//  @return IdentityEntitlementDetails
+func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentityV1Execute(r ApiGetEntitlementDetailsForIdentityV1Request) (*IdentityEntitlementDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Identityentitlementdetails
+		localVarReturnValue  *IdentityEntitlementDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.GetEntitlementDetailsForIdentityV1")
@@ -1341,7 +1341,7 @@ func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentityV1Execute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1363,7 +1363,7 @@ func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentityV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1374,7 +1374,7 @@ func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentityV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1396,7 +1396,7 @@ func (a *AccessRequestsAPIService) GetEntitlementDetailsForIdentityV1Execute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1495,7 +1495,7 @@ func (r ApiListAccessRequestStatusV1Request) RequestState(requestState string) A
 	return r
 }
 
-func (r ApiListAccessRequestStatusV1Request) Execute() ([]Requesteditemstatus, *http.Response, error) {
+func (r ApiListAccessRequestStatusV1Request) Execute() ([]RequestedItemStatus, *http.Response, error) {
 	return r.ApiService.ListAccessRequestStatusV1Execute(r)
 }
 
@@ -1517,13 +1517,13 @@ func (a *AccessRequestsAPIService) ListAccessRequestStatusV1(ctx context.Context
 }
 
 // Execute executes the request
-//  @return []Requesteditemstatus
-func (a *AccessRequestsAPIService) ListAccessRequestStatusV1Execute(r ApiListAccessRequestStatusV1Request) ([]Requesteditemstatus, *http.Response, error) {
+//  @return []RequestedItemStatus
+func (a *AccessRequestsAPIService) ListAccessRequestStatusV1Execute(r ApiListAccessRequestStatusV1Request) ([]RequestedItemStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Requesteditemstatus
+		localVarReturnValue  []RequestedItemStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.ListAccessRequestStatusV1")
@@ -1613,7 +1613,7 @@ func (a *AccessRequestsAPIService) ListAccessRequestStatusV1Execute(r ApiListAcc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1635,7 +1635,7 @@ func (a *AccessRequestsAPIService) ListAccessRequestStatusV1Execute(r ApiListAcc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1657,7 +1657,7 @@ func (a *AccessRequestsAPIService) ListAccessRequestStatusV1Execute(r ApiListAcc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1763,7 +1763,7 @@ func (r ApiListAdministratorsAccessRequestStatusV1Request) RequestState(requestS
 	return r
 }
 
-func (r ApiListAdministratorsAccessRequestStatusV1Request) Execute() ([]Accessrequestadminitemstatus, *http.Response, error) {
+func (r ApiListAdministratorsAccessRequestStatusV1Request) Execute() ([]AccessRequestAdminItemStatus, *http.Response, error) {
 	return r.ApiService.ListAdministratorsAccessRequestStatusV1Execute(r)
 }
 
@@ -1784,13 +1784,13 @@ func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatusV1(ctx c
 }
 
 // Execute executes the request
-//  @return []Accessrequestadminitemstatus
-func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatusV1Execute(r ApiListAdministratorsAccessRequestStatusV1Request) ([]Accessrequestadminitemstatus, *http.Response, error) {
+//  @return []AccessRequestAdminItemStatus
+func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatusV1Execute(r ApiListAdministratorsAccessRequestStatusV1Request) ([]AccessRequestAdminItemStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Accessrequestadminitemstatus
+		localVarReturnValue  []AccessRequestAdminItemStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.ListAdministratorsAccessRequestStatusV1")
@@ -1890,7 +1890,7 @@ func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatusV1Execut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1912,7 +1912,7 @@ func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatusV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1934,7 +1934,7 @@ func (a *AccessRequestsAPIService) ListAdministratorsAccessRequestStatusV1Execut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1962,7 +1962,7 @@ type ApiLoadAccountSelectionsV1Request struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
 	xSailPointExperimental *string
-	accountsselectionrequest *Accountsselectionrequest
+	accountsSelectionRequest *AccountsSelectionRequest
 }
 
 // Use this header to enable this experimental API.
@@ -1971,12 +1971,12 @@ func (r ApiLoadAccountSelectionsV1Request) XSailPointExperimental(xSailPointExpe
 	return r
 }
 
-func (r ApiLoadAccountSelectionsV1Request) Accountsselectionrequest(accountsselectionrequest Accountsselectionrequest) ApiLoadAccountSelectionsV1Request {
-	r.accountsselectionrequest = &accountsselectionrequest
+func (r ApiLoadAccountSelectionsV1Request) AccountsSelectionRequest(accountsSelectionRequest AccountsSelectionRequest) ApiLoadAccountSelectionsV1Request {
+	r.accountsSelectionRequest = &accountsSelectionRequest
 	return r
 }
 
-func (r ApiLoadAccountSelectionsV1Request) Execute() (*Accountsselectionresponse, *http.Response, error) {
+func (r ApiLoadAccountSelectionsV1Request) Execute() (*AccountsSelectionResponse, *http.Response, error) {
 	return r.ApiService.LoadAccountSelectionsV1Execute(r)
 }
 
@@ -1999,13 +1999,13 @@ func (a *AccessRequestsAPIService) LoadAccountSelectionsV1(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return Accountsselectionresponse
-func (a *AccessRequestsAPIService) LoadAccountSelectionsV1Execute(r ApiLoadAccountSelectionsV1Request) (*Accountsselectionresponse, *http.Response, error) {
+//  @return AccountsSelectionResponse
+func (a *AccessRequestsAPIService) LoadAccountSelectionsV1Execute(r ApiLoadAccountSelectionsV1Request) (*AccountsSelectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accountsselectionresponse
+		localVarReturnValue  *AccountsSelectionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.LoadAccountSelectionsV1")
@@ -2033,8 +2033,8 @@ func (a *AccessRequestsAPIService) LoadAccountSelectionsV1Execute(r ApiLoadAccou
 		r.xSailPointExperimental = &headerxSailPointExperimental
 	}
 	
-	if r.accountsselectionrequest == nil {
-		return localVarReturnValue, nil, reportError("accountsselectionrequest is required and must be specified")
+	if r.accountsSelectionRequest == nil {
+		return localVarReturnValue, nil, reportError("accountsSelectionRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2056,7 +2056,7 @@ func (a *AccessRequestsAPIService) LoadAccountSelectionsV1Execute(r ApiLoadAccou
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
-	localVarPostBody = r.accountsselectionrequest
+	localVarPostBody = r.accountsSelectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2080,7 +2080,7 @@ func (a *AccessRequestsAPIService) LoadAccountSelectionsV1Execute(r ApiLoadAccou
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2102,7 +2102,7 @@ func (a *AccessRequestsAPIService) LoadAccountSelectionsV1Execute(r ApiLoadAccou
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2124,7 +2124,7 @@ func (a *AccessRequestsAPIService) LoadAccountSelectionsV1Execute(r ApiLoadAccou
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2151,15 +2151,15 @@ func (a *AccessRequestsAPIService) LoadAccountSelectionsV1Execute(r ApiLoadAccou
 type ApiSetAccessRequestConfigV1Request struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
-	accessrequestconfig *Accessrequestconfig
+	accessRequestConfig *AccessRequestConfig
 }
 
-func (r ApiSetAccessRequestConfigV1Request) Accessrequestconfig(accessrequestconfig Accessrequestconfig) ApiSetAccessRequestConfigV1Request {
-	r.accessrequestconfig = &accessrequestconfig
+func (r ApiSetAccessRequestConfigV1Request) AccessRequestConfig(accessRequestConfig AccessRequestConfig) ApiSetAccessRequestConfigV1Request {
+	r.accessRequestConfig = &accessRequestConfig
 	return r
 }
 
-func (r ApiSetAccessRequestConfigV1Request) Execute() (*Accessrequestconfig, *http.Response, error) {
+func (r ApiSetAccessRequestConfigV1Request) Execute() (*AccessRequestConfig, *http.Response, error) {
 	return r.ApiService.SetAccessRequestConfigV1Execute(r)
 }
 
@@ -2181,14 +2181,14 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV1(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return Accessrequestconfig
+//  @return AccessRequestConfig
 // Deprecated
-func (a *AccessRequestsAPIService) SetAccessRequestConfigV1Execute(r ApiSetAccessRequestConfigV1Request) (*Accessrequestconfig, *http.Response, error) {
+func (a *AccessRequestsAPIService) SetAccessRequestConfigV1Execute(r ApiSetAccessRequestConfigV1Request) (*AccessRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessrequestconfig
+		localVarReturnValue  *AccessRequestConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.SetAccessRequestConfigV1")
@@ -2201,8 +2201,8 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV1Execute(r ApiSetAcces
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accessrequestconfig == nil {
-		return localVarReturnValue, nil, reportError("accessrequestconfig is required and must be specified")
+	if r.accessRequestConfig == nil {
+		return localVarReturnValue, nil, reportError("accessRequestConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2223,7 +2223,7 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV1Execute(r ApiSetAcces
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accessrequestconfig
+	localVarPostBody = r.accessRequestConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2247,7 +2247,7 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV1Execute(r ApiSetAcces
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2269,7 +2269,7 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV1Execute(r ApiSetAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2291,7 +2291,7 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV1Execute(r ApiSetAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2318,15 +2318,15 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV1Execute(r ApiSetAcces
 type ApiSetAccessRequestConfigV2Request struct {
 	ctx context.Context
 	ApiService *AccessRequestsAPIService
-	accessrequestconfigv2 *Accessrequestconfigv2
+	accessRequestConfig2 *AccessRequestConfig2
 }
 
-func (r ApiSetAccessRequestConfigV2Request) Accessrequestconfigv2(accessrequestconfigv2 Accessrequestconfigv2) ApiSetAccessRequestConfigV2Request {
-	r.accessrequestconfigv2 = &accessrequestconfigv2
+func (r ApiSetAccessRequestConfigV2Request) AccessRequestConfig2(accessRequestConfig2 AccessRequestConfig2) ApiSetAccessRequestConfigV2Request {
+	r.accessRequestConfig2 = &accessRequestConfig2
 	return r
 }
 
-func (r ApiSetAccessRequestConfigV2Request) Execute() (*Accessrequestconfigv2, *http.Response, error) {
+func (r ApiSetAccessRequestConfigV2Request) Execute() (*AccessRequestConfig2, *http.Response, error) {
 	return r.ApiService.SetAccessRequestConfigV2Execute(r)
 }
 
@@ -2346,13 +2346,13 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV2(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return Accessrequestconfigv2
-func (a *AccessRequestsAPIService) SetAccessRequestConfigV2Execute(r ApiSetAccessRequestConfigV2Request) (*Accessrequestconfigv2, *http.Response, error) {
+//  @return AccessRequestConfig2
+func (a *AccessRequestsAPIService) SetAccessRequestConfigV2Execute(r ApiSetAccessRequestConfigV2Request) (*AccessRequestConfig2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Accessrequestconfigv2
+		localVarReturnValue  *AccessRequestConfig2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.SetAccessRequestConfigV2")
@@ -2365,8 +2365,8 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV2Execute(r ApiSetAcces
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accessrequestconfigv2 == nil {
-		return localVarReturnValue, nil, reportError("accessrequestconfigv2 is required and must be specified")
+	if r.accessRequestConfig2 == nil {
+		return localVarReturnValue, nil, reportError("accessRequestConfig2 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2387,7 +2387,7 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV2Execute(r ApiSetAcces
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accessrequestconfigv2
+	localVarPostBody = r.accessRequestConfig2
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2411,7 +2411,7 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV2Execute(r ApiSetAcces
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2433,7 +2433,7 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV2Execute(r ApiSetAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2455,7 +2455,7 @@ func (a *AccessRequestsAPIService) SetAccessRequestConfigV2Execute(r ApiSetAcces
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Errorresponsedto
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -27,9 +27,9 @@ type Requestability struct {
 	ReauthorizationRequired NullableBool `json:"reauthorizationRequired,omitempty"`
 	// Indicates whether the requester of the containing object must provide access end date.
 	RequireEndDate NullableBool `json:"requireEndDate,omitempty"`
-	MaxPermittedAccessDuration NullableAccessduration `json:"maxPermittedAccessDuration,omitempty"`
+	MaxPermittedAccessDuration NullableAccessDuration `json:"maxPermittedAccessDuration,omitempty"`
 	// List describing the steps involved in approving the request.
-	ApprovalSchemes []Accessprofileapprovalscheme `json:"approvalSchemes,omitempty"`
+	ApprovalSchemes []AccessProfileApprovalScheme `json:"approvalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -237,9 +237,9 @@ func (o *Requestability) UnsetRequireEndDate() {
 }
 
 // GetMaxPermittedAccessDuration returns the MaxPermittedAccessDuration field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Requestability) GetMaxPermittedAccessDuration() Accessduration {
+func (o *Requestability) GetMaxPermittedAccessDuration() AccessDuration {
 	if o == nil || IsNil(o.MaxPermittedAccessDuration.Get()) {
-		var ret Accessduration
+		var ret AccessDuration
 		return ret
 	}
 	return *o.MaxPermittedAccessDuration.Get()
@@ -248,7 +248,7 @@ func (o *Requestability) GetMaxPermittedAccessDuration() Accessduration {
 // GetMaxPermittedAccessDurationOk returns a tuple with the MaxPermittedAccessDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Requestability) GetMaxPermittedAccessDurationOk() (*Accessduration, bool) {
+func (o *Requestability) GetMaxPermittedAccessDurationOk() (*AccessDuration, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -264,8 +264,8 @@ func (o *Requestability) HasMaxPermittedAccessDuration() bool {
 	return false
 }
 
-// SetMaxPermittedAccessDuration gets a reference to the given NullableAccessduration and assigns it to the MaxPermittedAccessDuration field.
-func (o *Requestability) SetMaxPermittedAccessDuration(v Accessduration) {
+// SetMaxPermittedAccessDuration gets a reference to the given NullableAccessDuration and assigns it to the MaxPermittedAccessDuration field.
+func (o *Requestability) SetMaxPermittedAccessDuration(v AccessDuration) {
 	o.MaxPermittedAccessDuration.Set(&v)
 }
 // SetMaxPermittedAccessDurationNil sets the value for MaxPermittedAccessDuration to be an explicit nil
@@ -279,9 +279,9 @@ func (o *Requestability) UnsetMaxPermittedAccessDuration() {
 }
 
 // GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Requestability) GetApprovalSchemes() []Accessprofileapprovalscheme {
+func (o *Requestability) GetApprovalSchemes() []AccessProfileApprovalScheme {
 	if o == nil {
-		var ret []Accessprofileapprovalscheme
+		var ret []AccessProfileApprovalScheme
 		return ret
 	}
 	return o.ApprovalSchemes
@@ -290,7 +290,7 @@ func (o *Requestability) GetApprovalSchemes() []Accessprofileapprovalscheme {
 // GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Requestability) GetApprovalSchemesOk() ([]Accessprofileapprovalscheme, bool) {
+func (o *Requestability) GetApprovalSchemesOk() ([]AccessProfileApprovalScheme, bool) {
 	if o == nil || IsNil(o.ApprovalSchemes) {
 		return nil, false
 	}
@@ -306,8 +306,8 @@ func (o *Requestability) HasApprovalSchemes() bool {
 	return false
 }
 
-// SetApprovalSchemes gets a reference to the given []Accessprofileapprovalscheme and assigns it to the ApprovalSchemes field.
-func (o *Requestability) SetApprovalSchemes(v []Accessprofileapprovalscheme) {
+// SetApprovalSchemes gets a reference to the given []AccessProfileApprovalScheme and assigns it to the ApprovalSchemes field.
+func (o *Requestability) SetApprovalSchemes(v []AccessProfileApprovalScheme) {
 	o.ApprovalSchemes = v
 }
 

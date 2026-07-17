@@ -66,11 +66,11 @@ Other parameters are passed through a pointer to a apiCreateCampaignFilterV1Requ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignfilterdetails** | [**Campaignfilterdetails**](../models/campaignfilterdetails) |  | 
+ **campaignFilterDetails** | [**CampaignFilterDetails**](../models/campaign-filter-details) |  | 
 
 ### Return type
 
-[**Campaignfilterdetails**](../models/campaignfilterdetails)
+[**CampaignFilterDetails**](../models/campaign-filter-details)
 
 ### HTTP request headers
 
@@ -92,10 +92,29 @@ import (
 )
 
 func main() {
-    campaignfilterdetailsJson := []byte(``) // Campaignfilterdetails | 
+    campaignfilterdetailsJson := []byte(`{
+          "owner" : "SailPoint Support",
+          "mode" : "INCLUSION",
+          "isSystemFilter" : false,
+          "name" : "Identity Attribute Campaign Filter",
+          "description" : "Campaign filter to certify data based on an identity attribute's specified property.",
+          "id" : "5ec18cef39020d6fd7a60ad3970aba61",
+          "criteriaList" : [ {
+            "type" : "IDENTITY_ATTRIBUTE",
+            "property" : "displayName",
+            "value" : "support",
+            "operation" : "CONTAINS",
+            "negateResult" : false,
+            "shortCircuit" : false,
+            "recordChildMatches" : false,
+            "id" : null,
+            "suppressMatchedItems" : false,
+            "children" : null
+          } ]
+        }`) // CampaignFilterDetails | 
 
-    var campaignfilterdetails certification_campaign_filters.Campaignfilterdetails
-    if err := json.Unmarshal(campaignfilterdetailsJson, &campaignfilterdetails); err != nil {
+    var campaignFilterDetails certification_campaign_filters.CampaignFilterDetails
+    if err := json.Unmarshal(campaignfilterdetailsJson, &campaignFilterDetails); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -103,13 +122,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignFiltersAPI.CreateCampaignFilterV1(context.Background()).Campaignfilterdetails(campaignfilterdetails).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignFiltersAPI.CreateCampaignFilterV1(context.Background()).Campaignfilterdetails(campaignfilterdetails).Execute()
+    resp, r, err := apiClient.CertificationCampaignFiltersAPI.CreateCampaignFilterV1(context.Background()).CampaignFilterDetails(campaignFilterDetails).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignFiltersAPI.CreateCampaignFilterV1(context.Background()).CampaignFilterDetails(campaignFilterDetails).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.CreateCampaignFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateCampaignFilterV1`: Campaignfilterdetails
+    // response from `CreateCampaignFilterV1`: CampaignFilterDetails
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.CreateCampaignFilterV1`: %v\n", resp)
 }
 ```
@@ -207,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Campaignfilterdetails**](../models/campaignfilterdetails)
+[**CampaignFilterDetails**](../models/campaign-filter-details)
 
 ### HTTP request headers
 
@@ -241,7 +260,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.GetCampaignFilterByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCampaignFilterByIdV1`: Campaignfilterdetails
+    // response from `GetCampaignFilterByIdV1`: CampaignFilterDetails
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.GetCampaignFilterByIdV1`: %v\n", resp)
 }
 ```
@@ -336,11 +355,11 @@ Other parameters are passed through a pointer to a apiUpdateCampaignFilterV1Requ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **campaignfilterdetails** | [**Campaignfilterdetails**](../models/campaignfilterdetails) | A campaign filter details with updated field values. | 
+ **campaignFilterDetails** | [**CampaignFilterDetails**](../models/campaign-filter-details) | A campaign filter details with updated field values. | 
 
 ### Return type
 
-[**Campaignfilterdetails**](../models/campaignfilterdetails)
+[**CampaignFilterDetails**](../models/campaign-filter-details)
 
 ### HTTP request headers
 
@@ -363,10 +382,29 @@ import (
 
 func main() {
     id := `e9f9a1397b842fd5a65842087040d3ac` // string | The ID of the campaign filter being modified. # string | The ID of the campaign filter being modified.
-    campaignfilterdetailsJson := []byte(``) // Campaignfilterdetails | A campaign filter details with updated field values.
+    campaignfilterdetailsJson := []byte(`{
+          "owner" : "SailPoint Support",
+          "mode" : "INCLUSION",
+          "isSystemFilter" : false,
+          "name" : "Identity Attribute Campaign Filter",
+          "description" : "Campaign filter to certify data based on an identity attribute's specified property.",
+          "id" : "5ec18cef39020d6fd7a60ad3970aba61",
+          "criteriaList" : [ {
+            "type" : "IDENTITY_ATTRIBUTE",
+            "property" : "displayName",
+            "value" : "support",
+            "operation" : "CONTAINS",
+            "negateResult" : false,
+            "shortCircuit" : false,
+            "recordChildMatches" : false,
+            "id" : null,
+            "suppressMatchedItems" : false,
+            "children" : null
+          } ]
+        }`) // CampaignFilterDetails | A campaign filter details with updated field values.
 
-    var campaignfilterdetails certification_campaign_filters.Campaignfilterdetails
-    if err := json.Unmarshal(campaignfilterdetailsJson, &campaignfilterdetails); err != nil {
+    var campaignFilterDetails certification_campaign_filters.CampaignFilterDetails
+    if err := json.Unmarshal(campaignfilterdetailsJson, &campaignFilterDetails); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -374,13 +412,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignFiltersAPI.UpdateCampaignFilterV1(context.Background(), id).Campaignfilterdetails(campaignfilterdetails).Execute()
-	  //resp, r, err := apiClient.CertificationCampaignFiltersAPI.UpdateCampaignFilterV1(context.Background(), id).Campaignfilterdetails(campaignfilterdetails).Execute()
+    resp, r, err := apiClient.CertificationCampaignFiltersAPI.UpdateCampaignFilterV1(context.Background(), id).CampaignFilterDetails(campaignFilterDetails).Execute()
+	  //resp, r, err := apiClient.CertificationCampaignFiltersAPI.UpdateCampaignFilterV1(context.Background(), id).CampaignFilterDetails(campaignFilterDetails).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.UpdateCampaignFilterV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateCampaignFilterV1`: Campaignfilterdetails
+    // response from `UpdateCampaignFilterV1`: CampaignFilterDetails
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.UpdateCampaignFilterV1`: %v\n", resp)
 }
 ```

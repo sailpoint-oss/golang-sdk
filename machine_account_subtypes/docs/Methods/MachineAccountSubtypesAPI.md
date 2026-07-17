@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourcesubtypewithsource**](../models/sourcesubtypewithsource)
+[**SourceSubtypeWithSource**](../models/source-subtype-with-source)
 
 ### HTTP request headers
 
@@ -99,7 +99,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.CreateSourceSubtypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateSourceSubtypeV1`: Sourcesubtypewithsource
+    // response from `CreateSourceSubtypeV1`: SourceSubtypeWithSource
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.CreateSourceSubtypeV1`: %v\n", resp)
 }
 ```
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Machineaccountsubtypeconfigdto**](../models/machineaccountsubtypeconfigdto)
+[**MachineAccountSubtypeConfigDto**](../models/machine-account-subtype-config-dto)
 
 ### HTTP request headers
 
@@ -258,7 +258,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMachineAccountSubtypeApprovalConfigV1`: Machineaccountsubtypeconfigdto
+    // response from `GetMachineAccountSubtypeApprovalConfigV1`: MachineAccountSubtypeConfigDto
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.GetMachineAccountSubtypeApprovalConfigV1`: %v\n", resp)
 }
 ```
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourcesubtypewithsource**](../models/sourcesubtypewithsource)
+[**SourceSubtypeWithSource**](../models/source-subtype-with-source)
 
 ### HTTP request headers
 
@@ -337,7 +337,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSourceSubtypeByIdV1`: Sourcesubtypewithsource
+    // response from `GetSourceSubtypeByIdV1`: SourceSubtypeWithSource
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.GetSourceSubtypeByIdV1`: %v\n", resp)
 }
 ```
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sourcesubtypewithsource**](../models/sourcesubtypewithsource)
+[**[]SourceSubtypeWithSource**](../models/source-subtype-with-source)
 
 ### HTTP request headers
 
@@ -420,7 +420,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.ListSourceSubtypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListSourceSubtypesV1`: []Sourcesubtypewithsource
+    // response from `ListSourceSubtypesV1`: []SourceSubtypeWithSource
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.ListSourceSubtypesV1`: %v\n", resp)
 }
 ```
@@ -460,7 +460,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sourcesubtypewithsource**](../models/sourcesubtypewithsource)
+[**[]SourceSubtypeWithSource**](../models/source-subtype-with-source)
 
 ### HTTP request headers
 
@@ -500,7 +500,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `LoadBulkSourceSubtypesV1`: []Sourcesubtypewithsource
+    // response from `LoadBulkSourceSubtypesV1`: []SourceSubtypeWithSource
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.LoadBulkSourceSubtypesV1`: %v\n", resp)
 }
 ```
@@ -546,7 +546,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sourcesubtypewithsource**](../models/sourcesubtypewithsource)
+[**SourceSubtypeWithSource**](../models/source-subtype-with-source)
 
 ### HTTP request headers
 
@@ -587,7 +587,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchMachineAccountSubtypeV1`: Sourcesubtypewithsource
+    // response from `PatchMachineAccountSubtypeV1`: SourceSubtypeWithSource
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.PatchMachineAccountSubtypeV1`: %v\n", resp)
 }
 ```
@@ -628,11 +628,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | The JSONPatch payload used to update the object. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the object. | 
 
 ### Return type
 
-[**Machineaccountsubtypeconfigdto**](../models/machineaccountsubtypeconfigdto)
+[**MachineAccountSubtypeConfigDto**](../models/machine-account-subtype-config-dto)
 
 ### HTTP request headers
 
@@ -656,10 +656,10 @@ import (
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     subtypeId := `00eebcf881994e419d72e757fd30dc0e` // string | machine account subtype ID. # string | machine account subtype ID.
-    jsonpatchoperationJson := []byte(``) // []Jsonpatchoperation | The JSONPatch payload used to update the object.
+    jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
-    var jsonpatchoperation []machine_account_subtypes.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []machine_account_subtypes.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -667,13 +667,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1(context.Background(), subtypeId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateMachineAccountSubtypeApprovalConfigV1`: Machineaccountsubtypeconfigdto
+    // response from `UpdateMachineAccountSubtypeApprovalConfigV1`: MachineAccountSubtypeConfigDto
     fmt.Fprintf(os.Stdout, "Response from `MachineAccountSubtypesAPI.UpdateMachineAccountSubtypeApprovalConfigV1`: %v\n", resp)
 }
 ```

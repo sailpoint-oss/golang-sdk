@@ -221,7 +221,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -245,7 +245,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -270,7 +270,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -305,7 +305,7 @@ paths:
               Machine Account:
                 $ref: '#/components/examples/createcampaignmachineaccount'
             schema:
-              $ref: '#/components/schemas/campaign-2'
+              $ref: '#/components/schemas/Campaign_2'
         required: true
       responses:
         "202":
@@ -323,7 +323,7 @@ paths:
                 Machine Account Owner:
                   $ref: '#/components/examples/fullcampaignmachineaccount'
               schema:
-                $ref: '#/components/schemas/campaign-2'
+                $ref: '#/components/schemas/Campaign_2'
           description: "This response indicates that the requested campaign has been\
             \ successfully accepted into the system, and its representation is returned\
             \ by the API."
@@ -331,7 +331,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -355,7 +355,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -380,7 +380,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -441,7 +441,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -465,7 +465,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -483,7 +483,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -508,7 +508,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -548,7 +548,7 @@ paths:
               path: /description
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: |
           A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -579,14 +579,14 @@ paths:
                 RoleComposition:
                   $ref: '#/components/examples/slimcampaignrolecomposition'
               schema:
-                $ref: '#/components/schemas/slimcampaign'
+                $ref: '#/components/schemas/SlimCampaign'
           description: "This response indicates that the PATCH operation succeeded,\
             \ and the API returns the campaign's new representation."
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -610,7 +610,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -628,7 +628,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -653,7 +653,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -686,7 +686,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/adminreviewreassign'
+              $ref: '#/components/schemas/AdminReviewReassign'
         required: true
       responses:
         "202":
@@ -701,13 +701,13 @@ paths:
                 errors: []
                 created: 2020-09-24T18:10:47.693Z
               schema:
-                $ref: '#/components/schemas/certificationtask'
+                $ref: '#/components/schemas/CertificationTask'
           description: The reassign task that has been submitted.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -731,7 +731,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -749,7 +749,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -774,7 +774,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -806,7 +806,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/activatecampaignoptions'
+              $ref: '#/components/schemas/ActivateCampaignOptions'
         description: "Optional. If no timezone is specified, the standard UTC timezone\
           \ is used (i.e. UTC+00:00). Although this can take any timezone, the intended\
           \ value is the caller's timezone. The activation time calculated from the\
@@ -826,7 +826,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -850,7 +850,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -868,7 +868,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -893,7 +893,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -934,7 +934,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/campaigncompleteoptions'
+              $ref: '#/components/schemas/CampaignCompleteOptions'
         description: "Optional. Default behavior is for the campaign to auto-approve\
           \ upon completion, unless autoCompleteAction=REVOKE"
         required: false
@@ -950,7 +950,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -974,7 +974,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -992,7 +992,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1017,7 +1017,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1038,7 +1038,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/campaignsdeleterequest'
+              $ref: '#/components/schemas/CampaignsDeleteRequest'
         description: IDs of the campaigns to delete.
         required: true
       responses:
@@ -1053,7 +1053,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1077,7 +1077,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1095,7 +1095,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1120,7 +1120,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1160,7 +1160,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1184,7 +1184,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1202,7 +1202,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1227,7 +1227,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1262,14 +1262,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/campaignreport'
+                  $ref: '#/components/schemas/CampaignReport'
                 type: array
           description: Array of campaign report objects.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1293,7 +1293,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1311,7 +1311,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1336,7 +1336,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1372,7 +1372,7 @@ paths:
         name: type
         required: true
         schema:
-          $ref: '#/components/schemas/reporttype'
+          $ref: '#/components/schemas/ReportType'
         style: simple
       responses:
         "202":
@@ -1386,7 +1386,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1410,7 +1410,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -1428,7 +1428,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -1453,7 +1453,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1477,13 +1477,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/campaignreportsconfig'
+                $ref: '#/components/schemas/CampaignReportsConfig'
           description: Campaign report configuration.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1507,7 +1507,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1532,7 +1532,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1553,7 +1553,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/campaignreportsconfig'
+              $ref: '#/components/schemas/CampaignReportsConfig'
         description: Campaign report configuration.
         required: true
       responses:
@@ -1561,13 +1561,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/campaignreportsconfig'
+                $ref: '#/components/schemas/CampaignReportsConfig'
           description: The persisted campaign report configuration.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1591,7 +1591,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1616,7 +1616,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1881,14 +1881,14 @@ paths:
                   mandatoryCommentRequirement: NO_DECISIONS
               schema:
                 items:
-                  $ref: '#/components/schemas/campaigntemplate'
+                  $ref: '#/components/schemas/CampaignTemplate'
                 type: array
           description: List of campaign template objects.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -1912,7 +1912,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -1937,7 +1937,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -1967,7 +1967,7 @@ paths:
               RoleComposition:
                 $ref: '#/components/examples/createcampaigntemplaterolecomposition'
             schema:
-              $ref: '#/components/schemas/campaigntemplate'
+              $ref: '#/components/schemas/CampaignTemplate'
         required: true
       responses:
         "200":
@@ -1983,13 +1983,13 @@ paths:
                 RoleComposition:
                   $ref: '#/components/examples/campaigntemplaterolecomposition'
               schema:
-                $ref: '#/components/schemas/campaigntemplate'
+                $ref: '#/components/schemas/CampaignTemplate'
           description: Created successfully.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2013,7 +2013,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2038,7 +2038,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2074,7 +2074,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2098,7 +2098,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2116,7 +2116,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2141,7 +2141,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2182,13 +2182,13 @@ paths:
                 RoleComposition:
                   $ref: '#/components/examples/campaigntemplaterolecomposition'
               schema:
-                $ref: '#/components/schemas/campaigntemplate'
+                $ref: '#/components/schemas/CampaignTemplate'
           description: Data for the campaign matching the given ID.
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2212,7 +2212,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2230,7 +2230,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2255,7 +2255,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2295,7 +2295,7 @@ paths:
               value: ff80818155fe8c080155fe8d925b0316
             schema:
               items:
-                $ref: '#/components/schemas/jsonpatchoperation'
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: |
           A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -2320,14 +2320,14 @@ paths:
                 RoleComposition:
                   $ref: '#/components/examples/campaigntemplaterolecomposition'
               schema:
-                $ref: '#/components/schemas/campaigntemplate'
+                $ref: '#/components/schemas/CampaignTemplate'
           description: "This response indicates that the PATCH operation succeeded,\
             \ and the API returns the template's new representation."
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2351,7 +2351,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2369,7 +2369,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2394,7 +2394,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2430,7 +2430,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2454,7 +2454,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2472,7 +2472,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2497,7 +2497,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2529,7 +2529,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/schedule-2'
+                $ref: '#/components/schemas/Schedule_2'
           description: "Current schedule for the campaign template. See the [Set Campaign\
             \ Template Schedule endpoint documentation](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule)\
             \ for more examples."
@@ -2537,7 +2537,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2561,7 +2561,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2579,7 +2579,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2604,7 +2604,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2703,7 +2703,7 @@ paths:
                     values:
                     - 2020-02-18
             schema:
-              $ref: '#/components/schemas/schedule-2'
+              $ref: '#/components/schemas/Schedule_2'
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -2712,7 +2712,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2736,7 +2736,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "404":
@@ -2754,7 +2754,7 @@ paths:
                       text: The server did not find a current representation for the
                         target resource.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
         "429":
@@ -2779,7 +2779,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -2822,14 +2822,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/campaignreference'
+                $ref: '#/components/schemas/CampaignReference'
           description: "This response indicates that a campaign was successfully generated\
             \ from this template, and the API returns a reference to the new campaign."
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
         "401":
           content:
@@ -2853,7 +2853,7 @@ paths:
                       text: The server understood the request but refuses to authorize
                         it.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
         "429":
@@ -2878,7 +2878,7 @@ paths:
                       localeOrigin: DEFAULT
                       text: An internal fault occurred.
               schema:
-                $ref: '#/components/schemas/errorresponsedto'
+                $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
@@ -3677,7 +3677,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Client Error - Returned if the request body is invalid.
     "401":
       content:
@@ -3701,7 +3701,7 @@ components:
                   text: The server understood the request but refuses to authorize
                     it.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: "Forbidden - Returned if the user you are running as, doesn't have\
         \ access to this end-point."
     "404":
@@ -3719,7 +3719,7 @@ components:
                   text: The server did not find a current representation for the target
                     resource.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
     "429":
@@ -3744,10 +3744,10 @@ components:
                   localeOrigin: DEFAULT
                   text: An internal fault occurred.
           schema:
-            $ref: '#/components/schemas/errorresponsedto'
+            $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
-    localeorigin:
+    LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
         \ locale is the system default. *REQUEST* means the locale was selected from\
         \ the request context (i.e., best match based on the *Accept-Language* header).\
@@ -3759,7 +3759,7 @@ components:
       example: DEFAULT
       nullable: true
       type: string
-    errormessagedto:
+    ErrorMessageDto:
       example:
         localeOrigin: DEFAULT
         text: The request was syntactically correct but its content is semantically
@@ -3772,7 +3772,7 @@ components:
           nullable: true
           type: string
         localeOrigin:
-          $ref: '#/components/schemas/localeorigin'
+          $ref: '#/components/schemas/LocaleOrigin'
         text:
           description: Actual text of the error message in the indicated locale.
           example: The request was syntactically correct but its content is semantically
@@ -3780,7 +3780,7 @@ components:
           type: string
       title: Error Message Dto
       type: object
-    campaignalert:
+    CampaignAlert:
       example:
         level: ERROR
         localizations:
@@ -3803,11 +3803,11 @@ components:
           type: string
         localizations:
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Campaign Alert
       type: object
-    slimcampaign:
+    SlimCampaign:
       example:
         totalCertifications: 100
         recommendationsEnabled: true
@@ -3951,7 +3951,7 @@ components:
         alerts:
           description: A list of errors and warnings that have accumulated.
           items:
-            $ref: '#/components/schemas/campaignalert'
+            $ref: '#/components/schemas/CampaignAlert'
           nullable: true
           readOnly: true
           type: array
@@ -3961,7 +3961,7 @@ components:
       - type
       title: Slim Campaign
       type: object
-    accessconstraint:
+    AccessConstraint:
       example:
         ids:
         - 2c90ad2a70ace7d50170acf22ca90010
@@ -3996,9 +3996,9 @@ components:
       - type
       title: Access Constraint
       type: object
-    campaign-2:
+    Campaign_2:
       allOf:
-      - $ref: '#/components/schemas/slimcampaign'
+      - $ref: '#/components/schemas/SlimCampaign'
       - properties:
           modified:
             description: Modified time of the campaign
@@ -4008,20 +4008,20 @@ components:
             readOnly: true
             type: string
           filter:
-            $ref: '#/components/schemas/campaign_2_allOf_filter'
+            $ref: '#/components/schemas/Campaign_2_allOf_filter'
           sunsetCommentsRequired:
             default: true
             description: Determines if comments on sunset date changes are required.
             example: true
             type: boolean
           sourceOwnerCampaignInfo:
-            $ref: '#/components/schemas/campaign_2_allOf_sourceOwnerCampaignInfo'
+            $ref: '#/components/schemas/Campaign_2_allOf_sourceOwnerCampaignInfo'
           searchCampaignInfo:
-            $ref: '#/components/schemas/campaign_2_allOf_searchCampaignInfo'
+            $ref: '#/components/schemas/Campaign_2_allOf_searchCampaignInfo'
           roleCompositionCampaignInfo:
-            $ref: '#/components/schemas/campaign_2_allOf_roleCompositionCampaignInfo'
+            $ref: '#/components/schemas/Campaign_2_allOf_roleCompositionCampaignInfo'
           machineAccountCampaignInfo:
-            $ref: '#/components/schemas/campaign_2_allOf_machineAccountCampaignInfo'
+            $ref: '#/components/schemas/Campaign_2_allOf_machineAccountCampaignInfo'
           sourcesWithOrphanEntitlements:
             description: A list of sources in the campaign that contain \"orphan entitlements\"
               (entitlements without a corresponding Managed Attribute). An empty list
@@ -4029,7 +4029,7 @@ components:
               may be unknown orphan entitlements in the campaign (the campaign was
               created before this feature was implemented).
             items:
-              $ref: '#/components/schemas/campaign_2_allOf_sourcesWithOrphanEntitlements'
+              $ref: '#/components/schemas/Campaign_2_allOf_sourcesWithOrphanEntitlements'
             nullable: true
             readOnly: true
             type: array
@@ -4148,7 +4148,7 @@ components:
         correlatedStatus: CORRELATED
       title: Campaign
       type: object
-    errorresponsedto:
+    ErrorResponseDto:
       example:
         causes:
         - localeOrigin: DEFAULT
@@ -4182,18 +4182,22 @@ components:
         messages:
           description: Generic localized reason for error
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         causes:
           description: Plain-text descriptive reasons to provide additional detail
             to the text provided in the messages field
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       title: Error Response Dto
       type: object
-    jsonpatchoperation:
+    JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /description
+        value: New description
       properties:
         op:
           description: The operation to be performed
@@ -4212,13 +4216,22 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/jsonpatchoperation_value'
+          $ref: '#/components/schemas/JsonPatchOperation_value'
       required:
       - op
       - path
       title: Json Patch Operation
       type: object
-    adminreviewreassign:
+    AdminReviewReassign:
+      example:
+        certificationIds:
+        - af3859464779471211bb8424a563abc1
+        - af3859464779471211bb8424a563abc2
+        - af3859464779471211bb8424a563abc3
+        reason: reassigned for some reason
+        reassignTo:
+          id: ef38f94347e94562b5bb8424a56397d8
+          type: IDENTITY
       properties:
         certificationIds:
           description: List of certification IDs to reassign
@@ -4232,23 +4245,23 @@ components:
           minItems: 1
           type: array
         reassignTo:
-          $ref: '#/components/schemas/adminreviewreassign_reassignTo'
+          $ref: '#/components/schemas/AdminReviewReassign_reassignTo'
         reason:
           description: Comment to explain why the certification was reassigned
           example: reassigned for some reason
           type: string
       title: Admin Review Reassign
       type: object
-    errormessagedtolist:
+    ErrorMessageDtoList:
       description: List of error messages
       example:
         locale: en-US
         localeOrigin: DEFAULT
         text: Error Message
       items:
-        $ref: '#/components/schemas/errormessagedto'
+        $ref: '#/components/schemas/ErrorMessageDto'
       type: array
-    reassignmenttraildto:
+    ReassignmentTrailDTO:
       properties:
         previousOwner:
           description: The ID of previous owner identity.
@@ -4264,16 +4277,16 @@ components:
           type: string
       title: Reassignment Trail DTO
       type: object
-    reassignmenttraildtolist:
+    ReassignmentTrailDTOList:
       description: Reassignment trails that lead to self certification identity
       example:
         previousOwner: ef38f94347e94562b5bb8424a56397d8
         newOwner: ef38f94347e94562b5bb8424a56397a3
         reassignmentType: AUTOMATIC_REASSIGNMENT
       items:
-        $ref: '#/components/schemas/reassignmenttraildto'
+        $ref: '#/components/schemas/ReassignmentTrailDTO'
       type: array
-    certificationtask:
+    CertificationTask:
       example:
         targetId: 2c918086719eec070171a7e3355a834c
         created: 2020-09-24T18:10:47.693Z
@@ -4336,7 +4349,7 @@ components:
             localeOrigin: DEFAULT
             text: Error Message
           items:
-            $ref: '#/components/schemas/errormessagedto'
+            $ref: '#/components/schemas/ErrorMessageDto'
           type: array
         reassignmentTrailDTOs:
           description: Reassignment trails that lead to self certification identity
@@ -4345,7 +4358,7 @@ components:
             newOwner: ef38f94347e94562b5bb8424a56397a3
             reassignmentType: AUTOMATIC_REASSIGNMENT
           items:
-            $ref: '#/components/schemas/reassignmenttraildto'
+            $ref: '#/components/schemas/ReassignmentTrailDTO'
           type: array
         created:
           description: The date and time on which this task was created.
@@ -4354,7 +4367,9 @@ components:
           type: string
       title: Certification Task
       type: object
-    activatecampaignoptions:
+    ActivateCampaignOptions:
+      example:
+        timeZone: -05:00
       properties:
         timeZone:
           default: Z
@@ -4365,7 +4380,9 @@ components:
           type: string
       title: Activate Campaign Options
       type: object
-    campaigncompleteoptions:
+    CampaignCompleteOptions:
+      example:
+        autoCompleteAction: REVOKE
       properties:
         autoCompleteAction:
           default: APPROVE
@@ -4378,7 +4395,11 @@ components:
           type: string
       title: Campaign Complete Options
       type: object
-    campaignsdeleterequest:
+    CampaignsDeleteRequest:
+      example:
+        ids:
+        - 2c9180887335cee10173490db1776c26
+        - 2c9180836a712436016a7125a90c0021
       properties:
         ids:
           description: The ids of the campaigns to delete
@@ -4390,7 +4411,7 @@ components:
           type: array
       title: Campaigns Delete Request
       type: object
-    sodreportresultdto:
+    SodReportResultDto:
       description: SOD policy violation report result.
       properties:
         type:
@@ -4409,9 +4430,9 @@ components:
           type: string
       title: Sod Report Result Dto
       type: object
-    reportresultreference:
+    ReportResultReference:
       allOf:
-      - $ref: '#/components/schemas/sodreportresultdto'
+      - $ref: '#/components/schemas/SodReportResultDto'
       - properties:
           status:
             description: Status of a SOD policy violation report.
@@ -4425,7 +4446,7 @@ components:
             example: PENDING
             type: string
         type: object
-    reporttype:
+    ReportType:
       description: type of a Report
       enum:
       - CAMPAIGN_COMPOSITION_REPORT
@@ -4434,12 +4455,12 @@ components:
       - CERTIFICATION_SIGNOFF_REPORT
       example: CAMPAIGN_COMPOSITION_REPORT
       type: string
-    campaignreport:
+    CampaignReport:
       allOf:
-      - $ref: '#/components/schemas/reportresultreference'
+      - $ref: '#/components/schemas/ReportResultReference'
       - properties:
           reportType:
-            $ref: '#/components/schemas/reporttype'
+            $ref: '#/components/schemas/ReportType'
           lastRunAt:
             description: The most recent date and time this report was run
             format: date-time
@@ -4457,7 +4478,7 @@ components:
       - reportType
       title: Campaign Report
       type: object
-    campaignreportsconfig:
+    CampaignReportsConfig:
       example:
         identityAttributeColumns:
         - firstname
@@ -4474,7 +4495,7 @@ components:
           type: array
       title: Campaign Reports Configuration
       type: object
-    campaigntemplate:
+    CampaignTemplate:
       description: Campaign Template
       example:
         ownerRef:
@@ -4625,7 +4646,7 @@ components:
           readOnly: true
           type: boolean
         ownerRef:
-          $ref: '#/components/schemas/campaigntemplate_ownerRef'
+          $ref: '#/components/schemas/CampaignTemplate_ownerRef'
         deadlineDuration:
           description: "The time period during which the campaign should be completed,\
             \ formatted as an ISO-8601 Duration. When this template generates a campaign,\
@@ -4637,7 +4658,7 @@ components:
           nullable: true
           type: string
         campaign:
-          $ref: '#/components/schemas/campaign-2'
+          $ref: '#/components/schemas/Campaign_2'
       required:
       - campaign
       - created
@@ -4646,7 +4667,7 @@ components:
       - name
       title: Campaign Template
       type: object
-    schedule-2:
+    Schedule_2:
       example:
         hours:
           values:
@@ -4680,11 +4701,11 @@ components:
           example: WEEKLY
           type: string
         months:
-          $ref: '#/components/schemas/schedule_2_months'
+          $ref: '#/components/schemas/Schedule_2_months'
         days:
-          $ref: '#/components/schemas/schedule_2_days'
+          $ref: '#/components/schemas/Schedule_2_days'
         hours:
-          $ref: '#/components/schemas/schedule_2_hours'
+          $ref: '#/components/schemas/Schedule_2_hours'
         expiration:
           description: Specifies the time after which this schedule will no longer
             occur.
@@ -4702,7 +4723,7 @@ components:
       - type
       title: Schedule
       type: object
-    campaignreference:
+    CampaignReference:
       example:
         campaignType: MANAGER
         name: Campaign Name
@@ -4775,8 +4796,8 @@ components:
       type: object
     getActiveCampaignsV1_200_response_inner:
       anyOf:
-      - $ref: '#/components/schemas/campaign-2'
-      - $ref: '#/components/schemas/slimcampaign'
+      - $ref: '#/components/schemas/Campaign_2'
+      - $ref: '#/components/schemas/SlimCampaign'
     getActiveCampaignsV1_401_response:
       example:
         error: "JWT validation failed: JWT is expired"
@@ -4795,9 +4816,9 @@ components:
       type: object
     getCampaignV1_200_response:
       anyOf:
-      - $ref: '#/components/schemas/slimcampaign'
-      - $ref: '#/components/schemas/campaign-2'
-    campaign_2_allOf_filter:
+      - $ref: '#/components/schemas/SlimCampaign'
+      - $ref: '#/components/schemas/Campaign_2'
+    Campaign_2_allOf_filter:
       description: Determines which items will be included in this campaign. The default
         campaign filter is used if this field is left blank.
       example:
@@ -4821,7 +4842,7 @@ components:
           example: Test Filter
           type: string
       type: object
-    campaign_2_allOf_sourceOwnerCampaignInfo:
+    Campaign_2_allOf_sourceOwnerCampaignInfo:
       description: Must be set only if the campaign type is SOURCE_OWNER.
       example:
         sourceIds:
@@ -4836,7 +4857,7 @@ components:
             type: string
           type: array
       type: object
-    campaign_2_allOf_searchCampaignInfo_reviewer:
+    Campaign_2_allOf_searchCampaignInfo_reviewer:
       description: "If specified, this identity or governance group will be the reviewer\
         \ for all certifications in this campaign. The allowed DTO types are IDENTITY\
         \ and GOVERNANCE_GROUP."
@@ -4863,7 +4884,7 @@ components:
           nullable: true
           type: string
       type: object
-    campaign_2_allOf_searchCampaignInfo:
+    Campaign_2_allOf_searchCampaignInfo:
       description: Must be set only if the campaign type is SEARCH.
       example:
         identityIds:
@@ -4911,7 +4932,7 @@ components:
           example: Search Campaign description
           type: string
         reviewer:
-          $ref: '#/components/schemas/campaign_2_allOf_searchCampaignInfo_reviewer'
+          $ref: '#/components/schemas/Campaign_2_allOf_searchCampaignInfo_reviewer'
         query:
           description: The scope for the campaign. The campaign will cover identities
             returned by the query and identities that have access items returned by
@@ -4932,13 +4953,13 @@ components:
           description: Further reduces the scope of the campaign by excluding identities
             (from `query` or `identityIds`) that do not have this access.
           items:
-            $ref: '#/components/schemas/accessconstraint'
+            $ref: '#/components/schemas/AccessConstraint'
           maxItems: 1000
           type: array
       required:
       - type
       type: object
-    campaign_2_allOf_roleCompositionCampaignInfo_reviewer:
+    Campaign_2_allOf_roleCompositionCampaignInfo_reviewer:
       description: "If specified, this identity or governance group will be the reviewer\
         \ for all certifications in this campaign. The allowed DTO types are IDENTITY\
         \ and GOVERNANCE_GROUP."
@@ -4964,7 +4985,7 @@ components:
           example: William Wilson
           type: string
       type: object
-    campaign_2_allOf_roleCompositionCampaignInfo_remediatorRef:
+    Campaign_2_allOf_roleCompositionCampaignInfo_remediatorRef:
       description: "This determines who remediation tasks will be assigned to. Remediation\
         \ tasks are created for each revoke decision on items in the campaign. The\
         \ only legal remediator type is 'IDENTITY', and the chosen identity must be\
@@ -4993,7 +5014,7 @@ components:
       - id
       - type
       type: object
-    campaign_2_allOf_roleCompositionCampaignInfo:
+    Campaign_2_allOf_roleCompositionCampaignInfo:
       description: Optional configuration options for role composition campaigns.
       example:
         remediatorRef:
@@ -5019,7 +5040,7 @@ components:
           nullable: true
           type: string
         reviewer:
-          $ref: '#/components/schemas/campaign_2_allOf_roleCompositionCampaignInfo_reviewer'
+          $ref: '#/components/schemas/Campaign_2_allOf_roleCompositionCampaignInfo_reviewer'
         roleIds:
           description: "Optional list of roles to include in this campaign. Only one\
             \ of `roleIds` and `query` may be set; if neither are set, all roles are\
@@ -5030,7 +5051,7 @@ components:
             type: string
           type: array
         remediatorRef:
-          $ref: '#/components/schemas/campaign_2_allOf_roleCompositionCampaignInfo_remediatorRef'
+          $ref: '#/components/schemas/Campaign_2_allOf_roleCompositionCampaignInfo_remediatorRef'
         query:
           description: "Optional search query to scope this campaign to a set of roles.\
             \ Only one of `roleIds` and `query` may be set; if neither are set, all\
@@ -5047,7 +5068,7 @@ components:
       required:
       - remediatorRef
       type: object
-    campaign_2_allOf_machineAccountCampaignInfo:
+    Campaign_2_allOf_machineAccountCampaignInfo:
       description: Must be set only if the campaign type is MACHINE_ACCOUNT.
       example:
         reviewerType: ACCOUNT_OWNER
@@ -5069,7 +5090,7 @@ components:
           example: ACCOUNT_OWNER
           type: string
       type: object
-    campaign_2_allOf_sourcesWithOrphanEntitlements:
+    Campaign_2_allOf_sourcesWithOrphanEntitlements:
       example:
         name: Source with orphan entitlements
         id: 2c90ad2a70ace7d50170acf22ca90010
@@ -5099,7 +5120,7 @@ components:
       - "001"
       - "002"
       - "003"
-    jsonpatchoperation_value:
+    JsonPatchOperation_value:
       description: "The value to be used for the operation, required for \"add\" and\
         \ \"replace\" operations"
       example: New description
@@ -5122,7 +5143,10 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
-    adminreviewreassign_reassignTo:
+    AdminReviewReassign_reassignTo:
+      example:
+        id: ef38f94347e94562b5bb8424a56397d8
+        type: IDENTITY
       properties:
         id:
           description: The identity ID to which the review is being assigned.
@@ -5135,7 +5159,7 @@ components:
           example: IDENTITY
           type: string
       type: object
-    campaigntemplate_ownerRef:
+    CampaignTemplate_ownerRef:
       description: "The owner of this template, and the owner of campaigns generated\
         \ from this template via a schedule. This field is automatically populated\
         \ at creation time with the current user."
@@ -5165,7 +5189,7 @@ components:
           type: string
       readOnly: true
       type: object
-    schedule_2_months:
+    Schedule_2_months:
       description: |
         Specifies which months of a schedule are active. Only valid for ANNUALLY schedule types. Examples:
 
@@ -5212,7 +5236,7 @@ components:
       - type
       - values
       type: object
-    schedule_2_days:
+    Schedule_2_days:
       description: |
         Specifies which day(s) a schedule is active for. This is required for all schedule types.
         The "values" field holds different data depending on the type of schedule:
@@ -5275,7 +5299,7 @@ components:
       - type
       - values
       type: object
-    schedule_2_hours:
+    Schedule_2_hours:
       description: |
         Specifies which hour(s) a schedule is active for. Examples:
 

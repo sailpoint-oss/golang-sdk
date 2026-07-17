@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workflowoauthclient**](../models/workflowoauthclient)
+[**WorkflowOAuthClient**](../models/workflow-o-auth-client)
 
 ### HTTP request headers
 
@@ -229,7 +229,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateWorkflowExternalTriggerV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateWorkflowExternalTriggerV1`: Workflowoauthclient
+    // response from `CreateWorkflowExternalTriggerV1`: WorkflowOAuthClient
     fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.CreateWorkflowExternalTriggerV1`: %v\n", resp)
 }
 ```
@@ -393,7 +393,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Workflowexecutionevent**](../models/workflowexecutionevent)
+[**[]WorkflowExecutionEvent**](../models/workflow-execution-event)
 
 ### HTTP request headers
 
@@ -427,7 +427,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionHistoryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWorkflowExecutionHistoryV1`: []Workflowexecutionevent
+    // response from `GetWorkflowExecutionHistoryV1`: []WorkflowExecutionEvent
     fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowExecutionHistoryV1`: %v\n", resp)
 }
 ```
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Workflowexecutionhistory**](../models/workflowexecutionhistory)
+[**WorkflowExecutionHistory**](../models/workflow-execution-history)
 
 ### HTTP request headers
 
@@ -493,7 +493,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionHistoryV2``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWorkflowExecutionHistoryV2`: Workflowexecutionhistory
+    // response from `GetWorkflowExecutionHistoryV2`: WorkflowExecutionHistory
     fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowExecutionHistoryV2`: %v\n", resp)
 }
 ```
@@ -525,7 +525,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Workflowexecution**](../models/workflowexecution)
+[**[]WorkflowExecution**](../models/workflow-execution)
 
 ### HTTP request headers
 
@@ -559,7 +559,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWorkflowExecutionV1`: []Workflowexecution
+    // response from `GetWorkflowExecutionV1`: []WorkflowExecution
     fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowExecutionV1`: %v\n", resp)
 }
 ```
@@ -607,7 +607,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Workflowexecution**](../models/workflowexecution)
+[**[]WorkflowExecution**](../models/workflow-execution)
 
 ### HTTP request headers
 
@@ -644,7 +644,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWorkflowExecutionsV1`: []Workflowexecution
+    // response from `GetWorkflowExecutionsV1`: []WorkflowExecution
     fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowExecutionsV1`: %v\n", resp)
 }
 ```
@@ -804,7 +804,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Workflowlibraryaction**](../models/workflowlibraryaction)
+[**[]WorkflowLibraryAction**](../models/workflow-library-action)
 
 ### HTTP request headers
 
@@ -840,7 +840,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryActionsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListWorkflowLibraryActionsV1`: []Workflowlibraryaction
+    // response from `ListWorkflowLibraryActionsV1`: []WorkflowLibraryAction
     fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowLibraryActionsV1`: %v\n", resp)
 }
 ```
@@ -864,7 +864,7 @@ Other parameters are passed through a pointer to a apiListWorkflowLibraryOperato
 
 ### Return type
 
-[**[]Workflowlibraryoperator**](../models/workflowlibraryoperator)
+[**[]WorkflowLibraryOperator**](../models/workflow-library-operator)
 
 ### HTTP request headers
 
@@ -897,7 +897,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryOperatorsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListWorkflowLibraryOperatorsV1`: []Workflowlibraryoperator
+    // response from `ListWorkflowLibraryOperatorsV1`: []WorkflowLibraryOperator
     fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowLibraryOperatorsV1`: %v\n", resp)
 }
 ```
@@ -927,7 +927,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Workflowlibrarytrigger**](../models/workflowlibrarytrigger)
+[**[]WorkflowLibraryTrigger**](../models/workflow-library-trigger)
 
 ### HTTP request headers
 
@@ -963,7 +963,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryTriggersV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListWorkflowLibraryTriggersV1`: []Workflowlibrarytrigger
+    // response from `ListWorkflowLibraryTriggersV1`: []WorkflowLibraryTrigger
     fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowLibraryTriggersV1`: %v\n", resp)
 }
 ```
@@ -1049,7 +1049,7 @@ Other parameters are passed through a pointer to a apiPatchWorkflowV1Request str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
 
@@ -1076,10 +1076,10 @@ import (
 
 func main() {
     id := `c17bea3a-574d-453c-9e04-4365fbf5af0b` // string | Id of the Workflow # string | Id of the Workflow
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"Send Email"},{"op":"replace","path":"/owner","value":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"William Wilson"}},{"op":"replace","path":"/description","value":"Send an email to the identity who's attributes changed."},{"op":"replace","path":"/enabled","value":false},{"op":"replace","path":"/definition","value":{"start":"Send Email Test","steps":{"Send Email":{"actionId":"sp:send-email","attributes":{"body":"This is a test","from":"sailpoint@sailpoint.com","recipientId.$":"$.identity.id","subject":"test"},"nextStep":"success","selectResult":null,"type":"action"},"success":{"type":"success"}}}},{"op":"replace","path":"/trigger","value":{"type":"EVENT","attributes":{"id":"idn:identity-attributes-changed"}}}]`) // []Jsonpatchoperation | 
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"Send Email"},{"op":"replace","path":"/owner","value":{"type":"IDENTITY","id":"2c91808568c529c60168cca6f90c1313","name":"William Wilson"}},{"op":"replace","path":"/description","value":"Send an email to the identity who's attributes changed."},{"op":"replace","path":"/enabled","value":false},{"op":"replace","path":"/definition","value":{"start":"Send Email Test","steps":{"Send Email":{"actionId":"sp:send-email","attributes":{"body":"This is a test","from":"sailpoint@sailpoint.com","recipientId.$":"$.identity.id","subject":"test"},"nextStep":"success","selectResult":null,"type":"action"},"success":{"type":"success"}}}},{"op":"replace","path":"/trigger","value":{"type":"EVENT","attributes":{"id":"idn:identity-attributes-changed"}}}]`) // []JsonPatchOperation | 
 
-    var jsonpatchoperation []workflows.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []workflows.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1087,8 +1087,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.PatchWorkflowV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.WorkflowsAPI.PatchWorkflowV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.PatchWorkflowV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.PatchWorkflowV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PatchWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1122,7 +1122,7 @@ Other parameters are passed through a pointer to a apiPutWorkflowV1Request struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **workflowbody** | [**Workflowbody**](../models/workflowbody) |  | 
+ **workflowBody** | [**WorkflowBody**](../models/workflow-body) |  | 
 
 ### Return type
 
@@ -1149,10 +1149,44 @@ import (
 
 func main() {
     id := `c17bea3a-574d-453c-9e04-4365fbf5af0b` // string | Id of the Workflow # string | Id of the Workflow
-    workflowbodyJson := []byte(``) // Workflowbody | 
+    workflowbodyJson := []byte(`{
+          "owner" : {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "name" : "Send Email",
+          "description" : "Send an email to the identity who's attributes changed.",
+          "definition" : {
+            "start" : "Send Email Test",
+            "steps" : {
+              "Send Email" : {
+                "actionId" : "sp:send-email",
+                "attributes" : {
+                  "body" : "This is a test",
+                  "from" : "sailpoint@sailpoint.com",
+                  "recipientId.$" : "$.identity.id",
+                  "subject" : "test"
+                },
+                "nextStep" : "success",
+                "selectResult" : null,
+                "type" : "ACTION"
+              },
+              "success" : {
+                "type" : "success"
+              }
+            }
+          },
+          "trigger" : {
+            "displayName" : "displayName",
+            "attributes" : "{}",
+            "type" : "EVENT"
+          },
+          "enabled" : false
+        }`) // WorkflowBody | 
 
-    var workflowbody workflows.Workflowbody
-    if err := json.Unmarshal(workflowbodyJson, &workflowbody); err != nil {
+    var workflowBody workflows.WorkflowBody
+    if err := json.Unmarshal(workflowbodyJson, &workflowBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -1160,8 +1194,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.PutWorkflowV1(context.Background(), id).Workflowbody(workflowbody).Execute()
-	  //resp, r, err := apiClient.WorkflowsAPI.PutWorkflowV1(context.Background(), id).Workflowbody(workflowbody).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.PutWorkflowV1(context.Background(), id).WorkflowBody(workflowBody).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.PutWorkflowV1(context.Background(), id).WorkflowBody(workflowBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PutWorkflowV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

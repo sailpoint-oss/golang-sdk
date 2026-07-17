@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'SearchFormDefinitionsByTenantV1400Res
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DetailCode** | Pointer to **string** |  | [optional] 
-**Messages** | Pointer to [**[]Errormessage**](errormessage) |  | [optional] 
+**Messages** | Pointer to [**[]ErrorMessage**](error-message) |  | [optional] 
 **StatusCode** | Pointer to **int64** |  | [optional] 
 **TrackingId** | Pointer to **string** |  | [optional] 
 
@@ -66,20 +66,20 @@ HasDetailCode returns a boolean if a field has been set.
 
 ### GetMessages
 
-`func (o *SearchFormDefinitionsByTenantV1400Response) GetMessages() []Errormessage`
+`func (o *SearchFormDefinitionsByTenantV1400Response) GetMessages() []ErrorMessage`
 
 GetMessages returns the Messages field if non-nil, zero value otherwise.
 
 ### GetMessagesOk
 
-`func (o *SearchFormDefinitionsByTenantV1400Response) GetMessagesOk() (*[]Errormessage, bool)`
+`func (o *SearchFormDefinitionsByTenantV1400Response) GetMessagesOk() (*[]ErrorMessage, bool)`
 
 GetMessagesOk returns a tuple with the Messages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessages
 
-`func (o *SearchFormDefinitionsByTenantV1400Response) SetMessages(v []Errormessage)`
+`func (o *SearchFormDefinitionsByTenantV1400Response) SetMessages(v []ErrorMessage)`
 
 SetMessages sets Messages field to given value.
 

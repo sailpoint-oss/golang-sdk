@@ -17,7 +17,7 @@ import (
 // Medium The notification medium (EMAIL, SLACK, or TEAMS)
 type Medium string
 
-// List of medium
+// List of Medium
 const (
 	MEDIUM_EMAIL Medium = "EMAIL"
 	MEDIUM_SLACK Medium = "SLACK"
@@ -67,7 +67,7 @@ func (v Medium) IsValid() bool {
 	return false
 }
 
-// Ptr returns reference to medium value
+// Ptr returns reference to Medium value
 func (v Medium) Ptr() *Medium {
 	return &v
 }

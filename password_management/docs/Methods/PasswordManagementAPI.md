@@ -74,11 +74,11 @@ Other parameters are passed through a pointer to a apiCreateDigitTokenV1Request 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
- **passworddigittokenreset** | [**Passworddigittokenreset**](../models/passworddigittokenreset) |  | 
+ **passwordDigitTokenReset** | [**PasswordDigitTokenReset**](../models/password-digit-token-reset) |  | 
 
 ### Return type
 
-[**Passworddigittoken**](../models/passworddigittoken)
+[**PasswordDigitToken**](../models/password-digit-token)
 
 ### HTTP request headers
 
@@ -101,10 +101,14 @@ import (
 
 func main() {
     xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
-    passworddigittokenresetJson := []byte(`{"userId":"Abby.Smith","length":8,"durationMinutes":5}`) // Passworddigittokenreset | 
+    passworddigittokenresetJson := []byte(`{
+          "durationMinutes" : 5,
+          "length" : 8,
+          "userId" : "Abby.Smith"
+        }`) // PasswordDigitTokenReset | 
 
-    var passworddigittokenreset password_management.Passworddigittokenreset
-    if err := json.Unmarshal(passworddigittokenresetJson, &passworddigittokenreset); err != nil {
+    var passwordDigitTokenReset password_management.PasswordDigitTokenReset
+    if err := json.Unmarshal(passworddigittokenresetJson, &passwordDigitTokenReset); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -112,13 +116,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementAPI.CreateDigitTokenV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passworddigittokenreset(passworddigittokenreset).Execute()
-	  //resp, r, err := apiClient.PasswordManagementAPI.CreateDigitTokenV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Passworddigittokenreset(passworddigittokenreset).Execute()
+    resp, r, err := apiClient.PasswordManagementAPI.CreateDigitTokenV1(context.Background()).XSailPointExperimental(xSailPointExperimental).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
+	  //resp, r, err := apiClient.PasswordManagementAPI.CreateDigitTokenV1(context.Background()).XSailPointExperimental(xSailPointExperimental).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.CreateDigitTokenV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateDigitTokenV1`: Passworddigittoken
+    // response from `CreateDigitTokenV1`: PasswordDigitToken
     fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.CreateDigitTokenV1`: %v\n", resp)
 }
 ```
@@ -150,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Passwordstatus**](../models/passwordstatus)
+[**PasswordStatus**](../models/password-status)
 
 ### HTTP request headers
 
@@ -184,7 +188,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.GetPasswordChangeStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPasswordChangeStatusV1`: Passwordstatus
+    // response from `GetPasswordChangeStatusV1`: PasswordStatus
     fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.GetPasswordChangeStatusV1`: %v\n", resp)
 }
 ```
@@ -209,11 +213,11 @@ Other parameters are passed through a pointer to a apiQueryPasswordInfoV1Request
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **passwordinfoquerydto** | [**Passwordinfoquerydto**](../models/passwordinfoquerydto) |  | 
+ **passwordInfoQueryDTO** | [**PasswordInfoQueryDTO**](../models/password-info-query-dto) |  | 
 
 ### Return type
 
-[**Passwordinfo**](../models/passwordinfo)
+[**PasswordInfo**](../models/password-info)
 
 ### HTTP request headers
 
@@ -235,10 +239,13 @@ import (
 )
 
 func main() {
-    passwordinfoquerydtoJson := []byte(``) // Passwordinfoquerydto | 
+    passwordinfoquerydtoJson := []byte(`{
+          "sourceName" : "My-AD",
+          "userName" : "Abby.Smith"
+        }`) // PasswordInfoQueryDTO | 
 
-    var passwordinfoquerydto password_management.Passwordinfoquerydto
-    if err := json.Unmarshal(passwordinfoquerydtoJson, &passwordinfoquerydto); err != nil {
+    var passwordInfoQueryDTO password_management.PasswordInfoQueryDTO
+    if err := json.Unmarshal(passwordinfoquerydtoJson, &passwordInfoQueryDTO); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -246,13 +253,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementAPI.QueryPasswordInfoV1(context.Background()).Passwordinfoquerydto(passwordinfoquerydto).Execute()
-	  //resp, r, err := apiClient.PasswordManagementAPI.QueryPasswordInfoV1(context.Background()).Passwordinfoquerydto(passwordinfoquerydto).Execute()
+    resp, r, err := apiClient.PasswordManagementAPI.QueryPasswordInfoV1(context.Background()).PasswordInfoQueryDTO(passwordInfoQueryDTO).Execute()
+	  //resp, r, err := apiClient.PasswordManagementAPI.QueryPasswordInfoV1(context.Background()).PasswordInfoQueryDTO(passwordInfoQueryDTO).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.QueryPasswordInfoV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `QueryPasswordInfoV1`: Passwordinfo
+    // response from `QueryPasswordInfoV1`: PasswordInfo
     fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.QueryPasswordInfoV1`: %v\n", resp)
 }
 ```
@@ -295,11 +302,11 @@ Other parameters are passed through a pointer to a apiSetPasswordV1Request struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **passwordchangerequest** | [**Passwordchangerequest**](../models/passwordchangerequest) |  | 
+ **passwordChangeRequest** | [**PasswordChangeRequest**](../models/password-change-request) |  | 
 
 ### Return type
 
-[**Passwordchangeresponse**](../models/passwordchangeresponse)
+[**PasswordChangeResponse**](../models/password-change-response)
 
 ### HTTP request headers
 
@@ -321,10 +328,16 @@ import (
 )
 
 func main() {
-    passwordchangerequestJson := []byte(``) // Passwordchangerequest | 
+    passwordchangerequestJson := []byte(`{
+          "sourceId" : "8a807d4c73c545510173c545d4b60246",
+          "accountId" : "CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com",
+          "identityId" : "8a807d4c73c545510173c545f0a002ff",
+          "publicKeyId" : "YWQ2NjQ4MTItZjY0NC00MWExLWFjMjktOGNmMzU3Y2VlNjk2",
+          "encryptedPassword" : "XzN+YwKgr2C+InkMYFMBG3UtjMEw5ZIql/XFlXo8cJNeslmkplx6vn4kd4/43IF9STBk5RnzR6XmjpEO+FwHDoiBwYZAkAZK/Iswxk4OdybG6Y4MStJCOCiK8osKr35IMMSV/mbO4wAeltoCk7daTWzTGLiI6UaT5tf+F2EgdjJZ7YqM8W8r7aUWsm3p2Xt01Y46ZRx0QaM91QruiIx2rECFT2pUO0wr+7oQ77jypATyGWRtADsu3YcvCk/6U5MqCnXMzKBcRas7NnZdSL/d5H1GglVGz3VLPMaivG4/oL4chOMmFCRl/zVsGxZ9RhN8rxsRGFFKn+rhExTi+bax3A=="
+        }`) // PasswordChangeRequest | 
 
-    var passwordchangerequest password_management.Passwordchangerequest
-    if err := json.Unmarshal(passwordchangerequestJson, &passwordchangerequest); err != nil {
+    var passwordChangeRequest password_management.PasswordChangeRequest
+    if err := json.Unmarshal(passwordchangerequestJson, &passwordChangeRequest); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -332,13 +345,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementAPI.SetPasswordV1(context.Background()).Passwordchangerequest(passwordchangerequest).Execute()
-	  //resp, r, err := apiClient.PasswordManagementAPI.SetPasswordV1(context.Background()).Passwordchangerequest(passwordchangerequest).Execute()
+    resp, r, err := apiClient.PasswordManagementAPI.SetPasswordV1(context.Background()).PasswordChangeRequest(passwordChangeRequest).Execute()
+	  //resp, r, err := apiClient.PasswordManagementAPI.SetPasswordV1(context.Background()).PasswordChangeRequest(passwordChangeRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.SetPasswordV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetPasswordV1`: Passwordchangeresponse
+    // response from `SetPasswordV1`: PasswordChangeResponse
     fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.SetPasswordV1`: %v\n", resp)
 }
 ```

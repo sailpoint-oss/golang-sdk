@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the Jwk type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Jwk{}
+// checks if the JWK type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JWK{}
 
-// Jwk A single JSON Web Key used for verifying signed delivery requests.
-type Jwk struct {
+// JWK A single JSON Web Key used for verifying signed delivery requests.
+type JWK struct {
 	// Algorithm intended for use with the key (e.g. RS256).
 	Alg *string `json:"alg,omitempty"`
 	// RSA public exponent (Base64url encoded).
@@ -34,27 +34,27 @@ type Jwk struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _Jwk Jwk
+type _JWK JWK
 
-// NewJwk instantiates a new Jwk object
+// NewJWK instantiates a new JWK object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJwk() *Jwk {
-	this := Jwk{}
+func NewJWK() *JWK {
+	this := JWK{}
 	return &this
 }
 
-// NewJwkWithDefaults instantiates a new Jwk object
+// NewJWKWithDefaults instantiates a new JWK object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewJwkWithDefaults() *Jwk {
-	this := Jwk{}
+func NewJWKWithDefaults() *JWK {
+	this := JWK{}
 	return &this
 }
 
 // GetAlg returns the Alg field value if set, zero value otherwise.
-func (o *Jwk) GetAlg() string {
+func (o *JWK) GetAlg() string {
 	if o == nil || IsNil(o.Alg) {
 		var ret string
 		return ret
@@ -64,7 +64,7 @@ func (o *Jwk) GetAlg() string {
 
 // GetAlgOk returns a tuple with the Alg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Jwk) GetAlgOk() (*string, bool) {
+func (o *JWK) GetAlgOk() (*string, bool) {
 	if o == nil || IsNil(o.Alg) {
 		return nil, false
 	}
@@ -72,7 +72,7 @@ func (o *Jwk) GetAlgOk() (*string, bool) {
 }
 
 // HasAlg returns a boolean if a field has been set.
-func (o *Jwk) HasAlg() bool {
+func (o *JWK) HasAlg() bool {
 	if o != nil && !IsNil(o.Alg) {
 		return true
 	}
@@ -81,12 +81,12 @@ func (o *Jwk) HasAlg() bool {
 }
 
 // SetAlg gets a reference to the given string and assigns it to the Alg field.
-func (o *Jwk) SetAlg(v string) {
+func (o *JWK) SetAlg(v string) {
 	o.Alg = &v
 }
 
 // GetE returns the E field value if set, zero value otherwise.
-func (o *Jwk) GetE() string {
+func (o *JWK) GetE() string {
 	if o == nil || IsNil(o.E) {
 		var ret string
 		return ret
@@ -96,7 +96,7 @@ func (o *Jwk) GetE() string {
 
 // GetEOk returns a tuple with the E field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Jwk) GetEOk() (*string, bool) {
+func (o *JWK) GetEOk() (*string, bool) {
 	if o == nil || IsNil(o.E) {
 		return nil, false
 	}
@@ -104,7 +104,7 @@ func (o *Jwk) GetEOk() (*string, bool) {
 }
 
 // HasE returns a boolean if a field has been set.
-func (o *Jwk) HasE() bool {
+func (o *JWK) HasE() bool {
 	if o != nil && !IsNil(o.E) {
 		return true
 	}
@@ -113,12 +113,12 @@ func (o *Jwk) HasE() bool {
 }
 
 // SetE gets a reference to the given string and assigns it to the E field.
-func (o *Jwk) SetE(v string) {
+func (o *JWK) SetE(v string) {
 	o.E = &v
 }
 
 // GetKid returns the Kid field value if set, zero value otherwise.
-func (o *Jwk) GetKid() string {
+func (o *JWK) GetKid() string {
 	if o == nil || IsNil(o.Kid) {
 		var ret string
 		return ret
@@ -128,7 +128,7 @@ func (o *Jwk) GetKid() string {
 
 // GetKidOk returns a tuple with the Kid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Jwk) GetKidOk() (*string, bool) {
+func (o *JWK) GetKidOk() (*string, bool) {
 	if o == nil || IsNil(o.Kid) {
 		return nil, false
 	}
@@ -136,7 +136,7 @@ func (o *Jwk) GetKidOk() (*string, bool) {
 }
 
 // HasKid returns a boolean if a field has been set.
-func (o *Jwk) HasKid() bool {
+func (o *JWK) HasKid() bool {
 	if o != nil && !IsNil(o.Kid) {
 		return true
 	}
@@ -145,12 +145,12 @@ func (o *Jwk) HasKid() bool {
 }
 
 // SetKid gets a reference to the given string and assigns it to the Kid field.
-func (o *Jwk) SetKid(v string) {
+func (o *JWK) SetKid(v string) {
 	o.Kid = &v
 }
 
 // GetKty returns the Kty field value if set, zero value otherwise.
-func (o *Jwk) GetKty() string {
+func (o *JWK) GetKty() string {
 	if o == nil || IsNil(o.Kty) {
 		var ret string
 		return ret
@@ -160,7 +160,7 @@ func (o *Jwk) GetKty() string {
 
 // GetKtyOk returns a tuple with the Kty field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Jwk) GetKtyOk() (*string, bool) {
+func (o *JWK) GetKtyOk() (*string, bool) {
 	if o == nil || IsNil(o.Kty) {
 		return nil, false
 	}
@@ -168,7 +168,7 @@ func (o *Jwk) GetKtyOk() (*string, bool) {
 }
 
 // HasKty returns a boolean if a field has been set.
-func (o *Jwk) HasKty() bool {
+func (o *JWK) HasKty() bool {
 	if o != nil && !IsNil(o.Kty) {
 		return true
 	}
@@ -177,12 +177,12 @@ func (o *Jwk) HasKty() bool {
 }
 
 // SetKty gets a reference to the given string and assigns it to the Kty field.
-func (o *Jwk) SetKty(v string) {
+func (o *JWK) SetKty(v string) {
 	o.Kty = &v
 }
 
 // GetN returns the N field value if set, zero value otherwise.
-func (o *Jwk) GetN() string {
+func (o *JWK) GetN() string {
 	if o == nil || IsNil(o.N) {
 		var ret string
 		return ret
@@ -192,7 +192,7 @@ func (o *Jwk) GetN() string {
 
 // GetNOk returns a tuple with the N field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Jwk) GetNOk() (*string, bool) {
+func (o *JWK) GetNOk() (*string, bool) {
 	if o == nil || IsNil(o.N) {
 		return nil, false
 	}
@@ -200,7 +200,7 @@ func (o *Jwk) GetNOk() (*string, bool) {
 }
 
 // HasN returns a boolean if a field has been set.
-func (o *Jwk) HasN() bool {
+func (o *JWK) HasN() bool {
 	if o != nil && !IsNil(o.N) {
 		return true
 	}
@@ -209,12 +209,12 @@ func (o *Jwk) HasN() bool {
 }
 
 // SetN gets a reference to the given string and assigns it to the N field.
-func (o *Jwk) SetN(v string) {
+func (o *JWK) SetN(v string) {
 	o.N = &v
 }
 
 // GetUse returns the Use field value if set, zero value otherwise.
-func (o *Jwk) GetUse() string {
+func (o *JWK) GetUse() string {
 	if o == nil || IsNil(o.Use) {
 		var ret string
 		return ret
@@ -224,7 +224,7 @@ func (o *Jwk) GetUse() string {
 
 // GetUseOk returns a tuple with the Use field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Jwk) GetUseOk() (*string, bool) {
+func (o *JWK) GetUseOk() (*string, bool) {
 	if o == nil || IsNil(o.Use) {
 		return nil, false
 	}
@@ -232,7 +232,7 @@ func (o *Jwk) GetUseOk() (*string, bool) {
 }
 
 // HasUse returns a boolean if a field has been set.
-func (o *Jwk) HasUse() bool {
+func (o *JWK) HasUse() bool {
 	if o != nil && !IsNil(o.Use) {
 		return true
 	}
@@ -241,11 +241,11 @@ func (o *Jwk) HasUse() bool {
 }
 
 // SetUse gets a reference to the given string and assigns it to the Use field.
-func (o *Jwk) SetUse(v string) {
+func (o *JWK) SetUse(v string) {
 	o.Use = &v
 }
 
-func (o Jwk) MarshalJSON() ([]byte, error) {
+func (o JWK) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -253,7 +253,7 @@ func (o Jwk) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Jwk) ToMap() (map[string]interface{}, error) {
+func (o JWK) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Alg) {
 		toSerialize["alg"] = o.Alg
@@ -281,16 +281,16 @@ func (o Jwk) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Jwk) UnmarshalJSON(data []byte) (err error) {
-	varJwk := _Jwk{}
+func (o *JWK) UnmarshalJSON(data []byte) (err error) {
+	varJWK := _JWK{}
 
-	err = json.Unmarshal(data, &varJwk)
+	err = json.Unmarshal(data, &varJWK)
 
 	if err != nil {
 		return err
 	}
 
-	*o = Jwk(varJwk)
+	*o = JWK(varJWK)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -307,38 +307,38 @@ func (o *Jwk) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableJwk struct {
-	value *Jwk
+type NullableJWK struct {
+	value *JWK
 	isSet bool
 }
 
-func (v NullableJwk) Get() *Jwk {
+func (v NullableJWK) Get() *JWK {
 	return v.value
 }
 
-func (v *NullableJwk) Set(val *Jwk) {
+func (v *NullableJWK) Set(val *JWK) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableJwk) IsSet() bool {
+func (v NullableJWK) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableJwk) Unset() {
+func (v *NullableJWK) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableJwk(val *Jwk) *NullableJwk {
-	return &NullableJwk{value: val, isSet: true}
+func NewNullableJWK(val *JWK) *NullableJWK {
+	return &NullableJWK{value: val, isSet: true}
 }
 
-func (v NullableJwk) MarshalJSON() ([]byte, error) {
+func (v NullableJWK) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableJwk) UnmarshalJSON(src []byte) error {
+func (v *NullableJWK) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -102,11 +102,11 @@ Other parameters are passed through a pointer to a apiApproveNonEmployeeRequestV
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **nonemployeeapprovaldecision** | [**Nonemployeeapprovaldecision**](../models/nonemployeeapprovaldecision) |  | 
+ **nonEmployeeApprovalDecision** | [**NonEmployeeApprovalDecision**](../models/non-employee-approval-decision) |  | 
 
 ### Return type
 
-[**Nonemployeeapprovalitem**](../models/nonemployeeapprovalitem)
+[**NonEmployeeApprovalItem**](../models/non-employee-approval-item)
 
 ### HTTP request headers
 
@@ -129,10 +129,12 @@ import (
 
 func main() {
     id := `e136567de87e4d029e60b3c3c55db56d` // string | Non-Employee approval item id (UUID) # string | Non-Employee approval item id (UUID)
-    nonemployeeapprovaldecisionJson := []byte(``) // Nonemployeeapprovaldecision | 
+    nonemployeeapprovaldecisionJson := []byte(`{
+          "comment" : "Approved by manager"
+        }`) // NonEmployeeApprovalDecision | 
 
-    var nonemployeeapprovaldecision non_employee_lifecycle_management.Nonemployeeapprovaldecision
-    if err := json.Unmarshal(nonemployeeapprovaldecisionJson, &nonemployeeapprovaldecision); err != nil {
+    var nonEmployeeApprovalDecision non_employee_lifecycle_management.NonEmployeeApprovalDecision
+    if err := json.Unmarshal(nonemployeeapprovaldecisionJson, &nonEmployeeApprovalDecision); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -140,13 +142,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequestV1(context.Background(), id).Nonemployeeapprovaldecision(nonemployeeapprovaldecision).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequestV1(context.Background(), id).Nonemployeeapprovaldecision(nonemployeeapprovaldecision).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequestV1(context.Background(), id).NonEmployeeApprovalDecision(nonEmployeeApprovalDecision).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequestV1(context.Background(), id).NonEmployeeApprovalDecision(nonEmployeeApprovalDecision).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApproveNonEmployeeRequestV1`: Nonemployeeapprovalitem
+    // response from `ApproveNonEmployeeRequestV1`: NonEmployeeApprovalItem
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequestV1`: %v\n", resp)
 }
 ```
@@ -171,11 +173,11 @@ Other parameters are passed through a pointer to a apiCreateNonEmployeeRecordV1R
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nonemployeerequestbody** | [**Nonemployeerequestbody**](../models/nonemployeerequestbody) | Non-Employee record creation request body. | 
+ **nonEmployeeRequestBody** | [**NonEmployeeRequestBody**](../models/non-employee-request-body) | Non-Employee record creation request body. | 
 
 ### Return type
 
-[**Nonemployeerecord**](../models/nonemployeerecord)
+[**NonEmployeeRecord**](../models/non-employee-record)
 
 ### HTTP request headers
 
@@ -198,10 +200,23 @@ import (
 )
 
 func main() {
-    nonemployeerequestbodyJson := []byte(``) // Nonemployeerequestbody | Non-Employee record creation request body.
+    nonemployeerequestbodyJson := []byte(`{
+          "sourceId" : "2c91808568c529c60168cca6f90c1313",
+          "firstName" : "William",
+          "lastName" : "Smith",
+          "manager" : "jane.doe",
+          "data" : {
+            "description" : "Auditing"
+          },
+          "accountName" : "william.smith",
+          "phone" : "5125555555",
+          "endDate" : "2021-03-25T00:00:00-05:00",
+          "email" : "william.smith@example.com",
+          "startDate" : "2020-03-24T00:00:00-05:00"
+        }`) // NonEmployeeRequestBody | Non-Employee record creation request body.
 
-    var nonemployeerequestbody non_employee_lifecycle_management.Nonemployeerequestbody
-    if err := json.Unmarshal(nonemployeerequestbodyJson, &nonemployeerequestbody); err != nil {
+    var nonEmployeeRequestBody non_employee_lifecycle_management.NonEmployeeRequestBody
+    if err := json.Unmarshal(nonemployeerequestbodyJson, &nonEmployeeRequestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -209,13 +224,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecordV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecordV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecordV1(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecordV1(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecordV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateNonEmployeeRecordV1`: Nonemployeerecord
+    // response from `CreateNonEmployeeRecordV1`: NonEmployeeRecord
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecordV1`: %v\n", resp)
 }
 ```
@@ -239,11 +254,11 @@ Other parameters are passed through a pointer to a apiCreateNonEmployeeRequestV1
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nonemployeerequestbody** | [**Nonemployeerequestbody**](../models/nonemployeerequestbody) | Non-Employee creation request body | 
+ **nonEmployeeRequestBody** | [**NonEmployeeRequestBody**](../models/non-employee-request-body) | Non-Employee creation request body | 
 
 ### Return type
 
-[**Nonemployeerequest**](../models/nonemployeerequest)
+[**NonEmployeeRequest**](../models/non-employee-request)
 
 ### HTTP request headers
 
@@ -266,10 +281,23 @@ import (
 )
 
 func main() {
-    nonemployeerequestbodyJson := []byte(``) // Nonemployeerequestbody | Non-Employee creation request body
+    nonemployeerequestbodyJson := []byte(`{
+          "sourceId" : "2c91808568c529c60168cca6f90c1313",
+          "firstName" : "William",
+          "lastName" : "Smith",
+          "manager" : "jane.doe",
+          "data" : {
+            "description" : "Auditing"
+          },
+          "accountName" : "william.smith",
+          "phone" : "5125555555",
+          "endDate" : "2021-03-25T00:00:00-05:00",
+          "email" : "william.smith@example.com",
+          "startDate" : "2020-03-24T00:00:00-05:00"
+        }`) // NonEmployeeRequestBody | Non-Employee creation request body
 
-    var nonemployeerequestbody non_employee_lifecycle_management.Nonemployeerequestbody
-    if err := json.Unmarshal(nonemployeerequestbodyJson, &nonemployeerequestbody); err != nil {
+    var nonEmployeeRequestBody non_employee_lifecycle_management.NonEmployeeRequestBody
+    if err := json.Unmarshal(nonemployeerequestbodyJson, &nonEmployeeRequestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -277,13 +305,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequestV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequestV1(context.Background()).Nonemployeerequestbody(nonemployeerequestbody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequestV1(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequestV1(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateNonEmployeeRequestV1`: Nonemployeerequest
+    // response from `CreateNonEmployeeRequestV1`: NonEmployeeRequest
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequestV1`: %v\n", resp)
 }
 ```
@@ -313,11 +341,11 @@ Other parameters are passed through a pointer to a apiCreateNonEmployeeSourceSch
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **nonemployeeschemaattributebody** | [**Nonemployeeschemaattributebody**](../models/nonemployeeschemaattributebody) |  | 
+ **nonEmployeeSchemaAttributeBody** | [**NonEmployeeSchemaAttributeBody**](../models/non-employee-schema-attribute-body) |  | 
 
 ### Return type
 
-[**Nonemployeeschemaattribute**](../models/nonemployeeschemaattribute)
+[**NonEmployeeSchemaAttribute**](../models/non-employee-schema-attribute)
 
 ### HTTP request headers
 
@@ -340,10 +368,17 @@ import (
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | The Source id # string | The Source id
-    nonemployeeschemaattributebodyJson := []byte(``) // Nonemployeeschemaattributebody | 
+    nonemployeeschemaattributebodyJson := []byte(`{
+          "helpText" : "The unique identifier for the account",
+          "label" : "Account Name",
+          "placeholder" : "Enter a unique user name for this account.",
+          "type" : "TEXT",
+          "technicalName" : "account.name",
+          "required" : true
+        }`) // NonEmployeeSchemaAttributeBody | 
 
-    var nonemployeeschemaattributebody non_employee_lifecycle_management.Nonemployeeschemaattributebody
-    if err := json.Unmarshal(nonemployeeschemaattributebodyJson, &nonemployeeschemaattributebody); err != nil {
+    var nonEmployeeSchemaAttributeBody non_employee_lifecycle_management.NonEmployeeSchemaAttributeBody
+    if err := json.Unmarshal(nonemployeeschemaattributebodyJson, &nonEmployeeSchemaAttributeBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -351,13 +386,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Nonemployeeschemaattributebody(nonemployeeschemaattributebody).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).Nonemployeeschemaattributebody(nonemployeeschemaattributebody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).NonEmployeeSchemaAttributeBody(nonEmployeeSchemaAttributeBody).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributesV1(context.Background(), sourceId).NonEmployeeSchemaAttributeBody(nonEmployeeSchemaAttributeBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateNonEmployeeSourceSchemaAttributesV1`: Nonemployeeschemaattribute
+    // response from `CreateNonEmployeeSourceSchemaAttributesV1`: NonEmployeeSchemaAttribute
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributesV1`: %v\n", resp)
 }
 ```
@@ -381,11 +416,11 @@ Other parameters are passed through a pointer to a apiCreateNonEmployeeSourceV1R
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nonemployeesourcerequestbody** | [**Nonemployeesourcerequestbody**](../models/nonemployeesourcerequestbody) | Non-Employee source creation request body. | 
+ **nonEmployeeSourceRequestBody** | [**NonEmployeeSourceRequestBody**](../models/non-employee-source-request-body) | Non-Employee source creation request body. | 
 
 ### Return type
 
-[**Nonemployeesourcewithcloudexternalid**](../models/nonemployeesourcewithcloudexternalid)
+[**NonEmployeeSourceWithCloudExternalId**](../models/non-employee-source-with-cloud-external-id)
 
 ### HTTP request headers
 
@@ -407,10 +442,35 @@ import (
 )
 
 func main() {
-    nonemployeesourcerequestbodyJson := []byte(``) // Nonemployeesourcerequestbody | Non-Employee source creation request body.
+    nonemployeesourcerequestbodyJson := []byte(`{
+          "owner" : {
+            "id" : "2c91808570313110017040b06f344ec9"
+          },
+          "managementWorkgroup" : "123299",
+          "accountManagers" : [ {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          } ],
+          "name" : "Retail",
+          "description" : "Source description",
+          "approvers" : [ {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          }, {
+            "id" : "2c91808570313110017040b06f344ec9"
+          } ]
+        }`) // NonEmployeeSourceRequestBody | Non-Employee source creation request body.
 
-    var nonemployeesourcerequestbody non_employee_lifecycle_management.Nonemployeesourcerequestbody
-    if err := json.Unmarshal(nonemployeesourcerequestbodyJson, &nonemployeesourcerequestbody); err != nil {
+    var nonEmployeeSourceRequestBody non_employee_lifecycle_management.NonEmployeeSourceRequestBody
+    if err := json.Unmarshal(nonemployeesourcerequestbodyJson, &nonEmployeeSourceRequestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -418,13 +478,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceV1(context.Background()).Nonemployeesourcerequestbody(nonemployeesourcerequestbody).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceV1(context.Background()).Nonemployeesourcerequestbody(nonemployeesourcerequestbody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceV1(context.Background()).NonEmployeeSourceRequestBody(nonEmployeeSourceRequestBody).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceV1(context.Background()).NonEmployeeSourceRequestBody(nonEmployeeSourceRequestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateNonEmployeeSourceV1`: Nonemployeesourcewithcloudexternalid
+    // response from `CreateNonEmployeeSourceV1`: NonEmployeeSourceWithCloudExternalId
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceV1`: %v\n", resp)
 }
 ```
@@ -988,7 +1048,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Nonemployeeapprovalsummary**](../models/nonemployeeapprovalsummary)
+[**NonEmployeeApprovalSummary**](../models/non-employee-approval-summary)
 
 ### HTTP request headers
 
@@ -1022,7 +1082,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNonEmployeeApprovalSummaryV1`: Nonemployeeapprovalsummary
+    // response from `GetNonEmployeeApprovalSummaryV1`: NonEmployeeApprovalSummary
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummaryV1`: %v\n", resp)
 }
 ```
@@ -1058,7 +1118,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Nonemployeeapprovalitemdetail**](../models/nonemployeeapprovalitemdetail)
+[**NonEmployeeApprovalItemDetail**](../models/non-employee-approval-item-detail)
 
 ### HTTP request headers
 
@@ -1093,7 +1153,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNonEmployeeApprovalV1`: Nonemployeeapprovalitemdetail
+    // response from `GetNonEmployeeApprovalV1`: NonEmployeeApprovalItemDetail
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalV1`: %v\n", resp)
 }
 ```
@@ -1127,7 +1187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Nonemployeebulkuploadstatus**](../models/nonemployeebulkuploadstatus)
+[**NonEmployeeBulkUploadStatus**](../models/non-employee-bulk-upload-status)
 
 ### HTTP request headers
 
@@ -1161,7 +1221,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatusV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNonEmployeeBulkUploadStatusV1`: Nonemployeebulkuploadstatus
+    // response from `GetNonEmployeeBulkUploadStatusV1`: NonEmployeeBulkUploadStatus
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatusV1`: %v\n", resp)
 }
 ```
@@ -1194,7 +1254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Nonemployeerecord**](../models/nonemployeerecord)
+[**NonEmployeeRecord**](../models/non-employee-record)
 
 ### HTTP request headers
 
@@ -1228,7 +1288,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecordV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNonEmployeeRecordV1`: Nonemployeerecord
+    // response from `GetNonEmployeeRecordV1`: NonEmployeeRecord
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecordV1`: %v\n", resp)
 }
 ```
@@ -1264,7 +1324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Nonemployeerequestsummary**](../models/nonemployeerequestsummary)
+[**NonEmployeeRequestSummary**](../models/non-employee-request-summary)
 
 ### HTTP request headers
 
@@ -1298,7 +1358,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummaryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNonEmployeeRequestSummaryV1`: Nonemployeerequestsummary
+    // response from `GetNonEmployeeRequestSummaryV1`: NonEmployeeRequestSummary
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummaryV1`: %v\n", resp)
 }
 ```
@@ -1334,7 +1394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Nonemployeerequest**](../models/nonemployeerequest)
+[**NonEmployeeRequest**](../models/non-employee-request)
 
 ### HTTP request headers
 
@@ -1368,7 +1428,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNonEmployeeRequestV1`: Nonemployeerequest
+    // response from `GetNonEmployeeRequestV1`: NonEmployeeRequest
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestV1`: %v\n", resp)
 }
 ```
@@ -1402,7 +1462,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Nonemployeeschemaattribute**](../models/nonemployeeschemaattribute)
+[**NonEmployeeSchemaAttribute**](../models/non-employee-schema-attribute)
 
 ### HTTP request headers
 
@@ -1437,7 +1497,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNonEmployeeSchemaAttributeV1`: Nonemployeeschemaattribute
+    // response from `GetNonEmployeeSchemaAttributeV1`: NonEmployeeSchemaAttribute
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttributeV1`: %v\n", resp)
 }
 ```
@@ -1470,7 +1530,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Nonemployeeschemaattribute**](../models/nonemployeeschemaattribute)
+[**[]NonEmployeeSchemaAttribute**](../models/non-employee-schema-attribute)
 
 ### HTTP request headers
 
@@ -1504,7 +1564,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNonEmployeeSourceSchemaAttributesV1`: []Nonemployeeschemaattribute
+    // response from `GetNonEmployeeSourceSchemaAttributesV1`: []NonEmployeeSchemaAttribute
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributesV1`: %v\n", resp)
 }
 ```
@@ -1540,7 +1600,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Nonemployeesource**](../models/nonemployeesource)
+[**NonEmployeeSource**](../models/non-employee-source)
 
 ### HTTP request headers
 
@@ -1574,7 +1634,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNonEmployeeSourceV1`: Nonemployeesource
+    // response from `GetNonEmployeeSourceV1`: NonEmployeeSource
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceV1`: %v\n", resp)
 }
 ```
@@ -1607,7 +1667,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Nonemployeebulkuploadjob**](../models/nonemployeebulkuploadjob)
+[**NonEmployeeBulkUploadJob**](../models/non-employee-bulk-upload-job)
 
 ### HTTP request headers
 
@@ -1642,7 +1702,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ImportNonEmployeeRecordsInBulkV1`: Nonemployeebulkuploadjob
+    // response from `ImportNonEmployeeRecordsInBulkV1`: NonEmployeeBulkUploadJob
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulkV1`: %v\n", resp)
 }
 ```
@@ -1679,7 +1739,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Nonemployeeapprovalitem**](../models/nonemployeeapprovalitem)
+[**[]NonEmployeeApprovalItem**](../models/non-employee-approval-item)
 
 ### HTTP request headers
 
@@ -1718,7 +1778,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovalsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListNonEmployeeApprovalsV1`: []Nonemployeeapprovalitem
+    // response from `ListNonEmployeeApprovalsV1`: []NonEmployeeApprovalItem
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovalsV1`: %v\n", resp)
 }
 ```
@@ -1752,7 +1812,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Nonemployeerecord**](../models/nonemployeerecord)
+[**[]NonEmployeeRecord**](../models/non-employee-record)
 
 ### HTTP request headers
 
@@ -1790,7 +1850,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecordsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListNonEmployeeRecordsV1`: []Nonemployeerecord
+    // response from `ListNonEmployeeRecordsV1`: []NonEmployeeRecord
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecordsV1`: %v\n", resp)
 }
 ```
@@ -1827,7 +1887,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Nonemployeerequest**](../models/nonemployeerequest)
+[**[]NonEmployeeRequest**](../models/non-employee-request)
 
 ### HTTP request headers
 
@@ -1866,7 +1926,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequestsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListNonEmployeeRequestsV1`: []Nonemployeerequest
+    // response from `ListNonEmployeeRequestsV1`: []NonEmployeeRequest
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequestsV1`: %v\n", resp)
 }
 ```
@@ -1901,7 +1961,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Nonemployeesourcewithnecount**](../models/nonemployeesourcewithnecount)
+[**[]NonEmployeeSourceWithNECount**](../models/non-employee-source-with-ne-count)
 
 ### HTTP request headers
 
@@ -1940,7 +2000,7 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeSourcesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListNonEmployeeSourcesV1`: []Nonemployeesourcewithnecount
+    // response from `ListNonEmployeeSourcesV1`: []NonEmployeeSourceWithNECount
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ListNonEmployeeSourcesV1`: %v\n", resp)
 }
 ```
@@ -1973,11 +2033,11 @@ Other parameters are passed through a pointer to a apiPatchNonEmployeeRecordV1Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. | 
 
 ### Return type
 
-[**Nonemployeerecord**](../models/nonemployeerecord)
+[**NonEmployeeRecord**](../models/non-employee-record)
 
 ### HTTP request headers
 
@@ -2000,10 +2060,10 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Non-employee record id (UUID) # string | Non-employee record id (UUID)
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/endDate","value":"2019-08-23T18:40:35.772Z"}]`) // []Jsonpatchoperation | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/endDate","value":"2019-08-23T18:40:35.772Z"}]`) // []JsonPatchOperation | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
-    var jsonpatchoperation []non_employee_lifecycle_management.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []non_employee_lifecycle_management.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2011,13 +2071,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecordV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecordV1(context.Background(), id).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecordV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecordV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecordV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchNonEmployeeRecordV1`: Nonemployeerecord
+    // response from `PatchNonEmployeeRecordV1`: NonEmployeeRecord
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecordV1`: %v\n", resp)
 }
 ```
@@ -2050,11 +2110,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update &#39;:&#39; &#39;label&#39;, &#39;helpText&#39;, &#39;placeholder&#39;, &#39;required&#39;. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update &#39;:&#39; &#39;label&#39;, &#39;helpText&#39;, &#39;placeholder&#39;, &#39;required&#39;. | 
 
 ### Return type
 
-[**Nonemployeeschemaattribute**](../models/nonemployeeschemaattribute)
+[**NonEmployeeSchemaAttribute**](../models/non-employee-schema-attribute)
 
 ### HTTP request headers
 
@@ -2078,10 +2138,10 @@ import (
 func main() {
     attributeId := `ef38f94347e94562b5bb8424a56397d8` // string | The Schema Attribute Id (UUID) # string | The Schema Attribute Id (UUID)
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | The Source id # string | The Source id
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/label","value":{"new attribute label":null}}]`) // []Jsonpatchoperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/label","value":{"new attribute label":null}}]`) // []JsonPatchOperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
 
-    var jsonpatchoperation []non_employee_lifecycle_management.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []non_employee_lifecycle_management.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2089,13 +2149,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttributeV1(context.Background(), attributeId, sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttributeV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchNonEmployeeSchemaAttributeV1`: Nonemployeeschemaattribute
+    // response from `PatchNonEmployeeSchemaAttributeV1`: NonEmployeeSchemaAttribute
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttributeV1`: %v\n", resp)
 }
 ```
@@ -2124,11 +2184,11 @@ Other parameters are passed through a pointer to a apiPatchNonEmployeeSourceV1Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonpatchoperation** | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
 
 ### Return type
 
-[**Nonemployeesource**](../models/nonemployeesource)
+[**NonEmployeeSource**](../models/non-employee-source)
 
 ### HTTP request headers
 
@@ -2151,10 +2211,10 @@ import (
 
 func main() {
     sourceId := `e136567de87e4d029e60b3c3c55db56d` // string | Source Id # string | Source Id
-    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":{"new name":null}},{"op":"replace","path":"/approvers","value":["2c91809f703bb37a017040a2fe8748c7","48b1f463c9e8427db5a5071bd81914b8"]}]`) // []Jsonpatchoperation | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":{"new name":null}},{"op":"replace","path":"/approvers","value":["2c91809f703bb37a017040a2fe8748c7","48b1f463c9e8427db5a5071bd81914b8"]}]`) // []JsonPatchOperation | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    var jsonpatchoperation []non_employee_lifecycle_management.Jsonpatchoperation
-    if err := json.Unmarshal(jsonpatchoperationJson, &jsonpatchoperation); err != nil {
+    var jsonPatchOperation []non_employee_lifecycle_management.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2162,13 +2222,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSourceV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSourceV1(context.Background(), sourceId).Jsonpatchoperation(jsonpatchoperation).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSourceV1(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSourceV1(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchNonEmployeeSourceV1`: Nonemployeesource
+    // response from `PatchNonEmployeeSourceV1`: NonEmployeeSource
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSourceV1`: %v\n", resp)
 }
 ```
@@ -2197,11 +2257,11 @@ Other parameters are passed through a pointer to a apiRejectNonEmployeeRequestV1
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **nonemployeerejectapprovaldecision** | [**Nonemployeerejectapprovaldecision**](../models/nonemployeerejectapprovaldecision) |  | 
+ **nonEmployeeRejectApprovalDecision** | [**NonEmployeeRejectApprovalDecision**](../models/non-employee-reject-approval-decision) |  | 
 
 ### Return type
 
-[**Nonemployeeapprovalitem**](../models/nonemployeeapprovalitem)
+[**NonEmployeeApprovalItem**](../models/non-employee-approval-item)
 
 ### HTTP request headers
 
@@ -2224,10 +2284,12 @@ import (
 
 func main() {
     id := `e136567de87e4d029e60b3c3c55db56d` // string | Non-Employee approval item id (UUID) # string | Non-Employee approval item id (UUID)
-    nonemployeerejectapprovaldecisionJson := []byte(``) // Nonemployeerejectapprovaldecision | 
+    nonemployeerejectapprovaldecisionJson := []byte(`{
+          "comment" : "approved"
+        }`) // NonEmployeeRejectApprovalDecision | 
 
-    var nonemployeerejectapprovaldecision non_employee_lifecycle_management.Nonemployeerejectapprovaldecision
-    if err := json.Unmarshal(nonemployeerejectapprovaldecisionJson, &nonemployeerejectapprovaldecision); err != nil {
+    var nonEmployeeRejectApprovalDecision non_employee_lifecycle_management.NonEmployeeRejectApprovalDecision
+    if err := json.Unmarshal(nonemployeerejectapprovaldecisionJson, &nonEmployeeRejectApprovalDecision); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2235,13 +2297,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequestV1(context.Background(), id).Nonemployeerejectapprovaldecision(nonemployeerejectapprovaldecision).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequestV1(context.Background(), id).Nonemployeerejectapprovaldecision(nonemployeerejectapprovaldecision).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequestV1(context.Background(), id).NonEmployeeRejectApprovalDecision(nonEmployeeRejectApprovalDecision).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequestV1(context.Background(), id).NonEmployeeRejectApprovalDecision(nonEmployeeRejectApprovalDecision).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequestV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RejectNonEmployeeRequestV1`: Nonemployeeapprovalitem
+    // response from `RejectNonEmployeeRequestV1`: NonEmployeeApprovalItem
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequestV1`: %v\n", resp)
 }
 ```
@@ -2274,11 +2336,11 @@ Other parameters are passed through a pointer to a apiUpdateNonEmployeeRecordV1R
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **nonemployeerequestbody** | [**Nonemployeerequestbody**](../models/nonemployeerequestbody) | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. | 
+ **nonEmployeeRequestBody** | [**NonEmployeeRequestBody**](../models/non-employee-request-body) | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. | 
 
 ### Return type
 
-[**Nonemployeerecord**](../models/nonemployeerecord)
+[**NonEmployeeRecord**](../models/non-employee-record)
 
 ### HTTP request headers
 
@@ -2302,10 +2364,23 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Non-employee record id (UUID) # string | Non-employee record id (UUID)
-    nonemployeerequestbodyJson := []byte(``) // Nonemployeerequestbody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+    nonemployeerequestbodyJson := []byte(`{
+          "sourceId" : "2c91808568c529c60168cca6f90c1313",
+          "firstName" : "William",
+          "lastName" : "Smith",
+          "manager" : "jane.doe",
+          "data" : {
+            "description" : "Auditing"
+          },
+          "accountName" : "william.smith",
+          "phone" : "5125555555",
+          "endDate" : "2021-03-25T00:00:00-05:00",
+          "email" : "william.smith@example.com",
+          "startDate" : "2020-03-24T00:00:00-05:00"
+        }`) // NonEmployeeRequestBody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
-    var nonemployeerequestbody non_employee_lifecycle_management.Nonemployeerequestbody
-    if err := json.Unmarshal(nonemployeerequestbodyJson, &nonemployeerequestbody); err != nil {
+    var nonEmployeeRequestBody non_employee_lifecycle_management.NonEmployeeRequestBody
+    if err := json.Unmarshal(nonemployeerequestbodyJson, &nonEmployeeRequestBody); err != nil {
       fmt.Println("Error:", err)
       return
     }
@@ -2313,13 +2388,13 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecordV1(context.Background(), id).Nonemployeerequestbody(nonemployeerequestbody).Execute()
-	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecordV1(context.Background(), id).Nonemployeerequestbody(nonemployeerequestbody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecordV1(context.Background(), id).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
+	  //resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecordV1(context.Background(), id).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecordV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateNonEmployeeRecordV1`: Nonemployeerecord
+    // response from `UpdateNonEmployeeRecordV1`: NonEmployeeRecord
     fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecordV1`: %v\n", resp)
 }
 ```

@@ -92,17 +92,17 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [DeleteParameterV1409Response](docs/DeleteParameterV1409Response.md)
- - [Errormessagedto](docs/Errormessagedto.md)
- - [Errorresponsedto](docs/Errorresponsedto.md)
+ - [ErrorMessageDto](docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [GetAttestationDocumentV1401Response](docs/GetAttestationDocumentV1401Response.md)
  - [GetAttestationDocumentV1429Response](docs/GetAttestationDocumentV1429Response.md)
- - [Localeorigin](docs/Localeorigin.md)
- - [Parameterstorageattestationdocument](docs/Parameterstorageattestationdocument.md)
- - [Parameterstoragejsonpatch](docs/Parameterstoragejsonpatch.md)
- - [Parameterstoragenewparameter](docs/Parameterstoragenewparameter.md)
- - [Parameterstorageparameter](docs/Parameterstorageparameter.md)
- - [Parameterstoragereference](docs/Parameterstoragereference.md)
- - [Parameterstorageupdateparameter](docs/Parameterstorageupdateparameter.md)
+ - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [ParameterStorageAttestationDocument](docs/ParameterStorageAttestationDocument.md)
+ - [ParameterStorageJsonPatch](docs/ParameterStorageJsonPatch.md)
+ - [ParameterStorageNewParameter](docs/ParameterStorageNewParameter.md)
+ - [ParameterStorageParameter](docs/ParameterStorageParameter.md)
+ - [ParameterStorageReference](docs/ParameterStorageReference.md)
+ - [ParameterStorageUpdateParameter](docs/ParameterStorageUpdateParameter.md)
 
 
 ## Documentation For Authorization

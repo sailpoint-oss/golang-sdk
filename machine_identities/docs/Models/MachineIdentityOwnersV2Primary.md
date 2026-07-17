@@ -1,0 +1,116 @@
+---
+id: v1-machine-identity-owners-v2-primary
+title: MachineIdentityOwnersV2Primary
+pagination_label: MachineIdentityOwnersV2Primary
+sidebar_label: MachineIdentityOwnersV2Primary
+sidebar_class_name: gosdk
+keywords: ['go', 'Golang', 'sdk', 'MachineIdentityOwnersV2Primary', 'V1MachineIdentityOwnersV2Primary'] 
+slug: /tools/sdk/go/machineidentities/models/machine-identity-owners-v2-primary
+tags: ['SDK', 'Software Development Kit', 'MachineIdentityOwnersV2Primary', 'V1MachineIdentityOwnersV2Primary']
+---
+
+# MachineIdentityOwnersV2Primary
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Type** | Pointer to **DtoType** |  | [optional] 
+**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
+**Name** | Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
+
+## Methods
+
+### NewMachineIdentityOwnersV2Primary
+
+`func NewMachineIdentityOwnersV2Primary() *MachineIdentityOwnersV2Primary`
+
+NewMachineIdentityOwnersV2Primary instantiates a new MachineIdentityOwnersV2Primary object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewMachineIdentityOwnersV2PrimaryWithDefaults
+
+`func NewMachineIdentityOwnersV2PrimaryWithDefaults() *MachineIdentityOwnersV2Primary`
+
+NewMachineIdentityOwnersV2PrimaryWithDefaults instantiates a new MachineIdentityOwnersV2Primary object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *MachineIdentityOwnersV2Primary) GetType() DtoType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *MachineIdentityOwnersV2Primary) GetTypeOk() (*DtoType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *MachineIdentityOwnersV2Primary) SetType(v DtoType)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *MachineIdentityOwnersV2Primary) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *MachineIdentityOwnersV2Primary) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *MachineIdentityOwnersV2Primary) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *MachineIdentityOwnersV2Primary) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *MachineIdentityOwnersV2Primary) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *MachineIdentityOwnersV2Primary) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *MachineIdentityOwnersV2Primary) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *MachineIdentityOwnersV2Primary) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *MachineIdentityOwnersV2Primary) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+
