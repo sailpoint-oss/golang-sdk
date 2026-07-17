@@ -549,6 +549,7 @@ components:
       example:
         armAuth: epiYNTRYA2S7swisDWk1Zv4VMNgvqEjiBh5_ufuCWsma2m-5XADijqBg0ijXLby5nS6lxZNXabhGnAPGeDGc4V3jQKrhwV-UHypRLs8ZLgOjiQNus9NimS0uPdKomRW6TFWqXyfnYd-znNgbbVuwUy9GyD9ebDVJSntPastxSx7UcyGuWBqfNZYpuxKRWe_7TVY60qL55jUqyz8N4XUbbdcxdbZ0uik6ut-Bv90MKTbZexBW_PR4qcgIkaEs4kIenLyBxnGziYo7AO0tJ8bGHO8FJRkibCpAQIt7PISLo7Gg_Xf9j10dKq2YDgy4pPTvz3fE2ZHYnXCXvXFSA-vVag==
         armCustomerId: DE38E75A-5FF6-4A65-5DC7-08D64426B09E
+        aiAgentDeleteRequestEnabled: false
         orgName: acme-solar
         lcsChangeHonorsSourceEnableFeature: false
         armDb: EU
@@ -580,6 +581,7 @@ components:
           example: America/Toronto
           type: string
         lcsChangeHonorsSourceEnableFeature:
+          default: false
           description: Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE
             flag is enabled for the current org.
           example: false
@@ -613,9 +615,17 @@ components:
           nullable: true
           type: string
         iaiEnableCertificationRecommendations:
+          default: true
           description: Flag to determine whether IAI Certification Recommendations
             are enabled for the current org
           example: true
+          type: boolean
+        aiAgentDeleteRequestEnabled:
+          default: false
+          description: Org opt-in flag that enables AI Agent delete-at-source lifecycle
+            requests for the current org.
+          example: false
+          nullable: true
           type: boolean
         sodReportConfigs:
           items:

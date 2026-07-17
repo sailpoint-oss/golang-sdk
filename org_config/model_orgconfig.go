@@ -37,6 +37,8 @@ type Orgconfig struct {
 	ArmSsoUrl NullableString `json:"armSsoUrl,omitempty"`
 	// Flag to determine whether IAI Certification Recommendations are enabled for the current org
 	IaiEnableCertificationRecommendations *bool `json:"iaiEnableCertificationRecommendations,omitempty"`
+	// Org opt-in flag that enables AI Agent delete-at-source lifecycle requests for the current org.
+	AiAgentDeleteRequestEnabled NullableBool `json:"aiAgentDeleteRequestEnabled,omitempty"`
 	SodReportConfigs []Reportconfigdto `json:"sodReportConfigs,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -49,6 +51,12 @@ type _Orgconfig Orgconfig
 // will change when the set of required properties is changed
 func NewOrgconfig() *Orgconfig {
 	this := Orgconfig{}
+	var lcsChangeHonorsSourceEnableFeature bool = false
+	this.LcsChangeHonorsSourceEnableFeature = &lcsChangeHonorsSourceEnableFeature
+	var iaiEnableCertificationRecommendations bool = true
+	this.IaiEnableCertificationRecommendations = &iaiEnableCertificationRecommendations
+	var aiAgentDeleteRequestEnabled bool = false
+	this.AiAgentDeleteRequestEnabled = *NewNullableBool(&aiAgentDeleteRequestEnabled)
 	return &this
 }
 
@@ -57,6 +65,12 @@ func NewOrgconfig() *Orgconfig {
 // but it doesn't guarantee that properties required by API are set
 func NewOrgconfigWithDefaults() *Orgconfig {
 	this := Orgconfig{}
+	var lcsChangeHonorsSourceEnableFeature bool = false
+	this.LcsChangeHonorsSourceEnableFeature = &lcsChangeHonorsSourceEnableFeature
+	var iaiEnableCertificationRecommendations bool = true
+	this.IaiEnableCertificationRecommendations = &iaiEnableCertificationRecommendations
+	var aiAgentDeleteRequestEnabled bool = false
+	this.AiAgentDeleteRequestEnabled = *NewNullableBool(&aiAgentDeleteRequestEnabled)
 	return &this
 }
 
@@ -398,6 +412,48 @@ func (o *Orgconfig) SetIaiEnableCertificationRecommendations(v bool) {
 	o.IaiEnableCertificationRecommendations = &v
 }
 
+// GetAiAgentDeleteRequestEnabled returns the AiAgentDeleteRequestEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Orgconfig) GetAiAgentDeleteRequestEnabled() bool {
+	if o == nil || IsNil(o.AiAgentDeleteRequestEnabled.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.AiAgentDeleteRequestEnabled.Get()
+}
+
+// GetAiAgentDeleteRequestEnabledOk returns a tuple with the AiAgentDeleteRequestEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Orgconfig) GetAiAgentDeleteRequestEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AiAgentDeleteRequestEnabled.Get(), o.AiAgentDeleteRequestEnabled.IsSet()
+}
+
+// HasAiAgentDeleteRequestEnabled returns a boolean if a field has been set.
+func (o *Orgconfig) HasAiAgentDeleteRequestEnabled() bool {
+	if o != nil && o.AiAgentDeleteRequestEnabled.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAiAgentDeleteRequestEnabled gets a reference to the given NullableBool and assigns it to the AiAgentDeleteRequestEnabled field.
+func (o *Orgconfig) SetAiAgentDeleteRequestEnabled(v bool) {
+	o.AiAgentDeleteRequestEnabled.Set(&v)
+}
+// SetAiAgentDeleteRequestEnabledNil sets the value for AiAgentDeleteRequestEnabled to be an explicit nil
+func (o *Orgconfig) SetAiAgentDeleteRequestEnabledNil() {
+	o.AiAgentDeleteRequestEnabled.Set(nil)
+}
+
+// UnsetAiAgentDeleteRequestEnabled ensures that no value is present for AiAgentDeleteRequestEnabled, not even an explicit nil
+func (o *Orgconfig) UnsetAiAgentDeleteRequestEnabled() {
+	o.AiAgentDeleteRequestEnabled.Unset()
+}
+
 // GetSodReportConfigs returns the SodReportConfigs field value if set, zero value otherwise.
 func (o *Orgconfig) GetSodReportConfigs() []Reportconfigdto {
 	if o == nil || IsNil(o.SodReportConfigs) {
@@ -467,6 +523,9 @@ func (o Orgconfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IaiEnableCertificationRecommendations) {
 		toSerialize["iaiEnableCertificationRecommendations"] = o.IaiEnableCertificationRecommendations
 	}
+	if o.AiAgentDeleteRequestEnabled.IsSet() {
+		toSerialize["aiAgentDeleteRequestEnabled"] = o.AiAgentDeleteRequestEnabled.Get()
+	}
 	if !IsNil(o.SodReportConfigs) {
 		toSerialize["sodReportConfigs"] = o.SodReportConfigs
 	}
@@ -501,6 +560,7 @@ func (o *Orgconfig) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "armDb")
 		delete(additionalProperties, "armSsoUrl")
 		delete(additionalProperties, "iaiEnableCertificationRecommendations")
+		delete(additionalProperties, "aiAgentDeleteRequestEnabled")
 		delete(additionalProperties, "sodReportConfigs")
 		o.AdditionalProperties = additionalProperties
 	}

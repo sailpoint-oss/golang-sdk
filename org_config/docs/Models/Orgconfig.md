@@ -17,13 +17,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrgName** | Pointer to **string** | The name of the org. | [optional] 
 **TimeZone** | Pointer to **string** | The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones | [optional] 
-**LcsChangeHonorsSourceEnableFeature** | Pointer to **bool** | Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org. | [optional] 
+**LcsChangeHonorsSourceEnableFeature** | Pointer to **bool** | Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org. | [optional] [default to false]
 **ArmCustomerId** | Pointer to **NullableString** | ARM Customer ID | [optional] 
 **ArmSapSystemIdMappings** | Pointer to **NullableString** | A list of IDN::sourceId to ARM::systemId mappings. | [optional] 
 **ArmAuth** | Pointer to **NullableString** | ARM authentication string | [optional] 
 **ArmDb** | Pointer to **NullableString** | ARM database name | [optional] 
 **ArmSsoUrl** | Pointer to **NullableString** | ARM SSO URL | [optional] 
-**IaiEnableCertificationRecommendations** | Pointer to **bool** | Flag to determine whether IAI Certification Recommendations are enabled for the current org | [optional] 
+**IaiEnableCertificationRecommendations** | Pointer to **bool** | Flag to determine whether IAI Certification Recommendations are enabled for the current org | [optional] [default to true]
+**AiAgentDeleteRequestEnabled** | Pointer to **NullableBool** | Org opt-in flag that enables AI Agent delete-at-source lifecycle requests for the current org. | [optional] [default to false]
 **SodReportConfigs** | Pointer to [**[]Reportconfigdto**](reportconfigdto) |  | [optional] 
 
 ## Methods
@@ -320,6 +321,41 @@ SetIaiEnableCertificationRecommendations sets IaiEnableCertificationRecommendati
 
 HasIaiEnableCertificationRecommendations returns a boolean if a field has been set.
 
+### GetAiAgentDeleteRequestEnabled
+
+`func (o *Orgconfig) GetAiAgentDeleteRequestEnabled() bool`
+
+GetAiAgentDeleteRequestEnabled returns the AiAgentDeleteRequestEnabled field if non-nil, zero value otherwise.
+
+### GetAiAgentDeleteRequestEnabledOk
+
+`func (o *Orgconfig) GetAiAgentDeleteRequestEnabledOk() (*bool, bool)`
+
+GetAiAgentDeleteRequestEnabledOk returns a tuple with the AiAgentDeleteRequestEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiAgentDeleteRequestEnabled
+
+`func (o *Orgconfig) SetAiAgentDeleteRequestEnabled(v bool)`
+
+SetAiAgentDeleteRequestEnabled sets AiAgentDeleteRequestEnabled field to given value.
+
+### HasAiAgentDeleteRequestEnabled
+
+`func (o *Orgconfig) HasAiAgentDeleteRequestEnabled() bool`
+
+HasAiAgentDeleteRequestEnabled returns a boolean if a field has been set.
+
+### SetAiAgentDeleteRequestEnabledNil
+
+`func (o *Orgconfig) SetAiAgentDeleteRequestEnabledNil(b bool)`
+
+ SetAiAgentDeleteRequestEnabledNil sets the value for AiAgentDeleteRequestEnabled to be an explicit nil
+
+### UnsetAiAgentDeleteRequestEnabled
+`func (o *Orgconfig) UnsetAiAgentDeleteRequestEnabled()`
+
+UnsetAiAgentDeleteRequestEnabled ensures that no value is present for AiAgentDeleteRequestEnabled, not even an explicit nil
 ### GetSodReportConfigs
 
 `func (o *Orgconfig) GetSodReportConfigs() []Reportconfigdto`
