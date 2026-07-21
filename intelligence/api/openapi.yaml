@@ -850,7 +850,7 @@ components:
         next:
           description: Absolute URL to the next accounts page; present only when more
             results exist.
-          example: https://tenant.example.api.cloud.sailpoint.com/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/accounts?limit=10&offset=10
+          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/accounts?limit=10&offset=10
           format: uri
           type: string
       required:
@@ -961,7 +961,7 @@ components:
         next:
           description: Absolute URL to the next rareAccess page; present only when
             more results exist.
-          example: https://tenant.example.api.cloud.sailpoint.com/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/outliers/rare-access?limit=10&offset=10
+          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/outliers/rare-access?limit=10&offset=10
           format: uri
           type: string
       required:
@@ -1013,7 +1013,7 @@ components:
         next:
           description: Absolute URL to the next access-items page; present only when
             more results exist.
-          example: https://tenant.example.api.cloud.sailpoint.com/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/access-history/access-items?limit=10&offset=10
+          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/access-items?limit=10&offset=10
           format: uri
           type: string
       required:
@@ -1068,7 +1068,7 @@ components:
         next:
           description: Absolute URL to the next certifications page; present only
             when more results exist.
-          example: https://tenant.example.api.cloud.sailpoint.com/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/access-history/certifications?limit=10&offset=10
+          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/certifications?limit=10&offset=10
           format: uri
           type: string
       required:

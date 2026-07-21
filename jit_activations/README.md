@@ -79,6 +79,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*JITActivationsAPI* | [**ListJitActivationHistoryForCurrentIdentityV1**](docs/JITActivationsAPI.md#listjitactivationhistoryforcurrentidentityv1) | **Get** /jit-activation-history/v1/current-identity | List JIT activation history (self)
+*JITActivationsAPI* | [**ListJitActivationHistoryV1**](docs/JITActivationsAPI.md#listjitactivationhistoryv1) | **Get** /jit-activation-history/v1 | List JIT activation history (admin)
 *JITActivationsAPI* | [**StartActivateWorkflowV1**](docs/JITActivationsAPI.md#startactivateworkflowv1) | **Post** /jit-activations/v1/activate | Start JIT activation workflow
 *JITActivationsAPI* | [**StartDeactivateWorkflowV1**](docs/JITActivationsAPI.md#startdeactivateworkflowv1) | **Post** /jit-activations/v1/deactivate | Deactivate JIT activation workflow
 *JITActivationsAPI* | [**StartExtendWorkflowV1**](docs/JITActivationsAPI.md#startextendworkflowv1) | **Post** /jit-activations/v1/extend | Extend JIT activation workflow
@@ -95,6 +97,13 @@ Class | Method | HTTP request | Description
  - [JitActivationDeactivateResponse](docs/JitActivationDeactivateResponse.md)
  - [JitActivationExtendRequest](docs/JitActivationExtendRequest.md)
  - [JitActivationExtendResponse](docs/JitActivationExtendResponse.md)
+ - [Jitactivationhistorydocument](docs/Jitactivationhistorydocument.md)
+ - [JitactivationhistorydocumentFrictionsInner](docs/JitactivationhistorydocumentFrictionsInner.md)
+ - [JitactivationhistorydocumentSummary](docs/JitactivationhistorydocumentSummary.md)
+ - [JitactivationhistorydocumentSummaryJustification](docs/JitactivationhistorydocumentSummaryJustification.md)
+ - [JitactivationhistorydocumentSummaryPolicyMatchesInner](docs/JitactivationhistorydocumentSummaryPolicyMatchesInner.md)
+ - [JitactivationhistorydocumentSummaryReauthentication](docs/JitactivationhistorydocumentSummaryReauthentication.md)
+ - [JitactivationhistorydocumentSummaryServiceNowTicket](docs/JitactivationhistorydocumentSummaryServiceNowTicket.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [StartActivateWorkflowV1401Response](docs/StartActivateWorkflowV1401Response.md)
  - [StartActivateWorkflowV1429Response](docs/StartActivateWorkflowV1429Response.md)

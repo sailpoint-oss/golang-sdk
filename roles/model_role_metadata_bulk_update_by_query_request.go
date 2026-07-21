@@ -18,7 +18,7 @@ import (
 // checks if the RoleMetadataBulkUpdateByQueryRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RoleMetadataBulkUpdateByQueryRequest{}
 
-// RoleMetadataBulkUpdateByQueryRequest Bulk update by query request of Role metadata. The maximum meta data values that one single role assigned can not exceed 25. Custom metadata need suit licensed. For more information about the query could refer to  [V3 API Perform Search](https://developer.sailpoint.com/docs/api/v3/search-post)
+// RoleMetadataBulkUpdateByQueryRequest Bulk update by query request of Role metadata. The maximum meta data values that one single role assigned can not exceed 25. Custom metadata need suit licensed. For more information about the query could refer to  [V3 API Perform Search](https://developer.sailpoint.com/docs/api/search-post-v-1)
 type RoleMetadataBulkUpdateByQueryRequest struct {
 	// query the identities to be updated
 	Query map[string]interface{} `json:"query"`

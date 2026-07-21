@@ -144,7 +144,7 @@ paths:
         \ or [\"authorization_code\" derived OAuth token](https://developer.sailpoint.com/idn/api/authentication#authorization-code-grant-flow).\n\
         \n>**Note: If you want to set an identity's source account password, you must\
         \ enable `PASSWORD` as one of the source's features. You can use the [PATCH\
-        \ Source endpoint](https://developer.sailpoint.com/docs/api/v3/update-source)\
+        \ Source endpoint](https://developer.sailpoint.com/docs/api/update-source-v-1)\
         \ to add the `PASSWORD` feature.**\n\nTo generate the encryptedPassword (RSA\
         \ encrypted using publicKey) for the request body, run the following command:\n\
         \n```bash\necho -n \"myPassword\" | openssl pkeyutl -encrypt -inkey public_key.pem\
@@ -157,7 +157,7 @@ paths:
         \ using the Virtual Appliance (VA), which has OpenSSL pre-installed and configured.\n\
         \nIf you are using a Windows machine, refer to this [guide](https://tecadmin.net/install-openssl-on-windows/)\
         \ for instructions on installing OpenSSL.\n\nYou can then use [Get Password\
-        \ Change Request Status](https://developer.sailpoint.com/idn/api/v3/get-password-change-status)\
+        \ Change Request Status](https://developer.sailpoint.com/docs/api/get-password-change-status-v-1)\
         \ to check the password change request status. To do so, you must provide\
         \ the `requestId` from your earlier request to set the password. \n"
       operationId: setPasswordV1

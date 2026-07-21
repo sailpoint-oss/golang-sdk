@@ -20,7 +20,7 @@ var _ MappedNullable = &AccessRequestDynamicApprover{}
 
 // AccessRequestDynamicApprover struct for AccessRequestDynamicApprover
 type AccessRequestDynamicApprover struct {
-	// The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request. 
+	// The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/docs/api/list-access-request-status-v-1) to get the status of the request. 
 	AccessRequestId string `json:"accessRequestId"`
 	// Identities access was requested for.
 	RequestedFor []AccessItemRequestedForDto `json:"requestedFor"`

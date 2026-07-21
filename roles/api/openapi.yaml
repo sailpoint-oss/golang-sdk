@@ -764,7 +764,7 @@ paths:
     post:
       description: "This endpoint initiates a bulk deletion of one or more roles.\n\
         When the request is successful, the endpoint returns the bulk delete's task\
-        \ result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status),\
+        \ result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/get-task-status-v-1),\
         \ which will return the task result's status and information. \nThis endpoint\
         \ can only bulk delete up to a limit of 50 roles per request. \nA user with\
         \ ROLE_SUBADMIN authority can only call this endpoint if all roles included\
@@ -3862,7 +3862,7 @@ components:
     RoleMetadataBulkUpdateByQueryRequest:
       description: |-
         Bulk update by query request of Role metadata. The maximum meta data values that one single role assigned can not exceed 25. Custom metadata need suit licensed.
-        For more information about the query could refer to  [V3 API Perform Search](https://developer.sailpoint.com/docs/api/v3/search-post)
+        For more information about the query could refer to  [V3 API Perform Search](https://developer.sailpoint.com/docs/api/search-post-v-1)
       example:
         query:
           query":

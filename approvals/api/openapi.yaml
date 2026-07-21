@@ -32,7 +32,7 @@ security:
 tags:
 - description: "Use this API to implement approval functionality. With this functionality\
     \ in place, you can get generic approvals and modify them. \n\nThe main advantages\
-    \ this API has vs [Access Request Approvals](https://developer.sailpoint.com/docs/api/v2025/access-request-approvals)\
+    \ this API has vs [Access Request Approvals](https://developer.sailpoint.com/docs/api/access-request-approvals)\
     \ are that you can use it to get generic approvals individually or in batches\
     \ and make changes to those approvals. \n"
   name: Approvals

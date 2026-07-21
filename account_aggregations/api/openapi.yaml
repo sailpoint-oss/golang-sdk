@@ -42,7 +42,7 @@ tags:
 
     Refer to [Loading Account Data](https://documentation.sailpoint.com/saas/help/accounts/loading_data.html) for more information about account aggregations.
 
-    If you are looking for the endpoint for account aggregations in a source, [click here](https://developer.sailpoint.com/docs/api/v2025/import-accounts)
+    If you are looking for the endpoint for account aggregations in a source, [click here](https://developer.sailpoint.com/docs/api/import-accounts-v-1)
   name: Account Aggregations
 paths:
   /account-aggregations/v1/{id}/status:

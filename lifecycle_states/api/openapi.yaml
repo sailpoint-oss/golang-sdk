@@ -1345,7 +1345,7 @@ components:
         accountActivityId:
           description: "ID of the IdentityRequest object that is generated when the\
             \ workflow launches. To follow the IdentityRequest, you can provide this\
-            \ ID with a [Get Account Activity request](https://developer.sailpoint.com/docs/api/v3/get-account-activity/).\
+            \ ID with a [Get Account Activity request](https://developer.sailpoint.com/docs/api/get-account-activity-v-1).\
             \ The response will contain relevant information about the IdentityRequest,\
             \ such as its status."
           example: 2c9180837ab5b716017ab7c6c9ef1e20

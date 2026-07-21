@@ -32,7 +32,7 @@ security:
 tags:
 - description: "Use this API to implement requestable object functionality. \nWith\
     \ this functionality in place, administrators can determine which access items\
-    \ can be requested with the [Access Request APIs](https://developer.sailpoint.com/docs/api/v2025/access-requests/),\
+    \ can be requested with the [Access Request APIs](https://developer.sailpoint.com/docs/api/access-requests),\
     \ along with their statuses. \nThis can be helpful for administrators who are\
     \ implementing and customizing access request functionality as a way of checking\
     \ which items are requestable as they are created, assigned, and made available.\n"
@@ -41,8 +41,8 @@ paths:
   /requestable-objects/v1:
     get:
       description: |-
-        Get a list of acccess items that can be requested through the [Access Request endpoints](https://developer.sailpoint.com/docs/api/v2024/access-requests). Access items are marked with `AVAILABLE`, `PENDING` or `ASSIGNED` with respect to the identity provided using `identity-id` query parameter.
-        This endpoint only lists roles and access profiles. For gathering requestable entitlements, the [Entitlements List API](https://developer.sailpoint.com/docs/api/v2025/list-entitlements) can be used with the segmented-for-identity parameter.
+        Get a list of acccess items that can be requested through the [Access Request endpoints](https://developer.sailpoint.com/docs/api/access-requests). Access items are marked with `AVAILABLE`, `PENDING` or `ASSIGNED` with respect to the identity provided using `identity-id` query parameter.
+        This endpoint only lists roles and access profiles. For gathering requestable entitlements, the [Entitlements List API](https://developer.sailpoint.com/docs/api/list-entitlements-v-1) can be used with the segmented-for-identity parameter.
         Any authenticated token can call this endpoint to see their requestable access items.
       operationId: listRequestableObjectsV1
       parameters:

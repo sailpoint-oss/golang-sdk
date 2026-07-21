@@ -30,7 +30,7 @@ security:
 - userAuth:
   - sp:scopes:all
 tags:
-- description: "Use this API in conjunction with [Public Identites Config](https://developer.sailpoint.com/docs/api/v2025/public-identities-config/)\
+- description: "Use this API in conjunction with [Public Identites Config](https://developer.sailpoint.com/docs/api/public-identities-config)\
     \ to enable non-administrators to view identities' publicly visible attributes.\
     \ \nWith this functionality in place, non-administrators can view identity attributes\
     \ other than the default attributes (email, lifecycle state, and manager), depending\

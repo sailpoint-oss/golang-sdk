@@ -19,7 +19,7 @@ var _ MappedNullable = &SetLifecycleStateV1200Response{}
 
 // SetLifecycleStateV1200Response struct for SetLifecycleStateV1200Response
 type SetLifecycleStateV1200Response struct {
-	// ID of the IdentityRequest object that is generated when the workflow launches. To follow the IdentityRequest, you can provide this ID with a [Get Account Activity request](https://developer.sailpoint.com/docs/api/v3/get-account-activity/). The response will contain relevant information about the IdentityRequest, such as its status.
+	// ID of the IdentityRequest object that is generated when the workflow launches. To follow the IdentityRequest, you can provide this ID with a [Get Account Activity request](https://developer.sailpoint.com/docs/api/get-account-activity-v-1). The response will contain relevant information about the IdentityRequest, such as its status.
 	AccountActivityId *string `json:"accountActivityId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

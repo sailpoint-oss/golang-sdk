@@ -3994,7 +3994,7 @@ paths:
         \ be updated:\n\n- id\n- name\n- created\n- modified\n\n\nTo switch an account\
         \ attribute to a group entitlement, you need to have the following in place:\n\
         \n- `isEntitlement: true`\n- Must define a schema for the group and [add it\
-        \ to the source](https://developer.sailpoint.com/idn/api/v3/create-source-schema)\
+        \ to the source](https://developer.sailpoint.com/docs/api/create-source-schema-v-1)\
         \ before updating the `isGroup` flag.  For example, here is the `group` account\
         \ attribute referencing a schema that defines the group:\n```json\n{\n   \
         \ \"name\": \"groups\",\n    \"type\": \"STRING\",\n    \"schema\": {\n  \

@@ -718,7 +718,7 @@ paths:
       tags:
       - Machine Accounts
       x-deprecated-description: |
-        This API has been deprecated, please refer to [Retrieve all subtypes](https://developer.sailpoint.com/docs/api/v2026/list-source-subtypes) for the latest API.
+        This API has been deprecated, please refer to [Retrieve all subtypes](https://developer.sailpoint.com/docs/api/list-source-subtypes-v-1) for the latest API.
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - SOURCE_ADMIN
@@ -844,7 +844,7 @@ paths:
       tags:
       - Machine Accounts
       x-deprecated-description: |
-        This API has been deprecated, please refer to [Create subtype](https://developer.sailpoint.com/docs/api/v2026/create-source-subtype) for the latest API.
+        This API has been deprecated, please refer to [Create subtype](https://developer.sailpoint.com/docs/api/create-source-subtype-v-1) for the latest API.
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - SOURCE_ADMIN
@@ -953,7 +953,7 @@ paths:
       tags:
       - Machine Accounts
       x-deprecated-description: |
-        This API has been deprecated, please refer to [Delete subtype by ID](https://developer.sailpoint.com/docs/api/v2026/delete-machine-account-subtype) for the latest API.
+        This API has been deprecated, please refer to [Delete subtype by ID](https://developer.sailpoint.com/docs/api/delete-machine-account-subtype-v-1) for the latest API.
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - SOURCE_ADMIN
@@ -1078,7 +1078,7 @@ paths:
       tags:
       - Machine Accounts
       x-deprecated-description: |
-        This API has been deprecated, please refer to [Retrieve all subtypes](https://developer.sailpoint.com/docs/api/v2026/list-source-subtypes) for the latest API.
+        This API has been deprecated, please refer to [Retrieve all subtypes](https://developer.sailpoint.com/docs/api/list-source-subtypes-v-1) for the latest API.
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - SOURCE_ADMIN
@@ -1219,7 +1219,7 @@ paths:
       tags:
       - Machine Accounts
       x-deprecated-description: |
-        This API has been deprecated, please refer to [Patch subtype by ID](https://developer.sailpoint.com/docs/api/v2026/patch-machine-account-subtype) for the latest API.
+        This API has been deprecated, please refer to [Patch subtype by ID](https://developer.sailpoint.com/docs/api/patch-machine-account-subtype-v-1) for the latest API.
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - SOURCE_ADMIN
@@ -1334,7 +1334,7 @@ paths:
       tags:
       - Machine Accounts
       x-deprecated-description: |
-        This API has been deprecated, please refer to [Get subtype by ID](https://developer.sailpoint.com/docs/api/v2026/get-source-subtype-by-id) for the latest API.
+        This API has been deprecated, please refer to [Get subtype by ID](https://developer.sailpoint.com/docs/api/get-source-subtype-by-id-v-1) for the latest API.
       x-sailpoint-userLevels:
       - ORG_ADMIN
       - SOURCE_ADMIN

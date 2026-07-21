@@ -38,7 +38,7 @@ tags:
     \ opens the possibility to configure Identity Security Cloud to run the saved\
     \ queries on a schedule, which is essential to detecting user information and\
     \ access changes throughout an organization's tenant and across all its sources.\
-    \ \nRefer to [Scheduled Search](https://developer.sailpoint.com/docs/api/v2025/scheduled-search/)\
+    \ \nRefer to [Scheduled Search](https://developer.sailpoint.com/docs/api/scheduled-search)\
     \ for more information about running saved searches on a schedule. \n\nIn Identity\
     \ Security Cloud, users can save searches under a name, and then they can access\
     \ that saved search and run it again when they want. \n\nRefer to [Managing Saved\

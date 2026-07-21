@@ -22,6 +22,30 @@ func Test_jit_activations_JITActivationsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test JITActivationsAPIService ListJitActivationHistoryForCurrentIdentityV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.JITActivationsAPI.ListJitActivationHistoryForCurrentIdentityV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test JITActivationsAPIService ListJitActivationHistoryV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.JITActivationsAPI.ListJitActivationHistoryV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test JITActivationsAPIService StartActivateWorkflowV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
