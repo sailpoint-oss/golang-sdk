@@ -422,7 +422,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Add the user agent to the request.
-	userAgent := "SailPoint-SDK-Go/3.1.3"
+	userAgent := "SailPoint-SDK-Go/3.1.4"
 	if c.cfg.UserAgent != "" {
 		userAgent += " " + c.cfg.UserAgent
 	}
