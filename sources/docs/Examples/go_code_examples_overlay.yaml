@@ -1028,15 +1028,14 @@
 
         func main() {
           id := `8c190e6787aa4ed9a90bd9d5344523fb` // string | The Source id # string | The Source id
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-          //resp, r, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          resp, r, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfigV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfigV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceEntitlementRequestConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2595,7 +2594,6 @@
 
         func main() {
           id := `8c190e6787aa4ed9a90bd9d5344523fb` // string | The Source id # string | The Source id
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            sourceentitlementrequestconfigJson := []byte(`{
           "accessRequestConfig" : {
             "denialCommentRequired" : false,
@@ -2636,8 +2634,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
-          //resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
+          resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
+          //resp, r, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceEntitlementRequestConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

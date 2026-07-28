@@ -22,6 +22,17 @@ Method | HTTP request | Description
 
 
 ## create-machine-account-mappings-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Create machine account mappings
 Creates Machine Account Mappings for both identities and accounts for a source.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -44,6 +55,7 @@ Other parameters are passed through a pointer to a apiCreateMachineAccountMappin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **attributeMappings** | [**AttributeMappings**](../models/attribute-mappings) |  | 
 
 ### Return type
@@ -71,6 +83,7 @@ import (
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     attributemappingsJson := []byte(`{
           "transformDefinition" : {
             "attributes" : {
@@ -102,8 +115,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).AttributeMappings(attributeMappings).Execute()
-	  //resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).AttributeMappings(attributeMappings).Execute()
+    resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).AttributeMappings(attributeMappings).Execute()
+	  //resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).AttributeMappings(attributeMappings).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.CreateMachineAccountMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -116,6 +129,17 @@ func main() {
 [[Back to top]](#)
 
 ## delete-machine-account-mappings-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Delete source's machine account mappings
 Use this API to remove machine account attribute mappings for a Source. 
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -138,6 +162,7 @@ Other parameters are passed through a pointer to a apiDeleteMachineAccountMappin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -164,13 +189,14 @@ import (
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | source ID. # string | source ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).Execute()
-	  //r, err := apiClient.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).Execute()
+    r, err := apiClient.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -182,6 +208,17 @@ func main() {
 [[Back to top]](#)
 
 ## list-machine-account-mappings-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Machine account mapping for source
 Retrieves Machine account mappings for a specified source using Source ID.
 
@@ -203,6 +240,7 @@ Other parameters are passed through a pointer to a apiListMachineAccountMappings
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
 
@@ -231,6 +269,7 @@ import (
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID # string | Source ID
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
@@ -238,8 +277,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).Execute()
-	  //resp, r, err := apiClient.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.ListMachineAccountMappingsV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

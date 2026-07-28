@@ -19,6 +19,17 @@ Method | HTTP request | Description
 
 
 ## send-declassify-machine-account-from-source-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Declassify source's all accounts
 Use this API to declassify all the accounts from a source.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -41,6 +52,7 @@ Other parameters are passed through a pointer to a apiSendDeclassifyMachineAccou
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -67,13 +79,14 @@ import (
 
 func main() {
     sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.DeclassifySourceAPI.SendDeclassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
-	  //r, err := apiClient.DeclassifySourceAPI.SendDeclassifyMachineAccountFromSourceV1(context.Background(), sourceId).Execute()
+    r, err := apiClient.DeclassifySourceAPI.SendDeclassifyMachineAccountFromSourceV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.DeclassifySourceAPI.SendDeclassifyMachineAccountFromSourceV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DeclassifySourceAPI.SendDeclassifyMachineAccountFromSourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -27,7 +27,14 @@ type ApiCreateMachineAccountMappingsV1Request struct {
 	ctx context.Context
 	ApiService *MachineAccountMappingsAPIService
 	sourceId string
+	xSailPointExperimental *string
 	attributeMappings *AttributeMappings
+}
+
+// Use this header to enable this experimental API.
+func (r ApiCreateMachineAccountMappingsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiCreateMachineAccountMappingsV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiCreateMachineAccountMappingsV1Request) AttributeMappings(attributeMappings AttributeMappings) ApiCreateMachineAccountMappingsV1Request {
@@ -78,6 +85,21 @@ func (a *MachineAccountMappingsAPIService) CreateMachineAccountMappingsV1Execute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.attributeMappings == nil {
 		return localVarReturnValue, nil, reportError("attributeMappings is required and must be specified")
 	}
@@ -99,6 +121,7 @@ func (a *MachineAccountMappingsAPIService) CreateMachineAccountMappingsV1Execute
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.attributeMappings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -196,6 +219,13 @@ type ApiDeleteMachineAccountMappingsV1Request struct {
 	ctx context.Context
 	ApiService *MachineAccountMappingsAPIService
 	sourceId string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiDeleteMachineAccountMappingsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiDeleteMachineAccountMappingsV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiDeleteMachineAccountMappingsV1Request) Execute() (*http.Response, error) {
@@ -239,6 +269,15 @@ func (a *MachineAccountMappingsAPIService) DeleteMachineAccountMappingsV1Execute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -257,6 +296,7 @@ func (a *MachineAccountMappingsAPIService) DeleteMachineAccountMappingsV1Execute
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -354,8 +394,15 @@ type ApiListMachineAccountMappingsV1Request struct {
 	ctx context.Context
 	ApiService *MachineAccountMappingsAPIService
 	sourceId string
+	xSailPointExperimental *string
 	limit *int32
 	offset *int32
+}
+
+// Use this header to enable this experimental API.
+func (r ApiListMachineAccountMappingsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiListMachineAccountMappingsV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -412,6 +459,15 @@ func (a *MachineAccountMappingsAPIService) ListMachineAccountMappingsV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
@@ -442,6 +498,7 @@ func (a *MachineAccountMappingsAPIService) ListMachineAccountMappingsV1Execute(r
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

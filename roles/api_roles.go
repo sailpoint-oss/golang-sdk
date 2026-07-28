@@ -1192,18 +1192,11 @@ type ApiGetRoleEntitlementsV1Request struct {
 	ctx context.Context
 	ApiService *RolesAPIService
 	id string
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
 	filters *string
 	sorters *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetRoleEntitlementsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetRoleEntitlementsV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1278,15 +1271,6 @@ func (a *RolesAPIService) GetRoleEntitlementsV1Execute(r ApiGetRoleEntitlementsV
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
@@ -1329,7 +1313,6 @@ func (a *RolesAPIService) GetRoleEntitlementsV1Execute(r ApiGetRoleEntitlementsV
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

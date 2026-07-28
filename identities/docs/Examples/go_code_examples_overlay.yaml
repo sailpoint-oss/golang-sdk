@@ -17,15 +17,14 @@
 
         func main() {
           id := `ef38f94347e94562b5bb8424a56397d8` // string | Identity Id # string | Identity Id
-          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-          //r, err := apiClient.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+          r, err := apiClient.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).Execute()
+          //r, err := apiClient.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.DeleteIdentityV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

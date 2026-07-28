@@ -45,17 +45,6 @@ Method | HTTP request | Description
 
 
 ## delete-identity-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Delete identity
 The API returns successful response if the requested identity was deleted.
 
@@ -77,7 +66,6 @@ Other parameters are passed through a pointer to a apiDeleteIdentityV1Request st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -104,14 +92,13 @@ import (
 
 func main() {
     id := `ef38f94347e94562b5bb8424a56397d8` // string | Identity Id # string | Identity Id
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).Execute()
+	  //r, err := apiClient.IdentitiesAPI.DeleteIdentityV1(context.Background(), id).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.DeleteIdentityV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

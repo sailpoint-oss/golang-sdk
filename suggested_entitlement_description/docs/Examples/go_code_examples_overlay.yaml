@@ -16,6 +16,7 @@
         )
 
         func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            bulkapproveentitlementrecommendationrequestJson := []byte(`{
           "items" : [ {
             "id" : "79db50d4-723c-4aa0-a824-83c2205d82d1",
@@ -39,8 +40,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).BulkApproveEntitlementRecommendationRequest(bulkApproveEntitlementRecommendationRequest).Execute()
-          //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).BulkApproveEntitlementRecommendationRequest(bulkApproveEntitlementRecommendationRequest).Execute()
+          resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).BulkApproveEntitlementRecommendationRequest(bulkApproveEntitlementRecommendationRequest).Execute()
+          //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).BulkApproveEntitlementRecommendationRequest(bulkApproveEntitlementRecommendationRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ApproveBulkEntitlementRecommendationsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,6 +216,7 @@
         )
 
         func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
 
@@ -223,8 +225,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1(context.Background()).Execute()
-          //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1(context.Background()).Offset(offset).Limit(limit).Execute()
+          resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ListPendingEntitlementRecommendationApprovalsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -250,6 +252,7 @@
         )
 
         func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
 
@@ -258,8 +261,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1(context.Background()).Execute()
-          //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1(context.Background()).Offset(offset).Limit(limit).Execute()
+          resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Offset(offset).Limit(limit).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ListPrivilegedEntitlementRecommendationsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -327,6 +330,7 @@
 
         func main() {
           id := `79db50d4-723c-4aa0-a824-83c2205d82d1` // string | The unique identifier of the entitlement recommendation to update. # string | The unique identifier of the entitlement recommendation to update.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           jsonpatchoperationJson := []byte(``) // []JsonPatchOperation | The patch operations to apply to the entitlement recommendation record.
 
           
@@ -340,8 +344,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
-          //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+          resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.PatchEntitlementRecommendationV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -408,6 +412,7 @@
         )
 
         func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            entitlementrecommendationassignrequestJson := []byte(`{
           "assignee" : {
             "type" : "IDENTITY",
@@ -427,8 +432,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).EntitlementRecommendationAssignRequest(entitlementRecommendationAssignRequest).Execute()
-          //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).EntitlementRecommendationAssignRequest(entitlementRecommendationAssignRequest).Execute()
+          resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).XSailPointExperimental(xSailPointExperimental).EntitlementRecommendationAssignRequest(entitlementRecommendationAssignRequest).Execute()
+          //resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1(context.Background()).XSailPointExperimental(xSailPointExperimental).EntitlementRecommendationAssignRequest(entitlementRecommendationAssignRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.SubmitEntitlementRecommendationsAssignmentV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

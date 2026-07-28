@@ -46,6 +46,17 @@ paths:
 
         The response is returned with HTTP 202 Accepted while the workflow initializes.
       operationId: startActivateWorkflowV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:
@@ -135,6 +146,17 @@ paths:
 
         The response is returned with HTTP 202 Accepted after the signal is sent.
       operationId: startDeactivateWorkflowV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:
@@ -243,6 +265,17 @@ paths:
 
         The response is returned with HTTP 202 Accepted after the signal is sent.
       operationId: startExtendWorkflowV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:

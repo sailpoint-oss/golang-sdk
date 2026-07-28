@@ -27,7 +27,14 @@ type ApiSendClassifyMachineAccountV1Request struct {
 	ctx context.Context
 	ApiService *MachineAccountClassifyAPIService
 	id string
+	xSailPointExperimental *string
 	classificationMode *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiSendClassifyMachineAccountV1Request) XSailPointExperimental(xSailPointExperimental string) ApiSendClassifyMachineAccountV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human.
@@ -79,6 +86,15 @@ func (a *MachineAccountClassifyAPIService) SendClassifyMachineAccountV1Execute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	if r.classificationMode != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "classificationMode", r.classificationMode, "form", "")
@@ -103,6 +119,7 @@ func (a *MachineAccountClassifyAPIService) SendClassifyMachineAccountV1Execute(r
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

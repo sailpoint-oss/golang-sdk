@@ -17,6 +17,7 @@
 
         func main() {
           sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            attributemappingsJson := []byte(`{
           "transformDefinition" : {
             "attributes" : {
@@ -50,8 +51,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).AttributeMappings(attributeMappings).Execute()
-          //resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).AttributeMappings(attributeMappings).Execute()
+          resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).AttributeMappings(attributeMappings).Execute()
+          //resp, r, err := apiClient.MachineAccountMappingsAPI.CreateMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).AttributeMappings(attributeMappings).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.CreateMachineAccountMappingsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -78,14 +79,15 @@
 
         func main() {
           sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | source ID. # string | source ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).Execute()
-          //r, err := apiClient.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).Execute()
+          r, err := apiClient.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.DeleteMachineAccountMappingsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -110,6 +112,7 @@
 
         func main() {
           sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID # string | Source ID
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
@@ -118,8 +121,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).Execute()
-          //resp, r, err := apiClient.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).Limit(limit).Offset(offset).Execute()
+          resp, r, err := apiClient.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineAccountMappingsAPI.ListMachineAccountMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineAccountMappingsAPI.ListMachineAccountMappingsV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

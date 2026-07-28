@@ -49,6 +49,16 @@ paths:
           type: string
         style: simple
         x-sailpoint-resource-operation-id: listSourcesV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       responses:
         "200":
           description: No content - indicates the request was successful but there
@@ -183,6 +193,16 @@ paths:
           type: string
         style: simple
         x-sailpoint-resource-operation-id: listSourcesV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -296,6 +316,16 @@ paths:
           type: string
         style: simple
         x-sailpoint-resource-operation-id: listSourcesV1
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:

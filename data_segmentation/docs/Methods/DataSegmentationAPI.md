@@ -28,6 +28,17 @@ Method | HTTP request | Description
 
 
 ## create-data-segment-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Create segment
 This API creates a segment. 
 >**Note:** Segment definitions may take time to propagate to all identities.
@@ -45,6 +56,7 @@ Other parameters are passed through a pointer to a apiCreateDataSegmentV1Request
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **dataSegment** | [**DataSegment**](../models/data-segment) |  | 
 
 ### Return type
@@ -71,6 +83,7 @@ import (
 )
 
 func main() {
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     datasegmentJson := []byte(`{
           "memberFilter" : {
             "expression" : {
@@ -118,8 +131,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataSegmentationAPI.CreateDataSegmentV1(context.Background()).DataSegment(dataSegment).Execute()
-	  //resp, r, err := apiClient.DataSegmentationAPI.CreateDataSegmentV1(context.Background()).DataSegment(dataSegment).Execute()
+    resp, r, err := apiClient.DataSegmentationAPI.CreateDataSegmentV1(context.Background()).XSailPointExperimental(xSailPointExperimental).DataSegment(dataSegment).Execute()
+	  //resp, r, err := apiClient.DataSegmentationAPI.CreateDataSegmentV1(context.Background()).XSailPointExperimental(xSailPointExperimental).DataSegment(dataSegment).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `DataSegmentationAPI.CreateDataSegmentV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

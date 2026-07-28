@@ -26,7 +26,14 @@ type DataSegmentationAPIService service
 type ApiCreateDataSegmentV1Request struct {
 	ctx context.Context
 	ApiService *DataSegmentationAPIService
+	xSailPointExperimental *string
 	dataSegment *DataSegment
+}
+
+// Use this header to enable this experimental API.
+func (r ApiCreateDataSegmentV1Request) XSailPointExperimental(xSailPointExperimental string) ApiCreateDataSegmentV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiCreateDataSegmentV1Request) DataSegment(dataSegment DataSegment) ApiCreateDataSegmentV1Request {
@@ -74,6 +81,21 @@ func (a *DataSegmentationAPIService) CreateDataSegmentV1Execute(r ApiCreateDataS
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.dataSegment == nil {
 		return localVarReturnValue, nil, reportError("dataSegment is required and must be specified")
 	}
@@ -95,6 +117,7 @@ func (a *DataSegmentationAPIService) CreateDataSegmentV1Execute(r ApiCreateDataS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.dataSegment
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

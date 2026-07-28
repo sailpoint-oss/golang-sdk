@@ -481,7 +481,14 @@ func (a *JITActivationsAPIService) ListJitActivationHistoryV1Execute(r ApiListJi
 type ApiStartActivateWorkflowV1Request struct {
 	ctx context.Context
 	ApiService *JITActivationsAPIService
+	xSailPointExperimental *string
 	jitActivationActivateRequest *JitActivationActivateRequest
+}
+
+// Use this header to enable this experimental API.
+func (r ApiStartActivateWorkflowV1Request) XSailPointExperimental(xSailPointExperimental string) ApiStartActivateWorkflowV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiStartActivateWorkflowV1Request) JitActivationActivateRequest(jitActivationActivateRequest JitActivationActivateRequest) ApiStartActivateWorkflowV1Request {
@@ -532,6 +539,21 @@ func (a *JITActivationsAPIService) StartActivateWorkflowV1Execute(r ApiStartActi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.jitActivationActivateRequest == nil {
 		return localVarReturnValue, nil, reportError("jitActivationActivateRequest is required and must be specified")
 	}
@@ -553,6 +575,7 @@ func (a *JITActivationsAPIService) StartActivateWorkflowV1Execute(r ApiStartActi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.jitActivationActivateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -649,7 +672,14 @@ func (a *JITActivationsAPIService) StartActivateWorkflowV1Execute(r ApiStartActi
 type ApiStartDeactivateWorkflowV1Request struct {
 	ctx context.Context
 	ApiService *JITActivationsAPIService
+	xSailPointExperimental *string
 	jitActivationDeactivateRequest *JitActivationDeactivateRequest
+}
+
+// Use this header to enable this experimental API.
+func (r ApiStartDeactivateWorkflowV1Request) XSailPointExperimental(xSailPointExperimental string) ApiStartDeactivateWorkflowV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiStartDeactivateWorkflowV1Request) JitActivationDeactivateRequest(jitActivationDeactivateRequest JitActivationDeactivateRequest) ApiStartDeactivateWorkflowV1Request {
@@ -702,6 +732,21 @@ func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.jitActivationDeactivateRequest == nil {
 		return localVarReturnValue, nil, reportError("jitActivationDeactivateRequest is required and must be specified")
 	}
@@ -723,6 +768,7 @@ func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.jitActivationDeactivateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -830,7 +876,14 @@ func (a *JITActivationsAPIService) StartDeactivateWorkflowV1Execute(r ApiStartDe
 type ApiStartExtendWorkflowV1Request struct {
 	ctx context.Context
 	ApiService *JITActivationsAPIService
+	xSailPointExperimental *string
 	jitActivationExtendRequest *JitActivationExtendRequest
+}
+
+// Use this header to enable this experimental API.
+func (r ApiStartExtendWorkflowV1Request) XSailPointExperimental(xSailPointExperimental string) ApiStartExtendWorkflowV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiStartExtendWorkflowV1Request) JitActivationExtendRequest(jitActivationExtendRequest JitActivationExtendRequest) ApiStartExtendWorkflowV1Request {
@@ -884,6 +937,21 @@ func (a *JITActivationsAPIService) StartExtendWorkflowV1Execute(r ApiStartExtend
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.jitActivationExtendRequest == nil {
 		return localVarReturnValue, nil, reportError("jitActivationExtendRequest is required and must be specified")
 	}
@@ -905,6 +973,7 @@ func (a *JITActivationsAPIService) StartExtendWorkflowV1Execute(r ApiStartExtend
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.jitActivationExtendRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

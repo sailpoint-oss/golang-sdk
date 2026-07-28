@@ -713,17 +713,6 @@ func main() {
 [[Back to top]](#)
 
 ## update-access-profiles-in-bulk-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Update access profile(s) requestable field.
 This API initiates a bulk update of field requestable for one or more Access Profiles.
 
@@ -746,7 +735,6 @@ Other parameters are passed through a pointer to a apiUpdateAccessProfilesInBulk
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **accessProfileBulkUpdateRequestInner** | [**[]AccessProfileBulkUpdateRequestInner**](../models/access-profile-bulk-update-request-inner) |  | 
 
 ### Return type
@@ -773,7 +761,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     accessprofilebulkupdaterequestinnerJson := []byte(`[{"id":"464ae7bf-791e-49fd-b746-06a2e4a89635","requestable":false}]`) // []AccessProfileBulkUpdateRequestInner | 
 
     var accessProfileBulkUpdateRequestInner []access_profiles.AccessProfileBulkUpdateRequestInner
@@ -785,8 +772,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessProfileBulkUpdateRequestInner(accessProfileBulkUpdateRequestInner).Execute()
-	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).XSailPointExperimental(xSailPointExperimental).AccessProfileBulkUpdateRequestInner(accessProfileBulkUpdateRequestInner).Execute()
+    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).AccessProfileBulkUpdateRequestInner(accessProfileBulkUpdateRequestInner).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).AccessProfileBulkUpdateRequestInner(accessProfileBulkUpdateRequestInner).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesInBulkV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

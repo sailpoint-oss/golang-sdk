@@ -1021,17 +1021,6 @@ paths:
         >  If any of the indicated Access Profiles is not does not exists in Organization,then those Access Profiles will be added in **notFound** list of the response. Access Profiles marked as **notFound** will not be updated.
          A SOURCE_SUBADMIN may only use this API to update Access Profiles which are associated with Sources they are able to administer.
       operationId: updateAccessProfilesInBulkV1
-      parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       requestBody:
         content:
           application/json:

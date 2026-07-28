@@ -27,6 +27,13 @@ type ApiGetJitActivationConfigV1Request struct {
 	ctx context.Context
 	ApiService *JITAccessAPIService
 	configType string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetJitActivationConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetJitActivationConfigV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiGetJitActivationConfigV1Request) Execute() (*JITActivationConfigResponse, *http.Response, error) {
@@ -76,6 +83,15 @@ func (a *JITAccessAPIService) GetJitActivationConfigV1Execute(r ApiGetJitActivat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -94,6 +110,7 @@ func (a *JITAccessAPIService) GetJitActivationConfigV1Execute(r ApiGetJitActivat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -200,7 +217,14 @@ type ApiPatchJitActivationConfigV1Request struct {
 	ctx context.Context
 	ApiService *JITAccessAPIService
 	configType string
+	xSailPointExperimental *string
 	jitAccessOperationRequest *[]JitAccessOperationRequest
+}
+
+// Use this header to enable this experimental API.
+func (r ApiPatchJitActivationConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiPatchJitActivationConfigV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiPatchJitActivationConfigV1Request) JitAccessOperationRequest(jitAccessOperationRequest []JitAccessOperationRequest) ApiPatchJitActivationConfigV1Request {
@@ -255,6 +279,21 @@ func (a *JITAccessAPIService) PatchJitActivationConfigV1Execute(r ApiPatchJitAct
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.jitAccessOperationRequest == nil {
 		return localVarReturnValue, nil, reportError("jitAccessOperationRequest is required and must be specified")
 	}
@@ -279,6 +318,7 @@ func (a *JITAccessAPIService) PatchJitActivationConfigV1Execute(r ApiPatchJitAct
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.jitAccessOperationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

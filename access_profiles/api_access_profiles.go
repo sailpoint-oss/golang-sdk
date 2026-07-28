@@ -1331,14 +1331,7 @@ func (a *AccessProfilesAPIService) PatchAccessProfileV1Execute(r ApiPatchAccessP
 type ApiUpdateAccessProfilesInBulkV1Request struct {
 	ctx context.Context
 	ApiService *AccessProfilesAPIService
-	xSailPointExperimental *string
 	accessProfileBulkUpdateRequestInner *[]AccessProfileBulkUpdateRequestInner
-}
-
-// Use this header to enable this experimental API.
-func (r ApiUpdateAccessProfilesInBulkV1Request) XSailPointExperimental(xSailPointExperimental string) ApiUpdateAccessProfilesInBulkV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiUpdateAccessProfilesInBulkV1Request) AccessProfileBulkUpdateRequestInner(accessProfileBulkUpdateRequestInner []AccessProfileBulkUpdateRequestInner) ApiUpdateAccessProfilesInBulkV1Request {
@@ -1391,21 +1384,6 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkV1Execute(r ApiUpda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.accessProfileBulkUpdateRequestInner == nil {
 		return localVarReturnValue, nil, reportError("accessProfileBulkUpdateRequestInner is required and must be specified")
 	}
@@ -1427,7 +1405,6 @@ func (a *AccessProfilesAPIService) UpdateAccessProfilesInBulkV1Execute(r ApiUpda
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.accessProfileBulkUpdateRequestInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

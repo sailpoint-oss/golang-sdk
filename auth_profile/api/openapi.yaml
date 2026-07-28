@@ -43,17 +43,6 @@ paths:
     get:
       description: This API returns a list of auth profiles.
       operationId: getProfileConfigListV1
-      parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       responses:
         "200":
           content:
@@ -130,16 +119,6 @@ paths:
       description: This API returns auth profile information.
       operationId: getProfileConfigV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: ID of the Auth Profile to patch.
         explode: false
         in: path
@@ -253,16 +232,6 @@ paths:
           type: string
         style: simple
         x-sailpoint-resource-operation-id: getProfileConfigListV1
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       requestBody:
         content:
           application/json-patch+json:

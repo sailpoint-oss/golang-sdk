@@ -189,16 +189,9 @@ func (a *OrgConfigAPIService) GetOrgConfigV1Execute(r ApiGetOrgConfigV1Request) 
 type ApiGetValidTimeZonesV1Request struct {
 	ctx context.Context
 	ApiService *OrgConfigAPIService
-	xSailPointExperimental *string
 	limit *int32
 	offset *int32
 	count *bool
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetValidTimeZonesV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetValidTimeZonesV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 // Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -258,15 +251,6 @@ func (a *OrgConfigAPIService) GetValidTimeZonesV1Execute(r ApiGetValidTimeZonesV
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
@@ -303,7 +287,6 @@ func (a *OrgConfigAPIService) GetValidTimeZonesV1Execute(r ApiGetValidTimeZonesV
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -94,6 +94,7 @@
         )
 
         func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            jitactivationactivaterequestJson := []byte(`{
           "activationPeriodMins" : 120,
           "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
@@ -110,8 +111,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).JitActivationActivateRequest(jitActivationActivateRequest).Execute()
-          //resp, r, err := apiClient.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).JitActivationActivateRequest(jitActivationActivateRequest).Execute()
+          resp, r, err := apiClient.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).XSailPointExperimental(xSailPointExperimental).JitActivationActivateRequest(jitActivationActivateRequest).Execute()
+          //resp, r, err := apiClient.JITActivationsAPI.StartActivateWorkflowV1(context.Background()).XSailPointExperimental(xSailPointExperimental).JitActivationActivateRequest(jitActivationActivateRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartActivateWorkflowV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,6 +138,7 @@
         )
 
         func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            jitactivationdeactivaterequestJson := []byte(`{
           "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
         }`) // JitActivationDeactivateRequest | 
@@ -152,8 +154,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).JitActivationDeactivateRequest(jitActivationDeactivateRequest).Execute()
-          //resp, r, err := apiClient.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).JitActivationDeactivateRequest(jitActivationDeactivateRequest).Execute()
+          resp, r, err := apiClient.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).XSailPointExperimental(xSailPointExperimental).JitActivationDeactivateRequest(jitActivationDeactivateRequest).Execute()
+          //resp, r, err := apiClient.JITActivationsAPI.StartDeactivateWorkflowV1(context.Background()).XSailPointExperimental(xSailPointExperimental).JitActivationDeactivateRequest(jitActivationDeactivateRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartDeactivateWorkflowV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -179,6 +181,7 @@
         )
 
         func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            jitactivationextendrequestJson := []byte(`{
           "activationPeriodExtensionMins" : 120,
           "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
@@ -195,8 +198,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).JitActivationExtendRequest(jitActivationExtendRequest).Execute()
-          //resp, r, err := apiClient.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).JitActivationExtendRequest(jitActivationExtendRequest).Execute()
+          resp, r, err := apiClient.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).XSailPointExperimental(xSailPointExperimental).JitActivationExtendRequest(jitActivationExtendRequest).Execute()
+          //resp, r, err := apiClient.JITActivationsAPI.StartExtendWorkflowV1(context.Background()).XSailPointExperimental(xSailPointExperimental).JitActivationExtendRequest(jitActivationExtendRequest).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `JITActivationsAPI.StartExtendWorkflowV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -27,13 +27,6 @@ type ApiDeleteIdentityV1Request struct {
 	ctx context.Context
 	ApiService *IdentitiesAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiDeleteIdentityV1Request) XSailPointExperimental(xSailPointExperimental string) ApiDeleteIdentityV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiDeleteIdentityV1Request) Execute() (*http.Response, error) {
@@ -76,15 +69,6 @@ func (a *IdentitiesAPIService) DeleteIdentityV1Execute(r ApiDeleteIdentityV1Requ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -103,7 +87,6 @@ func (a *IdentitiesAPIService) DeleteIdentityV1Execute(r ApiDeleteIdentityV1Requ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

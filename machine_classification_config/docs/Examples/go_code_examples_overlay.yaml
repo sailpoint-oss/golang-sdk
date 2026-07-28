@@ -17,14 +17,15 @@
 
         func main() {
           sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          r, err := apiClient.MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1(context.Background(), sourceId).Execute()
-          //r, err := apiClient.MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1(context.Background(), sourceId).Execute()
+          r, err := apiClient.MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //r, err := apiClient.MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.DeleteMachineClassificationConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -49,14 +50,15 @@
 
         func main() {
           sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID # string | Source ID
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
           
 
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineClassificationConfigAPI.GetMachineClassificationConfigV1(context.Background(), sourceId).Execute()
-          //resp, r, err := apiClient.MachineClassificationConfigAPI.GetMachineClassificationConfigV1(context.Background(), sourceId).Execute()
+          resp, r, err := apiClient.MachineClassificationConfigAPI.GetMachineClassificationConfigV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineClassificationConfigAPI.GetMachineClassificationConfigV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.GetMachineClassificationConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -83,6 +85,7 @@
 
         func main() {
           sourceId := `ef38f94347e94562b5bb8424a56397d8` // string | Source ID. # string | Source ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
            machineclassificationconfigJson := []byte(`{
           "criteria" : {
             "children" : [ {
@@ -151,8 +154,8 @@
 
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
-          resp, r, err := apiClient.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).MachineClassificationConfig(machineClassificationConfig).Execute()
-          //resp, r, err := apiClient.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).MachineClassificationConfig(machineClassificationConfig).Execute()
+          resp, r, err := apiClient.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).MachineClassificationConfig(machineClassificationConfig).Execute()
+          //resp, r, err := apiClient.MachineClassificationConfigAPI.SetMachineClassificationConfigV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).MachineClassificationConfig(machineClassificationConfig).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `MachineClassificationConfigAPI.SetMachineClassificationConfigV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

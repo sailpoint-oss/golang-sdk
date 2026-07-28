@@ -3978,13 +3978,6 @@ type ApiGetSourceEntitlementRequestConfigV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	id string
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetSourceEntitlementRequestConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetSourceEntitlementRequestConfigV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetSourceEntitlementRequestConfigV1Request) Execute() (*SourceEntitlementRequestConfig, *http.Response, error) {
@@ -4033,15 +4026,6 @@ func (a *SourcesAPIService) GetSourceEntitlementRequestConfigV1Execute(r ApiGetS
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4060,7 +4044,6 @@ func (a *SourcesAPIService) GetSourceEntitlementRequestConfigV1Execute(r ApiGetS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -10505,14 +10488,7 @@ type ApiUpdateSourceEntitlementRequestConfigV1Request struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
 	id string
-	xSailPointExperimental *string
 	sourceEntitlementRequestConfig *SourceEntitlementRequestConfig
-}
-
-// Use this header to enable this experimental API.
-func (r ApiUpdateSourceEntitlementRequestConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiUpdateSourceEntitlementRequestConfigV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiUpdateSourceEntitlementRequestConfigV1Request) SourceEntitlementRequestConfig(sourceEntitlementRequestConfig SourceEntitlementRequestConfig) ApiUpdateSourceEntitlementRequestConfigV1Request {
@@ -10566,21 +10542,6 @@ func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigV1Execute(r ApiU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.sourceEntitlementRequestConfig == nil {
 		return localVarReturnValue, nil, reportError("sourceEntitlementRequestConfig is required and must be specified")
 	}
@@ -10602,7 +10563,6 @@ func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigV1Execute(r ApiU
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.sourceEntitlementRequestConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

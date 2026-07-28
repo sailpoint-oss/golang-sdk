@@ -27,6 +27,13 @@ type ApiDeleteMachineClassificationConfigV1Request struct {
 	ctx context.Context
 	ApiService *MachineClassificationConfigAPIService
 	sourceId string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiDeleteMachineClassificationConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiDeleteMachineClassificationConfigV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiDeleteMachineClassificationConfigV1Request) Execute() (*http.Response, error) {
@@ -70,6 +77,15 @@ func (a *MachineClassificationConfigAPIService) DeleteMachineClassificationConfi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -88,6 +104,7 @@ func (a *MachineClassificationConfigAPIService) DeleteMachineClassificationConfi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -185,6 +202,13 @@ type ApiGetMachineClassificationConfigV1Request struct {
 	ctx context.Context
 	ApiService *MachineClassificationConfigAPIService
 	sourceId string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetMachineClassificationConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetMachineClassificationConfigV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiGetMachineClassificationConfigV1Request) Execute() (*MachineClassificationConfig, *http.Response, error) {
@@ -229,6 +253,15 @@ func (a *MachineClassificationConfigAPIService) GetMachineClassificationConfigV1
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -247,6 +280,7 @@ func (a *MachineClassificationConfigAPIService) GetMachineClassificationConfigV1
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -353,7 +387,14 @@ type ApiSetMachineClassificationConfigV1Request struct {
 	ctx context.Context
 	ApiService *MachineClassificationConfigAPIService
 	sourceId string
+	xSailPointExperimental *string
 	machineClassificationConfig *MachineClassificationConfig
+}
+
+// Use this header to enable this experimental API.
+func (r ApiSetMachineClassificationConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiSetMachineClassificationConfigV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiSetMachineClassificationConfigV1Request) MachineClassificationConfig(machineClassificationConfig MachineClassificationConfig) ApiSetMachineClassificationConfigV1Request {
@@ -403,6 +444,21 @@ func (a *MachineClassificationConfigAPIService) SetMachineClassificationConfigV1
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.machineClassificationConfig == nil {
 		return localVarReturnValue, nil, reportError("machineClassificationConfig is required and must be specified")
 	}
@@ -424,6 +480,7 @@ func (a *MachineClassificationConfigAPIService) SetMachineClassificationConfigV1
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.machineClassificationConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

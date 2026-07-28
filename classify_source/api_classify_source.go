@@ -27,6 +27,13 @@ type ApiDeleteClassifyMachineAccountFromSourceV1Request struct {
 	ctx context.Context
 	ApiService *ClassifySourceAPIService
 	sourceId string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiDeleteClassifyMachineAccountFromSourceV1Request) XSailPointExperimental(xSailPointExperimental string) ApiDeleteClassifyMachineAccountFromSourceV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiDeleteClassifyMachineAccountFromSourceV1Request) Execute() (*http.Response, error) {
@@ -70,6 +77,15 @@ func (a *ClassifySourceAPIService) DeleteClassifyMachineAccountFromSourceV1Execu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -88,6 +104,7 @@ func (a *ClassifySourceAPIService) DeleteClassifyMachineAccountFromSourceV1Execu
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -174,6 +191,13 @@ type ApiGetClassifyMachineAccountFromSourceStatusV1Request struct {
 	ctx context.Context
 	ApiService *ClassifySourceAPIService
 	sourceId string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiGetClassifyMachineAccountFromSourceStatusV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetClassifyMachineAccountFromSourceStatusV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiGetClassifyMachineAccountFromSourceStatusV1Request) Execute() (*SourceClassificationStatus, *http.Response, error) {
@@ -219,6 +243,15 @@ func (a *ClassifySourceAPIService) GetClassifyMachineAccountFromSourceStatusV1Ex
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -237,6 +270,7 @@ func (a *ClassifySourceAPIService) GetClassifyMachineAccountFromSourceStatusV1Ex
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -343,6 +377,13 @@ type ApiSendClassifyMachineAccountFromSourceV1Request struct {
 	ctx context.Context
 	ApiService *ClassifySourceAPIService
 	sourceId string
+	xSailPointExperimental *string
+}
+
+// Use this header to enable this experimental API.
+func (r ApiSendClassifyMachineAccountFromSourceV1Request) XSailPointExperimental(xSailPointExperimental string) ApiSendClassifyMachineAccountFromSourceV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 func (r ApiSendClassifyMachineAccountFromSourceV1Request) Execute() (*SendClassifyMachineAccountFromSourceV1200Response, *http.Response, error) {
@@ -388,6 +429,15 @@ func (a *ClassifySourceAPIService) SendClassifyMachineAccountFromSourceV1Execute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -406,6 +456,7 @@ func (a *ClassifySourceAPIService) SendClassifyMachineAccountFromSourceV1Execute
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

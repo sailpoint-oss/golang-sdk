@@ -91,16 +91,6 @@ paths:
           minimum: 0
           type: integer
         style: form
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       responses:
         "200":
           content:
@@ -180,17 +170,6 @@ paths:
         Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig.
         >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
       operationId: createSearchAttributeConfigV1
-      parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -307,16 +286,6 @@ paths:
           example: newMailAttribute
           type: string
         style: simple
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       responses:
         "204":
           description: No content - indicates the request was successful but there
@@ -408,16 +377,6 @@ paths:
         required: true
         schema:
           example: newMailAttribute
-          type: string
-        style: simple
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
           type: string
         style: simple
       responses:
@@ -519,16 +478,6 @@ paths:
         required: true
         schema:
           example: promotedMailAttribute
-          type: string
-        style: simple
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
           type: string
         style: simple
       requestBody:

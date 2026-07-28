@@ -41,17 +41,6 @@ Method | HTTP request | Description
 
 
 ## create-search-attribute-config-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Create extended search attributes
 Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig.
 >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
@@ -69,7 +58,6 @@ Other parameters are passed through a pointer to a apiCreateSearchAttributeConfi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **searchAttributeConfig** | [**SearchAttributeConfig**](../models/search-attribute-config) |  | 
 
 ### Return type
@@ -96,7 +84,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     searchattributeconfigJson := []byte(`{
           "displayName" : "New Mail Attribute",
           "name" : "newMailAttribute",
@@ -115,8 +102,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SearchAttributeConfig(searchAttributeConfig).Execute()
-	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).SearchAttributeConfig(searchAttributeConfig).Execute()
+    resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfigV1(context.Background()).SearchAttributeConfig(searchAttributeConfig).Execute()
+	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfigV1(context.Background()).SearchAttributeConfig(searchAttributeConfig).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.CreateSearchAttributeConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -129,17 +116,6 @@ func main() {
 [[Back to top]](#)
 
 ## delete-search-attribute-config-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Delete extended search attribute
 Delete an extended attribute configuration by name.
 
@@ -161,7 +137,6 @@ Other parameters are passed through a pointer to a apiDeleteSearchAttributeConfi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -188,14 +163,13 @@ import (
 
 func main() {
     name := `newMailAttribute` // string | Name of the extended search attribute configuration to delete. # string | Name of the extended search attribute configuration to delete.
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfigV1(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //r, err := apiClient.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfigV1(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
+    r, err := apiClient.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfigV1(context.Background(), name).Execute()
+	  //r, err := apiClient.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfigV1(context.Background(), name).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.DeleteSearchAttributeConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -207,17 +181,6 @@ func main() {
 [[Back to top]](#)
 
 ## get-search-attribute-config-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 List extended search attributes
 Get a list of attribute/application attributes currently configured in Identity Security Cloud (ISC).
 
@@ -234,7 +197,6 @@ Other parameters are passed through a pointer to a apiGetSearchAttributeConfigV1
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
 
@@ -262,7 +224,6 @@ import (
 )
 
 func main() {
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
@@ -270,8 +231,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSearchAttributeConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSearchAttributeConfigV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSearchAttributeConfigV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSearchAttributeConfigV1(context.Background()).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSearchAttributeConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -284,17 +245,6 @@ func main() {
 [[Back to top]](#)
 
 ## get-single-search-attribute-config-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Get extended search attribute
 Get an extended attribute configuration by name.
 
@@ -316,7 +266,6 @@ Other parameters are passed through a pointer to a apiGetSingleSearchAttributeCo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -343,14 +292,13 @@ import (
 
 func main() {
     name := `newMailAttribute` // string | Name of the extended search attribute configuration to get. # string | Name of the extended search attribute configuration to get.
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfigV1(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
-	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfigV1(context.Background(), name).XSailPointExperimental(xSailPointExperimental).Execute()
+    resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfigV1(context.Background(), name).Execute()
+	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfigV1(context.Background(), name).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -363,17 +311,6 @@ func main() {
 [[Back to top]](#)
 
 ## patch-search-attribute-config-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```go
-   configuration = Configuration()
-   configuration.Experimental = true
- ```
-:::
 Update extended search attribute
 Update an existing search attribute configuration. 
 You can patch these fields:
@@ -397,7 +334,6 @@ Other parameters are passed through a pointer to a apiPatchSearchAttributeConfig
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) |  | 
 
 ### Return type
@@ -425,7 +361,6 @@ import (
 
 func main() {
     name := `promotedMailAttribute` // string | Name of the search attribute configuration to patch. # string | Name of the search attribute configuration to patch.
-    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/name","value":"newAttributeName"},{"op":"replace","path":"/displayName","value":"new attribute display name"},{"op":"add","path":"/applicationAttributes","value":{"2c91808b79fd2422017a0b35d30f3968":"employeeNumber"}}]`) // []JsonPatchOperation | 
 
     var jsonPatchOperation []search_attribute_configuration.JsonPatchOperation
@@ -437,8 +372,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfigV1(context.Background(), name).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
-	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfigV1(context.Background(), name).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfigV1(context.Background(), name).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfigV1(context.Background(), name).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.PatchSearchAttributeConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

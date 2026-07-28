@@ -23,6 +23,17 @@ Method | HTTP request | Description
 
 
 ## get-jit-activation-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Get JIT activation policy configuration
 Returns the tenant's current JIT activation policy configuration, including governed entitlement IDs, activation and extension time limits, default periods, notification settings, and whether the policy applies to future assignments.
 
@@ -49,6 +60,7 @@ Other parameters are passed through a pointer to a apiGetJitActivationConfigV1Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 
 ### Return type
 
@@ -75,13 +87,14 @@ import (
 
 func main() {
     configType := `policy` // string | Configuration kind to read. Only **policy** (JIT activation policy) is supported today.  # string | Configuration kind to read. Only **policy** (JIT activation policy) is supported today. 
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.JITAccessAPI.GetJitActivationConfigV1(context.Background(), configType).Execute()
-	  //resp, r, err := apiClient.JITAccessAPI.GetJitActivationConfigV1(context.Background(), configType).Execute()
+    resp, r, err := apiClient.JITAccessAPI.GetJitActivationConfigV1(context.Background(), configType).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.JITAccessAPI.GetJitActivationConfigV1(context.Background(), configType).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITAccessAPI.GetJitActivationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -94,6 +107,17 @@ func main() {
 [[Back to top]](#)
 
 ## patch-jit-activation-config-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
 Update JIT activation policy configuration
 Updates the tenant's JIT activation policy configuration by applying one or more **replace** operations (same shape as JSON Patch: **op**, **path**, **value**). Use this to change entitlement lists, max/default activation and extension durations, notification recipients or template, and the apply-to-future-assignments flag.
 
@@ -120,6 +144,7 @@ Other parameters are passed through a pointer to a apiPatchJitActivationConfigV1
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **jitAccessOperationRequest** | [**[]JitAccessOperationRequest**](../models/jit-access-operation-request) |  | 
 
 ### Return type
@@ -147,6 +172,7 @@ import (
 
 func main() {
     configType := `policy` // string | Configuration kind to update. Only **policy** (JIT activation policy) is supported today.  # string | Configuration kind to update. Only **policy** (JIT activation policy) is supported today. 
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
     jitaccessoperationrequestJson := []byte(``) // []JitAccessOperationRequest | 
 
     var jitAccessOperationRequest []jit_access.JitAccessOperationRequest
@@ -158,8 +184,8 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).JitAccessOperationRequest(jitAccessOperationRequest).Execute()
-	  //resp, r, err := apiClient.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).JitAccessOperationRequest(jitAccessOperationRequest).Execute()
+    resp, r, err := apiClient.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).XSailPointExperimental(xSailPointExperimental).JitAccessOperationRequest(jitAccessOperationRequest).Execute()
+	  //resp, r, err := apiClient.JITAccessAPI.PatchJitActivationConfigV1(context.Background(), configType).XSailPointExperimental(xSailPointExperimental).JitAccessOperationRequest(jitAccessOperationRequest).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `JITAccessAPI.PatchJitActivationConfigV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

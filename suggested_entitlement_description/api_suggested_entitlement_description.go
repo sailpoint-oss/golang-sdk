@@ -26,7 +26,14 @@ type SuggestedEntitlementDescriptionAPIService service
 type ApiApproveBulkEntitlementRecommendationsV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
+	xSailPointExperimental *string
 	bulkApproveEntitlementRecommendationRequest *BulkApproveEntitlementRecommendationRequest
+}
+
+// Use this header to enable this experimental API.
+func (r ApiApproveBulkEntitlementRecommendationsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiApproveBulkEntitlementRecommendationsV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // The list of recommendation items to approve.
@@ -74,6 +81,21 @@ func (a *SuggestedEntitlementDescriptionAPIService) ApproveBulkEntitlementRecomm
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.bulkApproveEntitlementRecommendationRequest == nil {
 		return localVarReturnValue, nil, reportError("bulkApproveEntitlementRecommendationRequest is required and must be specified")
 	}
@@ -95,6 +117,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ApproveBulkEntitlementRecomm
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.bulkApproveEntitlementRecommendationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -930,8 +953,15 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesV1Execute(r Api
 type ApiListPendingEntitlementRecommendationApprovalsV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
+	xSailPointExperimental *string
 	offset *int32
 	limit *int32
+}
+
+// Use this header to enable this experimental API.
+func (r ApiListPendingEntitlementRecommendationApprovalsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiListPendingEntitlementRecommendationApprovalsV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -985,6 +1015,15 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPendingEntitlementRecomm
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
@@ -1015,6 +1054,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPendingEntitlementRecomm
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1109,8 +1149,15 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPendingEntitlementRecomm
 type ApiListPrivilegedEntitlementRecommendationsV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
+	xSailPointExperimental *string
 	offset *int32
 	limit *int32
+}
+
+// Use this header to enable this experimental API.
+func (r ApiListPrivilegedEntitlementRecommendationsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiListPrivilegedEntitlementRecommendationsV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1164,6 +1211,15 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPrivilegedEntitlementRec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
@@ -1194,6 +1250,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListPrivilegedEntitlementRec
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1565,7 +1622,14 @@ type ApiPatchEntitlementRecommendationV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
 	id string
+	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
+}
+
+// Use this header to enable this experimental API.
+func (r ApiPatchEntitlementRecommendationV1Request) XSailPointExperimental(xSailPointExperimental string) ApiPatchEntitlementRecommendationV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // The patch operations to apply to the entitlement recommendation record.
@@ -1616,6 +1680,21 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchEntitlementRecommendati
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -1637,6 +1716,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchEntitlementRecommendati
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1924,7 +2004,14 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedV1Execute(r ApiPatch
 type ApiSubmitEntitlementRecommendationsAssignmentV1Request struct {
 	ctx context.Context
 	ApiService *SuggestedEntitlementDescriptionAPIService
+	xSailPointExperimental *string
 	entitlementRecommendationAssignRequest *EntitlementRecommendationAssignRequest
+}
+
+// Use this header to enable this experimental API.
+func (r ApiSubmitEntitlementRecommendationsAssignmentV1Request) XSailPointExperimental(xSailPointExperimental string) ApiSubmitEntitlementRecommendationsAssignmentV1Request {
+	r.xSailPointExperimental = &xSailPointExperimental
+	return r
 }
 
 // The recommendation IDs and the target assignee.
@@ -1972,6 +2059,21 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitEntitlementRecommendat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
+	if r.xSailPointExperimental == nil {
+		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
+	}
+	
+	if r.xSailPointExperimental == nil {
+		headerxSailPointExperimental := "true"
+		r.xSailPointExperimental = &headerxSailPointExperimental
+	}
+	
 	if r.entitlementRecommendationAssignRequest == nil {
 		return localVarReturnValue, nil, reportError("entitlementRecommendationAssignRequest is required and must be specified")
 	}
@@ -1993,6 +2095,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitEntitlementRecommendat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.entitlementRecommendationAssignRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

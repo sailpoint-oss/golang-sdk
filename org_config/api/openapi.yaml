@@ -245,16 +245,6 @@ paths:
       description: List the valid time zones that can be set in organization configurations.
       operationId: getValidTimeZonesV1
       parameters:
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       - description: |-
           Note that for this API the maximum value for limit is 50.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.

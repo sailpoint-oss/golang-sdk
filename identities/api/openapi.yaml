@@ -248,16 +248,6 @@ paths:
           type: string
         style: simple
         x-sailpoint-resource-operation-id: listIdentitiesV1
-      - description: Use this header to enable this experimental API.
-        example: true
-        explode: false
-        in: header
-        name: X-SailPoint-Experimental
-        required: true
-        schema:
-          default: "true"
-          type: string
-        style: simple
       responses:
         "204":
           description: No content - indicates the request was successful but there

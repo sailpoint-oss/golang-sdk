@@ -26,13 +26,6 @@ type AuthProfileAPIService service
 type ApiGetProfileConfigListV1Request struct {
 	ctx context.Context
 	ApiService *AuthProfileAPIService
-	xSailPointExperimental *string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetProfileConfigListV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetProfileConfigListV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetProfileConfigListV1Request) Execute() ([]AuthProfileSummary, *http.Response, error) {
@@ -74,15 +67,6 @@ func (a *AuthProfileAPIService) GetProfileConfigListV1Execute(r ApiGetProfileCon
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -101,7 +85,6 @@ func (a *AuthProfileAPIService) GetProfileConfigListV1Execute(r ApiGetProfileCon
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -196,14 +179,7 @@ func (a *AuthProfileAPIService) GetProfileConfigListV1Execute(r ApiGetProfileCon
 type ApiGetProfileConfigV1Request struct {
 	ctx context.Context
 	ApiService *AuthProfileAPIService
-	xSailPointExperimental *string
 	id string
-}
-
-// Use this header to enable this experimental API.
-func (r ApiGetProfileConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiGetProfileConfigV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiGetProfileConfigV1Request) Execute() (*AuthProfile, *http.Response, error) {
@@ -248,15 +224,6 @@ func (a *AuthProfileAPIService) GetProfileConfigV1Execute(r ApiGetProfileConfigV
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -275,7 +242,6 @@ func (a *AuthProfileAPIService) GetProfileConfigV1Execute(r ApiGetProfileConfigV
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -382,14 +348,7 @@ type ApiPatchProfileConfigV1Request struct {
 	ctx context.Context
 	ApiService *AuthProfileAPIService
 	id string
-	xSailPointExperimental *string
 	jsonPatchOperation *[]JsonPatchOperation
-}
-
-// Use this header to enable this experimental API.
-func (r ApiPatchProfileConfigV1Request) XSailPointExperimental(xSailPointExperimental string) ApiPatchProfileConfigV1Request {
-	r.xSailPointExperimental = &xSailPointExperimental
-	return r
 }
 
 func (r ApiPatchProfileConfigV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchProfileConfigV1Request {
@@ -440,21 +399,6 @@ func (a *AuthProfileAPIService) PatchProfileConfigV1Execute(r ApiPatchProfileCon
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
-	if r.xSailPointExperimental == nil {
-		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
-	}
-	
-	if r.xSailPointExperimental == nil {
-		headerxSailPointExperimental := "true"
-		r.xSailPointExperimental = &headerxSailPointExperimental
-	}
-	
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -476,7 +420,6 @@ func (a *AuthProfileAPIService) PatchProfileConfigV1Execute(r ApiPatchProfileCon
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "simple", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
