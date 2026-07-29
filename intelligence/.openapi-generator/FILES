@@ -28,6 +28,7 @@ docs/IntelPrivilegedAccessSlice.md
 docs/IntelRareAccessSlice.md
 docs/IntelligenceAPI.md
 docs/IntelligenceAPIdeveloperSite_code_examples.yaml
+docs/Intelprivilegelevel.md
 docs/LocaleOrigin.md
 docs/Methods/Index.md
 git_push.sh
@@ -52,6 +53,7 @@ model_intel_privileged_access_item_wire.go
 model_intel_privileged_access_item_wire_source.go
 model_intel_privileged_access_slice.go
 model_intel_rare_access_slice.go
+model_intelprivilegelevel.go
 model_locale_origin.go
 response.go
 test/api_intelligence_test.go

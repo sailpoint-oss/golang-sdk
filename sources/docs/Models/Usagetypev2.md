@@ -1,15 +1,15 @@
 ---
-id: v1-usage-type
-title: UsageType
-pagination_label: UsageType
-sidebar_label: UsageType
+id: v1-usagetypev2
+title: Usagetypev2
+pagination_label: Usagetypev2
+sidebar_label: Usagetypev2
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'UsageType', 'V1UsageType'] 
-slug: /tools/sdk/go/sources/models/usage-type
-tags: ['SDK', 'Software Development Kit', 'UsageType', 'V1UsageType']
+keywords: ['go', 'Golang', 'sdk', 'Usagetypev2', 'V1Usagetypev2'] 
+slug: /tools/sdk/go/sources/models/usagetypev2
+tags: ['SDK', 'Software Development Kit', 'Usagetypev2', 'V1Usagetypev2']
 ---
 
-# UsageType
+# Usagetypev2
 
 ## Enum
 
@@ -45,5 +45,7 @@ tags: ['SDK', 'Software Development Kit', 'UsageType', 'V1UsageType']
 * `UNLOCK` (value: `"UNLOCK"`)
 
 * `CHANGE_PASSWORD` (value: `"CHANGE_PASSWORD"`)
+
+* `CREATE_MACHINE_ACCOUNT` (value: `"CREATE_MACHINE_ACCOUNT"`)
 
 

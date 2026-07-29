@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
  - [IntelPrivilegedAccessItemWireSource](docs/IntelPrivilegedAccessItemWireSource.md)
  - [IntelPrivilegedAccessSlice](docs/IntelPrivilegedAccessSlice.md)
  - [IntelRareAccessSlice](docs/IntelRareAccessSlice.md)
+ - [Intelprivilegelevel](docs/Intelprivilegelevel.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
 
 

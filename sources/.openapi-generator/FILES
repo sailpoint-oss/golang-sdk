@@ -97,6 +97,7 @@ docs/TaskResultDto.md
 docs/Transform.md
 docs/TransformRead.md
 docs/UsageType.md
+docs/Usagetypev2.md
 git_push.sh
 go.mod
 go.sum
@@ -187,6 +188,7 @@ model_task_result_dto.go
 model_transform.go
 model_transform_read.go
 model_usage_type.go
+model_usagetypev2.go
 response.go
 test/api_sources_test.go
 utils.go

@@ -232,6 +232,7 @@ Class | Method | HTTP request | Description
  - [Transform](docs/Transform.md)
  - [TransformRead](docs/TransformRead.md)
  - [UsageType](docs/UsageType.md)
+ - [Usagetypev2](docs/Usagetypev2.md)
 
 
 ## Documentation For Authorization

@@ -856,6 +856,24 @@ components:
       required:
       - items
       type: object
+    Intelprivilegelevel:
+      description: |
+        Effective privilege level for the privileged access item. Set to HIGH, MEDIUM, or LOW based on
+        the tenant's privilege classification configuration, including connector criteria, custom criteria,
+        manual overrides, or a single configured privilege level. Use NONE when no privilege level is
+        assigned. Entitlements previously marked with privileged=true are classified as HIGH.
+      properties:
+        effective:
+          description: |
+            Effective privilege level for the privileged access item.
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          - NONE
+          example: HIGH
+          type: string
+      type: object
     IntelPrivilegedAccessItemWire:
       properties:
         privileged:
@@ -863,6 +881,8 @@ components:
             the identity.
           example: true
           type: boolean
+        privilegeLevel:
+          $ref: '#/components/schemas/Intelprivilegelevel'
         id:
           description: Identifier of the privileged access item.
           example: ent-1

@@ -28,7 +28,7 @@ type ProvisioningPolicyDtoV2 struct {
 	SubtypeId NullableString `json:"subtypeId,omitempty"`
 	// the description of the provisioning policy
 	Description *string `json:"description,omitempty"`
-	UsageType *UsageType `json:"usageType,omitempty"`
+	UsageType *Usagetypev2 `json:"usageType,omitempty"`
 	Fields []FieldDetailsDtoV2 `json:"fields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -186,9 +186,9 @@ func (o *ProvisioningPolicyDtoV2) SetDescription(v string) {
 }
 
 // GetUsageType returns the UsageType field value if set, zero value otherwise.
-func (o *ProvisioningPolicyDtoV2) GetUsageType() UsageType {
+func (o *ProvisioningPolicyDtoV2) GetUsageType() Usagetypev2 {
 	if o == nil || IsNil(o.UsageType) {
-		var ret UsageType
+		var ret Usagetypev2
 		return ret
 	}
 	return *o.UsageType
@@ -196,7 +196,7 @@ func (o *ProvisioningPolicyDtoV2) GetUsageType() UsageType {
 
 // GetUsageTypeOk returns a tuple with the UsageType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProvisioningPolicyDtoV2) GetUsageTypeOk() (*UsageType, bool) {
+func (o *ProvisioningPolicyDtoV2) GetUsageTypeOk() (*Usagetypev2, bool) {
 	if o == nil || IsNil(o.UsageType) {
 		return nil, false
 	}
@@ -212,8 +212,8 @@ func (o *ProvisioningPolicyDtoV2) HasUsageType() bool {
 	return false
 }
 
-// SetUsageType gets a reference to the given UsageType and assigns it to the UsageType field.
-func (o *ProvisioningPolicyDtoV2) SetUsageType(v UsageType) {
+// SetUsageType gets a reference to the given Usagetypev2 and assigns it to the UsageType field.
+func (o *ProvisioningPolicyDtoV2) SetUsageType(v Usagetypev2) {
 	o.UsageType = &v
 }
 

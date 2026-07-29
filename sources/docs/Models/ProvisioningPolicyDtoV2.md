@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Name** | **NullableString** | the provisioning policy name | 
 **SubtypeId** | Pointer to **NullableString** | Subtype ID for which provisioning policy will be created when usageType is CREATE_MACHINE_ACCOUNT. | [optional] 
 **Description** | Pointer to **string** | the description of the provisioning policy | [optional] 
-**UsageType** | Pointer to **UsageType** |  | [optional] 
+**UsageType** | Pointer to **Usagetypev2** |  | [optional] 
 **Fields** | Pointer to [**[]FieldDetailsDtoV2**](field-details-dto-v2) |  | [optional] 
 
 ## Methods
@@ -158,20 +158,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetUsageType
 
-`func (o *ProvisioningPolicyDtoV2) GetUsageType() UsageType`
+`func (o *ProvisioningPolicyDtoV2) GetUsageType() Usagetypev2`
 
 GetUsageType returns the UsageType field if non-nil, zero value otherwise.
 
 ### GetUsageTypeOk
 
-`func (o *ProvisioningPolicyDtoV2) GetUsageTypeOk() (*UsageType, bool)`
+`func (o *ProvisioningPolicyDtoV2) GetUsageTypeOk() (*Usagetypev2, bool)`
 
 GetUsageTypeOk returns a tuple with the UsageType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsageType
 
-`func (o *ProvisioningPolicyDtoV2) SetUsageType(v UsageType)`
+`func (o *ProvisioningPolicyDtoV2) SetUsageType(v Usagetypev2)`
 
 SetUsageType sets UsageType field to given value.
 

@@ -22,6 +22,7 @@ var _ MappedNullable = &IntelPrivilegedAccessItemWire{}
 type IntelPrivilegedAccessItemWire struct {
 	// True when this item is classified as privileged access for the identity.
 	Privileged bool `json:"privileged"`
+	PrivilegeLevel *Intelprivilegelevel `json:"privilegeLevel,omitempty"`
 	// Identifier of the privileged access item.
 	Id string `json:"id"`
 	// Type of privileged access object.
@@ -82,6 +83,38 @@ func (o *IntelPrivilegedAccessItemWire) GetPrivilegedOk() (*bool, bool) {
 // SetPrivileged sets field value
 func (o *IntelPrivilegedAccessItemWire) SetPrivileged(v bool) {
 	o.Privileged = v
+}
+
+// GetPrivilegeLevel returns the PrivilegeLevel field value if set, zero value otherwise.
+func (o *IntelPrivilegedAccessItemWire) GetPrivilegeLevel() Intelprivilegelevel {
+	if o == nil || IsNil(o.PrivilegeLevel) {
+		var ret Intelprivilegelevel
+		return ret
+	}
+	return *o.PrivilegeLevel
+}
+
+// GetPrivilegeLevelOk returns a tuple with the PrivilegeLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntelPrivilegedAccessItemWire) GetPrivilegeLevelOk() (*Intelprivilegelevel, bool) {
+	if o == nil || IsNil(o.PrivilegeLevel) {
+		return nil, false
+	}
+	return o.PrivilegeLevel, true
+}
+
+// HasPrivilegeLevel returns a boolean if a field has been set.
+func (o *IntelPrivilegedAccessItemWire) HasPrivilegeLevel() bool {
+	if o != nil && !IsNil(o.PrivilegeLevel) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivilegeLevel gets a reference to the given Intelprivilegelevel and assigns it to the PrivilegeLevel field.
+func (o *IntelPrivilegedAccessItemWire) SetPrivilegeLevel(v Intelprivilegelevel) {
+	o.PrivilegeLevel = &v
 }
 
 // GetId returns the Id field value
@@ -303,6 +336,9 @@ func (o IntelPrivilegedAccessItemWire) MarshalJSON() ([]byte, error) {
 func (o IntelPrivilegedAccessItemWire) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["privileged"] = o.Privileged
+	if !IsNil(o.PrivilegeLevel) {
+		toSerialize["privilegeLevel"] = o.PrivilegeLevel
+	}
 	toSerialize["id"] = o.Id
 	toSerialize["type"] = o.Type
 	if !IsNil(o.DisplayName) {
@@ -366,6 +402,7 @@ func (o *IntelPrivilegedAccessItemWire) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "privileged")
+		delete(additionalProperties, "privilegeLevel")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "displayName")

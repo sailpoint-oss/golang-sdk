@@ -16,6 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'IntelPrivilegedAccessItemWire', 'V1In
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Privileged** | **bool** | True when this item is classified as privileged access for the identity. | 
+**PrivilegeLevel** | Pointer to [**Intelprivilegelevel**](intelprivilegelevel) |  | [optional] 
 **Id** | **string** | Identifier of the privileged access item. | 
 **Type** | **string** | Type of privileged access object. | 
 **DisplayName** | Pointer to **string** | Display label for the privileged access item in administrative experiences. | [optional] 
@@ -62,6 +63,31 @@ and a boolean to check if the value has been set.
 
 SetPrivileged sets Privileged field to given value.
 
+
+### GetPrivilegeLevel
+
+`func (o *IntelPrivilegedAccessItemWire) GetPrivilegeLevel() Intelprivilegelevel`
+
+GetPrivilegeLevel returns the PrivilegeLevel field if non-nil, zero value otherwise.
+
+### GetPrivilegeLevelOk
+
+`func (o *IntelPrivilegedAccessItemWire) GetPrivilegeLevelOk() (*Intelprivilegelevel, bool)`
+
+GetPrivilegeLevelOk returns a tuple with the PrivilegeLevel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivilegeLevel
+
+`func (o *IntelPrivilegedAccessItemWire) SetPrivilegeLevel(v Intelprivilegelevel)`
+
+SetPrivilegeLevel sets PrivilegeLevel field to given value.
+
+### HasPrivilegeLevel
+
+`func (o *IntelPrivilegedAccessItemWire) HasPrivilegeLevel() bool`
+
+HasPrivilegeLevel returns a boolean if a field has been set.
 
 ### GetId
 
