@@ -85,7 +85,7 @@ Class | Method | HTTP request | Description
 *WorkflowsAPI* | [**CreateWorkflowV1**](docs/WorkflowsAPI.md#createworkflowv1) | **Post** /workflows/v1 | Create workflow
 *WorkflowsAPI* | [**DeleteWorkflowV1**](docs/WorkflowsAPI.md#deleteworkflowv1) | **Delete** /workflows/v1/{id} | Delete workflow by id
 *WorkflowsAPI* | [**GetWorkflowExecutionHistoryV1**](docs/WorkflowsAPI.md#getworkflowexecutionhistoryv1) | **Get** /workflow-executions/v1/{id}/history | Get workflow execution history
-*WorkflowsAPI* | [**GetWorkflowExecutionHistoryV2**](docs/WorkflowsAPI.md#getworkflowexecutionhistoryv2) | **Get** /workflow-executions/v1/{id}/history-v2 | Get updated workflow execution history
+*WorkflowsAPI* | [**GetWorkflowExecutionHistoryV2ForV1**](docs/WorkflowsAPI.md#getworkflowexecutionhistoryv2forv1) | **Get** /workflow-executions/v1/{id}/history-v2 | Get updated workflow execution history
 *WorkflowsAPI* | [**GetWorkflowExecutionV1**](docs/WorkflowsAPI.md#getworkflowexecutionv1) | **Get** /workflow-executions/v1/{id} | Get workflow execution
 *WorkflowsAPI* | [**GetWorkflowExecutionsV1**](docs/WorkflowsAPI.md#getworkflowexecutionsv1) | **Get** /workflows/v1/{id}/executions | List workflow executions
 *WorkflowsAPI* | [**GetWorkflowV1**](docs/WorkflowsAPI.md#getworkflowv1) | **Get** /workflows/v1/{id} | Get workflow by id

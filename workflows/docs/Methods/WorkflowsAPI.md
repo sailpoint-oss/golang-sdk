@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**create-workflow-v1**](#create-workflow-v1) | **Post** `/workflows/v1` | Create workflow
 [**delete-workflow-v1**](#delete-workflow-v1) | **Delete** `/workflows/v1/{id}` | Delete workflow by id
 [**get-workflow-execution-history-v1**](#get-workflow-execution-history-v1) | **Get** `/workflow-executions/v1/{id}/history` | Get workflow execution history
-[**get-workflow-execution-history-v2**](#get-workflow-execution-history-v2) | **Get** `/workflow-executions/v1/{id}/history-v2` | Get updated workflow execution history
+[**get-workflow-execution-history-v2-for-v1**](#get-workflow-execution-history-v2-for-v1) | **Get** `/workflow-executions/v1/{id}/history-v2` | Get updated workflow execution history
 [**get-workflow-execution-v1**](#get-workflow-execution-v1) | **Get** `/workflow-executions/v1/{id}` | Get workflow execution
 [**get-workflow-executions-v1**](#get-workflow-executions-v1) | **Get** `/workflows/v1/{id}/executions` | List workflow executions
 [**get-workflow-v1**](#get-workflow-v1) | **Get** `/workflows/v1/{id}` | Get workflow by id
@@ -390,6 +390,8 @@ Other parameters are passed through a pointer to a apiGetWorkflowExecutionHistor
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
 
 ### Return type
 
@@ -416,13 +418,15 @@ import (
 
 func main() {
     id := `c17bea3a-574d-453c-9e04-4365fbf5af0b` // string | Id of the workflow execution # string | Id of the workflow execution
+    limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV1(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV1(context.Background(), id).Limit(limit).Offset(offset).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionHistoryV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -434,11 +438,11 @@ func main() {
 
 [[Back to top]](#)
 
-## get-workflow-execution-history-v2
+## get-workflow-execution-history-v2-for-v1
 Get updated workflow execution history
 Gets a workflow execution history, trigger input, and workflow definition of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
 
-[API Spec](https://developer.sailpoint.com/docs/api/get-workflow-execution-history-v-2)
+[API Spec](https://developer.sailpoint.com/docs/api/get-workflow-execution-history-v2-for-v-1)
 
 ### Path Parameters
 
@@ -450,7 +454,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetWorkflowExecutionHistoryV2Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetWorkflowExecutionHistoryV2ForV1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -487,14 +491,14 @@ func main() {
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV2(context.Background(), id).Execute()
-	  //resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV2(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV2ForV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV2ForV1(context.Background(), id).Execute()
     if err != nil {
-	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionHistoryV2``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionHistoryV2ForV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWorkflowExecutionHistoryV2`: WorkflowExecutionHistory
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowExecutionHistoryV2`: %v\n", resp)
+    // response from `GetWorkflowExecutionHistoryV2ForV1`: WorkflowExecutionHistory
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowExecutionHistoryV2ForV1`: %v\n", resp)
 }
 ```
 

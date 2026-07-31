@@ -102,13 +102,13 @@ func Test_workflows_WorkflowsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsAPIService GetWorkflowExecutionHistoryV2", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService GetWorkflowExecutionHistoryV2ForV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV2(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistoryV2ForV1(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

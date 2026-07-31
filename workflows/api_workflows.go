@@ -816,6 +816,20 @@ type ApiGetWorkflowExecutionHistoryV1Request struct {
 	ctx context.Context
 	ApiService *WorkflowsAPIService
 	id string
+	limit *int32
+	offset *int32
+}
+
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetWorkflowExecutionHistoryV1Request) Limit(limit int32) ApiGetWorkflowExecutionHistoryV1Request {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetWorkflowExecutionHistoryV1Request) Offset(offset int32) ApiGetWorkflowExecutionHistoryV1Request {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiGetWorkflowExecutionHistoryV1Request) Execute() ([]WorkflowExecutionEvent, *http.Response, error) {
@@ -861,6 +875,18 @@ func (a *WorkflowsAPIService) GetWorkflowExecutionHistoryV1Execute(r ApiGetWorkf
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -980,27 +1006,27 @@ func (a *WorkflowsAPIService) GetWorkflowExecutionHistoryV1Execute(r ApiGetWorkf
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetWorkflowExecutionHistoryV2Request struct {
+type ApiGetWorkflowExecutionHistoryV2ForV1Request struct {
 	ctx context.Context
 	ApiService *WorkflowsAPIService
 	id string
 }
 
-func (r ApiGetWorkflowExecutionHistoryV2Request) Execute() (*WorkflowExecutionHistory, *http.Response, error) {
-	return r.ApiService.GetWorkflowExecutionHistoryV2Execute(r)
+func (r ApiGetWorkflowExecutionHistoryV2ForV1Request) Execute() (*WorkflowExecutionHistory, *http.Response, error) {
+	return r.ApiService.GetWorkflowExecutionHistoryV2ForV1Execute(r)
 }
 
 /*
-GetWorkflowExecutionHistoryV2 Get updated workflow execution history
+GetWorkflowExecutionHistoryV2ForV1 Get updated workflow execution history
 
 Gets a workflow execution history, trigger input, and workflow definition of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Id of the workflow execution
- @return ApiGetWorkflowExecutionHistoryV2Request
+ @return ApiGetWorkflowExecutionHistoryV2ForV1Request
 */
-func (a *WorkflowsAPIService) GetWorkflowExecutionHistoryV2(ctx context.Context, id string) ApiGetWorkflowExecutionHistoryV2Request {
-	return ApiGetWorkflowExecutionHistoryV2Request{
+func (a *WorkflowsAPIService) GetWorkflowExecutionHistoryV2ForV1(ctx context.Context, id string) ApiGetWorkflowExecutionHistoryV2ForV1Request {
+	return ApiGetWorkflowExecutionHistoryV2ForV1Request{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1009,7 +1035,7 @@ func (a *WorkflowsAPIService) GetWorkflowExecutionHistoryV2(ctx context.Context,
 
 // Execute executes the request
 //  @return WorkflowExecutionHistory
-func (a *WorkflowsAPIService) GetWorkflowExecutionHistoryV2Execute(r ApiGetWorkflowExecutionHistoryV2Request) (*WorkflowExecutionHistory, *http.Response, error) {
+func (a *WorkflowsAPIService) GetWorkflowExecutionHistoryV2ForV1Execute(r ApiGetWorkflowExecutionHistoryV2ForV1Request) (*WorkflowExecutionHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1017,7 +1043,7 @@ func (a *WorkflowsAPIService) GetWorkflowExecutionHistoryV2Execute(r ApiGetWorkf
 		localVarReturnValue  *WorkflowExecutionHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.GetWorkflowExecutionHistoryV2")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.GetWorkflowExecutionHistoryV2ForV1")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

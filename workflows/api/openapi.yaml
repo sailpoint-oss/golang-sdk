@@ -973,7 +973,7 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:workflow:read
+        - sp:workflow-execution:read
         - sp:workflow:manage
       summary: List workflow executions
       tags:
@@ -999,6 +999,7 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getWorkflowExecutionsV1
       responses:
         "200":
           content:
@@ -1084,11 +1085,13 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:workflow:read
+        - sp:workflow-execution:read
         - sp:workflow:manage
       summary: Get workflow execution
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /workflow-executions/v1/{id}/history:
     get:
       description: "Get a detailed history of a single workflow execution.  Workflow\
@@ -1106,6 +1109,36 @@ paths:
           example: c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: getWorkflowExecutionV1
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -1191,18 +1224,22 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:workflow:read
+        - sp:workflow-execution:read
         - sp:workflow:manage
       summary: Get workflow execution history
       tags:
       - Workflows
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_SUBADMIN
+      - SOURCE_ADMIN
   /workflow-executions/v1/{id}/history-v2:
     get:
       description: "Gets a workflow execution history, trigger input, and workflow\
         \ definition of a single workflow execution.  Workflow executions are available\
         \ for up to 90 days before being archived.  If you attempt to access a workflow\
         \ execution that has been archived, you will receive a 404 Not Found."
-      operationId: getWorkflowExecutionHistoryV2
+      operationId: getWorkflowExecutionHistoryV2ForV1
       parameters:
       - description: Id of the workflow execution
         explode: false
@@ -1298,7 +1335,7 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:workflow:read
+        - sp:workflow-execution:read
         - sp:workflow:manage
       summary: Get updated workflow execution history
       tags:
