@@ -47,8 +47,11 @@ Requires tenant license idn:response-and-remediation.
 Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope.
 Supported queryable fields are id and email only.
 The response embeds the first page of accounts, rare access, access-history access items, and
-access-history certifications. Paged slices include a next link only when more results exist.
-The privilegedAccess slice contains the full result and is not paged.
+access-history certifications. Each paged slice includes `totalCount` from upstream
+`X-Total-Count` when `items` is non-empty, and carries a `next` continuation URL when
+`totalCount` exceeds the items returned on this page. Empty slices render as `items: []` with no
+`totalCount`. The privilegedAccess slice contains the full result and is not paged; it never
+carries `next` or `totalCount`.
 The outliers slice is omitted when the tenant lacks the IDA-outliers license.
 
 
@@ -223,6 +226,7 @@ type ApiGetIntelIdentityAccessItemHistoryV1Request struct {
 	id string
 	limit *int32
 	offset *int32
+	count *bool
 }
 
 // Page size. Defaults to 250; values above 250 are rejected with 400.
@@ -237,6 +241,12 @@ func (r ApiGetIntelIdentityAccessItemHistoryV1Request) Offset(offset int32) ApiG
 	return r
 }
 
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetIntelIdentityAccessItemHistoryV1Request) Count(count bool) ApiGetIntelIdentityAccessItemHistoryV1Request {
+	r.count = &count
+	return r
+}
+
 func (r ApiGetIntelIdentityAccessItemHistoryV1Request) Execute() ([]IntelAccessItemHistoryEvent, *http.Response, error) {
 	return r.ApiService.GetIntelIdentityAccessItemHistoryV1Execute(r)
 }
@@ -246,6 +256,7 @@ GetIntelIdentityAccessItemHistoryV1 List identity access item history
 
 Continuation endpoint for the parent response's `accessHistory.accessItems.next` link.
 Returns one page of access-item history events for the supplied limit and offset values.
+Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages).
 Unsupported event types and per-record decode failures are dropped server-side.
 Requires tenant license idn:response-and-remediation.
 
@@ -301,6 +312,12 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccessItemHistoryV1Execute(r Ap
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -416,6 +433,7 @@ type ApiGetIntelIdentityAccountsV1Request struct {
 	id string
 	limit *int32
 	offset *int32
+	count *bool
 }
 
 // Page size. Defaults to 250; values above 250 are rejected with 400.
@@ -430,6 +448,12 @@ func (r ApiGetIntelIdentityAccountsV1Request) Offset(offset int32) ApiGetIntelId
 	return r
 }
 
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetIntelIdentityAccountsV1Request) Count(count bool) ApiGetIntelIdentityAccountsV1Request {
+	r.count = &count
+	return r
+}
+
 func (r ApiGetIntelIdentityAccountsV1Request) Execute() ([]IntelAccessAccountWire, *http.Response, error) {
 	return r.ApiService.GetIntelIdentityAccountsV1Execute(r)
 }
@@ -439,6 +463,7 @@ GetIntelIdentityAccountsV1 List identity accounts
 
 Continuation endpoint for the parent response's `accounts.next` link.
 Returns one page of account rows for the supplied limit and offset values.
+Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages).
 Requires tenant license idn:response-and-remediation.
 
 
@@ -493,6 +518,12 @@ func (a *IntelligenceAPIService) GetIntelIdentityAccountsV1Execute(r ApiGetIntel
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -608,6 +639,7 @@ type ApiGetIntelIdentityCertificationHistoryV1Request struct {
 	id string
 	limit *int32
 	offset *int32
+	count *bool
 }
 
 // Page size. Defaults to 250; values above 250 are rejected with 400.
@@ -622,6 +654,12 @@ func (r ApiGetIntelIdentityCertificationHistoryV1Request) Offset(offset int32) A
 	return r
 }
 
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetIntelIdentityCertificationHistoryV1Request) Count(count bool) ApiGetIntelIdentityCertificationHistoryV1Request {
+	r.count = &count
+	return r
+}
+
 func (r ApiGetIntelIdentityCertificationHistoryV1Request) Execute() ([]IntelCertificationHistoryEvent, *http.Response, error) {
 	return r.ApiService.GetIntelIdentityCertificationHistoryV1Execute(r)
 }
@@ -631,6 +669,7 @@ GetIntelIdentityCertificationHistoryV1 List identity certification history
 
 Continuation endpoint for the parent response's `accessHistory.certifications.next` link.
 Returns one page of certification history events for the supplied limit and offset values.
+Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages).
 Per-record decode failures are dropped server-side.
 Requires tenant license idn:response-and-remediation.
 
@@ -686,6 +725,12 @@ func (a *IntelligenceAPIService) GetIntelIdentityCertificationHistoryV1Execute(r
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -801,6 +846,7 @@ type ApiGetIntelIdentityRareAccessV1Request struct {
 	id string
 	limit *int32
 	offset *int32
+	count *bool
 }
 
 // Page size. Defaults to 250; values above 250 are rejected with 400.
@@ -815,6 +861,12 @@ func (r ApiGetIntelIdentityRareAccessV1Request) Offset(offset int32) ApiGetIntel
 	return r
 }
 
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetIntelIdentityRareAccessV1Request) Count(count bool) ApiGetIntelIdentityRareAccessV1Request {
+	r.count = &count
+	return r
+}
+
 func (r ApiGetIntelIdentityRareAccessV1Request) Execute() ([]IntelOutlierAccessItem, *http.Response, error) {
 	return r.ApiService.GetIntelIdentityRareAccessV1Execute(r)
 }
@@ -824,9 +876,10 @@ GetIntelIdentityRareAccessV1 List identity rare access
 
 Continuation endpoint for the parent response's `outliers.rareAccess.next` link.
 Resolves the identity's first outlier, then returns one page of rare access
-items for the supplied limit and offset values. An identity with no outlier
-returns an empty array. Requires tenant license idn:response-and-remediation
-and the IDA-outliers license.
+items for the supplied limit and offset values. Pass `count=true` to receive
+`X-Total-Count` (including `0` on empty pages). An identity with no outlier
+returns an empty array with `X-Total-Count: 0` when `count=true`. Requires
+tenant license idn:response-and-remediation and the IDA-outliers license.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -880,6 +933,12 @@ func (a *IntelligenceAPIService) GetIntelIdentityRareAccessV1Execute(r ApiGetInt
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

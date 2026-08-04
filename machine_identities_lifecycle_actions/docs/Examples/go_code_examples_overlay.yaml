@@ -1,0 +1,167 @@
+- path: /machine-identities/v1/lifecycle-actions/{requestId}/cancel
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentitieslifecycleactions/methods/machine-identity-lifecycle-actions#cancel-machine-identity-lifecycle-action-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          requestId := `a1b2c3d4-e5f6-7890-abcd-ef1234567890` // string | Lifecycle request identifier. # string | Lifecycle request identifier.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           cancellifecycleactionrequestJson := []byte(`{
+          "comment" : "Cancelling - will resubmit after maintenance window"
+        }`) // CancelLifecycleActionRequest |  (optional)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentityLifecycleActionsAPI.CancelMachineIdentityLifecycleActionV1(context.Background(), requestId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineIdentityLifecycleActionsAPI.CancelMachineIdentityLifecycleActionV1(context.Background(), requestId).XSailPointExperimental(xSailPointExperimental).CancelLifecycleActionRequest(cancelLifecycleActionRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentityLifecycleActionsAPI.CancelMachineIdentityLifecycleActionV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CancelMachineIdentityLifecycleActionV1`: CancelLifecycleActionResponse
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentityLifecycleActionsAPI.CancelMachineIdentityLifecycleActionV1`: %v\n", resp)
+        }
+- path: /machine-identities/v1/lifecycle-actions/{requestId}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentitieslifecycleactions/methods/machine-identity-lifecycle-actions#get-machine-identity-lifecycle-action-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          requestId := `a1b2c3d4-e5f6-7890-abcd-ef1234567890` // string | Lifecycle request identifier. # string | Lifecycle request identifier.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentityLifecycleActionsAPI.GetMachineIdentityLifecycleActionV1(context.Background(), requestId).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineIdentityLifecycleActionsAPI.GetMachineIdentityLifecycleActionV1(context.Background(), requestId).XSailPointExperimental(xSailPointExperimental).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentityLifecycleActionsAPI.GetMachineIdentityLifecycleActionV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetMachineIdentityLifecycleActionV1`: LifecycleActionRequest
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentityLifecycleActionsAPI.GetMachineIdentityLifecycleActionV1`: %v\n", resp)
+        }
+- path: /machine-identities/v1/lifecycle-actions
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentitieslifecycleactions/methods/machine-identity-lifecycle-actions#list-machine-identity-lifecycle-actions-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+          filters := `status in ("RECEIVED","COMPLETED")` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **resourceType**: *eq, in*  **operationType**: *eq, in*  **status**: *eq, in*  **completed**: *eq*  **targetId**: *eq*  **targetName**: *eq, sw*  **sourceId**: *eq*  **created**: *gt, ge, lt, le* (optional)
+          sorters := `-created` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first). (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, status**  Default sort is **-created** (newest first). (optional)
+          limit := 50 // int32 | Max number of results to return. When omitted, the default limit is 50. The maximum allowed limit is 250.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int32 | Max number of results to return. When omitted, the default limit is 50. The maximum allowed limit is 250.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentityLifecycleActionsAPI.ListMachineIdentityLifecycleActionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+          //resp, r, err := apiClient.MachineIdentityLifecycleActionsAPI.ListMachineIdentityLifecycleActionsV1(context.Background()).XSailPointExperimental(xSailPointExperimental).Filters(filters).Sorters(sorters).Limit(limit).Offset(offset).Count(count).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentityLifecycleActionsAPI.ListMachineIdentityLifecycleActionsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListMachineIdentityLifecycleActionsV1`: []LifecycleActionRequest
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentityLifecycleActionsAPI.ListMachineIdentityLifecycleActionsV1`: %v\n", resp)
+        }
+- path: /machine-identities/v1/{id}/lifecycle-actions
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/machineidentitieslifecycleactions/methods/machine-identity-lifecycle-actions#submit-machine-identity-lifecycle-action-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            machine_identities_lifecycle_actions "github.com/sailpoint-oss/golang-sdk/v3/machine_identities_lifecycle_actions"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `1c9c8e1f-2f5f-4f77-9f7e-5d37e4fb3ef0` // string | Machine identity ID. # string | Machine identity ID.
+          xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+           lifecycleactionsubmitrequestJson := []byte(`{
+          "comments" : [ {
+            "comment" : "Suspending agent until security review completes"
+          }, {
+            "comment" : "Suspending agent until security review completes"
+          }, {
+            "comment" : "Suspending agent until security review completes"
+          }, {
+            "comment" : "Suspending agent until security review completes"
+          }, {
+            "comment" : "Suspending agent until security review completes"
+          } ],
+          "action" : "DEACTIVATE"
+        }`) // LifecycleActionSubmitRequest | 
+
+          
+          var lifecycleActionSubmitRequest machine_identities_lifecycle_actions.LifecycleActionSubmitRequest
+          if err := json.Unmarshal(lifecycleactionsubmitrequestJson, &lifecycleActionSubmitRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.MachineIdentityLifecycleActionsAPI.SubmitMachineIdentityLifecycleActionV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).LifecycleActionSubmitRequest(lifecycleActionSubmitRequest).Execute()
+          //resp, r, err := apiClient.MachineIdentityLifecycleActionsAPI.SubmitMachineIdentityLifecycleActionV1(context.Background(), id).XSailPointExperimental(xSailPointExperimental).LifecycleActionSubmitRequest(lifecycleActionSubmitRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `MachineIdentityLifecycleActionsAPI.SubmitMachineIdentityLifecycleActionV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `SubmitMachineIdentityLifecycleActionV1`: LifecycleActionSubmitResponse
+          fmt.Fprintf(os.Stdout, "Response from `MachineIdentityLifecycleActionsAPI.SubmitMachineIdentityLifecycleActionV1`: %v\n", resp)
+        }

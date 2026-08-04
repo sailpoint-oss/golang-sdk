@@ -22,7 +22,9 @@ var _ MappedNullable = &IntelAccountsSlice{}
 type IntelAccountsSlice struct {
 	// First page of accounts for the identity.
 	Items []IntelAccessAccountWire `json:"items"`
-	// Absolute URL to the next accounts page; present only when more results exist.
+	// Total number of accounts for this identity; omitted when `items` is empty.
+	TotalCount *int32 `json:"totalCount,omitempty"`
+	// Absolute URL to the next accounts page; present when totalCount exceeds the items returned on this page.
 	Next *string `json:"next,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -71,6 +73,38 @@ func (o *IntelAccountsSlice) SetItems(v []IntelAccessAccountWire) {
 	o.Items = v
 }
 
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+func (o *IntelAccountsSlice) GetTotalCount() int32 {
+	if o == nil || IsNil(o.TotalCount) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalCount
+}
+
+// GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntelAccountsSlice) GetTotalCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalCount) {
+		return nil, false
+	}
+	return o.TotalCount, true
+}
+
+// HasTotalCount returns a boolean if a field has been set.
+func (o *IntelAccountsSlice) HasTotalCount() bool {
+	if o != nil && !IsNil(o.TotalCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+func (o *IntelAccountsSlice) SetTotalCount(v int32) {
+	o.TotalCount = &v
+}
+
 // GetNext returns the Next field value if set, zero value otherwise.
 func (o *IntelAccountsSlice) GetNext() string {
 	if o == nil || IsNil(o.Next) {
@@ -114,6 +148,9 @@ func (o IntelAccountsSlice) MarshalJSON() ([]byte, error) {
 func (o IntelAccountsSlice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["items"] = o.Items
+	if !IsNil(o.TotalCount) {
+		toSerialize["totalCount"] = o.TotalCount
+	}
 	if !IsNil(o.Next) {
 		toSerialize["next"] = o.Next
 	}
@@ -161,6 +198,7 @@ func (o *IntelAccountsSlice) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "items")
+		delete(additionalProperties, "totalCount")
 		delete(additionalProperties, "next")
 		o.AdditionalProperties = additionalProperties
 	}

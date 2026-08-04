@@ -16,7 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'IntelAccountsSlice', 'V1IntelAccounts
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Items** | [**[]IntelAccessAccountWire**](intel-access-account-wire) | First page of accounts for the identity. | 
-**Next** | Pointer to **string** | Absolute URL to the next accounts page; present only when more results exist. | [optional] 
+**TotalCount** | Pointer to **int32** | Total number of accounts for this identity; omitted when `items` is empty. | [optional] 
+**Next** | Pointer to **string** | Absolute URL to the next accounts page; present when totalCount exceeds the items returned on this page. | [optional] 
 
 ## Methods
 
@@ -56,6 +57,31 @@ and a boolean to check if the value has been set.
 
 SetItems sets Items field to given value.
 
+
+### GetTotalCount
+
+`func (o *IntelAccountsSlice) GetTotalCount() int32`
+
+GetTotalCount returns the TotalCount field if non-nil, zero value otherwise.
+
+### GetTotalCountOk
+
+`func (o *IntelAccountsSlice) GetTotalCountOk() (*int32, bool)`
+
+GetTotalCountOk returns a tuple with the TotalCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalCount
+
+`func (o *IntelAccountsSlice) SetTotalCount(v int32)`
+
+SetTotalCount sets TotalCount field to given value.
+
+### HasTotalCount
+
+`func (o *IntelAccountsSlice) HasTotalCount() bool`
+
+HasTotalCount returns a boolean if a field has been set.
 
 ### GetNext
 

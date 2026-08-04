@@ -1088,7 +1088,8 @@ paths:
           \ of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID),\
           \ \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\"\
           , \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\"\
-          , \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)]"
+          , \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", \"AGENT_ACTIVATE_APPROVAL\"\
+          , \"AGENT_DEACTIVATE_APPROVAL\", (tenantID)]"
         example: 12345678901234567000000000000000
         explode: false
         in: path
@@ -1187,6 +1188,8 @@ paths:
           ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
           MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
           MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          AGENT_ACTIVATE_APPROVAL:APPROVAL_TYPE
+          AGENT_DEACTIVATE_APPROVAL:APPROVAL_TYPE
           [[tenantID]]:TENANT
           [[domainObjectID]]:DOMAIN_OBJECT
         example: ACCESS_REQUEST_APPROVAL
@@ -1198,9 +1201,9 @@ paths:
           type: string
         style: simple
         x-sailpoint-resource-operation-id:
-        - listEntitlements
-        - listRoles
-        - listAccessProfiles
+        - listEntitlementsV1
+        - listRolesV1
+        - listAccessProfilesV1
       - description: |-
           The scope of the field, where [[id]]:[[scope]] is the following
           [[roleID]]:ROLE
@@ -1212,6 +1215,8 @@ paths:
           ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
           MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
           MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          AGENT_ACTIVATE_APPROVAL:APPROVAL_TYPE
+          AGENT_DEACTIVATE_APPROVAL:APPROVAL_TYPE
           [[tenantID]]:TENANT
           [[domainObjectID]]:DOMAIN_OBJECT
         example: APPROVAL_TYPE
@@ -1333,6 +1338,8 @@ paths:
           ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
           MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
           MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          AGENT_ACTIVATE_APPROVAL:APPROVAL_TYPE
+          AGENT_DEACTIVATE_APPROVAL:APPROVAL_TYPE
           [[tenantID]]:TENANT
           [[domainObjectID]]:DOMAIN_OBJECT
         example: ACCESS_REQUEST_APPROVAL
@@ -1344,9 +1351,9 @@ paths:
           type: string
         style: simple
         x-sailpoint-resource-operation-id:
-        - listEntitlements
-        - listRoles
-        - listAccessProfiles
+        - listEntitlementsV1
+        - listRolesV1
+        - listAccessProfilesV1
       - description: |-
           The scope of the field, where [[id]]:[[scope]] is the following
           [[roleID]]:ROLE
@@ -1358,6 +1365,8 @@ paths:
           ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
           MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE
           MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE
+          AGENT_ACTIVATE_APPROVAL:APPROVAL_TYPE
+          AGENT_DEACTIVATE_APPROVAL:APPROVAL_TYPE
           [[tenantID]]:TENANT
           [[domainObjectID]]:DOMAIN_OBJECT
         example: APPROVAL_TYPE

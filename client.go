@@ -78,6 +78,7 @@ import (
 	machine_accounts "github.com/sailpoint-oss/golang-sdk/v3/machine_accounts"
 	machine_classification_config "github.com/sailpoint-oss/golang-sdk/v3/machine_classification_config"
 	machine_identities "github.com/sailpoint-oss/golang-sdk/v3/machine_identities"
+	machine_identities_lifecycle_actions "github.com/sailpoint-oss/golang-sdk/v3/machine_identities_lifecycle_actions"
 	managed_clients "github.com/sailpoint-oss/golang-sdk/v3/managed_clients"
 	managed_cluster_types "github.com/sailpoint-oss/golang-sdk/v3/managed_cluster_types"
 	managed_clusters "github.com/sailpoint-oss/golang-sdk/v3/managed_clusters"
@@ -213,6 +214,7 @@ type APIClient struct {
 	MachineAccountsAPI *machine_accounts.MachineAccountsAPIService
 	MachineClassificationConfigAPI *machine_classification_config.MachineClassificationConfigAPIService
 	MachineIdentitiesAPI *machine_identities.MachineIdentitiesAPIService
+	MachineIdentityLifecycleActionsAPI *machine_identities_lifecycle_actions.MachineIdentityLifecycleActionsAPIService
 	ManagedClientsAPI *managed_clients.ManagedClientsAPIService
 	ManagedClusterTypesAPI *managed_cluster_types.ManagedClusterTypesAPIService
 	ManagedClustersAPI *managed_clusters.ManagedClustersAPIService
@@ -1002,6 +1004,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgMachineIdentities.HTTPClient = cfg.HTTPClient
 	c.MachineIdentitiesAPI = machine_identities.NewAPIClient(_cfgMachineIdentities).MachineIdentitiesAPI
+
+	_cfgMachineIdentityLifecycleActions := machine_identities_lifecycle_actions.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgMachineIdentityLifecycleActions.HTTPClient = cfg.HTTPClient
+	c.MachineIdentityLifecycleActionsAPI = machine_identities_lifecycle_actions.NewAPIClient(_cfgMachineIdentityLifecycleActions).MachineIdentityLifecycleActionsAPI
 
 	_cfgManagedClients := managed_clients.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,

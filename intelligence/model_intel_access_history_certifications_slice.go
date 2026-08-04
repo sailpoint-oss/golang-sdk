@@ -22,7 +22,9 @@ var _ MappedNullable = &IntelAccessHistoryCertificationsSlice{}
 type IntelAccessHistoryCertificationsSlice struct {
 	// First page of certification history events for the identity.
 	Items []IntelCertificationHistoryEvent `json:"items"`
-	// Absolute URL to the next certifications page; present only when more results exist.
+	// Total number of events in this category; omitted when `items` is empty.
+	TotalCount *int32 `json:"totalCount,omitempty"`
+	// Absolute URL to the next certifications page; present when totalCount exceeds the items returned on this page.
 	Next *string `json:"next,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -71,6 +73,38 @@ func (o *IntelAccessHistoryCertificationsSlice) SetItems(v []IntelCertificationH
 	o.Items = v
 }
 
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+func (o *IntelAccessHistoryCertificationsSlice) GetTotalCount() int32 {
+	if o == nil || IsNil(o.TotalCount) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalCount
+}
+
+// GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntelAccessHistoryCertificationsSlice) GetTotalCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalCount) {
+		return nil, false
+	}
+	return o.TotalCount, true
+}
+
+// HasTotalCount returns a boolean if a field has been set.
+func (o *IntelAccessHistoryCertificationsSlice) HasTotalCount() bool {
+	if o != nil && !IsNil(o.TotalCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+func (o *IntelAccessHistoryCertificationsSlice) SetTotalCount(v int32) {
+	o.TotalCount = &v
+}
+
 // GetNext returns the Next field value if set, zero value otherwise.
 func (o *IntelAccessHistoryCertificationsSlice) GetNext() string {
 	if o == nil || IsNil(o.Next) {
@@ -114,6 +148,9 @@ func (o IntelAccessHistoryCertificationsSlice) MarshalJSON() ([]byte, error) {
 func (o IntelAccessHistoryCertificationsSlice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["items"] = o.Items
+	if !IsNil(o.TotalCount) {
+		toSerialize["totalCount"] = o.TotalCount
+	}
 	if !IsNil(o.Next) {
 		toSerialize["next"] = o.Next
 	}
@@ -161,6 +198,7 @@ func (o *IntelAccessHistoryCertificationsSlice) UnmarshalJSON(data []byte) (err 
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "items")
+		delete(additionalProperties, "totalCount")
 		delete(additionalProperties, "next")
 		o.AdditionalProperties = additionalProperties
 	}

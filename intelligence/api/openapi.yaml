@@ -35,6 +35,18 @@ tags:
     for SecOps enrichment use cases (SIEM/SOAR connectors, MCP, browser
     extension). Backed by Atlas internal-REST calls to MICE, Shelby List Accounts,
     SDS Search, IDA-outliers, and identity-history.
+
+    ## Pagination
+
+    The aggregated Human GET embeds the first **10** items per paged slice. Each upstream paged call
+    sends `count=true` and reads `X-Total-Count`. Parent slices expose `totalCount` when `items` is
+    non-empty and set `next` when `totalCount > offset + len(items)` (aggregate offset is always 0).
+    Empty slices render as `items: []` with no `totalCount`. `privilegedAccess` is never paged and
+    carries no `totalCount`.
+
+    Human child routes (`/accounts`, `/outliers/rare-access`, `/access-history/*`) follow the
+    SailPoint V3 pattern: pass `count=true` to receive `X-Total-Count` (including `0` on empty
+    pages). When `count` is omitted, upstream count work is skipped and the header is omitted.
   name: Intelligence
 paths:
   /intelligence/v1/identities:
@@ -45,8 +57,11 @@ paths:
         Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope.
         Supported queryable fields are id and email only.
         The response embeds the first page of accounts, rare access, access-history access items, and
-        access-history certifications. Paged slices include a next link only when more results exist.
-        The privilegedAccess slice contains the full result and is not paged.
+        access-history certifications. Each paged slice includes `totalCount` from upstream
+        `X-Total-Count` when `items` is non-empty, and carries a `next` continuation URL when
+        `totalCount` exceeds the items returned on this page. Empty slices render as `items: []` with no
+        `totalCount`. The privilegedAccess slice contains the full result and is not paged; it never
+        carries `next` or `totalCount`.
         The outliers slice is omitted when the tenant lacks the IDA-outliers license.
       operationId: getIdentityIntelligenceV1
       parameters:
@@ -173,6 +188,7 @@ paths:
       description: |
         Continuation endpoint for the parent response's `accounts.next` link.
         Returns one page of account rows for the supplied limit and offset values.
+        Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages).
         Requires tenant license idn:response-and-remediation.
       operationId: getIntelIdentityAccountsV1
       parameters:
@@ -214,6 +230,21 @@ paths:
           minimum: 0
           type: integer
         style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -238,6 +269,15 @@ paths:
                   $ref: '#/components/schemas/IntelAccessAccountWire'
                 type: array
           description: One page of accounts.
+          headers:
+            X-Total-Count:
+              description: Total number of accounts for this identity; present only
+                when `count=true` was sent (including `0` on empty pages).
+              explode: false
+              schema:
+                minimum: 0
+                type: integer
+              style: simple
         "400":
           content:
             application/json:
@@ -299,9 +339,10 @@ paths:
       description: |
         Continuation endpoint for the parent response's `outliers.rareAccess.next` link.
         Resolves the identity's first outlier, then returns one page of rare access
-        items for the supplied limit and offset values. An identity with no outlier
-        returns an empty array. Requires tenant license idn:response-and-remediation
-        and the IDA-outliers license.
+        items for the supplied limit and offset values. Pass `count=true` to receive
+        `X-Total-Count` (including `0` on empty pages). An identity with no outlier
+        returns an empty array with `X-Total-Count: 0` when `count=true`. Requires
+        tenant license idn:response-and-remediation and the IDA-outliers license.
       operationId: getIntelIdentityRareAccessV1
       parameters:
       - description: Non-empty identity id path segment for Intelligence sub-resources.
@@ -342,6 +383,21 @@ paths:
           minimum: 0
           type: integer
         style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -358,6 +414,15 @@ paths:
                   $ref: '#/components/schemas/IntelOutlierAccessItem'
                 type: array
           description: One page of rare access items.
+          headers:
+            X-Total-Count:
+              description: Total number of rare-access items for the resolved outlier;
+                present only when `count=true` was sent (including `0` on empty pages).
+              explode: false
+              schema:
+                minimum: 0
+                type: integer
+              style: simple
         "400":
           content:
             application/json:
@@ -419,6 +484,7 @@ paths:
       description: |
         Continuation endpoint for the parent response's `accessHistory.accessItems.next` link.
         Returns one page of access-item history events for the supplied limit and offset values.
+        Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages).
         Unsupported event types and per-record decode failures are dropped server-side.
         Requires tenant license idn:response-and-remediation.
       operationId: getIntelIdentityAccessItemHistoryV1
@@ -461,6 +527,21 @@ paths:
           minimum: 0
           type: integer
         style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -478,6 +559,15 @@ paths:
                   $ref: '#/components/schemas/IntelAccessItemHistoryEvent'
                 type: array
           description: One page of access-item history events.
+          headers:
+            X-Total-Count:
+              description: Total number of access-item history events for this identity;
+                present only when `count=true` was sent (including `0` on empty pages).
+              explode: false
+              schema:
+                minimum: 0
+                type: integer
+              style: simple
         "400":
           content:
             application/json:
@@ -539,6 +629,7 @@ paths:
       description: |
         Continuation endpoint for the parent response's `accessHistory.certifications.next` link.
         Returns one page of certification history events for the supplied limit and offset values.
+        Pass `count=true` to receive `X-Total-Count` (including `0` on empty pages).
         Per-record decode failures are dropped server-side.
         Requires tenant license idn:response-and-remediation.
       operationId: getIntelIdentityCertificationHistoryV1
@@ -581,6 +672,21 @@ paths:
           minimum: 0
           type: integer
         style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -596,6 +702,15 @@ paths:
                   $ref: '#/components/schemas/IntelCertificationHistoryEvent'
                 type: array
           description: One page of certification history events.
+          headers:
+            X-Total-Count:
+              description: Total number of certification history events for this identity;
+                present only when `count=true` was sent (including `0` on empty pages).
+              explode: false
+              schema:
+                minimum: 0
+                type: integer
+              style: simple
         "400":
           content:
             application/json:
@@ -667,6 +782,22 @@ components:
         type: string
       style: simple
       x-sailpoint-resource-operation-id: listIdentitiesV1
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
   responses:
     "400":
       content:
@@ -847,10 +978,17 @@ components:
           items:
             $ref: '#/components/schemas/IntelAccessAccountWire'
           type: array
+        totalCount:
+          description: Total number of accounts for this identity; omitted when `items`
+            is empty.
+          example: 42
+          format: int32
+          minimum: 1
+          type: integer
         next:
-          description: Absolute URL to the next accounts page; present only when more
-            results exist.
-          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/accounts?limit=10&offset=10
+          description: Absolute URL to the next accounts page; present when totalCount
+            exceeds the items returned on this page.
+          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/accounts?limit=10&offset=10&count=true
           format: uri
           type: string
       required:
@@ -978,10 +1116,17 @@ components:
           items:
             $ref: '#/components/schemas/IntelOutlierAccessItem'
           type: array
+        totalCount:
+          description: Total number of rare-access items for the resolved outlier;
+            omitted when `items` is empty.
+          example: 15
+          format: int32
+          minimum: 1
+          type: integer
         next:
-          description: Absolute URL to the next rareAccess page; present only when
-            more results exist.
-          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/outliers/rare-access?limit=10&offset=10
+          description: Absolute URL to the next rareAccess page; present when totalCount
+            exceeds the items returned on this page.
+          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/outliers/rare-access?limit=10&offset=10&count=true
           format: uri
           type: string
       required:
@@ -1030,10 +1175,17 @@ components:
           items:
             $ref: '#/components/schemas/IntelAccessItemHistoryEvent'
           type: array
+        totalCount:
+          description: Total number of events in this category; omitted when `items`
+            is empty.
+          example: 128
+          format: int32
+          minimum: 1
+          type: integer
         next:
-          description: Absolute URL to the next access-items page; present only when
-            more results exist.
-          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/access-items?limit=10&offset=10
+          description: Absolute URL to the next access-items page; present when totalCount
+            exceeds the items returned on this page.
+          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/access-items?limit=10&offset=10&count=true
           format: uri
           type: string
       required:
@@ -1085,10 +1237,17 @@ components:
           items:
             $ref: '#/components/schemas/IntelCertificationHistoryEvent'
           type: array
+        totalCount:
+          description: Total number of events in this category; omitted when `items`
+            is empty.
+          example: 6
+          format: int32
+          minimum: 1
+          type: integer
         next:
-          description: Absolute URL to the next certifications page; present only
-            when more results exist.
-          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/certifications?limit=10&offset=10
+          description: Absolute URL to the next certifications page; present when
+            totalCount exceeds the items returned on this page.
+          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/identities/v1/ef38f94347e94562b5bb8424a56397d8/access-history/certifications?limit=10&offset=10&count=true
           format: uri
           type: string
       required:

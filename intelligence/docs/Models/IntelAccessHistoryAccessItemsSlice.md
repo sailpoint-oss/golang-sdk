@@ -16,7 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'IntelAccessHistoryAccessItemsSlice', 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Items** | **[]IntelAccessItemHistoryEvent** | First page of access-item history events for the identity. | 
-**Next** | Pointer to **string** | Absolute URL to the next access-items page; present only when more results exist. | [optional] 
+**TotalCount** | Pointer to **int32** | Total number of events in this category; omitted when `items` is empty. | [optional] 
+**Next** | Pointer to **string** | Absolute URL to the next access-items page; present when totalCount exceeds the items returned on this page. | [optional] 
 
 ## Methods
 
@@ -56,6 +57,31 @@ and a boolean to check if the value has been set.
 
 SetItems sets Items field to given value.
 
+
+### GetTotalCount
+
+`func (o *IntelAccessHistoryAccessItemsSlice) GetTotalCount() int32`
+
+GetTotalCount returns the TotalCount field if non-nil, zero value otherwise.
+
+### GetTotalCountOk
+
+`func (o *IntelAccessHistoryAccessItemsSlice) GetTotalCountOk() (*int32, bool)`
+
+GetTotalCountOk returns a tuple with the TotalCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalCount
+
+`func (o *IntelAccessHistoryAccessItemsSlice) SetTotalCount(v int32)`
+
+SetTotalCount sets TotalCount field to given value.
+
+### HasTotalCount
+
+`func (o *IntelAccessHistoryAccessItemsSlice) HasTotalCount() bool`
+
+HasTotalCount returns a boolean if a field has been set.
 
 ### GetNext
 
