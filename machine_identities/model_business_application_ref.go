@@ -12,22 +12,24 @@ package machine_identities
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the BusinessApplicationRef type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &BusinessApplicationRef{}
 
-// BusinessApplicationRef Reference to a Business Application associated with a machine identity.
+// BusinessApplicationRef Reference to a Business Application associated with a machine identity. Available when Business Applications is enabled for the tenant. At most one Business Application reference is supported per machine identity on create and patch.
 type BusinessApplicationRef struct {
-	// Reference type.
-	Type *string `json:"type,omitempty"`
-	// Business Application ID.
-	Id *string `json:"id,omitempty"`
-	// Business Application display name.
+	// Reference type. Must be `BUSINESS_APPLICATION`.
+	Type string `json:"type"`
+	// Existing Business Application id in the tenant.
+	Id string `json:"id"`
+	// Business Application display name. Ignored on write; responses are enriched from the Business Application.
 	Name NullableString `json:"name,omitempty"`
+	// Sanctioned status of the linked Business Application. Ignored on write; responses are enriched from the Business Application.
 	SanctionedStatus *SanctionedStatus `json:"sanctionedStatus,omitempty"`
-	// Whether the Business Application reference was manually assigned or automatically correlated.
-	CorrelationType *string `json:"correlationType,omitempty"`
+	// Correlation type for this reference. On write: omit or `MANUAL` (default). `AUTOMATIC` is rejected (`400`). On response: may be `MANUAL` or `AUTOMATIC`.
+	CorrelationType *CorrelationType `json:"correlationType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -37,8 +39,10 @@ type _BusinessApplicationRef BusinessApplicationRef
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBusinessApplicationRef() *BusinessApplicationRef {
+func NewBusinessApplicationRef(type_ string, id string) *BusinessApplicationRef {
 	this := BusinessApplicationRef{}
+	this.Type = type_
+	this.Id = id
 	return &this
 }
 
@@ -50,68 +54,52 @@ func NewBusinessApplicationRefWithDefaults() *BusinessApplicationRef {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *BusinessApplicationRef) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *BusinessApplicationRef) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *BusinessApplicationRef) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *BusinessApplicationRef) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *BusinessApplicationRef) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *BusinessApplicationRef) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *BusinessApplicationRef) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *BusinessApplicationRef) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -189,9 +177,9 @@ func (o *BusinessApplicationRef) SetSanctionedStatus(v SanctionedStatus) {
 }
 
 // GetCorrelationType returns the CorrelationType field value if set, zero value otherwise.
-func (o *BusinessApplicationRef) GetCorrelationType() string {
+func (o *BusinessApplicationRef) GetCorrelationType() CorrelationType {
 	if o == nil || IsNil(o.CorrelationType) {
-		var ret string
+		var ret CorrelationType
 		return ret
 	}
 	return *o.CorrelationType
@@ -199,7 +187,7 @@ func (o *BusinessApplicationRef) GetCorrelationType() string {
 
 // GetCorrelationTypeOk returns a tuple with the CorrelationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BusinessApplicationRef) GetCorrelationTypeOk() (*string, bool) {
+func (o *BusinessApplicationRef) GetCorrelationTypeOk() (*CorrelationType, bool) {
 	if o == nil || IsNil(o.CorrelationType) {
 		return nil, false
 	}
@@ -215,8 +203,8 @@ func (o *BusinessApplicationRef) HasCorrelationType() bool {
 	return false
 }
 
-// SetCorrelationType gets a reference to the given string and assigns it to the CorrelationType field.
-func (o *BusinessApplicationRef) SetCorrelationType(v string) {
+// SetCorrelationType gets a reference to the given CorrelationType and assigns it to the CorrelationType field.
+func (o *BusinessApplicationRef) SetCorrelationType(v CorrelationType) {
 	o.CorrelationType = &v
 }
 
@@ -230,12 +218,8 @@ func (o BusinessApplicationRef) MarshalJSON() ([]byte, error) {
 
 func (o BusinessApplicationRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["id"] = o.Id
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
@@ -254,6 +238,28 @@ func (o BusinessApplicationRef) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *BusinessApplicationRef) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varBusinessApplicationRef := _BusinessApplicationRef{}
 
 	err = json.Unmarshal(data, &varBusinessApplicationRef)

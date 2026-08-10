@@ -19,7 +19,7 @@ import (
 // checks if the IntelIdentityAggregate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IntelIdentityAggregate{}
 
-// IntelIdentityAggregate Flat identity response with identity attributes hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+// IntelIdentityAggregate Human identity response (type Human). Identity attributes are hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []). The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
 type IntelIdentityAggregate struct {
 	// Identity Security Cloud identifier for this identity.
 	Id string `json:"id"`
@@ -31,8 +31,6 @@ type IntelIdentityAggregate struct {
 	Description NullableString `json:"description,omitempty"`
 	// NERM classification for the identity.
 	Subtype NullableString `json:"subtype,omitempty"`
-	// Serialized owner reference information when populated by upstream identity services.
-	Owners NullableString `json:"owners,omitempty"`
 	// Arbitrary SCIM-style attribute bag returned for the identity context view.
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	// Timestamp when the identity record was created in Identity Security Cloud.
@@ -47,6 +45,8 @@ type IntelIdentityAggregate struct {
 	IdentityStatus *string `json:"identityStatus,omitempty"`
 	// True when the identity is flagged as a people manager in the organization.
 	IsManager *bool `json:"isManager,omitempty"`
+	// Omitted when the tenant lacks the idg:base license.
+	IdentityGraph *Intelidentitygraphlink `json:"identityGraph,omitempty"`
 	// First page of accounts for the identity.
 	Accounts IntelAccountsSlice `json:"accounts"`
 	// Full privileged access result for the identity.
@@ -248,48 +248,6 @@ func (o *IntelIdentityAggregate) SetSubtypeNil() {
 // UnsetSubtype ensures that no value is present for Subtype, not even an explicit nil
 func (o *IntelIdentityAggregate) UnsetSubtype() {
 	o.Subtype.Unset()
-}
-
-// GetOwners returns the Owners field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IntelIdentityAggregate) GetOwners() string {
-	if o == nil || IsNil(o.Owners.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Owners.Get()
-}
-
-// GetOwnersOk returns a tuple with the Owners field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IntelIdentityAggregate) GetOwnersOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Owners.Get(), o.Owners.IsSet()
-}
-
-// HasOwners returns a boolean if a field has been set.
-func (o *IntelIdentityAggregate) HasOwners() bool {
-	if o != nil && o.Owners.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOwners gets a reference to the given NullableString and assigns it to the Owners field.
-func (o *IntelIdentityAggregate) SetOwners(v string) {
-	o.Owners.Set(&v)
-}
-// SetOwnersNil sets the value for Owners to be an explicit nil
-func (o *IntelIdentityAggregate) SetOwnersNil() {
-	o.Owners.Set(nil)
-}
-
-// UnsetOwners ensures that no value is present for Owners, not even an explicit nil
-func (o *IntelIdentityAggregate) UnsetOwners() {
-	o.Owners.Unset()
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -516,6 +474,38 @@ func (o *IntelIdentityAggregate) SetIsManager(v bool) {
 	o.IsManager = &v
 }
 
+// GetIdentityGraph returns the IdentityGraph field value if set, zero value otherwise.
+func (o *IntelIdentityAggregate) GetIdentityGraph() Intelidentitygraphlink {
+	if o == nil || IsNil(o.IdentityGraph) {
+		var ret Intelidentitygraphlink
+		return ret
+	}
+	return *o.IdentityGraph
+}
+
+// GetIdentityGraphOk returns a tuple with the IdentityGraph field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntelIdentityAggregate) GetIdentityGraphOk() (*Intelidentitygraphlink, bool) {
+	if o == nil || IsNil(o.IdentityGraph) {
+		return nil, false
+	}
+	return o.IdentityGraph, true
+}
+
+// HasIdentityGraph returns a boolean if a field has been set.
+func (o *IntelIdentityAggregate) HasIdentityGraph() bool {
+	if o != nil && !IsNil(o.IdentityGraph) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityGraph gets a reference to the given Intelidentitygraphlink and assigns it to the IdentityGraph field.
+func (o *IntelIdentityAggregate) SetIdentityGraph(v Intelidentitygraphlink) {
+	o.IdentityGraph = &v
+}
+
 // GetAccounts returns the Accounts field value
 func (o *IntelIdentityAggregate) GetAccounts() IntelAccountsSlice {
 	if o == nil {
@@ -641,9 +631,6 @@ func (o IntelIdentityAggregate) ToMap() (map[string]interface{}, error) {
 	if o.Subtype.IsSet() {
 		toSerialize["subtype"] = o.Subtype.Get()
 	}
-	if o.Owners.IsSet() {
-		toSerialize["owners"] = o.Owners.Get()
-	}
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
@@ -664,6 +651,9 @@ func (o IntelIdentityAggregate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsManager) {
 		toSerialize["isManager"] = o.IsManager
+	}
+	if !IsNil(o.IdentityGraph) {
+		toSerialize["identityGraph"] = o.IdentityGraph
 	}
 	toSerialize["accounts"] = o.Accounts
 	toSerialize["privilegedAccess"] = o.PrivilegedAccess
@@ -723,7 +713,6 @@ func (o *IntelIdentityAggregate) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "subtype")
-		delete(additionalProperties, "owners")
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
@@ -731,6 +720,7 @@ func (o *IntelIdentityAggregate) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "email")
 		delete(additionalProperties, "identityStatus")
 		delete(additionalProperties, "isManager")
+		delete(additionalProperties, "identityGraph")
 		delete(additionalProperties, "accounts")
 		delete(additionalProperties, "privilegedAccess")
 		delete(additionalProperties, "outliers")

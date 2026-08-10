@@ -36,8 +36,8 @@ Name | Type | Description | Notes
 **Resource** | Pointer to [**ResourceV2**](resource-v2) |  | [optional] 
 **Source** | Pointer to [**MachineIdentityV2Source**](machine-identity-v2-source) |  | [optional] 
 **UserEntitlements** | Pointer to [**[]UserEntitlementV2**](user-entitlement-v2) | The user entitlements associated to the machine identity. | [optional] 
-**BusinessApplicationRefs** | Pointer to [**[]BusinessApplicationRef**](business-application-ref) | Optional Business Application references associated with this machine identity. | [optional] 
-**EffectiveSanctionedStatus** | Pointer to **SanctionedStatus** |  | [optional] 
+**BusinessApplicationRefs** | Pointer to [**[]BusinessApplicationRef**](business-application-ref) | Optional Business Application references associated with this machine identity. Available when Business Applications is enabled for the tenant. On create and patch, at most one reference is allowed and is persisted as a `MANUAL` correlation. When Business Applications is not enabled, this field is null on responses and is rejected (`400`) if supplied on write. | [optional] 
+**EffectiveSanctionedStatus** | Pointer to **NullableSanctionedStatus** | Derived sanctioned status from linked Business Applications; `UNKNOWN` when no refs are present. Available when Business Applications is enabled for the tenant; null when it is not enabled. Read-only on create and patch input. | [optional] [readonly] 
 **Risk** | Pointer to [**MachineIdentityV2Risk**](machine-identity-v2-risk) |  | [optional] 
 
 ## Methods
@@ -659,6 +659,16 @@ SetEffectiveSanctionedStatus sets EffectiveSanctionedStatus field to given value
 
 HasEffectiveSanctionedStatus returns a boolean if a field has been set.
 
+### SetEffectiveSanctionedStatusNil
+
+`func (o *Machineidentityv2) SetEffectiveSanctionedStatusNil(b bool)`
+
+ SetEffectiveSanctionedStatusNil sets the value for EffectiveSanctionedStatus to be an explicit nil
+
+### UnsetEffectiveSanctionedStatus
+`func (o *Machineidentityv2) UnsetEffectiveSanctionedStatus()`
+
+UnsetEffectiveSanctionedStatus ensures that no value is present for EffectiveSanctionedStatus, not even an explicit nil
 ### GetRisk
 
 `func (o *Machineidentityv2) GetRisk() MachineIdentityV2Risk`

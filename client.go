@@ -99,6 +99,7 @@ import (
 	privilege_criteria_configuration "github.com/sailpoint-oss/golang-sdk/v3/privilege_criteria_configuration"
 	public_identities "github.com/sailpoint-oss/golang-sdk/v3/public_identities"
 	public_identities_config "github.com/sailpoint-oss/golang-sdk/v3/public_identities_config"
+	public_machine_identities "github.com/sailpoint-oss/golang-sdk/v3/public_machine_identities"
 	reports_data_extraction "github.com/sailpoint-oss/golang-sdk/v3/reports_data_extraction"
 	requestable_objects "github.com/sailpoint-oss/golang-sdk/v3/requestable_objects"
 	role_insights "github.com/sailpoint-oss/golang-sdk/v3/role_insights"
@@ -112,6 +113,7 @@ import (
 	service_desk_integration "github.com/sailpoint-oss/golang-sdk/v3/service_desk_integration"
 	shared_signals_framework_ssf "github.com/sailpoint-oss/golang-sdk/v3/shared_signals_framework_ssf"
 	sim_integrations "github.com/sailpoint-oss/golang-sdk/v3/sim_integrations"
+	sod_controls "github.com/sailpoint-oss/golang-sdk/v3/sod_controls"
 	sod_policies "github.com/sailpoint-oss/golang-sdk/v3/sod_policies"
 	sod_violations "github.com/sailpoint-oss/golang-sdk/v3/sod_violations"
 	source_usages "github.com/sailpoint-oss/golang-sdk/v3/source_usages"
@@ -235,6 +237,7 @@ type APIClient struct {
 	PrivilegeCriteriaConfigurationAPI *privilege_criteria_configuration.PrivilegeCriteriaConfigurationAPIService
 	PublicIdentitiesAPI *public_identities.PublicIdentitiesAPIService
 	PublicIdentitiesConfigAPI *public_identities_config.PublicIdentitiesConfigAPIService
+	PublicMachineIdentitiesAPI *public_machine_identities.PublicMachineIdentitiesAPIService
 	ReportsDataExtractionAPI *reports_data_extraction.ReportsDataExtractionAPIService
 	RequestableObjectsAPI *requestable_objects.RequestableObjectsAPIService
 	RoleInsightsAPI *role_insights.RoleInsightsAPIService
@@ -248,6 +251,7 @@ type APIClient struct {
 	ServiceDeskIntegrationAPI *service_desk_integration.ServiceDeskIntegrationAPIService
 	SharedSignalsFrameworkSSFAPI *shared_signals_framework_ssf.SharedSignalsFrameworkSSFAPIService
 	SIMIntegrationsAPI *sim_integrations.SIMIntegrationsAPIService
+	SODControlsAPI *sod_controls.SODControlsAPIService
 	SODPoliciesAPI *sod_policies.SODPoliciesAPIService
 	SODViolationsAPI *sod_violations.SODViolationsAPIService
 	SourceUsagesAPI *source_usages.SourceUsagesAPIService
@@ -1257,6 +1261,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	_cfgPublicIdentitiesConfig.HTTPClient = cfg.HTTPClient
 	c.PublicIdentitiesConfigAPI = public_identities_config.NewAPIClient(_cfgPublicIdentitiesConfig).PublicIdentitiesConfigAPI
 
+	_cfgPublicMachineIdentities := public_machine_identities.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgPublicMachineIdentities.HTTPClient = cfg.HTTPClient
+	c.PublicMachineIdentitiesAPI = public_machine_identities.NewAPIClient(_cfgPublicMachineIdentities).PublicMachineIdentitiesAPI
+
 	_cfgReportsDataExtraction := reports_data_extraction.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
 		cfg.ClientConfiguration.ClientSecret,
@@ -1412,6 +1428,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgSIMIntegrations.HTTPClient = cfg.HTTPClient
 	c.SIMIntegrationsAPI = sim_integrations.NewAPIClient(_cfgSIMIntegrations).SIMIntegrationsAPI
+
+	_cfgSODControls := sod_controls.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgSODControls.HTTPClient = cfg.HTTPClient
+	c.SODControlsAPI = sod_controls.NewAPIClient(_cfgSODControls).SODControlsAPI
 
 	_cfgSODPolicies := sod_policies.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,

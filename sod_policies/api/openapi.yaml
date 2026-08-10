@@ -119,9 +119,17 @@ paths:
 
           **id**: *eq, in*
 
-          **name**: *eq, in*
+          **name**: *eq, in, sw, co*
 
           **state**: *eq, in*
+
+          **level**: *eq, in*
+
+          **type**: *eq*
+
+          **description**: *eq, co, sw*
+
+          **ownerRef.name**: *eq, sw*
         example: id eq "bc693f07e7b645539626c25954c58554"
         explode: true
         in: query
@@ -133,7 +141,7 @@ paths:
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
-          Sorting is supported for the following fields: **id, name, created, modified, description**
+          Sorting is supported for the following fields: **id, name, created, modified, description, ownerRef.name**
         example: "id,name"
         explode: true
         in: query
@@ -281,6 +289,9 @@ paths:
       summary: List sod policies
       tags:
       - SOD Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOD_POLICY_ADMIN
     post:
       description: |-
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy.
@@ -491,6 +502,9 @@ paths:
       summary: Create sod policy
       tags:
       - SOD Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOD_POLICY_ADMIN
   /sod-policies/v1/{id}:
     delete:
       description: |-
@@ -604,6 +618,9 @@ paths:
       summary: Delete sod policy by id
       tags:
       - SOD Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOD_POLICY_ADMIN
     get:
       description: |-
         This gets specified SOD policy.
@@ -778,6 +795,9 @@ paths:
       summary: Get sod policy by id
       tags:
       - SOD Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOD_POLICY_ADMIN
     patch:
       description: "Allows updating SOD Policy fields other than [\"id\",\"created\"\
         ,\"creatorId\",\"policyQuery\",\"type\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902)\
@@ -839,6 +859,9 @@ paths:
           * violationOwnerAssignmentConfig
           * scheduled
           * conflictingAccessCriteria
+          * level
+          * secondaryOwnerRefs
+          * allowedControls
         required: true
       responses:
         "200":
@@ -996,6 +1019,9 @@ paths:
       summary: Patch sod policy by id
       tags:
       - SOD Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOD_POLICY_ADMIN
     put:
       description: |-
         This updates a specified SOD policy.
@@ -1234,6 +1260,9 @@ paths:
       summary: Update sod policy by id
       tags:
       - SOD Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOD_POLICY_ADMIN
   /sod-policies/v1/{id}/evaluate:
     post:
       description: Runs the scheduled report for the policy retrieved by passed policy
@@ -2547,6 +2576,7 @@ components:
           name: Support
           id: 2c9180a46faadee4016fb4e018c20639
           type: IDENTITY
+        level: HIGH
         created: 2020-01-01T00:00:00Z
         scheduled: true
         creatorId: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
@@ -2560,7 +2590,15 @@ components:
             type: IDENTITY
         correctionAdvice: "Based on the role of the employee, managers should remove\
           \ access that is not required for their job function."
+        allowedControls:
+        - type: COMPENSATING_CONTROL
+          id: 2c9180a46faadee4016fb4e018c20639
+          name: Mitigating Control 1
         type: GENERAL
+        secondaryOwnerRefs:
+        - type: IDENTITY
+          id: 2c9180a46faadee4016fb4e018c20639
+          name: Support
         tags:
         - TAG1
         - TAG2
@@ -2601,6 +2639,37 @@ components:
           type: string
         ownerRef:
           $ref: '#/components/schemas/SodPolicy_ownerRef'
+        secondaryOwnerRefs:
+          description: Additional owners of the SOD policy.(Max 10). Applicable only
+            to Conflicting Access Based policies.
+          example:
+          - type: IDENTITY
+            id: 2c9180a46faadee4016fb4e018c20639
+            name: Support
+          items:
+            $ref: '#/components/schemas/SodPolicy_secondaryOwnerRefs_inner'
+          type: array
+        allowedControls:
+          description: Compensating or other controls allowed for this policy.(Max
+            10). Applicable only to Conflicting Access Based policies.
+          example:
+          - type: COMPENSATING_CONTROL
+            id: 2c9180a46faadee4016fb4e018c20639
+            name: Mitigating Control 1
+          items:
+            $ref: '#/components/schemas/SodPolicy_allowedControls_inner'
+          type: array
+        level:
+          description: "Policy severity or priority level. Applicable only to Conflicting\
+            \ Access Based policies. If not specified, default will be HIGH."
+          enum:
+          - CRITICAL
+          - HIGH
+          - MEDIUM
+          - LOW
+          example: HIGH
+          nullable: true
+          type: string
         externalPolicyReference:
           description: Optional External Policy Reference
           example: XYZ policy
@@ -3124,6 +3193,41 @@ components:
         name:
           description: Owner's name.
           example: Support
+          type: string
+      type: object
+    SodPolicy_secondaryOwnerRefs_inner:
+      properties:
+        type:
+          description: Secondary Owner Type
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+        id:
+          description: Secondary Owner ID
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: Secondary Owner Name
+          example: Support
+          type: string
+      type: object
+    SodPolicy_allowedControls_inner:
+      properties:
+        type:
+          description: Control reference type.
+          enum:
+          - COMPENSATING_CONTROL
+          example: COMPENSATING_CONTROL
+          type: string
+        id:
+          description: Control reference ID.
+          example: 2c9180a46faadee4016fb4e018
+          type: string
+        name:
+          description: Control reference name.
+          example: Mitigating Control 1
           type: string
       type: object
     SodPolicy_conflictingAccessCriteria:

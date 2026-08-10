@@ -79,12 +79,23 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*SODViolationsAPI* | [**GetViolationV1**](docs/SODViolationsAPI.md#getviolationv1) | **Get** /violations/v1/{id} | Get policy violation by ID
+*SODViolationsAPI* | [**ListMyViolationsV1**](docs/SODViolationsAPI.md#listmyviolationsv1) | **Get** /my-violations/v1 | List My Policy Violations
+*SODViolationsAPI* | [**ListViolationsV1**](docs/SODViolationsAPI.md#listviolationsv1) | **Get** /violations/v1 | List Policy Violations
+*SODViolationsAPI* | [**MoveViolationV1**](docs/SODViolationsAPI.md#moveviolationv1) | **Post** /violations/v1/{id}/reassign | Reassign policy violation
+*SODViolationsAPI* | [**StartApplyControlV1**](docs/SODViolationsAPI.md#startapplycontrolv1) | **Post** /violations/v1/{id}/controls | Apply control to violation
 *SODViolationsAPI* | [**StartPredictSodViolationsV1**](docs/SODViolationsAPI.md#startpredictsodviolationsv1) | **Post** /sod-violations/v1/predict | Predict sod violations for identity.
 *SODViolationsAPI* | [**StartViolationCheckV1**](docs/SODViolationsAPI.md#startviolationcheckv1) | **Post** /sod-violations/v1/check | Check sod violations
 
 
 ## Documentation For Models
 
+ - [AccessCriteria](docs/AccessCriteria.md)
+ - [Appliedcontrol](docs/Appliedcontrol.md)
+ - [Appliedcontrolcreate](docs/Appliedcontrolcreate.md)
+ - [Appliedcontrolstatus](docs/Appliedcontrolstatus.md)
+ - [Conflictingitem](docs/Conflictingitem.md)
+ - [Conflictingitemsourceref](docs/Conflictingitemsourceref.md)
  - [DtoType](docs/DtoType.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
@@ -95,6 +106,11 @@ Class | Method | HTTP request | Description
  - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [Policyviolationresponse](docs/Policyviolationresponse.md)
+ - [Policyviolationrisklevel](docs/Policyviolationrisklevel.md)
+ - [Policyviolationstatus](docs/Policyviolationstatus.md)
+ - [Reassigninput](docs/Reassigninput.md)
+ - [Referenceresponse](docs/Referenceresponse.md)
  - [SodPolicyDto2](docs/SodPolicyDto2.md)
  - [SodViolationCheck](docs/SodViolationCheck.md)
  - [StartPredictSodViolationsV1401Response](docs/StartPredictSodViolationsV1401Response.md)
@@ -102,6 +118,7 @@ Class | Method | HTTP request | Description
  - [ViolationContext](docs/ViolationContext.md)
  - [ViolationContextPolicy](docs/ViolationContextPolicy.md)
  - [ViolationPrediction](docs/ViolationPrediction.md)
+ - [Violationreassigninput](docs/Violationreassigninput.md)
 
 
 ## Documentation For Authorization

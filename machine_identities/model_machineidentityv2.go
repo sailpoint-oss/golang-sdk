@@ -60,9 +60,10 @@ type Machineidentityv2 struct {
 	Source *MachineIdentityV2Source `json:"source,omitempty"`
 	// The user entitlements associated to the machine identity.
 	UserEntitlements []UserEntitlementV2 `json:"userEntitlements,omitempty"`
-	// Optional Business Application references associated with this machine identity.
+	// Optional Business Application references associated with this machine identity. Available when Business Applications is enabled for the tenant. On create and patch, at most one reference is allowed and is persisted as a `MANUAL` correlation. When Business Applications is not enabled, this field is null on responses and is rejected (`400`) if supplied on write.
 	BusinessApplicationRefs []BusinessApplicationRef `json:"businessApplicationRefs,omitempty"`
-	EffectiveSanctionedStatus *SanctionedStatus `json:"effectiveSanctionedStatus,omitempty"`
+	// Derived sanctioned status from linked Business Applications; `UNKNOWN` when no refs are present. Available when Business Applications is enabled for the tenant; null when it is not enabled. Read-only on create and patch input.
+	EffectiveSanctionedStatus NullableSanctionedStatus `json:"effectiveSanctionedStatus,omitempty"`
 	Risk *MachineIdentityV2Risk `json:"risk,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -804,36 +805,46 @@ func (o *Machineidentityv2) SetBusinessApplicationRefs(v []BusinessApplicationRe
 	o.BusinessApplicationRefs = v
 }
 
-// GetEffectiveSanctionedStatus returns the EffectiveSanctionedStatus field value if set, zero value otherwise.
+// GetEffectiveSanctionedStatus returns the EffectiveSanctionedStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Machineidentityv2) GetEffectiveSanctionedStatus() SanctionedStatus {
-	if o == nil || IsNil(o.EffectiveSanctionedStatus) {
+	if o == nil || IsNil(o.EffectiveSanctionedStatus.Get()) {
 		var ret SanctionedStatus
 		return ret
 	}
-	return *o.EffectiveSanctionedStatus
+	return *o.EffectiveSanctionedStatus.Get()
 }
 
 // GetEffectiveSanctionedStatusOk returns a tuple with the EffectiveSanctionedStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Machineidentityv2) GetEffectiveSanctionedStatusOk() (*SanctionedStatus, bool) {
-	if o == nil || IsNil(o.EffectiveSanctionedStatus) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EffectiveSanctionedStatus, true
+	return o.EffectiveSanctionedStatus.Get(), o.EffectiveSanctionedStatus.IsSet()
 }
 
 // HasEffectiveSanctionedStatus returns a boolean if a field has been set.
 func (o *Machineidentityv2) HasEffectiveSanctionedStatus() bool {
-	if o != nil && !IsNil(o.EffectiveSanctionedStatus) {
+	if o != nil && o.EffectiveSanctionedStatus.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEffectiveSanctionedStatus gets a reference to the given SanctionedStatus and assigns it to the EffectiveSanctionedStatus field.
+// SetEffectiveSanctionedStatus gets a reference to the given NullableSanctionedStatus and assigns it to the EffectiveSanctionedStatus field.
 func (o *Machineidentityv2) SetEffectiveSanctionedStatus(v SanctionedStatus) {
-	o.EffectiveSanctionedStatus = &v
+	o.EffectiveSanctionedStatus.Set(&v)
+}
+// SetEffectiveSanctionedStatusNil sets the value for EffectiveSanctionedStatus to be an explicit nil
+func (o *Machineidentityv2) SetEffectiveSanctionedStatusNil() {
+	o.EffectiveSanctionedStatus.Set(nil)
+}
+
+// UnsetEffectiveSanctionedStatus ensures that no value is present for EffectiveSanctionedStatus, not even an explicit nil
+func (o *Machineidentityv2) UnsetEffectiveSanctionedStatus() {
+	o.EffectiveSanctionedStatus.Unset()
 }
 
 // GetRisk returns the Risk field value if set, zero value otherwise.
@@ -942,8 +953,8 @@ func (o Machineidentityv2) ToMap() (map[string]interface{}, error) {
 	if o.BusinessApplicationRefs != nil {
 		toSerialize["businessApplicationRefs"] = o.BusinessApplicationRefs
 	}
-	if !IsNil(o.EffectiveSanctionedStatus) {
-		toSerialize["effectiveSanctionedStatus"] = o.EffectiveSanctionedStatus
+	if o.EffectiveSanctionedStatus.IsSet() {
+		toSerialize["effectiveSanctionedStatus"] = o.EffectiveSanctionedStatus.Get()
 	}
 	if !IsNil(o.Risk) {
 		toSerialize["risk"] = o.Risk

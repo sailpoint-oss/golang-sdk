@@ -31,6 +31,12 @@ type SodPolicy struct {
 	// Optional description of the SOD policy
 	Description NullableString `json:"description,omitempty"`
 	OwnerRef *SodPolicyOwnerRef `json:"ownerRef,omitempty"`
+	// Additional owners of the SOD policy.(Max 10). Applicable only to Conflicting Access Based policies.
+	SecondaryOwnerRefs []SodPolicySecondaryOwnerRefsInner `json:"secondaryOwnerRefs,omitempty"`
+	// Compensating or other controls allowed for this policy.(Max 10). Applicable only to Conflicting Access Based policies.
+	AllowedControls []SodPolicyAllowedControlsInner `json:"allowedControls,omitempty"`
+	// Policy severity or priority level. Applicable only to Conflicting Access Based policies. If not specified, default will be HIGH.
+	Level NullableString `json:"level,omitempty"`
 	// Optional External Policy Reference
 	ExternalPolicyReference NullableString `json:"externalPolicyReference,omitempty"`
 	// Search query of the SOD policy
@@ -283,6 +289,112 @@ func (o *SodPolicy) HasOwnerRef() bool {
 // SetOwnerRef gets a reference to the given SodPolicyOwnerRef and assigns it to the OwnerRef field.
 func (o *SodPolicy) SetOwnerRef(v SodPolicyOwnerRef) {
 	o.OwnerRef = &v
+}
+
+// GetSecondaryOwnerRefs returns the SecondaryOwnerRefs field value if set, zero value otherwise.
+func (o *SodPolicy) GetSecondaryOwnerRefs() []SodPolicySecondaryOwnerRefsInner {
+	if o == nil || IsNil(o.SecondaryOwnerRefs) {
+		var ret []SodPolicySecondaryOwnerRefsInner
+		return ret
+	}
+	return o.SecondaryOwnerRefs
+}
+
+// GetSecondaryOwnerRefsOk returns a tuple with the SecondaryOwnerRefs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SodPolicy) GetSecondaryOwnerRefsOk() ([]SodPolicySecondaryOwnerRefsInner, bool) {
+	if o == nil || IsNil(o.SecondaryOwnerRefs) {
+		return nil, false
+	}
+	return o.SecondaryOwnerRefs, true
+}
+
+// HasSecondaryOwnerRefs returns a boolean if a field has been set.
+func (o *SodPolicy) HasSecondaryOwnerRefs() bool {
+	if o != nil && !IsNil(o.SecondaryOwnerRefs) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecondaryOwnerRefs gets a reference to the given []SodPolicySecondaryOwnerRefsInner and assigns it to the SecondaryOwnerRefs field.
+func (o *SodPolicy) SetSecondaryOwnerRefs(v []SodPolicySecondaryOwnerRefsInner) {
+	o.SecondaryOwnerRefs = v
+}
+
+// GetAllowedControls returns the AllowedControls field value if set, zero value otherwise.
+func (o *SodPolicy) GetAllowedControls() []SodPolicyAllowedControlsInner {
+	if o == nil || IsNil(o.AllowedControls) {
+		var ret []SodPolicyAllowedControlsInner
+		return ret
+	}
+	return o.AllowedControls
+}
+
+// GetAllowedControlsOk returns a tuple with the AllowedControls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SodPolicy) GetAllowedControlsOk() ([]SodPolicyAllowedControlsInner, bool) {
+	if o == nil || IsNil(o.AllowedControls) {
+		return nil, false
+	}
+	return o.AllowedControls, true
+}
+
+// HasAllowedControls returns a boolean if a field has been set.
+func (o *SodPolicy) HasAllowedControls() bool {
+	if o != nil && !IsNil(o.AllowedControls) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedControls gets a reference to the given []SodPolicyAllowedControlsInner and assigns it to the AllowedControls field.
+func (o *SodPolicy) SetAllowedControls(v []SodPolicyAllowedControlsInner) {
+	o.AllowedControls = v
+}
+
+// GetLevel returns the Level field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SodPolicy) GetLevel() string {
+	if o == nil || IsNil(o.Level.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Level.Get()
+}
+
+// GetLevelOk returns a tuple with the Level field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SodPolicy) GetLevelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Level.Get(), o.Level.IsSet()
+}
+
+// HasLevel returns a boolean if a field has been set.
+func (o *SodPolicy) HasLevel() bool {
+	if o != nil && o.Level.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLevel gets a reference to the given NullableString and assigns it to the Level field.
+func (o *SodPolicy) SetLevel(v string) {
+	o.Level.Set(&v)
+}
+// SetLevelNil sets the value for Level to be an explicit nil
+func (o *SodPolicy) SetLevelNil() {
+	o.Level.Set(nil)
+}
+
+// UnsetLevel ensures that no value is present for Level, not even an explicit nil
+func (o *SodPolicy) UnsetLevel() {
+	o.Level.Unset()
 }
 
 // GetExternalPolicyReference returns the ExternalPolicyReference field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -737,6 +849,15 @@ func (o SodPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OwnerRef) {
 		toSerialize["ownerRef"] = o.OwnerRef
 	}
+	if !IsNil(o.SecondaryOwnerRefs) {
+		toSerialize["secondaryOwnerRefs"] = o.SecondaryOwnerRefs
+	}
+	if !IsNil(o.AllowedControls) {
+		toSerialize["allowedControls"] = o.AllowedControls
+	}
+	if o.Level.IsSet() {
+		toSerialize["level"] = o.Level.Get()
+	}
 	if o.ExternalPolicyReference.IsSet() {
 		toSerialize["externalPolicyReference"] = o.ExternalPolicyReference.Get()
 	}
@@ -801,6 +922,9 @@ func (o *SodPolicy) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "ownerRef")
+		delete(additionalProperties, "secondaryOwnerRefs")
+		delete(additionalProperties, "allowedControls")
+		delete(additionalProperties, "level")
 		delete(additionalProperties, "externalPolicyReference")
 		delete(additionalProperties, "policyQuery")
 		delete(additionalProperties, "compensatingControls")

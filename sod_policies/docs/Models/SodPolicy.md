@@ -21,6 +21,9 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **SailPointTime** | The time when this SOD policy is modified. | [optional] [readonly] 
 **Description** | Pointer to **NullableString** | Optional description of the SOD policy | [optional] 
 **OwnerRef** | Pointer to [**SodPolicyOwnerRef**](sod-policy-owner-ref) |  | [optional] 
+**SecondaryOwnerRefs** | Pointer to [**[]SodPolicySecondaryOwnerRefsInner**](sod-policy-secondary-owner-refs-inner) | Additional owners of the SOD policy.(Max 10). Applicable only to Conflicting Access Based policies. | [optional] 
+**AllowedControls** | Pointer to [**[]SodPolicyAllowedControlsInner**](sod-policy-allowed-controls-inner) | Compensating or other controls allowed for this policy.(Max 10). Applicable only to Conflicting Access Based policies. | [optional] 
+**Level** | Pointer to **NullableString** | Policy severity or priority level. Applicable only to Conflicting Access Based policies. If not specified, default will be HIGH. | [optional] 
 **ExternalPolicyReference** | Pointer to **NullableString** | Optional External Policy Reference | [optional] 
 **PolicyQuery** | Pointer to **string** | Search query of the SOD policy | [optional] 
 **CompensatingControls** | Pointer to **NullableString** | Optional compensating controls(Mitigating Controls) | [optional] 
@@ -213,6 +216,91 @@ SetOwnerRef sets OwnerRef field to given value.
 
 HasOwnerRef returns a boolean if a field has been set.
 
+### GetSecondaryOwnerRefs
+
+`func (o *SodPolicy) GetSecondaryOwnerRefs() []SodPolicySecondaryOwnerRefsInner`
+
+GetSecondaryOwnerRefs returns the SecondaryOwnerRefs field if non-nil, zero value otherwise.
+
+### GetSecondaryOwnerRefsOk
+
+`func (o *SodPolicy) GetSecondaryOwnerRefsOk() (*[]SodPolicySecondaryOwnerRefsInner, bool)`
+
+GetSecondaryOwnerRefsOk returns a tuple with the SecondaryOwnerRefs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecondaryOwnerRefs
+
+`func (o *SodPolicy) SetSecondaryOwnerRefs(v []SodPolicySecondaryOwnerRefsInner)`
+
+SetSecondaryOwnerRefs sets SecondaryOwnerRefs field to given value.
+
+### HasSecondaryOwnerRefs
+
+`func (o *SodPolicy) HasSecondaryOwnerRefs() bool`
+
+HasSecondaryOwnerRefs returns a boolean if a field has been set.
+
+### GetAllowedControls
+
+`func (o *SodPolicy) GetAllowedControls() []SodPolicyAllowedControlsInner`
+
+GetAllowedControls returns the AllowedControls field if non-nil, zero value otherwise.
+
+### GetAllowedControlsOk
+
+`func (o *SodPolicy) GetAllowedControlsOk() (*[]SodPolicyAllowedControlsInner, bool)`
+
+GetAllowedControlsOk returns a tuple with the AllowedControls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedControls
+
+`func (o *SodPolicy) SetAllowedControls(v []SodPolicyAllowedControlsInner)`
+
+SetAllowedControls sets AllowedControls field to given value.
+
+### HasAllowedControls
+
+`func (o *SodPolicy) HasAllowedControls() bool`
+
+HasAllowedControls returns a boolean if a field has been set.
+
+### GetLevel
+
+`func (o *SodPolicy) GetLevel() string`
+
+GetLevel returns the Level field if non-nil, zero value otherwise.
+
+### GetLevelOk
+
+`func (o *SodPolicy) GetLevelOk() (*string, bool)`
+
+GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLevel
+
+`func (o *SodPolicy) SetLevel(v string)`
+
+SetLevel sets Level field to given value.
+
+### HasLevel
+
+`func (o *SodPolicy) HasLevel() bool`
+
+HasLevel returns a boolean if a field has been set.
+
+### SetLevelNil
+
+`func (o *SodPolicy) SetLevelNil(b bool)`
+
+ SetLevelNil sets the value for Level to be an explicit nil
+
+### UnsetLevel
+`func (o *SodPolicy) UnsetLevel()`
+
+UnsetLevel ensures that no value is present for Level, not even an explicit nil
 ### GetExternalPolicyReference
 
 `func (o *SodPolicy) GetExternalPolicyReference() string`

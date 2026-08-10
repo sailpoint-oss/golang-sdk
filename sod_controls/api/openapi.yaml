@@ -1,0 +1,1273 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: "Use these APIs to interact with the Identity Security Cloud platform\
+    \ to achieve repeatable, automated processes with greater scalability. We encourage\
+    \ you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss\
+    \ to connect with other developers using our APIs."
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Identity Security Cloud API - SOD Controls
+  version: v1
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the versioned API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+tags:
+- description: |
+    Use this API to create, list, retrieve, update, and delete compensating controls associated with separation-of-duties policies. Requires policy violation management license.
+  name: SOD Controls
+paths:
+  /controls/v1:
+    get:
+      description: Returns a list of compensating controls associated with separation-of-duties
+        policies.
+      operationId: listControlsV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, sw, co*
+
+          **type**: *eq*
+
+          **owner**: *eq, in*
+
+          **description**: *eq, in, sw, co*
+
+          **action**: *eq, in*
+        example: type eq "Mitigation" and name co "payroll"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name**
+
+          Prefix a field with - for descending order, for example -name. If no sort is provided, results default to name ascending.
+        example: -name
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 3e078865-55ed-43cf-b83c-85c58d2016e6
+                name: Example Name
+                description: a description
+                owner:
+                  id: 943a7c57da334d07ba2454bf7fcf144f
+                  type: IDENTITY
+                  name: John Doe
+                secondaryOwners: []
+                type: MITIGATION
+                action: action
+                expiration: 720h
+                justificationRequired: true
+                workflowID: 3e07886555ed43cfb83c85c58d2016e6
+              schema:
+                items:
+                  $ref: '#/components/schemas/Compensatingcontrolresponse'
+                type: array
+          description: List of compensating controls
+          headers:
+            X-Total-Count:
+              description: |
+                Total number of matching controls (only present when `count=true`).
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listControlsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listControlsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sod-control:read
+      summary: List Compensating Controls
+      tags:
+      - SOD Controls
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOD_CONTROL_ADMIN
+      - SOD_POLICY_ADMIN
+    post:
+      description: Creates a compensating control associated with separation-of-duties
+        policies.
+      operationId: createControlV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: a name
+              description: a description
+              owner:
+                id: 3e07886555ed43cfb83c85c58d2016e6
+                type: IDENTITY
+              secondaryOwners:
+              - id: 943a7c57da334d07ba2454bf7fcf144f
+                type: GOVERNANCE_GROUP
+              type: Mitigation
+              action: Workflow
+              expiration: 20d
+              justificationRequired: true
+              workflowID: 3e07886555ed43cfb83c85c58d2016e6
+            schema:
+              $ref: '#/components/schemas/Compensatingcontrolcreate'
+        description: Data needed to create a Compensating Control
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              example:
+                id: 3e078865-55ed-43cf-b83c-85c58d2016e6
+                name: Example Name
+                description: a description
+                owner:
+                  id: 943a7c57da334d07ba2454bf7fcf144f
+                  type: IDENTITY
+                  name: John Doe
+                secondaryOwners: []
+                type: MITIGATION
+                action: action
+                expiration: 720h
+                justificationRequired: true
+                workflowID: 3e07886555ed43cfb83c85c58d2016e6
+              schema:
+                $ref: '#/components/schemas/Compensatingcontrolresponse'
+          description: Compensating Control successfully created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listControlsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listControlsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sod-control:manage
+      summary: Create Compensating Control
+      tags:
+      - SOD Controls
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOD_CONTROL_ADMIN
+  /controls/v1/{id}:
+    delete:
+      description: Deletes the specified compensating control from the data store.
+      operationId: deleteControlV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: the ID (UUID) of the compensating control to delete.
+        example: 3e078865-55ed-43cf-b83c-85c58d2016e6
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listControlsV1
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listControlsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listControlsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sod-control:manage
+      summary: Delete compensating control by ID
+      tags:
+      - SOD Controls
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: Returns a single compensating control by ID.
+      operationId: getControlV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: The ID of the compensating control to fetch
+        example: 3e078865-55ed-43cf-b83c-85c58d2016e6
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listControlsV1
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 3e078865-55ed-43cf-b83c-85c58d2016e6
+                name: Example Name
+                description: a description
+                owner:
+                  id: 943a7c57da334d07ba2454bf7fcf144f
+                  type: IDENTITY
+                  name: John Doe
+                secondaryOwners: []
+                type: MITIGATION
+                action: action
+                expiration: 720h
+                justificationRequired: true
+                workflowID: 3e07886555ed43cfb83c85c58d2016e6
+              schema:
+                $ref: '#/components/schemas/Compensatingcontrolresponse'
+          description: Single compensating control
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listControlsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listControlsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sod-control:read
+      summary: Get compensating control by ID
+      tags:
+      - SOD Controls
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOD_CONTROL_ADMIN
+      - SOD_POLICY_ADMIN
+    put:
+      description: Updates the specified compensating control.
+      operationId: putControlV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: The unique identifier of the Compensating Control to be updated.
+        example: 3e078865-55ed-43cf-b83c-85c58d2016e6
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listControlsV1
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: a name
+              description: a description
+              owner:
+                id: 3e07886555ed43cfb83c85c58d2016e6
+                type: IDENTITY
+              secondaryOwners:
+              - id: 943a7c57da334d07ba2454bf7fcf144f
+                type: GOVERNANCE_GROUP
+              type: Mitigation
+              action: Workflow
+              expiration: 20d
+              justificationRequired: true
+              workflowID: 3e07886555ed43cfb83c85c58d2016e6
+            schema:
+              $ref: '#/components/schemas/Compensatingcontrolupdate'
+        description: Data needed to put a Compensating Control
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 3e078865-55ed-43cf-b83c-85c58d2016e6
+                name: Example Name
+                description: a description
+                owner:
+                  id: 943a7c57da334d07ba2454bf7fcf144f
+                  type: IDENTITY
+                  name: John Doe
+                secondaryOwners: []
+                type: MITIGATION
+                action: action
+                expiration: 720h
+                justificationRequired: true
+                workflowID: 3e07886555ed43cfb83c85c58d2016e6
+              schema:
+                $ref: '#/components/schemas/Compensatingcontrolresponse'
+          description: Compensating Control successfully patched
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listControlsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listControlsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:sod-control:manage
+      summary: Put Compensating Control
+      tags:
+      - SOD Controls
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOD_CONTROL_ADMIN
+components:
+  parameters:
+    limit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 250
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 250
+        format: int32
+        maximum: 250
+        minimum: 0
+        type: integer
+      style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
+    count:
+      description: |-
+        If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+        Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: true
+      explode: true
+      in: query
+      name: count
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+  responses:
+    "204":
+      description: No content - indicates the request was successful but there is
+        no content to be returned in the response.
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Client Error - Returned if the request body is invalid.
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listControlsV1_401_response'
+      description: "Unauthorized - Returned if there is no authorization header, or\
+        \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
+    "404":
+      content:
+        application/json:
+          examples:
+            "404":
+              summary: An example of a 404 response object
+              value:
+                detailCode: 404 Not found
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server did not find a current representation for the target
+                    resource.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Not Found - returned if the request URL refers to a resource or
+        object that does not exist
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listControlsV1_429_response'
+      description: Too Many Requests - Returned in response to too many requests in
+        a given period of time - rate limited. The Retry-After header in the response
+        includes how long to wait before trying again.
+    "500":
+      content:
+        application/json:
+          examples:
+            "500":
+              summary: An example of a 500 response object
+              value:
+                detailCode: 500.0 Internal Fault
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: An internal fault occurred.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Internal Server Error - Returned if there is an unexpected error.
+  schemas:
+    Reference:
+      description: Reference to an identity or governance group returned in a response.
+      example:
+        name: John Doe
+        id: 943a7c57da334d07ba2454bf7fcf144f
+        type: IDENTITY
+      properties:
+        id:
+          description: |
+            Opaque identifier in the exact form required by the owning service (case, dashes, etc. must be preserved).
+          example: 943a7c57da334d07ba2454bf7fcf144f
+          type: string
+        type:
+          description: The type of object being referenced.
+          example: IDENTITY
+          type: string
+        name:
+          description: |
+            Human-readable name for the referenced identity or governance group when known. Omitted when unknown; null is allowed in the schema when clients send or receive explicit nulls.
+          example: John Doe
+          nullable: true
+          type: string
+      required:
+      - id
+      - type
+      type: object
+    Compensatingcontrolresponse:
+      example:
+        owner:
+          name: John Doe
+          id: 943a7c57da334d07ba2454bf7fcf144f
+          type: IDENTITY
+        name: Example Name
+        description: a description
+        secondaryOwners:
+        - id: 943a7c57da334d07ba2454bf7fcf144f
+          type: IDENTITY
+          name: John Doe
+        action: action
+        expiration: 720h
+        id: 3e078865-55ed-43cf-b83c-85c58d2016e6
+        type: MITIGATION
+        justificationRequired: true
+        workflowID: 3e07886555ed43cfb83c85c58d2016e6
+      properties:
+        id:
+          description: The system-generated unique identifier of the compensating
+            control.
+          example: 3e078865-55ed-43cf-b83c-85c58d2016e6
+          readOnly: true
+          type: string
+        name:
+          description: The display name of the compensating control.
+          example: Example Name
+          readOnly: true
+          type: string
+        description:
+          description: A human-readable description of the compensating control.
+          example: a description
+          readOnly: true
+          type: string
+        owner:
+          $ref: '#/components/schemas/Reference'
+        secondaryOwners:
+          description: References to additional identities or governance groups that
+            share ownership of the compensating control.
+          example:
+          - id: 943a7c57da334d07ba2454bf7fcf144f
+            type: IDENTITY
+            name: John Doe
+          items:
+            $ref: '#/components/schemas/Reference'
+          readOnly: true
+          type: array
+        type:
+          description: The type of compensating control that determines how a violation
+            is addressed.
+          example: MITIGATION
+          readOnly: true
+          type: string
+        action:
+          description: The action performed when the compensating control is applied.
+          example: action
+          readOnly: true
+          type: string
+        expiration:
+          description: "The duration after which the applied control expires, expressed\
+            \ as a duration string."
+          example: 720h
+          readOnly: true
+          type: string
+        justificationRequired:
+          description: Indicates whether a justification is required when applying
+            this control.
+          example: true
+          readOnly: true
+          type: boolean
+        workflowID:
+          description: |
+            Opaque workflow definition identifier in the exact form required by the owning service.
+          example: 3e07886555ed43cfb83c85c58d2016e6
+          readOnly: true
+          type: string
+      required:
+      - justificationRequired
+      - owner
+      type: object
+    LocaleOrigin:
+      description: "An indicator of how the locale was selected. *DEFAULT* means the\
+        \ locale is the system default. *REQUEST* means the locale was selected from\
+        \ the request context (i.e., best match based on the *Accept-Language* header).\
+        \ Additional values may be added in the future without notice."
+      enum:
+      - DEFAULT
+      - REQUEST
+      - null
+      example: DEFAULT
+      nullable: true
+      type: string
+    ErrorMessageDto:
+      example:
+        localeOrigin: DEFAULT
+        text: The request was syntactically correct but its content is semantically
+          invalid.
+        locale: en-US
+      properties:
+        locale:
+          description: "The locale for the message text, a BCP 47 language tag."
+          example: en-US
+          nullable: true
+          type: string
+        localeOrigin:
+          $ref: '#/components/schemas/LocaleOrigin'
+        text:
+          description: Actual text of the error message in the indicated locale.
+          example: The request was syntactically correct but its content is semantically
+            invalid.
+          type: string
+      title: Error Message Dto
+      type: object
+    ErrorResponseDto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
+      properties:
+        detailCode:
+          description: Fine-grained error code providing more detail of the error.
+          example: 400.1 Bad Request Content
+          type: string
+        trackingId:
+          description: Unique tracking id for the error.
+          example: e7eab60924f64aa284175b9fa3309599
+          type: string
+        messages:
+          description: Generic localized reason for error
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+        causes:
+          description: Plain-text descriptive reasons to provide additional detail
+            to the text provided in the messages field
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+      title: Error Response Dto
+      type: object
+    Referenceinput:
+      description: Reference to an identity or governance group supplied on a request
+        body.
+      example:
+        id: 3e07886555ed43cfb83c85c58d2016e6
+        type: IDENTITY
+      properties:
+        id:
+          description: |
+            Opaque identifier in the exact form required by the owning service (case, dashes, etc. must be preserved).
+          example: 3e07886555ed43cfb83c85c58d2016e6
+          maxLength: 2048
+          type: string
+        type:
+          description: The type of object being referenced.
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+      required:
+      - id
+      - type
+      type: object
+    Compensatingcontrolcreate:
+      example:
+        owner:
+          id: 3e07886555ed43cfb83c85c58d2016e6
+          type: IDENTITY
+        name: a name
+        description: a description
+        secondaryOwners:
+        - id: 943a7c57da334d07ba2454bf7fcf144f
+          type: GOVERNANCE_GROUP
+        action: Workflow
+        expiration: 20d
+        type: Mitigation
+        justificationRequired: true
+        workflowID: 3e07886555ed43cfb83c85c58d2016e6
+      properties:
+        name:
+          description: The display name of the compensating control.
+          example: a name
+          maxLength: 128
+          type: string
+        description:
+          description: A human-readable description of the compensating control.
+          example: a description
+          maxLength: 1024
+          type: string
+        owner:
+          $ref: '#/components/schemas/Referenceinput'
+        secondaryOwners:
+          description: References to additional identities or governance groups that
+            share ownership of the compensating control (maximum 10).
+          example:
+          - id: 943a7c57da334d07ba2454bf7fcf144f
+            type: GOVERNANCE_GROUP
+          items:
+            $ref: '#/components/schemas/Referenceinput'
+          maxItems: 10
+          type: array
+        type:
+          description: The type of compensating control that determines how a violation
+            is addressed.
+          enum:
+          - Mitigation
+          - Remediation
+          example: Mitigation
+          type: string
+        action:
+          description: The action performed when the compensating control is applied.
+          enum:
+          - Workflow
+          - Certification
+          example: Workflow
+          type: string
+        expiration:
+          description: "The duration after which the applied control expires, expressed\
+            \ as a duration string."
+          example: 20d
+          type: string
+        justificationRequired:
+          default: false
+          description: Indicates whether a justification is required when applying
+            this control.
+          example: true
+          type: boolean
+        workflowID:
+          description: Workflow definition ID used when the control action is a workflow.
+          example: 3e07886555ed43cfb83c85c58d2016e6
+          type: string
+      required:
+      - name
+      - owner
+      - type
+      type: object
+    Compensatingcontrolupdate:
+      example:
+        owner:
+          id: 3e07886555ed43cfb83c85c58d2016e6
+          type: IDENTITY
+        name: a name
+        description: a description
+        secondaryOwners:
+        - id: 943a7c57da334d07ba2454bf7fcf144f
+          type: GOVERNANCE_GROUP
+        action: Workflow
+        expiration: 20d
+        type: Mitigation
+        justificationRequired: true
+        workflowID: 3e07886555ed43cfb83c85c58d2016e6
+      properties:
+        name:
+          description: The display name of the compensating control.
+          example: a name
+          maxLength: 128
+          type: string
+        description:
+          description: A human-readable description of the compensating control.
+          example: a description
+          maxLength: 1024
+          type: string
+        owner:
+          $ref: '#/components/schemas/Referenceinput'
+        secondaryOwners:
+          description: References to additional identities or governance groups that
+            share ownership of the compensating control (maximum 10).
+          example:
+          - id: 943a7c57da334d07ba2454bf7fcf144f
+            type: GOVERNANCE_GROUP
+          items:
+            $ref: '#/components/schemas/Referenceinput'
+          maxItems: 10
+          type: array
+        type:
+          description: The type of compensating control that determines how a violation
+            is addressed.
+          enum:
+          - Mitigation
+          - Remediation
+          example: Mitigation
+          type: string
+        action:
+          description: The action performed when the compensating control is applied.
+          enum:
+          - Workflow
+          - Certification
+          example: Workflow
+          type: string
+        expiration:
+          description: "The duration after which the applied control expires, expressed\
+            \ as a duration string."
+          example: 20d
+          type: string
+        justificationRequired:
+          default: false
+          description: Indicates whether a justification is required when applying
+            this control.
+          example: true
+          type: boolean
+        workflowID:
+          description: Workflow definition ID used when the control action is a workflow.
+          example: 3e07886555ed43cfb83c85c58d2016e6
+          type: string
+      type: object
+    listControlsV1_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
+      properties:
+        error:
+          description: A message describing the error
+          example: "JWT validation failed: JWT is expired"
+      type: object
+    listControlsV1_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
+      properties:
+        message:
+          description: A message describing the error
+          example: ' Rate Limit Exceeded '
+      type: object

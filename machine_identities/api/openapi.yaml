@@ -769,6 +769,12 @@ paths:
           **entitlement.name**: *eq, in, sw*
 
           **risk.severity**: *eq, in*
+
+          **businessApplicationRefs.id**: *eq*
+
+          **effectiveSanctionedStatus**: *eq*
+
+          Business Application filters require Business Applications to be enabled for the tenant. Filter values are case-sensitive. When Business Applications is not enabled, these filters are not allowed and return `400`.
         example: identityId eq "2c9180858082150f0180893dbaf44201"
         explode: true
         in: query
@@ -933,10 +939,10 @@ paths:
       - SOURCE_SUBADMIN
       - HELPDESK
     post:
-      description: Use this API to create a machine identity. Additional owners may
-        be either up to ten human (IDENTITY) references or exactly one GOVERNANCE_GROUP
-        reference - not both. The maximum supported length for the description field
-        is 2000 characters.
+      description: |-
+        Use this API to create a machine identity. Additional owners may be either up to ten human (IDENTITY) references or exactly one GOVERNANCE_GROUP reference - not both. The maximum supported length for the description field is 2000 characters.
+
+        When Business Applications is enabled for the tenant, callers may optionally include a single `businessApplicationRefs` entry (`type`=`BUSINESS_APPLICATION`, `id`=BA UUID). The assignment is stored as a `MANUAL` correlation. `correlationType` may be omitted or `MANUAL`; `AUTOMATIC` is rejected (`400`). Unknown BA id returns `404`. More than one ref returns `400`. When Business Applications is not enabled, supplying `businessApplicationRefs` returns `400`. `sanctionedStatus` and `effectiveSanctionedStatus` are read-only and ignored on input.
       operationId: createMachineIdentityV2
       requestBody:
         content:
@@ -1254,7 +1260,12 @@ paths:
       description: |
         Use this API to selectively update machine identity details using a JSONPatch payload.
 
-        Patchable fields include **name**, **description**, **nativeIdentity**, **subtype**, **environment**, **attributes**, **owners**, **userEntitlements**, and **manuallyEdited** only.
+        Patchable fields include **name**, **description**, **nativeIdentity**, **subtype**, **environment**, **attributes**, **owners**, **userEntitlements**, **manuallyEdited**, and **businessApplicationRefs** (when Business Applications is enabled for the tenant).
+
+
+        When Business Applications is enabled for the tenant, `/businessApplicationRefs` may be replaced with at most one MANUAL Business Application
+        reference, or cleared with an empty array. Patching `/businessApplicationRefs` when Business Applications is not enabled returns `400`.
+        Existing `AUTOMATIC` correlations cannot be overridden (`400` / `ILLEGAL_UPDATE_ATTEMPT`). Unknown BA id returns `404`.
       operationId: updateMachineIdentityV2
       parameters:
       - description: Machine Identity ID.
@@ -1285,6 +1296,18 @@ paths:
                 value:
                 - op: remove
                   path: /attributes/securityRisk
+              Replace business application refs:
+                value:
+                - op: replace
+                  path: /businessApplicationRefs
+                  value:
+                  - type: BUSINESS_APPLICATION
+                    id: bff06019-d858-412e-a343-168849c64bb5
+              Clear business application refs:
+                value:
+                - op: replace
+                  path: /businessApplicationRefs
+                  value: []
             schema:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
@@ -2761,8 +2784,9 @@ components:
       title: User Entitlement V2
       type: object
     SanctionedStatus:
-      description: Sanctioned status for a Business Application or derived machine
-        identity effective status.
+      description: |-
+        Sanctioned status for a Business Application or the derived effective status on a machine identity.
+        Values are case-sensitive.
       enum:
       - SANCTIONED
       - UNSANCTIONED
@@ -2770,38 +2794,65 @@ components:
       example: SANCTIONED
       title: Sanctioned Status
       type: string
+    CorrelationType:
+      description: |-
+        Whether the Business Application reference was manually assigned or automatically correlated.
+        On write (create/patch), omit or send `MANUAL` (default). `AUTOMATIC` is rejected with `400 Bad Request`.
+      enum:
+      - MANUAL
+      - AUTOMATIC
+      example: MANUAL
+      title: Correlation Type
+      type: string
     BusinessApplicationRef:
-      description: Reference to a Business Application associated with a machine identity.
+      description: |-
+        Reference to a Business Application associated with a machine identity.
+        Available when Business Applications is enabled for the tenant.
+        At most one Business Application reference is supported per machine identity on create and patch.
       example:
         name: Cursor
         correlationType: MANUAL
-        id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        id: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
         type: BUSINESS_APPLICATION
         sanctionedStatus: SANCTIONED
       properties:
         type:
-          description: Reference type.
+          description: Reference type. Must be `BUSINESS_APPLICATION`.
+          enum:
+          - BUSINESS_APPLICATION
           example: BUSINESS_APPLICATION
           type: string
         id:
-          description: Business Application ID.
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          description: Existing Business Application id in the tenant.
+          example: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
+          format: uuid
           type: string
         name:
-          description: Business Application display name.
+          description: |-
+            Business Application display name.
+            Ignored on write; responses are enriched from the Business Application.
           example: Cursor
           nullable: true
           type: string
         sanctionedStatus:
-          $ref: '#/components/schemas/SanctionedStatus'
+          allOf:
+          - $ref: '#/components/schemas/SanctionedStatus'
+          description: |-
+            Sanctioned status of the linked Business Application.
+            Ignored on write; responses are enriched from the Business Application.
+          example: SANCTIONED
+          readOnly: true
         correlationType:
-          description: Whether the Business Application reference was manually assigned
-            or automatically correlated.
-          enum:
-          - MANUAL
-          - AUTOMATIC
+          allOf:
+          - $ref: '#/components/schemas/CorrelationType'
+          description: |-
+            Correlation type for this reference.
+            On write: omit or `MANUAL` (default). `AUTOMATIC` is rejected (`400`).
+            On response: may be `MANUAL` or `AUTOMATIC`.
           example: MANUAL
-          type: string
+      required:
+      - id
+      - type
       title: Business Application Ref
       type: object
     Machineidentityv2:
@@ -2885,14 +2936,26 @@ components:
               $ref: '#/components/schemas/UserEntitlementV2'
             type: array
           businessApplicationRefs:
-            description: Optional Business Application references associated with
-              this machine identity.
+            description: |-
+              Optional Business Application references associated with this machine identity.
+              Available when Business Applications is enabled for the tenant.
+              On create and patch, at most one reference is allowed and is persisted as a `MANUAL` correlation.
+              When Business Applications is not enabled, this field is null on responses and is rejected (`400`) if supplied on write.
             items:
               $ref: '#/components/schemas/BusinessApplicationRef'
+            maxItems: 1
             nullable: true
             type: array
           effectiveSanctionedStatus:
-            $ref: '#/components/schemas/SanctionedStatus'
+            allOf:
+            - $ref: '#/components/schemas/SanctionedStatus'
+            description: |-
+              Derived sanctioned status from linked Business Applications; `UNKNOWN` when no refs are present.
+              Available when Business Applications is enabled for the tenant; null when it is not enabled.
+              Read-only on create and patch input.
+            example: SANCTIONED
+            nullable: true
+            readOnly: true
           risk:
             $ref: '#/components/schemas/Machine_Identity_V2_risk'
         title: Machine Identity V2
@@ -2931,12 +2994,7 @@ components:
         businessApplicationRefs:
         - name: Cursor
           correlationType: MANUAL
-          id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-          type: BUSINESS_APPLICATION
-          sanctionedStatus: SANCTIONED
-        - name: Cursor
-          correlationType: MANUAL
-          id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          id: 2ee5e239-e68c-4d69-93fb-6c7ce4576190
           type: BUSINESS_APPLICATION
           sanctionedStatus: SANCTIONED
         userEntitlements:

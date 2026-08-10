@@ -1700,13 +1700,13 @@ func (r ApiListSodPoliciesV1Request) Count(count bool) ApiListSodPoliciesV1Reque
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in*  **state**: *eq, in*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw, co*  **state**: *eq, in*  **level**: *eq, in*  **type**: *eq*  **description**: *eq, co, sw*  **ownerRef.name**: *eq, sw*
 func (r ApiListSodPoliciesV1Request) Filters(filters string) ApiListSodPoliciesV1Request {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, description**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, description, ownerRef.name**
 func (r ApiListSodPoliciesV1Request) Sorters(sorters string) ApiListSodPoliciesV1Request {
 	r.sorters = &sorters
 	return r
@@ -1892,7 +1892,7 @@ type ApiPatchSodPolicyV1Request struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
+// A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria * level * secondaryOwnerRefs * allowedControls 
 func (r ApiPatchSodPolicyV1Request) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchSodPolicyV1Request {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r

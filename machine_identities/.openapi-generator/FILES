@@ -15,6 +15,7 @@ docs/CorrelationCondition.md
 docs/CorrelationConfig.md
 docs/CorrelationRule.md
 docs/CorrelationRuleAction.md
+docs/CorrelationType.md
 docs/DtoType.md
 docs/ErrorMessageDto.md
 docs/ErrorResponseDto.md
@@ -63,6 +64,7 @@ model_correlation_condition.go
 model_correlation_config.go
 model_correlation_rule.go
 model_correlation_rule_action.go
+model_correlation_type.go
 model_dto_type.go
 model_error_message_dto.go
 model_error_response_dto.go

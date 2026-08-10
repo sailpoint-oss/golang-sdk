@@ -14,7 +14,7 @@ import (
 	"encoding/json"
 )
 
-// SanctionedStatus Sanctioned status for a Business Application or derived machine identity effective status.
+// SanctionedStatus Sanctioned status for a Business Application or the derived effective status on a machine identity. Values are case-sensitive.
 type SanctionedStatus string
 
 // List of SanctionedStatus

@@ -15,17 +15,17 @@ tags: ['SDK', 'Software Development Kit', 'BusinessApplicationRef', 'V1BusinessA
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | Reference type. | [optional] 
-**Id** | Pointer to **string** | Business Application ID. | [optional] 
-**Name** | Pointer to **NullableString** | Business Application display name. | [optional] 
-**SanctionedStatus** | Pointer to **SanctionedStatus** |  | [optional] 
-**CorrelationType** | Pointer to **string** | Whether the Business Application reference was manually assigned or automatically correlated. | [optional] 
+**Type** | **string** | Reference type. Must be `BUSINESS_APPLICATION`. | 
+**Id** | **string** | Existing Business Application id in the tenant. | 
+**Name** | Pointer to **NullableString** | Business Application display name. Ignored on write; responses are enriched from the Business Application. | [optional] 
+**SanctionedStatus** | Pointer to **SanctionedStatus** | Sanctioned status of the linked Business Application. Ignored on write; responses are enriched from the Business Application. | [optional] [readonly] 
+**CorrelationType** | Pointer to **CorrelationType** | Correlation type for this reference. On write: omit or `MANUAL` (default). `AUTOMATIC` is rejected (`400`). On response: may be `MANUAL` or `AUTOMATIC`. | [optional] 
 
 ## Methods
 
 ### NewBusinessApplicationRef
 
-`func NewBusinessApplicationRef() *BusinessApplicationRef`
+`func NewBusinessApplicationRef(type_ string, id string, ) *BusinessApplicationRef`
 
 NewBusinessApplicationRef instantiates a new BusinessApplicationRef object
 This constructor will assign default values to properties that have it defined,
@@ -59,11 +59,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *BusinessApplicationRef) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetId
 
@@ -84,11 +79,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *BusinessApplicationRef) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -152,20 +142,20 @@ HasSanctionedStatus returns a boolean if a field has been set.
 
 ### GetCorrelationType
 
-`func (o *BusinessApplicationRef) GetCorrelationType() string`
+`func (o *BusinessApplicationRef) GetCorrelationType() CorrelationType`
 
 GetCorrelationType returns the CorrelationType field if non-nil, zero value otherwise.
 
 ### GetCorrelationTypeOk
 
-`func (o *BusinessApplicationRef) GetCorrelationTypeOk() (*string, bool)`
+`func (o *BusinessApplicationRef) GetCorrelationTypeOk() (*CorrelationType, bool)`
 
 GetCorrelationTypeOk returns a tuple with the CorrelationType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCorrelationType
 
-`func (o *BusinessApplicationRef) SetCorrelationType(v string)`
+`func (o *BusinessApplicationRef) SetCorrelationType(v CorrelationType)`
 
 SetCorrelationType sets CorrelationType field to given value.
 

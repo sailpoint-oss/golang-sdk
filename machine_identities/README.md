@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
  - [CorrelationConfig](docs/CorrelationConfig.md)
  - [CorrelationRule](docs/CorrelationRule.md)
  - [CorrelationRuleAction](docs/CorrelationRuleAction.md)
+ - [CorrelationType](docs/CorrelationType.md)
  - [DtoType](docs/DtoType.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)

@@ -31,9 +31,11 @@ docs/ScheduleType.md
 docs/Selector.md
 docs/SelectorType.md
 docs/SodPolicy.md
+docs/SodPolicyAllowedControlsInner.md
 docs/SodPolicyConflictingAccessCriteria.md
 docs/SodPolicyOwnerRef.md
 docs/SodPolicySchedule.md
+docs/SodPolicySecondaryOwnerRefsInner.md
 docs/SodRecipient.md
 docs/SodReportResultDto.md
 docs/ViolationOwnerAssignmentConfig.md
@@ -62,9 +64,11 @@ model_schedule_type.go
 model_selector.go
 model_selector_type.go
 model_sod_policy.go
+model_sod_policy_allowed_controls_inner.go
 model_sod_policy_conflicting_access_criteria.go
 model_sod_policy_owner_ref.go
 model_sod_policy_schedule.go
+model_sod_policy_secondary_owner_refs_inner.go
 model_sod_recipient.go
 model_sod_report_result_dto.go
 model_violation_owner_assignment_config.go

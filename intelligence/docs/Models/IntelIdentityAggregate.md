@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** | Preferred display name for the identity across administrative experiences. | [optional] 
 **Description** | Pointer to **NullableString** | Optional free-text description assigned to the identity profile when present. | [optional] 
 **Subtype** | Pointer to **NullableString** | NERM classification for the identity. | [optional] 
-**Owners** | Pointer to **NullableString** | Serialized owner reference information when populated by upstream identity services. | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | Arbitrary SCIM-style attribute bag returned for the identity context view. | [optional] 
 **Created** | Pointer to **SailPointTime** | Timestamp when the identity record was created in Identity Security Cloud. | [optional] 
 **Modified** | Pointer to **SailPointTime** | Timestamp when the identity record was last modified in Identity Security Cloud. | [optional] 
@@ -28,6 +27,7 @@ Name | Type | Description | Notes
 **Email** | Pointer to **string** | Primary business email address for the identity. | [optional] 
 **IdentityStatus** | Pointer to **string** | Current identity lifecycle status label from Identity Security Cloud. | [optional] 
 **IsManager** | Pointer to **bool** | True when the identity is flagged as a people manager in the organization. | [optional] [default to false]
+**IdentityGraph** | Pointer to [**Intelidentitygraphlink**](intelidentitygraphlink) | Omitted when the tenant lacks the idg:base license. | [optional] 
 **Accounts** | [**IntelAccountsSlice**](intel-accounts-slice) | First page of accounts for the identity. | 
 **PrivilegedAccess** | [**IntelPrivilegedAccessSlice**](intel-privileged-access-slice) | Full privileged access result for the identity. | 
 **Outliers** | Pointer to [**IntelOutliersSlice**](intel-outliers-slice) | Rare access slice; omitted when the tenant lacks the IDA-outliers license. | [optional] 
@@ -187,41 +187,6 @@ HasSubtype returns a boolean if a field has been set.
 `func (o *IntelIdentityAggregate) UnsetSubtype()`
 
 UnsetSubtype ensures that no value is present for Subtype, not even an explicit nil
-### GetOwners
-
-`func (o *IntelIdentityAggregate) GetOwners() string`
-
-GetOwners returns the Owners field if non-nil, zero value otherwise.
-
-### GetOwnersOk
-
-`func (o *IntelIdentityAggregate) GetOwnersOk() (*string, bool)`
-
-GetOwnersOk returns a tuple with the Owners field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOwners
-
-`func (o *IntelIdentityAggregate) SetOwners(v string)`
-
-SetOwners sets Owners field to given value.
-
-### HasOwners
-
-`func (o *IntelIdentityAggregate) HasOwners() bool`
-
-HasOwners returns a boolean if a field has been set.
-
-### SetOwnersNil
-
-`func (o *IntelIdentityAggregate) SetOwnersNil(b bool)`
-
- SetOwnersNil sets the value for Owners to be an explicit nil
-
-### UnsetOwners
-`func (o *IntelIdentityAggregate) UnsetOwners()`
-
-UnsetOwners ensures that no value is present for Owners, not even an explicit nil
 ### GetAttributes
 
 `func (o *IntelIdentityAggregate) GetAttributes() map[string]interface{}`
@@ -396,6 +361,31 @@ SetIsManager sets IsManager field to given value.
 `func (o *IntelIdentityAggregate) HasIsManager() bool`
 
 HasIsManager returns a boolean if a field has been set.
+
+### GetIdentityGraph
+
+`func (o *IntelIdentityAggregate) GetIdentityGraph() Intelidentitygraphlink`
+
+GetIdentityGraph returns the IdentityGraph field if non-nil, zero value otherwise.
+
+### GetIdentityGraphOk
+
+`func (o *IntelIdentityAggregate) GetIdentityGraphOk() (*Intelidentitygraphlink, bool)`
+
+GetIdentityGraphOk returns a tuple with the IdentityGraph field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentityGraph
+
+`func (o *IntelIdentityAggregate) SetIdentityGraph(v Intelidentitygraphlink)`
+
+SetIdentityGraph sets IdentityGraph field to given value.
+
+### HasIdentityGraph
+
+`func (o *IntelIdentityAggregate) HasIdentityGraph() bool`
+
+HasIdentityGraph returns a boolean if a field has been set.
 
 ### GetAccounts
 
