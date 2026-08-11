@@ -19,7 +19,7 @@ import (
 // checks if the IntelIdentityAggregate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IntelIdentityAggregate{}
 
-// IntelIdentityAggregate Human identity response (type Human). Identity attributes are hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []). The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
+// IntelIdentityAggregate Human identity response (type Human). Identity attributes are hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []). The outliers slice is omitted when the tenant lacks the IDA-outliers license. The identityGraph deep link is omitted when the tenant lacks the idg:base license. 
 type IntelIdentityAggregate struct {
 	// Identity Security Cloud identifier for this identity.
 	Id string `json:"id"`

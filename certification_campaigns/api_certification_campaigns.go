@@ -393,7 +393,10 @@ func (r ApiCreateCampaignV1Request) Execute() (*Campaign2, *http.Response, error
 /*
 CreateCampaignV1 Create a campaign
 
-Use this API to create a certification campaign with the information provided in the request body.    
+Use this API to create a certification campaign with the information provided in the request body.
+
+When the request body references a campaign filter (`filter.type: CAMPAIGN_FILTER`), the token must include both
+`idn:campaign:manage` and `idn:campaign-filter:read`.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -3538,6 +3541,8 @@ func (r ApiStartGenerateCampaignTemplateV1Request) Execute() (*CampaignReference
 StartGenerateCampaignTemplateV1 Generate a campaign from template
 
 Use this API to generate a new certification campaign from a campaign template.
+
+When the template campaign references a campaign filter (`filter.type: CAMPAIGN_FILTER`), the token must include both `idn:campaign-template:manage` and `idn:campaign-filter:read`.
 
 The campaign object contained in the template has special formatting applied to its name and description
 fields that determine the generated campaign's name/description. Placeholders in those fields are

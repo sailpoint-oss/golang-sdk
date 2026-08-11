@@ -19,7 +19,7 @@ import (
 // checks if the Intelidentitymachineaggregate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Intelidentitymachineaggregate{}
 
-// Intelidentitymachineaggregate Non-human identity response (type NHI). Machine identity fields are hoisted to the top level (no machine wrapper). Omits human-only fields and slices (email, alias, privilegedAccess, outliers, accessHistory). Top-level sourceId is omitted; use source.id when present. matchConfidence is present for opaque prefix resolution (exact or partial); omitted for direct id eq and exact opaque matches. 
+// Intelidentitymachineaggregate Non-human identity response (type NHI). Machine identity fields are hoisted to the top level (no machine wrapper). Omits human-only fields and slices (email, alias, privilegedAccess, outliers, accessHistory). Top-level sourceId is omitted; use source.id when present. matchConfidence is present for opaque prefix resolution (exact or partial); omitted for direct id eq and exact opaque matches. The identityGraph deep link is omitted when the tenant lacks the idg:base license. 
 type Intelidentitymachineaggregate struct {
 	// Identity Security Cloud identifier for this non-human identity.
 	Id string `json:"id"`

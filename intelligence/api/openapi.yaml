@@ -36,6 +36,14 @@ tags:
     extension). Backed by Atlas internal-REST calls to MICE, Shelby List Accounts,
     SDS Search, IDA-outliers, and identity-history.
 
+    ## License-based segmentation
+
+    - **`idn:response-and-remediation`** (required): enforced on all `/intelligence/*` routes.
+    - **`IDA-outliers`** (optional): governs the Human `outliers.rareAccess` slice only. When the
+      tenant lacks this license, the `outliers` key is omitted.
+    - **`idg:base`** (optional): governs the root-level `identityGraph` deep link on aggregate
+      responses. When the tenant lacks this license, `identityGraph` is omitted.
+
     ## Pagination
 
     The aggregated Human GET embeds the first **10** items per paged slice. Each upstream paged call
@@ -78,6 +86,13 @@ paths:
 
         Single-clause filters only; composite and or expressions are rejected with HTTP 400.
 
+        **identityGraph deep link**
+
+        When the tenant has the idg:base license, Human and NHI aggregate responses may include
+        `identityGraph.href`, a deep link into the Identity Graph UI for the resolved identity.
+        Opening the link requires the **Identity Graph Read Only** user level. The link is omitted
+        when the tenant lacks idg:base.
+
         **Human envelope (type Human)**
 
         Embeds the first page (10 items) of each enrichment slice. Each paged slice includes totalCount
@@ -86,7 +101,7 @@ paths:
         items [] with no totalCount). privilegedAccess returns the full privileged-access result and never carries
         next or totalCount. If any enrichment upstream fails, the whole request fails with HTTP 500,
         except outliers, which is omitted (not an error) when the tenant lacks the IDA-outliers license
-        (upstream 401 or 403). identityGraph is omitted when the tenant lacks the idg:base license.
+        (upstream 401 or 403).
 
         **Non-human identity envelope (type NHI)**
 
@@ -95,8 +110,7 @@ paths:
         Omits Human-only slices (privilegedAccess, outliers, accessHistory). Account paging via child
         routes is not yet released. Opaque prefix resolution that deduplicates to one parent identity
         returns HTTP 200 with matchConfidence partial; multiple distinct parent identities return HTTP 409
-        with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values. identityGraph is omitted
-        when the tenant lacks the idg:base license.
+        with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values.
       operationId: getIdentityIntelligenceV1
       parameters:
       - description: |-
@@ -762,7 +776,7 @@ components:
         identityStatus: ACTIVE
         isManager: false
         identityGraph:
-          href: https://tenant.example.api.cloud.sailpoint.com/ui/identity-graph?entity=identity&id=ef38f94347e94562b5bb8424a56397d8
+          href: https://tenant.identitynow.com/ui/identity-graph?entity=human_identity&id=ef38f94347e94562b5bb8424a56397d8
         accounts:
           items:
           - id: 2c91808874ff91550175097daaec161c
@@ -854,7 +868,7 @@ components:
         modified: 2026-07-24T07:18:45.541749Z
         matchConfidence: exact
         identityGraph:
-          href: https://tenant.example.api.cloud.sailpoint.com/ui/identity-graph?entity=machine_identity&id=a1b2c3d4e5f6478990abcdef12345678
+          href: https://tenant.identitynow.com/ui/identity-graph?entity=machine_identity&id=a1b2c3d4e5f6478990abcdef12345678
         accounts:
           items:
           - id: 8a38d5adb13d48fdadbc9d85d1509aa0
@@ -1001,13 +1015,16 @@ components:
       description: |
         Deep link into Identity Graph UI for the resolved identity at the aggregate root.
         Omitted when the tenant lacks the idg:base license.
+
+        To access the Identity Graph UI, the user must have the **Identity Graph Read Only** user level assigned.
       properties:
         href:
           description: |
             Absolute URL to the Identity Graph view. Omitted when the tenant lacks idg:base or when
-            the IDN UI host cannot be resolved from sp-tenant. Query parameters include entity and id
-            for the resolved identity.
-          example: https://tenant.example.api.cloud.sailpoint.com/ui/identity-graph?entity=identity&id=ef38f94347e94562b5bb8424a56397d8
+            the IDN UI host cannot be resolved from sp-tenant. Query parameters include `entity`
+            and `id` for the resolved identity. The `entity` value reflects identity type: `human_identity`
+            for Human responses and `machine_identity` for NHI responses.
+          example: https://tenant.identitynow.com/ui/identity-graph?entity=human_identity&id=ef38f94347e94562b5bb8424a56397d8
           format: uri
           type: string
       required:
@@ -1417,6 +1434,7 @@ components:
         Human identity response (type Human). Identity attributes are hoisted to the top level.
         The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []).
         The outliers slice is omitted when the tenant lacks the IDA-outliers license.
+        The identityGraph deep link is omitted when the tenant lacks the idg:base license.
       example:
         identityGraph: "{}"
         displayName: Example User
@@ -1833,7 +1851,7 @@ components:
         (no machine wrapper). Omits human-only fields and slices (email, alias, privilegedAccess, outliers,
         accessHistory). Top-level sourceId is omitted; use source.id when present. matchConfidence is
         present for opaque prefix resolution (exact or partial); omitted for direct id eq and exact opaque
-        matches.
+        matches. The identityGraph deep link is omitted when the tenant lacks the idg:base license.
       properties:
         id:
           description: Identity Security Cloud identifier for this non-human identity.

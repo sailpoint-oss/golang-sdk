@@ -29,6 +29,16 @@ type AuditEventData struct {
 	WorkflowUid *string `json:"workflow_uid,omitempty"`
 	// The profile type associated with the event
 	ProfileTypeId *string `json:"profile_type_id,omitempty"`
+	// The workflow version a change belongs to. Can be used for both Workflow configurations and Workflow Session events.
+	WorkflowVersionId *string `json:"workflow_version_id,omitempty"`
+	// The workflow version SHA.
+	Version *string `json:"version,omitempty"`
+	// The id of the workflow action or condition the step event refers to.
+	StepId *string `json:"step_id,omitempty"`
+	// The name associated to an action configuration.
+	StepLabel *string `json:"step_label,omitempty"`
+	// What triggered the versioning change.
+	Source *string `json:"source,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -211,6 +221,166 @@ func (o *AuditEventData) SetProfileTypeId(v string) {
 	o.ProfileTypeId = &v
 }
 
+// GetWorkflowVersionId returns the WorkflowVersionId field value if set, zero value otherwise.
+func (o *AuditEventData) GetWorkflowVersionId() string {
+	if o == nil || IsNil(o.WorkflowVersionId) {
+		var ret string
+		return ret
+	}
+	return *o.WorkflowVersionId
+}
+
+// GetWorkflowVersionIdOk returns a tuple with the WorkflowVersionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuditEventData) GetWorkflowVersionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WorkflowVersionId) {
+		return nil, false
+	}
+	return o.WorkflowVersionId, true
+}
+
+// HasWorkflowVersionId returns a boolean if a field has been set.
+func (o *AuditEventData) HasWorkflowVersionId() bool {
+	if o != nil && !IsNil(o.WorkflowVersionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkflowVersionId gets a reference to the given string and assigns it to the WorkflowVersionId field.
+func (o *AuditEventData) SetWorkflowVersionId(v string) {
+	o.WorkflowVersionId = &v
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *AuditEventData) GetVersion() string {
+	if o == nil || IsNil(o.Version) {
+		var ret string
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuditEventData) GetVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.Version) {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *AuditEventData) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
+func (o *AuditEventData) SetVersion(v string) {
+	o.Version = &v
+}
+
+// GetStepId returns the StepId field value if set, zero value otherwise.
+func (o *AuditEventData) GetStepId() string {
+	if o == nil || IsNil(o.StepId) {
+		var ret string
+		return ret
+	}
+	return *o.StepId
+}
+
+// GetStepIdOk returns a tuple with the StepId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuditEventData) GetStepIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StepId) {
+		return nil, false
+	}
+	return o.StepId, true
+}
+
+// HasStepId returns a boolean if a field has been set.
+func (o *AuditEventData) HasStepId() bool {
+	if o != nil && !IsNil(o.StepId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStepId gets a reference to the given string and assigns it to the StepId field.
+func (o *AuditEventData) SetStepId(v string) {
+	o.StepId = &v
+}
+
+// GetStepLabel returns the StepLabel field value if set, zero value otherwise.
+func (o *AuditEventData) GetStepLabel() string {
+	if o == nil || IsNil(o.StepLabel) {
+		var ret string
+		return ret
+	}
+	return *o.StepLabel
+}
+
+// GetStepLabelOk returns a tuple with the StepLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuditEventData) GetStepLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.StepLabel) {
+		return nil, false
+	}
+	return o.StepLabel, true
+}
+
+// HasStepLabel returns a boolean if a field has been set.
+func (o *AuditEventData) HasStepLabel() bool {
+	if o != nil && !IsNil(o.StepLabel) {
+		return true
+	}
+
+	return false
+}
+
+// SetStepLabel gets a reference to the given string and assigns it to the StepLabel field.
+func (o *AuditEventData) SetStepLabel(v string) {
+	o.StepLabel = &v
+}
+
+// GetSource returns the Source field value if set, zero value otherwise.
+func (o *AuditEventData) GetSource() string {
+	if o == nil || IsNil(o.Source) {
+		var ret string
+		return ret
+	}
+	return *o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuditEventData) GetSourceOk() (*string, bool) {
+	if o == nil || IsNil(o.Source) {
+		return nil, false
+	}
+	return o.Source, true
+}
+
+// HasSource returns a boolean if a field has been set.
+func (o *AuditEventData) HasSource() bool {
+	if o != nil && !IsNil(o.Source) {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given string and assigns it to the Source field.
+func (o *AuditEventData) SetSource(v string) {
+	o.Source = &v
+}
+
 func (o AuditEventData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -235,6 +405,21 @@ func (o AuditEventData) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProfileTypeId) {
 		toSerialize["profile_type_id"] = o.ProfileTypeId
+	}
+	if !IsNil(o.WorkflowVersionId) {
+		toSerialize["workflow_version_id"] = o.WorkflowVersionId
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.StepId) {
+		toSerialize["step_id"] = o.StepId
+	}
+	if !IsNil(o.StepLabel) {
+		toSerialize["step_label"] = o.StepLabel
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -263,6 +448,11 @@ func (o *AuditEventData) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "workflow_name")
 		delete(additionalProperties, "workflow_uid")
 		delete(additionalProperties, "profile_type_id")
+		delete(additionalProperties, "workflow_version_id")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "step_id")
+		delete(additionalProperties, "step_label")
+		delete(additionalProperties, "source")
 		o.AdditionalProperties = additionalProperties
 	}
 

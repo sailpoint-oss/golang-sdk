@@ -68,6 +68,13 @@ Resolves exactly one identity using a single SCIM-style filters expression.
 
 Single-clause filters only; composite and or expressions are rejected with HTTP 400.
 
+**identityGraph deep link**
+
+When the tenant has the idg:base license, Human and NHI aggregate responses may include
+`identityGraph.href`, a deep link into the Identity Graph UI for the resolved identity.
+Opening the link requires the **Identity Graph Read Only** user level. The link is omitted
+when the tenant lacks idg:base.
+
 **Human envelope (type Human)**
 
 Embeds the first page (10 items) of each enrichment slice. Each paged slice includes totalCount
@@ -76,7 +83,7 @@ totalCount exceeds the items returned on this page. Slices are always present (e
 items [] with no totalCount). privilegedAccess returns the full privileged-access result and never carries
 next or totalCount. If any enrichment upstream fails, the whole request fails with HTTP 500,
 except outliers, which is omitted (not an error) when the tenant lacks the IDA-outliers license
-(upstream 401 or 403). identityGraph is omitted when the tenant lacks the idg:base license.
+(upstream 401 or 403).
 
 **Non-human identity envelope (type NHI)**
 
@@ -85,8 +92,7 @@ aggregate and a derived block (isOrphaned, authorizedHumanIdentities, blastRadiu
 Omits Human-only slices (privilegedAccess, outliers, accessHistory). Account paging via child
 routes is not yet released. Opaque prefix resolution that deduplicates to one parent identity
 returns HTTP 200 with matchConfidence partial; multiple distinct parent identities return HTTP 409
-with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values. identityGraph is omitted
-when the tenant lacks the idg:base license.
+with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

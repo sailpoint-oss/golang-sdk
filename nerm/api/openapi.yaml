@@ -9447,6 +9447,11 @@ components:
           workflow_name: My Workflow
           profile_id: 7d8c53ca-e99d-485c-9524-ea3849e82c79
           workflow_uid: my_workflow
+          workflow_version_id: e309339f-551f-48ab-b4f6-58d93123911f
+          source: ui
+          step_id: 2f4b24c6-d420-4eee-b860-5ad24c743185
+          version: aadf95e45846365fa4b4c60f02c76ecffe718ee5
+          step_label: RequestAction
         created_at:
           lt: 2000-01-23
           eq: 2000-01-23
@@ -9563,6 +9568,12 @@ components:
           - AuditableWorkflowUnassignEvent
           - AuditableWorkflowWaitingForWorkflowEvent
           - AuditableWorkflowWorkflowChangedEvent
+          - AuditableWorkflowVersionCreatedEvent
+          - AuditableWorkflowVersionForkedEvent
+          - AuditableWorkflowVersionDeprecatedEvent
+          - AuditableWorkflowVersionDeletedEvent
+          - AuditableWorkflowStepCreatedEvent
+          - AuditableWorkflowStepUpdatedEvent
           - ActiveRecordCreate
           - ActiveRecordUpdate
           - ActiveRecordDestroy
@@ -12769,6 +12780,7 @@ components:
           - User
           - NeprofileUser
           - NeaccessUser
+          - NeaccessRegistrant
           example: User
           type: string
         profile_id:
@@ -13809,6 +13821,11 @@ components:
             workflow_name: My Workflow
             profile_id: 7d8c53ca-e99d-485c-9524-ea3849e82c79
             workflow_uid: my_workflow
+            workflow_version_id: e309339f-551f-48ab-b4f6-58d93123911f
+            source: ui
+            step_id: 2f4b24c6-d420-4eee-b860-5ad24c743185
+            version: aadf95e45846365fa4b4c60f02c76ecffe718ee5
+            step_label: RequestAction
           created_at:
             lt: 2000-01-23
             eq: 2000-01-23
@@ -13822,6 +13839,11 @@ components:
             workflow_name: My Workflow
             profile_id: 7d8c53ca-e99d-485c-9524-ea3849e82c79
             workflow_uid: my_workflow
+            workflow_version_id: e309339f-551f-48ab-b4f6-58d93123911f
+            source: ui
+            step_id: 2f4b24c6-d420-4eee-b860-5ad24c743185
+            version: aadf95e45846365fa4b4c60f02c76ecffe718ee5
+            step_label: RequestAction
           created_at:
             lt: 2000-01-23
             eq: 2000-01-23
@@ -15396,6 +15418,11 @@ components:
         workflow_name: My Workflow
         profile_id: 7d8c53ca-e99d-485c-9524-ea3849e82c79
         workflow_uid: my_workflow
+        workflow_version_id: e309339f-551f-48ab-b4f6-58d93123911f
+        source: ui
+        step_id: 2f4b24c6-d420-4eee-b860-5ad24c743185
+        version: aadf95e45846365fa4b4c60f02c76ecffe718ee5
+        step_label: RequestAction
       properties:
         profile_id:
           description: The profile id associated with the event
@@ -15419,6 +15446,36 @@ components:
           description: The profile type associated with the event
           example: 7d8c53ca-e99d-485c-9524-ea3849e82c79
           format: uuid
+          type: string
+        workflow_version_id:
+          description: The workflow version a change belongs to. Can be used for both
+            Workflow configurations and Workflow Session events.
+          example: e309339f-551f-48ab-b4f6-58d93123911f
+          format: uuid
+          type: string
+        version:
+          description: The workflow version SHA.
+          example: aadf95e45846365fa4b4c60f02c76ecffe718ee5
+          type: string
+        step_id:
+          description: The id of the workflow action or condition the step event refers
+            to.
+          example: 2f4b24c6-d420-4eee-b860-5ad24c743185
+          format: uuid
+          type: string
+        step_label:
+          description: The name associated to an action configuration.
+          example: RequestAction
+          type: string
+        source:
+          description: What triggered the versioning change.
+          enum:
+          - ui
+          - import
+          - fork
+          - cleanup_worker
+          - delete_worker
+          example: ui
           type: string
       type: object
     ProfileType_profile_type_dup_attributes_inner:

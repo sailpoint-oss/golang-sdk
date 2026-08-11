@@ -287,8 +287,11 @@ paths:
       - CERT_ADMIN
       - REPORT_ADMIN
     post:
-      description: "Use this API to create a certification campaign with the information\
-        \ provided in the request body.    \n"
+      description: |
+        Use this API to create a certification campaign with the information provided in the request body.
+
+        When the request body references a campaign filter (`filter.type: CAMPAIGN_FILTER`), the token must include both
+        `idn:campaign:manage` and `idn:campaign-filter:read`.
       operationId: createCampaignV1
       requestBody:
         content:
@@ -386,6 +389,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign:manage
+        - idn:campaign-filter:read
       summary: Create a campaign
       tags:
       - Certification Campaigns
@@ -2609,7 +2613,7 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:campaign-temlates:read
+        - idn:campaign-template:read
       summary: Get campaign template schedule
       tags:
       - Certification Campaigns
@@ -2796,6 +2800,8 @@ paths:
       description: |
         Use this API to generate a new certification campaign from a campaign template.
 
+        When the template campaign references a campaign filter (`filter.type: CAMPAIGN_FILTER`), the token must include both `idn:campaign-template:manage` and `idn:campaign-filter:read`.
+
         The campaign object contained in the template has special formatting applied to its name and description
         fields that determine the generated campaign's name/description. Placeholders in those fields are
         formatted with the current date and time upon generation.
@@ -2884,6 +2890,7 @@ paths:
       security:
       - userAuth:
         - idn:campaign-template:manage
+        - idn:campaign-filter:read
       summary: Generate a campaign from template
       tags:
       - Certification Campaigns

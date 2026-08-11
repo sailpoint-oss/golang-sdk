@@ -18,9 +18,9 @@ import (
 // checks if the Intelidentitygraphlink type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Intelidentitygraphlink{}
 
-// Intelidentitygraphlink Deep link into Identity Graph UI for the resolved identity at the aggregate root. Omitted when the tenant lacks the idg:base license. 
+// Intelidentitygraphlink Deep link into Identity Graph UI for the resolved identity at the aggregate root. Omitted when the tenant lacks the idg:base license.  To access the Identity Graph UI, the user must have the **Identity Graph Read Only** user level assigned. 
 type Intelidentitygraphlink struct {
-	// Absolute URL to the Identity Graph view. Omitted when the tenant lacks idg:base or when the IDN UI host cannot be resolved from sp-tenant. Query parameters include entity and id for the resolved identity. 
+	// Absolute URL to the Identity Graph view. Omitted when the tenant lacks idg:base or when the IDN UI host cannot be resolved from sp-tenant. Query parameters include `entity` and `id` for the resolved identity. The `entity` value reflects identity type: `human_identity` for Human responses and `machine_identity` for NHI responses. 
 	Href string `json:"href"`
 	AdditionalProperties map[string]interface{}
 }

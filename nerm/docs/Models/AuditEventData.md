@@ -20,6 +20,11 @@ Name | Type | Description | Notes
 **WorkflowName** | Pointer to **string** | The workflow name associated with the event | [optional] 
 **WorkflowUid** | Pointer to **string** | The workflow uid associated with the event | [optional] 
 **ProfileTypeId** | Pointer to **string** | The profile type associated with the event | [optional] 
+**WorkflowVersionId** | Pointer to **string** | The workflow version a change belongs to. Can be used for both Workflow configurations and Workflow Session events. | [optional] 
+**Version** | Pointer to **string** | The workflow version SHA. | [optional] 
+**StepId** | Pointer to **string** | The id of the workflow action or condition the step event refers to. | [optional] 
+**StepLabel** | Pointer to **string** | The name associated to an action configuration. | [optional] 
+**Source** | Pointer to **string** | What triggered the versioning change. | [optional] 
 
 ## Methods
 
@@ -164,5 +169,130 @@ SetProfileTypeId sets ProfileTypeId field to given value.
 `func (o *AuditEventData) HasProfileTypeId() bool`
 
 HasProfileTypeId returns a boolean if a field has been set.
+
+### GetWorkflowVersionId
+
+`func (o *AuditEventData) GetWorkflowVersionId() string`
+
+GetWorkflowVersionId returns the WorkflowVersionId field if non-nil, zero value otherwise.
+
+### GetWorkflowVersionIdOk
+
+`func (o *AuditEventData) GetWorkflowVersionIdOk() (*string, bool)`
+
+GetWorkflowVersionIdOk returns a tuple with the WorkflowVersionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkflowVersionId
+
+`func (o *AuditEventData) SetWorkflowVersionId(v string)`
+
+SetWorkflowVersionId sets WorkflowVersionId field to given value.
+
+### HasWorkflowVersionId
+
+`func (o *AuditEventData) HasWorkflowVersionId() bool`
+
+HasWorkflowVersionId returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *AuditEventData) GetVersion() string`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *AuditEventData) GetVersionOk() (*string, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *AuditEventData) SetVersion(v string)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *AuditEventData) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
+
+### GetStepId
+
+`func (o *AuditEventData) GetStepId() string`
+
+GetStepId returns the StepId field if non-nil, zero value otherwise.
+
+### GetStepIdOk
+
+`func (o *AuditEventData) GetStepIdOk() (*string, bool)`
+
+GetStepIdOk returns a tuple with the StepId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStepId
+
+`func (o *AuditEventData) SetStepId(v string)`
+
+SetStepId sets StepId field to given value.
+
+### HasStepId
+
+`func (o *AuditEventData) HasStepId() bool`
+
+HasStepId returns a boolean if a field has been set.
+
+### GetStepLabel
+
+`func (o *AuditEventData) GetStepLabel() string`
+
+GetStepLabel returns the StepLabel field if non-nil, zero value otherwise.
+
+### GetStepLabelOk
+
+`func (o *AuditEventData) GetStepLabelOk() (*string, bool)`
+
+GetStepLabelOk returns a tuple with the StepLabel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStepLabel
+
+`func (o *AuditEventData) SetStepLabel(v string)`
+
+SetStepLabel sets StepLabel field to given value.
+
+### HasStepLabel
+
+`func (o *AuditEventData) HasStepLabel() bool`
+
+HasStepLabel returns a boolean if a field has been set.
+
+### GetSource
+
+`func (o *AuditEventData) GetSource() string`
+
+GetSource returns the Source field if non-nil, zero value otherwise.
+
+### GetSourceOk
+
+`func (o *AuditEventData) GetSourceOk() (*string, bool)`
+
+GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSource
+
+`func (o *AuditEventData) SetSource(v string)`
+
+SetSource sets Source field to given value.
+
+### HasSource
+
+`func (o *AuditEventData) HasSource() bool`
+
+HasSource returns a boolean if a field has been set.
 
 
