@@ -16,6 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalRejectRequest', 'V1ApprovalRe
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment associated with the reject request. | [optional] 
+**OverrideApproverID** | Pointer to **string** | Optional field for ServiceNow Administrators to specify which member of a governance group to override/reject on behalf of. | [optional] 
 
 ## Methods
 
@@ -60,5 +61,30 @@ SetComment sets Comment field to given value.
 `func (o *ApprovalRejectRequest) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetOverrideApproverID
+
+`func (o *ApprovalRejectRequest) GetOverrideApproverID() string`
+
+GetOverrideApproverID returns the OverrideApproverID field if non-nil, zero value otherwise.
+
+### GetOverrideApproverIDOk
+
+`func (o *ApprovalRejectRequest) GetOverrideApproverIDOk() (*string, bool)`
+
+GetOverrideApproverIDOk returns a tuple with the OverrideApproverID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverrideApproverID
+
+`func (o *ApprovalRejectRequest) SetOverrideApproverID(v string)`
+
+SetOverrideApproverID sets OverrideApproverID field to given value.
+
+### HasOverrideApproverID
+
+`func (o *ApprovalRejectRequest) HasOverrideApproverID() bool`
+
+HasOverrideApproverID returns a boolean if a field has been set.
 
 

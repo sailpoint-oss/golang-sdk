@@ -953,6 +953,8 @@ GetAccessRequestConfigV1 Get access request configuration
 
 This endpoint returns the current access-request configuration.
 
+To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessRequestConfigV1Request
 
@@ -1108,6 +1110,8 @@ func (r ApiGetAccessRequestConfigV2Request) Execute() (*AccessRequestConfig2, *h
 GetAccessRequestConfigV2 Get access request configuration
 
 This endpoint returns the current access-request configuration.
+
+To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessRequestConfigV2Request
@@ -2168,6 +2172,8 @@ SetAccessRequestConfigV1 Update access request configuration
 
 This endpoint replaces the current access-request configuration.
 
+To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetAccessRequestConfigV1Request
 
@@ -2334,6 +2340,8 @@ func (r ApiSetAccessRequestConfigV2Request) Execute() (*AccessRequestConfig2, *h
 SetAccessRequestConfigV2 Update access request configuration
 
 This endpoint replaces the current access-request configuration.
+
+To manage approval configurations, use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetAccessRequestConfigV2Request

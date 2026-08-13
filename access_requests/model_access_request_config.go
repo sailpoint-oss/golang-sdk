@@ -21,7 +21,7 @@ var _ MappedNullable = &AccessRequestConfig{}
 type AccessRequestConfig struct {
 	// If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin.
 	ApprovalsMustBeExternal *bool `json:"approvalsMustBeExternal,omitempty"`
-	// If this is true and the requester and reviewer are the same, the request is automatically approved.
+	// If this is true and the requester and reviewer are the same, the request is automatically approved.  This field has been moved to the approval configurations. Please use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint instead.
 	AutoApprovalEnabled *bool `json:"autoApprovalEnabled,omitempty"`
 	// If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state.
 	ReauthorizationEnabled *bool `json:"reauthorizationEnabled,omitempty"`

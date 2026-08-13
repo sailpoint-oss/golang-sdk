@@ -10767,28 +10767,24 @@ components:
           identityID: fdfda352157d4cc79bb749953131b457
           type: MANAGER_OF
         reminderConfig:
-          reminderCronSchedule: 1 1 1 1 1
+          reminderCronSchedule: '@every 24h'
           daysUntilFirstReminder: 0
           maxReminders: 5
           enabled: false
         circumventApprovalProcess: false
         escalationConfig:
-          escalationCronSchedule: '*/5 * * * *'
+          escalationCronSchedule: '@every 72h'
           escalationChain:
-          - tier: 1
-            identityType: IDENTITY
+          - identityType: IDENTITY
             identityId: fdfda352157d4cc79bb749953131b457
-          - tier: 1
-            identityType: IDENTITY
+          - identityType: IDENTITY
             identityId: fdfda352157d4cc79bb749953131b457
           daysUntilFirstEscalation: 2
           enabled: true
         serialChain:
-        - tier: 1
-          identityType: IDENTITY
+        - identityType: IDENTITY
           identityId: 2c9180858090ea8801809a0465e829da
-        - tier: 1
-          identityType: IDENTITY
+        - identityType: IDENTITY
           identityId: 2c9180858090ea8801809a0465e829da
         machineIdentityManagerAssignment: MACHINE_IDENTITY_OWNER
         autoApprove: "OFF"
@@ -10836,17 +10832,16 @@ components:
         circumventApprovalProcess:
           default: false
           description: "When true, all approvals will be created with the status \"\
-            PASSED\"."
+            PASSED\" effectively skipping the approval process. Note this field should\
+            \ only be used for Machine Account or Machine related approvals."
           example: false
           type: boolean
         autoApprove:
-          description: "OFF will prevent the approval request from being assigned\
-            \ to the requester or requestee by assigning it to their manager instead.\
-            \ DIRECT will cause approval requests to be auto-approved when assigned\
-            \ directly and only to the requester. INDIRECT will auto-approve when\
-            \ the requester appears anywhere in the list of approvers, including in\
-            \ a governance group. This field will only be effective if requestedTarget.reauthRequired\
-            \ is set to false, otherwise the approval will have to be manually approved."
+          description: |-
+            OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead.
+            DIRECT when the requester != requestee this will cause steps assigned directly to the requester to be auto-approved.
+            INDIRECT when the requester != requestee this will cause steps assigned to the requester or a group containing the requester to be auto-approved.
+            This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved.
           enum:
           - "OFF"
           - DIRECT
@@ -10870,28 +10865,24 @@ components:
             identityID: fdfda352157d4cc79bb749953131b457
             type: MANAGER_OF
           reminderConfig:
-            reminderCronSchedule: 1 1 1 1 1
+            reminderCronSchedule: '@every 24h'
             daysUntilFirstReminder: 0
             maxReminders: 5
             enabled: false
           circumventApprovalProcess: false
           escalationConfig:
-            escalationCronSchedule: '*/5 * * * *'
+            escalationCronSchedule: '@every 72h'
             escalationChain:
-            - tier: 1
-              identityType: IDENTITY
+            - identityType: IDENTITY
               identityId: fdfda352157d4cc79bb749953131b457
-            - tier: 1
-              identityType: IDENTITY
+            - identityType: IDENTITY
               identityId: fdfda352157d4cc79bb749953131b457
             daysUntilFirstEscalation: 2
             enabled: true
           serialChain:
-          - tier: 1
-            identityType: IDENTITY
+          - identityType: IDENTITY
             identityId: 2c9180858090ea8801809a0465e829da
-          - tier: 1
-            identityType: IDENTITY
+          - identityType: IDENTITY
             identityId: 2c9180858090ea8801809a0465e829da
           machineIdentityManagerAssignment: MACHINE_IDENTITY_OWNER
           autoApprove: "OFF"
@@ -11946,7 +11937,7 @@ components:
     ApprovalConfig_reminderConfig:
       description: Configuration for reminders.
       example:
-        reminderCronSchedule: 1 1 1 1 1
+        reminderCronSchedule: '@every 24h'
         daysUntilFirstReminder: 0
         maxReminders: 5
         enabled: false
@@ -11963,7 +11954,10 @@ components:
           type: integer
         reminderCronSchedule:
           description: Cron schedule for reminders.
-          example: 1 1 1 1 1
+          example: '@every 24h'
+          externalDocs:
+            description: Predefined schedules and cron expression format
+            url: https://pkg.go.dev/github.com/robfig/cron#hdr-Predefined_schedules
           type: string
         maxReminders:
           description: Maximum number of reminders. Max is 20.
@@ -11973,16 +11967,9 @@ components:
       type: object
     ApprovalConfig_escalationConfig_escalationChain_inner:
       example:
-        tier: 1
         identityType: IDENTITY
         identityId: fdfda352157d4cc79bb749953131b457
       properties:
-        tier:
-          description: Starting at 1 defines the order in which the identities will
-            get assigned
-          example: 1
-          format: int64
-          type: integer
         identityId:
           description: Optional Identity ID of the type of identity defined in the
             'identityType' field.
@@ -11992,6 +11979,7 @@ components:
           description: Type of identityId in the escalation chain.
           enum:
           - IDENTITY
+          - GOVERNANCE_GROUP
           - MANAGER_OF
           - ACCOUNT_OWNER
           - MACHINE_ACCOUNT_OWNER
@@ -12008,24 +11996,45 @@ components:
           - ENTITLEMENT_OWNER
           - ROLE_OWNER
           - SOURCE_OWNER
+          - REQUESTED_TARGET_OWNER
           - ACCESS_PROFILE_PRIMARY_OWNER
           - APPLICATION_PRIMARY_OWNER
           - ENTITLEMENT_PRIMARY_OWNER
           - ROLE_PRIMARY_OWNER
           - SOURCE_PRIMARY_OWNER
+          - ACCOUNT_PRIMARY_OWNER
+          - MACHINE_ACCOUNT_PRIMARY_OWNER
+          - MACHINE_IDENTITY_PRIMARY_OWNER
+          - REQUESTED_TARGET_PRIMARY_OWNER
+          - ACCESS_PROFILE_SECONDARY_OWNER_GROUP
+          - APPLICATION_SECONDARY_OWNER_GROUP
+          - ENTITLEMENT_SECONDARY_OWNER_GROUP
+          - ROLE_SECONDARY_OWNER_GROUP
+          - SOURCE_SECONDARY_OWNER_GROUP
+          - ACCOUNT_SECONDARY_OWNER_GROUP
+          - MACHINE_ACCOUNT_SECONDARY_OWNER_GROUP
+          - MACHINE_IDENTITY_SECONDARY_OWNER_GROUP
+          - REQUESTED_TARGET_SECONDARY_OWNER_GROUP
+          - ACCESS_PROFILE_ALL_OWNER_GROUP
+          - APPLICATION_ALL_OWNER_GROUP
+          - ENTITLEMENT_ALL_OWNER_GROUP
+          - ROLE_ALL_OWNER_GROUP
+          - SOURCE_ALL_OWNER_GROUP
+          - ACCOUNT_ALL_OWNER_GROUP
+          - MACHINE_ACCOUNT_ALL_OWNER_GROUP
+          - MACHINE_IDENTITY_ALL_OWNER_GROUP
+          - REQUESTED_TARGET_ALL_OWNER_GROUP
           example: IDENTITY
           type: string
       type: object
     ApprovalConfig_escalationConfig:
       description: Configuration for escalations.
       example:
-        escalationCronSchedule: '*/5 * * * *'
+        escalationCronSchedule: '@every 72h'
         escalationChain:
-        - tier: 1
-          identityType: IDENTITY
+        - identityType: IDENTITY
           identityId: fdfda352157d4cc79bb749953131b457
-        - tier: 1
-          identityType: IDENTITY
+        - identityType: IDENTITY
           identityId: fdfda352157d4cc79bb749953131b457
         daysUntilFirstEscalation: 2
         enabled: true
@@ -12042,7 +12051,10 @@ components:
           type: integer
         escalationCronSchedule:
           description: Cron schedule for escalations.
-          example: '*/5 * * * *'
+          example: '@every 72h'
+          externalDocs:
+            description: Predefined schedules and cron expression format
+            url: https://pkg.go.dev/github.com/robfig/cron#hdr-Predefined_schedules
           type: string
         escalationChain:
           description: Escalation chain configuration.
@@ -12094,16 +12106,9 @@ components:
       type: object
     ApprovalConfig_serialChain_inner:
       example:
-        tier: 1
         identityType: IDENTITY
         identityId: 2c9180858090ea8801809a0465e829da
       properties:
-        tier:
-          description: Starting at 1 defines the order in which the identities will
-            get assigned
-          example: 1
-          format: int64
-          type: integer
         identityId:
           description: Optional Identity ID of the type of identity defined in the
             'identityType' field.
@@ -12136,18 +12141,27 @@ components:
           - ENTITLEMENT_PRIMARY_OWNER
           - ROLE_PRIMARY_OWNER
           - SOURCE_PRIMARY_OWNER
+          - ACCOUNT_PRIMARY_OWNER
+          - MACHINE_ACCOUNT_PRIMARY_OWNER
+          - MACHINE_IDENTITY_PRIMARY_OWNER
           - REQUESTED_TARGET_PRIMARY_OWNER
           - ACCESS_PROFILE_SECONDARY_OWNER_GROUP
           - APPLICATION_SECONDARY_OWNER_GROUP
           - ENTITLEMENT_SECONDARY_OWNER_GROUP
           - ROLE_SECONDARY_OWNER_GROUP
           - SOURCE_SECONDARY_OWNER_GROUP
+          - ACCOUNT_SECONDARY_OWNER_GROUP
+          - MACHINE_ACCOUNT_SECONDARY_OWNER_GROUP
+          - MACHINE_IDENTITY_SECONDARY_OWNER_GROUP
           - REQUESTED_TARGET_SECONDARY_OWNER_GROUP
           - ACCESS_PROFILE_ALL_OWNER_GROUP
           - APPLICATION_ALL_OWNER_GROUP
           - ENTITLEMENT_ALL_OWNER_GROUP
           - ROLE_ALL_OWNER_GROUP
           - SOURCE_ALL_OWNER_GROUP
+          - ACCOUNT_ALL_OWNER_GROUP
+          - MACHINE_ACCOUNT_ALL_OWNER_GROUP
+          - MACHINE_IDENTITY_ALL_OWNER_GROUP
           - REQUESTED_TARGET_ALL_OWNER_GROUP
           example: IDENTITY
           type: string
@@ -12168,6 +12182,7 @@ components:
           description: Type of identityID for the fallback approver.
           enum:
           - IDENTITY
+          - GOVERNANCE_GROUP
           - MANAGER_OF
           - ACCOUNT_OWNER
           - MACHINE_ACCOUNT_OWNER
@@ -12190,7 +12205,28 @@ components:
           - ENTITLEMENT_PRIMARY_OWNER
           - ROLE_PRIMARY_OWNER
           - SOURCE_PRIMARY_OWNER
+          - ACCOUNT_PRIMARY_OWNER
+          - MACHINE_ACCOUNT_PRIMARY_OWNER
+          - MACHINE_IDENTITY_PRIMARY_OWNER
           - REQUESTED_TARGET_PRIMARY_OWNER
+          - ACCESS_PROFILE_SECONDARY_OWNER_GROUP
+          - APPLICATION_SECONDARY_OWNER_GROUP
+          - ENTITLEMENT_SECONDARY_OWNER_GROUP
+          - ROLE_SECONDARY_OWNER_GROUP
+          - SOURCE_SECONDARY_OWNER_GROUP
+          - ACCOUNT_SECONDARY_OWNER_GROUP
+          - MACHINE_ACCOUNT_SECONDARY_OWNER_GROUP
+          - MACHINE_IDENTITY_SECONDARY_OWNER_GROUP
+          - REQUESTED_TARGET_SECONDARY_OWNER_GROUP
+          - ACCESS_PROFILE_ALL_OWNER_GROUP
+          - APPLICATION_ALL_OWNER_GROUP
+          - ENTITLEMENT_ALL_OWNER_GROUP
+          - ROLE_ALL_OWNER_GROUP
+          - SOURCE_ALL_OWNER_GROUP
+          - ACCOUNT_ALL_OWNER_GROUP
+          - MACHINE_ACCOUNT_ALL_OWNER_GROUP
+          - MACHINE_IDENTITY_ALL_OWNER_GROUP
+          - REQUESTED_TARGET_ALL_OWNER_GROUP
           example: MANAGER_OF
           type: string
       type: object

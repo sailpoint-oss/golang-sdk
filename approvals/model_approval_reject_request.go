@@ -21,6 +21,8 @@ var _ MappedNullable = &ApprovalRejectRequest{}
 type ApprovalRejectRequest struct {
 	// Comment associated with the reject request.
 	Comment *string `json:"comment,omitempty"`
+	// Optional field for ServiceNow Administrators to specify which member of a governance group to override/reject on behalf of.
+	OverrideApproverID *string `json:"overrideApproverID,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +77,38 @@ func (o *ApprovalRejectRequest) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetOverrideApproverID returns the OverrideApproverID field value if set, zero value otherwise.
+func (o *ApprovalRejectRequest) GetOverrideApproverID() string {
+	if o == nil || IsNil(o.OverrideApproverID) {
+		var ret string
+		return ret
+	}
+	return *o.OverrideApproverID
+}
+
+// GetOverrideApproverIDOk returns a tuple with the OverrideApproverID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalRejectRequest) GetOverrideApproverIDOk() (*string, bool) {
+	if o == nil || IsNil(o.OverrideApproverID) {
+		return nil, false
+	}
+	return o.OverrideApproverID, true
+}
+
+// HasOverrideApproverID returns a boolean if a field has been set.
+func (o *ApprovalRejectRequest) HasOverrideApproverID() bool {
+	if o != nil && !IsNil(o.OverrideApproverID) {
+		return true
+	}
+
+	return false
+}
+
+// SetOverrideApproverID gets a reference to the given string and assigns it to the OverrideApproverID field.
+func (o *ApprovalRejectRequest) SetOverrideApproverID(v string) {
+	o.OverrideApproverID = &v
+}
+
 func (o ApprovalRejectRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -87,6 +121,9 @@ func (o ApprovalRejectRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
+	}
+	if !IsNil(o.OverrideApproverID) {
+		toSerialize["overrideApproverID"] = o.OverrideApproverID
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -111,6 +148,7 @@ func (o *ApprovalRejectRequest) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
+		delete(additionalProperties, "overrideApproverID")
 		o.AdditionalProperties = additionalProperties
 	}
 

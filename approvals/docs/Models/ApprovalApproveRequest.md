@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdditionalAttributes** | Pointer to **map[string]string** | Additional attributes as key-value pairs that are not part of the standard schema but can be included for custom data. | [optional] 
 **Comment** | Pointer to **string** | Comment associated with the request. | [optional] 
+**OverrideApproverID** | Pointer to **string** | Optional field for ServiceNow Administrators to specify which member of a governance group to override/approve on behalf of. | [optional] 
 
 ## Methods
 
@@ -86,5 +87,30 @@ SetComment sets Comment field to given value.
 `func (o *ApprovalApproveRequest) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetOverrideApproverID
+
+`func (o *ApprovalApproveRequest) GetOverrideApproverID() string`
+
+GetOverrideApproverID returns the OverrideApproverID field if non-nil, zero value otherwise.
+
+### GetOverrideApproverIDOk
+
+`func (o *ApprovalApproveRequest) GetOverrideApproverIDOk() (*string, bool)`
+
+GetOverrideApproverIDOk returns a tuple with the OverrideApproverID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverrideApproverID
+
+`func (o *ApprovalApproveRequest) SetOverrideApproverID(v string)`
+
+SetOverrideApproverID sets OverrideApproverID field to given value.
+
+### HasOverrideApproverID
+
+`func (o *ApprovalApproveRequest) HasOverrideApproverID() bool`
+
+HasOverrideApproverID returns a boolean if a field has been set.
 
 

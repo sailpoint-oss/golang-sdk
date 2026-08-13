@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestConfig', 'V1AccessReques
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApprovalsMustBeExternal** | Pointer to **bool** | If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin. | [optional] [default to false]
-**AutoApprovalEnabled** | Pointer to **bool** | If this is true and the requester and reviewer are the same, the request is automatically approved. | [optional] [default to false]
+**AutoApprovalEnabled** | Pointer to **bool** | If this is true and the requester and reviewer are the same, the request is automatically approved.  This field has been moved to the approval configurations. Please use the [Put approval config](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1/) endpoint instead. | [optional] [default to false]
 **ReauthorizationEnabled** | Pointer to **bool** | If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state. | [optional] [default to false]
 **RequestOnBehalfOfConfig** | Pointer to [**RequestOnBehalfOfConfig**](request-on-behalf-of-config) |  | [optional] 
 **ApprovalReminderAndEscalationConfig** | Pointer to [**ApprovalReminderAndEscalationConfig**](approval-reminder-and-escalation-config) |  | [optional] 

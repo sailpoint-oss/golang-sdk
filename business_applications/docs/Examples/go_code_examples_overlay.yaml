@@ -1,0 +1,188 @@
+- path: /business-applications/v1
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/businessapplications/methods/business-applications#create-business-application-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            business_applications "github.com/sailpoint-oss/golang-sdk/v3/business_applications"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+           businessapplicationJson := []byte(`{
+          "owner" : {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "vendor" : "Cursor",
+          "created" : "2026-01-15T13:45:12.312Z",
+          "origin" : "",
+          "name" : "Cursor",
+          "description" : "AI coding assistant used by the platform engineering team.",
+          "modified" : "2026-02-20T09:31:47.882Z",
+          "id" : "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+          "source" : {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          },
+          "signatures" : [ {
+            "name" : "cursor",
+            "type" : "AI Agent"
+          }, {
+            "name" : "cursor",
+            "type" : "AI Agent"
+          } ],
+          "additionalOwners" : [ {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "William Wilson",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "IDENTITY"
+          } ],
+          "sanctionedStatus" : ""
+        }`) // BusinessApplication | 
+
+          
+          var businessApplication business_applications.BusinessApplication
+          if err := json.Unmarshal(businessapplicationJson, &businessApplication); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.BusinessApplicationsAPI.CreateBusinessApplicationV1(context.Background()).BusinessApplication(businessApplication).Execute()
+          //resp, r, err := apiClient.BusinessApplicationsAPI.CreateBusinessApplicationV1(context.Background()).BusinessApplication(businessApplication).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `BusinessApplicationsAPI.CreateBusinessApplicationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateBusinessApplicationV1`: BusinessApplication
+          fmt.Fprintf(os.Stdout, "Response from `BusinessApplicationsAPI.CreateBusinessApplicationV1`: %v\n", resp)
+        }
+- path: /business-applications/v1/{id}
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/businessapplications/methods/business-applications#get-business-application-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `a1b2c3d4-e5f6-7890-abcd-ef1234567890` // string | Business Application ID. # string | Business Application ID.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.BusinessApplicationsAPI.GetBusinessApplicationV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.BusinessApplicationsAPI.GetBusinessApplicationV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `BusinessApplicationsAPI.GetBusinessApplicationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetBusinessApplicationV1`: BusinessApplication
+          fmt.Fprintf(os.Stdout, "Response from `BusinessApplicationsAPI.GetBusinessApplicationV1`: %v\n", resp)
+        }
+- path: /business-applications/v1
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/businessapplications/methods/business-applications#list-business-applications-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          filters := `sanctionedStatus eq "SANCTIONED"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq, co*  **vendor**: *eq, co*  **signatures.type**: *eq, co*  **signatures.name**: *eq, co*  **source.name**: *eq, co*  **sanctionedStatus**: *eq* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq, co*  **vendor**: *eq, co*  **signatures.type**: *eq, co*  **signatures.name**: *eq, co*  **source.name**: *eq, co*  **sanctionedStatus**: *eq* (optional)
+          sorters := `name` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, sanctionedStatus** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, sanctionedStatus** (optional)
+          count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+          limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.BusinessApplicationsAPI.ListBusinessApplicationsV1(context.Background()).Execute()
+          //resp, r, err := apiClient.BusinessApplicationsAPI.ListBusinessApplicationsV1(context.Background()).Filters(filters).Sorters(sorters).Count(count).Limit(limit).Offset(offset).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `BusinessApplicationsAPI.ListBusinessApplicationsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `ListBusinessApplicationsV1`: []BusinessApplication
+          fmt.Fprintf(os.Stdout, "Response from `BusinessApplicationsAPI.ListBusinessApplicationsV1`: %v\n", resp)
+        }
+- path: /business-applications/v1/{id}
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/businessapplications/methods/business-applications#update-business-application-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            business_applications "github.com/sailpoint-oss/golang-sdk/v3/business_applications"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `a1b2c3d4-e5f6-7890-abcd-ef1234567890` // string | Business Application ID. # string | Business Application ID.
+          jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/sanctionedStatus","value":"SANCTIONED"}]`) // []JsonPatchOperation | A JSON array of patch operations per RFC 6902.
+
+          
+          var jsonPatchOperation []business_applications.JsonPatchOperation
+          if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.BusinessApplicationsAPI.UpdateBusinessApplicationV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+          //resp, r, err := apiClient.BusinessApplicationsAPI.UpdateBusinessApplicationV1(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `BusinessApplicationsAPI.UpdateBusinessApplicationV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateBusinessApplicationV1`: BusinessApplication
+          fmt.Fprintf(os.Stdout, "Response from `BusinessApplicationsAPI.UpdateBusinessApplicationV1`: %v\n", resp)
+        }

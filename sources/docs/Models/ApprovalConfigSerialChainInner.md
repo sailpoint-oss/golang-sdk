@@ -15,7 +15,6 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalConfigSerialChainInner', 'V1A
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Tier** | Pointer to **int64** | Starting at 1 defines the order in which the identities will get assigned | [optional] 
 **IdentityId** | Pointer to **string** | Optional Identity ID of the type of identity defined in the 'identityType' field. | [optional] 
 **IdentityType** | Pointer to **string** | Type of identityId in the serial chain. | [optional] 
 
@@ -37,31 +36,6 @@ will change when the set of required properties is changed
 NewApprovalConfigSerialChainInnerWithDefaults instantiates a new ApprovalConfigSerialChainInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetTier
-
-`func (o *ApprovalConfigSerialChainInner) GetTier() int64`
-
-GetTier returns the Tier field if non-nil, zero value otherwise.
-
-### GetTierOk
-
-`func (o *ApprovalConfigSerialChainInner) GetTierOk() (*int64, bool)`
-
-GetTierOk returns a tuple with the Tier field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTier
-
-`func (o *ApprovalConfigSerialChainInner) SetTier(v int64)`
-
-SetTier sets Tier field to given value.
-
-### HasTier
-
-`func (o *ApprovalConfigSerialChainInner) HasTier() bool`
-
-HasTier returns a boolean if a field has been set.
 
 ### GetIdentityId
 

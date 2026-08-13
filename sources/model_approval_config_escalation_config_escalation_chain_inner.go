@@ -19,8 +19,6 @@ var _ MappedNullable = &ApprovalConfigEscalationConfigEscalationChainInner{}
 
 // ApprovalConfigEscalationConfigEscalationChainInner struct for ApprovalConfigEscalationConfigEscalationChainInner
 type ApprovalConfigEscalationConfigEscalationChainInner struct {
-	// Starting at 1 defines the order in which the identities will get assigned
-	Tier *int64 `json:"tier,omitempty"`
 	// Optional Identity ID of the type of identity defined in the 'identityType' field.
 	IdentityId *string `json:"identityId,omitempty"`
 	// Type of identityId in the escalation chain.
@@ -45,38 +43,6 @@ func NewApprovalConfigEscalationConfigEscalationChainInner() *ApprovalConfigEsca
 func NewApprovalConfigEscalationConfigEscalationChainInnerWithDefaults() *ApprovalConfigEscalationConfigEscalationChainInner {
 	this := ApprovalConfigEscalationConfigEscalationChainInner{}
 	return &this
-}
-
-// GetTier returns the Tier field value if set, zero value otherwise.
-func (o *ApprovalConfigEscalationConfigEscalationChainInner) GetTier() int64 {
-	if o == nil || IsNil(o.Tier) {
-		var ret int64
-		return ret
-	}
-	return *o.Tier
-}
-
-// GetTierOk returns a tuple with the Tier field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApprovalConfigEscalationConfigEscalationChainInner) GetTierOk() (*int64, bool) {
-	if o == nil || IsNil(o.Tier) {
-		return nil, false
-	}
-	return o.Tier, true
-}
-
-// HasTier returns a boolean if a field has been set.
-func (o *ApprovalConfigEscalationConfigEscalationChainInner) HasTier() bool {
-	if o != nil && !IsNil(o.Tier) {
-		return true
-	}
-
-	return false
-}
-
-// SetTier gets a reference to the given int64 and assigns it to the Tier field.
-func (o *ApprovalConfigEscalationConfigEscalationChainInner) SetTier(v int64) {
-	o.Tier = &v
 }
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
@@ -153,9 +119,6 @@ func (o ApprovalConfigEscalationConfigEscalationChainInner) MarshalJSON() ([]byt
 
 func (o ApprovalConfigEscalationConfigEscalationChainInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Tier) {
-		toSerialize["tier"] = o.Tier
-	}
 	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
@@ -184,7 +147,6 @@ func (o *ApprovalConfigEscalationConfigEscalationChainInner) UnmarshalJSON(data 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "tier")
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "identityType")
 		o.AdditionalProperties = additionalProperties

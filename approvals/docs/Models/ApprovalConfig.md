@@ -23,8 +23,8 @@ Name | Type | Description | Notes
 **RequiresComment** | Pointer to **string** | Determines whether a comment is required when approving or rejecting the approval request. | [optional] 
 **FallbackApprover** | Pointer to [**ApprovalConfigFallbackApprover**](approval-config-fallback-approver) |  | [optional] 
 **MachineIdentityManagerAssignment** | Pointer to **string** | Specifies how to treat the identity type \"MANAGER_OF\" when the requestee is a machine identity. | [optional] [default to "MANAGER_OF_REQUESTER"]
-**CircumventApprovalProcess** | Pointer to **bool** | When true, all approvals will be created with the status \"PASSED\". | [optional] [default to false]
-**AutoApprove** | Pointer to **string** | OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead. DIRECT will cause approval requests to be auto-approved when assigned directly and only to the requester. INDIRECT will auto-approve when the requester appears anywhere in the list of approvers, including in a governance group. This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved. | [optional] 
+**CircumventApprovalProcess** | Pointer to **bool** | When true, all approvals will be created with the status \"PASSED\" effectively skipping the approval process. Note this field should only be used for Machine Account or Machine related approvals. | [optional] [default to false]
+**AutoApprove** | Pointer to **string** | OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead. DIRECT when the requester != requestee this will cause steps assigned directly to the requester to be auto-approved. INDIRECT when the requester != requestee this will cause steps assigned to the requester or a group containing the requester to be auto-approved. This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved. | [optional] 
 
 ## Methods
 

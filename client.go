@@ -35,6 +35,7 @@ import (
 	auth_profile "github.com/sailpoint-oss/golang-sdk/v3/auth_profile"
 	auth_users "github.com/sailpoint-oss/golang-sdk/v3/auth_users"
 	branding "github.com/sailpoint-oss/golang-sdk/v3/branding"
+	business_applications "github.com/sailpoint-oss/golang-sdk/v3/business_applications"
 	certification_campaign_filters "github.com/sailpoint-oss/golang-sdk/v3/certification_campaign_filters"
 	certification_campaigns "github.com/sailpoint-oss/golang-sdk/v3/certification_campaigns"
 	certification_summaries "github.com/sailpoint-oss/golang-sdk/v3/certification_summaries"
@@ -173,6 +174,7 @@ type APIClient struct {
 	AuthProfileAPI *auth_profile.AuthProfileAPIService
 	AuthUsersAPI *auth_users.AuthUsersAPIService
 	BrandingAPI *branding.BrandingAPIService
+	BusinessApplicationsAPI *business_applications.BusinessApplicationsAPIService
 	CertificationCampaignFiltersAPI *certification_campaign_filters.CertificationCampaignFiltersAPIService
 	CertificationCampaignsAPI *certification_campaigns.CertificationCampaignsAPIService
 	CertificationSummariesAPI *certification_summaries.CertificationSummariesAPIService
@@ -492,6 +494,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	)
 	_cfgBranding.HTTPClient = cfg.HTTPClient
 	c.BrandingAPI = branding.NewAPIClient(_cfgBranding).BrandingAPI
+
+	_cfgBusinessApplications := business_applications.NewConfiguration(
+		cfg.ClientConfiguration.ClientId,
+		cfg.ClientConfiguration.ClientSecret,
+		cfg.ClientConfiguration.BaseURL,
+		cfg.ClientConfiguration.TokenURL,
+		cfg.ClientConfiguration.Token,
+		consumerSuffix,
+		cfg.Experimental,
+	)
+	_cfgBusinessApplications.HTTPClient = cfg.HTTPClient
+	c.BusinessApplicationsAPI = business_applications.NewAPIClient(_cfgBusinessApplications).BusinessApplicationsAPI
 
 	_cfgCertificationCampaignFilters := certification_campaign_filters.NewConfiguration(
 		cfg.ClientConfiguration.ClientId,
