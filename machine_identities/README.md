@@ -87,8 +87,10 @@ Class | Method | HTTP request | Description
 *MachineIdentitiesAPI* | [**GetMachineIdentityV1**](docs/MachineIdentitiesAPI.md#getmachineidentityv1) | **Get** /machine-identities/v1/{id} | Get machine identity details
 *MachineIdentitiesAPI* | [**GetMachineIdentityV2**](docs/MachineIdentitiesAPI.md#getmachineidentityv2) | **Get** /machine-identities/v2/{id} | Get machine identity details
 *MachineIdentitiesAPI* | [**GetOwnershipCorrelationConfigV1**](docs/MachineIdentitiesAPI.md#getownershipcorrelationconfigv1) | **Get** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Get ownership correlation config
+*MachineIdentitiesAPI* | [**GetUnsanctionedAnomalySummaryV1**](docs/MachineIdentitiesAPI.md#getunsanctionedanomalysummaryv1) | **Get** /machine-identities/v1/anomaly-summaries/unsanctioned | Get unsanctioned application anomaly summary
 *MachineIdentitiesAPI* | [**ListMachineIdentitiesV1**](docs/MachineIdentitiesAPI.md#listmachineidentitiesv1) | **Get** /machine-identities/v1 | List machine identities
 *MachineIdentitiesAPI* | [**ListMachineIdentitiesV2**](docs/MachineIdentitiesAPI.md#listmachineidentitiesv2) | **Get** /machine-identities/v2 | List machine identities
+*MachineIdentitiesAPI* | [**ListMachineIdentityAnomaliesV1**](docs/MachineIdentitiesAPI.md#listmachineidentityanomaliesv1) | **Get** /machine-identities/v1/{id}/anomalies | List machine identity anomalies
 *MachineIdentitiesAPI* | [**ListMachineIdentityUserEntitlementsV1**](docs/MachineIdentitiesAPI.md#listmachineidentityuserentitlementsv1) | **Get** /machine-identity-user-entitlements/v1 | List machine identity&#39;s user entitlements
 *MachineIdentitiesAPI* | [**ListOwnershipCorrelationConfigsV1**](docs/MachineIdentitiesAPI.md#listownershipcorrelationconfigsv1) | **Get** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs | List ownership correlation configs
 *MachineIdentitiesAPI* | [**PatchOwnershipCorrelationConfigV1**](docs/MachineIdentitiesAPI.md#patchownershipcorrelationconfigv1) | **Patch** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Patch ownership correlation config
@@ -99,6 +101,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Anomaly](docs/Anomaly.md)
+ - [AnomalyBaseline](docs/AnomalyBaseline.md)
+ - [AnomalyEvidence](docs/AnomalyEvidence.md)
+ - [AnomalyEvidenceTimestamp](docs/AnomalyEvidenceTimestamp.md)
  - [ArrayInner](docs/ArrayInner.md)
  - [BaseCommonDto](docs/BaseCommonDto.md)
  - [BaseReferenceDto](docs/BaseReferenceDto.md)
@@ -140,6 +146,7 @@ Class | Method | HTTP request | Description
  - [TaskReturnDetails](docs/TaskReturnDetails.md)
  - [TaskStatusMessage](docs/TaskStatusMessage.md)
  - [TaskStatusMessageParametersInner](docs/TaskStatusMessageParametersInner.md)
+ - [UnsanctionedApplicationAnomalySummary](docs/UnsanctionedApplicationAnomalySummary.md)
  - [UserEntitlementV2](docs/UserEntitlementV2.md)
  - [UserEntitlementV2Source](docs/UserEntitlementV2Source.md)
 

@@ -45,6 +45,12 @@ docs/Intelmachineuserentitlement.md
 docs/Intelprivilegelevel.md
 docs/LocaleOrigin.md
 docs/Methods/Index.md
+docs/Responseactionaccepted.md
+docs/Responseactioncontext.md
+docs/Responseactioncreaterequest.md
+docs/ResponseactioncreaterequestOneOf.md
+docs/ResponseactioncreaterequestOneOf1.md
+docs/Responseactionstatus.md
 git_push.sh
 go.mod
 go.sum
@@ -83,6 +89,12 @@ model_intelmachinesourcewire.go
 model_intelmachineuserentitlement.go
 model_intelprivilegelevel.go
 model_locale_origin.go
+model_responseactionaccepted.go
+model_responseactioncontext.go
+model_responseactioncreaterequest.go
+model_responseactioncreaterequest_one_of.go
+model_responseactioncreaterequest_one_of_1.go
+model_responseactionstatus.go
 response.go
 test/api_intelligence_test.go
 utils.go

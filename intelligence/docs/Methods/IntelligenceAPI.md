@@ -10,10 +10,10 @@ tags: ['SDK', 'Software Development Kit', 'Intelligence', 'V1Intelligence']
 ---
 
 # IntelligenceAPI
-  Read-only HTTP API that returns the Intelligence (identity context)
-for SecOps enrichment use cases (SIEM/SOAR connectors, MCP, browser
-extension). Backed by Atlas internal-REST calls to MICE, Shelby List Accounts,
-SDS Search, IDA-outliers, and identity-history.
+  HTTP API that returns the Intelligence (identity context) for SecOps enrichment
+use cases (SIEM/SOAR connectors, MCP, browser extension), and accepts asynchronous
+response actions for remediation. Identity reads are backed by Atlas internal-REST
+calls to MICE, Shelby List Accounts, SDS Search, IDA-outliers, and identity-history.
 
 ## License-based segmentation
 
@@ -39,12 +39,100 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create-response-action-v1**](#create-response-action-v1) | **Post** `/intelligence/v1/response-actions` | Create a response action
 [**get-identity-intelligence-v1**](#get-identity-intelligence-v1) | **Get** `/intelligence/v1/identities` | Get identity by filter
 [**get-intel-identity-access-item-history-v1**](#get-intel-identity-access-item-history-v1) | **Get** `/intelligence/v1/identities/{id}/access-history/access-items` | List identity access item history
 [**get-intel-identity-accounts-v1**](#get-intel-identity-accounts-v1) | **Get** `/intelligence/v1/identities/{id}/accounts` | List identity accounts
 [**get-intel-identity-certification-history-v1**](#get-intel-identity-certification-history-v1) | **Get** `/intelligence/v1/identities/{id}/access-history/certifications` | List identity certification history
 [**get-intel-identity-rare-access-v1**](#get-intel-identity-rare-access-v1) | **Get** `/intelligence/v1/identities/{id}/outliers/rare-access` | List identity rare access
+[**get-response-action-status-v1**](#get-response-action-status-v1) | **Get** `/intelligence/v1/response-actions/{id}/status` | Get response action status
 
+
+## create-response-action-v1
+Create a response action
+Requires tenant license idn:response-and-remediation.
+
+Creates a response action: the request is validated, a requestId (the correlation id) is
+minted, the action is recorded as SUBMITTED, and an event is published that triggers the
+correlated workflow(s).
+
+Returns HTTP 202 with the requestId, an initial SUBMITTED status, and a statusUrl. Poll
+GET /intelligence/v1/response-actions/{requestId}/status for progress.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/create-response-action-v-1)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateResponseActionV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **responseactioncreaterequest** | [**Responseactioncreaterequest**](../models/responseactioncreaterequest) |  | 
+
+### Return type
+
+[**Responseactionaccepted**](../models/responseactionaccepted)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    intelligence "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    responseactioncreaterequestJson := []byte(`{
+          "actionType" : "DISABLE_ACCOUNT",
+          "identityType" : "HUMAN",
+          "identityId" : "2c918085842e69ae018428c919680149",
+          "accountIds" : [ "2c918085abc000000000000000000001" ],
+          "context" : {
+            "reason" : "Contain compromised account",
+            "externalAlertId" : "CS-FALCON-12345",
+            "source" : "CROWDSTRIKE",
+            "operator" : "soc-analyst@customer.com"
+          }
+        }`) // Responseactioncreaterequest | 
+
+    var responseactioncreaterequest intelligence.Responseactioncreaterequest
+    if err := json.Unmarshal(responseactioncreaterequestJson, &responseactioncreaterequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.IntelligenceAPI.CreateResponseActionV1(context.Background()).Responseactioncreaterequest(responseactioncreaterequest).Execute()
+	  //resp, r, err := apiClient.IntelligenceAPI.CreateResponseActionV1(context.Background()).Responseactioncreaterequest(responseactioncreaterequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.CreateResponseActionV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateResponseActionV1`: Responseactionaccepted
+    fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.CreateResponseActionV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
 
 ## get-identity-intelligence-v1
 Get identity by filter
@@ -469,6 +557,78 @@ func main() {
     }
     // response from `GetIntelIdentityRareAccessV1`: []IntelOutlierAccessItem
     fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityRareAccessV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## get-response-action-status-v1
+Get response action status
+Requires tenant license idn:response-and-remediation.
+
+Returns the current aggregate status of a previously submitted response action, identified by
+the requestId returned from POST /intelligence/v1/response-actions.
+
+Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-response-action-status-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The requestId of the response action to look up. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetResponseActionStatusV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Responseactionstatus**](../models/responseactionstatus)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    id := `3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b` // string | The requestId of the response action to look up. # string | The requestId of the response action to look up.
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.IntelligenceAPI.GetResponseActionStatusV1(context.Background(), id).Execute()
+	  //resp, r, err := apiClient.IntelligenceAPI.GetResponseActionStatusV1(context.Background(), id).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetResponseActionStatusV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetResponseActionStatusV1`: Responseactionstatus
+    fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetResponseActionStatusV1`: %v\n", resp)
 }
 ```
 

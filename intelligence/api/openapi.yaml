@@ -31,10 +31,10 @@ security:
   - sp:scopes:all
 tags:
 - description: |
-    Read-only HTTP API that returns the Intelligence (identity context)
-    for SecOps enrichment use cases (SIEM/SOAR connectors, MCP, browser
-    extension). Backed by Atlas internal-REST calls to MICE, Shelby List Accounts,
-    SDS Search, IDA-outliers, and identity-history.
+    HTTP API that returns the Intelligence (identity context) for SecOps enrichment
+    use cases (SIEM/SOAR connectors, MCP, browser extension), and accepts asynchronous
+    response actions for remediation. Identity reads are backed by Atlas internal-REST
+    calls to MICE, Shelby List Accounts, SDS Search, IDA-outliers, and identity-history.
 
     ## License-based segmentation
 
@@ -756,6 +756,214 @@ paths:
       x-required-right: sp:identity-sec-intel:read
       x-sailpoint-userLevels:
       - Any
+  /intelligence/v1/response-actions:
+    post:
+      description: |
+        Requires tenant license idn:response-and-remediation.
+
+        Creates a response action: the request is validated, a requestId (the correlation id) is
+        minted, the action is recorded as SUBMITTED, and an event is published that triggers the
+        correlated workflow(s).
+
+        Returns HTTP 202 with the requestId, an initial SUBMITTED status, and a statusUrl. Poll
+        GET /intelligence/v1/response-actions/{requestId}/status for progress.
+      operationId: createResponseActionV1
+      requestBody:
+        content:
+          application/json:
+            examples:
+              disableIdentity:
+                summary: Disable an identity
+                value:
+                  actionType: DISABLE_IDENTITY
+                  identityType: HUMAN
+                  identityId: 2c918085842e69ae018428c919680149
+                  context:
+                    source: CROWDSTRIKE
+                    externalAlertId: CS-FALCON-12345
+                    reason: Malware detected on endpoint DESKTOP-A1B2C3
+                    operator: soc-analyst@customer.com
+              disableAccount:
+                summary: Disable one or more accounts
+                value:
+                  actionType: DISABLE_ACCOUNT
+                  identityType: HUMAN
+                  identityId: 2c918085842e69ae018428c919680149
+                  accountIds:
+                  - 2c918085abc000000000000000000001
+                  context:
+                    source: CROWDSTRIKE
+                    externalAlertId: CS-FALCON-12345
+                    reason: Contain compromised account
+                    operator: soc-analyst@customer.com
+            schema:
+              $ref: '#/components/schemas/Responseactioncreaterequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              example:
+                requestId: 3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b
+                status: SUBMITTED
+                statusUrl: /intelligence/v1/response-actions/3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b/status
+              schema:
+                $ref: '#/components/schemas/Responseactionaccepted'
+          description: The response action was accepted and is being processed asynchronously.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Missing or invalid request body.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getIdentityIntelligenceV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getIdentityIntelligenceV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal or upstream server failure.
+      security:
+      - userAuth:
+        - sp:identity-sec-intel:write
+      - applicationAuth:
+        - sp:identity-sec-intel:write
+      summary: Create a response action
+      tags:
+      - Intelligence
+      x-required-right: sp:identity-sec-intel:write
+      x-sailpoint-userLevels:
+      - Any
+  /intelligence/v1/response-actions/{id}/status:
+    get:
+      description: |
+        Requires tenant license idn:response-and-remediation.
+
+        Returns the current aggregate status of a previously submitted response action, identified by
+        the requestId returned from POST /intelligence/v1/response-actions.
+
+        Supported actionType values: DISABLE_IDENTITY, DISABLE_ACCOUNT.
+      operationId: getResponseActionStatusV1
+      parameters:
+      - description: The requestId of the response action to look up.
+        example: 3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          maxLength: 128
+          minLength: 1
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: createResponseActionV1
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                requestId: 3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b
+                actionType: DISABLE_ACCOUNT
+                status: SUBMITTED
+                submittedAt: 2026-08-07T10:15:30Z
+                updatedAt: 2026-08-07T10:15:30Z
+              schema:
+                $ref: '#/components/schemas/Responseactionstatus'
+          description: The current status of the response action.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Invalid path parameter.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getIdentityIntelligenceV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: No response action exists for the supplied requestId.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getIdentityIntelligenceV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal or upstream server failure.
+      security:
+      - userAuth:
+        - sp:identity-sec-intel:read
+      - applicationAuth:
+        - sp:identity-sec-intel:read
+      summary: Get response action status
+      tags:
+      - Intelligence
+      x-required-right: sp:identity-sec-intel:read
+      x-sailpoint-userLevels:
+      - Any
 components:
   examples:
     intel-identity-human-envelope:
@@ -1002,6 +1210,24 @@ components:
             $ref: '#/components/schemas/getIdentityIntelligenceV1_401_response'
       description: "Unauthorized - Returned if there is no authorization header, or\
         \ if the JWT token is expired."
+    "403":
+      content:
+        application/json:
+          examples:
+            "403":
+              summary: An example of a 403 response object
+              value:
+                detailCode: 403 Forbidden
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The server understood the request but refuses to authorize
+                    it.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: "Forbidden - Returned if the user you are running as, doesn't have\
+        \ access to this end-point."
     "429":
       content:
         application/json:
@@ -2144,6 +2370,180 @@ components:
           locale: en-US
         detailCode: IDC_IDENTITY_AMBIGUOUS
         trackingId: e7eab60924f64aa284175b9fa3309599
+    Responseactioncontext:
+      description: External source metadata captured for audit and traceability.
+      example:
+        reason: Contain compromised account
+        externalAlertId: CS-FALCON-12345
+        source: CROWDSTRIKE
+        operator: soc-analyst@customer.com
+      properties:
+        source:
+          description: External system that initiated the action.
+          enum:
+          - CROWDSTRIKE
+          - SENTINEL
+          - SPLUNK
+          - CUSTOM
+          example: CROWDSTRIKE
+          maxLength: 128
+          type: string
+        externalAlertId:
+          description: External alert or case identifier.
+          example: CS-FALCON-12345
+          maxLength: 256
+          type: string
+        reason:
+          description: Human-readable reason for the action.
+          example: Contain compromised account
+          maxLength: 1024
+          type: string
+        operator:
+          description: Operator or analyst who initiated the action.
+          example: soc-analyst@customer.com
+          maxLength: 256
+          type: string
+      required:
+      - source
+      type: object
+    Responseactioncreaterequest:
+      description: Request body for creating a response action.
+      example:
+        actionType: DISABLE_ACCOUNT
+        identityType: HUMAN
+        identityId: 2c918085842e69ae018428c919680149
+        accountIds:
+        - 2c918085abc000000000000000000001
+        context:
+          reason: Contain compromised account
+          externalAlertId: CS-FALCON-12345
+          source: CROWDSTRIKE
+          operator: soc-analyst@customer.com
+      oneOf:
+      - $ref: '#/components/schemas/Responseactioncreaterequest_oneOf'
+      - $ref: '#/components/schemas/Responseactioncreaterequest_oneOf_1'
+      properties:
+        actionType:
+          description: Which response action to run.
+          enum:
+          - DISABLE_IDENTITY
+          - DISABLE_ACCOUNT
+          example: DISABLE_ACCOUNT
+          type: string
+        identityType:
+          description: Subject type of the response action. v1 supports HUMAN.
+          enum:
+          - HUMAN
+          example: HUMAN
+          type: string
+        identityId:
+          description: "ISC identity id, resolved by the caller from a prior intelligence\
+            \ query."
+          example: 2c918085842e69ae018428c919680149
+          type: string
+        accountIds:
+          description: |
+            One or more account ids. Required for DISABLE_ACCOUNT (1-50 after trim/dedupe); must be
+            omitted for DISABLE_IDENTITY. A single account is sent as a one-element array.
+          example:
+          - 2c918085abc000000000000000000001
+          items:
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+        context:
+          $ref: '#/components/schemas/Responseactioncontext'
+      required:
+      - actionType
+      - context
+      - identityId
+      - identityType
+      type: object
+    Responseactionaccepted:
+      description: Acknowledgement returned when a response action is accepted for
+        asynchronous processing.
+      example:
+        requestId: 3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b
+        statusUrl: /intelligence/v1/response-actions/3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b/status
+        status: SUBMITTED
+      properties:
+        requestId:
+          description: Tracking handle and correlation id for the response action.
+          example: 3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b
+          type: string
+        status:
+          description: Aggregate status of the response action. SUBMITTED at creation
+            (registered; no correlated workflow execution observed yet).
+          enum:
+          - SUBMITTED
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+          example: SUBMITTED
+          type: string
+        statusUrl:
+          description: Relative URL to poll for the current status of the response
+            action.
+          example: /intelligence/v1/response-actions/3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b/status
+          type: string
+      required:
+      - requestId
+      - status
+      - statusUrl
+      type: object
+    Responseactionstatus:
+      description: |
+        Current tracked status of a response action. Target fields from the create request
+        (identityType, identityId, accountIds, context) are not echoed here; they travel on the
+        action event used to start the workflow(s).
+      example:
+        actionType: DISABLE_ACCOUNT
+        requestId: 3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b
+        submittedAt: 2026-08-07T10:15:30Z
+        status: SUBMITTED
+        updatedAt: 2026-08-07T10:18:02Z
+      properties:
+        requestId:
+          description: Tracking handle and correlation id for the response action.
+          example: 3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b
+          type: string
+        actionType:
+          description: The action that was requested.
+          enum:
+          - DISABLE_IDENTITY
+          - DISABLE_ACCOUNT
+          example: DISABLE_ACCOUNT
+          type: string
+        status:
+          description: |
+            Aggregate status across the correlated workflow execution(s):
+            SUBMITTED (registered, no execution yet), IN_PROGRESS (any still non-terminal),
+            COMPLETED (all terminal and at least one succeeded), or FAILED (all terminal and none succeeded).
+          enum:
+          - SUBMITTED
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+          example: SUBMITTED
+          type: string
+        submittedAt:
+          description: When the response action was accepted.
+          example: 2026-08-07T10:15:30Z
+          format: date-time
+          type: string
+        updatedAt:
+          description: When the response action status last changed.
+          example: 2026-08-07T10:18:02Z
+          format: date-time
+          type: string
+      required:
+      - actionType
+      - requestId
+      - status
+      - submittedAt
+      - updatedAt
+      type: object
     getIdentityIntelligenceV1_401_response:
       example:
         error: "JWT validation failed: JWT is expired"
@@ -2173,3 +2573,20 @@ components:
           example: src-2
           type: string
       type: object
+    Responseactioncreaterequest_oneOf:
+      not:
+        required:
+        - accountIds
+      properties:
+        actionType:
+          enum:
+          - DISABLE_IDENTITY
+          type: string
+    Responseactioncreaterequest_oneOf_1:
+      properties:
+        actionType:
+          enum:
+          - DISABLE_ACCOUNT
+          type: string
+      required:
+      - accountIds

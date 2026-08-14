@@ -79,11 +79,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*IntelligenceAPI* | [**CreateResponseActionV1**](docs/IntelligenceAPI.md#createresponseactionv1) | **Post** /intelligence/v1/response-actions | Create a response action
 *IntelligenceAPI* | [**GetIdentityIntelligenceV1**](docs/IntelligenceAPI.md#getidentityintelligencev1) | **Get** /intelligence/v1/identities | Get identity by filter
 *IntelligenceAPI* | [**GetIntelIdentityAccessItemHistoryV1**](docs/IntelligenceAPI.md#getintelidentityaccessitemhistoryv1) | **Get** /intelligence/v1/identities/{id}/access-history/access-items | List identity access item history
 *IntelligenceAPI* | [**GetIntelIdentityAccountsV1**](docs/IntelligenceAPI.md#getintelidentityaccountsv1) | **Get** /intelligence/v1/identities/{id}/accounts | List identity accounts
 *IntelligenceAPI* | [**GetIntelIdentityCertificationHistoryV1**](docs/IntelligenceAPI.md#getintelidentitycertificationhistoryv1) | **Get** /intelligence/v1/identities/{id}/access-history/certifications | List identity certification history
 *IntelligenceAPI* | [**GetIntelIdentityRareAccessV1**](docs/IntelligenceAPI.md#getintelidentityrareaccessv1) | **Get** /intelligence/v1/identities/{id}/outliers/rare-access | List identity rare access
+*IntelligenceAPI* | [**GetResponseActionStatusV1**](docs/IntelligenceAPI.md#getresponseactionstatusv1) | **Get** /intelligence/v1/response-actions/{id}/status | Get response action status
 
 
 ## Documentation For Models
@@ -123,6 +125,12 @@ Class | Method | HTTP request | Description
  - [Intelmachineuserentitlement](docs/Intelmachineuserentitlement.md)
  - [Intelprivilegelevel](docs/Intelprivilegelevel.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [Responseactionaccepted](docs/Responseactionaccepted.md)
+ - [Responseactioncontext](docs/Responseactioncontext.md)
+ - [Responseactioncreaterequest](docs/Responseactioncreaterequest.md)
+ - [ResponseactioncreaterequestOneOf](docs/ResponseactioncreaterequestOneOf.md)
+ - [ResponseactioncreaterequestOneOf1](docs/ResponseactioncreaterequestOneOf1.md)
+ - [Responseactionstatus](docs/Responseactionstatus.md)
 
 
 ## Documentation For Authorization

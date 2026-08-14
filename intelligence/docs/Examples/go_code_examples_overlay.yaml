@@ -1,3 +1,54 @@
+- path: /intelligence/v1/response-actions
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/intelligence/methods/intelligence#create-response-action-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            intelligence "github.com/sailpoint-oss/golang-sdk/v3/intelligence"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+           responseactioncreaterequestJson := []byte(`{
+          "actionType" : "DISABLE_ACCOUNT",
+          "identityType" : "HUMAN",
+          "identityId" : "2c918085842e69ae018428c919680149",
+          "accountIds" : [ "2c918085abc000000000000000000001" ],
+          "context" : {
+            "reason" : "Contain compromised account",
+            "externalAlertId" : "CS-FALCON-12345",
+            "source" : "CROWDSTRIKE",
+            "operator" : "soc-analyst@customer.com"
+          }
+        }`) // Responseactioncreaterequest | 
+
+          
+          var responseactioncreaterequest intelligence.Responseactioncreaterequest
+          if err := json.Unmarshal(responseactioncreaterequestJson, &responseactioncreaterequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.IntelligenceAPI.CreateResponseActionV1(context.Background()).Responseactioncreaterequest(responseactioncreaterequest).Execute()
+          //resp, r, err := apiClient.IntelligenceAPI.CreateResponseActionV1(context.Background()).Responseactioncreaterequest(responseactioncreaterequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.CreateResponseActionV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `CreateResponseActionV1`: Responseactionaccepted
+          fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.CreateResponseActionV1`: %v\n", resp)
+        }
 - path: /intelligence/v1/identities
   method: Get
   xCodeSample:
@@ -179,4 +230,38 @@
           }
           // response from `GetIntelIdentityRareAccessV1`: []IntelOutlierAccessItem
           fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetIntelIdentityRareAccessV1`: %v\n", resp)
+        }
+- path: /intelligence/v1/response-actions/{id}/status
+  method: Get
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/intelligence/methods/intelligence#get-response-action-status-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `3f1e6c9a-8b2d-4e5f-9a1b-2c3d4e5f6a7b` // string | The requestId of the response action to look up. # string | The requestId of the response action to look up.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.IntelligenceAPI.GetResponseActionStatusV1(context.Background(), id).Execute()
+          //resp, r, err := apiClient.IntelligenceAPI.GetResponseActionStatusV1(context.Background(), id).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `IntelligenceAPI.GetResponseActionStatusV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `GetResponseActionStatusV1`: Responseactionstatus
+          fmt.Fprintf(os.Stdout, "Response from `IntelligenceAPI.GetResponseActionStatusV1`: %v\n", resp)
         }

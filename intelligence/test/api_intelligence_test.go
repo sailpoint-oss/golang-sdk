@@ -22,6 +22,18 @@ func Test_intelligence_IntelligenceAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test IntelligenceAPIService CreateResponseActionV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.IntelligenceAPI.CreateResponseActionV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IntelligenceAPIService GetIdentityIntelligenceV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -83,6 +95,20 @@ func Test_intelligence_IntelligenceAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.IntelligenceAPI.GetIntelIdentityRareAccessV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IntelligenceAPIService GetResponseActionStatusV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.IntelligenceAPI.GetResponseActionStatusV1(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

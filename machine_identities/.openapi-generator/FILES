@@ -7,6 +7,10 @@ api/openapi.yaml
 api_machine_identities.go
 client.go
 configuration.go
+docs/Anomaly.md
+docs/AnomalyBaseline.md
+docs/AnomalyEvidence.md
+docs/AnomalyEvidenceTimestamp.md
 docs/ArrayInner.md
 docs/BaseCommonDto.md
 docs/BaseReferenceDto.md
@@ -51,11 +55,16 @@ docs/TaskDefinitionSummary.md
 docs/TaskReturnDetails.md
 docs/TaskStatusMessage.md
 docs/TaskStatusMessageParametersInner.md
+docs/UnsanctionedApplicationAnomalySummary.md
 docs/UserEntitlementV2.md
 docs/UserEntitlementV2Source.md
 git_push.sh
 go.mod
 go.sum
+model_anomaly.go
+model_anomaly_baseline.go
+model_anomaly_evidence.go
+model_anomaly_evidence_timestamp.go
 model_array_inner.go
 model_base_common_dto.go
 model_base_reference_dto.go
@@ -97,6 +106,7 @@ model_task_definition_summary.go
 model_task_return_details.go
 model_task_status_message.go
 model_task_status_message_parameters_inner.go
+model_unsanctioned_application_anomaly_summary.go
 model_user_entitlement_v2.go
 model_user_entitlement_v2_source.go
 response.go

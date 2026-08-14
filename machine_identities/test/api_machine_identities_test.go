@@ -131,6 +131,18 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MachineIdentitiesAPIService GetUnsanctionedAnomalySummaryV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.GetUnsanctionedAnomalySummaryV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MachineIdentitiesAPIService ListMachineIdentitiesV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -148,6 +160,20 @@ func Test_machine_identities_MachineIdentitiesAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.MachineIdentitiesAPI.ListMachineIdentitiesV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MachineIdentitiesAPIService ListMachineIdentityAnomaliesV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MachineIdentitiesAPI.ListMachineIdentityAnomaliesV1(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

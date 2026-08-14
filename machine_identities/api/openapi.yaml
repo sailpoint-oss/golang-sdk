@@ -726,6 +726,298 @@ paths:
       - Machine Identities
       x-sailpoint-userLevels:
       - ORG_ADMIN
+  /machine-identities/v1/{id}/anomalies:
+    get:
+      description: |-
+        Returns a paginated list of anomalies detected for the specified machine identity (agent).
+
+        Set **count=true** to populate the *X-Total-Count* response header with the total number of anomalies for the agent. Combine **limit=0** with **count=true** to retrieve only the count with an empty result body.
+      operationId: listMachineIdentityAnomaliesV1
+      parameters:
+      - description: Machine identity (agent) ID.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listMachineIdentitiesV1
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **detectedAt**
+
+          The default sort is **-detectedAt** (most recent first).
+        example: -detectedAt
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Anomaly'
+                type: array
+          description: List of anomalies for the machine identity.
+          headers:
+            X-Total-Count:
+              description: Total number of anomalies for the agent. Only returned
+                when **count=true** is specified on the request.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+      summary: List machine identity anomalies
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /machine-identities/v1/anomaly-summaries/unsanctioned:
+    get:
+      description: "Returns aggregate counts (distinct agents, distinct owners, and\
+        \ total events) for anomalies of type **unsanctioned_app** across the tenant.\
+        \ Powers the Unsanctioned Agents card on the Agent Registry page."
+      operationId: getUnsanctionedAnomalySummaryV1
+      parameters:
+      - description: Use this header to enable this experimental API.
+        example: true
+        explode: false
+        in: header
+        name: X-SailPoint-Experimental
+        required: true
+        schema:
+          default: "true"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnsanctionedApplicationAnomalySummary'
+          description: Unsanctioned application anomaly summary.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listMachineIdentitiesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:mis-identity:read
+      summary: Get unsanctioned application anomaly summary
+      tags:
+      - Machine Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /machine-identities/v2:
     get:
       description: This API returns a list of machine identities.
@@ -2694,6 +2986,231 @@ components:
         id: id12345
         uuid: f5dd23fe-3414-42b7-bb1c-869400ad7a10
         nativeIdentity: abc:123:dddd
+    AnomalyEvidenceTimestamp:
+      description: Timestamp block for an anomaly's evidence.
+      example:
+        at: 2026-07-13T10:14:00Z
+        from: 2026-07-13T09:00:00Z
+      properties:
+        at:
+          description: Point-in-time the evidence was captured.
+          example: 2026-07-13T10:14:00Z
+          format: date-time
+          type: string
+        from:
+          description: Start of the aggregation window for time-window detections
+            (SIEM); null for point-in-time detections (SENTINEL).
+          example: 2026-07-13T09:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+      title: Anomaly Evidence Timestamp
+      type: object
+    AnomalyBaseline:
+      description: Peer-group baseline for time-series anomaly detections (SIEM source
+        only). Contains the windowed data points and deviation thresholds used to
+        render the anomaly chart.
+      properties:
+        uiFeatureName:
+          description: Name of the feature the baseline describes.
+          example: outbound_volume
+          type: string
+        windowSize:
+          description: Number of data points in the window.
+          example: 7
+          format: int32
+          type: integer
+        values:
+          description: Observed values across the window.
+          example:
+          - 3
+          - 5
+          - 4
+          - 6
+          - 5
+          - 7
+          - 5
+          items:
+            format: int32
+            type: integer
+          type: array
+        rawValue:
+          description: Raw observed values across the window.
+          example:
+          - "3"
+          - "5"
+          - "4"
+          - "6"
+          - "5"
+          - "7"
+          - "5"
+          items:
+            type: string
+          type: array
+        upperBound:
+          description: Upper deviation threshold per data point.
+          example:
+          - 8
+          - 8.2
+          - 8.1
+          - 8.5
+          - 8.3
+          - 8.6
+          - 8.4
+          items:
+            format: double
+            type: number
+          type: array
+        lowerBound:
+          description: Lower deviation threshold per data point.
+          example:
+          - 1
+          - 1.2
+          - 1.1
+          - 1.5
+          - 1.3
+          - 1.6
+          - 1.4
+          items:
+            format: double
+            type: number
+          type: array
+        minimumValue:
+          description: Minimum value in the window.
+          example: 0
+          format: int32
+          type: integer
+        fprValue:
+          description: False-positive-rate threshold value.
+          example: 0.01
+          format: double
+          type: number
+      title: Anomaly Baseline
+      type: object
+    AnomalyEvidence:
+      description: Detection evidence associated with an anomaly. SENTINEL detections
+        populate the agent attribute fields; SIEM detections instead include a baseline
+        with windowed time-series data.
+      example:
+        agentAttributeType: shell_exec
+        source: SENTINEL
+        baseline: ""
+        agentAttributeValue: curl external.example.com
+        timestamp:
+          at: 2026-07-13T10:14:00Z
+          from: 2026-07-13T09:00:00Z
+      properties:
+        source:
+          description: Evidence source system.
+          example: SENTINEL
+          type: string
+        timestamp:
+          $ref: '#/components/schemas/AnomalyEvidenceTimestamp'
+        agentAttributeType:
+          description: Attribute type captured for SENTINEL detections; null for SIEM
+            detections.
+          example: shell_exec
+          nullable: true
+          type: string
+        agentAttributeValue:
+          description: Attribute value captured for SENTINEL detections; null for
+            SIEM detections.
+          example: curl external.example.com
+          nullable: true
+          type: string
+        baseline:
+          allOf:
+          - $ref: '#/components/schemas/AnomalyBaseline'
+          description: Peer-group baseline for SIEM detections; null for SENTINEL
+            detections.
+          nullable: true
+      title: Anomaly Evidence
+      type: object
+    Anomaly:
+      description: A single anomaly detected for a machine identity by Agent Behavior
+        Monitoring.
+      example:
+        evidence:
+          agentAttributeType: shell_exec
+          source: SENTINEL
+          baseline: ""
+          agentAttributeValue: curl external.example.com
+          timestamp:
+            at: 2026-07-13T10:14:00Z
+            from: 2026-07-13T09:00:00Z
+        anomalyType: unsanctioned_app
+        description: Agent accessed an unsanctioned application.
+        detectedAt: 2026-07-13T10:14:00Z
+        id: rule-anom-001
+        ruleId: rule-tool-usage
+        dataSources:
+        - SENTINEL
+      properties:
+        id:
+          description: Anomaly identifier.
+          example: rule-anom-001
+          type: string
+        anomalyType:
+          description: Category of the detected anomaly.
+          example: unsanctioned_app
+          type: string
+        description:
+          description: Human-readable description of the anomaly.
+          example: Agent accessed an unsanctioned application.
+          type: string
+        ruleId:
+          description: Identifier of the detection rule that produced the anomaly.
+          example: rule-tool-usage
+          type: string
+        dataSources:
+          description: Source systems that contributed to the detection.
+          example:
+          - SENTINEL
+          items:
+            type: string
+          type: array
+        detectedAt:
+          description: Date-time the anomaly was detected.
+          example: 2026-07-13T10:14:00Z
+          format: date-time
+          type: string
+        evidence:
+          $ref: '#/components/schemas/AnomalyEvidence'
+      title: Anomaly
+      type: object
+    UnsanctionedApplicationAnomalySummary:
+      description: "Aggregate counts of machine identities flagged with unsanctioned-application\
+        \ anomalies, used to power the Unsanctioned Agents card."
+      example:
+        userCount: 254
+        anomalyType: unsanctioned_app
+        eventCount: 97
+        agentCount: 23
+      properties:
+        anomalyType:
+          description: The anomaly type these counts describe. Always unsanctioned_app
+            for this endpoint.
+          example: unsanctioned_app
+          type: string
+        agentCount:
+          description: Number of distinct agents with at least one unsanctioned-application
+            anomaly.
+          example: 23
+          format: int64
+          type: integer
+        userCount:
+          description: Number of distinct owners (users) associated with unsanctioned-application
+            anomalies.
+          example: 254
+          format: int64
+          type: integer
+        eventCount:
+          description: Total number of unsanctioned-application anomaly records.
+          example: 97
+          format: int64
+          type: integer
+      title: Unsanctioned Application Anomaly Summary
+      type: object
     MachineIdentityOwnersV2:
       description: Owner configuration for a machine identity. A single primary (human
         IDENTITY) owner plus additional owners that are either up to ten human (IDENTITY)
