@@ -967,12 +967,177 @@ paths:
       - Notifications
       x-sailpoint-userLevels:
       - ORG_ADMIN
+  /notification-preferences/v1:
+    get:
+      description: "Returns a list of notification preferences for the current tenant,\
+        \ including preferred mediums and optional CC/BCC email recipients for each\
+        \ notification key. Supports standard V3 filtering, sorting, and offset/limit\
+        \ pagination."
+      operationId: listNotificationPreferencesV1
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **key**: *eq, in*
+        example: key eq "approval_completed_notification"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **key**
+        example: key
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PreferencesDto'
+                type: array
+          description: List of notification preferences for the tenant.
+          headers:
+            X-Total-Count:
+              description: The total result count (returned only if the *count* parameter
+                is specified as *true*).
+              example: 25
+              explode: false
+              schema:
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-preferences:read
+      summary: List notification preferences for tenant
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /notification-preferences/v1/{key}:
     get:
-      description: Returns a list of notification preferences for tenant.
+      description: "Returns the notification preferences for a specific notification\
+        \ key, including preferred mediums and optional CC/BCC email recipients. If\
+        \ no custom preferences exist, returns the default settings from the interest\
+        \ definition. If the key does not exist, a 404 is returned."
       operationId: getNotificationPreferencesV1
       parameters:
-      - description: The key.
+      - description: The notification key.
+        example: approval_completed_notification
         explode: false
         in: path
         name: key
@@ -980,13 +1145,25 @@ paths:
         schema:
           type: string
         style: simple
+        x-sailpoint-resource-operation-id: listNotificationPreferencesV1
+      - description: "When `true`, excludes SLACK and TEAMS from the returned mediums\
+          \ if they are not configured for the tenant."
+        example: true
+        explode: true
+        in: query
+        name: filterUnavailableMediums
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PreferencesDto'
-          description: Return preference for the given notification key.
+          description: Notification preferences for the given key.
         "400":
           content:
             application/json:
@@ -1064,7 +1241,136 @@ paths:
       security:
       - userAuth:
         - idn:notification-preferences:read
-      summary: List notification preferences for tenant.
+      summary: Get notification preferences by key
+      tags:
+      - Notifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    put:
+      description: "Overwrites the notification preferences for a specific notification\
+        \ key. Controls which mediums are enabled and optional CC/BCC email recipients.\
+        \ The `key` property in the request body is optional; if provided, it must\
+        \ match the key in the path or a 400 is returned. Each of `ccList` and `bccList`\
+        \ supports a maximum of five entries, and the same recipient cannot appear\
+        \ in both lists. CC/BCC configuration requires EMAIL to be enabled in `mediums`\
+        \ and is only allowed for templates which support it (i.e., templates which\
+        \ contain sensitive data like reset tokens do not allow for carbon copy emails\
+        \ to be configured)."
+      operationId: setNotificationPreferencesV1
+      parameters:
+      - description: The notification key.
+        example: approval_completed_notification
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listNotificationPreferencesV1
+      requestBody:
+        content:
+          application/json:
+            example:
+              key: approval_completed_notification
+              mediums:
+              - EMAIL
+              ccList:
+              - type: IDENTITY
+                id: 6b0b8e47cc1f4c3fa961a38fc718e989
+              - type: STATIC_EMAIL
+                email: cc-recipient@example.com
+              bccList:
+              - type: MANAGER_OF
+            schema:
+              $ref: '#/components/schemas/PreferencesDto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PreferencesDto'
+          description: Preferences updated successfully. An echo of the saved preferences
+            is returned.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNotificationTemplateVariablesV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:notification-preferences:create
+      summary: Set notification preferences by key
       tags:
       - Notifications
       x-sailpoint-userLevels:
@@ -2564,18 +2870,66 @@ components:
       title: Notification Template Context
       type: object
     Medium:
-      description: "The notification medium (EMAIL, SLACK, or TEAMS)"
+      description: "The notification medium (EMAIL, SLACK, TEAMS, or INBOX)"
       enum:
       - EMAIL
       - SLACK
       - TEAMS
+      - INBOX
       example: EMAIL
       type: string
+    CcBccRecipientType:
+      description: Recipient resolution type for a CC or BCC preference entry. Dynamic
+        types are resolved at notification send time based on the triggering event's
+        context.
+      enum:
+      - IDENTITY
+      - MANAGER_OF
+      - GOVERNANCE_GROUP
+      - ORG_ADMINS
+      - STATIC_EMAIL
+      example: IDENTITY
+      title: CC/BCC Recipient Type
+      type: string
+    CcBccPreferenceEntry:
+      description: "One CC or BCC routing entry. Dynamic recipient types are resolved\
+        \ at notification send time. Field applicability depends on type: IDENTITY\
+        \ and GOVERNANCE_GROUP require `id`; STATIC_EMAIL requires `email`; MANAGER_OF\
+        \ may optionally include `id` (manager of that identity, otherwise manager\
+        \ of the notification recipient); ORG_ADMINS does not use `id` or `email`."
+      properties:
+        type:
+          $ref: '#/components/schemas/CcBccRecipientType'
+        id:
+          description: "Identity or governance group id when required by the recipient\
+            \ type. For MANAGER_OF, when provided this is the identity whose manager\
+            \ should receive the email."
+          example: 6b0b8e47cc1f4c3fa961a38fc718e989
+          nullable: true
+          type: string
+        email:
+          description: Static email address when type is STATIC_EMAIL.
+          example: cc-recipient@example.com
+          format: email
+          nullable: true
+          type: string
+      required:
+      - type
+      title: CC/BCC Preference Entry
+      type: object
     PreferencesDto:
-      description: Maps an Identity's attribute key to a list of preferred notification
-        mediums.
+      description: "Tenant notification preferences for a notification key, including\
+        \ preferred mediums and optional CC/BCC email recipients."
       example:
         modified: 2020-05-15T14:37:06.909Z
+        ccList:
+        - type: IDENTITY
+          id: 6b0b8e47cc1f4c3fa961a38fc718e989
+        - type: STATIC_EMAIL
+          email: cc-recipient@example.com
+        bccList:
+        - type: MANAGER_OF
+        - type: ORG_ADMINS
         mediums:
         - EMAIL
         key: cloud_manual_work_item_summary
@@ -2586,18 +2940,44 @@ components:
           type: string
         mediums:
           description: "List of preferred notification mediums, i.e., the mediums\
-            \ (or method) for which notifications are enabled. More mediums may be\
-            \ added in the future."
+            \ (or method) for which notifications are enabled. An empty list means\
+            \ the notification is disabled for the tenant. More mediums may be added\
+            \ in the future."
           example:
           - EMAIL
           items:
             $ref: '#/components/schemas/Medium'
           type: array
         modified:
-          description: Modified date of preference
+          description: Modified date of preference.
           example: 2020-05-15T14:37:06.909Z
           format: date-time
+          readOnly: true
           type: string
+        ccList:
+          description: Optional CC recipients for email notifications for this key.
+            Requires EMAIL to be included in `mediums`. Maximum of five entries. The
+            same recipient cannot appear in both `ccList` and `bccList`.
+          example:
+          - type: IDENTITY
+            id: 6b0b8e47cc1f4c3fa961a38fc718e989
+          - type: STATIC_EMAIL
+            email: cc-recipient@example.com
+          items:
+            $ref: '#/components/schemas/CcBccPreferenceEntry'
+          maxItems: 5
+          type: array
+        bccList:
+          description: Optional BCC recipients for email notifications for this key.
+            Requires EMAIL to be included in `mediums`. Maximum of five entries. The
+            same recipient cannot appear in both `ccList` and `bccList`.
+          example:
+          - type: MANAGER_OF
+          - type: ORG_ADMINS
+          items:
+            $ref: '#/components/schemas/CcBccPreferenceEntry'
+          maxItems: 5
+          type: array
       title: Preferences Dto
       type: object
     SendTestNotificationRequestDto:

@@ -12,20 +12,22 @@ package access_requests
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the AccountsSelectionRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccountsSelectionRequest{}
 
-// AccountsSelectionRequest struct for AccountsSelectionRequest
+// AccountsSelectionRequest Prefetch account selections for an access request before submit. Machine identity accounts-selection must use `requestedForWithRequestedItems` with `identityType: MACHINE` on each entry and only `ENTITLEMENT` items. Flat `requestedFor` / `requestedItems` must be omitted (do not send an empty array) for machine requests. 
 type AccountsSelectionRequest struct {
-	// A list of Identity IDs for whom the Access is requested.
-	RequestedFor []string `json:"requestedFor"`
+	// A list of Identity IDs for whom the Access is requested. * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`   (including all machine identity requests).
+	RequestedFor []string `json:"requestedFor,omitempty"`
 	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
-	RequestedItems []AccessRequestItem `json:"requestedItems"`
-	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.  
+	// Access items requested. * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`. 
+	RequestedItems []AccessRequestItem `json:"requestedItems,omitempty"`
+	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
+	// Nested payload pairing each identity with its requested items. * Required for machine identity accounts-selection. Set `identityType: MACHINE` on each entry. * Machine requests support `ENTITLEMENT` items only and do not allow mixed human and machine identities. * When present, `requestedFor` and `requestedItems` must be omitted (do not send an empty array).
+	RequestedForWithRequestedItems []RequestedForDtoRef `json:"requestedForWithRequestedItems,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,10 +37,8 @@ type _AccountsSelectionRequest AccountsSelectionRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountsSelectionRequest(requestedFor []string, requestedItems []AccessRequestItem) *AccountsSelectionRequest {
+func NewAccountsSelectionRequest() *AccountsSelectionRequest {
 	this := AccountsSelectionRequest{}
-	this.RequestedFor = requestedFor
-	this.RequestedItems = requestedItems
 	return &this
 }
 
@@ -50,26 +50,34 @@ func NewAccountsSelectionRequestWithDefaults() *AccountsSelectionRequest {
 	return &this
 }
 
-// GetRequestedFor returns the RequestedFor field value
+// GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
 func (o *AccountsSelectionRequest) GetRequestedFor() []string {
-	if o == nil {
+	if o == nil || IsNil(o.RequestedFor) {
 		var ret []string
 		return ret
 	}
-
 	return o.RequestedFor
 }
 
-// GetRequestedForOk returns a tuple with the RequestedFor field value
+// GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountsSelectionRequest) GetRequestedForOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RequestedFor) {
 		return nil, false
 	}
 	return o.RequestedFor, true
 }
 
-// SetRequestedFor sets field value
+// HasRequestedFor returns a boolean if a field has been set.
+func (o *AccountsSelectionRequest) HasRequestedFor() bool {
+	if o != nil && !IsNil(o.RequestedFor) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedFor gets a reference to the given []string and assigns it to the RequestedFor field.
 func (o *AccountsSelectionRequest) SetRequestedFor(v []string) {
 	o.RequestedFor = v
 }
@@ -116,26 +124,34 @@ func (o *AccountsSelectionRequest) UnsetRequestType() {
 	o.RequestType.Unset()
 }
 
-// GetRequestedItems returns the RequestedItems field value
+// GetRequestedItems returns the RequestedItems field value if set, zero value otherwise.
 func (o *AccountsSelectionRequest) GetRequestedItems() []AccessRequestItem {
-	if o == nil {
+	if o == nil || IsNil(o.RequestedItems) {
 		var ret []AccessRequestItem
 		return ret
 	}
-
 	return o.RequestedItems
 }
 
-// GetRequestedItemsOk returns a tuple with the RequestedItems field value
+// GetRequestedItemsOk returns a tuple with the RequestedItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountsSelectionRequest) GetRequestedItemsOk() ([]AccessRequestItem, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RequestedItems) {
 		return nil, false
 	}
 	return o.RequestedItems, true
 }
 
-// SetRequestedItems sets field value
+// HasRequestedItems returns a boolean if a field has been set.
+func (o *AccountsSelectionRequest) HasRequestedItems() bool {
+	if o != nil && !IsNil(o.RequestedItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedItems gets a reference to the given []AccessRequestItem and assigns it to the RequestedItems field.
 func (o *AccountsSelectionRequest) SetRequestedItems(v []AccessRequestItem) {
 	o.RequestedItems = v
 }
@@ -172,6 +188,39 @@ func (o *AccountsSelectionRequest) SetClientMetadata(v map[string]string) {
 	o.ClientMetadata = &v
 }
 
+// GetRequestedForWithRequestedItems returns the RequestedForWithRequestedItems field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountsSelectionRequest) GetRequestedForWithRequestedItems() []RequestedForDtoRef {
+	if o == nil {
+		var ret []RequestedForDtoRef
+		return ret
+	}
+	return o.RequestedForWithRequestedItems
+}
+
+// GetRequestedForWithRequestedItemsOk returns a tuple with the RequestedForWithRequestedItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountsSelectionRequest) GetRequestedForWithRequestedItemsOk() ([]RequestedForDtoRef, bool) {
+	if o == nil || IsNil(o.RequestedForWithRequestedItems) {
+		return nil, false
+	}
+	return o.RequestedForWithRequestedItems, true
+}
+
+// HasRequestedForWithRequestedItems returns a boolean if a field has been set.
+func (o *AccountsSelectionRequest) HasRequestedForWithRequestedItems() bool {
+	if o != nil && !IsNil(o.RequestedForWithRequestedItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedForWithRequestedItems gets a reference to the given []RequestedForDtoRef and assigns it to the RequestedForWithRequestedItems field.
+func (o *AccountsSelectionRequest) SetRequestedForWithRequestedItems(v []RequestedForDtoRef) {
+	o.RequestedForWithRequestedItems = v
+}
+
 func (o AccountsSelectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -182,13 +231,20 @@ func (o AccountsSelectionRequest) MarshalJSON() ([]byte, error) {
 
 func (o AccountsSelectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["requestedFor"] = o.RequestedFor
+	if !IsNil(o.RequestedFor) {
+		toSerialize["requestedFor"] = o.RequestedFor
+	}
 	if o.RequestType.IsSet() {
 		toSerialize["requestType"] = o.RequestType.Get()
 	}
-	toSerialize["requestedItems"] = o.RequestedItems
+	if !IsNil(o.RequestedItems) {
+		toSerialize["requestedItems"] = o.RequestedItems
+	}
 	if !IsNil(o.ClientMetadata) {
 		toSerialize["clientMetadata"] = o.ClientMetadata
+	}
+	if o.RequestedForWithRequestedItems != nil {
+		toSerialize["requestedForWithRequestedItems"] = o.RequestedForWithRequestedItems
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -199,28 +255,6 @@ func (o AccountsSelectionRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccountsSelectionRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"requestedFor",
-		"requestedItems",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varAccountsSelectionRequest := _AccountsSelectionRequest{}
 
 	err = json.Unmarshal(data, &varAccountsSelectionRequest)
@@ -238,6 +272,7 @@ func (o *AccountsSelectionRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "requestType")
 		delete(additionalProperties, "requestedItems")
 		delete(additionalProperties, "clientMetadata")
+		delete(additionalProperties, "requestedForWithRequestedItems")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'AccessItemRequestedFor', 'V1AccessIte
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of identity the access item is requested for. | [optional] 
+**Type** | Pointer to **string** | DTO type of identity the access item is requested for. `IDENTITY` for human identities. `MACHINE_IDENTITY` for machine identities. When `MACHINE_IDENTITY`, `id` is the machine identity id.  | [optional] 
 **Id** | Pointer to **string** | ID of identity the access item is requested for. | [optional] 
 **Name** | Pointer to **string** | Human-readable display name of identity the access item is requested for. | [optional] 
 

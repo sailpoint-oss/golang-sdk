@@ -22,15 +22,17 @@ Method | HTTP request | Description
 [**delete-verified-from-address-v1**](#delete-verified-from-address-v1) | **Delete** `/verified-from-addresses/v1/{id}` | Delete verified from address
 [**get-dkim-attributes-v1**](#get-dkim-attributes-v1) | **Get** `/verified-domains/v1` | Get dkim attributes
 [**get-mail-from-attributes-v1**](#get-mail-from-attributes-v1) | **Get** `/mail-from-attributes/v1/{identity}` | Get mail from attributes
-[**get-notification-preferences-v1**](#get-notification-preferences-v1) | **Get** `/notification-preferences/v1/{key}` | List notification preferences for tenant.
+[**get-notification-preferences-v1**](#get-notification-preferences-v1) | **Get** `/notification-preferences/v1/{key}` | Get notification preferences by key
 [**get-notification-template-v1**](#get-notification-template-v1) | **Get** `/notification-templates/v1/{id}` | Get notification template by id
 [**get-notification-template-variables-v1**](#get-notification-template-variables-v1) | **Get** `/notification-template-variables/v1/{key}/{medium}` | Get notification template variables
 [**get-notifications-template-context-v1**](#get-notifications-template-context-v1) | **Get** `/notification-template-context/v1` | Get notification template context
 [**list-from-addresses-v1**](#list-from-addresses-v1) | **Get** `/verified-from-addresses/v1` | List from addresses
+[**list-notification-preferences-v1**](#list-notification-preferences-v1) | **Get** `/notification-preferences/v1` | List notification preferences for tenant
 [**list-notification-template-defaults-v1**](#list-notification-template-defaults-v1) | **Get** `/notification-template-defaults/v1` | List notification template defaults
 [**list-notification-templates-v1**](#list-notification-templates-v1) | **Get** `/notification-templates/v1` | List notification templates
 [**put-mail-from-attributes-v1**](#put-mail-from-attributes-v1) | **Put** `/mail-from-attributes/v1` | Change mail from domain
 [**send-test-notification-v1**](#send-test-notification-v1) | **Post** `/send-test-notification/v1` | Send test notification
+[**set-notification-preferences-v1**](#set-notification-preferences-v1) | **Put** `/notification-preferences/v1/{key}` | Set notification preferences by key
 
 
 ## create-domain-dkim-v1
@@ -570,8 +572,8 @@ func main() {
 [[Back to top]](#)
 
 ## get-notification-preferences-v1
-List notification preferences for tenant.
-Returns a list of notification preferences for tenant.
+Get notification preferences by key
+Returns the notification preferences for a specific notification key, including preferred mediums and optional CC/BCC email recipients. If no custom preferences exist, returns the default settings from the interest definition. If the key does not exist, a 404 is returned.
 
 [API Spec](https://developer.sailpoint.com/docs/api/get-notification-preferences-v-1)
 
@@ -581,7 +583,7 @@ Returns a list of notification preferences for tenant.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**key** | **string** | The key. | 
+**key** | **string** | The notification key. | 
 
 ### Other Parameters
 
@@ -591,6 +593,7 @@ Other parameters are passed through a pointer to a apiGetNotificationPreferences
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **filterUnavailableMediums** | **bool** | When &#x60;true&#x60;, excludes SLACK and TEAMS from the returned mediums if they are not configured for the tenant. | [default to false]
 
 ### Return type
 
@@ -616,14 +619,15 @@ import (
 )
 
 func main() {
-    key := `key_example` // string | The key. # string | The key.
+    key := `approval_completed_notification` // string | The notification key. # string | The notification key.
+    filterUnavailableMediums := true // bool | When `true`, excludes SLACK and TEAMS from the returned mediums if they are not configured for the tenant. (optional) (default to false) # bool | When `true`, excludes SLACK and TEAMS from the returned mediums if they are not configured for the tenant. (optional) (default to false)
 
     
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
     resp, r, err := apiClient.NotificationsAPI.GetNotificationPreferencesV1(context.Background(), key).Execute()
-	  //resp, r, err := apiClient.NotificationsAPI.GetNotificationPreferencesV1(context.Background(), key).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.GetNotificationPreferencesV1(context.Background(), key).FilterUnavailableMediums(filterUnavailableMediums).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationPreferencesV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -898,6 +902,76 @@ func main() {
     }
     // response from `ListFromAddressesV1`: []EmailStatusDto
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListFromAddressesV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## list-notification-preferences-v1
+List notification preferences for tenant
+Returns a list of notification preferences for the current tenant, including preferred mediums and optional CC/BCC email recipients for each notification key. Supports standard V3 filtering, sorting, and offset/limit pagination.
+
+[API Spec](https://developer.sailpoint.com/docs/api/list-notification-preferences-v-1)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListNotificationPreferencesV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in* | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key** | 
+
+### Return type
+
+[**[]PreferencesDto**](../models/preferences-dto)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+    filters := `key eq "approval_completed_notification"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in* (optional)
+    sorters := `key` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key** (optional)
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.NotificationsAPI.ListNotificationPreferencesV1(context.Background()).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.ListNotificationPreferencesV1(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationPreferencesV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListNotificationPreferencesV1`: []PreferencesDto
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListNotificationPreferencesV1`: %v\n", resp)
 }
 ```
 
@@ -1179,6 +1253,95 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     
+}
+```
+
+[[Back to top]](#)
+
+## set-notification-preferences-v1
+Set notification preferences by key
+Overwrites the notification preferences for a specific notification key. Controls which mediums are enabled and optional CC/BCC email recipients. The `key` property in the request body is optional; if provided, it must match the key in the path or a 400 is returned. Each of `ccList` and `bccList` supports a maximum of five entries, and the same recipient cannot appear in both lists. CC/BCC configuration requires EMAIL to be enabled in `mediums` and is only allowed for templates which support it (i.e., templates which contain sensitive data like reset tokens do not allow for carbon copy emails to be configured).
+
+[API Spec](https://developer.sailpoint.com/docs/api/set-notification-preferences-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**key** | **string** | The notification key. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetNotificationPreferencesV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **preferencesDto** | [**PreferencesDto**](../models/preferences-dto) |  | 
+
+### Return type
+
+[**PreferencesDto**](../models/preferences-dto)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    notifications "github.com/sailpoint-oss/golang-sdk/v3/notifications"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    key := `approval_completed_notification` // string | The notification key. # string | The notification key.
+    preferencesdtoJson := []byte(`{
+          "modified" : "2020-05-15T14:37:06.909Z",
+          "ccList" : [ {
+            "type" : "IDENTITY",
+            "id" : "6b0b8e47cc1f4c3fa961a38fc718e989"
+          }, {
+            "type" : "STATIC_EMAIL",
+            "email" : "cc-recipient@example.com"
+          } ],
+          "bccList" : [ {
+            "type" : "MANAGER_OF"
+          }, {
+            "type" : "ORG_ADMINS"
+          } ],
+          "mediums" : [ "EMAIL" ],
+          "key" : "cloud_manual_work_item_summary"
+        }`) // PreferencesDto | 
+
+    var preferencesDto notifications.PreferencesDto
+    if err := json.Unmarshal(preferencesdtoJson, &preferencesDto); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.NotificationsAPI.SetNotificationPreferencesV1(context.Background(), key).PreferencesDto(preferencesDto).Execute()
+	  //resp, r, err := apiClient.NotificationsAPI.SetNotificationPreferencesV1(context.Background(), key).PreferencesDto(preferencesDto).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.SetNotificationPreferencesV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SetNotificationPreferencesV1`: PreferencesDto
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.SetNotificationPreferencesV1`: %v\n", resp)
 }
 ```
 

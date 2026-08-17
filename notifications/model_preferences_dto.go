@@ -18,14 +18,18 @@ import (
 // checks if the PreferencesDto type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PreferencesDto{}
 
-// PreferencesDto Maps an Identity's attribute key to a list of preferred notification mediums.
+// PreferencesDto Tenant notification preferences for a notification key, including preferred mediums and optional CC/BCC email recipients.
 type PreferencesDto struct {
 	// The template notification key.
 	Key *string `json:"key,omitempty"`
-	// List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future.
+	// List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. An empty list means the notification is disabled for the tenant. More mediums may be added in the future.
 	Mediums []Medium `json:"mediums,omitempty"`
-	// Modified date of preference
+	// Modified date of preference.
 	Modified *SailPointTime `json:"modified,omitempty"`
+	// Optional CC recipients for email notifications for this key. Requires EMAIL to be included in `mediums`. Maximum of five entries. The same recipient cannot appear in both `ccList` and `bccList`.
+	CcList []CcBccPreferenceEntry `json:"ccList,omitempty"`
+	// Optional BCC recipients for email notifications for this key. Requires EMAIL to be included in `mediums`. Maximum of five entries. The same recipient cannot appear in both `ccList` and `bccList`.
+	BccList []CcBccPreferenceEntry `json:"bccList,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -144,6 +148,70 @@ func (o *PreferencesDto) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
+// GetCcList returns the CcList field value if set, zero value otherwise.
+func (o *PreferencesDto) GetCcList() []CcBccPreferenceEntry {
+	if o == nil || IsNil(o.CcList) {
+		var ret []CcBccPreferenceEntry
+		return ret
+	}
+	return o.CcList
+}
+
+// GetCcListOk returns a tuple with the CcList field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PreferencesDto) GetCcListOk() ([]CcBccPreferenceEntry, bool) {
+	if o == nil || IsNil(o.CcList) {
+		return nil, false
+	}
+	return o.CcList, true
+}
+
+// HasCcList returns a boolean if a field has been set.
+func (o *PreferencesDto) HasCcList() bool {
+	if o != nil && !IsNil(o.CcList) {
+		return true
+	}
+
+	return false
+}
+
+// SetCcList gets a reference to the given []CcBccPreferenceEntry and assigns it to the CcList field.
+func (o *PreferencesDto) SetCcList(v []CcBccPreferenceEntry) {
+	o.CcList = v
+}
+
+// GetBccList returns the BccList field value if set, zero value otherwise.
+func (o *PreferencesDto) GetBccList() []CcBccPreferenceEntry {
+	if o == nil || IsNil(o.BccList) {
+		var ret []CcBccPreferenceEntry
+		return ret
+	}
+	return o.BccList
+}
+
+// GetBccListOk returns a tuple with the BccList field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PreferencesDto) GetBccListOk() ([]CcBccPreferenceEntry, bool) {
+	if o == nil || IsNil(o.BccList) {
+		return nil, false
+	}
+	return o.BccList, true
+}
+
+// HasBccList returns a boolean if a field has been set.
+func (o *PreferencesDto) HasBccList() bool {
+	if o != nil && !IsNil(o.BccList) {
+		return true
+	}
+
+	return false
+}
+
+// SetBccList gets a reference to the given []CcBccPreferenceEntry and assigns it to the BccList field.
+func (o *PreferencesDto) SetBccList(v []CcBccPreferenceEntry) {
+	o.BccList = v
+}
+
 func (o PreferencesDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -162,6 +230,12 @@ func (o PreferencesDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
+	}
+	if !IsNil(o.CcList) {
+		toSerialize["ccList"] = o.CcList
+	}
+	if !IsNil(o.BccList) {
+		toSerialize["bccList"] = o.BccList
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -188,6 +262,8 @@ func (o *PreferencesDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "mediums")
 		delete(additionalProperties, "modified")
+		delete(additionalProperties, "ccList")
+		delete(additionalProperties, "bccList")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -12,7 +12,6 @@ package access_requests
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the AccessRequest type satisfies the MappedNullable interface at compile time
@@ -20,13 +19,14 @@ var _ MappedNullable = &AccessRequest{}
 
 // AccessRequest struct for AccessRequest
 type AccessRequest struct {
-	// A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID.
-	RequestedFor []string `json:"requestedFor"`
+	// A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID. * Used for human identity requests with the 'requestedItems' field. * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`   (including all machine identity requests).
+	RequestedFor []string `json:"requestedFor,omitempty"`
 	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
-	RequestedItems []AccessRequestItem `json:"requestedItems"`
+	// * Used for human identity requests with the 'requestedFor' field. * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`.
+	RequestedItems []AccessRequestItem `json:"requestedItems,omitempty"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
-	// Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source * Allows the ability to request items with different start dates * Allows the ability to request items with different remove dates * Also allows different combinations of request items and identities in the same request * Only for use in GRANT_ACCESS type requests 
+	// Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source. * Allows the ability to request items with different start dates and remove dates. * Also allows different combinations of request items and identities in the same request. * For human identities, primarily used with GRANT_ACCESS (and related multi-account flows). Human REVOKE_ACCESS continues to use the flat `requestedFor` / `requestedItems` shape. * Required for machine identity access requests. Set `identityType: MACHINE` on each entry. Machine requests support GRANT_ACCESS, MODIFY_ACCESS, and REVOKE_ACCESS with the constraints documented on the create endpoint and item schemas (entitlement-only; grant/modify account selection; revoke nativeIdentity). 
 	RequestedForWithRequestedItems []RequestedForDtoRef `json:"requestedForWithRequestedItems,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -37,10 +37,8 @@ type _AccessRequest AccessRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessRequest(requestedFor []string, requestedItems []AccessRequestItem) *AccessRequest {
+func NewAccessRequest() *AccessRequest {
 	this := AccessRequest{}
-	this.RequestedFor = requestedFor
-	this.RequestedItems = requestedItems
 	return &this
 }
 
@@ -52,26 +50,34 @@ func NewAccessRequestWithDefaults() *AccessRequest {
 	return &this
 }
 
-// GetRequestedFor returns the RequestedFor field value
+// GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
 func (o *AccessRequest) GetRequestedFor() []string {
-	if o == nil {
+	if o == nil || IsNil(o.RequestedFor) {
 		var ret []string
 		return ret
 	}
-
 	return o.RequestedFor
 }
 
-// GetRequestedForOk returns a tuple with the RequestedFor field value
+// GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequest) GetRequestedForOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RequestedFor) {
 		return nil, false
 	}
 	return o.RequestedFor, true
 }
 
-// SetRequestedFor sets field value
+// HasRequestedFor returns a boolean if a field has been set.
+func (o *AccessRequest) HasRequestedFor() bool {
+	if o != nil && !IsNil(o.RequestedFor) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedFor gets a reference to the given []string and assigns it to the RequestedFor field.
 func (o *AccessRequest) SetRequestedFor(v []string) {
 	o.RequestedFor = v
 }
@@ -118,26 +124,34 @@ func (o *AccessRequest) UnsetRequestType() {
 	o.RequestType.Unset()
 }
 
-// GetRequestedItems returns the RequestedItems field value
+// GetRequestedItems returns the RequestedItems field value if set, zero value otherwise.
 func (o *AccessRequest) GetRequestedItems() []AccessRequestItem {
-	if o == nil {
+	if o == nil || IsNil(o.RequestedItems) {
 		var ret []AccessRequestItem
 		return ret
 	}
-
 	return o.RequestedItems
 }
 
-// GetRequestedItemsOk returns a tuple with the RequestedItems field value
+// GetRequestedItemsOk returns a tuple with the RequestedItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequest) GetRequestedItemsOk() ([]AccessRequestItem, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RequestedItems) {
 		return nil, false
 	}
 	return o.RequestedItems, true
 }
 
-// SetRequestedItems sets field value
+// HasRequestedItems returns a boolean if a field has been set.
+func (o *AccessRequest) HasRequestedItems() bool {
+	if o != nil && !IsNil(o.RequestedItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedItems gets a reference to the given []AccessRequestItem and assigns it to the RequestedItems field.
 func (o *AccessRequest) SetRequestedItems(v []AccessRequestItem) {
 	o.RequestedItems = v
 }
@@ -217,11 +231,15 @@ func (o AccessRequest) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["requestedFor"] = o.RequestedFor
+	if !IsNil(o.RequestedFor) {
+		toSerialize["requestedFor"] = o.RequestedFor
+	}
 	if o.RequestType.IsSet() {
 		toSerialize["requestType"] = o.RequestType.Get()
 	}
-	toSerialize["requestedItems"] = o.RequestedItems
+	if !IsNil(o.RequestedItems) {
+		toSerialize["requestedItems"] = o.RequestedItems
+	}
 	if !IsNil(o.ClientMetadata) {
 		toSerialize["clientMetadata"] = o.ClientMetadata
 	}
@@ -237,28 +255,6 @@ func (o AccessRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"requestedFor",
-		"requestedItems",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varAccessRequest := _AccessRequest{}
 
 	err = json.Unmarshal(data, &varAccessRequest)

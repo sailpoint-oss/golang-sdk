@@ -15,17 +15,17 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequest', 'V1AccessRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestedFor** | **[]string** | A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID. | 
+**RequestedFor** | Pointer to **[]string** | A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID. * Used for human identity requests with the 'requestedItems' field. * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`   (including all machine identity requests). | [optional] 
 **RequestType** | Pointer to **NullableAccessRequestType** |  | [optional] 
-**RequestedItems** | [**[]AccessRequestItem**](access-request-item) |  | 
+**RequestedItems** | Pointer to [**[]AccessRequestItem**](access-request-item) | * Used for human identity requests with the 'requestedFor' field. * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`. | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities. | [optional] 
-**RequestedForWithRequestedItems** | Pointer to [**[]RequestedForDtoRef**](requested-for-dto-ref) | Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source * Allows the ability to request items with different start dates * Allows the ability to request items with different remove dates * Also allows different combinations of request items and identities in the same request * Only for use in GRANT_ACCESS type requests  | [optional] 
+**RequestedForWithRequestedItems** | Pointer to [**[]RequestedForDtoRef**](requested-for-dto-ref) | Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source. * Allows the ability to request items with different start dates and remove dates. * Also allows different combinations of request items and identities in the same request. * For human identities, primarily used with GRANT_ACCESS (and related multi-account flows). Human REVOKE_ACCESS continues to use the flat `requestedFor` / `requestedItems` shape. * Required for machine identity access requests. Set `identityType: MACHINE` on each entry. Machine requests support GRANT_ACCESS, MODIFY_ACCESS, and REVOKE_ACCESS with the constraints documented on the create endpoint and item schemas (entitlement-only; grant/modify account selection; revoke nativeIdentity).  | [optional] 
 
 ## Methods
 
 ### NewAccessRequest
 
-`func NewAccessRequest(requestedFor []string, requestedItems []AccessRequestItem, ) *AccessRequest`
+`func NewAccessRequest() *AccessRequest`
 
 NewAccessRequest instantiates a new AccessRequest object
 This constructor will assign default values to properties that have it defined,
@@ -59,6 +59,11 @@ and a boolean to check if the value has been set.
 
 SetRequestedFor sets RequestedFor field to given value.
 
+### HasRequestedFor
+
+`func (o *AccessRequest) HasRequestedFor() bool`
+
+HasRequestedFor returns a boolean if a field has been set.
 
 ### GetRequestType
 
@@ -114,6 +119,11 @@ and a boolean to check if the value has been set.
 
 SetRequestedItems sets RequestedItems field to given value.
 
+### HasRequestedItems
+
+`func (o *AccessRequest) HasRequestedItems() bool`
+
+HasRequestedItems returns a boolean if a field has been set.
 
 ### GetClientMetadata
 

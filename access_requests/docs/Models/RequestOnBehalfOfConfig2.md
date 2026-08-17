@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowRequestOnBehalfOfAnyoneByAnyone** | Pointer to **bool** | If this is true, anyone can request access for anyone. | [optional] [default to false]
 **AllowRequestOnBehalfOfEmployeeByManager** | Pointer to **bool** | If this is true, a manager can request access for his or her direct reports. | [optional] [default to false]
+**AllowRequestOnBehalfOfForMachineIdentity** | Pointer to **bool** | If this is true, anyone can request access on behalf of machine identities. Machine access request authorization is evaluated as follows: 1. If this flag is true, any requester is allowed. 2. Else if `allowRequestForMachineByOwner` is true, the requester must be an admin or a primary/secondary owner of every requested machine identity. 3. Else admins are still allowed; non-admins receive 403.  | [optional] [default to true]
+**AllowRequestForMachineByOwner** | Pointer to **bool** | When `allowRequestOnBehalfOfForMachineIdentity` is false and this flag is true, only admins and primary/secondary owners of the requested machine identities may submit machine access requests. Defaults to false (opt-in).  | [optional] [default to false]
 
 ## Methods
 
@@ -86,5 +88,55 @@ SetAllowRequestOnBehalfOfEmployeeByManager sets AllowRequestOnBehalfOfEmployeeBy
 `func (o *RequestOnBehalfOfConfig2) HasAllowRequestOnBehalfOfEmployeeByManager() bool`
 
 HasAllowRequestOnBehalfOfEmployeeByManager returns a boolean if a field has been set.
+
+### GetAllowRequestOnBehalfOfForMachineIdentity
+
+`func (o *RequestOnBehalfOfConfig2) GetAllowRequestOnBehalfOfForMachineIdentity() bool`
+
+GetAllowRequestOnBehalfOfForMachineIdentity returns the AllowRequestOnBehalfOfForMachineIdentity field if non-nil, zero value otherwise.
+
+### GetAllowRequestOnBehalfOfForMachineIdentityOk
+
+`func (o *RequestOnBehalfOfConfig2) GetAllowRequestOnBehalfOfForMachineIdentityOk() (*bool, bool)`
+
+GetAllowRequestOnBehalfOfForMachineIdentityOk returns a tuple with the AllowRequestOnBehalfOfForMachineIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowRequestOnBehalfOfForMachineIdentity
+
+`func (o *RequestOnBehalfOfConfig2) SetAllowRequestOnBehalfOfForMachineIdentity(v bool)`
+
+SetAllowRequestOnBehalfOfForMachineIdentity sets AllowRequestOnBehalfOfForMachineIdentity field to given value.
+
+### HasAllowRequestOnBehalfOfForMachineIdentity
+
+`func (o *RequestOnBehalfOfConfig2) HasAllowRequestOnBehalfOfForMachineIdentity() bool`
+
+HasAllowRequestOnBehalfOfForMachineIdentity returns a boolean if a field has been set.
+
+### GetAllowRequestForMachineByOwner
+
+`func (o *RequestOnBehalfOfConfig2) GetAllowRequestForMachineByOwner() bool`
+
+GetAllowRequestForMachineByOwner returns the AllowRequestForMachineByOwner field if non-nil, zero value otherwise.
+
+### GetAllowRequestForMachineByOwnerOk
+
+`func (o *RequestOnBehalfOfConfig2) GetAllowRequestForMachineByOwnerOk() (*bool, bool)`
+
+GetAllowRequestForMachineByOwnerOk returns a tuple with the AllowRequestForMachineByOwner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowRequestForMachineByOwner
+
+`func (o *RequestOnBehalfOfConfig2) SetAllowRequestForMachineByOwner(v bool)`
+
+SetAllowRequestForMachineByOwner sets AllowRequestForMachineByOwner field to given value.
+
+### HasAllowRequestForMachineByOwner
+
+`func (o *RequestOnBehalfOfConfig2) HasAllowRequestForMachineByOwner() bool`
+
+HasAllowRequestForMachineByOwner returns a boolean if a field has been set.
 
 

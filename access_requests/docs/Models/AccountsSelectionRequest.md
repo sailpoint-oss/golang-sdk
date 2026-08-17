@@ -15,16 +15,17 @@ tags: ['SDK', 'Software Development Kit', 'AccountsSelectionRequest', 'V1Account
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestedFor** | **[]string** | A list of Identity IDs for whom the Access is requested. | 
+**RequestedFor** | Pointer to **[]string** | A list of Identity IDs for whom the Access is requested. * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`   (including all machine identity requests). | [optional] 
 **RequestType** | Pointer to **NullableAccessRequestType** |  | [optional] 
-**RequestedItems** | [**[]AccessRequestItem**](access-request-item) |  | 
-**ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.   | [optional] 
+**RequestedItems** | Pointer to [**[]AccessRequestItem**](access-request-item) | Access items requested. * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`.  | [optional] 
+**ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities. | [optional] 
+**RequestedForWithRequestedItems** | Pointer to [**[]RequestedForDtoRef**](requested-for-dto-ref) | Nested payload pairing each identity with its requested items. * Required for machine identity accounts-selection. Set `identityType: MACHINE` on each entry. * Machine requests support `ENTITLEMENT` items only and do not allow mixed human and machine identities. * When present, `requestedFor` and `requestedItems` must be omitted (do not send an empty array). | [optional] 
 
 ## Methods
 
 ### NewAccountsSelectionRequest
 
-`func NewAccountsSelectionRequest(requestedFor []string, requestedItems []AccessRequestItem, ) *AccountsSelectionRequest`
+`func NewAccountsSelectionRequest() *AccountsSelectionRequest`
 
 NewAccountsSelectionRequest instantiates a new AccountsSelectionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -58,6 +59,11 @@ and a boolean to check if the value has been set.
 
 SetRequestedFor sets RequestedFor field to given value.
 
+### HasRequestedFor
+
+`func (o *AccountsSelectionRequest) HasRequestedFor() bool`
+
+HasRequestedFor returns a boolean if a field has been set.
 
 ### GetRequestType
 
@@ -113,6 +119,11 @@ and a boolean to check if the value has been set.
 
 SetRequestedItems sets RequestedItems field to given value.
 
+### HasRequestedItems
+
+`func (o *AccountsSelectionRequest) HasRequestedItems() bool`
+
+HasRequestedItems returns a boolean if a field has been set.
 
 ### GetClientMetadata
 
@@ -139,4 +150,39 @@ SetClientMetadata sets ClientMetadata field to given value.
 
 HasClientMetadata returns a boolean if a field has been set.
 
+### GetRequestedForWithRequestedItems
+
+`func (o *AccountsSelectionRequest) GetRequestedForWithRequestedItems() []RequestedForDtoRef`
+
+GetRequestedForWithRequestedItems returns the RequestedForWithRequestedItems field if non-nil, zero value otherwise.
+
+### GetRequestedForWithRequestedItemsOk
+
+`func (o *AccountsSelectionRequest) GetRequestedForWithRequestedItemsOk() (*[]RequestedForDtoRef, bool)`
+
+GetRequestedForWithRequestedItemsOk returns a tuple with the RequestedForWithRequestedItems field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedForWithRequestedItems
+
+`func (o *AccountsSelectionRequest) SetRequestedForWithRequestedItems(v []RequestedForDtoRef)`
+
+SetRequestedForWithRequestedItems sets RequestedForWithRequestedItems field to given value.
+
+### HasRequestedForWithRequestedItems
+
+`func (o *AccountsSelectionRequest) HasRequestedForWithRequestedItems() bool`
+
+HasRequestedForWithRequestedItems returns a boolean if a field has been set.
+
+### SetRequestedForWithRequestedItemsNil
+
+`func (o *AccountsSelectionRequest) SetRequestedForWithRequestedItemsNil(b bool)`
+
+ SetRequestedForWithRequestedItemsNil sets the value for RequestedForWithRequestedItems to be an explicit nil
+
+### UnsetRequestedForWithRequestedItems
+`func (o *AccountsSelectionRequest) UnsetRequestedForWithRequestedItems()`
+
+UnsetRequestedForWithRequestedItems ensures that no value is present for RequestedForWithRequestedItems, not even an explicit nil
 

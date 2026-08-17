@@ -43,6 +43,8 @@ type AccessRequestAdminItemStatus struct {
 	Created *SailPointTime `json:"created,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
 	RequestedFor *RequestedItemStatusRequestedFor `json:"requestedFor,omitempty"`
+	// Type of identity the access was requested for. Requests without a stored identity type are returned as `HUMAN`. 
+	IdentityType *string `json:"identityType,omitempty"`
 	RequesterComment *RequestedItemStatusRequesterComment `json:"requesterComment,omitempty"`
 	SodViolationContext *RequestedItemStatusSodViolationContext `json:"sodViolationContext,omitempty"`
 	ProvisioningDetails *RequestedItemStatusProvisioningDetails `json:"provisioningDetails,omitempty"`
@@ -593,6 +595,38 @@ func (o *AccessRequestAdminItemStatus) SetRequestedFor(v RequestedItemStatusRequ
 	o.RequestedFor = &v
 }
 
+// GetIdentityType returns the IdentityType field value if set, zero value otherwise.
+func (o *AccessRequestAdminItemStatus) GetIdentityType() string {
+	if o == nil || IsNil(o.IdentityType) {
+		var ret string
+		return ret
+	}
+	return *o.IdentityType
+}
+
+// GetIdentityTypeOk returns a tuple with the IdentityType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessRequestAdminItemStatus) GetIdentityTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.IdentityType) {
+		return nil, false
+	}
+	return o.IdentityType, true
+}
+
+// HasIdentityType returns a boolean if a field has been set.
+func (o *AccessRequestAdminItemStatus) HasIdentityType() bool {
+	if o != nil && !IsNil(o.IdentityType) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityType gets a reference to the given string and assigns it to the IdentityType field.
+func (o *AccessRequestAdminItemStatus) SetIdentityType(v string) {
+	o.IdentityType = &v
+}
+
 // GetRequesterComment returns the RequesterComment field value if set, zero value otherwise.
 func (o *AccessRequestAdminItemStatus) GetRequesterComment() RequestedItemStatusRequesterComment {
 	if o == nil || IsNil(o.RequesterComment) {
@@ -1061,6 +1095,9 @@ func (o AccessRequestAdminItemStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RequestedFor) {
 		toSerialize["requestedFor"] = o.RequestedFor
 	}
+	if !IsNil(o.IdentityType) {
+		toSerialize["identityType"] = o.IdentityType
+	}
 	if !IsNil(o.RequesterComment) {
 		toSerialize["requesterComment"] = o.RequesterComment
 	}
@@ -1133,6 +1170,7 @@ func (o *AccessRequestAdminItemStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "requester")
 		delete(additionalProperties, "requestedFor")
+		delete(additionalProperties, "identityType")
 		delete(additionalProperties, "requesterComment")
 		delete(additionalProperties, "sodViolationContext")
 		delete(additionalProperties, "provisioningDetails")

@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **SailPointTime** | When the request was created. | [optional] 
 **Requester** | Pointer to [**AccessItemRequester**](access-item-requester) |  | [optional] 
 **RequestedFor** | Pointer to [**RequestedItemStatusRequestedFor**](requested-item-status-requested-for) |  | [optional] 
+**IdentityType** | Pointer to **string** | Type of identity the access was requested for. Legacy requests without a stored identity type are returned as `HUMAN`.  | [optional] 
 **RequesterComment** | Pointer to [**RequestedItemStatusRequesterComment**](requested-item-status-requester-comment) |  | [optional] 
 **SodViolationContext** | Pointer to [**RequestedItemStatusSodViolationContext**](requested-item-status-sod-violation-context) |  | [optional] 
 **ProvisioningDetails** | Pointer to [**RequestedItemStatusProvisioningDetails**](requested-item-status-provisioning-details) |  | [optional] 
@@ -41,7 +42,7 @@ Name | Type | Description | Notes
 **Cancelable** | Pointer to **bool** | True if the request can be canceled. | [optional] [default to false]
 **AccessRequestId** | Pointer to **string** | This is the account activity id. | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs, if any were included in the corresponding access request | [optional] 
-**RequestedAccounts** | Pointer to [**[]RequestedAccountRef**](requested-account-ref) | The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources. | [optional] 
+**RequestedAccounts** | Pointer to [**[]RequestedAccountRef**](requested-account-ref) | The accounts selected for the access to be provisioned on, in case the requested-for identity has multiple accounts on one or more sources. | [optional] 
 **PrivilegeLevel** | Pointer to **NullableString** | The privilege level of the requested access item, if applicable. | [optional] 
 **JitDetails** | Pointer to **[]EntitlementStateSnapshotJitDetail** | JIT (Just-In-Time) details for the requested access item, if applicable. | [optional] 
 
@@ -518,6 +519,31 @@ SetRequestedFor sets RequestedFor field to given value.
 `func (o *RequestedItemStatus) HasRequestedFor() bool`
 
 HasRequestedFor returns a boolean if a field has been set.
+
+### GetIdentityType
+
+`func (o *RequestedItemStatus) GetIdentityType() string`
+
+GetIdentityType returns the IdentityType field if non-nil, zero value otherwise.
+
+### GetIdentityTypeOk
+
+`func (o *RequestedItemStatus) GetIdentityTypeOk() (*string, bool)`
+
+GetIdentityTypeOk returns a tuple with the IdentityType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentityType
+
+`func (o *RequestedItemStatus) SetIdentityType(v string)`
+
+SetIdentityType sets IdentityType field to given value.
+
+### HasIdentityType
+
+`func (o *RequestedItemStatus) HasIdentityType() bool`
+
+HasIdentityType returns a boolean if a field has been set.
 
 ### GetRequesterComment
 

@@ -86,19 +86,23 @@ Class | Method | HTTP request | Description
 *NotificationsAPI* | [**DeleteVerifiedFromAddressV1**](docs/NotificationsAPI.md#deleteverifiedfromaddressv1) | **Delete** /verified-from-addresses/v1/{id} | Delete verified from address
 *NotificationsAPI* | [**GetDkimAttributesV1**](docs/NotificationsAPI.md#getdkimattributesv1) | **Get** /verified-domains/v1 | Get dkim attributes
 *NotificationsAPI* | [**GetMailFromAttributesV1**](docs/NotificationsAPI.md#getmailfromattributesv1) | **Get** /mail-from-attributes/v1/{identity} | Get mail from attributes
-*NotificationsAPI* | [**GetNotificationPreferencesV1**](docs/NotificationsAPI.md#getnotificationpreferencesv1) | **Get** /notification-preferences/v1/{key} | List notification preferences for tenant.
+*NotificationsAPI* | [**GetNotificationPreferencesV1**](docs/NotificationsAPI.md#getnotificationpreferencesv1) | **Get** /notification-preferences/v1/{key} | Get notification preferences by key
 *NotificationsAPI* | [**GetNotificationTemplateV1**](docs/NotificationsAPI.md#getnotificationtemplatev1) | **Get** /notification-templates/v1/{id} | Get notification template by id
 *NotificationsAPI* | [**GetNotificationTemplateVariablesV1**](docs/NotificationsAPI.md#getnotificationtemplatevariablesv1) | **Get** /notification-template-variables/v1/{key}/{medium} | Get notification template variables
 *NotificationsAPI* | [**GetNotificationsTemplateContextV1**](docs/NotificationsAPI.md#getnotificationstemplatecontextv1) | **Get** /notification-template-context/v1 | Get notification template context
 *NotificationsAPI* | [**ListFromAddressesV1**](docs/NotificationsAPI.md#listfromaddressesv1) | **Get** /verified-from-addresses/v1 | List from addresses
+*NotificationsAPI* | [**ListNotificationPreferencesV1**](docs/NotificationsAPI.md#listnotificationpreferencesv1) | **Get** /notification-preferences/v1 | List notification preferences for tenant
 *NotificationsAPI* | [**ListNotificationTemplateDefaultsV1**](docs/NotificationsAPI.md#listnotificationtemplatedefaultsv1) | **Get** /notification-template-defaults/v1 | List notification template defaults
 *NotificationsAPI* | [**ListNotificationTemplatesV1**](docs/NotificationsAPI.md#listnotificationtemplatesv1) | **Get** /notification-templates/v1 | List notification templates
 *NotificationsAPI* | [**PutMailFromAttributesV1**](docs/NotificationsAPI.md#putmailfromattributesv1) | **Put** /mail-from-attributes/v1 | Change mail from domain
 *NotificationsAPI* | [**SendTestNotificationV1**](docs/NotificationsAPI.md#sendtestnotificationv1) | **Post** /send-test-notification/v1 | Send test notification
+*NotificationsAPI* | [**SetNotificationPreferencesV1**](docs/NotificationsAPI.md#setnotificationpreferencesv1) | **Put** /notification-preferences/v1/{key} | Set notification preferences by key
 
 
 ## Documentation For Models
 
+ - [CcBccPreferenceEntry](docs/CcBccPreferenceEntry.md)
+ - [CcBccRecipientType](docs/CcBccRecipientType.md)
  - [CreateDomainDkimV1405Response](docs/CreateDomainDkimV1405Response.md)
  - [DkimAttributes](docs/DkimAttributes.md)
  - [DomainAddress](docs/DomainAddress.md)

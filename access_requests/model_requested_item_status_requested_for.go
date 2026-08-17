@@ -17,7 +17,7 @@ import (
 // checks if the RequestedItemStatusRequestedFor type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RequestedItemStatusRequestedFor{}
 
-// RequestedItemStatusRequestedFor Identity access was requested for.
+// RequestedItemStatusRequestedFor Identity access was requested for. For machine identity requests, `type` is `MACHINE_IDENTITY` and `id` is the machine identity id.
 type RequestedItemStatusRequestedFor struct {
 	// Type of the object to which this reference applies
 	Type *string `json:"type,omitempty"`

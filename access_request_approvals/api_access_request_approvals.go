@@ -812,7 +812,8 @@ func (r ApiListCompletedApprovalsV1Request) Execute() ([]CompletedApproval, *htt
 /*
 ListCompletedApprovalsV1 Completed access request approvals list
 
-This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info.
+This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info. For access requests for machines, each approval will include 'identityType' as 'MACHINE' and 'requestedFor' with 'type: MACHINE_IDENTITY' and the machine id. Approvals without a stored identity type are returned as 'HUMAN' / 'IDENTITY'.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListCompletedApprovalsV1Request
@@ -1035,6 +1036,8 @@ func (r ApiListPendingApprovalsV1Request) Execute() ([]PendingApproval, *http.Re
 ListPendingApprovalsV1 Pending access request approvals list
 
 This endpoint returns a list of pending approvals. See "owner-id" query parameter below for authorization info.
+For access requests for machines, each approval will include `identityType` as `MACHINE` and `requestedFor` with `type: MACHINE_IDENTITY` and the machine id. Approvals without a stored identity type are returned as `HUMAN` / `IDENTITY`.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListPendingApprovalsV1Request

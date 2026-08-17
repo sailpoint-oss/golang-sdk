@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/resources
 packageName: api_versioned
-packageVersion: 3.1.19
+packageVersion: 3.1.20
 generateInterfaces: false
 disallowAdditionalPropertiesIfNotPresent: false
 useOneOfDiscriminatorLookup: false

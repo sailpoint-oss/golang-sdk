@@ -411,11 +411,36 @@ paths:
         \ or entitlement will be removed on that date and time.\n* Now supports an\
         \ alternate field 'requestedForWithRequestedItems' for users to specify account\
         \ selections while requesting items where they have more than one account\
-        \ on the source.\n\n:::caution\n\nIf any entitlements are being requested,\
-        \ then the maximum number of entitlements that can be requested is 25, and\
-        \ the maximum number of identities that can be requested for is 10. If you\
-        \ exceed these limits, the request will fail with a 400 error. If you are\
-        \ not requesting any entitlements, then there are no limits.\n\n:::\n\n__REVOKE_ACCESS__\n\
+        \ on the source.\n\n__MACHINE IDENTITY ACCESS REQUESTS__\n* Machine identity\
+        \ access requests reuse this same endpoint. They must use `requestedForWithRequestedItems`\
+        \ with `identityType: MACHINE` on each entry. Do not use the flat `requestedFor`\
+        \ / `requestedItems` shape for machines. Mixed human and machine identities\
+        \ in one request are not supported.\n* Request `identityType` uses `HUMAN`\
+        \ / `MACHINE`. List, status, and approval responses use `IDENTITY` / `MACHINE_IDENTITY`\
+        \ on `requestedFor.type` for the same distinction.\n\nPrerequisites and authorization:\n\
+        * The organization must have Machine Identity Security licensed; otherwise\
+        \ the request is rejected with 403.\n* Access request config v2 `machineIdentityAccessRequestEnabled`\
+        \ must be true (default true); otherwise 403.\n* Request-on-behalf-of for\
+        \ machines is controlled by `allowRequestOnBehalfOfForMachineIdentity` and\
+        \ `allowRequestForMachineByOwner` on the access request configuration. See\
+        \ those schema fields for the authorization cascade (open ROBO, owner/admin\
+        \ ROBO, then admin-only fallback).\n\nConstraints for machine requests:\n\
+        * Only `ENTITLEMENT` items are supported (roles and access profiles are rejected).\n\
+        * GRANT_ACCESS and MODIFY_ACCESS requests require `accountSelection` to be\
+        \ provided with `accountUuid` and/or `nativeIdentity`  that match a real machine\
+        \ account for that machine identity on the selected source. Prefer values\
+        \ returned by the accounts-selection API.\n* MODIFY_ACCESS requests additionally\
+        \ require each item to have `startDate` and/or `removeDate` to denote date\
+        \ modifications.\n* REVOKE_ACCESS must target exactly one machine identity.\
+        \ Per entitlement item, provide `nativeIdentity` (or it may be auto-resolved\
+        \ when the machine has exactly one account on the entitlement source). Do\
+        \ not send `accountSelection` on machine revoke.\n* Multi-machine GRANT_ACCESS\
+        \ is allowed within existing recipient limits; multi-machine REVOKE_ACCESS\
+        \ is not.\n\n:::caution\n\nIf any entitlements are being requested, then the\
+        \ maximum number of entitlements that can be requested is 25, and the maximum\
+        \ number of identities that can be requested for is 10. If you exceed these\
+        \ limits, the request will fail with a 400 error. If you are not requesting\
+        \ any entitlements, then there are no limits.\n\n:::\n\n__REVOKE_ACCESS__\n\
         * Can only be requested for a single identity at a time.\n* You cannot use\
         \ an access request to revoke access from an identity if that access has been\
         \ granted by role membership or by birthright provisioning. \n* Does not support\
@@ -437,12 +462,24 @@ paths:
         \ requests for identities with multiple accounts on a single source, with\
         \ the help of 'assignmentId' and 'nativeIdentity' fields. These fields should\
         \ be used within the 'requestedItems' section for the revoke requests. \n\
-        * Usage of 'requestedForWithRequestedItems' field is not supported for revoke\
-        \ requests.\n"
+        * For human identities, usage of 'requestedForWithRequestedItems' is not supported\
+        \ for revoke requests. Machine identity revoke requests must use 'requestedForWithRequestedItems'\
+        \ with `identityType: MACHINE` as described above.\n"
       operationId: createAccessRequestV1
       requestBody:
         content:
           application/json:
+            examples:
+              GRANT_ACCESS for Humans:
+                $ref: '#/components/examples/create-human-grant'
+              GRANT_ACCESS for Humans with account selection:
+                $ref: '#/components/examples/create-human-grant-nested'
+              GRANT_ACCESS for Machines:
+                $ref: '#/components/examples/create-machine-grant'
+              REVOKE_ACCESS for Humans:
+                $ref: '#/components/examples/create-human-revoke'
+              REVOKE_ACCESS for Machines:
+                $ref: '#/components/examples/create-machine-revoke'
             schema:
               $ref: '#/components/schemas/AccessRequest'
         required: true
@@ -836,6 +873,26 @@ paths:
         Use this API to fetch account information for an identity against the items in an access request.
 
         Used to fetch accountSelection for the AccessRequest prior to submitting for async processing.
+
+        __Machine identities__
+
+        * Must use `requestedForWithRequestedItems` with `identityType: MACHINE` on each entry.
+
+        * Fields `requestedFor` / `requestedItems` are not supported and should be omitted.
+
+        * Only `ENTITLEMENT` items are supported.
+
+        * Mixed human and machine identities in one request are not supported.
+
+        * Response identities use `type: MACHINE_IDENTITY`. Use the returned account `accountUuid` / `nativeIdentity`
+        values when submitting the access request; invalid or mismatched account details are rejected on create.
+
+        * If the machine has no account on a requested source, the item may be returned with
+        `accountsSelectionBlocked: true` and `accountsSelectionBlockedReason: NO_ACCOUNT_ON_SOURCE` (empty accounts on the
+        response in that blocked case is expected).
+
+        * Same licensing, `machineIdentityAccessRequestEnabled`, and request-on-behalf-of rules as create access request
+        apply.
       operationId: loadAccountSelectionsV1
       parameters:
       - description: Use this header to enable this experimental API.
@@ -851,6 +908,11 @@ paths:
       requestBody:
         content:
           application/json:
+            examples:
+              Humans:
+                $ref: '#/components/examples/accounts-selection-human-grant'
+              Machines:
+                $ref: '#/components/examples/accounts-selection-machine-grant'
             schema:
               $ref: '#/components/schemas/AccountsSelectionRequest'
         required: true
@@ -931,7 +993,7 @@ paths:
       description: |-
         Use this API to return a list of access request statuses based on the specified query parameters.
         If an access request was made for access that an identity already has, the API ignores the access request.  These ignored requests do not display in the list of access request statuses.
-        Any user with any user level can get the status of their own access requests. A user with ORG_ADMIN is required to call this API to get a list of statuses for other users.
+        Any user with any user level can get the status of their own access requests. A user with ORG_ADMIN is required to call this API to get a list of statuses for other users. For access requests for machines, each status item will include `identityType` as `MACHINE` and `requestedFor` with `type: MACHINE_IDENTITY` and the machine id. Requests without a stored identity type are returned as `HUMAN` / `IDENTITY`.
       operationId: listAccessRequestStatusV1
       parameters:
       - description: Filter the results by the identity the requests were made for.
@@ -1564,6 +1626,96 @@ paths:
       - ORG_ADMIN
       - USER
 components:
+  examples:
+    create-human-grant:
+      description: GRANT_ACCESS for a human identity using the flat requestedFor /
+        requestedItems shape (default when account selection is not needed).
+      value:
+        requestType: GRANT_ACCESS
+        requestedFor:
+        - 2c918084660f45d6016617daa9210584
+        requestedItems:
+        - type: ACCESS_PROFILE
+          id: 2c9180835d2e5168015d32f890ca1581
+          comment: Requesting access profile for John Doe
+    create-human-grant-nested:
+      description: "GRANT_ACCESS for a human identity using requestedForWithRequestedItems,\
+        \ with accountSelection and optional sunrise/sunset dates on the item."
+      value:
+        requestType: GRANT_ACCESS
+        requestedForWithRequestedItems:
+        - identityId: 2c918084660f45d6016617daa9210584
+          identityType: HUMAN
+          requestedItems:
+          - type: ACCESS_PROFILE
+            id: 2c9180835d2e5168015d32f890ca1581
+            comment: Requesting access profile for John Doe
+            startDate: 2027-01-15T21:22:23.000Z
+            removeDate: 2027-07-11T21:23:15.000Z
+            accountSelection:
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+    create-machine-grant:
+      description: GRANT_ACCESS for a machine identity using requestedForWithRequestedItems.
+      value:
+        requestType: GRANT_ACCESS
+        requestedForWithRequestedItems:
+        - identityId: a1111111-bc6d-4ff3-8365-c2d44f2c68d6
+          identityType: MACHINE
+          requestedItems:
+          - id: 2c9180835d2e5168015d32f890ca1581
+            type: ENTITLEMENT
+            accountSelection:
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+    create-human-revoke:
+      description: REVOKE_ACCESS for a human identity using the flat requestedFor
+        / requestedItems shape. Comment is required. Human revoke cannot use requestedForWithRequestedItems.
+      value:
+        requestType: REVOKE_ACCESS
+        requestedFor:
+        - 2c918084660f45d6016617daa9210584
+        requestedItems:
+        - type: ACCESS_PROFILE
+          id: 2c9180835d2e5168015d32f890ca1581
+          comment: I no longer need this access profile.
+    create-machine-revoke:
+      description: REVOKE_ACCESS for a machine identity using requestedForWithRequestedItems
+        and nativeIdentity.
+      value:
+        requestType: REVOKE_ACCESS
+        requestedForWithRequestedItems:
+        - identityId: a1111111-bc6d-4ff3-8365-c2d44f2c68d6
+          identityType: MACHINE
+          requestedItems:
+          - id: 2c9180835d2e5168015d32f890ca1581
+            type: ENTITLEMENT
+            comment: Revoking entitlement from machine identity
+            nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+    accounts-selection-human-grant:
+      description: Accounts-selection for a human identity using the flat requestedFor
+        / requestedItems shape.
+      value:
+        requestType: GRANT_ACCESS
+        requestedFor:
+        - 2c918084660f45d6016617daa9210584
+        requestedItems:
+        - type: ACCESS_PROFILE
+          id: 2c9180835d2e5168015d32f890ca1581
+    accounts-selection-machine-grant:
+      description: Accounts-selection for a machine identity using requestedForWithRequestedItems.
+      value:
+        requestType: GRANT_ACCESS
+        requestedForWithRequestedItems:
+        - identityId: a1111111-bc6d-4ff3-8365-c2d44f2c68d6
+          identityType: MACHINE
+          requestedItems:
+          - id: 2c9180835d2e5168015d32f890ca1581
+            type: ENTITLEMENT
   responses:
     "202":
       content:
@@ -1649,7 +1801,9 @@ components:
     RequestOnBehalfOfConfig:
       example:
         allowRequestOnBehalfOfEmployeeByManager: true
+        allowRequestOnBehalfOfForMachineIdentity: true
         allowRequestOnBehalfOfAnyoneByAnyone: true
+        allowRequestForMachineByOwner: false
       properties:
         allowRequestOnBehalfOfAnyoneByAnyone:
           default: false
@@ -1661,6 +1815,18 @@ components:
           description: "If this is true, a manager can request access for his or her\
             \ direct reports."
           example: true
+          type: boolean
+        allowRequestOnBehalfOfForMachineIdentity:
+          default: true
+          description: |
+            If this is true, anyone can request access on behalf of machine identities. Machine access request authorization is evaluated as follows: 1. If this flag is true, any requester is allowed. 2. Else if `allowRequestForMachineByOwner` is true, the requester must be an admin or a primary/secondary owner of every requested machine identity. 3. Else admins are still allowed; non-admins receive 403.
+          example: true
+          type: boolean
+        allowRequestForMachineByOwner:
+          default: false
+          description: |
+            When `allowRequestOnBehalfOfForMachineIdentity` is false and this flag is true, only admins and primary/secondary owners of the requested machine identities may submit machine access requests. Defaults to false (opt-in).
+          example: false
           type: boolean
       title: Request On Behalf Of Config
       type: object
@@ -1855,7 +2021,9 @@ components:
       example:
         requestOnBehalfOfConfig:
           allowRequestOnBehalfOfEmployeeByManager: true
+          allowRequestOnBehalfOfForMachineIdentity: true
           allowRequestOnBehalfOfAnyoneByAnyone: true
+          allowRequestForMachineByOwner: false
         approvalReminderAndEscalationConfig:
           fallbackApproverRef:
             name: Alison Ferguso
@@ -1999,7 +2167,9 @@ components:
     RequestOnBehalfOfConfig_2:
       example:
         allowRequestOnBehalfOfEmployeeByManager: true
+        allowRequestOnBehalfOfForMachineIdentity: true
         allowRequestOnBehalfOfAnyoneByAnyone: true
+        allowRequestForMachineByOwner: false
       properties:
         allowRequestOnBehalfOfAnyoneByAnyone:
           default: false
@@ -2011,6 +2181,18 @@ components:
           description: "If this is true, a manager can request access for his or her\
             \ direct reports."
           example: true
+          type: boolean
+        allowRequestOnBehalfOfForMachineIdentity:
+          default: true
+          description: |
+            If this is true, anyone can request access on behalf of machine identities. Machine access request authorization is evaluated as follows: 1. If this flag is true, any requester is allowed. 2. Else if `allowRequestForMachineByOwner` is true, the requester must be an admin or a primary/secondary owner of every requested machine identity. 3. Else admins are still allowed; non-admins receive 403.
+          example: true
+          type: boolean
+        allowRequestForMachineByOwner:
+          default: false
+          description: |
+            When `allowRequestOnBehalfOfForMachineIdentity` is false and this flag is true, only admins and primary/secondary owners of the requested machine identities may submit machine access requests. Defaults to false (opt-in).
+          example: false
           type: boolean
       title: Request On Behalf Of Config
       type: object
@@ -2047,7 +2229,9 @@ components:
         govGroupVisibilityEnabled: true
         requestOnBehalfOfConfig:
           allowRequestOnBehalfOfEmployeeByManager: true
+          allowRequestOnBehalfOfForMachineIdentity: true
           allowRequestOnBehalfOfAnyoneByAnyone: true
+          allowRequestForMachineByOwner: false
         entitlementRequestConfig:
           accessRequestConfig:
             denialCommentRequired: false
@@ -2069,6 +2253,7 @@ components:
             - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
               approverType: GOVERNANCE_GROUP
         reauthorizationEnabled: true
+        machineIdentityAccessRequestEnabled: true
         approvalsMustBeExternal: true
       properties:
         approvalsMustBeExternal:
@@ -2095,6 +2280,12 @@ components:
             \ able to see the names of governance group members when a request is\
             \ awaiting the group's approval. Up to the first 10 members of the group\
             \ will be listed."
+          example: true
+          type: boolean
+        machineIdentityAccessRequestEnabled:
+          default: true
+          description: |
+            If this is false, machine identity access requests and machine accounts-selection are rejected with 403 (for example, "Machine identity access request is disabled in access request configuration."). Defaults to true. Exposed on access-request-config v2 only.
           example: true
           type: boolean
       title: Access Request Config
@@ -2197,13 +2388,20 @@ components:
         nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
       properties:
         accountUuid:
-          description: "The uuid for the account, available under the 'objectguid'\
-            \ attribute"
+          description: "The uuid for the account on the source, available under the\
+            \ 'objectguid' attribute * Corresponds to the account's unique identifier\
+            \ as returned by accounts-selection or the accounts APIs. * For machine\
+            \ identity GRANT_ACCESS / MODIFY_ACCESS, provide `accountUuid` and/or\
+            \ `nativeIdentity`. Submitted values must match a real machine account\
+            \ for the requested machine identity on the selected source."
           example: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
           nullable: true
           type: string
         nativeIdentity:
-          description: The 'distinguishedName' attribute for the account
+          description: "The 'distinguishedName' attribute for the account. * For machine\
+            \ identity GRANT_ACCESS / MODIFY_ACCESS, provide `accountUuid` and/or\
+            \ `nativeIdentity`. Submitted values must match a real machine account\
+            \ for the requested machine identity on the selected source."
           example: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
           nullable: false
           type: string
@@ -2253,9 +2451,12 @@ components:
         id: 2c9180835d2e5168015d32f890ca1581
         type: ACCESS_PROFILE
         startDate: 2020-06-12T21:22:23Z
+        nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
       properties:
         type:
-          description: The type of the item being requested.
+          description: |
+            The type of the item being requested.
+            * Machine identity access requests support `ENTITLEMENT` only.
           enum:
           - ACCESS_PROFILE
           - ROLE
@@ -2290,6 +2491,7 @@ components:
             * Specify a date-time in the future.
             * This date-time can be used to indicate date-time when access item will be provisioned on the identity account. A GRANT_ACCESS request can use startDate to specify when to schedule provisioning of access item for an identity/account & a MODIFY_ACCESS request can use startDate to change the provisioning date-time of already assigned access item. But REVOKE_ACCESS request can not have startDate field. You can change the sunrise date in requests for yourself or others you are authorized to request for.
             * If the startDate is in the past, then the provisioning will be processed as soon as possible, but no guarantees can be made about when the provisioning will occur. If the startDate is in the future, then the provisioning will be scheduled to occur on that date and time. If no startDate is provided, then the provisioning will be processed as soon as possible.
+            * For machine identity MODIFY_ACCESS, each requested item must include `startDate` and/or `removeDate`.
           example: 2020-06-12T21:22:23Z
           format: date-time
           type: string
@@ -2299,24 +2501,41 @@ components:
             * Specify a date-time in the future.
             * The current SLA for the deprovisioning is 24 hours.
             * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for.
+            * For machine identity MODIFY_ACCESS, each requested item must include `startDate` and/or `removeDate`.
           example: 2020-07-11T21:23:15Z
           format: date-time
           type: string
         accountSelection:
           description: |
-            The accounts where the access item will be provisioned to
-            * Includes selections performed by the user in the event of multiple accounts existing on the same source
-            * Also includes details for sources where user only has one account
+            The accounts where the access item will be provisioned to.
+
+            * Includes selections performed by the user in the event of multiple accounts existing on the same source.
+
+            * Also includes details for sources where user only has one account.
+
+            * For machine identity GRANT_ACCESS and MODIFY_ACCESS: required. Provide exactly one source entry and exactly one
+            account on that source. `accountUuid` and/or `nativeIdentity` must match a real machine account for the requested
+            machine identity on that source. Prefer values returned by the accounts-selection API.
+
+            * For machine identity REVOKE_ACCESS: not supported. Use `nativeIdentity` on the item instead.
           items:
             $ref: '#/components/schemas/SourceItemRef'
           nullable: true
           type: array
+        nativeIdentity:
+          description: |
+            The unique identifier for an account on the identity, designated as the account ID attribute in the source's account schema.
+            * For machine identity REVOKE_ACCESS: required per entitlement item (or auto-resolved when the machine has exactly one account on the entitlement source). Must match a machine account on that source. Do not send `accountSelection` on machine revoke. Human REVOKE_ACCESS cannot use this nested item schema; use flat `requestedItems` instead.
+          example: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          nullable: true
+          type: string
       required:
       - id
       - type
       type: object
     RequestedForDtoRef:
       example:
+        identityType: HUMAN
         identityId: cb89bc2f1ee6445fbea12224c526ba3a
         requestedItems:
         - clientMetadata:
@@ -2340,6 +2559,7 @@ components:
           id: 2c9180835d2e5168015d32f890ca1581
           type: ACCESS_PROFILE
           startDate: 2020-06-12T21:22:23Z
+          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
         - clientMetadata:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
@@ -2361,11 +2581,24 @@ components:
           id: 2c9180835d2e5168015d32f890ca1581
           type: ACCESS_PROFILE
           startDate: 2020-06-12T21:22:23Z
+          nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
       properties:
         identityId:
-          description: The identity id for which the access is requested
+          description: |
+            The identity id the access is requested for. * `HUMAN` (default): the human identity id. * `MACHINE`: the machine identity id (hyphenated RFC-4122 UUID, not the correlated human identity).
           example: cb89bc2f1ee6445fbea12224c526ba3a
           nullable: false
+          type: string
+        identityType:
+          default: HUMAN
+          description: |
+            Type of identity the access is requested for.
+            * `HUMAN` (default) - standard human identity access request.
+            * `MACHINE` - machine identity access request. When `MACHINE`, all entries in the request must also be `MACHINE` (mixed human and machine identities in one request are not supported), and only `ENTITLEMENT` items are allowed.
+          enum:
+          - HUMAN
+          - MACHINE
+          example: HUMAN
           type: string
         requestedItems:
           description: the details for the access items that are requested for the
@@ -2407,7 +2640,8 @@ components:
           startDate: 2020-06-12T21:22:23Z
           nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
         requestedForWithRequestedItems:
-        - identityId: cb89bc2f1ee6445fbea12224c526ba3a
+        - identityType: HUMAN
+          identityId: cb89bc2f1ee6445fbea12224c526ba3a
           requestedItems:
           - clientMetadata:
               requestedAppName: test-app
@@ -2430,6 +2664,7 @@ components:
             id: 2c9180835d2e5168015d32f890ca1581
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
           - clientMetadata:
               requestedAppName: test-app
               requestedAppId: 2c91808f7892918f0178b78da4a305a1
@@ -2451,7 +2686,9 @@ components:
             id: 2c9180835d2e5168015d32f890ca1581
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
-        - identityId: cb89bc2f1ee6445fbea12224c526ba3a
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+        - identityType: HUMAN
+          identityId: cb89bc2f1ee6445fbea12224c526ba3a
           requestedItems:
           - clientMetadata:
               requestedAppName: test-app
@@ -2474,6 +2711,7 @@ components:
             id: 2c9180835d2e5168015d32f890ca1581
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
           - clientMetadata:
               requestedAppName: test-app
               requestedAppId: 2c91808f7892918f0178b78da4a305a1
@@ -2495,10 +2733,14 @@ components:
             id: 2c9180835d2e5168015d32f890ca1581
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
       properties:
         requestedFor:
-          description: "A list of Identity IDs for whom the Access is requested. If\
-            \ it's a Revoke request, there can only be one Identity ID."
+          description: |-
+            A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID.
+            * Used for human identity requests with the 'requestedItems' field.
+            * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`
+              (including all machine identity requests).
           example: 2c918084660f45d6016617daa9210584
           items:
             type: string
@@ -2506,6 +2748,9 @@ components:
         requestType:
           $ref: '#/components/schemas/AccessRequestType'
         requestedItems:
+          description: |-
+            * Used for human identity requests with the 'requestedFor' field.
+            * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`.
           items:
             $ref: '#/components/schemas/AccessRequestItem'
           minItems: 1
@@ -2526,18 +2771,15 @@ components:
           description: |
             Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity.
             * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided
-            * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source
-            * Allows the ability to request items with different start dates
-            * Allows the ability to request items with different remove dates
-            * Also allows different combinations of request items and identities in the same request
-            * Only for use in GRANT_ACCESS type requests
+            * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source.
+            * Allows the ability to request items with different start dates and remove dates.
+            * Also allows different combinations of request items and identities in the same request.
+            * For human identities, primarily used with GRANT_ACCESS (and related multi-account flows). Human REVOKE_ACCESS continues to use the flat `requestedFor` / `requestedItems` shape.
+            * Required for machine identity access requests. Set `identityType: MACHINE` on each entry. Machine requests support GRANT_ACCESS, MODIFY_ACCESS, and REVOKE_ACCESS with the constraints documented on the create endpoint and item schemas (entitlement-only; grant/modify account selection; revoke nativeIdentity).
           items:
             $ref: '#/components/schemas/RequestedForDtoRef'
           nullable: true
           type: array
-      required:
-      - requestedFor
-      - requestedItems
       title: Access Request
       type: object
     RequestedItemDetails:
@@ -2722,6 +2964,8 @@ components:
       title: Bulk Cancel Access Request
       type: object
     AccountsSelectionRequest:
+      description: |
+        Prefetch account selections for an access request before submit. Machine identity accounts-selection must use `requestedForWithRequestedItems` with `identityType: MACHINE` on each entry and only `ENTITLEMENT` items. Flat `requestedFor` / `requestedItems` must be omitted (do not send an empty array) for machine requests.
       example:
         requestedFor: 2c918084660f45d6016617daa9210584
         clientMetadata:
@@ -2779,9 +3023,107 @@ components:
           assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
           startDate: 2020-06-12T21:22:23Z
           nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+        requestedForWithRequestedItems:
+        - identityType: HUMAN
+          identityId: cb89bc2f1ee6445fbea12224c526ba3a
+          requestedItems:
+          - clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            removeDate: 2020-07-11T21:23:15Z
+            accountSelection:
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            comment: Requesting access profile for John Doe
+            id: 2c9180835d2e5168015d32f890ca1581
+            type: ACCESS_PROFILE
+            startDate: 2020-06-12T21:22:23Z
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          - clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            removeDate: 2020-07-11T21:23:15Z
+            accountSelection:
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            comment: Requesting access profile for John Doe
+            id: 2c9180835d2e5168015d32f890ca1581
+            type: ACCESS_PROFILE
+            startDate: 2020-06-12T21:22:23Z
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+        - identityType: HUMAN
+          identityId: cb89bc2f1ee6445fbea12224c526ba3a
+          requestedItems:
+          - clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            removeDate: 2020-07-11T21:23:15Z
+            accountSelection:
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            comment: Requesting access profile for John Doe
+            id: 2c9180835d2e5168015d32f890ca1581
+            type: ACCESS_PROFILE
+            startDate: 2020-06-12T21:22:23Z
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          - clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            removeDate: 2020-07-11T21:23:15Z
+            accountSelection:
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            - sourceId: cb89bc2f1ee6445fbea12224c526ba3a
+              accounts:
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+              - accountUuid: "{fab7119e-004f-4822-9c33-b8d570d6c6a6}"
+                nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
+            comment: Requesting access profile for John Doe
+            id: 2c9180835d2e5168015d32f890ca1581
+            type: ACCESS_PROFILE
+            startDate: 2020-06-12T21:22:23Z
+            nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
       properties:
         requestedFor:
-          description: A list of Identity IDs for whom the Access is requested.
+          description: |-
+            A list of Identity IDs for whom the Access is requested.
+            * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`
+              (including all machine identity requests).
           example: 2c918084660f45d6016617daa9210584
           items:
             type: string
@@ -2789,6 +3131,9 @@ components:
         requestType:
           $ref: '#/components/schemas/AccessRequestType'
         requestedItems:
+          description: |
+            Access items requested.
+            * Must be omitted (do not send an empty array) when using `requestedForWithRequestedItems`.
           items:
             $ref: '#/components/schemas/AccessRequestItem'
           maxItems: 25
@@ -2799,16 +3144,23 @@ components:
             example: "{\"requestedAppId\":\"2c91808f7892918f0178b78da4a305a1\",\"\
               requestedAppName\":\"test-app\"}"
             type: string
-          description: 'Arbitrary key-value pairs. They will never be processed by
+          description: Arbitrary key-value pairs. They will never be processed by
             the IdentityNow system but will be returned on associated APIs such as
-            /account-activities.  '
+            /account-activities.
           example:
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
             requestedAppName: test-app
           type: object
-      required:
-      - requestedFor
-      - requestedItems
+        requestedForWithRequestedItems:
+          description: |-
+            Nested payload pairing each identity with its requested items.
+            * Required for machine identity accounts-selection. Set `identityType: MACHINE` on each entry.
+            * Machine requests support `ENTITLEMENT` items only and do not allow mixed human and machine identities.
+            * When present, `requestedFor` and `requestedItems` must be omitted (do not send an empty array).
+          items:
+            $ref: '#/components/schemas/RequestedForDtoRef'
+          nullable: true
+          type: array
       title: Accounts Selection Request
       type: object
     DtoType:
@@ -2954,13 +3306,16 @@ components:
           default: false
           description: |
             This field indicates if account selections are not allowed for this requested item.
-            * If true, this field indicates that account selections will not be available for this item and user combination. In this case, no account selections should be provided in the access request for this item and user combination, irrespective of whether the user has single or multiple accounts on a source.
+            * If true, this field indicates that account selections will not be available for this item and identity combination. In this case, no account selections should be provided in the access request for this item and identity combination, irrespective of whether the identity has single or multiple accounts on a source.
             * An example is where a user is requesting an access profile that is already assigned to one of their accounts.
+            * For machine identities, this can be true with reason `NO_ACCOUNT_ON_SOURCE` when the machine has no account on a requested source. Empty `sources[].accounts` on the accounts-selection response is valid in that blocked case; submitting empty accounts on create is not valid.
           example: false
           type: boolean
         accountsSelectionBlockedReason:
-          description: "If account selections are not allowed for an item, this field\
-            \ will denote the reason."
+          description: |
+            If account selections are not allowed for an item, this field will denote the reason.
+            * `ACCESS_PROFILE_ALREADY_ASSIGNED_TO_AN_ACCOUNT` - access profile already assigned on an account.
+            * `NO_ACCOUNT_ON_SOURCE` - no account found on at least one requested source (only for machine identities).
           example: ACCESS_PROFILE_ALREADY_ASSIGNED_TO_AN_ACCOUNT
           nullable: true
           type: string
@@ -3080,7 +3435,8 @@ components:
         type:
           $ref: '#/components/schemas/DtoType'
         id:
-          description: The identity id for the user
+          description: |
+            The identity id for the requested-for identity. * `IDENTITY`: the human identity id. * `MACHINE_IDENTITY`: the machine identity id (not the correlated human identity).
           example: 70016590f2df4b879bdb1313a9e4e19e
           type: string
         name:
@@ -3967,6 +4323,7 @@ components:
         approvalIds:
         - 85f0cf482dd44327b593624c07906c21
         - fa57e1bfa36f41ee85e33ee59fcbeac5
+        identityType: HUMAN
         provisioningDetails:
           orderedSubPhaseReferences: manualWorkItemDetails
         accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
@@ -4266,6 +4623,14 @@ components:
           $ref: '#/components/schemas/AccessItemRequester'
         requestedFor:
           $ref: '#/components/schemas/RequestedItemStatus_requestedFor'
+        identityType:
+          description: |
+            Type of identity the access was requested for. Legacy requests without a stored identity type are returned as `HUMAN`.
+          enum:
+          - HUMAN
+          - MACHINE
+          example: HUMAN
+          type: string
         requesterComment:
           $ref: '#/components/schemas/RequestedItemStatus_requesterComment'
         sodViolationContext:
@@ -4318,8 +4683,9 @@ components:
           nullable: true
           type: object
         requestedAccounts:
-          description: "The accounts selected by the user for the access to be provisioned\
-            \ on, in case they have multiple accounts on one or more sources."
+          description: "The accounts selected for the access to be provisioned on,\
+            \ in case the requested-for identity has multiple accounts on one or more\
+            \ sources."
           items:
             $ref: '#/components/schemas/RequestedAccountRef'
           nullable: true
@@ -4355,6 +4721,7 @@ components:
           comment: This is a comment.
         description: This is the Engineering role that engineers are granted.
         type: ACCESS_PROFILE
+        identityType: HUMAN
         provisioningDetails:
           orderedSubPhaseReferences: manualWorkItemDetails
         accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
@@ -4636,6 +5003,14 @@ components:
           $ref: '#/components/schemas/AccessItemRequester'
         requestedFor:
           $ref: '#/components/schemas/RequestedItemStatus_requestedFor'
+        identityType:
+          description: |
+            Type of identity the access was requested for. Requests without a stored identity type are returned as `HUMAN`.
+          enum:
+          - HUMAN
+          - MACHINE
+          example: HUMAN
+          type: string
         requesterComment:
           $ref: '#/components/schemas/RequestedItemStatus_requesterComment'
         sodViolationContext:
@@ -5084,7 +5459,8 @@ components:
         modified: 2019-12-20T09:17:12.192Z
         comment: This request must be cancelled.
     RequestedItemStatus_requestedFor:
-      description: Identity access was requested for.
+      description: "Identity access was requested for. For machine identity requests,\
+        \ `type` is `MACHINE_IDENTITY` and `id` is the machine identity id."
       example:
         name: William Wilson
         id: 2c9180835d191a86015d28455b4b232a
@@ -5094,6 +5470,7 @@ components:
           description: Type of the object to which this reference applies
           enum:
           - IDENTITY
+          - MACHINE_IDENTITY
           example: IDENTITY
           type: string
         id:

@@ -45,6 +45,8 @@ type RequestedItemStatus struct {
 	Created *SailPointTime `json:"created,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
 	RequestedFor *RequestedItemStatusRequestedFor `json:"requestedFor,omitempty"`
+	// Type of identity the access was requested for. Legacy requests without a stored identity type are returned as `HUMAN`. 
+	IdentityType *string `json:"identityType,omitempty"`
 	RequesterComment *RequestedItemStatusRequesterComment `json:"requesterComment,omitempty"`
 	SodViolationContext *RequestedItemStatusSodViolationContext `json:"sodViolationContext,omitempty"`
 	ProvisioningDetails *RequestedItemStatusProvisioningDetails `json:"provisioningDetails,omitempty"`
@@ -63,7 +65,7 @@ type RequestedItemStatus struct {
 	AccessRequestId *string `json:"accessRequestId,omitempty"`
 	// Arbitrary key-value pairs, if any were included in the corresponding access request
 	ClientMetadata map[string]string `json:"clientMetadata,omitempty"`
-	// The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.
+	// The accounts selected for the access to be provisioned on, in case the requested-for identity has multiple accounts on one or more sources.
 	RequestedAccounts []RequestedAccountRef `json:"requestedAccounts,omitempty"`
 	// The privilege level of the requested access item, if applicable.
 	PrivilegeLevel NullableString `json:"privilegeLevel,omitempty"`
@@ -628,6 +630,38 @@ func (o *RequestedItemStatus) SetRequestedFor(v RequestedItemStatusRequestedFor)
 	o.RequestedFor = &v
 }
 
+// GetIdentityType returns the IdentityType field value if set, zero value otherwise.
+func (o *RequestedItemStatus) GetIdentityType() string {
+	if o == nil || IsNil(o.IdentityType) {
+		var ret string
+		return ret
+	}
+	return *o.IdentityType
+}
+
+// GetIdentityTypeOk returns a tuple with the IdentityType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestedItemStatus) GetIdentityTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.IdentityType) {
+		return nil, false
+	}
+	return o.IdentityType, true
+}
+
+// HasIdentityType returns a boolean if a field has been set.
+func (o *RequestedItemStatus) HasIdentityType() bool {
+	if o != nil && !IsNil(o.IdentityType) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityType gets a reference to the given string and assigns it to the IdentityType field.
+func (o *RequestedItemStatus) SetIdentityType(v string) {
+	o.IdentityType = &v
+}
+
 // GetRequesterComment returns the RequesterComment field value if set, zero value otherwise.
 func (o *RequestedItemStatus) GetRequesterComment() RequestedItemStatusRequesterComment {
 	if o == nil || IsNil(o.RequesterComment) {
@@ -1175,6 +1209,9 @@ func (o RequestedItemStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RequestedFor) {
 		toSerialize["requestedFor"] = o.RequestedFor
 	}
+	if !IsNil(o.IdentityType) {
+		toSerialize["identityType"] = o.IdentityType
+	}
 	if !IsNil(o.RequesterComment) {
 		toSerialize["requesterComment"] = o.RequesterComment
 	}
@@ -1254,6 +1291,7 @@ func (o *RequestedItemStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "requester")
 		delete(additionalProperties, "requestedFor")
+		delete(additionalProperties, "identityType")
 		delete(additionalProperties, "requesterComment")
 		delete(additionalProperties, "sodViolationContext")
 		delete(additionalProperties, "provisioningDetails")

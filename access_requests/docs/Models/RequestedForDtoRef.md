@@ -15,7 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'RequestedForDtoRef', 'V1RequestedForD
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityId** | **string** | The identity id for which the access is requested | 
+**IdentityId** | **string** | The identity id the access is requested for. * `HUMAN` (default): the human identity id. * `MACHINE`: the machine identity id (hyphenated RFC-4122 UUID, not the correlated human identity).  | 
+**IdentityType** | Pointer to **string** | Type of identity the access is requested for. * `HUMAN` (default) - standard human identity access request. * `MACHINE` - machine identity access request. When `MACHINE`, all entries in the request must also be `MACHINE` (mixed human and machine identities in one request are not supported), and only `ENTITLEMENT` items are allowed.  | [optional] [default to "HUMAN"]
 **RequestedItems** | [**[]RequestedItemDtoRef**](requested-item-dto-ref) | the details for the access items that are requested for the identity | 
 
 ## Methods
@@ -56,6 +57,31 @@ and a boolean to check if the value has been set.
 
 SetIdentityId sets IdentityId field to given value.
 
+
+### GetIdentityType
+
+`func (o *RequestedForDtoRef) GetIdentityType() string`
+
+GetIdentityType returns the IdentityType field if non-nil, zero value otherwise.
+
+### GetIdentityTypeOk
+
+`func (o *RequestedForDtoRef) GetIdentityTypeOk() (*string, bool)`
+
+GetIdentityTypeOk returns a tuple with the IdentityType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentityType
+
+`func (o *RequestedForDtoRef) SetIdentityType(v string)`
+
+SetIdentityType sets IdentityType field to given value.
+
+### HasIdentityType
+
+`func (o *RequestedForDtoRef) HasIdentityType() bool`
+
+HasIdentityType returns a boolean if a field has been set.
 
 ### GetRequestedItems
 

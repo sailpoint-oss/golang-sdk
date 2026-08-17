@@ -7,6 +7,8 @@ api/openapi.yaml
 api_notifications.go
 client.go
 configuration.go
+docs/CcBccPreferenceEntry.md
+docs/CcBccRecipientType.md
 docs/CreateDomainDkimV1405Response.md
 docs/DkimAttributes.md
 docs/DomainAddress.md
@@ -41,6 +43,8 @@ docs/TemplateVariablesDto.md
 git_push.sh
 go.mod
 go.sum
+model_cc_bcc_preference_entry.go
+model_cc_bcc_recipient_type.go
 model_create_domain_dkim_v1_405_response.go
 model_dkim_attributes.go
 model_domain_address.go

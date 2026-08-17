@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **SailPointTime** | When the request was created. | [optional] 
 **Requester** | Pointer to [**AccessItemRequester**](access-item-requester) |  | [optional] 
 **RequestedFor** | Pointer to [**RequestedItemStatusRequestedFor**](requested-item-status-requested-for) |  | [optional] 
+**IdentityType** | Pointer to **string** | Type of identity the access was requested for. Requests without a stored identity type are returned as `HUMAN`.  | [optional] 
 **RequesterComment** | Pointer to [**RequestedItemStatusRequesterComment**](requested-item-status-requester-comment) |  | [optional] 
 **SodViolationContext** | Pointer to [**RequestedItemStatusSodViolationContext**](requested-item-status-sod-violation-context) |  | [optional] 
 **ProvisioningDetails** | Pointer to [**RequestedItemStatusProvisioningDetails**](requested-item-status-provisioning-details) |  | [optional] 
@@ -480,6 +481,31 @@ SetRequestedFor sets RequestedFor field to given value.
 `func (o *AccessRequestAdminItemStatus) HasRequestedFor() bool`
 
 HasRequestedFor returns a boolean if a field has been set.
+
+### GetIdentityType
+
+`func (o *AccessRequestAdminItemStatus) GetIdentityType() string`
+
+GetIdentityType returns the IdentityType field if non-nil, zero value otherwise.
+
+### GetIdentityTypeOk
+
+`func (o *AccessRequestAdminItemStatus) GetIdentityTypeOk() (*string, bool)`
+
+GetIdentityTypeOk returns a tuple with the IdentityType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentityType
+
+`func (o *AccessRequestAdminItemStatus) SetIdentityType(v string)`
+
+SetIdentityType sets IdentityType field to given value.
+
+### HasIdentityType
+
+`func (o *AccessRequestAdminItemStatus) HasIdentityType() bool`
+
+HasIdentityType returns a boolean if a field has been set.
 
 ### GetRequesterComment
 

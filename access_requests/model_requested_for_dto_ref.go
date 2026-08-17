@@ -20,8 +20,10 @@ var _ MappedNullable = &RequestedForDtoRef{}
 
 // RequestedForDtoRef struct for RequestedForDtoRef
 type RequestedForDtoRef struct {
-	// The identity id for which the access is requested
+	// The identity id the access is requested for. * `HUMAN` (default): the human identity id. * `MACHINE`: the machine identity id (hyphenated RFC-4122 UUID, not the correlated human identity). 
 	IdentityId string `json:"identityId"`
+	// Type of identity the access is requested for. * `HUMAN` (default) - standard human identity access request. * `MACHINE` - machine identity access request. When `MACHINE`, all entries in the request must also be `MACHINE` (mixed human and machine identities in one request are not supported), and only `ENTITLEMENT` items are allowed. 
+	IdentityType *string `json:"identityType,omitempty"`
 	// the details for the access items that are requested for the identity
 	RequestedItems []RequestedItemDtoRef `json:"requestedItems"`
 	AdditionalProperties map[string]interface{}
@@ -36,6 +38,8 @@ type _RequestedForDtoRef RequestedForDtoRef
 func NewRequestedForDtoRef(identityId string, requestedItems []RequestedItemDtoRef) *RequestedForDtoRef {
 	this := RequestedForDtoRef{}
 	this.IdentityId = identityId
+	var identityType string = "HUMAN"
+	this.IdentityType = &identityType
 	this.RequestedItems = requestedItems
 	return &this
 }
@@ -45,6 +49,8 @@ func NewRequestedForDtoRef(identityId string, requestedItems []RequestedItemDtoR
 // but it doesn't guarantee that properties required by API are set
 func NewRequestedForDtoRefWithDefaults() *RequestedForDtoRef {
 	this := RequestedForDtoRef{}
+	var identityType string = "HUMAN"
+	this.IdentityType = &identityType
 	return &this
 }
 
@@ -70,6 +76,38 @@ func (o *RequestedForDtoRef) GetIdentityIdOk() (*string, bool) {
 // SetIdentityId sets field value
 func (o *RequestedForDtoRef) SetIdentityId(v string) {
 	o.IdentityId = v
+}
+
+// GetIdentityType returns the IdentityType field value if set, zero value otherwise.
+func (o *RequestedForDtoRef) GetIdentityType() string {
+	if o == nil || IsNil(o.IdentityType) {
+		var ret string
+		return ret
+	}
+	return *o.IdentityType
+}
+
+// GetIdentityTypeOk returns a tuple with the IdentityType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestedForDtoRef) GetIdentityTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.IdentityType) {
+		return nil, false
+	}
+	return o.IdentityType, true
+}
+
+// HasIdentityType returns a boolean if a field has been set.
+func (o *RequestedForDtoRef) HasIdentityType() bool {
+	if o != nil && !IsNil(o.IdentityType) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityType gets a reference to the given string and assigns it to the IdentityType field.
+func (o *RequestedForDtoRef) SetIdentityType(v string) {
+	o.IdentityType = &v
 }
 
 // GetRequestedItems returns the RequestedItems field value
@@ -107,6 +145,9 @@ func (o RequestedForDtoRef) MarshalJSON() ([]byte, error) {
 func (o RequestedForDtoRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["identityId"] = o.IdentityId
+	if !IsNil(o.IdentityType) {
+		toSerialize["identityType"] = o.IdentityType
+	}
 	toSerialize["requestedItems"] = o.RequestedItems
 
 	for key, value := range o.AdditionalProperties {
@@ -153,6 +194,7 @@ func (o *RequestedForDtoRef) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityId")
+		delete(additionalProperties, "identityType")
 		delete(additionalProperties, "requestedItems")
 		o.AdditionalProperties = additionalProperties
 	}

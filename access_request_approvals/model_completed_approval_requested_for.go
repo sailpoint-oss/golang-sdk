@@ -17,7 +17,7 @@ import (
 // checks if the CompletedApprovalRequestedFor type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CompletedApprovalRequestedFor{}
 
-// CompletedApprovalRequestedFor Identity access was requested for.
+// CompletedApprovalRequestedFor Identity access was requested for. For machine identity requests, `type` is `MACHINE_IDENTITY` and `id` is the machine identity id.
 type CompletedApprovalRequestedFor struct {
 	// Type of the object to which this reference applies
 	Type *string `json:"type,omitempty"`

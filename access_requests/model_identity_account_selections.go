@@ -24,7 +24,7 @@ type IdentityAccountSelections struct {
 	// A boolean indicating whether any account selections will be required for the user to raise an access request
 	AccountsSelectionRequired *bool `json:"accountsSelectionRequired,omitempty"`
 	Type *DtoType `json:"type,omitempty"`
-	// The identity id for the user
+	// The identity id for the requested-for identity. * `IDENTITY`: the human identity id. * `MACHINE_IDENTITY`: the machine identity id (not the correlated human identity). 
 	Id *string `json:"id,omitempty"`
 	// The name of the identity
 	Name *string `json:"name,omitempty"`

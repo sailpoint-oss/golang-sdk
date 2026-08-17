@@ -23,6 +23,10 @@ type RequestOnBehalfOfConfig2 struct {
 	AllowRequestOnBehalfOfAnyoneByAnyone *bool `json:"allowRequestOnBehalfOfAnyoneByAnyone,omitempty"`
 	// If this is true, a manager can request access for his or her direct reports.
 	AllowRequestOnBehalfOfEmployeeByManager *bool `json:"allowRequestOnBehalfOfEmployeeByManager,omitempty"`
+	// If this is true, anyone can request access on behalf of machine identities. Machine access request authorization is evaluated as follows: 1. If this flag is true, any requester is allowed. 2. Else if `allowRequestForMachineByOwner` is true, the requester must be an admin or a primary/secondary owner of every requested machine identity. 3. Else admins are still allowed; non-admins receive 403. 
+	AllowRequestOnBehalfOfForMachineIdentity *bool `json:"allowRequestOnBehalfOfForMachineIdentity,omitempty"`
+	// When `allowRequestOnBehalfOfForMachineIdentity` is false and this flag is true, only admins and primary/secondary owners of the requested machine identities may submit machine access requests. Defaults to false (opt-in). 
+	AllowRequestForMachineByOwner *bool `json:"allowRequestForMachineByOwner,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -38,6 +42,10 @@ func NewRequestOnBehalfOfConfig2() *RequestOnBehalfOfConfig2 {
 	this.AllowRequestOnBehalfOfAnyoneByAnyone = &allowRequestOnBehalfOfAnyoneByAnyone
 	var allowRequestOnBehalfOfEmployeeByManager bool = false
 	this.AllowRequestOnBehalfOfEmployeeByManager = &allowRequestOnBehalfOfEmployeeByManager
+	var allowRequestOnBehalfOfForMachineIdentity bool = true
+	this.AllowRequestOnBehalfOfForMachineIdentity = &allowRequestOnBehalfOfForMachineIdentity
+	var allowRequestForMachineByOwner bool = false
+	this.AllowRequestForMachineByOwner = &allowRequestForMachineByOwner
 	return &this
 }
 
@@ -50,6 +58,10 @@ func NewRequestOnBehalfOfConfig2WithDefaults() *RequestOnBehalfOfConfig2 {
 	this.AllowRequestOnBehalfOfAnyoneByAnyone = &allowRequestOnBehalfOfAnyoneByAnyone
 	var allowRequestOnBehalfOfEmployeeByManager bool = false
 	this.AllowRequestOnBehalfOfEmployeeByManager = &allowRequestOnBehalfOfEmployeeByManager
+	var allowRequestOnBehalfOfForMachineIdentity bool = true
+	this.AllowRequestOnBehalfOfForMachineIdentity = &allowRequestOnBehalfOfForMachineIdentity
+	var allowRequestForMachineByOwner bool = false
+	this.AllowRequestForMachineByOwner = &allowRequestForMachineByOwner
 	return &this
 }
 
@@ -117,6 +129,70 @@ func (o *RequestOnBehalfOfConfig2) SetAllowRequestOnBehalfOfEmployeeByManager(v 
 	o.AllowRequestOnBehalfOfEmployeeByManager = &v
 }
 
+// GetAllowRequestOnBehalfOfForMachineIdentity returns the AllowRequestOnBehalfOfForMachineIdentity field value if set, zero value otherwise.
+func (o *RequestOnBehalfOfConfig2) GetAllowRequestOnBehalfOfForMachineIdentity() bool {
+	if o == nil || IsNil(o.AllowRequestOnBehalfOfForMachineIdentity) {
+		var ret bool
+		return ret
+	}
+	return *o.AllowRequestOnBehalfOfForMachineIdentity
+}
+
+// GetAllowRequestOnBehalfOfForMachineIdentityOk returns a tuple with the AllowRequestOnBehalfOfForMachineIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestOnBehalfOfConfig2) GetAllowRequestOnBehalfOfForMachineIdentityOk() (*bool, bool) {
+	if o == nil || IsNil(o.AllowRequestOnBehalfOfForMachineIdentity) {
+		return nil, false
+	}
+	return o.AllowRequestOnBehalfOfForMachineIdentity, true
+}
+
+// HasAllowRequestOnBehalfOfForMachineIdentity returns a boolean if a field has been set.
+func (o *RequestOnBehalfOfConfig2) HasAllowRequestOnBehalfOfForMachineIdentity() bool {
+	if o != nil && !IsNil(o.AllowRequestOnBehalfOfForMachineIdentity) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowRequestOnBehalfOfForMachineIdentity gets a reference to the given bool and assigns it to the AllowRequestOnBehalfOfForMachineIdentity field.
+func (o *RequestOnBehalfOfConfig2) SetAllowRequestOnBehalfOfForMachineIdentity(v bool) {
+	o.AllowRequestOnBehalfOfForMachineIdentity = &v
+}
+
+// GetAllowRequestForMachineByOwner returns the AllowRequestForMachineByOwner field value if set, zero value otherwise.
+func (o *RequestOnBehalfOfConfig2) GetAllowRequestForMachineByOwner() bool {
+	if o == nil || IsNil(o.AllowRequestForMachineByOwner) {
+		var ret bool
+		return ret
+	}
+	return *o.AllowRequestForMachineByOwner
+}
+
+// GetAllowRequestForMachineByOwnerOk returns a tuple with the AllowRequestForMachineByOwner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestOnBehalfOfConfig2) GetAllowRequestForMachineByOwnerOk() (*bool, bool) {
+	if o == nil || IsNil(o.AllowRequestForMachineByOwner) {
+		return nil, false
+	}
+	return o.AllowRequestForMachineByOwner, true
+}
+
+// HasAllowRequestForMachineByOwner returns a boolean if a field has been set.
+func (o *RequestOnBehalfOfConfig2) HasAllowRequestForMachineByOwner() bool {
+	if o != nil && !IsNil(o.AllowRequestForMachineByOwner) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowRequestForMachineByOwner gets a reference to the given bool and assigns it to the AllowRequestForMachineByOwner field.
+func (o *RequestOnBehalfOfConfig2) SetAllowRequestForMachineByOwner(v bool) {
+	o.AllowRequestForMachineByOwner = &v
+}
+
 func (o RequestOnBehalfOfConfig2) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -132,6 +208,12 @@ func (o RequestOnBehalfOfConfig2) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AllowRequestOnBehalfOfEmployeeByManager) {
 		toSerialize["allowRequestOnBehalfOfEmployeeByManager"] = o.AllowRequestOnBehalfOfEmployeeByManager
+	}
+	if !IsNil(o.AllowRequestOnBehalfOfForMachineIdentity) {
+		toSerialize["allowRequestOnBehalfOfForMachineIdentity"] = o.AllowRequestOnBehalfOfForMachineIdentity
+	}
+	if !IsNil(o.AllowRequestForMachineByOwner) {
+		toSerialize["allowRequestForMachineByOwner"] = o.AllowRequestForMachineByOwner
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -157,6 +239,8 @@ func (o *RequestOnBehalfOfConfig2) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "allowRequestOnBehalfOfAnyoneByAnyone")
 		delete(additionalProperties, "allowRequestOnBehalfOfEmployeeByManager")
+		delete(additionalProperties, "allowRequestOnBehalfOfForMachineIdentity")
+		delete(additionalProperties, "allowRequestForMachineByOwner")
 		o.AdditionalProperties = additionalProperties
 	}
 

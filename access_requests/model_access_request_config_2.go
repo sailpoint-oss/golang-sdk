@@ -27,6 +27,8 @@ type AccessRequestConfig2 struct {
 	EntitlementRequestConfig *EntitlementRequestConfig2 `json:"entitlementRequestConfig,omitempty"`
 	// If this is true, requesters and requested-for users will be able to see the names of governance group members when a request is awaiting the group's approval. Up to the first 10 members of the group will be listed.
 	GovGroupVisibilityEnabled *bool `json:"govGroupVisibilityEnabled,omitempty"`
+	// If this is false, machine identity access requests and machine accounts-selection are rejected with 403 (for example, \"Machine identity access request is disabled in access request configuration.\"). Defaults to true. Exposed on access-request-config v2 only. 
+	MachineIdentityAccessRequestEnabled *bool `json:"machineIdentityAccessRequestEnabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,6 +46,8 @@ func NewAccessRequestConfig2() *AccessRequestConfig2 {
 	this.ReauthorizationEnabled = &reauthorizationEnabled
 	var govGroupVisibilityEnabled bool = false
 	this.GovGroupVisibilityEnabled = &govGroupVisibilityEnabled
+	var machineIdentityAccessRequestEnabled bool = true
+	this.MachineIdentityAccessRequestEnabled = &machineIdentityAccessRequestEnabled
 	return &this
 }
 
@@ -58,6 +62,8 @@ func NewAccessRequestConfig2WithDefaults() *AccessRequestConfig2 {
 	this.ReauthorizationEnabled = &reauthorizationEnabled
 	var govGroupVisibilityEnabled bool = false
 	this.GovGroupVisibilityEnabled = &govGroupVisibilityEnabled
+	var machineIdentityAccessRequestEnabled bool = true
+	this.MachineIdentityAccessRequestEnabled = &machineIdentityAccessRequestEnabled
 	return &this
 }
 
@@ -221,6 +227,38 @@ func (o *AccessRequestConfig2) SetGovGroupVisibilityEnabled(v bool) {
 	o.GovGroupVisibilityEnabled = &v
 }
 
+// GetMachineIdentityAccessRequestEnabled returns the MachineIdentityAccessRequestEnabled field value if set, zero value otherwise.
+func (o *AccessRequestConfig2) GetMachineIdentityAccessRequestEnabled() bool {
+	if o == nil || IsNil(o.MachineIdentityAccessRequestEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.MachineIdentityAccessRequestEnabled
+}
+
+// GetMachineIdentityAccessRequestEnabledOk returns a tuple with the MachineIdentityAccessRequestEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessRequestConfig2) GetMachineIdentityAccessRequestEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.MachineIdentityAccessRequestEnabled) {
+		return nil, false
+	}
+	return o.MachineIdentityAccessRequestEnabled, true
+}
+
+// HasMachineIdentityAccessRequestEnabled returns a boolean if a field has been set.
+func (o *AccessRequestConfig2) HasMachineIdentityAccessRequestEnabled() bool {
+	if o != nil && !IsNil(o.MachineIdentityAccessRequestEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetMachineIdentityAccessRequestEnabled gets a reference to the given bool and assigns it to the MachineIdentityAccessRequestEnabled field.
+func (o *AccessRequestConfig2) SetMachineIdentityAccessRequestEnabled(v bool) {
+	o.MachineIdentityAccessRequestEnabled = &v
+}
+
 func (o AccessRequestConfig2) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -245,6 +283,9 @@ func (o AccessRequestConfig2) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GovGroupVisibilityEnabled) {
 		toSerialize["govGroupVisibilityEnabled"] = o.GovGroupVisibilityEnabled
+	}
+	if !IsNil(o.MachineIdentityAccessRequestEnabled) {
+		toSerialize["machineIdentityAccessRequestEnabled"] = o.MachineIdentityAccessRequestEnabled
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -273,6 +314,7 @@ func (o *AccessRequestConfig2) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "requestOnBehalfOfConfig")
 		delete(additionalProperties, "entitlementRequestConfig")
 		delete(additionalProperties, "govGroupVisibilityEnabled")
+		delete(additionalProperties, "machineIdentityAccessRequestEnabled")
 		o.AdditionalProperties = additionalProperties
 	}
 

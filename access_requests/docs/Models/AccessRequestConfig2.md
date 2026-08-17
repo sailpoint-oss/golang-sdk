@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **RequestOnBehalfOfConfig** | Pointer to [**RequestOnBehalfOfConfig2**](request-on-behalf-of-config2) |  | [optional] 
 **EntitlementRequestConfig** | Pointer to [**EntitlementRequestConfig2**](entitlement-request-config2) |  | [optional] 
 **GovGroupVisibilityEnabled** | Pointer to **bool** | If this is true, requesters and requested-for users will be able to see the names of governance group members when a request is awaiting the group's approval. Up to the first 10 members of the group will be listed. | [optional] [default to false]
+**MachineIdentityAccessRequestEnabled** | Pointer to **bool** | If this is false, machine identity access requests and machine accounts-selection are rejected with 403 (for example, \"Machine identity access request is disabled in access request configuration.\"). Defaults to true. Exposed on access-request-config v2 only.  | [optional] [default to true]
 
 ## Methods
 
@@ -164,5 +165,30 @@ SetGovGroupVisibilityEnabled sets GovGroupVisibilityEnabled field to given value
 `func (o *AccessRequestConfig2) HasGovGroupVisibilityEnabled() bool`
 
 HasGovGroupVisibilityEnabled returns a boolean if a field has been set.
+
+### GetMachineIdentityAccessRequestEnabled
+
+`func (o *AccessRequestConfig2) GetMachineIdentityAccessRequestEnabled() bool`
+
+GetMachineIdentityAccessRequestEnabled returns the MachineIdentityAccessRequestEnabled field if non-nil, zero value otherwise.
+
+### GetMachineIdentityAccessRequestEnabledOk
+
+`func (o *AccessRequestConfig2) GetMachineIdentityAccessRequestEnabledOk() (*bool, bool)`
+
+GetMachineIdentityAccessRequestEnabledOk returns a tuple with the MachineIdentityAccessRequestEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMachineIdentityAccessRequestEnabled
+
+`func (o *AccessRequestConfig2) SetMachineIdentityAccessRequestEnabled(v bool)`
+
+SetMachineIdentityAccessRequestEnabled sets MachineIdentityAccessRequestEnabled field to given value.
+
+### HasMachineIdentityAccessRequestEnabled
+
+`func (o *AccessRequestConfig2) HasMachineIdentityAccessRequestEnabled() bool`
+
+HasMachineIdentityAccessRequestEnabled returns a boolean if a field has been set.
 
 

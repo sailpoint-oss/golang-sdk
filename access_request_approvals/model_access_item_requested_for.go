@@ -19,7 +19,7 @@ var _ MappedNullable = &AccessItemRequestedFor{}
 
 // AccessItemRequestedFor Identity the access item is requested for.
 type AccessItemRequestedFor struct {
-	// DTO type of identity the access item is requested for.
+	// DTO type of identity the access item is requested for. `IDENTITY` for human identities. `MACHINE_IDENTITY` for machine identities. When `MACHINE_IDENTITY`, `id` is the machine identity id. 
 	Type *string `json:"type,omitempty"`
 	// ID of identity the access item is requested for.
 	Id *string `json:"id,omitempty"`

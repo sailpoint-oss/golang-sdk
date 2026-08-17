@@ -31,6 +31,8 @@ type CompletedApproval struct {
 	// When the access-request was created.
 	RequestCreated *SailPointTime `json:"requestCreated,omitempty"`
 	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
+	// Type of identity the access was requested for. Requests without a stored identity type are returned as `HUMAN`. 
+	IdentityType *string `json:"identityType,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
 	RequestedFor *CompletedApprovalRequestedFor `json:"requestedFor,omitempty"`
 	ReviewedBy *AccessItemReviewedBy `json:"reviewedBy,omitempty"`
@@ -302,6 +304,38 @@ func (o *CompletedApproval) SetRequestTypeNil() {
 // UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
 func (o *CompletedApproval) UnsetRequestType() {
 	o.RequestType.Unset()
+}
+
+// GetIdentityType returns the IdentityType field value if set, zero value otherwise.
+func (o *CompletedApproval) GetIdentityType() string {
+	if o == nil || IsNil(o.IdentityType) {
+		var ret string
+		return ret
+	}
+	return *o.IdentityType
+}
+
+// GetIdentityTypeOk returns a tuple with the IdentityType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompletedApproval) GetIdentityTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.IdentityType) {
+		return nil, false
+	}
+	return o.IdentityType, true
+}
+
+// HasIdentityType returns a boolean if a field has been set.
+func (o *CompletedApproval) HasIdentityType() bool {
+	if o != nil && !IsNil(o.IdentityType) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityType gets a reference to the given string and assigns it to the IdentityType field.
+func (o *CompletedApproval) SetIdentityType(v string) {
+	o.IdentityType = &v
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
@@ -1162,6 +1196,9 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	if o.RequestType.IsSet() {
 		toSerialize["requestType"] = o.RequestType.Get()
 	}
+	if !IsNil(o.IdentityType) {
+		toSerialize["identityType"] = o.IdentityType
+	}
 	if !IsNil(o.Requester) {
 		toSerialize["requester"] = o.Requester
 	}
@@ -1262,6 +1299,7 @@ func (o *CompletedApproval) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "requestCreated")
 		delete(additionalProperties, "requestType")
+		delete(additionalProperties, "identityType")
 		delete(additionalProperties, "requester")
 		delete(additionalProperties, "requestedFor")
 		delete(additionalProperties, "reviewedBy")

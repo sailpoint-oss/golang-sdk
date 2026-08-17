@@ -21,7 +21,7 @@ var _ MappedNullable = &RequestedItemDtoRef{}
 
 // RequestedItemDtoRef struct for RequestedItemDtoRef
 type RequestedItemDtoRef struct {
-	// The type of the item being requested.
+	// The type of the item being requested. * Machine identity access requests support `ENTITLEMENT` only. 
 	Type string `json:"type"`
 	// ID of Role, Access Profile or Entitlement being requested.
 	Id string `json:"id"`
@@ -29,12 +29,14 @@ type RequestedItemDtoRef struct {
 	Comment *string `json:"comment,omitempty"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
-	// The date and time the role or access profile or entitlement is/will be provisioned to the specified identity. Also known as the sunrise date. * Specify a date-time in the future. * This date-time can be used to indicate date-time when access item will be provisioned on the identity account. A GRANT_ACCESS request can use startDate to specify when to schedule provisioning of access item for an identity/account & a MODIFY_ACCESS request can use startDate to change the provisioning date-time of already assigned access item. But REVOKE_ACCESS request can not have startDate field. You can change the sunrise date in requests for yourself or others you are authorized to request for. * If the startDate is in the past, then the provisioning will be processed as soon as possible, but no guarantees can be made about when the provisioning will occur. If the startDate is in the future, then the provisioning will be scheduled to occur on that date and time. If no startDate is provided, then the provisioning will be processed as soon as possible. 
+	// The date and time the role or access profile or entitlement is/will be provisioned to the specified identity. Also known as the sunrise date. * Specify a date-time in the future. * This date-time can be used to indicate date-time when access item will be provisioned on the identity account. A GRANT_ACCESS request can use startDate to specify when to schedule provisioning of access item for an identity/account & a MODIFY_ACCESS request can use startDate to change the provisioning date-time of already assigned access item. But REVOKE_ACCESS request can not have startDate field. You can change the sunrise date in requests for yourself or others you are authorized to request for. * If the startDate is in the past, then the provisioning will be processed as soon as possible, but no guarantees can be made about when the provisioning will occur. If the startDate is in the future, then the provisioning will be scheduled to occur on that date and time. If no startDate is provided, then the provisioning will be processed as soon as possible. * For machine identity MODIFY_ACCESS, each requested item must include `startDate` and/or `removeDate`. 
 	StartDate *SailPointTime `json:"startDate,omitempty"`
-	// The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date-time in the future. * The current SLA for the deprovisioning is 24 hours. * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for. 
+	// The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date-time in the future. * The current SLA for the deprovisioning is 24 hours. * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for. * For machine identity MODIFY_ACCESS, each requested item must include `startDate` and/or `removeDate`. 
 	RemoveDate *SailPointTime `json:"removeDate,omitempty"`
-	// The accounts where the access item will be provisioned to * Includes selections performed by the user in the event of multiple accounts existing on the same source * Also includes details for sources where user only has one account 
+	// The accounts where the access item will be provisioned to.  * Includes selections performed by the user in the event of multiple accounts existing on the same source.  * Also includes details for sources where user only has one account.  * For machine identity GRANT_ACCESS and MODIFY_ACCESS: required. Provide exactly one source entry and exactly one account on that source. `accountUuid` and/or `nativeIdentity` must match a real machine account for the requested machine identity on that source. Prefer values returned by the accounts-selection API.  * For machine identity REVOKE_ACCESS: not supported. Use `nativeIdentity` on the item instead. 
 	AccountSelection []SourceItemRef `json:"accountSelection,omitempty"`
+	// The unique identifier for an account on the identity, designated as the account ID attribute in the source's account schema. * For machine identity REVOKE_ACCESS: required per entitlement item (or auto-resolved when the machine has exactly one account on the entitlement source). Must match a machine account on that source. Do not send `accountSelection` on machine revoke. Human REVOKE_ACCESS cannot use this nested item schema; use flat `requestedItems` instead. 
+	NativeIdentity NullableString `json:"nativeIdentity,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -268,6 +270,48 @@ func (o *RequestedItemDtoRef) SetAccountSelection(v []SourceItemRef) {
 	o.AccountSelection = v
 }
 
+// GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RequestedItemDtoRef) GetNativeIdentity() string {
+	if o == nil || IsNil(o.NativeIdentity.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.NativeIdentity.Get()
+}
+
+// GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RequestedItemDtoRef) GetNativeIdentityOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NativeIdentity.Get(), o.NativeIdentity.IsSet()
+}
+
+// HasNativeIdentity returns a boolean if a field has been set.
+func (o *RequestedItemDtoRef) HasNativeIdentity() bool {
+	if o != nil && o.NativeIdentity.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNativeIdentity gets a reference to the given NullableString and assigns it to the NativeIdentity field.
+func (o *RequestedItemDtoRef) SetNativeIdentity(v string) {
+	o.NativeIdentity.Set(&v)
+}
+// SetNativeIdentityNil sets the value for NativeIdentity to be an explicit nil
+func (o *RequestedItemDtoRef) SetNativeIdentityNil() {
+	o.NativeIdentity.Set(nil)
+}
+
+// UnsetNativeIdentity ensures that no value is present for NativeIdentity, not even an explicit nil
+func (o *RequestedItemDtoRef) UnsetNativeIdentity() {
+	o.NativeIdentity.Unset()
+}
+
 func (o RequestedItemDtoRef) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -294,6 +338,9 @@ func (o RequestedItemDtoRef) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AccountSelection != nil {
 		toSerialize["accountSelection"] = o.AccountSelection
+	}
+	if o.NativeIdentity.IsSet() {
+		toSerialize["nativeIdentity"] = o.NativeIdentity.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -346,6 +393,7 @@ func (o *RequestedItemDtoRef) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "startDate")
 		delete(additionalProperties, "removeDate")
 		delete(additionalProperties, "accountSelection")
+		delete(additionalProperties, "nativeIdentity")
 		o.AdditionalProperties = additionalProperties
 	}
 

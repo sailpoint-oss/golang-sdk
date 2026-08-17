@@ -14,7 +14,7 @@ import (
 	"encoding/json"
 )
 
-// Medium The notification medium (EMAIL, SLACK, or TEAMS)
+// Medium The notification medium (EMAIL, SLACK, TEAMS, or INBOX)
 type Medium string
 
 // List of Medium
@@ -22,6 +22,7 @@ const (
 	MEDIUM_EMAIL Medium = "EMAIL"
 	MEDIUM_SLACK Medium = "SLACK"
 	MEDIUM_TEAMS Medium = "TEAMS"
+	MEDIUM_INBOX Medium = "INBOX"
 )
 
 // All allowed values of Medium enum
@@ -29,6 +30,7 @@ var AllowedMediumEnumValues = []Medium{
 	"EMAIL",
 	"SLACK",
 	"TEAMS",
+	"INBOX",
 }
 
 func (v *Medium) UnmarshalJSON(src []byte) error {

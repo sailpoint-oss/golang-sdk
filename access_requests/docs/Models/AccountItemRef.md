@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AccountItemRef', 'V1AccountItemRef']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountUuid** | Pointer to **NullableString** | The uuid for the account, available under the 'objectguid' attribute | [optional] 
-**NativeIdentity** | Pointer to **string** | The 'distinguishedName' attribute for the account | [optional] 
+**AccountUuid** | Pointer to **NullableString** | The uuid for the account on the source, available under the 'objectguid' attribute * Corresponds to the account's unique identifier as returned by accounts-selection or the accounts APIs. * For machine identity GRANT_ACCESS / MODIFY_ACCESS, provide `accountUuid` and/or `nativeIdentity`. Submitted values must match a real machine account for the requested machine identity on the selected source. | [optional] 
+**NativeIdentity** | Pointer to **string** | The 'distinguishedName' attribute for the account. * For machine identity GRANT_ACCESS / MODIFY_ACCESS, provide `accountUuid` and/or `nativeIdentity`. Submitted values must match a real machine account for the requested machine identity on the selected source. | [optional] 
 
 ## Methods
 

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **SailPointTime** | When the approval was modified last time. | [optional] 
 **RequestCreated** | Pointer to **SailPointTime** | When the access-request was created. | [optional] 
 **RequestType** | Pointer to **NullableAccessRequestType** |  | [optional] 
+**IdentityType** | Pointer to **string** | Type of identity the access was requested for. Requests without a stored identity type are returned as `HUMAN`.  | [optional] 
 **Requester** | Pointer to [**AccessItemRequester**](access-item-requester) |  | [optional] 
 **RequestedFor** | Pointer to [**CompletedApprovalRequestedFor**](completed-approval-requested-for) |  | [optional] 
 **ReviewedBy** | Pointer to [**AccessItemReviewedBy**](access-item-reviewed-by) |  | [optional] 
@@ -225,6 +226,31 @@ HasRequestType returns a boolean if a field has been set.
 `func (o *CompletedApproval) UnsetRequestType()`
 
 UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
+### GetIdentityType
+
+`func (o *CompletedApproval) GetIdentityType() string`
+
+GetIdentityType returns the IdentityType field if non-nil, zero value otherwise.
+
+### GetIdentityTypeOk
+
+`func (o *CompletedApproval) GetIdentityTypeOk() (*string, bool)`
+
+GetIdentityTypeOk returns a tuple with the IdentityType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentityType
+
+`func (o *CompletedApproval) SetIdentityType(v string)`
+
+SetIdentityType sets IdentityType field to given value.
+
+### HasIdentityType
+
+`func (o *CompletedApproval) HasIdentityType() bool`
+
+HasIdentityType returns a boolean if a field has been set.
+
 ### GetRequester
 
 `func (o *CompletedApproval) GetRequester() AccessItemRequester`

@@ -62,8 +62,9 @@ tags:
 paths:
   /access-request-approvals/v1/pending:
     get:
-      description: This endpoint returns a list of pending approvals. See "owner-id"
-        query parameter below for authorization info.
+      description: |
+        This endpoint returns a list of pending approvals. See "owner-id" query parameter below for authorization info.
+        For access requests for machines, each approval will include `identityType` as `MACHINE` and `requestedFor` with `type: MACHINE_IDENTITY` and the machine id. Approvals without a stored identity type are returned as `HUMAN` / `IDENTITY`.
       operationId: listPendingApprovalsV1
       parameters:
       - description: |-
@@ -233,8 +234,8 @@ paths:
       - ORG_ADMIN
   /access-request-approvals/v1/completed:
     get:
-      description: This endpoint returns list of completed approvals. See *owner-id*
-        query parameter below for authorization info.
+      description: |
+        This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info. For access requests for machines, each approval will include 'identityType' as 'MACHINE' and 'requestedFor' with 'type: MACHINE_IDENTITY' and the machine id. Approvals without a stored identity type are returned as 'HUMAN' / 'IDENTITY'.
       operationId: listCompletedApprovalsV1
       parameters:
       - description: |-
@@ -398,6 +399,8 @@ paths:
       summary: Completed access request approvals list
       tags:
       - Access Request Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-request-approvals/v1/{approvalId}/approve:
     post:
       description: Use this endpoint to approve an access request approval. Only the
@@ -1155,9 +1158,13 @@ components:
         type: IDENTITY
       properties:
         type:
-          description: DTO type of identity the access item is requested for.
+          description: |
+            DTO type of identity the access item is requested for.
+            `IDENTITY` for human identities.
+            `MACHINE_IDENTITY` for machine identities. When `MACHINE_IDENTITY`, `id` is the machine identity id.
           enum:
           - IDENTITY
+          - MACHINE_IDENTITY
           example: IDENTITY
           type: string
         id:
@@ -1714,6 +1721,7 @@ components:
             type: IDENTITY
           comment: This is a comment.
         actionInProcess: APPROVED
+        identityType: HUMAN
         startUpdateRequested: true
         currentStartDate: 2020-07-11T00:00:00Z
         modified: 2018-07-25T20:22:28.104Z
@@ -1882,6 +1890,14 @@ components:
           type: string
         requestType:
           $ref: '#/components/schemas/AccessRequestType'
+        identityType:
+          description: |
+            Type of identity the access was requested for. Requests without a stored identity type are returned as `HUMAN`.
+          enum:
+          - HUMAN
+          - MACHINE
+          example: HUMAN
+          type: string
         requester:
           $ref: '#/components/schemas/AccessItemRequester'
         requestedFor:
@@ -2103,6 +2119,7 @@ components:
             id: 2c9180847e25f377017e2ae8cae4650b
             type: IDENTITY
           comment: This is a comment.
+        identityType: HUMAN
         startUpdateRequested: true
         currentStartDate: 2020-07-11T00:00:00Z
         modified: 2018-07-25T20:22:28.104Z
@@ -2283,6 +2300,14 @@ components:
           type: string
         requestType:
           $ref: '#/components/schemas/AccessRequestType'
+        identityType:
+          description: |
+            Type of identity the access was requested for. Requests without a stored identity type are returned as `HUMAN`.
+          enum:
+          - HUMAN
+          - MACHINE
+          example: HUMAN
+          type: string
         requester:
           $ref: '#/components/schemas/AccessItemRequester'
         requestedFor:
@@ -2594,7 +2619,8 @@ components:
           type: string
       type: object
     CompletedApproval_requestedFor:
-      description: Identity access was requested for.
+      description: "Identity access was requested for. For machine identity requests,\
+        \ `type` is `MACHINE_IDENTITY` and `id` is the machine identity id."
       example:
         name: William Wilson
         id: 2c9180835d191a86015d28455b4b232a
@@ -2604,6 +2630,7 @@ components:
           description: Type of the object to which this reference applies
           enum:
           - IDENTITY
+          - MACHINE_IDENTITY
           example: IDENTITY
           type: string
         id:
