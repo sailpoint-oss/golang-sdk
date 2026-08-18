@@ -42,6 +42,7 @@ Name | Type | Description | Notes
 **ReauthorizationRequired** | Pointer to **bool** | True if re-auth is required. | [optional] [default to false]
 **AccessRequestId** | Pointer to **string** | This is the account activity id. | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs, if any were included in the corresponding access request | [optional] 
+**Form** | Pointer to [**RequestedItemStatusForm**](requested-item-status-form) |  | [optional] 
 
 ## Methods
 
@@ -857,4 +858,29 @@ HasClientMetadata returns a boolean if a field has been set.
 `func (o *AccessRequestAdminItemStatus) UnsetClientMetadata()`
 
 UnsetClientMetadata ensures that no value is present for ClientMetadata, not even an explicit nil
+### GetForm
+
+`func (o *AccessRequestAdminItemStatus) GetForm() RequestedItemStatusForm`
+
+GetForm returns the Form field if non-nil, zero value otherwise.
+
+### GetFormOk
+
+`func (o *AccessRequestAdminItemStatus) GetFormOk() (*RequestedItemStatusForm, bool)`
+
+GetFormOk returns a tuple with the Form field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForm
+
+`func (o *AccessRequestAdminItemStatus) SetForm(v RequestedItemStatusForm)`
+
+SetForm sets Form field to given value.
+
+### HasForm
+
+`func (o *AccessRequestAdminItemStatus) HasForm() bool`
+
+HasForm returns a boolean if a field has been set.
+
 

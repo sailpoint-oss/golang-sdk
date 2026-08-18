@@ -65,6 +65,7 @@ paths:
       description: |
         This endpoint returns a list of pending approvals. See "owner-id" query parameter below for authorization info.
         For access requests for machines, each approval will include `identityType` as `MACHINE` and `requestedFor` with `type: MACHINE_IDENTITY` and the machine id. Approvals without a stored identity type are returned as `HUMAN` / `IDENTITY`.
+        When a requested object has an associated form, each approval may include a `form` object with the form definition ID, instance ID, and answers (`formData`).
       operationId: listPendingApprovalsV1
       parameters:
       - description: |-
@@ -236,6 +237,7 @@ paths:
     get:
       description: |
         This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info. For access requests for machines, each approval will include 'identityType' as 'MACHINE' and 'requestedFor' with 'type: MACHINE_IDENTITY' and the machine id. Approvals without a stored identity type are returned as 'HUMAN' / 'IDENTITY'.
+        When a requested object has an associated form, each approval may include a `form` object with the form definition ID, instance ID, and answers (`formData`).
       operationId: listCompletedApprovalsV1
       parameters:
       - description: |-
@@ -1695,6 +1697,80 @@ components:
           type: array
       title: Entitlement State Snapshot Jit Detail
       type: object
+    AccessRequestItemForm:
+      additionalProperties: true
+      description: "Completed form instance associated with an access request item.\
+        \ Omitted when the item has no associated form or no form answers were captured.\
+        \ All listed properties may be present when form answers exist. Optional structural\
+        \ keys (`formElements`, `formConditions`, `formInstanceInputs`) may also be\
+        \ present; their shape follows the form instance payload."
+      example:
+        formDefinitionId: b2c1808f-77f5-4a3a-9f3a-1d2e3f4a5b6c
+        formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
+        formData:
+          department: Engineering
+          notifyRequester: true
+          platforms:
+          - AWS
+          - GCP
+      nullable: true
+      properties:
+        formDefinitionId:
+          description: ID of the form definition that was completed for this item.
+          example: b2c1808f-77f5-4a3a-9f3a-1d2e3f4a5b6c
+          nullable: true
+          type: string
+        formInstanceId:
+          description: ID of the completed form instance.
+          example: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
+          nullable: true
+          type: string
+        formData:
+          additionalProperties: true
+          description: Key-value pairs (form field technical name to value) from the
+            completed form instance.
+          example:
+            department: Engineering
+            notifyRequester: true
+            platforms:
+            - AWS
+            - GCP
+          nullable: true
+          type: object
+        formElements:
+          description: Optional form element definitions when present. Shape follows
+            the form instance payload.
+          example:
+          - id: 00000000-0000-0000-0000-000000000000
+            elementType: TEXT
+          items:
+            additionalProperties: true
+            type: object
+          nullable: true
+          type: array
+        formConditions:
+          description: Optional conditional display rules when present. Shape follows
+            the form instance payload; do not depend on a fixed condition schema in
+            this API.
+          example:
+          - ruleOperator: AND
+            rules: []
+            effects: []
+          items:
+            additionalProperties: true
+            type: object
+          nullable: true
+          type: array
+        formInstanceInputs:
+          additionalProperties: true
+          description: Optional inputs passed into the form instance when present.
+            Copied from the form instance payload as-is.
+          example:
+            department: Engineering
+          nullable: true
+          type: object
+      title: Access Request Item Form
+      type: object
     PendingApproval:
       example:
         requestedFor:
@@ -1849,6 +1925,24 @@ components:
           uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
         requestCreated: 2017-07-11T18:45:35.098Z
         accessRequestId: 2b838de9db9babcfe646d4f274ad4238
+        form:
+          formConditions:
+          - ruleOperator: AND
+            rules: []
+            effects: []
+          formDefinitionId: b2c1808f-77f5-4a3a-9f3a-1d2e3f4a5b6c
+          formInstanceInputs:
+            department: Engineering
+          formData:
+            department: Engineering
+            notifyRequester: true
+            platforms:
+            - AWS
+            - GCP
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
+          formElements:
+          - id: 00000000-0000-0000-0000-000000000000
+            elementType: TEXT
         name: aName
         jitDetails:
         - attributeValues:
@@ -1994,6 +2088,8 @@ components:
             $ref: '#/components/schemas/EntitlementStateSnapshotJitDetail'
           nullable: true
           type: array
+        form:
+          $ref: '#/components/schemas/PendingApproval_form'
       title: Pending Approval
       type: object
     ErrorResponseDto:
@@ -2263,6 +2359,24 @@ components:
           state: SUCCESS
           uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
         requestCreated: 2017-07-11T18:45:35.098Z
+        form:
+          formConditions:
+          - ruleOperator: AND
+            rules: []
+            effects: []
+          formDefinitionId: b2c1808f-77f5-4a3a-9f3a-1d2e3f4a5b6c
+          formInstanceInputs:
+            department: Engineering
+          formData:
+            department: Engineering
+            notifyRequester: true
+            platforms:
+            - AWS
+            - GCP
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
+          formElements:
+          - id: 00000000-0000-0000-0000-000000000000
+            elementType: TEXT
         name: aName
         jitDetails:
         - attributeValues:
@@ -2410,6 +2524,8 @@ components:
             $ref: '#/components/schemas/EntitlementStateSnapshotJitDetail'
           nullable: true
           type: array
+        form:
+          $ref: '#/components/schemas/PendingApproval_form'
       title: Completed Approval
       type: object
     ForwardApprovalDto:
@@ -2618,6 +2734,30 @@ components:
           example: DAYS
           type: string
       type: object
+    PendingApproval_form:
+      allOf:
+      - $ref: '#/components/schemas/AccessRequestItemForm'
+      - description: Completed form data for this approval item when the requested
+          object has an associated form.
+        nullable: true
+      example:
+        formConditions:
+        - ruleOperator: AND
+          rules: []
+          effects: []
+        formDefinitionId: b2c1808f-77f5-4a3a-9f3a-1d2e3f4a5b6c
+        formInstanceInputs:
+          department: Engineering
+        formData:
+          department: Engineering
+          notifyRequester: true
+          platforms:
+          - AWS
+          - GCP
+        formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
+        formElements:
+        - id: 00000000-0000-0000-0000-000000000000
+          elementType: TEXT
     CompletedApproval_requestedFor:
       description: "Identity access was requested for. For machine identity requests,\
         \ `type` is `MACHINE_IDENTITY` and `id` is the machine identity id."

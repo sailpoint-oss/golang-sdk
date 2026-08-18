@@ -69,6 +69,7 @@ type PendingApproval struct {
 	MaxPermittedAccessDuration NullablePendingApprovalMaxPermittedAccessDuration `json:"maxPermittedAccessDuration,omitempty"`
 	// JIT (Just-In-Time) details for the requested access item, if applicable.
 	JitDetails []EntitlementStateSnapshotJitDetail `json:"jitDetails,omitempty"`
+	Form *PendingApprovalForm `json:"form,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -1074,6 +1075,38 @@ func (o *PendingApproval) SetJitDetails(v []EntitlementStateSnapshotJitDetail) {
 	o.JitDetails = v
 }
 
+// GetForm returns the Form field value if set, zero value otherwise.
+func (o *PendingApproval) GetForm() PendingApprovalForm {
+	if o == nil || IsNil(o.Form) {
+		var ret PendingApprovalForm
+		return ret
+	}
+	return *o.Form
+}
+
+// GetFormOk returns a tuple with the Form field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PendingApproval) GetFormOk() (*PendingApprovalForm, bool) {
+	if o == nil || IsNil(o.Form) {
+		return nil, false
+	}
+	return o.Form, true
+}
+
+// HasForm returns a boolean if a field has been set.
+func (o *PendingApproval) HasForm() bool {
+	if o != nil && !IsNil(o.Form) {
+		return true
+	}
+
+	return false
+}
+
+// SetForm gets a reference to the given PendingApprovalForm and assigns it to the Form field.
+func (o *PendingApproval) SetForm(v PendingApprovalForm) {
+	o.Form = &v
+}
+
 func (o PendingApproval) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1171,6 +1204,9 @@ func (o PendingApproval) ToMap() (map[string]interface{}, error) {
 	if o.JitDetails != nil {
 		toSerialize["jitDetails"] = o.JitDetails
 	}
+	if !IsNil(o.Form) {
+		toSerialize["form"] = o.Form
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1222,6 +1258,7 @@ func (o *PendingApproval) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "privilegeLevel")
 		delete(additionalProperties, "maxPermittedAccessDuration")
 		delete(additionalProperties, "jitDetails")
+		delete(additionalProperties, "form")
 		o.AdditionalProperties = additionalProperties
 	}
 

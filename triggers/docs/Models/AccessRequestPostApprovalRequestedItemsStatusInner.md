@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Operation** | **string** | The action to perform on the access item. | 
 **Comment** | Pointer to **NullableString** | A comment from the identity requesting the access. | [optional] 
 **ClientMetadata** | Pointer to **map[string]interface{}** | Additional customer defined metadata about the access item. | [optional] 
+**Form** | Pointer to [**AccessRequestDynamicApproverRequestedItemsInnerForm**](access-request-dynamic-approver-requested-items-inner-form) |  | [optional] 
 **ApprovalInfo** | [**[]AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner**](access-request-post-approval-requested-items-status-inner-approval-info-inner) | A list of one or more approvers for the access request. | 
 
 ## Methods
@@ -228,6 +229,31 @@ HasClientMetadata returns a boolean if a field has been set.
 `func (o *AccessRequestPostApprovalRequestedItemsStatusInner) UnsetClientMetadata()`
 
 UnsetClientMetadata ensures that no value is present for ClientMetadata, not even an explicit nil
+### GetForm
+
+`func (o *AccessRequestPostApprovalRequestedItemsStatusInner) GetForm() AccessRequestDynamicApproverRequestedItemsInnerForm`
+
+GetForm returns the Form field if non-nil, zero value otherwise.
+
+### GetFormOk
+
+`func (o *AccessRequestPostApprovalRequestedItemsStatusInner) GetFormOk() (*AccessRequestDynamicApproverRequestedItemsInnerForm, bool)`
+
+GetFormOk returns a tuple with the Form field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForm
+
+`func (o *AccessRequestPostApprovalRequestedItemsStatusInner) SetForm(v AccessRequestDynamicApproverRequestedItemsInnerForm)`
+
+SetForm sets Form field to given value.
+
+### HasForm
+
+`func (o *AccessRequestPostApprovalRequestedItemsStatusInner) HasForm() bool`
+
+HasForm returns a boolean if a field has been set.
+
 ### GetApprovalInfo
 
 `func (o *AccessRequestPostApprovalRequestedItemsStatusInner) GetApprovalInfo() []AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner`

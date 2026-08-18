@@ -45,6 +45,7 @@ Name | Type | Description | Notes
 **RequestedAccounts** | Pointer to [**[]RequestedAccountRef**](requested-account-ref) | The accounts selected for the access to be provisioned on, in case the requested-for identity has multiple accounts on one or more sources. | [optional] 
 **PrivilegeLevel** | Pointer to **NullableString** | The privilege level of the requested access item, if applicable. | [optional] 
 **JitDetails** | Pointer to **[]EntitlementStateSnapshotJitDetail** | JIT (Just-In-Time) details for the requested access item, if applicable. | [optional] 
+**Form** | Pointer to [**RequestedItemStatusForm**](requested-item-status-form) |  | [optional] 
 
 ## Methods
 
@@ -975,4 +976,29 @@ HasJitDetails returns a boolean if a field has been set.
 `func (o *RequestedItemStatus) UnsetJitDetails()`
 
 UnsetJitDetails ensures that no value is present for JitDetails, not even an explicit nil
+### GetForm
+
+`func (o *RequestedItemStatus) GetForm() RequestedItemStatusForm`
+
+GetForm returns the Form field if non-nil, zero value otherwise.
+
+### GetFormOk
+
+`func (o *RequestedItemStatus) GetFormOk() (*RequestedItemStatusForm, bool)`
+
+GetFormOk returns a tuple with the Form field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForm
+
+`func (o *RequestedItemStatus) SetForm(v RequestedItemStatusForm)`
+
+SetForm sets Form field to given value.
+
+### HasForm
+
+`func (o *RequestedItemStatus) HasForm() bool`
+
+HasForm returns a boolean if a field has been set.
+
 

@@ -34,6 +34,7 @@ type AccessRequestPostApprovalRequestedItemsStatusInner struct {
 	Comment NullableString `json:"comment,omitempty"`
 	// Additional customer defined metadata about the access item.
 	ClientMetadata map[string]interface{} `json:"clientMetadata,omitempty"`
+	Form *AccessRequestDynamicApproverRequestedItemsInnerForm `json:"form,omitempty"`
 	// A list of one or more approvers for the access request.
 	ApprovalInfo []AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner `json:"approvalInfo"`
 	AdditionalProperties map[string]interface{}
@@ -276,6 +277,38 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInner) SetClientMetadata(v
 	o.ClientMetadata = v
 }
 
+// GetForm returns the Form field value if set, zero value otherwise.
+func (o *AccessRequestPostApprovalRequestedItemsStatusInner) GetForm() AccessRequestDynamicApproverRequestedItemsInnerForm {
+	if o == nil || IsNil(o.Form) {
+		var ret AccessRequestDynamicApproverRequestedItemsInnerForm
+		return ret
+	}
+	return *o.Form
+}
+
+// GetFormOk returns a tuple with the Form field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessRequestPostApprovalRequestedItemsStatusInner) GetFormOk() (*AccessRequestDynamicApproverRequestedItemsInnerForm, bool) {
+	if o == nil || IsNil(o.Form) {
+		return nil, false
+	}
+	return o.Form, true
+}
+
+// HasForm returns a boolean if a field has been set.
+func (o *AccessRequestPostApprovalRequestedItemsStatusInner) HasForm() bool {
+	if o != nil && !IsNil(o.Form) {
+		return true
+	}
+
+	return false
+}
+
+// SetForm gets a reference to the given AccessRequestDynamicApproverRequestedItemsInnerForm and assigns it to the Form field.
+func (o *AccessRequestPostApprovalRequestedItemsStatusInner) SetForm(v AccessRequestDynamicApproverRequestedItemsInnerForm) {
+	o.Form = &v
+}
+
 // GetApprovalInfo returns the ApprovalInfo field value
 func (o *AccessRequestPostApprovalRequestedItemsStatusInner) GetApprovalInfo() []AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner {
 	if o == nil {
@@ -322,6 +355,9 @@ func (o AccessRequestPostApprovalRequestedItemsStatusInner) ToMap() (map[string]
 	}
 	if o.ClientMetadata != nil {
 		toSerialize["clientMetadata"] = o.ClientMetadata
+	}
+	if !IsNil(o.Form) {
+		toSerialize["form"] = o.Form
 	}
 	toSerialize["approvalInfo"] = o.ApprovalInfo
 
@@ -378,6 +414,7 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInner) UnmarshalJSON(data 
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "clientMetadata")
+		delete(additionalProperties, "form")
 		delete(additionalProperties, "approvalInfo")
 		o.AdditionalProperties = additionalProperties
 	}

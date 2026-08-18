@@ -30,6 +30,8 @@ type EntitlementAccessRequestConfig struct {
 	// If true, then remove date or sunset date is required in access request of the entitlement.
 	RequireEndDate *bool `json:"requireEndDate,omitempty"`
 	MaxPermittedAccessDuration NullableEntitlementAccessRequestConfigMaxPermittedAccessDuration `json:"maxPermittedAccessDuration,omitempty"`
+	// The ID of the form definition used for the access request. If specified, the form is presented to the requester during the access request process.
+	FormDefinitionId NullableString `json:"formDefinitionId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -270,6 +272,48 @@ func (o *EntitlementAccessRequestConfig) UnsetMaxPermittedAccessDuration() {
 	o.MaxPermittedAccessDuration.Unset()
 }
 
+// GetFormDefinitionId returns the FormDefinitionId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EntitlementAccessRequestConfig) GetFormDefinitionId() string {
+	if o == nil || IsNil(o.FormDefinitionId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FormDefinitionId.Get()
+}
+
+// GetFormDefinitionIdOk returns a tuple with the FormDefinitionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EntitlementAccessRequestConfig) GetFormDefinitionIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FormDefinitionId.Get(), o.FormDefinitionId.IsSet()
+}
+
+// HasFormDefinitionId returns a boolean if a field has been set.
+func (o *EntitlementAccessRequestConfig) HasFormDefinitionId() bool {
+	if o != nil && o.FormDefinitionId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFormDefinitionId gets a reference to the given NullableString and assigns it to the FormDefinitionId field.
+func (o *EntitlementAccessRequestConfig) SetFormDefinitionId(v string) {
+	o.FormDefinitionId.Set(&v)
+}
+// SetFormDefinitionIdNil sets the value for FormDefinitionId to be an explicit nil
+func (o *EntitlementAccessRequestConfig) SetFormDefinitionIdNil() {
+	o.FormDefinitionId.Set(nil)
+}
+
+// UnsetFormDefinitionId ensures that no value is present for FormDefinitionId, not even an explicit nil
+func (o *EntitlementAccessRequestConfig) UnsetFormDefinitionId() {
+	o.FormDefinitionId.Unset()
+}
+
 func (o EntitlementAccessRequestConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -297,6 +341,9 @@ func (o EntitlementAccessRequestConfig) ToMap() (map[string]interface{}, error) 
 	}
 	if o.MaxPermittedAccessDuration.IsSet() {
 		toSerialize["maxPermittedAccessDuration"] = o.MaxPermittedAccessDuration.Get()
+	}
+	if o.FormDefinitionId.IsSet() {
+		toSerialize["formDefinitionId"] = o.FormDefinitionId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -326,6 +373,7 @@ func (o *EntitlementAccessRequestConfig) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "reauthorizationRequired")
 		delete(additionalProperties, "requireEndDate")
 		delete(additionalProperties, "maxPermittedAccessDuration")
+		delete(additionalProperties, "formDefinitionId")
 		o.AdditionalProperties = additionalProperties
 	}
 

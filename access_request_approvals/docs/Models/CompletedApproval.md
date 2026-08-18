@@ -46,6 +46,7 @@ Name | Type | Description | Notes
 **PrivilegeLevel** | Pointer to **NullableString** | The privilege level of the requested access item, if applicable. | [optional] 
 **MaxPermittedAccessDuration** | Pointer to [**NullablePendingApprovalMaxPermittedAccessDuration**](pending-approval-max-permitted-access-duration) |  | [optional] 
 **JitDetails** | Pointer to **[]EntitlementStateSnapshotJitDetail** | JIT (Just-In-Time) details for the requested access item, if applicable. | [optional] 
+**Form** | Pointer to [**PendingApprovalForm**](pending-approval-form) |  | [optional] 
 
 ## Methods
 
@@ -931,4 +932,29 @@ HasJitDetails returns a boolean if a field has been set.
 `func (o *CompletedApproval) UnsetJitDetails()`
 
 UnsetJitDetails ensures that no value is present for JitDetails, not even an explicit nil
+### GetForm
+
+`func (o *CompletedApproval) GetForm() PendingApprovalForm`
+
+GetForm returns the Form field if non-nil, zero value otherwise.
+
+### GetFormOk
+
+`func (o *CompletedApproval) GetFormOk() (*PendingApprovalForm, bool)`
+
+GetFormOk returns a tuple with the Form field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForm
+
+`func (o *CompletedApproval) SetForm(v PendingApprovalForm)`
+
+SetForm sets Form field to given value.
+
+### HasForm
+
+`func (o *CompletedApproval) HasForm() bool`
+
+HasForm returns a boolean if a field has been set.
+
 

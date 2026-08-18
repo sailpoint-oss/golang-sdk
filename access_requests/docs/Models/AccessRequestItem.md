@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **RemoveDate** | Pointer to **SailPointTime** | The date and time the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date-time in the future. * The current SLA for the deprovisioning is 24 hours. * This date-time can be used to change the duration of an existing access item assignment for the specified identity. A GRANT_ACCESS request can extend duration or even remove an expiration date, and either a  GRANT_ACCESS or REVOKE_ACCESS request can reduce duration or add an expiration date where one has not previously been present. You can change the expiration date in requests for yourself or others you are authorized to request for.  | [optional] 
 **AssignmentId** | Pointer to **NullableString** | The assignmentId for a specific role assignment on the identity. This id is used to revoke that specific roleAssignment on that identity. * For use with REVOKE_ACCESS requests for roles for identities with multiple accounts on a single source.  | [optional] 
 **NativeIdentity** | Pointer to **NullableString** | The unique identifier for an account on the identity, designated as the account ID attribute in the source's account schema. This is used to revoke a specific attributeAssignment on the identity. * For use with REVOKE_ACCESS requests for entitlements for identities with multiple accounts on a single source.  | [optional] 
+**FormInstanceId** | Pointer to **NullableString** | Optional ID of a completed form instance for this line item. For human GRANT_ACCESS requests, include when the requested role, access profile, or entitlement has an associated `formDefinitionId` in its request configuration. An empty `formInstanceId` on a GRANT_ACCESS item is rejected with HTTP 400. Not used for REVOKE_ACCESS. | [optional] 
 
 ## Methods
 
@@ -253,4 +254,39 @@ HasNativeIdentity returns a boolean if a field has been set.
 `func (o *AccessRequestItem) UnsetNativeIdentity()`
 
 UnsetNativeIdentity ensures that no value is present for NativeIdentity, not even an explicit nil
+### GetFormInstanceId
+
+`func (o *AccessRequestItem) GetFormInstanceId() string`
+
+GetFormInstanceId returns the FormInstanceId field if non-nil, zero value otherwise.
+
+### GetFormInstanceIdOk
+
+`func (o *AccessRequestItem) GetFormInstanceIdOk() (*string, bool)`
+
+GetFormInstanceIdOk returns a tuple with the FormInstanceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormInstanceId
+
+`func (o *AccessRequestItem) SetFormInstanceId(v string)`
+
+SetFormInstanceId sets FormInstanceId field to given value.
+
+### HasFormInstanceId
+
+`func (o *AccessRequestItem) HasFormInstanceId() bool`
+
+HasFormInstanceId returns a boolean if a field has been set.
+
+### SetFormInstanceIdNil
+
+`func (o *AccessRequestItem) SetFormInstanceIdNil(b bool)`
+
+ SetFormInstanceIdNil sets the value for FormInstanceId to be an explicit nil
+
+### UnsetFormInstanceId
+`func (o *AccessRequestItem) UnsetFormInstanceId()`
+
+UnsetFormInstanceId ensures that no value is present for FormInstanceId, not even an explicit nil
 

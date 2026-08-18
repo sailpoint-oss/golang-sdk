@@ -357,6 +357,7 @@ func (r ApiGetEntitlementRequestConfigV1Request) Execute() (*EntitlementRequestC
 GetEntitlementRequestConfigV1 Get entitlement request config
 
 This API returns the entitlement request config for a specified entitlement.
+The `accessRequestConfig.formDefinitionId` field associates an optional custom form with entitlement access requests.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Entitlement Id
@@ -2021,6 +2022,7 @@ func (r ApiPutEntitlementRequestConfigV1Request) Execute() (*EntitlementRequestC
 PutEntitlementRequestConfigV1 Replace entitlement request config
 
 This API replaces the entitlement request config for a specified entitlement.
+Set `accessRequestConfig.formDefinitionId` to associate an optional custom form with entitlement access requests.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Entitlement ID

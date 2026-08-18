@@ -14,6 +14,7 @@ docs/AccessRequestAdminItemStatus.md
 docs/AccessRequestConfig.md
 docs/AccessRequestConfig2.md
 docs/AccessRequestItem.md
+docs/AccessRequestItemForm.md
 docs/AccessRequestPhases.md
 docs/AccessRequestResponse.md
 docs/AccessRequestTracking.md
@@ -73,6 +74,7 @@ docs/RequestedItemDetails.md
 docs/RequestedItemDtoRef.md
 docs/RequestedItemStatus.md
 docs/RequestedItemStatusCancelledRequestDetails.md
+docs/RequestedItemStatusForm.md
 docs/RequestedItemStatusPreApprovalTriggerDetails.md
 docs/RequestedItemStatusProvisioningDetails.md
 docs/RequestedItemStatusRequestState.md
@@ -98,6 +100,7 @@ model_access_request_admin_item_status.go
 model_access_request_config.go
 model_access_request_config_2.go
 model_access_request_item.go
+model_access_request_item_form.go
 model_access_request_phases.go
 model_access_request_response.go
 model_access_request_tracking.go
@@ -154,6 +157,7 @@ model_requested_item_details.go
 model_requested_item_dto_ref.go
 model_requested_item_status.go
 model_requested_item_status_cancelled_request_details.go
+model_requested_item_status_form.go
 model_requested_item_status_pre_approval_trigger_details.go
 model_requested_item_status_provisioning_details.go
 model_requested_item_status_request_state.go

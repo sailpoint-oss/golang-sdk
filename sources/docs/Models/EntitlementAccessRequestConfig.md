@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **ReauthorizationRequired** | Pointer to **bool** | Is Reauthorization Required | [optional] [default to false]
 **RequireEndDate** | Pointer to **bool** | If true, then remove date or sunset date is required in access request of the entitlement. | [optional] [default to false]
 **MaxPermittedAccessDuration** | Pointer to [**NullableEntitlementAccessRequestConfigMaxPermittedAccessDuration**](entitlement-access-request-config-max-permitted-access-duration) |  | [optional] 
+**FormDefinitionId** | Pointer to **NullableString** | The ID of the form definition used for the access request. If specified, the form is presented to the requester during the access request process. | [optional] 
 
 ## Methods
 
@@ -201,4 +202,39 @@ HasMaxPermittedAccessDuration returns a boolean if a field has been set.
 `func (o *EntitlementAccessRequestConfig) UnsetMaxPermittedAccessDuration()`
 
 UnsetMaxPermittedAccessDuration ensures that no value is present for MaxPermittedAccessDuration, not even an explicit nil
+### GetFormDefinitionId
+
+`func (o *EntitlementAccessRequestConfig) GetFormDefinitionId() string`
+
+GetFormDefinitionId returns the FormDefinitionId field if non-nil, zero value otherwise.
+
+### GetFormDefinitionIdOk
+
+`func (o *EntitlementAccessRequestConfig) GetFormDefinitionIdOk() (*string, bool)`
+
+GetFormDefinitionIdOk returns a tuple with the FormDefinitionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormDefinitionId
+
+`func (o *EntitlementAccessRequestConfig) SetFormDefinitionId(v string)`
+
+SetFormDefinitionId sets FormDefinitionId field to given value.
+
+### HasFormDefinitionId
+
+`func (o *EntitlementAccessRequestConfig) HasFormDefinitionId() bool`
+
+HasFormDefinitionId returns a boolean if a field has been set.
+
+### SetFormDefinitionIdNil
+
+`func (o *EntitlementAccessRequestConfig) SetFormDefinitionIdNil(b bool)`
+
+ SetFormDefinitionIdNil sets the value for FormDefinitionId to be an explicit nil
+
+### UnsetFormDefinitionId
+`func (o *EntitlementAccessRequestConfig) UnsetFormDefinitionId()`
+
+UnsetFormDefinitionId ensures that no value is present for FormDefinitionId, not even an explicit nil
 

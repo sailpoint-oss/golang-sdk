@@ -32,6 +32,7 @@ type AccessRequestPreApprovalRequestedItemsInner struct {
 	Operation string `json:"operation"`
 	// A comment from the identity requesting the access.
 	Comment NullableString `json:"comment,omitempty"`
+	Form *AccessRequestDynamicApproverRequestedItemsInnerForm `json:"form,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -238,6 +239,38 @@ func (o *AccessRequestPreApprovalRequestedItemsInner) UnsetComment() {
 	o.Comment.Unset()
 }
 
+// GetForm returns the Form field value if set, zero value otherwise.
+func (o *AccessRequestPreApprovalRequestedItemsInner) GetForm() AccessRequestDynamicApproverRequestedItemsInnerForm {
+	if o == nil || IsNil(o.Form) {
+		var ret AccessRequestDynamicApproverRequestedItemsInnerForm
+		return ret
+	}
+	return *o.Form
+}
+
+// GetFormOk returns a tuple with the Form field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessRequestPreApprovalRequestedItemsInner) GetFormOk() (*AccessRequestDynamicApproverRequestedItemsInnerForm, bool) {
+	if o == nil || IsNil(o.Form) {
+		return nil, false
+	}
+	return o.Form, true
+}
+
+// HasForm returns a boolean if a field has been set.
+func (o *AccessRequestPreApprovalRequestedItemsInner) HasForm() bool {
+	if o != nil && !IsNil(o.Form) {
+		return true
+	}
+
+	return false
+}
+
+// SetForm gets a reference to the given AccessRequestDynamicApproverRequestedItemsInnerForm and assigns it to the Form field.
+func (o *AccessRequestPreApprovalRequestedItemsInner) SetForm(v AccessRequestDynamicApproverRequestedItemsInnerForm) {
+	o.Form = &v
+}
+
 func (o AccessRequestPreApprovalRequestedItemsInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -257,6 +290,9 @@ func (o AccessRequestPreApprovalRequestedItemsInner) ToMap() (map[string]interfa
 	toSerialize["operation"] = o.Operation
 	if o.Comment.IsSet() {
 		toSerialize["comment"] = o.Comment.Get()
+	}
+	if !IsNil(o.Form) {
+		toSerialize["form"] = o.Form
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -310,6 +346,7 @@ func (o *AccessRequestPreApprovalRequestedItemsInner) UnmarshalJSON(data []byte)
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "comment")
+		delete(additionalProperties, "form")
 		o.AdditionalProperties = additionalProperties
 	}
 

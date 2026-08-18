@@ -1456,8 +1456,9 @@ paths:
       - ORG_ADMIN
   /entitlements/v1/{id}/entitlement-request-config:
     get:
-      description: This API returns the entitlement request config for a specified
-        entitlement.
+      description: |-
+        This API returns the entitlement request config for a specified entitlement.
+        The `accessRequestConfig.formDefinitionId` field associates an optional custom form with entitlement access requests.
       operationId: getEntitlementRequestConfigV1
       parameters:
       - description: Entitlement Id
@@ -1479,6 +1480,7 @@ paths:
                   requestCommentRequired: true
                   denialCommentRequired: true
                   reauthorizationRequired: false
+                  formDefinitionId: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
                   approvalSchemes:
                   - approverType: ENTITLEMENT_OWNER
                     approverId: null
@@ -1590,8 +1592,9 @@ paths:
       - SOURCE_SUBADMIN
       - SOURCE_ADMIN
     put:
-      description: This API replaces the entitlement request config for a specified
-        entitlement.
+      description: |-
+        This API replaces the entitlement request config for a specified entitlement.
+        Set `accessRequestConfig.formDefinitionId` to associate an optional custom form with entitlement access requests.
       operationId: putEntitlementRequestConfigV1
       parameters:
       - description: Entitlement ID
@@ -1618,6 +1621,7 @@ paths:
                 accessRequestConfig:
                   requestCommentRequired: true
                   denialCommentRequired: true
+                  formDefinitionId: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
                   approvalSchemes:
                   - approverType: ENTITLEMENT_OWNER
                     approverId: null
@@ -2775,6 +2779,7 @@ components:
         - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
           approverType: GOVERNANCE_GROUP
         reauthorizationRequired: false
+        formDefinitionId: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
         requestCommentRequired: true
         requireEndDate: true
         maxPermittedAccessDuration:
@@ -2811,6 +2816,13 @@ components:
           type: boolean
         maxPermittedAccessDuration:
           $ref: '#/components/schemas/EntitlementAccessRequestConfig_maxPermittedAccessDuration'
+        formDefinitionId:
+          description: "The ID of the form definition used for the access request.\
+            \ If specified, the form is presented to the requester during the access\
+            \ request process."
+          example: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
+          nullable: true
+          type: string
       title: Entitlement Access Request Config
       type: object
     EntitlementRevocationRequestConfig:
@@ -2839,6 +2851,7 @@ components:
           - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
             approverType: GOVERNANCE_GROUP
           reauthorizationRequired: false
+          formDefinitionId: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
           requestCommentRequired: true
           requireEndDate: true
           maxPermittedAccessDuration:

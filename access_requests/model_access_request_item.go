@@ -37,6 +37,8 @@ type AccessRequestItem struct {
 	AssignmentId NullableString `json:"assignmentId,omitempty"`
 	// The unique identifier for an account on the identity, designated as the account ID attribute in the source's account schema. This is used to revoke a specific attributeAssignment on the identity. * For use with REVOKE_ACCESS requests for entitlements for identities with multiple accounts on a single source. 
 	NativeIdentity NullableString `json:"nativeIdentity,omitempty"`
+	// Optional ID of a completed form instance for this line item. For human GRANT_ACCESS requests, include when the requested role, access profile, or entitlement has an associated `formDefinitionId` in its request configuration. An empty `formInstanceId` on a GRANT_ACCESS item is rejected with HTTP 400. Not used for REVOKE_ACCESS.
+	FormInstanceId NullableString `json:"formInstanceId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -321,6 +323,48 @@ func (o *AccessRequestItem) UnsetNativeIdentity() {
 	o.NativeIdentity.Unset()
 }
 
+// GetFormInstanceId returns the FormInstanceId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccessRequestItem) GetFormInstanceId() string {
+	if o == nil || IsNil(o.FormInstanceId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FormInstanceId.Get()
+}
+
+// GetFormInstanceIdOk returns a tuple with the FormInstanceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccessRequestItem) GetFormInstanceIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FormInstanceId.Get(), o.FormInstanceId.IsSet()
+}
+
+// HasFormInstanceId returns a boolean if a field has been set.
+func (o *AccessRequestItem) HasFormInstanceId() bool {
+	if o != nil && o.FormInstanceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFormInstanceId gets a reference to the given NullableString and assigns it to the FormInstanceId field.
+func (o *AccessRequestItem) SetFormInstanceId(v string) {
+	o.FormInstanceId.Set(&v)
+}
+// SetFormInstanceIdNil sets the value for FormInstanceId to be an explicit nil
+func (o *AccessRequestItem) SetFormInstanceIdNil() {
+	o.FormInstanceId.Set(nil)
+}
+
+// UnsetFormInstanceId ensures that no value is present for FormInstanceId, not even an explicit nil
+func (o *AccessRequestItem) UnsetFormInstanceId() {
+	o.FormInstanceId.Unset()
+}
+
 func (o AccessRequestItem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -350,6 +394,9 @@ func (o AccessRequestItem) ToMap() (map[string]interface{}, error) {
 	}
 	if o.NativeIdentity.IsSet() {
 		toSerialize["nativeIdentity"] = o.NativeIdentity.Get()
+	}
+	if o.FormInstanceId.IsSet() {
+		toSerialize["formInstanceId"] = o.FormInstanceId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -403,6 +450,7 @@ func (o *AccessRequestItem) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "removeDate")
 		delete(additionalProperties, "assignmentId")
 		delete(additionalProperties, "nativeIdentity")
+		delete(additionalProperties, "formInstanceId")
 		o.AdditionalProperties = additionalProperties
 	}
 

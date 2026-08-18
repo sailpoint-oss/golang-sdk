@@ -99,6 +99,8 @@ Class | Method | HTTP request | Description
  - [AccessRequestDynamicApprover](docs/AccessRequestDynamicApprover.md)
  - [AccessRequestDynamicApprover2](docs/AccessRequestDynamicApprover2.md)
  - [AccessRequestDynamicApproverRequestedItemsInner](docs/AccessRequestDynamicApproverRequestedItemsInner.md)
+ - [AccessRequestDynamicApproverRequestedItemsInnerForm](docs/AccessRequestDynamicApproverRequestedItemsInnerForm.md)
+ - [AccessRequestItemForm](docs/AccessRequestItemForm.md)
  - [AccessRequestPostApproval](docs/AccessRequestPostApproval.md)
  - [AccessRequestPostApprovalRequestedItemsStatusInner](docs/AccessRequestPostApprovalRequestedItemsStatusInner.md)
  - [AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner](docs/AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner.md)

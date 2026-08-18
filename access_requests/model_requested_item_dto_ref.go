@@ -37,6 +37,8 @@ type RequestedItemDtoRef struct {
 	AccountSelection []SourceItemRef `json:"accountSelection,omitempty"`
 	// The unique identifier for an account on the identity, designated as the account ID attribute in the source's account schema. * For machine identity REVOKE_ACCESS: required per entitlement item (or auto-resolved when the machine has exactly one account on the entitlement source). Must match a machine account on that source. Do not send `accountSelection` on machine revoke. Human REVOKE_ACCESS cannot use this nested item schema; use flat `requestedItems` instead. 
 	NativeIdentity NullableString `json:"nativeIdentity,omitempty"`
+	// Optional ID of a completed form instance for this line item. * For human GRANT_ACCESS: include when the requested role, access profile, or entitlement has an associated `formDefinitionId` in its request configuration. An empty `formInstanceId` on a GRANT_ACCESS item is rejected with HTTP 400. * Not supported for machine identity access requests.
+	FormInstanceId NullableString `json:"formInstanceId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -312,6 +314,48 @@ func (o *RequestedItemDtoRef) UnsetNativeIdentity() {
 	o.NativeIdentity.Unset()
 }
 
+// GetFormInstanceId returns the FormInstanceId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RequestedItemDtoRef) GetFormInstanceId() string {
+	if o == nil || IsNil(o.FormInstanceId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FormInstanceId.Get()
+}
+
+// GetFormInstanceIdOk returns a tuple with the FormInstanceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RequestedItemDtoRef) GetFormInstanceIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FormInstanceId.Get(), o.FormInstanceId.IsSet()
+}
+
+// HasFormInstanceId returns a boolean if a field has been set.
+func (o *RequestedItemDtoRef) HasFormInstanceId() bool {
+	if o != nil && o.FormInstanceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFormInstanceId gets a reference to the given NullableString and assigns it to the FormInstanceId field.
+func (o *RequestedItemDtoRef) SetFormInstanceId(v string) {
+	o.FormInstanceId.Set(&v)
+}
+// SetFormInstanceIdNil sets the value for FormInstanceId to be an explicit nil
+func (o *RequestedItemDtoRef) SetFormInstanceIdNil() {
+	o.FormInstanceId.Set(nil)
+}
+
+// UnsetFormInstanceId ensures that no value is present for FormInstanceId, not even an explicit nil
+func (o *RequestedItemDtoRef) UnsetFormInstanceId() {
+	o.FormInstanceId.Unset()
+}
+
 func (o RequestedItemDtoRef) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -341,6 +385,9 @@ func (o RequestedItemDtoRef) ToMap() (map[string]interface{}, error) {
 	}
 	if o.NativeIdentity.IsSet() {
 		toSerialize["nativeIdentity"] = o.NativeIdentity.Get()
+	}
+	if o.FormInstanceId.IsSet() {
+		toSerialize["formInstanceId"] = o.FormInstanceId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -394,6 +441,7 @@ func (o *RequestedItemDtoRef) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "removeDate")
 		delete(additionalProperties, "accountSelection")
 		delete(additionalProperties, "nativeIdentity")
+		delete(additionalProperties, "formInstanceId")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Type** | **string** | The type of access item. | 
 **Operation** | **string** | The action to perform on the access item. | 
 **Comment** | Pointer to **NullableString** | A comment from the identity requesting the access. | [optional] 
+**Form** | Pointer to [**AccessRequestDynamicApproverRequestedItemsInnerForm**](access-request-dynamic-approver-requested-items-inner-form) |  | [optional] 
 
 ## Methods
 
@@ -191,4 +192,29 @@ HasComment returns a boolean if a field has been set.
 `func (o *AccessRequestPreApprovalRequestedItemsInner) UnsetComment()`
 
 UnsetComment ensures that no value is present for Comment, not even an explicit nil
+### GetForm
+
+`func (o *AccessRequestPreApprovalRequestedItemsInner) GetForm() AccessRequestDynamicApproverRequestedItemsInnerForm`
+
+GetForm returns the Form field if non-nil, zero value otherwise.
+
+### GetFormOk
+
+`func (o *AccessRequestPreApprovalRequestedItemsInner) GetFormOk() (*AccessRequestDynamicApproverRequestedItemsInnerForm, bool)`
+
+GetFormOk returns a tuple with the Form field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForm
+
+`func (o *AccessRequestPreApprovalRequestedItemsInner) SetForm(v AccessRequestDynamicApproverRequestedItemsInnerForm)`
+
+SetForm sets Form field to given value.
+
+### HasForm
+
+`func (o *AccessRequestPreApprovalRequestedItemsInner) HasForm() bool`
+
+HasForm returns a boolean if a field has been set.
+
 

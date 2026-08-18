@@ -13,6 +13,7 @@ docs/AccessItemReviewedBy.md
 docs/AccessRequestApprovalsAPI.md
 docs/AccessRequestApprovalsAPIdeveloperSite_code_examples.yaml
 docs/AccessRequestApproversListResponse.md
+docs/AccessRequestItemForm.md
 docs/AccessRequestType.md
 docs/ApprovalForwardHistory.md
 docs/ApprovalSummary.md
@@ -36,6 +37,7 @@ docs/Methods/Index.md
 docs/OwnerDto.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
+docs/PendingApprovalForm.md
 docs/PendingApprovalMaxPermittedAccessDuration.md
 docs/PendingApprovalOwner.md
 docs/ReassignmentType.md
@@ -55,6 +57,7 @@ model_access_item_requested_for.go
 model_access_item_requester.go
 model_access_item_reviewed_by.go
 model_access_request_approvers_list_response.go
+model_access_request_item_form.go
 model_access_request_type.go
 model_approval_forward_history.go
 model_approval_summary.go
@@ -77,6 +80,7 @@ model_locale_origin.go
 model_owner_dto.go
 model_pending_approval.go
 model_pending_approval_action.go
+model_pending_approval_form.go
 model_pending_approval_max_permitted_access_duration.go
 model_pending_approval_owner.go
 model_reassignment_type.go

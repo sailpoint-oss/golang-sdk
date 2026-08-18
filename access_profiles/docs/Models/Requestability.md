@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **RequireEndDate** | Pointer to **NullableBool** | Indicates whether the requester of the containing object must provide access end date. | [optional] [default to false]
 **MaxPermittedAccessDuration** | Pointer to [**NullableAccessDuration**](access-duration) |  | [optional] 
 **ApprovalSchemes** | Pointer to [**[]AccessProfileApprovalScheme**](access-profile-approval-scheme) | List describing the steps involved in approving the request. | [optional] 
+**FormDefinitionId** | Pointer to **NullableString** | The ID of the form definition used for the access request. If specified, the form is presented to the requester during the access request process. | [optional] 
 
 ## Methods
 
@@ -251,4 +252,39 @@ HasApprovalSchemes returns a boolean if a field has been set.
 `func (o *Requestability) UnsetApprovalSchemes()`
 
 UnsetApprovalSchemes ensures that no value is present for ApprovalSchemes, not even an explicit nil
+### GetFormDefinitionId
+
+`func (o *Requestability) GetFormDefinitionId() string`
+
+GetFormDefinitionId returns the FormDefinitionId field if non-nil, zero value otherwise.
+
+### GetFormDefinitionIdOk
+
+`func (o *Requestability) GetFormDefinitionIdOk() (*string, bool)`
+
+GetFormDefinitionIdOk returns a tuple with the FormDefinitionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormDefinitionId
+
+`func (o *Requestability) SetFormDefinitionId(v string)`
+
+SetFormDefinitionId sets FormDefinitionId field to given value.
+
+### HasFormDefinitionId
+
+`func (o *Requestability) HasFormDefinitionId() bool`
+
+HasFormDefinitionId returns a boolean if a field has been set.
+
+### SetFormDefinitionIdNil
+
+`func (o *Requestability) SetFormDefinitionIdNil(b bool)`
+
+ SetFormDefinitionIdNil sets the value for FormDefinitionId to be an explicit nil
+
+### UnsetFormDefinitionId
+`func (o *Requestability) UnsetFormDefinitionId()`
+
+UnsetFormDefinitionId ensures that no value is present for FormDefinitionId, not even an explicit nil
 

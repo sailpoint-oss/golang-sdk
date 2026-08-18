@@ -436,35 +436,54 @@ paths:
         \ when the machine has exactly one account on the entitlement source). Do\
         \ not send `accountSelection` on machine revoke.\n* Multi-machine GRANT_ACCESS\
         \ is allowed within existing recipient limits; multi-machine REVOKE_ACCESS\
-        \ is not.\n\n:::caution\n\nIf any entitlements are being requested, then the\
-        \ maximum number of entitlements that can be requested is 25, and the maximum\
-        \ number of identities that can be requested for is 10. If you exceed these\
-        \ limits, the request will fail with a 400 error. If you are not requesting\
-        \ any entitlements, then there are no limits.\n\n:::\n\n__REVOKE_ACCESS__\n\
-        * Can only be requested for a single identity at a time.\n* You cannot use\
-        \ an access request to revoke access from an identity if that access has been\
-        \ granted by role membership or by birthright provisioning. \n* Does not support\
-        \ self request. Only manager can request to revoke access for their directly\
-        \ managed employees.\n* If a `removeDate` is specified, then the requested\
-        \ role, access profile, or entitlement will be removed on that date and time.\n\
-        * Roles, access profiles, and entitlements can be requested for revocation.\n\
-        * Revoke requests for entitlements are limited to 1 entitlement per access\
-        \ request currently.\n* You cannot specify a 'startDate' in a REVOKE_ACCESS\
-        \ request, as startDate is only applicable for GRANT_ACCESS requests to indicate\
-        \ when the access should be provisioned, and it does not make sense in the\
-        \ context of revoking access.\n* You can specify a `removeDate` to add or\
-        \ alter a sunset date and time on an assignment. The `removeDate` must be\
-        \ a future date-time, in the UTC timezone. If the user already has the access\
-        \ assigned with a sunset date and time, the removeDate must be a date-time\
-        \ earlier than the existing sunset date and time. \n* Allows a manager to\
-        \ request to revoke access for direct employees. A user with ORG_ADMIN authority\
-        \ can also request to revoke access from anyone.\n* Now supports REVOKE_ACCESS\
-        \ requests for identities with multiple accounts on a single source, with\
-        \ the help of 'assignmentId' and 'nativeIdentity' fields. These fields should\
-        \ be used within the 'requestedItems' section for the revoke requests. \n\
-        * For human identities, usage of 'requestedForWithRequestedItems' is not supported\
-        \ for revoke requests. Machine identity revoke requests must use 'requestedForWithRequestedItems'\
-        \ with `identityType: MACHINE` as described above.\n"
+        \ is not.\n\n__FORMS IN ACCESS REQUESTS__\n* Forms apply to human GRANT_ACCESS\
+        \ requests for roles, access profiles, and entitlements. Forms are not used\
+        \ for REVOKE_ACCESS.\n* Roles, access profiles, and entitlements can optionally\
+        \ reference a `formDefinitionId` in their request configuration. When configured,\
+        \ the requester completes that form and includes the resulting `formInstanceId`\
+        \ on each affected GRANT_ACCESS line item when submitting the access request.\n\
+        * Provide `formInstanceId` on each GRANT_ACCESS line item in `requestedItems`\
+        \ (flat payload) or in `requestedForWithRequestedItems.requestedItems` (nested\
+        \ payload). An empty `formInstanceId` on a GRANT_ACCESS line item is rejected\
+        \ with HTTP 400.\n* When a configured form is required, a missing `formInstanceId`,\
+        \ a submitted form whose definition does not match the configured `formDefinitionId`,\
+        \ or form instance data that could not be read may fail the request during\
+        \ asynchronous processing even when this endpoint returns success.\n* Reusing\
+        \ the same `formInstanceId` for the same requested object across multiple\
+        \ recipients is supported.\n* Completed form answers are returned on access\
+        \ request status, administration, and approval responses in the `form` object\
+        \ on each item. Access request pre-approval and dynamic approver trigger inputs\
+        \ may include `form` on each entry in `requestedItems`. The post-approval\
+        \ trigger includes `form` on each entry in `requestedItemsStatus`.\n\n:::caution\n\
+        \nIf any entitlements are being requested, then the maximum number of entitlements\
+        \ that can be requested is 25, and the maximum number of identities that can\
+        \ be requested for is 10. If you exceed these limits, the request will fail\
+        \ with a 400 error. If you are not requesting any entitlements, then there\
+        \ are no limits.\n\n:::\n\n__REVOKE_ACCESS__\n* Can only be requested for\
+        \ a single identity at a time.\n* You cannot use an access request to revoke\
+        \ access from an identity if that access has been granted by role membership\
+        \ or by birthright provisioning. \n* Does not support self request. Only manager\
+        \ can request to revoke access for their directly managed employees.\n* If\
+        \ a `removeDate` is specified, then the requested role, access profile, or\
+        \ entitlement will be removed on that date and time.\n* Roles, access profiles,\
+        \ and entitlements can be requested for revocation.\n* Revoke requests for\
+        \ entitlements are limited to 1 entitlement per access request currently.\n\
+        * You cannot specify a 'startDate' in a REVOKE_ACCESS request, as startDate\
+        \ is only applicable for GRANT_ACCESS requests to indicate when the access\
+        \ should be provisioned, and it does not make sense in the context of revoking\
+        \ access.\n* You can specify a `removeDate` to add or alter a sunset date\
+        \ and time on an assignment. The `removeDate` must be a future date-time,\
+        \ in the UTC timezone. If the user already has the access assigned with a\
+        \ sunset date and time, the removeDate must be a date-time earlier than the\
+        \ existing sunset date and time. \n* Allows a manager to request to revoke\
+        \ access for direct employees. A user with ORG_ADMIN authority can also request\
+        \ to revoke access from anyone.\n* Now supports REVOKE_ACCESS requests for\
+        \ identities with multiple accounts on a single source, with the help of 'assignmentId'\
+        \ and 'nativeIdentity' fields. These fields should be used within the 'requestedItems'\
+        \ section for the revoke requests. \n* For human identities, usage of 'requestedForWithRequestedItems'\
+        \ is not supported for revoke requests. Machine identity revoke requests must\
+        \ use 'requestedForWithRequestedItems' with `identityType: MACHINE` as described\
+        \ above.\n"
       operationId: createAccessRequestV1
       requestBody:
         content:
@@ -994,6 +1013,7 @@ paths:
         Use this API to return a list of access request statuses based on the specified query parameters.
         If an access request was made for access that an identity already has, the API ignores the access request.  These ignored requests do not display in the list of access request statuses.
         Any user with any user level can get the status of their own access requests. A user with ORG_ADMIN is required to call this API to get a list of statuses for other users. For access requests for machines, each status item will include `identityType` as `MACHINE` and `requestedFor` with `type: MACHINE_IDENTITY` and the machine id. Requests without a stored identity type are returned as `HUMAN` / `IDENTITY`.
+        When a requested object has an associated form, each status item may include a `form` object with the form definition ID, instance ID, and answers (`formData`).
       operationId: listAccessRequestStatusV1
       parameters:
       - description: Filter the results by the identity the requests were made for.
@@ -1193,6 +1213,7 @@ paths:
       description: |-
         Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters.
         Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses
+        When a requested object has an associated form, each status item may include a `form` object with the form definition ID, instance ID, and answers (`formData`).
       operationId: listAdministratorsAccessRequestStatusV1
       parameters:
       - description: Use this header to enable this experimental API.
@@ -1628,8 +1649,9 @@ paths:
 components:
   examples:
     create-human-grant:
-      description: GRANT_ACCESS for a human identity using the flat requestedFor /
-        requestedItems shape (default when account selection is not needed).
+      description: "GRANT_ACCESS for a human identity using the flat requestedFor\
+        \ / requestedItems shape (default when account selection is not needed), with\
+        \ optional formInstanceId when the requested object has an associated form."
       value:
         requestType: GRANT_ACCESS
         requestedFor:
@@ -1638,9 +1660,11 @@ components:
         - type: ACCESS_PROFILE
           id: 2c9180835d2e5168015d32f890ca1581
           comment: Requesting access profile for John Doe
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
     create-human-grant-nested:
       description: "GRANT_ACCESS for a human identity using requestedForWithRequestedItems,\
-        \ with accountSelection and optional sunrise/sunset dates on the item."
+        \ with accountSelection, optional formInstanceId when the requested object\
+        \ has an associated form, and optional sunrise/sunset dates on the item."
       value:
         requestType: GRANT_ACCESS
         requestedForWithRequestedItems:
@@ -1650,6 +1674,7 @@ components:
           - type: ACCESS_PROFILE
             id: 2c9180835d2e5168015d32f890ca1581
             comment: Requesting access profile for John Doe
+            formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
             startDate: 2027-01-15T21:22:23.000Z
             removeDate: 2027-07-11T21:23:15.000Z
             accountSelection:
@@ -1935,6 +1960,7 @@ components:
         - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
           approverType: GOVERNANCE_GROUP
         reauthorizationRequired: false
+        formDefinitionId: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
         requestCommentRequired: true
         requireEndDate: true
         maxPermittedAccessDuration:
@@ -1971,6 +1997,13 @@ components:
           type: boolean
         maxPermittedAccessDuration:
           $ref: '#/components/schemas/EntitlementAccessRequestConfig_maxPermittedAccessDuration'
+        formDefinitionId:
+          description: "The ID of the form definition used for the access request.\
+            \ If specified, the form is presented to the requester during the access\
+            \ request process."
+          example: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
+          nullable: true
+          type: string
       title: Entitlement Access Request Config
       type: object
     EntitlementRevocationRequestConfig:
@@ -1999,6 +2032,7 @@ components:
           - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
             approverType: GOVERNANCE_GROUP
           reauthorizationRequired: false
+          formDefinitionId: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
           requestCommentRequired: true
           requireEndDate: true
           maxPermittedAccessDuration:
@@ -2043,6 +2077,7 @@ components:
             - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
               approverType: GOVERNANCE_GROUP
             reauthorizationRequired: false
+            formDefinitionId: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
             requestCommentRequired: true
             requireEndDate: true
             maxPermittedAccessDuration:
@@ -2206,6 +2241,7 @@ components:
           - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
             approverType: GOVERNANCE_GROUP
           reauthorizationRequired: false
+          formDefinitionId: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
           requestCommentRequired: true
           requireEndDate: true
           maxPermittedAccessDuration:
@@ -2241,6 +2277,7 @@ components:
             - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
               approverType: GOVERNANCE_GROUP
             reauthorizationRequired: false
+            formDefinitionId: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
             requestCommentRequired: true
             requireEndDate: true
             maxPermittedAccessDuration:
@@ -2310,6 +2347,7 @@ components:
         removeDate: 2020-07-11T21:23:15Z
         comment: Requesting access profile for John Doe
         id: 2c9180835d2e5168015d32f890ca1581
+        formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
         type: ACCESS_PROFILE
         assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
         startDate: 2020-06-12T21:22:23Z
@@ -2375,6 +2413,15 @@ components:
             The unique identifier for an account on the identity, designated as the account ID attribute in the source's account schema. This is used to revoke a specific attributeAssignment on the identity.
             * For use with REVOKE_ACCESS requests for entitlements for identities with multiple accounts on a single source.
           example: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
+          nullable: true
+          type: string
+        formInstanceId:
+          description: "Optional ID of a completed form instance for this line item.\
+            \ For human GRANT_ACCESS requests, include when the requested role, access\
+            \ profile, or entitlement has an associated `formDefinitionId` in its\
+            \ request configuration. An empty `formInstanceId` on a GRANT_ACCESS item\
+            \ is rejected with HTTP 400. Not used for REVOKE_ACCESS."
+          example: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
           nullable: true
           type: string
       required:
@@ -2449,6 +2496,7 @@ components:
             nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
         comment: Requesting access profile for John Doe
         id: 2c9180835d2e5168015d32f890ca1581
+        formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
         type: ACCESS_PROFILE
         startDate: 2020-06-12T21:22:23Z
         nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
@@ -2529,6 +2577,14 @@ components:
           example: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
           nullable: true
           type: string
+        formInstanceId:
+          description: |-
+            Optional ID of a completed form instance for this line item.
+            * For human GRANT_ACCESS: include when the requested role, access profile, or entitlement has an associated `formDefinitionId` in its request configuration. An empty `formInstanceId` on a GRANT_ACCESS item is rejected with HTTP 400.
+            * Not supported for machine identity access requests.
+          example: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
+          nullable: true
+          type: string
       required:
       - id
       - type
@@ -2557,6 +2613,7 @@ components:
               nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
           type: ACCESS_PROFILE
           startDate: 2020-06-12T21:22:23Z
           nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
@@ -2579,6 +2636,7 @@ components:
               nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
           type: ACCESS_PROFILE
           startDate: 2020-06-12T21:22:23Z
           nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
@@ -2625,6 +2683,7 @@ components:
           removeDate: 2020-07-11T21:23:15Z
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
           type: ACCESS_PROFILE
           assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
           startDate: 2020-06-12T21:22:23Z
@@ -2635,6 +2694,7 @@ components:
           removeDate: 2020-07-11T21:23:15Z
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
           type: ACCESS_PROFILE
           assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
           startDate: 2020-06-12T21:22:23Z
@@ -2662,6 +2722,7 @@ components:
                 nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
             comment: Requesting access profile for John Doe
             id: 2c9180835d2e5168015d32f890ca1581
+            formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
             nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
@@ -2684,6 +2745,7 @@ components:
                 nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
             comment: Requesting access profile for John Doe
             id: 2c9180835d2e5168015d32f890ca1581
+            formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
             nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
@@ -2709,6 +2771,7 @@ components:
                 nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
             comment: Requesting access profile for John Doe
             id: 2c9180835d2e5168015d32f890ca1581
+            formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
             nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
@@ -2731,6 +2794,7 @@ components:
                 nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
             comment: Requesting access profile for John Doe
             id: 2c9180835d2e5168015d32f890ca1581
+            formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
             nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
@@ -2979,6 +3043,7 @@ components:
           removeDate: 2020-07-11T21:23:15Z
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
           type: ACCESS_PROFILE
           assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
           startDate: 2020-06-12T21:22:23Z
@@ -2989,6 +3054,7 @@ components:
           removeDate: 2020-07-11T21:23:15Z
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
           type: ACCESS_PROFILE
           assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
           startDate: 2020-06-12T21:22:23Z
@@ -2999,6 +3065,7 @@ components:
           removeDate: 2020-07-11T21:23:15Z
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
           type: ACCESS_PROFILE
           assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
           startDate: 2020-06-12T21:22:23Z
@@ -3009,6 +3076,7 @@ components:
           removeDate: 2020-07-11T21:23:15Z
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
           type: ACCESS_PROFILE
           assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
           startDate: 2020-06-12T21:22:23Z
@@ -3019,6 +3087,7 @@ components:
           removeDate: 2020-07-11T21:23:15Z
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
           type: ACCESS_PROFILE
           assignmentId: ee48a191c00d49bf9264eb0a4fc3a9fc
           startDate: 2020-06-12T21:22:23Z
@@ -3046,6 +3115,7 @@ components:
                 nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
             comment: Requesting access profile for John Doe
             id: 2c9180835d2e5168015d32f890ca1581
+            formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
             nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
@@ -3068,6 +3138,7 @@ components:
                 nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
             comment: Requesting access profile for John Doe
             id: 2c9180835d2e5168015d32f890ca1581
+            formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
             nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
@@ -3093,6 +3164,7 @@ components:
                 nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
             comment: Requesting access profile for John Doe
             id: 2c9180835d2e5168015d32f890ca1581
+            formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
             nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
@@ -3115,6 +3187,7 @@ components:
                 nativeIdentity: "CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local"
             comment: Requesting access profile for John Doe
             id: 2c9180835d2e5168015d32f890ca1581
+            formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
             type: ACCESS_PROFILE
             startDate: 2020-06-12T21:22:23Z
             nativeIdentity: "CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN"
@@ -4292,6 +4365,80 @@ components:
           type: array
       title: Entitlement State Snapshot Jit Detail
       type: object
+    AccessRequestItemForm:
+      additionalProperties: true
+      description: "Completed form instance associated with an access request item.\
+        \ Omitted when the item has no associated form or no form answers were captured.\
+        \ All listed properties may be present when form answers exist. Optional structural\
+        \ keys (`formElements`, `formConditions`, `formInstanceInputs`) may also be\
+        \ present; their shape follows the form instance payload."
+      example:
+        formDefinitionId: b2c1808f-77f5-4a3a-9f3a-1d2e3f4a5b6c
+        formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
+        formData:
+          department: Engineering
+          notifyRequester: true
+          platforms:
+          - AWS
+          - GCP
+      nullable: true
+      properties:
+        formDefinitionId:
+          description: ID of the form definition that was completed for this item.
+          example: b2c1808f-77f5-4a3a-9f3a-1d2e3f4a5b6c
+          nullable: true
+          type: string
+        formInstanceId:
+          description: ID of the completed form instance.
+          example: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
+          nullable: true
+          type: string
+        formData:
+          additionalProperties: true
+          description: Key-value pairs (form field technical name to value) from the
+            completed form instance.
+          example:
+            department: Engineering
+            notifyRequester: true
+            platforms:
+            - AWS
+            - GCP
+          nullable: true
+          type: object
+        formElements:
+          description: Optional form element definitions when present. Shape follows
+            the form instance payload.
+          example:
+          - id: 00000000-0000-0000-0000-000000000000
+            elementType: TEXT
+          items:
+            additionalProperties: true
+            type: object
+          nullable: true
+          type: array
+        formConditions:
+          description: Optional conditional display rules when present. Shape follows
+            the form instance payload; do not depend on a fixed condition schema in
+            this API.
+          example:
+          - ruleOperator: AND
+            rules: []
+            effects: []
+          items:
+            additionalProperties: true
+            type: object
+          nullable: true
+          type: array
+        formInstanceInputs:
+          additionalProperties: true
+          description: Optional inputs passed into the form instance when present.
+            Copied from the form instance payload as-is.
+          example:
+            department: Engineering
+          nullable: true
+          type: object
+      title: Access Request Item Form
+      type: object
     RequestedItemStatus:
       example:
         requestedFor:
@@ -4489,6 +4636,24 @@ components:
           modified: 2019-12-20T09:17:12.192Z
           comment: This request must be cancelled.
         accessRequestId: 2b838de9-db9b-abcf-e646-d4f274ad4238
+        form:
+          formConditions:
+          - ruleOperator: AND
+            rules: []
+            effects: []
+          formDefinitionId: b2c1808f-77f5-4a3a-9f3a-1d2e3f4a5b6c
+          formInstanceInputs:
+            department: Engineering
+          formData:
+            department: Engineering
+            notifyRequester: true
+            platforms:
+            - AWS
+            - GCP
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
+          formElements:
+          - id: 00000000-0000-0000-0000-000000000000
+            elementType: TEXT
         name: AccessProfile1
         manualWorkItemDetails:
         - originalOwner:
@@ -4702,6 +4867,8 @@ components:
             $ref: '#/components/schemas/EntitlementStateSnapshotJitDetail'
           nullable: true
           type: array
+        form:
+          $ref: '#/components/schemas/RequestedItemStatus_form'
       title: Requested Item Status
       type: object
     AccessRequestAdminItemStatus:
@@ -4887,6 +5054,24 @@ components:
           modified: 2019-12-20T09:17:12.192Z
           comment: This request must be cancelled.
         accessRequestId: 2b838de9-db9b-abcf-e646-d4f274ad4238
+        form:
+          formConditions:
+          - ruleOperator: AND
+            rules: []
+            effects: []
+          formDefinitionId: b2c1808f-77f5-4a3a-9f3a-1d2e3f4a5b6c
+          formInstanceInputs:
+            department: Engineering
+          formData:
+            department: Engineering
+            notifyRequester: true
+            platforms:
+            - AWS
+            - GCP
+          formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
+          formElements:
+          - id: 00000000-0000-0000-0000-000000000000
+            elementType: TEXT
         name: AccessProfile1
         manualWorkItemDetails:
         - originalOwner:
@@ -5067,6 +5252,8 @@ components:
             key2: value2
           nullable: true
           type: object
+        form:
+          $ref: '#/components/schemas/RequestedItemStatus_form'
       title: Access Request Admin Item Status
       type: object
     BulkApproveAccessRequest:
@@ -5584,3 +5771,27 @@ components:
         decision: APPROVED
         comment: Access is Approved
         reviewer: John Doe
+    RequestedItemStatus_form:
+      allOf:
+      - $ref: '#/components/schemas/AccessRequestItemForm'
+      - description: Completed form data for this item when the requested object has
+          an associated form.
+        nullable: true
+      example:
+        formConditions:
+        - ruleOperator: AND
+          rules: []
+          effects: []
+        formDefinitionId: b2c1808f-77f5-4a3a-9f3a-1d2e3f4a5b6c
+        formInstanceInputs:
+          department: Engineering
+        formData:
+          department: Engineering
+          notifyRequester: true
+          platforms:
+          - AWS
+          - GCP
+        formInstanceId: 9f3a1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e
+        formElements:
+        - id: 00000000-0000-0000-0000-000000000000
+          elementType: TEXT
