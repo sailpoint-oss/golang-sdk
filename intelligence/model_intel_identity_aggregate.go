@@ -19,7 +19,7 @@ import (
 // checks if the IntelIdentityAggregate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IntelIdentityAggregate{}
 
-// IntelIdentityAggregate Human identity response (type Human). Identity attributes are hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []). The outliers slice is omitted when the tenant lacks the IDA-outliers license. The identityGraph deep link is omitted when the tenant lacks the idg:base license. 
+// IntelIdentityAggregate Human identity response (type Human). Identity attributes are hoisted to the top level. The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []). The outliers slice is omitted when the tenant lacks the IDA-outliers license. The identityGraph deep link is omitted when the tenant lacks the idg:base license. The nonHumanIdentityOwnership slice is omitted when the tenant lacks idn:machine-identity-security. 
 type IntelIdentityAggregate struct {
 	// Identity Security Cloud identifier for this identity.
 	Id string `json:"id"`
@@ -47,6 +47,8 @@ type IntelIdentityAggregate struct {
 	IsManager *bool `json:"isManager,omitempty"`
 	// Omitted when the tenant lacks the idg:base license.
 	IdentityGraph *Intelidentitygraphlink `json:"identityGraph,omitempty"`
+	// Omitted when the tenant lacks `idn:machine-identity-security`. When present, both `agents` and `applications` always render. 
+	NonHumanIdentityOwnership *Intelnonhumanidentityownership `json:"nonHumanIdentityOwnership,omitempty"`
 	// First page of accounts for the identity.
 	Accounts IntelAccountsSlice `json:"accounts"`
 	// Full privileged access result for the identity.
@@ -506,6 +508,38 @@ func (o *IntelIdentityAggregate) SetIdentityGraph(v Intelidentitygraphlink) {
 	o.IdentityGraph = &v
 }
 
+// GetNonHumanIdentityOwnership returns the NonHumanIdentityOwnership field value if set, zero value otherwise.
+func (o *IntelIdentityAggregate) GetNonHumanIdentityOwnership() Intelnonhumanidentityownership {
+	if o == nil || IsNil(o.NonHumanIdentityOwnership) {
+		var ret Intelnonhumanidentityownership
+		return ret
+	}
+	return *o.NonHumanIdentityOwnership
+}
+
+// GetNonHumanIdentityOwnershipOk returns a tuple with the NonHumanIdentityOwnership field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntelIdentityAggregate) GetNonHumanIdentityOwnershipOk() (*Intelnonhumanidentityownership, bool) {
+	if o == nil || IsNil(o.NonHumanIdentityOwnership) {
+		return nil, false
+	}
+	return o.NonHumanIdentityOwnership, true
+}
+
+// HasNonHumanIdentityOwnership returns a boolean if a field has been set.
+func (o *IntelIdentityAggregate) HasNonHumanIdentityOwnership() bool {
+	if o != nil && !IsNil(o.NonHumanIdentityOwnership) {
+		return true
+	}
+
+	return false
+}
+
+// SetNonHumanIdentityOwnership gets a reference to the given Intelnonhumanidentityownership and assigns it to the NonHumanIdentityOwnership field.
+func (o *IntelIdentityAggregate) SetNonHumanIdentityOwnership(v Intelnonhumanidentityownership) {
+	o.NonHumanIdentityOwnership = &v
+}
+
 // GetAccounts returns the Accounts field value
 func (o *IntelIdentityAggregate) GetAccounts() IntelAccountsSlice {
 	if o == nil {
@@ -655,6 +689,9 @@ func (o IntelIdentityAggregate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IdentityGraph) {
 		toSerialize["identityGraph"] = o.IdentityGraph
 	}
+	if !IsNil(o.NonHumanIdentityOwnership) {
+		toSerialize["nonHumanIdentityOwnership"] = o.NonHumanIdentityOwnership
+	}
 	toSerialize["accounts"] = o.Accounts
 	toSerialize["privilegedAccess"] = o.PrivilegedAccess
 	if !IsNil(o.Outliers) {
@@ -721,6 +758,7 @@ func (o *IntelIdentityAggregate) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "identityStatus")
 		delete(additionalProperties, "isManager")
 		delete(additionalProperties, "identityGraph")
+		delete(additionalProperties, "nonHumanIdentityOwnership")
 		delete(additionalProperties, "accounts")
 		delete(additionalProperties, "privilegedAccess")
 		delete(additionalProperties, "outliers")

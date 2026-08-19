@@ -253,18 +253,24 @@ Embeds the first page (10 items) of each enrichment slice. Each paged slice incl
 from upstream X-Total-Count when items is non-empty, and carries a next continuation URL when
 totalCount exceeds the items returned on this page. Slices are always present (empty uses
 items [] with no totalCount). privilegedAccess returns the full privileged-access result and never carries
-next or totalCount. If any enrichment upstream fails, the whole request fails with HTTP 500,
-except outliers, which is omitted (not an error) when the tenant lacks the IDA-outliers license
-(upstream 401 or 403).
+next or totalCount. When the tenant has idn:machine-identity-security, nonHumanIdentityOwnership
+is included with agents and applications categories; each category is a flat object with
+independently paged primaryOwned and secondaryOwned buckets, and optional message/reason when
+upstream ownership fetch fails for that category (reason UPSTREAM_UNAVAILABLE). When the tenant
+lacks that license, nonHumanIdentityOwnership is omitted. Continue ownership paging with
+GET .../non-human-identity-ownership/{category} and optional ownershipRole=primary|secondary
+(defaults to primary). If any enrichment upstream fails, the whole request fails with HTTP 500,
+except outliers (omitted when the tenant lacks the IDA-outliers license) and
+nonHumanIdentityOwnership category-level degrade (aggregate still returns HTTP 200).
 
 **Non-human identity envelope (type NHI)**
 
 Returns flat non-human identity fields at the top level plus correlated machine accounts on the
 aggregate and a derived block (isOrphaned, authorizedHumanIdentities, blastRadiusSummary).
-Omits Human-only slices (privilegedAccess, outliers, accessHistory). Account paging via child
-routes is not yet released. Opaque prefix resolution that deduplicates to one parent identity
-returns HTTP 200 with matchConfidence partial; multiple distinct parent identities return HTTP 409
-with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values.
+Omits Human-only slices (privilegedAccess, outliers, accessHistory, nonHumanIdentityOwnership).
+Account paging via child routes is not yet released. Opaque prefix resolution that deduplicates
+to one parent identity returns HTTP 200 with matchConfidence partial; multiple distinct parent
+identities return HTTP 409 with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -931,6 +937,240 @@ func (a *IntelligenceAPIService) GetIntelIdentityCertificationHistoryV1Execute(r
 		return localVarReturnValue, nil, reportError("id must have less than 128 elements")
 	}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v GetIdentityIntelligenceV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v GetIdentityIntelligenceV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request struct {
+	ctx context.Context
+	ApiService *IntelligenceAPIService
+	id string
+	category string
+	ownershipRole *string
+	limit *int32
+	offset *int32
+	count *bool
+}
+
+// Optional ownership role discriminator. When set to &#x60;primary&#x60; or &#x60;secondary&#x60;, returns one paged role bucket. When omitted, defaults to &#x60;primary&#x60;. 
+func (r ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request) OwnershipRole(ownershipRole string) ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request {
+	r.ownershipRole = &ownershipRole
+	return r
+}
+
+// Page size. Defaults to 250; values above 250 are rejected with 400.
+func (r ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request) Limit(limit int32) ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request {
+	r.limit = &limit
+	return r
+}
+
+// Zero-based page offset. Defaults to 0.
+func (r ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request) Offset(offset int32) ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request {
+	r.offset = &offset
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request) Count(count bool) ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request {
+	r.count = &count
+	return r
+}
+
+func (r ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request) Execute() ([]Intelnonhumanidentityownershipitem, *http.Response, error) {
+	return r.ApiService.GetIntelIdentityNonHumanIdentityOwnershipV1Execute(r)
+}
+
+/*
+GetIntelIdentityNonHumanIdentityOwnershipV1 List owned NHI identities
+
+Continuation endpoint for a human parent's
+`nonHumanIdentityOwnership.{category}.primaryOwned.next` or
+`nonHumanIdentityOwnership.{category}.secondaryOwned.next` link. Returns a bare JSON array of
+owned non-human identity summary rows for the given `category`, optional `ownershipRole`,
+`limit`, and `offset`. Wire items match the aggregate ownership item shape
+(`{ id, displayName, source? }`).
+
+When `ownershipRole` is omitted, the request defaults to `primary`. Pass `count=true` to
+receive `X-Total-Count` (including `0` on empty pages). The `filters` query parameter is not
+supported on this route (HTTP 400).
+
+Requires tenant licenses `idn:response-and-remediation` and `idn:machine-identity-security`.
+Tenants without `idn:machine-identity-security` receive HTTP 403.
+
+Not applicable to non-human identities (no ownership slice on the NHI envelope).
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Non-empty identity id path segment for Intelligence sub-resources.
+ @param category Non-human identity ownership category. Use `agents` for AI Agent subtypes and `applications` for Application subtypes. 
+ @return ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request
+*/
+func (a *IntelligenceAPIService) GetIntelIdentityNonHumanIdentityOwnershipV1(ctx context.Context, id string, category string) ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request {
+	return ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+		category: category,
+	}
+}
+
+// Execute executes the request
+//  @return []Intelnonhumanidentityownershipitem
+func (a *IntelligenceAPIService) GetIntelIdentityNonHumanIdentityOwnershipV1Execute(r ApiGetIntelIdentityNonHumanIdentityOwnershipV1Request) ([]Intelnonhumanidentityownershipitem, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Intelnonhumanidentityownershipitem
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntelligenceAPIService.GetIntelIdentityNonHumanIdentityOwnershipV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/intelligence/v1/identities/{id}/non-human-identity-ownership/{category}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"category"+"}", url.PathEscape(parameterValueToString(r.category, "category")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.id) < 1 {
+		return localVarReturnValue, nil, reportError("id must have at least 1 elements")
+	}
+	if strlen(r.id) > 128 {
+		return localVarReturnValue, nil, reportError("id must have less than 128 elements")
+	}
+
+	if r.ownershipRole != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ownershipRole", r.ownershipRole, "form", "")
+	} else {
+		var defaultValue string = "primary"
+		r.ownershipRole = &defaultValue
+	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {

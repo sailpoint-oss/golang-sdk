@@ -42,6 +42,10 @@ docs/Intelmachineentityref.md
 docs/Intelmachineidentityowners.md
 docs/Intelmachinesourcewire.md
 docs/Intelmachineuserentitlement.md
+docs/Intelnonhumanidentityownedslice.md
+docs/Intelnonhumanidentityownership.md
+docs/Intelnonhumanidentityownershipcategory.md
+docs/Intelnonhumanidentityownershipitem.md
 docs/Intelprivilegelevel.md
 docs/LocaleOrigin.md
 docs/Methods/Index.md
@@ -87,6 +91,10 @@ model_intelmachineentityref.go
 model_intelmachineidentityowners.go
 model_intelmachinesourcewire.go
 model_intelmachineuserentitlement.go
+model_intelnonhumanidentityownedslice.go
+model_intelnonhumanidentityownership.go
+model_intelnonhumanidentityownershipcategory.go
+model_intelnonhumanidentityownershipitem.go
 model_intelprivilegelevel.go
 model_locale_origin.go
 model_responseactionaccepted.go

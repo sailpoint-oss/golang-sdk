@@ -88,6 +88,21 @@ func Test_intelligence_IntelligenceAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IntelligenceAPIService GetIntelIdentityNonHumanIdentityOwnershipV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var category string
+
+		resp, httpRes, err := apiClient.IntelligenceAPI.GetIntelIdentityNonHumanIdentityOwnershipV1(context.Background(), id, category).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IntelligenceAPIService GetIntelIdentityRareAccessV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

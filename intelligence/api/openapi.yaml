@@ -43,6 +43,10 @@ tags:
       tenant lacks this license, the `outliers` key is omitted.
     - **`idg:base`** (optional): governs the root-level `identityGraph` deep link on aggregate
       responses. When the tenant lacks this license, `identityGraph` is omitted.
+    - **`idn:machine-identity-security`** (optional): governs the Human `nonHumanIdentityOwnership`
+      slice. When the tenant lacks this license, `nonHumanIdentityOwnership` is omitted on the
+      aggregate GET and the `/non-human-identity-ownership/{category}` child route returns
+      **403 Forbidden**.
 
     ## Pagination
 
@@ -50,11 +54,13 @@ tags:
     sends `count=true` and reads `X-Total-Count`. Parent slices expose `totalCount` when `items` is
     non-empty and set `next` when `totalCount > offset + len(items)` (aggregate offset is always 0).
     Empty slices render as `items: []` with no `totalCount`. `privilegedAccess` is never paged and
-    carries no `totalCount`.
+    carries no `totalCount`. When licensed, `nonHumanIdentityOwnership` pages each
+    `primaryOwned` / `secondaryOwned` bucket independently under `agents` and `applications`.
 
-    Human child routes (`/accounts`, `/outliers/rare-access`, `/access-history/*`) follow the
-    SailPoint V3 pattern: pass `count=true` to receive `X-Total-Count` (including `0` on empty
-    pages). When `count` is omitted, upstream count work is skipped and the header is omitted.
+    Human child routes (`/accounts`, `/outliers/rare-access`, `/access-history/*`,
+    `/non-human-identity-ownership/{category}`) follow the SailPoint V3 pattern: pass `count=true`
+    to receive `X-Total-Count` (including `0` on empty pages). When `count` is omitted, upstream
+    count work is skipped and the header is omitted.
   name: Intelligence
 paths:
   /intelligence/v1/identities:
@@ -99,18 +105,24 @@ paths:
         from upstream X-Total-Count when items is non-empty, and carries a next continuation URL when
         totalCount exceeds the items returned on this page. Slices are always present (empty uses
         items [] with no totalCount). privilegedAccess returns the full privileged-access result and never carries
-        next or totalCount. If any enrichment upstream fails, the whole request fails with HTTP 500,
-        except outliers, which is omitted (not an error) when the tenant lacks the IDA-outliers license
-        (upstream 401 or 403).
+        next or totalCount. When the tenant has idn:machine-identity-security, nonHumanIdentityOwnership
+        is included with agents and applications categories; each category is a flat object with
+        independently paged primaryOwned and secondaryOwned buckets, and optional message/reason when
+        upstream ownership fetch fails for that category (reason UPSTREAM_UNAVAILABLE). When the tenant
+        lacks that license, nonHumanIdentityOwnership is omitted. Continue ownership paging with
+        GET .../non-human-identity-ownership/{category} and optional ownershipRole=primary|secondary
+        (defaults to primary). If any enrichment upstream fails, the whole request fails with HTTP 500,
+        except outliers (omitted when the tenant lacks the IDA-outliers license) and
+        nonHumanIdentityOwnership category-level degrade (aggregate still returns HTTP 200).
 
         **Non-human identity envelope (type NHI)**
 
         Returns flat non-human identity fields at the top level plus correlated machine accounts on the
         aggregate and a derived block (isOrphaned, authorizedHumanIdentities, blastRadiusSummary).
-        Omits Human-only slices (privilegedAccess, outliers, accessHistory). Account paging via child
-        routes is not yet released. Opaque prefix resolution that deduplicates to one parent identity
-        returns HTTP 200 with matchConfidence partial; multiple distinct parent identities return HTTP 409
-        with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values.
+        Omits Human-only slices (privilegedAccess, outliers, accessHistory, nonHumanIdentityOwnership).
+        Account paging via child routes is not yet released. Opaque prefix resolution that deduplicates
+        to one parent identity returns HTTP 200 with matchConfidence partial; multiple distinct parent
+        identities return HTTP 409 with IDC_IDENTITY_AMBIGUOUS and candidate id and displayName values.
       operationId: getIdentityIntelligenceV1
       parameters:
       - description: |-
@@ -756,6 +768,183 @@ paths:
       x-required-right: sp:identity-sec-intel:read
       x-sailpoint-userLevels:
       - Any
+  /intelligence/v1/identities/{id}/non-human-identity-ownership/{category}:
+    get:
+      description: |
+        Continuation endpoint for a human parent's
+        `nonHumanIdentityOwnership.{category}.primaryOwned.next` or
+        `nonHumanIdentityOwnership.{category}.secondaryOwned.next` link. Returns a bare JSON array of
+        owned non-human identity summary rows for the given `category`, optional `ownershipRole`,
+        `limit`, and `offset`. Wire items match the aggregate ownership item shape
+        (`{ id, displayName, source? }`).
+
+        When `ownershipRole` is omitted, the request defaults to `primary`. Pass `count=true` to
+        receive `X-Total-Count` (including `0` on empty pages). The `filters` query parameter is not
+        supported on this route (HTTP 400).
+
+        Requires tenant licenses `idn:response-and-remediation` and `idn:machine-identity-security`.
+        Tenants without `idn:machine-identity-security` receive HTTP 403.
+
+        Not applicable to non-human identities (no ownership slice on the NHI envelope).
+      operationId: getIntelIdentityNonHumanIdentityOwnershipV1
+      parameters:
+      - description: Non-empty identity id path segment for Intelligence sub-resources.
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          maxLength: 128
+          minLength: 1
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listIdentitiesV1
+      - description: |
+          Non-human identity ownership category. Use `agents` for AI Agent subtypes and
+          `applications` for Application subtypes.
+        example: agents
+        explode: false
+        in: path
+        name: category
+        required: true
+        schema:
+          enum:
+          - agents
+          - applications
+          type: string
+        style: simple
+      - description: |
+          Optional ownership role discriminator. When set to `primary` or `secondary`, returns one
+          paged role bucket. When omitted, defaults to `primary`.
+        example: primary
+        explode: true
+        in: query
+        name: ownershipRole
+        required: false
+        schema:
+          default: primary
+          enum:
+          - primary
+          - secondary
+          type: string
+        style: form
+      - description: Page size. Defaults to 250; values above 250 are rejected with
+          400.
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 1
+          type: integer
+        style: form
+      - description: Zero-based page offset. Defaults to 0.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 2c91808874ff91550175097daaec161e
+                displayName: Example AI Agent
+                source:
+                  id: 310a15aa1cf34939a8730cc16b6473da
+                  name: Example Source
+                  type: DelimitedFile
+              schema:
+                items:
+                  $ref: '#/components/schemas/Intelnonhumanidentityownershipitem'
+                type: array
+          description: One page of owned non-human identities for the requested category
+            and role.
+          headers:
+            X-Total-Count:
+              description: Total number of owned non-human identities for the requested
+                ownership role; present only when `count=true` was sent (including
+                `0` on empty pages).
+              explode: false
+              schema:
+                minimum: 0
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: |
+            Invalid path or query parameters, including invalid `category`, invalid `ownershipRole`,
+            unsupported `filters`, or invalid `limit`/`offset`/`count`.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getIdentityIntelligenceV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: |
+            Unauthorized access, or tenant lacks the `idn:machine-identity-security` license required
+            for this route.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getIdentityIntelligenceV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal or upstream server failure.
+      security:
+      - userAuth:
+        - sp:identity-sec-intel:read
+      - applicationAuth:
+        - sp:identity-sec-intel:read
+      summary: List owned NHI identities
+      tags:
+      - Intelligence
+      x-required-right: sp:identity-sec-intel:read
+      x-sailpoint-userLevels:
+      - Any
   /intelligence/v1/response-actions:
     post:
       description: |
@@ -985,6 +1174,31 @@ components:
         isManager: false
         identityGraph:
           href: https://tenant.identitynow.com/ui/identity-graph?entity=human_identity&id=ef38f94347e94562b5bb8424a56397d8
+        nonHumanIdentityOwnership:
+          agents:
+            primaryOwned:
+              items:
+              - id: 2c91808874ff91550175097daaec161e
+                displayName: Example AI Agent
+                source:
+                  id: 310a15aa1cf34939a8730cc16b6473da
+                  name: Example Source
+                  type: DelimitedFile
+              totalCount: 1
+            secondaryOwned:
+              items: []
+          applications:
+            primaryOwned:
+              items:
+              - id: 2c91808874ff91550175097daaec161f
+                displayName: Example Application
+                source:
+                  id: 60de165099e649cb828553a5e8510fc4
+                  name: Example Directory
+                  type: DelimitedFile
+              totalCount: 1
+            secondaryOwned:
+              items: []
         accounts:
           items:
           - id: 2c91808874ff91550175097daaec161c
@@ -1202,6 +1416,37 @@ components:
         default: false
         type: boolean
       style: form
+    intelligence-ownership-category:
+      description: |
+        Non-human identity ownership category. Use `agents` for AI Agent subtypes and
+        `applications` for Application subtypes.
+      example: agents
+      explode: false
+      in: path
+      name: category
+      required: true
+      schema:
+        enum:
+        - agents
+        - applications
+        type: string
+      style: simple
+    intelligence-ownership-role:
+      description: |
+        Optional ownership role discriminator. When set to `primary` or `secondary`, returns one
+        paged role bucket. When omitted, defaults to `primary`.
+      example: primary
+      explode: true
+      in: query
+      name: ownershipRole
+      required: false
+      schema:
+        default: primary
+        enum:
+        - primary
+        - secondary
+        type: string
+      style: form
   responses:
     "401":
       content:
@@ -1255,6 +1500,131 @@ components:
           type: string
       required:
       - href
+      type: object
+    Intelmachinesourcewire:
+      properties:
+        id:
+          description: Source identifier.
+          example: 60de165099e649cb828553a5e8510fc4
+          type: string
+        name:
+          description: Source display name.
+          example: Example Directory
+          type: string
+        type:
+          description: Source type label from upstream.
+          example: DelimitedFile
+          type: string
+      required:
+      - id
+      - name
+      - type
+      type: object
+    Intelnonhumanidentityownershipitem:
+      description: Owned non-human identity summary row (aggregate slices and child
+        route).
+      example:
+        displayName: Example AI Agent
+        id: 2c91808874ff91550175097daaec161e
+        source: "{}"
+      properties:
+        id:
+          description: Identity Security Cloud identifier for the owned non-human
+            identity.
+          example: 2c91808874ff91550175097daaec161e
+          type: string
+        displayName:
+          description: Preferred display name for the owned non-human identity.
+          example: Example AI Agent
+          type: string
+        source:
+          allOf:
+          - $ref: '#/components/schemas/Intelmachinesourcewire'
+          description: Source of the owned non-human identity.
+          type: object
+      required:
+      - displayName
+      - id
+      type: object
+    Intelnonhumanidentityownedslice:
+      description: |
+        One paged ownership role bucket (`primaryOwned` or `secondaryOwned`) embedded on the human
+        aggregate. Embeds the first page of owned non-human identities; totalCount when items is
+        non-empty. Continuation next carries limit and offset.
+      properties:
+        items:
+          description: First page of owned non-human identities for this role.
+          items:
+            $ref: '#/components/schemas/Intelnonhumanidentityownershipitem'
+          type: array
+        totalCount:
+          description: Total number of owned non-human identities in this role; omitted
+            when items is empty.
+          example: 11
+          format: int32
+          minimum: 1
+          type: integer
+        next:
+          description: |
+            Absolute URL to the next page for this category and ownership role; present when totalCount
+            exceeds the items returned on this page. Includes `ownershipRole`, `limit`, `offset`, and
+            `count=true`.
+          example: https://tenant.example.api.cloud.sailpoint.com/intelligence/v1/identities/ef38f94347e94562b5bb8424a56397d8/non-human-identity-ownership/agents?ownershipRole=primary&limit=10&offset=10&count=true
+          format: uri
+          type: string
+      required:
+      - items
+      type: object
+    Intelnonhumanidentityownershipcategory:
+      description: |
+        Ownership category for agents or applications. On success, primaryOwned and secondaryOwned
+        carry independently paged buckets. On category-level upstream failure, message and reason are
+        set (reason: UPSTREAM_UNAVAILABLE). The service emits one flat object today, so primaryOwned
+        and secondaryOwned may still appear on the failure path with empty items.
+      properties:
+        primaryOwned:
+          allOf:
+          - $ref: '#/components/schemas/Intelnonhumanidentityownedslice'
+          description: First page of non-human identities for which this human is
+            the primary owner.
+          type: object
+        secondaryOwned:
+          allOf:
+          - $ref: '#/components/schemas/Intelnonhumanidentityownedslice'
+          description: First page of non-human identities for which this human is
+            a secondary owner.
+          type: object
+        message:
+          description: Human-readable explanation of the temporary ownership data
+            failure.
+          example: Data temporarily unavailable. Please try again later.
+          type: string
+        reason:
+          description: Machine-readable reason code for the category-level ownership
+            failure.
+          enum:
+          - UPSTREAM_UNAVAILABLE
+          example: UPSTREAM_UNAVAILABLE
+          type: string
+      type: object
+    Intelnonhumanidentityownership:
+      description: |
+        Non-human identities the human owns, grouped by subtype category. Present only when the tenant
+        has `idn:machine-identity-security`. When present, both `agents` and `applications` always render.
+        Each category is a flat object with optional primaryOwned/secondaryOwned buckets and optional
+        message/reason when upstream ownership fetch fails for that category.
+      properties:
+        agents:
+          allOf:
+          - $ref: '#/components/schemas/Intelnonhumanidentityownershipcategory'
+          description: Ownership for non-human identities with subtype AI Agent.
+        applications:
+          allOf:
+          - $ref: '#/components/schemas/Intelnonhumanidentityownershipcategory'
+          description: Ownership for non-human identities with subtype Application.
+      required:
+      - agents
+      - applications
       type: object
     IntelAccessSourceWire:
       properties:
@@ -1661,7 +2031,9 @@ components:
         The accounts, privilegedAccess, and accessHistory slices are always present (empty slices use items []).
         The outliers slice is omitted when the tenant lacks the IDA-outliers license.
         The identityGraph deep link is omitted when the tenant lacks the idg:base license.
+        The nonHumanIdentityOwnership slice is omitted when the tenant lacks idn:machine-identity-security.
       example:
+        nonHumanIdentityOwnership: "{}"
         identityGraph: "{}"
         displayName: Example User
         created: 2026-05-12T08:00:00Z
@@ -1757,6 +2129,13 @@ components:
           - $ref: '#/components/schemas/Intelidentitygraphlink'
           description: Omitted when the tenant lacks the idg:base license.
           type: object
+        nonHumanIdentityOwnership:
+          allOf:
+          - $ref: '#/components/schemas/Intelnonhumanidentityownership'
+          description: |
+            Omitted when the tenant lacks `idn:machine-identity-security`. When present, both `agents`
+            and `applications` always render.
+          type: object
         accounts:
           allOf:
           - $ref: '#/components/schemas/IntelAccountsSlice'
@@ -1783,25 +2162,6 @@ components:
       - accounts
       - id
       - privilegedAccess
-      - type
-      type: object
-    Intelmachinesourcewire:
-      properties:
-        id:
-          description: Source identifier.
-          example: 60de165099e649cb828553a5e8510fc4
-          type: string
-        name:
-          description: Source display name.
-          example: Example Directory
-          type: string
-        type:
-          description: Source type label from upstream.
-          example: DelimitedFile
-          type: string
-      required:
-      - id
-      - name
       - type
       type: object
     Intelmachineentityref:

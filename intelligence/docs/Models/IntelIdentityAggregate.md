@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **IdentityStatus** | Pointer to **string** | Current identity lifecycle status label from Identity Security Cloud. | [optional] 
 **IsManager** | Pointer to **bool** | True when the identity is flagged as a people manager in the organization. | [optional] [default to false]
 **IdentityGraph** | Pointer to [**Intelidentitygraphlink**](intelidentitygraphlink) | Omitted when the tenant lacks the idg:base license. | [optional] 
+**NonHumanIdentityOwnership** | Pointer to [**Intelnonhumanidentityownership**](intelnonhumanidentityownership) | Omitted when the tenant lacks `idn:machine-identity-security`. When present, both `agents` and `applications` always render.  | [optional] 
 **Accounts** | [**IntelAccountsSlice**](intel-accounts-slice) | First page of accounts for the identity. | 
 **PrivilegedAccess** | [**IntelPrivilegedAccessSlice**](intel-privileged-access-slice) | Full privileged access result for the identity. | 
 **Outliers** | Pointer to [**IntelOutliersSlice**](intel-outliers-slice) | Rare access slice; omitted when the tenant lacks the IDA-outliers license. | [optional] 
@@ -386,6 +387,31 @@ SetIdentityGraph sets IdentityGraph field to given value.
 `func (o *IntelIdentityAggregate) HasIdentityGraph() bool`
 
 HasIdentityGraph returns a boolean if a field has been set.
+
+### GetNonHumanIdentityOwnership
+
+`func (o *IntelIdentityAggregate) GetNonHumanIdentityOwnership() Intelnonhumanidentityownership`
+
+GetNonHumanIdentityOwnership returns the NonHumanIdentityOwnership field if non-nil, zero value otherwise.
+
+### GetNonHumanIdentityOwnershipOk
+
+`func (o *IntelIdentityAggregate) GetNonHumanIdentityOwnershipOk() (*Intelnonhumanidentityownership, bool)`
+
+GetNonHumanIdentityOwnershipOk returns a tuple with the NonHumanIdentityOwnership field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNonHumanIdentityOwnership
+
+`func (o *IntelIdentityAggregate) SetNonHumanIdentityOwnership(v Intelnonhumanidentityownership)`
+
+SetNonHumanIdentityOwnership sets NonHumanIdentityOwnership field to given value.
+
+### HasNonHumanIdentityOwnership
+
+`func (o *IntelIdentityAggregate) HasNonHumanIdentityOwnership() bool`
+
+HasNonHumanIdentityOwnership returns a boolean if a field has been set.
 
 ### GetAccounts
 

@@ -84,6 +84,7 @@ Class | Method | HTTP request | Description
 *IntelligenceAPI* | [**GetIntelIdentityAccessItemHistoryV1**](docs/IntelligenceAPI.md#getintelidentityaccessitemhistoryv1) | **Get** /intelligence/v1/identities/{id}/access-history/access-items | List identity access item history
 *IntelligenceAPI* | [**GetIntelIdentityAccountsV1**](docs/IntelligenceAPI.md#getintelidentityaccountsv1) | **Get** /intelligence/v1/identities/{id}/accounts | List identity accounts
 *IntelligenceAPI* | [**GetIntelIdentityCertificationHistoryV1**](docs/IntelligenceAPI.md#getintelidentitycertificationhistoryv1) | **Get** /intelligence/v1/identities/{id}/access-history/certifications | List identity certification history
+*IntelligenceAPI* | [**GetIntelIdentityNonHumanIdentityOwnershipV1**](docs/IntelligenceAPI.md#getintelidentitynonhumanidentityownershipv1) | **Get** /intelligence/v1/identities/{id}/non-human-identity-ownership/{category} | List owned NHI identities
 *IntelligenceAPI* | [**GetIntelIdentityRareAccessV1**](docs/IntelligenceAPI.md#getintelidentityrareaccessv1) | **Get** /intelligence/v1/identities/{id}/outliers/rare-access | List identity rare access
 *IntelligenceAPI* | [**GetResponseActionStatusV1**](docs/IntelligenceAPI.md#getresponseactionstatusv1) | **Get** /intelligence/v1/response-actions/{id}/status | Get response action status
 
@@ -123,6 +124,10 @@ Class | Method | HTTP request | Description
  - [Intelmachineidentityowners](docs/Intelmachineidentityowners.md)
  - [Intelmachinesourcewire](docs/Intelmachinesourcewire.md)
  - [Intelmachineuserentitlement](docs/Intelmachineuserentitlement.md)
+ - [Intelnonhumanidentityownedslice](docs/Intelnonhumanidentityownedslice.md)
+ - [Intelnonhumanidentityownership](docs/Intelnonhumanidentityownership.md)
+ - [Intelnonhumanidentityownershipcategory](docs/Intelnonhumanidentityownershipcategory.md)
+ - [Intelnonhumanidentityownershipitem](docs/Intelnonhumanidentityownershipitem.md)
  - [Intelprivilegelevel](docs/Intelprivilegelevel.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [Responseactionaccepted](docs/Responseactionaccepted.md)
