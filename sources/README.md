@@ -81,6 +81,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *SourcesAPI* | [**CreateProvisioningPolicyV1**](docs/SourcesAPI.md#createprovisioningpolicyv1) | **Post** /sources/v1/{sourceId}/provisioning-policies | Create provisioning policy
 *SourcesAPI* | [**CreateProvisioningPolicyV2**](docs/SourcesAPI.md#createprovisioningpolicyv2) | **Post** /sources/v2/{sourceId}/provisioning-policies | Create provisioning policy
+*SourcesAPI* | [**CreateSourceDatasetV1**](docs/SourcesAPI.md#createsourcedatasetv1) | **Post** /sources/v1/{sourceId}/datasets | Create dataset on source
+*SourcesAPI* | [**CreateSourceResourceV1**](docs/SourcesAPI.md#createsourceresourcev1) | **Post** /sources/v1/{sourceId}/resources | Create resource on source
 *SourcesAPI* | [**CreateSourceScheduleV1**](docs/SourcesAPI.md#createsourceschedulev1) | **Post** /sources/v1/{sourceId}/schedules | Create schedule on source
 *SourcesAPI* | [**CreateSourceSchemaV1**](docs/SourcesAPI.md#createsourceschemav1) | **Post** /sources/v1/{sourceId}/schemas | Create schema on source
 *SourcesAPI* | [**CreateSourceV1**](docs/SourcesAPI.md#createsourcev1) | **Post** /sources/v1 | Creates a source in identitynow.
@@ -88,6 +90,9 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**DeleteNativeChangeDetectionConfigV1**](docs/SourcesAPI.md#deletenativechangedetectionconfigv1) | **Delete** /sources/v1/{sourceId}/native-change-detection-config | Delete native change detection configuration
 *SourcesAPI* | [**DeleteProvisioningPolicyV1**](docs/SourcesAPI.md#deleteprovisioningpolicyv1) | **Delete** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Delete provisioning policy by usagetype
 *SourcesAPI* | [**DeleteProvisioningPolicyV2**](docs/SourcesAPI.md#deleteprovisioningpolicyv2) | **Delete** /sources/v2/{sourceId}/provisioning-policies/{id} | Delete provisioning policy by ID
+*SourcesAPI* | [**DeleteSourceDatasetObjectsV1**](docs/SourcesAPI.md#deletesourcedatasetobjectsv1) | **Post** /sources/v1/{sourceId}/datasets/{datasetId}/delete-objects | Delete objects for source dataset
+*SourcesAPI* | [**DeleteSourceDatasetV1**](docs/SourcesAPI.md#deletesourcedatasetv1) | **Delete** /sources/v1/{sourceId}/datasets/{datasetId} | Delete source dataset by id
+*SourcesAPI* | [**DeleteSourceResourceV1**](docs/SourcesAPI.md#deletesourceresourcev1) | **Delete** /sources/v1/{sourceId}/resources/{resourceId} | Delete source resource by id
 *SourcesAPI* | [**DeleteSourceScheduleV1**](docs/SourcesAPI.md#deletesourceschedulev1) | **Delete** /sources/v1/{sourceId}/schedules/{scheduleType} | Delete source schedule by type.
 *SourcesAPI* | [**DeleteSourceSchemaV1**](docs/SourcesAPI.md#deletesourceschemav1) | **Delete** /sources/v1/{sourceId}/schemas/{schemaId} | Delete source schema by id
 *SourcesAPI* | [**DeleteSourceV1**](docs/SourcesAPI.md#deletesourcev1) | **Delete** /sources/v1/{id} | Delete source by id
@@ -102,8 +107,13 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**GetSourceAttrSyncConfigV1**](docs/SourcesAPI.md#getsourceattrsyncconfigv1) | **Get** /sources/v1/{id}/attribute-sync-config | Attribute sync config
 *SourcesAPI* | [**GetSourceConfigV1**](docs/SourcesAPI.md#getsourceconfigv1) | **Get** /sources/v1/{id}/connectors/source-config | Gets source config with language-translations
 *SourcesAPI* | [**GetSourceConnectionsV1**](docs/SourcesAPI.md#getsourceconnectionsv1) | **Get** /sources/v1/{sourceId}/connections | Get source connections by id
+*SourcesAPI* | [**GetSourceDatasetV1**](docs/SourcesAPI.md#getsourcedatasetv1) | **Get** /sources/v1/{sourceId}/datasets/{datasetId} | Get source dataset by id
+*SourcesAPI* | [**GetSourceDatasetsV1**](docs/SourcesAPI.md#getsourcedatasetsv1) | **Get** /sources/v1/{sourceId}/datasets | List datasets on source
 *SourcesAPI* | [**GetSourceEntitlementRequestConfigV1**](docs/SourcesAPI.md#getsourceentitlementrequestconfigv1) | **Get** /sources/v1/{id}/entitlement-request-config | Get source entitlement request configuration
 *SourcesAPI* | [**GetSourceHealthV1**](docs/SourcesAPI.md#getsourcehealthv1) | **Get** /sources/v1/{sourceId}/source-health | Fetches source health by id
+*SourcesAPI* | [**GetSourceResourceMappingsV1**](docs/SourcesAPI.md#getsourceresourcemappingsv1) | **Get** /sources/v1/{sourceId}/resources/mappings | Get source resource mappings
+*SourcesAPI* | [**GetSourceResourceV1**](docs/SourcesAPI.md#getsourceresourcev1) | **Get** /sources/v1/{sourceId}/resources/{resourceId} | Get source resource by id
+*SourcesAPI* | [**GetSourceResourcesV1**](docs/SourcesAPI.md#getsourceresourcesv1) | **Get** /sources/v1/{sourceId}/resources | List resources for a source
 *SourcesAPI* | [**GetSourceScheduleV1**](docs/SourcesAPI.md#getsourceschedulev1) | **Get** /sources/v1/{sourceId}/schedules/{scheduleType} | Get source schedule by type
 *SourcesAPI* | [**GetSourceSchedulesV1**](docs/SourcesAPI.md#getsourceschedulesv1) | **Get** /sources/v1/{sourceId}/schedules | List schedules on source
 *SourcesAPI* | [**GetSourceSchemaV1**](docs/SourcesAPI.md#getsourceschemav1) | **Get** /sources/v1/{sourceId}/schemas/{schemaId} | Get source schema by id
@@ -114,6 +124,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**ImportConnectorFileV1**](docs/SourcesAPI.md#importconnectorfilev1) | **Post** /sources/v1/{sourceId}/upload-connector-file | Upload connector file to source
 *SourcesAPI* | [**ImportEntitlementsSchemaV1**](docs/SourcesAPI.md#importentitlementsschemav1) | **Post** /sources/v1/{id}/schemas/entitlements | Uploads source entitlements schema template
 *SourcesAPI* | [**ImportEntitlementsV1**](docs/SourcesAPI.md#importentitlementsv1) | **Post** /sources/v1/{sourceId}/load-entitlements | Entitlement aggregation
+*SourcesAPI* | [**ImportSourceDatasetV1**](docs/SourcesAPI.md#importsourcedatasetv1) | **Post** /sources/v1/{sourceId}/datasets/{datasetId}/aggregate | Aggregate source dataset
 *SourcesAPI* | [**ImportUncorrelatedAccountsV1**](docs/SourcesAPI.md#importuncorrelatedaccountsv1) | **Post** /sources/v1/{id}/load-uncorrelated-accounts | Process uncorrelated accounts
 *SourcesAPI* | [**ListPasswordPolicyHoldersOnSourceV1**](docs/SourcesAPI.md#listpasswordpolicyholdersonsourcev1) | **Get** /sources/v1/{sourceId}/password-policies | Get Password Policy for source
 *SourcesAPI* | [**ListProvisioningPoliciesV1**](docs/SourcesAPI.md#listprovisioningpoliciesv1) | **Get** /sources/v1/{sourceId}/provisioning-policies | Lists provisioningpolicies
@@ -125,6 +136,8 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**PutProvisioningPolicyV1**](docs/SourcesAPI.md#putprovisioningpolicyv1) | **Put** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Update provisioning policy by usagetype
 *SourcesAPI* | [**PutProvisioningPolicyV2**](docs/SourcesAPI.md#putprovisioningpolicyv2) | **Put** /sources/v2/{sourceId}/provisioning-policies/{id} | Update provisioning policy by ID
 *SourcesAPI* | [**PutSourceAttrSyncConfigV1**](docs/SourcesAPI.md#putsourceattrsyncconfigv1) | **Put** /sources/v1/{id}/attribute-sync-config | Update attribute sync config
+*SourcesAPI* | [**PutSourceDatasetV1**](docs/SourcesAPI.md#putsourcedatasetv1) | **Put** /sources/v1/{sourceId}/datasets/{datasetId} | Update source dataset (full)
+*SourcesAPI* | [**PutSourceResourceV1**](docs/SourcesAPI.md#putsourceresourcev1) | **Put** /sources/v1/{sourceId}/resources/{resourceId} | Update source resource (full)
 *SourcesAPI* | [**PutSourceSchemaV1**](docs/SourcesAPI.md#putsourceschemav1) | **Put** /sources/v1/{sourceId}/schemas/{schemaId} | Update source schema (full)
 *SourcesAPI* | [**PutSourceV1**](docs/SourcesAPI.md#putsourcev1) | **Put** /sources/v1/{id} | Update source (full)
 *SourcesAPI* | [**SearchResourceObjectsV1**](docs/SourcesAPI.md#searchresourceobjectsv1) | **Post** /sources/v1/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
@@ -137,7 +150,9 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**UpdateProvisioningPoliciesInBulkV1**](docs/SourcesAPI.md#updateprovisioningpoliciesinbulkv1) | **Post** /sources/v1/{sourceId}/provisioning-policies/bulk-update | Bulk update provisioning policies
 *SourcesAPI* | [**UpdateProvisioningPolicyV1**](docs/SourcesAPI.md#updateprovisioningpolicyv1) | **Patch** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Partial update of provisioning policy
 *SourcesAPI* | [**UpdateProvisioningPolicyV2**](docs/SourcesAPI.md#updateprovisioningpolicyv2) | **Patch** /sources/v2/{sourceId}/provisioning-policies/{id} | Partial update of provisioning policy
+*SourcesAPI* | [**UpdateSourceDatasetV1**](docs/SourcesAPI.md#updatesourcedatasetv1) | **Patch** /sources/v1/{sourceId}/datasets/{datasetId} | Update source dataset (partial)
 *SourcesAPI* | [**UpdateSourceEntitlementRequestConfigV1**](docs/SourcesAPI.md#updatesourceentitlementrequestconfigv1) | **Put** /sources/v1/{id}/entitlement-request-config | Update source entitlement request configuration
+*SourcesAPI* | [**UpdateSourceResourceV1**](docs/SourcesAPI.md#updatesourceresourcev1) | **Patch** /sources/v1/{sourceId}/resources/{resourceId} | Update source resource (partial)
 *SourcesAPI* | [**UpdateSourceScheduleV1**](docs/SourcesAPI.md#updatesourceschedulev1) | **Patch** /sources/v1/{sourceId}/schedules/{scheduleType} | Update source schedule (partial)
 *SourcesAPI* | [**UpdateSourceSchemaV1**](docs/SourcesAPI.md#updatesourceschemav1) | **Patch** /sources/v1/{sourceId}/schemas/{schemaId} | Update source schema (partial)
 *SourcesAPI* | [**UpdateSourceV1**](docs/SourcesAPI.md#updatesourcev1) | **Patch** /sources/v1/{id} | Update source (partial)
@@ -165,6 +180,7 @@ Class | Method | HTTP request | Description
  - [ConnectorDetail](docs/ConnectorDetail.md)
  - [CorrelationConfig](docs/CorrelationConfig.md)
  - [CorrelationConfigAttributeAssignmentsInner](docs/CorrelationConfigAttributeAssignmentsInner.md)
+ - [DatasetAggregationRequest](docs/DatasetAggregationRequest.md)
  - [DeleteSourceV1202Response](docs/DeleteSourceV1202Response.md)
  - [DependantAppConnections](docs/DependantAppConnections.md)
  - [DependantAppConnectionsAccountSource](docs/DependantAppConnectionsAccountSource.md)
@@ -217,6 +233,9 @@ Class | Method | HTTP request | Description
  - [SourceBeforeProvisioningRule](docs/SourceBeforeProvisioningRule.md)
  - [SourceCluster](docs/SourceCluster.md)
  - [SourceConnectionsDto](docs/SourceConnectionsDto.md)
+ - [SourceDataset](docs/SourceDataset.md)
+ - [SourceDatasetResource](docs/SourceDatasetResource.md)
+ - [SourceDatasetResourceReference](docs/SourceDatasetResourceReference.md)
  - [SourceEntitlementRequestConfig](docs/SourceEntitlementRequestConfig.md)
  - [SourceHealthDto](docs/SourceHealthDto.md)
  - [SourceManagementWorkgroup](docs/SourceManagementWorkgroup.md)
@@ -224,10 +243,12 @@ Class | Method | HTTP request | Description
  - [SourceManagerCorrelationRule](docs/SourceManagerCorrelationRule.md)
  - [SourceOwner](docs/SourceOwner.md)
  - [SourcePasswordPoliciesInner](docs/SourcePasswordPoliciesInner.md)
+ - [SourceResourceMappingValue](docs/SourceResourceMappingValue.md)
  - [SourceSchemasInner](docs/SourceSchemasInner.md)
  - [SourceSyncJob](docs/SourceSyncJob.md)
  - [SourceSyncPayload](docs/SourceSyncPayload.md)
  - [StatusResponse](docs/StatusResponse.md)
+ - [TaskResultDetails](docs/TaskResultDetails.md)
  - [TaskResultDto](docs/TaskResultDto.md)
  - [Transform](docs/Transform.md)
  - [TransformRead](docs/TransformRead.md)

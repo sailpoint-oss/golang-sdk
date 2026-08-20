@@ -74,6 +74,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-provisioning-policy-v1**](#create-provisioning-policy-v1) | **Post** `/sources/v1/{sourceId}/provisioning-policies` | Create provisioning policy
 [**create-provisioning-policy-v2**](#create-provisioning-policy-v2) | **Post** `/sources/v2/{sourceId}/provisioning-policies` | Create provisioning policy
+[**create-source-dataset-v1**](#create-source-dataset-v1) | **Post** `/sources/v1/{sourceId}/datasets` | Create dataset on source
+[**create-source-resource-v1**](#create-source-resource-v1) | **Post** `/sources/v1/{sourceId}/resources` | Create resource on source
 [**create-source-schedule-v1**](#create-source-schedule-v1) | **Post** `/sources/v1/{sourceId}/schedules` | Create schedule on source
 [**create-source-schema-v1**](#create-source-schema-v1) | **Post** `/sources/v1/{sourceId}/schemas` | Create schema on source
 [**create-source-v1**](#create-source-v1) | **Post** `/sources/v1` | Creates a source in identitynow.
@@ -81,6 +83,9 @@ Method | HTTP request | Description
 [**delete-native-change-detection-config-v1**](#delete-native-change-detection-config-v1) | **Delete** `/sources/v1/{sourceId}/native-change-detection-config` | Delete native change detection configuration
 [**delete-provisioning-policy-v1**](#delete-provisioning-policy-v1) | **Delete** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Delete provisioning policy by usagetype
 [**delete-provisioning-policy-v2**](#delete-provisioning-policy-v2) | **Delete** `/sources/v2/{sourceId}/provisioning-policies/{id}` | Delete provisioning policy by ID
+[**delete-source-dataset-objects-v1**](#delete-source-dataset-objects-v1) | **Post** `/sources/v1/{sourceId}/datasets/{datasetId}/delete-objects` | Delete objects for source dataset
+[**delete-source-dataset-v1**](#delete-source-dataset-v1) | **Delete** `/sources/v1/{sourceId}/datasets/{datasetId}` | Delete source dataset by id
+[**delete-source-resource-v1**](#delete-source-resource-v1) | **Delete** `/sources/v1/{sourceId}/resources/{resourceId}` | Delete source resource by id
 [**delete-source-schedule-v1**](#delete-source-schedule-v1) | **Delete** `/sources/v1/{sourceId}/schedules/{scheduleType}` | Delete source schedule by type.
 [**delete-source-schema-v1**](#delete-source-schema-v1) | **Delete** `/sources/v1/{sourceId}/schemas/{schemaId}` | Delete source schema by id
 [**delete-source-v1**](#delete-source-v1) | **Delete** `/sources/v1/{id}` | Delete source by id
@@ -95,8 +100,13 @@ Method | HTTP request | Description
 [**get-source-attr-sync-config-v1**](#get-source-attr-sync-config-v1) | **Get** `/sources/v1/{id}/attribute-sync-config` | Attribute sync config
 [**get-source-config-v1**](#get-source-config-v1) | **Get** `/sources/v1/{id}/connectors/source-config` | Gets source config with language-translations
 [**get-source-connections-v1**](#get-source-connections-v1) | **Get** `/sources/v1/{sourceId}/connections` | Get source connections by id
+[**get-source-dataset-v1**](#get-source-dataset-v1) | **Get** `/sources/v1/{sourceId}/datasets/{datasetId}` | Get source dataset by id
+[**get-source-datasets-v1**](#get-source-datasets-v1) | **Get** `/sources/v1/{sourceId}/datasets` | List datasets on source
 [**get-source-entitlement-request-config-v1**](#get-source-entitlement-request-config-v1) | **Get** `/sources/v1/{id}/entitlement-request-config` | Get source entitlement request configuration
 [**get-source-health-v1**](#get-source-health-v1) | **Get** `/sources/v1/{sourceId}/source-health` | Fetches source health by id
+[**get-source-resource-mappings-v1**](#get-source-resource-mappings-v1) | **Get** `/sources/v1/{sourceId}/resources/mappings` | Get source resource mappings
+[**get-source-resource-v1**](#get-source-resource-v1) | **Get** `/sources/v1/{sourceId}/resources/{resourceId}` | Get source resource by id
+[**get-source-resources-v1**](#get-source-resources-v1) | **Get** `/sources/v1/{sourceId}/resources` | List resources for a source
 [**get-source-schedule-v1**](#get-source-schedule-v1) | **Get** `/sources/v1/{sourceId}/schedules/{scheduleType}` | Get source schedule by type
 [**get-source-schedules-v1**](#get-source-schedules-v1) | **Get** `/sources/v1/{sourceId}/schedules` | List schedules on source
 [**get-source-schema-v1**](#get-source-schema-v1) | **Get** `/sources/v1/{sourceId}/schemas/{schemaId}` | Get source schema by id
@@ -107,6 +117,7 @@ Method | HTTP request | Description
 [**import-connector-file-v1**](#import-connector-file-v1) | **Post** `/sources/v1/{sourceId}/upload-connector-file` | Upload connector file to source
 [**import-entitlements-schema-v1**](#import-entitlements-schema-v1) | **Post** `/sources/v1/{id}/schemas/entitlements` | Uploads source entitlements schema template
 [**import-entitlements-v1**](#import-entitlements-v1) | **Post** `/sources/v1/{sourceId}/load-entitlements` | Entitlement aggregation
+[**import-source-dataset-v1**](#import-source-dataset-v1) | **Post** `/sources/v1/{sourceId}/datasets/{datasetId}/aggregate` | Aggregate source dataset
 [**import-uncorrelated-accounts-v1**](#import-uncorrelated-accounts-v1) | **Post** `/sources/v1/{id}/load-uncorrelated-accounts` | Process uncorrelated accounts
 [**list-password-policy-holders-on-source-v1**](#list-password-policy-holders-on-source-v1) | **Get** `/sources/v1/{sourceId}/password-policies` | Get Password Policy for source
 [**list-provisioning-policies-v1**](#list-provisioning-policies-v1) | **Get** `/sources/v1/{sourceId}/provisioning-policies` | Lists provisioningpolicies
@@ -118,6 +129,8 @@ Method | HTTP request | Description
 [**put-provisioning-policy-v1**](#put-provisioning-policy-v1) | **Put** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Update provisioning policy by usagetype
 [**put-provisioning-policy-v2**](#put-provisioning-policy-v2) | **Put** `/sources/v2/{sourceId}/provisioning-policies/{id}` | Update provisioning policy by ID
 [**put-source-attr-sync-config-v1**](#put-source-attr-sync-config-v1) | **Put** `/sources/v1/{id}/attribute-sync-config` | Update attribute sync config
+[**put-source-dataset-v1**](#put-source-dataset-v1) | **Put** `/sources/v1/{sourceId}/datasets/{datasetId}` | Update source dataset (full)
+[**put-source-resource-v1**](#put-source-resource-v1) | **Put** `/sources/v1/{sourceId}/resources/{resourceId}` | Update source resource (full)
 [**put-source-schema-v1**](#put-source-schema-v1) | **Put** `/sources/v1/{sourceId}/schemas/{schemaId}` | Update source schema (full)
 [**put-source-v1**](#put-source-v1) | **Put** `/sources/v1/{id}` | Update source (full)
 [**search-resource-objects-v1**](#search-resource-objects-v1) | **Post** `/sources/v1/{sourceId}/connector/peek-resource-objects` | Peek source connector&#39;s resource objects
@@ -130,7 +143,9 @@ Method | HTTP request | Description
 [**update-provisioning-policies-in-bulk-v1**](#update-provisioning-policies-in-bulk-v1) | **Post** `/sources/v1/{sourceId}/provisioning-policies/bulk-update` | Bulk update provisioning policies
 [**update-provisioning-policy-v1**](#update-provisioning-policy-v1) | **Patch** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Partial update of provisioning policy
 [**update-provisioning-policy-v2**](#update-provisioning-policy-v2) | **Patch** `/sources/v2/{sourceId}/provisioning-policies/{id}` | Partial update of provisioning policy
+[**update-source-dataset-v1**](#update-source-dataset-v1) | **Patch** `/sources/v1/{sourceId}/datasets/{datasetId}` | Update source dataset (partial)
 [**update-source-entitlement-request-config-v1**](#update-source-entitlement-request-config-v1) | **Put** `/sources/v1/{id}/entitlement-request-config` | Update source entitlement request configuration
+[**update-source-resource-v1**](#update-source-resource-v1) | **Patch** `/sources/v1/{sourceId}/resources/{resourceId}` | Update source resource (partial)
 [**update-source-schedule-v1**](#update-source-schedule-v1) | **Patch** `/sources/v1/{sourceId}/schedules/{scheduleType}` | Update source schedule (partial)
 [**update-source-schema-v1**](#update-source-schema-v1) | **Patch** `/sources/v1/{sourceId}/schemas/{schemaId}` | Update source schema (partial)
 [**update-source-v1**](#update-source-v1) | **Patch** `/sources/v1/{id}` | Update source (partial)
@@ -378,6 +393,246 @@ func main() {
     }
     // response from `CreateProvisioningPolicyV2`: ProvisioningPolicyDtoV2
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateProvisioningPolicyV2`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## create-source-dataset-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Create dataset on source
+Use this API to create a dataset on the specified source in Identity Security Cloud (ISC).
+
+
+This operation requires a connector with the `supportDatasetCreation` label. `name` is required.
+The dataset `id` is always server-generated from `name` as `customer:` plus a normalized form of
+the name; any client-supplied `id` is ignored.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/create-source-dataset-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateSourceDatasetV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **sourceDataset** | [**SourceDataset**](../models/source-dataset) |  | 
+
+### Return type
+
+[**SourceDataset**](../models/source-dataset)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    sourcedatasetJson := []byte(`{
+          "name" : "Applications",
+          "description" : "CMDB application records for this source.",
+          "resources" : [ {
+            "name" : "Role",
+            "id" : "aws:iam-role",
+            "type" : "std:resource"
+          }, {
+            "name" : "Role",
+            "id" : "aws:iam-role",
+            "type" : "std:resource"
+          } ],
+          "id" : "cmdb-servicenow:applications",
+          "aggregationEnabled" : true
+        }`) // SourceDataset | 
+
+    var sourceDataset sources.SourceDataset
+    if err := json.Unmarshal(sourcedatasetJson, &sourceDataset); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.CreateSourceDatasetV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).SourceDataset(sourceDataset).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.CreateSourceDatasetV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).SourceDataset(sourceDataset).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateSourceDatasetV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateSourceDatasetV1`: SourceDataset
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateSourceDatasetV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## create-source-resource-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Create resource on source
+Use this API to create a resource on the specified source in Identity Security Cloud (ISC).
+
+
+This operation requires a connector with the `supportDatasetCreation` label. `name`, `type`,
+`datasetId`, and `schema` are required. The `schema` must define at least one attribute plus
+`identityAttribute` and `displayAttribute`. The resource `id` is always server-generated from
+`name` as `customer:` plus a normalized form of the name; any client-supplied `id` is ignored.
+After creation, schema attribute edits are made through the source schema APIs.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/create-source-resource-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateSourceResourceV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **sourceDatasetResource** | [**SourceDatasetResource**](../models/source-dataset-resource) |  | 
+
+### Return type
+
+[**SourceDatasetResource**](../models/source-dataset-resource)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    sourcedatasetresourceJson := []byte(`{
+          "schema" : {
+            "features" : [ "PROVISIONING", "NO_PERMISSIONS_PROVISIONING", "GROUPS_HAVE_MEMBERS" ],
+            "nativeObjectType" : "User",
+            "configuration" : {
+              "groupMemberAttribute" : "member"
+            },
+            "created" : "2019-12-24T22:32:58.104Z",
+            "includePermissions" : false,
+            "name" : "account",
+            "hierarchyAttribute" : "memberOf",
+            "modified" : "2019-12-31T20:22:28.104Z",
+            "attributes" : [ {
+              "name" : "sAMAccountName",
+              "type" : "STRING",
+              "isMultiValued" : false,
+              "isEntitlement" : false,
+              "isGroup" : false
+            }, {
+              "name" : "memberOf",
+              "type" : "STRING",
+              "schema" : {
+                "type" : "CONNECTOR_SCHEMA",
+                "id" : "2c9180887671ff8c01767b4671fc7d60",
+                "name" : "group"
+              },
+              "description" : "Group membership",
+              "isMultiValued" : true,
+              "isEntitlement" : true,
+              "isGroup" : true
+            } ],
+            "id" : "2c9180835d191a86015d28455b4a2329",
+            "displayAttribute" : "distinguishedName",
+            "identityAttribute" : "sAMAccountName"
+          },
+          "features" : [ "Create", "Delete" ],
+          "name" : "Account",
+          "datasetId" : "cmdb-servicenow:applications",
+          "id" : "aws:iam-role",
+          "type" : "std:resource"
+        }`) // SourceDatasetResource | 
+
+    var sourceDatasetResource sources.SourceDatasetResource
+    if err := json.Unmarshal(sourcedatasetresourceJson, &sourceDatasetResource); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.CreateSourceResourceV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).SourceDatasetResource(sourceDatasetResource).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.CreateSourceResourceV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).SourceDatasetResource(sourceDatasetResource).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateSourceResourceV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateSourceResourceV1`: SourceDatasetResource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateSourceResourceV1`: %v\n", resp)
 }
 ```
 
@@ -993,6 +1248,261 @@ func main() {
 	  //r, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV2(context.Background(), sourceId, id).XSailPointExperimental(xSailPointExperimental).Execute()
     if err != nil {
 	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteProvisioningPolicyV2``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    
+}
+```
+
+[[Back to top]](#)
+
+## delete-source-dataset-objects-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Delete objects for source dataset
+Starts a task to delete aggregated objects for the specified dataset on the source in Identity
+Security Cloud (ISC). Linked dataset and resource definitions are not deleted.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/delete-source-dataset-objects-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+**datasetId** | **string** | Dataset ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSourceDatasetObjectsV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+### Return type
+
+[**TaskResultDetails**](../models/task-result-details)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    datasetId := `cmdb-servicenow:applications` // string | Dataset ID. # string | Dataset ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.DeleteSourceDatasetObjectsV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.DeleteSourceDatasetObjectsV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSourceDatasetObjectsV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteSourceDatasetObjectsV1`: TaskResultDetails
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.DeleteSourceDatasetObjectsV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## delete-source-dataset-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Delete source dataset by id
+Use this API to delete a dataset on the specified source in Identity Security Cloud (ISC).
+
+
+This operation requires a connector with the `supportDatasetCreation` label. Linked resource
+schemas are not deleted.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/delete-source-dataset-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+**datasetId** | **string** | Dataset ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSourceDatasetV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+### Return type
+
+ (empty response body)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    datasetId := `cmdb-servicenow:applications` // string | Dataset ID. # string | Dataset ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.SourcesAPI.DeleteSourceDatasetV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.SourcesAPI.DeleteSourceDatasetV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSourceDatasetV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    
+}
+```
+
+[[Back to top]](#)
+
+## delete-source-resource-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Delete source resource by id
+Use this API to delete a resource on the specified source in Identity Security Cloud (ISC).
+
+
+The resource schema is deleted and the resource is unlinked from any dataset rows on the source.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/delete-source-resource-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+**resourceId** | **string** | Resource ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSourceResourceV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+### Return type
+
+ (empty response body)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    resourceId := `account` // string | Resource ID. # string | Resource ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.SourcesAPI.DeleteSourceResourceV1(context.Background(), sourceId, resourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //r, err := apiClient.SourcesAPI.DeleteSourceResourceV1(context.Background(), sourceId, resourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSourceResourceV1``: %v\n", err)
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     
@@ -1968,6 +2478,175 @@ func main() {
 
 [[Back to top]](#)
 
+## get-source-dataset-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Get source dataset by id
+Use this API to get a dataset by id for the specified source in Identity Security Cloud (ISC).
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-source-dataset-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+**datasetId** | **string** | Dataset ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceDatasetV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+### Return type
+
+[**SourceDataset**](../models/source-dataset)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    datasetId := `cmdb-servicenow:applications` // string | Dataset ID. # string | Dataset ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.GetSourceDatasetV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceDatasetV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceDatasetV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSourceDatasetV1`: SourceDataset
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceDatasetV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## get-source-datasets-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+List datasets on source
+Use this API to list datasets for the specified source in Identity Security Cloud (ISC).
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-source-datasets-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceDatasetsV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+
+### Return type
+
+[**[]SourceDataset**](../models/source-dataset)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.GetSourceDatasetsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceDatasetsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceDatasetsV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSourceDatasetsV1`: []SourceDataset
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceDatasetsV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
 ## get-source-entitlement-request-config-v1
 Get source entitlement request configuration
 This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.
@@ -2099,6 +2778,259 @@ func main() {
     }
     // response from `GetSourceHealthV1`: SourceHealthDto
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceHealthV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## get-source-resource-mappings-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Get source resource mappings
+Use this API to get aggregation metadata for resources on the specified source in Identity
+Security Cloud (ISC). The response is keyed by resource id. Each value includes the linked
+dataset id, resource type, and connector object type. Resources without a matching schema are
+omitted.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-source-resource-mappings-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceResourceMappingsV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+### Return type
+
+[**map[string]SourceResourceMappingValue**](../models/source-resource-mapping-value)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.GetSourceResourceMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceResourceMappingsV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceResourceMappingsV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSourceResourceMappingsV1`: map[string]SourceResourceMappingValue
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceResourceMappingsV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## get-source-resource-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Get source resource by id
+Use this API to get a resource by id on the specified source in Identity Security Cloud (ISC).
+The response includes the full CIS schema for the resource.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-source-resource-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+**resourceId** | **string** | Resource ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceResourceV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+
+### Return type
+
+[**SourceDatasetResource**](../models/source-dataset-resource)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    resourceId := `account` // string | Resource ID. # string | Resource ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.GetSourceResourceV1(context.Background(), sourceId, resourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceResourceV1(context.Background(), sourceId, resourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceResourceV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSourceResourceV1`: SourceDatasetResource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceResourceV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## get-source-resources-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+List resources for a source
+Use this API to list resources defined on the specified source in Identity Security Cloud (ISC).
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-source-resources-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceResourcesV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+
+### Return type
+
+[**[]SourceDatasetResource**](../models/source-dataset-resource)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.GetSourceResourcesV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.GetSourceResourcesV1(context.Background(), sourceId).XSailPointExperimental(xSailPointExperimental).Limit(limit).Offset(offset).Count(count).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceResourcesV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSourceResourcesV1`: []SourceDatasetResource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceResourcesV1`: %v\n", resp)
 }
 ```
 
@@ -2810,6 +3742,96 @@ func main() {
     }
     // response from `ImportEntitlementsV1`: LoadEntitlementTask
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ImportEntitlementsV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## import-source-dataset-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Aggregate source dataset
+Starts an aggregation for the specified dataset on the source in Identity Security Cloud (ISC).
+An optional `config` object can be supplied for connector-specific aggregation settings.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/import-source-dataset-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+**datasetId** | **string** | Dataset ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportSourceDatasetV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **datasetAggregationRequest** | [**DatasetAggregationRequest**](../models/dataset-aggregation-request) |  | 
+
+### Return type
+
+[**TaskResultDetails**](../models/task-result-details)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    datasetId := `cmdb-servicenow:applications` // string | Dataset ID. # string | Dataset ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    datasetaggregationrequestJson := []byte(`{
+          "config" : {
+            "region" : "us-east-1"
+          }
+        }`) // DatasetAggregationRequest |  (optional)
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.ImportSourceDatasetV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.ImportSourceDatasetV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).DatasetAggregationRequest(datasetAggregationRequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportSourceDatasetV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportSourceDatasetV1`: TaskResultDetails
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ImportSourceDatasetV1`: %v\n", resp)
 }
 ```
 
@@ -3773,6 +4795,249 @@ func main() {
     }
     // response from `PutSourceAttrSyncConfigV1`: AttrSyncSourceConfig
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutSourceAttrSyncConfigV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## put-source-dataset-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Update source dataset (full)
+Use this API to replace a dataset on the specified source in Identity Security Cloud (ISC).
+
+
+Callers should round-trip the GET representation. `id` is required in the request body and must
+match the path. `aggregationEnabled` may always be updated. `name`, `description`, and `resources`
+can be changed only when the connector has the `supportDatasetCreation` label.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/put-source-dataset-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+**datasetId** | **string** | Dataset ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutSourceDatasetV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **sourceDataset** | [**SourceDataset**](../models/source-dataset) |  | 
+
+### Return type
+
+[**SourceDataset**](../models/source-dataset)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    datasetId := `cmdb-servicenow:applications` // string | Dataset ID. # string | Dataset ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    sourcedatasetJson := []byte(`{
+          "name" : "Applications",
+          "description" : "CMDB application records for this source.",
+          "resources" : [ {
+            "name" : "Role",
+            "id" : "aws:iam-role",
+            "type" : "std:resource"
+          }, {
+            "name" : "Role",
+            "id" : "aws:iam-role",
+            "type" : "std:resource"
+          } ],
+          "id" : "cmdb-servicenow:applications",
+          "aggregationEnabled" : true
+        }`) // SourceDataset | 
+
+    var sourceDataset sources.SourceDataset
+    if err := json.Unmarshal(sourcedatasetJson, &sourceDataset); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.PutSourceDatasetV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).SourceDataset(sourceDataset).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutSourceDatasetV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).SourceDataset(sourceDataset).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutSourceDatasetV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutSourceDatasetV1`: SourceDataset
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutSourceDatasetV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## put-source-resource-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Update source resource (full)
+Use this API to replace a resource on the specified source in Identity Security Cloud (ISC).
+
+
+After creation, schema attribute edits should be made through the source schema APIs. Connectors
+with the `supportDatasetCreation` label can update additional resource fields.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/put-source-resource-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+**resourceId** | **string** | Resource ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutSourceResourceV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **sourceDatasetResource** | [**SourceDatasetResource**](../models/source-dataset-resource) |  | 
+
+### Return type
+
+[**SourceDatasetResource**](../models/source-dataset-resource)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    resourceId := `account` // string | Resource ID. # string | Resource ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    sourcedatasetresourceJson := []byte(`{
+          "schema" : {
+            "features" : [ "PROVISIONING", "NO_PERMISSIONS_PROVISIONING", "GROUPS_HAVE_MEMBERS" ],
+            "nativeObjectType" : "User",
+            "configuration" : {
+              "groupMemberAttribute" : "member"
+            },
+            "created" : "2019-12-24T22:32:58.104Z",
+            "includePermissions" : false,
+            "name" : "account",
+            "hierarchyAttribute" : "memberOf",
+            "modified" : "2019-12-31T20:22:28.104Z",
+            "attributes" : [ {
+              "name" : "sAMAccountName",
+              "type" : "STRING",
+              "isMultiValued" : false,
+              "isEntitlement" : false,
+              "isGroup" : false
+            }, {
+              "name" : "memberOf",
+              "type" : "STRING",
+              "schema" : {
+                "type" : "CONNECTOR_SCHEMA",
+                "id" : "2c9180887671ff8c01767b4671fc7d60",
+                "name" : "group"
+              },
+              "description" : "Group membership",
+              "isMultiValued" : true,
+              "isEntitlement" : true,
+              "isGroup" : true
+            } ],
+            "id" : "2c9180835d191a86015d28455b4a2329",
+            "displayAttribute" : "distinguishedName",
+            "identityAttribute" : "sAMAccountName"
+          },
+          "features" : [ "Create", "Delete" ],
+          "name" : "Account",
+          "datasetId" : "cmdb-servicenow:applications",
+          "id" : "aws:iam-role",
+          "type" : "std:resource"
+        }`) // SourceDatasetResource | 
+
+    var sourceDatasetResource sources.SourceDatasetResource
+    if err := json.Unmarshal(sourcedatasetresourceJson, &sourceDatasetResource); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.PutSourceResourceV1(context.Background(), sourceId, resourceId).XSailPointExperimental(xSailPointExperimental).SourceDatasetResource(sourceDatasetResource).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.PutSourceResourceV1(context.Background(), sourceId, resourceId).XSailPointExperimental(xSailPointExperimental).SourceDatasetResource(sourceDatasetResource).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutSourceResourceV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutSourceResourceV1`: SourceDatasetResource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutSourceResourceV1`: %v\n", resp)
 }
 ```
 
@@ -4819,6 +6084,100 @@ func main() {
 
 [[Back to top]](#)
 
+## update-source-dataset-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Update source dataset (partial)
+Use this API to selectively update an existing dataset using a JSONPatch payload.
+
+
+`aggregationEnabled` may always be updated. `name`, `description`, and `resources` can be changed
+only when the connector has the `supportDatasetCreation` label. `id` is immutable.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-source-dataset-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+**datasetId** | **string** | Dataset ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateSourceDatasetV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the dataset. | 
+
+### Return type
+
+[**SourceDataset**](../models/source-dataset)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    datasetId := `cmdb-servicenow:applications` // string | Dataset ID. # string | Dataset ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/aggregationEnabled","value":true}]`) // []JsonPatchOperation | The JSONPatch payload used to update the dataset.
+
+    var jsonPatchOperation []sources.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.UpdateSourceDatasetV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceDatasetV1(context.Background(), sourceId, datasetId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceDatasetV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateSourceDatasetV1`: SourceDataset
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateSourceDatasetV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
 ## update-source-entitlement-request-config-v1
 Update source entitlement request configuration
 This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.
@@ -4919,6 +6278,100 @@ func main() {
     }
     // response from `UpdateSourceEntitlementRequestConfigV1`: SourceEntitlementRequestConfig
     fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateSourceEntitlementRequestConfigV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-source-resource-v1
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```go
+   configuration = Configuration()
+   configuration.Experimental = true
+ ```
+:::
+Update source resource (partial)
+Use this API to selectively update an existing resource using a JSONPatch payload.
+
+
+After creation, schema attribute edits should be made through the source schema APIs. Connectors
+with the `supportDatasetCreation` label can update additional resource fields.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-source-resource-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+**resourceId** | **string** | Resource ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateSourceResourceV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](../models/json-patch-operation) | The JSONPatch payload used to update the resource. | 
+
+### Return type
+
+[**SourceDatasetResource**](../models/source-dataset-resource)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    sources "github.com/sailpoint-oss/golang-sdk/v3/sources"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    sourceId := `2c9180835d191a86015d28455b4a2329` // string | Source ID. # string | Source ID.
+    resourceId := `account` // string | Resource ID. # string | Resource ID.
+    xSailPointExperimental := `true` // string | Use this header to enable this experimental API. (default to "true") # string | Use this header to enable this experimental API. (default to "true")
+    jsonpatchoperationJson := []byte(`[{"op":"replace","path":"/features","value":["Create","Delete"]}]`) // []JsonPatchOperation | The JSONPatch payload used to update the resource.
+
+    var jsonPatchOperation []sources.JsonPatchOperation
+    if err := json.Unmarshal(jsonpatchoperationJson, &jsonPatchOperation); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.UpdateSourceResourceV1(context.Background(), sourceId, resourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+	  //resp, r, err := apiClient.SourcesAPI.UpdateSourceResourceV1(context.Background(), sourceId, resourceId).XSailPointExperimental(xSailPointExperimental).JsonPatchOperation(jsonPatchOperation).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceResourceV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateSourceResourceV1`: SourceDatasetResource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateSourceResourceV1`: %v\n", resp)
 }
 ```
 

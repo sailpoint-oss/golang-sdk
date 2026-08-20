@@ -50,6 +50,34 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesAPIService CreateSourceDatasetV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.CreateSourceDatasetV1(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService CreateSourceResourceV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.CreateSourceResourceV1(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesAPIService CreateSourceScheduleV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -139,6 +167,49 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		var id string
 
 		httpRes, err := apiClient.SourcesAPI.DeleteProvisioningPolicyV2(context.Background(), sourceId, id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService DeleteSourceDatasetObjectsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var datasetId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.DeleteSourceDatasetObjectsV1(context.Background(), sourceId, datasetId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService DeleteSourceDatasetV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var datasetId string
+
+		httpRes, err := apiClient.SourcesAPI.DeleteSourceDatasetV1(context.Background(), sourceId, datasetId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService DeleteSourceResourceV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var resourceId string
+
+		httpRes, err := apiClient.SourcesAPI.DeleteSourceResourceV1(context.Background(), sourceId, resourceId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -341,6 +412,35 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesAPIService GetSourceDatasetV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var datasetId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceDatasetV1(context.Background(), sourceId, datasetId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService GetSourceDatasetsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceDatasetsV1(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesAPIService GetSourceEntitlementRequestConfigV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -362,6 +462,49 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		var sourceId string
 
 		resp, httpRes, err := apiClient.SourcesAPI.GetSourceHealthV1(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService GetSourceResourceMappingsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceResourceMappingsV1(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService GetSourceResourceV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var resourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceResourceV1(context.Background(), sourceId, resourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService GetSourceResourcesV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceResourcesV1(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -504,6 +647,21 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		var sourceId string
 
 		resp, httpRes, err := apiClient.SourcesAPI.ImportEntitlementsV1(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService ImportSourceDatasetV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var datasetId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.ImportSourceDatasetV1(context.Background(), sourceId, datasetId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -658,6 +816,36 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.SourcesAPI.PutSourceAttrSyncConfigV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService PutSourceDatasetV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var datasetId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.PutSourceDatasetV1(context.Background(), sourceId, datasetId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService PutSourceResourceV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var resourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.PutSourceResourceV1(context.Background(), sourceId, resourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -836,6 +1024,21 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesAPIService UpdateSourceDatasetV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var datasetId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateSourceDatasetV1(context.Background(), sourceId, datasetId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesAPIService UpdateSourceEntitlementRequestConfigV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -843,6 +1046,21 @@ func Test_sources_SourcesAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfigV1(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService UpdateSourceResourceV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var resourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateSourceResourceV1(context.Background(), sourceId, resourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
