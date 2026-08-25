@@ -765,7 +765,7 @@ func (a *ParameterStorageAPIService) GetParameterStorageSpecificationV1Execute(r
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/parameter-storage/v1/specification"
+	localVarPath := localBasePath + "/parameter-storage/v1/specifications"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

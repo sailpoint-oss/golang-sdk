@@ -142,7 +142,7 @@
           // response from `GetParameterReferencesV1`: []ParameterStorageReference
           fmt.Fprintf(os.Stdout, "Response from `ParameterStorageAPI.GetParameterReferencesV1`: %v\n", resp)
         }
-- path: /parameter-storage/v1/specification
+- path: /parameter-storage/v1/specifications
   method: Get
   xCodeSample:
     - lang: Go

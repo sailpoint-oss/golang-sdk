@@ -529,6 +529,9 @@ paths:
       summary: Export identity profiles
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - API
   /identity-profiles/v1/import:
     post:
       description: This imports previously exported identity profiles.
@@ -608,9 +611,14 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:manage
+      - applicationAuth:
+        - idn:identity-profile:manage
       summary: Import identity profiles
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - API
   /identity-profiles/v1/{identity-profile-id}:
     delete:
       description: |-

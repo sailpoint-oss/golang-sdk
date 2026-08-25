@@ -865,7 +865,7 @@ paths:
       - ORG_ADMIN
       x-audience:
       - external-public
-  /parameter-storage/v1/specification:
+  /parameter-storage/v1/specifications:
     get:
       description: Get the specifications for all parameter types. All parameters
         must conform to this specification document.

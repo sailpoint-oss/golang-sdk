@@ -83,7 +83,7 @@ Class | Method | HTTP request | Description
 *ParameterStorageAPI* | [**DeleteParameterV1**](docs/ParameterStorageAPI.md#deleteparameterv1) | **Delete** /parameter-storage/v1/parameters/{id} | Delete a parameter.
 *ParameterStorageAPI* | [**GetAttestationDocumentV1**](docs/ParameterStorageAPI.md#getattestationdocumentv1) | **Get** /parameter-storage/v1/attestation | Get an attestation document.
 *ParameterStorageAPI* | [**GetParameterReferencesV1**](docs/ParameterStorageAPI.md#getparameterreferencesv1) | **Get** /parameter-storage/v1/parameters/{id}/references | Get parameter references.
-*ParameterStorageAPI* | [**GetParameterStorageSpecificationV1**](docs/ParameterStorageAPI.md#getparameterstoragespecificationv1) | **Get** /parameter-storage/v1/specification | Get specifications for parameter types.
+*ParameterStorageAPI* | [**GetParameterStorageSpecificationV1**](docs/ParameterStorageAPI.md#getparameterstoragespecificationv1) | **Get** /parameter-storage/v1/specifications | Get specifications for parameter types.
 *ParameterStorageAPI* | [**GetParameterV1**](docs/ParameterStorageAPI.md#getparameterv1) | **Get** /parameter-storage/v1/parameters/{id} | Get a specific parameter.
 *ParameterStorageAPI* | [**SearchParametersV1**](docs/ParameterStorageAPI.md#searchparametersv1) | **Get** /parameter-storage/v1/parameters | Query stored parameters.
 *ParameterStorageAPI* | [**UpdateParameterV1**](docs/ParameterStorageAPI.md#updateparameterv1) | **Patch** /parameter-storage/v1/parameters/{id} | Update a parameter.
