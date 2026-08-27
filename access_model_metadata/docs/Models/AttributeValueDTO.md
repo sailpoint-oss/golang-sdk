@@ -15,9 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AttributeValueDTO', 'V1AttributeValue
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Value** | Pointer to **string** | Technical name of the Attribute value. This is unique and cannot be changed after creation. | [optional] 
-**Name** | Pointer to **string** | The display name of the Attribute value. | [optional] 
+**Value** | Pointer to **string** | Technical name of the Attribute value. This is unique and cannot be changed after creation. Allowed characters are letters, numbers, dashes (-), and underscores (_); the value cannot start or end with a dash or underscore. | [optional] 
+**Name** | Pointer to **string** | The display name of the Attribute value. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ - | [optional] 
 **Status** | Pointer to **string** | The status of the Attribute value. | [optional] 
+**Type** | Pointer to **NullableString** | Indicates how this Attribute value was created. static values are pre-defined and created directly through this API. adhoc values are created dynamically through an internal service-to-service flow when the parent Attribute has isAdhoc set to true, and cannot be created directly through the public create-value API. | [optional] 
 
 ## Methods
 
@@ -113,4 +114,39 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
+### GetType
+
+`func (o *AttributeValueDTO) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AttributeValueDTO) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AttributeValueDTO) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *AttributeValueDTO) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *AttributeValueDTO) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *AttributeValueDTO) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 

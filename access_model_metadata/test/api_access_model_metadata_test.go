@@ -48,6 +48,35 @@ func Test_access_model_metadata_AccessModelMetadataAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccessModelMetadataAPIService DeleteAccessModelMetadataAttributeV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var key string
+
+		resp, httpRes, err := apiClient.AccessModelMetadataAPI.DeleteAccessModelMetadataAttributeV1(context.Background(), key).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccessModelMetadataAPIService DeleteAccessModelMetadataAttributeValueV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var key string
+		var value string
+
+		resp, httpRes, err := apiClient.AccessModelMetadataAPI.DeleteAccessModelMetadataAttributeValueV1(context.Background(), key, value).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccessModelMetadataAPIService GetAccessModelMetadataAttributeV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

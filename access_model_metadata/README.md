@@ -81,6 +81,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccessModelMetadataAPI* | [**CreateAccessModelMetadataAttributeV1**](docs/AccessModelMetadataAPI.md#createaccessmodelmetadataattributev1) | **Post** /access-model-metadata/v1/attributes | Create access model metadata attribute
 *AccessModelMetadataAPI* | [**CreateAccessModelMetadataAttributeValueV1**](docs/AccessModelMetadataAPI.md#createaccessmodelmetadataattributevaluev1) | **Post** /access-model-metadata/v1/attributes/{key}/values | Create access model metadata value
+*AccessModelMetadataAPI* | [**DeleteAccessModelMetadataAttributeV1**](docs/AccessModelMetadataAPI.md#deleteaccessmodelmetadataattributev1) | **Delete** /access-model-metadata/v1/attributes/{key} | Delete access model metadata attribute
+*AccessModelMetadataAPI* | [**DeleteAccessModelMetadataAttributeValueV1**](docs/AccessModelMetadataAPI.md#deleteaccessmodelmetadataattributevaluev1) | **Delete** /access-model-metadata/v1/attributes/{key}/values/{value} | Delete access model metadata value
 *AccessModelMetadataAPI* | [**GetAccessModelMetadataAttributeV1**](docs/AccessModelMetadataAPI.md#getaccessmodelmetadataattributev1) | **Get** /access-model-metadata/v1/attributes/{key} | Get access model metadata attribute
 *AccessModelMetadataAPI* | [**GetAccessModelMetadataAttributeValueV1**](docs/AccessModelMetadataAPI.md#getaccessmodelmetadataattributevaluev1) | **Get** /access-model-metadata/v1/attributes/{key}/values/{value} | Get access model metadata value
 *AccessModelMetadataAPI* | [**ListAccessModelMetadataAttributeV1**](docs/AccessModelMetadataAPI.md#listaccessmodelmetadataattributev1) | **Get** /access-model-metadata/v1/attributes | List access model metadata attributes
@@ -131,6 +133,8 @@ Class | Method | HTTP request | Description
  - [SearchFilterType](docs/SearchFilterType.md)
  - [SubSearchAggregationSpecification](docs/SubSearchAggregationSpecification.md)
  - [TextQuery](docs/TextQuery.md)
+ - [TrackerKeyDTO](docs/TrackerKeyDTO.md)
+ - [TrackerValueDTO](docs/TrackerValueDTO.md)
  - [TypeAheadQuery](docs/TypeAheadQuery.md)
 
 

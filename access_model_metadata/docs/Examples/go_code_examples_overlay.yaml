@@ -18,12 +18,15 @@
         func main() {
            attributedtoJson := []byte(`{
           "multiselect" : false,
+          "isAdhoc" : false,
           "values" : [ {
             "name" : "Public",
+            "type" : "static",
             "value" : "public",
             "status" : "active"
           }, {
             "name" : "Public",
+            "type" : "static",
             "value" : "public",
             "status" : "active"
           } ],
@@ -76,6 +79,7 @@
           key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
            attributevaluedtoJson := []byte(`{
           "name" : "Public",
+          "type" : "static",
           "value" : "public",
           "status" : "active"
         }`) // AttributeValueDTO | Attribute value to create
@@ -99,6 +103,75 @@
           }
           // response from `CreateAccessModelMetadataAttributeValueV1`: AttributeValueDTO
           fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.CreateAccessModelMetadataAttributeValueV1`: %v\n", resp)
+        }
+- path: /access-model-metadata/v1/attributes/{key}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessmodelmetadata/methods/access-model-metadata#delete-access-model-metadata-attribute-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessModelMetadataAPI.DeleteAccessModelMetadataAttributeV1(context.Background(), key).Execute()
+          //resp, r, err := apiClient.AccessModelMetadataAPI.DeleteAccessModelMetadataAttributeV1(context.Background(), key).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.DeleteAccessModelMetadataAttributeV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DeleteAccessModelMetadataAttributeV1`: TrackerKeyDTO
+          fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.DeleteAccessModelMetadataAttributeV1`: %v\n", resp)
+        }
+- path: /access-model-metadata/v1/attributes/{key}/values/{value}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessmodelmetadata/methods/access-model-metadata#delete-access-model-metadata-attribute-value-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
+          value := `public` // string | Technical name of the Attribute value. # string | Technical name of the Attribute value.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessModelMetadataAPI.DeleteAccessModelMetadataAttributeValueV1(context.Background(), key, value).Execute()
+          //resp, r, err := apiClient.AccessModelMetadataAPI.DeleteAccessModelMetadataAttributeValueV1(context.Background(), key, value).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.DeleteAccessModelMetadataAttributeValueV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `DeleteAccessModelMetadataAttributeValueV1`: TrackerValueDTO
+          fmt.Fprintf(os.Stdout, "Response from `AccessModelMetadataAPI.DeleteAccessModelMetadataAttributeValueV1`: %v\n", resp)
         }
 - path: /access-model-metadata/v1/attributes/{key}
   method: Get
@@ -187,9 +260,10 @@
         )
 
         func main() {
-          filters := `name eq "Privacy"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or* (optional)
-          sorters := `name,-key` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, key** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, key** (optional)
+          filters := `name eq "Privacy"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, co*  **name**: *eq, co*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, co*  **name**: *eq, co*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or* (optional)
+          sorters := `name,-key` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, type, status** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, type, status** (optional)
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
           
@@ -198,7 +272,7 @@
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttributeV1(context.Background()).Execute()
-          //resp, r, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttributeV1(context.Background()).Filters(filters).Sorters(sorters).Limit(limit).Count(count).Execute()
+          //resp, r, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttributeV1(context.Background()).Filters(filters).Sorters(sorters).Limit(limit).Offset(offset).Count(count).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.ListAccessModelMetadataAttributeV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -225,7 +299,10 @@
 
         func main() {
           key := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
+          filters := `name eq "Public"` // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, co*  **name**: *eq, co*  **status**: *eq*  **type**: *eq*  Supported composite operators are *and, or* (optional) # string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, co*  **name**: *eq, co*  **status**: *eq*  **type**: *eq*  Supported composite operators are *and, or* (optional)
+          sorters := `name,-value` // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **value, name, status, type** (optional) # string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **value, name, status, type** (optional)
           limit := 250 // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset := 0 // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
           
@@ -234,7 +311,7 @@
           configuration := sailpoint.NewDefaultConfiguration()
           apiClient := sailpoint.NewAPIClient(configuration)
           resp, r, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValueV1(context.Background(), key).Execute()
-          //resp, r, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValueV1(context.Background(), key).Limit(limit).Count(count).Execute()
+          //resp, r, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValueV1(context.Background(), key).Filters(filters).Sorters(sorters).Limit(limit).Offset(offset).Count(count).Execute()
           if err != nil {
             fmt.Fprintf(os.Stderr, "Error when calling `AccessModelMetadataAPI.ListAccessModelMetadataAttributeValueV1``: %v\n", err)
             fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

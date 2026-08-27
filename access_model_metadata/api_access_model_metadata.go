@@ -44,6 +44,13 @@ CreateAccessModelMetadataAttributeV1 Create access model metadata attribute
 
 Create a new Access Model Metadata Attribute.
 
+The **isAdhoc** field can be set on creation to indicate whether the Attribute supports ad-hoc
+(dynamically created) values in addition to static values; if omitted, it defaults to *false*.
+
+Any **values** provided at creation time must each have a *type* of *static* (or omit/leave *type*
+blank); *adhoc* is not an allowed value on this public API and results in a *400* error. Ad-hoc
+values are created dynamically through an internal service-to-service flow, not through this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateAccessModelMetadataAttributeV1Request
@@ -209,7 +216,12 @@ func (r ApiCreateAccessModelMetadataAttributeValueV1Request) Execute() (*Attribu
 /*
 CreateAccessModelMetadataAttributeValueV1 Create access model metadata value
 
-Create a new value for an existing Access Model Metadata Attribute.    
+Create a new value for an existing Access Model Metadata Attribute.
+
+The **type** field must be omitted, blank, or *static* (case-insensitive); *adhoc* is not an
+allowed value on this public API and results in a *400* error. Ad-hoc values are created
+dynamically through an internal service-to-service flow when the parent Attribute has *isAdhoc*
+set to *true*, not through this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -324,6 +336,370 @@ func (a *AccessModelMetadataAPIService) CreateAccessModelMetadataAttributeValueV
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessModelMetadataAttributeV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteAccessModelMetadataAttributeV1Request struct {
+	ctx context.Context
+	ApiService *AccessModelMetadataAPIService
+	key string
+}
+
+func (r ApiDeleteAccessModelMetadataAttributeV1Request) Execute() (*TrackerKeyDTO, *http.Response, error) {
+	return r.ApiService.DeleteAccessModelMetadataAttributeV1Execute(r)
+}
+
+/*
+DeleteAccessModelMetadataAttributeV1 Delete access model metadata attribute
+
+Delete an existing Access Model Metadata Attribute and all of its values.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param key Technical name of the Attribute.
+ @return ApiDeleteAccessModelMetadataAttributeV1Request
+*/
+func (a *AccessModelMetadataAPIService) DeleteAccessModelMetadataAttributeV1(ctx context.Context, key string) ApiDeleteAccessModelMetadataAttributeV1Request {
+	return ApiDeleteAccessModelMetadataAttributeV1Request{
+		ApiService: a,
+		ctx: ctx,
+		key: key,
+	}
+}
+
+// Execute executes the request
+//  @return TrackerKeyDTO
+func (a *AccessModelMetadataAPIService) DeleteAccessModelMetadataAttributeV1Execute(r ApiDeleteAccessModelMetadataAttributeV1Request) (*TrackerKeyDTO, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TrackerKeyDTO
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.DeleteAccessModelMetadataAttributeV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/access-model-metadata/v1/attributes/{key}"
+	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", url.PathEscape(parameterValueToString(r.key, "key")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessModelMetadataAttributeV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 410 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessModelMetadataAttributeV1429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteAccessModelMetadataAttributeValueV1Request struct {
+	ctx context.Context
+	ApiService *AccessModelMetadataAPIService
+	key string
+	value string
+}
+
+func (r ApiDeleteAccessModelMetadataAttributeValueV1Request) Execute() (*TrackerValueDTO, *http.Response, error) {
+	return r.ApiService.DeleteAccessModelMetadataAttributeValueV1Execute(r)
+}
+
+/*
+DeleteAccessModelMetadataAttributeValueV1 Delete access model metadata value
+
+Delete an existing Access Model Metadata Attribute Value.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param key Technical name of the Attribute.
+ @param value Technical name of the Attribute value.
+ @return ApiDeleteAccessModelMetadataAttributeValueV1Request
+*/
+func (a *AccessModelMetadataAPIService) DeleteAccessModelMetadataAttributeValueV1(ctx context.Context, key string, value string) ApiDeleteAccessModelMetadataAttributeValueV1Request {
+	return ApiDeleteAccessModelMetadataAttributeValueV1Request{
+		ApiService: a,
+		ctx: ctx,
+		key: key,
+		value: value,
+	}
+}
+
+// Execute executes the request
+//  @return TrackerValueDTO
+func (a *AccessModelMetadataAPIService) DeleteAccessModelMetadataAttributeValueV1Execute(r ApiDeleteAccessModelMetadataAttributeValueV1Request) (*TrackerValueDTO, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TrackerValueDTO
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessModelMetadataAPIService.DeleteAccessModelMetadataAttributeValueV1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/access-model-metadata/v1/attributes/{key}/values/{value}"
+	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", url.PathEscape(parameterValueToString(r.key, "key")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"value"+"}", url.PathEscape(parameterValueToString(r.value, "value")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessModelMetadataAttributeV1401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 410 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -716,16 +1092,17 @@ type ApiListAccessModelMetadataAttributeV1Request struct {
 	filters *string
 	sorters *string
 	limit *int32
+	offset *int32
 	count *bool
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq*  **name**: *eq*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, co*  **name**: *eq, co*  **type**: *eq*  **status**: *eq*  **objectTypes**: *eq*  Supported composite operators are *and, or*
 func (r ApiListAccessModelMetadataAttributeV1Request) Filters(filters string) ApiListAccessModelMetadataAttributeV1Request {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, key**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, name, type, status**
 func (r ApiListAccessModelMetadataAttributeV1Request) Sorters(sorters string) ApiListAccessModelMetadataAttributeV1Request {
 	r.sorters = &sorters
 	return r
@@ -734,6 +1111,12 @@ func (r ApiListAccessModelMetadataAttributeV1Request) Sorters(sorters string) Ap
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListAccessModelMetadataAttributeV1Request) Limit(limit int32) ApiListAccessModelMetadataAttributeV1Request {
 	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListAccessModelMetadataAttributeV1Request) Offset(offset int32) ApiListAccessModelMetadataAttributeV1Request {
+	r.offset = &offset
 	return r
 }
 
@@ -750,7 +1133,7 @@ func (r ApiListAccessModelMetadataAttributeV1Request) Execute() ([]AttributeDTO,
 /*
 ListAccessModelMetadataAttributeV1 List access model metadata attributes
 
-Get a list of Access Model Metadata Attributes
+Get a list of Access Model Metadata Attributes. Supports pagination through limit and offset parameters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccessModelMetadataAttributeV1Request
@@ -794,6 +1177,12 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeV1Execut
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
@@ -924,13 +1313,34 @@ type ApiListAccessModelMetadataAttributeValueV1Request struct {
 	ctx context.Context
 	ApiService *AccessModelMetadataAPIService
 	key string
+	filters *string
+	sorters *string
 	limit *int32
+	offset *int32
 	count *bool
+}
+
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, co*  **name**: *eq, co*  **status**: *eq*  **type**: *eq*  Supported composite operators are *and, or*
+func (r ApiListAccessModelMetadataAttributeValueV1Request) Filters(filters string) ApiListAccessModelMetadataAttributeValueV1Request {
+	r.filters = &filters
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **value, name, status, type**
+func (r ApiListAccessModelMetadataAttributeValueV1Request) Sorters(sorters string) ApiListAccessModelMetadataAttributeValueV1Request {
+	r.sorters = &sorters
+	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListAccessModelMetadataAttributeValueV1Request) Limit(limit int32) ApiListAccessModelMetadataAttributeValueV1Request {
 	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListAccessModelMetadataAttributeValueV1Request) Offset(offset int32) ApiListAccessModelMetadataAttributeValueV1Request {
+	r.offset = &offset
 	return r
 }
 
@@ -947,7 +1357,7 @@ func (r ApiListAccessModelMetadataAttributeValueV1Request) Execute() ([]Attribut
 /*
 ListAccessModelMetadataAttributeValueV1 List access model metadata values
 
-Get a list of Access Model Metadata Attribute Values
+Get a list of Access Model Metadata Attribute Values. Supports pagination through limit and offset parameters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param key Technical name of the Attribute.
@@ -983,11 +1393,23 @@ func (a *AccessModelMetadataAPIService) ListAccessModelMetadataAttributeValueV1E
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.filters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.sorters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
+	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
@@ -1135,7 +1557,7 @@ func (r ApiUpdateAccessModelMetadataAttributeV1Request) Execute() (*AttributeDTO
 UpdateAccessModelMetadataAttributeV1 Update access model metadata attribute
 
 Update an existing Access Model Metadata Attribute.  
-The following fields are patchable: **name**, **description**, **multiselect**, **values**
+The following fields are patchable: **name**, **description**, **multiselect**, **isAdhoc**, **values**
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

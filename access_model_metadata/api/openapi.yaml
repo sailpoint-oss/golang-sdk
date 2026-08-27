@@ -32,7 +32,7 @@ security:
 tags:
 - description: |
     Use this API to create and manage metadata attributes for your Access Model.
-    Access Model Metadata allows you to add contextual information to your ISC Access Model items using pre-defined metadata for risk, regulations, privacy levels, etc., or by creating your own metadata attributes to reflect the unique needs of your organization. This release of the API includes support for entitlement metadata. Support for role and access profile metadata will be introduced in a subsequent release.
+    Access Model Metadata allows you to add contextual information to your ISC Access Model items using pre-defined metadata for risk, regulations, privacy levels, etc., or by creating your own metadata attributes to reflect the unique needs of your organization. This release of the API includes support for entitlement, role, and access profile metadata.
 
     Common usages for Access Model metadata include:
 
@@ -45,7 +45,8 @@ tags:
 paths:
   /access-model-metadata/v1/attributes:
     get:
-      description: Get a list of Access Model Metadata Attributes
+      description: Get a list of Access Model Metadata Attributes. Supports pagination
+        through limit and offset parameters.
       operationId: listAccessModelMetadataAttributeV1
       parameters:
       - description: |-
@@ -53,9 +54,9 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **key**: *eq*
+          **key**: *eq, co*
 
-          **name**: *eq*
+          **name**: *eq, co*
 
           **type**: *eq*
 
@@ -75,7 +76,7 @@ paths:
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
-          Sorting is supported for the following fields: **name, key**
+          Sorting is supported for the following fields: **key, name, type, status**
         example: "name,-key"
         explode: true
         in: query
@@ -101,6 +102,20 @@ paths:
           type: integer
         style: form
       - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
           If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
 
           Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
@@ -119,6 +134,29 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                Adhoc-enabled attribute:
+                  description: A paginated list containing an Adhoc-enabled Attribute
+                  value:
+                  - key: iscPrivacy
+                    name: Privacy
+                    multiselect: true
+                    isAdhoc: true
+                    status: active
+                    type: custom
+                    objectTypes:
+                    - all
+                    description: Specifies the level of privacy associated with an
+                      access item.
+                    values:
+                    - value: public
+                      name: Public
+                      status: active
+                      type: static
+                    - value: restricted-42
+                      name: Restricted 42
+                      status: active
+                      type: adhoc
               schema:
                 items:
                   $ref: '#/components/schemas/AttributeDTO'
@@ -213,10 +251,36 @@ paths:
     post:
       description: |
         Create a new Access Model Metadata Attribute.
+
+        The **isAdhoc** field can be set on creation to indicate whether the Attribute supports ad-hoc
+        (dynamically created) values in addition to static values; if omitted, it defaults to *false*.
+
+        Any **values** provided at creation time must each have a *type* of *static* (or omit/leave *type*
+        blank); *adhoc* is not an allowed value on this public API and results in a *400* error. Ad-hoc
+        values are created dynamically through an internal service-to-service flow, not through this API.
       operationId: createAccessModelMetadataAttributeV1
       requestBody:
         content:
           application/json:
+            examples:
+              Adhoc-enabled attribute:
+                description: "Create an Attribute that supports ad-hoc values, with\
+                  \ an initial static value"
+                value:
+                  key: iscPrivacy
+                  name: Privacy
+                  multiselect: false
+                  isAdhoc: true
+                  type: custom
+                  objectTypes:
+                  - all
+                  description: Specifies the level of privacy associated with an access
+                    item.
+                  values:
+                  - value: public
+                    name: Public
+                    status: active
+                    type: static
             schema:
               $ref: '#/components/schemas/AttributeDTO'
         description: Attribute to create
@@ -295,6 +359,131 @@ paths:
       x-sailpoint-userLevels:
       - ORG_ADMIN
   /access-model-metadata/v1/attributes/{key}:
+    delete:
+      description: |
+        Delete an existing Access Model Metadata Attribute and all of its values.
+      operationId: deleteAccessModelMetadataAttributeV1
+      parameters:
+      - description: Technical name of the Attribute.
+        example: iscPrivacy
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttributeV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackerKeyDTO'
+          description: OK - Attribute deleted successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "410":
+          content:
+            application/json:
+              examples:
+                "410":
+                  summary: An example of a 410 response object
+                  value:
+                    detailCode: 410 Gone
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The requested operation is not yet available for your
+                        tenant.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Gone - returned if the requested operation is not yet available
+            for your tenant because the underlying capability is still being rolled
+            out.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-model-metadata:delete
+      - applicationAuth:
+        - idn:access-model-metadata:delete
+      summary: Delete access model metadata attribute
+      tags:
+      - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
       description: Get single Access Model Metadata Attribute
       operationId: getAccessModelMetadataAttributeV1
@@ -404,7 +593,8 @@ paths:
       - ORG_ADMIN
     patch:
       description: "Update an existing Access Model Metadata Attribute.  \nThe following\
-        \ fields are patchable: **name**, **description**, **multiselect**, **values**\n"
+        \ fields are patchable: **name**, **description**, **multiselect**, **isAdhoc**,\
+        \ **values**\n"
       operationId: updateAccessModelMetadataAttributeV1
       parameters:
       - description: Technical name of the Attribute.
@@ -519,7 +709,8 @@ paths:
       - ORG_ADMIN
   /access-model-metadata/v1/attributes/{key}/values:
     get:
-      description: Get a list of Access Model Metadata Attribute Values
+      description: Get a list of Access Model Metadata Attribute Values. Supports
+        pagination through limit and offset parameters.
       operationId: listAccessModelMetadataAttributeValueV1
       parameters:
       - description: Technical name of the Attribute.
@@ -533,6 +724,41 @@ paths:
         style: simple
         x-sailpoint-resource-operation-id: listAccessModelMetadataAttributeV1
       - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **value**: *eq, co*
+
+          **name**: *eq, co*
+
+          **status**: *eq*
+
+          **type**: *eq*
+
+          Supported composite operators are *and, or*
+        example: name eq "Public"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **value, name, status, type**
+        example: "name,-value"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         example: 250
@@ -544,6 +770,20 @@ paths:
           default: 250
           format: int32
           maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -566,6 +806,18 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                Paginated static and adhoc values:
+                  description: A paginated page of values for an Adhoc-enabled Attribute
+                  value:
+                  - value: public
+                    name: Public
+                    status: active
+                    type: static
+                  - value: restricted-42
+                    name: Restricted 42
+                    status: active
+                    type: adhoc
               schema:
                 items:
                   $ref: '#/components/schemas/AttributeValueDTO'
@@ -658,8 +910,13 @@ paths:
       x-sailpoint-userLevels:
       - ORG_ADMIN
     post:
-      description: "Create a new value for an existing Access Model Metadata Attribute.\
-        \    \n"
+      description: |
+        Create a new value for an existing Access Model Metadata Attribute.
+
+        The **type** field must be omitted, blank, or *static* (case-insensitive); *adhoc* is not an
+        allowed value on this public API and results in a *400* error. Ad-hoc values are created
+        dynamically through an internal service-to-service flow when the parent Attribute has *isAdhoc*
+        set to *true*, not through this API.
       operationId: createAccessModelMetadataAttributeValueV1
       parameters:
       - description: Technical name of the Attribute.
@@ -675,6 +932,15 @@ paths:
       requestBody:
         content:
           application/json:
+            examples:
+              Static value:
+                description: Create a static value; type may also be omitted or left
+                  blank
+                value:
+                  value: public
+                  name: Public
+                  status: active
+                  type: static
             schema:
               $ref: '#/components/schemas/AttributeValueDTO'
         description: Attribute value to create
@@ -689,6 +955,18 @@ paths:
         "400":
           content:
             application/json:
+              examples:
+                "400.1 Bad request content":
+                  description: Response when an unsupported type (e.g. "adhoc") is
+                    sent to this public API
+                  value:
+                    detailCode: 400.1 Bad request content
+                    trackingId: 1ea1adcb84da4dcb890145e05745774e
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The request was syntactically correct but its content
+                        is semantically invalid.
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
@@ -771,6 +1049,141 @@ paths:
       x-sailpoint-userLevels:
       - ORG_ADMIN
   /access-model-metadata/v1/attributes/{key}/values/{value}:
+    delete:
+      description: |
+        Delete an existing Access Model Metadata Attribute Value.
+      operationId: deleteAccessModelMetadataAttributeValueV1
+      parameters:
+      - description: Technical name of the Attribute.
+        example: iscPrivacy
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttributeV1
+      - description: Technical name of the Attribute value.
+        example: public
+        explode: false
+        in: path
+        name: value
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-sailpoint-resource-operation-id: listAccessModelMetadataAttributeValueV1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackerValueDTO'
+          description: OK - Attribute value deleted successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "410":
+          content:
+            application/json:
+              examples:
+                "410":
+                  summary: An example of a 410 response object
+                  value:
+                    detailCode: 410 Gone
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The requested operation is not yet available for your
+                        tenant.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Gone - returned if the requested operation is not yet available
+            for your tenant because the underlying capability is still being rolled
+            out.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttributeV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:access-model-metadata:delete
+      - applicationAuth:
+        - idn:access-model-metadata:delete
+      summary: Delete access model metadata value
+      tags:
+      - Access Model Metadata
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
       description: Get single Access Model Metadata Attribute Value
       operationId: getAccessModelMetadataAttributeValueV1
@@ -1286,6 +1699,21 @@ components:
         minimum: 0
         type: integer
       style: form
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
     count:
       description: |-
         If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
@@ -1352,6 +1780,23 @@ components:
             $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
+    "410":
+      content:
+        application/json:
+          examples:
+            "410":
+              summary: An example of a 410 response object
+              value:
+                detailCode: 410 Gone
+                trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                messages:
+                - locale: en-US
+                  localeOrigin: DEFAULT
+                  text: The requested operation is not yet available for your tenant.
+          schema:
+            $ref: '#/components/schemas/ErrorResponseDto'
+      description: Gone - returned if the requested operation is not yet available
+        for your tenant because the underlying capability is still being rolled out.
     "429":
       content:
         application/json:
@@ -1380,31 +1825,54 @@ components:
     AttributeValueDTO:
       example:
         name: Public
+        type: static
         value: public
         status: active
       properties:
         value:
-          description: Technical name of the Attribute value. This is unique and cannot
-            be changed after creation.
+          description: "Technical name of the Attribute value. This is unique and\
+            \ cannot be changed after creation. Allowed characters are letters, numbers,\
+            \ dashes (-), and underscores (_); the value cannot start or end with\
+            \ a dash or underscore."
           example: public
+          maxLength: 255
+          pattern: "^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$"
           type: string
         name:
-          description: The display name of the Attribute value.
+          description: "The display name of the Attribute value. Allowed characters\
+            \ are letters, numbers, whitespace, and the following special characters:\
+            \ . / | , ( ) & _ -"
           example: Public
+          maxLength: 100
           type: string
         status:
           description: The status of the Attribute value.
           example: active
           type: string
+        type:
+          description: "Indicates how this Attribute value was created. static values\
+            \ are pre-defined and created directly through this API. adhoc values\
+            \ are created dynamically through an internal service-to-service flow\
+            \ when the parent Attribute has isAdhoc set to true, and cannot be created\
+            \ directly through the public create-value API."
+          enum:
+          - static
+          - adhoc
+          example: static
+          nullable: true
+          type: string
       type: object
     AttributeDTO:
       example:
         multiselect: false
+        isAdhoc: false
         values:
         - name: Public
+          type: static
           value: public
           status: active
         - name: Public
+          type: static
           value: public
           status: active
         name: Privacy
@@ -1416,18 +1884,35 @@ components:
         status: active
       properties:
         key:
-          description: Technical name of the Attribute. This is unique and cannot
-            be changed after creation.
+          description: "Technical name of the Attribute. This is unique and cannot\
+            \ be changed after creation. Allowed characters are letters, numbers,\
+            \ dashes (-), and underscores (_); the value cannot start or end with\
+            \ a dash or underscore."
           example: iscPrivacy
+          maxLength: 255
+          pattern: "^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$"
           type: string
         name:
-          description: The display name of the key.
+          description: "The display name of the key. Allowed characters are letters,\
+            \ numbers, whitespace, and the following special characters: . / | , (\
+            \ ) & _ -"
           example: Privacy
+          maxLength: 100
           type: string
         multiselect:
           default: false
           description: Indicates whether the attribute can have multiple values.
           example: false
+          type: boolean
+        isAdhoc:
+          default: false
+          description: "Indicates whether this Attribute supports ad-hoc (dynamically\
+            \ created) values, in addition to pre-defined static values. Ad-hoc values\
+            \ are created dynamically through an internal service-to-service flow\
+            \ rather than through the public create-value API. This field can be set\
+            \ when creating an Attribute; if omitted, it defaults to false."
+          example: false
+          nullable: true
           type: boolean
         status:
           description: The status of the Attribute.
@@ -1448,8 +1933,11 @@ components:
           nullable: true
           type: array
         description:
-          description: The description of the Attribute.
+          description: "The description of the Attribute. Allowed characters are letters,\
+            \ numbers, whitespace, and the following special characters: . / | , (\
+            \ ) & _ : -"
           example: Specifies the level of privacy associated with an access item.
+          maxLength: 500
           type: string
         values:
           items:
@@ -1534,6 +2022,46 @@ components:
           type: array
       title: Error Response Dto
       type: object
+    TrackerKeyDTO:
+      example:
+        created: 2020-10-08T18:33:52.029Z
+        id: 2c9180867817ac4d017817c491119a20
+        type: metadata-attribute
+        errors:
+        - errors
+        - errors
+        key: iscPrivacy
+        status: DELETING
+      properties:
+        id:
+          description: ID of the tracker created to record this delete operation.
+          example: 2c9180867817ac4d017817c491119a20
+          type: string
+        type:
+          description: The type of object being tracked.
+          example: metadata-attribute
+          type: string
+        status:
+          description: The status of the delete operation.
+          example: DELETING
+          type: string
+        errors:
+          description: Any errors encountered while processing the delete operation.
+          items:
+            type: string
+          nullable: true
+          type: array
+        created:
+          description: The time the delete operation was initiated.
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        key:
+          description: Technical name of the deleted Attribute.
+          example: iscPrivacy
+          nullable: true
+          type: string
+      type: object
     JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
       example:
@@ -1563,6 +2091,45 @@ components:
       - op
       - path
       title: Json Patch Operation
+      type: object
+    TrackerValueDTO:
+      example:
+        created: 2020-10-08T18:33:52.029Z
+        id: 2c9180867817ac4d017817c491119a20
+        type: value
+        value: public
+        errors:
+        - errors
+        - errors
+        status: DELETING
+      properties:
+        id:
+          description: ID of the tracker created to record this delete operation.
+          example: 2c9180867817ac4d017817c491119a20
+          type: string
+        type:
+          description: The type of object being tracked.
+          example: value
+          type: string
+        status:
+          description: The status of the delete operation.
+          example: DELETING
+          type: string
+        errors:
+          description: Any errors encountered while processing the delete operation.
+          items:
+            type: string
+          nullable: true
+          type: array
+        created:
+          description: The time the delete operation was initiated.
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        value:
+          description: Technical name of the deleted Attribute value.
+          example: public
+          type: string
       type: object
     BulkUpdateAMMKeyValue:
       description: "The metadata to be updated, including attribute and values."

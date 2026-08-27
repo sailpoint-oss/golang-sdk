@@ -2906,34 +2906,70 @@ components:
     AttributeValueDTO:
       properties:
         value:
-          description: Technical name of the Attribute value. This is unique and cannot
-            be changed after creation.
+          description: "Technical name of the Attribute value. This is unique and\
+            \ cannot be changed after creation. Allowed characters are letters, numbers,\
+            \ dashes (-), and underscores (_); the value cannot start or end with\
+            \ a dash or underscore."
           example: public
+          maxLength: 255
+          pattern: "^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$"
           type: string
         name:
-          description: The display name of the Attribute value.
+          description: "The display name of the Attribute value. Allowed characters\
+            \ are letters, numbers, whitespace, and the following special characters:\
+            \ . / | , ( ) & _ -"
           example: Public
+          maxLength: 100
           type: string
         status:
           description: The status of the Attribute value.
           example: active
           type: string
+        type:
+          description: "Indicates how this Attribute value was created. static values\
+            \ are pre-defined and created directly through this API. adhoc values\
+            \ are created dynamically through an internal service-to-service flow\
+            \ when the parent Attribute has isAdhoc set to true, and cannot be created\
+            \ directly through the public create-value API."
+          enum:
+          - static
+          - adhoc
+          example: static
+          nullable: true
+          type: string
       type: object
     AttributeDTO:
       properties:
         key:
-          description: Technical name of the Attribute. This is unique and cannot
-            be changed after creation.
+          description: "Technical name of the Attribute. This is unique and cannot\
+            \ be changed after creation. Allowed characters are letters, numbers,\
+            \ dashes (-), and underscores (_); the value cannot start or end with\
+            \ a dash or underscore."
           example: iscPrivacy
+          maxLength: 255
+          pattern: "^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$"
           type: string
         name:
-          description: The display name of the key.
+          description: "The display name of the key. Allowed characters are letters,\
+            \ numbers, whitespace, and the following special characters: . / | , (\
+            \ ) & _ -"
           example: Privacy
+          maxLength: 100
           type: string
         multiselect:
           default: false
           description: Indicates whether the attribute can have multiple values.
           example: false
+          type: boolean
+        isAdhoc:
+          default: false
+          description: "Indicates whether this Attribute supports ad-hoc (dynamically\
+            \ created) values, in addition to pre-defined static values. Ad-hoc values\
+            \ are created dynamically through an internal service-to-service flow\
+            \ rather than through the public create-value API. This field can be set\
+            \ when creating an Attribute; if omitted, it defaults to false."
+          example: false
+          nullable: true
           type: boolean
         status:
           description: The status of the Attribute.
@@ -2954,8 +2990,11 @@ components:
           nullable: true
           type: array
         description:
-          description: The description of the Attribute.
+          description: "The description of the Attribute. Allowed characters are letters,\
+            \ numbers, whitespace, and the following special characters: . / | , (\
+            \ ) & _ : -"
           example: Specifies the level of privacy associated with an access item.
+          maxLength: 500
           type: string
         values:
           items:

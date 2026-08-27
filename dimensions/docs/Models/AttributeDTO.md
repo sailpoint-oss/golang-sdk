@@ -15,13 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'AttributeDTO', 'V1AttributeDTO']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | Technical name of the Attribute. This is unique and cannot be changed after creation. | [optional] 
-**Name** | Pointer to **string** | The display name of the key. | [optional] 
+**Key** | Pointer to **string** | Technical name of the Attribute. This is unique and cannot be changed after creation. Allowed characters are letters, numbers, dashes (-), and underscores (_); the value cannot start or end with a dash or underscore. | [optional] 
+**Name** | Pointer to **string** | The display name of the key. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ - | [optional] 
 **Multiselect** | Pointer to **bool** | Indicates whether the attribute can have multiple values. | [optional] [default to false]
+**IsAdhoc** | Pointer to **NullableBool** | Indicates whether this Attribute supports ad-hoc (dynamically created) values, in addition to pre-defined static values. Ad-hoc values are created dynamically through an internal service-to-service flow rather than through the public create-value API. This field can be set when creating an Attribute; if omitted, it defaults to false. | [optional] [default to false]
 **Status** | Pointer to **string** | The status of the Attribute. | [optional] 
 **Type** | Pointer to **string** | The type of the Attribute. This can be either \"custom\" or \"governance\". | [optional] 
 **ObjectTypes** | Pointer to **[]string** | An array of object types this attributes values can be applied to. Possible values are \"all\" or \"entitlement\". Value \"all\" means this attribute can be used with all object types that are supported. | [optional] 
-**Description** | Pointer to **string** | The description of the Attribute. | [optional] 
+**Description** | Pointer to **string** | The description of the Attribute. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ : - | [optional] 
 **Values** | Pointer to [**[]AttributeValueDTO**](attribute-value-dto) |  | [optional] 
 
 ## Methods
@@ -118,6 +119,41 @@ SetMultiselect sets Multiselect field to given value.
 
 HasMultiselect returns a boolean if a field has been set.
 
+### GetIsAdhoc
+
+`func (o *AttributeDTO) GetIsAdhoc() bool`
+
+GetIsAdhoc returns the IsAdhoc field if non-nil, zero value otherwise.
+
+### GetIsAdhocOk
+
+`func (o *AttributeDTO) GetIsAdhocOk() (*bool, bool)`
+
+GetIsAdhocOk returns a tuple with the IsAdhoc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsAdhoc
+
+`func (o *AttributeDTO) SetIsAdhoc(v bool)`
+
+SetIsAdhoc sets IsAdhoc field to given value.
+
+### HasIsAdhoc
+
+`func (o *AttributeDTO) HasIsAdhoc() bool`
+
+HasIsAdhoc returns a boolean if a field has been set.
+
+### SetIsAdhocNil
+
+`func (o *AttributeDTO) SetIsAdhocNil(b bool)`
+
+ SetIsAdhocNil sets the value for IsAdhoc to be an explicit nil
+
+### UnsetIsAdhoc
+`func (o *AttributeDTO) UnsetIsAdhoc()`
+
+UnsetIsAdhoc ensures that no value is present for IsAdhoc, not even an explicit nil
 ### GetStatus
 
 `func (o *AttributeDTO) GetStatus() string`

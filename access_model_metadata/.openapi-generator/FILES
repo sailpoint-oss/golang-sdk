@@ -47,6 +47,8 @@ docs/SearchAggregationSpecification.md
 docs/SearchFilterType.md
 docs/SubSearchAggregationSpecification.md
 docs/TextQuery.md
+docs/TrackerKeyDTO.md
+docs/TrackerValueDTO.md
 docs/TypeAheadQuery.md
 git_push.sh
 go.mod
@@ -88,6 +90,8 @@ model_search_aggregation_specification.go
 model_search_filter_type.go
 model_sub_search_aggregation_specification.go
 model_text_query.go
+model_tracker_key_dto.go
+model_tracker_value_dto.go
 model_type_ahead_query.go
 response.go
 test/api_access_model_metadata_test.go

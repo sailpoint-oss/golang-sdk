@@ -19,12 +19,14 @@ var _ MappedNullable = &AttributeValueDTO{}
 
 // AttributeValueDTO struct for AttributeValueDTO
 type AttributeValueDTO struct {
-	// Technical name of the Attribute value. This is unique and cannot be changed after creation.
-	Value *string `json:"value,omitempty"`
-	// The display name of the Attribute value.
+	// Technical name of the Attribute value. This is unique and cannot be changed after creation. Allowed characters are letters, numbers, dashes (-), and underscores (_); the value cannot start or end with a dash or underscore.
+	Value *string `json:"value,omitempty" validate:"regexp=^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$"`
+	// The display name of the Attribute value. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ -
 	Name *string `json:"name,omitempty"`
 	// The status of the Attribute value.
 	Status *string `json:"status,omitempty"`
+	// Indicates how this Attribute value was created. static values are pre-defined and created directly through this API. adhoc values are created dynamically through an internal service-to-service flow when the parent Attribute has isAdhoc set to true, and cannot be created directly through the public create-value API.
+	Type NullableString `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -143,6 +145,48 @@ func (o *AttributeValueDTO) SetStatus(v string) {
 	o.Status = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AttributeValueDTO) GetType() string {
+	if o == nil || IsNil(o.Type.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Type.Get()
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AttributeValueDTO) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Type.Get(), o.Type.IsSet()
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *AttributeValueDTO) HasType() bool {
+	if o != nil && o.Type.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
+func (o *AttributeValueDTO) SetType(v string) {
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *AttributeValueDTO) SetTypeNil() {
+	o.Type.Set(nil)
+}
+
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *AttributeValueDTO) UnsetType() {
+	o.Type.Unset()
+}
+
 func (o AttributeValueDTO) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -161,6 +205,9 @@ func (o AttributeValueDTO) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -187,6 +234,7 @@ func (o *AttributeValueDTO) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "status")
+		delete(additionalProperties, "type")
 		o.AdditionalProperties = additionalProperties
 	}
 

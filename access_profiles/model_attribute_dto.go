@@ -19,19 +19,21 @@ var _ MappedNullable = &AttributeDTO{}
 
 // AttributeDTO struct for AttributeDTO
 type AttributeDTO struct {
-	// Technical name of the Attribute. This is unique and cannot be changed after creation.
-	Key *string `json:"key,omitempty"`
-	// The display name of the key.
+	// Technical name of the Attribute. This is unique and cannot be changed after creation. Allowed characters are letters, numbers, dashes (-), and underscores (_); the value cannot start or end with a dash or underscore.
+	Key *string `json:"key,omitempty" validate:"regexp=^[a-zA-Z0-9]([a-zA-Z0-9_-]*[a-zA-Z0-9])?$"`
+	// The display name of the key. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ -
 	Name *string `json:"name,omitempty"`
 	// Indicates whether the attribute can have multiple values.
 	Multiselect *bool `json:"multiselect,omitempty"`
+	// Indicates whether this Attribute supports ad-hoc (dynamically created) values, in addition to pre-defined static values. Ad-hoc values are created dynamically through an internal service-to-service flow rather than through the public create-value API. This field can be set when creating an Attribute; if omitted, it defaults to false.
+	IsAdhoc NullableBool `json:"isAdhoc,omitempty"`
 	// The status of the Attribute.
 	Status *string `json:"status,omitempty"`
 	// The type of the Attribute. This can be either \"custom\" or \"governance\".
 	Type *string `json:"type,omitempty"`
 	// An array of object types this attributes values can be applied to. Possible values are \"all\" or \"entitlement\". Value \"all\" means this attribute can be used with all object types that are supported.
 	ObjectTypes []string `json:"objectTypes,omitempty"`
-	// The description of the Attribute.
+	// The description of the Attribute. Allowed characters are letters, numbers, whitespace, and the following special characters: . / | , ( ) & _ : -
 	Description *string `json:"description,omitempty"`
 	Values []AttributeValueDTO `json:"values,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -47,6 +49,8 @@ func NewAttributeDTO() *AttributeDTO {
 	this := AttributeDTO{}
 	var multiselect bool = false
 	this.Multiselect = &multiselect
+	var isAdhoc bool = false
+	this.IsAdhoc = *NewNullableBool(&isAdhoc)
 	return &this
 }
 
@@ -57,6 +61,8 @@ func NewAttributeDTOWithDefaults() *AttributeDTO {
 	this := AttributeDTO{}
 	var multiselect bool = false
 	this.Multiselect = &multiselect
+	var isAdhoc bool = false
+	this.IsAdhoc = *NewNullableBool(&isAdhoc)
 	return &this
 }
 
@@ -154,6 +160,48 @@ func (o *AttributeDTO) HasMultiselect() bool {
 // SetMultiselect gets a reference to the given bool and assigns it to the Multiselect field.
 func (o *AttributeDTO) SetMultiselect(v bool) {
 	o.Multiselect = &v
+}
+
+// GetIsAdhoc returns the IsAdhoc field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AttributeDTO) GetIsAdhoc() bool {
+	if o == nil || IsNil(o.IsAdhoc.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAdhoc.Get()
+}
+
+// GetIsAdhocOk returns a tuple with the IsAdhoc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AttributeDTO) GetIsAdhocOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsAdhoc.Get(), o.IsAdhoc.IsSet()
+}
+
+// HasIsAdhoc returns a boolean if a field has been set.
+func (o *AttributeDTO) HasIsAdhoc() bool {
+	if o != nil && o.IsAdhoc.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAdhoc gets a reference to the given NullableBool and assigns it to the IsAdhoc field.
+func (o *AttributeDTO) SetIsAdhoc(v bool) {
+	o.IsAdhoc.Set(&v)
+}
+// SetIsAdhocNil sets the value for IsAdhoc to be an explicit nil
+func (o *AttributeDTO) SetIsAdhocNil() {
+	o.IsAdhoc.Set(nil)
+}
+
+// UnsetIsAdhoc ensures that no value is present for IsAdhoc, not even an explicit nil
+func (o *AttributeDTO) UnsetIsAdhoc() {
+	o.IsAdhoc.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -337,6 +385,9 @@ func (o AttributeDTO) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Multiselect) {
 		toSerialize["multiselect"] = o.Multiselect
 	}
+	if o.IsAdhoc.IsSet() {
+		toSerialize["isAdhoc"] = o.IsAdhoc.Get()
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
@@ -377,6 +428,7 @@ func (o *AttributeDTO) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "multiselect")
+		delete(additionalProperties, "isAdhoc")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "objectTypes")
