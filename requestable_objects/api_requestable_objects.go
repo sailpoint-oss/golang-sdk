@@ -26,9 +26,9 @@ type ApiListRequestableObjectsV1Request struct {
 	ctx context.Context
 	ApiService *RequestableObjectsAPIService
 	identityId *string
-	types *[]string
+	types *string
 	term *string
-	statuses *[]RequestableObjectRequestStatus
+	statuses *string
 	limit *int32
 	offset *int32
 	count *bool
@@ -43,7 +43,7 @@ func (r ApiListRequestableObjectsV1Request) IdentityId(identityId string) ApiLis
 }
 
 // Filters the results to the specified type/types, where each type is one of &#x60;ROLE&#x60; or &#x60;ACCESS_PROFILE&#x60;. If absent, all types are returned. SailPoint may add support for additional types in the future without notice.
-func (r ApiListRequestableObjectsV1Request) Types(types []string) ApiListRequestableObjectsV1Request {
+func (r ApiListRequestableObjectsV1Request) Types(types string) ApiListRequestableObjectsV1Request {
 	r.types = &types
 	return r
 }
@@ -55,7 +55,7 @@ func (r ApiListRequestableObjectsV1Request) Term(term string) ApiListRequestable
 }
 
 // Filters the result to the specified status/statuses, where each status is one of &#x60;AVAILABLE&#x60;, &#x60;ASSIGNED&#x60;, or &#x60;PENDING&#x60;. Specifying this parameter without also specifying an &#x60;identity-id&#x60; parameter results in an error.  SailPoint may add additional statuses in the future without notice.
-func (r ApiListRequestableObjectsV1Request) Statuses(statuses []RequestableObjectRequestStatus) ApiListRequestableObjectsV1Request {
+func (r ApiListRequestableObjectsV1Request) Statuses(statuses string) ApiListRequestableObjectsV1Request {
 	r.statuses = &statuses
 	return r
 }
@@ -136,13 +136,13 @@ func (a *RequestableObjectsAPIService) ListRequestableObjectsV1Execute(r ApiList
 		parameterAddToHeaderOrQuery(localVarQueryParams, "identity-id", r.identityId, "form", "")
 	}
 	if r.types != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "types", r.types, "form", "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "types", r.types, "form", "")
 	}
 	if r.term != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "term", r.term, "form", "")
 	}
 	if r.statuses != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "statuses", r.statuses, "form", "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "statuses", r.statuses, "form", "")
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")

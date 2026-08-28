@@ -63,18 +63,13 @@ paths:
           \ type is one of `ROLE` or `ACCESS_PROFILE`. If absent, all types are returned.\
           \ SailPoint may add support for additional types in the future without notice."
         example: "ACCESS_PROFILE,ROLE"
-        explode: false
+        explode: true
         in: query
         name: types
         required: false
         schema:
-          items:
-            description: Currently supported requestable object types.
-            enum:
-            - ACCESS_PROFILE
-            - ROLE
-            type: string
-          type: array
+          format: comma-separated
+          type: string
         style: form
       - description: "Allows searching requestable access items with a partial match\
           \ on the name or description. If `term` is provided, then the API will ignore\
@@ -92,17 +87,14 @@ paths:
           \ parameter without also specifying an `identity-id` parameter results in\
           \ an error.  SailPoint may add additional statuses in the future without\
           \ notice."
-        example:
-        - ASSIGNED
-        - PENDING
-        explode: false
+        example: "ASSIGNED,PENDING"
+        explode: true
         in: query
         name: statuses
         required: false
         schema:
-          items:
-            $ref: '#/components/schemas/RequestableObjectRequestStatus'
-          type: array
+          format: comma-separated
+          type: string
         style: form
       - description: |-
           Max number of results to return.
@@ -356,6 +348,14 @@ components:
             $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
+    RequestableObjectType:
+      description: Currently supported requestable object types.
+      enum:
+      - ACCESS_PROFILE
+      - ROLE
+      - ENTITLEMENT
+      example: ACCESS_PROFILE
+      type: string
     RequestableObjectRequestStatus:
       description: "Status indicating the ability of an access request for the object\
         \ to be made by or on behalf of the identity specified by *identity-id*. *AVAILABLE*\
@@ -370,14 +370,6 @@ components:
       - ASSIGNED
       - null
       example: AVAILABLE
-      type: string
-    RequestableObjectType:
-      description: Currently supported requestable object types.
-      enum:
-      - ACCESS_PROFILE
-      - ROLE
-      - ENTITLEMENT
-      example: ACCESS_PROFILE
       type: string
     IdentityReferenceWithNameAndEmail:
       example:
