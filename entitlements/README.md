@@ -92,6 +92,9 @@ Class | Method | HTTP request | Description
 *EntitlementsAPI* | [**PutEntitlementRequestConfigV1**](docs/EntitlementsAPI.md#putentitlementrequestconfigv1) | **Put** /entitlements/v1/{id}/entitlement-request-config | Replace entitlement request config
 *EntitlementsAPI* | [**ResetSourceEntitlementsV1**](docs/EntitlementsAPI.md#resetsourceentitlementsv1) | **Post** /entitlements/v1/reset/sources/{id} | Reset source entitlements
 *EntitlementsAPI* | [**UpdateEntitlementsInBulkV1**](docs/EntitlementsAPI.md#updateentitlementsinbulkv1) | **Post** /entitlements/v1/bulk-update | Bulk update an entitlement list
+*EntitlementsAPI* | [**UpdateEntitlementsMetadataByFilterV1**](docs/EntitlementsAPI.md#updateentitlementsmetadatabyfilterv1) | **Post** /entitlements/v1/access-model-metadata/bulk-update/filter | Bulk-update metadata by filter
+*EntitlementsAPI* | [**UpdateEntitlementsMetadataByIdsV1**](docs/EntitlementsAPI.md#updateentitlementsmetadatabyidsv1) | **Post** /entitlements/v1/access-model-metadata/bulk-update/ids | Bulk-update metadata by ids
+*EntitlementsAPI* | [**UpdateEntitlementsMetadataByQueryV1**](docs/EntitlementsAPI.md#updateentitlementsmetadatabyqueryv1) | **Post** /entitlements/v1/access-model-metadata/bulk-update/query | Bulk-update metadata by query
 
 
 ## Documentation For Models
@@ -115,6 +118,11 @@ Class | Method | HTTP request | Description
  - [EntitlementV2Owner](docs/EntitlementV2Owner.md)
  - [EntitlementV2PrivilegeLevel](docs/EntitlementV2PrivilegeLevel.md)
  - [EntitlementV2Source](docs/EntitlementV2Source.md)
+ - [Entitlementmetadatabulkupdatebyfilterrequest](docs/Entitlementmetadatabulkupdatebyfilterrequest.md)
+ - [Entitlementmetadatabulkupdatebyidrequest](docs/Entitlementmetadatabulkupdatebyidrequest.md)
+ - [EntitlementmetadatabulkupdatebyidrequestValuesInner](docs/EntitlementmetadatabulkupdatebyidrequestValuesInner.md)
+ - [Entitlementmetadatabulkupdatebyqueryrequest](docs/Entitlementmetadatabulkupdatebyqueryrequest.md)
+ - [Entitlementmetadatabulkupdateresponse](docs/Entitlementmetadatabulkupdateresponse.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [ImportEntitlementsBySourceV1Request](docs/ImportEntitlementsBySourceV1Request.md)

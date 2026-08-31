@@ -21,6 +21,11 @@ docs/AccessProfileUsage.md
 docs/AccessProfileUsageUsedByInner.md
 docs/AccessProfilesAPI.md
 docs/AccessProfilesAPIdeveloperSite_code_examples.yaml
+docs/Accessprofilemetadatabulkupdatebyfilterrequest.md
+docs/Accessprofilemetadatabulkupdatebyidrequest.md
+docs/AccessprofilemetadatabulkupdatebyidrequestValuesInner.md
+docs/Accessprofilemetadatabulkupdatebyqueryrequest.md
+docs/Accessprofilemetadatabulkupdateresponse.md
 docs/AdditionalOwnerRef.md
 docs/ArrayInner.md
 docs/AttributeDTO.md
@@ -63,6 +68,11 @@ model_access_profile_source_ref.go
 model_access_profile_update_item.go
 model_access_profile_usage.go
 model_access_profile_usage_used_by_inner.go
+model_accessprofilemetadatabulkupdatebyfilterrequest.go
+model_accessprofilemetadatabulkupdatebyidrequest.go
+model_accessprofilemetadatabulkupdatebyidrequest_values_inner.go
+model_accessprofilemetadatabulkupdatebyqueryrequest.go
+model_accessprofilemetadatabulkupdateresponse.go
 model_additional_owner_ref.go
 model_array_inner.go
 model_attribute_dto.go

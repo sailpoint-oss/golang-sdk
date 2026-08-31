@@ -52,11 +52,16 @@ Method | HTTP request | Description
 [**create-access-profile-v1**](#create-access-profile-v1) | **Post** `/access-profiles/v1` | Create access profile
 [**delete-access-profile-v1**](#delete-access-profile-v1) | **Delete** `/access-profiles/v1/{id}` | Delete the specified access profile
 [**delete-access-profiles-in-bulk-v1**](#delete-access-profiles-in-bulk-v1) | **Post** `/access-profiles/v1/bulk-delete` | Delete access profile(s)
+[**delete-metadata-from-access-profile-by-key-and-value-v1**](#delete-metadata-from-access-profile-by-key-and-value-v1) | **Delete** `/access-profiles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Remove metadata from access profile
 [**get-access-profile-entitlements-v1**](#get-access-profile-entitlements-v1) | **Get** `/access-profiles/v1/{id}/entitlements` | List access profile&#39;s entitlements
 [**get-access-profile-v1**](#get-access-profile-v1) | **Get** `/access-profiles/v1/{id}` | Get an access profile
 [**list-access-profiles-v1**](#list-access-profiles-v1) | **Get** `/access-profiles/v1` | List access profiles
 [**patch-access-profile-v1**](#patch-access-profile-v1) | **Patch** `/access-profiles/v1/{id}` | Patch a specified access profile
 [**update-access-profiles-in-bulk-v1**](#update-access-profiles-in-bulk-v1) | **Post** `/access-profiles/v1/bulk-update-requestable` | Update access profile(s) requestable field.
+[**update-access-profiles-metadata-by-filter-v1**](#update-access-profiles-metadata-by-filter-v1) | **Post** `/access-profiles/v1/access-model-metadata/bulk-update/filter` | Bulk-update metadata by filter
+[**update-access-profiles-metadata-by-ids-v1**](#update-access-profiles-metadata-by-ids-v1) | **Post** `/access-profiles/v1/access-model-metadata/bulk-update/ids` | Bulk-update metadata by ids
+[**update-access-profiles-metadata-by-query-v1**](#update-access-profiles-metadata-by-query-v1) | **Post** `/access-profiles/v1/access-model-metadata/bulk-update/query` | Bulk-update metadata by query
+[**update-attribute-key-and-value-to-access-profile-v1**](#update-attribute-key-and-value-to-access-profile-v1) | **Post** `/access-profiles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Add metadata to access profile
 
 
 ## create-access-profile-v1
@@ -384,6 +389,77 @@ func main() {
     }
     // response from `DeleteAccessProfilesInBulkV1`: AccessProfileBulkDeleteResponse
     fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.DeleteAccessProfilesInBulkV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## delete-metadata-from-access-profile-by-key-and-value-v1
+Remove metadata from access profile
+This API removes a single Access Model Metadata value from an access profile by attribute key and attribute value.
+
+[API Spec](https://developer.sailpoint.com/docs/api/delete-metadata-from-access-profile-by-key-and-value-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The access profile&#39;s ID. | 
+**attributeKey** | **string** | Technical name of the Attribute. | 
+**attributeValue** | **string** | Technical name of the Attribute Value. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteMetadataFromAccessProfileByKeyAndValueV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    id := `2c91808c74ff913f0175097daa9d59cd` // string | The access profile's ID. # string | The access profile's ID.
+    attributeKey := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
+    attributeValue := `public` // string | Technical name of the Attribute Value. # string | Technical name of the Attribute Value.
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.AccessProfilesAPI.DeleteMetadataFromAccessProfileByKeyAndValueV1(context.Background(), id, attributeKey, attributeValue).Execute()
+	  //r, err := apiClient.AccessProfilesAPI.DeleteMetadataFromAccessProfileByKeyAndValueV1(context.Background(), id, attributeKey, attributeValue).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.DeleteMetadataFromAccessProfileByKeyAndValueV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    
 }
 ```
 
@@ -785,6 +861,325 @@ func main() {
     }
     // response from `UpdateAccessProfilesInBulkV1`: []AccessProfileUpdateItem
     fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesInBulkV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-access-profiles-metadata-by-filter-v1
+Bulk-update metadata by filter
+This API initiates a bulk update of Access Model Metadata for every access profile matching the supplied filter expression.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-access-profiles-metadata-by-filter-v-1)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAccessProfilesMetadataByFilterV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accessprofilemetadatabulkupdatebyfilterrequest** | [**Accessprofilemetadatabulkupdatebyfilterrequest**](../models/accessprofilemetadatabulkupdatebyfilterrequest) |  | 
+
+### Return type
+
+[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    access_profiles "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    accessprofilemetadatabulkupdatebyfilterrequestJson := []byte(`{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : "requestable eq false",
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }`) // Accessprofilemetadatabulkupdatebyfilterrequest | 
+
+    var accessprofilemetadatabulkupdatebyfilterrequest access_profiles.Accessprofilemetadatabulkupdatebyfilterrequest
+    if err := json.Unmarshal(accessprofilemetadatabulkupdatebyfilterrequestJson, &accessprofilemetadatabulkupdatebyfilterrequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1(context.Background()).Accessprofilemetadatabulkupdatebyfilterrequest(accessprofilemetadatabulkupdatebyfilterrequest).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1(context.Background()).Accessprofilemetadatabulkupdatebyfilterrequest(accessprofilemetadatabulkupdatebyfilterrequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAccessProfilesMetadataByFilterV1`: Accessprofilemetadatabulkupdateresponse
+    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-access-profiles-metadata-by-ids-v1
+Bulk-update metadata by ids
+This API initiates a bulk update of Access Model Metadata for one or more access profiles by a list of access profile IDs.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+The maximum access profile count in a single request is 3000. A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-access-profiles-metadata-by-ids-v-1)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAccessProfilesMetadataByIdsV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accessprofilemetadatabulkupdatebyidrequest** | [**Accessprofilemetadatabulkupdatebyidrequest**](../models/accessprofilemetadatabulkupdatebyidrequest) |  | 
+
+### Return type
+
+[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    access_profiles "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    accessprofilemetadatabulkupdatebyidrequestJson := []byte(`{
+          "accessProfiles" : [ "b1db89554cfa431cb8b9921ea38d9367" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }`) // Accessprofilemetadatabulkupdatebyidrequest | 
+
+    var accessprofilemetadatabulkupdatebyidrequest access_profiles.Accessprofilemetadatabulkupdatebyidrequest
+    if err := json.Unmarshal(accessprofilemetadatabulkupdatebyidrequestJson, &accessprofilemetadatabulkupdatebyidrequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1(context.Background()).Accessprofilemetadatabulkupdatebyidrequest(accessprofilemetadatabulkupdatebyidrequest).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1(context.Background()).Accessprofilemetadatabulkupdatebyidrequest(accessprofilemetadatabulkupdatebyidrequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAccessProfilesMetadataByIdsV1`: Accessprofilemetadatabulkupdateresponse
+    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-access-profiles-metadata-by-query-v1
+Bulk-update metadata by query
+This API initiates a bulk update of Access Model Metadata for every access profile matching the supplied search query.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+A single access profile cannot be assigned more than 25 metadata values. Adding or replacing custom metadata requires a suite license.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-access-profiles-metadata-by-query-v-1)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAccessProfilesMetadataByQueryV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accessprofilemetadatabulkupdatebyqueryrequest** | [**Accessprofilemetadatabulkupdatebyqueryrequest**](../models/accessprofilemetadatabulkupdatebyqueryrequest) |  | 
+
+### Return type
+
+[**Accessprofilemetadatabulkupdateresponse**](../models/accessprofilemetadatabulkupdateresponse)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    access_profiles "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    accessprofilemetadatabulkupdatebyqueryrequestJson := []byte(`{
+          "query" : {
+            "indices" : [ "accessprofiles" ],
+            "queryType" : "TEXT",
+            "textQuery" : {
+              "terms" : [ "test123" ],
+              "fields" : [ "id" ],
+              "matchAny" : false,
+              "contains" : true
+            },
+            "includeNested" : false
+          },
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }`) // Accessprofilemetadatabulkupdatebyqueryrequest | 
+
+    var accessprofilemetadatabulkupdatebyqueryrequest access_profiles.Accessprofilemetadatabulkupdatebyqueryrequest
+    if err := json.Unmarshal(accessprofilemetadatabulkupdatebyqueryrequestJson, &accessprofilemetadatabulkupdatebyqueryrequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1(context.Background()).Accessprofilemetadatabulkupdatebyqueryrequest(accessprofilemetadatabulkupdatebyqueryrequest).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1(context.Background()).Accessprofilemetadatabulkupdatebyqueryrequest(accessprofilemetadatabulkupdatebyqueryrequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAccessProfilesMetadataByQueryV1`: Accessprofilemetadatabulkupdateresponse
+    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-attribute-key-and-value-to-access-profile-v1
+Add metadata to access profile
+This API adds a single Access Model Metadata value to an access profile by attribute key and attribute value. A single access profile cannot be assigned more than 25 metadata values. Adding custom metadata requires a suite license.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-attribute-key-and-value-to-access-profile-v-1)
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The access profile&#39;s ID. | 
+**attributeKey** | **string** | Technical name of the Attribute. | 
+**attributeValue** | **string** | Technical name of the Attribute Value. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAttributeKeyAndValueToAccessProfileV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**AccessProfile**](../models/access-profile)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  
+    
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    id := `c24359c389374d0fb8585698a2189e3d` // string | The access profile's ID. # string | The access profile's ID.
+    attributeKey := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
+    attributeValue := `public` // string | Technical name of the Attribute Value. # string | Technical name of the Attribute Value.
+
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccessProfilesAPI.UpdateAttributeKeyAndValueToAccessProfileV1(context.Background(), id, attributeKey, attributeValue).Execute()
+	  //resp, r, err := apiClient.AccessProfilesAPI.UpdateAttributeKeyAndValueToAccessProfileV1(context.Background(), id, attributeKey, attributeValue).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAttributeKeyAndValueToAccessProfileV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAttributeKeyAndValueToAccessProfileV1`: AccessProfile
+    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAttributeKeyAndValueToAccessProfileV1`: %v\n", resp)
 }
 ```
 

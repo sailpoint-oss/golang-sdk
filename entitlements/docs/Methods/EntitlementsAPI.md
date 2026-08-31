@@ -28,6 +28,9 @@ Method | HTTP request | Description
 [**put-entitlement-request-config-v1**](#put-entitlement-request-config-v1) | **Put** `/entitlements/v1/{id}/entitlement-request-config` | Replace entitlement request config
 [**reset-source-entitlements-v1**](#reset-source-entitlements-v1) | **Post** `/entitlements/v1/reset/sources/{id}` | Reset source entitlements
 [**update-entitlements-in-bulk-v1**](#update-entitlements-in-bulk-v1) | **Post** `/entitlements/v1/bulk-update` | Bulk update an entitlement list
+[**update-entitlements-metadata-by-filter-v1**](#update-entitlements-metadata-by-filter-v1) | **Post** `/entitlements/v1/access-model-metadata/bulk-update/filter` | Bulk-update metadata by filter
+[**update-entitlements-metadata-by-ids-v1**](#update-entitlements-metadata-by-ids-v1) | **Post** `/entitlements/v1/access-model-metadata/bulk-update/ids` | Bulk-update metadata by ids
+[**update-entitlements-metadata-by-query-v1**](#update-entitlements-metadata-by-query-v1) | **Post** `/entitlements/v1/access-model-metadata/bulk-update/query` | Bulk-update metadata by query
 
 
 ## create-access-model-metadata-for-entitlement-v1
@@ -1016,6 +1019,259 @@ func main() {
 	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     
+}
+```
+
+[[Back to top]](#)
+
+## update-entitlements-metadata-by-filter-v1
+Bulk-update metadata by filter
+This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied filter expression.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+Adding or replacing custom metadata requires a suite license.
+
+This API replaces the deprecated `updateAccessModelMetadataByFilterV1` operation.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-entitlements-metadata-by-filter-v-1)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateEntitlementsMetadataByFilterV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entitlementmetadatabulkupdatebyfilterrequest** | [**Entitlementmetadatabulkupdatebyfilterrequest**](../models/entitlementmetadatabulkupdatebyfilterrequest) | Attribute metadata bulk update request body. | 
+
+### Return type
+
+[**Entitlementmetadatabulkupdateresponse**](../models/entitlementmetadatabulkupdateresponse)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    entitlements "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    entitlementmetadatabulkupdatebyfilterrequestJson := []byte(`{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : "id eq 2c9180867817ac4d017817c491119a20",
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }`) // Entitlementmetadatabulkupdatebyfilterrequest | Attribute metadata bulk update request body.
+
+    var entitlementmetadatabulkupdatebyfilterrequest entitlements.Entitlementmetadatabulkupdatebyfilterrequest
+    if err := json.Unmarshal(entitlementmetadatabulkupdatebyfilterrequestJson, &entitlementmetadatabulkupdatebyfilterrequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.EntitlementsAPI.UpdateEntitlementsMetadataByFilterV1(context.Background()).Entitlementmetadatabulkupdatebyfilterrequest(entitlementmetadatabulkupdatebyfilterrequest).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.UpdateEntitlementsMetadataByFilterV1(context.Background()).Entitlementmetadatabulkupdatebyfilterrequest(entitlementmetadatabulkupdatebyfilterrequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.UpdateEntitlementsMetadataByFilterV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateEntitlementsMetadataByFilterV1`: Entitlementmetadatabulkupdateresponse
+    fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.UpdateEntitlementsMetadataByFilterV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-entitlements-metadata-by-ids-v1
+Bulk-update metadata by ids
+This API initiates a bulk update of Access Model Metadata for one or more entitlements by a list of entitlement IDs.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+The maximum entitlement count in a single request is 3000. Adding or replacing custom metadata requires a suite license.
+
+This API replaces the deprecated `updateAccessModelMetadataByIdsV1` operation.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-entitlements-metadata-by-ids-v-1)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateEntitlementsMetadataByIdsV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entitlementmetadatabulkupdatebyidrequest** | [**Entitlementmetadatabulkupdatebyidrequest**](../models/entitlementmetadatabulkupdatebyidrequest) | Attribute metadata bulk update request body. | 
+
+### Return type
+
+[**Entitlementmetadatabulkupdateresponse**](../models/entitlementmetadatabulkupdateresponse)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    entitlements "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    entitlementmetadatabulkupdatebyidrequestJson := []byte(`{
+          "entitlements" : [ "2c9180867817ac4d017817c491119a20", "2c9180867817ac4d017817c491119a21" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }`) // Entitlementmetadatabulkupdatebyidrequest | Attribute metadata bulk update request body.
+
+    var entitlementmetadatabulkupdatebyidrequest entitlements.Entitlementmetadatabulkupdatebyidrequest
+    if err := json.Unmarshal(entitlementmetadatabulkupdatebyidrequestJson, &entitlementmetadatabulkupdatebyidrequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.EntitlementsAPI.UpdateEntitlementsMetadataByIdsV1(context.Background()).Entitlementmetadatabulkupdatebyidrequest(entitlementmetadatabulkupdatebyidrequest).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.UpdateEntitlementsMetadataByIdsV1(context.Background()).Entitlementmetadatabulkupdatebyidrequest(entitlementmetadatabulkupdatebyidrequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.UpdateEntitlementsMetadataByIdsV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateEntitlementsMetadataByIdsV1`: Entitlementmetadatabulkupdateresponse
+    fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.UpdateEntitlementsMetadataByIdsV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-entitlements-metadata-by-query-v1
+Bulk-update metadata by query
+This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied search query.
+
+The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+Adding or replacing custom metadata requires a suite license.
+
+This API replaces the deprecated `updateAccessModelMetadataByQueryV1` operation.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-entitlements-metadata-by-query-v-1)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateEntitlementsMetadataByQueryV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entitlementmetadatabulkupdatebyqueryrequest** | [**Entitlementmetadatabulkupdatebyqueryrequest**](../models/entitlementmetadatabulkupdatebyqueryrequest) | Attribute metadata bulk update request body. | 
+
+### Return type
+
+[**Entitlementmetadatabulkupdateresponse**](../models/entitlementmetadatabulkupdateresponse)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    entitlements "github.com/sailpoint-oss/golang-sdk/v3/entitlements"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    entitlementmetadatabulkupdatebyqueryrequestJson := []byte(`{
+          "query" : {
+            "indices" : [ "entitlements" ],
+            "queryType" : "TEXT",
+            "textQuery" : {
+              "terms" : [ "test123" ],
+              "fields" : [ "id" ],
+              "matchAny" : false,
+              "contains" : true
+            },
+            "includeNested" : false
+          },
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }`) // Entitlementmetadatabulkupdatebyqueryrequest | Attribute metadata bulk update request body.
+
+    var entitlementmetadatabulkupdatebyqueryrequest entitlements.Entitlementmetadatabulkupdatebyqueryrequest
+    if err := json.Unmarshal(entitlementmetadatabulkupdatebyqueryrequestJson, &entitlementmetadatabulkupdatebyqueryrequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.EntitlementsAPI.UpdateEntitlementsMetadataByQueryV1(context.Background()).Entitlementmetadatabulkupdatebyqueryrequest(entitlementmetadatabulkupdatebyqueryrequest).Execute()
+	  //resp, r, err := apiClient.EntitlementsAPI.UpdateEntitlementsMetadataByQueryV1(context.Background()).Entitlementmetadatabulkupdatebyqueryrequest(entitlementmetadatabulkupdatebyqueryrequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.UpdateEntitlementsMetadataByQueryV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateEntitlementsMetadataByQueryV1`: Entitlementmetadatabulkupdateresponse
+    fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.UpdateEntitlementsMetadataByQueryV1`: %v\n", resp)
 }
 ```
 

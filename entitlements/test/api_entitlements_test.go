@@ -202,4 +202,40 @@ func Test_entitlements_EntitlementsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test EntitlementsAPIService UpdateEntitlementsMetadataByFilterV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.EntitlementsAPI.UpdateEntitlementsMetadataByFilterV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService UpdateEntitlementsMetadataByIdsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.EntitlementsAPI.UpdateEntitlementsMetadataByIdsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService UpdateEntitlementsMetadataByQueryV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.EntitlementsAPI.UpdateEntitlementsMetadataByQueryV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

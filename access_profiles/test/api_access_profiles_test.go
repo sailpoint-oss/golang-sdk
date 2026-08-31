@@ -59,6 +59,21 @@ func Test_access_profiles_AccessProfilesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccessProfilesAPIService DeleteMetadataFromAccessProfileByKeyAndValueV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var attributeKey string
+		var attributeValue string
+
+		httpRes, err := apiClient.AccessProfilesAPI.DeleteMetadataFromAccessProfileByKeyAndValueV1(context.Background(), id, attributeKey, attributeValue).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccessProfilesAPIService GetAccessProfileEntitlementsV1", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -118,6 +133,58 @@ func Test_access_profiles_AccessProfilesAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulkV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccessProfilesAPIService UpdateAccessProfilesMetadataByFilterV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccessProfilesAPIService UpdateAccessProfilesMetadataByIdsV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccessProfilesAPIService UpdateAccessProfilesMetadataByQueryV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccessProfilesAPIService UpdateAttributeKeyAndValueToAccessProfileV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var attributeKey string
+		var attributeValue string
+
+		resp, httpRes, err := apiClient.AccessProfilesAPI.UpdateAttributeKeyAndValueToAccessProfileV1(context.Background(), id, attributeKey, attributeValue).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

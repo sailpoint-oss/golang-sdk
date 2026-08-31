@@ -229,6 +229,40 @@
           // response from `DeleteAccessProfilesInBulkV1`: AccessProfileBulkDeleteResponse
           fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.DeleteAccessProfilesInBulkV1`: %v\n", resp)
         }
+- path: /access-profiles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}
+  method: Delete
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#delete-metadata-from-access-profile-by-key-and-value-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `2c91808c74ff913f0175097daa9d59cd` // string | The access profile's ID. # string | The access profile's ID.
+          attributeKey := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
+          attributeValue := `public` // string | Technical name of the Attribute Value. # string | Technical name of the Attribute Value.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          r, err := apiClient.AccessProfilesAPI.DeleteMetadataFromAccessProfileByKeyAndValueV1(context.Background(), id, attributeKey, attributeValue).Execute()
+          //r, err := apiClient.AccessProfilesAPI.DeleteMetadataFromAccessProfileByKeyAndValueV1(context.Background(), id, attributeKey, attributeValue).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.DeleteMetadataFromAccessProfileByKeyAndValueV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+        }
 - path: /access-profiles/v1/{id}/entitlements
   method: Get
   xCodeSample:
@@ -423,4 +457,194 @@
           }
           // response from `UpdateAccessProfilesInBulkV1`: []AccessProfileUpdateItem
           fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesInBulkV1`: %v\n", resp)
+        }
+- path: /access-profiles/v1/access-model-metadata/bulk-update/filter
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#update-access-profiles-metadata-by-filter-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            access_profiles "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+           accessprofilemetadatabulkupdatebyfilterrequestJson := []byte(`{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : "requestable eq false",
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }`) // Accessprofilemetadatabulkupdatebyfilterrequest | 
+
+          
+          var accessprofilemetadatabulkupdatebyfilterrequest access_profiles.Accessprofilemetadatabulkupdatebyfilterrequest
+          if err := json.Unmarshal(accessprofilemetadatabulkupdatebyfilterrequestJson, &accessprofilemetadatabulkupdatebyfilterrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1(context.Background()).Accessprofilemetadatabulkupdatebyfilterrequest(accessprofilemetadatabulkupdatebyfilterrequest).Execute()
+          //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1(context.Background()).Accessprofilemetadatabulkupdatebyfilterrequest(accessprofilemetadatabulkupdatebyfilterrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateAccessProfilesMetadataByFilterV1`: Accessprofilemetadatabulkupdateresponse
+          fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesMetadataByFilterV1`: %v\n", resp)
+        }
+- path: /access-profiles/v1/access-model-metadata/bulk-update/ids
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#update-access-profiles-metadata-by-ids-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            access_profiles "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+           accessprofilemetadatabulkupdatebyidrequestJson := []byte(`{
+          "accessProfiles" : [ "b1db89554cfa431cb8b9921ea38d9367" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }`) // Accessprofilemetadatabulkupdatebyidrequest | 
+
+          
+          var accessprofilemetadatabulkupdatebyidrequest access_profiles.Accessprofilemetadatabulkupdatebyidrequest
+          if err := json.Unmarshal(accessprofilemetadatabulkupdatebyidrequestJson, &accessprofilemetadatabulkupdatebyidrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1(context.Background()).Accessprofilemetadatabulkupdatebyidrequest(accessprofilemetadatabulkupdatebyidrequest).Execute()
+          //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1(context.Background()).Accessprofilemetadatabulkupdatebyidrequest(accessprofilemetadatabulkupdatebyidrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateAccessProfilesMetadataByIdsV1`: Accessprofilemetadatabulkupdateresponse
+          fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesMetadataByIdsV1`: %v\n", resp)
+        }
+- path: /access-profiles/v1/access-model-metadata/bulk-update/query
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#update-access-profiles-metadata-by-query-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            access_profiles "github.com/sailpoint-oss/golang-sdk/v3/access_profiles"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+           accessprofilemetadatabulkupdatebyqueryrequestJson := []byte(`{
+          "query" : {
+            "indices" : [ "accessprofiles" ],
+            "queryType" : "TEXT",
+            "textQuery" : {
+              "terms" : [ "test123" ],
+              "fields" : [ "id" ],
+              "matchAny" : false,
+              "contains" : true
+            },
+            "includeNested" : false
+          },
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "ATTRIBUTE",
+          "operation" : "REPLACE"
+        }`) // Accessprofilemetadatabulkupdatebyqueryrequest | 
+
+          
+          var accessprofilemetadatabulkupdatebyqueryrequest access_profiles.Accessprofilemetadatabulkupdatebyqueryrequest
+          if err := json.Unmarshal(accessprofilemetadatabulkupdatebyqueryrequestJson, &accessprofilemetadatabulkupdatebyqueryrequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1(context.Background()).Accessprofilemetadatabulkupdatebyqueryrequest(accessprofilemetadatabulkupdatebyqueryrequest).Execute()
+          //resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1(context.Background()).Accessprofilemetadatabulkupdatebyqueryrequest(accessprofilemetadatabulkupdatebyqueryrequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateAccessProfilesMetadataByQueryV1`: Accessprofilemetadatabulkupdateresponse
+          fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesMetadataByQueryV1`: %v\n", resp)
+        }
+- path: /access-profiles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}
+  method: Post
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/accessprofiles/methods/access-profiles#update-attribute-key-and-value-to-access-profile-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+            
+            
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+          id := `c24359c389374d0fb8585698a2189e3d` // string | The access profile's ID. # string | The access profile's ID.
+          attributeKey := `iscPrivacy` // string | Technical name of the Attribute. # string | Technical name of the Attribute.
+          attributeValue := `public` // string | Technical name of the Attribute Value. # string | Technical name of the Attribute Value.
+
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.AccessProfilesAPI.UpdateAttributeKeyAndValueToAccessProfileV1(context.Background(), id, attributeKey, attributeValue).Execute()
+          //resp, r, err := apiClient.AccessProfilesAPI.UpdateAttributeKeyAndValueToAccessProfileV1(context.Background(), id, attributeKey, attributeValue).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAttributeKeyAndValueToAccessProfileV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateAttributeKeyAndValueToAccessProfileV1`: AccessProfile
+          fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAttributeKeyAndValueToAccessProfileV1`: %v\n", resp)
         }

@@ -2024,6 +2024,336 @@ paths:
       - Entitlements
       x-sailpoint-userLevels:
       - ORG_ADMIN
+  /entitlements/v1/access-model-metadata/bulk-update/ids:
+    post:
+      description: |-
+        This API initiates a bulk update of Access Model Metadata for one or more entitlements by a list of entitlement IDs.
+
+        The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+        The maximum entitlement count in a single request is 3000. Adding or replacing custom metadata requires a suite license.
+
+        This API replaces the deprecated `updateAccessModelMetadataByIdsV1` operation.
+      operationId: updateEntitlementsMetadataByIdsV1
+      requestBody:
+        content:
+          application/json:
+            example:
+              entitlements:
+              - 2c9180867817ac4d017817c491119a20
+              operation: REPLACE
+              replaceScope: ATTRIBUTE
+              values:
+              - attribute: iscFederalClassifications
+                values:
+                - topSecret
+            schema:
+              $ref: '#/components/schemas/Entitlementmetadatabulkupdatebyidrequest'
+        description: Attribute metadata bulk update request body.
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              examples:
+                Update request created successfully:
+                  value:
+                    id: 2d82ac17-eb0d-4ba6-9918-dcad6ee0294d
+                    type: ENTITLEMENT
+                    status: CREATED
+                    created: 2024-09-16T18:59:06.871594Z
+              schema:
+                $ref: '#/components/schemas/Entitlementmetadatabulkupdateresponse'
+          description: Returned if the bulk update request was created.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlementsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlementsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:manage
+      summary: Bulk-update metadata by ids
+      tags:
+      - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /entitlements/v1/access-model-metadata/bulk-update/filter:
+    post:
+      description: |-
+        This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied filter expression.
+
+        The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+        Adding or replacing custom metadata requires a suite license.
+
+        This API replaces the deprecated `updateAccessModelMetadataByFilterV1` operation.
+      operationId: updateEntitlementsMetadataByFilterV1
+      requestBody:
+        content:
+          application/json:
+            example:
+              filters: id eq 2c9180867817ac4d017817c491119a20
+              operation: REPLACE
+              replaceScope: ATTRIBUTE
+              values:
+              - attribute: iscFederalClassifications
+                values:
+                - topSecret
+            schema:
+              $ref: '#/components/schemas/Entitlementmetadatabulkupdatebyfilterrequest'
+        description: Attribute metadata bulk update request body.
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              examples:
+                Update request created successfully:
+                  value:
+                    id: 2d82ac17-eb0d-4ba6-9918-dcad6ee0294d
+                    type: ENTITLEMENT
+                    status: CHUNK_PENDING
+                    created: 2024-09-16T18:59:06.871594Z
+              schema:
+                $ref: '#/components/schemas/Entitlementmetadatabulkupdateresponse'
+          description: Returned if the bulk update request was created.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlementsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlementsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:manage
+      summary: Bulk-update metadata by filter
+      tags:
+      - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+  /entitlements/v1/access-model-metadata/bulk-update/query:
+    post:
+      description: |-
+        This API initiates a bulk update of Access Model Metadata for every entitlement matching the supplied search query.
+
+        The update is processed asynchronously. The response returns the ID of the task performing the update.
+
+        Adding or replacing custom metadata requires a suite license.
+
+        This API replaces the deprecated `updateAccessModelMetadataByQueryV1` operation.
+      operationId: updateEntitlementsMetadataByQueryV1
+      requestBody:
+        content:
+          application/json:
+            example:
+              query:
+                indices:
+                - entitlements
+                queryType: TEXT
+                textQuery:
+                  terms:
+                  - test123
+                  fields:
+                  - id
+                  matchAny: false
+                  contains: true
+                includeNested: false
+              operation: REPLACE
+              replaceScope: ATTRIBUTE
+              values:
+              - attribute: iscFederalClassifications
+                values:
+                - topSecret
+            schema:
+              $ref: '#/components/schemas/Entitlementmetadatabulkupdatebyqueryrequest'
+        description: Attribute metadata bulk update request body.
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              examples:
+                Update request created successfully:
+                  value:
+                    id: 2d82ac17-eb0d-4ba6-9918-dcad6ee0294d
+                    type: ENTITLEMENT
+                    status: CREATED
+                    created: 2024-09-16T18:59:06.871594Z
+              schema:
+                $ref: '#/components/schemas/Entitlementmetadatabulkupdateresponse'
+          description: Returned if the bulk update request was created.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlementsV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEntitlementsV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - idn:entitlement:manage
+      summary: Bulk-update metadata by query
+      tags:
+      - Entitlements
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /entitlements/v1/aggregate/sources/{id}:
     post:
       deprecated: true
@@ -3091,6 +3421,224 @@ components:
           type: array
       title: Entitlement
       type: object
+    Entitlementmetadatabulkupdatebyidrequest:
+      description: Request to bulk update Access Model Metadata on a list of entitlements
+        identified by ID. The maximum entitlement count in a single request is 3000.
+        Adding or replacing custom metadata requires a suite license.
+      example:
+        entitlements:
+        - 2c9180867817ac4d017817c491119a20
+        - 2c9180867817ac4d017817c491119a21
+        values:
+        - attribute: iscFederalClassifications
+          values:
+          - topSecret
+        replaceScope: ATTRIBUTE
+        operation: REPLACE
+      properties:
+        entitlements:
+          description: The IDs of the entitlements to update.
+          example:
+          - 2c9180867817ac4d017817c491119a20
+          - 2c9180867817ac4d017817c491119a21
+          items:
+            type: string
+          maxItems: 3000
+          type: array
+        operation:
+          description: The operation to be performed
+          enum:
+          - ADD
+          - REMOVE
+          - REPLACE
+          example: REPLACE
+          type: string
+        replaceScope:
+          description: "The choice of update scope. **ATTRIBUTE** replaces only the\
+            \ values of the attributes named in `values`, and **ALL** replaces every\
+            \ metadata attribute on the entitlement."
+          enum:
+          - ALL
+          - ATTRIBUTE
+          example: ATTRIBUTE
+          type: string
+        values:
+          description: "The metadata to be updated, including attribute key and value."
+          example:
+          - attribute: iscFederalClassifications
+            values:
+            - topSecret
+          items:
+            $ref: '#/components/schemas/Entitlementmetadatabulkupdatebyidrequest_values_inner'
+          nullable: false
+          type: array
+      required:
+      - entitlements
+      - operation
+      - values
+      type: object
+    Entitlementmetadatabulkupdateresponse:
+      example:
+        created: 2020-10-08T18:33:52.029Z
+        id: 2d82ac17-eb0d-4ba6-9918-dcad6ee0294d
+        type: ENTITLEMENT
+        status: CREATED
+      properties:
+        id:
+          description: ID of the task that is processing the bulk update.
+          example: 2d82ac17-eb0d-4ba6-9918-dcad6ee0294d
+          type: string
+        type:
+          description: Type of the object the bulk update applies to.
+          example: ENTITLEMENT
+          type: string
+        status:
+          description: The status of the bulk update request.
+          enum:
+          - CREATED
+          - PRE_PROCESS
+          - PRE_PROCESS_COMPLETED
+          - POST_PROCESS
+          - COMPLETED
+          - CHUNK_PENDING
+          - CHUNK_PROCESSING
+          - RE_PROCESSING
+          - PRE_PROCESS_FAILED
+          - FAILED
+          example: CREATED
+          type: string
+        created:
+          description: Time when the bulk update request was created
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+      type: object
+    Entitlementmetadatabulkupdatebyfilterrequest:
+      description: Request to bulk update Access Model Metadata on every entitlement
+        matching a filter expression. Adding or replacing custom metadata requires
+        a suite license.
+      example:
+        values:
+        - attribute: iscFederalClassifications
+          values:
+          - topSecret
+        filters: id eq 2c9180867817ac4d017817c491119a20
+        replaceScope: ATTRIBUTE
+        operation: REPLACE
+      properties:
+        filters:
+          description: |-
+            Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+            Filtering is supported for the following fields and operators:
+
+            **id**: *eq*
+          example: id eq 2c9180867817ac4d017817c491119a20
+          type: string
+        operation:
+          description: The operation to be performed
+          enum:
+          - ADD
+          - REMOVE
+          - REPLACE
+          example: REPLACE
+          type: string
+        replaceScope:
+          description: "The choice of update scope. **ATTRIBUTE** replaces only the\
+            \ values of the attributes named in `values`, and **ALL** replaces every\
+            \ metadata attribute on the entitlement."
+          enum:
+          - ALL
+          - ATTRIBUTE
+          example: ATTRIBUTE
+          type: string
+        values:
+          description: "The metadata to be updated, including attribute key and value."
+          example:
+          - attribute: iscFederalClassifications
+            values:
+            - topSecret
+          items:
+            $ref: '#/components/schemas/Entitlementmetadatabulkupdatebyidrequest_values_inner'
+          nullable: false
+          type: array
+      required:
+      - filters
+      - operation
+      - values
+      type: object
+    Entitlementmetadatabulkupdatebyqueryrequest:
+      description: |-
+        Request to bulk update Access Model Metadata on every entitlement matching a search query. Adding or replacing custom metadata requires a suite license.
+
+        For more information about the query object, refer to [V3 API Perform Search](https://developer.sailpoint.com/docs/api/v3/search-post).
+      example:
+        query:
+          indices:
+          - entitlements
+          queryType: TEXT
+          textQuery:
+            terms:
+            - test123
+            fields:
+            - id
+            matchAny: false
+            contains: true
+          includeNested: false
+        values:
+        - attribute: iscFederalClassifications
+          values:
+          - topSecret
+        replaceScope: ATTRIBUTE
+        operation: REPLACE
+      properties:
+        query:
+          description: The search query selecting the entitlements to update.
+          example:
+            indices:
+            - entitlements
+            queryType: TEXT
+            textQuery:
+              terms:
+              - test123
+              fields:
+              - id
+              matchAny: false
+              contains: true
+            includeNested: false
+          type: object
+        operation:
+          description: The operation to be performed
+          enum:
+          - ADD
+          - REMOVE
+          - REPLACE
+          example: REPLACE
+          type: string
+        replaceScope:
+          description: "The choice of update scope. **ATTRIBUTE** replaces only the\
+            \ values of the attributes named in `values`, and **ALL** replaces every\
+            \ metadata attribute on the entitlement."
+          enum:
+          - ALL
+          - ATTRIBUTE
+          example: ATTRIBUTE
+          type: string
+        values:
+          description: "The metadata to be updated, including attribute key and value."
+          example:
+          - attribute: iscFederalClassifications
+            values:
+            - topSecret
+          items:
+            $ref: '#/components/schemas/Entitlementmetadatabulkupdatebyidrequest_values_inner'
+          nullable: false
+          type: array
+      required:
+      - operation
+      - query
+      - values
+      type: object
     LoadEntitlementTask:
       example:
         uniqueName: Cloud Group Aggregation
@@ -3362,6 +3910,30 @@ components:
           description: The source name
           example: Corporate Active Directory
           type: string
+      type: object
+    Entitlementmetadatabulkupdatebyidrequest_values_inner:
+      properties:
+        attribute:
+          description: The technical name of the metadata attribute.
+          example: iscFederalClassifications
+          type: string
+        values:
+          description: The values of the attribute to be updated.
+          example:
+          - secret
+          items:
+            example: secret
+            type: string
+          nullable: true
+          type: array
+        objectType:
+          description: "The type of the metadata attribute. Set to `custom` for custom\
+            \ metadata attributes, which require a suite license."
+          example: custom
+          type: string
+      required:
+      - attribute
+      - values
       type: object
     LoadEntitlementTask_returns_inner:
       properties:
