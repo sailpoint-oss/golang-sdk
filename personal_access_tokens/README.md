@@ -83,11 +83,13 @@ Class | Method | HTTP request | Description
 *PersonalAccessTokensAPI* | [**DeletePersonalAccessTokenV1**](docs/PersonalAccessTokensAPI.md#deletepersonalaccesstokenv1) | **Delete** /personal-access-tokens/v1/{id} | Delete personal access token
 *PersonalAccessTokensAPI* | [**ListPersonalAccessTokensV1**](docs/PersonalAccessTokensAPI.md#listpersonalaccesstokensv1) | **Get** /personal-access-tokens/v1 | List personal access tokens
 *PersonalAccessTokensAPI* | [**PatchPersonalAccessTokenV1**](docs/PersonalAccessTokensAPI.md#patchpersonalaccesstokenv1) | **Patch** /personal-access-tokens/v1/{id} | Patch personal access token
+*PersonalAccessTokensAPI* | [**UpdateBulkPersonalAccessTokensV1**](docs/PersonalAccessTokensAPI.md#updatebulkpersonalaccesstokensv1) | **Patch** /personal-access-tokens/v1/bulk-update | Bulk update personal access tokens
 
 
 ## Documentation For Models
 
  - [ArrayInner](docs/ArrayInner.md)
+ - [BulkUpdatePersonalAccessTokensRequest](docs/BulkUpdatePersonalAccessTokensRequest.md)
  - [CreatePersonalAccessTokenRequest](docs/CreatePersonalAccessTokenRequest.md)
  - [CreatePersonalAccessTokenResponse](docs/CreatePersonalAccessTokenResponse.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)

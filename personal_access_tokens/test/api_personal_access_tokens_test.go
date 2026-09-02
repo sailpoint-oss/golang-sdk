@@ -73,4 +73,16 @@ func Test_personal_access_tokens_PersonalAccessTokensAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PersonalAccessTokensAPIService UpdateBulkPersonalAccessTokensV1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.PersonalAccessTokensAPI.UpdateBulkPersonalAccessTokensV1(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

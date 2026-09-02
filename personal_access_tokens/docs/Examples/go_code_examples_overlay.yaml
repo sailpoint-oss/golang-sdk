@@ -152,3 +152,50 @@
           // response from `PatchPersonalAccessTokenV1`: GetPersonalAccessTokenResponse
           fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensAPI.PatchPersonalAccessTokenV1`: %v\n", resp)
         }
+- path: /personal-access-tokens/v1/bulk-update
+  method: Patch
+  xCodeSample:
+    - lang: Go
+      label: SDK_tools/sdk/go/personalaccesstokens/methods/personal-access-tokens#update-bulk-personal-access-tokens-v1
+      source: |
+        package main
+
+        import (
+          "context"
+          "fmt"
+          "os"
+             "encoding/json"
+            personal_access_tokens "github.com/sailpoint-oss/golang-sdk/v3/personal_access_tokens"
+          sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+        )
+
+        func main() {
+           bulkupdatepersonalaccesstokensrequestJson := []byte(`{
+          "patch" : [ {
+            "op" : "replace",
+            "path" : "/expirationDate",
+            "value" : "2026-08-01T00:00:00.000Z"
+          } ],
+          "ids" : [ "695dab70d33d466b81d958dc9fb392db", "abc123def456abc123def456abc12345" ]
+        }`) // BulkUpdatePersonalAccessTokensRequest | The IDs of the personal access tokens to update, along with a single JSON Patch document to apply to each of them.
+
+          
+          var bulkUpdatePersonalAccessTokensRequest personal_access_tokens.BulkUpdatePersonalAccessTokensRequest
+          if err := json.Unmarshal(bulkupdatepersonalaccesstokensrequestJson, &bulkUpdatePersonalAccessTokensRequest); err != nil {
+            fmt.Println("Error:", err)
+            return
+          }
+          
+
+
+          configuration := sailpoint.NewDefaultConfiguration()
+          apiClient := sailpoint.NewAPIClient(configuration)
+          resp, r, err := apiClient.PersonalAccessTokensAPI.UpdateBulkPersonalAccessTokensV1(context.Background()).BulkUpdatePersonalAccessTokensRequest(bulkUpdatePersonalAccessTokensRequest).Execute()
+          //resp, r, err := apiClient.PersonalAccessTokensAPI.UpdateBulkPersonalAccessTokensV1(context.Background()).BulkUpdatePersonalAccessTokensRequest(bulkUpdatePersonalAccessTokensRequest).Execute()
+          if err != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.UpdateBulkPersonalAccessTokensV1``: %v\n", err)
+            fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+          }
+          // response from `UpdateBulkPersonalAccessTokensV1`: []GetPersonalAccessTokenResponse
+          fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensAPI.UpdateBulkPersonalAccessTokensV1`: %v\n", resp)
+        }

@@ -495,6 +495,123 @@ paths:
       - Personal Access Tokens
       x-sailpoint-userLevels:
       - Any
+  /personal-access-tokens/v1/bulk-update:
+    patch:
+      description: |-
+        This applies a single [JSON Patch](https://tools.ietf.org/html/rfc6902) document to multiple personal access tokens (PATs) in the current tenant in one request.
+        The same `patch` is applied to every token referenced in `ids`. Up to **25** tokens can be updated per request.
+        This is an administrative operation intended for org admins managing PATs across their tenant. The caller must have the `idn:all-personal-access-tokens:update` right. API OAuth client credentials are not permitted to call this endpoint.
+        Note: This operation is also accessible via `POST` to the same path; both methods behave identically. Unlike the single-token patch endpoint, the request body uses `Content-Type: application/json` (not `application/json-patch+json`).
+        **Allowed patch paths**
+        Only expiration-related paths may be modified in bulk:
+        * `/expirationDate` - Set or clear the token's expiration date. Any other path (for example `/name` or `/scope`) results in a `400` response.
+        * `/userAwareTokenNeverExpires` - Explicit acknowledgment that the token will never expire.
+        **expirationDate and userAwareTokenNeverExpires Relationship:**
+        When clearing `expirationDate` (either by removing it or replacing it with `null`), `userAwareTokenNeverExpires` must also be set to `true` in the same patch. This serves as an explicit acknowledgment that the caller is aware of the security implications of creating a token that will never expire. When `expirationDate` is set to a valid future date-time, `userAwareTokenNeverExpires` can be omitted.
+        **Note:** `userAwareTokenNeverExpires` is stored internally and is not returned in the response.
+      operationId: updateBulkPersonalAccessTokensV1
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Set expiration on multiple tokens:
+                value:
+                  ids:
+                  - 695dab70d33d466b81d958dc9fb392db
+                  - abc123def456abc123def456abc12345
+                  patch:
+                  - op: replace
+                    path: /expirationDate
+                    value: 2026-12-31T23:59:59.999Z
+              Set tokens to never expire:
+                value:
+                  ids:
+                  - 695dab70d33d466b81d958dc9fb392db
+                  patch:
+                  - op: remove
+                    path: /expirationDate
+                  - op: replace
+                    path: /userAwareTokenNeverExpires
+                    value: true
+            schema:
+              $ref: '#/components/schemas/BulkUpdatePersonalAccessTokensRequest'
+        description: "The IDs of the personal access tokens to update, along with\
+          \ a single JSON Patch document to apply to each of them."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/GetPersonalAccessTokenResponse'
+                type: array
+          description: "The bulk update succeeded. Returns the updated representation\
+            \ of each personal access token, sorted by `id`."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPersonalAccessTokensV1_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPersonalAccessTokensV1_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:all-personal-access-tokens:manage
+      summary: Bulk update personal access tokens
+      tags:
+      - Personal Access Tokens
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
 components:
   responses:
     "400":
@@ -937,6 +1054,52 @@ components:
       - op
       - path
       title: Json Patch Operation
+      type: object
+    BulkUpdatePersonalAccessTokensRequest:
+      description: Request body for bulk updating personal access tokens. A single
+        JSON Patch document is applied to every personal access token referenced in
+        `ids`.
+      example:
+        patch:
+        - op: replace
+          path: /expirationDate
+          value: 2026-08-01T00:00:00.000Z
+        ids:
+        - 695dab70d33d466b81d958dc9fb392db
+        - abc123def456abc123def456abc12345
+      properties:
+        ids:
+          description: The IDs of the personal access tokens to update. All IDs must
+            reference personal access tokens that exist in the current tenant. Duplicate
+            and blank values are not allowed.
+          example:
+          - 695dab70d33d466b81d958dc9fb392db
+          - abc123def456abc123def456abc12345
+          items:
+            type: string
+          maxItems: 25
+          minItems: 1
+          type: array
+          uniqueItems: true
+        patch:
+          description: |-
+            A single [JSON Patch](https://tools.ietf.org/html/rfc6902) document that is applied identically to every personal access token referenced in `ids`.
+            Only the following paths are allowed for bulk updates:
+            * `/expirationDate` - Set (`replace`) or clear (`remove`) the token's expiration.
+            * `/userAwareTokenNeverExpires` - Explicit acknowledgment required when clearing `expirationDate`.
+            Any other path (for example `/name` or `/scope`) results in a `400` response.
+          example:
+          - op: replace
+            path: /expirationDate
+            value: 2026-08-01T00:00:00.000Z
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          minItems: 1
+          type: array
+      required:
+      - ids
+      - patch
+      title: Bulk Update Personal Access Tokens Request
       type: object
     listPersonalAccessTokensV1_401_response:
       example:

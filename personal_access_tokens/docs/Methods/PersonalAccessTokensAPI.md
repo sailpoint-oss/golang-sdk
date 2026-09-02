@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**delete-personal-access-token-v1**](#delete-personal-access-token-v1) | **Delete** `/personal-access-tokens/v1/{id}` | Delete personal access token
 [**list-personal-access-tokens-v1**](#list-personal-access-tokens-v1) | **Get** `/personal-access-tokens/v1` | List personal access tokens
 [**patch-personal-access-token-v1**](#patch-personal-access-token-v1) | **Patch** `/personal-access-tokens/v1/{id}` | Patch personal access token
+[**update-bulk-personal-access-tokens-v1**](#update-bulk-personal-access-tokens-v1) | **Patch** `/personal-access-tokens/v1/bulk-update` | Bulk update personal access tokens
 
 
 ## create-personal-access-token-v1
@@ -319,6 +320,90 @@ func main() {
     }
     // response from `PatchPersonalAccessTokenV1`: GetPersonalAccessTokenResponse
     fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensAPI.PatchPersonalAccessTokenV1`: %v\n", resp)
+}
+```
+
+[[Back to top]](#)
+
+## update-bulk-personal-access-tokens-v1
+Bulk update personal access tokens
+This applies a single [JSON Patch](https://tools.ietf.org/html/rfc6902) document to multiple personal access tokens (PATs) in the current tenant in one request.
+The same `patch` is applied to every token referenced in `ids`. Up to **25** tokens can be updated per request.
+This is an administrative operation intended for org admins managing PATs across their tenant. The caller must have the `idn:all-personal-access-tokens:update` right. API OAuth client credentials are not permitted to call this endpoint.
+Note: This operation is also accessible via `POST` to the same path; both methods behave identically. Unlike the single-token patch endpoint, the request body uses `Content-Type: application/json` (not `application/json-patch+json`).
+**Allowed patch paths**
+Only expiration-related paths may be modified in bulk:
+* `/expirationDate` - Set or clear the token's expiration date. Any other path (for example `/name` or `/scope`) results in a `400` response.
+* `/userAwareTokenNeverExpires` - Explicit acknowledgment that the token will never expire.
+**expirationDate and userAwareTokenNeverExpires Relationship:**
+When clearing `expirationDate` (either by removing it or replacing it with `null`), `userAwareTokenNeverExpires` must also be set to `true` in the same patch. This serves as an explicit acknowledgment that the caller is aware of the security implications of creating a token that will never expire. When `expirationDate` is set to a valid future date-time, `userAwareTokenNeverExpires` can be omitted.
+**Note:** `userAwareTokenNeverExpires` is stored internally and is not returned in the response.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-bulk-personal-access-tokens-v-1)
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateBulkPersonalAccessTokensV1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bulkUpdatePersonalAccessTokensRequest** | [**BulkUpdatePersonalAccessTokensRequest**](../models/bulk-update-personal-access-tokens-request) | The IDs of the personal access tokens to update, along with a single JSON Patch document to apply to each of them. | 
+
+### Return type
+
+[**[]GetPersonalAccessTokenResponse**](../models/get-personal-access-token-response)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+  "encoding/json"
+    personal_access_tokens "github.com/sailpoint-oss/golang-sdk/v3/personal_access_tokens"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v3"
+)
+
+func main() {
+    bulkupdatepersonalaccesstokensrequestJson := []byte(`{
+          "patch" : [ {
+            "op" : "replace",
+            "path" : "/expirationDate",
+            "value" : "2026-08-01T00:00:00.000Z"
+          } ],
+          "ids" : [ "695dab70d33d466b81d958dc9fb392db", "abc123def456abc123def456abc12345" ]
+        }`) // BulkUpdatePersonalAccessTokensRequest | The IDs of the personal access tokens to update, along with a single JSON Patch document to apply to each of them.
+
+    var bulkUpdatePersonalAccessTokensRequest personal_access_tokens.BulkUpdatePersonalAccessTokensRequest
+    if err := json.Unmarshal(bulkupdatepersonalaccesstokensrequestJson, &bulkUpdatePersonalAccessTokensRequest); err != nil {
+      fmt.Println("Error:", err)
+      return
+    }
+    
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonalAccessTokensAPI.UpdateBulkPersonalAccessTokensV1(context.Background()).BulkUpdatePersonalAccessTokensRequest(bulkUpdatePersonalAccessTokensRequest).Execute()
+	  //resp, r, err := apiClient.PersonalAccessTokensAPI.UpdateBulkPersonalAccessTokensV1(context.Background()).BulkUpdatePersonalAccessTokensRequest(bulkUpdatePersonalAccessTokensRequest).Execute()
+    if err != nil {
+	    fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.UpdateBulkPersonalAccessTokensV1``: %v\n", err)
+	    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateBulkPersonalAccessTokensV1`: []GetPersonalAccessTokenResponse
+    fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensAPI.UpdateBulkPersonalAccessTokensV1`: %v\n", resp)
 }
 ```
 

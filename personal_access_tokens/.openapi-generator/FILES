@@ -8,6 +8,7 @@ api_personal_access_tokens.go
 client.go
 configuration.go
 docs/ArrayInner.md
+docs/BulkUpdatePersonalAccessTokensRequest.md
 docs/CreatePersonalAccessTokenRequest.md
 docs/CreatePersonalAccessTokenResponse.md
 docs/ErrorMessageDto.md
@@ -26,6 +27,7 @@ git_push.sh
 go.mod
 go.sum
 model_array_inner.go
+model_bulk_update_personal_access_tokens_request.go
 model_create_personal_access_token_request.go
 model_create_personal_access_token_response.go
 model_error_message_dto.go
