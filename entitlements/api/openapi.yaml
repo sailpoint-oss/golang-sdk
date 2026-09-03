@@ -921,7 +921,6 @@ paths:
       security:
       - userAuth:
         - idn:entitlement:manage
-        - idn:entitlement:update
       summary: Patch an entitlement
       tags:
       - Entitlements
