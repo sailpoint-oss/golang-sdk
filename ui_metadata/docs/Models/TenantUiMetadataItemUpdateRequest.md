@@ -18,6 +18,9 @@ Name | Type | Description | Notes
 **IframeWhiteList** | Pointer to **NullableString** | Parameter that organizational administrators can adjust to permit another domain to encapsulate IDN within an iframe. If you would like to reset the value use \"null\". It will only allow include into iframe non authenticated portions of the product, such as password reset. | [optional] 
 **UsernameLabel** | Pointer to **NullableString** | Descriptor for the username input field. If you would like to reset the value use \"null\". | [optional] 
 **UsernameEmptyText** | Pointer to **NullableString** | Placeholder text displayed in the username input field. If you would like to reset the value use \"null\". | [optional] 
+**InstanceBadgeDisplayName** | Pointer to **NullableString** | Display name for the instance badge. Optional. Omit this property to leave the stored value unchanged. Use null to clear it. | [optional] 
+**InstanceBadgeColor** | Pointer to **NullableString** | Hex value of color for the instance badge. Optional. Omit this property to leave the stored value unchanged. Use null to clear it. | [optional] 
+**InstanceBadgeVisible** | Pointer to **NullableBool** | Visibility toggle for the instance badge. Optional. Omit this property to leave the stored value unchanged. Null is stored as false. | [optional] 
 
 ## Methods
 
@@ -143,4 +146,109 @@ HasUsernameEmptyText returns a boolean if a field has been set.
 `func (o *TenantUiMetadataItemUpdateRequest) UnsetUsernameEmptyText()`
 
 UnsetUsernameEmptyText ensures that no value is present for UsernameEmptyText, not even an explicit nil
+### GetInstanceBadgeDisplayName
+
+`func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeDisplayName() string`
+
+GetInstanceBadgeDisplayName returns the InstanceBadgeDisplayName field if non-nil, zero value otherwise.
+
+### GetInstanceBadgeDisplayNameOk
+
+`func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeDisplayNameOk() (*string, bool)`
+
+GetInstanceBadgeDisplayNameOk returns a tuple with the InstanceBadgeDisplayName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceBadgeDisplayName
+
+`func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeDisplayName(v string)`
+
+SetInstanceBadgeDisplayName sets InstanceBadgeDisplayName field to given value.
+
+### HasInstanceBadgeDisplayName
+
+`func (o *TenantUiMetadataItemUpdateRequest) HasInstanceBadgeDisplayName() bool`
+
+HasInstanceBadgeDisplayName returns a boolean if a field has been set.
+
+### SetInstanceBadgeDisplayNameNil
+
+`func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeDisplayNameNil(b bool)`
+
+ SetInstanceBadgeDisplayNameNil sets the value for InstanceBadgeDisplayName to be an explicit nil
+
+### UnsetInstanceBadgeDisplayName
+`func (o *TenantUiMetadataItemUpdateRequest) UnsetInstanceBadgeDisplayName()`
+
+UnsetInstanceBadgeDisplayName ensures that no value is present for InstanceBadgeDisplayName, not even an explicit nil
+### GetInstanceBadgeColor
+
+`func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeColor() string`
+
+GetInstanceBadgeColor returns the InstanceBadgeColor field if non-nil, zero value otherwise.
+
+### GetInstanceBadgeColorOk
+
+`func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeColorOk() (*string, bool)`
+
+GetInstanceBadgeColorOk returns a tuple with the InstanceBadgeColor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceBadgeColor
+
+`func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeColor(v string)`
+
+SetInstanceBadgeColor sets InstanceBadgeColor field to given value.
+
+### HasInstanceBadgeColor
+
+`func (o *TenantUiMetadataItemUpdateRequest) HasInstanceBadgeColor() bool`
+
+HasInstanceBadgeColor returns a boolean if a field has been set.
+
+### SetInstanceBadgeColorNil
+
+`func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeColorNil(b bool)`
+
+ SetInstanceBadgeColorNil sets the value for InstanceBadgeColor to be an explicit nil
+
+### UnsetInstanceBadgeColor
+`func (o *TenantUiMetadataItemUpdateRequest) UnsetInstanceBadgeColor()`
+
+UnsetInstanceBadgeColor ensures that no value is present for InstanceBadgeColor, not even an explicit nil
+### GetInstanceBadgeVisible
+
+`func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeVisible() bool`
+
+GetInstanceBadgeVisible returns the InstanceBadgeVisible field if non-nil, zero value otherwise.
+
+### GetInstanceBadgeVisibleOk
+
+`func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeVisibleOk() (*bool, bool)`
+
+GetInstanceBadgeVisibleOk returns a tuple with the InstanceBadgeVisible field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceBadgeVisible
+
+`func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeVisible(v bool)`
+
+SetInstanceBadgeVisible sets InstanceBadgeVisible field to given value.
+
+### HasInstanceBadgeVisible
+
+`func (o *TenantUiMetadataItemUpdateRequest) HasInstanceBadgeVisible() bool`
+
+HasInstanceBadgeVisible returns a boolean if a field has been set.
+
+### SetInstanceBadgeVisibleNil
+
+`func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeVisibleNil(b bool)`
+
+ SetInstanceBadgeVisibleNil sets the value for InstanceBadgeVisible to be an explicit nil
+
+### UnsetInstanceBadgeVisible
+`func (o *TenantUiMetadataItemUpdateRequest) UnsetInstanceBadgeVisible()`
+
+UnsetInstanceBadgeVisible ensures that no value is present for InstanceBadgeVisible, not even an explicit nil
 

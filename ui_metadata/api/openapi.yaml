@@ -332,6 +332,9 @@ components:
         usernameEmptyText: Please provide your work email address...
         usernameLabel: Email
         iframeWhiteList: http://example.com http://example2.com
+        instanceBadgeVisible: true
+        instanceBadgeDisplayName: Sandbox
+        instanceBadgeColor: FFAA00
       properties:
         iframeWhiteList:
           description: "Parameter that organizational administrators can adjust to\
@@ -353,6 +356,24 @@ components:
           example: Please provide your work email address...
           nullable: true
           type: string
+        instanceBadgeDisplayName:
+          description: Display name for the instance badge. Null when no display name
+            is configured.
+          example: Sandbox
+          nullable: true
+          type: string
+        instanceBadgeColor:
+          description: Hex value of color for the instance badge. Null when no color
+            is configured.
+          example: FFAA00
+          nullable: true
+          type: string
+        instanceBadgeVisible:
+          default: false
+          description: Whether the instance badge is visible. Defaults to false when
+            no value is stored.
+          example: true
+          type: boolean
       type: object
     LocaleOrigin:
       description: "An indicator of how the locale was selected. *DEFAULT* means the\
@@ -436,6 +457,9 @@ components:
         usernameEmptyText: Please provide your work email address...
         usernameLabel: Email
         iframeWhiteList: http://example.com http://example2.com
+        instanceBadgeVisible: true
+        instanceBadgeDisplayName: Sandbox
+        instanceBadgeColor: FFAA00
       properties:
         iframeWhiteList:
           description: "Parameter that organizational administrators can adjust to\
@@ -457,6 +481,24 @@ components:
           example: Please provide your work email address...
           nullable: true
           type: string
+        instanceBadgeDisplayName:
+          description: Display name for the instance badge. Optional. Omit this property
+            to leave the stored value unchanged. Use null to clear it.
+          example: Sandbox
+          nullable: true
+          type: string
+        instanceBadgeColor:
+          description: Hex value of color for the instance badge. Optional. Omit this
+            property to leave the stored value unchanged. Use null to clear it.
+          example: FFAA00
+          nullable: true
+          type: string
+        instanceBadgeVisible:
+          description: Visibility toggle for the instance badge. Optional. Omit this
+            property to leave the stored value unchanged. Null is stored as false.
+          example: true
+          nullable: true
+          type: boolean
       type: object
     getTenantUiMetadataV1_401_response:
       example:

@@ -4090,6 +4090,339 @@ components:
           type: object
       title: Invocation
       type: object
+    AccessRequestDynamicApprovalResponse:
+      properties:
+        id:
+          description: "Unique identifier of the approver to add to the approval process.\
+            \ If there is none, send an empty value \"\"."
+          example: 2c91808b6ef1d43e016efba0ce470906
+          type: string
+        type:
+          description: "Type of approver to add to the approval process. If there\
+            \ is none, send an empty value \"\"."
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+        name:
+          description: "Name of the approver to add to the approval process. If there\
+            \ is none, send an empty value \"\"."
+          example: Adam Adams
+          type: string
+      required:
+      - id
+      - name
+      - type
+      title: Access Request Dynamic Approval Response
+      type: object
+    AccessRequestSubmittedResponse:
+      properties:
+        approved:
+          description: Approval or denial of the request by the subscribing service.
+          example: true
+          type: boolean
+        comment:
+          description: Comment from the subscribing service approving or denying the
+            request.
+          example: This access has passed preliminary approval.
+          type: string
+        approver:
+          description: "Name of the subscribing service approving the request.  This\
+            \ doesn't normally have to be the name of an existing identity in ISC,\
+            \ but it does if you have an active subscription to the [Access Request\
+            \ Decision trigger](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/access-request-decision).\
+            \ If you don't provide the `username` of an existing identity in your\
+            \ tenant, your Access Request Decision subscriptions will never trigger."
+          example: AcmeCorpExternalIntegration
+          type: string
+      required:
+      - approved
+      - approver
+      - comment
+      title: Access Request Submitted Response
+      type: object
+    FormSubmitted:
+      properties:
+        submittedAt:
+          description: Date and time when the user submitted the form.
+          example: 2020-06-29T22:01:50.474Z
+          format: date-time
+          type: string
+        tenantId:
+          description: ISC tenant's unique identifier.
+          example: 2c9180845d1edece015d27a9717c3e19
+          type: string
+        formInstanceId:
+          description: Form instance's unique identifier.
+          example: 2c9180835d2e5168015d32f890ca1582
+          type: string
+        formDefinitionId:
+          description: Form definition's unique identifier.
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        name:
+          description: Form's name.
+          example: Open Service Request
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/FormSubmitted_createdBy'
+        submittedBy:
+          $ref: '#/components/schemas/FormSubmitted_submittedBy'
+        formData:
+          additionalProperties: true
+          description: Data in the submitted form.
+          example:
+            department: IT
+            requestType: New Laptop
+            laptop: New Laptop type for Engineer
+            comments: "My laptop is running slowly, and I need to get a shiny new\
+              \ laptop to get my work done. Thanks!"
+          nullable: true
+          type: object
+      required:
+      - createdBy
+      - formData
+      - formDefinitionId
+      - formInstanceId
+      - name
+      - submittedAt
+      - submittedBy
+      - tenantId
+      title: Form Submitted
+      type: object
+    OutlierDetected:
+      properties:
+        identity:
+          $ref: '#/components/schemas/OutlierDetected_identity'
+        outlierType:
+          description: Identity's outlier type.
+          enum:
+          - LOW_SIMILARITY
+          example: LOW_SIMILARITY
+          type: string
+        score:
+          description: "Dissimilarity score that determines whether the identity is\
+            \ an outlier, ranging from `0.0` to `1.0`. The higher the score, the more\
+            \ likely the identity is an outlier."
+          example: 0.82
+          format: decimal
+          type: number
+      required:
+      - identity
+      - outlierType
+      - score
+      title: Outlier Detected
+      type: object
+    SODViolationCreatedPayload:
+      description: JSON body delivered for the **SODViolationCreated** webhook.
+      properties:
+        created:
+          description: When the violation record was created.
+          example: 2026-03-04T22:51:24.535433Z
+          format: date-time
+          type: string
+        id:
+          description: Violation ID.
+          example: 230bb065e18641f9bd6985ea9cf2e1a4
+          type: string
+        lastEvaluatedDate:
+          description: When the violation was last evaluated.
+          example: 2026-03-04T22:51:22.158Z
+          format: date-time
+          type: string
+        level:
+          description: Violation severity level.
+          example: High
+          type: string
+        name:
+          description: Human-readable violation name.
+          example: Violation for 01ea1d94-5db1-4444-a235-6f71c22b3449 - Target 2c9180888380236101838062022f00ea
+          type: string
+        owner:
+          $ref: '#/components/schemas/SODViolationCreatedPayload_owner'
+        policy:
+          $ref: '#/components/schemas/SODViolationCreatedPayload_policy'
+        status:
+          description: Violation lifecycle status.
+          example: Open
+          type: string
+        target:
+          $ref: '#/components/schemas/SODViolationCreatedPayload_target'
+      title: SOD Violation Created Payload
+      type: object
+    SODViolationReopenedPayload:
+      description: JSON body delivered for the **SODViolationReopened** webhook.
+      properties:
+        created:
+          description: When the violation record was created.
+          example: 2026-03-04T22:51:24.535433Z
+          format: date-time
+          type: string
+        modified:
+          description: When the violation was last modified.
+          example: 2026-03-05T22:51:24.535433Z
+          format: date-time
+          type: string
+        id:
+          description: Violation ID.
+          example: 230bb065e18641f9bd6985ea9cf2e1a4
+          type: string
+        lastEvaluatedDate:
+          description: When the violation was last evaluated.
+          example: 2026-03-05T22:51:22.158Z
+          format: date-time
+          type: string
+        level:
+          description: Violation severity level.
+          example: High
+          type: string
+        name:
+          description: Human-readable violation name.
+          example: Violation for 01ea1d94-5db1-4444-a235-6f71c22b3449 - Target 2c9180888380236101838062022f00ea
+          type: string
+        owner:
+          $ref: '#/components/schemas/SODViolationCreatedPayload_owner'
+        policy:
+          $ref: '#/components/schemas/SODViolationCreatedPayload_policy'
+        previousStatus:
+          description: Violation status before the reopen.
+          example: Mitigated
+          type: string
+        currentStatus:
+          description: Violation status after the reopen.
+          example: Open
+          type: string
+        target:
+          $ref: '#/components/schemas/SODViolationCreatedPayload_target'
+        reason:
+          description: Why the violation was reopened.
+          enum:
+          - Conflicting Criteria Updated
+          - Applied Control Expired
+          example: Conflicting Criteria Updated
+          type: string
+      title: SOD Violation Reopened Payload
+      type: object
+    ViolationAppliedControlStatus:
+      description: Lifecycle status of a compensating control application on a violation.
+        **Pending** - not yet in effect; **Active** - currently mitigating the violation;
+        **Completed** - finished successfully; **Canceled** - withdrawn before completion;
+        **Failed** - could not be completed successfully.
+      enum:
+      - Pending
+      - Active
+      - Completed
+      - Canceled
+      - Failed
+      example: Active
+      title: Violation Applied Control Status
+      type: string
+    SODViolationMitigatedPayload:
+      description: JSON body delivered for the **SODViolationMitigated** webhook.
+      properties:
+        appliedControls:
+          description: Controls applied to mitigate the violation. For now this lists
+            the currently active application(s).
+          items:
+            $ref: '#/components/schemas/SODViolationMitigatedPayload_appliedControls_inner'
+          type: array
+        created:
+          description: When the violation record was created.
+          example: 2026-03-04T22:51:24.535433Z
+          format: date-time
+          type: string
+        expiration:
+          description: Violation-level expiration (may be a sentinel when not set).
+          example: 2026-04-04T22:51:24.535433Z
+          format: date-time
+          type: string
+        id:
+          description: Violation ID.
+          example: 230bb065e18641f9bd6985ea9cf2e1a4
+          type: string
+        lastEvaluatedDate:
+          description: When the violation was last evaluated.
+          example: 2026-03-05T22:51:22.158Z
+          format: date-time
+          type: string
+        level:
+          description: Violation severity level.
+          example: High
+          type: string
+        modified:
+          description: When the violation was last modified.
+          example: 2026-03-05T22:51:24.535433Z
+          format: date-time
+          type: string
+        name:
+          description: Human-readable violation name.
+          example: Violation for 01ea1d94-5db1-4444-a235-6f71c22b3449 - Target 2c9180888380236101838062022f00ea
+          type: string
+        owner:
+          $ref: '#/components/schemas/SODViolationMitigatedPayload_owner'
+        policy:
+          $ref: '#/components/schemas/SODViolationCreatedPayload_policy'
+        status:
+          description: Violation lifecycle status after mitigation.
+          example: Mitigated
+          type: string
+        target:
+          $ref: '#/components/schemas/SODViolationCreatedPayload_target'
+      title: SOD Violation Mitigated Payload
+      type: object
+    SODViolationClosedPayload:
+      description: JSON body delivered for the **SODViolationClosed** webhook.
+      properties:
+        created:
+          description: When the violation record was created.
+          example: 2026-03-04T22:51:24.535433Z
+          format: date-time
+          type: string
+        modified:
+          description: When the violation was last modified.
+          example: 2026-03-04T22:51:24.535433Z
+          format: date-time
+          type: string
+        id:
+          description: Violation ID.
+          example: 230bb065e18641f9bd6985ea9cf2e1a4
+          type: string
+        lastEvaluatedDate:
+          description: When the violation was last evaluated.
+          example: 2026-03-04T22:51:22.158Z
+          format: date-time
+          type: string
+        level:
+          description: Violation severity level.
+          example: High
+          type: string
+        name:
+          description: Human-readable violation name.
+          example: Violation for 01ea1d94-5db1-4444-a235-6f71c22b3449 - Target 2c9180888380236101838062022f00ea
+          type: string
+        owner:
+          $ref: '#/components/schemas/SODViolationClosedPayload_owner'
+        policy:
+          $ref: '#/components/schemas/SODViolationClosedPayload_policy'
+        previousStatus:
+          description: Violation status before closure (**Open** or **Mitigated**).
+          enum:
+          - Open
+          - Mitigated
+          example: Mitigated
+          type: string
+        currentStatus:
+          description: Violation status after the event (always **Closed** for this
+            webhook).
+          enum:
+          - Closed
+          example: Closed
+          type: string
+        target:
+          $ref: '#/components/schemas/SODViolationClosedPayload_target'
+      title: SOD Violation Closed Payload
+      type: object
     listTriggersV1_401_response:
       example:
         error: "JWT validation failed: JWT is expired"
@@ -6159,3 +6492,988 @@ components:
       - op
       - path
       type: object
+    FormSubmitted_createdBy:
+      description: Origin of the form creation.
+      properties:
+        type:
+          description: Form creation origin's type.
+          enum:
+          - WORKFLOW_EXECUTION
+          - SOURCE
+          example: WORKFLOW_EXECUTION
+          type: string
+        id:
+          description: Unique identifier of the origin of the form creation.
+          example: 2c9180845d1edece015d27a9717c3e19
+          type: string
+      required:
+      - id
+      - type
+      type: object
+    FormSubmitted_submittedBy:
+      description: Identity who submitted the form.
+      properties:
+        type:
+          description: DTO type of the identity who submitted the form.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Unique identifier of the identity who submitted the form.
+          example: 2c9180845d1edece015d27a9717c3e19
+          type: string
+        name:
+          description: Name of the identity who submitted the form.
+          example: Rob.Robertson
+          type: string
+      required:
+      - id
+      - name
+      - type
+      type: object
+    OutlierDetected_identity:
+      description: "Identity with unusual access, relative to its peers."
+      properties:
+        type:
+          description: Identity's DTO type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Identity's unique ID.
+          example: 2c7180a46faadee4016fb4e018c20642
+          type: string
+        name:
+          description: Identity's name.
+          example: Michael Michaels
+          type: string
+      required:
+      - id
+      - name
+      - type
+      type: object
+    SODViolationCreatedPayload_owner:
+      description: Owner of the violation (e.g. assigned identity).
+      properties:
+        id:
+          description: Owner ID.
+          example: 2c918088837fe14901838062029a04bf
+          type: string
+        type:
+          description: DTO type of the owner reference.
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+      type: object
+    SODViolationCreatedPayload_policy:
+      description: SOD policy associated with the violation.
+      properties:
+        id:
+          description: Policy ID.
+          example: 01ea1d94-5db1-4444-a235-6f71c22b3449
+          type: string
+        type:
+          description: Policy type (always **SOD** for this webhook).
+          enum:
+          - SOD
+          example: SOD
+          type: string
+      type: object
+    SODViolationCreatedPayload_target:
+      description: Identity or entity the violation applies to.
+      properties:
+        id:
+          description: Target ID.
+          example: 2c9180888380236101838062022f00ea
+          type: string
+        type:
+          description: DTO type of the target reference.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+      type: object
+    SODViolationMitigatedPayload_appliedControls_inner_applier:
+      description: Identity that applied the control.
+      properties:
+        id:
+          description: Applier ID.
+          example: 2c918088837fe14901838062029a04bf
+          type: string
+        type:
+          description: DTO type of the applier reference.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+      type: object
+    SODViolationMitigatedPayload_appliedControls_inner_control:
+      description: Reference to the compensating control definition.
+      properties:
+        id:
+          description: Control ID.
+          example: 01ea1d945db14444a2356f71c22b3449
+          type: string
+        type:
+          description: Control type (always **COMPENSATING_CONTROL** for this webhook).
+          enum:
+          - COMPENSATING_CONTROL
+          example: COMPENSATING_CONTROL
+          type: string
+      type: object
+    SODViolationMitigatedPayload_appliedControls_inner:
+      properties:
+        appliedDate:
+          description: When the control was applied.
+          example: 2026-03-05T22:51:24.535433Z
+          format: date-time
+          type: string
+        applier:
+          $ref: '#/components/schemas/SODViolationMitigatedPayload_appliedControls_inner_applier'
+        comments:
+          description: Optional comments from the applier.
+          example: Applied compensating control to mitigate violation while awaiting
+            access review.
+          nullable: true
+          type: string
+        control:
+          $ref: '#/components/schemas/SODViolationMitigatedPayload_appliedControls_inner_control'
+        expiration:
+          description: When this application of the control expires.
+          example: 2026-04-05T22:51:24.535433Z
+          format: date-time
+          type: string
+        id:
+          description: ID of the control application record.
+          example: 230bb065e18641f9bd6985ea9cf2e1a4
+          type: string
+        status:
+          $ref: '#/components/schemas/ViolationAppliedControlStatus'
+        violation:
+          description: ID of the violation this application belongs to.
+          example: 230bb065e18641f9bd6985ea9cf2e1a4
+          type: string
+        workflowId:
+          description: Optional workflow correlation ID.
+          example: 2c918088837fe14901838062029a04bf
+          nullable: true
+          type: string
+      type: object
+    SODViolationMitigatedPayload_owner:
+      description: Owner of the violation.
+      properties:
+        id:
+          description: Owner ID.
+          example: 2c918088837fe14901838062029a04bf
+          type: string
+        type:
+          description: DTO type of the owner reference.
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+      type: object
+    SODViolationClosedPayload_owner:
+      description: Owner of the violation (e.g. assigned identity).
+      properties:
+        id:
+          description: Owner ID.
+          example: 2c918088837fe14901838062029a04bf
+          type: string
+        type:
+          description: Owner type.
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+      type: object
+    SODViolationClosedPayload_policy:
+      description: SOD policy associated with the violation.
+      properties:
+        id:
+          description: Policy ID.
+          example: 01ea1d945db14444a2356f71c22b3449
+          type: string
+        type:
+          description: Policy type (always **SOD** for this webhook).
+          enum:
+          - SOD
+          example: SOD
+          type: string
+      type: object
+    SODViolationClosedPayload_target:
+      description: Identity or entity the violation applied to.
+      properties:
+        id:
+          description: Target ID.
+          example: 2c9180888380236101838062022f00ea
+          type: string
+        type:
+          description: Target type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+      type: object
+x-webhooks:
+  AccessRequestDecision:
+    post:
+      summary: Access request decision
+      operationId: accessRequestDecisionEvent
+      description: |-
+        This event trigger fires after an access request is approved or denied.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Access Request Decision](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/access-request-decision).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessRequestPostApproval'
+  AccessRequestDynamicApproval:
+    post:
+      summary: Access request dynamic approval
+      operationId: accessRequestDynamicApprovalEvent
+      description: |-
+        This event trigger fires after an access request is submitted but before the request is approved or denied. You can use this trigger as a way to route the access request to an additional approval step by an identity or governance group.
+        This is a `REQUEST_RESPONSE` event trigger.  This trigger type expects a response from the subscribers with directions about how to proceed with the event. You can only have one subscriber per event. For more information about this event trigger, refer to [Access Request Dynamic Approval](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/access-request-dynamic-approval).
+        >**Note: If there is an active subscription to the [Access Request Submitted trigger](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/access-request-submitted), this trigger is invoked after the Access Request Submitted trigger, only if the response to that trigger was to approve the request.**
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessRequestDynamicApprover'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessRequestDynamicApprovalResponse'
+  AccessRequestSubmitted:
+    post:
+      summary: Access request submitted
+      operationId: accessRequestSubmittedEvent
+      description: |-
+        This event trigger fires after an access request is submitted but before the request is approved or denied.  A service subscribing to the trigger can respond in real-time to approve or deny the request.
+        This is a `REQUEST_RESPONSE` event trigger.  This trigger type expects a response from the subscribers with directions about how to proceed with the event. You can only have one subscriber per event. For more information about this event trigger, refer to [Access Request Submitted](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/access-request-submitted).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessRequestPreApproval'
+      responses:
+        "200":
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessRequestSubmittedResponse'
+  AccountAggregationCompleted:
+    post:
+      summary: Account aggregation completed
+      operationId: accountAggregationCompletedEvent
+      description: |-
+        This event trigger fires after a source aggregation has either succeeded or failed in collecting source accounts but before Identity Security Cloud (ISC) processes the aggregation.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Account Aggregation Completed](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/account-aggregation-completed).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountAggregationCompleted'
+  AccountsCollectedForAggregation:
+    post:
+      summary: Accounts collected for aggregation
+      operationId: accountsCollectedForAggregationEvent
+      description: |-
+        This event trigger fires when Identity Security Cloud has gathered the accounts on a source and is prepared to aggregate them.
+        This trigger occurs after the accounts have been collected from the source but before the aggregation processing begins.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger.
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountsCollectedForAggregation'
+  AccountCreated:
+    post:
+      summary: Account created
+      operationId: accountCreatedEvent
+      description: |-
+        This event trigger fires when a new account is created in Identity Security Cloud.
+        Accounts can be created via aggregations or provisioning, including when entitlements are added or removed.
+        You could use this event trigger to fire a Workflow that notifies a source owner when an account is created.
+        See [Aggregating Accounts](https://documentation.sailpoint.com/saas/help/accounts/index.html#aggregating-accounts) and [Configuring Source Account Provisioning](https://documentation.sailpoint.com/saas/help/provisioning/create_profile.html) for more information about the scenarios that lead to account creation.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Account Created](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/account-created).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountCreated'
+  AccountDeleted:
+    post:
+      summary: Account deleted
+      operationId: accountDeletedEvent
+      description: |-
+        This event trigger fires when an account is deleted in Identity Security Cloud.
+        Accounts can be deleted via aggregations or provisioning.
+        You could use this event trigger to fire a Workflow that takes additional actions after a privileged account has been deleted.
+        See [Aggregating Accounts](https://documentation.sailpoint.com/saas/help/accounts/index.html#aggregating-accounts) and [Configuring Source Account Provisioning](https://documentation.sailpoint.com/saas/help/provisioning/create_profile.html) for more information about the scenarios that lead to account deletion.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Account Deleted](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/account-deleted).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountDeleted'
+  AccountUpdated:
+    post:
+      summary: Account updated
+      operationId: accountUpdatedEvent
+      description: |-
+        This event trigger fires when an account is updated in Identity Security Cloud.
+        Accounts can be updated via aggregations or provisioning, including when entitlements are added or removed.
+        You could use this event trigger to fire a Workflow that takes additional actions after a new entitlement has been provisioned to a privileged account.
+        See [Aggregating Accounts](https://documentation.sailpoint.com/saas/help/accounts/index.html#aggregating-accounts) and [Configuring Source Account Provisioning](https://documentation.sailpoint.com/saas/help/provisioning/create_profile.html) for more information about the scenarios that lead to account updates.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Account Updated](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/account-updated).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountUpdated'
+  CampaignActivated:
+    post:
+      summary: Campaign activated
+      operationId: campaignActivatedEvent
+      description: |-
+        This event trigger fires after a certification campaign is activated.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Campaign Activated](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/campaign-activated).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignActivated'
+  CampaignEnded:
+    post:
+      summary: Campaign ended
+      operationId: campaignEndedEvent
+      description: |-
+        This event trigger fires after a certification campaign ends.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Campaign Ended](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/campaign-ended).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignEnded'
+  CampaignGenerated:
+    post:
+      summary: Campaign generated
+      operationId: campaignGeneratedEvent
+      description: |-
+        This event trigger fires after a certification campaign has generated and moved into the 'Preview Ready' state but hasn't been activated yet.  A typical use case for this event trigger is to use it to immediately activate a campaign once it is generated.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Campaign Generated](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/campaign-generated).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignGenerated'
+  CertificationSignedOff:
+    post:
+      summary: Certification signed off
+      operationId: certificationSignedOffEvent
+      description: |-
+        This event trigger fires after a certification is signed off on and moves to the 'End' status. Do not confuse this event trigger with the Campaign End trigger.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Certification Sign Off](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/certification-signed-off).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificationSignedOff'
+  FormSubmitted:
+    post:
+      summary: Form submitted
+      operationId: formSubmittedEvent
+      description: |-
+        This event trigger fires after a user has submitted a [custom form](https://documentation.sailpoint.com/saas/help/forms/index.html) in Identity Security Cloud (ISC).
+        A typical use case for this trigger is to immediately take actions based on the data in the submitted form.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Form Submitted](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/form-submitted).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormSubmitted'
+  IdentityAttributesChanged:
+    post:
+      summary: Identity attributes changed
+      operationId: identityAttributesChangedEvent
+      description: |-
+        This event trigger fires when Identity Security Cloud (ISC) detects an identity attribute change.  ISC identity attribute changes occur when account attributes aggregated from an authoritative source differ from an identity's current attributes during an identity refresh.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Identity Attributes Changed](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/identity-attribute-changed).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityAttributesChanged'
+  IdentityCreated:
+    post:
+      summary: Identity created
+      operationId: identityCreatedEvent
+      description: |-
+        This event trigger fires when Identity Security Cloud (ISC) detects a new identity during an aggregation and refresh from an authoritative source. ISC detects a new identity when it finds an account from an authoritative source that isn't correlated to an existing identity.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Identity Created](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/identity-created).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityCreated'
+  MachineIdentityCreated:
+    post:
+      summary: Machine Identity Created
+      operationId: machineIdentityCreatedEvent
+      description: "This event trigger fires when a new machine identity is created\
+        \ in Identity Security Cloud.\nMachine identities can be created via the UI,\
+        \ endpoint, or aggregated. Machine identities can also be created via machine\
+        \ account to machine account mappings.\nYou could use this event trigger to\
+        \ fire a Workflow that discovers machine identity owners when a machine identity\
+        \ is created.\nSee [Managing Application Identities](https://documentation.sailpoint.com/saas/help/machine/identity.html),\
+        \  [Managing AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_mgmt.html#updating-ai-agents),\
+        \  [Aggregating AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_aggregations.html)\
+        \ or  [Mapping Machine Account Attributes](https://documentation.sailpoint.com/saas/help/machine/account_configuration.html#mapping-machine-account-attributes)\
+        \  for more information about the scenarios that lead to machine identity\
+        \ creation. \nCustomers that have licensed Machine Identity Security or Agent\
+        \ Identity Security will receive this event trigger.\nThis is a `FIRE_AND_FORGET`\
+        \ event trigger.  You can have a maximum of 50 subscriptions for this trigger.\
+        \ For more information about this event trigger, refer to [Machine Identity\
+        \ Created](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/machine-identity-created)."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineIdentityCreated'
+  MachineIdentityUpdated:
+    post:
+      summary: Machine Identity Updated
+      operationId: machineIdentityUpdatedEvent
+      description: |-
+        This event trigger fires when a machine identity is updated in Identity Security Cloud.
+        Machine identities can be updated via the UI, endpoint, or aggregations.
+        You could use this event trigger to fire a Workflow that notifies machine identity owners when a machine identity's owner list changes.
+        See [Managing Application Identities](https://documentation.sailpoint.com/saas/help/machine/identity.html),  [Managing AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_mgmt.html#updating-ai-agents) or  [Aggregating AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_aggregations.html)  for more information about the scenarios that lead to machine identity updates.
+        Customers that have licensed Machine Identity Security or Agent Identity Security will receive this event trigger.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Machine Identity Updated](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/machine-identity-updated).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineIdentityUpdated'
+  MachineIdentityDeleted:
+    post:
+      summary: Machine Identity Deleted
+      operationId: machineIdentityDeletedEvent
+      description: |-
+        This event trigger fires when a machine identity is deleted in Identity Security Cloud.
+        Machine identities can be deleted via the UI, endpoint, or aggregations. Machine identities can also be auto-deleted when all account correlations to the machine identity are removed.
+        You could use this event trigger to fire a Workflow that notifies machine identity owners when a machine identity is decommissioned.
+        See [Managing Application Identities](https://documentation.sailpoint.com/saas/help/machine/identity.html),  [Managing AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_mgmt.html#updating-ai-agents),  [Aggregating AI Agents](https://documentation.sailpoint.com/saas/help/agent/agent_aggregations.html),  [Mapping Machine Account Attributes](https://documentation.sailpoint.com/saas/help/machine/account_configuration.html#mapping-machine-account-attributes)  for more information about the scenarios that lead to machine identity deletion.
+        Customers that have licensed Machine Identity Security or Agent Identity Security will receive this event trigger.
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Machine Identity Deleted](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/machine-identity-deleted).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineIdentityDeleted'
+  NativeChangeAccountCreated:
+    post:
+      summary: Native change account created
+      operationId: nativeChangeAccountCreatedEvent
+      description: "This event trigger fires when Identity Security Cloud (ISC) aggregates\
+        \ data from an external source and detects that a new account exists on the\
+        \ source. The external source must meet these criteria for you to receive\
+        \ this type of event:\n  * Native Change Detection (NCD) is enabled.\n  *\
+        \ Account Create operations are monitored.\n  * At least one attribute selected\
+        \ for monitoring has changed.\n\nIn addition to having NCD enabled,  There\
+        \ are two ways to configure a source for NCD: \n  * Invoke the 'Update Native\
+        \ Change Detection' configuration for each source you want to receive NCD\
+        \ events from.\n  * Configure the NCD options on the source in the source\
+        \ configuration user interface (UI).\n  \nThis is a `FIRE_AND_FORGET` event\
+        \ trigger.  You can have a maximum of 50 subscriptions for this trigger. For\
+        \ more information about this event trigger, refer to [Native Change Account\
+        \ Created](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/native-change-account-created)."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceAccountCreated'
+  NativeChangeAccountDeleted:
+    post:
+      summary: Native change account deleted
+      operationId: nativeChangeAccountDeletedEvent
+      description: "This event trigger fires when Identity Security Cloud (ISC) aggregates\
+        \ data from an external source and detects that an account has been deleted\
+        \ from the source. The external source must meet these criteria for you to\
+        \ receive this type of event:\n  * Native Change Detection (NCD) is enabled.\n\
+        \  * Account Delete operations are monitored.\n  * At least one attribute\
+        \ selected for monitoring has changed.\n  \nIn addition to having NCD enabled,\
+        \  There are two ways to configure a source for NCD: \n  * Invoke the 'Update\
+        \ Native Change Detection' configuration for each source you want to receive\
+        \ NCD events from.\n  * Configure the NCD options on the source in the source\
+        \ configuration user interface (UI).\n\nA typical use for this event trigger\
+        \ would be to notify the correlated identity's manager and the source owner\
+        \ when the account is deleted.\nThis is a `FIRE_AND_FORGET` event trigger.\
+        \  You can have a maximum of 50 subscriptions for this trigger. For more information\
+        \ about this event trigger, refer to [Native Change Account Deleted](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/native-change-account-deleted)."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceAccountDeleted'
+  NativeChangeAccountUpdated:
+    post:
+      summary: Native change account updated
+      operationId: nativeChangeAccountUpdatedEvent
+      description: "This event trigger fires when Identity Security Cloud (ISC) aggregates\
+        \ data from an external source and detects that an account has been updated\
+        \ on the source. The external source must meet these criteria for you to receive\
+        \ this type of event:\n  * Native Change Detection (NCD) is enabled.\n  *\
+        \ Account Update operations are monitored.\n  * At least one attribute selected\
+        \ for monitoring has changed.\n  \nIn addition to having NCD enabled,  There\
+        \ are two ways to configure a source for NCD: \n  * Invoke the 'Update Native\
+        \ Change Detection' configuration for each source you want to receive NCD\
+        \ events from.\n  * Configure the NCD options on the source in the source\
+        \ configuration user interface (UI).\n\nA typical use for this event trigger\
+        \ would be to notify the correlated identity's manager and the source owner\
+        \ when the account is deleted.\nThis is a `FIRE_AND_FORGET` event trigger.\
+        \  You can have a maximum of 50 subscriptions for this trigger. For more information\
+        \ about this event trigger, refer to [Native Change Account Updated](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/native-change-account-updated)."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceAccountUpdated'
+  OutlierDetected:
+    post:
+      summary: Outlier detected
+      operationId: outlierDetectedEvent
+      description: |-
+        This event trigger fires when Identity Security Cloud (ISC) detects that identities have unusual access relative their peers. ISC calculates outliers daily, flags the outliers, and notifies the trigger's subscribers when it detects them.
+        These are the requirements to use the trigger:
+          * Your organization must have Access Insights, which it needs to access Identity Outliers.
+          * Your organization must have at a configured source that it has loaded account data from.
+          * Your organization's accound data must be onboarded into AI-Driven Identity Security.
+
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Outlier Detected](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/outlier-detected).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OutlierDetected'
+  ProvisioningCompleted:
+    post:
+      summary: Provisioning completed
+      operationId: provisioningCompletedEvent
+      description: "This event trigger fires after Identity Security Cloud (ISC) provisions\
+        \ access to an account.  This trigger provides organizations with a flexible\
+        \ way to extend the provisioning workflow after an identity's access has changed\
+        \ within ISC. \nThese are the requirements to use the trigger:\n  * An oAuth\
+        \ client must be configured with the `ORG_ADMIN` authority.\n  * The organization\
+        \ has enabled the `ARSENAL_ALLOW_POSTPROVISIONING_TRIGGERS` feature flag.\n\
+        \  * Connectors are configured for provisioning into the target applications.\n\
+        \  * The organization is configured for automated provisioning. Different\
+        \ event contexts require different setups. For more information about these\
+        \ setups, refer to [Provisioning Completed](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/provisioning-completed).\n\
+        \nTo provision access to a target application, the source's connector must\
+        \ support these features: \n  * `ENABLE`: The ability to enable or disable\
+        \ accounts.\n  * `UNLOCK`: The ability to lock or unlock accounts.\n  * `PROVISIONING`:\
+        \ The ability to write to accounts.\n  * `PASSWORD`: The ability to update\
+        \ account passwords.\n\nFor a list of supported connectors and features, refer\
+        \ to [Identity Security Cloud Connectors](https://documentation.sailpoint.com/connectors/isc/landingpages/help/landingpages/isc_landing.html).\
+        \ For more information about configuring sources for provisioning in ISC,\
+        \ refer to [Configuring Source Account Provisioning](https://documentation.sailpoint.com/saas/help/provisioning/create_profile.html).\n\
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions\
+        \ for this trigger. For more information about this event trigger, refer to\
+        \ [Provisioning Completed](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/provisioning-completed)."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProvisioningCompleted'
+  ScheduledSearch:
+    post:
+      summary: Scheduled search
+      operationId: scheduledSearchEvent
+      description: "This event trigger fires after Identity Security Cloud (ISC) generates\
+        \ a report from a saved search. \nIn ISC, users can subscribe to saved searches\
+        \ to receive an email report generated by the saved search. They can then\
+        \ set a schedule for when those saved searches generate reports, such as daily\
+        \ at 6:00 GMT.  The trigger can notify an external HTTP application that ISC\
+        \ has generated a report from a saved search and the report is ready to be\
+        \ processed. \nThese are some typical use cases for the trigger:\n  * Perform\
+        \ continous checks for Separation of Duties (SOD) violations, for quality\
+        \ control.\n  * Respond to upcoming Joiner-Mover-Leaver (JML) scenarios, such\
+        \ as deprovisioning access before an employee's separation date. \n\nThis\
+        \ is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions\
+        \ for this trigger. For more information about this event trigger, refer to\
+        \ [Scheduled Search](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/scheduled-search)."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SavedSearchComplete'
+  SODViolationCreated:
+    post:
+      summary: SOD Violation Created
+      operationId: sodViolationCreatedEvent
+      x-displayName: SODViolationCreated
+      description: This event trigger fires once the new violation gets created. This
+        is a `FIRE_AND_FORGET` event trigger. You can have a maximum of 50 subscriptions
+        for this trigger.
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SODViolationCreatedPayload'
+  SODViolationReopened:
+    post:
+      summary: SOD Violation Reopened
+      operationId: sodViolationReopenedEvent
+      x-displayName: SODViolationReopened
+      description: "This event trigger fires when a mitigated SOD violation returns\
+        \ to an open state. This is a `FIRE_AND_FORGET` event trigger. You can have\
+        \ a maximum of 50 subscriptions for this trigger. \nIt is emitted in these\
+        \ situations:\n- **Conflicting criteria updated** — conflicting access criteria\
+        \ change such that the violation is no longer considered mitigated and moves\
+        \ from **Mitigated** to **Open**.\n- **Applied control expired** — the compensating\
+        \ control that mitigated the violation expires, moving the violation from\
+        \ **Mitigated** to **Open**.\nThe payload includes **previousStatus**, **currentStatus**,\
+        \ and **reason** to distinguish these cases (`Conflicting Criteria Updated`\
+        \ or `Applied Control Expired`)."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SODViolationReopenedPayload'
+  SODViolationMitigated:
+    post:
+      summary: SOD Violation Mitigated
+      operationId: sodViolationMitigatedEvent
+      x-displayName: SODViolationMitigated
+      description: "This event trigger fires when compensating controls are applied\
+        \ to an SOD violation such that the violation is mitigated. This is a `FIRE_AND_FORGET`\
+        \ event trigger. You can have a maximum of 50 subscriptions for this trigger.\
+        \ \nThe payload includes the violation in **Mitigated** state and **appliedControls**\
+        \ listing the active control application(s) (including applier, control reference,\
+        \ expiration, and optional workflow correlation)."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SODViolationMitigatedPayload'
+  SODViolationClosed:
+    post:
+      summary: SOD Violation Closed
+      operationId: sodViolationClosedEvent
+      x-displayName: SODViolationClosed
+      description: "This event trigger fires once the violation no longer applies\
+        \ and its status is updated to **Closed**. This is a `FIRE_AND_FORGET` event\
+        \ trigger. You can have a maximum of 50 subscriptions for this trigger. \n\
+        **previousStatus** indicates whether the violation was **Open** or **Mitigated**\
+        \ immediately before closure; **currentStatus** is **Closed**."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SODViolationClosedPayload'
+  SourceCreated:
+    post:
+      summary: Source created
+      operationId: sourceCreatedEvent
+      description: "This event trigger fires when a new source is created in Identity\
+        \ Security Cloud (ISC), by either the [API](https://developer.sailpoint.com/docs/api/v2024/create-source)\
+        \ or the [Admin UI](https://documentation.sailpoint.com/saas/help/accounts/loading_data.html#configuring-a-source).\
+        \ \nThese are some typical use cases for the trigger:\n  * Provide evidence\
+        \ to auditors to show that connector logic and sources are maintained by proper\
+        \ change control processes and aren't vulnerable to outside manipulation.\
+        \ \n  * Auto-configure new sources with proper owners, using external data\
+        \ sources. \n\nThis is a `FIRE_AND_FORGET` event trigger.  You can have a\
+        \ maximum of 50 subscriptions for this trigger. For more information about\
+        \ this event trigger, refer to [Source Created](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/source-created)."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceCreated'
+  SourceDeleted:
+    post:
+      summary: Source deleted
+      operationId: sourceDeletedEvent
+      description: "This event trigger fires when a new source is deleted from Identity\
+        \ Security Cloud (ISC), by either the [API](https://developer.sailpoint.com/docs/api/v2024/delete-source)\
+        \ or the [Admin UI](https://documentation.sailpoint.com/saas/help/sources/index.html#deleting-a-source).\
+        \ \nThese are some typical use cases for the trigger:\n  * Provide evidence\
+        \ to auditors to show that connector logic and sources are maintained by proper\
+        \ change control processes and aren't vulnerable to outside manipulation.\
+        \ \n  * Alert admins when a source is incorrectly deleted. \n\nThis is a `FIRE_AND_FORGET`\
+        \ event trigger.  You can have a maximum of 50 subscriptions for this trigger.\
+        \ For more information about this event trigger, refer to [Source Created](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/source-deleted)."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceDeleted'
+  SourceUpdated:
+    post:
+      summary: Source updated
+      operationId: sourceUpdatedEvent
+      description: "This event trigger fires when a new source's configuration is\
+        \ changed in Identity Security Cloud (ISC).\nThese are some typical use cases\
+        \ for the trigger:\n  * Provide evidence to auditors to show that connector\
+        \ logic and sources are maintained by proper change control processes and\
+        \ aren't vulnerable to outside manipulation. \n  * Trigger review for an updated\
+        \ source. \n\nThis is a `FIRE_AND_FORGET` event trigger.  You can have a maximum\
+        \ of 50 subscriptions for this trigger. For more information about this event\
+        \ trigger, refer to [Source Created](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/source-updated)."
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceUpdated'
+  VaClusterStatusChange:
+    post:
+      summary: Va cluster status change
+      operationId: vaClusterStatusChangeEvent
+      description: |-
+        This event trigger fires when Identity Security Cloud (ISC) runs a health check on a virtual appliance (VA) cluster, and the cluster's health status is different from the previous health check, such as a change from healthy to unhealthy or the opposite.  VA cluster health checks run every 30 minutes. Users can use this trigger to monitor all their VA clusters' health status changes.
+        These are some typical use cases for the trigger:
+          * Create real-time health dashboards for VA clusters.
+          * Notify an admin or system to take appropriate actions when a VA cluster's health status changes.
+
+        This is a `FIRE_AND_FORGET` event trigger.  You can have a maximum of 50 subscriptions for this trigger. For more information about this event trigger, refer to [Source Created](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/va-cluster-status-change).
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VAClusterStatusChangeEvent'
+  IdentityDeleted:
+    post:
+      summary: Identity deleted
+      operationId: identityDeletedEvent
+      description: "This event trigger fires after an identity has been completely\
+        \ deleted from Identity Security Cloud (ISC). ISC only deletes an identity\
+        \ when it meets all these requirements: \n  * It has no correlated accounts.\n\
+        \  * It's not an owner of a role, access profile, application, source, or\
+        \ task result. \n  * It's not an owner or requester of a work item.\n  * It's\
+        \ not a protected account or manager.\n  * It has no assigned capabilities,\
+        \ such as being an assigned certification reviewer.\n  * It's not involved\
+        \ in any active certification as a target (its access is not being certified).\n\
+        \nThese are some typical use cases for the trigger:\n  * Notify an administrator\
+        \ or system to take the appropriate provisioning actions as part of the leaver\
+        \ workflow.\n  * Notify a system to trigger another action, such as deactivating\
+        \ an employee's badge upon termination.\n\nThis is a `FIRE_AND_FORGET` event\
+        \ trigger.  You can have a maximum of 50 subscriptions for this trigger. For\
+        \ more information about this event trigger, refer to [Identity Deleted](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/identity-deleted).\n\
+        >**Note: This is an early access event trigger. Contact support to enable\
+        \ it on your tenant.**"
+      tags:
+      - Triggers
+      security:
+      - userAuth:
+        - sp:trigger-service-subscriptions:manage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityDeleted'

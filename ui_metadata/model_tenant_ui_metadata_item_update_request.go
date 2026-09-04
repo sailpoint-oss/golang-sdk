@@ -25,6 +25,12 @@ type TenantUiMetadataItemUpdateRequest struct {
 	UsernameLabel NullableString `json:"usernameLabel,omitempty"`
 	// Placeholder text displayed in the username input field. If you would like to reset the value use \"null\".
 	UsernameEmptyText NullableString `json:"usernameEmptyText,omitempty"`
+	// Display name for the instance badge. Optional. Omit this property to leave the stored value unchanged. Use null to clear it.
+	InstanceBadgeDisplayName NullableString `json:"instanceBadgeDisplayName,omitempty"`
+	// Hex value of color for the instance badge. Optional. Omit this property to leave the stored value unchanged. Use null to clear it.
+	InstanceBadgeColor NullableString `json:"instanceBadgeColor,omitempty"`
+	// Visibility toggle for the instance badge. Optional. Omit this property to leave the stored value unchanged. Null is stored as false.
+	InstanceBadgeVisible NullableBool `json:"instanceBadgeVisible,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -173,6 +179,132 @@ func (o *TenantUiMetadataItemUpdateRequest) UnsetUsernameEmptyText() {
 	o.UsernameEmptyText.Unset()
 }
 
+// GetInstanceBadgeDisplayName returns the InstanceBadgeDisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeDisplayName() string {
+	if o == nil || IsNil(o.InstanceBadgeDisplayName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceBadgeDisplayName.Get()
+}
+
+// GetInstanceBadgeDisplayNameOk returns a tuple with the InstanceBadgeDisplayName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeDisplayNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstanceBadgeDisplayName.Get(), o.InstanceBadgeDisplayName.IsSet()
+}
+
+// HasInstanceBadgeDisplayName returns a boolean if a field has been set.
+func (o *TenantUiMetadataItemUpdateRequest) HasInstanceBadgeDisplayName() bool {
+	if o != nil && o.InstanceBadgeDisplayName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceBadgeDisplayName gets a reference to the given NullableString and assigns it to the InstanceBadgeDisplayName field.
+func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeDisplayName(v string) {
+	o.InstanceBadgeDisplayName.Set(&v)
+}
+// SetInstanceBadgeDisplayNameNil sets the value for InstanceBadgeDisplayName to be an explicit nil
+func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeDisplayNameNil() {
+	o.InstanceBadgeDisplayName.Set(nil)
+}
+
+// UnsetInstanceBadgeDisplayName ensures that no value is present for InstanceBadgeDisplayName, not even an explicit nil
+func (o *TenantUiMetadataItemUpdateRequest) UnsetInstanceBadgeDisplayName() {
+	o.InstanceBadgeDisplayName.Unset()
+}
+
+// GetInstanceBadgeColor returns the InstanceBadgeColor field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeColor() string {
+	if o == nil || IsNil(o.InstanceBadgeColor.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceBadgeColor.Get()
+}
+
+// GetInstanceBadgeColorOk returns a tuple with the InstanceBadgeColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeColorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstanceBadgeColor.Get(), o.InstanceBadgeColor.IsSet()
+}
+
+// HasInstanceBadgeColor returns a boolean if a field has been set.
+func (o *TenantUiMetadataItemUpdateRequest) HasInstanceBadgeColor() bool {
+	if o != nil && o.InstanceBadgeColor.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceBadgeColor gets a reference to the given NullableString and assigns it to the InstanceBadgeColor field.
+func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeColor(v string) {
+	o.InstanceBadgeColor.Set(&v)
+}
+// SetInstanceBadgeColorNil sets the value for InstanceBadgeColor to be an explicit nil
+func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeColorNil() {
+	o.InstanceBadgeColor.Set(nil)
+}
+
+// UnsetInstanceBadgeColor ensures that no value is present for InstanceBadgeColor, not even an explicit nil
+func (o *TenantUiMetadataItemUpdateRequest) UnsetInstanceBadgeColor() {
+	o.InstanceBadgeColor.Unset()
+}
+
+// GetInstanceBadgeVisible returns the InstanceBadgeVisible field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeVisible() bool {
+	if o == nil || IsNil(o.InstanceBadgeVisible.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.InstanceBadgeVisible.Get()
+}
+
+// GetInstanceBadgeVisibleOk returns a tuple with the InstanceBadgeVisible field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TenantUiMetadataItemUpdateRequest) GetInstanceBadgeVisibleOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstanceBadgeVisible.Get(), o.InstanceBadgeVisible.IsSet()
+}
+
+// HasInstanceBadgeVisible returns a boolean if a field has been set.
+func (o *TenantUiMetadataItemUpdateRequest) HasInstanceBadgeVisible() bool {
+	if o != nil && o.InstanceBadgeVisible.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceBadgeVisible gets a reference to the given NullableBool and assigns it to the InstanceBadgeVisible field.
+func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeVisible(v bool) {
+	o.InstanceBadgeVisible.Set(&v)
+}
+// SetInstanceBadgeVisibleNil sets the value for InstanceBadgeVisible to be an explicit nil
+func (o *TenantUiMetadataItemUpdateRequest) SetInstanceBadgeVisibleNil() {
+	o.InstanceBadgeVisible.Set(nil)
+}
+
+// UnsetInstanceBadgeVisible ensures that no value is present for InstanceBadgeVisible, not even an explicit nil
+func (o *TenantUiMetadataItemUpdateRequest) UnsetInstanceBadgeVisible() {
+	o.InstanceBadgeVisible.Unset()
+}
+
 func (o TenantUiMetadataItemUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -191,6 +323,15 @@ func (o TenantUiMetadataItemUpdateRequest) ToMap() (map[string]interface{}, erro
 	}
 	if o.UsernameEmptyText.IsSet() {
 		toSerialize["usernameEmptyText"] = o.UsernameEmptyText.Get()
+	}
+	if o.InstanceBadgeDisplayName.IsSet() {
+		toSerialize["instanceBadgeDisplayName"] = o.InstanceBadgeDisplayName.Get()
+	}
+	if o.InstanceBadgeColor.IsSet() {
+		toSerialize["instanceBadgeColor"] = o.InstanceBadgeColor.Get()
+	}
+	if o.InstanceBadgeVisible.IsSet() {
+		toSerialize["instanceBadgeVisible"] = o.InstanceBadgeVisible.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -217,6 +358,9 @@ func (o *TenantUiMetadataItemUpdateRequest) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "iframeWhiteList")
 		delete(additionalProperties, "usernameLabel")
 		delete(additionalProperties, "usernameEmptyText")
+		delete(additionalProperties, "instanceBadgeDisplayName")
+		delete(additionalProperties, "instanceBadgeColor")
+		delete(additionalProperties, "instanceBadgeVisible")
 		o.AdditionalProperties = additionalProperties
 	}
 

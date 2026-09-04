@@ -1114,11 +1114,25 @@ type ApiListReassignmentConfigurationsV1Request struct {
 	ctx context.Context
 	ApiService *WorkReassignmentAPIService
 	xSailPointExperimental *string
+	limit *int32
+	offset *int32
 }
 
 // Use this header to enable this experimental API.
 func (r ApiListReassignmentConfigurationsV1Request) XSailPointExperimental(xSailPointExperimental string) ApiListReassignmentConfigurationsV1Request {
 	r.xSailPointExperimental = &xSailPointExperimental
+	return r
+}
+
+// Max number of results to return.
+func (r ApiListReassignmentConfigurationsV1Request) Limit(limit int32) ApiListReassignmentConfigurationsV1Request {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListReassignmentConfigurationsV1Request) Offset(offset int32) ApiListReassignmentConfigurationsV1Request {
+	r.offset = &offset
 	return r
 }
 
@@ -1129,7 +1143,7 @@ func (r ApiListReassignmentConfigurationsV1Request) Execute() ([]ConfigurationRe
 /*
 ListReassignmentConfigurationsV1 List reassignment configurations
 
-Gets all Reassignment configuration for the current org.
+Gets a paginated list of Reassignment configurations for the current org.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListReassignmentConfigurationsV1Request
@@ -1171,6 +1185,18 @@ func (a *WorkReassignmentAPIService) ListReassignmentConfigurationsV1Execute(r A
 		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
 	}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 20
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -133,9 +133,37 @@ paths:
       - Work Reassignment
   /reassignment-configurations/v1:
     get:
-      description: Gets all Reassignment configuration for the current org.
+      description: Gets a paginated list of Reassignment configurations for the current
+        org.
       operationId: listReassignmentConfigurationsV1
       parameters:
+      - description: Max number of results to return.
+        example: 20
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          format: int32
+          maximum: 20
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
       - description: Use this header to enable this experimental API.
         example: true
         explode: false
@@ -1004,6 +1032,22 @@ components:
         - reassignedToId: 279de502e5dc43f4854e1b96f57c578f
           reassignedFromId: 31d9c631f5574571a935aaa48a6255df
           reassignmentType: AUTOMATIC_REASSIGNMENT
+  parameters:
+    offset:
+      description: |-
+        Offset into the full result set. Usually specified with *limit* to paginate through the results.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 0
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        format: int32
+        minimum: 0
+        type: integer
+      style: form
   responses:
     "400":
       content:
