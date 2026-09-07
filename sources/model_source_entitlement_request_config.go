@@ -19,8 +19,8 @@ var _ MappedNullable = &SourceEntitlementRequestConfig{}
 
 // SourceEntitlementRequestConfig Entitlement Request Configuration
 type SourceEntitlementRequestConfig struct {
-	AccessRequestConfig *EntitlementAccessRequestConfig `json:"accessRequestConfig,omitempty"`
-	RevocationRequestConfig *EntitlementRevocationRequestConfig `json:"revocationRequestConfig,omitempty"`
+	AccessRequestConfig *SourceEntitlementAccessRequestConfig `json:"accessRequestConfig,omitempty"`
+	RevocationRequestConfig *SourceEntitlementRevocationRequestConfig `json:"revocationRequestConfig,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,9 +44,9 @@ func NewSourceEntitlementRequestConfigWithDefaults() *SourceEntitlementRequestCo
 }
 
 // GetAccessRequestConfig returns the AccessRequestConfig field value if set, zero value otherwise.
-func (o *SourceEntitlementRequestConfig) GetAccessRequestConfig() EntitlementAccessRequestConfig {
+func (o *SourceEntitlementRequestConfig) GetAccessRequestConfig() SourceEntitlementAccessRequestConfig {
 	if o == nil || IsNil(o.AccessRequestConfig) {
-		var ret EntitlementAccessRequestConfig
+		var ret SourceEntitlementAccessRequestConfig
 		return ret
 	}
 	return *o.AccessRequestConfig
@@ -54,7 +54,7 @@ func (o *SourceEntitlementRequestConfig) GetAccessRequestConfig() EntitlementAcc
 
 // GetAccessRequestConfigOk returns a tuple with the AccessRequestConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceEntitlementRequestConfig) GetAccessRequestConfigOk() (*EntitlementAccessRequestConfig, bool) {
+func (o *SourceEntitlementRequestConfig) GetAccessRequestConfigOk() (*SourceEntitlementAccessRequestConfig, bool) {
 	if o == nil || IsNil(o.AccessRequestConfig) {
 		return nil, false
 	}
@@ -70,15 +70,15 @@ func (o *SourceEntitlementRequestConfig) HasAccessRequestConfig() bool {
 	return false
 }
 
-// SetAccessRequestConfig gets a reference to the given EntitlementAccessRequestConfig and assigns it to the AccessRequestConfig field.
-func (o *SourceEntitlementRequestConfig) SetAccessRequestConfig(v EntitlementAccessRequestConfig) {
+// SetAccessRequestConfig gets a reference to the given SourceEntitlementAccessRequestConfig and assigns it to the AccessRequestConfig field.
+func (o *SourceEntitlementRequestConfig) SetAccessRequestConfig(v SourceEntitlementAccessRequestConfig) {
 	o.AccessRequestConfig = &v
 }
 
 // GetRevocationRequestConfig returns the RevocationRequestConfig field value if set, zero value otherwise.
-func (o *SourceEntitlementRequestConfig) GetRevocationRequestConfig() EntitlementRevocationRequestConfig {
+func (o *SourceEntitlementRequestConfig) GetRevocationRequestConfig() SourceEntitlementRevocationRequestConfig {
 	if o == nil || IsNil(o.RevocationRequestConfig) {
-		var ret EntitlementRevocationRequestConfig
+		var ret SourceEntitlementRevocationRequestConfig
 		return ret
 	}
 	return *o.RevocationRequestConfig
@@ -86,7 +86,7 @@ func (o *SourceEntitlementRequestConfig) GetRevocationRequestConfig() Entitlemen
 
 // GetRevocationRequestConfigOk returns a tuple with the RevocationRequestConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceEntitlementRequestConfig) GetRevocationRequestConfigOk() (*EntitlementRevocationRequestConfig, bool) {
+func (o *SourceEntitlementRequestConfig) GetRevocationRequestConfigOk() (*SourceEntitlementRevocationRequestConfig, bool) {
 	if o == nil || IsNil(o.RevocationRequestConfig) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *SourceEntitlementRequestConfig) HasRevocationRequestConfig() bool {
 	return false
 }
 
-// SetRevocationRequestConfig gets a reference to the given EntitlementRevocationRequestConfig and assigns it to the RevocationRequestConfig field.
-func (o *SourceEntitlementRequestConfig) SetRevocationRequestConfig(v EntitlementRevocationRequestConfig) {
+// SetRevocationRequestConfig gets a reference to the given SourceEntitlementRevocationRequestConfig and assigns it to the RevocationRequestConfig field.
+func (o *SourceEntitlementRequestConfig) SetRevocationRequestConfig(v SourceEntitlementRevocationRequestConfig) {
 	o.RevocationRequestConfig = &v
 }
 

@@ -34,10 +34,6 @@ docs/DependantAppConnectionsAccountSource.md
 docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md
 docs/DependantConnectionsMissingDto.md
 docs/DtoType.md
-docs/EntitlementAccessRequestConfig.md
-docs/EntitlementAccessRequestConfigMaxPermittedAccessDuration.md
-docs/EntitlementApprovalScheme.md
-docs/EntitlementRevocationRequestConfig.md
 docs/ErrorMessageDto.md
 docs/ErrorResponseDto.md
 docs/FieldDetailsDto.md
@@ -84,7 +80,11 @@ docs/SourceConnectionsDto.md
 docs/SourceDataset.md
 docs/SourceDatasetResource.md
 docs/SourceDatasetResourceReference.md
+docs/SourceEntitlementAccessRequestConfig.md
+docs/SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration.md
+docs/SourceEntitlementApprovalScheme.md
 docs/SourceEntitlementRequestConfig.md
+docs/SourceEntitlementRevocationRequestConfig.md
 docs/SourceHealthDto.md
 docs/SourceManagementWorkgroup.md
 docs/SourceManagerCorrelationMapping.md
@@ -134,10 +134,6 @@ model_dependant_app_connections_account_source.go
 model_dependant_app_connections_account_source_password_policies_inner.go
 model_dependant_connections_missing_dto.go
 model_dto_type.go
-model_entitlement_access_request_config.go
-model_entitlement_access_request_config_max_permitted_access_duration.go
-model_entitlement_approval_scheme.go
-model_entitlement_revocation_request_config.go
 model_error_message_dto.go
 model_error_response_dto.go
 model_field_details_dto.go
@@ -183,7 +179,11 @@ model_source_connections_dto.go
 model_source_dataset.go
 model_source_dataset_resource.go
 model_source_dataset_resource_reference.go
+model_source_entitlement_access_request_config.go
+model_source_entitlement_access_request_config_max_permitted_access_duration.go
+model_source_entitlement_approval_scheme.go
 model_source_entitlement_request_config.go
+model_source_entitlement_revocation_request_config.go
 model_source_health_dto.go
 model_source_management_workgroup.go
 model_source_manager_correlation_mapping.go

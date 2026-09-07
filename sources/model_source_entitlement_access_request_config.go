@@ -14,13 +14,13 @@ import (
 	"encoding/json"
 )
 
-// checks if the EntitlementAccessRequestConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EntitlementAccessRequestConfig{}
+// checks if the SourceEntitlementAccessRequestConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceEntitlementAccessRequestConfig{}
 
-// EntitlementAccessRequestConfig struct for EntitlementAccessRequestConfig
-type EntitlementAccessRequestConfig struct {
+// SourceEntitlementAccessRequestConfig struct for SourceEntitlementAccessRequestConfig
+type SourceEntitlementAccessRequestConfig struct {
 	// Ordered list of approval steps for the access request. Empty when no approval is required.
-	ApprovalSchemes []EntitlementApprovalScheme `json:"approvalSchemes,omitempty"`
+	ApprovalSchemes []SourceEntitlementApprovalScheme `json:"approvalSchemes,omitempty"`
 	// If the requester must provide a comment during access request.
 	RequestCommentRequired *bool `json:"requestCommentRequired,omitempty"`
 	// If the reviewer must provide a comment when denying the access request.
@@ -29,20 +29,20 @@ type EntitlementAccessRequestConfig struct {
 	ReauthorizationRequired *bool `json:"reauthorizationRequired,omitempty"`
 	// If true, then remove date or sunset date is required in access request of the entitlement.
 	RequireEndDate *bool `json:"requireEndDate,omitempty"`
-	MaxPermittedAccessDuration NullableEntitlementAccessRequestConfigMaxPermittedAccessDuration `json:"maxPermittedAccessDuration,omitempty"`
+	MaxPermittedAccessDuration NullableSourceEntitlementAccessRequestConfigMaxPermittedAccessDuration `json:"maxPermittedAccessDuration,omitempty"`
 	// The ID of the form definition used for the access request. If specified, the form is presented to the requester during the access request process.
 	FormDefinitionId NullableString `json:"formDefinitionId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _EntitlementAccessRequestConfig EntitlementAccessRequestConfig
+type _SourceEntitlementAccessRequestConfig SourceEntitlementAccessRequestConfig
 
-// NewEntitlementAccessRequestConfig instantiates a new EntitlementAccessRequestConfig object
+// NewSourceEntitlementAccessRequestConfig instantiates a new SourceEntitlementAccessRequestConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEntitlementAccessRequestConfig() *EntitlementAccessRequestConfig {
-	this := EntitlementAccessRequestConfig{}
+func NewSourceEntitlementAccessRequestConfig() *SourceEntitlementAccessRequestConfig {
+	this := SourceEntitlementAccessRequestConfig{}
 	var requestCommentRequired bool = false
 	this.RequestCommentRequired = &requestCommentRequired
 	var denialCommentRequired bool = false
@@ -54,11 +54,11 @@ func NewEntitlementAccessRequestConfig() *EntitlementAccessRequestConfig {
 	return &this
 }
 
-// NewEntitlementAccessRequestConfigWithDefaults instantiates a new EntitlementAccessRequestConfig object
+// NewSourceEntitlementAccessRequestConfigWithDefaults instantiates a new SourceEntitlementAccessRequestConfig object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewEntitlementAccessRequestConfigWithDefaults() *EntitlementAccessRequestConfig {
-	this := EntitlementAccessRequestConfig{}
+func NewSourceEntitlementAccessRequestConfigWithDefaults() *SourceEntitlementAccessRequestConfig {
+	this := SourceEntitlementAccessRequestConfig{}
 	var requestCommentRequired bool = false
 	this.RequestCommentRequired = &requestCommentRequired
 	var denialCommentRequired bool = false
@@ -71,9 +71,9 @@ func NewEntitlementAccessRequestConfigWithDefaults() *EntitlementAccessRequestCo
 }
 
 // GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise.
-func (o *EntitlementAccessRequestConfig) GetApprovalSchemes() []EntitlementApprovalScheme {
+func (o *SourceEntitlementAccessRequestConfig) GetApprovalSchemes() []SourceEntitlementApprovalScheme {
 	if o == nil || IsNil(o.ApprovalSchemes) {
-		var ret []EntitlementApprovalScheme
+		var ret []SourceEntitlementApprovalScheme
 		return ret
 	}
 	return o.ApprovalSchemes
@@ -81,7 +81,7 @@ func (o *EntitlementAccessRequestConfig) GetApprovalSchemes() []EntitlementAppro
 
 // GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementAccessRequestConfig) GetApprovalSchemesOk() ([]EntitlementApprovalScheme, bool) {
+func (o *SourceEntitlementAccessRequestConfig) GetApprovalSchemesOk() ([]SourceEntitlementApprovalScheme, bool) {
 	if o == nil || IsNil(o.ApprovalSchemes) {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *EntitlementAccessRequestConfig) GetApprovalSchemesOk() ([]EntitlementAp
 }
 
 // HasApprovalSchemes returns a boolean if a field has been set.
-func (o *EntitlementAccessRequestConfig) HasApprovalSchemes() bool {
+func (o *SourceEntitlementAccessRequestConfig) HasApprovalSchemes() bool {
 	if o != nil && !IsNil(o.ApprovalSchemes) {
 		return true
 	}
@@ -97,13 +97,13 @@ func (o *EntitlementAccessRequestConfig) HasApprovalSchemes() bool {
 	return false
 }
 
-// SetApprovalSchemes gets a reference to the given []EntitlementApprovalScheme and assigns it to the ApprovalSchemes field.
-func (o *EntitlementAccessRequestConfig) SetApprovalSchemes(v []EntitlementApprovalScheme) {
+// SetApprovalSchemes gets a reference to the given []SourceEntitlementApprovalScheme and assigns it to the ApprovalSchemes field.
+func (o *SourceEntitlementAccessRequestConfig) SetApprovalSchemes(v []SourceEntitlementApprovalScheme) {
 	o.ApprovalSchemes = v
 }
 
 // GetRequestCommentRequired returns the RequestCommentRequired field value if set, zero value otherwise.
-func (o *EntitlementAccessRequestConfig) GetRequestCommentRequired() bool {
+func (o *SourceEntitlementAccessRequestConfig) GetRequestCommentRequired() bool {
 	if o == nil || IsNil(o.RequestCommentRequired) {
 		var ret bool
 		return ret
@@ -113,7 +113,7 @@ func (o *EntitlementAccessRequestConfig) GetRequestCommentRequired() bool {
 
 // GetRequestCommentRequiredOk returns a tuple with the RequestCommentRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementAccessRequestConfig) GetRequestCommentRequiredOk() (*bool, bool) {
+func (o *SourceEntitlementAccessRequestConfig) GetRequestCommentRequiredOk() (*bool, bool) {
 	if o == nil || IsNil(o.RequestCommentRequired) {
 		return nil, false
 	}
@@ -121,7 +121,7 @@ func (o *EntitlementAccessRequestConfig) GetRequestCommentRequiredOk() (*bool, b
 }
 
 // HasRequestCommentRequired returns a boolean if a field has been set.
-func (o *EntitlementAccessRequestConfig) HasRequestCommentRequired() bool {
+func (o *SourceEntitlementAccessRequestConfig) HasRequestCommentRequired() bool {
 	if o != nil && !IsNil(o.RequestCommentRequired) {
 		return true
 	}
@@ -130,12 +130,12 @@ func (o *EntitlementAccessRequestConfig) HasRequestCommentRequired() bool {
 }
 
 // SetRequestCommentRequired gets a reference to the given bool and assigns it to the RequestCommentRequired field.
-func (o *EntitlementAccessRequestConfig) SetRequestCommentRequired(v bool) {
+func (o *SourceEntitlementAccessRequestConfig) SetRequestCommentRequired(v bool) {
 	o.RequestCommentRequired = &v
 }
 
 // GetDenialCommentRequired returns the DenialCommentRequired field value if set, zero value otherwise.
-func (o *EntitlementAccessRequestConfig) GetDenialCommentRequired() bool {
+func (o *SourceEntitlementAccessRequestConfig) GetDenialCommentRequired() bool {
 	if o == nil || IsNil(o.DenialCommentRequired) {
 		var ret bool
 		return ret
@@ -145,7 +145,7 @@ func (o *EntitlementAccessRequestConfig) GetDenialCommentRequired() bool {
 
 // GetDenialCommentRequiredOk returns a tuple with the DenialCommentRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementAccessRequestConfig) GetDenialCommentRequiredOk() (*bool, bool) {
+func (o *SourceEntitlementAccessRequestConfig) GetDenialCommentRequiredOk() (*bool, bool) {
 	if o == nil || IsNil(o.DenialCommentRequired) {
 		return nil, false
 	}
@@ -153,7 +153,7 @@ func (o *EntitlementAccessRequestConfig) GetDenialCommentRequiredOk() (*bool, bo
 }
 
 // HasDenialCommentRequired returns a boolean if a field has been set.
-func (o *EntitlementAccessRequestConfig) HasDenialCommentRequired() bool {
+func (o *SourceEntitlementAccessRequestConfig) HasDenialCommentRequired() bool {
 	if o != nil && !IsNil(o.DenialCommentRequired) {
 		return true
 	}
@@ -162,12 +162,12 @@ func (o *EntitlementAccessRequestConfig) HasDenialCommentRequired() bool {
 }
 
 // SetDenialCommentRequired gets a reference to the given bool and assigns it to the DenialCommentRequired field.
-func (o *EntitlementAccessRequestConfig) SetDenialCommentRequired(v bool) {
+func (o *SourceEntitlementAccessRequestConfig) SetDenialCommentRequired(v bool) {
 	o.DenialCommentRequired = &v
 }
 
 // GetReauthorizationRequired returns the ReauthorizationRequired field value if set, zero value otherwise.
-func (o *EntitlementAccessRequestConfig) GetReauthorizationRequired() bool {
+func (o *SourceEntitlementAccessRequestConfig) GetReauthorizationRequired() bool {
 	if o == nil || IsNil(o.ReauthorizationRequired) {
 		var ret bool
 		return ret
@@ -177,7 +177,7 @@ func (o *EntitlementAccessRequestConfig) GetReauthorizationRequired() bool {
 
 // GetReauthorizationRequiredOk returns a tuple with the ReauthorizationRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementAccessRequestConfig) GetReauthorizationRequiredOk() (*bool, bool) {
+func (o *SourceEntitlementAccessRequestConfig) GetReauthorizationRequiredOk() (*bool, bool) {
 	if o == nil || IsNil(o.ReauthorizationRequired) {
 		return nil, false
 	}
@@ -185,7 +185,7 @@ func (o *EntitlementAccessRequestConfig) GetReauthorizationRequiredOk() (*bool, 
 }
 
 // HasReauthorizationRequired returns a boolean if a field has been set.
-func (o *EntitlementAccessRequestConfig) HasReauthorizationRequired() bool {
+func (o *SourceEntitlementAccessRequestConfig) HasReauthorizationRequired() bool {
 	if o != nil && !IsNil(o.ReauthorizationRequired) {
 		return true
 	}
@@ -194,12 +194,12 @@ func (o *EntitlementAccessRequestConfig) HasReauthorizationRequired() bool {
 }
 
 // SetReauthorizationRequired gets a reference to the given bool and assigns it to the ReauthorizationRequired field.
-func (o *EntitlementAccessRequestConfig) SetReauthorizationRequired(v bool) {
+func (o *SourceEntitlementAccessRequestConfig) SetReauthorizationRequired(v bool) {
 	o.ReauthorizationRequired = &v
 }
 
 // GetRequireEndDate returns the RequireEndDate field value if set, zero value otherwise.
-func (o *EntitlementAccessRequestConfig) GetRequireEndDate() bool {
+func (o *SourceEntitlementAccessRequestConfig) GetRequireEndDate() bool {
 	if o == nil || IsNil(o.RequireEndDate) {
 		var ret bool
 		return ret
@@ -209,7 +209,7 @@ func (o *EntitlementAccessRequestConfig) GetRequireEndDate() bool {
 
 // GetRequireEndDateOk returns a tuple with the RequireEndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementAccessRequestConfig) GetRequireEndDateOk() (*bool, bool) {
+func (o *SourceEntitlementAccessRequestConfig) GetRequireEndDateOk() (*bool, bool) {
 	if o == nil || IsNil(o.RequireEndDate) {
 		return nil, false
 	}
@@ -217,7 +217,7 @@ func (o *EntitlementAccessRequestConfig) GetRequireEndDateOk() (*bool, bool) {
 }
 
 // HasRequireEndDate returns a boolean if a field has been set.
-func (o *EntitlementAccessRequestConfig) HasRequireEndDate() bool {
+func (o *SourceEntitlementAccessRequestConfig) HasRequireEndDate() bool {
 	if o != nil && !IsNil(o.RequireEndDate) {
 		return true
 	}
@@ -226,14 +226,14 @@ func (o *EntitlementAccessRequestConfig) HasRequireEndDate() bool {
 }
 
 // SetRequireEndDate gets a reference to the given bool and assigns it to the RequireEndDate field.
-func (o *EntitlementAccessRequestConfig) SetRequireEndDate(v bool) {
+func (o *SourceEntitlementAccessRequestConfig) SetRequireEndDate(v bool) {
 	o.RequireEndDate = &v
 }
 
 // GetMaxPermittedAccessDuration returns the MaxPermittedAccessDuration field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EntitlementAccessRequestConfig) GetMaxPermittedAccessDuration() EntitlementAccessRequestConfigMaxPermittedAccessDuration {
+func (o *SourceEntitlementAccessRequestConfig) GetMaxPermittedAccessDuration() SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration {
 	if o == nil || IsNil(o.MaxPermittedAccessDuration.Get()) {
-		var ret EntitlementAccessRequestConfigMaxPermittedAccessDuration
+		var ret SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration
 		return ret
 	}
 	return *o.MaxPermittedAccessDuration.Get()
@@ -242,7 +242,7 @@ func (o *EntitlementAccessRequestConfig) GetMaxPermittedAccessDuration() Entitle
 // GetMaxPermittedAccessDurationOk returns a tuple with the MaxPermittedAccessDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EntitlementAccessRequestConfig) GetMaxPermittedAccessDurationOk() (*EntitlementAccessRequestConfigMaxPermittedAccessDuration, bool) {
+func (o *SourceEntitlementAccessRequestConfig) GetMaxPermittedAccessDurationOk() (*SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -250,7 +250,7 @@ func (o *EntitlementAccessRequestConfig) GetMaxPermittedAccessDurationOk() (*Ent
 }
 
 // HasMaxPermittedAccessDuration returns a boolean if a field has been set.
-func (o *EntitlementAccessRequestConfig) HasMaxPermittedAccessDuration() bool {
+func (o *SourceEntitlementAccessRequestConfig) HasMaxPermittedAccessDuration() bool {
 	if o != nil && o.MaxPermittedAccessDuration.IsSet() {
 		return true
 	}
@@ -258,22 +258,22 @@ func (o *EntitlementAccessRequestConfig) HasMaxPermittedAccessDuration() bool {
 	return false
 }
 
-// SetMaxPermittedAccessDuration gets a reference to the given NullableEntitlementAccessRequestConfigMaxPermittedAccessDuration and assigns it to the MaxPermittedAccessDuration field.
-func (o *EntitlementAccessRequestConfig) SetMaxPermittedAccessDuration(v EntitlementAccessRequestConfigMaxPermittedAccessDuration) {
+// SetMaxPermittedAccessDuration gets a reference to the given NullableSourceEntitlementAccessRequestConfigMaxPermittedAccessDuration and assigns it to the MaxPermittedAccessDuration field.
+func (o *SourceEntitlementAccessRequestConfig) SetMaxPermittedAccessDuration(v SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration) {
 	o.MaxPermittedAccessDuration.Set(&v)
 }
 // SetMaxPermittedAccessDurationNil sets the value for MaxPermittedAccessDuration to be an explicit nil
-func (o *EntitlementAccessRequestConfig) SetMaxPermittedAccessDurationNil() {
+func (o *SourceEntitlementAccessRequestConfig) SetMaxPermittedAccessDurationNil() {
 	o.MaxPermittedAccessDuration.Set(nil)
 }
 
 // UnsetMaxPermittedAccessDuration ensures that no value is present for MaxPermittedAccessDuration, not even an explicit nil
-func (o *EntitlementAccessRequestConfig) UnsetMaxPermittedAccessDuration() {
+func (o *SourceEntitlementAccessRequestConfig) UnsetMaxPermittedAccessDuration() {
 	o.MaxPermittedAccessDuration.Unset()
 }
 
 // GetFormDefinitionId returns the FormDefinitionId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EntitlementAccessRequestConfig) GetFormDefinitionId() string {
+func (o *SourceEntitlementAccessRequestConfig) GetFormDefinitionId() string {
 	if o == nil || IsNil(o.FormDefinitionId.Get()) {
 		var ret string
 		return ret
@@ -284,7 +284,7 @@ func (o *EntitlementAccessRequestConfig) GetFormDefinitionId() string {
 // GetFormDefinitionIdOk returns a tuple with the FormDefinitionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EntitlementAccessRequestConfig) GetFormDefinitionIdOk() (*string, bool) {
+func (o *SourceEntitlementAccessRequestConfig) GetFormDefinitionIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -292,7 +292,7 @@ func (o *EntitlementAccessRequestConfig) GetFormDefinitionIdOk() (*string, bool)
 }
 
 // HasFormDefinitionId returns a boolean if a field has been set.
-func (o *EntitlementAccessRequestConfig) HasFormDefinitionId() bool {
+func (o *SourceEntitlementAccessRequestConfig) HasFormDefinitionId() bool {
 	if o != nil && o.FormDefinitionId.IsSet() {
 		return true
 	}
@@ -301,20 +301,20 @@ func (o *EntitlementAccessRequestConfig) HasFormDefinitionId() bool {
 }
 
 // SetFormDefinitionId gets a reference to the given NullableString and assigns it to the FormDefinitionId field.
-func (o *EntitlementAccessRequestConfig) SetFormDefinitionId(v string) {
+func (o *SourceEntitlementAccessRequestConfig) SetFormDefinitionId(v string) {
 	o.FormDefinitionId.Set(&v)
 }
 // SetFormDefinitionIdNil sets the value for FormDefinitionId to be an explicit nil
-func (o *EntitlementAccessRequestConfig) SetFormDefinitionIdNil() {
+func (o *SourceEntitlementAccessRequestConfig) SetFormDefinitionIdNil() {
 	o.FormDefinitionId.Set(nil)
 }
 
 // UnsetFormDefinitionId ensures that no value is present for FormDefinitionId, not even an explicit nil
-func (o *EntitlementAccessRequestConfig) UnsetFormDefinitionId() {
+func (o *SourceEntitlementAccessRequestConfig) UnsetFormDefinitionId() {
 	o.FormDefinitionId.Unset()
 }
 
-func (o EntitlementAccessRequestConfig) MarshalJSON() ([]byte, error) {
+func (o SourceEntitlementAccessRequestConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -322,7 +322,7 @@ func (o EntitlementAccessRequestConfig) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o EntitlementAccessRequestConfig) ToMap() (map[string]interface{}, error) {
+func (o SourceEntitlementAccessRequestConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ApprovalSchemes) {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
@@ -353,16 +353,16 @@ func (o EntitlementAccessRequestConfig) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *EntitlementAccessRequestConfig) UnmarshalJSON(data []byte) (err error) {
-	varEntitlementAccessRequestConfig := _EntitlementAccessRequestConfig{}
+func (o *SourceEntitlementAccessRequestConfig) UnmarshalJSON(data []byte) (err error) {
+	varSourceEntitlementAccessRequestConfig := _SourceEntitlementAccessRequestConfig{}
 
-	err = json.Unmarshal(data, &varEntitlementAccessRequestConfig)
+	err = json.Unmarshal(data, &varSourceEntitlementAccessRequestConfig)
 
 	if err != nil {
 		return err
 	}
 
-	*o = EntitlementAccessRequestConfig(varEntitlementAccessRequestConfig)
+	*o = SourceEntitlementAccessRequestConfig(varSourceEntitlementAccessRequestConfig)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -380,38 +380,38 @@ func (o *EntitlementAccessRequestConfig) UnmarshalJSON(data []byte) (err error) 
 	return err
 }
 
-type NullableEntitlementAccessRequestConfig struct {
-	value *EntitlementAccessRequestConfig
+type NullableSourceEntitlementAccessRequestConfig struct {
+	value *SourceEntitlementAccessRequestConfig
 	isSet bool
 }
 
-func (v NullableEntitlementAccessRequestConfig) Get() *EntitlementAccessRequestConfig {
+func (v NullableSourceEntitlementAccessRequestConfig) Get() *SourceEntitlementAccessRequestConfig {
 	return v.value
 }
 
-func (v *NullableEntitlementAccessRequestConfig) Set(val *EntitlementAccessRequestConfig) {
+func (v *NullableSourceEntitlementAccessRequestConfig) Set(val *SourceEntitlementAccessRequestConfig) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableEntitlementAccessRequestConfig) IsSet() bool {
+func (v NullableSourceEntitlementAccessRequestConfig) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableEntitlementAccessRequestConfig) Unset() {
+func (v *NullableSourceEntitlementAccessRequestConfig) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableEntitlementAccessRequestConfig(val *EntitlementAccessRequestConfig) *NullableEntitlementAccessRequestConfig {
-	return &NullableEntitlementAccessRequestConfig{value: val, isSet: true}
+func NewNullableSourceEntitlementAccessRequestConfig(val *SourceEntitlementAccessRequestConfig) *NullableSourceEntitlementAccessRequestConfig {
+	return &NullableSourceEntitlementAccessRequestConfig{value: val, isSet: true}
 }
 
-func (v NullableEntitlementAccessRequestConfig) MarshalJSON() ([]byte, error) {
+func (v NullableSourceEntitlementAccessRequestConfig) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableEntitlementAccessRequestConfig) UnmarshalJSON(src []byte) error {
+func (v *NullableSourceEntitlementAccessRequestConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

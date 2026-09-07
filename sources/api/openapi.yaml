@@ -9207,6 +9207,8 @@ paths:
         Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined.
         - During access request, this source-level entitlement request configuration overrides the global organization-level configuration.
         - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
+
+        The `WORKFLOW` approver type is not supported in source-level configuration. To use a workflow as an approver, configure it on the entitlement with [Replace entitlement request config](https://developer.sailpoint.com/docs/api/put-entitlement-request-config-v-1). A source-level request that contains `WORKFLOW` fails with a 400.
       operationId: getSourceEntitlementRequestConfigV1
       parameters:
       - description: The Source id
@@ -9338,6 +9340,8 @@ paths:
         Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined.
         - During access request, this source-level entitlement request configuration overrides the global organization-level configuration.
         - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
+
+        The `WORKFLOW` approver type is not supported in source-level configuration. To use a workflow as an approver, configure it on the entitlement with [Replace entitlement request config](https://developer.sailpoint.com/docs/api/put-entitlement-request-config-v-1). A source-level request that contains `WORKFLOW` fails with a 400.
       operationId: updateSourceEntitlementRequestConfigV1
       parameters:
       - description: The Source id
@@ -12989,37 +12993,40 @@ components:
       - status
       title: Source Sync Job
       type: object
-    EntitlementApprovalScheme:
+    SourceEntitlementApprovalScheme:
       example:
         approverId: e3eab852-8315-467f-9de7-70eda97f63c8
         approverType: GOVERNANCE_GROUP
       properties:
         approverType:
-          description: "Describes the individual or group that is responsible for\
-            \ an approval step. Values are as follows.\n\n**ENTITLEMENT_OWNER**: Owner\
-            \ of the associated Entitlement\n\n**SOURCE_OWNER**: Owner of the associated\
-            \ Source\n\n**MANAGER**: Manager of the Identity for whom the request\
-            \ is being made\n\n**GOVERNANCE_GROUP**: A Governance Group, the ID of\
-            \ which is specified by the **approverId** field\n\n**WORKFLOW**: A Workflow,\
-            \ the ID of which is specified by the **approverId** field, Workflows\
-            \ are exclusive to other types of approvals and License required.     "
+          description: |-
+            Describes the individual or group that is responsible for an approval step. Values are as follows.
+
+            **ENTITLEMENT_OWNER**: Owner of the associated Entitlement
+
+            **SOURCE_OWNER**: Owner of the associated Source
+
+            **MANAGER**: Manager of the Identity for whom the request is being made
+
+            **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field
+
+            **WORKFLOW** is not supported in source-level entitlement request configuration. Use the entitlement-level [Replace entitlement request config](https://developer.sailpoint.com/docs/api/put-entitlement-request-config-v-1) endpoint to configure a workflow approver. A source-level request that contains `WORKFLOW` is rejected with a 400.
           enum:
           - ENTITLEMENT_OWNER
           - SOURCE_OWNER
           - MANAGER
           - GOVERNANCE_GROUP
-          - WORKFLOW
           example: GOVERNANCE_GROUP
           type: string
         approverId:
           description: "Id of the specific approver, used only when approverType is\
-            \ GOVERNANCE_GROUP or WORKFLOW"
+            \ GOVERNANCE_GROUP"
           example: e3eab852-8315-467f-9de7-70eda97f63c8
           nullable: true
           type: string
-      title: Entitlement Approval Scheme
+      title: Source Entitlement Approval Scheme
       type: object
-    EntitlementAccessRequestConfig:
+    SourceEntitlementAccessRequestConfig:
       example:
         denialCommentRequired: false
         approvalSchemes:
@@ -13039,7 +13046,7 @@ components:
           description: Ordered list of approval steps for the access request. Empty
             when no approval is required.
           items:
-            $ref: '#/components/schemas/EntitlementApprovalScheme'
+            $ref: '#/components/schemas/SourceEntitlementApprovalScheme'
           type: array
         requestCommentRequired:
           default: false
@@ -13064,7 +13071,7 @@ components:
           example: true
           type: boolean
         maxPermittedAccessDuration:
-          $ref: '#/components/schemas/EntitlementAccessRequestConfig_maxPermittedAccessDuration'
+          $ref: '#/components/schemas/SourceEntitlementAccessRequestConfig_maxPermittedAccessDuration'
         formDefinitionId:
           description: "The ID of the form definition used for the access request.\
             \ If specified, the form is presented to the requester during the access\
@@ -13072,9 +13079,9 @@ components:
           example: 78258e80-e9e2-4e1a-a11f-ce0b7c62f25d
           nullable: true
           type: string
-      title: Entitlement Access Request Config
+      title: Source Entitlement Access Request Config
       type: object
-    EntitlementRevocationRequestConfig:
+    SourceEntitlementRevocationRequestConfig:
       example:
         approvalSchemes:
         - approverId: e3eab852-8315-467f-9de7-70eda97f63c8
@@ -13083,12 +13090,12 @@ components:
           approverType: GOVERNANCE_GROUP
       properties:
         approvalSchemes:
-          description: Ordered list of approval steps for the access request. Empty
-            when no approval is required.
+          description: Ordered list of approval steps for the revocation request.
+            Empty when no approval is required.
           items:
-            $ref: '#/components/schemas/EntitlementApprovalScheme'
+            $ref: '#/components/schemas/SourceEntitlementApprovalScheme'
           type: array
-      title: Entitlement Revocation Request Config
+      title: Source Entitlement Revocation Request Config
       type: object
     SourceEntitlementRequestConfig:
       description: Entitlement Request Configuration
@@ -13115,9 +13122,9 @@ components:
             approverType: GOVERNANCE_GROUP
       properties:
         accessRequestConfig:
-          $ref: '#/components/schemas/EntitlementAccessRequestConfig'
+          $ref: '#/components/schemas/SourceEntitlementAccessRequestConfig'
         revocationRequestConfig:
-          $ref: '#/components/schemas/EntitlementRevocationRequestConfig'
+          $ref: '#/components/schemas/SourceEntitlementRevocationRequestConfig'
       title: Source Entitlement Request Config
       type: object
     LoadEntitlementTask:
@@ -14347,7 +14354,7 @@ components:
             attributeName: groupsCreated
           type: object
       type: object
-    EntitlementAccessRequestConfig_maxPermittedAccessDuration:
+    SourceEntitlementAccessRequestConfig_maxPermittedAccessDuration:
       description: The maximum duration for which the access is permitted.
       example:
         value: 5

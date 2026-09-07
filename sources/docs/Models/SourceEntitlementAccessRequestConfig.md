@@ -1,240 +1,240 @@
 ---
-id: v1-entitlement-access-request-config
-title: EntitlementAccessRequestConfig
-pagination_label: EntitlementAccessRequestConfig
-sidebar_label: EntitlementAccessRequestConfig
+id: v1-source-entitlement-access-request-config
+title: SourceEntitlementAccessRequestConfig
+pagination_label: SourceEntitlementAccessRequestConfig
+sidebar_label: SourceEntitlementAccessRequestConfig
 sidebar_class_name: gosdk
-keywords: ['go', 'Golang', 'sdk', 'EntitlementAccessRequestConfig', 'V1EntitlementAccessRequestConfig'] 
-slug: /tools/sdk/go/sources/models/entitlement-access-request-config
-tags: ['SDK', 'Software Development Kit', 'EntitlementAccessRequestConfig', 'V1EntitlementAccessRequestConfig']
+keywords: ['go', 'Golang', 'sdk', 'SourceEntitlementAccessRequestConfig', 'V1SourceEntitlementAccessRequestConfig'] 
+slug: /tools/sdk/go/sources/models/source-entitlement-access-request-config
+tags: ['SDK', 'Software Development Kit', 'SourceEntitlementAccessRequestConfig', 'V1SourceEntitlementAccessRequestConfig']
 ---
 
-# EntitlementAccessRequestConfig
+# SourceEntitlementAccessRequestConfig
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApprovalSchemes** | Pointer to [**[]EntitlementApprovalScheme**](entitlement-approval-scheme) | Ordered list of approval steps for the access request. Empty when no approval is required. | [optional] 
+**ApprovalSchemes** | Pointer to [**[]SourceEntitlementApprovalScheme**](source-entitlement-approval-scheme) | Ordered list of approval steps for the access request. Empty when no approval is required. | [optional] 
 **RequestCommentRequired** | Pointer to **bool** | If the requester must provide a comment during access request. | [optional] [default to false]
 **DenialCommentRequired** | Pointer to **bool** | If the reviewer must provide a comment when denying the access request. | [optional] [default to false]
 **ReauthorizationRequired** | Pointer to **bool** | Is Reauthorization Required | [optional] [default to false]
 **RequireEndDate** | Pointer to **bool** | If true, then remove date or sunset date is required in access request of the entitlement. | [optional] [default to false]
-**MaxPermittedAccessDuration** | Pointer to [**NullableEntitlementAccessRequestConfigMaxPermittedAccessDuration**](entitlement-access-request-config-max-permitted-access-duration) |  | [optional] 
+**MaxPermittedAccessDuration** | Pointer to [**NullableSourceEntitlementAccessRequestConfigMaxPermittedAccessDuration**](source-entitlement-access-request-config-max-permitted-access-duration) |  | [optional] 
 **FormDefinitionId** | Pointer to **NullableString** | The ID of the form definition used for the access request. If specified, the form is presented to the requester during the access request process. | [optional] 
 
 ## Methods
 
-### NewEntitlementAccessRequestConfig
+### NewSourceEntitlementAccessRequestConfig
 
-`func NewEntitlementAccessRequestConfig() *EntitlementAccessRequestConfig`
+`func NewSourceEntitlementAccessRequestConfig() *SourceEntitlementAccessRequestConfig`
 
-NewEntitlementAccessRequestConfig instantiates a new EntitlementAccessRequestConfig object
+NewSourceEntitlementAccessRequestConfig instantiates a new SourceEntitlementAccessRequestConfig object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewEntitlementAccessRequestConfigWithDefaults
+### NewSourceEntitlementAccessRequestConfigWithDefaults
 
-`func NewEntitlementAccessRequestConfigWithDefaults() *EntitlementAccessRequestConfig`
+`func NewSourceEntitlementAccessRequestConfigWithDefaults() *SourceEntitlementAccessRequestConfig`
 
-NewEntitlementAccessRequestConfigWithDefaults instantiates a new EntitlementAccessRequestConfig object
+NewSourceEntitlementAccessRequestConfigWithDefaults instantiates a new SourceEntitlementAccessRequestConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetApprovalSchemes
 
-`func (o *EntitlementAccessRequestConfig) GetApprovalSchemes() []EntitlementApprovalScheme`
+`func (o *SourceEntitlementAccessRequestConfig) GetApprovalSchemes() []SourceEntitlementApprovalScheme`
 
 GetApprovalSchemes returns the ApprovalSchemes field if non-nil, zero value otherwise.
 
 ### GetApprovalSchemesOk
 
-`func (o *EntitlementAccessRequestConfig) GetApprovalSchemesOk() (*[]EntitlementApprovalScheme, bool)`
+`func (o *SourceEntitlementAccessRequestConfig) GetApprovalSchemesOk() (*[]SourceEntitlementApprovalScheme, bool)`
 
 GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovalSchemes
 
-`func (o *EntitlementAccessRequestConfig) SetApprovalSchemes(v []EntitlementApprovalScheme)`
+`func (o *SourceEntitlementAccessRequestConfig) SetApprovalSchemes(v []SourceEntitlementApprovalScheme)`
 
 SetApprovalSchemes sets ApprovalSchemes field to given value.
 
 ### HasApprovalSchemes
 
-`func (o *EntitlementAccessRequestConfig) HasApprovalSchemes() bool`
+`func (o *SourceEntitlementAccessRequestConfig) HasApprovalSchemes() bool`
 
 HasApprovalSchemes returns a boolean if a field has been set.
 
 ### GetRequestCommentRequired
 
-`func (o *EntitlementAccessRequestConfig) GetRequestCommentRequired() bool`
+`func (o *SourceEntitlementAccessRequestConfig) GetRequestCommentRequired() bool`
 
 GetRequestCommentRequired returns the RequestCommentRequired field if non-nil, zero value otherwise.
 
 ### GetRequestCommentRequiredOk
 
-`func (o *EntitlementAccessRequestConfig) GetRequestCommentRequiredOk() (*bool, bool)`
+`func (o *SourceEntitlementAccessRequestConfig) GetRequestCommentRequiredOk() (*bool, bool)`
 
 GetRequestCommentRequiredOk returns a tuple with the RequestCommentRequired field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestCommentRequired
 
-`func (o *EntitlementAccessRequestConfig) SetRequestCommentRequired(v bool)`
+`func (o *SourceEntitlementAccessRequestConfig) SetRequestCommentRequired(v bool)`
 
 SetRequestCommentRequired sets RequestCommentRequired field to given value.
 
 ### HasRequestCommentRequired
 
-`func (o *EntitlementAccessRequestConfig) HasRequestCommentRequired() bool`
+`func (o *SourceEntitlementAccessRequestConfig) HasRequestCommentRequired() bool`
 
 HasRequestCommentRequired returns a boolean if a field has been set.
 
 ### GetDenialCommentRequired
 
-`func (o *EntitlementAccessRequestConfig) GetDenialCommentRequired() bool`
+`func (o *SourceEntitlementAccessRequestConfig) GetDenialCommentRequired() bool`
 
 GetDenialCommentRequired returns the DenialCommentRequired field if non-nil, zero value otherwise.
 
 ### GetDenialCommentRequiredOk
 
-`func (o *EntitlementAccessRequestConfig) GetDenialCommentRequiredOk() (*bool, bool)`
+`func (o *SourceEntitlementAccessRequestConfig) GetDenialCommentRequiredOk() (*bool, bool)`
 
 GetDenialCommentRequiredOk returns a tuple with the DenialCommentRequired field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDenialCommentRequired
 
-`func (o *EntitlementAccessRequestConfig) SetDenialCommentRequired(v bool)`
+`func (o *SourceEntitlementAccessRequestConfig) SetDenialCommentRequired(v bool)`
 
 SetDenialCommentRequired sets DenialCommentRequired field to given value.
 
 ### HasDenialCommentRequired
 
-`func (o *EntitlementAccessRequestConfig) HasDenialCommentRequired() bool`
+`func (o *SourceEntitlementAccessRequestConfig) HasDenialCommentRequired() bool`
 
 HasDenialCommentRequired returns a boolean if a field has been set.
 
 ### GetReauthorizationRequired
 
-`func (o *EntitlementAccessRequestConfig) GetReauthorizationRequired() bool`
+`func (o *SourceEntitlementAccessRequestConfig) GetReauthorizationRequired() bool`
 
 GetReauthorizationRequired returns the ReauthorizationRequired field if non-nil, zero value otherwise.
 
 ### GetReauthorizationRequiredOk
 
-`func (o *EntitlementAccessRequestConfig) GetReauthorizationRequiredOk() (*bool, bool)`
+`func (o *SourceEntitlementAccessRequestConfig) GetReauthorizationRequiredOk() (*bool, bool)`
 
 GetReauthorizationRequiredOk returns a tuple with the ReauthorizationRequired field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReauthorizationRequired
 
-`func (o *EntitlementAccessRequestConfig) SetReauthorizationRequired(v bool)`
+`func (o *SourceEntitlementAccessRequestConfig) SetReauthorizationRequired(v bool)`
 
 SetReauthorizationRequired sets ReauthorizationRequired field to given value.
 
 ### HasReauthorizationRequired
 
-`func (o *EntitlementAccessRequestConfig) HasReauthorizationRequired() bool`
+`func (o *SourceEntitlementAccessRequestConfig) HasReauthorizationRequired() bool`
 
 HasReauthorizationRequired returns a boolean if a field has been set.
 
 ### GetRequireEndDate
 
-`func (o *EntitlementAccessRequestConfig) GetRequireEndDate() bool`
+`func (o *SourceEntitlementAccessRequestConfig) GetRequireEndDate() bool`
 
 GetRequireEndDate returns the RequireEndDate field if non-nil, zero value otherwise.
 
 ### GetRequireEndDateOk
 
-`func (o *EntitlementAccessRequestConfig) GetRequireEndDateOk() (*bool, bool)`
+`func (o *SourceEntitlementAccessRequestConfig) GetRequireEndDateOk() (*bool, bool)`
 
 GetRequireEndDateOk returns a tuple with the RequireEndDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequireEndDate
 
-`func (o *EntitlementAccessRequestConfig) SetRequireEndDate(v bool)`
+`func (o *SourceEntitlementAccessRequestConfig) SetRequireEndDate(v bool)`
 
 SetRequireEndDate sets RequireEndDate field to given value.
 
 ### HasRequireEndDate
 
-`func (o *EntitlementAccessRequestConfig) HasRequireEndDate() bool`
+`func (o *SourceEntitlementAccessRequestConfig) HasRequireEndDate() bool`
 
 HasRequireEndDate returns a boolean if a field has been set.
 
 ### GetMaxPermittedAccessDuration
 
-`func (o *EntitlementAccessRequestConfig) GetMaxPermittedAccessDuration() EntitlementAccessRequestConfigMaxPermittedAccessDuration`
+`func (o *SourceEntitlementAccessRequestConfig) GetMaxPermittedAccessDuration() SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration`
 
 GetMaxPermittedAccessDuration returns the MaxPermittedAccessDuration field if non-nil, zero value otherwise.
 
 ### GetMaxPermittedAccessDurationOk
 
-`func (o *EntitlementAccessRequestConfig) GetMaxPermittedAccessDurationOk() (*EntitlementAccessRequestConfigMaxPermittedAccessDuration, bool)`
+`func (o *SourceEntitlementAccessRequestConfig) GetMaxPermittedAccessDurationOk() (*SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration, bool)`
 
 GetMaxPermittedAccessDurationOk returns a tuple with the MaxPermittedAccessDuration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxPermittedAccessDuration
 
-`func (o *EntitlementAccessRequestConfig) SetMaxPermittedAccessDuration(v EntitlementAccessRequestConfigMaxPermittedAccessDuration)`
+`func (o *SourceEntitlementAccessRequestConfig) SetMaxPermittedAccessDuration(v SourceEntitlementAccessRequestConfigMaxPermittedAccessDuration)`
 
 SetMaxPermittedAccessDuration sets MaxPermittedAccessDuration field to given value.
 
 ### HasMaxPermittedAccessDuration
 
-`func (o *EntitlementAccessRequestConfig) HasMaxPermittedAccessDuration() bool`
+`func (o *SourceEntitlementAccessRequestConfig) HasMaxPermittedAccessDuration() bool`
 
 HasMaxPermittedAccessDuration returns a boolean if a field has been set.
 
 ### SetMaxPermittedAccessDurationNil
 
-`func (o *EntitlementAccessRequestConfig) SetMaxPermittedAccessDurationNil(b bool)`
+`func (o *SourceEntitlementAccessRequestConfig) SetMaxPermittedAccessDurationNil(b bool)`
 
  SetMaxPermittedAccessDurationNil sets the value for MaxPermittedAccessDuration to be an explicit nil
 
 ### UnsetMaxPermittedAccessDuration
-`func (o *EntitlementAccessRequestConfig) UnsetMaxPermittedAccessDuration()`
+`func (o *SourceEntitlementAccessRequestConfig) UnsetMaxPermittedAccessDuration()`
 
 UnsetMaxPermittedAccessDuration ensures that no value is present for MaxPermittedAccessDuration, not even an explicit nil
 ### GetFormDefinitionId
 
-`func (o *EntitlementAccessRequestConfig) GetFormDefinitionId() string`
+`func (o *SourceEntitlementAccessRequestConfig) GetFormDefinitionId() string`
 
 GetFormDefinitionId returns the FormDefinitionId field if non-nil, zero value otherwise.
 
 ### GetFormDefinitionIdOk
 
-`func (o *EntitlementAccessRequestConfig) GetFormDefinitionIdOk() (*string, bool)`
+`func (o *SourceEntitlementAccessRequestConfig) GetFormDefinitionIdOk() (*string, bool)`
 
 GetFormDefinitionIdOk returns a tuple with the FormDefinitionId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFormDefinitionId
 
-`func (o *EntitlementAccessRequestConfig) SetFormDefinitionId(v string)`
+`func (o *SourceEntitlementAccessRequestConfig) SetFormDefinitionId(v string)`
 
 SetFormDefinitionId sets FormDefinitionId field to given value.
 
 ### HasFormDefinitionId
 
-`func (o *EntitlementAccessRequestConfig) HasFormDefinitionId() bool`
+`func (o *SourceEntitlementAccessRequestConfig) HasFormDefinitionId() bool`
 
 HasFormDefinitionId returns a boolean if a field has been set.
 
 ### SetFormDefinitionIdNil
 
-`func (o *EntitlementAccessRequestConfig) SetFormDefinitionIdNil(b bool)`
+`func (o *SourceEntitlementAccessRequestConfig) SetFormDefinitionIdNil(b bool)`
 
  SetFormDefinitionIdNil sets the value for FormDefinitionId to be an explicit nil
 
 ### UnsetFormDefinitionId
-`func (o *EntitlementAccessRequestConfig) UnsetFormDefinitionId()`
+`func (o *SourceEntitlementAccessRequestConfig) UnsetFormDefinitionId()`
 
 UnsetFormDefinitionId ensures that no value is present for FormDefinitionId, not even an explicit nil
 

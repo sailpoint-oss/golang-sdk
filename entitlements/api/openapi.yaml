@@ -1609,6 +1609,36 @@ paths:
       requestBody:
         content:
           application/json:
+            examples:
+              Set config with governance group approval:
+                description: A sequential list of approvers. The request goes to each
+                  approver in order.
+                value:
+                  accessRequestConfig:
+                    requestCommentRequired: true
+                    denialCommentRequired: true
+                    approvalSchemes:
+                    - approverType: ENTITLEMENT_OWNER
+                    - approverType: GOVERNANCE_GROUP
+                      approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+                  revocationRequestConfig:
+                    approvalSchemes: []
+              Set config with workflow approval:
+                description: "A workflow approver. `approverId` is the ID of a workflow\
+                  \ that uses the `idn:access-request-trigger` trigger, the Adaptive\
+                  \ Approvals feature must be enabled for the tenant, and `WORKFLOW`\
+                  \ must be the only entry in `approvalSchemes`. Workflow approvals\
+                  \ are supported only at the entitlement level, not at the source\
+                  \ level."
+                value:
+                  accessRequestConfig:
+                    requestCommentRequired: false
+                    denialCommentRequired: false
+                    approvalSchemes:
+                    - approverType: WORKFLOW
+                      approverId: 8b2fa4a4-bd33-41a1-9ac6-0ffebc976a90
+                  revocationRequestConfig:
+                    approvalSchemes: []
             schema:
               $ref: '#/components/schemas/EntitlementRequestConfig'
         required: true
@@ -3075,14 +3105,23 @@ components:
         approverType: GOVERNANCE_GROUP
       properties:
         approverType:
-          description: "Describes the individual or group that is responsible for\
-            \ an approval step. Values are as follows.\n\n**ENTITLEMENT_OWNER**: Owner\
-            \ of the associated Entitlement\n\n**SOURCE_OWNER**: Owner of the associated\
-            \ Source\n\n**MANAGER**: Manager of the Identity for whom the request\
-            \ is being made\n\n**GOVERNANCE_GROUP**: A Governance Group, the ID of\
-            \ which is specified by the **approverId** field\n\n**WORKFLOW**: A Workflow,\
-            \ the ID of which is specified by the **approverId** field, Workflows\
-            \ are exclusive to other types of approvals and License required.     "
+          description: |-
+            Describes the individual or group that is responsible for an approval step. Values are as follows.
+
+            **ENTITLEMENT_OWNER**: Owner of the associated Entitlement
+
+            **SOURCE_OWNER**: Owner of the associated Source
+
+            **MANAGER**: Manager of the Identity for whom the request is being made
+
+            **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field
+
+            **WORKFLOW**: A Workflow, the ID of which is specified by the **approverId** field. A workflow approver has these requirements.
+
+            - The Adaptive Approvals feature must be enabled for the tenant.
+            - The workflow given in **approverId** must use the `idn:access-request-trigger` trigger.
+            - `WORKFLOW` is exclusive of the other approver types. If you use it, it must be the only entry in **approvalSchemes**.
+            - `WORKFLOW` is supported only in entitlement-level configuration. The source-level [Update source entitlement request configuration](https://developer.sailpoint.com/docs/api/update-source-entitlement-request-config-v-1) endpoint rejects it with a 400.
           enum:
           - ENTITLEMENT_OWNER
           - SOURCE_OWNER
@@ -3093,7 +3132,8 @@ components:
           type: string
         approverId:
           description: "Id of the specific approver, used only when approverType is\
-            \ GOVERNANCE_GROUP or WORKFLOW"
+            \ GOVERNANCE_GROUP or WORKFLOW. For WORKFLOW this is the ID of the workflow\
+            \ to run."
           example: e3eab852-8315-467f-9de7-70eda97f63c8
           nullable: true
           type: string
@@ -3163,8 +3203,8 @@ components:
           approverType: GOVERNANCE_GROUP
       properties:
         approvalSchemes:
-          description: Ordered list of approval steps for the access request. Empty
-            when no approval is required.
+          description: Ordered list of approval steps for the revocation request.
+            Empty when no approval is required.
           items:
             $ref: '#/components/schemas/EntitlementApprovalScheme'
           type: array

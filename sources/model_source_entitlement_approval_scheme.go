@@ -14,39 +14,39 @@ import (
 	"encoding/json"
 )
 
-// checks if the EntitlementApprovalScheme type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EntitlementApprovalScheme{}
+// checks if the SourceEntitlementApprovalScheme type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceEntitlementApprovalScheme{}
 
-// EntitlementApprovalScheme struct for EntitlementApprovalScheme
-type EntitlementApprovalScheme struct {
-	// Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field  **WORKFLOW**: A Workflow, the ID of which is specified by the **approverId** field, Workflows are exclusive to other types of approvals and License required.     
+// SourceEntitlementApprovalScheme struct for SourceEntitlementApprovalScheme
+type SourceEntitlementApprovalScheme struct {
+	// Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field  **WORKFLOW** is not supported in source-level entitlement request configuration. Use the entitlement-level [Replace entitlement request config](https://developer.sailpoint.com/docs/api/put-entitlement-request-config-v-1) endpoint to configure a workflow approver. A source-level request that contains `WORKFLOW` is rejected with a 400.
 	ApproverType *string `json:"approverType,omitempty"`
-	// Id of the specific approver, used only when approverType is GOVERNANCE_GROUP or WORKFLOW
+	// Id of the specific approver, used only when approverType is GOVERNANCE_GROUP
 	ApproverId NullableString `json:"approverId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _EntitlementApprovalScheme EntitlementApprovalScheme
+type _SourceEntitlementApprovalScheme SourceEntitlementApprovalScheme
 
-// NewEntitlementApprovalScheme instantiates a new EntitlementApprovalScheme object
+// NewSourceEntitlementApprovalScheme instantiates a new SourceEntitlementApprovalScheme object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEntitlementApprovalScheme() *EntitlementApprovalScheme {
-	this := EntitlementApprovalScheme{}
+func NewSourceEntitlementApprovalScheme() *SourceEntitlementApprovalScheme {
+	this := SourceEntitlementApprovalScheme{}
 	return &this
 }
 
-// NewEntitlementApprovalSchemeWithDefaults instantiates a new EntitlementApprovalScheme object
+// NewSourceEntitlementApprovalSchemeWithDefaults instantiates a new SourceEntitlementApprovalScheme object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewEntitlementApprovalSchemeWithDefaults() *EntitlementApprovalScheme {
-	this := EntitlementApprovalScheme{}
+func NewSourceEntitlementApprovalSchemeWithDefaults() *SourceEntitlementApprovalScheme {
+	this := SourceEntitlementApprovalScheme{}
 	return &this
 }
 
 // GetApproverType returns the ApproverType field value if set, zero value otherwise.
-func (o *EntitlementApprovalScheme) GetApproverType() string {
+func (o *SourceEntitlementApprovalScheme) GetApproverType() string {
 	if o == nil || IsNil(o.ApproverType) {
 		var ret string
 		return ret
@@ -56,7 +56,7 @@ func (o *EntitlementApprovalScheme) GetApproverType() string {
 
 // GetApproverTypeOk returns a tuple with the ApproverType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementApprovalScheme) GetApproverTypeOk() (*string, bool) {
+func (o *SourceEntitlementApprovalScheme) GetApproverTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ApproverType) {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *EntitlementApprovalScheme) GetApproverTypeOk() (*string, bool) {
 }
 
 // HasApproverType returns a boolean if a field has been set.
-func (o *EntitlementApprovalScheme) HasApproverType() bool {
+func (o *SourceEntitlementApprovalScheme) HasApproverType() bool {
 	if o != nil && !IsNil(o.ApproverType) {
 		return true
 	}
@@ -73,12 +73,12 @@ func (o *EntitlementApprovalScheme) HasApproverType() bool {
 }
 
 // SetApproverType gets a reference to the given string and assigns it to the ApproverType field.
-func (o *EntitlementApprovalScheme) SetApproverType(v string) {
+func (o *SourceEntitlementApprovalScheme) SetApproverType(v string) {
 	o.ApproverType = &v
 }
 
 // GetApproverId returns the ApproverId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EntitlementApprovalScheme) GetApproverId() string {
+func (o *SourceEntitlementApprovalScheme) GetApproverId() string {
 	if o == nil || IsNil(o.ApproverId.Get()) {
 		var ret string
 		return ret
@@ -89,7 +89,7 @@ func (o *EntitlementApprovalScheme) GetApproverId() string {
 // GetApproverIdOk returns a tuple with the ApproverId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EntitlementApprovalScheme) GetApproverIdOk() (*string, bool) {
+func (o *SourceEntitlementApprovalScheme) GetApproverIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,7 +97,7 @@ func (o *EntitlementApprovalScheme) GetApproverIdOk() (*string, bool) {
 }
 
 // HasApproverId returns a boolean if a field has been set.
-func (o *EntitlementApprovalScheme) HasApproverId() bool {
+func (o *SourceEntitlementApprovalScheme) HasApproverId() bool {
 	if o != nil && o.ApproverId.IsSet() {
 		return true
 	}
@@ -106,20 +106,20 @@ func (o *EntitlementApprovalScheme) HasApproverId() bool {
 }
 
 // SetApproverId gets a reference to the given NullableString and assigns it to the ApproverId field.
-func (o *EntitlementApprovalScheme) SetApproverId(v string) {
+func (o *SourceEntitlementApprovalScheme) SetApproverId(v string) {
 	o.ApproverId.Set(&v)
 }
 // SetApproverIdNil sets the value for ApproverId to be an explicit nil
-func (o *EntitlementApprovalScheme) SetApproverIdNil() {
+func (o *SourceEntitlementApprovalScheme) SetApproverIdNil() {
 	o.ApproverId.Set(nil)
 }
 
 // UnsetApproverId ensures that no value is present for ApproverId, not even an explicit nil
-func (o *EntitlementApprovalScheme) UnsetApproverId() {
+func (o *SourceEntitlementApprovalScheme) UnsetApproverId() {
 	o.ApproverId.Unset()
 }
 
-func (o EntitlementApprovalScheme) MarshalJSON() ([]byte, error) {
+func (o SourceEntitlementApprovalScheme) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -127,7 +127,7 @@ func (o EntitlementApprovalScheme) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o EntitlementApprovalScheme) ToMap() (map[string]interface{}, error) {
+func (o SourceEntitlementApprovalScheme) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ApproverType) {
 		toSerialize["approverType"] = o.ApproverType
@@ -143,16 +143,16 @@ func (o EntitlementApprovalScheme) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EntitlementApprovalScheme) UnmarshalJSON(data []byte) (err error) {
-	varEntitlementApprovalScheme := _EntitlementApprovalScheme{}
+func (o *SourceEntitlementApprovalScheme) UnmarshalJSON(data []byte) (err error) {
+	varSourceEntitlementApprovalScheme := _SourceEntitlementApprovalScheme{}
 
-	err = json.Unmarshal(data, &varEntitlementApprovalScheme)
+	err = json.Unmarshal(data, &varSourceEntitlementApprovalScheme)
 
 	if err != nil {
 		return err
 	}
 
-	*o = EntitlementApprovalScheme(varEntitlementApprovalScheme)
+	*o = SourceEntitlementApprovalScheme(varSourceEntitlementApprovalScheme)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -165,38 +165,38 @@ func (o *EntitlementApprovalScheme) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableEntitlementApprovalScheme struct {
-	value *EntitlementApprovalScheme
+type NullableSourceEntitlementApprovalScheme struct {
+	value *SourceEntitlementApprovalScheme
 	isSet bool
 }
 
-func (v NullableEntitlementApprovalScheme) Get() *EntitlementApprovalScheme {
+func (v NullableSourceEntitlementApprovalScheme) Get() *SourceEntitlementApprovalScheme {
 	return v.value
 }
 
-func (v *NullableEntitlementApprovalScheme) Set(val *EntitlementApprovalScheme) {
+func (v *NullableSourceEntitlementApprovalScheme) Set(val *SourceEntitlementApprovalScheme) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableEntitlementApprovalScheme) IsSet() bool {
+func (v NullableSourceEntitlementApprovalScheme) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableEntitlementApprovalScheme) Unset() {
+func (v *NullableSourceEntitlementApprovalScheme) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableEntitlementApprovalScheme(val *EntitlementApprovalScheme) *NullableEntitlementApprovalScheme {
-	return &NullableEntitlementApprovalScheme{value: val, isSet: true}
+func NewNullableSourceEntitlementApprovalScheme(val *SourceEntitlementApprovalScheme) *NullableSourceEntitlementApprovalScheme {
+	return &NullableSourceEntitlementApprovalScheme{value: val, isSet: true}
 }
 
-func (v NullableEntitlementApprovalScheme) MarshalJSON() ([]byte, error) {
+func (v NullableSourceEntitlementApprovalScheme) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableEntitlementApprovalScheme) UnmarshalJSON(src []byte) error {
+func (v *NullableSourceEntitlementApprovalScheme) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

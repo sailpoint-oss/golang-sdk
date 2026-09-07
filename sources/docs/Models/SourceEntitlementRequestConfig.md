@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'SourceEntitlementRequestConfig', 'V1S
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessRequestConfig** | Pointer to [**EntitlementAccessRequestConfig**](entitlement-access-request-config) |  | [optional] 
-**RevocationRequestConfig** | Pointer to [**EntitlementRevocationRequestConfig**](entitlement-revocation-request-config) |  | [optional] 
+**AccessRequestConfig** | Pointer to [**SourceEntitlementAccessRequestConfig**](source-entitlement-access-request-config) |  | [optional] 
+**RevocationRequestConfig** | Pointer to [**SourceEntitlementRevocationRequestConfig**](source-entitlement-revocation-request-config) |  | [optional] 
 
 ## Methods
 
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAccessRequestConfig
 
-`func (o *SourceEntitlementRequestConfig) GetAccessRequestConfig() EntitlementAccessRequestConfig`
+`func (o *SourceEntitlementRequestConfig) GetAccessRequestConfig() SourceEntitlementAccessRequestConfig`
 
 GetAccessRequestConfig returns the AccessRequestConfig field if non-nil, zero value otherwise.
 
 ### GetAccessRequestConfigOk
 
-`func (o *SourceEntitlementRequestConfig) GetAccessRequestConfigOk() (*EntitlementAccessRequestConfig, bool)`
+`func (o *SourceEntitlementRequestConfig) GetAccessRequestConfigOk() (*SourceEntitlementAccessRequestConfig, bool)`
 
 GetAccessRequestConfigOk returns a tuple with the AccessRequestConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessRequestConfig
 
-`func (o *SourceEntitlementRequestConfig) SetAccessRequestConfig(v EntitlementAccessRequestConfig)`
+`func (o *SourceEntitlementRequestConfig) SetAccessRequestConfig(v SourceEntitlementAccessRequestConfig)`
 
 SetAccessRequestConfig sets AccessRequestConfig field to given value.
 
@@ -64,20 +64,20 @@ HasAccessRequestConfig returns a boolean if a field has been set.
 
 ### GetRevocationRequestConfig
 
-`func (o *SourceEntitlementRequestConfig) GetRevocationRequestConfig() EntitlementRevocationRequestConfig`
+`func (o *SourceEntitlementRequestConfig) GetRevocationRequestConfig() SourceEntitlementRevocationRequestConfig`
 
 GetRevocationRequestConfig returns the RevocationRequestConfig field if non-nil, zero value otherwise.
 
 ### GetRevocationRequestConfigOk
 
-`func (o *SourceEntitlementRequestConfig) GetRevocationRequestConfigOk() (*EntitlementRevocationRequestConfig, bool)`
+`func (o *SourceEntitlementRequestConfig) GetRevocationRequestConfigOk() (*SourceEntitlementRevocationRequestConfig, bool)`
 
 GetRevocationRequestConfigOk returns a tuple with the RevocationRequestConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRevocationRequestConfig
 
-`func (o *SourceEntitlementRequestConfig) SetRevocationRequestConfig(v EntitlementRevocationRequestConfig)`
+`func (o *SourceEntitlementRequestConfig) SetRevocationRequestConfig(v SourceEntitlementRevocationRequestConfig)`
 
 SetRevocationRequestConfig sets RevocationRequestConfig field to given value.
 

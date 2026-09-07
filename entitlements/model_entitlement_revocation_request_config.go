@@ -19,7 +19,7 @@ var _ MappedNullable = &EntitlementRevocationRequestConfig{}
 
 // EntitlementRevocationRequestConfig struct for EntitlementRevocationRequestConfig
 type EntitlementRevocationRequestConfig struct {
-	// Ordered list of approval steps for the access request. Empty when no approval is required.
+	// Ordered list of approval steps for the revocation request. Empty when no approval is required.
 	ApprovalSchemes []EntitlementApprovalScheme `json:"approvalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
