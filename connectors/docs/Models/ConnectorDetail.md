@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **ClassName** | Pointer to **string** | The connector class name | [optional] 
 **ScriptName** | Pointer to **string** | The connector script name | [optional] 
 **ApplicationXml** | Pointer to **string** | The connector application xml | [optional] 
+**ProvisioningPolicies** | Pointer to [**[]ProvisioningPolicyDto**](provisioning-policy-dto) | Default provisioning policies parsed from the connector application XML templates. Always an array; empty when the connector ships no templates. | [optional] 
 **CorrelationConfigXml** | Pointer to **string** | The connector correlation config xml | [optional] 
 **SourceConfigXml** | Pointer to **string** | The connector source config xml | [optional] 
 **SourceConfig** | Pointer to **NullableString** | The connector source config | [optional] 
@@ -175,6 +176,31 @@ SetApplicationXml sets ApplicationXml field to given value.
 `func (o *ConnectorDetail) HasApplicationXml() bool`
 
 HasApplicationXml returns a boolean if a field has been set.
+
+### GetProvisioningPolicies
+
+`func (o *ConnectorDetail) GetProvisioningPolicies() []ProvisioningPolicyDto`
+
+GetProvisioningPolicies returns the ProvisioningPolicies field if non-nil, zero value otherwise.
+
+### GetProvisioningPoliciesOk
+
+`func (o *ConnectorDetail) GetProvisioningPoliciesOk() (*[]ProvisioningPolicyDto, bool)`
+
+GetProvisioningPoliciesOk returns a tuple with the ProvisioningPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioningPolicies
+
+`func (o *ConnectorDetail) SetProvisioningPolicies(v []ProvisioningPolicyDto)`
+
+SetProvisioningPolicies sets ProvisioningPolicies field to given value.
+
+### HasProvisioningPolicies
+
+`func (o *ConnectorDetail) HasProvisioningPolicies() bool`
+
+HasProvisioningPolicies returns a boolean if a field has been set.
 
 ### GetCorrelationConfigXml
 

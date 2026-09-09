@@ -10720,7 +10720,7 @@ components:
         isMultiValued: false
         name: userName
         attributes:
-          template: "${firstname}.${lastname}${uniqueCounter}"
+          template: "{firstname}.{lastname}{uniqueCounter}"
           cloudMaxUniqueChecks: "50"
           cloudMaxSize: "20"
           cloudRequired: "true"
@@ -10741,7 +10741,7 @@ components:
         attributes:
           description: Attributes required for the transform
           example:
-            template: "${firstname}.${lastname}${uniqueCounter}"
+            template: "{firstname}.{lastname}{uniqueCounter}"
             cloudMaxUniqueChecks: "50"
             cloudMaxSize: "20"
             cloudRequired: "true"
@@ -10797,7 +10797,7 @@ components:
           isMultiValued: false
           name: userName
           attributes:
-            template: "${firstname}.${lastname}${uniqueCounter}"
+            template: "{firstname}.{lastname}{uniqueCounter}"
             cloudMaxUniqueChecks: "50"
             cloudMaxSize: "20"
             cloudRequired: "true"
@@ -10810,7 +10810,7 @@ components:
           isMultiValued: false
           name: userName
           attributes:
-            template: "${firstname}.${lastname}${uniqueCounter}"
+            template: "{firstname}.{lastname}{uniqueCounter}"
             cloudMaxUniqueChecks: "50"
             cloudMaxSize: "20"
             cloudRequired: "true"
@@ -12323,6 +12323,27 @@ components:
           type: array
       title: Resource Objects Response
       type: object
+    Provisioningpolicies:
+      description: Default provisioning policies parsed from the connector application
+        XML templates. Always an array; empty when the connector ships no templates.
+      example:
+      - name: Account
+        description: Create Account Profile
+        usageType: CREATE
+        fields:
+        - name: distinguishedName
+          transform:
+            type: identityAttribute
+            attributes:
+              name: email
+          attributes: {}
+          isRequired: true
+          type: string
+          isMultiValued: false
+      items:
+        $ref: '#/components/schemas/ProvisioningPolicyDto'
+      nullable: false
+      type: array
     ConnectorDetail:
       example:
         applicationXml: |
@@ -12360,6 +12381,20 @@ components:
         className: class name
         type: ServiceNow
         fileUpload: true
+        provisioningPolicies:
+        - name: Account
+          description: Create Account Profile
+          usageType: CREATE
+          fields:
+          - name: distinguishedName
+            transform:
+              type: identityAttribute
+              attributes:
+                name: email
+            attributes: {}
+            isRequired: true
+            type: string
+            isMultiValued: false
         sourceConfigFrom: sp-connect
         sourceConfig: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"\
           ?><!-- Copyright (C) 2023 SailPoint Technologies, Inc.  All rights reserved.\
@@ -12417,6 +12452,27 @@ components:
             <!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
             <Application connector="sailpoint.connector.OpenConnectorAdapter" name="custom Atlassian Suite - Cloud" type="custom Atlassian Suite - Cloud"/>
           type: string
+        provisioningPolicies:
+          description: Default provisioning policies parsed from the connector application
+            XML templates. Always an array; empty when the connector ships no templates.
+          example:
+          - name: Account
+            description: Create Account Profile
+            usageType: CREATE
+            fields:
+            - name: distinguishedName
+              transform:
+                type: identityAttribute
+                attributes:
+                  name: email
+              attributes: {}
+              isRequired: true
+              type: string
+              isMultiValued: false
+          items:
+            $ref: '#/components/schemas/ProvisioningPolicyDto'
+          nullable: false
+          type: array
         correlationConfigXml:
           description: The connector correlation config xml
           example: "<?xml version='1.0' encoding='UTF-8'?>\n<!-- Copyright (C) 2021\

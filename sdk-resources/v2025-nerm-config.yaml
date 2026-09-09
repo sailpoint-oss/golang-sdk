@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/resources
 packageName: nerm_v2025
-packageVersion: 3.1.36
+packageVersion: 3.1.37
 generateInterfaces: false
 disallowAdditionalPropertiesIfNotPresent: false
 useOneOfDiscriminatorLookup: false

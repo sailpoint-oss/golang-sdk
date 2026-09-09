@@ -1781,6 +1781,146 @@ components:
             $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
   schemas:
+    UsageType:
+      description: "The type of provisioning policy usage. \nIn IdentityNow, a source\
+        \ can support various provisioning operations. For example, when a joiner\
+        \ is added to a source, this may trigger both CREATE and UPDATE provisioning\
+        \ operations.  Each usage type is considered a provisioning policy.  A source\
+        \ can have any number of these provisioning policies defined. \nThese are\
+        \ the common usage types: \nCREATE - This usage type relates to 'Create Account\
+        \ Profile', the provisioning template for the account to be created. For example,\
+        \ this would be used for a joiner on a source.  \nUPDATE - This usage type\
+        \ relates to 'Update Account Profile', the provisioning template for the 'Update'\
+        \ connector operations. For example, this would be used for an attribute sync\
+        \ on a source.\nENABLE - This usage type relates to 'Enable Account Profile',\
+        \ the provisioning template for the account to be enabled. For example, this\
+        \ could be used for a joiner on a source once the joiner's account is created.\
+        \ \nDISABLE - This usage type relates to 'Disable Account Profile', the provisioning\
+        \ template for the account to be disabled. For example, this could be used\
+        \ when a leaver is removed temporarily from a source.\nYou can use these usage\
+        \ types for all your provisioning policy needs. "
+      enum:
+      - CREATE
+      - UPDATE
+      - ENABLE
+      - DISABLE
+      - DELETE
+      - ASSIGN
+      - UNASSIGN
+      - CREATE_GROUP
+      - UPDATE_GROUP
+      - DELETE_GROUP
+      - REGISTER
+      - CREATE_IDENTITY
+      - UPDATE_IDENTITY
+      - EDIT_GROUP
+      - UNLOCK
+      - CHANGE_PASSWORD
+      example: CREATE
+      nullable: false
+      type: string
+    FieldDetailsDto:
+      properties:
+        name:
+          description: The name of the attribute.
+          example: userName
+          type: string
+        transform:
+          default: {}
+          description: The transform to apply to the field
+          example:
+            type: rule
+            attributes:
+              name: Create Unique LDAP Attribute
+          type: object
+        attributes:
+          description: Attributes required for the transform
+          example:
+            template: "{firstname}.{lastname}{uniqueCounter}"
+            cloudMaxUniqueChecks: "50"
+            cloudMaxSize: "20"
+            cloudRequired: "true"
+          type: object
+        isRequired:
+          default: false
+          description: Flag indicating whether or not the attribute is required.
+          example: false
+          readOnly: true
+          type: boolean
+        type:
+          description: |
+            The type of the attribute.
+
+            string: For text-based data.
+
+            int: For whole numbers.
+
+            long: For larger whole numbers.
+
+            date: For date and time values.
+
+            boolean: For true/false values.
+
+            secret: For sensitive data like passwords, which will be masked and encrypted.
+          enum:
+          - string
+          - int
+          - long
+          - date
+          - boolean
+          - secret
+          example: string
+          type: string
+        isMultiValued:
+          default: false
+          description: Flag indicating whether or not the attribute is multi-valued.
+          example: false
+          type: boolean
+      title: Field Details Dto
+      type: object
+    ProvisioningPolicyDto:
+      properties:
+        name:
+          description: the provisioning policy name
+          example: example provisioning policy for inactive identities
+          nullable: true
+          type: string
+        description:
+          description: the description of the provisioning policy
+          example: this provisioning policy creates access based on an identity going
+            inactive
+          type: string
+        usageType:
+          $ref: '#/components/schemas/UsageType'
+        fields:
+          items:
+            $ref: '#/components/schemas/FieldDetailsDto'
+          type: array
+      required:
+      - name
+      title: Provisioning Policy Dto
+      type: object
+    Provisioningpolicies:
+      description: Default provisioning policies parsed from the connector application
+        XML templates. Always an array; empty when the connector ships no templates.
+      example:
+      - name: Account
+        description: Create Account Profile
+        usageType: CREATE
+        fields:
+        - name: distinguishedName
+          transform:
+            type: identityAttribute
+            attributes:
+              name: email
+          attributes: {}
+          isRequired: true
+          type: string
+          isMultiValued: false
+      items:
+        $ref: '#/components/schemas/ProvisioningPolicyDto'
+      nullable: false
+      type: array
     ConnectorDetail:
       example:
         applicationXml: |
@@ -1818,6 +1958,20 @@ components:
         className: class name
         type: ServiceNow
         fileUpload: true
+        provisioningPolicies:
+        - name: Account
+          description: Create Account Profile
+          usageType: CREATE
+          fields:
+          - name: distinguishedName
+            transform:
+              type: identityAttribute
+              attributes:
+                name: email
+            attributes: {}
+            isRequired: true
+            type: string
+            isMultiValued: false
         sourceConfigFrom: sp-connect
         sourceConfig: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"\
           ?><!-- Copyright (C) 2023 SailPoint Technologies, Inc.  All rights reserved.\
@@ -1875,6 +2029,27 @@ components:
             <!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
             <Application connector="sailpoint.connector.OpenConnectorAdapter" name="custom Atlassian Suite - Cloud" type="custom Atlassian Suite - Cloud"/>
           type: string
+        provisioningPolicies:
+          description: Default provisioning policies parsed from the connector application
+            XML templates. Always an array; empty when the connector ships no templates.
+          example:
+          - name: Account
+            description: Create Account Profile
+            usageType: CREATE
+            fields:
+            - name: distinguishedName
+              transform:
+                type: identityAttribute
+                attributes:
+                  name: email
+              attributes: {}
+              isRequired: true
+              type: string
+              isMultiValued: false
+          items:
+            $ref: '#/components/schemas/ProvisioningPolicyDto'
+          nullable: false
+          type: array
         correlationConfigXml:
           description: The connector correlation config xml
           example: "<?xml version='1.0' encoding='UTF-8'?>\n<!-- Copyright (C) 2021\

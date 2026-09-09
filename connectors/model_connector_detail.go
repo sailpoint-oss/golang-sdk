@@ -29,6 +29,8 @@ type ConnectorDetail struct {
 	ScriptName *string `json:"scriptName,omitempty"`
 	// The connector application xml
 	ApplicationXml *string `json:"applicationXml,omitempty"`
+	// Default provisioning policies parsed from the connector application XML templates. Always an array; empty when the connector ships no templates.
+	ProvisioningPolicies []ProvisioningPolicyDto `json:"provisioningPolicies,omitempty"`
 	// The connector correlation config xml
 	CorrelationConfigXml *string `json:"correlationConfigXml,omitempty"`
 	// The connector source config xml
@@ -239,6 +241,38 @@ func (o *ConnectorDetail) HasApplicationXml() bool {
 // SetApplicationXml gets a reference to the given string and assigns it to the ApplicationXml field.
 func (o *ConnectorDetail) SetApplicationXml(v string) {
 	o.ApplicationXml = &v
+}
+
+// GetProvisioningPolicies returns the ProvisioningPolicies field value if set, zero value otherwise.
+func (o *ConnectorDetail) GetProvisioningPolicies() []ProvisioningPolicyDto {
+	if o == nil || IsNil(o.ProvisioningPolicies) {
+		var ret []ProvisioningPolicyDto
+		return ret
+	}
+	return o.ProvisioningPolicies
+}
+
+// GetProvisioningPoliciesOk returns a tuple with the ProvisioningPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectorDetail) GetProvisioningPoliciesOk() ([]ProvisioningPolicyDto, bool) {
+	if o == nil || IsNil(o.ProvisioningPolicies) {
+		return nil, false
+	}
+	return o.ProvisioningPolicies, true
+}
+
+// HasProvisioningPolicies returns a boolean if a field has been set.
+func (o *ConnectorDetail) HasProvisioningPolicies() bool {
+	if o != nil && !IsNil(o.ProvisioningPolicies) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvisioningPolicies gets a reference to the given []ProvisioningPolicyDto and assigns it to the ProvisioningPolicies field.
+func (o *ConnectorDetail) SetProvisioningPolicies(v []ProvisioningPolicyDto) {
+	o.ProvisioningPolicies = v
 }
 
 // GetCorrelationConfigXml returns the CorrelationConfigXml field value if set, zero value otherwise.
@@ -639,6 +673,9 @@ func (o ConnectorDetail) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApplicationXml) {
 		toSerialize["applicationXml"] = o.ApplicationXml
 	}
+	if !IsNil(o.ProvisioningPolicies) {
+		toSerialize["provisioningPolicies"] = o.ProvisioningPolicies
+	}
 	if !IsNil(o.CorrelationConfigXml) {
 		toSerialize["correlationConfigXml"] = o.CorrelationConfigXml
 	}
@@ -699,6 +736,7 @@ func (o *ConnectorDetail) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "className")
 		delete(additionalProperties, "scriptName")
 		delete(additionalProperties, "applicationXml")
+		delete(additionalProperties, "provisioningPolicies")
 		delete(additionalProperties, "correlationConfigXml")
 		delete(additionalProperties, "sourceConfigXml")
 		delete(additionalProperties, "sourceConfig")
